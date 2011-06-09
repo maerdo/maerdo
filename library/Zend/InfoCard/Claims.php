@@ -1,307 +1,307 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Claims.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Claimsphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Result value of the InfoCard component, contains any error messages and claims
- * from the processing of an information card.
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_InfoCard_Claims
-{
-    /**
-     * Successful validation and extraion of claims
-     */
-    const RESULT_SUCCESS = 1;
+php/php*php*
+php php*php Resultphp valuephp ofphp thephp InfoCardphp componentphp,php containsphp anyphp errorphp messagesphp andphp claims
+php php*php fromphp thephp processingphp ofphp anphp informationphp cardphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_InfoCardphp_Claims
+php{
+php php php php php/php*php*
+php php php php php php*php Successfulphp validationphp andphp extraionphp ofphp claims
+php php php php php php*php/
+php php php php constphp RESULTphp_SUCCESSphp php=php php1php;
 
-    /**
-     * Indicates there was an error processing the XML document
-     */
-    const RESULT_PROCESSING_FAILURE = 2;
+php php php php php/php*php*
+php php php php php php*php Indicatesphp therephp wasphp anphp errorphp processingphp thephp XMLphp document
+php php php php php php*php/
+php php php php constphp RESULTphp_PROCESSINGphp_FAILUREphp php=php php2php;
 
-    /**
-     * Indicates that the signature values within the XML document failed verification
-     */
-    const RESULT_VALIDATION_FAILURE = 3;
+php php php php php/php*php*
+php php php php php php*php Indicatesphp thatphp thephp signaturephp valuesphp withinphp thephp XMLphp documentphp failedphp verification
+php php php php php php*php/
+php php php php constphp RESULTphp_VALIDATIONphp_FAILUREphp php=php php3php;
 
-    /**
-     * The default namespace to assume in these claims
-     *
-     * @var string
-     */
-    protected $_defaultNamespace  = null;
+php php php php php/php*php*
+php php php php php php*php Thephp defaultphp namespacephp tophp assumephp inphp thesephp claims
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_defaultNamespacephp php php=php nullphp;
 
-    /**
-     * A boolean indicating if the claims should be consider "valid" or not based on processing
-     *
-     * @var bool
-     */
-    protected $_isValid = true;
+php php php php php/php*php*
+php php php php php php*php Aphp booleanphp indicatingphp ifphp thephp claimsphp shouldphp bephp considerphp php"validphp"php orphp notphp basedphp onphp processing
+php php php php php php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isValidphp php=php truephp;
 
-    /**
-     * The error message if any
-     *
-     * @var string
-     */
-    protected $_error = "";
+php php php php php/php*php*
+php php php php php php*php Thephp errorphp messagephp ifphp any
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_errorphp php=php php"php"php;
 
-    /**
-     * An array of claims taken from the information card
-     *
-     * @var array
-     */
-    protected $_claims;
+php php php php php/php*php*
+php php php php php php*php Anphp arrayphp ofphp claimsphp takenphp fromphp thephp informationphp card
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_claimsphp;
 
-    /**
-     * The result code of processing the information card as defined by the constants of this class
-     *
-     * @var integer
-     */
-    protected $_code;
+php php php php php/php*php*
+php php php php php php*php Thephp resultphp codephp ofphp processingphp thephp informationphp cardphp asphp definedphp byphp thephp constantsphp ofphp thisphp class
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_codephp;
 
-    /**
-     * Override for the safeguard which ensures that you don't use claims which failed validation.
-     * Used in situations when there was a validation error you'd like to ignore
-     *
-     * @return Zend_InfoCard_Claims
-     */
-    public function forceValid()
-    {
-        trigger_error("Forcing Claims to be valid although it is a security risk", E_USER_WARNING);
-        $this->_isValid = true;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Overridephp forphp thephp safeguardphp whichphp ensuresphp thatphp youphp donphp'tphp usephp claimsphp whichphp failedphp validationphp.
+php php php php php php*php Usedphp inphp situationsphp whenphp therephp wasphp aphp validationphp errorphp youphp'dphp likephp tophp ignore
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Claims
+php php php php php php*php/
+php php php php publicphp functionphp forceValidphp(php)
+php php php php php{
+php php php php php php php php triggerphp_errorphp(php"Forcingphp Claimsphp tophp bephp validphp althoughphp itphp isphp aphp securityphp riskphp"php,php Ephp_USERphp_WARNINGphp)php;
+php php php php php php php php php$thisphp-php>php_isValidphp php=php truephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve the PPI (Private Personal Identifier) associated with the information card
-     *
-     * @return string the private personal identifier
-     */
-    public function getCardID()
-    {
-        return $this->getClaim('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier');
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp PPIphp php(Privatephp Personalphp Identifierphp)php associatedphp withphp thephp informationphp card
+php php php php php php*
+php php php php php php*php php@returnphp stringphp thephp privatephp personalphp identifier
+php php php php php php*php/
+php php php php publicphp functionphp getCardIDphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getClaimphp(php'httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php5php/identityphp/claimsphp/privatepersonalidentifierphp'php)php;
+php php php php php}
 
-    /**
-     * Retrieves the default namespace used in this information card. If a default namespace was not
-     * set, it figures out which one to consider 'default' by taking the first namespace sorted by use-count
-     * in claims
-     *
-     * @throws Zend_InfoCard_Exception
-     * @return string The default namespace
-     */
-    public function getDefaultNamespace()
-    {
-        if($this->_defaultNamespace === null) {
-            $namespaces = array();
-            $leader = '';
-            foreach($this->_claims as $claim) {
-                if(!isset($namespaces[$claim['namespace']])) {
-                    $namespaces[$claim['namespace']] = 1;
-                } else {
-                    $namespaces[$claim['namespace']]++;
-                }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp defaultphp namespacephp usedphp inphp thisphp informationphp cardphp.php Ifphp aphp defaultphp namespacephp wasphp not
+php php php php php php*php setphp,php itphp figuresphp outphp whichphp onephp tophp considerphp php'defaultphp'php byphp takingphp thephp firstphp namespacephp sortedphp byphp usephp-count
+php php php php php php*php inphp claims
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php php@returnphp stringphp Thephp defaultphp namespace
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultNamespacephp(php)
+php php php php php{
+php php php php php php php php ifphp(php$thisphp-php>php_defaultNamespacephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$namespacesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php$leaderphp php=php php'php'php;
+php php php php php php php php php php php php foreachphp(php$thisphp-php>php_claimsphp asphp php$claimphp)php php{
+php php php php php php php php php php php php php php php php ifphp(php!issetphp(php$namespacesphp[php$claimphp[php'namespacephp'php]php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$namespacesphp[php$claimphp[php'namespacephp'php]php]php php=php php1php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$namespacesphp[php$claimphp[php'namespacephp'php]php]php+php+php;
+php php php php php php php php php php php php php php php php php}
 
-                if(empty($leader) || ($namespaces[$claim['namespace']] > $leader)) {
-                    $leader = $claim['namespace'];
-                }
-            }
+php php php php php php php php php php php php php php php php ifphp(emptyphp(php$leaderphp)php php|php|php php(php$namespacesphp[php$claimphp[php'namespacephp'php]php]php php>php php$leaderphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$leaderphp php=php php$claimphp[php'namespacephp'php]php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            if(empty($leader)) {
-                require_once 'Zend/InfoCard/Exception.php';
-                throw new Zend_InfoCard_Exception("Failed to determine default namespace");
-            }
+php php php php php php php php php php php php ifphp(emptyphp(php$leaderphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Exceptionphp(php"Failedphp tophp determinephp defaultphp namespacephp"php)php;
+php php php php php php php php php php php php php}
 
-            $this->setDefaultNamespace($leader);
-        }
+php php php php php php php php php php php php php$thisphp-php>setDefaultNamespacephp(php$leaderphp)php;
+php php php php php php php php php}
 
-        return $this->_defaultNamespace;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_defaultNamespacephp;
+php php php php php}
 
-    /**
-     * Set the default namespace, overriding any existing default
-     *
-     * @throws Zend_InfoCard_Exception
-     * @param string $namespace The default namespace to use
-     * @return Zend_InfoCard_Claims
-     */
-    public function setDefaultNamespace($namespace)
-    {
+php php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp namespacephp,php overridingphp anyphp existingphp default
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php php@paramphp stringphp php$namespacephp Thephp defaultphp namespacephp tophp use
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Claims
+php php php php php php*php/
+php php php php publicphp functionphp setDefaultNamespacephp(php$namespacephp)
+php php php php php{
 
-        foreach($this->_claims as $claim) {
-            if($namespace == $claim['namespace']) {
-                $this->_defaultNamespace = $namespace;
-                return $this;
-            }
-        }
+php php php php php php php php foreachphp(php$thisphp-php>php_claimsphp asphp php$claimphp)php php{
+php php php php php php php php php php php php ifphp(php$namespacephp php=php=php php$claimphp[php'namespacephp'php]php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_defaultNamespacephp php=php php$namespacephp;
+php php php php php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        require_once 'Zend/InfoCard/Exception.php';
-        throw new Zend_InfoCard_Exception("At least one claim must exist in specified namespace to make it the default namespace");
-    }
+php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Exceptionphp(php"Atphp leastphp onephp claimphp mustphp existphp inphp specifiedphp namespacephp tophp makephp itphp thephp defaultphp namespacephp"php)php;
+php php php php php}
 
-    /**
-     * Indicates if this claim object contains validated claims or not
-     *
-     * @return bool
-     */
-    public function isValid()
-    {
-        return $this->_isValid;
-    }
+php php php php php/php*php*
+php php php php php php*php Indicatesphp ifphp thisphp claimphp objectphp containsphp validatedphp claimsphp orphp not
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isValidphp;
+php php php php php}
 
-    /**
-     * Set the error message contained within the claims object
-     *
-     * @param string $error The error message
-     * @return Zend_InfoCard_Claims
-     */
-    public function setError($error)
-    {
-        $this->_error = $error;
-        $this->_isValid = false;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp errorphp messagephp containedphp withinphp thephp claimsphp object
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$errorphp Thephp errorphp message
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Claims
+php php php php php php*php/
+php php php php publicphp functionphp setErrorphp(php$errorphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_errorphp php=php php$errorphp;
+php php php php php php php php php$thisphp-php>php_isValidphp php=php falsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve the error message contained within the claims object
-     *
-     * @return string The error message
-     */
-    public function getErrorMsg()
-    {
-        return $this->_error;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp errorphp messagephp containedphp withinphp thephp claimsphp object
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp errorphp message
+php php php php php php*php/
+php php php php publicphp functionphp getErrorMsgphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_errorphp;
+php php php php php}
 
-    /**
-     * Set the claims for the claims object. Can only be set once and is done
-     * by the component itself. Internal use only.
-     *
-     * @throws Zend_InfoCard_Exception
-     * @param array $claims
-     * @return Zend_InfoCard_Claims
-     */
-    public function setClaims(Array $claims)
-    {
-        if($this->_claims !== null) {
-            require_once 'Zend/InfoCard/Exception.php';
-            throw new Zend_InfoCard_Exception("Claim objects are read-only");
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp claimsphp forphp thephp claimsphp objectphp.php Canphp onlyphp bephp setphp oncephp andphp isphp done
+php php php php php php*php byphp thephp componentphp itselfphp.php Internalphp usephp onlyphp.
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php php@paramphp arrayphp php$claims
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Claims
+php php php php php php*php/
+php php php php publicphp functionphp setClaimsphp(Arrayphp php$claimsphp)
+php php php php php{
+php php php php php php php php ifphp(php$thisphp-php>php_claimsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Exceptionphp(php"Claimphp objectsphp arephp readphp-onlyphp"php)php;
+php php php php php php php php php}
 
-        $this->_claims = $claims;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_claimsphp php=php php$claimsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set the result code of the claims object.
-     *
-     * @throws Zend_InfoCard_Exception
-     * @param int $code The result code
-     * @return Zend_InfoCard_Claims
-     */
-    public function setCode($code)
-    {
-        switch($code) {
-            case self::RESULT_PROCESSING_FAILURE:
-            case self::RESULT_SUCCESS:
-            case self::RESULT_VALIDATION_FAILURE:
-                $this->_code = $code;
-                return $this;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp resultphp codephp ofphp thephp claimsphp objectphp.
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php php@paramphp intphp php$codephp Thephp resultphp code
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Claims
+php php php php php php*php/
+php php php php publicphp functionphp setCodephp(php$codephp)
+php php php php php{
+php php php php php php php php switchphp(php$codephp)php php{
+php php php php php php php php php php php php casephp selfphp:php:RESULTphp_PROCESSINGphp_FAILUREphp:
+php php php php php php php php php php php php casephp selfphp:php:RESULTphp_SUCCESSphp:
+php php php php php php php php php php php php casephp selfphp:php:RESULTphp_VALIDATIONphp_FAILUREphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_codephp php=php php$codephp;
+php php php php php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
 
-        require_once 'Zend/InfoCard/Exception.php';
-        throw new Zend_InfoCard_Exception("Attempted to set unknown error code");
-    }
+php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Exceptionphp(php"Attemptedphp tophp setphp unknownphp errorphp codephp"php)php;
+php php php php php}
 
-    /**
-     * Gets the result code of the claims object
-     *
-     * @return integer The result code
-     */
-    public function getCode()
-    {
-        return $this->_code;
-    }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp resultphp codephp ofphp thephp claimsphp object
+php php php php php php*
+php php php php php php*php php@returnphp integerphp Thephp resultphp code
+php php php php php php*php/
+php php php php publicphp functionphp getCodephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_codephp;
+php php php php php}
 
-    /**
-     * Get a claim by providing its complete claim URI
-     *
-     * @param string $claimURI The complete claim URI to retrieve
-     * @return mixed The claim matching that specific URI or null if not found
-     */
-    public function getClaim($claimURI)
-    {
-        if($this->claimExists($claimURI)) {
-            return $this->_claims[$claimURI]['value'];
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp aphp claimphp byphp providingphp itsphp completephp claimphp URI
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$claimURIphp Thephp completephp claimphp URIphp tophp retrieve
+php php php php php php*php php@returnphp mixedphp Thephp claimphp matchingphp thatphp specificphp URIphp orphp nullphp ifphp notphp found
+php php php php php php*php/
+php php php php publicphp functionphp getClaimphp(php$claimURIphp)
+php php php php php{
+php php php php php php php php ifphp(php$thisphp-php>claimExistsphp(php$claimURIphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_claimsphp[php$claimURIphp]php[php'valuephp'php]php;
+php php php php php php php php php}
 
-        return null;
-    }
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Indicates if a specific claim URI exists or not within the object
-     *
-     * @param string $claimURI The complete claim URI to check
-     * @return bool true if the claim exists, false if not found
-     */
-    public function claimExists($claimURI)
-    {
-        return isset($this->_claims[$claimURI]);
-    }
+php php php php php/php*php*
+php php php php php php*php Indicatesphp ifphp aphp specificphp claimphp URIphp existsphp orphp notphp withinphp thephp object
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$claimURIphp Thephp completephp claimphp URIphp tophp check
+php php php php php php*php php@returnphp boolphp truephp ifphp thephp claimphp existsphp,php falsephp ifphp notphp found
+php php php php php php*php/
+php php php php publicphp functionphp claimExistsphp(php$claimURIphp)
+php php php php php{
+php php php php php php php php returnphp issetphp(php$thisphp-php>php_claimsphp[php$claimURIphp]php)php;
+php php php php php}
 
-    /**
-     * Magic helper function
-     * @throws Zend_InfoCard_Exception
-     */
-    public function __unset($k)
-    {
-        require_once 'Zend/InfoCard/Exception.php';
-        throw new Zend_InfoCard_Exception("Claim objects are read-only");
-    }
+php php php php php/php*php*
+php php php php php php*php Magicphp helperphp function
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_unsetphp(php$kphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Exceptionphp(php"Claimphp objectsphp arephp readphp-onlyphp"php)php;
+php php php php php}
 
-    /**
-     * Magic helper function
-     */
-    public function __isset($k)
-    {
-        return $this->claimExists("{$this->getDefaultNamespace()}/$k");
-    }
+php php php php php/php*php*
+php php php php php php*php Magicphp helperphp function
+php php php php php php*php/
+php php php php publicphp functionphp php_php_issetphp(php$kphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>claimExistsphp(php"php{php$thisphp-php>getDefaultNamespacephp(php)php}php/php$kphp"php)php;
+php php php php php}
 
-    /**
-     * Magic helper function
-     */
-    public function __get($k)
-    {
-        return $this->getClaim("{$this->getDefaultNamespace()}/$k");
-    }
+php php php php php/php*php*
+php php php php php php*php Magicphp helperphp function
+php php php php php php*php/
+php php php php publicphp functionphp php_php_getphp(php$kphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getClaimphp(php"php{php$thisphp-php>getDefaultNamespacephp(php)php}php/php$kphp"php)php;
+php php php php php}
 
-    /**
-     * Magic helper function
-     * @throws Zend_InfoCard_Exception
-     */
-    public function __set($k, $v)
-    {
-        require_once 'Zend/InfoCard/Exception.php';
-        throw new Zend_InfoCard_Exception("Claim objects are read-only");
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Magicphp helperphp function
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_setphp(php$kphp,php php$vphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Exceptionphp(php"Claimphp objectsphp arephp readphp-onlyphp"php)php;
+php php php php php}
+php}

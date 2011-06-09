@@ -1,59 +1,59 @@
-<?="<?php\n"?>
+<php?php=php"<php?phpphp\nphp"php?php>
 
- 
-class <?=$params['module']?>_Model_<?=$params['filename']?> extends <?=$params['module']?>_Model_Abstract {
+php 
+classphp <php?php=php$paramsphp[php'modulephp'php]php?php>php_Modelphp_<php?php=php$paramsphp[php'filenamephp'php]php?php>php extendsphp <php?php=php$paramsphp[php'modulephp'php]php?php>php_Modelphp_Abstractphp php{
 
-<?foreach ($params['fields'] as $column):?>
-    protected $_<?=ucfirst($column)?>;
-<?endforeach;?>
+<php?foreachphp php(php$paramsphp[php'fieldsphp'php]php asphp php$columnphp)php:php?php>
+php php php php protectedphp php$php_<php?php=ucfirstphp(php$columnphp)php?php>php;
+<php?endforeachphp;php?php>
 
-	protected $_modelInstance;
-    protected $_mapper;
-    
+php	protectedphp php$php_modelInstancephp;
+php php php php protectedphp php$php_mapperphp;
+php php php php 
 
-	public function __construct() {
-		$this->_mapper=new <?=$params['module']?>_Model_Mappers_<?=$params['filename']?>();    	
-    	$this->_modelInstance=$this;
+php	publicphp functionphp php_php_constructphp(php)php php{
+php	php	php$thisphp-php>php_mapperphp=newphp <php?php=php$paramsphp[php'modulephp'php]php?php>php_Modelphp_Mappersphp_<php?php=php$paramsphp[php'filenamephp'php]php?php>php(php)php;php php php php php	
+php php php php php	php$thisphp-php>php_modelInstancephp=php$thisphp;
 
-	}
+php	php}
 
-	
-    <?foreach ($params['fields'] as $column):?>
+php	
+php php php php <php?foreachphp php(php$paramsphp[php'fieldsphp'php]php asphp php$columnphp)php:php?php>
 
 
-    public function set<?=ucfirst($column)?>($data)
-    {
-        $this->_<?=ucfirst($column)?>=$data;
-        return $this;
-    }
+php php php php publicphp functionphp set<php?php=ucfirstphp(php$columnphp)php?php>php(php$dataphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_<php?php=ucfirstphp(php$columnphp)php?php>php=php$dataphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-     
-    public function get<?=ucfirst($column)?>()
-    {
-        return $this->_<?=ucfirst($column)?>;
-    }
-    <?endforeach;?>
+php php php php php 
+php php php php publicphp functionphp get<php?php=ucfirstphp(php$columnphp)php?php>php(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_<php?php=ucfirstphp(php$columnphp)php?php>php;
+php php php php php}
+php php php php <php?endforeachphp;php?php>
 
-  
-    /**
-     * returns the mapper class
-     *
-     * @return  <?=$params['module']?>_Model_Mappers_<?=$params['filename']?>
-     *
-     */       
-    public function getMapper()
-    {
-        if (null === $this->_mapper) {
-            $this->setMapper(new  <?=$params['module']?>_Model_Mappers_<?=$params['filename']?>());
-        }
-        return $this->_mapper;
-    }
-    
-    public function setMapper($mapper)
-    {
-        $this->_mapper = $mapper;
-        return $this;
-    }       
+php php 
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp mapperphp class
+php php php php php php*
+php php php php php php*php php@returnphp php <php?php=php$paramsphp[php'modulephp'php]php?php>php_Modelphp_Mappersphp_<php?php=php$paramsphp[php'filenamephp'php]php?php>
+php php php php php php*
+php php php php php php*php/php php php php php php php 
+php php php php publicphp functionphp getMapperphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_mapperphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setMapperphp(newphp php <php?php=php$paramsphp[php'modulephp'php]php?php>php_Modelphp_Mappersphp_<php?php=php$paramsphp[php'filenamephp'php]php?php>php(php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_mapperphp;
+php php php php php}
+php php php php 
+php php php php publicphp functionphp setMapperphp(php$mapperphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_mapperphp php=php php$mapperphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}php php php php php php php 
 
-}
+php}
 

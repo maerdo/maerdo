@@ -1,803 +1,803 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_OpenId
- * @subpackage Zend_OpenId_Provider
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Provider.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_OpenId
+php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Providerphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_OpenId
- */
-require_once "Zend/OpenId.php";
+php/php*php*
+php php*php php@seephp Zendphp_OpenId
+php php*php/
+requirephp_oncephp php"Zendphp/OpenIdphp.phpphp"php;
 
-/**
- * @see Zend_OpenId_Extension
- */
-require_once "Zend/OpenId/Extension.php";
+php/php*php*
+php php*php php@seephp Zendphp_OpenIdphp_Extension
+php php*php/
+requirephp_oncephp php"Zendphp/OpenIdphp/Extensionphp.phpphp"php;
 
-/**
- * OpenID provider (server) implementation
- *
- * @category   Zend
- * @package    Zend_OpenId
- * @subpackage Zend_OpenId_Provider
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_OpenId_Provider
-{
+php/php*php*
+php php*php OpenIDphp providerphp php(serverphp)php implementation
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_OpenId
+php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_OpenIdphp_Provider
+php{
 
-    /**
-     * Reference to an implementation of storage object
-     *
-     * @var Zend_OpenId_Provider_Storage $_storage
-     */
-    private $_storage;
+php php php php php/php*php*
+php php php php php php*php Referencephp tophp anphp implementationphp ofphp storagephp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_OpenIdphp_Providerphp_Storagephp php$php_storage
+php php php php php php*php/
+php php php php privatephp php$php_storagephp;
 
-    /**
-     * Reference to an implementation of user object
-     *
-     * @var Zend_OpenId_Provider_User $_user
-     */
-    private $_user;
+php php php php php/php*php*
+php php php php php php*php Referencephp tophp anphp implementationphp ofphp userphp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_OpenIdphp_Providerphp_Userphp php$php_user
+php php php php php php*php/
+php php php php privatephp php$php_userphp;
 
-    /**
-     * Time to live of association session in secconds
-     *
-     * @var integer $_sessionTtl
-     */
-    private $_sessionTtl;
+php php php php php/php*php*
+php php php php php php*php Timephp tophp livephp ofphp associationphp sessionphp inphp secconds
+php php php php php php*
+php php php php php php*php php@varphp integerphp php$php_sessionTtl
+php php php php php php*php/
+php php php php privatephp php$php_sessionTtlphp;
 
-    /**
-     * URL to peform interactive user login
-     *
-     * @var string $_loginUrl
-     */
-    private $_loginUrl;
+php php php php php/php*php*
+php php php php php php*php URLphp tophp peformphp interactivephp userphp login
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_loginUrl
+php php php php php php*php/
+php php php php privatephp php$php_loginUrlphp;
 
-    /**
-     * URL to peform interactive validation of consumer by user
-     *
-     * @var string $_trustUrl
-     */
-    private $_trustUrl;
+php php php php php/php*php*
+php php php php php php*php URLphp tophp peformphp interactivephp validationphp ofphp consumerphp byphp user
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_trustUrl
+php php php php php php*php/
+php php php php privatephp php$php_trustUrlphp;
 
-    /**
-     * The OP Endpoint URL
-     *
-     * @var string $_opEndpoint
-     */
-    private $_opEndpoint;
+php php php php php/php*php*
+php php php php php php*php Thephp OPphp Endpointphp URL
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_opEndpoint
+php php php php php php*php/
+php php php php privatephp php$php_opEndpointphp;
 
-    /**
-     * Constructs a Zend_OpenId_Provider object with given parameters.
-     *
-     * @param string $loginUrl is an URL that provides login screen for
-     *  end-user (by default it is the same URL with additional GET variable
-     *  openid.action=login)
-     * @param string $trustUrl is an URL that shows a question if end-user
-     *  trust to given consumer (by default it is the same URL with additional
-     *  GET variable openid.action=trust)
-     * @param Zend_OpenId_Provider_User $user is an object for communication
-     *  with User-Agent and store information about logged-in user (it is a
-     *  Zend_OpenId_Provider_User_Session object by default)
-     * @param Zend_OpenId_Provider_Storage $storage is an object for keeping
-     *  persistent database (it is a Zend_OpenId_Provider_Storage_File object
-     *  by default)
-     * @param integer $sessionTtl is a default time to live for association
-     *   session in seconds (1 hour by default). Consumer must reestablish
-     *   association after that time.
-     */
-    public function __construct($loginUrl = null,
-                                $trustUrl = null,
-                                Zend_OpenId_Provider_User $user = null,
-                                Zend_OpenId_Provider_Storage $storage = null,
-                                $sessionTtl = 3600)
-    {
-        if ($loginUrl === null) {
-            $loginUrl = Zend_OpenId::selfUrl() . '?openid.action=login';
-        } else {
-            $loginUrl = Zend_OpenId::absoluteUrl($loginUrl);
-        }
-        $this->_loginUrl = $loginUrl;
-        if ($trustUrl === null) {
-            $trustUrl = Zend_OpenId::selfUrl() . '?openid.action=trust';
-        } else {
-            $trustUrl = Zend_OpenId::absoluteUrl($trustUrl);
-        }
-        $this->_trustUrl = $trustUrl;
-        if ($user === null) {
-            require_once "Zend/OpenId/Provider/User/Session.php";
-            $this->_user = new Zend_OpenId_Provider_User_Session();
-        } else {
-            $this->_user = $user;
-        }
-        if ($storage === null) {
-            require_once "Zend/OpenId/Provider/Storage/File.php";
-            $this->_storage = new Zend_OpenId_Provider_Storage_File();
-        } else {
-            $this->_storage = $storage;
-        }
-        $this->_sessionTtl = $sessionTtl;
-    }
+php php php php php/php*php*
+php php php php php php*php Constructsphp aphp Zendphp_OpenIdphp_Providerphp objectphp withphp givenphp parametersphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$loginUrlphp isphp anphp URLphp thatphp providesphp loginphp screenphp for
+php php php php php php*php php endphp-userphp php(byphp defaultphp itphp isphp thephp samephp URLphp withphp additionalphp GETphp variable
+php php php php php php*php php openidphp.actionphp=loginphp)
+php php php php php php*php php@paramphp stringphp php$trustUrlphp isphp anphp URLphp thatphp showsphp aphp questionphp ifphp endphp-user
+php php php php php php*php php trustphp tophp givenphp consumerphp php(byphp defaultphp itphp isphp thephp samephp URLphp withphp additional
+php php php php php php*php php GETphp variablephp openidphp.actionphp=trustphp)
+php php php php php php*php php@paramphp Zendphp_OpenIdphp_Providerphp_Userphp php$userphp isphp anphp objectphp forphp communication
+php php php php php php*php php withphp Userphp-Agentphp andphp storephp informationphp aboutphp loggedphp-inphp userphp php(itphp isphp a
+php php php php php php*php php Zendphp_OpenIdphp_Providerphp_Userphp_Sessionphp objectphp byphp defaultphp)
+php php php php php php*php php@paramphp Zendphp_OpenIdphp_Providerphp_Storagephp php$storagephp isphp anphp objectphp forphp keeping
+php php php php php php*php php persistentphp databasephp php(itphp isphp aphp Zendphp_OpenIdphp_Providerphp_Storagephp_Filephp object
+php php php php php php*php php byphp defaultphp)
+php php php php php php*php php@paramphp integerphp php$sessionTtlphp isphp aphp defaultphp timephp tophp livephp forphp association
+php php php php php php*php php php sessionphp inphp secondsphp php(php1php hourphp byphp defaultphp)php.php Consumerphp mustphp reestablish
+php php php php php php*php php php associationphp afterphp thatphp timephp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$loginUrlphp php=php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$trustUrlphp php=php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_OpenIdphp_Providerphp_Userphp php$userphp php=php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_OpenIdphp_Providerphp_Storagephp php$storagephp php=php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$sessionTtlphp php=php php3php6php0php0php)
+php php php php php{
+php php php php php php php php ifphp php(php$loginUrlphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$loginUrlphp php=php Zendphp_OpenIdphp:php:selfUrlphp(php)php php.php php'php?openidphp.actionphp=loginphp'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$loginUrlphp php=php Zendphp_OpenIdphp:php:absoluteUrlphp(php$loginUrlphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_loginUrlphp php=php php$loginUrlphp;
+php php php php php php php php ifphp php(php$trustUrlphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$trustUrlphp php=php Zendphp_OpenIdphp:php:selfUrlphp(php)php php.php php'php?openidphp.actionphp=trustphp'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$trustUrlphp php=php Zendphp_OpenIdphp:php:absoluteUrlphp(php$trustUrlphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_trustUrlphp php=php php$trustUrlphp;
+php php php php php php php php ifphp php(php$userphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php"Zendphp/OpenIdphp/Providerphp/Userphp/Sessionphp.phpphp"php;
+php php php php php php php php php php php php php$thisphp-php>php_userphp php=php newphp Zendphp_OpenIdphp_Providerphp_Userphp_Sessionphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_userphp php=php php$userphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$storagephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php"Zendphp/OpenIdphp/Providerphp/Storagephp/Filephp.phpphp"php;
+php php php php php php php php php php php php php$thisphp-php>php_storagephp php=php newphp Zendphp_OpenIdphp_Providerphp_Storagephp_Filephp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_storagephp php=php php$storagephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_sessionTtlphp php=php php$sessionTtlphp;
+php php php php php}
 
-    /**
-     * Sets the OP Endpoint URL
-     *
-     * @param string $url the OP Endpoint URL
-     * @return null
-     */
-    public function setOpEndpoint($url)
-    {
-        $this->_opEndpoint = $url;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp OPphp Endpointphp URL
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$urlphp thephp OPphp Endpointphp URL
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php publicphp functionphp setOpEndpointphp(php$urlphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_opEndpointphp php=php php$urlphp;
+php php php php php}
 
-    /**
-     * Registers a new user with given $id and $password
-     * Returns true in case of success and false if user with given $id already
-     * exists
-     *
-     * @param string $id user identity URL
-     * @param string $password encoded user password
-     * @return bool
-     */
-    public function register($id, $password)
-    {
-        if (!Zend_OpenId::normalize($id) || empty($id)) {
-            return false;
-        }
-        return $this->_storage->addUser($id, md5($id.$password));
-    }
+php php php php php/php*php*
+php php php php php php*php Registersphp aphp newphp userphp withphp givenphp php$idphp andphp php$password
+php php php php php php*php Returnsphp truephp inphp casephp ofphp successphp andphp falsephp ifphp userphp withphp givenphp php$idphp already
+php php php php php php*php exists
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$passwordphp encodedphp userphp password
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp registerphp(php$idphp,php php$passwordphp)
+php php php php php{
+php php php php php php php php ifphp php(php!Zendphp_OpenIdphp:php:normalizephp(php$idphp)php php|php|php emptyphp(php$idphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_storagephp-php>addUserphp(php$idphp,php mdphp5php(php$idphp.php$passwordphp)php)php;
+php php php php php}
 
-    /**
-     * Returns true if user with given $id exists and false otherwise
-     *
-     * @param string $id user identity URL
-     * @return bool
-     */
-    public function hasUser($id) {
-        if (!Zend_OpenId::normalize($id)) {
-            return false;
-        }
-        return $this->_storage->hasUser($id);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp userphp withphp givenphp php$idphp existsphp andphp falsephp otherwise
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasUserphp(php$idphp)php php{
+php php php php php php php php ifphp php(php!Zendphp_OpenIdphp:php:normalizephp(php$idphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_storagephp-php>hasUserphp(php$idphp)php;
+php php php php php}
 
-    /**
-     * Performs login of user with given $id and $password
-     * Returns true in case of success and false otherwise
-     *
-     * @param string $id user identity URL
-     * @param string $password user password
-     * @return bool
-     */
-    public function login($id, $password)
-    {
-        if (!Zend_OpenId::normalize($id)) {
-            return false;
-        }
-        if (!$this->_storage->checkUser($id, md5($id.$password))) {
-            return false;
-        }
-        $this->_user->setLoggedInUser($id);
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Performsphp loginphp ofphp userphp withphp givenphp php$idphp andphp php$password
+php php php php php php*php Returnsphp truephp inphp casephp ofphp successphp andphp falsephp otherwise
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$passwordphp userphp password
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp loginphp(php$idphp,php php$passwordphp)
+php php php php php{
+php php php php php php php php ifphp php(php!Zendphp_OpenIdphp:php:normalizephp(php$idphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$thisphp-php>php_storagephp-php>checkUserphp(php$idphp,php mdphp5php(php$idphp.php$passwordphp)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_userphp-php>setLoggedInUserphp(php$idphp)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Performs logout. Clears information about logged in user.
-     *
-     * @return void
-     */
-    public function logout()
-    {
-        $this->_user->delLoggedInUser();
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Performsphp logoutphp.php Clearsphp informationphp aboutphp loggedphp inphp userphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp logoutphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_userphp-php>delLoggedInUserphp(php)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Returns identity URL of current logged in user or false
-     *
-     * @return mixed
-     */
-    public function getLoggedInUser() {
-        return $this->_user->getLoggedInUser();
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp identityphp URLphp ofphp currentphp loggedphp inphp userphp orphp false
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getLoggedInUserphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_userphp-php>getLoggedInUserphp(php)php;
+php php php php php}
 
-    /**
-     * Retrieve consumer's root URL from request query.
-     * Returns URL or false in case of failure
-     *
-     * @param array $params query arguments
-     * @return mixed
-     */
-    public function getSiteRoot($params)
-    {
-        $version = 1.1;
-        if (isset($params['openid_ns']) &&
-            $params['openid_ns'] == Zend_OpenId::NS_2_0) {
-            $version = 2.0;
-        }
-        if ($version >= 2.0 && isset($params['openid_realm'])) {
-            $root = $params['openid_realm'];
-        } else if ($version < 2.0 && isset($params['openid_trust_root'])) {
-            $root = $params['openid_trust_root'];
-        } else if (isset($params['openid_return_to'])) {
-            $root = $params['openid_return_to'];
-        } else {
-            return false;
-        }
-        if (Zend_OpenId::normalizeUrl($root) && !empty($root)) {
-            return $root;
-        }
-        return false;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp consumerphp'sphp rootphp URLphp fromphp requestphp queryphp.
+php php php php php php*php Returnsphp URLphp orphp falsephp inphp casephp ofphp failure
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$paramsphp queryphp arguments
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getSiteRootphp(php$paramsphp)
+php php php php php{
+php php php php php php php php php$versionphp php=php php1php.php1php;
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_nsphp'php]php)php php&php&
+php php php php php php php php php php php php php$paramsphp[php'openidphp_nsphp'php]php php=php=php Zendphp_OpenIdphp:php:NSphp_php2php_php0php)php php{
+php php php php php php php php php php php php php$versionphp php=php php2php.php0php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$versionphp php>php=php php2php.php0php php&php&php issetphp(php$paramsphp[php'openidphp_realmphp'php]php)php)php php{
+php php php php php php php php php php php php php$rootphp php=php php$paramsphp[php'openidphp_realmphp'php]php;
+php php php php php php php php php}php elsephp ifphp php(php$versionphp <php php2php.php0php php&php&php issetphp(php$paramsphp[php'openidphp_trustphp_rootphp'php]php)php)php php{
+php php php php php php php php php php php php php$rootphp php=php php$paramsphp[php'openidphp_trustphp_rootphp'php]php;
+php php php php php php php php php}php elsephp ifphp php(issetphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php)php)php php{
+php php php php php php php php php php php php php$rootphp php=php php$paramsphp[php'openidphp_returnphp_tophp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(Zendphp_OpenIdphp:php:normalizeUrlphp(php$rootphp)php php&php&php php!emptyphp(php$rootphp)php)php php{
+php php php php php php php php php php php php returnphp php$rootphp;
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Allows consumer with given root URL to authenticate current logged
-     * in user. Returns true on success and false on error.
-     *
-     * @param string $root root URL
-     * @param mixed $extensions extension object or array of extensions objects
-     * @return bool
-     */
-    public function allowSite($root, $extensions=null)
-    {
-        $id = $this->getLoggedInUser();
-        if ($id === false) {
-            return false;
-        }
-        if ($extensions !== null) {
-            $data = array();
-            Zend_OpenId_Extension::forAll($extensions, 'getTrustData', $data);
-        } else {
-            $data = true;
-        }
-        $this->_storage->addSite($id, $root, $data);
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Allowsphp consumerphp withphp givenphp rootphp URLphp tophp authenticatephp currentphp logged
+php php php php php php*php inphp userphp.php Returnsphp truephp onphp successphp andphp falsephp onphp errorphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$rootphp rootphp URL
+php php php php php php*php php@paramphp mixedphp php$extensionsphp extensionphp objectphp orphp arrayphp ofphp extensionsphp objects
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp allowSitephp(php$rootphp,php php$extensionsphp=nullphp)
+php php php php php{
+php php php php php php php php php$idphp php=php php$thisphp-php>getLoggedInUserphp(php)php;
+php php php php php php php php ifphp php(php$idphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$extensionsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$dataphp php=php arrayphp(php)php;
+php php php php php php php php php php php php Zendphp_OpenIdphp_Extensionphp:php:forAllphp(php$extensionsphp,php php'getTrustDataphp'php,php php$dataphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$dataphp php=php truephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_storagephp-php>addSitephp(php$idphp,php php$rootphp,php php$dataphp)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Prohibit consumer with given root URL to authenticate current logged
-     * in user. Returns true on success and false on error.
-     *
-     * @param string $root root URL
-     * @return bool
-     */
-    public function denySite($root)
-    {
-        $id = $this->getLoggedInUser();
-        if ($id === false) {
-            return false;
-        }
-        $this->_storage->addSite($id, $root, false);
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Prohibitphp consumerphp withphp givenphp rootphp URLphp tophp authenticatephp currentphp logged
+php php php php php php*php inphp userphp.php Returnsphp truephp onphp successphp andphp falsephp onphp errorphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$rootphp rootphp URL
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp denySitephp(php$rootphp)
+php php php php php{
+php php php php php php php php php$idphp php=php php$thisphp-php>getLoggedInUserphp(php)php;
+php php php php php php php php ifphp php(php$idphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_storagephp-php>addSitephp(php$idphp,php php$rootphp,php falsephp)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Delete consumer with given root URL from known sites of current logged
-     * in user. Next time this consumer will try to authenticate the user,
-     * Provider will ask user's confirmation.
-     * Returns true on success and false on error.
-     *
-     * @param string $root root URL
-     * @return bool
-     */
-    public function delSite($root)
-    {
-        $id = $this->getLoggedInUser();
-        if ($id === false) {
-            return false;
-        }
-        $this->_storage->addSite($id, $root, null);
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Deletephp consumerphp withphp givenphp rootphp URLphp fromphp knownphp sitesphp ofphp currentphp logged
+php php php php php php*php inphp userphp.php Nextphp timephp thisphp consumerphp willphp tryphp tophp authenticatephp thephp userphp,
+php php php php php php*php Providerphp willphp askphp userphp'sphp confirmationphp.
+php php php php php php*php Returnsphp truephp onphp successphp andphp falsephp onphp errorphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$rootphp rootphp URL
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp delSitephp(php$rootphp)
+php php php php php{
+php php php php php php php php php$idphp php=php php$thisphp-php>getLoggedInUserphp(php)php;
+php php php php php php php php ifphp php(php$idphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_storagephp-php>addSitephp(php$idphp,php php$rootphp,php nullphp)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Returns list of known consumers for current logged in user or false
-     * if he is not logged in.
-     *
-     * @return mixed
-     */
-    public function getTrustedSites()
-    {
-        $id = $this->getLoggedInUser();
-        if ($id === false) {
-            return false;
-        }
-        return $this->_storage->getTrustedSites($id);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp listphp ofphp knownphp consumersphp forphp currentphp loggedphp inphp userphp orphp false
+php php php php php php*php ifphp hephp isphp notphp loggedphp inphp.
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getTrustedSitesphp(php)
+php php php php php{
+php php php php php php php php php$idphp php=php php$thisphp-php>getLoggedInUserphp(php)php;
+php php php php php php php php ifphp php(php$idphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_storagephp-php>getTrustedSitesphp(php$idphp)php;
+php php php php php}
 
-    /**
-     * Handles HTTP request from consumer
-     *
-     * @param array $params GET or POST variables. If this parameter is omited
-     *  or set to null, then $_GET or $_POST superglobal variable is used
-     *  according to REQUEST_METHOD.
-     * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response an optional response
-     *  object to perform HTTP or HTML form redirection
-     * @return mixed
-     */
-    public function handle($params=null, $extensions=null,
-                           Zend_Controller_Response_Abstract $response = null)
-    {
-        if ($params === null) {
-            if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                $params = $_GET;
-            } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $params = $_POST;
-            } else {
-                return false;
-            }
-        }
-        $version = 1.1;
-        if (isset($params['openid_ns']) &&
-            $params['openid_ns'] == Zend_OpenId::NS_2_0) {
-            $version = 2.0;
-        }
-        if (isset($params['openid_mode'])) {
-            if ($params['openid_mode'] == 'associate') {
-                $response = $this->_associate($version, $params);
-                $ret = '';
-                foreach ($response as $key => $val) {
-                    $ret .= $key . ':' . $val . "\n";
-                }
-                return $ret;
-            } else if ($params['openid_mode'] == 'checkid_immediate') {
-                $ret = $this->_checkId($version, $params, 1, $extensions, $response);
-                if (is_bool($ret)) return $ret;
-                if (!empty($params['openid_return_to'])) {
-                    Zend_OpenId::redirect($params['openid_return_to'], $ret, $response);
-                }
-                return true;
-            } else if ($params['openid_mode'] == 'checkid_setup') {
-                $ret = $this->_checkId($version, $params, 0, $extensions, $response);
-                if (is_bool($ret)) return $ret;
-                if (!empty($params['openid_return_to'])) {
-                    Zend_OpenId::redirect($params['openid_return_to'], $ret, $response);
-                }
-                return true;
-            } else if ($params['openid_mode'] == 'check_authentication') {
-                $response = $this->_checkAuthentication($version, $params);
-                $ret = '';
-                foreach ($response as $key => $val) {
-                    $ret .= $key . ':' . $val . "\n";
-                }
-                return $ret;
-            }
-        }
-        return false;
-    }
+php php php php php/php*php*
+php php php php php php*php Handlesphp HTTPphp requestphp fromphp consumer
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$paramsphp GETphp orphp POSTphp variablesphp.php Ifphp thisphp parameterphp isphp omited
+php php php php php php*php php orphp setphp tophp nullphp,php thenphp php$php_GETphp orphp php$php_POSTphp superglobalphp variablephp isphp used
+php php php php php php*php php accordingphp tophp REQUESTphp_METHODphp.
+php php php php php php*php php@paramphp mixedphp php$extensionsphp extensionphp objectphp orphp arrayphp ofphp extensionsphp objects
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp anphp optionalphp response
+php php php php php php*php php objectphp tophp performphp HTTPphp orphp HTMLphp formphp redirection
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp handlephp(php$paramsphp=nullphp,php php$extensionsphp=nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$paramsphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php$php_SERVERphp[php"REQUESTphp_METHODphp"php]php php=php=php php"GETphp"php)php php{
+php php php php php php php php php php php php php php php php php$paramsphp php=php php$php_GETphp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$php_SERVERphp[php"REQUESTphp_METHODphp"php]php php=php=php php"POSTphp"php)php php{
+php php php php php php php php php php php php php php php php php$paramsphp php=php php$php_POSTphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$versionphp php=php php1php.php1php;
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_nsphp'php]php)php php&php&
+php php php php php php php php php php php php php$paramsphp[php'openidphp_nsphp'php]php php=php=php Zendphp_OpenIdphp:php:NSphp_php2php_php0php)php php{
+php php php php php php php php php php php php php$versionphp php=php php2php.php0php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_modephp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php$paramsphp[php'openidphp_modephp'php]php php=php=php php'associatephp'php)php php{
+php php php php php php php php php php php php php php php php php$responsephp php=php php$thisphp-php>php_associatephp(php$versionphp,php php$paramsphp)php;
+php php php php php php php php php php php php php php php php php$retphp php=php php'php'php;
+php php php php php php php php php php php php php php php php foreachphp php(php$responsephp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$retphp php.php=php php$keyphp php.php php'php:php'php php.php php$valphp php.php php"php\nphp"php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$paramsphp[php'openidphp_modephp'php]php php=php=php php'checkidphp_immediatephp'php)php php{
+php php php php php php php php php php php php php php php php php$retphp php=php php$thisphp-php>php_checkIdphp(php$versionphp,php php$paramsphp,php php1php,php php$extensionsphp,php php$responsephp)php;
+php php php php php php php php php php php php php php php php ifphp php(isphp_boolphp(php$retphp)php)php returnphp php$retphp;
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php Zendphp_OpenIdphp:php:redirectphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php,php php$retphp,php php$responsephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$paramsphp[php'openidphp_modephp'php]php php=php=php php'checkidphp_setupphp'php)php php{
+php php php php php php php php php php php php php php php php php$retphp php=php php$thisphp-php>php_checkIdphp(php$versionphp,php php$paramsphp,php php0php,php php$extensionsphp,php php$responsephp)php;
+php php php php php php php php php php php php php php php php ifphp php(isphp_boolphp(php$retphp)php)php returnphp php$retphp;
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php Zendphp_OpenIdphp:php:redirectphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php,php php$retphp,php php$responsephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$paramsphp[php'openidphp_modephp'php]php php=php=php php'checkphp_authenticationphp'php)php php{
+php php php php php php php php php php php php php php php php php$responsephp php=php php$thisphp-php>php_checkAuthenticationphp(php$versionphp,php php$paramsphp)php;
+php php php php php php php php php php php php php php php php php$retphp php=php php'php'php;
+php php php php php php php php php php php php php php php php foreachphp php(php$responsephp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$retphp php.php=php php$keyphp php.php php'php:php'php php.php php$valphp php.php php"php\nphp"php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Generates a secret key for given hash function, returns RAW key or false
-     * if function is not supported
-     *
-     * @param string $func hash function (sha1 or sha256)
-     * @return mixed
-     */
-    protected function _genSecret($func)
-    {
-        if ($func == 'sha1') {
-            $macLen = 20; /* 160 bit */
-        } else if ($func == 'sha256') {
-            $macLen = 32; /* 256 bit */
-        } else {
-            return false;
-        }
-        return Zend_OpenId::randomBytes($macLen);
-    }
+php php php php php/php*php*
+php php php php php php*php Generatesphp aphp secretphp keyphp forphp givenphp hashphp functionphp,php returnsphp RAWphp keyphp orphp false
+php php php php php php*php ifphp functionphp isphp notphp supported
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$funcphp hashphp functionphp php(shaphp1php orphp shaphp2php5php6php)
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php protectedphp functionphp php_genSecretphp(php$funcphp)
+php php php php php{
+php php php php php php php php ifphp php(php$funcphp php=php=php php'shaphp1php'php)php php{
+php php php php php php php php php php php php php$macLenphp php=php php2php0php;php php/php*php php1php6php0php bitphp php*php/
+php php php php php php php php php}php elsephp ifphp php(php$funcphp php=php=php php'shaphp2php5php6php'php)php php{
+php php php php php php php php php php php php php$macLenphp php=php php3php2php;php php/php*php php2php5php6php bitphp php*php/
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp Zendphp_OpenIdphp:php:randomBytesphp(php$macLenphp)php;
+php php php php php}
 
-    /**
-     * Processes association request from OpenID consumerm generates secret
-     * shared key and send it back using Diffie-Hellman encruption.
-     * Returns array of variables to push back to consumer.
-     *
-     * @param float $version OpenID version
-     * @param array $params GET or POST request variables
-     * @return array
-     */
-    protected function _associate($version, $params)
-    {
-        $ret = array();
+php php php php php/php*php*
+php php php php php php*php Processesphp associationphp requestphp fromphp OpenIDphp consumermphp generatesphp secret
+php php php php php php*php sharedphp keyphp andphp sendphp itphp backphp usingphp Diffiephp-Hellmanphp encruptionphp.
+php php php php php php*php Returnsphp arrayphp ofphp variablesphp tophp pushphp backphp tophp consumerphp.
+php php php php php php*
+php php php php php php*php php@paramphp floatphp php$versionphp OpenIDphp version
+php php php php php php*php php@paramphp arrayphp php$paramsphp GETphp orphp POSTphp requestphp variables
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_associatephp(php$versionphp,php php$paramsphp)
+php php php php php{
+php php php php php php php php php$retphp php=php arrayphp(php)php;
 
-        if ($version >= 2.0) {
-            $ret['ns'] = Zend_OpenId::NS_2_0;
-        }
+php php php php php php php php ifphp php(php$versionphp php>php=php php2php.php0php)php php{
+php php php php php php php php php php php php php$retphp[php'nsphp'php]php php=php Zendphp_OpenIdphp:php:NSphp_php2php_php0php;
+php php php php php php php php php}
 
-        if (isset($params['openid_assoc_type']) &&
-            $params['openid_assoc_type'] == 'HMAC-SHA1') {
-            $macFunc = 'sha1';
-        } else if (isset($params['openid_assoc_type']) &&
-            $params['openid_assoc_type'] == 'HMAC-SHA256' &&
-            $version >= 2.0) {
-            $macFunc = 'sha256';
-        } else {
-            $ret['error'] = 'Wrong "openid.assoc_type"';
-            $ret['error-code'] = 'unsupported-type';
-            return $ret;
-        }
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_assocphp_typephp'php]php)php php&php&
+php php php php php php php php php php php php php$paramsphp[php'openidphp_assocphp_typephp'php]php php=php=php php'HMACphp-SHAphp1php'php)php php{
+php php php php php php php php php php php php php$macFuncphp php=php php'shaphp1php'php;
+php php php php php php php php php}php elsephp ifphp php(issetphp(php$paramsphp[php'openidphp_assocphp_typephp'php]php)php php&php&
+php php php php php php php php php php php php php$paramsphp[php'openidphp_assocphp_typephp'php]php php=php=php php'HMACphp-SHAphp2php5php6php'php php&php&
+php php php php php php php php php php php php php$versionphp php>php=php php2php.php0php)php php{
+php php php php php php php php php php php php php$macFuncphp php=php php'shaphp2php5php6php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$retphp[php'errorphp'php]php php=php php'Wrongphp php"openidphp.assocphp_typephp"php'php;
+php php php php php php php php php php php php php$retphp[php'errorphp-codephp'php]php php=php php'unsupportedphp-typephp'php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}
 
-        $ret['assoc_type'] = $params['openid_assoc_type'];
+php php php php php php php php php$retphp[php'assocphp_typephp'php]php php=php php$paramsphp[php'openidphp_assocphp_typephp'php]php;
 
-        $secret = $this->_genSecret($macFunc);
+php php php php php php php php php$secretphp php=php php$thisphp-php>php_genSecretphp(php$macFuncphp)php;
 
-        if (empty($params['openid_session_type']) ||
-            $params['openid_session_type'] == 'no-encryption') {
-            $ret['mac_key'] = base64_encode($secret);
-        } else if (isset($params['openid_session_type']) &&
-            $params['openid_session_type'] == 'DH-SHA1') {
-            $dhFunc = 'sha1';
-        } else if (isset($params['openid_session_type']) &&
-            $params['openid_session_type'] == 'DH-SHA256' &&
-            $version >= 2.0) {
-            $dhFunc = 'sha256';
-        } else {
-            $ret['error'] = 'Wrong "openid.session_type"';
-            $ret['error-code'] = 'unsupported-type';
-            return $ret;
-        }
+php php php php php php php php ifphp php(emptyphp(php$paramsphp[php'openidphp_sessionphp_typephp'php]php)php php|php|
+php php php php php php php php php php php php php$paramsphp[php'openidphp_sessionphp_typephp'php]php php=php=php php'nophp-encryptionphp'php)php php{
+php php php php php php php php php php php php php$retphp[php'macphp_keyphp'php]php php=php basephp6php4php_encodephp(php$secretphp)php;
+php php php php php php php php php}php elsephp ifphp php(issetphp(php$paramsphp[php'openidphp_sessionphp_typephp'php]php)php php&php&
+php php php php php php php php php php php php php$paramsphp[php'openidphp_sessionphp_typephp'php]php php=php=php php'DHphp-SHAphp1php'php)php php{
+php php php php php php php php php php php php php$dhFuncphp php=php php'shaphp1php'php;
+php php php php php php php php php}php elsephp ifphp php(issetphp(php$paramsphp[php'openidphp_sessionphp_typephp'php]php)php php&php&
+php php php php php php php php php php php php php$paramsphp[php'openidphp_sessionphp_typephp'php]php php=php=php php'DHphp-SHAphp2php5php6php'php php&php&
+php php php php php php php php php php php php php$versionphp php>php=php php2php.php0php)php php{
+php php php php php php php php php php php php php$dhFuncphp php=php php'shaphp2php5php6php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$retphp[php'errorphp'php]php php=php php'Wrongphp php"openidphp.sessionphp_typephp"php'php;
+php php php php php php php php php php php php php$retphp[php'errorphp-codephp'php]php php=php php'unsupportedphp-typephp'php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}
 
-        if (isset($params['openid_session_type'])) {
-            $ret['session_type'] = $params['openid_session_type'];
-        }
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_sessionphp_typephp'php]php)php)php php{
+php php php php php php php php php php php php php$retphp[php'sessionphp_typephp'php]php php=php php$paramsphp[php'openidphp_sessionphp_typephp'php]php;
+php php php php php php php php php}
 
-        if (isset($dhFunc)) {
-            if (empty($params['openid_dh_consumer_public'])) {
-                $ret['error'] = 'Wrong "openid.dh_consumer_public"';
-                return $ret;
-            }
-            if (empty($params['openid_dh_gen'])) {
-                $g = pack('H*', Zend_OpenId::DH_G);
-            } else {
-                $g = base64_decode($params['openid_dh_gen']);
-            }
-            if (empty($params['openid_dh_modulus'])) {
-                $p = pack('H*', Zend_OpenId::DH_P);
-            } else {
-                $p = base64_decode($params['openid_dh_modulus']);
-            }
+php php php php php php php php ifphp php(issetphp(php$dhFuncphp)php)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$paramsphp[php'openidphp_dhphp_consumerphp_publicphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$retphp[php'errorphp'php]php php=php php'Wrongphp php"openidphp.dhphp_consumerphp_publicphp"php'php;
+php php php php php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(emptyphp(php$paramsphp[php'openidphp_dhphp_genphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$gphp php=php packphp(php'Hphp*php'php,php Zendphp_OpenIdphp:php:DHphp_Gphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$gphp php=php basephp6php4php_decodephp(php$paramsphp[php'openidphp_dhphp_genphp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(emptyphp(php$paramsphp[php'openidphp_dhphp_modulusphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$pphp php=php packphp(php'Hphp*php'php,php Zendphp_OpenIdphp:php:DHphp_Pphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$pphp php=php basephp6php4php_decodephp(php$paramsphp[php'openidphp_dhphp_modulusphp'php]php)php;
+php php php php php php php php php php php php php}
 
-            $dh = Zend_OpenId::createDhKey($p, $g);
-            $dh_details = Zend_OpenId::getDhKeyDetails($dh);
+php php php php php php php php php php php php php$dhphp php=php Zendphp_OpenIdphp:php:createDhKeyphp(php$pphp,php php$gphp)php;
+php php php php php php php php php php php php php$dhphp_detailsphp php=php Zendphp_OpenIdphp:php:getDhKeyDetailsphp(php$dhphp)php;
 
-            $sec = Zend_OpenId::computeDhSecret(
-                base64_decode($params['openid_dh_consumer_public']), $dh);
-            if ($sec === false) {
-                $ret['error'] = 'Wrong "openid.session_type"';
-                $ret['error-code'] = 'unsupported-type';
-                return $ret;
-            }
-            $sec = Zend_OpenId::digest($dhFunc, $sec);
-            $ret['dh_server_public'] = base64_encode(
-                Zend_OpenId::btwoc($dh_details['pub_key']));
-            $ret['enc_mac_key']      = base64_encode($secret ^ $sec);
-        }
+php php php php php php php php php php php php php$secphp php=php Zendphp_OpenIdphp:php:computeDhSecretphp(
+php php php php php php php php php php php php php php php php basephp6php4php_decodephp(php$paramsphp[php'openidphp_dhphp_consumerphp_publicphp'php]php)php,php php$dhphp)php;
+php php php php php php php php php php php php ifphp php(php$secphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$retphp[php'errorphp'php]php php=php php'Wrongphp php"openidphp.sessionphp_typephp"php'php;
+php php php php php php php php php php php php php php php php php$retphp[php'errorphp-codephp'php]php php=php php'unsupportedphp-typephp'php;
+php php php php php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$secphp php=php Zendphp_OpenIdphp:php:digestphp(php$dhFuncphp,php php$secphp)php;
+php php php php php php php php php php php php php$retphp[php'dhphp_serverphp_publicphp'php]php php=php basephp6php4php_encodephp(
+php php php php php php php php php php php php php php php php Zendphp_OpenIdphp:php:btwocphp(php$dhphp_detailsphp[php'pubphp_keyphp'php]php)php)php;
+php php php php php php php php php php php php php$retphp[php'encphp_macphp_keyphp'php]php php php php php php php=php basephp6php4php_encodephp(php$secretphp php^php php$secphp)php;
+php php php php php php php php php}
 
-        $handle = uniqid();
-        $expiresIn = $this->_sessionTtl;
+php php php php php php php php php$handlephp php=php uniqidphp(php)php;
+php php php php php php php php php$expiresInphp php=php php$thisphp-php>php_sessionTtlphp;
 
-        $ret['assoc_handle'] = $handle;
-        $ret['expires_in'] = $expiresIn;
+php php php php php php php php php$retphp[php'assocphp_handlephp'php]php php=php php$handlephp;
+php php php php php php php php php$retphp[php'expiresphp_inphp'php]php php=php php$expiresInphp;
 
-        $this->_storage->addAssociation($handle,
-            $macFunc, $secret, time() + $expiresIn);
+php php php php php php php php php$thisphp-php>php_storagephp-php>addAssociationphp(php$handlephp,
+php php php php php php php php php php php php php$macFuncphp,php php$secretphp,php timephp(php)php php+php php$expiresInphp)php;
 
-        return $ret;
-    }
+php php php php php php php php returnphp php$retphp;
+php php php php php}
 
-    /**
-     * Performs authentication (or authentication check).
-     *
-     * @param float $version OpenID version
-     * @param array $params GET or POST request variables
-     * @param bool $immediate enables or disables interaction with user
-     * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response
-     * @return array
-     */
-    protected function _checkId($version, $params, $immediate, $extensions=null,
-        Zend_Controller_Response_Abstract $response = null)
-    {
-        $ret = array();
+php php php php php/php*php*
+php php php php php php*php Performsphp authenticationphp php(orphp authenticationphp checkphp)php.
+php php php php php php*
+php php php php php php*php php@paramphp floatphp php$versionphp OpenIDphp version
+php php php php php php*php php@paramphp arrayphp php$paramsphp GETphp orphp POSTphp requestphp variables
+php php php php php php*php php@paramphp boolphp php$immediatephp enablesphp orphp disablesphp interactionphp withphp user
+php php php php php php*php php@paramphp mixedphp php$extensionsphp extensionphp objectphp orphp arrayphp ofphp extensionsphp objects
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Responsephp_Abstractphp php$response
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_checkIdphp(php$versionphp,php php$paramsphp,php php$immediatephp,php php$extensionsphp=nullphp,
+php php php php php php php php Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$retphp php=php arrayphp(php)php;
 
-        if ($version >= 2.0) {
-            $ret['openid.ns'] = Zend_OpenId::NS_2_0;
-        }
-        $root = $this->getSiteRoot($params);
-        if ($root === false) {
-            return false;
-        }
+php php php php php php php php ifphp php(php$versionphp php>php=php php2php.php0php)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.nsphp'php]php php=php Zendphp_OpenIdphp:php:NSphp_php2php_php0php;
+php php php php php php php php php}
+php php php php php php php php php$rootphp php=php php$thisphp-php>getSiteRootphp(php$paramsphp)php;
+php php php php php php php php ifphp php(php$rootphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if (isset($params['openid_identity']) &&
-            !$this->_storage->hasUser($params['openid_identity'])) {
-            $ret['openid.mode'] = ($immediate && $version >= 2.0) ? 'setup_needed': 'cancel';
-            return $ret;
-        }
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_identityphp'php]php)php php&php&
+php php php php php php php php php php php php php!php$thisphp-php>php_storagephp-php>hasUserphp(php$paramsphp[php'openidphp_identityphp'php]php)php)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.modephp'php]php php=php php(php$immediatephp php&php&php php$versionphp php>php=php php2php.php0php)php php?php php'setupphp_neededphp'php:php php'cancelphp'php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}
 
-        /* Check if user already logged in into the server */
-        if (!isset($params['openid_identity']) ||
-            $this->_user->getLoggedInUser() !== $params['openid_identity']) {
-            $params2 = array();
-            foreach ($params as $key => $val) {
-                if (strpos($key, 'openid_ns_') === 0) {
-                    $key = 'openid.ns.' . substr($key, strlen('openid_ns_'));
-                } else if (strpos($key, 'openid_sreg_') === 0) {
-                    $key = 'openid.sreg.' . substr($key, strlen('openid_sreg_'));
-                } else if (strpos($key, 'openid_') === 0) {
-                    $key = 'openid.' . substr($key, strlen('openid_'));
-                }
-                $params2[$key] = $val;
-            }
-            if ($immediate) {
-                $params2['openid.mode'] = 'checkid_setup';
-                $ret['openid.mode'] = ($version >= 2.0) ? 'setup_needed': 'id_res';
-                $ret['openid.user_setup_url'] = $this->_loginUrl
-                    . (strpos($this->_loginUrl, '?') === false ? '?' : '&')
-                    . Zend_OpenId::paramsToQuery($params2);
-                return $ret;
-            } else {
-                /* Redirect to Server Login Screen */
-                Zend_OpenId::redirect($this->_loginUrl, $params2, $response);
-                return true;
-            }
-        }
+php php php php php php php php php/php*php Checkphp ifphp userphp alreadyphp loggedphp inphp intophp thephp serverphp php*php/
+php php php php php php php php ifphp php(php!issetphp(php$paramsphp[php'openidphp_identityphp'php]php)php php|php|
+php php php php php php php php php php php php php$thisphp-php>php_userphp-php>getLoggedInUserphp(php)php php!php=php=php php$paramsphp[php'openidphp_identityphp'php]php)php php{
+php php php php php php php php php php php php php$paramsphp2php php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$keyphp,php php'openidphp_nsphp_php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'openidphp.nsphp.php'php php.php substrphp(php$keyphp,php strlenphp(php'openidphp_nsphp_php'php)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(strposphp(php$keyphp,php php'openidphp_sregphp_php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'openidphp.sregphp.php'php php.php substrphp(php$keyphp,php strlenphp(php'openidphp_sregphp_php'php)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(strposphp(php$keyphp,php php'openidphp_php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'openidphp.php'php php.php substrphp(php$keyphp,php strlenphp(php'openidphp_php'php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$paramsphp2php[php$keyphp]php php=php php$valphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$immediatephp)php php{
+php php php php php php php php php php php php php php php php php$paramsphp2php[php'openidphp.modephp'php]php php=php php'checkidphp_setupphp'php;
+php php php php php php php php php php php php php php php php php$retphp[php'openidphp.modephp'php]php php=php php(php$versionphp php>php=php php2php.php0php)php php?php php'setupphp_neededphp'php:php php'idphp_resphp'php;
+php php php php php php php php php php php php php php php php php$retphp[php'openidphp.userphp_setupphp_urlphp'php]php php=php php$thisphp-php>php_loginUrl
+php php php php php php php php php php php php php php php php php php php php php.php php(strposphp(php$thisphp-php>php_loginUrlphp,php php'php?php'php)php php=php=php=php falsephp php?php php'php?php'php php:php php'php&php'php)
+php php php php php php php php php php php php php php php php php php php php php.php Zendphp_OpenIdphp:php:paramsToQueryphp(php$paramsphp2php)php;
+php php php php php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php*php Redirectphp tophp Serverphp Loginphp Screenphp php*php/
+php php php php php php php php php php php php php php php php Zendphp_OpenIdphp:php:redirectphp(php$thisphp-php>php_loginUrlphp,php php$paramsphp2php,php php$responsephp)php;
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (!Zend_OpenId_Extension::forAll($extensions, 'parseRequest', $params)) {
-            $ret['openid.mode'] = ($immediate && $version >= 2.0) ? 'setup_needed': 'cancel';
-            return $ret;
-        }
+php php php php php php php php ifphp php(php!Zendphp_OpenIdphp_Extensionphp:php:forAllphp(php$extensionsphp,php php'parseRequestphp'php,php php$paramsphp)php)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.modephp'php]php php=php php(php$immediatephp php&php&php php$versionphp php>php=php php2php.php0php)php php?php php'setupphp_neededphp'php:php php'cancelphp'php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}
 
-        /* Check if user trusts to the consumer */
-        $trusted = null;
-        $sites = $this->_storage->getTrustedSites($params['openid_identity']);
-        if (isset($params['openid_return_to'])) {
-            $root = $params['openid_return_to'];
-        }
-        if (isset($sites[$root])) {
-            $trusted = $sites[$root];
-        } else {
-            foreach ($sites as $site => $t) {
-                if (strpos($root, $site) === 0) {
-                    $trusted = $t;
-                    break;
-                } else {
-                    /* OpenID 2.0 (9.2) check for realm wild-card matching */
-                    $n = strpos($site, '://*.');
-                    if ($n != false) {
-                        $regex = '/^'
-                               . preg_quote(substr($site, 0, $n+3), '/')
-                               . '[A-Za-z1-9_\.]+?'
-                               . preg_quote(substr($site, $n+4), '/')
-                               . '/';
-                        if (preg_match($regex, $root)) {
-                            $trusted = $t;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+php php php php php php php php php/php*php Checkphp ifphp userphp trustsphp tophp thephp consumerphp php*php/
+php php php php php php php php php$trustedphp php=php nullphp;
+php php php php php php php php php$sitesphp php=php php$thisphp-php>php_storagephp-php>getTrustedSitesphp(php$paramsphp[php'openidphp_identityphp'php]php)php;
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php)php)php php{
+php php php php php php php php php php php php php$rootphp php=php php$paramsphp[php'openidphp_returnphp_tophp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$sitesphp[php$rootphp]php)php)php php{
+php php php php php php php php php php php php php$trustedphp php=php php$sitesphp[php$rootphp]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php foreachphp php(php$sitesphp asphp php$sitephp php=php>php php$tphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$rootphp,php php$sitephp)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$trustedphp php=php php$tphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php*php OpenIDphp php2php.php0php php(php9php.php2php)php checkphp forphp realmphp wildphp-cardphp matchingphp php*php/
+php php php php php php php php php php php php php php php php php php php php php$nphp php=php strposphp(php$sitephp,php php'php:php/php/php*php.php'php)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$nphp php!php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp php=php php'php/php^php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php pregphp_quotephp(substrphp(php$sitephp,php php0php,php php$nphp+php3php)php,php php'php/php'php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php[Aphp-Zaphp-zphp1php-php9php_php\php.php]php+php?php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php pregphp_quotephp(substrphp(php$sitephp,php php$nphp+php4php)php,php php'php/php'php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php/php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php$regexphp,php php$rootphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$trustedphp php=php php$tphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (is_array($trusted)) {
-            if (!Zend_OpenId_Extension::forAll($extensions, 'checkTrustData', $trusted)) {
-                $trusted = null;
-            }
-        }
+php php php php php php php php ifphp php(isphp_arrayphp(php$trustedphp)php)php php{
+php php php php php php php php php php php php ifphp php(php!Zendphp_OpenIdphp_Extensionphp:php:forAllphp(php$extensionsphp,php php'checkTrustDataphp'php,php php$trustedphp)php)php php{
+php php php php php php php php php php php php php php php php php$trustedphp php=php nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($trusted === false) {
-            $ret['openid.mode'] = 'cancel';
-            return $ret;
-        } else if ($trusted === null) {
-            /* Redirect to Server Trust Screen */
-            $params2 = array();
-            foreach ($params as $key => $val) {
-                if (strpos($key, 'openid_ns_') === 0) {
-                    $key = 'openid.ns.' . substr($key, strlen('openid_ns_'));
-                } else if (strpos($key, 'openid_sreg_') === 0) {
-                    $key = 'openid.sreg.' . substr($key, strlen('openid_sreg_'));
-                } else if (strpos($key, 'openid_') === 0) {
-                    $key = 'openid.' . substr($key, strlen('openid_'));
-                }
-                $params2[$key] = $val;
-            }
-            if ($immediate) {
-                $params2['openid.mode'] = 'checkid_setup';
-                $ret['openid.mode'] = ($version >= 2.0) ? 'setup_needed': 'id_res';
-                $ret['openid.user_setup_url'] = $this->_trustUrl
-                    . (strpos($this->_trustUrl, '?') === false ? '?' : '&')
-                    . Zend_OpenId::paramsToQuery($params2);
-                return $ret;
-            } else {
-                Zend_OpenId::redirect($this->_trustUrl, $params2, $response);
-                return true;
-            }
-        }
+php php php php php php php php ifphp php(php$trustedphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.modephp'php]php php=php php'cancelphp'php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}php elsephp ifphp php(php$trustedphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php*php Redirectphp tophp Serverphp Trustphp Screenphp php*php/
+php php php php php php php php php php php php php$paramsphp2php php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$keyphp,php php'openidphp_nsphp_php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'openidphp.nsphp.php'php php.php substrphp(php$keyphp,php strlenphp(php'openidphp_nsphp_php'php)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(strposphp(php$keyphp,php php'openidphp_sregphp_php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'openidphp.sregphp.php'php php.php substrphp(php$keyphp,php strlenphp(php'openidphp_sregphp_php'php)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(strposphp(php$keyphp,php php'openidphp_php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'openidphp.php'php php.php substrphp(php$keyphp,php strlenphp(php'openidphp_php'php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$paramsphp2php[php$keyphp]php php=php php$valphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$immediatephp)php php{
+php php php php php php php php php php php php php php php php php$paramsphp2php[php'openidphp.modephp'php]php php=php php'checkidphp_setupphp'php;
+php php php php php php php php php php php php php php php php php$retphp[php'openidphp.modephp'php]php php=php php(php$versionphp php>php=php php2php.php0php)php php?php php'setupphp_neededphp'php:php php'idphp_resphp'php;
+php php php php php php php php php php php php php php php php php$retphp[php'openidphp.userphp_setupphp_urlphp'php]php php=php php$thisphp-php>php_trustUrl
+php php php php php php php php php php php php php php php php php php php php php.php php(strposphp(php$thisphp-php>php_trustUrlphp,php php'php?php'php)php php=php=php=php falsephp php?php php'php?php'php php:php php'php&php'php)
+php php php php php php php php php php php php php php php php php php php php php.php Zendphp_OpenIdphp:php:paramsToQueryphp(php$paramsphp2php)php;
+php php php php php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php Zendphp_OpenIdphp:php:redirectphp(php$thisphp-php>php_trustUrlphp,php php$paramsphp2php,php php$responsephp)php;
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_respond($version, $ret, $params, $extensions);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_respondphp(php$versionphp,php php$retphp,php php$paramsphp,php php$extensionsphp)php;
+php php php php php}
 
-    /**
-     * Perepares information to send back to consumer's authentication request,
-     * signs it using shared secret and send back through HTTP redirection
-     *
-     * @param array $params GET or POST request variables
-     * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response an optional response
-     *  object to perform HTTP or HTML form redirection
-     * @return bool
-     */
-    public function respondToConsumer($params, $extensions=null,
-                           Zend_Controller_Response_Abstract $response = null)
-    {
-        $version = 1.1;
-        if (isset($params['openid_ns']) &&
-            $params['openid_ns'] == Zend_OpenId::NS_2_0) {
-            $version = 2.0;
-        }
-        $ret = array();
-        if ($version >= 2.0) {
-            $ret['openid.ns'] = Zend_OpenId::NS_2_0;
-        }
-        $ret = $this->_respond($version, $ret, $params, $extensions);
-        if (!empty($params['openid_return_to'])) {
-            Zend_OpenId::redirect($params['openid_return_to'], $ret, $response);
-        }
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Pereparesphp informationphp tophp sendphp backphp tophp consumerphp'sphp authenticationphp requestphp,
+php php php php php php*php signsphp itphp usingphp sharedphp secretphp andphp sendphp backphp throughphp HTTPphp redirection
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$paramsphp GETphp orphp POSTphp requestphp variables
+php php php php php php*php php@paramphp mixedphp php$extensionsphp extensionphp objectphp orphp arrayphp ofphp extensionsphp objects
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp anphp optionalphp response
+php php php php php php*php php objectphp tophp performphp HTTPphp orphp HTMLphp formphp redirection
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp respondToConsumerphp(php$paramsphp,php php$extensionsphp=nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$versionphp php=php php1php.php1php;
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_nsphp'php]php)php php&php&
+php php php php php php php php php php php php php$paramsphp[php'openidphp_nsphp'php]php php=php=php Zendphp_OpenIdphp:php:NSphp_php2php_php0php)php php{
+php php php php php php php php php php php php php$versionphp php=php php2php.php0php;
+php php php php php php php php php}
+php php php php php php php php php$retphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php$versionphp php>php=php php2php.php0php)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.nsphp'php]php php=php Zendphp_OpenIdphp:php:NSphp_php2php_php0php;
+php php php php php php php php php}
+php php php php php php php php php$retphp php=php php$thisphp-php>php_respondphp(php$versionphp,php php$retphp,php php$paramsphp,php php$extensionsphp)php;
+php php php php php php php php ifphp php(php!emptyphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php)php)php php{
+php php php php php php php php php php php php Zendphp_OpenIdphp:php:redirectphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php,php php$retphp,php php$responsephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Perepares information to send back to consumer's authentication request
-     * and signs it using shared secret.
-     *
-     * @param float $version OpenID protcol version
-     * @param array $ret arguments to be send back to consumer
-     * @param array $params GET or POST request variables
-     * @param mixed $extensions extension object or array of extensions objects
-     * @return array
-     */
-    protected function _respond($version, $ret, $params, $extensions=null)
-    {
-        if (empty($params['openid_assoc_handle']) ||
-            !$this->_storage->getAssociation($params['openid_assoc_handle'],
-                $macFunc, $secret, $expires)) {
-            /* Use dumb mode */
-            if (!empty($params['openid_assoc_handle'])) {
-                $ret['openid.invalidate_handle'] = $params['openid_assoc_handle'];
-            }
-            $macFunc = $version >= 2.0 ? 'sha256' : 'sha1';
-            $secret = $this->_genSecret($macFunc);
-            $handle = uniqid();
-            $expiresIn = $this->_sessionTtl;
-            $this->_storage->addAssociation($handle,
-                $macFunc, $secret, time() + $expiresIn);
-            $ret['openid.assoc_handle'] = $handle;
-        } else {
-            $ret['openid.assoc_handle'] = $params['openid_assoc_handle'];
-        }
-        if (isset($params['openid_return_to'])) {
-            $ret['openid.return_to'] = $params['openid_return_to'];
-        }
-        if (isset($params['openid_claimed_id'])) {
-            $ret['openid.claimed_id'] = $params['openid_claimed_id'];
-        }
-        if (isset($params['openid_identity'])) {
-            $ret['openid.identity'] = $params['openid_identity'];
-        }
+php php php php php/php*php*
+php php php php php php*php Pereparesphp informationphp tophp sendphp backphp tophp consumerphp'sphp authenticationphp request
+php php php php php php*php andphp signsphp itphp usingphp sharedphp secretphp.
+php php php php php php*
+php php php php php php*php php@paramphp floatphp php$versionphp OpenIDphp protcolphp version
+php php php php php php*php php@paramphp arrayphp php$retphp argumentsphp tophp bephp sendphp backphp tophp consumer
+php php php php php php*php php@paramphp arrayphp php$paramsphp GETphp orphp POSTphp requestphp variables
+php php php php php php*php php@paramphp mixedphp php$extensionsphp extensionphp objectphp orphp arrayphp ofphp extensionsphp objects
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_respondphp(php$versionphp,php php$retphp,php php$paramsphp,php php$extensionsphp=nullphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$paramsphp[php'openidphp_assocphp_handlephp'php]php)php php|php|
+php php php php php php php php php php php php php!php$thisphp-php>php_storagephp-php>getAssociationphp(php$paramsphp[php'openidphp_assocphp_handlephp'php]php,
+php php php php php php php php php php php php php php php php php$macFuncphp,php php$secretphp,php php$expiresphp)php)php php{
+php php php php php php php php php php php php php/php*php Usephp dumbphp modephp php*php/
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$paramsphp[php'openidphp_assocphp_handlephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$retphp[php'openidphp.invalidatephp_handlephp'php]php php=php php$paramsphp[php'openidphp_assocphp_handlephp'php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$macFuncphp php=php php$versionphp php>php=php php2php.php0php php?php php'shaphp2php5php6php'php php:php php'shaphp1php'php;
+php php php php php php php php php php php php php$secretphp php=php php$thisphp-php>php_genSecretphp(php$macFuncphp)php;
+php php php php php php php php php php php php php$handlephp php=php uniqidphp(php)php;
+php php php php php php php php php php php php php$expiresInphp php=php php$thisphp-php>php_sessionTtlphp;
+php php php php php php php php php php php php php$thisphp-php>php_storagephp-php>addAssociationphp(php$handlephp,
+php php php php php php php php php php php php php php php php php$macFuncphp,php php$secretphp,php timephp(php)php php+php php$expiresInphp)php;
+php php php php php php php php php php php php php$retphp[php'openidphp.assocphp_handlephp'php]php php=php php$handlephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$retphp[php'openidphp.assocphp_handlephp'php]php php=php php$paramsphp[php'openidphp_assocphp_handlephp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_returnphp_tophp'php]php)php)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.returnphp_tophp'php]php php=php php$paramsphp[php'openidphp_returnphp_tophp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_claimedphp_idphp'php]php)php)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.claimedphp_idphp'php]php php=php php$paramsphp[php'openidphp_claimedphp_idphp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'openidphp_identityphp'php]php)php)php php{
+php php php php php php php php php php php php php$retphp[php'openidphp.identityphp'php]php php=php php$paramsphp[php'openidphp_identityphp'php]php;
+php php php php php php php php php}
 
-        if ($version >= 2.0) {
-            if (!empty($this->_opEndpoint)) {
-                $ret['openid.op_endpoint'] = $this->_opEndpoint;
-            } else {
-                $ret['openid.op_endpoint'] = Zend_OpenId::selfUrl();
-            }
-        }
-        $ret['openid.response_nonce'] = gmdate('Y-m-d\TH:i:s\Z') . uniqid();
-        $ret['openid.mode'] = 'id_res';
+php php php php php php php php ifphp php(php$versionphp php>php=php php2php.php0php)php php{
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_opEndpointphp)php)php php{
+php php php php php php php php php php php php php php php php php$retphp[php'openidphp.opphp_endpointphp'php]php php=php php$thisphp-php>php_opEndpointphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$retphp[php'openidphp.opphp_endpointphp'php]php php=php Zendphp_OpenIdphp:php:selfUrlphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$retphp[php'openidphp.responsephp_noncephp'php]php php=php gmdatephp(php'Yphp-mphp-dphp\THphp:iphp:sphp\Zphp'php)php php.php uniqidphp(php)php;
+php php php php php php php php php$retphp[php'openidphp.modephp'php]php php=php php'idphp_resphp'php;
 
-        Zend_OpenId_Extension::forAll($extensions, 'prepareResponse', $ret);
+php php php php php php php php Zendphp_OpenIdphp_Extensionphp:php:forAllphp(php$extensionsphp,php php'prepareResponsephp'php,php php$retphp)php;
 
-        $signed = '';
-        $data = '';
-        foreach ($ret as $key => $val) {
-            if (strpos($key, 'openid.') === 0) {
-                $key = substr($key, strlen('openid.'));
-                if (!empty($signed)) {
-                    $signed .= ',';
-                }
-                $signed .= $key;
-                $data .= $key . ':' . $val . "\n";
-            }
-        }
-        $signed .= ',signed';
-        $data .= 'signed:' . $signed . "\n";
-        $ret['openid.signed'] = $signed;
+php php php php php php php php php$signedphp php=php php'php'php;
+php php php php php php php php php$dataphp php=php php'php'php;
+php php php php php php php php foreachphp php(php$retphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php ifphp php(strposphp(php$keyphp,php php'openidphp.php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$keyphp php=php substrphp(php$keyphp,php strlenphp(php'openidphp.php'php)php)php;
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$signedphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$signedphp php.php=php php'php,php'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$signedphp php.php=php php$keyphp;
+php php php php php php php php php php php php php php php php php$dataphp php.php=php php$keyphp php.php php'php:php'php php.php php$valphp php.php php"php\nphp"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$signedphp php.php=php php'php,signedphp'php;
+php php php php php php php php php$dataphp php.php=php php'signedphp:php'php php.php php$signedphp php.php php"php\nphp"php;
+php php php php php php php php php$retphp[php'openidphp.signedphp'php]php php=php php$signedphp;
 
-        $ret['openid.sig'] = base64_encode(
-            Zend_OpenId::hashHmac($macFunc, $data, $secret));
+php php php php php php php php php$retphp[php'openidphp.sigphp'php]php php=php basephp6php4php_encodephp(
+php php php php php php php php php php php php Zendphp_OpenIdphp:php:hashHmacphp(php$macFuncphp,php php$dataphp,php php$secretphp)php)php;
 
-        return $ret;
-    }
+php php php php php php php php returnphp php$retphp;
+php php php php php}
 
-    /**
-     * Performs authentication validation for dumb consumers
-     * Returns array of variables to push back to consumer.
-     * It MUST contain 'is_valid' variable with value 'true' or 'false'.
-     *
-     * @param float $version OpenID version
-     * @param array $params GET or POST request variables
-     * @return array
-     */
-    protected function _checkAuthentication($version, $params)
-    {
-        $ret = array();
-        if ($version >= 2.0) {
-            $ret['ns'] = Zend_OpenId::NS_2_0;
-        }
-        $ret['openid.mode'] = 'id_res';
+php php php php php/php*php*
+php php php php php php*php Performsphp authenticationphp validationphp forphp dumbphp consumers
+php php php php php php*php Returnsphp arrayphp ofphp variablesphp tophp pushphp backphp tophp consumerphp.
+php php php php php php*php Itphp MUSTphp containphp php'isphp_validphp'php variablephp withphp valuephp php'truephp'php orphp php'falsephp'php.
+php php php php php php*
+php php php php php php*php php@paramphp floatphp php$versionphp OpenIDphp version
+php php php php php php*php php@paramphp arrayphp php$paramsphp GETphp orphp POSTphp requestphp variables
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_checkAuthenticationphp(php$versionphp,php php$paramsphp)
+php php php php php{
+php php php php php php php php php$retphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php$versionphp php>php=php php2php.php0php)php php{
+php php php php php php php php php php php php php$retphp[php'nsphp'php]php php=php Zendphp_OpenIdphp:php:NSphp_php2php_php0php;
+php php php php php php php php php}
+php php php php php php php php php$retphp[php'openidphp.modephp'php]php php=php php'idphp_resphp'php;
 
-        if (empty($params['openid_assoc_handle']) ||
-            empty($params['openid_signed']) ||
-            empty($params['openid_sig']) ||
-            !$this->_storage->getAssociation($params['openid_assoc_handle'],
-                $macFunc, $secret, $expires)) {
-            $ret['is_valid'] = 'false';
-            return $ret;
-        }
+php php php php php php php php ifphp php(emptyphp(php$paramsphp[php'openidphp_assocphp_handlephp'php]php)php php|php|
+php php php php php php php php php php php php emptyphp(php$paramsphp[php'openidphp_signedphp'php]php)php php|php|
+php php php php php php php php php php php php emptyphp(php$paramsphp[php'openidphp_sigphp'php]php)php php|php|
+php php php php php php php php php php php php php!php$thisphp-php>php_storagephp-php>getAssociationphp(php$paramsphp[php'openidphp_assocphp_handlephp'php]php,
+php php php php php php php php php php php php php php php php php$macFuncphp,php php$secretphp,php php$expiresphp)php)php php{
+php php php php php php php php php php php php php$retphp[php'isphp_validphp'php]php php=php php'falsephp'php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}
 
-        $signed = explode(',', $params['openid_signed']);
-        $data = '';
-        foreach ($signed as $key) {
-            $data .= $key . ':';
-            if ($key == 'mode') {
-                $data .= "id_res\n";
-            } else {
-                $data .= $params['openid_' . strtr($key,'.','_')]."\n";
-            }
-        }
-        if ($this->_secureStringCompare(base64_decode($params['openid_sig']),
-            Zend_OpenId::hashHmac($macFunc, $data, $secret))) {
-            $ret['is_valid'] = 'true';
-        } else {
-            $ret['is_valid'] = 'false';
-        }
-        return $ret;
-    }
+php php php php php php php php php$signedphp php=php explodephp(php'php,php'php,php php$paramsphp[php'openidphp_signedphp'php]php)php;
+php php php php php php php php php$dataphp php=php php'php'php;
+php php php php php php php php foreachphp php(php$signedphp asphp php$keyphp)php php{
+php php php php php php php php php php php php php$dataphp php.php=php php$keyphp php.php php'php:php'php;
+php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php'modephp'php)php php{
+php php php php php php php php php php php php php php php php php$dataphp php.php=php php"idphp_resphp\nphp"php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$dataphp php.php=php php$paramsphp[php'openidphp_php'php php.php strtrphp(php$keyphp,php'php.php'php,php'php_php'php)php]php.php"php\nphp"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_secureStringComparephp(basephp6php4php_decodephp(php$paramsphp[php'openidphp_sigphp'php]php)php,
+php php php php php php php php php php php php Zendphp_OpenIdphp:php:hashHmacphp(php$macFuncphp,php php$dataphp,php php$secretphp)php)php)php php{
+php php php php php php php php php php php php php$retphp[php'isphp_validphp'php]php php=php php'truephp'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$retphp[php'isphp_validphp'php]php php=php php'falsephp'php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$retphp;
+php php php php php}
 
-    /**
-     * Securely compare two strings for equality while avoided C level memcmp()
-     * optimisations capable of leaking timing information useful to an attacker
-     * attempting to iteratively guess the unknown string (e.g. password) being
-     * compared against.
-     *
-     * @param string $a
-     * @param string $b
-     * @return bool
-     */
-    protected function _secureStringCompare($a, $b)
-    {
-        if (strlen($a) !== strlen($b)) {
-            return false;
-        }
-        $result = 0;
-        for ($i = 0; $i < strlen($a); $i++) {
-            $result |= ord($a[$i]) ^ ord($b[$i]);
-        }
-        return $result == 0;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Securelyphp comparephp twophp stringsphp forphp equalityphp whilephp avoidedphp Cphp levelphp memcmpphp(php)
+php php php php php php*php optimisationsphp capablephp ofphp leakingphp timingphp informationphp usefulphp tophp anphp attacker
+php php php php php php*php attemptingphp tophp iterativelyphp guessphp thephp unknownphp stringphp php(ephp.gphp.php passwordphp)php being
+php php php php php php*php comparedphp againstphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$a
+php php php php php php*php php@paramphp stringphp php$b
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php protectedphp functionphp php_secureStringComparephp(php$aphp,php php$bphp)
+php php php php php{
+php php php php php php php php ifphp php(strlenphp(php$aphp)php php!php=php=php strlenphp(php$bphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php php$resultphp php=php php0php;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php strlenphp(php$aphp)php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php$resultphp php|php=php ordphp(php$aphp[php$iphp]php)php php^php ordphp(php$bphp[php$iphp]php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$resultphp php=php=php php0php;
+php php php php php}
+php}

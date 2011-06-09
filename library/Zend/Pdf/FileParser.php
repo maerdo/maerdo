@@ -1,485 +1,485 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @subpackage FileParser
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: FileParser.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp FileParser
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php FileParserphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Abstract utility class for parsing binary files.
- *
- * Provides a library of methods to quickly navigate and extract various data
- * types (signed and unsigned integers, floating- and fixed-point numbers,
- * strings, etc.) from the file.
- *
- * File access is managed via a {@link Zend_Pdf_FileParserDataSource} object.
- * This allows the same parser code to work with many different data sources:
- * in-memory objects, filesystem files, etc.
- *
- * @package    Zend_Pdf
- * @subpackage FileParser
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Pdf_FileParser
-{
-  /**** Class Constants ****/
+php/php*php*
+php php*php Abstractphp utilityphp classphp forphp parsingphp binaryphp filesphp.
+php php*
+php php*php Providesphp aphp libraryphp ofphp methodsphp tophp quicklyphp navigatephp andphp extractphp variousphp data
+php php*php typesphp php(signedphp andphp unsignedphp integersphp,php floatingphp-php andphp fixedphp-pointphp numbersphp,
+php php*php stringsphp,php etcphp.php)php fromphp thephp filephp.
+php php*
+php php*php Filephp accessphp isphp managedphp viaphp aphp php{php@linkphp Zendphp_Pdfphp_FileParserDataSourcephp}php objectphp.
+php php*php Thisphp allowsphp thephp samephp parserphp codephp tophp workphp withphp manyphp differentphp dataphp sourcesphp:
+php php*php inphp-memoryphp objectsphp,php filesystemphp filesphp,php etcphp.
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp FileParser
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Pdfphp_FileParser
+php{
+php php php/php*php*php*php*php Classphp Constantsphp php*php*php*php*php/
 
-    /**
-     * Little-endian byte order (0x04 0x03 0x02 0x01).
-     */
-    const BYTE_ORDER_LITTLE_ENDIAN = 0;
+php php php php php/php*php*
+php php php php php php*php Littlephp-endianphp bytephp orderphp php(php0xphp0php4php php0xphp0php3php php0xphp0php2php php0xphp0php1php)php.
+php php php php php php*php/
+php php php php constphp BYTEphp_ORDERphp_LITTLEphp_ENDIANphp php=php php0php;
 
-    /**
-     * Big-endian byte order (0x01 0x02 0x03 0x04).
-     */
-    const BYTE_ORDER_BIG_ENDIAN    = 1;
-
-
-
-  /**** Instance Variables ****/
-
-
-    /**
-     * Flag indicating that the file has passed a cursory validation check.
-     * @var boolean
-     */
-    protected $_isScreened = false;
-
-    /**
-     * Flag indicating that the file has been sucessfully parsed.
-     * @var boolean
-     */
-    protected $_isParsed = false;
-
-    /**
-     * Object representing the data source to be parsed.
-     * @var Zend_Pdf_FileParserDataSource
-     */
-    protected $_dataSource = null;
+php php php php php/php*php*
+php php php php php php*php Bigphp-endianphp bytephp orderphp php(php0xphp0php1php php0xphp0php2php php0xphp0php3php php0xphp0php4php)php.
+php php php php php php*php/
+php php php php constphp BYTEphp_ORDERphp_BIGphp_ENDIANphp php php php php=php php1php;
 
 
 
-  /**** Public Interface ****/
+php php php/php*php*php*php*php Instancephp Variablesphp php*php*php*php*php/
 
 
-  /* Abstract Methods */
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp thatphp thephp filephp hasphp passedphp aphp cursoryphp validationphp checkphp.
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isScreenedphp php=php falsephp;
 
-    /**
-     * Performs a cursory check to verify that the binary file is in the expected
-     * format. Intended to quickly weed out obviously bogus files.
-     *
-     * Must set $this->_isScreened to true if successful.
-     *
-     * @throws Zend_Pdf_Exception
-     */
-    abstract public function screen();
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp thatphp thephp filephp hasphp beenphp sucessfullyphp parsedphp.
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isParsedphp php=php falsephp;
 
-    /**
-     * Reads and parses the complete binary file.
-     *
-     * Must set $this->_isParsed to true if successful.
-     *
-     * @throws Zend_Pdf_Exception
-     */
-    abstract public function parse();
+php php php php php/php*php*
+php php php php php php*php Objectphp representingphp thephp dataphp sourcephp tophp bephp parsedphp.
+php php php php php php*php php@varphp Zendphp_Pdfphp_FileParserDataSource
+php php php php php php*php/
+php php php php protectedphp php$php_dataSourcephp php=php nullphp;
 
 
-  /* Object Lifecycle */
 
-    /**
-     * Object constructor.
-     *
-     * Verifies that the data source has been properly initialized.
-     *
-     * @param Zend_Pdf_FileParserDataSource $dataSource
-     * @throws Zend_Pdf_Exception
-     */
-    public function __construct(Zend_Pdf_FileParserDataSource $dataSource)
-    {
-        if ($dataSource->getSize() == 0) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('The data source has not been properly initialized',
-                                         Zend_Pdf_Exception::BAD_DATA_SOURCE);
-        }
-        $this->_dataSource = $dataSource;
-    }
-
-    /**
-     * Object destructor.
-     *
-     * Discards the data source object.
-     */
-    public function __destruct()
-    {
-        $this->_dataSource = null;
-    }
+php php php/php*php*php*php*php Publicphp Interfacephp php*php*php*php*php/
 
 
-  /* Accessors */
+php php php/php*php Abstractphp Methodsphp php*php/
 
-    /**
-     * Returns true if the file has passed a cursory validation check.
-     *
-     * @return boolean
-     */
-    public function isScreened()
-    {
-        return $this->_isScreened;
-    }
+php php php php php/php*php*
+php php php php php php*php Performsphp aphp cursoryphp checkphp tophp verifyphp thatphp thephp binaryphp filephp isphp inphp thephp expected
+php php php php php php*php formatphp.php Intendedphp tophp quicklyphp weedphp outphp obviouslyphp bogusphp filesphp.
+php php php php php php*
+php php php php php php*php Mustphp setphp php$thisphp-php>php_isScreenedphp tophp truephp ifphp successfulphp.
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp screenphp(php)php;
 
-    /**
-     * Returns true if the file has been successfully parsed.
-     *
-     * @return boolean
-     */
-    public function isParsed()
-    {
-        return $this->_isParsed;
-    }
-
-    /**
-     * Returns the data source object representing the file being parsed.
-     *
-     * @return Zend_Pdf_FileParserDataSource
-     */
-    public function getDataSource()
-    {
-        return $this->_dataSource;
-    }
+php php php php php/php*php*
+php php php php php php*php Readsphp andphp parsesphp thephp completephp binaryphp filephp.
+php php php php php php*
+php php php php php php*php Mustphp setphp php$thisphp-php>php_isParsedphp tophp truephp ifphp successfulphp.
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp parsephp(php)php;
 
 
-  /* Primitive Methods */
+php php php/php*php Objectphp Lifecyclephp php*php/
 
-    /**
-     * Convenience wrapper for the data source object's moveToOffset() method.
-     *
-     * @param integer $offset Destination byte offset.
-     * @throws Zend_Pdf_Exception
-     */
-    public function moveToOffset($offset)
-    {
-        $this->_dataSource->moveToOffset($offset);
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructorphp.
+php php php php php php*
+php php php php php php*php Verifiesphp thatphp thephp dataphp sourcephp hasphp beenphp properlyphp initializedphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_FileParserDataSourcephp php$dataSource
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(Zendphp_Pdfphp_FileParserDataSourcephp php$dataSourcephp)
+php php php php php{
+php php php php php php php php ifphp php(php$dataSourcephp-php>getSizephp(php)php php=php=php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Thephp dataphp sourcephp hasphp notphp beenphp properlyphp initializedphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:BADphp_DATAphp_SOURCEphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataSourcephp php=php php$dataSourcephp;
+php php php php php}
 
-    public function getOffset() {
-       return $this->_dataSource->getOffset();
-    }
-
-    public function getSize() {
-       return $this->_dataSource->getSize();
-    }
-
-    /**
-     * Convenience wrapper for the data source object's readBytes() method.
-     *
-     * @param integer $byteCount Number of bytes to read.
-     * @return string
-     * @throws Zend_Pdf_Exception
-     */
-    public function readBytes($byteCount)
-    {
-        return $this->_dataSource->readBytes($byteCount);
-    }
-
-    /**
-     * Convenience wrapper for the data source object's skipBytes() method.
-     *
-     * @param integer $byteCount Number of bytes to skip.
-     * @throws Zend_Pdf_Exception
-     */
-    public function skipBytes($byteCount)
-    {
-        $this->_dataSource->skipBytes($byteCount);
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp destructorphp.
+php php php php php php*
+php php php php php php*php Discardsphp thephp dataphp sourcephp objectphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_destructphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataSourcephp php=php nullphp;
+php php php php php}
 
 
-  /* Parser Methods */
+php php php/php*php Accessorsphp php*php/
 
-    /**
-     * Reads the signed integer value from the binary file at the current byte
-     * offset.
-     *
-     * Advances the offset by the number of bytes read. Throws an exception if
-     * an error occurs.
-     *
-     * @param integer $size Size of integer in bytes: 1-4
-     * @param integer $byteOrder (optional) Big- or little-endian byte order.
-     *   Use the BYTE_ORDER_ constants defined in {@link Zend_Pdf_FileParser}.
-     *   If omitted, uses big-endian.
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    public function readInt($size, $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN)
-    {
-        if (($size < 1) || ($size > 4)) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid signed integer size: $size",
-                                         Zend_Pdf_Exception::INVALID_INTEGER_SIZE);
-        }
-        $bytes = $this->_dataSource->readBytes($size);
-        /* unpack() will not work for this method because it always works in
-         * the host byte order for signed integers. It also does not allow for
-         * variable integer sizes.
-         */
-        if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN) {
-            $number = ord($bytes[0]);
-            if (($number & 0x80) == 0x80) {
-                /* This number is negative. Extract the positive equivalent.
-                 */
-                $number = (~ $number) & 0xff;
-                for ($i = 1; $i < $size; $i++) {
-                    $number = ($number << 8) | ((~ ord($bytes[$i])) & 0xff);
-                }
-                /* Now turn this back into a negative number by taking the
-                 * two's complement (we didn't add one above so won't
-                 * subtract it below). This works reliably on both 32- and
-                 * 64-bit systems.
-                 */
-                $number = ~$number;
-            } else {
-                for ($i = 1; $i < $size; $i++) {
-                    $number = ($number << 8) | ord($bytes[$i]);
-                }
-            }
-        } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
-            $number = ord($bytes[$size - 1]);
-            if (($number & 0x80) == 0x80) {
-                /* Negative number. See discussion above.
-                 */
-                $number = 0;
-                for ($i = --$size; $i >= 0; $i--) {
-                    $number |= ((~ ord($bytes[$i])) & 0xff) << ($i * 8);
-                }
-                $number = ~$number;
-            } else {
-                $number = 0;
-                for ($i = --$size; $i >= 0; $i--) {
-                    $number |= ord($bytes[$i]) << ($i * 8);
-                }
-            }
-        } else {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid byte order: $byteOrder",
-                                         Zend_Pdf_Exception::INVALID_BYTE_ORDER);
-        }
-        return $number;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp thephp filephp hasphp passedphp aphp cursoryphp validationphp checkphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isScreenedphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isScreenedphp;
+php php php php php}
 
-    /**
-     * Reads the unsigned integer value from the binary file at the current byte
-     * offset.
-     *
-     * Advances the offset by the number of bytes read. Throws an exception if
-     * an error occurs.
-     *
-     * NOTE: If you ask for a 4-byte unsigned integer on a 32-bit machine, the
-     * resulting value WILL BE SIGNED because PHP uses signed integers internally
-     * for everything. To guarantee portability, be sure to use bitwise operators
-     * operators on large unsigned integers!
-     *
-     * @param integer $size Size of integer in bytes: 1-4
-     * @param integer $byteOrder (optional) Big- or little-endian byte order.
-     *   Use the BYTE_ORDER_ constants defined in {@link Zend_Pdf_FileParser}.
-     *   If omitted, uses big-endian.
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    public function readUInt($size, $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN)
-    {
-        if (($size < 1) || ($size > 4)) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid unsigned integer size: $size",
-                                         Zend_Pdf_Exception::INVALID_INTEGER_SIZE);
-        }
-        $bytes = $this->_dataSource->readBytes($size);
-        /* unpack() is a bit heavyweight for this simple conversion. Just
-         * work the bytes directly.
-         */
-        if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN) {
-            $number = ord($bytes[0]);
-            for ($i = 1; $i < $size; $i++) {
-                $number = ($number << 8) | ord($bytes[$i]);
-            }
-        } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
-            $number = 0;
-            for ($i = --$size; $i >= 0; $i--) {
-                $number |= ord($bytes[$i]) << ($i * 8);
-            }
-        } else {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid byte order: $byteOrder",
-                                         Zend_Pdf_Exception::INVALID_BYTE_ORDER);
-        }
-        return $number;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp thephp filephp hasphp beenphp successfullyphp parsedphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isParsedphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isParsedphp;
+php php php php php}
 
-    /**
-     * Returns true if the specified bit is set in the integer bitfield.
-     *
-     * @param integer $bit Bit number to test (i.e. - 0-31)
-     * @param integer $bitField
-     * @return boolean
-     */
-    public function isBitSet($bit, $bitField)
-    {
-        $bitMask = 1 << $bit;
-        $isSet = (($bitField & $bitMask) == $bitMask);
-        return $isSet;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp dataphp sourcephp objectphp representingphp thephp filephp beingphp parsedphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_FileParserDataSource
+php php php php php php*php/
+php php php php publicphp functionphp getDataSourcephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dataSourcephp;
+php php php php php}
 
-    /**
-     * Reads the signed fixed-point number from the binary file at the current
-     * byte offset.
-     *
-     * Common fixed-point sizes are 2.14 and 16.16.
-     *
-     * Advances the offset by the number of bytes read. Throws an exception if
-     * an error occurs.
-     *
-     * @param integer $mantissaBits Number of bits in the mantissa
-     * @param integer $fractionBits Number of bits in the fraction
-     * @param integer $byteOrder (optional) Big- or little-endian byte order.
-     *   Use the BYTE_ORDER_ constants defined in {@link Zend_Pdf_FileParser}.
-     *   If omitted, uses big-endian.
-     * @return float
-     * @throws Zend_Pdf_Exception
-     */
-    public function readFixed($mantissaBits, $fractionBits,
-                              $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN)
-    {
-        $bitsToRead = $mantissaBits + $fractionBits;
-        if (($bitsToRead % 8) !== 0) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Fixed-point numbers are whole bytes',
-                                         Zend_Pdf_Exception::BAD_FIXED_POINT_SIZE);
-        }
-        $number = $this->readInt(($bitsToRead >> 3), $byteOrder) / (1 << $fractionBits);
-        return $number;
-    }
 
-    /**
-     * Reads the Unicode UTF-16-encoded string from the binary file at the
-     * current byte offset.
-     *
-     * The byte order of the UTF-16 string must be specified. You must also
-     * supply the desired resulting character set.
-     *
-     * Advances the offset by the number of bytes read. Throws an exception if
-     * an error occurs.
-     *
-     * @todo Consider changing $byteCount to a character count. They are not
-     *   always equivalent (in the case of surrogates).
-     * @todo Make $byteOrder optional if there is a byte-order mark (BOM) in the
-     *   string being extracted.
-     *
-     * @param integer $byteCount Number of bytes (characters * 2) to return.
-     * @param integer $byteOrder (optional) Big- or little-endian byte order.
-     *   Use the BYTE_ORDER_ constants defined in {@link Zend_Pdf_FileParser}.
-     *   If omitted, uses big-endian.
-     * @param string $characterSet (optional) Desired resulting character set.
-     *   You may use any character set supported by {@link iconv()}. If omitted,
-     *   uses 'current locale'.
-     * @return string
-     * @throws Zend_Pdf_Exception
-     */
-    public function readStringUTF16($byteCount,
-                                    $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN,
-                                    $characterSet = '')
-    {
-        if ($byteCount == 0) {
-            return '';
-        }
-        $bytes = $this->_dataSource->readBytes($byteCount);
-        if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN) {
-            if ($characterSet == 'UTF-16BE') {
-                return $bytes;
-            }
-            return iconv('UTF-16BE', $characterSet, $bytes);
-        } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
-            if ($characterSet == 'UTF-16LE') {
-                return $bytes;
-            }
-            return iconv('UTF-16LE', $characterSet, $bytes);
-        } else {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid byte order: $byteOrder",
-                                         Zend_Pdf_Exception::INVALID_BYTE_ORDER);
-        }
-    }
+php php php/php*php Primitivephp Methodsphp php*php/
 
-    /**
-     * Reads the Mac Roman-encoded string from the binary file at the current
-     * byte offset.
-     *
-     * You must supply the desired resulting character set.
-     *
-     * Advances the offset by the number of bytes read. Throws an exception if
-     * an error occurs.
-     *
-     * @param integer $byteCount Number of bytes (characters) to return.
-     * @param string $characterSet (optional) Desired resulting character set.
-     *   You may use any character set supported by {@link iconv()}. If omitted,
-     *   uses 'current locale'.
-     * @return string
-     * @throws Zend_Pdf_Exception
-     */
-    public function readStringMacRoman($byteCount, $characterSet = '')
-    {
-        if ($byteCount == 0) {
-            return '';
-        }
-        $bytes = $this->_dataSource->readBytes($byteCount);
-        if ($characterSet == 'MacRoman') {
-            return $bytes;
-        }
-        return iconv('MacRoman', $characterSet, $bytes);
-    }
+php php php php php/php*php*
+php php php php php php*php Conveniencephp wrapperphp forphp thephp dataphp sourcephp objectphp'sphp moveToOffsetphp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$offsetphp Destinationphp bytephp offsetphp.
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp moveToOffsetphp(php$offsetphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataSourcephp-php>moveToOffsetphp(php$offsetphp)php;
+php php php php php}
 
-    /**
-     * Reads the Pascal string from the binary file at the current byte offset.
-     *
-     * The length of the Pascal string is determined by reading the length bytes
-     * which preceed the character data. You must supply the desired resulting
-     * character set.
-     *
-     * Advances the offset by the number of bytes read. Throws an exception if
-     * an error occurs.
-     *
-     * @param string $characterSet (optional) Desired resulting character set.
-     *   You may use any character set supported by {@link iconv()}. If omitted,
-     *   uses 'current locale'.
-     * @param integer $lengthBytes (optional) Number of bytes that make up the
-     *   length. Default is 1.
-     * @return string
-     * @throws Zend_Pdf_Exception
-     */
-    public function readStringPascal($characterSet = '', $lengthBytes = 1)
-    {
-        $byteCount = $this->readUInt($lengthBytes);
-        if ($byteCount == 0) {
-            return '';
-        }
-        $bytes = $this->_dataSource->readBytes($byteCount);
-        if ($characterSet == 'ASCII') {
-            return $bytes;
-        }
-        return iconv('ASCII', $characterSet, $bytes);
-    }
+php php php php publicphp functionphp getOffsetphp(php)php php{
+php php php php php php php returnphp php$thisphp-php>php_dataSourcephp-php>getOffsetphp(php)php;
+php php php php php}
 
-}
+php php php php publicphp functionphp getSizephp(php)php php{
+php php php php php php php returnphp php$thisphp-php>php_dataSourcephp-php>getSizephp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Conveniencephp wrapperphp forphp thephp dataphp sourcephp objectphp'sphp readBytesphp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$byteCountphp Numberphp ofphp bytesphp tophp readphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readBytesphp(php$byteCountphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dataSourcephp-php>readBytesphp(php$byteCountphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Conveniencephp wrapperphp forphp thephp dataphp sourcephp objectphp'sphp skipBytesphp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$byteCountphp Numberphp ofphp bytesphp tophp skipphp.
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp skipBytesphp(php$byteCountphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataSourcephp-php>skipBytesphp(php$byteCountphp)php;
+php php php php php}
+
+
+php php php/php*php Parserphp Methodsphp php*php/
+
+php php php php php/php*php*
+php php php php php php*php Readsphp thephp signedphp integerphp valuephp fromphp thephp binaryphp filephp atphp thephp currentphp byte
+php php php php php php*php offsetphp.
+php php php php php php*
+php php php php php php*php Advancesphp thephp offsetphp byphp thephp numberphp ofphp bytesphp readphp.php Throwsphp anphp exceptionphp if
+php php php php php php*php anphp errorphp occursphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$sizephp Sizephp ofphp integerphp inphp bytesphp:php php1php-php4
+php php php php php php*php php@paramphp integerphp php$byteOrderphp php(optionalphp)php Bigphp-php orphp littlephp-endianphp bytephp orderphp.
+php php php php php php*php php php Usephp thephp BYTEphp_ORDERphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_FileParserphp}php.
+php php php php php php*php php php Ifphp omittedphp,php usesphp bigphp-endianphp.
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readIntphp(php$sizephp,php php$byteOrderphp php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_BIGphp_ENDIANphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$sizephp <php php1php)php php|php|php php(php$sizephp php>php php4php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Invalidphp signedphp integerphp sizephp:php php$sizephp"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INVALIDphp_INTEGERphp_SIZEphp)php;
+php php php php php php php php php}
+php php php php php php php php php$bytesphp php=php php$thisphp-php>php_dataSourcephp-php>readBytesphp(php$sizephp)php;
+php php php php php php php php php/php*php unpackphp(php)php willphp notphp workphp forphp thisphp methodphp becausephp itphp alwaysphp worksphp in
+php php php php php php php php php php*php thephp hostphp bytephp orderphp forphp signedphp integersphp.php Itphp alsophp doesphp notphp allowphp for
+php php php php php php php php php php*php variablephp integerphp sizesphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$byteOrderphp php=php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_BIGphp_ENDIANphp)php php{
+php php php php php php php php php php php php php$numberphp php=php ordphp(php$bytesphp[php0php]php)php;
+php php php php php php php php php php php php ifphp php(php(php$numberphp php&php php0xphp8php0php)php php=php=php php0xphp8php0php)php php{
+php php php php php php php php php php php php php php php php php/php*php Thisphp numberphp isphp negativephp.php Extractphp thephp positivephp equivalentphp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php$numberphp php=php php(php~php php$numberphp)php php&php php0xffphp;
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php1php;php php$iphp <php php$sizephp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$numberphp php=php php(php$numberphp <php<php php8php)php php|php php(php(php~php ordphp(php$bytesphp[php$iphp]php)php)php php&php php0xffphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php/php*php Nowphp turnphp thisphp backphp intophp aphp negativephp numberphp byphp takingphp the
+php php php php php php php php php php php php php php php php php php*php twophp'sphp complementphp php(wephp didnphp'tphp addphp onephp abovephp sophp wonphp't
+php php php php php php php php php php php php php php php php php php*php subtractphp itphp belowphp)php.php Thisphp worksphp reliablyphp onphp bothphp php3php2php-php and
+php php php php php php php php php php php php php php php php php php*php php6php4php-bitphp systemsphp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php$numberphp php=php php~php$numberphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php1php;php php$iphp <php php$sizephp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$numberphp php=php php(php$numberphp <php<php php8php)php php|php ordphp(php$bytesphp[php$iphp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php$byteOrderphp php=php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_LITTLEphp_ENDIANphp)php php{
+php php php php php php php php php php php php php$numberphp php=php ordphp(php$bytesphp[php$sizephp php-php php1php]php)php;
+php php php php php php php php php php php php ifphp php(php(php$numberphp php&php php0xphp8php0php)php php=php=php php0xphp8php0php)php php{
+php php php php php php php php php php php php php php php php php/php*php Negativephp numberphp.php Seephp discussionphp abovephp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php$numberphp php=php php0php;
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php-php-php$sizephp;php php$iphp php>php=php php0php;php php$iphp-php-php)php php{
+php php php php php php php php php php php php php php php php php php php php php$numberphp php|php=php php(php(php~php ordphp(php$bytesphp[php$iphp]php)php)php php&php php0xffphp)php <php<php php(php$iphp php*php php8php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$numberphp php=php php~php$numberphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$numberphp php=php php0php;
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php-php-php$sizephp;php php$iphp php>php=php php0php;php php$iphp-php-php)php php{
+php php php php php php php php php php php php php php php php php php php php php$numberphp php|php=php ordphp(php$bytesphp[php$iphp]php)php <php<php php(php$iphp php*php php8php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Invalidphp bytephp orderphp:php php$byteOrderphp"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INVALIDphp_BYTEphp_ORDERphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$numberphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Readsphp thephp unsignedphp integerphp valuephp fromphp thephp binaryphp filephp atphp thephp currentphp byte
+php php php php php php*php offsetphp.
+php php php php php php*
+php php php php php php*php Advancesphp thephp offsetphp byphp thephp numberphp ofphp bytesphp readphp.php Throwsphp anphp exceptionphp if
+php php php php php php*php anphp errorphp occursphp.
+php php php php php php*
+php php php php php php*php NOTEphp:php Ifphp youphp askphp forphp aphp php4php-bytephp unsignedphp integerphp onphp aphp php3php2php-bitphp machinephp,php the
+php php php php php php*php resultingphp valuephp WILLphp BEphp SIGNEDphp becausephp PHPphp usesphp signedphp integersphp internally
+php php php php php php*php forphp everythingphp.php Tophp guaranteephp portabilityphp,php bephp surephp tophp usephp bitwisephp operators
+php php php php php php*php operatorsphp onphp largephp unsignedphp integersphp!
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$sizephp Sizephp ofphp integerphp inphp bytesphp:php php1php-php4
+php php php php php php*php php@paramphp integerphp php$byteOrderphp php(optionalphp)php Bigphp-php orphp littlephp-endianphp bytephp orderphp.
+php php php php php php*php php php Usephp thephp BYTEphp_ORDERphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_FileParserphp}php.
+php php php php php php*php php php Ifphp omittedphp,php usesphp bigphp-endianphp.
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readUIntphp(php$sizephp,php php$byteOrderphp php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_BIGphp_ENDIANphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$sizephp <php php1php)php php|php|php php(php$sizephp php>php php4php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Invalidphp unsignedphp integerphp sizephp:php php$sizephp"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INVALIDphp_INTEGERphp_SIZEphp)php;
+php php php php php php php php php}
+php php php php php php php php php$bytesphp php=php php$thisphp-php>php_dataSourcephp-php>readBytesphp(php$sizephp)php;
+php php php php php php php php php/php*php unpackphp(php)php isphp aphp bitphp heavyweightphp forphp thisphp simplephp conversionphp.php Just
+php php php php php php php php php php*php workphp thephp bytesphp directlyphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$byteOrderphp php=php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_BIGphp_ENDIANphp)php php{
+php php php php php php php php php php php php php$numberphp php=php ordphp(php$bytesphp[php0php]php)php;
+php php php php php php php php php php php php forphp php(php$iphp php=php php1php;php php$iphp <php php$sizephp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$numberphp php=php php(php$numberphp <php<php php8php)php php|php ordphp(php$bytesphp[php$iphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php$byteOrderphp php=php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_LITTLEphp_ENDIANphp)php php{
+php php php php php php php php php php php php php$numberphp php=php php0php;
+php php php php php php php php php php php php forphp php(php$iphp php=php php-php-php$sizephp;php php$iphp php>php=php php0php;php php$iphp-php-php)php php{
+php php php php php php php php php php php php php php php php php$numberphp php|php=php ordphp(php$bytesphp[php$iphp]php)php <php<php php(php$iphp php*php php8php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Invalidphp bytephp orderphp:php php$byteOrderphp"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INVALIDphp_BYTEphp_ORDERphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$numberphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp thephp specifiedphp bitphp isphp setphp inphp thephp integerphp bitfieldphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$bitphp Bitphp numberphp tophp testphp php(iphp.ephp.php php-php php0php-php3php1php)
+php php php php php php*php php@paramphp integerphp php$bitField
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isBitSetphp(php$bitphp,php php$bitFieldphp)
+php php php php php{
+php php php php php php php php php$bitMaskphp php=php php1php <php<php php$bitphp;
+php php php php php php php php php$isSetphp php=php php(php(php$bitFieldphp php&php php$bitMaskphp)php php=php=php php$bitMaskphp)php;
+php php php php php php php php returnphp php$isSetphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Readsphp thephp signedphp fixedphp-pointphp numberphp fromphp thephp binaryphp filephp atphp thephp current
+php php php php php php*php bytephp offsetphp.
+php php php php php php*
+php php php php php php*php Commonphp fixedphp-pointphp sizesphp arephp php2php.php1php4php andphp php1php6php.php1php6php.
+php php php php php php*
+php php php php php php*php Advancesphp thephp offsetphp byphp thephp numberphp ofphp bytesphp readphp.php Throwsphp anphp exceptionphp if
+php php php php php php*php anphp errorphp occursphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$mantissaBitsphp Numberphp ofphp bitsphp inphp thephp mantissa
+php php php php php php*php php@paramphp integerphp php$fractionBitsphp Numberphp ofphp bitsphp inphp thephp fraction
+php php php php php php*php php@paramphp integerphp php$byteOrderphp php(optionalphp)php Bigphp-php orphp littlephp-endianphp bytephp orderphp.
+php php php php php php*php php php Usephp thephp BYTEphp_ORDERphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_FileParserphp}php.
+php php php php php php*php php php Ifphp omittedphp,php usesphp bigphp-endianphp.
+php php php php php php*php php@returnphp float
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readFixedphp(php$mantissaBitsphp,php php$fractionBitsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$byteOrderphp php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_BIGphp_ENDIANphp)
+php php php php php{
+php php php php php php php php php$bitsToReadphp php=php php$mantissaBitsphp php+php php$fractionBitsphp;
+php php php php php php php php ifphp php(php(php$bitsToReadphp php%php php8php)php php!php=php=php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Fixedphp-pointphp numbersphp arephp wholephp bytesphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:BADphp_FIXEDphp_POINTphp_SIZEphp)php;
+php php php php php php php php php}
+php php php php php php php php php$numberphp php=php php$thisphp-php>readIntphp(php(php$bitsToReadphp php>php>php php3php)php,php php$byteOrderphp)php php/php php(php1php <php<php php$fractionBitsphp)php;
+php php php php php php php php returnphp php$numberphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Readsphp thephp Unicodephp UTFphp-php1php6php-encodedphp stringphp fromphp thephp binaryphp filephp atphp the
+php php php php php php*php currentphp bytephp offsetphp.
+php php php php php php*
+php php php php php php*php Thephp bytephp orderphp ofphp thephp UTFphp-php1php6php stringphp mustphp bephp specifiedphp.php Youphp mustphp also
+php php php php php php*php supplyphp thephp desiredphp resultingphp characterphp setphp.
+php php php php php php*
+php php php php php php*php Advancesphp thephp offsetphp byphp thephp numberphp ofphp bytesphp readphp.php Throwsphp anphp exceptionphp if
+php php php php php php*php anphp errorphp occursphp.
+php php php php php php*
+php php php php php php*php php@todophp Considerphp changingphp php$byteCountphp tophp aphp characterphp countphp.php Theyphp arephp not
+php php php php php php*php php php alwaysphp equivalentphp php(inphp thephp casephp ofphp surrogatesphp)php.
+php php php php php php*php php@todophp Makephp php$byteOrderphp optionalphp ifphp therephp isphp aphp bytephp-orderphp markphp php(BOMphp)php inphp the
+php php php php php php*php php php stringphp beingphp extractedphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$byteCountphp Numberphp ofphp bytesphp php(charactersphp php*php php2php)php tophp returnphp.
+php php php php php php*php php@paramphp integerphp php$byteOrderphp php(optionalphp)php Bigphp-php orphp littlephp-endianphp bytephp orderphp.
+php php php php php php*php php php Usephp thephp BYTEphp_ORDERphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_FileParserphp}php.
+php php php php php php*php php php Ifphp omittedphp,php usesphp bigphp-endianphp.
+php php php php php php*php php@paramphp stringphp php$characterSetphp php(optionalphp)php Desiredphp resultingphp characterphp setphp.
+php php php php php php*php php php Youphp mayphp usephp anyphp characterphp setphp supportedphp byphp php{php@linkphp iconvphp(php)php}php.php Ifphp omittedphp,
+php php php php php php*php php php usesphp php'currentphp localephp'php.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readStringUTFphp1php6php(php$byteCountphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$byteOrderphp php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_BIGphp_ENDIANphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$characterSetphp php=php php'php'php)
+php php php php php{
+php php php php php php php php ifphp php(php$byteCountphp php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+php php php php php php php php php$bytesphp php=php php$thisphp-php>php_dataSourcephp-php>readBytesphp(php$byteCountphp)php;
+php php php php php php php php ifphp php(php$byteOrderphp php=php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_BIGphp_ENDIANphp)php php{
+php php php php php php php php php php php php ifphp php(php$characterSetphp php=php=php php'UTFphp-php1php6BEphp'php)php php{
+php php php php php php php php php php php php php php php php returnphp php$bytesphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp iconvphp(php'UTFphp-php1php6BEphp'php,php php$characterSetphp,php php$bytesphp)php;
+php php php php php php php php php}php elsephp ifphp php(php$byteOrderphp php=php=php Zendphp_Pdfphp_FileParserphp:php:BYTEphp_ORDERphp_LITTLEphp_ENDIANphp)php php{
+php php php php php php php php php php php php ifphp php(php$characterSetphp php=php=php php'UTFphp-php1php6LEphp'php)php php{
+php php php php php php php php php php php php php php php php returnphp php$bytesphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp iconvphp(php'UTFphp-php1php6LEphp'php,php php$characterSetphp,php php$bytesphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Invalidphp bytephp orderphp:php php$byteOrderphp"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INVALIDphp_BYTEphp_ORDERphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Readsphp thephp Macphp Romanphp-encodedphp stringphp fromphp thephp binaryphp filephp atphp thephp current
+php php php php php php*php bytephp offsetphp.
+php php php php php php*
+php php php php php php*php Youphp mustphp supplyphp thephp desiredphp resultingphp characterphp setphp.
+php php php php php php*
+php php php php php php*php Advancesphp thephp offsetphp byphp thephp numberphp ofphp bytesphp readphp.php Throwsphp anphp exceptionphp if
+php php php php php php*php anphp errorphp occursphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$byteCountphp Numberphp ofphp bytesphp php(charactersphp)php tophp returnphp.
+php php php php php php*php php@paramphp stringphp php$characterSetphp php(optionalphp)php Desiredphp resultingphp characterphp setphp.
+php php php php php php*php php php Youphp mayphp usephp anyphp characterphp setphp supportedphp byphp php{php@linkphp iconvphp(php)php}php.php Ifphp omittedphp,
+php php php php php php*php php php usesphp php'currentphp localephp'php.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readStringMacRomanphp(php$byteCountphp,php php$characterSetphp php=php php'php'php)
+php php php php php{
+php php php php php php php php ifphp php(php$byteCountphp php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+php php php php php php php php php$bytesphp php=php php$thisphp-php>php_dataSourcephp-php>readBytesphp(php$byteCountphp)php;
+php php php php php php php php ifphp php(php$characterSetphp php=php=php php'MacRomanphp'php)php php{
+php php php php php php php php php php php php returnphp php$bytesphp;
+php php php php php php php php php}
+php php php php php php php php returnphp iconvphp(php'MacRomanphp'php,php php$characterSetphp,php php$bytesphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Readsphp thephp Pascalphp stringphp fromphp thephp binaryphp filephp atphp thephp currentphp bytephp offsetphp.
+php php php php php php*
+php php php php php php*php Thephp lengthphp ofphp thephp Pascalphp stringphp isphp determinedphp byphp readingphp thephp lengthphp bytes
+php php php php php php*php whichphp preceedphp thephp characterphp dataphp.php Youphp mustphp supplyphp thephp desiredphp resulting
+php php php php php php*php characterphp setphp.
+php php php php php php*
+php php php php php php*php Advancesphp thephp offsetphp byphp thephp numberphp ofphp bytesphp readphp.php Throwsphp anphp exceptionphp if
+php php php php php php*php anphp errorphp occursphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$characterSetphp php(optionalphp)php Desiredphp resultingphp characterphp setphp.
+php php php php php php*php php php Youphp mayphp usephp anyphp characterphp setphp supportedphp byphp php{php@linkphp iconvphp(php)php}php.php Ifphp omittedphp,
+php php php php php php*php php php usesphp php'currentphp localephp'php.
+php php php php php php*php php@paramphp integerphp php$lengthBytesphp php(optionalphp)php Numberphp ofphp bytesphp thatphp makephp upphp the
+php php php php php php*php php php lengthphp.php Defaultphp isphp php1php.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readStringPascalphp(php$characterSetphp php=php php'php'php,php php$lengthBytesphp php=php php1php)
+php php php php php{
+php php php php php php php php php$byteCountphp php=php php$thisphp-php>readUIntphp(php$lengthBytesphp)php;
+php php php php php php php php ifphp php(php$byteCountphp php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+php php php php php php php php php$bytesphp php=php php$thisphp-php>php_dataSourcephp-php>readBytesphp(php$byteCountphp)php;
+php php php php php php php php ifphp php(php$characterSetphp php=php=php php'ASCIIphp'php)php php{
+php php php php php php php php php php php php returnphp php$bytesphp;
+php php php php php php php php php}
+php php php php php php php php returnphp iconvphp(php'ASCIIphp'php,php php$characterSetphp,php php$bytesphp)php;
+php php php php php}
+
+php}

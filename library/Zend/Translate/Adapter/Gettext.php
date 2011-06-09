@@ -1,165 +1,165 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Gettext.php 22653 2010-07-22 18:41:39Z mabe $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Gettextphp.phpphp php2php2php6php5php3php php2php0php1php0php-php0php7php-php2php2php php1php8php:php4php1php:php3php9Zphp mabephp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Locale */
-require_once 'Zend/Locale.php';
+php/php*php*php Zendphp_Localephp php*php/
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
 
-/** Zend_Translate_Adapter */
-require_once 'Zend/Translate/Adapter.php';
+php/php*php*php Zendphp_Translatephp_Adapterphp php*php/
+requirephp_oncephp php'Zendphp/Translatephp/Adapterphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter {
-    // Internal variables
-    private $_bigEndian   = false;
-    private $_file        = false;
-    private $_adapterInfo = array();
-    private $_data        = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Translatephp_Adapterphp_Gettextphp extendsphp Zendphp_Translatephp_Adapterphp php{
+php php php php php/php/php Internalphp variables
+php php php php privatephp php$php_bigEndianphp php php php=php falsephp;
+php php php php privatephp php$php_filephp php php php php php php php php=php falsephp;
+php php php php privatephp php$php_adapterInfophp php=php arrayphp(php)php;
+php php php php privatephp php$php_dataphp php php php php php php php php=php arrayphp(php)php;
 
-    /**
-     * Read values from the MO file
-     *
-     * @param  string  $bytes
-     */
-    private function _readMOData($bytes)
-    {
-        if ($this->_bigEndian === false) {
-            return unpack('V' . $bytes, fread($this->_file, 4 * $bytes));
-        } else {
-            return unpack('N' . $bytes, fread($this->_file, 4 * $bytes));
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Readphp valuesphp fromphp thephp MOphp file
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$bytes
+php php php php php php*php/
+php php php php privatephp functionphp php_readMODataphp(php$bytesphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_bigEndianphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp unpackphp(php'Vphp'php php.php php$bytesphp,php freadphp(php$thisphp-php>php_filephp,php php4php php*php php$bytesphp)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp unpackphp(php'Nphp'php php.php php$bytesphp,php freadphp(php$thisphp-php>php_filephp,php php4php php*php php$bytesphp)php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Load translation data (MO file reader)
-     *
-     * @param  string  $filename  MO file to add, full path must be given for access
-     * @param  string  $locale    New Locale/Language to set, identical with locale identifier,
-     *                            see Zend_Locale for more information
-     * @param  array   $option    OPTIONAL Options to use
-     * @throws Zend_Translation_Exception
-     * @return array
-     */
-    protected function _loadTranslationData($filename, $locale, array $options = array())
-    {
-        $this->_data      = array();
-        $this->_bigEndian = false;
-        $this->_file      = @fopen($filename, 'rb');
-        if (!$this->_file) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception('Error opening translation file \'' . $filename . '\'.');
-        }
-        if (@filesize($filename) < 10) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception('\'' . $filename . '\' is not a gettext file');
-        }
+php php php php php/php*php*
+php php php php php php*php Loadphp translationphp dataphp php(MOphp filephp readerphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$filenamephp php MOphp filephp tophp addphp,php fullphp pathphp mustphp bephp givenphp forphp access
+php php php php php php*php php@paramphp php stringphp php php$localephp php php php Newphp Localephp/Languagephp tophp setphp,php identicalphp withphp localephp identifierphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php seephp Zendphp_Localephp forphp morephp information
+php php php php php php*php php@paramphp php arrayphp php php php$optionphp php php php OPTIONALphp Optionsphp tophp use
+php php php php php php*php php@throwsphp Zendphp_Translationphp_Exception
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadTranslationDataphp(php$filenamephp,php php$localephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataphp php php php php php php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_bigEndianphp php=php falsephp;
+php php php php php php php php php$thisphp-php>php_filephp php php php php php php=php php@fopenphp(php$filenamephp,php php'rbphp'php)php;
+php php php php php php php php ifphp php(php!php$thisphp-php>php_filephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php'Errorphp openingphp translationphp filephp php\php'php'php php.php php$filenamephp php.php php'php\php'php.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php@filesizephp(php$filenamephp)php <php php1php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php'php\php'php'php php.php php$filenamephp php.php php'php\php'php isphp notphp aphp gettextphp filephp'php)php;
+php php php php php php php php php}
 
-        // get Endian
-        $input = $this->_readMOData(1);
-        if (strtolower(substr(dechex($input[1]), -8)) == "950412de") {
-            $this->_bigEndian = false;
-        } else if (strtolower(substr(dechex($input[1]), -8)) == "de120495") {
-            $this->_bigEndian = true;
-        } else {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception('\'' . $filename . '\' is not a gettext file');
-        }
-        // read revision - not supported for now
-        $input = $this->_readMOData(1);
+php php php php php php php php php/php/php getphp Endian
+php php php php php php php php php$inputphp php=php php$thisphp-php>php_readMODataphp(php1php)php;
+php php php php php php php php ifphp php(strtolowerphp(substrphp(dechexphp(php$inputphp[php1php]php)php,php php-php8php)php)php php=php=php php"php9php5php0php4php1php2dephp"php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_bigEndianphp php=php falsephp;
+php php php php php php php php php}php elsephp ifphp php(strtolowerphp(substrphp(dechexphp(php$inputphp[php1php]php)php,php php-php8php)php)php php=php=php php"dephp1php2php0php4php9php5php"php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_bigEndianphp php=php truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php'php\php'php'php php.php php$filenamephp php.php php'php\php'php isphp notphp aphp gettextphp filephp'php)php;
+php php php php php php php php php}
+php php php php php php php php php/php/php readphp revisionphp php-php notphp supportedphp forphp now
+php php php php php php php php php$inputphp php=php php$thisphp-php>php_readMODataphp(php1php)php;
 
-        // number of bytes
-        $input = $this->_readMOData(1);
-        $total = $input[1];
+php php php php php php php php php/php/php numberphp ofphp bytes
+php php php php php php php php php$inputphp php=php php$thisphp-php>php_readMODataphp(php1php)php;
+php php php php php php php php php$totalphp php=php php$inputphp[php1php]php;
 
-        // number of original strings
-        $input = $this->_readMOData(1);
-        $OOffset = $input[1];
+php php php php php php php php php/php/php numberphp ofphp originalphp strings
+php php php php php php php php php$inputphp php=php php$thisphp-php>php_readMODataphp(php1php)php;
+php php php php php php php php php$OOffsetphp php=php php$inputphp[php1php]php;
 
-        // number of translation strings
-        $input = $this->_readMOData(1);
-        $TOffset = $input[1];
+php php php php php php php php php/php/php numberphp ofphp translationphp strings
+php php php php php php php php php$inputphp php=php php$thisphp-php>php_readMODataphp(php1php)php;
+php php php php php php php php php$TOffsetphp php=php php$inputphp[php1php]php;
 
-        // fill the original table
-        fseek($this->_file, $OOffset);
-        $origtemp = $this->_readMOData(2 * $total);
-        fseek($this->_file, $TOffset);
-        $transtemp = $this->_readMOData(2 * $total);
+php php php php php php php php php/php/php fillphp thephp originalphp table
+php php php php php php php php fseekphp(php$thisphp-php>php_filephp,php php$OOffsetphp)php;
+php php php php php php php php php$origtempphp php=php php$thisphp-php>php_readMODataphp(php2php php*php php$totalphp)php;
+php php php php php php php php fseekphp(php$thisphp-php>php_filephp,php php$TOffsetphp)php;
+php php php php php php php php php$transtempphp php=php php$thisphp-php>php_readMODataphp(php2php php*php php$totalphp)php;
 
-        for($count = 0; $count < $total; ++$count) {
-            if ($origtemp[$count * 2 + 1] != 0) {
-                fseek($this->_file, $origtemp[$count * 2 + 2]);
-                $original = @fread($this->_file, $origtemp[$count * 2 + 1]);
-                $original = explode("\0", $original);
-            } else {
-                $original[0] = '';
-            }
+php php php php php php php php forphp(php$countphp php=php php0php;php php$countphp <php php$totalphp;php php+php+php$countphp)php php{
+php php php php php php php php php php php php ifphp php(php$origtempphp[php$countphp php*php php2php php+php php1php]php php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php fseekphp(php$thisphp-php>php_filephp,php php$origtempphp[php$countphp php*php php2php php+php php2php]php)php;
+php php php php php php php php php php php php php php php php php$originalphp php=php php@freadphp(php$thisphp-php>php_filephp,php php$origtempphp[php$countphp php*php php2php php+php php1php]php)php;
+php php php php php php php php php php php php php php php php php$originalphp php=php explodephp(php"php\php0php"php,php php$originalphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$originalphp[php0php]php php=php php'php'php;
+php php php php php php php php php php php php php}
 
-            if ($transtemp[$count * 2 + 1] != 0) {
-                fseek($this->_file, $transtemp[$count * 2 + 2]);
-                $translate = fread($this->_file, $transtemp[$count * 2 + 1]);
-                $translate = explode("\0", $translate);
-                if ((count($original) > 1) && (count($translate) > 1)) {
-                    $this->_data[$locale][$original[0]] = $translate;
-                    array_shift($original);
-                    foreach ($original as $orig) {
-                        $this->_data[$locale][$orig] = '';
-                    }
-                } else {
-                    $this->_data[$locale][$original[0]] = $translate[0];
-                }
-            }
-        }
+php php php php php php php php php php php php ifphp php(php$transtempphp[php$countphp php*php php2php php+php php1php]php php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php fseekphp(php$thisphp-php>php_filephp,php php$transtempphp[php$countphp php*php php2php php+php php2php]php)php;
+php php php php php php php php php php php php php php php php php$translatephp php=php freadphp(php$thisphp-php>php_filephp,php php$transtempphp[php$countphp php*php php2php php+php php1php]php)php;
+php php php php php php php php php php php php php php php php php$translatephp php=php explodephp(php"php\php0php"php,php php$translatephp)php;
+php php php php php php php php php php php php php php php php ifphp php(php(countphp(php$originalphp)php php>php php1php)php php&php&php php(countphp(php$translatephp)php php>php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$localephp]php[php$originalphp[php0php]php]php php=php php$translatephp;
+php php php php php php php php php php php php php php php php php php php php arrayphp_shiftphp(php$originalphp)php;
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$originalphp asphp php$origphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$localephp]php[php$origphp]php php=php php'php'php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$localephp]php[php$originalphp[php0php]php]php php=php php$translatephp[php0php]php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $this->_data[$locale][''] = trim($this->_data[$locale]['']);
-        if (empty($this->_data[$locale][''])) {
-            $this->_adapterInfo[$filename] = 'No adapter information available';
-        } else {
-            $this->_adapterInfo[$filename] = $this->_data[$locale][''];
-        }
+php php php php php php php php php$thisphp-php>php_dataphp[php$localephp]php[php'php'php]php php=php trimphp(php$thisphp-php>php_dataphp[php$localephp]php[php'php'php]php)php;
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_dataphp[php$localephp]php[php'php'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_adapterInfophp[php$filenamephp]php php=php php'Nophp adapterphp informationphp availablephp'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_adapterInfophp[php$filenamephp]php php=php php$thisphp-php>php_dataphp[php$localephp]php[php'php'php]php;
+php php php php php php php php php}
 
-        unset($this->_data[$locale]['']);
-        return $this->_data;
-    }
+php php php php php php php php unsetphp(php$thisphp-php>php_dataphp[php$localephp]php[php'php'php]php)php;
+php php php php php php php php returnphp php$thisphp-php>php_dataphp;
+php php php php php}
 
-    /**
-     * Returns the adapter informations
-     *
-     * @return array Each loaded adapter information as array value
-     */
-    public function getAdapterInfo()
-    {
-        return $this->_adapterInfo;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp informations
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Eachphp loadedphp adapterphp informationphp asphp arrayphp value
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterInfophp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_adapterInfophp;
+php php php php php}
 
-    /**
-     * Returns the adapter name
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return "Gettext";
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php"Gettextphp"php;
+php php php php php}
+php}

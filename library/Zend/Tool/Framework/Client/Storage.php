@@ -1,117 +1,117 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Storage.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Storagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Framework_Client_Storage_AdapterInterface
- */
-require_once 'Zend/Tool/Framework/Client/Storage/AdapterInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Clientphp_Storagephp_AdapterInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Storagephp/AdapterInterfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Framework_Client_Storage
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Storage
+php{
 
-    /**
-     * @var Zend_Tool_Framework_Client_Storage_AdapterInterface
-     */
-    protected $_adapter = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Clientphp_Storagephp_AdapterInterface
+php php php php php php*php/
+php php php php protectedphp php$php_adapterphp php=php nullphp;
 
-    public function __construct($options = array())
-    {
-        if (isset($options['adapter'])) {
-            $this->setAdapter($options['adapter']);
-        }
-    }
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'adapterphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setAdapterphp(php$optionsphp[php'adapterphp'php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    public function setAdapter($adapter)
-    {
-        if (is_string($adapter)) {
-            $storageAdapterClass = 'Zend_Tool_Framework_Client_Storage_' . ucfirst($adapter);
-            Zend_Loader::loadClass($storageAdapterClass);
-            $adapter = new $storageAdapterClass();
-        }
-        $this->_adapter = $adapter;
-    }
+php php php php publicphp functionphp setAdapterphp(php$adapterphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$adapterphp)php)php php{
+php php php php php php php php php php php php php$storageAdapterClassphp php=php php'Zendphp_Toolphp_Frameworkphp_Clientphp_Storagephp_php'php php.php ucfirstphp(php$adapterphp)php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$storageAdapterClassphp)php;
+php php php php php php php php php php php php php$adapterphp php=php newphp php$storageAdapterClassphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
+php php php php php}
 
-    public function isEnabled()
-    {
-        return ($this->_adapter instanceof Zend_Tool_Framework_Client_Storage_AdapterInterface);
-    }
+php php php php publicphp functionphp isEnabledphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php$thisphp-php>php_adapterphp instanceofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Storagephp_AdapterInterfacephp)php;
+php php php php php}
 
-    public function put($name, $value)
-    {
-        if (!$this->_adapter) {
-            return false;
-        }
+php php php php publicphp functionphp putphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_adapterphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $this->_adapter->put($name, $value);
+php php php php php php php php php$thisphp-php>php_adapterphp-php>putphp(php$namephp,php php$valuephp)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    public function get($name, $defaultValue = false)
-    {
-        if (!$this->_adapter) {
-            return false;
-        }
+php php php php publicphp functionphp getphp(php$namephp,php php$defaultValuephp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_adapterphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if ($this->_adapter->has($name)) {
-            return $this->_adapter->get($name);
-        } else {
-            return $defaultValue;
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_adapterphp-php>hasphp(php$namephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_adapterphp-php>getphp(php$namephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php$defaultValuephp;
+php php php php php php php php php}
 
-    }
+php php php php php}
 
-    public function has($name)
-    {
-        if (!$this->_adapter) {
-            return false;
-        }
+php php php php publicphp functionphp hasphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_adapterphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return $this->_adapter->has($name);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp-php>hasphp(php$namephp)php;
+php php php php php}
 
-    public function remove($name)
-    {
-        if (!$this->_adapter) {
-            return false;
-        }
+php php php php publicphp functionphp removephp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_adapterphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $this->_adapter->remove($name);
+php php php php php php php php php$thisphp-php>php_adapterphp-php>removephp(php$namephp)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    public function getStreamUri($name)
-    {
-        if (!$this->_adapter) {
-            return false;
-        }
+php php php php publicphp functionphp getStreamUriphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_adapterphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return $this->_adapter->getStreamUri($name);
-    }
-}
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp-php>getStreamUriphp(php$namephp)php;
+php php php php php}
+php}

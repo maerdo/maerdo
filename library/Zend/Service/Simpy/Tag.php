@@ -1,81 +1,81 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Simpy
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Tag.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Simpy
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Tagphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Simpy
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Simpy_Tag
-{
-    /**
-     * Name of the tag
-     *
-     * @var string
-     */
-    protected $_tag;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Simpy
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Simpyphp_Tag
+php{
+php php php php php/php*php*
+php php php php php php*php Namephp ofphp thephp tag
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_tagphp;
 
-    /**
-     * Number of links with the tag
-     *
-     * @var int
-     */
-    protected $_count;
+php php php php php/php*php*
+php php php php php php*php Numberphp ofphp linksphp withphp thephp tag
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_countphp;
 
-    /**
-     * Constructor to initialize the object with data
-     *
-     * @param  DOMNode $node Individual <tag> node from a parsed response from
-     *                       a GetTags operation
-     * @return void
-     */
-    public function __construct($node)
-    {
-        $map =& $node->attributes;
-        $this->_tag = $map->getNamedItem('name')->nodeValue;
-        $this->_count = $map->getNamedItem('count')->nodeValue;
-    }
+php php php php php/php*php*
+php php php php php php*php Constructorphp tophp initializephp thephp objectphp withphp data
+php php php php php php*
+php php php php php php*php php@paramphp php DOMNodephp php$nodephp Individualphp php<tagphp>php nodephp fromphp aphp parsedphp responsephp from
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php aphp GetTagsphp operation
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$nodephp)
+php php php php php{
+php php php php php php php php php$mapphp php=php&php php$nodephp-php>attributesphp;
+php php php php php php php php php$thisphp-php>php_tagphp php=php php$mapphp-php>getNamedItemphp(php'namephp'php)php-php>nodeValuephp;
+php php php php php php php php php$thisphp-php>php_countphp php=php php$mapphp-php>getNamedItemphp(php'countphp'php)php-php>nodeValuephp;
+php php php php php}
 
-    /**
-     * Returns the name of the tag
-     *
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->_tag;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp namephp ofphp thephp tag
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTagphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_tagphp;
+php php php php php}
 
-    /**
-     * Returns the number of links with the tag
-     *
-     * @return int
-     */
-    public function getCount()
-    {
-        return $this->_count;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp linksphp withphp thephp tag
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp getCountphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_countphp;
+php php php php php}
+php}

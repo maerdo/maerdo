@@ -1,439 +1,439 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Zend_XmlRpc_Value
- */
-require_once 'Zend/XmlRpc/Value.php';
+php/php*php*
+php php*php Zendphp_XmlRpcphp_Value
+php php*php/
+requirephp_oncephp php'Zendphp/XmlRpcphp/Valuephp.phpphp'php;
 
-/**
- * Zend_XmlRpc_Fault
- */
-require_once 'Zend/XmlRpc/Fault.php';
+php/php*php*
+php php*php Zendphp_XmlRpcphp_Fault
+php php*php/
+requirephp_oncephp php'Zendphp/XmlRpcphp/Faultphp.phpphp'php;
 
-/**
- * XmlRpc Request object
- *
- * Encapsulates an XmlRpc request, holding the method call and all parameters.
- * Provides accessors for these, as well as the ability to load from XML and to
- * create the XML request string.
- *
- * Additionally, if errors occur setting the method or parsing XML, a fault is
- * generated and stored in {@link $_fault}; developers may check for it using
- * {@link isFault()} and {@link getFault()}.
- *
- * @category Zend
- * @package  Zend_XmlRpc
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version $Id: Request.php 20208 2010-01-11 22:37:37Z lars $
- */
-class Zend_XmlRpc_Request
-{
-    /**
-     * Request character encoding
-     * @var string
-     */
-    protected $_encoding = 'UTF-8';
+php/php*php*
+php php*php XmlRpcphp Requestphp object
+php php*
+php php*php Encapsulatesphp anphp XmlRpcphp requestphp,php holdingphp thephp methodphp callphp andphp allphp parametersphp.
+php php*php Providesphp accessorsphp forphp thesephp,php asphp wellphp asphp thephp abilityphp tophp loadphp fromphp XMLphp andphp to
+php php*php createphp thephp XMLphp requestphp stringphp.
+php php*
+php php*php Additionallyphp,php ifphp errorsphp occurphp settingphp thephp methodphp orphp parsingphp XMLphp,php aphp faultphp is
+php php*php generatedphp andphp storedphp inphp php{php@linkphp php$php_faultphp}php;php developersphp mayphp checkphp forphp itphp using
+php php*php php{php@linkphp isFaultphp(php)php}php andphp php{php@linkphp getFaultphp(php)php}php.
+php php*
+php php*php php@categoryphp Zend
+php php*php php@packagephp php Zendphp_XmlRpc
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php$Idphp:php Requestphp.phpphp php2php0php2php0php8php php2php0php1php0php-php0php1php-php1php1php php2php2php:php3php7php:php3php7Zphp larsphp php$
+php php*php/
+classphp Zendphp_XmlRpcphp_Request
+php{
+php php php php php/php*php*
+php php php php php php*php Requestphp characterphp encoding
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_encodingphp php=php php'UTFphp-php8php'php;
 
-    /**
-     * Method to call
-     * @var string
-     */
-    protected $_method;
+php php php php php/php*php*
+php php php php php php*php Methodphp tophp call
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_methodphp;
 
-    /**
-     * XML request
-     * @var string
-     */
-    protected $_xml;
+php php php php php/php*php*
+php php php php php php*php XMLphp request
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_xmlphp;
 
-    /**
-     * Method parameters
-     * @var array
-     */
-    protected $_params = array();
+php php php php php/php*php*
+php php php php php php*php Methodphp parameters
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_paramsphp php=php arrayphp(php)php;
 
-    /**
-     * Fault object, if any
-     * @var Zend_XmlRpc_Fault
-     */
-    protected $_fault = null;
+php php php php php/php*php*
+php php php php php php*php Faultphp objectphp,php ifphp any
+php php php php php php*php php@varphp Zendphp_XmlRpcphp_Fault
+php php php php php php*php/
+php php php php protectedphp php$php_faultphp php=php nullphp;
 
-    /**
-     * XML-RPC type for each param
-     * @var array
-     */
-    protected $_types = array();
+php php php php php/php*php*
+php php php php php php*php XMLphp-RPCphp typephp forphp eachphp param
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_typesphp php=php arrayphp(php)php;
 
-    /**
-     * XML-RPC request params
-     * @var array
-     */
-    protected $_xmlRpcParams = array();
+php php php php php/php*php*
+php php php php php php*php XMLphp-RPCphp requestphp params
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_xmlRpcParamsphp php=php arrayphp(php)php;
 
-    /**
-     * Create a new XML-RPC request
-     *
-     * @param string $method (optional)
-     * @param array $params  (optional)
-     */
-    public function __construct($method = null, $params = null)
-    {
-        if ($method !== null) {
-            $this->setMethod($method);
-        }
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp XMLphp-RPCphp request
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$methodphp php(optionalphp)
+php php php php php php*php php@paramphp arrayphp php$paramsphp php php(optionalphp)
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$methodphp php=php nullphp,php php$paramsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$methodphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setMethodphp(php$methodphp)php;
+php php php php php php php php php}
 
-        if ($params !== null) {
-            $this->setParams($params);
-        }
-    }
+php php php php php php php php ifphp php(php$paramsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setParamsphp(php$paramsphp)php;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Set encoding to use in request
-     *
-     * @param string $encoding
-     * @return Zend_XmlRpc_Request
-     */
-    public function setEncoding($encoding)
-    {
-        $this->_encoding = $encoding;
-        Zend_XmlRpc_Value::setEncoding($encoding);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp encodingphp tophp usephp inphp request
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$encoding
+php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setEncodingphp(php$encodingphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_encodingphp php=php php$encodingphp;
+php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:setEncodingphp(php$encodingphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve current request encoding
-     *
-     * @return string
-     */
-    public function getEncoding()
-    {
-        return $this->_encoding;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp currentphp requestphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_encodingphp;
+php php php php php}
 
-    /**
-     * Set method to call
-     *
-     * @param string $method
-     * @return boolean Returns true on success, false if method name is invalid
-     */
-    public function setMethod($method)
-    {
-        if (!is_string($method) || !preg_match('/^[a-z0-9_.:\/]+$/i', $method)) {
-            $this->_fault = new Zend_XmlRpc_Fault(634, 'Invalid method name ("' . $method . '")');
-            $this->_fault->setEncoding($this->getEncoding());
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp methodphp tophp call
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$method
+php php php php php php*php php@returnphp booleanphp Returnsphp truephp onphp successphp,php falsephp ifphp methodphp namephp isphp invalid
+php php php php php php*php/
+php php php php publicphp functionphp setMethodphp(php$methodphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$methodphp)php php|php|php php!pregphp_matchphp(php'php/php^php[aphp-zphp0php-php9php_php.php:php\php/php]php+php$php/iphp'php,php php$methodphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_faultphp php=php newphp Zendphp_XmlRpcphp_Faultphp(php6php3php4php,php php'Invalidphp methodphp namephp php(php"php'php php.php php$methodphp php.php php'php"php)php'php)php;
+php php php php php php php php php php php php php$thisphp-php>php_faultphp-php>setEncodingphp(php$thisphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $this->_method = $method;
-        return true;
-    }
+php php php php php php php php php$thisphp-php>php_methodphp php=php php$methodphp;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Retrieve call method
-     *
-     * @return string
-     */
-    public function getMethod()
-    {
-        return $this->_method;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp callphp method
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getMethodphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_methodphp;
+php php php php php}
 
-    /**
-     * Add a parameter to the parameter stack
-     *
-     * Adds a parameter to the parameter stack, associating it with the type
-     * $type if provided
-     *
-     * @param mixed $value
-     * @param string $type Optional; type hinting
-     * @return void
-     */
-    public function addParam($value, $type = null)
-    {
-        $this->_params[] = $value;
-        if (null === $type) {
-            // Detect type if not provided explicitly
-            if ($value instanceof Zend_XmlRpc_Value) {
-                $type = $value->getType();
-            } else {
-                $xmlRpcValue = Zend_XmlRpc_Value::getXmlRpcValue($value);
-                $type        = $xmlRpcValue->getType();
-            }
-        }
-        $this->_types[]  = $type;
-        $this->_xmlRpcParams[] = array('value' => $value, 'type' => $type);
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp parameterphp tophp thephp parameterphp stack
+php php php php php php*
+php php php php php php*php Addsphp aphp parameterphp tophp thephp parameterphp stackphp,php associatingphp itphp withphp thephp type
+php php php php php php*php php$typephp ifphp provided
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$value
+php php php php php php*php php@paramphp stringphp php$typephp Optionalphp;php typephp hinting
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp addParamphp(php$valuephp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_paramsphp[php]php php=php php$valuephp;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$typephp)php php{
+php php php php php php php php php php php php php/php/php Detectphp typephp ifphp notphp providedphp explicitly
+php php php php php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_XmlRpcphp_Valuephp)php php{
+php php php php php php php php php php php php php php php php php$typephp php=php php$valuephp-php>getTypephp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$xmlRpcValuephp php=php Zendphp_XmlRpcphp_Valuephp:php:getXmlRpcValuephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php$typephp php php php php php php php php=php php$xmlRpcValuephp-php>getTypephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_typesphp[php]php php php=php php$typephp;
+php php php php php php php php php$thisphp-php>php_xmlRpcParamsphp[php]php php=php arrayphp(php'valuephp'php php=php>php php$valuephp,php php'typephp'php php=php>php php$typephp)php;
+php php php php php}
 
-    /**
-     * Set the parameters array
-     *
-     * If called with a single, array value, that array is used to set the
-     * parameters stack. If called with multiple values or a single non-array
-     * value, the arguments are used to set the parameters stack.
-     *
-     * Best is to call with array of the format, in order to allow type hinting
-     * when creating the XMLRPC values for each parameter:
-     * <code>
-     * $array = array(
-     *     array(
-     *         'value' => $value,
-     *         'type'  => $type
-     *     )[, ... ]
-     * );
-     * </code>
-     *
-     * @access public
-     * @return void
-     */
-    public function setParams()
-    {
-        $argc = func_num_args();
-        $argv = func_get_args();
-        if (0 == $argc) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp parametersphp array
+php php php php php php*
+php php php php php php*php Ifphp calledphp withphp aphp singlephp,php arrayphp valuephp,php thatphp arrayphp isphp usedphp tophp setphp the
+php php php php php php*php parametersphp stackphp.php Ifphp calledphp withphp multiplephp valuesphp orphp aphp singlephp nonphp-array
+php php php php php php*php valuephp,php thephp argumentsphp arephp usedphp tophp setphp thephp parametersphp stackphp.
+php php php php php php*
+php php php php php php*php Bestphp isphp tophp callphp withphp arrayphp ofphp thephp formatphp,php inphp orderphp tophp allowphp typephp hinting
+php php php php php php*php whenphp creatingphp thephp XMLRPCphp valuesphp forphp eachphp parameterphp:
+php php php php php php*php php<codephp>
+php php php php php php*php php$arrayphp php=php arrayphp(
+php php php php php php*php php php php php arrayphp(
+php php php php php php*php php php php php php php php php php'valuephp'php php=php>php php$valuephp,
+php php php php php php*php php php php php php php php php php'typephp'php php php=php>php php$type
+php php php php php php*php php php php php php)php[php,php php.php.php.php php]
+php php php php php php*php php)php;
+php php php php php php*php <php/codephp>
+php php php php php php*
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setParamsphp(php)
+php php php php php{
+php php php php php php php php php$argcphp php=php funcphp_numphp_argsphp(php)php;
+php php php php php php php php php$argvphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php ifphp php(php0php php=php=php php$argcphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        if ((1 == $argc) && is_array($argv[0])) {
-            $params     = array();
-            $types      = array();
-            $wellFormed = true;
-            foreach ($argv[0] as $arg) {
-                if (!is_array($arg) || !isset($arg['value'])) {
-                    $wellFormed = false;
-                    break;
-                }
-                $params[] = $arg['value'];
+php php php php php php php php ifphp php(php(php1php php=php=php php$argcphp)php php&php&php isphp_arrayphp(php$argvphp[php0php]php)php)php php{
+php php php php php php php php php php php php php$paramsphp php php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php$typesphp php php php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php$wellFormedphp php=php truephp;
+php php php php php php php php php php php php foreachphp php(php$argvphp[php0php]php asphp php$argphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$argphp)php php|php|php php!issetphp(php$argphp[php'valuephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$wellFormedphp php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$paramsphp[php]php php=php php$argphp[php'valuephp'php]php;
 
-                if (!isset($arg['type'])) {
-                    $xmlRpcValue = Zend_XmlRpc_Value::getXmlRpcValue($arg['value']);
-                    $arg['type'] = $xmlRpcValue->getType();
-                }
-                $types[] = $arg['type'];
-            }
-            if ($wellFormed) {
-                $this->_xmlRpcParams = $argv[0];
-                $this->_params = $params;
-                $this->_types  = $types;
-            } else {
-                $this->_params = $argv[0];
-                $this->_types  = array();
-                $xmlRpcParams  = array();
-                foreach ($argv[0] as $arg) {
-                    if ($arg instanceof Zend_XmlRpc_Value) {
-                        $type = $arg->getType();
-                    } else {
-                        $xmlRpcValue = Zend_XmlRpc_Value::getXmlRpcValue($arg);
-                        $type        = $xmlRpcValue->getType();
-                    }
-                    $xmlRpcParams[] = array('value' => $arg, 'type' => $type);
-                    $this->_types[] = $type;
-                }
-                $this->_xmlRpcParams = $xmlRpcParams;
-            }
-            return;
-        }
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$argphp[php'typephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$xmlRpcValuephp php=php Zendphp_XmlRpcphp_Valuephp:php:getXmlRpcValuephp(php$argphp[php'valuephp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php php$argphp[php'typephp'php]php php=php php$xmlRpcValuephp-php>getTypephp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$typesphp[php]php php=php php$argphp[php'typephp'php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$wellFormedphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_xmlRpcParamsphp php=php php$argvphp[php0php]php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_paramsphp php=php php$paramsphp;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_typesphp php php=php php$typesphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_paramsphp php=php php$argvphp[php0php]php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_typesphp php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php$xmlRpcParamsphp php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$argvphp[php0php]php asphp php$argphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$argphp instanceofphp Zendphp_XmlRpcphp_Valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$argphp-php>getTypephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$xmlRpcValuephp php=php Zendphp_XmlRpcphp_Valuephp:php:getXmlRpcValuephp(php$argphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php php php php php php php php=php php$xmlRpcValuephp-php>getTypephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$xmlRpcParamsphp[php]php php=php arrayphp(php'valuephp'php php=php>php php$argphp,php php'typephp'php php=php>php php$typephp)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_typesphp[php]php php=php php$typephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$thisphp-php>php_xmlRpcParamsphp php=php php$xmlRpcParamsphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        $this->_params = $argv;
-        $this->_types  = array();
-        $xmlRpcParams  = array();
-        foreach ($argv as $arg) {
-            if ($arg instanceof Zend_XmlRpc_Value) {
-                $type = $arg->getType();
-            } else {
-                $xmlRpcValue = Zend_XmlRpc_Value::getXmlRpcValue($arg);
-                $type        = $xmlRpcValue->getType();
-            }
-            $xmlRpcParams[] = array('value' => $arg, 'type' => $type);
-            $this->_types[] = $type;
-        }
-        $this->_xmlRpcParams = $xmlRpcParams;
-    }
+php php php php php php php php php$thisphp-php>php_paramsphp php=php php$argvphp;
+php php php php php php php php php$thisphp-php>php_typesphp php php=php arrayphp(php)php;
+php php php php php php php php php$xmlRpcParamsphp php php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$argvphp asphp php$argphp)php php{
+php php php php php php php php php php php php ifphp php(php$argphp instanceofphp Zendphp_XmlRpcphp_Valuephp)php php{
+php php php php php php php php php php php php php php php php php$typephp php=php php$argphp-php>getTypephp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$xmlRpcValuephp php=php Zendphp_XmlRpcphp_Valuephp:php:getXmlRpcValuephp(php$argphp)php;
+php php php php php php php php php php php php php php php php php$typephp php php php php php php php php=php php$xmlRpcValuephp-php>getTypephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$xmlRpcParamsphp[php]php php=php arrayphp(php'valuephp'php php=php>php php$argphp,php php'typephp'php php=php>php php$typephp)php;
+php php php php php php php php php php php php php$thisphp-php>php_typesphp[php]php php=php php$typephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_xmlRpcParamsphp php=php php$xmlRpcParamsphp;
+php php php php php}
 
-    /**
-     * Retrieve the array of parameters
-     *
-     * @return array
-     */
-    public function getParams()
-    {
-        return $this->_params;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp arrayphp ofphp parameters
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getParamsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_paramsphp;
+php php php php php}
 
-    /**
-     * Return parameter types
-     *
-     * @return array
-     */
-    public function getTypes()
-    {
-        return $this->_types;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp parameterphp types
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getTypesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_typesphp;
+php php php php php}
 
-    /**
-     * Load XML and parse into request components
-     *
-     * @param string $request
-     * @return boolean True on success, false if an error occurred.
-     */
-    public function loadXml($request)
-    {
-        if (!is_string($request)) {
-            $this->_fault = new Zend_XmlRpc_Fault(635);
-            $this->_fault->setEncoding($this->getEncoding());
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Loadphp XMLphp andphp parsephp intophp requestphp components
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$request
+php php php php php php*php php@returnphp booleanphp Truephp onphp successphp,php falsephp ifphp anphp errorphp occurredphp.
+php php php php php php*php/
+php php php php publicphp functionphp loadXmlphp(php$requestphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$requestphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_faultphp php=php newphp Zendphp_XmlRpcphp_Faultphp(php6php3php5php)php;
+php php php php php php php php php php php php php$thisphp-php>php_faultphp-php>setEncodingphp(php$thisphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        try {
-            $xml = new SimpleXMLElement($request);
-        } catch (Exception $e) {
-            // Not valid XML
-            $this->_fault = new Zend_XmlRpc_Fault(631);
-            $this->_fault->setEncoding($this->getEncoding());
-            return false;
-        }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$xmlphp php=php newphp SimpleXMLElementphp(php$requestphp)php;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php/php/php Notphp validphp XML
+php php php php php php php php php php php php php$thisphp-php>php_faultphp php=php newphp Zendphp_XmlRpcphp_Faultphp(php6php3php1php)php;
+php php php php php php php php php php php php php$thisphp-php>php_faultphp-php>setEncodingphp(php$thisphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        // Check for method name
-        if (empty($xml->methodName)) {
-            // Missing method name
-            $this->_fault = new Zend_XmlRpc_Fault(632);
-            $this->_fault->setEncoding($this->getEncoding());
-            return false;
-        }
+php php php php php php php php php/php/php Checkphp forphp methodphp name
+php php php php php php php php ifphp php(emptyphp(php$xmlphp-php>methodNamephp)php)php php{
+php php php php php php php php php php php php php/php/php Missingphp methodphp name
+php php php php php php php php php php php php php$thisphp-php>php_faultphp php=php newphp Zendphp_XmlRpcphp_Faultphp(php6php3php2php)php;
+php php php php php php php php php php php php php$thisphp-php>php_faultphp-php>setEncodingphp(php$thisphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $this->_method = (string) $xml->methodName;
+php php php php php php php php php$thisphp-php>php_methodphp php=php php(stringphp)php php$xmlphp-php>methodNamephp;
 
-        // Check for parameters
-        if (!empty($xml->params)) {
-            $types = array();
-            $argv  = array();
-            foreach ($xml->params->children() as $param) {
-                if (!isset($param->value)) {
-                    $this->_fault = new Zend_XmlRpc_Fault(633);
-                    $this->_fault->setEncoding($this->getEncoding());
-                    return false;
-                }
+php php php php php php php php php/php/php Checkphp forphp parameters
+php php php php php php php php ifphp php(php!emptyphp(php$xmlphp-php>paramsphp)php)php php{
+php php php php php php php php php php php php php$typesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php$argvphp php php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$xmlphp-php>paramsphp-php>childrenphp(php)php asphp php$paramphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$paramphp-php>valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_faultphp php=php newphp Zendphp_XmlRpcphp_Faultphp(php6php3php3php)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_faultphp-php>setEncodingphp(php$thisphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php}
 
-                try {
-                    $param   = Zend_XmlRpc_Value::getXmlRpcValue($param->value, Zend_XmlRpc_Value::XML_STRING);
-                    $types[] = $param->getType();
-                    $argv[]  = $param->getValue();
-                } catch (Exception $e) {
-                    $this->_fault = new Zend_XmlRpc_Fault(636);
-                    $this->_fault->setEncoding($this->getEncoding());
-                    return false;
-                }
-            }
+php php php php php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php php php php php$paramphp php php php=php Zendphp_XmlRpcphp_Valuephp:php:getXmlRpcValuephp(php$paramphp-php>valuephp,php Zendphp_XmlRpcphp_Valuephp:php:XMLphp_STRINGphp)php;
+php php php php php php php php php php php php php php php php php php php php php$typesphp[php]php php=php php$paramphp-php>getTypephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$argvphp[php]php php php=php php$paramphp-php>getValuephp(php)php;
+php php php php php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_faultphp php=php newphp Zendphp_XmlRpcphp_Faultphp(php6php3php6php)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_faultphp-php>setEncodingphp(php$thisphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            $this->_types  = $types;
-            $this->_params = $argv;
-        }
+php php php php php php php php php php php php php$thisphp-php>php_typesphp php php=php php$typesphp;
+php php php php php php php php php php php php php$thisphp-php>php_paramsphp php=php php$argvphp;
+php php php php php php php php php}
 
-        $this->_xml = $request;
+php php php php php php php php php$thisphp-php>php_xmlphp php=php php$requestphp;
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Does the current request contain errors and should it return a fault
-     * response?
-     *
-     * @return boolean
-     */
-    public function isFault()
-    {
-        return $this->_fault instanceof Zend_XmlRpc_Fault;
-    }
+php php php php php/php*php*
+php php php php php php*php Doesphp thephp currentphp requestphp containphp errorsphp andphp shouldphp itphp returnphp aphp fault
+php php php php php php*php responsephp?
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isFaultphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_faultphp instanceofphp Zendphp_XmlRpcphp_Faultphp;
+php php php php php}
 
-    /**
-     * Retrieve the fault response, if any
-     *
-     * @return null|Zend_XmlRpc_Fault
-     */
-    public function getFault()
-    {
-        return $this->_fault;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp faultphp responsephp,php ifphp any
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|Zendphp_XmlRpcphp_Fault
+php php php php php php*php/
+php php php php publicphp functionphp getFaultphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_faultphp;
+php php php php php}
 
-    /**
-     * Retrieve method parameters as XMLRPC values
-     *
-     * @return array
-     */
-    protected function _getXmlRpcParams()
-    {
-        $params = array();
-        if (is_array($this->_xmlRpcParams)) {
-            foreach ($this->_xmlRpcParams as $param) {
-                $value = $param['value'];
-                $type  = isset($param['type']) ? $param['type'] : Zend_XmlRpc_Value::AUTO_DETECT_TYPE;
+php php php php php/php*php*
+php php php php php php*php Retrievephp methodphp parametersphp asphp XMLRPCphp values
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_getXmlRpcParamsphp(php)
+php php php php php{
+php php php php php php php php php$paramsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_xmlRpcParamsphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_xmlRpcParamsphp asphp php$paramphp)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php php$paramphp[php'valuephp'php]php;
+php php php php php php php php php php php php php php php php php$typephp php php=php issetphp(php$paramphp[php'typephp'php]php)php php?php php$paramphp[php'typephp'php]php php:php Zendphp_XmlRpcphp_Valuephp:php:AUTOphp_DETECTphp_TYPEphp;
 
-                if (!$value instanceof Zend_XmlRpc_Value) {
-                    $value = Zend_XmlRpc_Value::getXmlRpcValue($value, $type);
-                }
-                $params[] = $value;
-            }
-        }
+php php php php php php php php php php php php php php php php ifphp php(php!php$valuephp instanceofphp Zendphp_XmlRpcphp_Valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php Zendphp_XmlRpcphp_Valuephp:php:getXmlRpcValuephp(php$valuephp,php php$typephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$paramsphp[php]php php=php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $params;
-    }
+php php php php php php php php returnphp php$paramsphp;
+php php php php php}
 
-    /**
-     * Create XML request
-     *
-     * @return string
-     */
-    public function saveXml()
-    {
-        $args   = $this->_getXmlRpcParams();
-        $method = $this->getMethod();
+php php php php php/php*php*
+php php php php php php*php Createphp XMLphp request
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp saveXmlphp(php)
+php php php php php{
+php php php php php php php php php$argsphp php php php=php php$thisphp-php>php_getXmlRpcParamsphp(php)php;
+php php php php php php php php php$methodphp php=php php$thisphp-php>getMethodphp(php)php;
 
-        $generator = Zend_XmlRpc_Value::getGenerator();
-        $generator->openElement('methodCall')
-                  ->openElement('methodName', $method)
-                  ->closeElement('methodName');
+php php php php php php php php php$generatorphp php=php Zendphp_XmlRpcphp_Valuephp:php:getGeneratorphp(php)php;
+php php php php php php php php php$generatorphp-php>openElementphp(php'methodCallphp'php)
+php php php php php php php php php php php php php php php php php php php-php>openElementphp(php'methodNamephp'php,php php$methodphp)
+php php php php php php php php php php php php php php php php php php php-php>closeElementphp(php'methodNamephp'php)php;
 
-        if (is_array($args) && count($args)) {
-            $generator->openElement('params');
+php php php php php php php php ifphp php(isphp_arrayphp(php$argsphp)php php&php&php countphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php$generatorphp-php>openElementphp(php'paramsphp'php)php;
 
-            foreach ($args as $arg) {
-                $generator->openElement('param');
-                $arg->generateXml();
-                $generator->closeElement('param');
-            }
-            $generator->closeElement('params');
-        }
-        $generator->closeElement('methodCall');
+php php php php php php php php php php php php foreachphp php(php$argsphp asphp php$argphp)php php{
+php php php php php php php php php php php php php php php php php$generatorphp-php>openElementphp(php'paramphp'php)php;
+php php php php php php php php php php php php php php php php php$argphp-php>generateXmlphp(php)php;
+php php php php php php php php php php php php php php php php php$generatorphp-php>closeElementphp(php'paramphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$generatorphp-php>closeElementphp(php'paramsphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$generatorphp-php>closeElementphp(php'methodCallphp'php)php;
 
-        return $generator->flush();
-    }
+php php php php php php php php returnphp php$generatorphp-php>flushphp(php)php;
+php php php php php}
 
-    /**
-     * Return XML request
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->saveXML();
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnphp XMLphp request
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>saveXMLphp(php)php;
+php php php php php}
+php}

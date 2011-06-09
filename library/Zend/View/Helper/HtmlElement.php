@@ -1,141 +1,141 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: HtmlElement.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php HtmlElementphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_View_Helper_Abstract
- */
-require_once 'Zend/View/Helper/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Viewphp_Helperphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_View_Helper_HtmlElement extends Zend_View_Helper_Abstract
-{
-    /**
-     * EOL character
-     */
-    const EOL = "\n";
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Viewphp_Helperphp_HtmlElementphp extendsphp Zendphp_Viewphp_Helperphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php EOLphp character
+php php php php php php*php/
+php php php php constphp EOLphp php=php php"php\nphp"php;
 
-    /**
-     * The tag closing bracket
-     *
-     * @var string
-     */
-    protected $_closingBracket = null;
+php php php php php/php*php*
+php php php php php php*php Thephp tagphp closingphp bracket
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_closingBracketphp php=php nullphp;
 
-    /**
-     * Get the tag closing bracket
-     *
-     * @return string
-     */
-    public function getClosingBracket()
-    {
-        if (!$this->_closingBracket) {
-            if ($this->_isXhtml()) {
-                $this->_closingBracket = ' />';
-            } else {
-                $this->_closingBracket = '>';
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp tagphp closingphp bracket
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getClosingBracketphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_closingBracketphp)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_isXhtmlphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_closingBracketphp php=php php'php php/php>php'php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_closingBracketphp php=php php'php>php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_closingBracket;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_closingBracketphp;
+php php php php php}
 
-    /**
-     * Is doctype XHTML?
-     *
-     * @return boolean
-     */
-    protected function _isXhtml()
-    {
-        $doctype = $this->view->doctype();
-        return $doctype->isXhtml();
-    }
+php php php php php/php*php*
+php php php php php php*php Isphp doctypephp XHTMLphp?
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_isXhtmlphp(php)
+php php php php php{
+php php php php php php php php php$doctypephp php=php php$thisphp-php>viewphp-php>doctypephp(php)php;
+php php php php php php php php returnphp php$doctypephp-php>isXhtmlphp(php)php;
+php php php php php}
 
-    /**
-     * Converts an associative array to a string of tag attributes.
-     *
-     * @access public
-     *
-     * @param array $attribs From this array, each key-value pair is
-     * converted to an attribute name and value.
-     *
-     * @return string The XHTML for the attributes.
-     */
-    protected function _htmlAttribs($attribs)
-    {
-        $xhtml = '';
-        foreach ((array) $attribs as $key => $val) {
-            $key = $this->view->escape($key);
+php php php php php/php*php*
+php php php php php php*php Convertsphp anphp associativephp arrayphp tophp aphp stringphp ofphp tagphp attributesphp.
+php php php php php php*
+php php php php php php*php php@accessphp public
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$attribsphp Fromphp thisphp arrayphp,php eachphp keyphp-valuephp pairphp is
+php php php php php php*php convertedphp tophp anphp attributephp namephp andphp valuephp.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp XHTMLphp forphp thephp attributesphp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_htmlAttribsphp(php$attribsphp)
+php php php php php{
+php php php php php php php php php$xhtmlphp php=php php'php'php;
+php php php php php php php php foreachphp php(php(arrayphp)php php$attribsphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php$keyphp php=php php$thisphp-php>viewphp-php>escapephp(php$keyphp)php;
 
-            if (('on' == substr($key, 0, 2)) || ('constraints' == $key)) {
-                // Don't escape event attributes; _do_ substitute double quotes with singles
-                if (!is_scalar($val)) {
-                    // non-scalar data should be cast to JSON first
-                    require_once 'Zend/Json.php';
-                    $val = Zend_Json::encode($val);
-                }
-                $val = preg_replace('/"([^"]*)":/', '$1:', $val);
-            } else {
-                if (is_array($val)) {
-                    $val = implode(' ', $val);
-                }
-                $val = $this->view->escape($val);
-            }
+php php php php php php php php php php php php ifphp php(php(php'onphp'php php=php=php substrphp(php$keyphp,php php0php,php php2php)php)php php|php|php php(php'constraintsphp'php php=php=php php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Donphp'tphp escapephp eventphp attributesphp;php php_dophp_php substitutephp doublephp quotesphp withphp singles
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_scalarphp(php$valphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php nonphp-scalarphp dataphp shouldphp bephp castphp tophp JSONphp first
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php$valphp php=php Zendphp_Jsonphp:php:encodephp(php$valphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$valphp php=php pregphp_replacephp(php'php/php"php(php[php^php"php]php*php)php"php:php/php'php,php php'php$php1php:php'php,php php$valphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valphp php=php implodephp(php'php php'php,php php$valphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$valphp php=php php$thisphp-php>viewphp-php>escapephp(php$valphp)php;
+php php php php php php php php php php php php php}
 
-            if ('id' == $key) {
-                $val = $this->_normalizeId($val);
-            }
+php php php php php php php php php php php php ifphp php(php'idphp'php php=php=php php$keyphp)php php{
+php php php php php php php php php php php php php php php php php$valphp php=php php$thisphp-php>php_normalizeIdphp(php$valphp)php;
+php php php php php php php php php php php php php}
 
-            if (strpos($val, '"') !== false) {
-                $xhtml .= " $key='$val'";
-            } else {
-                $xhtml .= " $key=\"$val\"";
-            }
+php php php php php php php php php php php php ifphp php(strposphp(php$valphp,php php'php"php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$xhtmlphp php.php=php php"php php$keyphp=php'php$valphp'php"php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$xhtmlphp php.php=php php"php php$keyphp=php\php"php$valphp\php"php"php;
+php php php php php php php php php php php php php}
 
-        }
-        return $xhtml;
-    }
+php php php php php php php php php}
+php php php php php php php php returnphp php$xhtmlphp;
+php php php php php}
 
-    /**
-     * Normalize an ID
-     *
-     * @param  string $value
-     * @return string
-     */
-    protected function _normalizeId($value)
-    {
-        if (strstr($value, '[')) {
-            if ('[]' == substr($value, -2)) {
-                $value = substr($value, 0, strlen($value) - 2);
-            }
-            $value = trim($value, ']');
-            $value = str_replace('][', '-', $value);
-            $value = str_replace('[', '-', $value);
-        }
-        return $value;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Normalizephp anphp ID
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_normalizeIdphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(strstrphp(php$valuephp,php php'php[php'php)php)php php{
+php php php php php php php php php php php php ifphp php(php'php[php]php'php php=php=php substrphp(php$valuephp,php php-php2php)php)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php substrphp(php$valuephp,php php0php,php strlenphp(php$valuephp)php php-php php2php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$valuephp php=php trimphp(php$valuephp,php php'php]php'php)php;
+php php php php php php php php php php php php php$valuephp php=php strphp_replacephp(php'php]php[php'php,php php'php-php'php,php php$valuephp)php;
+php php php php php php php php php php php php php$valuephp php=php strphp_replacephp(php'php[php'php,php php'php-php'php,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$valuephp;
+php php php php php}
+php}

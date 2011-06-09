@@ -1,560 +1,560 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: EmailAddress.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php EmailAddressphp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * @see Zend_Validate_Hostname
- */
-require_once 'Zend/Validate/Hostname.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Hostname
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Hostnamephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
-{
-    const INVALID            = 'emailAddressInvalid';
-    const INVALID_FORMAT     = 'emailAddressInvalidFormat';
-    const INVALID_HOSTNAME   = 'emailAddressInvalidHostname';
-    const INVALID_MX_RECORD  = 'emailAddressInvalidMxRecord';
-    const INVALID_SEGMENT    = 'emailAddressInvalidSegment';
-    const DOT_ATOM           = 'emailAddressDotAtom';
-    const QUOTED_STRING      = 'emailAddressQuotedString';
-    const INVALID_LOCAL_PART = 'emailAddressInvalidLocalPart';
-    const LENGTH_EXCEEDED    = 'emailAddressLengthExceeded';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_EmailAddressphp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php constphp INVALIDphp php php php php php php php php php php php php=php php'emailAddressInvalidphp'php;
+php php php php constphp INVALIDphp_FORMATphp php php php php php=php php'emailAddressInvalidFormatphp'php;
+php php php php constphp INVALIDphp_HOSTNAMEphp php php php=php php'emailAddressInvalidHostnamephp'php;
+php php php php constphp INVALIDphp_MXphp_RECORDphp php php=php php'emailAddressInvalidMxRecordphp'php;
+php php php php constphp INVALIDphp_SEGMENTphp php php php php=php php'emailAddressInvalidSegmentphp'php;
+php php php php constphp DOTphp_ATOMphp php php php php php php php php php php php=php php'emailAddressDotAtomphp'php;
+php php php php constphp QUOTEDphp_STRINGphp php php php php php php=php php'emailAddressQuotedStringphp'php;
+php php php php constphp INVALIDphp_LOCALphp_PARTphp php=php php'emailAddressInvalidLocalPartphp'php;
+php php php php constphp LENGTHphp_EXCEEDEDphp php php php php=php php'emailAddressLengthExceededphp'php;
 
-    /**
-     * @var array
-     */
-    protected $_messageTemplates = array(
-        self::INVALID            => "Invalid type given. String expected",
-        self::INVALID_FORMAT     => "'%value%' is no valid email address in the basic format local-part@hostname",
-        self::INVALID_HOSTNAME   => "'%hostname%' is no valid hostname for email address '%value%'",
-        self::INVALID_MX_RECORD  => "'%hostname%' does not appear to have a valid MX record for the email address '%value%'",
-        self::INVALID_SEGMENT    => "'%hostname%' is not in a routable network segment. The email address '%value%' should not be resolved from public network",
-        self::DOT_ATOM           => "'%localPart%' can not be matched against dot-atom format",
-        self::QUOTED_STRING      => "'%localPart%' can not be matched against quoted-string format",
-        self::INVALID_LOCAL_PART => "'%localPart%' is no valid local part for email address '%value%'",
-        self::LENGTH_EXCEEDED    => "'%value%' exceeds the allowed length",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:INVALIDphp php php php php php php php php php php php php=php>php php"Invalidphp typephp givenphp.php Stringphp expectedphp"php,
+php php php php php php php php selfphp:php:INVALIDphp_FORMATphp php php php php php=php>php php"php'php%valuephp%php'php isphp nophp validphp emailphp addressphp inphp thephp basicphp formatphp localphp-partphp@hostnamephp"php,
+php php php php php php php php selfphp:php:INVALIDphp_HOSTNAMEphp php php php=php>php php"php'php%hostnamephp%php'php isphp nophp validphp hostnamephp forphp emailphp addressphp php'php%valuephp%php'php"php,
+php php php php php php php php selfphp:php:INVALIDphp_MXphp_RECORDphp php php=php>php php"php'php%hostnamephp%php'php doesphp notphp appearphp tophp havephp aphp validphp MXphp recordphp forphp thephp emailphp addressphp php'php%valuephp%php'php"php,
+php php php php php php php php selfphp:php:INVALIDphp_SEGMENTphp php php php php=php>php php"php'php%hostnamephp%php'php isphp notphp inphp aphp routablephp networkphp segmentphp.php Thephp emailphp addressphp php'php%valuephp%php'php shouldphp notphp bephp resolvedphp fromphp publicphp networkphp"php,
+php php php php php php php php selfphp:php:DOTphp_ATOMphp php php php php php php php php php php php=php>php php"php'php%localPartphp%php'php canphp notphp bephp matchedphp againstphp dotphp-atomphp formatphp"php,
+php php php php php php php php selfphp:php:QUOTEDphp_STRINGphp php php php php php php=php>php php"php'php%localPartphp%php'php canphp notphp bephp matchedphp againstphp quotedphp-stringphp formatphp"php,
+php php php php php php php php selfphp:php:INVALIDphp_LOCALphp_PARTphp php=php>php php"php'php%localPartphp%php'php isphp nophp validphp localphp partphp forphp emailphp addressphp php'php%valuephp%php'php"php,
+php php php php php php php php selfphp:php:LENGTHphp_EXCEEDEDphp php php php php=php>php php"php'php%valuephp%php'php exceedsphp thephp allowedphp lengthphp"php,
+php php php php php)php;
 
-    /**
-     * @see http://en.wikipedia.org/wiki/IPv4
-     * @var array
-     */
-    protected $_invalidIp = array(
-        '0'   => '0.0.0.0/8',
-        '10'  => '10.0.0.0/8',
-        '127' => '127.0.0.0/8',
-        '128' => '128.0.0.0/16',
-        '169' => '169.254.0.0/16',
-        '172' => '172.16.0.0/12',
-        '191' => '191.255.0.0/16',
-        '192' => array(
-            '192.0.0.0/24',
-            '192.0.2.0/24',
-            '192.88.99.0/24',
-            '192.168.0.0/16'
-        ),
-        '198' => '198.18.0.0/15',
-        '223' => '223.255.255.0/24',
-        '224' => '224.0.0.0/4',
-        '240' => '240.0.0.0/4'
-    );
+php php php php php/php*php*
+php php php php php php*php php@seephp httpphp:php/php/enphp.wikipediaphp.orgphp/wikiphp/IPvphp4
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_invalidIpphp php=php arrayphp(
+php php php php php php php php php'php0php'php php php php=php>php php'php0php.php0php.php0php.php0php/php8php'php,
+php php php php php php php php php'php1php0php'php php php=php>php php'php1php0php.php0php.php0php.php0php/php8php'php,
+php php php php php php php php php'php1php2php7php'php php=php>php php'php1php2php7php.php0php.php0php.php0php/php8php'php,
+php php php php php php php php php'php1php2php8php'php php=php>php php'php1php2php8php.php0php.php0php.php0php/php1php6php'php,
+php php php php php php php php php'php1php6php9php'php php=php>php php'php1php6php9php.php2php5php4php.php0php.php0php/php1php6php'php,
+php php php php php php php php php'php1php7php2php'php php=php>php php'php1php7php2php.php1php6php.php0php.php0php/php1php2php'php,
+php php php php php php php php php'php1php9php1php'php php=php>php php'php1php9php1php.php2php5php5php.php0php.php0php/php1php6php'php,
+php php php php php php php php php'php1php9php2php'php php=php>php arrayphp(
+php php php php php php php php php php php php php'php1php9php2php.php0php.php0php.php0php/php2php4php'php,
+php php php php php php php php php php php php php'php1php9php2php.php0php.php2php.php0php/php2php4php'php,
+php php php php php php php php php php php php php'php1php9php2php.php8php8php.php9php9php.php0php/php2php4php'php,
+php php php php php php php php php php php php php'php1php9php2php.php1php6php8php.php0php.php0php/php1php6php'
+php php php php php php php php php)php,
+php php php php php php php php php'php1php9php8php'php php=php>php php'php1php9php8php.php1php8php.php0php.php0php/php1php5php'php,
+php php php php php php php php php'php2php2php3php'php php=php>php php'php2php2php3php.php2php5php5php.php2php5php5php.php0php/php2php4php'php,
+php php php php php php php php php'php2php2php4php'php php=php>php php'php2php2php4php.php0php.php0php.php0php/php4php'php,
+php php php php php php php php php'php2php4php0php'php php=php>php php'php2php4php0php.php0php.php0php.php0php/php4php'
+php php php php php)php;
 
-    /**
-     * @var array
-     */
-    protected $_messageVariables = array(
-        'hostname'  => '_hostname',
-        'localPart' => '_localPart'
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messageVariablesphp php=php arrayphp(
+php php php php php php php php php'hostnamephp'php php php=php>php php'php_hostnamephp'php,
+php php php php php php php php php'localPartphp'php php=php>php php'php_localPartphp'
+php php php php php)php;
 
-    /**
-     * @var string
-     */
-    protected $_hostname;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_hostnamephp;
 
-    /**
-     * @var string
-     */
-    protected $_localPart;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_localPartphp;
 
-    /**
-     * Internal options array
-     */
-    protected $_options = array(
-        'mx'       => false,
-        'deep'     => false,
-        'domain'   => true,
-        'allow'    => Zend_Validate_Hostname::ALLOW_DNS,
-        'hostname' => null
-    );
+php php php php php/php*php*
+php php php php php php*php Internalphp optionsphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'mxphp'php php php php php php php php=php>php falsephp,
+php php php php php php php php php'deepphp'php php php php php php=php>php falsephp,
+php php php php php php php php php'domainphp'php php php php=php>php truephp,
+php php php php php php php php php'allowphp'php php php php php=php>php Zendphp_Validatephp_Hostnamephp:php:ALLOWphp_DNSphp,
+php php php php php php php php php'hostnamephp'php php=php>php null
+php php php php php)php;
 
-    /**
-     * Instantiates hostname validator for local use
-     *
-     * The following option keys are supported:
-     * 'hostname' => A hostname validator, see Zend_Validate_Hostname
-     * 'allow'    => Options for the hostname validator, see Zend_Validate_Hostname::ALLOW_*
-     * 'mx'       => If MX check should be enabled, boolean
-     * 'deep'     => If a deep MX check should be done, boolean
-     *
-     * @param array|Zend_Config $options OPTIONAL
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } else if (!is_array($options)) {
-            $options = func_get_args();
-            $temp['allow'] = array_shift($options);
-            if (!empty($options)) {
-                $temp['mx'] = array_shift($options);
-            }
+php php php php php/php*php*
+php php php php php php*php Instantiatesphp hostnamephp validatorphp forphp localphp use
+php php php php php php*
+php php php php php php*php Thephp followingphp optionphp keysphp arephp supportedphp:
+php php php php php php*php php'hostnamephp'php php=php>php Aphp hostnamephp validatorphp,php seephp Zendphp_Validatephp_Hostname
+php php php php php php*php php'allowphp'php php php php php=php>php Optionsphp forphp thephp hostnamephp validatorphp,php seephp Zendphp_Validatephp_Hostnamephp:php:ALLOWphp_php*
+php php php php php php*php php'mxphp'php php php php php php php php=php>php Ifphp MXphp checkphp shouldphp bephp enabledphp,php boolean
+php php php php php php*php php'deepphp'php php php php php php=php>php Ifphp aphp deepphp MXphp checkphp shouldphp bephp donephp,php boolean
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$optionsphp OPTIONAL
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php php$tempphp[php'allowphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp[php'mxphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php}
 
-            if (!empty($options)) {
-                $temp['hostname'] = array_shift($options);
-            }
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp[php'hostnamephp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php}
 
-            $options = $temp;
-        }
+php php php php php php php php php php php php php$optionsphp php=php php$tempphp;
+php php php php php php php php php}
 
-        $options += $this->_options;
-        $this->setOptions($options);
-    }
+php php php php php php php php php$optionsphp php+php=php php$thisphp-php>php_optionsphp;
+php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Returns all set Options
-     *
-     * @return array
-     */
-    public function getOptions()
-    {
-        return $this->_options;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp setphp Options
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp;
+php php php php php}
 
-    /**
-     * Set options for the email validator
-     *
-     * @param array $options
-     * @return Zend_Validate_EmailAddress fluid interface
-     */
-    public function setOptions(array $options = array())
-    {
-        if (array_key_exists('messages', $options)) {
-            $this->setMessages($options['messages']);
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp optionsphp forphp thephp emailphp validator
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Validatephp_EmailAddressphp fluidphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'messagesphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMessagesphp(php$optionsphp[php'messagesphp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('hostname', $options)) {
-            if (array_key_exists('allow', $options)) {
-                $this->setHostnameValidator($options['hostname'], $options['allow']);
-            } else {
-                $this->setHostnameValidator($options['hostname']);
-            }
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'hostnamephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'allowphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setHostnameValidatorphp(php$optionsphp[php'hostnamephp'php]php,php php$optionsphp[php'allowphp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setHostnameValidatorphp(php$optionsphp[php'hostnamephp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (array_key_exists('mx', $options)) {
-            $this->setValidateMx($options['mx']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'mxphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setValidateMxphp(php$optionsphp[php'mxphp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('deep', $options)) {
-            $this->setDeepMxCheck($options['deep']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'deepphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setDeepMxCheckphp(php$optionsphp[php'deepphp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('domain', $options)) {
-            $this->setDomainCheck($options['domain']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'domainphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setDomainCheckphp(php$optionsphp[php'domainphp'php]php)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets the validation failure message template for a particular key
-     * Adds the ability to set messages to the attached hostname validator
-     *
-     * @param  string $messageString
-     * @param  string $messageKey     OPTIONAL
-     * @return Zend_Validate_Abstract Provides a fluent interface
-     * @throws Zend_Validate_Exception
-     */
-    public function setMessage($messageString, $messageKey = null)
-    {
-        $messageKeys = $messageKey;
-        if ($messageKey === null) {
-            $keys = array_keys($this->_messageTemplates);
-            $messageKeys = current($keys);
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp validationphp failurephp messagephp templatephp forphp aphp particularphp key
+php php php php php php*php Addsphp thephp abilityphp tophp setphp messagesphp tophp thephp attachedphp hostnamephp validator
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$messageString
+php php php php php php*php php@paramphp php stringphp php$messageKeyphp php php php php OPTIONAL
+php php php php php php*php php@returnphp Zendphp_Validatephp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setMessagephp(php$messageStringphp,php php$messageKeyphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$messageKeysphp php=php php$messageKeyphp;
+php php php php php php php php ifphp php(php$messageKeyphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$keysphp php=php arrayphp_keysphp(php$thisphp-php>php_messageTemplatesphp)php;
+php php php php php php php php php php php php php$messageKeysphp php=php currentphp(php$keysphp)php;
+php php php php php php php php php}
 
-        if (!isset($this->_messageTemplates[$messageKeys])) {
-            $this->_options['hostname']->setMessage($messageString, $messageKey);
-        }
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_messageTemplatesphp[php$messageKeysphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'hostnamephp'php]php-php>setMessagephp(php$messageStringphp,php php$messageKeyphp)php;
+php php php php php php php php php}
 
-        $this->_messageTemplates[$messageKeys] = $messageString;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_messageTemplatesphp[php$messageKeysphp]php php=php php$messageStringphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set hostname validator
-     *
-     * @return Zend_Validate_Hostname
-     */
-    public function getHostnameValidator()
-    {
-        return $this->_options['hostname'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp hostnamephp validator
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Validatephp_Hostname
+php php php php php php*php/
+php php php php publicphp functionphp getHostnameValidatorphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'hostnamephp'php]php;
+php php php php php}
 
-    /**
-     * @param Zend_Validate_Hostname $hostnameValidator OPTIONAL
-     * @param int                    $allow             OPTIONAL
-     * @return void
-     */
-    public function setHostnameValidator(Zend_Validate_Hostname $hostnameValidator = null, $allow = Zend_Validate_Hostname::ALLOW_DNS)
-    {
-        if (!$hostnameValidator) {
-            $hostnameValidator = new Zend_Validate_Hostname($allow);
-        }
+php php php php php/php*php*
+php php php php php php*php php@paramphp Zendphp_Validatephp_Hostnamephp php$hostnameValidatorphp OPTIONAL
+php php php php php php*php php@paramphp intphp php php php php php php php php php php php php php php php php php php php php$allowphp php php php php php php php php php php php php OPTIONAL
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setHostnameValidatorphp(Zendphp_Validatephp_Hostnamephp php$hostnameValidatorphp php=php nullphp,php php$allowphp php=php Zendphp_Validatephp_Hostnamephp:php:ALLOWphp_DNSphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$hostnameValidatorphp)php php{
+php php php php php php php php php php php php php$hostnameValidatorphp php=php newphp Zendphp_Validatephp_Hostnamephp(php$allowphp)php;
+php php php php php php php php php}
 
-        $this->_options['hostname'] = $hostnameValidator;
-        $this->_options['allow']    = $allow;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_optionsphp[php'hostnamephp'php]php php=php php$hostnameValidatorphp;
+php php php php php php php php php$thisphp-php>php_optionsphp[php'allowphp'php]php php php php php=php php$allowphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Whether MX checking via getmxrr is supported or not
-     *
-     * This currently only works on UNIX systems
-     *
-     * @return boolean
-     */
-    public function validateMxSupported()
-    {
-        return function_exists('getmxrr');
-    }
+php php php php php/php*php*
+php php php php php php*php Whetherphp MXphp checkingphp viaphp getmxrrphp isphp supportedphp orphp not
+php php php php php php*
+php php php php php php*php Thisphp currentlyphp onlyphp worksphp onphp UNIXphp systems
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp validateMxSupportedphp(php)
+php php php php php{
+php php php php php php php php returnphp functionphp_existsphp(php'getmxrrphp'php)php;
+php php php php php}
 
-    /**
-     * Returns the set validateMx option
-     *
-     * @return boolean
-     */
-    public function getValidateMx()
-    {
-        return $this->_options['mx'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp validateMxphp option
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getValidateMxphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'mxphp'php]php;
+php php php php php}
 
-    /**
-     * Set whether we check for a valid MX record via DNS
-     *
-     * This only applies when DNS hostnames are validated
-     *
-     * @param boolean $mx Set allowed to true to validate for MX records, and false to not validate them
-     * @return Zend_Validate_EmailAddress Fluid Interface
-     */
-    public function setValidateMx($mx)
-    {
-        if ((bool) $mx && !$this->validateMxSupported()) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('MX checking not available on this system');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp whetherphp wephp checkphp forphp aphp validphp MXphp recordphp viaphp DNS
+php php php php php php*
+php php php php php php*php Thisphp onlyphp appliesphp whenphp DNSphp hostnamesphp arephp validated
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$mxphp Setphp allowedphp tophp truephp tophp validatephp forphp MXphp recordsphp,php andphp falsephp tophp notphp validatephp them
+php php php php php php*php php@returnphp Zendphp_Validatephp_EmailAddressphp Fluidphp Interface
+php php php php php php*php/
+php php php php publicphp functionphp setValidateMxphp(php$mxphp)
+php php php php php{
+php php php php php php php php ifphp php(php(boolphp)php php$mxphp php&php&php php!php$thisphp-php>validateMxSupportedphp(php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'MXphp checkingphp notphp availablephp onphp thisphp systemphp'php)php;
+php php php php php php php php php}
 
-        $this->_options['mx'] = (bool) $mx;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_optionsphp[php'mxphp'php]php php=php php(boolphp)php php$mxphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set deepMxCheck option
-     *
-     * @return boolean
-     */
-    public function getDeepMxCheck()
-    {
-        return $this->_options['deep'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp deepMxCheckphp option
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getDeepMxCheckphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'deepphp'php]php;
+php php php php php}
 
-    /**
-     * Set whether we check MX record should be a deep validation
-     *
-     * @param boolean $deep Set deep to true to perform a deep validation process for MX records
-     * @return Zend_Validate_EmailAddress Fluid Interface
-     */
-    public function setDeepMxCheck($deep)
-    {
-        $this->_options['deep'] = (bool) $deep;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp whetherphp wephp checkphp MXphp recordphp shouldphp bephp aphp deepphp validation
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$deepphp Setphp deepphp tophp truephp tophp performphp aphp deepphp validationphp processphp forphp MXphp records
+php php php php php php*php php@returnphp Zendphp_Validatephp_EmailAddressphp Fluidphp Interface
+php php php php php php*php/
+php php php php publicphp functionphp setDeepMxCheckphp(php$deepphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp[php'deepphp'php]php php=php php(boolphp)php php$deepphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set domainCheck option
-     *
-     * @return unknown
-     */
-    public function getDomainCheck()
-    {
-        return $this->_options['domain'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp domainCheckphp option
+php php php php php php*
+php php php php php php*php php@returnphp unknown
+php php php php php php*php/
+php php php php publicphp functionphp getDomainCheckphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'domainphp'php]php;
+php php php php php}
 
-    /**
-     * Sets if the domain should also be checked
-     * or only the local part of the email address
-     *
-     * @param boolean $domain
-     * @return Zend_Validate_EmailAddress Fluid Interface
-     */
-    public function setDomainCheck($domain = true)
-    {
-        $this->_options['domain'] = (boolean) $domain;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp ifphp thephp domainphp shouldphp alsophp bephp checked
+php php php php php php*php orphp onlyphp thephp localphp partphp ofphp thephp emailphp address
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$domain
+php php php php php php*php php@returnphp Zendphp_Validatephp_EmailAddressphp Fluidphp Interface
+php php php php php php*php/
+php php php php publicphp functionphp setDomainCheckphp(php$domainphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp[php'domainphp'php]php php=php php(booleanphp)php php$domainphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns if the given host is reserved
-     *
-     * @param string $host
-     * @return boolean
-     */
-    private function _isReserved($host){
-        if (!preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $host)) {
-            $host = gethostbyname($host);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp thephp givenphp hostphp isphp reserved
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$host
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php privatephp functionphp php_isReservedphp(php$hostphp)php{
+php php php php php php php php ifphp php(php!pregphp_matchphp(php'php/php^php(php[php0php-php9php]php{php1php,php3php}php\php.php)php{php3php}php[php0php-php9php]php{php1php,php3php}php$php/php'php,php php$hostphp)php)php php{
+php php php php php php php php php php php php php$hostphp php=php gethostbynamephp(php$hostphp)php;
+php php php php php php php php php}
 
-        $octet = explode('.',$host);
-        if ((int)$octet[0] >= 224) {
-            return true;
-        } else if (array_key_exists($octet[0], $this->_invalidIp)) {
-            foreach ((array)$this->_invalidIp[$octet[0]] as $subnetData) {
-                // we skip the first loop as we already know that octet matches
-                for ($i = 1; $i < 4; $i++) {
-                    if (strpos($subnetData, $octet[$i]) !== $i * 4) {
-                        break;
-                    }
-                }
+php php php php php php php php php$octetphp php=php explodephp(php'php.php'php,php$hostphp)php;
+php php php php php php php php ifphp php(php(intphp)php$octetphp[php0php]php php>php=php php2php2php4php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp ifphp php(arrayphp_keyphp_existsphp(php$octetphp[php0php]php,php php$thisphp-php>php_invalidIpphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php(arrayphp)php$thisphp-php>php_invalidIpphp[php$octetphp[php0php]php]php asphp php$subnetDataphp)php php{
+php php php php php php php php php php php php php php php php php/php/php wephp skipphp thephp firstphp loopphp asphp wephp alreadyphp knowphp thatphp octetphp matches
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php1php;php php$iphp <php php4php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(strposphp(php$subnetDataphp,php php$octetphp[php$iphp]php)php php!php=php=php php$iphp php*php php4php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
 
-                $host       = explode("/", $subnetData);
-                $binaryHost = "";
-                $tmp        = explode(".", $host[0]);
-                for ($i = 0; $i < 4 ; $i++) {
-                    $binaryHost .= str_pad(decbin($tmp[$i]), 8, "0", STR_PAD_LEFT);
-                }
+php php php php php php php php php php php php php php php php php$hostphp php php php php php php php=php explodephp(php"php/php"php,php php$subnetDataphp)php;
+php php php php php php php php php php php php php php php php php$binaryHostphp php=php php"php"php;
+php php php php php php php php php php php php php php php php php$tmpphp php php php php php php php php=php explodephp(php"php.php"php,php php$hostphp[php0php]php)php;
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php4php php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$binaryHostphp php.php=php strphp_padphp(decbinphp(php$tmpphp[php$iphp]php)php,php php8php,php php"php0php"php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php php php php php php php php php}
 
-                $segmentData = array(
-                    'network'   => (int)$this->_toIp(str_pad(substr($binaryHost, 0, $host[1]), 32, 0)),
-                    'broadcast' => (int)$this->_toIp(str_pad(substr($binaryHost, 0, $host[1]), 32, 1))
-                );
+php php php php php php php php php php php php php php php php php$segmentDataphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'networkphp'php php php php=php>php php(intphp)php$thisphp-php>php_toIpphp(strphp_padphp(substrphp(php$binaryHostphp,php php0php,php php$hostphp[php1php]php)php,php php3php2php,php php0php)php)php,
+php php php php php php php php php php php php php php php php php php php php php'broadcastphp'php php=php>php php(intphp)php$thisphp-php>php_toIpphp(strphp_padphp(substrphp(php$binaryHostphp,php php0php,php php$hostphp[php1php]php)php,php php3php2php,php php1php)php)
+php php php php php php php php php php php php php php php php php)php;
 
-                for ($j = $i; $j < 4; $j++) {
-                    if ((int)$octet[$j] < $segmentData['network'][$j] ||
-                        (int)$octet[$j] > $segmentData['broadcast'][$j]) {
-                        return false;
-                    }
-                }
-            }
+php php php php php php php php php php php php php php php php forphp php(php$jphp php=php php$iphp;php php$jphp <php php4php;php php$jphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(intphp)php$octetphp[php$jphp]php <php php$segmentDataphp[php'networkphp'php]php[php$jphp]php php|php|
+php php php php php php php php php php php php php php php php php php php php php php php php php(intphp)php$octetphp[php$jphp]php php>php php$segmentDataphp[php'broadcastphp'php]php[php$jphp]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            return true;
-        } else {
-            return false;
-        }
-    }
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Converts a binary string to an IP address
-     *
-     * @param string $binary
-     * @return mixed
-     */
-    private function _toIp($binary)
-    {
-        $ip  = array();
-        $tmp = explode(".", chunk_split($binary, 8, "."));
-        for ($i = 0; $i < 4 ; $i++) {
-            $ip[$i] = bindec($tmp[$i]);
-        }
+php php php php php/php*php*
+php php php php php php*php Convertsphp aphp binaryphp stringphp tophp anphp IPphp address
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$binary
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php privatephp functionphp php_toIpphp(php$binaryphp)
+php php php php php{
+php php php php php php php php php$ipphp php php=php arrayphp(php)php;
+php php php php php php php php php$tmpphp php=php explodephp(php"php.php"php,php chunkphp_splitphp(php$binaryphp,php php8php,php php"php.php"php)php)php;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php4php php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php$ipphp[php$iphp]php php=php bindecphp(php$tmpphp[php$iphp]php)php;
+php php php php php php php php php}
 
-        return $ip;
-    }
+php php php php php php php php returnphp php$ipphp;
+php php php php php}
 
-    /**
-     * Internal method to validate the local part of the email address
-     *
-     * @return boolean
-     */
-    private function _validateLocalPart()
-    {
-        // First try to match the local part on the common dot-atom format
-        $result = false;
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp tophp validatephp thephp localphp partphp ofphp thephp emailphp address
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php privatephp functionphp php_validateLocalPartphp(php)
+php php php php php{
+php php php php php php php php php/php/php Firstphp tryphp tophp matchphp thephp localphp partphp onphp thephp commonphp dotphp-atomphp format
+php php php php php php php php php$resultphp php=php falsephp;
 
-        // Dot-atom characters are: 1*atext *("." 1*atext)
-        // atext: ALPHA / DIGIT / and "!", "#", "$", "%", "&", "'", "*",
-        //        "+", "-", "/", "=", "?", "^", "_", "`", "{", "|", "}", "~"
-        $atext = 'a-zA-Z0-9\x21\x23\x24\x25\x26\x27\x2a\x2b\x2d\x2f\x3d\x3f\x5e\x5f\x60\x7b\x7c\x7d\x7e';
-        if (preg_match('/^[' . $atext . ']+(\x2e+[' . $atext . ']+)*$/', $this->_localPart)) {
-            $result = true;
-        } else {
-            // Try quoted string format
+php php php php php php php php php/php/php Dotphp-atomphp charactersphp arephp:php php1php*atextphp php*php(php"php.php"php php1php*atextphp)
+php php php php php php php php php/php/php atextphp:php ALPHAphp php/php DIGITphp php/php andphp php"php!php"php,php php"php#php"php,php php"php$php"php,php php"php%php"php,php php"php&php"php,php php"php'php"php,php php"php*php"php,
+php php php php php php php php php/php/php php php php php php php php php"php+php"php,php php"php-php"php,php php"php/php"php,php php"php=php"php,php php"php?php"php,php php"php^php"php,php php"php_php"php,php php"php`php"php,php php"php{php"php,php php"php|php"php,php php"php}php"php,php php"php~php"
+php php php php php php php php php$atextphp php=php php'aphp-zAphp-Zphp0php-php9php\xphp2php1php\xphp2php3php\xphp2php4php\xphp2php5php\xphp2php6php\xphp2php7php\xphp2aphp\xphp2bphp\xphp2dphp\xphp2fphp\xphp3dphp\xphp3fphp\xphp5ephp\xphp5fphp\xphp6php0php\xphp7bphp\xphp7cphp\xphp7dphp\xphp7ephp'php;
+php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^php[php'php php.php php$atextphp php.php php'php]php+php(php\xphp2ephp+php[php'php php.php php$atextphp php.php php'php]php+php)php*php$php/php'php,php php$thisphp-php>php_localPartphp)php)php php{
+php php php php php php php php php php php php php$resultphp php=php truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Tryphp quotedphp stringphp format
 
-            // Quoted-string characters are: DQUOTE *([FWS] qtext/quoted-pair) [FWS] DQUOTE
-            // qtext: Non white space controls, and the rest of the US-ASCII characters not
-            //   including "\" or the quote character
-            $noWsCtl = '\x01-\x08\x0b\x0c\x0e-\x1f\x7f';
-            $qtext   = $noWsCtl . '\x21\x23-\x5b\x5d-\x7e';
-            $ws      = '\x20\x09';
-            if (preg_match('/^\x22([' . $ws . $qtext . '])*[$ws]?\x22$/', $this->_localPart)) {
-                $result = true;
-            } else {
-                $this->_error(self::DOT_ATOM);
-                $this->_error(self::QUOTED_STRING);
-                $this->_error(self::INVALID_LOCAL_PART);
-            }
-        }
+php php php php php php php php php php php php php/php/php Quotedphp-stringphp charactersphp arephp:php DQUOTEphp php*php(php[FWSphp]php qtextphp/quotedphp-pairphp)php php[FWSphp]php DQUOTE
+php php php php php php php php php php php php php/php/php qtextphp:php Nonphp whitephp spacephp controlsphp,php andphp thephp restphp ofphp thephp USphp-ASCIIphp charactersphp not
+php php php php php php php php php php php php php/php/php php php includingphp php"php\php"php orphp thephp quotephp character
+php php php php php php php php php php php php php$noWsCtlphp php=php php'php\xphp0php1php-php\xphp0php8php\xphp0bphp\xphp0cphp\xphp0ephp-php\xphp1fphp\xphp7fphp'php;
+php php php php php php php php php php php php php$qtextphp php php php=php php$noWsCtlphp php.php php'php\xphp2php1php\xphp2php3php-php\xphp5bphp\xphp5dphp-php\xphp7ephp'php;
+php php php php php php php php php php php php php$wsphp php php php php php php=php php'php\xphp2php0php\xphp0php9php'php;
+php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^php\xphp2php2php(php[php'php php.php php$wsphp php.php php$qtextphp php.php php'php]php)php*php[php$wsphp]php?php\xphp2php2php$php/php'php,php php$thisphp-php>php_localPartphp)php)php php{
+php php php php php php php php php php php php php php php php php$resultphp php=php truephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:DOTphp_ATOMphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:QUOTEDphp_STRINGphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp_LOCALphp_PARTphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $result;
-    }
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * Internal method to validate the servers MX records
-     *
-     * @return boolean
-     */
-    private function _validateMXRecords()
-    {
-        $mxHosts = array();
-        $result = getmxrr($this->_hostname, $mxHosts);
-        if (!$result) {
-            $this->_error(self::INVALID_MX_RECORD);
-        } else if ($this->_options['deep'] && function_exists('checkdnsrr')) {
-            $validAddress = false;
-            $reserved     = true;
-            foreach ($mxHosts as $hostname) {
-                $res = $this->_isReserved($hostname);
-                if (!$res) {
-                    $reserved = false;
-                }
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp tophp validatephp thephp serversphp MXphp records
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php privatephp functionphp php_validateMXRecordsphp(php)
+php php php php php{
+php php php php php php php php php$mxHostsphp php=php arrayphp(php)php;
+php php php php php php php php php$resultphp php=php getmxrrphp(php$thisphp-php>php_hostnamephp,php php$mxHostsphp)php;
+php php php php php php php php ifphp php(php!php$resultphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp_MXphp_RECORDphp)php;
+php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_optionsphp[php'deepphp'php]php php&php&php functionphp_existsphp(php'checkdnsrrphp'php)php)php php{
+php php php php php php php php php php php php php$validAddressphp php=php falsephp;
+php php php php php php php php php php php php php$reservedphp php php php php php=php truephp;
+php php php php php php php php php php php php foreachphp php(php$mxHostsphp asphp php$hostnamephp)php php{
+php php php php php php php php php php php php php php php php php$resphp php=php php$thisphp-php>php_isReservedphp(php$hostnamephp)php;
+php php php php php php php php php php php php php php php php ifphp php(php!php$resphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$reservedphp php=php falsephp;
+php php php php php php php php php php php php php php php php php}
 
-                if (!$res
-                    && (checkdnsrr($hostname, "A")
-                    || checkdnsrr($hostname, "AAAA")
-                    || checkdnsrr($hostname, "A6"))) {
-                    $validAddress = true;
-                    break;
-                }
-            }
+php php php php php php php php php php php php php php php php ifphp php(php!php$res
+php php php php php php php php php php php php php php php php php php php php php&php&php php(checkdnsrrphp(php$hostnamephp,php php"Aphp"php)
+php php php php php php php php php php php php php php php php php php php php php|php|php checkdnsrrphp(php$hostnamephp,php php"AAAAphp"php)
+php php php php php php php php php php php php php php php php php php php php php|php|php checkdnsrrphp(php$hostnamephp,php php"Aphp6php"php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$validAddressphp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            if (!$validAddress) {
-                $result = false;
-                if ($reserved) {
-                    $this->_error(self::INVALID_SEGMENT);
-                } else {
-                    $this->_error(self::INVALID_MX_RECORD);
-                }
-            }
-        }
+php php php php php php php php php php php php ifphp php(php!php$validAddressphp)php php{
+php php php php php php php php php php php php php php php php php$resultphp php=php falsephp;
+php php php php php php php php php php php php php php php php ifphp php(php$reservedphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp_SEGMENTphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp_MXphp_RECORDphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $result;
-    }
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * Internal method to validate the hostname part of the email address
-     *
-     * @return boolean
-     */
-    private function _validateHostnamePart()
-    {
-        $hostname = $this->_options['hostname']->setTranslator($this->getTranslator())
-                         ->isValid($this->_hostname);
-        if (!$hostname) {
-            $this->_error(self::INVALID_HOSTNAME);
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp tophp validatephp thephp hostnamephp partphp ofphp thephp emailphp address
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php privatephp functionphp php_validateHostnamePartphp(php)
+php php php php php{
+php php php php php php php php php$hostnamephp php=php php$thisphp-php>php_optionsphp[php'hostnamephp'php]php-php>setTranslatorphp(php$thisphp-php>getTranslatorphp(php)php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php-php>isValidphp(php$thisphp-php>php_hostnamephp)php;
+php php php php php php php php ifphp php(php!php$hostnamephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp_HOSTNAMEphp)php;
 
-            // Get messages and errors from hostnameValidator
-            foreach ($this->_options['hostname']->getMessages() as $code => $message) {
-                $this->_messages[$code] = $message;
-            }
+php php php php php php php php php php php php php/php/php Getphp messagesphp andphp errorsphp fromphp hostnameValidator
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp[php'hostnamephp'php]php-php>getMessagesphp(php)php asphp php$codephp php=php>php php$messagephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_messagesphp[php$codephp]php php=php php$messagephp;
+php php php php php php php php php php php php php}
 
-            foreach ($this->_options['hostname']->getErrors() as $error) {
-                $this->_errors[] = $error;
-            }
-        } else if ($this->_options['mx']) {
-            // MX check on hostname
-            $hostname = $this->_validateMXRecords();
-        }
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp[php'hostnamephp'php]php-php>getErrorsphp(php)php asphp php$errorphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_errorsphp[php]php php=php php$errorphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_optionsphp[php'mxphp'php]php)php php{
+php php php php php php php php php php php php php/php/php MXphp checkphp onphp hostname
+php php php php php php php php php php php php php$hostnamephp php=php php$thisphp-php>php_validateMXRecordsphp(php)php;
+php php php php php php php php php}
 
-        return $hostname;
-    }
+php php php php php php php php returnphp php$hostnamephp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if and only if $value is a valid email address
-     * according to RFC2822
-     *
-     * @link   http://www.ietf.org/rfc/rfc2822.txt RFC2822
-     * @link   http://www.columbia.edu/kermit/ascii.html US-ASCII characters
-     * @param  string $value
-     * @return boolean
-     */
-    public function isValid($value)
-    {
-        if (!is_string($value)) {
-            $this->_error(self::INVALID);
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp php$valuephp isphp aphp validphp emailphp address
+php php php php php php*php accordingphp tophp RFCphp2php8php2php2
+php php php php php php*
+php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.ietfphp.orgphp/rfcphp/rfcphp2php8php2php2php.txtphp RFCphp2php8php2php2
+php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.columbiaphp.eduphp/kermitphp/asciiphp.htmlphp USphp-ASCIIphp characters
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $matches = array();
-        $length  = true;
-        $this->_setValue($value);
+php php php php php php php php php$matchesphp php=php arrayphp(php)php;
+php php php php php php php php php$lengthphp php php=php truephp;
+php php php php php php php php php$thisphp-php>php_setValuephp(php$valuephp)php;
 
-        // Split email address up and disallow '..'
-        if ((strpos($value, '..') !== false) or
-            (!preg_match('/^(.+)@([^@]+)$/', $value, $matches))) {
-            $this->_error(self::INVALID_FORMAT);
-            return false;
-        }
+php php php php php php php php php/php/php Splitphp emailphp addressphp upphp andphp disallowphp php'php.php.php'
+php php php php php php php php ifphp php(php(strposphp(php$valuephp,php php'php.php.php'php)php php!php=php=php falsephp)php or
+php php php php php php php php php php php php php(php!pregphp_matchphp(php'php/php^php(php.php+php)php@php(php[php^php@php]php+php)php$php/php'php,php php$valuephp,php php$matchesphp)php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp_FORMATphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $this->_localPart = $matches[1];
-        $this->_hostname  = $matches[2];
+php php php php php php php php php$thisphp-php>php_localPartphp php=php php$matchesphp[php1php]php;
+php php php php php php php php php$thisphp-php>php_hostnamephp php php=php php$matchesphp[php2php]php;
 
-        if ((strlen($this->_localPart) > 64) || (strlen($this->_hostname) > 255)) {
-            $length = false;
-            $this->_error(self::LENGTH_EXCEEDED);
-        }
+php php php php php php php php ifphp php(php(strlenphp(php$thisphp-php>php_localPartphp)php php>php php6php4php)php php|php|php php(strlenphp(php$thisphp-php>php_hostnamephp)php php>php php2php5php5php)php)php php{
+php php php php php php php php php php php php php$lengthphp php=php falsephp;
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:LENGTHphp_EXCEEDEDphp)php;
+php php php php php php php php php}
 
-        // Match hostname part
-        if ($this->_options['domain']) {
-            $hostname = $this->_validateHostnamePart();
-        }
+php php php php php php php php php/php/php Matchphp hostnamephp part
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'domainphp'php]php)php php{
+php php php php php php php php php php php php php$hostnamephp php=php php$thisphp-php>php_validateHostnamePartphp(php)php;
+php php php php php php php php php}
 
-        $local = $this->_validateLocalPart();
+php php php php php php php php php$localphp php=php php$thisphp-php>php_validateLocalPartphp(php)php;
 
-        // If both parts valid, return true
-        if ($local && $length) {
-            if (($this->_options['domain'] && $hostname) || !$this->_options['domain']) {
-                return true;
-            }
-        }
+php php php php php php php php php/php/php Ifphp bothphp partsphp validphp,php returnphp true
+php php php php php php php php ifphp php(php$localphp php&php&php php$lengthphp)php php{
+php php php php php php php php php php php php ifphp php(php(php$thisphp-php>php_optionsphp[php'domainphp'php]php php&php&php php$hostnamephp)php php|php|php php!php$thisphp-php>php_optionsphp[php'domainphp'php]php)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return false;
-    }
-}
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

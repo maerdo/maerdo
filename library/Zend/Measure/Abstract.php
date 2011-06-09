@@ -1,418 +1,418 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Measure
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Abstract.php 21329 2010-03-04 22:06:08Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Measure
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Abstractphp.phpphp php2php1php3php2php9php php2php0php1php0php-php0php3php-php0php4php php2php2php:php0php6php:php0php8Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Locale
- */
-require_once 'Zend/Locale.php';
+php/php*php*
+php php*php php@seephp Zendphp_Locale
+php php*php/
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
 
-/**
- * @see Zend_Locale_Math
- */
-require_once 'Zend/Locale/Math.php';
+php/php*php*
+php php*php php@seephp Zendphp_Localephp_Math
+php php*php/
+requirephp_oncephp php'Zendphp/Localephp/Mathphp.phpphp'php;
 
-/**
- * @see Zend_Locale_Format
- */
-require_once 'Zend/Locale/Format.php';
+php/php*php*
+php php*php php@seephp Zendphp_Localephp_Format
+php php*php/
+requirephp_oncephp php'Zendphp/Localephp/Formatphp.phpphp'php;
 
-/**
- * Abstract class for all measurements
- *
- * @category   Zend
- * @package    Zend_Measure
- * @subpackage Zend_Measure_Abstract
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Measure_Abstract
-{
-    /**
-     * Plain value in standard unit
-     *
-     * @var string $_value
-     */
-    protected $_value;
+php/php*php*
+php php*php Abstractphp classphp forphp allphp measurements
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Measure
+php php*php php@subpackagephp Zendphp_Measurephp_Abstract
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Measurephp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Plainphp valuephp inphp standardphp unit
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_value
+php php php php php php*php/
+php php php php protectedphp php$php_valuephp;
 
-    /**
-     * Original type for this unit
-     *
-     * @var string $_type
-     */
-    protected $_type;
+php php php php php/php*php*
+php php php php php php*php Originalphp typephp forphp thisphp unit
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_type
+php php php php php php*php/
+php php php php protectedphp php$php_typephp;
 
-    /**
-     * Locale identifier
-     *
-     * @var string $_locale
-     */
-    protected $_locale = null;
+php php php php php/php*php*
+php php php php php php*php Localephp identifier
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_locale
+php php php php php php*php/
+php php php php protectedphp php$php_localephp php=php nullphp;
 
-    /**
-     * Unit types for this measurement
-     */
-    protected $_units = array();
+php php php php php/php*php*
+php php php php php php*php Unitphp typesphp forphp thisphp measurement
+php php php php php php*php/
+php php php php protectedphp php$php_unitsphp php=php arrayphp(php)php;
 
-    /**
-     * Zend_Measure_Abstract is an abstract class for the different measurement types
-     *
-     * @param  $value  mixed  - Value as string, integer, real or float
-     * @param  $type   type   - OPTIONAL a measure type f.e. Zend_Measure_Length::METER
-     * @param  $locale locale - OPTIONAL a Zend_Locale Type
-     * @throws Zend_Measure_Exception
-     */
-    public function __construct($value, $type = null, $locale = null)
-    {
-        if (($type !== null) and (Zend_Locale::isLocale($type, null, false))) {
-            $locale = $type;
-            $type = null;
-        }
+php php php php php/php*php*
+php php php php php php*php Zendphp_Measurephp_Abstractphp isphp anphp abstractphp classphp forphp thephp differentphp measurementphp types
+php php php php php php*
+php php php php php php*php php@paramphp php php$valuephp php mixedphp php php-php Valuephp asphp stringphp,php integerphp,php realphp orphp float
+php php php php php php*php php@paramphp php php$typephp php php typephp php php php-php OPTIONALphp aphp measurephp typephp fphp.ephp.php Zendphp_Measurephp_Lengthphp:php:METER
+php php php php php php*php php@paramphp php php$localephp localephp php-php OPTIONALphp aphp Zendphp_Localephp Type
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$valuephp,php php$typephp php=php nullphp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$typephp php!php=php=php nullphp)php andphp php(Zendphp_Localephp:php:isLocalephp(php$typephp,php nullphp,php falsephp)php)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$typephp;
+php php php php php php php php php php php php php$typephp php=php nullphp;
+php php php php php php php php php}
 
-        $this->setLocale($locale);
-        if ($type === null) {
-            $type = $this->_units['STANDARD'];
-        }
+php php php php php php php php php$thisphp-php>setLocalephp(php$localephp)php;
+php php php php php php php php ifphp php(php$typephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$typephp php=php php$thisphp-php>php_unitsphp[php'STANDARDphp'php]php;
+php php php php php php php php php}
 
-        if (isset($this->_units[$type]) === false) {
-            require_once 'Zend/Measure/Exception.php';
-            throw new Zend_Measure_Exception("Type ($type) is unknown");
-        }
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_unitsphp[php$typephp]php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Typephp php(php$typephp)php isphp unknownphp"php)php;
+php php php php php php php php php}
 
-        $this->setValue($value, $type, $this->_locale);
-    }
+php php php php php php php php php$thisphp-php>setValuephp(php$valuephp,php php$typephp,php php$thisphp-php>php_localephp)php;
+php php php php php}
 
-    /**
-     * Returns the actual set locale
-     *
-     * @return string
-     */
-    public function getLocale()
-    {
-        return $this->_locale;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp actualphp setphp locale
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getLocalephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_localephp;
+php php php php php}
 
-    /**
-     * Sets a new locale for the value representation
-     *
-     * @param string|Zend_Locale $locale (Optional) New locale to set
-     * @param boolean            $check  False, check but don't set; True, set the new locale
-     * @return Zend_Measure_Abstract
-     */
-    public function setLocale($locale = null, $check = false)
-    {
-        if (empty($locale)) {
-            require_once 'Zend/Registry.php';
-            if (Zend_Registry::isRegistered('Zend_Locale') === true) {
-                $locale = Zend_Registry::get('Zend_Locale');
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp localephp forphp thephp valuephp representation
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|Zendphp_Localephp php$localephp php(Optionalphp)php Newphp localephp tophp set
+php php php php php php*php php@paramphp booleanphp php php php php php php php php php php php php$checkphp php Falsephp,php checkphp butphp donphp'tphp setphp;php Truephp,php setphp thephp newphp locale
+php php php php php php*php php@returnphp Zendphp_Measurephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setLocalephp(php$localephp php=php nullphp,php php$checkphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$localephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
+php php php php php php php php php php php php ifphp php(Zendphp_Registryphp:php:isRegisteredphp(php'Zendphp_Localephp'php)php php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php$localephp php=php Zendphp_Registryphp:php:getphp(php'Zendphp_Localephp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($locale === null) {
-            $locale = new Zend_Locale();
-        }
+php php php php php php php php ifphp php(php$localephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$localephp php=php newphp Zendphp_Localephp(php)php;
+php php php php php php php php php}
 
-        if (!Zend_Locale::isLocale($locale, true, false)) {
-            if (!Zend_Locale::isLocale($locale, false, false)) {
-                require_once 'Zend/Measure/Exception.php';
-                throw new Zend_Measure_Exception("Language (" . (string) $locale . ") is unknown");
-            }
+php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php truephp,php falsephp)php)php php{
+php php php php php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php falsephp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Languagephp php(php"php php.php php(stringphp)php php$localephp php.php php"php)php isphp unknownphp"php)php;
+php php php php php php php php php php php php php}
 
-            $locale = new Zend_Locale($locale);
-        }
+php php php php php php php php php php php php php$localephp php=php newphp Zendphp_Localephp(php$localephp)php;
+php php php php php php php php php}
 
-        if (!$check) {
-            $this->_locale = (string) $locale;
-        }
-        return $this;
-    }
+php php php php php php php php ifphp php(php!php$checkphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_localephp php=php php(stringphp)php php$localephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the internal value
-     *
-     * @param integer            $round  (Optional) Rounds the value to an given precision,
-     *                                              Default is -1 which returns without rounding
-     * @param string|Zend_Locale $locale (Optional) Locale for number representation
-     * @return integer|string
-     */
-    public function getValue($round = -1, $locale = null)
-    {
-        if ($round < 0) {
-            $return = $this->_value;
-        } else {
-            $return = Zend_Locale_Math::round($this->_value, $round);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp internalphp value
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php php php php php php php php php php php php$roundphp php php(Optionalphp)php Roundsphp thephp valuephp tophp anphp givenphp precisionphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Defaultphp isphp php-php1php whichphp returnsphp withoutphp rounding
+php php php php php php*php php@paramphp stringphp|Zendphp_Localephp php$localephp php(Optionalphp)php Localephp forphp numberphp representation
+php php php php php php*php php@returnphp integerphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getValuephp(php$roundphp php=php php-php1php,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$roundphp <php php0php)php php{
+php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_valuephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$returnphp php=php Zendphp_Localephp_Mathphp:php:roundphp(php$thisphp-php>php_valuephp,php php$roundphp)php;
+php php php php php php php php php}
 
-        if ($locale !== null) {
-            $this->setLocale($locale, true);
-            return Zend_Locale_Format::toNumber($return, array('locale' => $locale));
-        }
+php php php php php php php php ifphp php(php$localephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setLocalephp(php$localephp,php truephp)php;
+php php php php php php php php php php php php returnphp Zendphp_Localephp_Formatphp:php:toNumberphp(php$returnphp,php arrayphp(php'localephp'php php=php>php php$localephp)php)php;
+php php php php php php php php php}
 
-        return $return;
-    }
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Set a new value
-     *
-     * @param  integer|string      $value   Value as string, integer, real or float
-     * @param  string              $type    OPTIONAL A measure type f.e. Zend_Measure_Length::METER
-     * @param  string|Zend_Locale  $locale  OPTIONAL Locale for parsing numbers
-     * @throws Zend_Measure_Exception
-     * @return Zend_Measure_Abstract
-     */
-    public function setValue($value, $type = null, $locale = null)
-    {
-        if (($type !== null) and (Zend_Locale::isLocale($type, null, false))) {
-            $locale = $type;
-            $type = null;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp newphp value
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp|stringphp php php php php php php$valuephp php php Valuephp asphp stringphp,php integerphp,php realphp orphp float
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$typephp php php php OPTIONALphp Aphp measurephp typephp fphp.ephp.php Zendphp_Measurephp_Lengthphp:php:METER
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php php$localephp php OPTIONALphp Localephp forphp parsingphp numbers
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exception
+php php php php php php*php php@returnphp Zendphp_Measurephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setValuephp(php$valuephp,php php$typephp php=php nullphp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$typephp php!php=php=php nullphp)php andphp php(Zendphp_Localephp:php:isLocalephp(php$typephp,php nullphp,php falsephp)php)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$typephp;
+php php php php php php php php php php php php php$typephp php=php nullphp;
+php php php php php php php php php}
 
-        if ($locale === null) {
-            $locale = $this->_locale;
-        }
+php php php php php php php php ifphp php(php$localephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_localephp;
+php php php php php php php php php}
 
-        $this->setLocale($locale, true);
-        if ($type === null) {
-            $type = $this->_units['STANDARD'];
-        }
+php php php php php php php php php$thisphp-php>setLocalephp(php$localephp,php truephp)php;
+php php php php php php php php ifphp php(php$typephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$typephp php=php php$thisphp-php>php_unitsphp[php'STANDARDphp'php]php;
+php php php php php php php php php}
 
-        if (empty($this->_units[$type])) {
-            require_once 'Zend/Measure/Exception.php';
-            throw new Zend_Measure_Exception("Type ($type) is unknown");
-        }
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_unitsphp[php$typephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Typephp php(php$typephp)php isphp unknownphp"php)php;
+php php php php php php php php php}
 
-        try {
-            $value = Zend_Locale_Format::getNumber($value, array('locale' => $locale));
-        } catch(Exception $e) {
-            require_once 'Zend/Measure/Exception.php';
-            throw new Zend_Measure_Exception($e->getMessage(), $e->getCode(), $e);
-        }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$valuephp php=php Zendphp_Localephp_Formatphp:php:getNumberphp(php$valuephp,php arrayphp(php'localephp'php php=php>php php$localephp)php)php;
+php php php php php php php php php}php catchphp(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
 
-        $this->_value = $value;
-        $this->setType($type);
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_valuephp php=php php$valuephp;
+php php php php php php php php php$thisphp-php>setTypephp(php$typephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the original type
-     *
-     * @return type
-     */
-    public function getType()
-    {
-        return $this->_type;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp originalphp type
+php php php php php php*
+php php php php php php*php php@returnphp type
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_typephp;
+php php php php php}
 
-    /**
-     * Set a new type, and convert the value
-     *
-     * @param  string $type New type to set
-     * @throws Zend_Measure_Exception
-     * @return Zend_Measure_Abstract
-     */
-    public function setType($type)
-    {
-        if (empty($this->_units[$type])) {
-            require_once 'Zend/Measure/Exception.php';
-            throw new Zend_Measure_Exception("Type ($type) is unknown");
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp newphp typephp,php andphp convertphp thephp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$typephp Newphp typephp tophp set
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exception
+php php php php php php*php php@returnphp Zendphp_Measurephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setTypephp(php$typephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_unitsphp[php$typephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Typephp php(php$typephp)php isphp unknownphp"php)php;
+php php php php php php php php php}
 
-        if (empty($this->_type)) {
-            $this->_type = $type;
-        } else {
-            // Convert to standard value
-            $value = $this->_value;
-            if (is_array($this->_units[$this->getType()][0])) {
-                foreach ($this->_units[$this->getType()][0] as $key => $found) {
-                    switch ($key) {
-                        case "/":
-                            if ($found != 0) {
-                                $value = call_user_func(Zend_Locale_Math::$div, $value, $found, 25);
-                            }
-                            break;
-                        case "+":
-                            $value = call_user_func(Zend_Locale_Math::$add, $value, $found, 25);
-                            break;
-                        case "-":
-                            $value = call_user_func(Zend_Locale_Math::$sub, $value, $found, 25);
-                            break;
-                        default:
-                            $value = call_user_func(Zend_Locale_Math::$mul, $value, $found, 25);
-                            break;
-                    }
-                }
-            } else {
-                $value = call_user_func(Zend_Locale_Math::$mul, $value, $this->_units[$this->getType()][0], 25);
-            }
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_typephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_typephp php=php php$typephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Convertphp tophp standardphp value
+php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>php_valuephp;
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_unitsphp[php$thisphp-php>getTypephp(php)php]php[php0php]php)php)php php{
+php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_unitsphp[php$thisphp-php>getTypephp(php)php]php[php0php]php asphp php$keyphp php=php>php php$foundphp)php php{
+php php php php php php php php php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php"php/php"php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$foundphp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$divphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php"php+php"php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$addphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php"php-php"php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$subphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$mulphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$mulphp,php php$valuephp,php php$thisphp-php>php_unitsphp[php$thisphp-php>getTypephp(php)php]php[php0php]php,php php2php5php)php;
+php php php php php php php php php php php php php}
 
-            // Convert to expected value
-            if (is_array($this->_units[$type][0])) {
-                foreach (array_reverse($this->_units[$type][0]) as $key => $found) {
-                    switch ($key) {
-                        case "/":
-                            $value = call_user_func(Zend_Locale_Math::$mul, $value, $found, 25);
-                            break;
-                        case "+":
-                            $value = call_user_func(Zend_Locale_Math::$sub, $value, $found, 25);
-                            break;
-                        case "-":
-                            $value = call_user_func(Zend_Locale_Math::$add, $value, $found, 25);
-                            break;
-                        default:
-                            if ($found != 0) {
-                                $value = call_user_func(Zend_Locale_Math::$div, $value, $found, 25);
-                            }
-                            break;
-                    }
-                }
-            } else {
-                $value = call_user_func(Zend_Locale_Math::$div, $value, $this->_units[$type][0], 25);
-            }
+php php php php php php php php php php php php php/php/php Convertphp tophp expectedphp value
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_unitsphp[php$typephp]php[php0php]php)php)php php{
+php php php php php php php php php php php php php php php php foreachphp php(arrayphp_reversephp(php$thisphp-php>php_unitsphp[php$typephp]php[php0php]php)php asphp php$keyphp php=php>php php$foundphp)php php{
+php php php php php php php php php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php"php/php"php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$mulphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php"php+php"php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$subphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php"php-php"php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$addphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$foundphp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$divphp,php php$valuephp,php php$foundphp,php php2php5php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$divphp,php php$valuephp,php php$thisphp-php>php_unitsphp[php$typephp]php[php0php]php,php php2php5php)php;
+php php php php php php php php php php php php php}
 
-            $slength = strlen($value);
-            $length  = 0;
-            for($i = 1; $i <= $slength; ++$i) {
-                if ($value[$slength - $i] != '0') {
-                    $length = 26 - $i;
-                    break;
-                }
-            }
+php php php php php php php php php php php php php$slengthphp php=php strlenphp(php$valuephp)php;
+php php php php php php php php php php php php php$lengthphp php php=php php0php;
+php php php php php php php php php php php php forphp(php$iphp php=php php1php;php php$iphp <php=php php$slengthphp;php php+php+php$iphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$valuephp[php$slengthphp php-php php$iphp]php php!php=php php'php0php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$lengthphp php=php php2php6php php-php php$iphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            $this->_value = Zend_Locale_Math::round($value, $length);
-            $this->_type  = $type;
-        }
-        return $this;
-    }
+php php php php php php php php php php php php php$thisphp-php>php_valuephp php=php Zendphp_Localephp_Mathphp:php:roundphp(php$valuephp,php php$lengthphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_typephp php php=php php$typephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Compare if the value and type is equal
-     *
-     * @param  Zend_Measure_Abstract $object object to compare
-     * @return boolean
-     */
-    public function equals($object)
-    {
-        if ((string) $object == $this->toString()) {
-            return true;
-        }
+php php php php php/php*php*
+php php php php php php*php Comparephp ifphp thephp valuephp andphp typephp isphp equal
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Measurephp_Abstractphp php$objectphp objectphp tophp compare
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp equalsphp(php$objectphp)
+php php php php php{
+php php php php php php php php ifphp php(php(stringphp)php php$objectphp php=php=php php$thisphp-php>toStringphp(php)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Returns a string representation
-     *
-     * @param  integer            $round  (Optional) Runds the value to an given exception
-     * @param  string|Zend_Locale $locale (Optional) Locale to set for the number
-     * @return string
-     */
-    public function toString($round = -1, $locale = null)
-    {
-        if ($locale === null) {
-            $locale = $this->_locale;
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp stringphp representation
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php php$roundphp php php(Optionalphp)php Rundsphp thephp valuephp tophp anphp givenphp exception
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php(Optionalphp)php Localephp tophp setphp forphp thephp number
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php$roundphp php=php php-php1php,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$localephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_localephp;
+php php php php php php php php php}
 
-        return $this->getValue($round, $locale) . ' ' . $this->_units[$this->getType()][1];
-    }
+php php php php php php php php returnphp php$thisphp-php>getValuephp(php$roundphp,php php$localephp)php php.php php'php php'php php.php php$thisphp-php>php_unitsphp[php$thisphp-php>getTypephp(php)php]php[php1php]php;
+php php php php php}
 
-    /**
-     * Returns a string representation
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->toString();
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp stringphp representation
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>toStringphp(php)php;
+php php php php php}
 
-    /**
-     * Returns the conversion list
-     *
-     * @return array
-     */
-    public function getConversionList()
-    {
-        return $this->_units;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp conversionphp list
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getConversionListphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_unitsphp;
+php php php php php}
 
-    /**
-     * Alias function for setType returning the converted unit
-     *
-     * @param  string             $type   Constant Type
-     * @param  integer            $round  (Optional) Rounds the value to a given precision
-     * @param  string|Zend_Locale $locale (Optional) Locale to set for the number
-     * @return string
-     */
-    public function convertTo($type, $round = 2, $locale = null)
-    {
-        $this->setType($type);
-        return $this->toString($round, $locale);
-    }
+php php php php php/php*php*
+php php php php php php*php Aliasphp functionphp forphp setTypephp returningphp thephp convertedphp unit
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$typephp php php Constantphp Type
+php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php php$roundphp php php(Optionalphp)php Roundsphp thephp valuephp tophp aphp givenphp precision
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php(Optionalphp)php Localephp tophp setphp forphp thephp number
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp convertTophp(php$typephp,php php$roundphp php=php php2php,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setTypephp(php$typephp)php;
+php php php php php php php php returnphp php$thisphp-php>toStringphp(php$roundphp,php php$localephp)php;
+php php php php php}
 
-    /**
-     * Adds an unit to another one
-     *
-     * @param  Zend_Measure_Abstract $object object of same unit type
-     * @return Zend_Measure_Abstract
-     */
-    public function add($object)
-    {
-        $object->setType($this->getType());
-        $value  = $this->getValue(-1) + $object->getValue(-1);
+php php php php php/php*php*
+php php php php php php*php Addsphp anphp unitphp tophp anotherphp one
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Measurephp_Abstractphp php$objectphp objectphp ofphp samephp unitphp type
+php php php php php php*php php@returnphp Zendphp_Measurephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp addphp(php$objectphp)
+php php php php php{
+php php php php php php php php php$objectphp-php>setTypephp(php$thisphp-php>getTypephp(php)php)php;
+php php php php php php php php php$valuephp php php=php php$thisphp-php>getValuephp(php-php1php)php php+php php$objectphp-php>getValuephp(php-php1php)php;
 
-        $this->setValue($value, $this->getType(), $this->_locale);
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>setValuephp(php$valuephp,php php$thisphp-php>getTypephp(php)php,php php$thisphp-php>php_localephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Substracts an unit from another one
-     *
-     * @param  Zend_Measure_Abstract $object object of same unit type
-     * @return Zend_Measure_Abstract
-     */
-    public function sub($object)
-    {
-        $object->setType($this->getType());
-        $value  = $this->getValue(-1) - $object->getValue(-1);
+php php php php php/php*php*
+php php php php php php*php Substractsphp anphp unitphp fromphp anotherphp one
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Measurephp_Abstractphp php$objectphp objectphp ofphp samephp unitphp type
+php php php php php php*php php@returnphp Zendphp_Measurephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp subphp(php$objectphp)
+php php php php php{
+php php php php php php php php php$objectphp-php>setTypephp(php$thisphp-php>getTypephp(php)php)php;
+php php php php php php php php php$valuephp php php=php php$thisphp-php>getValuephp(php-php1php)php php-php php$objectphp-php>getValuephp(php-php1php)php;
 
-        $this->setValue($value, $this->getType(), $this->_locale);
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>setValuephp(php$valuephp,php php$thisphp-php>getTypephp(php)php,php php$thisphp-php>php_localephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Compares two units
-     *
-     * @param  Zend_Measure_Abstract $object object of same unit type
-     * @return boolean
-     */
-    public function compare($object)
-    {
-        $object->setType($this->getType());
-        $value  = $this->getValue(-1) - $object->getValue(-1);
+php php php php php/php*php*
+php php php php php php*php Comparesphp twophp units
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Measurephp_Abstractphp php$objectphp objectphp ofphp samephp unitphp type
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp comparephp(php$objectphp)
+php php php php php{
+php php php php php php php php php$objectphp-php>setTypephp(php$thisphp-php>getTypephp(php)php)php;
+php php php php php php php php php$valuephp php php=php php$thisphp-php>getValuephp(php-php1php)php php-php php$objectphp-php>getValuephp(php-php1php)php;
 
-        if ($value < 0) {
-            return -1;
-        } else if ($value > 0) {
-            return 1;
-        }
+php php php php php php php php ifphp php(php$valuephp <php php0php)php php{
+php php php php php php php php php php php php returnphp php-php1php;
+php php php php php php php php php}php elsephp ifphp php(php$valuephp php>php php0php)php php{
+php php php php php php php php php php php php returnphp php1php;
+php php php php php php php php php}
 
-        return 0;
-    }
-}
+php php php php php php php php returnphp php0php;
+php php php php php}
+php}

@@ -1,102 +1,102 @@
-<?php
-/**
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage DocumentService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp DocumentService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * This interface describes the API that concrete query adapter should implement
- *
- * Common interface for document storage services in the cloud. This interface
- * supports most document services and provides some flexibility for
- * vendor-specific features and requirements via an optional $options array in
- * each method signature. Classes implementing this interface should implement
- * URI construction for collections and documents from the parameters given in each
- * method and the account data passed in to the constructor. Classes
- * implementing this interface are also responsible for security; access control
- * isn't currently supported in this interface, although we are considering
- * access control support in future versions of the interface. Query
- * optimization mechanisms are also not supported in this version.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage DocumentService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Cloud_DocumentService_QueryAdapter
-{
-    /**
-     * SELECT clause (fields to be selected)
-     *
-     * @param string $select
-     * @return Zend_Cloud_DocumentService_QueryAdapter
-     */
-    public function select($select);
+php/php*php*
+php php*php Thisphp interfacephp describesphp thephp APIphp thatphp concretephp queryphp adapterphp shouldphp implement
+php php*
+php php*php Commonphp interfacephp forphp documentphp storagephp servicesphp inphp thephp cloudphp.php Thisphp interface
+php php*php supportsphp mostphp documentphp servicesphp andphp providesphp somephp flexibilityphp for
+php php*php vendorphp-specificphp featuresphp andphp requirementsphp viaphp anphp optionalphp php$optionsphp arrayphp in
+php php*php eachphp methodphp signaturephp.php Classesphp implementingphp thisphp interfacephp shouldphp implement
+php php*php URIphp constructionphp forphp collectionsphp andphp documentsphp fromphp thephp parametersphp givenphp inphp each
+php php*php methodphp andphp thephp accountphp dataphp passedphp inphp tophp thephp constructorphp.php Classes
+php php*php implementingphp thisphp interfacephp arephp alsophp responsiblephp forphp securityphp;php accessphp control
+php php*php isnphp'tphp currentlyphp supportedphp inphp thisphp interfacephp,php althoughphp wephp arephp considering
+php php*php accessphp controlphp supportphp inphp futurephp versionsphp ofphp thephp interfacephp.php Query
+php php*php optimizationphp mechanismsphp arephp alsophp notphp supportedphp inphp thisphp versionphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp DocumentService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Cloudphp_DocumentServicephp_QueryAdapter
+php{
+php php php php php/php*php*
+php php php php php php*php SELECTphp clausephp php(fieldsphp tophp bephp selectedphp)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$select
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_QueryAdapter
+php php php php php php*php/
+php php php php publicphp functionphp selectphp(php$selectphp)php;
 
-    /**
-     * FROM clause (table name)
-     *
-     * @param string $from
-     * @return Zend_Cloud_DocumentService_QueryAdapter
-     */
-    public function from($from);
+php php php php php/php*php*
+php php php php php php*php FROMphp clausephp php(tablephp namephp)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$from
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_QueryAdapter
+php php php php php php*php/
+php php php php publicphp functionphp fromphp(php$fromphp)php;
 
-    /**
-     * WHERE clause (conditions to be used)
-     *
-     * @param string $where
-     * @param mixed $value Value or array of values to be inserted instead of ?
-     * @param string $op Operation to use to join where clauses (AND/OR)
-     * @return Zend_Cloud_DocumentService_QueryAdapter
-     */
-    public function where($where, $value = null, $op = 'and');
+php php php php php/php*php*
+php php php php php php*php WHEREphp clausephp php(conditionsphp tophp bephp usedphp)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$where
+php php php php php php*php php@paramphp mixedphp php$valuephp Valuephp orphp arrayphp ofphp valuesphp tophp bephp insertedphp insteadphp ofphp php?
+php php php php php php*php php@paramphp stringphp php$opphp Operationphp tophp usephp tophp joinphp wherephp clausesphp php(ANDphp/ORphp)
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_QueryAdapter
+php php php php php php*php/
+php php php php publicphp functionphp wherephp(php$wherephp,php php$valuephp php=php nullphp,php php$opphp php=php php'andphp'php)php;
 
-    /**
-     * WHERE clause for item ID
-     *
-     * This one should be used when fetching specific rows since some adapters
-     * have special syntax for primary keys
-     *
-     * @param mixed $value Row ID for the document
-     * @return Zend_Cloud_DocumentService_QueryAdapter
-     */
-    public function whereId($value);
+php php php php php/php*php*
+php php php php php php*php WHEREphp clausephp forphp itemphp ID
+php php php php php php*
+php php php php php php*php Thisphp onephp shouldphp bephp usedphp whenphp fetchingphp specificphp rowsphp sincephp somephp adapters
+php php php php php php*php havephp specialphp syntaxphp forphp primaryphp keys
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$valuephp Rowphp IDphp forphp thephp document
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_QueryAdapter
+php php php php php php*php/
+php php php php publicphp functionphp whereIdphp(php$valuephp)php;
 
-    /**
-     * LIMIT clause (how many rows ot return)
-     *
-     * @param int $limit
-     * @return Zend_Cloud_DocumentService_QueryAdapter
-     */
-    public function limit($limit);
+php php php php php/php*php*
+php php php php php php*php LIMITphp clausephp php(howphp manyphp rowsphp otphp returnphp)
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$limit
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_QueryAdapter
+php php php php php php*php/
+php php php php publicphp functionphp limitphp(php$limitphp)php;
 
-    /**
-     * ORDER BY clause (sorting)
-     *
-     * @param string $sort Column to sort by
-     * @param string $direction Direction - asc/desc
-     * @return Zend_Cloud_DocumentService_QueryAdapter
-     */
-    public function order($sort, $direction = 'asc');
+php php php php php/php*php*
+php php php php php php*php ORDERphp BYphp clausephp php(sortingphp)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sortphp Columnphp tophp sortphp by
+php php php php php php*php php@paramphp stringphp php$directionphp Directionphp php-php ascphp/desc
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_QueryAdapter
+php php php php php php*php/
+php php php php publicphp functionphp orderphp(php$sortphp,php php$directionphp php=php php'ascphp'php)php;
 
-    /**
-     * Assemble the query into a format the adapter can utilize
-     *
-     * @return mixed
-     */
-    public function assemble();
-}
+php php php php php/php*php*
+php php php php php php*php Assemblephp thephp queryphp intophp aphp formatphp thephp adapterphp canphp utilize
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp assemblephp(php)php;
+php}

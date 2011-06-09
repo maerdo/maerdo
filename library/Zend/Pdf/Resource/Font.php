@@ -1,530 +1,530 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Font.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Fontphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Pdf_Resource */
-require_once 'Zend/Pdf/Resource.php';
+php/php*php*php Zendphp_Pdfphp_Resourcephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp.phpphp'php;
 
-/**
- * Zend_Pdf_Font
- *
- * Zend_Pdf_Font class constants are used within Zend_Pdf_Resource_Font
- * and its subclusses.
- */
-require_once 'Zend/Pdf/Font.php';
+php/php*php*
+php php*php Zendphp_Pdfphp_Font
+php php*
+php php*php Zendphp_Pdfphp_Fontphp classphp constantsphp arephp usedphp withinphp Zendphp_Pdfphp_Resourcephp_Font
+php php*php andphp itsphp subclussesphp.
+php php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Fontphp.phpphp'php;
 
-/**
- * Abstract class which manages PDF fonts.
- *
- * Defines the public interface and creates shared storage for concrete
- * subclasses which are responsible for generating the font's information
- * dictionaries, mapping characters to glyphs, and providing both overall font
- * and glyph-specific metric data.
- *
- * Font objects should be normally be obtained from the factory methods
- * {@link Zend_Pdf_Font::fontWithName} and {@link Zend_Pdf_Font::fontWithPath}.
- *
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Pdf_Resource_Font extends Zend_Pdf_Resource
-{
-  /**** Instance Variables ****/
-
-
-    /**
-     * The type of font. Use TYPE_ constants defined in {@link Zend_Pdf_Font}.
-     * @var integer
-     */
-    protected $_fontType = Zend_Pdf_Font::TYPE_UNKNOWN;
-
-    /**
-     * Array containing descriptive names for the font. See {@link fontName()}.
-     * @var array
-     */
-    protected $_fontNames = array();
-
-    /**
-     * Flag indicating whether or not this font is bold.
-     * @var boolean
-     */
-    protected $_isBold = false;
-
-    /**
-     * Flag indicating whether or not this font is italic.
-     * @var boolean
-     */
-    protected $_isItalic = false;
-
-    /**
-     * Flag indicating whether or not this font is monospaced.
-     * @var boolean
-     */
-    protected $_isMonospace = false;
-
-    /**
-     * The position below the text baseline of the underline (in glyph units).
-     * @var integer
-     */
-    protected $_underlinePosition = 0;
-
-    /**
-     * The thickness of the underline (in glyph units).
-     * @var integer
-     */
-    protected $_underlineThickness = 0;
-
-    /**
-     * The position above the text baseline of the strikethrough (in glyph units).
-     * @var integer
-     */
-    protected $_strikePosition = 0;
-
-    /**
-     * The thickness of the strikethrough (in glyph units).
-     * @var integer
-     */
-    protected $_strikeThickness = 0;
-
-    /**
-     * Number of glyph units per em. See {@link getUnitsPerEm()}.
-     * @var integer
-     */
-    protected $_unitsPerEm = 0;
-
-    /**
-     * Typographical ascent. See {@link getAscent()}.
-     * @var integer
-     */
-    protected $_ascent = 0;
-
-    /**
-     * Typographical descent. See {@link getDescent()}.
-     * @var integer
-     */
-    protected $_descent = 0;
-
-    /**
-     * Typographical line gap. See {@link getLineGap()}.
-     * @var integer
-     */
-    protected $_lineGap = 0;
+php/php*php*
+php php*php Abstractphp classphp whichphp managesphp PDFphp fontsphp.
+php php*
+php php*php Definesphp thephp publicphp interfacephp andphp createsphp sharedphp storagephp forphp concrete
+php php*php subclassesphp whichphp arephp responsiblephp forphp generatingphp thephp fontphp'sphp information
+php php*php dictionariesphp,php mappingphp charactersphp tophp glyphsphp,php andphp providingphp bothphp overallphp font
+php php*php andphp glyphphp-specificphp metricphp dataphp.
+php php*
+php php*php Fontphp objectsphp shouldphp bephp normallyphp bephp obtainedphp fromphp thephp factoryphp methods
+php php*php php{php@linkphp Zendphp_Pdfphp_Fontphp:php:fontWithNamephp}php andphp php{php@linkphp Zendphp_Pdfphp_Fontphp:php:fontWithPathphp}php.
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Pdfphp_Resourcephp_Fontphp extendsphp Zendphp_Pdfphp_Resource
+php{
+php php php/php*php*php*php*php Instancephp Variablesphp php*php*php*php*php/
 
 
+php php php php php/php*php*
+php php php php php php*php Thephp typephp ofphp fontphp.php Usephp TYPEphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_Fontphp}php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_fontTypephp php=php Zendphp_Pdfphp_Fontphp:php:TYPEphp_UNKNOWNphp;
 
-  /**** Public Interface ****/
+php php php php php/php*php*
+php php php php php php*php Arrayphp containingphp descriptivephp namesphp forphp thephp fontphp.php Seephp php{php@linkphp fontNamephp(php)php}php.
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_fontNamesphp php=php arrayphp(php)php;
 
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp whetherphp orphp notphp thisphp fontphp isphp boldphp.
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isBoldphp php=php falsephp;
 
-  /* Object Lifecycle */
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp whetherphp orphp notphp thisphp fontphp isphp italicphp.
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isItalicphp php=php falsephp;
 
-    /**
-     * Object constructor.
-     *
-     */
-    public function __construct()
-    {
-        parent::__construct(new Zend_Pdf_Element_Dictionary());
-        $this->_resource->Type = new Zend_Pdf_Element_Name('Font');
-    }
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp whetherphp orphp notphp thisphp fontphp isphp monospacedphp.
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isMonospacephp php=php falsephp;
 
+php php php php php/php*php*
+php php php php php php*php Thephp positionphp belowphp thephp textphp baselinephp ofphp thephp underlinephp php(inphp glyphphp unitsphp)php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_underlinePositionphp php=php php0php;
 
-  /* Object Magic Methods */
+php php php php php/php*php*
+php php php php php php*php Thephp thicknessphp ofphp thephp underlinephp php(inphp glyphphp unitsphp)php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_underlineThicknessphp php=php php0php;
 
-    /**
-     * Returns the full name of the font in the encoding method of the current
-     * locale. Transliterates any characters that cannot be naturally
-     * represented in that character set.
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getFontName(Zend_Pdf_Font::NAME_FULL, '', '//TRANSLIT');
-    }
+php php php php php/php*php*
+php php php php php php*php Thephp positionphp abovephp thephp textphp baselinephp ofphp thephp strikethroughphp php(inphp glyphphp unitsphp)php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_strikePositionphp php=php php0php;
 
+php php php php php/php*php*
+php php php php php php*php Thephp thicknessphp ofphp thephp strikethroughphp php(inphp glyphphp unitsphp)php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_strikeThicknessphp php=php php0php;
 
-  /* Accessors */
+php php php php php/php*php*
+php php php php php php*php Numberphp ofphp glyphphp unitsphp perphp emphp.php Seephp php{php@linkphp getUnitsPerEmphp(php)php}php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_unitsPerEmphp php=php php0php;
 
-    /**
-     * Returns the type of font.
-     *
-     * @return integer One of the TYPE_ constants defined in
-     *   {@link Zend_Pdf_Font}.
-     */
-    public function getFontType()
-    {
-        return $this->_fontType;
-    }
+php php php php php/php*php*
+php php php php php php*php Typographicalphp ascentphp.php Seephp php{php@linkphp getAscentphp(php)php}php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_ascentphp php=php php0php;
 
-    /**
-     * Returns the specified descriptive name for the font.
-     *
-     * The font name type is usually one of the following:
-     * <ul>
-     *  <li>{@link Zend_Pdf_Font::NAME_FULL}
-     *  <li>{@link Zend_Pdf_Font::NAME_FAMILY}
-     *  <li>{@link Zend_Pdf_Font::NAME_PREFERRED_FAMILY}
-     *  <li>{@link Zend_Pdf_Font::NAME_STYLE}
-     *  <li>{@link Zend_Pdf_Font::NAME_PREFERRED_STYLE}
-     *  <li>{@link Zend_Pdf_Font::NAME_DESCRIPTION}
-     *  <li>{@link Zend_Pdf_Font::NAME_SAMPLE_TEXT}
-     *  <li>{@link Zend_Pdf_Font::NAME_ID}
-     *  <li>{@link Zend_Pdf_Font::NAME_VERSION}
-     *  <li>{@link Zend_Pdf_Font::NAME_POSTSCRIPT}
-     *  <li>{@link Zend_Pdf_Font::NAME_CID_NAME}
-     *  <li>{@link Zend_Pdf_Font::NAME_DESIGNER}
-     *  <li>{@link Zend_Pdf_Font::NAME_DESIGNER_URL}
-     *  <li>{@link Zend_Pdf_Font::NAME_MANUFACTURER}
-     *  <li>{@link Zend_Pdf_Font::NAME_VENDOR_URL}
-     *  <li>{@link Zend_Pdf_Font::NAME_COPYRIGHT}
-     *  <li>{@link Zend_Pdf_Font::NAME_TRADEMARK}
-     *  <li>{@link Zend_Pdf_Font::NAME_LICENSE}
-     *  <li>{@link Zend_Pdf_Font::NAME_LICENSE_URL}
-     * </ul>
-     *
-     * Note that not all names are available for all fonts. In addition, some
-     * fonts may contain additional names, whose indicies are in the range
-     * 256 to 32767 inclusive, which are used for certain font layout features.
-     *
-     * If the preferred language translation is not available, uses the first
-     * available translation for the name, which is usually English.
-     *
-     * If the requested name does not exist, returns null.
-     *
-     * All names are stored internally as Unicode strings, using UTF-16BE
-     * encoding. You may optionally supply a different resulting character set.
-     *
-     * @param integer $nameType Type of name requested.
-     * @param mixed $language Preferred language (string) or array of languages
-     *   in preferred order. Use the ISO 639 standard 2-letter language codes.
-     * @param string $characterSet (optional) Desired resulting character set.
-     *   You may use any character set supported by {@link iconv()};
-     * @return string
-     */
-    public function getFontName($nameType, $language, $characterSet = null)
-    {
-        if (! isset($this->_fontNames[$nameType])) {
-            return null;
-        }
-        $name = null;
-        if (is_array($language)) {
-            foreach ($language as $code) {
-                if (isset($this->_fontNames[$nameType][$code])) {
-                    $name = $this->_fontNames[$nameType][$code];
-                    break;
-                }
-            }
-        } else {
-            if (isset($this->_fontNames[$nameType][$language])) {
-                $name = $this->_fontNames[$nameType][$language];
-            }
-        }
-        /* If the preferred language could not be found, use whatever is first.
-         */
-        if ($name === null) {
-            $names = $this->_fontNames[$nameType];
-            $name  = reset($names);
-        }
-        /* Convert the character set if requested.
-         */
-        if (($characterSet !== null) && ($characterSet != 'UTF-16BE') && PHP_OS != 'AIX') { // AIX knows not this charset
-            $name = iconv('UTF-16BE', $characterSet, $name);
-        }
-        return $name;
-    }
+php php php php php/php*php*
+php php php php php php*php Typographicalphp descentphp.php Seephp php{php@linkphp getDescentphp(php)php}php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_descentphp php=php php0php;
 
-    /**
-     * Returns whole set of font names.
-     *
-     * @return array
-     */
-    public function getFontNames()
-    {
-        return $this->_fontNames;
-    }
-
-    /**
-     * Returns true if font is bold.
-     *
-     * @return boolean
-     */
-    public function isBold()
-    {
-        return $this->_isBold;
-    }
-
-    /**
-     * Returns true if font is italic.
-     *
-     * @return boolean
-     */
-    public function isItalic()
-    {
-        return $this->_isItalic;
-    }
-
-    /**
-     * Returns true if font is monospace.
-     *
-     * @return boolean
-     */
-    public function isMonospace()
-    {
-        return $this->_isMonospace;
-    }
-
-    /**
-     * Returns the suggested position below the text baseline of the underline
-     * in glyph units.
-     *
-     * This value is usually negative.
-     *
-     * @return integer
-     */
-    public function getUnderlinePosition()
-    {
-        return $this->_underlinePosition;
-    }
-
-    /**
-     * Returns the suggested line thickness of the underline in glyph units.
-     *
-     * @return integer
-     */
-    public function getUnderlineThickness()
-    {
-        return $this->_underlineThickness;
-    }
-
-    /**
-     * Returns the suggested position above the text baseline of the
-     * strikethrough in glyph units.
-     *
-     * @return integer
-     */
-    public function getStrikePosition()
-    {
-        return $this->_strikePosition;
-    }
-
-    /**
-     * Returns the suggested line thickness of the strikethrough in glyph units.
-     *
-     * @return integer
-     */
-    public function getStrikeThickness()
-    {
-        return $this->_strikeThickness;
-    }
-
-    /**
-     * Returns the number of glyph units per em.
-     *
-     * Used to convert glyph space to user space. Frequently used in conjunction
-     * with {@link widthsForGlyphs()} to calculate the with of a run of text.
-     *
-     * @return integer
-     */
-    public function getUnitsPerEm()
-    {
-        return $this->_unitsPerEm;
-    }
-
-    /**
-     * Returns the typographic ascent in font glyph units.
-     *
-     * The typographic ascent is the distance from the font's baseline to the
-     * top of the text frame. It is frequently used to locate the initial
-     * baseline for a paragraph of text inside a given rectangle.
-     *
-     * @return integer
-     */
-    public function getAscent()
-    {
-        return $this->_ascent;
-    }
-
-    /**
-     * Returns the typographic descent in font glyph units.
-     *
-     * The typographic descent is the distance below the font's baseline to the
-     * bottom of the text frame. It is always negative.
-     *
-     * @return integer
-     */
-    public function getDescent()
-    {
-        return $this->_descent;
-    }
-
-    /**
-     * Returns the typographic line gap in font glyph units.
-     *
-     * The typographic line gap is the distance between the bottom of the text
-     * frame of one line to the top of the text frame of the next. It is
-     * typically combined with the typographical ascent and descent to determine
-     * the font's total line height (or leading).
-     *
-     * @return integer
-     */
-    public function getLineGap()
-    {
-        return $this->_lineGap;
-    }
-
-    /**
-     * Returns the suggested line height (or leading) in font glyph units.
-     *
-     * This value is determined by adding together the values of the typographic
-     * ascent, descent, and line gap. This value yields the suggested line
-     * spacing as determined by the font developer.
-     *
-     * It should be noted that this is only a guideline; layout engines will
-     * frequently modify this value to achieve special effects such as double-
-     * spacing.
-     *
-     * @return integer
-     */
-    public function getLineHeight()
-    {
-        return $this->_ascent - $this->_descent + $this->_lineGap;
-    }
-
-
-  /* Information and Conversion Methods */
-
-    /**
-     * Returns an array of glyph numbers corresponding to the Unicode characters.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumberForCharacter()}.
-     *
-     * @param array $characterCodes Array of Unicode character codes (code points).
-     * @return array Array of glyph numbers.
-     */
-    abstract public function glyphNumbersForCharacters($characterCodes);
-
-    /**
-     * Returns the glyph number corresponding to the Unicode character.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumbersForCharacters()} which is optimized for bulk
-     * operations.
-     *
-     * @param integer $characterCode Unicode character code (code point).
-     * @return integer Glyph number.
-     */
-    abstract public function glyphNumberForCharacter($characterCode);
-
-    /**
-     * Returns a number between 0 and 1 inclusive that indicates the percentage
-     * of characters in the string which are covered by glyphs in this font.
-     *
-     * Since no one font will contain glyphs for the entire Unicode character
-     * range, this method can be used to help locate a suitable font when the
-     * actual contents of the string are not known.
-     *
-     * Note that some fonts lie about the characters they support. Additionally,
-     * fonts don't usually contain glyphs for control characters such as tabs
-     * and line breaks, so it is rare that you will get back a full 1.0 score.
-     * The resulting value should be considered informational only.
-     *
-     * @param string $string
-     * @param string $charEncoding (optional) Character encoding of source text.
-     *   If omitted, uses 'current locale'.
-     * @return float
-     */
-    abstract public function getCoveredPercentage($string, $charEncoding = '');
-
-    /**
-     * Returns the widths of the glyphs.
-     *
-     * The widths are expressed in the font's glyph space. You are responsible
-     * for converting to user space as necessary. See {@link unitsPerEm()}.
-     *
-     * See also {@link widthForGlyph()}.
-     *
-     * @param array $glyphNumbers Array of glyph numbers.
-     * @return array Array of glyph widths (integers).
-     * @throws Zend_Pdf_Exception
-     */
-    abstract public function widthsForGlyphs($glyphNumbers);
-
-    /**
-     * Returns the width of the glyph.
-     *
-     * Like {@link widthsForGlyphs()} but used for one glyph at a time.
-     *
-     * @param integer $glyphNumber
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    abstract public function widthForGlyph($glyphNumber);
-
-    /**
-     * Convert string to the font encoding.
-     *
-     * The method is used to prepare string for text drawing operators
-     *
-     * @param string $string
-     * @param string $charEncoding Character encoding of source text.
-     * @return string
-     */
-    abstract public function encodeString($string, $charEncoding);
-
-    /**
-     * Convert string from the font encoding.
-     *
-     * The method is used to convert strings retrieved from existing content streams
-     *
-     * @param string $string
-     * @param string $charEncoding Character encoding of resulting text.
-     * @return string
-     */
-    abstract public function decodeString($string, $charEncoding);
+php php php php php/php*php*
+php php php php php php*php Typographicalphp linephp gapphp.php Seephp php{php@linkphp getLineGapphp(php)php}php.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_lineGapphp php=php php0php;
 
 
 
-  /**** Internal Methods ****/
+php php php/php*php*php*php*php Publicphp Interfacephp php*php*php*php*php/
 
 
-    /**
-     * If the font's glyph space is not 1000 units per em, converts the value.
-     *
-     * @internal
-     * @param integer $value
-     * @return integer
-     */
-    public function toEmSpace($value)
-    {
-        if ($this->_unitsPerEm == 1000) {
-            return $value;
-        }
-        return ceil(($value / $this->_unitsPerEm) * 1000);    // always round up
-    }
-}
+php php php/php*php Objectphp Lifecyclephp php*php/
+
+php php php php php/php*php*
+php php php php php php*php Objectphp constructorphp.
+php php php php php php*
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+php php php php php php php php php$thisphp-php>php_resourcephp-php>Typephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Fontphp'php)php;
+php php php php php}
+
+
+php php php/php*php Objectphp Magicphp Methodsphp php*php/
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp fullphp namephp ofphp thephp fontphp inphp thephp encodingphp methodphp ofphp thephp current
+php php php php php php*php localephp.php Transliteratesphp anyphp charactersphp thatphp cannotphp bephp naturally
+php php php php php php*php representedphp inphp thatphp characterphp setphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getFontNamephp(Zendphp_Pdfphp_Fontphp:php:NAMEphp_FULLphp,php php'php'php,php php'php/php/TRANSLITphp'php)php;
+php php php php php}
+
+
+php php php/php*php Accessorsphp php*php/
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp typephp ofphp fontphp.
+php php php php php php*
+php php php php php php*php php@returnphp integerphp Onephp ofphp thephp TYPEphp_php constantsphp definedphp in
+php php php php php php*php php php php{php@linkphp Zendphp_Pdfphp_Fontphp}php.
+php php php php php php*php/
+php php php php publicphp functionphp getFontTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_fontTypephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp specifiedphp descriptivephp namephp forphp thephp fontphp.
+php php php php php php*
+php php php php php php*php Thephp fontphp namephp typephp isphp usuallyphp onephp ofphp thephp followingphp:
+php php php php php php*php php<ulphp>
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_FULLphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_FAMILYphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_PREFERREDphp_FAMILYphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_STYLEphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_PREFERREDphp_STYLEphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_DESCRIPTIONphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_SAMPLEphp_TEXTphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_IDphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_VERSIONphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_POSTSCRIPTphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_CIDphp_NAMEphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_DESIGNERphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_DESIGNERphp_URLphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_MANUFACTURERphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_VENDORphp_URLphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_COPYRIGHTphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_TRADEMARKphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_LICENSEphp}
+php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Fontphp:php:NAMEphp_LICENSEphp_URLphp}
+php php php php php php*php <php/ulphp>
+php php php php php php*
+php php php php php php*php Notephp thatphp notphp allphp namesphp arephp availablephp forphp allphp fontsphp.php Inphp additionphp,php some
+php php php php php php*php fontsphp mayphp containphp additionalphp namesphp,php whosephp indiciesphp arephp inphp thephp range
+php php php php php php*php php2php5php6php tophp php3php2php7php6php7php inclusivephp,php whichphp arephp usedphp forphp certainphp fontphp layoutphp featuresphp.
+php php php php php php*
+php php php php php php*php Ifphp thephp preferredphp languagephp translationphp isphp notphp availablephp,php usesphp thephp first
+php php php php php php*php availablephp translationphp forphp thephp namephp,php whichphp isphp usuallyphp Englishphp.
+php php php php php php*
+php php php php php php*php Ifphp thephp requestedphp namephp doesphp notphp existphp,php returnsphp nullphp.
+php php php php php php*
+php php php php php php*php Allphp namesphp arephp storedphp internallyphp asphp Unicodephp stringsphp,php usingphp UTFphp-php1php6BE
+php php php php php php*php encodingphp.php Youphp mayphp optionallyphp supplyphp aphp differentphp resultingphp characterphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$nameTypephp Typephp ofphp namephp requestedphp.
+php php php php php php*php php@paramphp mixedphp php$languagephp Preferredphp languagephp php(stringphp)php orphp arrayphp ofphp languages
+php php php php php php*php php php inphp preferredphp orderphp.php Usephp thephp ISOphp php6php3php9php standardphp php2php-letterphp languagephp codesphp.
+php php php php php php*php php@paramphp stringphp php$characterSetphp php(optionalphp)php Desiredphp resultingphp characterphp setphp.
+php php php php php php*php php php Youphp mayphp usephp anyphp characterphp setphp supportedphp byphp php{php@linkphp iconvphp(php)php}php;
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getFontNamephp(php$nameTypephp,php php$languagephp,php php$characterSetphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>php_fontNamesphp[php$nameTypephp]php)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php php$namephp php=php nullphp;
+php php php php php php php php ifphp php(isphp_arrayphp(php$languagephp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$languagephp asphp php$codephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_fontNamesphp[php$nameTypephp]php[php$codephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$namephp php=php php$thisphp-php>php_fontNamesphp[php$nameTypephp]php[php$codephp]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_fontNamesphp[php$nameTypephp]php[php$languagephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$namephp php=php php$thisphp-php>php_fontNamesphp[php$nameTypephp]php[php$languagephp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php/php*php Ifphp thephp preferredphp languagephp couldphp notphp bephp foundphp,php usephp whateverphp isphp firstphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$namephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$namesphp php=php php$thisphp-php>php_fontNamesphp[php$nameTypephp]php;
+php php php php php php php php php php php php php$namephp php php=php resetphp(php$namesphp)php;
+php php php php php php php php php}
+php php php php php php php php php/php*php Convertphp thephp characterphp setphp ifphp requestedphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php(php$characterSetphp php!php=php=php nullphp)php php&php&php php(php$characterSetphp php!php=php php'UTFphp-php1php6BEphp'php)php php&php&php PHPphp_OSphp php!php=php php'AIXphp'php)php php{php php/php/php AIXphp knowsphp notphp thisphp charset
+php php php php php php php php php php php php php$namephp php=php iconvphp(php'UTFphp-php1php6BEphp'php,php php$characterSetphp,php php$namephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$namephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp wholephp setphp ofphp fontphp namesphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getFontNamesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_fontNamesphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp fontphp isphp boldphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isBoldphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isBoldphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp fontphp isphp italicphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isItalicphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isItalicphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp fontphp isphp monospacephp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isMonospacephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isMonospacephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp suggestedphp positionphp belowphp thephp textphp baselinephp ofphp thephp underline
+php php php php php php*php inphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php Thisphp valuephp isphp usuallyphp negativephp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getUnderlinePositionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_underlinePositionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp suggestedphp linephp thicknessphp ofphp thephp underlinephp inphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getUnderlineThicknessphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_underlineThicknessphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp suggestedphp positionphp abovephp thephp textphp baselinephp ofphp the
+php php php php php php*php strikethroughphp inphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getStrikePositionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_strikePositionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp suggestedphp linephp thicknessphp ofphp thephp strikethroughphp inphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getStrikeThicknessphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_strikeThicknessphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp glyphphp unitsphp perphp emphp.
+php php php php php php*
+php php php php php php*php Usedphp tophp convertphp glyphphp spacephp tophp userphp spacephp.php Frequentlyphp usedphp inphp conjunction
+php php php php php php*php withphp php{php@linkphp widthsForGlyphsphp(php)php}php tophp calculatephp thephp withphp ofphp aphp runphp ofphp textphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getUnitsPerEmphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_unitsPerEmphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp typographicphp ascentphp inphp fontphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php Thephp typographicphp ascentphp isphp thephp distancephp fromphp thephp fontphp'sphp baselinephp tophp the
+php php php php php php*php topphp ofphp thephp textphp framephp.php Itphp isphp frequentlyphp usedphp tophp locatephp thephp initial
+php php php php php php*php baselinephp forphp aphp paragraphphp ofphp textphp insidephp aphp givenphp rectanglephp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getAscentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_ascentphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp typographicphp descentphp inphp fontphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php Thephp typographicphp descentphp isphp thephp distancephp belowphp thephp fontphp'sphp baselinephp tophp the
+php php php php php php*php bottomphp ofphp thephp textphp framephp.php Itphp isphp alwaysphp negativephp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getDescentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_descentphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp typographicphp linephp gapphp inphp fontphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php Thephp typographicphp linephp gapphp isphp thephp distancephp betweenphp thephp bottomphp ofphp thephp text
+php php php php php php*php framephp ofphp onephp linephp tophp thephp topphp ofphp thephp textphp framephp ofphp thephp nextphp.php Itphp is
+php php php php php php*php typicallyphp combinedphp withphp thephp typographicalphp ascentphp andphp descentphp tophp determine
+php php php php php php*php thephp fontphp'sphp totalphp linephp heightphp php(orphp leadingphp)php.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getLineGapphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_lineGapphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp suggestedphp linephp heightphp php(orphp leadingphp)php inphp fontphp glyphphp unitsphp.
+php php php php php php*
+php php php php php php*php Thisphp valuephp isphp determinedphp byphp addingphp togetherphp thephp valuesphp ofphp thephp typographic
+php php php php php php*php ascentphp,php descentphp,php andphp linephp gapphp.php Thisphp valuephp yieldsphp thephp suggestedphp line
+php php php php php php*php spacingphp asphp determinedphp byphp thephp fontphp developerphp.
+php php php php php php*
+php php php php php php*php Itphp shouldphp bephp notedphp thatphp thisphp isphp onlyphp aphp guidelinephp;php layoutphp enginesphp will
+php php php php php php*php frequentlyphp modifyphp thisphp valuephp tophp achievephp specialphp effectsphp suchphp asphp doublephp-
+php php php php php php*php spacingphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getLineHeightphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_ascentphp php-php php$thisphp-php>php_descentphp php+php php$thisphp-php>php_lineGapphp;
+php php php php php}
+
+
+php php php/php*php Informationphp andphp Conversionphp Methodsphp php*php/
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp glyphphp numbersphp correspondingphp tophp thephp Unicodephp charactersphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumberForCharacterphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$characterCodesphp Arrayphp ofphp Unicodephp characterphp codesphp php(codephp pointsphp)php.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp glyphNumbersForCharactersphp(php$characterCodesphp)php;
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp glyphphp numberphp correspondingphp tophp thephp Unicodephp characterphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumbersForCharactersphp(php)php}php whichphp isphp optimizedphp forphp bulk
+php php php php php php*php operationsphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$characterCodephp Unicodephp characterphp codephp php(codephp pointphp)php.
+php php php php php php*php php@returnphp integerphp Glyphphp numberphp.
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp glyphNumberForCharacterphp(php$characterCodephp)php;
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp numberphp betweenphp php0php andphp php1php inclusivephp thatphp indicatesphp thephp percentage
+php php php php php php*php ofphp charactersphp inphp thephp stringphp whichphp arephp coveredphp byphp glyphsphp inphp thisphp fontphp.
+php php php php php php*
+php php php php php php*php Sincephp nophp onephp fontphp willphp containphp glyphsphp forphp thephp entirephp Unicodephp character
+php php php php php php*php rangephp,php thisphp methodphp canphp bephp usedphp tophp helpphp locatephp aphp suitablephp fontphp whenphp the
+php php php php php php*php actualphp contentsphp ofphp thephp stringphp arephp notphp knownphp.
+php php php php php php*
+php php php php php php*php Notephp thatphp somephp fontsphp liephp aboutphp thephp charactersphp theyphp supportphp.php Additionallyphp,
+php php php php php php*php fontsphp donphp'tphp usuallyphp containphp glyphsphp forphp controlphp charactersphp suchphp asphp tabs
+php php php php php php*php andphp linephp breaksphp,php sophp itphp isphp rarephp thatphp youphp willphp getphp backphp aphp fullphp php1php.php0php scorephp.
+php php php php php php*php Thephp resultingphp valuephp shouldphp bephp consideredphp informationalphp onlyphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp php(optionalphp)php Characterphp encodingphp ofphp sourcephp textphp.
+php php php php php php*php php php Ifphp omittedphp,php usesphp php'currentphp localephp'php.
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getCoveredPercentagephp(php$stringphp,php php$charEncodingphp php=php php'php'php)php;
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthsphp ofphp thephp glyphsphp.
+php php php php php php*
+php php php php php php*php Thephp widthsphp arephp expressedphp inphp thephp fontphp'sphp glyphphp spacephp.php Youphp arephp responsible
+php php php php php php*php forphp convertingphp tophp userphp spacephp asphp necessaryphp.php Seephp php{php@linkphp unitsPerEmphp(php)php}php.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp widthForGlyphphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$glyphNumbersphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp widthsphp php(integersphp)php.
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp widthsForGlyphsphp(php$glyphNumbersphp)php;
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthphp ofphp thephp glyphphp.
+php php php php php php*
+php php php php php php*php Likephp php{php@linkphp widthsForGlyphsphp(php)php}php butphp usedphp forphp onephp glyphphp atphp aphp timephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$glyphNumber
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp widthForGlyphphp(php$glyphNumberphp)php;
+
+php php php php php/php*php*
+php php php php php php*php Convertphp stringphp tophp thephp fontphp encodingphp.
+php php php php php php*
+php php php php php php*php Thephp methodphp isphp usedphp tophp preparephp stringphp forphp textphp drawingphp operators
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp Characterphp encodingphp ofphp sourcephp textphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp encodeStringphp(php$stringphp,php php$charEncodingphp)php;
+
+php php php php php/php*php*
+php php php php php php*php Convertphp stringphp fromphp thephp fontphp encodingphp.
+php php php php php php*
+php php php php php php*php Thephp methodphp isphp usedphp tophp convertphp stringsphp retrievedphp fromphp existingphp contentphp streams
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp Characterphp encodingphp ofphp resultingphp textphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp decodeStringphp(php$stringphp,php php$charEncodingphp)php;
+
+
+
+php php php/php*php*php*php*php Internalphp Methodsphp php*php*php*php*php/
+
+
+php php php php php/php*php*
+php php php php php php*php Ifphp thephp fontphp'sphp glyphphp spacephp isphp notphp php1php0php0php0php unitsphp perphp emphp,php convertsphp thephp valuephp.
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php php@paramphp integerphp php$value
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp toEmSpacephp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_unitsPerEmphp php=php=php php1php0php0php0php)php php{
+php php php php php php php php php php php php returnphp php$valuephp;
+php php php php php php php php php}
+php php php php php php php php returnphp ceilphp(php(php$valuephp php/php php$thisphp-php>php_unitsPerEmphp)php php*php php1php0php0php0php)php;php php php php php/php/php alwaysphp roundphp up
+php php php php php}
+php}
 

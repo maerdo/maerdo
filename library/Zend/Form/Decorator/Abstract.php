@@ -1,254 +1,254 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Form_Decorator_Interface */
-require_once 'Zend/Form/Decorator/Interface.php';
+php/php*php*php Zendphp_Formphp_Decoratorphp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Interfacephp.phpphp'php;
 
-/**
- * Zend_Form_Decorator_Abstract
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 21146 2010-02-23 14:35:57Z yoshida@zend.co.jp $
- */
-abstract class Zend_Form_Decorator_Abstract implements Zend_Form_Decorator_Interface
-{
-    /**
-     * Placement constants
-     */
-    const APPEND  = 'APPEND';
-    const PREPEND = 'PREPEND';
+php/php*php*
+php php*php Zendphp_Formphp_Decoratorphp_Abstract
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php1php1php4php6php php2php0php1php0php-php0php2php-php2php3php php1php4php:php3php5php:php5php7Zphp yoshidaphp@zendphp.cophp.jpphp php$
+php php*php/
+abstractphp classphp Zendphp_Formphp_Decoratorphp_Abstractphp implementsphp Zendphp_Formphp_Decoratorphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Placementphp constants
+php php php php php php*php/
+php php php php constphp APPENDphp php php=php php'APPENDphp'php;
+php php php php constphp PREPENDphp php=php php'PREPENDphp'php;
 
-    /**
-     * Default placement: append
-     * @var string
-     */
-    protected $_placement = 'APPEND';
+php php php php php/php*php*
+php php php php php php*php Defaultphp placementphp:php append
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_placementphp php=php php'APPENDphp'php;
 
-    /**
-     * @var Zend_Form_Element|Zend_Form
-     */
-    protected $_element;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Formphp_Elementphp|Zendphp_Form
+php php php php php php*php/
+php php php php protectedphp php$php_elementphp;
 
-    /**
-     * Decorator options
-     * @var array
-     */
-    protected $_options = array();
+php php php php php/php*php*
+php php php php php php*php Decoratorphp options
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(php)php;
 
-    /**
-     * Separator between new content and old
-     * @var string
-     */
-    protected $_separator = PHP_EOL;
+php php php php php/php*php*
+php php php php php php*php Separatorphp betweenphp newphp contentphp andphp old
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_separatorphp php=php PHPphp_EOLphp;
 
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options
-     * @return void
-     */
-    public function __construct($options = null)
-    {
-        if (is_array($options)) {
-            $this->setOptions($options);
-        } elseif ($options instanceof Zend_Config) {
-            $this->setConfig($options);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php php}php elseifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set options
-     *
-     * @param  array $options
-     * @return Zend_Form_Decorator_Abstract
-     */
-    public function setOptions(array $options)
-    {
-        $this->_options = $options;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp php=php php$optionsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set options from config object
-     *
-     * @param  Zend_Config $config
-     * @return Zend_Form_Decorator_Abstract
-     */
-    public function setConfig(Zend_Config $config)
-    {
-        return $this->setOptions($config->toArray());
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp optionsphp fromphp configphp object
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>setOptionsphp(php$configphp-php>toArrayphp(php)php)php;
+php php php php php}
 
-    /**
-     * Set option
-     *
-     * @param  string $key
-     * @param  mixed $value
-     * @return Zend_Form_Decorator_Abstract
-     */
-    public function setOption($key, $value)
-    {
-        $this->_options[(string) $key] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setOptionphp(php$keyphp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp[php(stringphp)php php$keyphp]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get option
-     *
-     * @param  string $key
-     * @return mixed
-     */
-    public function getOption($key)
-    {
-        $key = (string) $key;
-        if (isset($this->_options[$key])) {
-            return $this->_options[$key];
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getOptionphp(php$keyphp)
+php php php php php{
+php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php$keyphp]php;
+php php php php php php php php php}
 
-        return null;
-    }
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Retrieve options
-     *
-     * @return array
-     */
-    public function getOptions()
-    {
-        return $this->_options;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp options
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp;
+php php php php php}
 
-    /**
-     * Remove single option
-     *
-     * @param mixed $key
-     * @return void
-     */
-    public function removeOption($key)
-    {
-        if (null !== $this->getOption($key)) {
-            unset($this->_options[$key]);
-            return true;
-        }
+php php php php php/php*php*
+php php php php php php*php Removephp singlephp option
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$key
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp removeOptionphp(php$keyphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>getOptionphp(php$keyphp)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_optionsphp[php$keyphp]php)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Clear all options
-     *
-     * @return Zend_Form_Decorator_Abstract
-     */
-    public function clearOptions()
-    {
-        $this->_options = array();
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Clearphp allphp options
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp clearOptionsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp php=php arrayphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set current form element
-     *
-     * @param  Zend_Form_Element|Zend_Form $element
-     * @return Zend_Form_Decorator_Abstract
-     * @throws Zend_Form_Decorator_Exception on invalid element type
-     */
-    public function setElement($element)
-    {
-        if ((!$element instanceof Zend_Form_Element)
-            && (!$element instanceof Zend_Form)
-            && (!$element instanceof Zend_Form_DisplayGroup))
-        {
-            require_once 'Zend/Form/Decorator/Exception.php';
-            throw new Zend_Form_Decorator_Exception('Invalid element type passed to decorator');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp currentphp formphp element
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Formphp_Elementphp|Zendphp_Formphp php$element
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Abstract
+php php php php php php*php php@throwsphp Zendphp_Formphp_Decoratorphp_Exceptionphp onphp invalidphp elementphp type
+php php php php php php*php/
+php php php php publicphp functionphp setElementphp(php$elementphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php!php$elementphp instanceofphp Zendphp_Formphp_Elementphp)
+php php php php php php php php php php php php php&php&php php(php!php$elementphp instanceofphp Zendphp_Formphp)
+php php php php php php php php php php php php php&php&php php(php!php$elementphp instanceofphp Zendphp_Formphp_DisplayGroupphp)php)
+php php php php php php php php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Decoratorphp_Exceptionphp(php'Invalidphp elementphp typephp passedphp tophp decoratorphp'php)php;
+php php php php php php php php php}
 
-        $this->_element = $element;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_elementphp php=php php$elementphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve current element
-     *
-     * @return Zend_Form_Element|Zend_Form
-     */
-    public function getElement()
-    {
-        return $this->_element;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp currentphp element
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp|Zendphp_Form
+php php php php php php*php/
+php php php php publicphp functionphp getElementphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_elementphp;
+php php php php php}
 
-    /**
-     * Determine if decorator should append or prepend content
-     *
-     * @return string
-     */
-    public function getPlacement()
-    {
-        $placement = $this->_placement;
-        if (null !== ($placementOpt = $this->getOption('placement'))) {
-            $placementOpt = strtoupper($placementOpt);
-            switch ($placementOpt) {
-                case self::APPEND:
-                case self::PREPEND:
-                    $placement = $this->_placement = $placementOpt;
-                    break;
-                case false:
-                    $placement = $this->_placement = null;
-                    break;
-                default:
-                    break;
-            }
-            $this->removeOption('placement');
-        }
+php php php php php/php*php*
+php php php php php php*php Determinephp ifphp decoratorphp shouldphp appendphp orphp prependphp content
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getPlacementphp(php)
+php php php php php{
+php php php php php php php php php$placementphp php=php php$thisphp-php>php_placementphp;
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$placementOptphp php=php php$thisphp-php>getOptionphp(php'placementphp'php)php)php)php php{
+php php php php php php php php php php php php php$placementOptphp php=php strtoupperphp(php$placementOptphp)php;
+php php php php php php php php php php php php switchphp php(php$placementOptphp)php php{
+php php php php php php php php php php php php php php php php casephp selfphp:php:APPENDphp:
+php php php php php php php php php php php php php php php php casephp selfphp:php:PREPENDphp:
+php php php php php php php php php php php php php php php php php php php php php$placementphp php=php php$thisphp-php>php_placementphp php=php php$placementOptphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp falsephp:
+php php php php php php php php php php php php php php php php php php php php php$placementphp php=php php$thisphp-php>php_placementphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>removeOptionphp(php'placementphp'php)php;
+php php php php php php php php php}
 
-        return $placement;
-    }
+php php php php php php php php returnphp php$placementphp;
+php php php php php}
 
-    /**
-     * Retrieve separator to use between old and new content
-     *
-     * @return string
-     */
-    public function getSeparator()
-    {
-        $separator = $this->_separator;
-        if (null !== ($separatorOpt = $this->getOption('separator'))) {
-            $separator = $this->_separator = (string) $separatorOpt;
-            $this->removeOption('separator');
-        }
-        return $separator;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp separatorphp tophp usephp betweenphp oldphp andphp newphp content
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getSeparatorphp(php)
+php php php php php{
+php php php php php php php php php$separatorphp php=php php$thisphp-php>php_separatorphp;
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$separatorOptphp php=php php$thisphp-php>getOptionphp(php'separatorphp'php)php)php)php php{
+php php php php php php php php php php php php php$separatorphp php=php php$thisphp-php>php_separatorphp php=php php(stringphp)php php$separatorOptphp;
+php php php php php php php php php php php php php$thisphp-php>removeOptionphp(php'separatorphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$separatorphp;
+php php php php php}
 
-    /**
-     * Decorate content and/or element
-     *
-     * @param  string $content
-     * @return string
-     * @throws Zend_Form_Decorator_Exception when unimplemented
-     */
-    public function render($content)
-    {
-        require_once 'Zend/Form/Decorator/Exception.php';
-        throw new Zend_Form_Decorator_Exception('render() not implemented');
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Decoratephp contentphp andphp/orphp element
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$content
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Formphp_Decoratorphp_Exceptionphp whenphp unimplemented
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php$contentphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Formphp_Decoratorphp_Exceptionphp(php'renderphp(php)php notphp implementedphp'php)php;
+php php php php php}
+php}

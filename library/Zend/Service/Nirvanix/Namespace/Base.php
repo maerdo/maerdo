@@ -1,172 +1,172 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Nirvanix
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Base.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Nirvanix
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Basephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Http_Client
- */
-require_once 'Zend/Http/Client.php';
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Client
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
 
-/**
- * @see Zend_Service_Nirvanix_Response
- */
-require_once 'Zend/Service/Nirvanix/Response.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Nirvanixphp_Response
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Nirvanixphp/Responsephp.phpphp'php;
 
-/**
- * The Nirvanix web services are split into namespaces.  This is a proxy class
- * representing one namespace.  It allows calls to the namespace to be made by
- * PHP object calls rather than by having to construct HTTP client requests.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Nirvanix
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Nirvanix_Namespace_Base
-{
-    /**
-     * HTTP client instance that will be used to make calls to
-     * the Nirvanix web services.
-     * @var Zend_Http_Client
-     */
-    protected $_httpClient;
+php/php*php*
+php php*php Thephp Nirvanixphp webphp servicesphp arephp splitphp intophp namespacesphp.php php Thisphp isphp aphp proxyphp class
+php php*php representingphp onephp namespacephp.php php Itphp allowsphp callsphp tophp thephp namespacephp tophp bephp madephp by
+php php*php PHPphp objectphp callsphp ratherphp thanphp byphp havingphp tophp constructphp HTTPphp clientphp requestsphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Nirvanix
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Nirvanixphp_Namespacephp_Base
+php{
+php php php php php/php*php*
+php php php php php php*php HTTPphp clientphp instancephp thatphp willphp bephp usedphp tophp makephp callsphp to
+php php php php php php*php thephp Nirvanixphp webphp servicesphp.
+php php php php php php*php php@varphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php protectedphp php$php_httpClientphp;
 
-    /**
-     * Host to use for calls to this Nirvanix namespace.  It is possible
-     * that the user will wish to use different hosts for different namespaces.
-     * @var string
-     */
-    protected $_host = 'http://services.nirvanix.com';
+php php php php php/php*php*
+php php php php php php*php Hostphp tophp usephp forphp callsphp tophp thisphp Nirvanixphp namespacephp.php php Itphp isphp possible
+php php php php php php*php thatphp thephp userphp willphp wishphp tophp usephp differentphp hostsphp forphp differentphp namespacesphp.
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_hostphp php=php php'httpphp:php/php/servicesphp.nirvanixphp.comphp'php;
 
-    /**
-     * Name of this namespace as used in the URL.
-     * @var string
-     */
-    protected $_namespace = '';
+php php php php php/php*php*
+php php php php php php*php Namephp ofphp thisphp namespacephp asphp usedphp inphp thephp URLphp.
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namespacephp php=php php'php'php;
 
-    /**
-     * Defaults for POST parameters.  When a request to the service is to be
-     * made, the POST parameters are merged into these.  This is a convenience
-     * feature so parameters that are repeatedly required like sessionToken
-     * do not need to be supplied again and again by the user.
-     *
-     * @param array
-     */
-    protected $_defaults = array();
+php php php php php/php*php*
+php php php php php php*php Defaultsphp forphp POSTphp parametersphp.php php Whenphp aphp requestphp tophp thephp servicephp isphp tophp be
+php php php php php php*php madephp,php thephp POSTphp parametersphp arephp mergedphp intophp thesephp.php php Thisphp isphp aphp convenience
+php php php php php php*php featurephp sophp parametersphp thatphp arephp repeatedlyphp requiredphp likephp sessionToken
+php php php php php php*php dophp notphp needphp tophp bephp suppliedphp againphp andphp againphp byphp thephp userphp.
+php php php php php php*
+php php php php php php*php php@paramphp array
+php php php php php php*php/
+php php php php protectedphp php$php_defaultsphp php=php arrayphp(php)php;
 
-    /**
-     * Class constructor.
-     *
-     * @param  $options  array  Options and dependency injection
-     */
-    public function __construct($options = array())
-    {
-        if (isset($options['baseUrl'])) {
-            $this->_host = $options['baseUrl'];
-        }
+php php php php php/php*php*
+php php php php php php*php Classphp constructorphp.
+php php php php php php*
+php php php php php php*php php@paramphp php php$optionsphp php arrayphp php Optionsphp andphp dependencyphp injection
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'baseUrlphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_hostphp php=php php$optionsphp[php'baseUrlphp'php]php;
+php php php php php php php php php}
 
-        if (isset($options['namespace'])) {
-            $this->_namespace = $options['namespace'];
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'namespacephp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_namespacephp php=php php$optionsphp[php'namespacephp'php]php;
+php php php php php php php php php}
 
-        if (isset($options['defaults'])) {
-            $this->_defaults = $options['defaults'];
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'defaultsphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_defaultsphp php=php php$optionsphp[php'defaultsphp'php]php;
+php php php php php php php php php}
 
-        if (! isset($options['httpClient'])) {
-            $options['httpClient'] = new Zend_Http_Client();
-        }
-        $this->_httpClient = $options['httpClient'];
-    }
+php php php php php php php php ifphp php(php!php issetphp(php$optionsphp[php'httpClientphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'httpClientphp'php]php php=php newphp Zendphp_Httpphp_Clientphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_httpClientphp php=php php$optionsphp[php'httpClientphp'php]php;
+php php php php php}
 
-    /**
-     * When a method call is made against this proxy, convert it to
-     * an HTTP request to make against the Nirvanix REST service.
-     *
-     * $imfs->DeleteFiles(array('filePath' => 'foo'));
-     *
-     * Assuming this object was proxying the IMFS namespace, the
-     * method call above would call the DeleteFiles command.  The
-     * POST parameters would be filePath, merged with the
-     * $this->_defaults (containing the sessionToken).
-     *
-     * @param  string  $methodName  Name of the command to call
-     *                              on this namespace.
-     * @param  array   $args        Only the first is used and it must be
-     *                              an array.  It contains the POST params.
-     *
-     * @return Zend_Service_Nirvanix_Response
-     */
-    public function __call($methodName, $args)
-    {
-        $uri = $this->_makeUri($methodName);
-        $this->_httpClient->setUri($uri);
+php php php php php/php*php*
+php php php php php php*php Whenphp aphp methodphp callphp isphp madephp againstphp thisphp proxyphp,php convertphp itphp to
+php php php php php php*php anphp HTTPphp requestphp tophp makephp againstphp thephp Nirvanixphp RESTphp servicephp.
+php php php php php php*
+php php php php php php*php php$imfsphp-php>DeleteFilesphp(arrayphp(php'filePathphp'php php=php>php php'foophp'php)php)php;
+php php php php php php*
+php php php php php php*php Assumingphp thisphp objectphp wasphp proxyingphp thephp IMFSphp namespacephp,php the
+php php php php php php*php methodphp callphp abovephp wouldphp callphp thephp DeleteFilesphp commandphp.php php The
+php php php php php php*php POSTphp parametersphp wouldphp bephp filePathphp,php mergedphp withphp the
+php php php php php php*php php$thisphp-php>php_defaultsphp php(containingphp thephp sessionTokenphp)php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$methodNamephp php Namephp ofphp thephp commandphp tophp call
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php onphp thisphp namespacephp.
+php php php php php php*php php@paramphp php arrayphp php php php$argsphp php php php php php php php Onlyphp thephp firstphp isphp usedphp andphp itphp mustphp be
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php anphp arrayphp.php php Itphp containsphp thephp POSTphp paramsphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Servicephp_Nirvanixphp_Response
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodNamephp,php php$argsphp)
+php php php php php{
+php php php php php php php php php$uriphp php=php php$thisphp-php>php_makeUriphp(php$methodNamephp)php;
+php php php php php php php php php$thisphp-php>php_httpClientphp-php>setUriphp(php$uriphp)php;
 
-        if (!isset($args[0]) || !is_array($args[0])) {
-            $args[0] = array();
-        }
+php php php php php php php php ifphp php(php!issetphp(php$argsphp[php0php]php)php php|php|php php!isphp_arrayphp(php$argsphp[php0php]php)php)php php{
+php php php php php php php php php php php php php$argsphp[php0php]php php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        $params = array_merge($this->_defaults, $args[0]);
-        $this->_httpClient->resetParameters();
-        $this->_httpClient->setParameterPost($params);
+php php php php php php php php php$paramsphp php=php arrayphp_mergephp(php$thisphp-php>php_defaultsphp,php php$argsphp[php0php]php)php;
+php php php php php php php php php$thisphp-php>php_httpClientphp-php>resetParametersphp(php)php;
+php php php php php php php php php$thisphp-php>php_httpClientphp-php>setParameterPostphp(php$paramsphp)php;
 
-        $httpResponse = $this->_httpClient->request(Zend_Http_Client::POST);
-        return $this->_wrapResponse($httpResponse);
-    }
+php php php php php php php php php$httpResponsephp php=php php$thisphp-php>php_httpClientphp-php>requestphp(Zendphp_Httpphp_Clientphp:php:POSTphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_wrapResponsephp(php$httpResponsephp)php;
+php php php php php}
 
-    /**
-     * Return the HTTP client used for this namespace.  This is useful
-     * for inspecting the last request or directly interacting with the
-     * HTTP client.
-     *
-     * @return Zend_Http_Client
-     */
-    public function getHttpClient()
-    {
-        return $this->_httpClient;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp HTTPphp clientphp usedphp forphp thisphp namespacephp.php php Thisphp isphp useful
+php php php php php php*php forphp inspectingphp thephp lastphp requestphp orphp directlyphp interactingphp withphp the
+php php php php php php*php HTTPphp clientphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp getHttpClientphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_httpClientphp;
+php php php php php}
 
-    /**
-     * Make a complete URI from an RPC method name.  All Nirvanix REST
-     * service URIs use the same format.
-     *
-     * @param  string  $methodName  RPC method name
-     * @return string
-     */
-    protected function _makeUri($methodName)
-    {
-        $methodName = ucfirst($methodName);
-        return "{$this->_host}/ws/{$this->_namespace}/{$methodName}.ashx";
-    }
+php php php php php/php*php*
+php php php php php php*php Makephp aphp completephp URIphp fromphp anphp RPCphp methodphp namephp.php php Allphp Nirvanixphp REST
+php php php php php php*php servicephp URIsphp usephp thephp samephp formatphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$methodNamephp php RPCphp methodphp name
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_makeUriphp(php$methodNamephp)
+php php php php php{
+php php php php php php php php php$methodNamephp php=php ucfirstphp(php$methodNamephp)php;
+php php php php php php php php returnphp php"php{php$thisphp-php>php_hostphp}php/wsphp/php{php$thisphp-php>php_namespacephp}php/php{php$methodNamephp}php.ashxphp"php;
+php php php php php}
 
-    /**
-     * All Nirvanix REST service calls return an XML payload.  This method
-     * makes a Zend_Service_Nirvanix_Response from that XML payload.
-     *
-     * @param  Zend_Http_Response  $httpResponse  Raw response from Nirvanix
-     * @return Zend_Service_Nirvanix_Response     Wrapped response
-     */
-    protected function _wrapResponse($httpResponse)
-    {
-        return new Zend_Service_Nirvanix_Response($httpResponse->getBody());
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Allphp Nirvanixphp RESTphp servicephp callsphp returnphp anphp XMLphp payloadphp.php php Thisphp method
+php php php php php php*php makesphp aphp Zendphp_Servicephp_Nirvanixphp_Responsephp fromphp thatphp XMLphp payloadphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Httpphp_Responsephp php php$httpResponsephp php Rawphp responsephp fromphp Nirvanix
+php php php php php php*php php@returnphp Zendphp_Servicephp_Nirvanixphp_Responsephp php php php php Wrappedphp response
+php php php php php php*php/
+php php php php protectedphp functionphp php_wrapResponsephp(php$httpResponsephp)
+php php php php php{
+php php php php php php php php returnphp newphp Zendphp_Servicephp_Nirvanixphp_Responsephp(php$httpResponsephp-php>getBodyphp(php)php)php;
+php php php php php}
+php}

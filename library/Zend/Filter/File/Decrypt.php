@@ -1,106 +1,106 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Decrypt.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Decryptphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Filter_Decrypt
- */
-require_once 'Zend/Filter/Decrypt.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Decrypt
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Decryptphp.phpphp'php;
 
-/**
- * Decrypts a given file and stores the decrypted file content
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Filter_File_Decrypt extends Zend_Filter_Decrypt
-{
-    /**
-     * New filename to set
-     *
-     * @var string
-     */
-    protected $_filename;
+php/php*php*
+php php*php Decryptsphp aphp givenphp filephp andphp storesphp thephp decryptedphp filephp content
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Filterphp_Filephp_Decryptphp extendsphp Zendphp_Filterphp_Decrypt
+php{
+php php php php php/php*php*
+php php php php php php*php Newphp filenamephp tophp set
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_filenamephp;
 
-    /**
-     * Returns the new filename where the content will be stored
-     *
-     * @return string
-     */
-    public function getFilename()
-    {
-        return $this->_filename;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp newphp filenamephp wherephp thephp contentphp willphp bephp stored
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getFilenamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_filenamephp;
+php php php php php}
 
-    /**
-     * Sets the new filename where the content will be stored
-     *
-     * @param  string $filename (Optional) New filename to set
-     * @return Zend_Filter_File_Encryt
-     */
-    public function setFilename($filename = null)
-    {
-        $this->_filename = $filename;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp newphp filenamephp wherephp thephp contentphp willphp bephp stored
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$filenamephp php(Optionalphp)php Newphp filenamephp tophp set
+php php php php php php*php php@returnphp Zendphp_Filterphp_Filephp_Encryt
+php php php php php php*php/
+php php php php publicphp functionphp setFilenamephp(php$filenamephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_filenamephp php=php php$filenamephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Filter_Interface
-     *
-     * Decrypts the file $value with the defined settings
-     *
-     * @param  string $value Full path of file to change
-     * @return string The filename which has been set, or false when there were errors
-     */
-    public function filter($value)
-    {
-        if (!file_exists($value)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("File '$value' not found");
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
+php php php php php php*
+php php php php php php*php Decryptsphp thephp filephp php$valuephp withphp thephp definedphp settings
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Fullphp pathphp ofphp filephp tophp change
+php php php php php php*php php@returnphp stringphp Thephp filenamephp whichphp hasphp beenphp setphp,php orphp falsephp whenphp therephp werephp errors
+php php php php php php*php/
+php php php php publicphp functionphp filterphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!filephp_existsphp(php$valuephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Filephp php'php$valuephp'php notphp foundphp"php)php;
+php php php php php php php php php}
 
-        if (!isset($this->_filename)) {
-            $this->_filename = $value;
-        }
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_filenamephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_filenamephp php=php php$valuephp;
+php php php php php php php php php}
 
-        if (file_exists($this->_filename) and !is_writable($this->_filename)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("File '{$this->_filename}' is not writable");
-        }
+php php php php php php php php ifphp php(filephp_existsphp(php$thisphp-php>php_filenamephp)php andphp php!isphp_writablephp(php$thisphp-php>php_filenamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Filephp php'php{php$thisphp-php>php_filenamephp}php'php isphp notphp writablephp"php)php;
+php php php php php php php php php}
 
-        $content = file_get_contents($value);
-        if (!$content) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Problem while reading file '$value'");
-        }
+php php php php php php php php php$contentphp php=php filephp_getphp_contentsphp(php$valuephp)php;
+php php php php php php php php ifphp php(php!php$contentphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Problemphp whilephp readingphp filephp php'php$valuephp'php"php)php;
+php php php php php php php php php}
 
-        $decrypted = parent::filter($content);
-        $result    = file_put_contents($this->_filename, $decrypted);
+php php php php php php php php php$decryptedphp php=php parentphp:php:filterphp(php$contentphp)php;
+php php php php php php php php php$resultphp php php php php=php filephp_putphp_contentsphp(php$thisphp-php>php_filenamephp,php php$decryptedphp)php;
 
-        if (!$result) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Problem while writing file '{$this->_filename}'");
-        }
+php php php php php php php php ifphp php(php!php$resultphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Problemphp whilephp writingphp filephp php'php{php$thisphp-php>php_filenamephp}php'php"php)php;
+php php php php php php php php php}
 
-        return $this->_filename;
-    }
-}
+php php php php php php php php returnphp php$thisphp-php>php_filenamephp;
+php php php php php}
+php}

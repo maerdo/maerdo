@@ -1,1277 +1,1277 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Mail.php 23251 2010-10-26 12:47:55Z matthew $
- */
-
-
-/**
- * @see Zend_Mail_Transport_Abstract
- */
-require_once 'Zend/Mail/Transport/Abstract.php';
-
-/**
- * @see Zend_Mime
- */
-require_once 'Zend/Mime.php';
-
-/**
- * @see Zend_Mime_Message
- */
-require_once 'Zend/Mime/Message.php';
-
-/**
- * @see Zend_Mime_Part
- */
-require_once 'Zend/Mime/Part.php';
-
-
-/**
- * Class for sending an email.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Mail extends Zend_Mime_Message
-{
-    /**#@+
-     * @access protected
-     */
-
-    /**
-     * @var Zend_Mail_Transport_Abstract
-     * @static
-     */
-    protected static $_defaultTransport = null;
-
-    /**
-     * @var array
-     * @static
-     */
-    protected static $_defaultFrom;
-
-    /**
-     * @var array
-     * @static
-     */
-    protected static $_defaultReplyTo;
-
-    /**
-     * Mail character set
-     * @var string
-     */
-    protected $_charset = 'iso-8859-1';
-
-    /**
-     * Mail headers
-     * @var array
-     */
-    protected $_headers = array();
-
-    /**
-     * Encoding of Mail headers
-     * @var string
-     */
-    protected $_headerEncoding = Zend_Mime::ENCODING_QUOTEDPRINTABLE;
-
-    /**
-     * From: address
-     * @var string
-     */
-    protected $_from = null;
-
-    /**
-     * To: addresses
-     * @var array
-     */
-    protected $_to = array();
-
-    /**
-     * Array of all recipients
-     * @var array
-     */
-    protected $_recipients = array();
-
-    /**
-     * Reply-To header
-     * @var string
-     */
-    protected $_replyTo = null;
-
-    /**
-     * Return-Path header
-     * @var string
-     */
-    protected $_returnPath = null;
-
-    /**
-     * Subject: header
-     * @var string
-     */
-    protected $_subject = null;
-
-    /**
-     * Date: header
-     * @var string
-     */
-    protected $_date = null;
-
-    /**
-     * Message-ID: header
-     * @var string
-     */
-    protected $_messageId = null;
-
-    /**
-     * text/plain MIME part
-     * @var false|Zend_Mime_Part
-     */
-    protected $_bodyText = false;
-
-    /**
-     * text/html MIME part
-     * @var false|Zend_Mime_Part
-     */
-    protected $_bodyHtml = false;
-
-    /**
-     * MIME boundary string
-     * @var string
-     */
-    protected $_mimeBoundary = null;
-
-    /**
-     * Content type of the message
-     * @var string
-     */
-    protected $_type = null;
-
-    /**#@-*/
-
-    /**
-     * Flag: whether or not email has attachments
-     * @var boolean
-     */
-    public $hasAttachments = false;
-
-
-    /**
-     * Sets the default mail transport for all following uses of
-     * Zend_Mail::send();
-     *
-     * @todo Allow passing a string to indicate the transport to load
-     * @todo Allow passing in optional options for the transport to load
-     * @param  Zend_Mail_Transport_Abstract $transport
-     */
-    public static function setDefaultTransport(Zend_Mail_Transport_Abstract $transport)
-    {
-        self::$_defaultTransport = $transport;
-    }
-
-    /**
-     * Gets the default mail transport for all following uses of
-     * unittests
-     *
-     * @todo Allow passing a string to indicate the transport to load
-     * @todo Allow passing in optional options for the transport to load
-     */
-    public static function getDefaultTransport()
-    {
-        return self::$_defaultTransport;
-    }
-
-    /**
-     * Clear the default transport property
-     */
-    public static function clearDefaultTransport()
-    {
-        self::$_defaultTransport = null;
-    }
-
-    /**
-     * Public constructor
-     *
-     * @param  string $charset
-     * @return void
-     */
-    public function __construct($charset = null)
-    {
-        if ($charset != null) {
-            $this->_charset = $charset;
-        }
-    }
-
-    /**
-     * Return charset string
-     *
-     * @return string
-     */
-    public function getCharset()
-    {
-        return $this->_charset;
-    }
-
-    /**
-     * Set content type
-     *
-     * Should only be used for manually setting multipart content types.
-     *
-     * @param  string $type Content type
-     * @return Zend_Mail Implements fluent interface
-     * @throws Zend_Mail_Exception for types not supported by Zend_Mime
-     */
-    public function setType($type)
-    {
-        $allowed = array(
-            Zend_Mime::MULTIPART_ALTERNATIVE,
-            Zend_Mime::MULTIPART_MIXED,
-            Zend_Mime::MULTIPART_RELATED,
-        );
-        if (!in_array($type, $allowed)) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Invalid content type "' . $type . '"');
-        }
-
-        $this->_type = $type;
-        return $this;
-    }
-
-    /**
-     * Get content type of the message
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->_type;
-    }
-
-    /**
-     * Set an arbitrary mime boundary for the message
-     *
-     * If not set, Zend_Mime will generate one.
-     *
-     * @param  string    $boundary
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function setMimeBoundary($boundary)
-    {
-        $this->_mimeBoundary = $boundary;
-
-        return $this;
-    }
-
-    /**
-     * Return the boundary string used for the message
-     *
-     * @return string
-     */
-    public function getMimeBoundary()
-    {
-        return $this->_mimeBoundary;
-    }
-
-    /**
-     * Return encoding of mail headers
-     *
-     * @deprecated use {@link getHeaderEncoding()} instead
-     * @return string
-     */
-    public function getEncodingOfHeaders()
-    {
-        return $this->getHeaderEncoding();
-    }
-
-    /**
-     * Return the encoding of mail headers
-     *
-     * Either Zend_Mime::ENCODING_QUOTEDPRINTABLE or Zend_Mime::ENCODING_BASE64
-     *
-     * @return string
-     */
-    public function getHeaderEncoding()
-    {
-        return $this->_headerEncoding;
-    }
-
-    /**
-     * Set the encoding of mail headers
-     *
-     * @deprecated Use {@link setHeaderEncoding()} instead.
-     * @param  string $encoding
-     * @return Zend_Mail
-     */
-    public function setEncodingOfHeaders($encoding)
-    {
-        return $this->setHeaderEncoding($encoding);
-    }
-
-    /**
-     * Set the encoding of mail headers
-     *
-     * @param  string $encoding Zend_Mime::ENCODING_QUOTEDPRINTABLE or Zend_Mime::ENCODING_BASE64
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function setHeaderEncoding($encoding)
-    {
-        $allowed = array(
-            Zend_Mime::ENCODING_BASE64,
-            Zend_Mime::ENCODING_QUOTEDPRINTABLE
-        );
-        if (!in_array($encoding, $allowed)) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Invalid encoding "' . $encoding . '"');
-        }
-        $this->_headerEncoding = $encoding;
-
-        return $this;
-    }
-
-    /**
-     * Sets the text body for the message.
-     *
-     * @param  string $txt
-     * @param  string $charset
-     * @param  string $encoding
-     * @return Zend_Mail Provides fluent interface
-    */
-    public function setBodyText($txt, $charset = null, $encoding = Zend_Mime::ENCODING_QUOTEDPRINTABLE)
-    {
-        if ($charset === null) {
-            $charset = $this->_charset;
-        }
-
-        $mp = new Zend_Mime_Part($txt);
-        $mp->encoding = $encoding;
-        $mp->type = Zend_Mime::TYPE_TEXT;
-        $mp->disposition = Zend_Mime::DISPOSITION_INLINE;
-        $mp->charset = $charset;
-
-        $this->_bodyText = $mp;
-
-        return $this;
-    }
-
-    /**
-     * Return text body Zend_Mime_Part or string
-     *
-     * @param  bool textOnly Whether to return just the body text content or the MIME part; defaults to false, the MIME part
-     * @return false|Zend_Mime_Part|string
-     */
-    public function getBodyText($textOnly = false)
-    {
-        if ($textOnly && $this->_bodyText) {
-            $body = $this->_bodyText;
-            return $body->getContent();
-        }
-
-        return $this->_bodyText;
-    }
-
-    /**
-     * Sets the HTML body for the message
-     *
-     * @param  string    $html
-     * @param  string    $charset
-     * @param  string    $encoding
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function setBodyHtml($html, $charset = null, $encoding = Zend_Mime::ENCODING_QUOTEDPRINTABLE)
-    {
-        if ($charset === null) {
-            $charset = $this->_charset;
-        }
-
-        $mp = new Zend_Mime_Part($html);
-        $mp->encoding = $encoding;
-        $mp->type = Zend_Mime::TYPE_HTML;
-        $mp->disposition = Zend_Mime::DISPOSITION_INLINE;
-        $mp->charset = $charset;
-
-        $this->_bodyHtml = $mp;
-
-        return $this;
-    }
-
-    /**
-     * Return Zend_Mime_Part representing body HTML
-     *
-     * @param  bool $htmlOnly Whether to return the body HTML only, or the MIME part; defaults to false, the MIME part
-     * @return false|Zend_Mime_Part|string
-     */
-    public function getBodyHtml($htmlOnly = false)
-    {
-        if ($htmlOnly && $this->_bodyHtml) {
-            $body = $this->_bodyHtml;
-            return $body->getContent();
-        }
-
-        return $this->_bodyHtml;
-    }
-
-    /**
-     * Adds an existing attachment to the mail message
-     *
-     * @param  Zend_Mime_Part $attachment
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function addAttachment(Zend_Mime_Part $attachment)
-    {
-        $this->addPart($attachment);
-        $this->hasAttachments = true;
-
-        return $this;
-    }
-
-    /**
-     * Creates a Zend_Mime_Part attachment
-     *
-     * Attachment is automatically added to the mail object after creation. The
-     * attachment object is returned to allow for further manipulation.
-     *
-     * @param  string         $body
-     * @param  string         $mimeType
-     * @param  string         $disposition
-     * @param  string         $encoding
-     * @param  string         $filename OPTIONAL A filename for the attachment
-     * @return Zend_Mime_Part Newly created Zend_Mime_Part object (to allow
-     * advanced settings)
-     */
-    public function createAttachment($body,
-                                     $mimeType    = Zend_Mime::TYPE_OCTETSTREAM,
-                                     $disposition = Zend_Mime::DISPOSITION_ATTACHMENT,
-                                     $encoding    = Zend_Mime::ENCODING_BASE64,
-                                     $filename    = null)
-    {
-
-        $mp = new Zend_Mime_Part($body);
-        $mp->encoding = $encoding;
-        $mp->type = $mimeType;
-        $mp->disposition = $disposition;
-        $mp->filename = $filename;
-
-        $this->addAttachment($mp);
-
-        return $mp;
-    }
-
-    /**
-     * Return a count of message parts
-     *
-     * @return integer
-     */
-    public function getPartCount()
-    {
-        return count($this->_parts);
-    }
-
-    /**
-     * Encode header fields
-     *
-     * Encodes header content according to RFC1522 if it contains non-printable
-     * characters.
-     *
-     * @param  string $value
-     * @return string
-     */
-    protected function _encodeHeader($value)
-    {
-        if (Zend_Mime::isPrintable($value) === false) {
-            if ($this->getHeaderEncoding() === Zend_Mime::ENCODING_QUOTEDPRINTABLE) {
-                $value = Zend_Mime::encodeQuotedPrintableHeader($value, $this->getCharset(), Zend_Mime::LINELENGTH, Zend_Mime::LINEEND);
-            } else {
-                $value = Zend_Mime::encodeBase64Header($value, $this->getCharset(), Zend_Mime::LINELENGTH, Zend_Mime::LINEEND);
-            }
-        }
-
-        return $value;
-    }
-
-    /**
-     * Add a header to the message
-     *
-     * Adds a header to this message. If append is true and the header already
-     * exists, raises a flag indicating that the header should be appended.
-     *
-     * @param string  $headerName
-     * @param string  $value
-     * @param bool $append
-     */
-    protected function _storeHeader($headerName, $value, $append = false)
-    {
-        if (isset($this->_headers[$headerName])) {
-            $this->_headers[$headerName][] = $value;
-        } else {
-            $this->_headers[$headerName] = array($value);
-        }
-
-        if ($append) {
-            $this->_headers[$headerName]['append'] = true;
-        }
-
-    }
-
-    /**
-     * Clear header from the message
-     *
-     * @param string $headerName
-     * @deprecated use public method directly
-     */
-    protected function _clearHeader($headerName)
-    {
-        $this->clearHeader($headerName);
-    }
-
-    /**
-     * Helper function for adding a recipient and the corresponding header
-     *
-     * @param string $headerName
-     * @param string $email
-     * @param string $name
-     */
-    protected function _addRecipientAndHeader($headerName, $email, $name)
-    {
-        $email = $this->_filterEmail($email);
-        $name  = $this->_filterName($name);
-        // prevent duplicates
-        $this->_recipients[$email] = 1;
-        $this->_storeHeader($headerName, $this->_formatAddress($email, $name), true);
-    }
-
-    /**
-     * Adds To-header and recipient, $email can be an array, or a single string address
-     *
-     * @param  string|array $email
-     * @param  string $name
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function addTo($email, $name='')
-    {
-        if (!is_array($email)) {
-            $email = array($name => $email);
-        }
-
-        foreach ($email as $n => $recipient) {
-            $this->_addRecipientAndHeader('To', $recipient, is_int($n) ? '' : $n);
-            $this->_to[] = $recipient;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Adds Cc-header and recipient, $email can be an array, or a single string address
-     *
-     * @param  string|array    $email
-     * @param  string    $name
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function addCc($email, $name='')
-    {
-        if (!is_array($email)) {
-            $email = array($name => $email);
-        }
-
-        foreach ($email as $n => $recipient) {
-            $this->_addRecipientAndHeader('Cc', $recipient, is_int($n) ? '' : $n);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Adds Bcc recipient, $email can be an array, or a single string address
-     *
-     * @param  string|array    $email
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function addBcc($email)
-    {
-        if (!is_array($email)) {
-            $email = array($email);
-        }
-
-        foreach ($email as $recipient) {
-            $this->_addRecipientAndHeader('Bcc', $recipient, '');
-        }
-
-        return $this;
-    }
-
-    /**
-     * Return list of recipient email addresses
-     *
-     * @return array (of strings)
-     */
-    public function getRecipients()
-    {
-        return array_keys($this->_recipients);
-    }
-
-    /**
-     * Clear header from the message
-     *
-     * @param string $headerName
-     * @return Zend_Mail Provides fluent inter
-     */
-    public function clearHeader($headerName)
-    {
-        if (isset($this->_headers[$headerName])){
-            unset($this->_headers[$headerName]);
-        }
-        return $this;
-    }
-
-    /**
-     * Clears list of recipient email addresses
-     *
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function clearRecipients()
-    {
-        $this->_recipients = array();
-        $this->_to = array();
-
-        $this->clearHeader('To');
-        $this->clearHeader('Cc');
-        $this->clearHeader('Bcc');
-
-        return $this;
-    }
-
-    /**
-     * Sets From-header and sender of the message
-     *
-     * @param  string    $email
-     * @param  string    $name
-     * @return Zend_Mail Provides fluent interface
-     * @throws Zend_Mail_Exception if called subsequent times
-     */
-    public function setFrom($email, $name = null)
-    {
-        if (null !== $this->_from) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('From Header set twice');
-        }
-
-        $email = $this->_filterEmail($email);
-        $name  = $this->_filterName($name);
-        $this->_from = $email;
-        $this->_storeHeader('From', $this->_formatAddress($email, $name), true);
-
-        return $this;
-    }
-
-    /**
-     * Set Reply-To Header
-     *
-     * @param string $email
-     * @param string $name
-     * @return Zend_Mail
-     * @throws Zend_Mail_Exception if called more than one time
-     */
-    public function setReplyTo($email, $name = null)
-    {
-        if (null !== $this->_replyTo) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Reply-To Header set twice');
-        }
-
-        $email = $this->_filterEmail($email);
-        $name  = $this->_filterName($name);
-        $this->_replyTo = $email;
-        $this->_storeHeader('Reply-To', $this->_formatAddress($email, $name), true);
-
-        return $this;
-    }
-
-    /**
-     * Returns the sender of the mail
-     *
-     * @return string
-     */
-    public function getFrom()
-    {
-        return $this->_from;
-    }
-
-    /**
-     * Returns the current Reply-To address of the message
-     *
-     * @return string|null Reply-To address, null when not set
-     */
-    public function getReplyTo()
-    {
-        return $this->_replyTo;
-    }
-
-    /**
-     * Clears the sender from the mail
-     *
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function clearFrom()
-    {
-        $this->_from = null;
-        $this->clearHeader('From');
-
-        return $this;
-    }
-
-     /**
-      * Clears the current Reply-To address from the message
-      *
-      * @return Zend_Mail Provides fluent interface
-      */
-    public function clearReplyTo()
-    {
-        $this->_replyTo = null;
-        $this->clearHeader('Reply-To');
-
-        return $this;
-    }
-
-    /**
-     * Sets Default From-email and name of the message
-     *
-     * @param  string               $email
-     * @param  string    Optional   $name
-     * @return void
-     */
-    public static function setDefaultFrom($email, $name = null)
-    {
-        self::$_defaultFrom = array('email' => $email, 'name' => $name);
-    }
-
-    /**
-     * Returns the default sender of the mail
-     *
-     * @return null|array   Null if none was set.
-     */
-    public static function getDefaultFrom()
-    {
-        return self::$_defaultFrom;
-    }
-
-    /**
-     * Clears the default sender from the mail
-     *
-     * @return void
-     */
-    public static function clearDefaultFrom()
-    {
-        self::$_defaultFrom = null;
-    }
-
-    /**
-     * Sets From-name and -email based on the defaults
-     *
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function setFromToDefaultFrom() {
-        $from = self::getDefaultFrom();
-        if($from === null) {
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception(
-                'No default From Address set to use');
-        }
-
-        $this->setFrom($from['email'], $from['name']);
-
-        return $this;
-    }
-
-    /**
-     * Sets Default ReplyTo-address and -name of the message
-     *
-     * @param  string               $email
-     * @param  string    Optional   $name
-     * @return void
-     */
-    public static function setDefaultReplyTo($email, $name = null)
-    {
-        self::$_defaultReplyTo = array('email' => $email, 'name' => $name);
-    }
-
-    /**
-     * Returns the default Reply-To Address and Name of the mail
-     *
-     * @return null|array   Null if none was set.
-     */
-    public static function getDefaultReplyTo()
-    {
-        return self::$_defaultReplyTo;
-    }
-
-    /**
-     * Clears the default ReplyTo-address and -name from the mail
-     *
-     * @return void
-     */
-    public static function clearDefaultReplyTo()
-    {
-        self::$_defaultReplyTo = null;
-    }
-
-    /**
-     * Sets ReplyTo-name and -email based on the defaults
-     *
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function setReplyToFromDefault() {
-        $replyTo = self::getDefaultReplyTo();
-        if($replyTo === null) {
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception(
-                'No default Reply-To Address set to use');
-        }
-
-        $this->setReplyTo($replyTo['email'], $replyTo['name']);
-
-        return $this;
-    }
-
-    /**
-     * Sets the Return-Path header of the message
-     *
-     * @param  string    $email
-     * @return Zend_Mail Provides fluent interface
-     * @throws Zend_Mail_Exception if set multiple times
-     */
-    public function setReturnPath($email)
-    {
-        if ($this->_returnPath === null) {
-            $email = $this->_filterEmail($email);
-            $this->_returnPath = $email;
-            $this->_storeHeader('Return-Path', $email, false);
-        } else {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Return-Path Header set twice');
-        }
-        return $this;
-    }
-
-    /**
-     * Returns the current Return-Path address of the message
-     *
-     * If no Return-Path header is set, returns the value of {@link $_from}.
-     *
-     * @return string
-     */
-    public function getReturnPath()
-    {
-        if (null !== $this->_returnPath) {
-            return $this->_returnPath;
-        }
-
-        return $this->_from;
-    }
-
-    /**
-     * Clears the current Return-Path address from the message
-     *
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function clearReturnPath()
-    {
-        $this->_returnPath = null;
-        $this->clearHeader('Return-Path');
-
-        return $this;
-    }
-
-    /**
-     * Sets the subject of the message
-     *
-     * @param   string    $subject
-     * @return  Zend_Mail Provides fluent interface
-     * @throws  Zend_Mail_Exception
-     */
-    public function setSubject($subject)
-    {
-        if ($this->_subject === null) {
-            $subject = $this->_filterOther($subject);
-            $this->_subject = $this->_encodeHeader($subject);
-            $this->_storeHeader('Subject', $this->_subject);
-        } else {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Subject set twice');
-        }
-        return $this;
-    }
-
-    /**
-     * Returns the encoded subject of the message
-     *
-     * @return string
-     */
-    public function getSubject()
-    {
-        return $this->_subject;
-    }
-
-    /**
-     * Clears the encoded subject from the message
-     *
-     * @return  Zend_Mail Provides fluent interface
-     */
-    public function clearSubject()
-    {
-        $this->_subject = null;
-        $this->clearHeader('Subject');
-
-        return $this;
-    }
-
-    /**
-     * Sets Date-header
-     *
-     * @param  timestamp|string|Zend_Date $date
-     * @return Zend_Mail Provides fluent interface
-     * @throws Zend_Mail_Exception if called subsequent times or wrong date format.
-     */
-    public function setDate($date = null)
-    {
-        if ($this->_date === null) {
-            if ($date === null) {
-                $date = date('r');
-            } else if (is_int($date)) {
-                $date = date('r', $date);
-            } else if (is_string($date)) {
-                $date = strtotime($date);
-                if ($date === false || $date < 0) {
-                    /**
-                     * @see Zend_Mail_Exception
-                     */
-                    require_once 'Zend/Mail/Exception.php';
-                    throw new Zend_Mail_Exception('String representations of Date Header must be ' .
-                                                  'strtotime()-compatible');
-                }
-                $date = date('r', $date);
-            } else if ($date instanceof Zend_Date) {
-                $date = $date->get(Zend_Date::RFC_2822);
-            } else {
-                /**
-                 * @see Zend_Mail_Exception
-                 */
-                require_once 'Zend/Mail/Exception.php';
-                throw new Zend_Mail_Exception(__METHOD__ . ' only accepts UNIX timestamps, Zend_Date objects, ' .
-                                              ' and strtotime()-compatible strings');
-            }
-            $this->_date = $date;
-            $this->_storeHeader('Date', $date);
-        } else {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Date Header set twice');
-        }
-        return $this;
-    }
-
-    /**
-     * Returns the formatted date of the message
-     *
-     * @return string
-     */
-    public function getDate()
-    {
-        return $this->_date;
-    }
-
-    /**
-     * Clears the formatted date from the message
-     *
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function clearDate()
-    {
-        $this->_date = null;
-        $this->clearHeader('Date');
-
-        return $this;
-    }
-
-    /**
-     * Sets the Message-ID of the message
-     *
-     * @param   boolean|string  $id
-     * true  :Auto
-     * false :No set
-     * null  :No set
-     * string:Sets given string (Angle brackets is not necessary)
-     * @return  Zend_Mail Provides fluent interface
-     * @throws  Zend_Mail_Exception
-     */
-    public function setMessageId($id = true)
-    {
-        if ($id === null || $id === false) {
-            return $this;
-        } elseif ($id === true) {
-            $id = $this->createMessageId();
-        }
-
-        if ($this->_messageId === null) {
-            $id = $this->_filterOther($id);
-            $this->_messageId = $id;
-            $this->_storeHeader('Message-Id', '<' . $this->_messageId . '>');
-        } else {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Message-ID set twice');
-        }
-
-        return $this;
-    }
-
-    /**
-     * Returns the Message-ID of the message
-     *
-     * @return string
-     */
-    public function getMessageId()
-    {
-        return $this->_messageId;
-    }
-
-
-    /**
-     * Clears the Message-ID from the message
-     *
-     * @return Zend_Mail Provides fluent interface
-     */
-    public function clearMessageId()
-    {
-        $this->_messageId = null;
-        $this->clearHeader('Message-Id');
-
-        return $this;
-    }
-
-    /**
-     * Creates the Message-ID
-     *
-     * @return string
-     */
-    public function createMessageId() {
-
-        $time = time();
-
-        if ($this->_from !== null) {
-            $user = $this->_from;
-        } elseif (isset($_SERVER['REMOTE_ADDR'])) {
-            $user = $_SERVER['REMOTE_ADDR'];
-        } else {
-            $user = getmypid();
-        }
-
-        $rand = mt_rand();
-
-        if ($this->_recipients !== array()) {
-            $recipient = array_rand($this->_recipients);
-        } else {
-            $recipient = 'unknown';
-        }
-
-        if (isset($_SERVER["SERVER_NAME"])) {
-            $hostName = $_SERVER["SERVER_NAME"];
-        } else {
-            $hostName = php_uname('n');
-        }
-
-        return sha1($time . $user . $rand . $recipient) . '@' . $hostName;
-    }
-
-    /**
-     * Add a custom header to the message
-     *
-     * @param  string              $name
-     * @param  string              $value
-     * @param  boolean             $append
-     * @return Zend_Mail           Provides fluent interface
-     * @throws Zend_Mail_Exception on attempts to create standard headers
-     */
-    public function addHeader($name, $value, $append = false)
-    {
-        $prohibit = array('to', 'cc', 'bcc', 'from', 'subject',
-                          'reply-to', 'return-path',
-                          'date', 'message-id',
-                         );
-        if (in_array(strtolower($name), $prohibit)) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('Cannot set standard header from addHeader()');
-        }
-
-        $value = $this->_filterOther($value);
-        $value = $this->_encodeHeader($value);
-        $this->_storeHeader($name, $value, $append);
-
-        return $this;
-    }
-
-    /**
-     * Return mail headers
-     *
-     * @return void
-     */
-    public function getHeaders()
-    {
-        return $this->_headers;
-    }
-
-    /**
-     * Sends this email using the given transport or a previously
-     * set DefaultTransport or the internal mail function if no
-     * default transport had been set.
-     *
-     * @param  Zend_Mail_Transport_Abstract $transport
-     * @return Zend_Mail                    Provides fluent interface
-     */
-    public function send($transport = null)
-    {
-        if ($transport === null) {
-            if (! self::$_defaultTransport instanceof Zend_Mail_Transport_Abstract) {
-                require_once 'Zend/Mail/Transport/Sendmail.php';
-                $transport = new Zend_Mail_Transport_Sendmail();
-            } else {
-                $transport = self::$_defaultTransport;
-            }
-        }
-
-        if ($this->_date === null) {
-            $this->setDate();
-        }
-
-        if(null === $this->_from && null !== self::getDefaultFrom()) {
-            $this->setFromToDefaultFrom();
-        }
-
-        if(null === $this->_replyTo && null !== self::getDefaultReplyTo()) {
-            $this->setReplyToFromDefault();
-        }
-
-        $transport->send($this);
-
-        return $this;
-    }
-
-    /**
-     * Filter of email data
-     *
-     * @param string $email
-     * @return string
-     */
-    protected function _filterEmail($email)
-    {
-        $rule = array("\r" => '',
-                      "\n" => '',
-                      "\t" => '',
-                      '"'  => '',
-                      ','  => '',
-                      '<'  => '',
-                      '>'  => '',
-        );
-
-        return strtr($email, $rule);
-    }
-
-    /**
-     * Filter of name data
-     *
-     * @param string $name
-     * @return string
-     */
-    protected function _filterName($name)
-    {
-        $rule = array("\r" => '',
-                      "\n" => '',
-                      "\t" => '',
-                      '"'  => "'",
-                      '<'  => '[',
-                      '>'  => ']',
-        );
-
-        return trim(strtr($name, $rule));
-    }
-
-    /**
-     * Filter of other data
-     *
-     * @param string $data
-     * @return string
-     */
-    protected function _filterOther($data)
-    {
-        $rule = array("\r" => '',
-                      "\n" => '',
-                      "\t" => '',
-        );
-
-        return strtr($data, $rule);
-    }
-
-    /**
-     * Formats e-mail address
-     *
-     * @param string $email
-     * @param string $name
-     * @return string
-     */
-    protected function _formatAddress($email, $name)
-    {
-        if ($name === '' || $name === null || $name === $email) {
-            return $email;
-        } else {
-            $encodedName = $this->_encodeHeader($name);
-            if ($encodedName === $name &&
-                    ((strpos($name, '@') !== false) || (strpos($name, ',') !== false))) {
-                $format = '"%s" <%s>';
-            } else {
-                $format = '%s <%s>';
-            }
-            return sprintf($format, $encodedName, $email);
-        }
-    }
-
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Mailphp.phpphp php2php3php2php5php1php php2php0php1php0php-php1php0php-php2php6php php1php2php:php4php7php:php5php5Zphp matthewphp php$
+php php*php/
+
+
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Transportphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Transportphp/Abstractphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Mime
+php php*php/
+requirephp_oncephp php'Zendphp/Mimephp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Mimephp_Message
+php php*php/
+requirephp_oncephp php'Zendphp/Mimephp/Messagephp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Mimephp_Part
+php php*php/
+requirephp_oncephp php'Zendphp/Mimephp/Partphp.phpphp'php;
+
+
+php/php*php*
+php php*php Classphp forphp sendingphp anphp emailphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Mailphp extendsphp Zendphp_Mimephp_Message
+php{
+php php php php php/php*php*php#php@php+
+php php php php php php*php php@accessphp protected
+php php php php php php*php/
+
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Mailphp_Transportphp_Abstract
+php php php php php php*php php@static
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultTransportphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php php@static
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultFromphp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php php@static
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultReplyTophp;
+
+php php php php php/php*php*
+php php php php php php*php Mailphp characterphp set
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_charsetphp php=php php'isophp-php8php8php5php9php-php1php'php;
+
+php php php php php/php*php*
+php php php php php php*php Mailphp headers
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_headersphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Encodingphp ofphp Mailphp headers
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_headerEncodingphp php=php Zendphp_Mimephp:php:ENCODINGphp_QUOTEDPRINTABLEphp;
+
+php php php php php/php*php*
+php php php php php php*php Fromphp:php address
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_fromphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Tophp:php addresses
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_tophp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp allphp recipients
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_recipientsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Replyphp-Tophp header
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_replyTophp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Returnphp-Pathphp header
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_returnPathphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Subjectphp:php header
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_subjectphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Datephp:php header
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_datephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Messagephp-IDphp:php header
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_messageIdphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php textphp/plainphp MIMEphp part
+php php php php php php*php php@varphp falsephp|Zendphp_Mimephp_Part
+php php php php php php*php/
+php php php php protectedphp php$php_bodyTextphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php textphp/htmlphp MIMEphp part
+php php php php php php*php php@varphp falsephp|Zendphp_Mimephp_Part
+php php php php php php*php/
+php php php php protectedphp php$php_bodyHtmlphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php MIMEphp boundaryphp string
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_mimeBoundaryphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Contentphp typephp ofphp thephp message
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_typephp php=php nullphp;
+
+php php php php php/php*php*php#php@php-php*php/
+
+php php php php php/php*php*
+php php php php php php*php Flagphp:php whetherphp orphp notphp emailphp hasphp attachments
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php publicphp php$hasAttachmentsphp php=php falsephp;
+
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp defaultphp mailphp transportphp forphp allphp followingphp usesphp of
+php php php php php php*php Zendphp_Mailphp:php:sendphp(php)php;
+php php php php php php*
+php php php php php php*php php@todophp Allowphp passingphp aphp stringphp tophp indicatephp thephp transportphp tophp load
+php php php php php php*php php@todophp Allowphp passingphp inphp optionalphp optionsphp forphp thephp transportphp tophp load
+php php php php php php*php php@paramphp php Zendphp_Mailphp_Transportphp_Abstractphp php$transport
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultTransportphp(Zendphp_Mailphp_Transportphp_Abstractphp php$transportphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultTransportphp php=php php$transportphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp defaultphp mailphp transportphp forphp allphp followingphp usesphp of
+php php php php php php*php unittests
+php php php php php php*
+php php php php php php*php php@todophp Allowphp passingphp aphp stringphp tophp indicatephp thephp transportphp tophp load
+php php php php php php*php php@todophp Allowphp passingphp inphp optionalphp optionsphp forphp thephp transportphp tophp load
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultTransportphp(php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:php$php_defaultTransportphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp thephp defaultphp transportphp property
+php php php php php php*php/
+php php php php publicphp staticphp functionphp clearDefaultTransportphp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultTransportphp php=php nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Publicphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$charset
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$charsetphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$charsetphp php!php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_charsetphp php=php php$charsetphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp charsetphp string
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getCharsetphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_charsetphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp contentphp type
+php php php php php php*
+php php php php php php*php Shouldphp onlyphp bephp usedphp forphp manuallyphp settingphp multipartphp contentphp typesphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$typephp Contentphp type
+php php php php php php*php php@returnphp Zendphp_Mailphp Implementsphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exceptionphp forphp typesphp notphp supportedphp byphp Zendphp_Mime
+php php php php php php*php/
+php php php php publicphp functionphp setTypephp(php$typephp)
+php php php php php{
+php php php php php php php php php$allowedphp php=php arrayphp(
+php php php php php php php php php php php php Zendphp_Mimephp:php:MULTIPARTphp_ALTERNATIVEphp,
+php php php php php php php php php php php php Zendphp_Mimephp:php:MULTIPARTphp_MIXEDphp,
+php php php php php php php php php php php php Zendphp_Mimephp:php:MULTIPARTphp_RELATEDphp,
+php php php php php php php php php)php;
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$typephp,php php$allowedphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Invalidphp contentphp typephp php"php'php php.php php$typephp php.php php'php"php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_typephp php=php php$typephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp contentphp typephp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_typephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp anphp arbitraryphp mimephp boundaryphp forphp thephp message
+php php php php php php*
+php php php php php php*php Ifphp notphp setphp,php Zendphp_Mimephp willphp generatephp onephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php$boundary
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setMimeBoundaryphp(php$boundaryphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_mimeBoundaryphp php=php php$boundaryphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp boundaryphp stringphp usedphp forphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getMimeBoundaryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_mimeBoundaryphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp encodingphp ofphp mailphp headers
+php php php php php php*
+php php php php php php*php php@deprecatedphp usephp php{php@linkphp getHeaderEncodingphp(php)php}php instead
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingOfHeadersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getHeaderEncodingphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp encodingphp ofphp mailphp headers
+php php php php php php*
+php php php php php php*php Eitherphp Zendphp_Mimephp:php:ENCODINGphp_QUOTEDPRINTABLEphp orphp Zendphp_Mimephp:php:ENCODINGphp_BASEphp6php4
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getHeaderEncodingphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_headerEncodingphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp encodingphp ofphp mailphp headers
+php php php php php php*
+php php php php php php*php php@deprecatedphp Usephp php{php@linkphp setHeaderEncodingphp(php)php}php insteadphp.
+php php php php php php*php php@paramphp php stringphp php$encoding
+php php php php php php*php php@returnphp Zendphp_Mail
+php php php php php php*php/
+php php php php publicphp functionphp setEncodingOfHeadersphp(php$encodingphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>setHeaderEncodingphp(php$encodingphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp encodingphp ofphp mailphp headers
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$encodingphp Zendphp_Mimephp:php:ENCODINGphp_QUOTEDPRINTABLEphp orphp Zendphp_Mimephp:php:ENCODINGphp_BASEphp6php4
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setHeaderEncodingphp(php$encodingphp)
+php php php php php{
+php php php php php php php php php$allowedphp php=php arrayphp(
+php php php php php php php php php php php php Zendphp_Mimephp:php:ENCODINGphp_BASEphp6php4php,
+php php php php php php php php php php php php Zendphp_Mimephp:php:ENCODINGphp_QUOTEDPRINTABLE
+php php php php php php php php php)php;
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$encodingphp,php php$allowedphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Invalidphp encodingphp php"php'php php.php php$encodingphp php.php php'php"php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_headerEncodingphp php=php php$encodingphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp textphp bodyphp forphp thephp messagephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$txt
+php php php php php php*php php@paramphp php stringphp php$charset
+php php php php php php*php php@paramphp php stringphp php$encoding
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php*php/
+php php php php publicphp functionphp setBodyTextphp(php$txtphp,php php$charsetphp php=php nullphp,php php$encodingphp php=php Zendphp_Mimephp:php:ENCODINGphp_QUOTEDPRINTABLEphp)
+php php php php php{
+php php php php php php php php ifphp php(php$charsetphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$charsetphp php=php php$thisphp-php>php_charsetphp;
+php php php php php php php php php}
+
+php php php php php php php php php$mpphp php=php newphp Zendphp_Mimephp_Partphp(php$txtphp)php;
+php php php php php php php php php$mpphp-php>encodingphp php=php php$encodingphp;
+php php php php php php php php php$mpphp-php>typephp php=php Zendphp_Mimephp:php:TYPEphp_TEXTphp;
+php php php php php php php php php$mpphp-php>dispositionphp php=php Zendphp_Mimephp:php:DISPOSITIONphp_INLINEphp;
+php php php php php php php php php$mpphp-php>charsetphp php=php php$charsetphp;
+
+php php php php php php php php php$thisphp-php>php_bodyTextphp php=php php$mpphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp textphp bodyphp Zendphp_Mimephp_Partphp orphp string
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp textOnlyphp Whetherphp tophp returnphp justphp thephp bodyphp textphp contentphp orphp thephp MIMEphp partphp;php defaultsphp tophp falsephp,php thephp MIMEphp part
+php php php php php php*php php@returnphp falsephp|Zendphp_Mimephp_Partphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getBodyTextphp(php$textOnlyphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$textOnlyphp php&php&php php$thisphp-php>php_bodyTextphp)php php{
+php php php php php php php php php php php php php$bodyphp php=php php$thisphp-php>php_bodyTextphp;
+php php php php php php php php php php php php returnphp php$bodyphp-php>getContentphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_bodyTextphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp HTMLphp bodyphp forphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php$html
+php php php php php php*php php@paramphp php stringphp php php php php$charset
+php php php php php php*php php@paramphp php stringphp php php php php$encoding
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setBodyHtmlphp(php$htmlphp,php php$charsetphp php=php nullphp,php php$encodingphp php=php Zendphp_Mimephp:php:ENCODINGphp_QUOTEDPRINTABLEphp)
+php php php php php{
+php php php php php php php php ifphp php(php$charsetphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$charsetphp php=php php$thisphp-php>php_charsetphp;
+php php php php php php php php php}
+
+php php php php php php php php php$mpphp php=php newphp Zendphp_Mimephp_Partphp(php$htmlphp)php;
+php php php php php php php php php$mpphp-php>encodingphp php=php php$encodingphp;
+php php php php php php php php php$mpphp-php>typephp php=php Zendphp_Mimephp:php:TYPEphp_HTMLphp;
+php php php php php php php php php$mpphp-php>dispositionphp php=php Zendphp_Mimephp:php:DISPOSITIONphp_INLINEphp;
+php php php php php php php php php$mpphp-php>charsetphp php=php php$charsetphp;
+
+php php php php php php php php php$thisphp-php>php_bodyHtmlphp php=php php$mpphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp Zendphp_Mimephp_Partphp representingphp bodyphp HTML
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$htmlOnlyphp Whetherphp tophp returnphp thephp bodyphp HTMLphp onlyphp,php orphp thephp MIMEphp partphp;php defaultsphp tophp falsephp,php thephp MIMEphp part
+php php php php php php*php php@returnphp falsephp|Zendphp_Mimephp_Partphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getBodyHtmlphp(php$htmlOnlyphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$htmlOnlyphp php&php&php php$thisphp-php>php_bodyHtmlphp)php php{
+php php php php php php php php php php php php php$bodyphp php=php php$thisphp-php>php_bodyHtmlphp;
+php php php php php php php php php php php php returnphp php$bodyphp-php>getContentphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_bodyHtmlphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addsphp anphp existingphp attachmentphp tophp thephp mailphp message
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Mimephp_Partphp php$attachment
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addAttachmentphp(Zendphp_Mimephp_Partphp php$attachmentphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>addPartphp(php$attachmentphp)php;
+php php php php php php php php php$thisphp-php>hasAttachmentsphp php=php truephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createsphp aphp Zendphp_Mimephp_Partphp attachment
+php php php php php php*
+php php php php php php*php Attachmentphp isphp automaticallyphp addedphp tophp thephp mailphp objectphp afterphp creationphp.php The
+php php php php php php*php attachmentphp objectphp isphp returnedphp tophp allowphp forphp furtherphp manipulationphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php$body
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php$mimeType
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php$disposition
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php$encoding
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php$filenamephp OPTIONALphp Aphp filenamephp forphp thephp attachment
+php php php php php php*php php@returnphp Zendphp_Mimephp_Partphp Newlyphp createdphp Zendphp_Mimephp_Partphp objectphp php(tophp allow
+php php php php php php*php advancedphp settingsphp)
+php php php php php php*php/
+php php php php publicphp functionphp createAttachmentphp(php$bodyphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$mimeTypephp php php php php=php Zendphp_Mimephp:php:TYPEphp_OCTETSTREAMphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$dispositionphp php=php Zendphp_Mimephp:php:DISPOSITIONphp_ATTACHMENTphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$encodingphp php php php php=php Zendphp_Mimephp:php:ENCODINGphp_BASEphp6php4php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$filenamephp php php php php=php nullphp)
+php php php php php{
+
+php php php php php php php php php$mpphp php=php newphp Zendphp_Mimephp_Partphp(php$bodyphp)php;
+php php php php php php php php php$mpphp-php>encodingphp php=php php$encodingphp;
+php php php php php php php php php$mpphp-php>typephp php=php php$mimeTypephp;
+php php php php php php php php php$mpphp-php>dispositionphp php=php php$dispositionphp;
+php php php php php php php php php$mpphp-php>filenamephp php=php php$filenamephp;
+
+php php php php php php php php php$thisphp-php>addAttachmentphp(php$mpphp)php;
+
+php php php php php php php php returnphp php$mpphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp countphp ofphp messagephp parts
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getPartCountphp(php)
+php php php php php{
+php php php php php php php php returnphp countphp(php$thisphp-php>php_partsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Encodephp headerphp fields
+php php php php php php*
+php php php php php php*php Encodesphp headerphp contentphp accordingphp tophp RFCphp1php5php2php2php ifphp itphp containsphp nonphp-printable
+php php php php php php*php charactersphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_encodeHeaderphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(Zendphp_Mimephp:php:isPrintablephp(php$valuephp)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>getHeaderEncodingphp(php)php php=php=php=php Zendphp_Mimephp:php:ENCODINGphp_QUOTEDPRINTABLEphp)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php Zendphp_Mimephp:php:encodeQuotedPrintableHeaderphp(php$valuephp,php php$thisphp-php>getCharsetphp(php)php,php Zendphp_Mimephp:php:LINELENGTHphp,php Zendphp_Mimephp:php:LINEENDphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$valuephp php=php Zendphp_Mimephp:php:encodeBasephp6php4Headerphp(php$valuephp,php php$thisphp-php>getCharsetphp(php)php,php Zendphp_Mimephp:php:LINELENGTHphp,php Zendphp_Mimephp:php:LINEENDphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$valuephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp aphp headerphp tophp thephp message
+php php php php php php*
+php php php php php php*php Addsphp aphp headerphp tophp thisphp messagephp.php Ifphp appendphp isphp truephp andphp thephp headerphp already
+php php php php php php*php existsphp,php raisesphp aphp flagphp indicatingphp thatphp thephp headerphp shouldphp bephp appendedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php php$headerName
+php php php php php php*php php@paramphp stringphp php php$value
+php php php php php php*php php@paramphp boolphp php$append
+php php php php php php*php/
+php php php php protectedphp functionphp php_storeHeaderphp(php$headerNamephp,php php$valuephp,php php$appendphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_headersphp[php$headerNamephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_headersphp[php$headerNamephp]php[php]php php=php php$valuephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_headersphp[php$headerNamephp]php php=php arrayphp(php$valuephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$appendphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_headersphp[php$headerNamephp]php[php'appendphp'php]php php=php truephp;
+php php php php php php php php php}
+
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp headerphp fromphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$headerName
+php php php php php php*php php@deprecatedphp usephp publicphp methodphp directly
+php php php php php php*php/
+php php php php protectedphp functionphp php_clearHeaderphp(php$headerNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>clearHeaderphp(php$headerNamephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Helperphp functionphp forphp addingphp aphp recipientphp andphp thephp correspondingphp header
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$headerName
+php php php php php php*php php@paramphp stringphp php$email
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php/
+php php php php protectedphp functionphp php_addRecipientAndHeaderphp(php$headerNamephp,php php$emailphp,php php$namephp)
+php php php php php{
+php php php php php php php php php$emailphp php=php php$thisphp-php>php_filterEmailphp(php$emailphp)php;
+php php php php php php php php php$namephp php php=php php$thisphp-php>php_filterNamephp(php$namephp)php;
+php php php php php php php php php/php/php preventphp duplicates
+php php php php php php php php php$thisphp-php>php_recipientsphp[php$emailphp]php php=php php1php;
+php php php php php php php php php$thisphp-php>php_storeHeaderphp(php$headerNamephp,php php$thisphp-php>php_formatAddressphp(php$emailphp,php php$namephp)php,php truephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addsphp Tophp-headerphp andphp recipientphp,php php$emailphp canphp bephp anphp arrayphp,php orphp aphp singlephp stringphp address
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$email
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addTophp(php$emailphp,php php$namephp=php'php'php)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$emailphp)php)php php{
+php php php php php php php php php php php php php$emailphp php=php arrayphp(php$namephp php=php>php php$emailphp)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$emailphp asphp php$nphp php=php>php php$recipientphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_addRecipientAndHeaderphp(php'Tophp'php,php php$recipientphp,php isphp_intphp(php$nphp)php php?php php'php'php php:php php$nphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_tophp[php]php php=php php$recipientphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addsphp Ccphp-headerphp andphp recipientphp,php php$emailphp canphp bephp anphp arrayphp,php orphp aphp singlephp stringphp address
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php php php php$email
+php php php php php php*php php@paramphp php stringphp php php php php$name
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addCcphp(php$emailphp,php php$namephp=php'php'php)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$emailphp)php)php php{
+php php php php php php php php php php php php php$emailphp php=php arrayphp(php$namephp php=php>php php$emailphp)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$emailphp asphp php$nphp php=php>php php$recipientphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_addRecipientAndHeaderphp(php'Ccphp'php,php php$recipientphp,php isphp_intphp(php$nphp)php php?php php'php'php php:php php$nphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addsphp Bccphp recipientphp,php php$emailphp canphp bephp anphp arrayphp,php orphp aphp singlephp stringphp address
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php php php php$email
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addBccphp(php$emailphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$emailphp)php)php php{
+php php php php php php php php php php php php php$emailphp php=php arrayphp(php$emailphp)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$emailphp asphp php$recipientphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_addRecipientAndHeaderphp(php'Bccphp'php,php php$recipientphp,php php'php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp listphp ofphp recipientphp emailphp addresses
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp php(ofphp stringsphp)
+php php php php php php*php/
+php php php php publicphp functionphp getRecipientsphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp_keysphp(php$thisphp-php>php_recipientsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp headerphp fromphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$headerName
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp inter
+php php php php php php*php/
+php php php php publicphp functionphp clearHeaderphp(php$headerNamephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_headersphp[php$headerNamephp]php)php)php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_headersphp[php$headerNamephp]php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp listphp ofphp recipientphp emailphp addresses
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp clearRecipientsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_recipientsphp php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_tophp php=php arrayphp(php)php;
+
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Tophp'php)php;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Ccphp'php)php;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Bccphp'php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp Fromphp-headerphp andphp senderphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php$email
+php php php php php php*php php@paramphp php stringphp php php php php$name
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exceptionphp ifphp calledphp subsequentphp times
+php php php php php php*php/
+php php php php publicphp functionphp setFromphp(php$emailphp,php php$namephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_fromphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Fromphp Headerphp setphp twicephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$emailphp php=php php$thisphp-php>php_filterEmailphp(php$emailphp)php;
+php php php php php php php php php$namephp php php=php php$thisphp-php>php_filterNamephp(php$namephp)php;
+php php php php php php php php php$thisphp-php>php_fromphp php=php php$emailphp;
+php php php php php php php php php$thisphp-php>php_storeHeaderphp(php'Fromphp'php,php php$thisphp-php>php_formatAddressphp(php$emailphp,php php$namephp)php,php truephp)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp Replyphp-Tophp Header
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$email
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Mail
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exceptionphp ifphp calledphp morephp thanphp onephp time
+php php php php php php*php/
+php php php php publicphp functionphp setReplyTophp(php$emailphp,php php$namephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_replyTophp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Replyphp-Tophp Headerphp setphp twicephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$emailphp php=php php$thisphp-php>php_filterEmailphp(php$emailphp)php;
+php php php php php php php php php$namephp php php=php php$thisphp-php>php_filterNamephp(php$namephp)php;
+php php php php php php php php php$thisphp-php>php_replyTophp php=php php$emailphp;
+php php php php php php php php php$thisphp-php>php_storeHeaderphp(php'Replyphp-Tophp'php,php php$thisphp-php>php_formatAddressphp(php$emailphp,php php$namephp)php,php truephp)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp senderphp ofphp thephp mail
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getFromphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_fromphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp currentphp Replyphp-Tophp addressphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|nullphp Replyphp-Tophp addressphp,php nullphp whenphp notphp set
+php php php php php php*php/
+php php php php publicphp functionphp getReplyTophp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_replyTophp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp thephp senderphp fromphp thephp mail
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp clearFromphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fromphp php=php nullphp;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Fromphp'php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php php/php*php*
+php php php php php php php*php Clearsphp thephp currentphp Replyphp-Tophp addressphp fromphp thephp message
+php php php php php php php*
+php php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php php*php/
+php php php php publicphp functionphp clearReplyTophp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_replyTophp php=php nullphp;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Replyphp-Tophp'php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp Defaultphp Fromphp-emailphp andphp namephp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php$email
+php php php php php php*php php@paramphp php stringphp php php php Optionalphp php php php$name
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultFromphp(php$emailphp,php php$namephp php=php nullphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultFromphp php=php arrayphp(php'emailphp'php php=php>php php$emailphp,php php'namephp'php php=php>php php$namephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp defaultphp senderphp ofphp thephp mail
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|arrayphp php php Nullphp ifphp nonephp wasphp setphp.
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultFromphp(php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:php$php_defaultFromphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp thephp defaultphp senderphp fromphp thephp mail
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp clearDefaultFromphp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultFromphp php=php nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp Fromphp-namephp andphp php-emailphp basedphp onphp thephp defaults
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setFromToDefaultFromphp(php)php php{
+php php php php php php php php php$fromphp php=php selfphp:php:getDefaultFromphp(php)php;
+php php php php php php php php ifphp(php$fromphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Nophp defaultphp Fromphp Addressphp setphp tophp usephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>setFromphp(php$fromphp[php'emailphp'php]php,php php$fromphp[php'namephp'php]php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp Defaultphp ReplyTophp-addressphp andphp php-namephp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php$email
+php php php php php php*php php@paramphp php stringphp php php php Optionalphp php php php$name
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultReplyTophp(php$emailphp,php php$namephp php=php nullphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultReplyTophp php=php arrayphp(php'emailphp'php php=php>php php$emailphp,php php'namephp'php php=php>php php$namephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp defaultphp Replyphp-Tophp Addressphp andphp Namephp ofphp thephp mail
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|arrayphp php php Nullphp ifphp nonephp wasphp setphp.
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultReplyTophp(php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:php$php_defaultReplyTophp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp thephp defaultphp ReplyTophp-addressphp andphp php-namephp fromphp thephp mail
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp clearDefaultReplyTophp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultReplyTophp php=php nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp ReplyTophp-namephp andphp php-emailphp basedphp onphp thephp defaults
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setReplyToFromDefaultphp(php)php php{
+php php php php php php php php php$replyTophp php=php selfphp:php:getDefaultReplyTophp(php)php;
+php php php php php php php php ifphp(php$replyTophp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Nophp defaultphp Replyphp-Tophp Addressphp setphp tophp usephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>setReplyTophp(php$replyTophp[php'emailphp'php]php,php php$replyTophp[php'namephp'php]php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp Returnphp-Pathphp headerphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php$email
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exceptionphp ifphp setphp multiplephp times
+php php php php php php*php/
+php php php php publicphp functionphp setReturnPathphp(php$emailphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_returnPathphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$emailphp php=php php$thisphp-php>php_filterEmailphp(php$emailphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_returnPathphp php=php php$emailphp;
+php php php php php php php php php php php php php$thisphp-php>php_storeHeaderphp(php'Returnphp-Pathphp'php,php php$emailphp,php falsephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Returnphp-Pathphp Headerphp setphp twicephp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp currentphp Returnphp-Pathphp addressphp ofphp thephp message
+php php php php php php*
+php php php php php php*php Ifphp nophp Returnphp-Pathphp headerphp isphp setphp,php returnsphp thephp valuephp ofphp php{php@linkphp php$php_fromphp}php.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getReturnPathphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_returnPathphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_returnPathphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_fromphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp thephp currentphp Returnphp-Pathphp addressphp fromphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp clearReturnPathphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_returnPathphp php=php nullphp;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Returnphp-Pathphp'php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp subjectphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php php php$subject
+php php php php php php*php php@returnphp php Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php php@throwsphp php Zendphp_Mailphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setSubjectphp(php$subjectphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_subjectphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$subjectphp php=php php$thisphp-php>php_filterOtherphp(php$subjectphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_subjectphp php=php php$thisphp-php>php_encodeHeaderphp(php$subjectphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_storeHeaderphp(php'Subjectphp'php,php php$thisphp-php>php_subjectphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Subjectphp setphp twicephp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp encodedphp subjectphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getSubjectphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_subjectphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp thephp encodedphp subjectphp fromphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp php Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp clearSubjectphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_subjectphp php=php nullphp;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Subjectphp'php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp Datephp-header
+php php php php php php*
+php php php php php php*php php@paramphp php timestampphp|stringphp|Zendphp_Datephp php$date
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exceptionphp ifphp calledphp subsequentphp timesphp orphp wrongphp datephp formatphp.
+php php php php php php*php/
+php php php php publicphp functionphp setDatephp(php$datephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_datephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php$datephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$datephp php=php datephp(php'rphp'php)php;
+php php php php php php php php php php php php php}php elsephp ifphp php(isphp_intphp(php$datephp)php)php php{
+php php php php php php php php php php php php php php php php php$datephp php=php datephp(php'rphp'php,php php$datephp)php;
+php php php php php php php php php php php php php}php elsephp ifphp php(isphp_stringphp(php$datephp)php)php php{
+php php php php php php php php php php php php php php php php php$datephp php=php strtotimephp(php$datephp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$datephp php=php=php=php falsephp php|php|php php$datephp <php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Stringphp representationsphp ofphp Datephp Headerphp mustphp bephp php'php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'strtotimephp(php)php-compatiblephp'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$datephp php=php datephp(php'rphp'php,php php$datephp)php;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$datephp instanceofphp Zendphp_Datephp)php php{
+php php php php php php php php php php php php php php php php php$datephp php=php php$datephp-php>getphp(Zendphp_Datephp:php:RFCphp_php2php8php2php2php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php_php_METHODphp_php_php php.php php'php onlyphp acceptsphp UNIXphp timestampsphp,php Zendphp_Datephp objectsphp,php php'php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php andphp strtotimephp(php)php-compatiblephp stringsphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_datephp php=php php$datephp;
+php php php php php php php php php php php php php$thisphp-php>php_storeHeaderphp(php'Datephp'php,php php$datephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Datephp Headerphp setphp twicephp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp formattedphp datephp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDatephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_datephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp thephp formattedphp datephp fromphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp clearDatephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_datephp php=php nullphp;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Datephp'php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp Messagephp-IDphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php php booleanphp|stringphp php php$id
+php php php php php php*php truephp php php:Auto
+php php php php php php*php falsephp php:Nophp set
+php php php php php php*php nullphp php php:Nophp set
+php php php php php php*php stringphp:Setsphp givenphp stringphp php(Anglephp bracketsphp isphp notphp necessaryphp)
+php php php php php php*php php@returnphp php Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php php@throwsphp php Zendphp_Mailphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setMessageIdphp(php$idphp php=php truephp)
+php php php php php{
+php php php php php php php php ifphp php(php$idphp php=php=php=php nullphp php|php|php php$idphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}php elseifphp php(php$idphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$idphp php=php php$thisphp-php>createMessageIdphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>php_messageIdphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_filterOtherphp(php$idphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_messageIdphp php=php php$idphp;
+php php php php php php php php php php php php php$thisphp-php>php_storeHeaderphp(php'Messagephp-Idphp'php,php php'<php'php php.php php$thisphp-php>php_messageIdphp php.php php'php>php'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Messagephp-IDphp setphp twicephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp Messagephp-IDphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getMessageIdphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_messageIdphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp thephp Messagephp-IDphp fromphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp clearMessageIdphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_messageIdphp php=php nullphp;
+php php php php php php php php php$thisphp-php>clearHeaderphp(php'Messagephp-Idphp'php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createsphp thephp Messagephp-ID
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp createMessageIdphp(php)php php{
+
+php php php php php php php php php$timephp php=php timephp(php)php;
+
+php php php php php php php php ifphp php(php$thisphp-php>php_fromphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$userphp php=php php$thisphp-php>php_fromphp;
+php php php php php php php php php}php elseifphp php(issetphp(php$php_SERVERphp[php'REMOTEphp_ADDRphp'php]php)php)php php{
+php php php php php php php php php php php php php$userphp php=php php$php_SERVERphp[php'REMOTEphp_ADDRphp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$userphp php=php getmypidphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$randphp php=php mtphp_randphp(php)php;
+
+php php php php php php php php ifphp php(php$thisphp-php>php_recipientsphp php!php=php=php arrayphp(php)php)php php{
+php php php php php php php php php php php php php$recipientphp php=php arrayphp_randphp(php$thisphp-php>php_recipientsphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$recipientphp php=php php'unknownphp'php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$php_SERVERphp[php"SERVERphp_NAMEphp"php]php)php)php php{
+php php php php php php php php php php php php php$hostNamephp php=php php$php_SERVERphp[php"SERVERphp_NAMEphp"php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$hostNamephp php=php phpphp_unamephp(php'nphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp shaphp1php(php$timephp php.php php$userphp php.php php$randphp php.php php$recipientphp)php php.php php'php@php'php php.php php$hostNamephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp aphp customphp headerphp tophp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$name
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$value
+php php php php php php*php php@paramphp php booleanphp php php php php php php php php php php php php php$append
+php php php php php php*php php@returnphp Zendphp_Mailphp php php php php php php php php php php Providesphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exceptionphp onphp attemptsphp tophp createphp standardphp headers
+php php php php php php*php/
+php php php php publicphp functionphp addHeaderphp(php$namephp,php php$valuephp,php php$appendphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$prohibitphp php=php arrayphp(php'tophp'php,php php'ccphp'php,php php'bccphp'php,php php'fromphp'php,php php'subjectphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php'replyphp-tophp'php,php php'returnphp-pathphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php'datephp'php,php php'messagephp-idphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php ifphp php(inphp_arrayphp(strtolowerphp(php$namephp)php,php php$prohibitphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'Cannotphp setphp standardphp headerphp fromphp addHeaderphp(php)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$valuephp php=php php$thisphp-php>php_filterOtherphp(php$valuephp)php;
+php php php php php php php php php$valuephp php=php php$thisphp-php>php_encodeHeaderphp(php$valuephp)php;
+php php php php php php php php php$thisphp-php>php_storeHeaderphp(php$namephp,php php$valuephp,php php$appendphp)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp mailphp headers
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp getHeadersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_headersphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Sendsphp thisphp emailphp usingphp thephp givenphp transportphp orphp aphp previously
+php php php php php php*php setphp DefaultTransportphp orphp thephp internalphp mailphp functionphp ifphp no
+php php php php php php*php defaultphp transportphp hadphp beenphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Mailphp_Transportphp_Abstractphp php$transport
+php php php php php php*php php@returnphp Zendphp_Mailphp php php php php php php php php php php php php php php php php php php php Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp sendphp(php$transportphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$transportphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php!php selfphp:php:php$php_defaultTransportphp instanceofphp Zendphp_Mailphp_Transportphp_Abstractphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Transportphp/Sendmailphp.phpphp'php;
+php php php php php php php php php php php php php php php php php$transportphp php=php newphp Zendphp_Mailphp_Transportphp_Sendmailphp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$transportphp php=php selfphp:php:php$php_defaultTransportphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>php_datephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setDatephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp(nullphp php=php=php=php php$thisphp-php>php_fromphp php&php&php nullphp php!php=php=php selfphp:php:getDefaultFromphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setFromToDefaultFromphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp(nullphp php=php=php=php php$thisphp-php>php_replyTophp php&php&php nullphp php!php=php=php selfphp:php:getDefaultReplyTophp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setReplyToFromDefaultphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$transportphp-php>sendphp(php$thisphp)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Filterphp ofphp emailphp data
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$email
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_filterEmailphp(php$emailphp)
+php php php php php{
+php php php php php php php php php$rulephp php=php arrayphp(php"php\rphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php"php\nphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php"php\tphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php'php"php'php php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php'php,php'php php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php'<php'php php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php'php>php'php php php=php>php php'php'php,
+php php php php php php php php php)php;
+
+php php php php php php php php returnphp strtrphp(php$emailphp,php php$rulephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Filterphp ofphp namephp data
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_filterNamephp(php$namephp)
+php php php php php{
+php php php php php php php php php$rulephp php=php arrayphp(php"php\rphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php"php\nphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php"php\tphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php'php"php'php php php=php>php php"php'php"php,
+php php php php php php php php php php php php php php php php php php php php php php php'<php'php php php=php>php php'php[php'php,
+php php php php php php php php php php php php php php php php php php php php php php php'php>php'php php php=php>php php'php]php'php,
+php php php php php php php php php)php;
+
+php php php php php php php php returnphp trimphp(strtrphp(php$namephp,php php$rulephp)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Filterphp ofphp otherphp data
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_filterOtherphp(php$dataphp)
+php php php php php{
+php php php php php php php php php$rulephp php=php arrayphp(php"php\rphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php"php\nphp"php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php"php\tphp"php php=php>php php'php'php,
+php php php php php php php php php)php;
+
+php php php php php php php php returnphp strtrphp(php$dataphp,php php$rulephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Formatsphp ephp-mailphp address
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$email
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_formatAddressphp(php$emailphp,php php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php$namephp php=php=php=php php'php'php php|php|php php$namephp php=php=php=php nullphp php|php|php php$namephp php=php=php=php php$emailphp)php php{
+php php php php php php php php php php php php returnphp php$emailphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$encodedNamephp php=php php$thisphp-php>php_encodeHeaderphp(php$namephp)php;
+php php php php php php php php php php php php ifphp php(php$encodedNamephp php=php=php=php php$namephp php&php&
+php php php php php php php php php php php php php php php php php php php php php(php(strposphp(php$namephp,php php'php@php'php)php php!php=php=php falsephp)php php|php|php php(strposphp(php$namephp,php php'php,php'php)php php!php=php=php falsephp)php)php)php php{
+php php php php php php php php php php php php php php php php php$formatphp php=php php'php"php%sphp"php <php%sphp>php'php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$formatphp php=php php'php%sphp <php%sphp>php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp sprintfphp(php$formatphp,php php$encodedNamephp,php php$emailphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php}

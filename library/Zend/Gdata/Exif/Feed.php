@@ -1,70 +1,70 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage Exif
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Feed.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Gdata
+php php*php php@subpackagephp Exif
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Feedphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Gdata_eed
- */
-require_once 'Zend/Gdata/Feed.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_eed
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Feedphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif
- */
-require_once 'Zend/Gdata/Exif.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exif
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Entry
- */
-require_once 'Zend/Gdata/Exif/Entry.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Entry
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Entryphp.phpphp'php;
 
-/**
- * Feed for Gdata EXIF data entries.
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage Exif
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Gdata_Exif_Feed extends Zend_Gdata_Feed
-{
+php/php*php*
+php php*php Feedphp forphp Gdataphp EXIFphp dataphp entriesphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Gdata
+php php*php php@subpackagephp Exif
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Gdataphp_Exifphp_Feedphp extendsphp Zendphp_Gdataphp_Feed
+php{
 
-    /**
-     * The classname for individual feed elements.
-     *
-     * @var string
-     */
-    protected $_entryClassName = 'Zend_Gdata_Exif_Entry';
+php php php php php/php*php*
+php php php php php php*php Thephp classnamephp forphp individualphp feedphp elementsphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_entryClassNamephp php=php php'Zendphp_Gdataphp_Exifphp_Entryphp'php;
 
-    /**
-     * Create a new instance.
-     *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
-     */
-    public function __construct($element = null)
-    {
-        $this->registerAllNamespaces(Zend_Gdata_Exif::$namespaces);
-        parent::__construct($element);
-    }
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp instancephp.
+php php php php php php*
+php php php php php php*php php@paramphp DOMElementphp php$elementphp php(optionalphp)php DOMElementphp fromphp whichphp this
+php php php php php php*php php php php php php php php php php objectphp shouldphp bephp constructedphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$elementphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>registerAllNamespacesphp(Zendphp_Gdataphp_Exifphp:php:php$namespacesphp)php;
+php php php php php php php php parentphp:php:php_php_constructphp(php$elementphp)php;
+php php php php php}
 
-}
+php}

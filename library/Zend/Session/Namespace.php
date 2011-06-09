@@ -1,529 +1,529 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Session
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Namespace.php 20096 2010-01-06 02:05:09Z bkarwin $
- * @since      Preview Release 0.2
- */
-
-
-/**
- * @see Zend_Session
- */
-require_once 'Zend/Session.php';
-
-
-/**
- * @see Zend_Session_Abstract
- */
-require_once 'Zend/Session/Abstract.php';
-
-
-/**
- * Zend_Session_Namespace
- *
- * @category   Zend
- * @package    Zend_Session
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAggregate
-{
-
-    /**
-     * used as option to constructor to prevent additional instances to the same namespace
-     */
-    const SINGLE_INSTANCE = true;
-
-    /**
-     * Namespace - which namespace this instance of zend-session is saving-to/getting-from
-     *
-     * @var string
-     */
-    protected $_namespace = "Default";
-
-    /**
-     * Namespace locking mechanism
-     *
-     * @var array
-     */
-    protected static $_namespaceLocks = array();
-
-    /**
-     * Single instance namespace array to ensure data security.
-     *
-     * @var array
-     */
-    protected static $_singleInstances = array();
-
-    /**
-     * resetSingleInstance()
-     *
-     * @param string $namespaceName
-     * @return null
-     */
-    public static function resetSingleInstance($namespaceName = null)
-    {
-        if ($namespaceName != null) {
-            if (array_key_exists($namespaceName, self::$_singleInstances)) {
-                unset(self::$_singleInstances[$namespaceName]);
-            }
-            return;
-        }
-
-        self::$_singleInstances = array();
-        return;
-    }
-
-    /**
-     * __construct() - Returns an instance object bound to a particular, isolated section
-     * of the session, identified by $namespace name (defaulting to 'Default').
-     * The optional argument $singleInstance will prevent construction of additional
-     * instance objects acting as accessors to this $namespace.
-     *
-     * @param string $namespace       - programmatic name of the requested namespace
-     * @param bool $singleInstance    - prevent creation of additional accessor instance objects for this namespace
-     * @return void
-     */
-    public function __construct($namespace = 'Default', $singleInstance = false)
-    {
-        if ($namespace === '') {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('Session namespace must be a non-empty string.');
-        }
-
-        if ($namespace[0] == "_") {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('Session namespace must not start with an underscore.');
-        }
-
-        if (preg_match('#(^[0-9])#i', $namespace[0])) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('Session namespace must not start with a number.');
-        }
-
-        if (isset(self::$_singleInstances[$namespace])) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception("A session namespace object already exists for this namespace ('$namespace'), and no additional accessors (session namespace objects) for this namespace are permitted.");
-        }
-
-        if ($singleInstance === true) {
-            self::$_singleInstances[$namespace] = true;
-        }
-
-        $this->_namespace = $namespace;
-
-        // Process metadata specific only to this namespace.
-        Zend_Session::start(true); // attempt auto-start (throws exception if strict option set)
-
-        if (self::$_readable === false) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception(self::_THROW_NOT_READABLE_MSG);
-        }
-
-        if (!isset($_SESSION['__ZF'])) {
-            return; // no further processing needed
-        }
-
-        // do not allow write access to namespaces, after stop() or writeClose()
-        if (parent::$_writable === true) {
-            if (isset($_SESSION['__ZF'][$namespace])) {
-
-                // Expire Namespace by Namespace Hop (ENNH)
-                if (isset($_SESSION['__ZF'][$namespace]['ENNH'])) {
-                    $_SESSION['__ZF'][$namespace]['ENNH']--;
-
-                    if ($_SESSION['__ZF'][$namespace]['ENNH'] === 0) {
-                        if (isset($_SESSION[$namespace])) {
-                            self::$_expiringData[$namespace] = $_SESSION[$namespace];
-                            unset($_SESSION[$namespace]);
-                        }
-                        unset($_SESSION['__ZF'][$namespace]);
-                    }
-                }
-
-                // Expire Namespace Variables by Namespace Hop (ENVNH)
-                if (isset($_SESSION['__ZF'][$namespace]['ENVNH'])) {
-                    foreach ($_SESSION['__ZF'][$namespace]['ENVNH'] as $variable => $hops) {
-                        $_SESSION['__ZF'][$namespace]['ENVNH'][$variable]--;
-
-                        if ($_SESSION['__ZF'][$namespace]['ENVNH'][$variable] === 0) {
-                            if (isset($_SESSION[$namespace][$variable])) {
-                                self::$_expiringData[$namespace][$variable] = $_SESSION[$namespace][$variable];
-                                unset($_SESSION[$namespace][$variable]);
-                            }
-                            unset($_SESSION['__ZF'][$namespace]['ENVNH'][$variable]);
-                        }
-                    }
-                    if(empty($_SESSION['__ZF'][$namespace]['ENVNH'])) {
-                        unset($_SESSION['__ZF'][$namespace]['ENVNH']);
-                    }
-                }
-            }
-
-            if (empty($_SESSION['__ZF'][$namespace])) {
-                unset($_SESSION['__ZF'][$namespace]);
-            }
-
-            if (empty($_SESSION['__ZF'])) {
-                unset($_SESSION['__ZF']);
-            }
-        }
-    }
-
-
-    /**
-     * getIterator() - return an iteratable object for use in foreach and the like,
-     * this completes the IteratorAggregate interface
-     *
-     * @return ArrayObject - iteratable container of the namespace contents
-     */
-    public function getIterator()
-    {
-        return new ArrayObject(parent::_namespaceGetAll($this->_namespace));
-    }
-
-
-    /**
-     * lock() - mark a session/namespace as readonly
-     *
-     * @return void
-     */
-    public function lock()
-    {
-        self::$_namespaceLocks[$this->_namespace] = true;
-    }
-
-
-    /**
-     * unlock() - unmark a session/namespace to enable read & write
-     *
-     * @return void
-     */
-    public function unlock()
-    {
-        unset(self::$_namespaceLocks[$this->_namespace]);
-    }
-
-
-    /**
-     * unlockAll() - unmark all session/namespaces to enable read & write
-     *
-     * @return void
-     */
-    public static function unlockAll()
-    {
-        self::$_namespaceLocks = array();
-    }
-
-
-    /**
-     * isLocked() - return lock status, true if, and only if, read-only
-     *
-     * @return bool
-     */
-    public function isLocked()
-    {
-        return isset(self::$_namespaceLocks[$this->_namespace]);
-    }
-
-
-    /**
-     * unsetAll() - unset all variables in this namespace
-     *
-     * @return true
-     */
-    public function unsetAll()
-    {
-        return parent::_namespaceUnset($this->_namespace);
-    }
-
-
-    /**
-     * __get() - method to get a variable in this object's current namespace
-     *
-     * @param string $name - programmatic name of a key, in a <key,value> pair in the current namespace
-     * @return mixed
-     */
-    public function & __get($name)
-    {
-        if ($name === '') {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception("The '$name' key must be a non-empty string");
-        }
-
-        return parent::_namespaceGet($this->_namespace, $name);
-    }
-
-
-    /**
-     * __set() - method to set a variable/value in this object's namespace
-     *
-     * @param string $name - programmatic name of a key, in a <key,value> pair in the current namespace
-     * @param mixed $value - value in the <key,value> pair to assign to the $name key
-     * @throws Zend_Session_Exception
-     * @return true
-     */
-    public function __set($name, $value)
-    {
-        if (isset(self::$_namespaceLocks[$this->_namespace])) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('This session/namespace has been marked as read-only.');
-        }
-
-        if ($name === '') {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception("The '$name' key must be a non-empty string");
-        }
-
-        if (parent::$_writable === false) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception(parent::_THROW_NOT_WRITABLE_MSG);
-        }
-
-        $name = (string) $name;
-
-        $_SESSION[$this->_namespace][$name] = $value;
-    }
-
-
-    /**
-     * apply() - enables applying user-selected function, such as array_merge() to the namespace
-     * Parameters following the $callback argument are passed to the callback function.
-     * Caveat: ignores members expiring now.
-     *
-     * Example:
-     *   $namespace->apply('array_merge', array('tree' => 'apple', 'fruit' => 'peach'), array('flower' => 'rose'));
-     *   $namespace->apply('count');
-     *
-     * @param string|array $callback - callback function
-     */
-    public function apply($callback)
-    {
-        $arg_list = func_get_args();
-        $arg_list[0] = $_SESSION[$this->_namespace];
-        return call_user_func_array($callback, $arg_list);
-    }
-
-
-    /**
-     * applySet() - enables applying user-selected function, and sets entire namespace to the result
-     * Result of $callback must be an array.
-     * Parameters following the $callback argument are passed to the callback function.
-     * Caveat: ignores members expiring now.
-     *
-     * Example:
-     *   $namespace->applySet('array_merge', array('tree' => 'apple', 'fruit' => 'peach'), array('flower' => 'rose'));
-     *
-     * @param string|array $callback - callback function
-     */
-    public function applySet($callback)
-    {
-        $arg_list = func_get_args();
-        $arg_list[0] = $_SESSION[$this->_namespace];
-        $result = call_user_func_array($callback, $arg_list);
-        if (!is_array($result)) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('Result must be an array. Got: ' . gettype($result));
-        }
-        $_SESSION[$this->_namespace] = $result;
-        return $result;
-    }
-
-
-    /**
-     * __isset() - determine if a variable in this object's namespace is set
-     *
-     * @param string $name - programmatic name of a key, in a <key,value> pair in the current namespace
-     * @return bool
-     */
-    public function __isset($name)
-    {
-        if ($name === '') {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception("The '$name' key must be a non-empty string");
-        }
-
-        return parent::_namespaceIsset($this->_namespace, $name);
-    }
-
-
-    /**
-     * __unset() - unset a variable in this object's namespace.
-     *
-     * @param string $name - programmatic name of a key, in a <key,value> pair in the current namespace
-     * @return true
-     */
-    public function __unset($name)
-    {
-        if ($name === '') {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception("The '$name' key must be a non-empty string");
-        }
-
-        return parent::_namespaceUnset($this->_namespace, $name);
-    }
-
-
-    /**
-     * setExpirationSeconds() - expire the namespace, or specific variables after a specified
-     * number of seconds
-     *
-     * @param int $seconds     - expires in this many seconds
-     * @param mixed $variables - OPTIONAL list of variables to expire (defaults to all)
-     * @throws Zend_Session_Exception
-     * @return void
-     */
-    public function setExpirationSeconds($seconds, $variables = null)
-    {
-        if (parent::$_writable === false) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception(parent::_THROW_NOT_WRITABLE_MSG);
-        }
-
-        if ($seconds <= 0) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('Seconds must be positive.');
-        }
-
-        if ($variables === null) {
-
-            // apply expiration to entire namespace
-            $_SESSION['__ZF'][$this->_namespace]['ENT'] = time() + $seconds;
-
-        } else {
-
-            if (is_string($variables)) {
-                $variables = array($variables);
-            }
-
-            foreach ($variables as $variable) {
-                if (!empty($variable)) {
-                    $_SESSION['__ZF'][$this->_namespace]['ENVT'][$variable] = time() + $seconds;
-                }
-            }
-        }
-    }
-
-
-    /**
-     * setExpirationHops() - expire the namespace, or specific variables after a specified
-     * number of page hops
-     *
-     * @param int $hops        - how many "hops" (number of subsequent requests) before expiring
-     * @param mixed $variables - OPTIONAL list of variables to expire (defaults to all)
-     * @param boolean $hopCountOnUsageOnly - OPTIONAL if set, only count a hop/request if this namespace is used
-     * @throws Zend_Session_Exception
-     * @return void
-     */
-    public function setExpirationHops($hops, $variables = null, $hopCountOnUsageOnly = false)
-    {
-        if (parent::$_writable === false) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception(parent::_THROW_NOT_WRITABLE_MSG);
-        }
-
-        if ($hops <= 0) {
-            /**
-             * @see Zend_Session_Exception
-             */
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('Hops must be positive number.');
-        }
-
-        if ($variables === null) {
-
-            // apply expiration to entire namespace
-            if ($hopCountOnUsageOnly === false) {
-                $_SESSION['__ZF'][$this->_namespace]['ENGH'] = $hops;
-            } else {
-                $_SESSION['__ZF'][$this->_namespace]['ENNH'] = $hops;
-            }
-
-        } else {
-
-            if (is_string($variables)) {
-                $variables = array($variables);
-            }
-
-            foreach ($variables as $variable) {
-                if (!empty($variable)) {
-                    if ($hopCountOnUsageOnly === false) {
-                        $_SESSION['__ZF'][$this->_namespace]['ENVGH'][$variable] = $hops;
-                    } else {
-                        $_SESSION['__ZF'][$this->_namespace]['ENVNH'][$variable] = $hops;
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns the namespace name
-     *
-     * @return string
-     */
-    public function getNamespace()
-    {
-        return $this->_namespace;
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Session
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Namespacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php php@sincephp php php php php php Previewphp Releasephp php0php.php2
+php php*php/
+
+
+php/php*php*
+php php*php php@seephp Zendphp_Session
+php php*php/
+requirephp_oncephp php'Zendphp/Sessionphp.phpphp'php;
+
+
+php/php*php*
+php php*php php@seephp Zendphp_Sessionphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Sessionphp/Abstractphp.phpphp'php;
+
+
+php/php*php*
+php php*php Zendphp_Sessionphp_Namespace
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Session
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Sessionphp_Namespacephp extendsphp Zendphp_Sessionphp_Abstractphp implementsphp IteratorAggregate
+php{
+
+php php php php php/php*php*
+php php php php php php*php usedphp asphp optionphp tophp constructorphp tophp preventphp additionalphp instancesphp tophp thephp samephp namespace
+php php php php php php*php/
+php php php php constphp SINGLEphp_INSTANCEphp php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Namespacephp php-php whichphp namespacephp thisphp instancephp ofphp zendphp-sessionphp isphp savingphp-tophp/gettingphp-from
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namespacephp php=php php"Defaultphp"php;
+
+php php php php php/php*php*
+php php php php php php*php Namespacephp lockingphp mechanism
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_namespaceLocksphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Singlephp instancephp namespacephp arrayphp tophp ensurephp dataphp securityphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_singleInstancesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php resetSingleInstancephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namespaceName
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php publicphp staticphp functionphp resetSingleInstancephp(php$namespaceNamephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$namespaceNamephp php!php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namespaceNamephp,php selfphp:php:php$php_singleInstancesphp)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(selfphp:php:php$php_singleInstancesphp[php$namespaceNamephp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php selfphp:php:php$php_singleInstancesphp php=php arrayphp(php)php;
+php php php php php php php php returnphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php_php_constructphp(php)php php-php Returnsphp anphp instancephp objectphp boundphp tophp aphp particularphp,php isolatedphp section
+php php php php php php*php ofphp thephp sessionphp,php identifiedphp byphp php$namespacephp namephp php(defaultingphp tophp php'Defaultphp'php)php.
+php php php php php php*php Thephp optionalphp argumentphp php$singleInstancephp willphp preventphp constructionphp ofphp additional
+php php php php php php*php instancephp objectsphp actingphp asphp accessorsphp tophp thisphp php$namespacephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namespacephp php php php php php php php-php programmaticphp namephp ofphp thephp requestedphp namespace
+php php php php php php*php php@paramphp boolphp php$singleInstancephp php php php php-php preventphp creationphp ofphp additionalphp accessorphp instancephp objectsphp forphp thisphp namespace
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$namespacephp php=php php'Defaultphp'php,php php$singleInstancephp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$namespacephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php'Sessionphp namespacephp mustphp bephp aphp nonphp-emptyphp stringphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$namespacephp[php0php]php php=php=php php"php_php"php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php'Sessionphp namespacephp mustphp notphp startphp withphp anphp underscorephp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(pregphp_matchphp(php'php#php(php^php[php0php-php9php]php)php#iphp'php,php php$namespacephp[php0php]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php'Sessionphp namespacephp mustphp notphp startphp withphp aphp numberphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_singleInstancesphp[php$namespacephp]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php"Aphp sessionphp namespacephp objectphp alreadyphp existsphp forphp thisphp namespacephp php(php'php$namespacephp'php)php,php andphp nophp additionalphp accessorsphp php(sessionphp namespacephp objectsphp)php forphp thisphp namespacephp arephp permittedphp.php"php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$singleInstancephp php=php=php=php truephp)php php{
+php php php php php php php php php php php php selfphp:php:php$php_singleInstancesphp[php$namespacephp]php php=php truephp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_namespacephp php=php php$namespacephp;
+
+php php php php php php php php php/php/php Processphp metadataphp specificphp onlyphp tophp thisphp namespacephp.
+php php php php php php php php Zendphp_Sessionphp:php:startphp(truephp)php;php php/php/php attemptphp autophp-startphp php(throwsphp exceptionphp ifphp strictphp optionphp setphp)
+
+php php php php php php php php ifphp php(selfphp:php:php$php_readablephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(selfphp:php:php_THROWphp_NOTphp_READABLEphp_MSGphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php)php)php php{
+php php php php php php php php php php php php returnphp;php php/php/php nophp furtherphp processingphp needed
+php php php php php php php php php}
+
+php php php php php php php php php/php/php dophp notphp allowphp writephp accessphp tophp namespacesphp,php afterphp stopphp(php)php orphp writeClosephp(php)
+php php php php php php php php ifphp php(parentphp:php:php$php_writablephp php=php=php=php truephp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php)php)php php{
+
+php php php php php php php php php php php php php php php php php/php/php Expirephp Namespacephp byphp Namespacephp Hopphp php(ENNHphp)
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENNHphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENNHphp'php]php-php-php;
+
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENNHphp'php]php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp[php$namespacephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:php$php_expiringDataphp[php$namespacephp]php php=php php$php_SESSIONphp[php$namespacephp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php$namespacephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php/php/php Expirephp Namespacephp Variablesphp byphp Namespacephp Hopphp php(ENVNHphp)
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENVNHphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENVNHphp'php]php asphp php$variablephp php=php>php php$hopsphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENVNHphp'php]php[php$variablephp]php-php-php;
+
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENVNHphp'php]php[php$variablephp]php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp[php$namespacephp]php[php$variablephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:php$php_expiringDataphp[php$namespacephp]php[php$variablephp]php php=php php$php_SESSIONphp[php$namespacephp]php[php$variablephp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php$namespacephp]php[php$variablephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENVNHphp'php]php[php$variablephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php ifphp(emptyphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENVNHphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php[php'ENVNHphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(emptyphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$namespacephp]php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(emptyphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php'php_php_ZFphp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php getIteratorphp(php)php php-php returnphp anphp iteratablephp objectphp forphp usephp inphp foreachphp andphp thephp likephp,
+php php php php php php*php thisphp completesphp thephp IteratorAggregatephp interface
+php php php php php php*
+php php php php php php*php php@returnphp ArrayObjectphp php-php iteratablephp containerphp ofphp thephp namespacephp contents
+php php php php php php*php/
+php php php php publicphp functionphp getIteratorphp(php)
+php php php php php{
+php php php php php php php php returnphp newphp ArrayObjectphp(parentphp:php:php_namespaceGetAllphp(php$thisphp-php>php_namespacephp)php)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php lockphp(php)php php-php markphp aphp sessionphp/namespacephp asphp readonly
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp lockphp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_namespaceLocksphp[php$thisphp-php>php_namespacephp]php php=php truephp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php unlockphp(php)php php-php unmarkphp aphp sessionphp/namespacephp tophp enablephp readphp php&php write
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp unlockphp(php)
+php php php php php{
+php php php php php php php php unsetphp(selfphp:php:php$php_namespaceLocksphp[php$thisphp-php>php_namespacephp]php)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php unlockAllphp(php)php php-php unmarkphp allphp sessionphp/namespacesphp tophp enablephp readphp php&php write
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp unlockAllphp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_namespaceLocksphp php=php arrayphp(php)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php isLockedphp(php)php php-php returnphp lockphp statusphp,php truephp ifphp,php andphp onlyphp ifphp,php readphp-only
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isLockedphp(php)
+php php php php php{
+php php php php php php php php returnphp issetphp(selfphp:php:php$php_namespaceLocksphp[php$thisphp-php>php_namespacephp]php)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php unsetAllphp(php)php php-php unsetphp allphp variablesphp inphp thisphp namespace
+php php php php php php*
+php php php php php php*php php@returnphp true
+php php php php php php*php/
+php php php php publicphp functionphp unsetAllphp(php)
+php php php php php{
+php php php php php php php php returnphp parentphp:php:php_namespaceUnsetphp(php$thisphp-php>php_namespacephp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php php_php_getphp(php)php php-php methodphp tophp getphp aphp variablephp inphp thisphp objectphp'sphp currentphp namespace
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namephp php-php programmaticphp namephp ofphp aphp keyphp,php inphp aphp php<keyphp,valuephp>php pairphp inphp thephp currentphp namespace
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp php&php php_php_getphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php$namephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php"Thephp php'php$namephp'php keyphp mustphp bephp aphp nonphp-emptyphp stringphp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp parentphp:php:php_namespaceGetphp(php$thisphp-php>php_namespacephp,php php$namephp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php php_php_setphp(php)php php-php methodphp tophp setphp aphp variablephp/valuephp inphp thisphp objectphp'sphp namespace
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namephp php-php programmaticphp namephp ofphp aphp keyphp,php inphp aphp php<keyphp,valuephp>php pairphp inphp thephp currentphp namespace
+php php php php php php*php php@paramphp mixedphp php$valuephp php-php valuephp inphp thephp php<keyphp,valuephp>php pairphp tophp assignphp tophp thephp php$namephp key
+php php php php php php*php php@throwsphp Zendphp_Sessionphp_Exception
+php php php php php php*php php@returnphp true
+php php php php php php*php/
+php php php php publicphp functionphp php_php_setphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_namespaceLocksphp[php$thisphp-php>php_namespacephp]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php'Thisphp sessionphp/namespacephp hasphp beenphp markedphp asphp readphp-onlyphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$namephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php"Thephp php'php$namephp'php keyphp mustphp bephp aphp nonphp-emptyphp stringphp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(parentphp:php:php$php_writablephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(parentphp:php:php_THROWphp_NOTphp_WRITABLEphp_MSGphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
+
+php php php php php php php php php$php_SESSIONphp[php$thisphp-php>php_namespacephp]php[php$namephp]php php=php php$valuephp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php applyphp(php)php php-php enablesphp applyingphp userphp-selectedphp functionphp,php suchphp asphp arrayphp_mergephp(php)php tophp thephp namespace
+php php php php php php*php Parametersphp followingphp thephp php$callbackphp argumentphp arephp passedphp tophp thephp callbackphp functionphp.
+php php php php php php*php Caveatphp:php ignoresphp membersphp expiringphp nowphp.
+php php php php php php*
+php php php php php php*php Examplephp:
+php php php php php php*php php php php$namespacephp-php>applyphp(php'arrayphp_mergephp'php,php arrayphp(php'treephp'php php=php>php php'applephp'php,php php'fruitphp'php php=php>php php'peachphp'php)php,php arrayphp(php'flowerphp'php php=php>php php'rosephp'php)php)php;
+php php php php php php*php php php php$namespacephp-php>applyphp(php'countphp'php)php;
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$callbackphp php-php callbackphp function
+php php php php php php*php/
+php php php php publicphp functionphp applyphp(php$callbackphp)
+php php php php php{
+php php php php php php php php php$argphp_listphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php$argphp_listphp[php0php]php php=php php$php_SESSIONphp[php$thisphp-php>php_namespacephp]php;
+php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(php$callbackphp,php php$argphp_listphp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php applySetphp(php)php php-php enablesphp applyingphp userphp-selectedphp functionphp,php andphp setsphp entirephp namespacephp tophp thephp result
+php php php php php php*php Resultphp ofphp php$callbackphp mustphp bephp anphp arrayphp.
+php php php php php php*php Parametersphp followingphp thephp php$callbackphp argumentphp arephp passedphp tophp thephp callbackphp functionphp.
+php php php php php php*php Caveatphp:php ignoresphp membersphp expiringphp nowphp.
+php php php php php php*
+php php php php php php*php Examplephp:
+php php php php php php*php php php php$namespacephp-php>applySetphp(php'arrayphp_mergephp'php,php arrayphp(php'treephp'php php=php>php php'applephp'php,php php'fruitphp'php php=php>php php'peachphp'php)php,php arrayphp(php'flowerphp'php php=php>php php'rosephp'php)php)php;
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$callbackphp php-php callbackphp function
+php php php php php php*php/
+php php php php publicphp functionphp applySetphp(php$callbackphp)
+php php php php php{
+php php php php php php php php php$argphp_listphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php$argphp_listphp[php0php]php php=php php$php_SESSIONphp[php$thisphp-php>php_namespacephp]php;
+php php php php php php php php php$resultphp php=php callphp_userphp_funcphp_arrayphp(php$callbackphp,php php$argphp_listphp)php;
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$resultphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php'Resultphp mustphp bephp anphp arrayphp.php Gotphp:php php'php php.php gettypephp(php$resultphp)php)php;
+php php php php php php php php php}
+php php php php php php php php php$php_SESSIONphp[php$thisphp-php>php_namespacephp]php php=php php$resultphp;
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php php_php_issetphp(php)php php-php determinephp ifphp aphp variablephp inphp thisphp objectphp'sphp namespacephp isphp set
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namephp php-php programmaticphp namephp ofphp aphp keyphp,php inphp aphp php<keyphp,valuephp>php pairphp inphp thephp currentphp namespace
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp php_php_issetphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php$namephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php"Thephp php'php$namephp'php keyphp mustphp bephp aphp nonphp-emptyphp stringphp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp parentphp:php:php_namespaceIssetphp(php$thisphp-php>php_namespacephp,php php$namephp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php php_php_unsetphp(php)php php-php unsetphp aphp variablephp inphp thisphp objectphp'sphp namespacephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namephp php-php programmaticphp namephp ofphp aphp keyphp,php inphp aphp php<keyphp,valuephp>php pairphp inphp thephp currentphp namespace
+php php php php php php*php php@returnphp true
+php php php php php php*php/
+php php php php publicphp functionphp php_php_unsetphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php$namephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php"Thephp php'php$namephp'php keyphp mustphp bephp aphp nonphp-emptyphp stringphp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp parentphp:php:php_namespaceUnsetphp(php$thisphp-php>php_namespacephp,php php$namephp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php setExpirationSecondsphp(php)php php-php expirephp thephp namespacephp,php orphp specificphp variablesphp afterphp aphp specified
+php php php php php php*php numberphp ofphp seconds
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$secondsphp php php php php php-php expiresphp inphp thisphp manyphp seconds
+php php php php php php*php php@paramphp mixedphp php$variablesphp php-php OPTIONALphp listphp ofphp variablesphp tophp expirephp php(defaultsphp tophp allphp)
+php php php php php php*php php@throwsphp Zendphp_Sessionphp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setExpirationSecondsphp(php$secondsphp,php php$variablesphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(parentphp:php:php$php_writablephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(parentphp:php:php_THROWphp_NOTphp_WRITABLEphp_MSGphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$secondsphp <php=php php0php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php'Secondsphp mustphp bephp positivephp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$variablesphp php=php=php=php nullphp)php php{
+
+php php php php php php php php php php php php php/php/php applyphp expirationphp tophp entirephp namespace
+php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$thisphp-php>php_namespacephp]php[php'ENTphp'php]php php=php timephp(php)php php+php php$secondsphp;
+
+php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$variablesphp)php)php php{
+php php php php php php php php php php php php php php php php php$variablesphp php=php arrayphp(php$variablesphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php foreachphp php(php$variablesphp asphp php$variablephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$variablephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$thisphp-php>php_namespacephp]php[php'ENVTphp'php]php[php$variablephp]php php=php timephp(php)php php+php php$secondsphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php setExpirationHopsphp(php)php php-php expirephp thephp namespacephp,php orphp specificphp variablesphp afterphp aphp specified
+php php php php php php*php numberphp ofphp pagephp hops
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$hopsphp php php php php php php php php-php howphp manyphp php"hopsphp"php php(numberphp ofphp subsequentphp requestsphp)php beforephp expiring
+php php php php php php*php php@paramphp mixedphp php$variablesphp php-php OPTIONALphp listphp ofphp variablesphp tophp expirephp php(defaultsphp tophp allphp)
+php php php php php php*php php@paramphp booleanphp php$hopCountOnUsageOnlyphp php-php OPTIONALphp ifphp setphp,php onlyphp countphp aphp hopphp/requestphp ifphp thisphp namespacephp isphp used
+php php php php php php*php php@throwsphp Zendphp_Sessionphp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setExpirationHopsphp(php$hopsphp,php php$variablesphp php=php nullphp,php php$hopCountOnUsageOnlyphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(parentphp:php:php$php_writablephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(parentphp:php:php_THROWphp_NOTphp_WRITABLEphp_MSGphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$hopsphp <php=php php0php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(php'Hopsphp mustphp bephp positivephp numberphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$variablesphp php=php=php=php nullphp)php php{
+
+php php php php php php php php php php php php php/php/php applyphp expirationphp tophp entirephp namespace
+php php php php php php php php php php php php ifphp php(php$hopCountOnUsageOnlyphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$thisphp-php>php_namespacephp]php[php'ENGHphp'php]php php=php php$hopsphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$thisphp-php>php_namespacephp]php[php'ENNHphp'php]php php=php php$hopsphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$variablesphp)php)php php{
+php php php php php php php php php php php php php php php php php$variablesphp php=php arrayphp(php$variablesphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php foreachphp php(php$variablesphp asphp php$variablephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$variablephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$hopCountOnUsageOnlyphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$thisphp-php>php_namespacephp]php[php'ENVGHphp'php]php[php$variablephp]php php=php php$hopsphp;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php$thisphp-php>php_namespacephp]php[php'ENVNHphp'php]php[php$variablephp]php php=php php$hopsphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp namespacephp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamespacephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_namespacephp;
+php php php php php}
+php}

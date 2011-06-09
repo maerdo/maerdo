@@ -1,134 +1,134 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Transport
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Transport
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp$
+php php*php/
 
-/**
- * @see Zend_Mail_Transport_Abstract
- */
-require_once 'Zend/Mail/Transport/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Transportphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Transportphp/Abstractphp.phpphp'php;
 
 
-/**
- * File transport
- *
- * Class for saving outgoing emails in filesystem
- *
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Transport
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Mail_Transport_File extends Zend_Mail_Transport_Abstract
-{
-    /**
-     * Target directory for saving sent email messages
-     *
-     * @var string
-     */
-    protected $_path;
+php/php*php*
+php php*php Filephp transport
+php php*
+php php*php Classphp forphp savingphp outgoingphp emailsphp inphp filesystem
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Transport
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Mailphp_Transportphp_Filephp extendsphp Zendphp_Mailphp_Transportphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Targetphp directoryphp forphp savingphp sentphp emailphp messages
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_pathphp;
 
-    /**
-     * Callback function generating a file name
-     *
-     * @var string|array
-     */
-    protected $_callback;
+php php php php php/php*php*
+php php php php php php*php Callbackphp functionphp generatingphp aphp filephp name
+php php php php php php*
+php php php php php php*php php@varphp stringphp|array
+php php php php php php*php/
+php php php php protectedphp php$php_callbackphp;
 
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options OPTIONAL (Default: null)
-     * @return void
-     */
-    public function __construct($options = null)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } elseif (!is_array($options)) {
-            $options = array();
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp OPTIONALphp php(Defaultphp:php nullphp)
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        // Making sure we have some defaults to work with
-        if (!isset($options['path'])) {
-            $options['path'] = sys_get_temp_dir();
-        }
-        if (!isset($options['callback'])) {
-            $options['callback'] = array($this, 'defaultCallback');
-        }
+php php php php php php php php php/php/php Makingphp surephp wephp havephp somephp defaultsphp tophp workphp with
+php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php'pathphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'pathphp'php]php php=php sysphp_getphp_tempphp_dirphp(php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php'callbackphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'callbackphp'php]php php=php arrayphp(php$thisphp,php php'defaultCallbackphp'php)php;
+php php php php php php php php php}
 
-        $this->setOptions($options);
-    }
+php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Sets options
-     *
-     * @param  array $options
-     * @return void
-     */
-    public function setOptions(array $options)
-    {
-        if (isset($options['path'])&& is_dir($options['path'])) {
-            $this->_path = $options['path'];
-        }
-        if (isset($options['callback']) && is_callable($options['callback'])) {
-            $this->_callback = $options['callback'];
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'pathphp'php]php)php&php&php isphp_dirphp(php$optionsphp[php'pathphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_pathphp php=php php$optionsphp[php'pathphp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'callbackphp'php]php)php php&php&php isphp_callablephp(php$optionsphp[php'callbackphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_callbackphp php=php php$optionsphp[php'callbackphp'php]php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Saves e-mail message to a file
-     *
-     * @return void
-     * @throws Zend_Mail_Transport_Exception on not writable target directory
-     * @throws Zend_Mail_Transport_Exception on file_put_contents() failure
-     */
-    protected function _sendMail()
-    {
-        $file = $this->_path . DIRECTORY_SEPARATOR . call_user_func($this->_callback, $this);
+php php php php php/php*php*
+php php php php php php*php Savesphp ephp-mailphp messagephp tophp aphp file
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Transportphp_Exceptionphp onphp notphp writablephp targetphp directory
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Transportphp_Exceptionphp onphp filephp_putphp_contentsphp(php)php failure
+php php php php php php*php/
+php php php php protectedphp functionphp php_sendMailphp(php)
+php php php php php{
+php php php php php php php php php$filephp php=php php$thisphp-php>php_pathphp php.php DIRECTORYphp_SEPARATORphp php.php callphp_userphp_funcphp(php$thisphp-php>php_callbackphp,php php$thisphp)php;
 
-        if (!is_writable(dirname($file))) {
-            require_once 'Zend/Mail/Transport/Exception.php';
-            throw new Zend_Mail_Transport_Exception(sprintf(
-                'Target directory "%s" does not exist or is not writable',
-                dirname($file)
-            ));
-        }
+php php php php php php php php ifphp php(php!isphp_writablephp(dirnamephp(php$filephp)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Transportphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Transportphp_Exceptionphp(sprintfphp(
+php php php php php php php php php php php php php php php php php'Targetphp directoryphp php"php%sphp"php doesphp notphp existphp orphp isphp notphp writablephp'php,
+php php php php php php php php php php php php php php php php dirnamephp(php$filephp)
+php php php php php php php php php php php php php)php)php;
+php php php php php php php php php}
 
-        $email = $this->header . $this->EOL . $this->body;
+php php php php php php php php php$emailphp php=php php$thisphp-php>headerphp php.php php$thisphp-php>EOLphp php.php php$thisphp-php>bodyphp;
 
-        if (!file_put_contents($file, $email)) {
-            require_once 'Zend/Mail/Transport/Exception.php';
-            throw new Zend_Mail_Transport_Exception('Unable to send mail');
-        }
-    }
+php php php php php php php php ifphp php(php!filephp_putphp_contentsphp(php$filephp,php php$emailphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Transportphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Transportphp_Exceptionphp(php'Unablephp tophp sendphp mailphp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Default callback for generating filenames
-     *
-     * @param Zend_Mail_Transport_File File transport instance
-     * @return string
-     */
-    public function defaultCallback($transport)
-    {
-        return 'ZendMail_' . $_SERVER['REQUEST_TIME'] . '_' . mt_rand() . '.tmp';
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Defaultphp callbackphp forphp generatingphp filenames
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Mailphp_Transportphp_Filephp Filephp transportphp instance
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp defaultCallbackphp(php$transportphp)
+php php php php php{
+php php php php php php php php returnphp php'ZendMailphp_php'php php.php php$php_SERVERphp[php'REQUESTphp_TIMEphp'php]php php.php php'php_php'php php.php mtphp_randphp(php)php php.php php'php.tmpphp'php;
+php php php php php}
+php}

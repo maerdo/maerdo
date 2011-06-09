@@ -1,155 +1,155 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Soap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ArrayOfTypeSequence.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Soap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ArrayOfTypeSequencephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Soap_Wsdl_Strategy_DefaultComplexType
- */
-require_once "Zend/Soap/Wsdl/Strategy/DefaultComplexType.php";
+php/php*php*
+php php*php php@seephp Zendphp_Soapphp_Wsdlphp_Strategyphp_DefaultComplexType
+php php*php/
+requirephp_oncephp php"Zendphp/Soapphp/Wsdlphp/Strategyphp/DefaultComplexTypephp.phpphp"php;
 
-/**
- * Zend_Soap_Wsdl_Strategy_ArrayOfTypeSequence
- *
- * @category   Zend
- * @package    Zend_Soap
- * @subpackage Wsdl
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Soap_Wsdl_Strategy_ArrayOfTypeSequence extends Zend_Soap_Wsdl_Strategy_DefaultComplexType
-{
-    /**
-     * Add an unbounded ArrayOfType based on the xsd:sequence syntax if type[] is detected in return value doc comment.
-     *
-     * @param string $type
-     * @return string tns:xsd-type
-     */
-    public function addComplexType($type)
-    {
-        $nestedCounter = $this->_getNestedCount($type);
+php/php*php*
+php php*php Zendphp_Soapphp_Wsdlphp_Strategyphp_ArrayOfTypeSequence
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Soap
+php php*php php@subpackagephp Wsdl
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Soapphp_Wsdlphp_Strategyphp_ArrayOfTypeSequencephp extendsphp Zendphp_Soapphp_Wsdlphp_Strategyphp_DefaultComplexType
+php{
+php php php php php/php*php*
+php php php php php php*php Addphp anphp unboundedphp ArrayOfTypephp basedphp onphp thephp xsdphp:sequencephp syntaxphp ifphp typephp[php]php isphp detectedphp inphp returnphp valuephp docphp commentphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$type
+php php php php php php*php php@returnphp stringphp tnsphp:xsdphp-type
+php php php php php php*php/
+php php php php publicphp functionphp addComplexTypephp(php$typephp)
+php php php php php{
+php php php php php php php php php$nestedCounterphp php=php php$thisphp-php>php_getNestedCountphp(php$typephp)php;
 
-        if($nestedCounter > 0) {
-            $singularType = $this->_getSingularType($type);
+php php php php php php php php ifphp(php$nestedCounterphp php>php php0php)php php{
+php php php php php php php php php php php php php$singularTypephp php=php php$thisphp-php>php_getSingularTypephp(php$typephp)php;
 
-            for($i = 1; $i <= $nestedCounter; $i++) {
-                $complexTypeName = substr($this->_getTypeNameBasedOnNestingLevel($singularType, $i), 4);
-                $childTypeName = $this->_getTypeNameBasedOnNestingLevel($singularType, $i-1);
+php php php php php php php php php php php php forphp(php$iphp php=php php1php;php php$iphp <php=php php$nestedCounterphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$complexTypeNamephp php=php substrphp(php$thisphp-php>php_getTypeNameBasedOnNestingLevelphp(php$singularTypephp,php php$iphp)php,php php4php)php;
+php php php php php php php php php php php php php php php php php$childTypeNamephp php=php php$thisphp-php>php_getTypeNameBasedOnNestingLevelphp(php$singularTypephp,php php$iphp-php1php)php;
 
-                $this->_addElementFromWsdlAndChildTypes($complexTypeName, $childTypeName);
-            }
-            // adding the PHP type which is resolved to a nested XSD type. therefore add only once.
-            $this->getContext()->addType($complexTypeName);
+php php php php php php php php php php php php php php php php php$thisphp-php>php_addElementFromWsdlAndChildTypesphp(php$complexTypeNamephp,php php$childTypeNamephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php/php/php addingphp thephp PHPphp typephp whichphp isphp resolvedphp tophp aphp nestedphp XSDphp typephp.php thereforephp addphp onlyphp oncephp.
+php php php php php php php php php php php php php$thisphp-php>getContextphp(php)php-php>addTypephp(php$complexTypeNamephp)php;
 
-            return "tns:$complexTypeName";
-        } else if (!in_array($type, $this->getContext()->getTypes())) {
-            // New singular complex type
-            return parent::addComplexType($type);
-        } else {
-            // Existing complex type
-            return $this->getContext()->getType($type);
-        }
-    }
+php php php php php php php php php php php php returnphp php"tnsphp:php$complexTypeNamephp"php;
+php php php php php php php php php}php elsephp ifphp php(php!inphp_arrayphp(php$typephp,php php$thisphp-php>getContextphp(php)php-php>getTypesphp(php)php)php)php php{
+php php php php php php php php php php php php php/php/php Newphp singularphp complexphp type
+php php php php php php php php php php php php returnphp parentphp:php:addComplexTypephp(php$typephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Existingphp complexphp type
+php php php php php php php php php php php php returnphp php$thisphp-php>getContextphp(php)php-php>getTypephp(php$typephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Return the ArrayOf or simple type name based on the singular xsdtype and the nesting level
-     *
-     * @param  string $singularType
-     * @param  int    $level
-     * @return string
-     */
-    protected function _getTypeNameBasedOnNestingLevel($singularType, $level)
-    {
-        if($level == 0) {
-            // This is not an Array anymore, return the xsd simple type
-            return $singularType;
-        } else {
-            $prefix = str_repeat("ArrayOf", $level);
-            $xsdType = $this->_getStrippedXsdType($singularType);
-            $arrayType = $prefix.$xsdType;
-            return "tns:$arrayType";
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp ArrayOfphp orphp simplephp typephp namephp basedphp onphp thephp singularphp xsdtypephp andphp thephp nestingphp level
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$singularType
+php php php php php php*php php@paramphp php intphp php php php php$level
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getTypeNameBasedOnNestingLevelphp(php$singularTypephp,php php$levelphp)
+php php php php php{
+php php php php php php php php ifphp(php$levelphp php=php=php php0php)php php{
+php php php php php php php php php php php php php/php/php Thisphp isphp notphp anphp Arrayphp anymorephp,php returnphp thephp xsdphp simplephp type
+php php php php php php php php php php php php returnphp php$singularTypephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$prefixphp php=php strphp_repeatphp(php"ArrayOfphp"php,php php$levelphp)php;
+php php php php php php php php php php php php php$xsdTypephp php=php php$thisphp-php>php_getStrippedXsdTypephp(php$singularTypephp)php;
+php php php php php php php php php php php php php$arrayTypephp php=php php$prefixphp.php$xsdTypephp;
+php php php php php php php php php php php php returnphp php"tnsphp:php$arrayTypephp"php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Strip the xsd: from a singularType and Format it nice for ArrayOf<Type> naming
-     *
-     * @param  string $singularType
-     * @return string
-     */
-    protected function _getStrippedXsdType($singularType)
-    {
-        return ucfirst(substr(strtolower($singularType), 4));
-    }
+php php php php php/php*php*
+php php php php php php*php Stripphp thephp xsdphp:php fromphp aphp singularTypephp andphp Formatphp itphp nicephp forphp ArrayOfphp<Typephp>php naming
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$singularType
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getStrippedXsdTypephp(php$singularTypephp)
+php php php php php{
+php php php php php php php php returnphp ucfirstphp(substrphp(strtolowerphp(php$singularTypephp)php,php php4php)php)php;
+php php php php php}
 
-    /**
-     * From a nested defintion with type[], get the singular xsd:type
-     *
-     * @throws Zend_Soap_Wsdl_Exception When no xsd:simpletype can be detected.
-     * @param  string $type
-     * @return string
-     */
-    protected function _getSingularType($type)
-    {
-        $singulartype = $this->getContext()->getType(str_replace("[]", "", $type));
-        return $singulartype;
-    }
+php php php php php/php*php*
+php php php php php php*php Fromphp aphp nestedphp defintionphp withphp typephp[php]php,php getphp thephp singularphp xsdphp:type
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Wsdlphp_Exceptionphp Whenphp nophp xsdphp:simpletypephp canphp bephp detectedphp.
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getSingularTypephp(php$typephp)
+php php php php php{
+php php php php php php php php php$singulartypephp php=php php$thisphp-php>getContextphp(php)php-php>getTypephp(strphp_replacephp(php"php[php]php"php,php php"php"php,php php$typephp)php)php;
+php php php php php php php php returnphp php$singulartypephp;
+php php php php php}
 
-    /**
-     * Return the array nesting level based on the type name
-     *
-     * @param  string $type
-     * @return integer
-     */
-    protected function _getNestedCount($type)
-    {
-        return substr_count($type, "[]");
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp arrayphp nestingphp levelphp basedphp onphp thephp typephp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php protectedphp functionphp php_getNestedCountphp(php$typephp)
+php php php php php{
+php php php php php php php php returnphp substrphp_countphp(php$typephp,php php"php[php]php"php)php;
+php php php php php}
 
-    /**
-     * Append the complex type definition to the WSDL via the context access
-     *
-     * @param  string $arrayType
-     * @param  string $childTypeName
-     * @return void
-     */
-    protected function _addElementFromWsdlAndChildTypes($arrayType, $childTypeName)
-    {
-        if (!in_array($arrayType, $this->getContext()->getTypes())) {
-            $dom = $this->getContext()->toDomDocument();
+php php php php php/php*php*
+php php php php php php*php Appendphp thephp complexphp typephp definitionphp tophp thephp WSDLphp viaphp thephp contextphp access
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$arrayType
+php php php php php php*php php@paramphp php stringphp php$childTypeName
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_addElementFromWsdlAndChildTypesphp(php$arrayTypephp,php php$childTypeNamephp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$arrayTypephp,php php$thisphp-php>getContextphp(php)php-php>getTypesphp(php)php)php)php php{
+php php php php php php php php php php php php php$domphp php=php php$thisphp-php>getContextphp(php)php-php>toDomDocumentphp(php)php;
 
-            $complexType = $dom->createElement('xsd:complexType');
-            $complexType->setAttribute('name', $arrayType);
+php php php php php php php php php php php php php$complexTypephp php=php php$domphp-php>createElementphp(php'xsdphp:complexTypephp'php)php;
+php php php php php php php php php php php php php$complexTypephp-php>setAttributephp(php'namephp'php,php php$arrayTypephp)php;
 
-            $sequence = $dom->createElement('xsd:sequence');
+php php php php php php php php php php php php php$sequencephp php=php php$domphp-php>createElementphp(php'xsdphp:sequencephp'php)php;
 
-            $element = $dom->createElement('xsd:element');
-            $element->setAttribute('name',      'item');
-            $element->setAttribute('type',      $childTypeName);
-            $element->setAttribute('minOccurs', 0);
-            $element->setAttribute('maxOccurs', 'unbounded');
-            $sequence->appendChild($element);
+php php php php php php php php php php php php php$elementphp php=php php$domphp-php>createElementphp(php'xsdphp:elementphp'php)php;
+php php php php php php php php php php php php php$elementphp-php>setAttributephp(php'namephp'php,php php php php php php php'itemphp'php)php;
+php php php php php php php php php php php php php$elementphp-php>setAttributephp(php'typephp'php,php php php php php php php$childTypeNamephp)php;
+php php php php php php php php php php php php php$elementphp-php>setAttributephp(php'minOccursphp'php,php php0php)php;
+php php php php php php php php php php php php php$elementphp-php>setAttributephp(php'maxOccursphp'php,php php'unboundedphp'php)php;
+php php php php php php php php php php php php php$sequencephp-php>appendChildphp(php$elementphp)php;
 
-            $complexType->appendChild($sequence);
+php php php php php php php php php php php php php$complexTypephp-php>appendChildphp(php$sequencephp)php;
 
-            $this->getContext()->getSchema()->appendChild($complexType);
-            $this->getContext()->addType($arrayType);
-        }
-    }
-}
+php php php php php php php php php php php php php$thisphp-php>getContextphp(php)php-php>getSchemaphp(php)php-php>appendChildphp(php$complexTypephp)php;
+php php php php php php php php php php php php php$thisphp-php>getContextphp(php)php-php>addTypephp(php$arrayTypephp)php;
+php php php php php php php php php}
+php php php php php}
+php}

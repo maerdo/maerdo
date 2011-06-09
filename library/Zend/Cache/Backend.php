@@ -1,266 +1,266 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Backend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Backend.php 20880 2010-02-03 18:18:32Z matthew $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Backend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Backendphp.phpphp php2php0php8php8php0php php2php0php1php0php-php0php2php-php0php3php php1php8php:php1php8php:php3php2Zphp matthewphp php$
+php php*php/
 
 
-/**
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Backend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cache_Backend
-{
-    /**
-     * Frontend or Core directives
-     *
-     * =====> (int) lifetime :
-     * - Cache lifetime (in seconds)
-     * - If null, the cache is valid forever
-     *
-     * =====> (int) logging :
-     * - if set to true, a logging is activated throw Zend_Log
-     *
-     * @var array directives
-     */
-    protected $_directives = array(
-        'lifetime' => 3600,
-        'logging'  => false,
-        'logger'   => null
-    );
+php/php*php*
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Backend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cachephp_Backend
+php{
+php php php php php/php*php*
+php php php php php php*php Frontendphp orphp Corephp directives
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(intphp)php lifetimephp php:
+php php php php php php*php php-php Cachephp lifetimephp php(inphp secondsphp)
+php php php php php php*php php-php Ifphp nullphp,php thephp cachephp isphp validphp forever
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(intphp)php loggingphp php:
+php php php php php php*php php-php ifphp setphp tophp truephp,php aphp loggingphp isphp activatedphp throwphp Zendphp_Log
+php php php php php php*
+php php php php php php*php php@varphp arrayphp directives
+php php php php php php*php/
+php php php php protectedphp php$php_directivesphp php=php arrayphp(
+php php php php php php php php php'lifetimephp'php php=php>php php3php6php0php0php,
+php php php php php php php php php'loggingphp'php php php=php>php falsephp,
+php php php php php php php php php'loggerphp'php php php php=php>php null
+php php php php php)php;
 
-    /**
-     * Available options
-     *
-     * @var array available options
-     */
-    protected $_options = array();
+php php php php php/php*php*
+php php php php php php*php Availablephp options
+php php php php php php*
+php php php php php php*php php@varphp arrayphp availablephp options
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(php)php;
 
-    /**
-     * Constructor
-     *
-     * @param  array $options Associative array of options
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function __construct(array $options = array())
-    {
-        while (list($name, $value) = each($options)) {
-            $this->setOption($name, $value);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Associativephp arrayphp ofphp options
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set the frontend directives
-     *
-     * @param  array $directives Assoc of directives
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function setDirectives($directives)
-    {
-        if (!is_array($directives)) Zend_Cache::throwException('Directives parameter must be an array');
-        while (list($name, $value) = each($directives)) {
-            if (!is_string($name)) {
-                Zend_Cache::throwException("Incorrect option name : $name");
-            }
-            $name = strtolower($name);
-            if (array_key_exists($name, $this->_directives)) {
-                $this->_directives[$name] = $value;
-            }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp frontendphp directives
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$directivesphp Assocphp ofphp directives
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setDirectivesphp(php$directivesphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$directivesphp)php)php Zendphp_Cachephp:php:throwExceptionphp(php'Directivesphp parameterphp mustphp bephp anphp arrayphp'php)php;
+php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$directivesphp)php)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Incorrectphp optionphp namephp php:php php$namephp"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_directivesphp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_directivesphp[php$namephp]php php=php php$valuephp;
+php php php php php php php php php php php php php}
 
-        }
+php php php php php php php php php}
 
-        $this->_loggerSanity();
-    }
+php php php php php php php php php$thisphp-php>php_loggerSanityphp(php)php;
+php php php php php}
 
-    /**
-     * Set an option
-     *
-     * @param  string $name
-     * @param  mixed  $value
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function setOption($name, $value)
-    {
-        if (!is_string($name)) {
-            Zend_Cache::throwException("Incorrect option name : $name");
-        }
-        $name = strtolower($name);
-        if (array_key_exists($name, $this->_options)) {
-            $this->_options[$name] = $value;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp anphp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php php$value
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setOptionphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$namephp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Incorrectphp optionphp namephp php:php php$namephp"php)php;
+php php php php php php php php php}
+php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php$namephp]php php=php php$valuephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Get the life time
-     *
-     * if $specificLifetime is not false, the given specific life time is used
-     * else, the global lifetime is used
-     *
-     * @param  int $specificLifetime
-     * @return int Cache life time
-     */
-    public function getLifetime($specificLifetime)
-    {
-        if ($specificLifetime === false) {
-            return $this->_directives['lifetime'];
-        }
-        return $specificLifetime;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp lifephp time
+php php php php php php*
+php php php php php php*php ifphp php$specificLifetimephp isphp notphp falsephp,php thephp givenphp specificphp lifephp timephp isphp used
+php php php php php php*php elsephp,php thephp globalphp lifetimephp isphp used
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$specificLifetime
+php php php php php php*php php@returnphp intphp Cachephp lifephp time
+php php php php php php*php/
+php php php php publicphp functionphp getLifetimephp(php$specificLifetimephp)
+php php php php php{
+php php php php php php php php ifphp php(php$specificLifetimephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_directivesphp[php'lifetimephp'php]php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$specificLifetimephp;
+php php php php php}
 
-    /**
-     * Return true if the automatic cleaning is available for the backend
-     *
-     * DEPRECATED : use getCapabilities() instead
-     *
-     * @deprecated
-     * @return boolean
-     */
-    public function isAutomaticCleaningAvailable()
-    {
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp truephp ifphp thephp automaticphp cleaningphp isphp availablephp forphp thephp backend
+php php php php php php*
+php php php php php php*php DEPRECATEDphp php:php usephp getCapabilitiesphp(php)php instead
+php php php php php php*
+php php php php php php*php php@deprecated
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isAutomaticCleaningAvailablephp(php)
+php php php php php{
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Determine system TMP directory and detect if we have read access
-     *
-     * inspired from Zend_File_Transfer_Adapter_Abstract
-     *
-     * @return string
-     * @throws Zend_Cache_Exception if unable to determine directory
-     */
-    public function getTmpDir()
-    {
-        $tmpdir = array();
-        foreach (array($_ENV, $_SERVER) as $tab) {
-            foreach (array('TMPDIR', 'TEMP', 'TMP', 'windir', 'SystemRoot') as $key) {
-                if (isset($tab[$key])) {
-                    if (($key == 'windir') or ($key == 'SystemRoot')) {
-                        $dir = realpath($tab[$key] . '\\temp');
-                    } else {
-                        $dir = realpath($tab[$key]);
-                    }
-                    if ($this->_isGoodTmpDir($dir)) {
-                        return $dir;
-                    }
-                }
-            }
-        }
-        $upload = ini_get('upload_tmp_dir');
-        if ($upload) {
-            $dir = realpath($upload);
-            if ($this->_isGoodTmpDir($dir)) {
-                return $dir;
-            }
-        }
-        if (function_exists('sys_get_temp_dir')) {
-            $dir = sys_get_temp_dir();
-            if ($this->_isGoodTmpDir($dir)) {
-                return $dir;
-            }
-        }
-        // Attemp to detect by creating a temporary file
-        $tempFile = tempnam(md5(uniqid(rand(), TRUE)), '');
-        if ($tempFile) {
-            $dir = realpath(dirname($tempFile));
-            unlink($tempFile);
-            if ($this->_isGoodTmpDir($dir)) {
-                return $dir;
-            }
-        }
-        if ($this->_isGoodTmpDir('/tmp')) {
-            return '/tmp';
-        }
-        if ($this->_isGoodTmpDir('\\temp')) {
-            return '\\temp';
-        }
-        Zend_Cache::throwException('Could not determine temp directory, please specify a cache_dir manually');
-    }
+php php php php php/php*php*
+php php php php php php*php Determinephp systemphp TMPphp directoryphp andphp detectphp ifphp wephp havephp readphp access
+php php php php php php*
+php php php php php php*php inspiredphp fromphp Zendphp_Filephp_Transferphp_Adapterphp_Abstract
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exceptionphp ifphp unablephp tophp determinephp directory
+php php php php php php*php/
+php php php php publicphp functionphp getTmpDirphp(php)
+php php php php php{
+php php php php php php php php php$tmpdirphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(arrayphp(php$php_ENVphp,php php$php_SERVERphp)php asphp php$tabphp)php php{
+php php php php php php php php php php php php foreachphp php(arrayphp(php'TMPDIRphp'php,php php'TEMPphp'php,php php'TMPphp'php,php php'windirphp'php,php php'SystemRootphp'php)php asphp php$keyphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$tabphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$keyphp php=php=php php'windirphp'php)php orphp php(php$keyphp php=php=php php'SystemRootphp'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$dirphp php=php realpathphp(php$tabphp[php$keyphp]php php.php php'php\php\tempphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$dirphp php=php realpathphp(php$tabphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_isGoodTmpDirphp(php$dirphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$dirphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$uploadphp php=php iniphp_getphp(php'uploadphp_tmpphp_dirphp'php)php;
+php php php php php php php php ifphp php(php$uploadphp)php php{
+php php php php php php php php php php php php php$dirphp php=php realpathphp(php$uploadphp)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_isGoodTmpDirphp(php$dirphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$dirphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(functionphp_existsphp(php'sysphp_getphp_tempphp_dirphp'php)php)php php{
+php php php php php php php php php php php php php$dirphp php=php sysphp_getphp_tempphp_dirphp(php)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_isGoodTmpDirphp(php$dirphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$dirphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php/php/php Attempphp tophp detectphp byphp creatingphp aphp temporaryphp file
+php php php php php php php php php$tempFilephp php=php tempnamphp(mdphp5php(uniqidphp(randphp(php)php,php TRUEphp)php)php,php php'php'php)php;
+php php php php php php php php ifphp php(php$tempFilephp)php php{
+php php php php php php php php php php php php php$dirphp php=php realpathphp(dirnamephp(php$tempFilephp)php)php;
+php php php php php php php php php php php php unlinkphp(php$tempFilephp)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_isGoodTmpDirphp(php$dirphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$dirphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_isGoodTmpDirphp(php'php/tmpphp'php)php)php php{
+php php php php php php php php php php php php returnphp php'php/tmpphp'php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_isGoodTmpDirphp(php'php\php\tempphp'php)php)php php{
+php php php php php php php php php php php php returnphp php'php\php\tempphp'php;
+php php php php php php php php php}
+php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Couldphp notphp determinephp tempphp directoryphp,php pleasephp specifyphp aphp cachephp_dirphp manuallyphp'php)php;
+php php php php php}
 
-    /**
-     * Verify if the given temporary directory is readable and writable
-     *
-     * @param $dir temporary directory
-     * @return boolean true if the directory is ok
-     */
-    protected function _isGoodTmpDir($dir)
-    {
-        if (is_readable($dir)) {
-            if (is_writable($dir)) {
-                return true;
-            }
-        }
-        return false;
-    }
+php php php php php/php*php*
+php php php php php php*php Verifyphp ifphp thephp givenphp temporaryphp directoryphp isphp readablephp andphp writable
+php php php php php php*
+php php php php php php*php php@paramphp php$dirphp temporaryphp directory
+php php php php php php*php php@returnphp booleanphp truephp ifphp thephp directoryphp isphp ok
+php php php php php php*php/
+php php php php protectedphp functionphp php_isGoodTmpDirphp(php$dirphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_readablephp(php$dirphp)php)php php{
+php php php php php php php php php php php php ifphp php(isphp_writablephp(php$dirphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Make sure if we enable logging that the Zend_Log class
-     * is available.
-     * Create a default log object if none is set.
-     *
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    protected function _loggerSanity()
-    {
-        if (!isset($this->_directives['logging']) || !$this->_directives['logging']) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Makephp surephp ifphp wephp enablephp loggingphp thatphp thephp Zendphp_Logphp class
+php php php php php php*php isphp availablephp.
+php php php php php php*php Createphp aphp defaultphp logphp objectphp ifphp nonephp isphp setphp.
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_loggerSanityphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_directivesphp[php'loggingphp'php]php)php php|php|php php!php$thisphp-php>php_directivesphp[php'loggingphp'php]php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        if (isset($this->_directives['logger'])) {
-            if ($this->_directives['logger'] instanceof Zend_Log) {
-                return;
-            }
-            Zend_Cache::throwException('Logger object is not an instance of Zend_Log class.');
-        }
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_directivesphp[php'loggerphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_directivesphp[php'loggerphp'php]php instanceofphp Zendphp_Logphp)php php{
+php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Loggerphp objectphp isphp notphp anphp instancephp ofphp Zendphp_Logphp classphp.php'php)php;
+php php php php php php php php php}
 
-        // Create a default logger to the standard output stream
-        require_once 'Zend/Log.php';
-        require_once 'Zend/Log/Writer/Stream.php';
-        $logger = new Zend_Log(new Zend_Log_Writer_Stream('php://output'));
-        $this->_directives['logger'] = $logger;
-    }
+php php php php php php php php php/php/php Createphp aphp defaultphp loggerphp tophp thephp standardphp outputphp stream
+php php php php php php php php requirephp_oncephp php'Zendphp/Logphp.phpphp'php;
+php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Writerphp/Streamphp.phpphp'php;
+php php php php php php php php php$loggerphp php=php newphp Zendphp_Logphp(newphp Zendphp_Logphp_Writerphp_Streamphp(php'phpphp:php/php/outputphp'php)php)php;
+php php php php php php php php php$thisphp-php>php_directivesphp[php'loggerphp'php]php php=php php$loggerphp;
+php php php php php}
 
-    /**
-     * Log a message at the WARN (4) priority.
-     *
-     * @param  string $message
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    protected function _log($message, $priority = 4)
-    {
-        if (!$this->_directives['logging']) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Logphp aphp messagephp atphp thephp WARNphp php(php4php)php priorityphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$message
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_logphp(php$messagephp,php php$priorityphp php=php php4php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_directivesphp[php'loggingphp'php]php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        if (!isset($this->_directives['logger'])) {
-            Zend_Cache::throwException('Logging is enabled but logger is not set.');
-        }
-        $logger = $this->_directives['logger'];
-        if (!$logger instanceof Zend_Log) {
-            Zend_Cache::throwException('Logger object is not an instance of Zend_Log class.');
-        }
-        $logger->log($message, $priority);
-    }
-}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_directivesphp[php'loggerphp'php]php)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Loggingphp isphp enabledphp butphp loggerphp isphp notphp setphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$loggerphp php=php php$thisphp-php>php_directivesphp[php'loggerphp'php]php;
+php php php php php php php php ifphp php(php!php$loggerphp instanceofphp Zendphp_Logphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Loggerphp objectphp isphp notphp anphp instancephp ofphp Zendphp_Logphp classphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$loggerphp-php>logphp(php$messagephp,php php$priorityphp)php;
+php php php php php}
+php}

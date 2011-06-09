@@ -1,536 +1,536 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Backend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: TwoLevels.php 22736 2010-07-30 16:25:54Z andyfowler $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Backend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php TwoLevelsphp.phpphp php2php2php7php3php6php php2php0php1php0php-php0php7php-php3php0php php1php6php:php2php5php:php5php4Zphp andyfowlerphp php$
+php php*php/
 
 
-/**
- * @see Zend_Cache_Backend_ExtendedInterface
- */
-require_once 'Zend/Cache/Backend/ExtendedInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Cachephp_Backendphp_ExtendedInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Cachephp/Backendphp/ExtendedInterfacephp.phpphp'php;
 
-/**
- * @see Zend_Cache_Backend
- */
-require_once 'Zend/Cache/Backend.php';
-
-
-/**
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Backend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
-{
-    /**
-     * Available options
-     *
-     * =====> (string) slow_backend :
-     * - Slow backend name
-     * - Must implement the Zend_Cache_Backend_ExtendedInterface
-     * - Should provide a big storage
-     *
-     * =====> (string) fast_backend :
-     * - Flow backend name
-     * - Must implement the Zend_Cache_Backend_ExtendedInterface
-     * - Must be much faster than slow_backend
-     *
-     * =====> (array) slow_backend_options :
-     * - Slow backend options (see corresponding backend)
-     *
-     * =====> (array) fast_backend_options :
-     * - Fast backend options (see corresponding backend)
-     *
-     * =====> (int) stats_update_factor :
-     * - Disable / Tune the computation of the fast backend filling percentage
-     * - When saving a record into cache :
-     *     1               => systematic computation of the fast backend filling percentage
-     *     x (integer) > 1 => computation of the fast backend filling percentage randomly 1 times on x cache write
-     *
-     * =====> (boolean) slow_backend_custom_naming :
-     * =====> (boolean) fast_backend_custom_naming :
-     * =====> (boolean) slow_backend_autoload :
-     * =====> (boolean) fast_backend_autoload :
-     * - See Zend_Cache::factory() method
-     *
-     * =====> (boolean) auto_refresh_fast_cache
-     * - If true, auto refresh the fast cache when a cache record is hit
-     *
-     * @var array available options
-     */
-    protected $_options = array(
-        'slow_backend' => 'File',
-        'fast_backend' => 'Apc',
-        'slow_backend_options' => array(),
-        'fast_backend_options' => array(),
-        'stats_update_factor' => 10,
-        'slow_backend_custom_naming' => false,
-        'fast_backend_custom_naming' => false,
-        'slow_backend_autoload' => false,
-        'fast_backend_autoload' => false,
-        'auto_refresh_fast_cache' => true
-    );
-
-    /**
-     * Slow Backend
-     *
-     * @var Zend_Cache_Backend_ExtendedInterface
-     */
-    protected $_slowBackend;
-
-    /**
-     * Fast Backend
-     *
-     * @var Zend_Cache_Backend_ExtendedInterface
-     */
-    protected $_fastBackend;
-
-    /**
-     * Cache for the fast backend filling percentage
-     *
-     * @var int
-     */
-    protected $_fastBackendFillingPercentage = null;
-
-    /**
-     * Constructor
-     *
-     * @param  array $options Associative array of options
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function __construct(array $options = array())
-    {
-        parent::__construct($options);
-
-        if ($this->_options['slow_backend'] === null) {
-            Zend_Cache::throwException('slow_backend option has to set');
-        } elseif ($this->_options['slow_backend'] instanceof Zend_Cache_Backend_ExtendedInterface) {
-            $this->_slowBackend = $this->_options['slow_backend'];
-        } else {
-            $this->_slowBackend = Zend_Cache::_makeBackend(
-                $this->_options['slow_backend'],
-                $this->_options['slow_backend_options'],
-                $this->_options['slow_backend_custom_naming'],
-                $this->_options['slow_backend_autoload']
-            );
-            if (!in_array('Zend_Cache_Backend_ExtendedInterface', class_implements($this->_slowBackend))) {
-                Zend_Cache::throwException('slow_backend must implement the Zend_Cache_Backend_ExtendedInterface interface');
-            }
-        }
-
-        if ($this->_options['fast_backend'] === null) {
-            Zend_Cache::throwException('fast_backend option has to set');
-        } elseif ($this->_options['fast_backend'] instanceof Zend_Cache_Backend_ExtendedInterface) {
-            $this->_fastBackend = $this->_options['fast_backend'];
-        } else {
-            $this->_fastBackend = Zend_Cache::_makeBackend(
-                $this->_options['fast_backend'],
-                $this->_options['fast_backend_options'],
-                $this->_options['fast_backend_custom_naming'],
-                $this->_options['fast_backend_autoload']
-            );
-            if (!in_array('Zend_Cache_Backend_ExtendedInterface', class_implements($this->_fastBackend))) {
-                Zend_Cache::throwException('fast_backend must implement the Zend_Cache_Backend_ExtendedInterface interface');
-            }
-        }
-
-        $this->_slowBackend->setDirectives($this->_directives);
-        $this->_fastBackend->setDirectives($this->_directives);
-    }
-
-    /**
-     * Test if a cache is available or not (for the given id)
-     *
-     * @param  string $id cache id
-     * @return mixed|false (a cache is not available) or "last modified" timestamp (int) of the available cache record
-     */
-    public function test($id)
-    {
-        $fastTest = $this->_fastBackend->test($id);
-        if ($fastTest) {
-            return $fastTest;
-        } else {
-            return $this->_slowBackend->test($id);
-        }
-    }
-
-    /**
-     * Save some string datas into a cache record
-     *
-     * Note : $data is always "string" (serialization is done by the
-     * core not by the backend)
-     *
-     * @param  string $data            Datas to cache
-     * @param  string $id              Cache id
-     * @param  array $tags             Array of strings, the cache record will be tagged by each string entry
-     * @param  int   $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
-     * @param  int   $priority         integer between 0 (very low priority) and 10 (maximum priority) used by some particular backends
-     * @return boolean true if no problem
-     */
-    public function save($data, $id, $tags = array(), $specificLifetime = false, $priority = 8)
-    {
-        $usage = $this->_getFastFillingPercentage('saving');
-        $boolFast = true;
-        $lifetime = $this->getLifetime($specificLifetime);
-        $preparedData = $this->_prepareData($data, $lifetime, $priority);
-        if (($priority > 0) && (10 * $priority >= $usage)) {
-            $fastLifetime = $this->_getFastLifetime($lifetime, $priority);
-            $boolFast = $this->_fastBackend->save($preparedData, $id, array(), $fastLifetime);
-            $boolSlow = $this->_slowBackend->save($preparedData, $id, $tags, $lifetime);
-        } else {
-            $boolSlow = $this->_slowBackend->save($preparedData, $id, $tags, $lifetime);
-            if ($boolSlow === true) {
-                $boolFast = $this->_fastBackend->remove($id);
-                if (!$boolFast && !$this->_fastBackend->test($id)) {
-                    // some backends return false on remove() even if the key never existed. (and it won't if fast is full)
-                    // all we care about is that the key doesn't exist now
-                    $boolFast = true;
-                }
-            }
-        }
-
-        return ($boolFast && $boolSlow);
-    }
-
-    /**
-     * Test if a cache is available for the given id and (if yes) return it (false else)
-     *
-     * Note : return value is always "string" (unserialization is done by the core not by the backend)
-     *
-     * @param  string  $id                     Cache id
-     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
-     * @return string|false cached datas
-     */
-    public function load($id, $doNotTestCacheValidity = false)
-    {
-        $res = $this->_fastBackend->load($id, $doNotTestCacheValidity);
-        if ($res === false) {
-            $res = $this->_slowBackend->load($id, $doNotTestCacheValidity);
-            if ($res === false) {
-                // there is no cache at all for this id
-                return false;
-            }
-        }
-        $array = unserialize($res);
-        // maybe, we have to refresh the fast cache ?
-        if ($this->_options['auto_refresh_fast_cache']) {
-            if ($array['priority'] == 10) {
-                // no need to refresh the fast cache with priority = 10
-                return $array['data'];
-            }
-            $newFastLifetime = $this->_getFastLifetime($array['lifetime'], $array['priority'], time() - $array['expire']);
-            // we have the time to refresh the fast cache
-            $usage = $this->_getFastFillingPercentage('loading');
-            if (($array['priority'] > 0) && (10 * $array['priority'] >= $usage)) {
-                // we can refresh the fast cache
-                $preparedData = $this->_prepareData($array['data'], $array['lifetime'], $array['priority']);
-                $this->_fastBackend->save($preparedData, $id, array(), $newFastLifetime);
-            }
-        }
-        return $array['data'];
-    }
-
-    /**
-     * Remove a cache record
-     *
-     * @param  string $id Cache id
-     * @return boolean True if no problem
-     */
-    public function remove($id)
-    {
-        $boolFast = $this->_fastBackend->remove($id);
-        $boolSlow = $this->_slowBackend->remove($id);
-        return $boolFast && $boolSlow;
-    }
-
-    /**
-     * Clean some cache records
-     *
-     * Available modes are :
-     * Zend_Cache::CLEANING_MODE_ALL (default)    => remove all cache entries ($tags is not used)
-     * Zend_Cache::CLEANING_MODE_OLD              => remove too old cache entries ($tags is not used)
-     * Zend_Cache::CLEANING_MODE_MATCHING_TAG     => remove cache entries matching all given tags
-     *                                               ($tags can be an array of strings or a single string)
-     * Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG => remove cache entries not {matching one of the given tags}
-     *                                               ($tags can be an array of strings or a single string)
-     * Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG => remove cache entries matching any given tags
-     *                                               ($tags can be an array of strings or a single string)
-     *
-     * @param  string $mode Clean mode
-     * @param  array  $tags Array of tags
-     * @throws Zend_Cache_Exception
-     * @return boolean true if no problem
-     */
-    public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = array())
-    {
-        switch($mode) {
-            case Zend_Cache::CLEANING_MODE_ALL:
-                $boolFast = $this->_fastBackend->clean(Zend_Cache::CLEANING_MODE_ALL);
-                $boolSlow = $this->_slowBackend->clean(Zend_Cache::CLEANING_MODE_ALL);
-                return $boolFast && $boolSlow;
-                break;
-            case Zend_Cache::CLEANING_MODE_OLD:
-                return $this->_slowBackend->clean(Zend_Cache::CLEANING_MODE_OLD);
-            case Zend_Cache::CLEANING_MODE_MATCHING_TAG:
-                $ids = $this->_slowBackend->getIdsMatchingTags($tags);
-                $res = true;
-                foreach ($ids as $id) {
-                    $bool = $this->remove($id);
-                    $res = $res && $bool;
-                }
-                return $res;
-                break;
-            case Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG:
-                $ids = $this->_slowBackend->getIdsNotMatchingTags($tags);
-                $res = true;
-                foreach ($ids as $id) {
-                    $bool = $this->remove($id);
-                    $res = $res && $bool;
-                }
-                return $res;
-                break;
-            case Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG:
-                $ids = $this->_slowBackend->getIdsMatchingAnyTags($tags);
-                $res = true;
-                foreach ($ids as $id) {
-                    $bool = $this->remove($id);
-                    $res = $res && $bool;
-                }
-                return $res;
-                break;
-            default:
-                Zend_Cache::throwException('Invalid mode for clean() method');
-                break;
-        }
-    }
-
-    /**
-     * Return an array of stored cache ids
-     *
-     * @return array array of stored cache ids (string)
-     */
-    public function getIds()
-    {
-        return $this->_slowBackend->getIds();
-    }
-
-    /**
-     * Return an array of stored tags
-     *
-     * @return array array of stored tags (string)
-     */
-    public function getTags()
-    {
-        return $this->_slowBackend->getTags();
-    }
-
-    /**
-     * Return an array of stored cache ids which match given tags
-     *
-     * In case of multiple tags, a logical AND is made between tags
-     *
-     * @param array $tags array of tags
-     * @return array array of matching cache ids (string)
-     */
-    public function getIdsMatchingTags($tags = array())
-    {
-        return $this->_slowBackend->getIdsMatchingTags($tags);
-    }
-
-    /**
-     * Return an array of stored cache ids which don't match given tags
-     *
-     * In case of multiple tags, a logical OR is made between tags
-     *
-     * @param array $tags array of tags
-     * @return array array of not matching cache ids (string)
-     */
-    public function getIdsNotMatchingTags($tags = array())
-    {
-        return $this->_slowBackend->getIdsNotMatchingTags($tags);
-    }
-
-    /**
-     * Return an array of stored cache ids which match any given tags
-     *
-     * In case of multiple tags, a logical AND is made between tags
-     *
-     * @param array $tags array of tags
-     * @return array array of any matching cache ids (string)
-     */
-    public function getIdsMatchingAnyTags($tags = array())
-    {
-        return $this->_slowBackend->getIdsMatchingAnyTags($tags);
-    }
+php/php*php*
+php php*php php@seephp Zendphp_Cachephp_Backend
+php php*php/
+requirephp_oncephp php'Zendphp/Cachephp/Backendphp.phpphp'php;
 
 
-    /**
-     * Return the filling percentage of the backend storage
-     *
-     * @return int integer between 0 and 100
-     */
-    public function getFillingPercentage()
-    {
-        return $this->_slowBackend->getFillingPercentage();
-    }
+php/php*php*
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Backend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-    /**
-     * Return an array of metadatas for the given cache id
-     *
-     * The array must include these keys :
-     * - expire : the expire timestamp
-     * - tags : a string array of tags
-     * - mtime : timestamp of last modification time
-     *
-     * @param string $id cache id
-     * @return array array of metadatas (false if the cache id is not found)
-     */
-    public function getMetadatas($id)
-    {
-        return $this->_slowBackend->getMetadatas($id);
-    }
+classphp Zendphp_Cachephp_Backendphp_TwoLevelsphp extendsphp Zendphp_Cachephp_Backendphp implementsphp Zendphp_Cachephp_Backendphp_ExtendedInterface
+php{
+php php php php php/php*php*
+php php php php php php*php Availablephp options
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(stringphp)php slowphp_backendphp php:
+php php php php php php*php php-php Slowphp backendphp name
+php php php php php php*php php-php Mustphp implementphp thephp Zendphp_Cachephp_Backendphp_ExtendedInterface
+php php php php php php*php php-php Shouldphp providephp aphp bigphp storage
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(stringphp)php fastphp_backendphp php:
+php php php php php php*php php-php Flowphp backendphp name
+php php php php php php*php php-php Mustphp implementphp thephp Zendphp_Cachephp_Backendphp_ExtendedInterface
+php php php php php php*php php-php Mustphp bephp muchphp fasterphp thanphp slowphp_backend
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(arrayphp)php slowphp_backendphp_optionsphp php:
+php php php php php php*php php-php Slowphp backendphp optionsphp php(seephp correspondingphp backendphp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(arrayphp)php fastphp_backendphp_optionsphp php:
+php php php php php php*php php-php Fastphp backendphp optionsphp php(seephp correspondingphp backendphp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(intphp)php statsphp_updatephp_factorphp php:
+php php php php php php*php php-php Disablephp php/php Tunephp thephp computationphp ofphp thephp fastphp backendphp fillingphp percentage
+php php php php php php*php php-php Whenphp savingphp aphp recordphp intophp cachephp php:
+php php php php php php*php php php php php php1php php php php php php php php php php php php php php php php=php>php systematicphp computationphp ofphp thephp fastphp backendphp fillingphp percentage
+php php php php php php*php php php php php xphp php(integerphp)php php>php php1php php=php>php computationphp ofphp thephp fastphp backendphp fillingphp percentagephp randomlyphp php1php timesphp onphp xphp cachephp write
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(booleanphp)php slowphp_backendphp_customphp_namingphp php:
+php php php php php php*php php=php=php=php=php=php>php php(booleanphp)php fastphp_backendphp_customphp_namingphp php:
+php php php php php php*php php=php=php=php=php=php>php php(booleanphp)php slowphp_backendphp_autoloadphp php:
+php php php php php php*php php=php=php=php=php=php>php php(booleanphp)php fastphp_backendphp_autoloadphp php:
+php php php php php php*php php-php Seephp Zendphp_Cachephp:php:factoryphp(php)php method
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(booleanphp)php autophp_refreshphp_fastphp_cache
+php php php php php php*php php-php Ifphp truephp,php autophp refreshphp thephp fastphp cachephp whenphp aphp cachephp recordphp isphp hit
+php php php php php php*
+php php php php php php*php php@varphp arrayphp availablephp options
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'slowphp_backendphp'php php=php>php php'Filephp'php,
+php php php php php php php php php'fastphp_backendphp'php php=php>php php'Apcphp'php,
+php php php php php php php php php'slowphp_backendphp_optionsphp'php php=php>php arrayphp(php)php,
+php php php php php php php php php'fastphp_backendphp_optionsphp'php php=php>php arrayphp(php)php,
+php php php php php php php php php'statsphp_updatephp_factorphp'php php=php>php php1php0php,
+php php php php php php php php php'slowphp_backendphp_customphp_namingphp'php php=php>php falsephp,
+php php php php php php php php php'fastphp_backendphp_customphp_namingphp'php php=php>php falsephp,
+php php php php php php php php php'slowphp_backendphp_autoloadphp'php php=php>php falsephp,
+php php php php php php php php php'fastphp_backendphp_autoloadphp'php php=php>php falsephp,
+php php php php php php php php php'autophp_refreshphp_fastphp_cachephp'php php=php>php true
+php php php php php)php;
 
-    /**
-     * Give (if possible) an extra lifetime to the given cache id
-     *
-     * @param string $id cache id
-     * @param int $extraLifetime
-     * @return boolean true if ok
-     */
-    public function touch($id, $extraLifetime)
-    {
-        return $this->_slowBackend->touch($id, $extraLifetime);
-    }
+php php php php php/php*php*
+php php php php php php*php Slowphp Backend
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Cachephp_Backendphp_ExtendedInterface
+php php php php php php*php/
+php php php php protectedphp php$php_slowBackendphp;
 
-    /**
-     * Return an associative array of capabilities (booleans) of the backend
-     *
-     * The array must include these keys :
-     * - automatic_cleaning (is automating cleaning necessary)
-     * - tags (are tags supported)
-     * - expired_read (is it possible to read expired cache records
-     *                 (for doNotTestCacheValidity option for example))
-     * - priority does the backend deal with priority when saving
-     * - infinite_lifetime (is infinite lifetime can work with this backend)
-     * - get_list (is it possible to get the list of cache ids and the complete list of tags)
-     *
-     * @return array associative of with capabilities
-     */
-    public function getCapabilities()
-    {
-        $slowBackendCapabilities = $this->_slowBackend->getCapabilities();
-        return array(
-            'automatic_cleaning' => $slowBackendCapabilities['automatic_cleaning'],
-            'tags' => $slowBackendCapabilities['tags'],
-            'expired_read' => $slowBackendCapabilities['expired_read'],
-            'priority' => $slowBackendCapabilities['priority'],
-            'infinite_lifetime' => $slowBackendCapabilities['infinite_lifetime'],
-            'get_list' => $slowBackendCapabilities['get_list']
-        );
-    }
+php php php php php/php*php*
+php php php php php php*php Fastphp Backend
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Cachephp_Backendphp_ExtendedInterface
+php php php php php php*php/
+php php php php protectedphp php$php_fastBackendphp;
 
-    /**
-     * Prepare a serialized array to store datas and metadatas informations
-     *
-     * @param string $data data to store
-     * @param int $lifetime original lifetime
-     * @param int $priority priority
-     * @return string serialize array to store into cache
-     */
-    private function _prepareData($data, $lifetime, $priority)
-    {
-        $lt = $lifetime;
-        if ($lt === null) {
-            $lt = 9999999999;
-        }
-        return serialize(array(
-            'data' => $data,
-            'lifetime' => $lifetime,
-            'expire' => time() + $lt,
-            'priority' => $priority
-        ));
-    }
+php php php php php/php*php*
+php php php php php php*php Cachephp forphp thephp fastphp backendphp fillingphp percentage
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_fastBackendFillingPercentagephp php=php nullphp;
 
-    /**
-     * Compute and return the lifetime for the fast backend
-     *
-     * @param int $lifetime original lifetime
-     * @param int $priority priority
-     * @param int $maxLifetime maximum lifetime
-     * @return int lifetime for the fast backend
-     */
-    private function _getFastLifetime($lifetime, $priority, $maxLifetime = null)
-    {
-        if ($lifetime === null) {
-            // if lifetime is null, we have an infinite lifetime
-            // we need to use arbitrary lifetimes
-            $fastLifetime = (int) (2592000 / (11 - $priority));
-        } else {
-            $fastLifetime = (int) ($lifetime / (11 - $priority));
-        }
-        if (($maxLifetime !== null) && ($maxLifetime >= 0)) {
-            if ($fastLifetime > $maxLifetime) {
-                return $maxLifetime;
-            }
-        }
-        return $fastLifetime;
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Associativephp arrayphp ofphp options
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
 
-    /**
-     * PUBLIC METHOD FOR UNIT TESTING ONLY !
-     *
-     * Force a cache record to expire
-     *
-     * @param string $id cache id
-     */
-    public function ___expire($id)
-    {
-        $this->_fastBackend->remove($id);
-        $this->_slowBackend->___expire($id);
-    }
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'slowphp_backendphp'php]php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'slowphp_backendphp optionphp hasphp tophp setphp'php)php;
+php php php php php php php php php}php elseifphp php(php$thisphp-php>php_optionsphp[php'slowphp_backendphp'php]php instanceofphp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_slowBackendphp php=php php$thisphp-php>php_optionsphp[php'slowphp_backendphp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_slowBackendphp php=php Zendphp_Cachephp:php:php_makeBackendphp(
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'slowphp_backendphp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'slowphp_backendphp_optionsphp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'slowphp_backendphp_customphp_namingphp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'slowphp_backendphp_autoloadphp'php]
+php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php'Zendphp_Cachephp_Backendphp_ExtendedInterfacephp'php,php classphp_implementsphp(php$thisphp-php>php_slowBackendphp)php)php)php php{
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'slowphp_backendphp mustphp implementphp thephp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp interfacephp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-    private function _getFastFillingPercentage($mode)
-    {
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'fastphp_backendphp'php]php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'fastphp_backendphp optionphp hasphp tophp setphp'php)php;
+php php php php php php php php php}php elseifphp php(php$thisphp-php>php_optionsphp[php'fastphp_backendphp'php]php instanceofphp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_fastBackendphp php=php php$thisphp-php>php_optionsphp[php'fastphp_backendphp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_fastBackendphp php=php Zendphp_Cachephp:php:php_makeBackendphp(
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'fastphp_backendphp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'fastphp_backendphp_optionsphp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'fastphp_backendphp_customphp_namingphp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'fastphp_backendphp_autoloadphp'php]
+php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php'Zendphp_Cachephp_Backendphp_ExtendedInterfacephp'php,php classphp_implementsphp(php$thisphp-php>php_fastBackendphp)php)php)php php{
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'fastphp_backendphp mustphp implementphp thephp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp interfacephp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($mode == 'saving') {
-            // mode saving
-            if ($this->_fastBackendFillingPercentage === null) {
-                $this->_fastBackendFillingPercentage = $this->_fastBackend->getFillingPercentage();
-            } else {
-                $rand = rand(1, $this->_options['stats_update_factor']);
-                if ($rand == 1) {
-                    // we force a refresh
-                    $this->_fastBackendFillingPercentage = $this->_fastBackend->getFillingPercentage();
-                }
-            }
-        } else {
-            // mode loading
-            // we compute the percentage only if it's not available in cache
-            if ($this->_fastBackendFillingPercentage === null) {
-                $this->_fastBackendFillingPercentage = $this->_fastBackend->getFillingPercentage();
-            }
-        }
-        return $this->_fastBackendFillingPercentage;
-    }
+php php php php php php php php php$thisphp-php>php_slowBackendphp-php>setDirectivesphp(php$thisphp-php>php_directivesphp)php;
+php php php php php php php php php$thisphp-php>php_fastBackendphp-php>setDirectivesphp(php$thisphp-php>php_directivesphp)php;
+php php php php php}
 
-}
+php php php php php/php*php*
+php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp orphp notphp php(forphp thephp givenphp idphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$idphp cachephp id
+php php php php php php*php php@returnphp mixedphp|falsephp php(aphp cachephp isphp notphp availablephp)php orphp php"lastphp modifiedphp"php timestampphp php(intphp)php ofphp thephp availablephp cachephp record
+php php php php php php*php/
+php php php php publicphp functionphp testphp(php$idphp)
+php php php php php{
+php php php php php php php php php$fastTestphp php=php php$thisphp-php>php_fastBackendphp-php>testphp(php$idphp)php;
+php php php php php php php php ifphp php(php$fastTestphp)php php{
+php php php php php php php php php php php php returnphp php$fastTestphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>testphp(php$idphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Savephp somephp stringphp datasphp intophp aphp cachephp record
+php php php php php php*
+php php php php php php*php Notephp php:php php$dataphp isphp alwaysphp php"stringphp"php php(serializationphp isphp donephp byphp the
+php php php php php php*php corephp notphp byphp thephp backendphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$dataphp php php php php php php php php php php php Datasphp tophp cache
+php php php php php php*php php@paramphp php stringphp php$idphp php php php php php php php php php php php php php Cachephp id
+php php php php php php*php php@paramphp php arrayphp php$tagsphp php php php php php php php php php php php php Arrayphp ofphp stringsphp,php thephp cachephp recordphp willphp bephp taggedphp byphp eachphp stringphp entry
+php php php php php php*php php@paramphp php intphp php php php$specificLifetimephp Ifphp php!php=php falsephp,php setphp aphp specificphp lifetimephp forphp thisphp cachephp recordphp php(nullphp php=php>php infinitephp lifetimephp)
+php php php php php php*php php@paramphp php intphp php php php$priorityphp php php php php php php php php integerphp betweenphp php0php php(veryphp lowphp priorityphp)php andphp php1php0php php(maximumphp priorityphp)php usedphp byphp somephp particularphp backends
+php php php php php php*php php@returnphp booleanphp truephp ifphp nophp problem
+php php php php php php*php/
+php php php php publicphp functionphp savephp(php$dataphp,php php$idphp,php php$tagsphp php=php arrayphp(php)php,php php$specificLifetimephp php=php falsephp,php php$priorityphp php=php php8php)
+php php php php php{
+php php php php php php php php php$usagephp php=php php$thisphp-php>php_getFastFillingPercentagephp(php'savingphp'php)php;
+php php php php php php php php php$boolFastphp php=php truephp;
+php php php php php php php php php$lifetimephp php=php php$thisphp-php>getLifetimephp(php$specificLifetimephp)php;
+php php php php php php php php php$preparedDataphp php=php php$thisphp-php>php_prepareDataphp(php$dataphp,php php$lifetimephp,php php$priorityphp)php;
+php php php php php php php php ifphp php(php(php$priorityphp php>php php0php)php php&php&php php(php1php0php php*php php$priorityphp php>php=php php$usagephp)php)php php{
+php php php php php php php php php php php php php$fastLifetimephp php=php php$thisphp-php>php_getFastLifetimephp(php$lifetimephp,php php$priorityphp)php;
+php php php php php php php php php php php php php$boolFastphp php=php php$thisphp-php>php_fastBackendphp-php>savephp(php$preparedDataphp,php php$idphp,php arrayphp(php)php,php php$fastLifetimephp)php;
+php php php php php php php php php php php php php$boolSlowphp php=php php$thisphp-php>php_slowBackendphp-php>savephp(php$preparedDataphp,php php$idphp,php php$tagsphp,php php$lifetimephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$boolSlowphp php=php php$thisphp-php>php_slowBackendphp-php>savephp(php$preparedDataphp,php php$idphp,php php$tagsphp,php php$lifetimephp)php;
+php php php php php php php php php php php php ifphp php(php$boolSlowphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php$boolFastphp php=php php$thisphp-php>php_fastBackendphp-php>removephp(php$idphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php!php$boolFastphp php&php&php php!php$thisphp-php>php_fastBackendphp-php>testphp(php$idphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php somephp backendsphp returnphp falsephp onphp removephp(php)php evenphp ifphp thephp keyphp neverphp existedphp.php php(andphp itphp wonphp'tphp ifphp fastphp isphp fullphp)
+php php php php php php php php php php php php php php php php php php php php php/php/php allphp wephp carephp aboutphp isphp thatphp thephp keyphp doesnphp'tphp existphp now
+php php php php php php php php php php php php php php php php php php php php php$boolFastphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php(php$boolFastphp php&php&php php$boolSlowphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp idphp andphp php(ifphp yesphp)php returnphp itphp php(falsephp elsephp)
+php php php php php php*
+php php php php php php*php Notephp php:php returnphp valuephp isphp alwaysphp php"stringphp"php php(unserializationphp isphp donephp byphp thephp corephp notphp byphp thephp backendphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$idphp php php php php php php php php php php php php php php php php php php php php Cachephp id
+php php php php php php*php php@paramphp php booleanphp php$doNotTestCacheValidityphp Ifphp setphp tophp truephp,php thephp cachephp validityphp wonphp'tphp bephp tested
+php php php php php php*php php@returnphp stringphp|falsephp cachedphp datas
+php php php php php php*php/
+php php php php publicphp functionphp loadphp(php$idphp,php php$doNotTestCacheValidityphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$resphp php=php php$thisphp-php>php_fastBackendphp-php>loadphp(php$idphp,php php$doNotTestCacheValidityphp)php;
+php php php php php php php php ifphp php(php$resphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php$resphp php=php php$thisphp-php>php_slowBackendphp-php>loadphp(php$idphp,php php$doNotTestCacheValidityphp)php;
+php php php php php php php php php php php php ifphp php(php$resphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php/php/php therephp isphp nophp cachephp atphp allphp forphp thisphp id
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$arrayphp php=php unserializephp(php$resphp)php;
+php php php php php php php php php/php/php maybephp,php wephp havephp tophp refreshphp thephp fastphp cachephp php?
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'autophp_refreshphp_fastphp_cachephp'php]php)php php{
+php php php php php php php php php php php php ifphp php(php$arrayphp[php'priorityphp'php]php php=php=php php1php0php)php php{
+php php php php php php php php php php php php php php php php php/php/php nophp needphp tophp refreshphp thephp fastphp cachephp withphp priorityphp php=php php1php0
+php php php php php php php php php php php php php php php php returnphp php$arrayphp[php'dataphp'php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$newFastLifetimephp php=php php$thisphp-php>php_getFastLifetimephp(php$arrayphp[php'lifetimephp'php]php,php php$arrayphp[php'priorityphp'php]php,php timephp(php)php php-php php$arrayphp[php'expirephp'php]php)php;
+php php php php php php php php php php php php php/php/php wephp havephp thephp timephp tophp refreshphp thephp fastphp cache
+php php php php php php php php php php php php php$usagephp php=php php$thisphp-php>php_getFastFillingPercentagephp(php'loadingphp'php)php;
+php php php php php php php php php php php php ifphp php(php(php$arrayphp[php'priorityphp'php]php php>php php0php)php php&php&php php(php1php0php php*php php$arrayphp[php'priorityphp'php]php php>php=php php$usagephp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php wephp canphp refreshphp thephp fastphp cache
+php php php php php php php php php php php php php php php php php$preparedDataphp php=php php$thisphp-php>php_prepareDataphp(php$arrayphp[php'dataphp'php]php,php php$arrayphp[php'lifetimephp'php]php,php php$arrayphp[php'priorityphp'php]php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_fastBackendphp-php>savephp(php$preparedDataphp,php php$idphp,php arrayphp(php)php,php php$newFastLifetimephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$arrayphp[php'dataphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp aphp cachephp record
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
+php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
+php php php php php php*php/
+php php php php publicphp functionphp removephp(php$idphp)
+php php php php php{
+php php php php php php php php php$boolFastphp php=php php$thisphp-php>php_fastBackendphp-php>removephp(php$idphp)php;
+php php php php php php php php php$boolSlowphp php=php php$thisphp-php>php_slowBackendphp-php>removephp(php$idphp)php;
+php php php php php php php php returnphp php$boolFastphp php&php&php php$boolSlowphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Cleanphp somephp cachephp records
+php php php php php php*
+php php php php php php*php Availablephp modesphp arephp php:
+php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp php(defaultphp)php php php php php=php>php removephp allphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
+php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp php php php php php php php php php php php php php php=php>php removephp toophp oldphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
+php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp php php php php php=php>php removephp cachephp entriesphp matchingphp allphp givenphp tags
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
+php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp php=php>php removephp cachephp entriesphp notphp php{matchingphp onephp ofphp thephp givenphp tagsphp}
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
+php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_ANYphp_TAGphp php=php>php removephp cachephp entriesphp matchingphp anyphp givenphp tags
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$modephp Cleanphp mode
+php php php php php php*php php@paramphp php arrayphp php php$tagsphp Arrayphp ofphp tags
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp booleanphp truephp ifphp nophp problem
+php php php php php php*php/
+php php php php publicphp functionphp cleanphp(php$modephp php=php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp,php php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php switchphp(php$modephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp:
+php php php php php php php php php php php php php php php php php$boolFastphp php=php php$thisphp-php>php_fastBackendphp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp)php;
+php php php php php php php php php php php php php php php php php$boolSlowphp php=php php$thisphp-php>php_slowBackendphp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp)php;
+php php php php php php php php php php php php php php php php returnphp php$boolFastphp php&php&php php$boolSlowphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp:
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp)php;
+php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp:
+php php php php php php php php php php php php php php php php php$idsphp php=php php$thisphp-php>php_slowBackendphp-php>getIdsMatchingTagsphp(php$tagsphp)php;
+php php php php php php php php php php php php php php php php php$resphp php=php truephp;
+php php php php php php php php php php php php php php php php foreachphp php(php$idsphp asphp php$idphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$boolphp php=php php$thisphp-php>removephp(php$idphp)php;
+php php php php php php php php php php php php php php php php php php php php php$resphp php=php php$resphp php&php&php php$boolphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$resphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp:
+php php php php php php php php php php php php php php php php php$idsphp php=php php$thisphp-php>php_slowBackendphp-php>getIdsNotMatchingTagsphp(php$tagsphp)php;
+php php php php php php php php php php php php php php php php php$resphp php=php truephp;
+php php php php php php php php php php php php php php php php foreachphp php(php$idsphp asphp php$idphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$boolphp php=php php$thisphp-php>removephp(php$idphp)php;
+php php php php php php php php php php php php php php php php php php php php php$resphp php=php php$resphp php&php&php php$boolphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$resphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_ANYphp_TAGphp:
+php php php php php php php php php php php php php php php php php$idsphp php=php php$thisphp-php>php_slowBackendphp-php>getIdsMatchingAnyTagsphp(php$tagsphp)php;
+php php php php php php php php php php php php php php php php php$resphp php=php truephp;
+php php php php php php php php php php php php php php php php foreachphp php(php$idsphp asphp php$idphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$boolphp php=php php$thisphp-php>removephp(php$idphp)php;
+php php php php php php php php php php php php php php php php php php php php php$resphp php=php php$resphp php&php&php php$boolphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$resphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp modephp forphp cleanphp(php)php methodphp'php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp ids
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>getIdsphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp tags
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp tagsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getTagsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>getTagsphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp givenphp tags
+php php php php php php*
+php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ANDphp isphp madephp betweenphp tags
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp matchingphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>getIdsMatchingTagsphp(php$tagsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp donphp'tphp matchphp givenphp tags
+php php php php php php*
+php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ORphp isphp madephp betweenphp tags
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp notphp matchingphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsNotMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>getIdsNotMatchingTagsphp(php$tagsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp anyphp givenphp tags
+php php php php php php*
+php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ANDphp isphp madephp betweenphp tags
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp anyphp matchingphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsMatchingAnyTagsphp(php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>getIdsMatchingAnyTagsphp(php$tagsphp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp fillingphp percentagephp ofphp thephp backendphp storage
+php php php php php php*
+php php php php php php*php php@returnphp intphp integerphp betweenphp php0php andphp php1php0php0
+php php php php php php*php/
+php php php php publicphp functionphp getFillingPercentagephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>getFillingPercentagephp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp metadatasphp forphp thephp givenphp cachephp id
+php php php php php php*
+php php php php php php*php Thephp arrayphp mustphp includephp thesephp keysphp php:
+php php php php php php*php php-php expirephp php:php thephp expirephp timestamp
+php php php php php php*php php-php tagsphp php:php aphp stringphp arrayphp ofphp tags
+php php php php php php*php php-php mtimephp php:php timestampphp ofphp lastphp modificationphp time
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp cachephp id
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp metadatasphp php(falsephp ifphp thephp cachephp idphp isphp notphp foundphp)
+php php php php php php*php/
+php php php php publicphp functionphp getMetadatasphp(php$idphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>getMetadatasphp(php$idphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Givephp php(ifphp possiblephp)php anphp extraphp lifetimephp tophp thephp givenphp cachephp id
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp cachephp id
+php php php php php php*php php@paramphp intphp php$extraLifetime
+php php php php php php*php php@returnphp booleanphp truephp ifphp ok
+php php php php php php*php/
+php php php php publicphp functionphp touchphp(php$idphp,php php$extraLifetimephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slowBackendphp-php>touchphp(php$idphp,php php$extraLifetimephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp associativephp arrayphp ofphp capabilitiesphp php(booleansphp)php ofphp thephp backend
+php php php php php php*
+php php php php php php*php Thephp arrayphp mustphp includephp thesephp keysphp php:
+php php php php php php*php php-php automaticphp_cleaningphp php(isphp automatingphp cleaningphp necessaryphp)
+php php php php php php*php php-php tagsphp php(arephp tagsphp supportedphp)
+php php php php php php*php php-php expiredphp_readphp php(isphp itphp possiblephp tophp readphp expiredphp cachephp records
+php php php php php php*php php php php php php php php php php php php php php php php php php(forphp doNotTestCacheValidityphp optionphp forphp examplephp)php)
+php php php php php php*php php-php priorityphp doesphp thephp backendphp dealphp withphp priorityphp whenphp saving
+php php php php php php*php php-php infinitephp_lifetimephp php(isphp infinitephp lifetimephp canphp workphp withphp thisphp backendphp)
+php php php php php php*php php-php getphp_listphp php(isphp itphp possiblephp tophp getphp thephp listphp ofphp cachephp idsphp andphp thephp completephp listphp ofphp tagsphp)
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp associativephp ofphp withphp capabilities
+php php php php php php*php/
+php php php php publicphp functionphp getCapabilitiesphp(php)
+php php php php php{
+php php php php php php php php php$slowBackendCapabilitiesphp php=php php$thisphp-php>php_slowBackendphp-php>getCapabilitiesphp(php)php;
+php php php php php php php php returnphp arrayphp(
+php php php php php php php php php php php php php'automaticphp_cleaningphp'php php=php>php php$slowBackendCapabilitiesphp[php'automaticphp_cleaningphp'php]php,
+php php php php php php php php php php php php php'tagsphp'php php=php>php php$slowBackendCapabilitiesphp[php'tagsphp'php]php,
+php php php php php php php php php php php php php'expiredphp_readphp'php php=php>php php$slowBackendCapabilitiesphp[php'expiredphp_readphp'php]php,
+php php php php php php php php php php php php php'priorityphp'php php=php>php php$slowBackendCapabilitiesphp[php'priorityphp'php]php,
+php php php php php php php php php php php php php'infinitephp_lifetimephp'php php=php>php php$slowBackendCapabilitiesphp[php'infinitephp_lifetimephp'php]php,
+php php php php php php php php php php php php php'getphp_listphp'php php=php>php php$slowBackendCapabilitiesphp[php'getphp_listphp'php]
+php php php php php php php php php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Preparephp aphp serializedphp arrayphp tophp storephp datasphp andphp metadatasphp informations
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$dataphp dataphp tophp store
+php php php php php php*php php@paramphp intphp php$lifetimephp originalphp lifetime
+php php php php php php*php php@paramphp intphp php$priorityphp priority
+php php php php php php*php php@returnphp stringphp serializephp arrayphp tophp storephp intophp cache
+php php php php php php*php/
+php php php php privatephp functionphp php_prepareDataphp(php$dataphp,php php$lifetimephp,php php$priorityphp)
+php php php php php{
+php php php php php php php php php$ltphp php=php php$lifetimephp;
+php php php php php php php php ifphp php(php$ltphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$ltphp php=php php9php9php9php9php9php9php9php9php9php9php;
+php php php php php php php php php}
+php php php php php php php php returnphp serializephp(arrayphp(
+php php php php php php php php php php php php php'dataphp'php php=php>php php$dataphp,
+php php php php php php php php php php php php php'lifetimephp'php php=php>php php$lifetimephp,
+php php php php php php php php php php php php php'expirephp'php php=php>php timephp(php)php php+php php$ltphp,
+php php php php php php php php php php php php php'priorityphp'php php=php>php php$priority
+php php php php php php php php php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Computephp andphp returnphp thephp lifetimephp forphp thephp fastphp backend
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$lifetimephp originalphp lifetime
+php php php php php php*php php@paramphp intphp php$priorityphp priority
+php php php php php php*php php@paramphp intphp php$maxLifetimephp maximumphp lifetime
+php php php php php php*php php@returnphp intphp lifetimephp forphp thephp fastphp backend
+php php php php php php*php/
+php php php php privatephp functionphp php_getFastLifetimephp(php$lifetimephp,php php$priorityphp,php php$maxLifetimephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$lifetimephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php ifphp lifetimephp isphp nullphp,php wephp havephp anphp infinitephp lifetime
+php php php php php php php php php php php php php/php/php wephp needphp tophp usephp arbitraryphp lifetimes
+php php php php php php php php php php php php php$fastLifetimephp php=php php(intphp)php php(php2php5php9php2php0php0php0php php/php php(php1php1php php-php php$priorityphp)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$fastLifetimephp php=php php(intphp)php php(php$lifetimephp php/php php(php1php1php php-php php$priorityphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php(php$maxLifetimephp php!php=php=php nullphp)php php&php&php php(php$maxLifetimephp php>php=php php0php)php)php php{
+php php php php php php php php php php php php ifphp php(php$fastLifetimephp php>php php$maxLifetimephp)php php{
+php php php php php php php php php php php php php php php php returnphp php$maxLifetimephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$fastLifetimephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php PUBLICphp METHODphp FORphp UNITphp TESTINGphp ONLYphp php!
+php php php php php php*
+php php php php php php*php Forcephp aphp cachephp recordphp tophp expire
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp cachephp id
+php php php php php php*php/
+php php php php publicphp functionphp php_php_php_expirephp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fastBackendphp-php>removephp(php$idphp)php;
+php php php php php php php php php$thisphp-php>php_slowBackendphp-php>php_php_php_expirephp(php$idphp)php;
+php php php php php}
+
+php php php php privatephp functionphp php_getFastFillingPercentagephp(php$modephp)
+php php php php php{
+
+php php php php php php php php ifphp php(php$modephp php=php=php php'savingphp'php)php php{
+php php php php php php php php php php php php php/php/php modephp saving
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_fastBackendFillingPercentagephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_fastBackendFillingPercentagephp php=php php$thisphp-php>php_fastBackendphp-php>getFillingPercentagephp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$randphp php=php randphp(php1php,php php$thisphp-php>php_optionsphp[php'statsphp_updatephp_factorphp'php]php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$randphp php=php=php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php wephp forcephp aphp refresh
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_fastBackendFillingPercentagephp php=php php$thisphp-php>php_fastBackendphp-php>getFillingPercentagephp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php modephp loading
+php php php php php php php php php php php php php/php/php wephp computephp thephp percentagephp onlyphp ifphp itphp'sphp notphp availablephp inphp cache
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_fastBackendFillingPercentagephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_fastBackendFillingPercentagephp php=php php$thisphp-php>php_fastBackendphp-php>getFillingPercentagephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_fastBackendFillingPercentagephp;
+php php php php php}
+
+php}

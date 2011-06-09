@@ -1,271 +1,271 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Index
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: SegmentMerger.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Index
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php SegmentMergerphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Search_Lucene_Index_SegmentInfo */
-require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
-
-
-/**
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Index
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_Index_SegmentMerger
-{
-    /**
-     * Target segment writer
-     *
-     * @var Zend_Search_Lucene_Index_SegmentWriter_StreamWriter
-     */
-    private $_writer;
-
-    /**
-     * Number of docs in a new segment
-     *
-     * @var integer
-     */
-    private $_docCount;
-
-    /**
-     * A set of segments to be merged
-     *
-     * @var array Zend_Search_Lucene_Index_SegmentInfo
-     */
-    private $_segmentInfos = array();
-
-    /**
-     * Flag to signal, that merge is already done
-     *
-     * @var boolean
-     */
-    private $_mergeDone = false;
-
-    /**
-     * Field map
-     * [<segment_name>][<field_number>] => <target_field_number>
-     *
-     * @var array
-     */
-    private $_fieldsMap = array();
+php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfophp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/SegmentInfophp.phpphp'php;
 
 
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Index
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_Indexphp_SegmentMerger
+php{
+php php php php php/php*php*
+php php php php php php*php Targetphp segmentphp writer
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Indexphp_SegmentWriterphp_StreamWriter
+php php php php php php*php/
+php php php php privatephp php$php_writerphp;
 
-    /**
-     * Object constructor.
-     *
-     * Creates new segment merger with $directory as target to merge segments into
-     * and $name as a name of new segment
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $directory
-     * @param string $name
-     */
-    public function __construct($directory, $name)
-    {
-        /** Zend_Search_Lucene_Index_SegmentWriter_StreamWriter */
-        require_once 'Zend/Search/Lucene/Index/SegmentWriter/StreamWriter.php';
-        $this->_writer = new Zend_Search_Lucene_Index_SegmentWriter_StreamWriter($directory, $name);
-    }
+php php php php php/php*php*
+php php php php php php*php Numberphp ofphp docsphp inphp aphp newphp segment
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_docCountphp;
 
+php php php php php/php*php*
+php php php php php php*php Aphp setphp ofphp segmentsphp tophp bephp merged
+php php php php php php*
+php php php php php php*php php@varphp arrayphp Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfo
+php php php php php php*php/
+php php php php privatephp php$php_segmentInfosphp php=php arrayphp(php)php;
 
-    /**
-     * Add segmnet to a collection of segments to be merged
-     *
-     * @param Zend_Search_Lucene_Index_SegmentInfo $segment
-     */
-    public function addSource(Zend_Search_Lucene_Index_SegmentInfo $segmentInfo)
-    {
-        $this->_segmentInfos[$segmentInfo->getName()] = $segmentInfo;
-    }
+php php php php php/php*php*
+php php php php php php*php Flagphp tophp signalphp,php thatphp mergephp isphp alreadyphp done
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php privatephp php$php_mergeDonephp php=php falsephp;
 
-
-    /**
-     * Do merge.
-     *
-     * Returns number of documents in newly created segment
-     *
-     * @return Zend_Search_Lucene_Index_SegmentInfo
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function merge()
-    {
-        if ($this->_mergeDone) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Merge is already done.');
-        }
-
-        if (count($this->_segmentInfos) < 1) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Wrong number of segments to be merged ('
-                                                 . count($this->_segmentInfos)
-                                                 . ').');
-        }
-
-        $this->_mergeFields();
-        $this->_mergeNorms();
-        $this->_mergeStoredFields();
-        $this->_mergeTerms();
-
-        $this->_mergeDone = true;
-
-        return $this->_writer->close();
-    }
+php php php php php/php*php*
+php php php php php php*php Fieldphp map
+php php php php php php*php php[php<segmentphp_namephp>php]php[php<fieldphp_numberphp>php]php php=php>php php<targetphp_fieldphp_numberphp>
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_fieldsMapphp php=php arrayphp(php)php;
 
 
-    /**
-     * Merge fields information
-     */
-    private function _mergeFields()
-    {
-        foreach ($this->_segmentInfos as $segName => $segmentInfo) {
-            foreach ($segmentInfo->getFieldInfos() as $fieldInfo) {
-                $this->_fieldsMap[$segName][$fieldInfo->number] = $this->_writer->addFieldInfo($fieldInfo);
-            }
-        }
-    }
 
-    /**
-     * Merge field's normalization factors
-     */
-    private function _mergeNorms()
-    {
-        foreach ($this->_writer->getFieldInfos() as $fieldInfo) {
-            if ($fieldInfo->isIndexed) {
-                foreach ($this->_segmentInfos as $segName => $segmentInfo) {
-                    if ($segmentInfo->hasDeletions()) {
-                        $srcNorm = $segmentInfo->normVector($fieldInfo->name);
-                        $norm    = '';
-                        $docs    = $segmentInfo->count();
-                        for ($count = 0; $count < $docs; $count++) {
-                            if (!$segmentInfo->isDeleted($count)) {
-                                $norm .= $srcNorm[$count];
-                            }
-                        }
-                        $this->_writer->addNorm($fieldInfo->name, $norm);
-                    } else {
-                        $this->_writer->addNorm($fieldInfo->name, $segmentInfo->normVector($fieldInfo->name));
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Merge fields information
-     */
-    private function _mergeStoredFields()
-    {
-        $this->_docCount = 0;
-
-        foreach ($this->_segmentInfos as $segName => $segmentInfo) {
-            $fdtFile = $segmentInfo->openCompoundFile('.fdt');
-
-            for ($count = 0; $count < $segmentInfo->count(); $count++) {
-                $fieldCount = $fdtFile->readVInt();
-                $storedFields = array();
-
-                for ($count2 = 0; $count2 < $fieldCount; $count2++) {
-                    $fieldNum = $fdtFile->readVInt();
-                    $bits = $fdtFile->readByte();
-                    $fieldInfo = $segmentInfo->getField($fieldNum);
-
-                    if (!($bits & 2)) { // Text data
-                        $storedFields[] =
-                                 new Zend_Search_Lucene_Field($fieldInfo->name,
-                                                              $fdtFile->readString(),
-                                                              'UTF-8',
-                                                              true,
-                                                              $fieldInfo->isIndexed,
-                                                              $bits & 1 );
-                    } else {            // Binary data
-                        $storedFields[] =
-                                 new Zend_Search_Lucene_Field($fieldInfo->name,
-                                                              $fdtFile->readBinary(),
-                                                              '',
-                                                              true,
-                                                              $fieldInfo->isIndexed,
-                                                              $bits & 1,
-                                                              true);
-                    }
-                }
-
-                if (!$segmentInfo->isDeleted($count)) {
-                    $this->_docCount++;
-                    $this->_writer->addStoredFields($storedFields);
-                }
-            }
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructorphp.
+php php php php php php*
+php php php php php php*php Createsphp newphp segmentphp mergerphp withphp php$directoryphp asphp targetphp tophp mergephp segmentsphp into
+php php php php php php*php andphp php$namephp asphp aphp namephp ofphp newphp segment
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$directory
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$directoryphp,php php$namephp)
+php php php php php{
+php php php php php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_SegmentWriterphp_StreamWriterphp php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/SegmentWriterphp/StreamWriterphp.phpphp'php;
+php php php php php php php php php$thisphp-php>php_writerphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_SegmentWriterphp_StreamWriterphp(php$directoryphp,php php$namephp)php;
+php php php php php}
 
 
-    /**
-     * Merge fields information
-     */
-    private function _mergeTerms()
-    {
-        /** Zend_Search_Lucene_Index_TermsPriorityQueue */
-        require_once 'Zend/Search/Lucene/Index/TermsPriorityQueue.php';
+php php php php php/php*php*
+php php php php php php*php Addphp segmnetphp tophp aphp collectionphp ofphp segmentsphp tophp bephp merged
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfophp php$segment
+php php php php php php*php/
+php php php php publicphp functionphp addSourcephp(Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfophp php$segmentInfophp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_segmentInfosphp[php$segmentInfophp-php>getNamephp(php)php]php php=php php$segmentInfophp;
+php php php php php}
 
-        $segmentInfoQueue = new Zend_Search_Lucene_Index_TermsPriorityQueue();
 
-        $segmentStartId = 0;
-        foreach ($this->_segmentInfos as $segName => $segmentInfo) {
-            $segmentStartId = $segmentInfo->resetTermsStream($segmentStartId, Zend_Search_Lucene_Index_SegmentInfo::SM_MERGE_INFO);
+php php php php php/php*php*
+php php php php php php*php Dophp mergephp.
+php php php php php php*
+php php php php php php*php Returnsphp numberphp ofphp documentsphp inphp newlyphp createdphp segment
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfo
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp mergephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_mergeDonephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Mergephp isphp alreadyphp donephp.php'php)php;
+php php php php php php php php php}
 
-            // Skip "empty" segments
-            if ($segmentInfo->currentTerm() !== null) {
-                $segmentInfoQueue->put($segmentInfo);
-            }
-        }
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_segmentInfosphp)php <php php1php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Wrongphp numberphp ofphp segmentsphp tophp bephp mergedphp php(php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php countphp(php$thisphp-php>php_segmentInfosphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php)php.php'php)php;
+php php php php php php php php php}
 
-        $this->_writer->initializeDictionaryFiles();
+php php php php php php php php php$thisphp-php>php_mergeFieldsphp(php)php;
+php php php php php php php php php$thisphp-php>php_mergeNormsphp(php)php;
+php php php php php php php php php$thisphp-php>php_mergeStoredFieldsphp(php)php;
+php php php php php php php php php$thisphp-php>php_mergeTermsphp(php)php;
 
-        $termDocs = array();
-        while (($segmentInfo = $segmentInfoQueue->pop()) !== null) {
-            // Merge positions array
-            $termDocs += $segmentInfo->currentTermPositions();
+php php php php php php php php php$thisphp-php>php_mergeDonephp php=php truephp;
 
-            if ($segmentInfoQueue->top() === null ||
-                $segmentInfoQueue->top()->currentTerm()->key() !=
-                            $segmentInfo->currentTerm()->key()) {
-                // We got new term
-                ksort($termDocs, SORT_NUMERIC);
+php php php php php php php php returnphp php$thisphp-php>php_writerphp-php>closephp(php)php;
+php php php php php}
 
-                // Add term if it's contained in any document
-                if (count($termDocs) > 0) {
-                    $this->_writer->addTerm($segmentInfo->currentTerm(), $termDocs);
-                }
-                $termDocs = array();
-            }
 
-            $segmentInfo->nextTerm();
-            // check, if segment dictionary is finished
-            if ($segmentInfo->currentTerm() !== null) {
-                // Put segment back into the priority queue
-                $segmentInfoQueue->put($segmentInfo);
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Mergephp fieldsphp information
+php php php php php php*php/
+php php php php privatephp functionphp php_mergeFieldsphp(php)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>php_segmentInfosphp asphp php$segNamephp php=php>php php$segmentInfophp)php php{
+php php php php php php php php php php php php foreachphp php(php$segmentInfophp-php>getFieldInfosphp(php)php asphp php$fieldInfophp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_fieldsMapphp[php$segNamephp]php[php$fieldInfophp-php>numberphp]php php=php php$thisphp-php>php_writerphp-php>addFieldInfophp(php$fieldInfophp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-        $this->_writer->closeDictionaryFiles();
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Mergephp fieldphp'sphp normalizationphp factors
+php php php php php php*php/
+php php php php privatephp functionphp php_mergeNormsphp(php)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>php_writerphp-php>getFieldInfosphp(php)php asphp php$fieldInfophp)php php{
+php php php php php php php php php php php php ifphp php(php$fieldInfophp-php>isIndexedphp)php php{
+php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_segmentInfosphp asphp php$segNamephp php=php>php php$segmentInfophp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$segmentInfophp-php>hasDeletionsphp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$srcNormphp php=php php$segmentInfophp-php>normVectorphp(php$fieldInfophp-php>namephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$normphp php php php php=php php'php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$docsphp php php php php=php php$segmentInfophp-php>countphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$docsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$segmentInfophp-php>isDeletedphp(php$countphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$normphp php.php=php php$srcNormphp[php$countphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_writerphp-php>addNormphp(php$fieldInfophp-php>namephp,php php$normphp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_writerphp-php>addNormphp(php$fieldInfophp-php>namephp,php php$segmentInfophp-php>normVectorphp(php$fieldInfophp-php>namephp)php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Mergephp fieldsphp information
+php php php php php php*php/
+php php php php privatephp functionphp php_mergeStoredFieldsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_docCountphp php=php php0php;
+
+php php php php php php php php foreachphp php(php$thisphp-php>php_segmentInfosphp asphp php$segNamephp php=php>php php$segmentInfophp)php php{
+php php php php php php php php php php php php php$fdtFilephp php=php php$segmentInfophp-php>openCompoundFilephp(php'php.fdtphp'php)php;
+
+php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$segmentInfophp-php>countphp(php)php;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$fieldCountphp php=php php$fdtFilephp-php>readVIntphp(php)php;
+php php php php php php php php php php php php php php php php php$storedFieldsphp php=php arrayphp(php)php;
+
+php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$fieldCountphp;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$fieldNumphp php=php php$fdtFilephp-php>readVIntphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$bitsphp php=php php$fdtFilephp-php>readBytephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$fieldInfophp php=php php$segmentInfophp-php>getFieldphp(php$fieldNumphp)php;
+
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!php(php$bitsphp php&php php2php)php)php php{php php/php/php Textphp data
+php php php php php php php php php php php php php php php php php php php php php php php php php$storedFieldsphp[php]php php=
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Searchphp_Lucenephp_Fieldphp(php$fieldInfophp-php>namephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fdtFilephp-php>readStringphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'UTFphp-php8php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php truephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldInfophp-php>isIndexedphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$bitsphp php&php php1php php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{php php php php php php php php php php php php php/php/php Binaryphp data
+php php php php php php php php php php php php php php php php php php php php php php php php php$storedFieldsphp[php]php php=
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Searchphp_Lucenephp_Fieldphp(php$fieldInfophp-php>namephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fdtFilephp-php>readBinaryphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php truephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldInfophp-php>isIndexedphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$bitsphp php&php php1php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php truephp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php!php$segmentInfophp-php>isDeletedphp(php$countphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_docCountphp+php+php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_writerphp-php>addStoredFieldsphp(php$storedFieldsphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Mergephp fieldsphp information
+php php php php php php*php/
+php php php php privatephp functionphp php_mergeTermsphp(php)
+php php php php php{
+php php php php php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_TermsPriorityQueuephp php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/TermsPriorityQueuephp.phpphp'php;
+
+php php php php php php php php php$segmentInfoQueuephp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_TermsPriorityQueuephp(php)php;
+
+php php php php php php php php php$segmentStartIdphp php=php php0php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_segmentInfosphp asphp php$segNamephp php=php>php php$segmentInfophp)php php{
+php php php php php php php php php php php php php$segmentStartIdphp php=php php$segmentInfophp-php>resetTermsStreamphp(php$segmentStartIdphp,php Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfophp:php:SMphp_MERGEphp_INFOphp)php;
+
+php php php php php php php php php php php php php/php/php Skipphp php"emptyphp"php segments
+php php php php php php php php php php php php ifphp php(php$segmentInfophp-php>currentTermphp(php)php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$segmentInfoQueuephp-php>putphp(php$segmentInfophp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_writerphp-php>initializeDictionaryFilesphp(php)php;
+
+php php php php php php php php php$termDocsphp php=php arrayphp(php)php;
+php php php php php php php php whilephp php(php(php$segmentInfophp php=php php$segmentInfoQueuephp-php>popphp(php)php)php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php Mergephp positionsphp array
+php php php php php php php php php php php php php$termDocsphp php+php=php php$segmentInfophp-php>currentTermPositionsphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$segmentInfoQueuephp-php>topphp(php)php php=php=php=php nullphp php|php|
+php php php php php php php php php php php php php php php php php$segmentInfoQueuephp-php>topphp(php)php-php>currentTermphp(php)php-php>keyphp(php)php php!php=
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$segmentInfophp-php>currentTermphp(php)php-php>keyphp(php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Wephp gotphp newphp term
+php php php php php php php php php php php php php php php php ksortphp(php$termDocsphp,php SORTphp_NUMERICphp)php;
+
+php php php php php php php php php php php php php php php php php/php/php Addphp termphp ifphp itphp'sphp containedphp inphp anyphp document
+php php php php php php php php php php php php php php php php ifphp php(countphp(php$termDocsphp)php php>php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_writerphp-php>addTermphp(php$segmentInfophp-php>currentTermphp(php)php,php php$termDocsphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$termDocsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$segmentInfophp-php>nextTermphp(php)php;
+php php php php php php php php php php php php php/php/php checkphp,php ifphp segmentphp dictionaryphp isphp finished
+php php php php php php php php php php php php ifphp php(php$segmentInfophp-php>currentTermphp(php)php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Putphp segmentphp backphp intophp thephp priorityphp queue
+php php php php php php php php php php php php php php php php php$segmentInfoQueuephp-php>putphp(php$segmentInfophp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_writerphp-php>closeDictionaryFilesphp(php)php;
+php php php php php}
+php}

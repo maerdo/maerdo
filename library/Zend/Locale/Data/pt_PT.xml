@@ -1,1865 +1,1865 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.85 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="pt"/>
-		<territory type="PT"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="af">afrikaans</language>
-			<language type="art">idioma artifical</language>
-			<language type="awa">Awadhi</language>
-			<language type="bai">bamileke Languages</language>
-			<language type="bug">Buginese</language>
-			<language type="ce">chechene</language>
-			<language type="cel">idioma céltico</language>
-			<language type="chn">jargão chinook</language>
-			<language type="cpe">crioulo ou pidgin do inglês</language>
-			<language type="cpf">crioulo ou pidgin do francês</language>
-			<language type="cpp">crioulo ou pidgin do português</language>
-			<language type="cs">checo</language>
-			<language type="cus">idioma cuchita</language>
-			<language type="de_CH">alemão alto (Suíça)</language>
-			<language type="dra">idioma dravítico</language>
-			<language type="dyu">diula</language>
-			<language type="egy">egípcio clássico</language>
-			<language type="en">Inglês</language>
-			<language type="enm">inglês medieval</language>
-			<language type="et">estónio</language>
-			<language type="fiu">idioma ugro-finês</language>
-			<language type="frm">francês medieval</language>
-			<language type="frs">frísio oriental</language>
-			<language type="gmh">alemão medieval alto</language>
-			<language type="grc">grego clássico</language>
-			<language type="gsw">alemão da Suíça</language>
-			<language type="hsb">sorbiano superior</language>
-			<language type="hy">arménio</language>
-			<language type="iba">Iban</language>
-			<language type="ig">igbo</language>
-			<language type="ik">Inupiaq</language>
-			<language type="jv">jv</language>
-			<language type="khi">khoisan</language>
-			<language type="lez">lezghiano</language>
-			<language type="mga">irlandês, medieval (900-1200)</language>
-			<language type="mk">macedónio</language>
-			<language type="nah">Nauatle</language>
-			<language type="nds">baixo alemão</language>
-			<language type="nic">nigeriano - cordofano</language>
-			<language type="nl_BE">flamengo (Bélgica)</language>
-			<language type="non">norse, old</language>
-			<language type="oc">provençal</language>
-			<language type="os">ossético</language>
-			<language type="peo">persa arcaico (aprox. 600-400 a.C.)</language>
-			<language type="pl">polaco</language>
-			<language type="pra">idioma prácito</language>
-			<language type="pro">provençal, arcaico (até 1500)</language>
-			<language type="pt_PT">português europeu</language>
-			<language type="rm">reto-romance</language>
-			<language type="rom">romanês</language>
-			<language type="sai">idioma indígeno sul-americano</language>
-			<language type="sal">salishan languages</language>
-			<language type="sgn">linguages de sinais</language>
-			<language type="ssa">idioma nilo-sariano</language>
-			<language type="ta">tamil</language>
-			<language type="tai">idioma tailândes</language>
-			<language type="tet">tetum</language>
-			<language type="tg">tajique</language>
-			<language type="tl">tagalogue</language>
-			<language type="to">tonga</language>
-			<language type="tog">toganês</language>
-			<language type="tyv">tuviniano</language>
-			<language type="wen">idioma sórbio</language>
-			<language type="zza">zazaki</language>
-		</languages>
-		<scripts>
-			<script type="Armn">arménio</script>
-			<script type="Blis">símbolos Bliss</script>
-			<script type="Brah">Brahmi</script>
-			<script type="Cans">símbolos aborígenes canadianos</script>
-			<script type="Cyrs">cirílico (eslavónico sacro antigo)</script>
-			<script type="Egyd">egípcio demótico</script>
-			<script type="Egyh">egípcio hierático</script>
-			<script type="Geok">georgiano khutsuri</script>
-			<script type="Inds">indus</script>
-			<script type="Latf">latim (fraktur)</script>
-			<script type="Lina">linear A</script>
-			<script type="Linb">linear B</script>
-			<script type="Mand">mandaeano</script>
-			<script type="Mlym">malaialam</script>
-			<script type="Nkoo">n’ko</script>
-			<script type="Plrd">Pollard fonético</script>
-			<script type="Sgnw">escrita gestual</script>
-			<script type="Sylo">siloti nagri</script>
-			<script type="Tale">tai le</script>
-			<script type="Talu">tai lue moderno</script>
-			<script type="Taml">tamil</script>
-			<script type="Telu">telugu</script>
-			<script type="Teng">tenguar</script>
-			<script type="Xsux">cuneiforme sumero-acadiano</script>
-			<script type="Zxxx">não escrito</script>
-			<script type="Zzzz">inválido ou desconhecido</script>
-		</scripts>
-		<territories>
-			<territory type="009">Oceânia</territory>
-			<territory type="015">Norte de África</territory>
-			<territory type="017">África Interior</territory>
-			<territory type="018">África Meridional</territory>
-			<territory type="035">Sudeste Asiático</territory>
-			<territory type="057">Micronésia</territory>
-			<territory type="062">Ásia Sul-Central</territory>
-			<territory type="151">Europa de Leste</territory>
-			<territory type="154">Europa do Norte</territory>
-			<territory type="172">172</territory>
-			<territory type="AE">Emiratos Árabes Unidos</territory>
-			<territory type="AI">Anguilha</territory>
-			<territory type="AM">Arménia</territory>
-			<territory type="AQ">Antárctica</territory>
-			<territory type="AX">Ilhas Alanda</territory>
-			<territory type="AZ">Azerbeijão</territory>
-			<territory type="BD">Bangladeche</territory>
-			<territory type="BF">Burkina-Faso</territory>
-			<territory type="BH">Bahrein</territory>
-			<territory type="BJ">Benim</territory>
-			<territory type="BS">Baamas</territory>
-			<territory type="BW">Botswana</territory>
-			<territory type="BY">Bielorrússia</territory>
-			<territory type="CC">Ilhas Cocos</territory>
-			<territory type="CD">República Democrática do Congo</territory>
-			<territory type="CG">Congo-Brazzaville</territory>
-			<territory type="CX">Ilha do Natal</territory>
-			<territory type="CZ">República Checa</territory>
-			<territory type="EE">Estónia</territory>
-			<territory type="EG">Egipto</territory>
-			<territory type="EH">Sara Ocidental</territory>
-			<territory type="FK">Ilhas Falkland ou Malvinas</territory>
-			<territory type="FM">Estados Federados da Micronésia</territory>
-			<territory type="FO">Ilhas Faroé</territory>
-			<territory type="GL">Gronelândia</territory>
-			<territory type="GW">Guiné-Bissau</territory>
-			<territory type="HK">Hong Kong - Região Administrativa Especial da China</territory>
-			<territory type="IR">Irão</territory>
-			<territory type="KE">Quénia</territory>
-			<territory type="KG">Quirguizistão</territory>
-			<territory type="KN">Saint Kitts e Nevis</territory>
-			<territory type="KW">Cuaite</territory>
-			<territory type="KY">Ilhas Caimão</territory>
-			<territory type="KZ">Cazaquistão</territory>
-			<territory type="LA">Laos, República Popular Democrática do</territory>
-			<territory type="LV">Letónia</territory>
-			<territory type="MC">Mónaco</territory>
-			<territory type="MD">Moldávia, República da</territory>
-			<territory type="MG">Madagáscar</territory>
-			<territory type="MK">Macedónia, República da</territory>
-			<territory type="MO">Macau - Região Administrativa Especial da China</territory>
-			<territory type="MP">Ilhas Mariana do Norte</territory>
-			<territory type="MS">Monserrate</territory>
-			<territory type="MU">Maurícias</territory>
-			<territory type="MW">Malaui</territory>
-			<territory type="NC">Nova Caledónia</territory>
-			<territory type="NF">Ilha Norfolque</territory>
-			<territory type="NL">Países Baixos</territory>
-			<territory type="PG">Papua Nova Guiné</territory>
-			<territory type="PL">Polónia</territory>
-			<territory type="PS">Território Palestiniano</territory>
-			<territory type="QA">Qatar</territory>
-			<territory type="QO">Oceânia Insular</territory>
-			<territory type="RO">Roménia</territory>
-			<territory type="SC">Seicheles</territory>
-			<territory type="SG">Singapura</territory>
-			<territory type="SI">Eslovénia</territory>
-			<territory type="SJ">Esvalbarda e Jan Mayen</territory>
-			<territory type="SM">São Marino</territory>
-			<territory type="TC">Ilhas Turcas e Caicos</territory>
-			<territory type="TJ">Tajiquistão</territory>
-			<territory type="TK">Toquelau</territory>
-			<territory type="TM">Turquemenistão</territory>
-			<territory type="TT">Trindade e Tobago</territory>
-			<territory type="UM">Ilhas Minor Outlying (E.U.A)</territory>
-			<territory type="UZ">Usbequistão</territory>
-			<territory type="VI">Ilhas Virgin E.U.A.</territory>
-			<territory type="VN">Vietname</territory>
-			<territory type="YE">Iémen</territory>
-			<territory type="ZW">Zimbabwe</territory>
-		</territories>
-		<variants>
-			<variant type="1901">Alemão Tradicional</variant>
-			<variant type="1996">Alemão Moderno</variant>
-			<variant type="AREVELA">arménio oriental</variant>
-			<variant type="AREVMDA">arménio ocidental</variant>
-			<variant type="BISKE">dialecto san giorgio/bila</variant>
-			<variant type="BOONT">buntlingue</variant>
-			<variant type="FONIPA">Alfabeto Fonético Internacional</variant>
-			<variant type="FONUPA">Alfabeto Fonético Urálico</variant>
-			<variant type="LIPAW">dialecto lipovaz de Resian</variant>
-			<variant type="MONOTON">monotónico</variant>
-			<variant type="NEDIS">dialecto natisone</variant>
-			<variant type="NJIVA">dialecto gniva/njiva</variant>
-			<variant type="OSOJS">dialecto oseacco/osojane</variant>
-			<variant type="POLYTON">politónico</variant>
-			<variant type="POSIX">Computador</variant>
-			<variant type="REVISED">Revisão Ortográfica</variant>
-			<variant type="SAAHO">Saho</variant>
-			<variant type="SCOUSE">Scouse</variant>
-			<variant type="SOLBA">dialecto stolvizza/solbica</variant>
-		</variants>
-		<keys>
-			<key type="collation">Ordem</key>
-		</keys>
-		<types>
-			<type type="big5han" key="collation">Ordem de Chinês Tradicional - Big5</type>
-			<type type="direct" key="collation">Ordem Directa</type>
-			<type type="gb2312han" key="collation">Ordem de Chinês Simplificado - GB2312</type>
-			<type type="phonebook" key="collation">Ordem da Lista Telefónica</type>
-		</types>
-		<measurementSystemNames>
-			<measurementSystemName type="metric">Métrico</measurementSystemName>
-		</measurementSystemNames>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters type="auxiliary">[ª ă å ä ā æ è ĕ ë ē ì ĭ î ï ī ñ º ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
-	</characters>
-	<dates>
-		<calendars>
-			<calendar type="buddhist">
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE, MMMM d, y G</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>MMMM d, y G</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>MMM d, y G</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>M/d/yyyy</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="Md">d-M</dateFormatItem>
-						<dateFormatItem id="MMMMd">d de MMMM</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">Jan</month>
-							<month type="2">Fev</month>
-							<month type="3">Mar</month>
-							<month type="4">Abr</month>
-							<month type="5">Mai</month>
-							<month type="6">Jun</month>
-							<month type="7">Jul</month>
-							<month type="8">Ago</month>
-							<month type="9">Set</month>
-							<month type="10">Out</month>
-							<month type="11">Nov</month>
-							<month type="12">Dez</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Janeiro</month>
-							<month type="2">Fevereiro</month>
-							<month type="3">Março</month>
-							<month type="4">Abril</month>
-							<month type="5">Maio</month>
-							<month type="6">Junho</month>
-							<month type="7">Julho</month>
-							<month type="8">Agosto</month>
-							<month type="9">Setembro</month>
-							<month type="10">Outubro</month>
-							<month type="11">Novembro</month>
-							<month type="12">Dezembro</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<quarters>
-					<quarterContext type="format">
-						<quarterWidth type="wide">
-							<quarter type="1">1.º trimestre</quarter>
-							<quarter type="2">2.º trimestre</quarter>
-							<quarter type="3">3.º trimestre</quarter>
-							<quarter type="4">4.º trimestre</quarter>
-						</quarterWidth>
-					</quarterContext>
-				</quarters>
-				<am>Antes do meio-dia</am>
-				<pm>Depois do meio-dia</pm>
-				<dateFormats>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>d 'de' MMM 'de' yyyy</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yQ">QQQ 'de' yyyy</dateFormatItem>
-						<dateFormatItem id="yQQQ">QQQ 'de' y</dateFormatItem>
-						<dateFormatItem id="yyQ">QQQ 'de' yy</dateFormatItem>
-					</availableFormats>
-					<intervalFormats>
-						<intervalFormatItem id="hm">
-							<greatestDifference id="h">H'h' - H'h'</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MMM">
-							<greatestDifference id="M">MMM-MMM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="y">
-							<greatestDifference id="y">y-y</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMMM">
-							<greatestDifference id="M">MM-MM 'de' yyyy</greatestDifference>
-						</intervalFormatItem>
-					</intervalFormats>
-				</dateTimeFormats>
-			</calendar>
-			<calendar type="japanese">
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE, MMMM d, y G</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>MMMM d, y G</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>MMM d, y G</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>M/d/yy</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<zone type="America/Argentina/Tucuman">
-				<exemplarCity>Tucumán</exemplarCity>
-			</zone>
-			<zone type="America/Cuiaba">
-				<exemplarCity>Cuibá</exemplarCity>
-			</zone>
-			<zone type="America/Araguaina">
-				<exemplarCity>Araguaina</exemplarCity>
-			</zone>
-			<zone type="America/Bahia">
-				<exemplarCity>Baía</exemplarCity>
-			</zone>
-			<zone type="America/St_Johns">
-				<exemplarCity>St.John's</exemplarCity>
-			</zone>
-			<zone type="Pacific/Easter">
-				<exemplarCity>Páscoa</exemplarCity>
-			</zone>
-			<zone type="Europe/Madrid">
-				<exemplarCity>Madrid</exemplarCity>
-			</zone>
-			<zone type="Africa/Casablanca">
-				<exemplarCity>Marrocos</exemplarCity>
-			</zone>
-			<zone type="Asia/Ulaanbaatar">
-				<exemplarCity>Ulan Bator</exemplarCity>
-			</zone>
-			<zone type="America/Cancun">
-				<exemplarCity>Cancun</exemplarCity>
-			</zone>
-			<zone type="Europe/Kaliningrad">
-				<exemplarCity>Kaliningrado</exemplarCity>
-			</zone>
-			<zone type="Europe/Moscow">
-				<exemplarCity>Moscovo</exemplarCity>
-			</zone>
-			<zone type="Asia/Sakhalin">
-				<exemplarCity>Sacalina</exemplarCity>
-			</zone>
-			<zone type="America/North_Dakota/Center">
-				<exemplarCity>Center</exemplarCity>
-			</zone>
-			<zone type="America/Indiana/Petersburg">
-				<exemplarCity>Petersburgo</exemplarCity>
-			</zone>
-			<metazone type="Acre">
-				<long>
-					<standard>Hora do Acre</standard>
-					<daylight>Hora de Verão do Acre</daylight>
-				</long>
-				<commonlyUsed>false</commonlyUsed>
-			</metazone>
-			<metazone type="Afghanistan">
-				<long>
-					<standard>Hora do Afeganistão</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Africa_Central">
-				<long>
-					<standard>Hora da África Central</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Africa_Eastern">
-				<long>
-					<standard>Hora da África Oriental</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Africa_FarWestern">
-				<long>
-					<generic>Hora do Sara Ocidental</generic>
-				</long>
-				<short>
-					<generic>Hora do Sara Ocidental</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Africa_Southern">
-				<long>
-					<generic>Hora da África do Sul</generic>
-					<standard>Hora Padrão da África do Sul</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Africa_Western">
-				<long>
-					<generic>Hora da Nigéria</generic>
-					<standard>Hora da África Ocidental</standard>
-					<daylight>Hora de Verão da África Ocidental</daylight>
-				</long>
-				<short>
-					<generic>Hora da Nigéria</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Aktyubinsk">
-				<long>
-					<standard>Hora de Aktyubinsk</standard>
-					<daylight>Hora de Verão de Aktyubinsk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Alaska">
-				<long>
-					<generic>Hora do Alaska</generic>
-					<standard>Hora Padrão do Alaska</standard>
-					<daylight>Hora de Verão do Alaska</daylight>
-				</long>
-			</metazone>
-			<metazone type="Alaska_Hawaii">
-				<long>
-					<generic>Hora do Alaska- Havai</generic>
-					<standard>Hora Padrão do Alaska-Havai</standard>
-					<daylight>Hora de Verão do Alaska-Havai</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Almaty">
-				<long>
-					<standard>Hora de Almaty</standard>
-					<daylight>Hora de Verão de Almaty</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Amazon">
-				<long>
-					<standard>Hora do Amazonas</standard>
-					<daylight>Hora de Verão do Amazonas</daylight>
-				</long>
-				<commonlyUsed>false</commonlyUsed>
-			</metazone>
-			<metazone type="America_Central">
-				<long>
-					<generic>Hora Central</generic>
-					<standard>Hora Padrão Central</standard>
-					<daylight>Hora de Verão Central</daylight>
-				</long>
-			</metazone>
-			<metazone type="America_Eastern">
-				<long>
-					<generic>Hora Oriental</generic>
-					<standard>Hora Padrão Oriental</standard>
-					<daylight>Hora de Verão Oriental</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="America_Mountain">
-				<long>
-					<generic>Hora da Montanha</generic>
-					<standard>Hora Padrão da Montanha</standard>
-					<daylight>Hora de Verão da Montanha</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="America_Pacific">
-				<long>
-					<generic>Hora do Pacífico</generic>
-					<standard>Hora Padrão do Pacífico</standard>
-					<daylight>Hora de Verão do Pacífico</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Anadyr">
-				<long>
-					<standard>Hora de Anadyr</standard>
-					<daylight>Hora de Verão de Anadyr</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Aqtau">
-				<long>
-					<standard>Hora de Aqtau</standard>
-					<daylight>Hora de Verão de Aqtau</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Aqtobe">
-				<long>
-					<standard>Hora de Aqtobe</standard>
-					<daylight>Hora de Verão de Aqtobe</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Arabian">
-				<long>
-					<generic>Hora da Arábia</generic>
-					<standard>Hora Padrão da Arábia</standard>
-					<daylight>Hora de Verão da Arábia</daylight>
-				</long>
-			</metazone>
-			<metazone type="Argentina">
-				<long>
-					<standard>Hora da Argentina</standard>
-					<daylight>Hora de Verão da Argentina</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Argentina_Western">
-				<long>
-					<standard>Hora da Argentina Ocidental</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Armenia">
-				<long>
-					<generic>Hora da Arménia</generic>
-					<standard>Hora da Arménia</standard>
-					<daylight>Hora de Verão da Arménia</daylight>
-				</long>
-				<short>
-					<generic>Hora da Arménia</generic>
-					<standard>AMT (Arménia)</standard>
-					<daylight>AMST (Arménia)</daylight>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Ashkhabad">
-				<long>
-					<generic>Hora do Turquemenistão</generic>
-					<standard>Hora de Ashkhabad</standard>
-					<daylight>Hora de Verão de Ashkhabad</daylight>
-				</long>
-				<short>
-					<generic>Hora do Turquemenistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Atlantic">
-				<long>
-					<generic>Hora do Atlântico</generic>
-					<standard>Hora Padrão do Atlântico</standard>
-					<daylight>Hora de Verão do Atlântico</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Australia_Central">
-				<long>
-					<generic>Hora da Austrália Central</generic>
-					<standard>Hora Padrão da Austrália Central</standard>
-					<daylight>Hora de Verão da Austrália Central</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Australia_CentralWestern">
-				<long>
-					<generic>Hora da Austrália Central Ocidental</generic>
-					<standard>Hora Padrão da Austrália Central Ocidental</standard>
-					<daylight>Hora de Verão da Austrália Central Ocidental</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Australia_Eastern">
-				<long>
-					<generic>Hora da Austrália Oriental</generic>
-					<standard>Hora Padrão da Austrália Oriental</standard>
-					<daylight>Hora de Verão da Austrália Oriental</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Australia_Western">
-				<long>
-					<generic>Hora da Austrália Ocidental</generic>
-					<standard>Hora Padrão da Austrália Ocidental</standard>
-					<daylight>Hora de Verão da Austrália Ocidental</daylight>
-				</long>
-			</metazone>
-			<metazone type="Azerbaijan">
-				<long>
-					<generic>Hora do Azerbeijão</generic>
-					<standard>Hora do Azerbeijão</standard>
-					<daylight>Hora de Verão do Azerbeijão</daylight>
-				</long>
-				<short>
-					<generic>Hora do Azerbeijão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Azores">
-				<long>
-					<standard>Hora dos Açores</standard>
-					<daylight>Hora de Verão dos Açores</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Baku">
-				<long>
-					<generic>Hora do Azerbeijão</generic>
-					<standard>Hora de Baku</standard>
-					<daylight>Hora de Verão de Baku</daylight>
-				</long>
-				<short>
-					<generic>Hora do Azerbeijão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Bangladesh">
-				<long>
-					<generic>Hora do Bangladesh</generic>
-					<standard>Hora do Bangladesh</standard>
-				</long>
-				<short>
-					<generic>Hora do Bangladesh</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Bering">
-				<long>
-					<generic>Hora de Bering</generic>
-					<standard>Hora Padrão de Bering</standard>
-					<daylight>Hora de Verão de Bring</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Bhutan">
-				<long>
-					<generic>Hora do Botão</generic>
-					<standard>Hora do Botão</standard>
-				</long>
-				<short>
-					<generic>Hora do Botão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Bolivia">
-				<long>
-					<standard>Hora da Bolívia</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Borneo">
-				<long>
-					<standard>Hora do Bornéu</standard>
-					<daylight>Hora de Verão do Bornéu</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Brasilia">
-				<long>
-					<standard>Hora de Brasília</standard>
-					<daylight>Hora de Verão de Brasília</daylight>
-				</long>
-				<commonlyUsed>false</commonlyUsed>
-			</metazone>
-			<metazone type="British">
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Brunei">
-				<long>
-					<generic>Hora do Brunei</generic>
-					<standard>Hora do Brunei Darussalam</standard>
-				</long>
-				<short>
-					<generic>Hora do Brunei</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Cape_Verde">
-				<long>
-					<standard>Hora de Cabo Verde</standard>
-					<daylight>Hora de Verão de Cabo Verde</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Chamorro">
-				<long>
-					<generic>Hora de Chamarro</generic>
-					<standard>Hora Padrão de Chamarro</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Changbai">
-				<long>
-					<standard>Hora de Changbai</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Chatham">
-				<long>
-					<standard>Hora Padrão de Chatham</standard>
-					<daylight>Hora de Verão de Chatham</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Chile">
-				<long>
-					<standard>Hora do Chile</standard>
-					<daylight>Hora de Verão do Chile</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="China">
-				<long>
-					<generic>Hora da China</generic>
-					<standard>Hora Padrão da China</standard>
-					<daylight>Hora de Verão da China</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Choibalsan">
-				<long>
-					<standard>Hora de Choibalsan</standard>
-					<daylight>Hora de Verão de Choibalsan</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Christmas">
-				<long>
-					<standard>Hora da Ilha de Natal</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Cocos">
-				<long>
-					<standard>Hora das Ilhas Cocos</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Colombia">
-				<long>
-					<standard>Hora da Colômbia</standard>
-					<daylight>Hora de Verão da Colômbia</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Cook">
-				<long>
-					<generic>Hora das Ilhas Cook</generic>
-					<standard>Hora das Ilhas Cook</standard>
-					<daylight>Hora Intermédia de Verão das Ilhas Cook</daylight>
-				</long>
-				<short>
-					<generic>Hora das Ilhas Cook</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Cuba">
-				<long>
-					<generic>Hora de Cuba</generic>
-					<standard>Hora Padrão de Cuba</standard>
-					<daylight>Hora de Verão de Cuba</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Dacca">
-				<long>
-					<generic>Hora do Bangladesh</generic>
-					<standard>Hora de Dacca</standard>
-				</long>
-				<short>
-					<generic>Hora do Bangladesh</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Davis">
-				<long>
-					<standard>Hora de Davis</standard>
-				</long>
-			</metazone>
-			<metazone type="Dominican">
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="DumontDUrville">
-				<long>
-					<standard>Hora de Dumont-d'Urville</standard>
-				</long>
-			</metazone>
-			<metazone type="Dushanbe">
-				<long>
-					<generic>Hora do Tajiquistão</generic>
-					<standard>Hora de Dushanbe</standard>
-					<daylight>Hora de Verão de Dushanbe</daylight>
-				</long>
-				<short>
-					<generic>Hora do Tajiquistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Dutch_Guiana">
-				<long>
-					<standard>Hora da Guiana Holandesa</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="East_Timor">
-				<long>
-					<generic>Hora de Timor Leste</generic>
-					<standard>Hora de Timor Leste</standard>
-				</long>
-				<short>
-					<generic>Hora de Timor Leste</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Easter">
-				<long>
-					<standard>Hora da Ilha de Páscoa</standard>
-					<daylight>Hora de Verão da Ilha de Páscoa</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Ecuador">
-				<long>
-					<standard>Hora do Equador</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Europe_Central">
-				<long>
-					<standard>Horário Padrão da Europa Central</standard>
-					<daylight>Hora de Verão da Europa Central</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Europe_Eastern">
-				<long>
-					<standard>Hora da Europa Oriental</standard>
-					<daylight>Hora de Verão da Europa Oriental</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Europe_Western">
-				<long>
-					<standard>Hora da Europa Ocidental</standard>
-					<daylight>Hora de Verão da Europa Ocidental</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Falkland">
-				<long>
-					<standard>Hora das Ilhas Malvinas</standard>
-					<daylight>Hora de Verão das Ilhas Malvinas</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Fiji">
-				<long>
-					<generic>Hora das Ilhas Fiji</generic>
-					<standard>Hora das Ilhas Fiji</standard>
-					<daylight>Hora de Verão das Ilhas Fiji</daylight>
-				</long>
-				<short>
-					<generic>Hora das Ilhas Fiji</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="French_Guiana">
-				<long>
-					<standard>Hora da Guiana Francesa</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="French_Southern">
-				<long>
-					<standard>Hora da Antártida e dos Territórios Franceses do Sul</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Frunze">
-				<long>
-					<generic>Hora do Quirguizistão</generic>
-					<standard>Hora de Frunze</standard>
-					<daylight>Hora de Verão de Frunze</daylight>
-				</long>
-				<short>
-					<generic>Hora do Quirguizistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Galapagos">
-				<long>
-					<standard>Hora de Galápagos</standard>
-				</long>
-			</metazone>
-			<metazone type="Gambier">
-				<long>
-					<standard>Hora de Gambier</standard>
-				</long>
-			</metazone>
-			<metazone type="Georgia">
-				<long>
-					<generic>Hora da Geórgia</generic>
-					<standard>Hora da Georgia</standard>
-					<daylight>Hora de Verão da Georgia</daylight>
-				</long>
-				<short>
-					<generic>Hora da Geórgia</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Gilbert_Islands">
-				<long>
-					<standard>Hora das Ilhas Gilbert</standard>
-				</long>
-			</metazone>
-			<metazone type="GMT">
-				<long>
-					<standard>Hora do Meridiano de Greenwich</standard>
-				</long>
-			</metazone>
-			<metazone type="Goose_Bay">
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Greenland_Central">
-				<long>
-					<standard>Hora da Gronelândia Central</standard>
-					<daylight>Hora de Verão da Gronelândia Central</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Guam">
-				<long>
-					<standard>Hora Padrão de Guam</standard>
-				</long>
-			</metazone>
-			<metazone type="Gulf">
-				<long>
-					<standard>Hora Padrão do Golfo</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Hawaii_Aleutian">
-				<long>
-					<standard>Hora Padrão do Havai</standard>
-				</long>
-			</metazone>
-			<metazone type="Hong_Kong">
-				<long>
-					<generic>Hora de Hong Kong - Região Administrativa Especial da China</generic>
-					<standard>Hora de Hong Kong</standard>
-					<daylight>Hora de Verão de Hong Kong</daylight>
-				</long>
-				<short>
-					<generic>Hora de Hong Kong - Região Administrativa Especial da China</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Hovd">
-				<long>
-					<standard>Hora de Hovd</standard>
-					<daylight>Hora de Verão de Hovd</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="India">
-				<long>
-					<generic>Hora da Índia</generic>
-					<standard>Hora Padrão da Índia</standard>
-				</long>
-				<short>
-					<generic>Hora da Índia</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Indian_Ocean">
-				<long>
-					<standard>Hora do Oceano Índico</standard>
-				</long>
-			</metazone>
-			<metazone type="Indochina">
-				<long>
-					<generic>Hora do Vietname</generic>
-				</long>
-				<short>
-					<generic>Hora do Vietname</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Indonesia_Central">
-				<long>
-					<standard>Hora da Indonésia Central</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Indonesia_Eastern">
-				<long>
-					<standard>Hora da Indonésia Oriental</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Indonesia_Western">
-				<long>
-					<standard>Hora da Indonésia Ocidental</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Iran">
-				<long>
-					<generic>Hora do Irão</generic>
-					<standard>Hora Padrão do Irão</standard>
-					<daylight>Hora de Verão do Irão</daylight>
-				</long>
-				<short>
-					<generic>Hora do Irão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Irish">
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Irkutsk">
-				<long>
-					<standard>Hora de Irkutsk</standard>
-					<daylight>Hora de Verão de Irkutsk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Israel">
-				<long>
-					<generic>Hora de Israel</generic>
-					<standard>Hora Padrão de Israel</standard>
-					<daylight>Hora de Verão de Israel</daylight>
-				</long>
-				<short>
-					<generic>Hora de Israel</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Japan">
-				<long>
-					<generic>Hora do Japão</generic>
-					<standard>Hora Padrão do Japão</standard>
-					<daylight>Hora de Verão do Japão</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kamchatka">
-				<long>
-					<standard>Hora de Petropavlovsk-Kamchatski</standard>
-					<daylight>Hora de Verão de Petropavlovsk-Kamchatski</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Karachi">
-				<long>
-					<generic>Hora do Paquistão</generic>
-					<standard>Hora de Carachi</standard>
-				</long>
-				<short>
-					<generic>Hora do Paquistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kashgar">
-				<long>
-					<standard>Hora de Kashgar</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kazakhstan_Eastern">
-				<long>
-					<generic>Hora do Casaquistão do Leste</generic>
-					<standard>Hora Padrão do Cazaquistão do Leste</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kazakhstan_Western">
-				<long>
-					<generic>Hora do Casaquistão do Oeste</generic>
-					<standard>Hora Padrão do Casaquistão do Oeste</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kizilorda">
-				<long>
-					<standard>Hora de Kizilorda</standard>
-					<daylight>Hora de Verão de Kizilorda</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Korea">
-				<long>
-					<generic>Hora da Coreia</generic>
-					<standard>Hora Padrão da Coreia</standard>
-					<daylight>Hora de Verão da Coreia</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kosrae">
-				<long>
-					<standard>Hora de Kosrae</standard>
-				</long>
-			</metazone>
-			<metazone type="Krasnoyarsk">
-				<long>
-					<standard>Hora de Krasnoyarsk</standard>
-					<daylight>Hora de Verão de Krasnoyarsk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kuybyshev">
-				<long>
-					<standard>Hora de Kuybyshev</standard>
-					<daylight>Hora de Verão de Kuybyshev</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Kwajalein">
-				<long>
-					<standard>Hora de Kwajalein</standard>
-				</long>
-			</metazone>
-			<metazone type="Kyrgystan">
-				<long>
-					<generic>Hora do Quirguizistão</generic>
-					<standard>Hora do Quirguizistão</standard>
-				</long>
-				<short>
-					<generic>Hora do Quirguizistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Lanka">
-				<long>
-					<generic>Hora do Sri Lanka</generic>
-					<standard>Hora do Sri Lanka</standard>
-				</long>
-				<short>
-					<generic>Hora do Sri Lanka</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Liberia">
-				<long>
-					<generic>Hora da Libéria</generic>
-				</long>
-				<short>
-					<generic>Hora da Libéria</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Line_Islands">
-				<long>
-					<standard>Hora das Ilhas Line</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Long_Shu">
-				<long>
-					<standard>Hora de Long-Shu</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Lord_Howe">
-				<long>
-					<generic>Hora de Lord Howe</generic>
-					<standard>Hora Padrão de Lord Howe</standard>
-					<daylight>Hora de Verão de Lord Howe</daylight>
-				</long>
-			</metazone>
-			<metazone type="Macau">
-				<long>
-					<generic>Hora de Macau - Região Administrativa Especial da China</generic>
-					<standard>Hora de Macau</standard>
-					<daylight>Hora de Verão de Macau</daylight>
-				</long>
-				<short>
-					<generic>Hora de Macau - Região Administrativa Especial da China</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Magadan">
-				<long>
-					<standard>Hora de Magadan</standard>
-					<daylight>Hora de Verão de Magadan</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Malaya">
-				<long>
-					<generic>Hora da Malásia</generic>
-					<standard>Hora de Malaia</standard>
-				</long>
-				<short>
-					<generic>Hora da Malásia</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Malaysia">
-				<long>
-					<standard>Hora da Malásia</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Maldives">
-				<long>
-					<standard>Hora das Ilhas Maldivas</standard>
-				</long>
-			</metazone>
-			<metazone type="Marquesas">
-				<long>
-					<standard>Hora das Marquesas</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Marshall_Islands">
-				<long>
-					<standard>Hora das Ilhas Marshall</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Mauritius">
-				<long>
-					<standard>Hora das Ilhas Maurícias</standard>
-				</long>
-			</metazone>
-			<metazone type="Mawson">
-				<long>
-					<standard>Hora de Mawson</standard>
-				</long>
-			</metazone>
-			<metazone type="Mongolia">
-				<long>
-					<standard>Hora de Ulan Bator</standard>
-					<daylight>Hora de Verão de Ulan Bator</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Moscow">
-				<long>
-					<generic>Hora de Moscovo</generic>
-					<standard>Hora Padrão de Moscovo</standard>
-					<daylight>Hora de Verão de Moscovo</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Myanmar">
-				<long>
-					<generic>Hora de Mianmar</generic>
-				</long>
-				<short>
-					<generic>Hora de Mianmar</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Nauru">
-				<long>
-					<standard>Hora de Nauru</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Nepal">
-				<long>
-					<generic>Hora do Nepal</generic>
-					<standard>Hora do Nepal</standard>
-				</long>
-				<short>
-					<generic>Hora do Nepal</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="New_Caledonia">
-				<long>
-					<generic>Hora da Nova Caledónia</generic>
-					<standard>Hora da Nova Caledónia</standard>
-					<daylight>Hora de Verão da Nova Caledónia</daylight>
-				</long>
-				<short>
-					<generic>Hora da Nova Caledónia</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="New_Zealand">
-				<long>
-					<generic>Hora da Nova Zelândia</generic>
-					<standard>Hora Padrão da Nova Zelândia</standard>
-					<daylight>Hora de Verão da Nova Zelândia</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Newfoundland">
-				<long>
-					<standard>Horário Padrão da Terra Nova</standard>
-					<daylight>Horário de Verão da Terra Nova</daylight>
-				</long>
-			</metazone>
-			<metazone type="Niue">
-				<long>
-					<generic>Hora de Niue</generic>
-					<standard>Hora de Niue</standard>
-				</long>
-				<short>
-					<generic>Hora de Niue</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Norfolk">
-				<long>
-					<generic>Hora da Ilha Norfolque</generic>
-				</long>
-				<short>
-					<generic>Hora da Ilha Norfolque</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="North_Mariana">
-				<long>
-					<generic>Hora das Ilhas Mariana do Norte</generic>
-					<standard>Hora das Ilhas Mariana do Norte</standard>
-				</long>
-				<short>
-					<generic>Hora das Ilhas Mariana do Norte</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Novosibirsk">
-				<long>
-					<standard>Hora de Novosibirsk</standard>
-					<daylight>Hora de Verão de Novosibirsk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Omsk">
-				<long>
-					<standard>Hora de Omsk</standard>
-					<daylight>Hora de Verão de Omsk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Oral">
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Pakistan">
-				<long>
-					<standard>Hora do Paquistão</standard>
-					<daylight>Hora de Verão do Paquistão</daylight>
-				</long>
-				<short>
-					<generic>Hora do Paquistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Palau">
-				<long>
-					<generic>Hora de Palau</generic>
-					<standard>Hora de Palau</standard>
-				</long>
-				<short>
-					<generic>Hora de Palau</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Papua_New_Guinea">
-				<long>
-					<generic>Hora da Papua Nova Guiné</generic>
-					<standard>Hora da Papua Nova Guiné</standard>
-				</long>
-				<short>
-					<generic>Hora da Papua Nova Guiné</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Philippines">
-				<long>
-					<generic>Hora das Filipinas</generic>
-					<standard>Hora das Filipinas</standard>
-					<daylight>Hora de Verão das Filipinas</daylight>
-				</long>
-				<short>
-					<generic>Hora das Filipinas</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Phoenix_Islands">
-				<long>
-					<standard>Hora das Ilhas Fénix</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Pitcairn">
-				<long>
-					<generic>Hora de Pitcairn</generic>
-					<standard>Hora de Pitcairn</standard>
-				</long>
-				<short>
-					<generic>Hora de Pitcairn</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Ponape">
-				<long>
-					<standard>Hora de Ponape</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Qyzylorda">
-				<long>
-					<standard>Hora de Qyzylorda</standard>
-					<daylight>Hora de Verão de Qyzylorda</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Reunion">
-				<long>
-					<standard>Hora das Ilhas de Reunião</standard>
-				</long>
-			</metazone>
-			<metazone type="Rothera">
-				<long>
-					<standard>Hora de Rothera</standard>
-				</long>
-			</metazone>
-			<metazone type="Sakhalin">
-				<long>
-					<standard>Hora de Sakhalin</standard>
-					<daylight>Hora de Verão de Sakhalin</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Samara">
-				<long>
-					<standard>Hora de Samara</standard>
-					<daylight>Hora de Verão de Samara</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Samarkand">
-				<long>
-					<standard>Hora de Samarkand</standard>
-					<daylight>Hora de Verão de Samarkand</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Samoa">
-				<long>
-					<generic>Hora da Samoa</generic>
-					<standard>Hora Padrão da Samoa</standard>
-				</long>
-				<short>
-					<generic>Hora da Samoa</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Seychelles">
-				<long>
-					<standard>Hora das Ilhas Seicheles</standard>
-				</long>
-			</metazone>
-			<metazone type="Shevchenko">
-				<long>
-					<standard>Hora de Shevchenko</standard>
-					<daylight>Hora de Verão de Shevchenko</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Singapore">
-				<long>
-					<generic>Hora de Singapura</generic>
-					<standard>Hora Padrão de Singapura</standard>
-				</long>
-				<short>
-					<generic>Hora de Singapura</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Solomon">
-				<long>
-					<generic>Hora das Ilhas Salomão</generic>
-				</long>
-				<short>
-					<generic>Hora das Ilhas Salomão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="South_Georgia">
-				<long>
-					<standard>Hora da Georgia do Sul</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Sverdlovsk">
-				<long>
-					<standard>Hora de Sverdlovsk</standard>
-					<daylight>Hora de Verão de Sverdlovsk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Syowa">
-				<long>
-					<standard>Hora de Syowa</standard>
-				</long>
-			</metazone>
-			<metazone type="Tahiti">
-				<long>
-					<generic>Hora da Polinésia Francesa</generic>
-					<standard>Hora do Tahiti</standard>
-				</long>
-				<short>
-					<generic>Hora da Polinésia Francesa</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Tajikistan">
-				<long>
-					<generic>Hora do Tajiquistão</generic>
-					<standard>Hora do Tajiquistão</standard>
-				</long>
-				<short>
-					<generic>Hora do Tajiquistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Tashkent">
-				<long>
-					<generic>Hora de Tashkent</generic>
-					<standard>Hora de Tashkent</standard>
-					<daylight>Hora de Verão de Tashkent</daylight>
-				</long>
-				<short>
-					<generic>Hora do Uzbequistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Tbilisi">
-				<long>
-					<generic>Hora da Geórgia</generic>
-					<standard>Hora de Tbilisi</standard>
-					<daylight>Hora de Verão de Tbilisi</daylight>
-				</long>
-				<short>
-					<generic>Hora de Geórgia</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Tokelau">
-				<long>
-					<generic>Hora de Toquelau</generic>
-					<standard>Hora de Toquelau</standard>
-				</long>
-				<short>
-					<generic>Hora de Toquelau</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Tonga">
-				<long>
-					<generic>Hora de Tonga</generic>
-					<daylight>Hora de Verão de Tonga</daylight>
-				</long>
-				<short>
-					<generic>Hora de Tonga</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Truk">
-				<long>
-					<standard>Hora de Truk</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Turkey">
-				<long>
-					<standard>Hora da Turquia</standard>
-					<daylight>Hora de Verão da Turquia</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Turkmenistan">
-				<long>
-					<generic>Hora do Turquemenistão</generic>
-					<standard>Hora do Turquemenistão</standard>
-					<daylight>Hora de Verão do Turquemenistão</daylight>
-				</long>
-				<short>
-					<generic>Hora do Turquemenistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Tuvalu">
-				<long>
-					<generic>Hora de Tuvalu</generic>
-				</long>
-				<short>
-					<generic>Hora de Tuvalu</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Uralsk">
-				<long>
-					<standard>Hora de Ural'sk</standard>
-					<daylight>Hora de Verão de Ural'sk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Urumqi">
-				<long>
-					<standard>Hora de Urumqi</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Uzbekistan">
-				<long>
-					<generic>Hora do Uzbequistão</generic>
-					<standard>Hora do Uzbequistão</standard>
-					<daylight>Hora de Verão do Uzbequistão</daylight>
-				</long>
-				<short>
-					<generic>Hora do Uzbequistão</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Vanuatu">
-				<long>
-					<generic>Hora de Vanuatu</generic>
-					<standard>Hora de Vanuatu</standard>
-				</long>
-				<short>
-					<generic>Hora de Vanuatu</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Vladivostok">
-				<long>
-					<standard>Hora de Vladivostok</standard>
-					<daylight>Hora de Verão de Vladivostok</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Volgograd">
-				<long>
-					<standard>Hora de Volvograd</standard>
-					<daylight>Hora de Verão de Volgograd</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Vostok">
-				<long>
-					<standard>Hora de Vostok</standard>
-				</long>
-			</metazone>
-			<metazone type="Wake">
-				<long>
-					<standard>Hora das Ilhas Wake</standard>
-				</long>
-			</metazone>
-			<metazone type="Wallis">
-				<long>
-					<generic>Hora de Wallis e Futuna</generic>
-					<standard>Hora de Wallis e Futuna</standard>
-				</long>
-				<short>
-					<generic>Hora de Wallis e Futuna</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Yakutsk">
-				<long>
-					<standard>Hora de Yakutsk</standard>
-					<daylight>Hora de Verão de Yakutsk</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Yekaterinburg">
-				<long>
-					<standard>Hora de Yekaterinburg</standard>
-					<daylight>Hora de Verão de Yekaterinburg</daylight>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-			<metazone type="Yerevan">
-				<long>
-					<generic>Hora da Arménia</generic>
-					<standard>Hora de Yerevan</standard>
-					<daylight>Hora de Verão de Yerevan</daylight>
-				</long>
-				<short>
-					<generic>Hora da Arménia</generic>
-				</short>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<symbols>
-			<group> </group>
-		</symbols>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>#,##0.00 ¤</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-		</currencyFormats>
-		<currencies>
-			<currency type="AED">
-				<displayName>Dirham dos Emirados Árabes Unidos</displayName>
-			</currency>
-			<currency type="AFA">
-				<displayName>Afeghani (1927-2002)</displayName>
-			</currency>
-			<currency type="AFN">
-				<displayName>Afeghani</displayName>
-			</currency>
-			<currency type="ANG">
-				<displayName>Florim das Antilhas Holandesa</displayName>
-			</currency>
-			<currency type="AWG">
-				<displayName>Florim de Aruba</displayName>
-			</currency>
-			<currency type="BAD">
-				<displayName>Dinar da Bósnia-Herzegóvina</displayName>
-			</currency>
-			<currency type="BAM">
-				<displayName>Marco bósnio-herzegóvino conversível</displayName>
-			</currency>
-			<currency type="BEC">
-				<displayName>Franco belga (convertível)</displayName>
-			</currency>
-			<currency type="BYB">
-				<displayName>Rublo novo bielorusso (1994-1999)</displayName>
-			</currency>
-			<currency type="CYP">
-				<displayName>Libra de Chipre</displayName>
-			</currency>
-			<currency type="CZK">
-				<displayName>Coroa da República Checa</displayName>
-			</currency>
-			<currency type="ECV">
-				<displayName>Unidad de Valor Constante (UVC) do Equador</displayName>
-			</currency>
-			<currency type="FJD">
-				<displayName>Dólar das Fiji</displayName>
-			</currency>
-			<currency type="GHC">
-				<displayName>Cedi do Gana</displayName>
-			</currency>
-			<currency type="GMD">
-				<displayName>Dalasi da Gâmbia</displayName>
-			</currency>
-			<currency type="GNF">
-				<displayName>Franco da Guiné</displayName>
-			</currency>
-			<currency type="GTQ">
-				<displayName>Quetzal da Guatemala</displayName>
-			</currency>
-			<currency type="HNL">
-				<displayName>Lempira das Honduras</displayName>
-			</currency>
-			<currency type="KWD">
-				<displayName>Dinar koweitiano</displayName>
-			</currency>
-			<currency type="KYD">
-				<displayName>Dólar das Ilhas Caimão</displayName>
-			</currency>
-			<currency type="MKD">
-				<displayName>Dinar macedónio</displayName>
-			</currency>
-			<currency type="MLF">
-				<displayName>Franco do Mali</displayName>
-			</currency>
-			<currency type="MWK">
-				<displayName>Cuacha do Malawi</displayName>
-			</currency>
-			<currency type="MXP">
-				<displayName>Peso Plata mexicano (1861-1992)</displayName>
-			</currency>
-			<currency type="MXV">
-				<displayName>Unidad de Inversion (UDI) mexicana</displayName>
-			</currency>
-			<currency type="NIC">
-				<displayName>Córdoba nicaraguano</displayName>
-			</currency>
-			<currency type="NIO">
-				<displayName>Córdoba Ouro nicaraguano</displayName>
-			</currency>
-			<currency type="PLN">
-				<displayName>Zloti polaco</displayName>
-			</currency>
-			<currency type="PLZ">
-				<displayName>Zloti polaco (1950-1995)</displayName>
-			</currency>
-			<currency type="PTE">
-				<pattern>#,##0.00 ¤;-#,##0.00 ¤</pattern>
-				<decimal>$</decimal>
-				<group>,</group>
-			</currency>
-			<currency type="QAR">
-				<displayName>Rial do Qatar</displayName>
-			</currency>
-			<currency type="SGD">
-				<displayName>Dólar de Singapura</displayName>
-			</currency>
-			<currency type="TZS">
-				<displayName>Xelim de Tanzânia</displayName>
-			</currency>
-			<currency type="WST">
-				<displayName>Tala de Samoa Ocidental</displayName>
-			</currency>
-			<currency type="XEU">
-				<displayName>Unidade da Moeda Europeia</displayName>
-			</currency>
-			<currency type="XXX">
-				<displayName>Moeda inválida ou desconhecida</displayName>
-			</currency>
-			<currency type="YUD">
-				<displayName>Dinar forte jugoslavo</displayName>
-			</currency>
-			<currency type="YUM">
-				<displayName>Super Dinar jugoslavo</displayName>
-			</currency>
-			<currency type="YUN">
-				<displayName>Dinar conversível jugoslavo</displayName>
-			</currency>
-			<currency type="ZWD">
-				<displayName>Dólar do Zimbabwe</displayName>
-			</currency>
-		</currencies>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php8php5php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
+php	php	php<languagephp typephp=php"ptphp"php/php>
+php	php	php<territoryphp typephp=php"PTphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"afphp"php>afrikaans<php/languagephp>
+php	php	php	php<languagephp typephp=php"artphp"php>idiomaphp artifical<php/languagephp>
+php	php	php	php<languagephp typephp=php"awaphp"php>Awadhi<php/languagephp>
+php	php	php	php<languagephp typephp=php"baiphp"php>bamilekephp Languages<php/languagephp>
+php	php	php	php<languagephp typephp=php"bugphp"php>Buginese<php/languagephp>
+php	php	php	php<languagephp typephp=php"cephp"php>chechene<php/languagephp>
+php	php	php	php<languagephp typephp=php"celphp"php>idiomaphp céltico<php/languagephp>
+php	php	php	php<languagephp typephp=php"chnphp"php>jargãophp chinook<php/languagephp>
+php	php	php	php<languagephp typephp=php"cpephp"php>crioulophp ouphp pidginphp dophp inglês<php/languagephp>
+php	php	php	php<languagephp typephp=php"cpfphp"php>crioulophp ouphp pidginphp dophp francês<php/languagephp>
+php	php	php	php<languagephp typephp=php"cppphp"php>crioulophp ouphp pidginphp dophp português<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>checo<php/languagephp>
+php	php	php	php<languagephp typephp=php"cusphp"php>idiomaphp cuchita<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp_CHphp"php>alemãophp altophp php(Suíçaphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"draphp"php>idiomaphp dravítico<php/languagephp>
+php	php	php	php<languagephp typephp=php"dyuphp"php>diula<php/languagephp>
+php	php	php	php<languagephp typephp=php"egyphp"php>egípciophp clássico<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>Inglês<php/languagephp>
+php	php	php	php<languagephp typephp=php"enmphp"php>inglêsphp medieval<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>estónio<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiuphp"php>idiomaphp ugrophp-finês<php/languagephp>
+php	php	php	php<languagephp typephp=php"frmphp"php>francêsphp medieval<php/languagephp>
+php	php	php	php<languagephp typephp=php"frsphp"php>frísiophp oriental<php/languagephp>
+php	php	php	php<languagephp typephp=php"gmhphp"php>alemãophp medievalphp alto<php/languagephp>
+php	php	php	php<languagephp typephp=php"grcphp"php>gregophp clássico<php/languagephp>
+php	php	php	php<languagephp typephp=php"gswphp"php>alemãophp daphp Suíça<php/languagephp>
+php	php	php	php<languagephp typephp=php"hsbphp"php>sorbianophp superior<php/languagephp>
+php	php	php	php<languagephp typephp=php"hyphp"php>arménio<php/languagephp>
+php	php	php	php<languagephp typephp=php"ibaphp"php>Iban<php/languagephp>
+php	php	php	php<languagephp typephp=php"igphp"php>igbo<php/languagephp>
+php	php	php	php<languagephp typephp=php"ikphp"php>Inupiaq<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>jv<php/languagephp>
+php	php	php	php<languagephp typephp=php"khiphp"php>khoisan<php/languagephp>
+php	php	php	php<languagephp typephp=php"lezphp"php>lezghiano<php/languagephp>
+php	php	php	php<languagephp typephp=php"mgaphp"php>irlandêsphp,php medievalphp php(php9php0php0php-php1php2php0php0php)<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>macedónio<php/languagephp>
+php	php	php	php<languagephp typephp=php"nahphp"php>Nauatle<php/languagephp>
+php	php	php	php<languagephp typephp=php"ndsphp"php>baixophp alemão<php/languagephp>
+php	php	php	php<languagephp typephp=php"nicphp"php>nigerianophp php-php cordofano<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp_BEphp"php>flamengophp php(Bélgicaphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"nonphp"php>norsephp,php old<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>provençal<php/languagephp>
+php	php	php	php<languagephp typephp=php"osphp"php>ossético<php/languagephp>
+php	php	php	php<languagephp typephp=php"peophp"php>persaphp arcaicophp php(aproxphp.php php6php0php0php-php4php0php0php aphp.Cphp.php)<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>polaco<php/languagephp>
+php	php	php	php<languagephp typephp=php"praphp"php>idiomaphp prácito<php/languagephp>
+php	php	php	php<languagephp typephp=php"prophp"php>provençalphp,php arcaicophp php(atéphp php1php5php0php0php)<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>portuguêsphp europeu<php/languagephp>
+php	php	php	php<languagephp typephp=php"rmphp"php>retophp-romance<php/languagephp>
+php	php	php	php<languagephp typephp=php"romphp"php>romanês<php/languagephp>
+php	php	php	php<languagephp typephp=php"saiphp"php>idiomaphp indígenophp sulphp-americano<php/languagephp>
+php	php	php	php<languagephp typephp=php"salphp"php>salishanphp languages<php/languagephp>
+php	php	php	php<languagephp typephp=php"sgnphp"php>linguagesphp dephp sinais<php/languagephp>
+php	php	php	php<languagephp typephp=php"ssaphp"php>idiomaphp nilophp-sariano<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>tamil<php/languagephp>
+php	php	php	php<languagephp typephp=php"taiphp"php>idiomaphp tailândes<php/languagephp>
+php	php	php	php<languagephp typephp=php"tetphp"php>tetum<php/languagephp>
+php	php	php	php<languagephp typephp=php"tgphp"php>tajique<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlphp"php>tagalogue<php/languagephp>
+php	php	php	php<languagephp typephp=php"tophp"php>tonga<php/languagephp>
+php	php	php	php<languagephp typephp=php"togphp"php>toganês<php/languagephp>
+php	php	php	php<languagephp typephp=php"tyvphp"php>tuviniano<php/languagephp>
+php	php	php	php<languagephp typephp=php"wenphp"php>idiomaphp sórbio<php/languagephp>
+php	php	php	php<languagephp typephp=php"zzaphp"php>zazaki<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Armnphp"php>arménio<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Blisphp"php>símbolosphp Bliss<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Brahphp"php>Brahmi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cansphp"php>símbolosphp aborígenesphp canadianos<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cyrsphp"php>cirílicophp php(eslavónicophp sacrophp antigophp)<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egydphp"php>egípciophp demótico<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egyhphp"php>egípciophp hierático<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Geokphp"php>georgianophp khutsuri<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Indsphp"php>indus<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latfphp"php>latimphp php(frakturphp)<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Linaphp"php>linearphp A<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Linbphp"php>linearphp B<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mandphp"php>mandaeano<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mlymphp"php>malaialam<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Nkoophp"php>nphp’ko<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Plrdphp"php>Pollardphp fonético<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sgnwphp"php>escritaphp gestual<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sylophp"php>silotiphp nagri<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Talephp"php>taiphp le<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Taluphp"php>taiphp luephp moderno<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tamlphp"php>tamil<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Teluphp"php>telugu<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tengphp"php>tenguar<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Xsuxphp"php>cuneiformephp sumerophp-acadiano<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zxxxphp"php>nãophp escrito<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zzzzphp"php>inválidophp ouphp desconhecido<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"php0php0php9php"php>Oceânia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php5php"php>Nortephp dephp África<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php7php"php>Áfricaphp Interior<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php8php"php>Áfricaphp Meridional<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php5php"php>Sudestephp Asiático<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php5php7php"php>Micronésia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php6php2php"php>Ásiaphp Sulphp-Central<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php1php"php>Europaphp dephp Leste<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php4php"php>Europaphp dophp Norte<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php7php2php"php>php1php7php2<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AEphp"php>Emiratosphp Árabesphp Unidos<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AIphp"php>Anguilha<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AMphp"php>Arménia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AQphp"php>Antárctica<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AXphp"php>Ilhasphp Alanda<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AZphp"php>Azerbeijão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BDphp"php>Bangladeche<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BFphp"php>Burkinaphp-Faso<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BHphp"php>Bahrein<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BJphp"php>Benim<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BSphp"php>Baamas<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BWphp"php>Botswana<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BYphp"php>Bielorrússia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CCphp"php>Ilhasphp Cocos<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CDphp"php>Repúblicaphp Democráticaphp dophp Congo<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CGphp"php>Congophp-Brazzaville<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CXphp"php>Ilhaphp dophp Natal<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CZphp"php>Repúblicaphp Checa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EEphp"php>Estónia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EGphp"php>Egipto<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EHphp"php>Saraphp Ocidental<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FKphp"php>Ilhasphp Falklandphp ouphp Malvinas<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FMphp"php>Estadosphp Federadosphp daphp Micronésia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FOphp"php>Ilhasphp Faroé<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GLphp"php>Gronelândia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GWphp"php>Guinéphp-Bissau<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HKphp"php>Hongphp Kongphp php-php Regiãophp Administrativaphp Especialphp daphp China<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IRphp"php>Irão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KEphp"php>Quénia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KGphp"php>Quirguizistão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KNphp"php>Saintphp Kittsphp ephp Nevis<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KWphp"php>Cuaite<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KYphp"php>Ilhasphp Caimão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KZphp"php>Cazaquistão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LAphp"php>Laosphp,php Repúblicaphp Popularphp Democráticaphp do<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LVphp"php>Letónia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MCphp"php>Mónaco<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MDphp"php>Moldáviaphp,php Repúblicaphp da<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MGphp"php>Madagáscar<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MKphp"php>Macedóniaphp,php Repúblicaphp da<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MOphp"php>Macauphp php-php Regiãophp Administrativaphp Especialphp daphp China<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MPphp"php>Ilhasphp Marianaphp dophp Norte<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MSphp"php>Monserrate<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MUphp"php>Maurícias<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MWphp"php>Malaui<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NCphp"php>Novaphp Caledónia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NFphp"php>Ilhaphp Norfolque<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NLphp"php>Paísesphp Baixos<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PGphp"php>Papuaphp Novaphp Guiné<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PLphp"php>Polónia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PSphp"php>Territóriophp Palestiniano<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QAphp"php>Qatar<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QOphp"php>Oceâniaphp Insular<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ROphp"php>Roménia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SCphp"php>Seicheles<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SGphp"php>Singapura<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SIphp"php>Eslovénia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SJphp"php>Esvalbardaphp ephp Janphp Mayen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SMphp"php>Sãophp Marino<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TCphp"php>Ilhasphp Turcasphp ephp Caicos<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TJphp"php>Tajiquistão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TKphp"php>Toquelau<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TMphp"php>Turquemenistão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TTphp"php>Trindadephp ephp Tobago<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UMphp"php>Ilhasphp Minorphp Outlyingphp php(Ephp.Uphp.Aphp)<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UZphp"php>Usbequistão<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VIphp"php>Ilhasphp Virginphp Ephp.Uphp.Aphp.<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VNphp"php>Vietname<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"YEphp"php>Iémen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZWphp"php>Zimbabwe<php/territoryphp>
+php	php	<php/territoriesphp>
+php	php	php<variantsphp>
+php	php	php	php<variantphp typephp=php"php1php9php0php1php"php>Alemãophp Tradicional<php/variantphp>
+php	php	php	php<variantphp typephp=php"php1php9php9php6php"php>Alemãophp Moderno<php/variantphp>
+php	php	php	php<variantphp typephp=php"AREVELAphp"php>arméniophp oriental<php/variantphp>
+php	php	php	php<variantphp typephp=php"AREVMDAphp"php>arméniophp ocidental<php/variantphp>
+php	php	php	php<variantphp typephp=php"BISKEphp"php>dialectophp sanphp giorgiophp/bila<php/variantphp>
+php	php	php	php<variantphp typephp=php"BOONTphp"php>buntlingue<php/variantphp>
+php	php	php	php<variantphp typephp=php"FONIPAphp"php>Alfabetophp Fonéticophp Internacional<php/variantphp>
+php	php	php	php<variantphp typephp=php"FONUPAphp"php>Alfabetophp Fonéticophp Urálico<php/variantphp>
+php	php	php	php<variantphp typephp=php"LIPAWphp"php>dialectophp lipovazphp dephp Resian<php/variantphp>
+php	php	php	php<variantphp typephp=php"MONOTONphp"php>monotónico<php/variantphp>
+php	php	php	php<variantphp typephp=php"NEDISphp"php>dialectophp natisone<php/variantphp>
+php	php	php	php<variantphp typephp=php"NJIVAphp"php>dialectophp gnivaphp/njiva<php/variantphp>
+php	php	php	php<variantphp typephp=php"OSOJSphp"php>dialectophp oseaccophp/osojane<php/variantphp>
+php	php	php	php<variantphp typephp=php"POLYTONphp"php>politónico<php/variantphp>
+php	php	php	php<variantphp typephp=php"POSIXphp"php>Computador<php/variantphp>
+php	php	php	php<variantphp typephp=php"REVISEDphp"php>Revisãophp Ortográfica<php/variantphp>
+php	php	php	php<variantphp typephp=php"SAAHOphp"php>Saho<php/variantphp>
+php	php	php	php<variantphp typephp=php"SCOUSEphp"php>Scouse<php/variantphp>
+php	php	php	php<variantphp typephp=php"SOLBAphp"php>dialectophp stolvizzaphp/solbica<php/variantphp>
+php	php	<php/variantsphp>
+php	php	php<keysphp>
+php	php	php	php<keyphp typephp=php"collationphp"php>Ordem<php/keyphp>
+php	php	<php/keysphp>
+php	php	php<typesphp>
+php	php	php	php<typephp typephp=php"bigphp5hanphp"php keyphp=php"collationphp"php>Ordemphp dephp Chinêsphp Tradicionalphp php-php Bigphp5<php/typephp>
+php	php	php	php<typephp typephp=php"directphp"php keyphp=php"collationphp"php>Ordemphp Directa<php/typephp>
+php	php	php	php<typephp typephp=php"gbphp2php3php1php2hanphp"php keyphp=php"collationphp"php>Ordemphp dephp Chinêsphp Simplificadophp php-php GBphp2php3php1php2<php/typephp>
+php	php	php	php<typephp typephp=php"phonebookphp"php keyphp=php"collationphp"php>Ordemphp daphp Listaphp Telefónica<php/typephp>
+php	php	<php/typesphp>
+php	php	php<measurementSystemNamesphp>
+php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>Métrico<php/measurementSystemNamephp>
+php	php	<php/measurementSystemNamesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[ªphp ăphp åphp äphp āphp æphp èphp ĕphp ëphp ēphp ìphp ĭphp îphp ïphp īphp ñphp ºphp ŏphp öphp øphp ōphp œphp ßphp ùphp ŭphp ûphp üphp ūphp ÿphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"buddhistphp"php>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp,php MMMMphp dphp,php yphp G<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>MMMMphp dphp,php yphp G<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>MMMphp dphp,php yphp G<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>Mphp/dphp/yyyy<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>dphp-M<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>dphp dephp MMMM<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Jan<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Fev<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Mar<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Abr<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Mai<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Jun<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Jul<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Ago<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Set<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Out<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Nov<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Dez<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Janeiro<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Fevereiro<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Março<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Abril<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Maio<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Junho<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Julho<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Agosto<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Setembro<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Outubro<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Novembro<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Dezembro<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<quartersphp>
+php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>php1php.ºphp trimestre<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>php2php.ºphp trimestre<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>php3php.ºphp trimestre<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>php4php.ºphp trimestre<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	<php/quarterContextphp>
+php	php	php	php	<php/quartersphp>
+php	php	php	php	php<amphp>Antesphp dophp meiophp-dia<php/amphp>
+php	php	php	php	php<pmphp>Depoisphp dophp meiophp-dia<php/pmphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp php'dephp'php MMMphp php'dephp'php yyyy<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQphp"php>QQQphp php'dephp'php yyyy<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQQQphp"php>QQQphp php'dephp'php y<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>QQQphp php'dephp'php yy<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	php	php<intervalFormatsphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>Hphp'hphp'php php-php Hphp'hphp'<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp-MMM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp-y<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp-MMphp php'dephp'php yyyy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	<php/intervalFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	php	php<calendarphp typephp=php"japanesephp"php>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp,php MMMMphp dphp,php yphp G<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>MMMMphp dphp,php yphp G<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>MMMphp dphp,php yphp G<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>Mphp/dphp/yy<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<zonephp typephp=php"Americaphp/Argentinaphp/Tucumanphp"php>
+php	php	php	php	php<exemplarCityphp>Tucumán<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Cuiabaphp"php>
+php	php	php	php	php<exemplarCityphp>Cuibá<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Araguainaphp"php>
+php	php	php	php	php<exemplarCityphp>Araguaina<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Bahiaphp"php>
+php	php	php	php	php<exemplarCityphp>Baía<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Stphp_Johnsphp"php>
+php	php	php	php	php<exemplarCityphp>Stphp.Johnphp's<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Pacificphp/Easterphp"php>
+php	php	php	php	php<exemplarCityphp>Páscoa<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Europephp/Madridphp"php>
+php	php	php	php	php<exemplarCityphp>Madrid<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Africaphp/Casablancaphp"php>
+php	php	php	php	php<exemplarCityphp>Marrocos<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Ulaanbaatarphp"php>
+php	php	php	php	php<exemplarCityphp>Ulanphp Bator<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Cancunphp"php>
+php	php	php	php	php<exemplarCityphp>Cancun<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Europephp/Kaliningradphp"php>
+php	php	php	php	php<exemplarCityphp>Kaliningrado<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Europephp/Moscowphp"php>
+php	php	php	php	php<exemplarCityphp>Moscovo<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Sakhalinphp"php>
+php	php	php	php	php<exemplarCityphp>Sacalina<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Northphp_Dakotaphp/Centerphp"php>
+php	php	php	php	php<exemplarCityphp>Center<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Indianaphp/Petersburgphp"php>
+php	php	php	php	php<exemplarCityphp>Petersburgo<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<metazonephp typephp=php"Acrephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Acre<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Acre<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>false<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Afghanistanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Afeganistão<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Africaphp_Centralphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Áfricaphp Central<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Africaphp_Easternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Áfricaphp Oriental<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Africaphp_FarWesternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Saraphp Ocidental<php/genericphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Saraphp Ocidental<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Africaphp_Southernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Áfricaphp dophp Sul<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Áfricaphp dophp Sul<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Africaphp_Westernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Nigéria<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Áfricaphp Ocidental<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Áfricaphp Ocidental<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Nigéria<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Aktyubinskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Aktyubinsk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Aktyubinsk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Alaskaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Alaska<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Alaska<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Alaska<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Alaskaphp_Hawaiiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Alaskaphp-php Havai<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Alaskaphp-Havai<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Alaskaphp-Havai<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Almatyphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Almaty<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Almaty<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Amazonphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Amazonas<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Amazonas<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>false<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Americaphp_Centralphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp Central<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp Central<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp Central<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Americaphp_Easternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp Oriental<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp Oriental<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp Oriental<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Americaphp_Mountainphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Montanha<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Montanha<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Montanha<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Americaphp_Pacificphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Pacífico<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Pacífico<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Pacífico<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Anadyrphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Anadyr<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Anadyr<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Aqtauphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Aqtau<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Aqtau<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Aqtobephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Aqtobe<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Aqtobe<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Arabianphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Arábia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Arábia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Arábia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Argentinaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Argentina<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Argentina<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Argentinaphp_Westernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Argentinaphp Ocidental<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Armeniaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Arménia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Arménia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Arménia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Arménia<php/genericphp>
+php	php	php	php	php	php<standardphp>AMTphp php(Arméniaphp)<php/standardphp>
+php	php	php	php	php	php<daylightphp>AMSTphp php(Arméniaphp)<php/daylightphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Ashkhabadphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Turquemenistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Ashkhabad<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Ashkhabad<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Turquemenistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Atlanticphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Atlântico<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Atlântico<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Atlântico<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Australiaphp_Centralphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Austráliaphp Central<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Austráliaphp Central<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Austráliaphp Central<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Australiaphp_CentralWesternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Austráliaphp Centralphp Ocidental<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Austráliaphp Centralphp Ocidental<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Austráliaphp Centralphp Ocidental<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Australiaphp_Easternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Austráliaphp Oriental<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Austráliaphp Oriental<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Austráliaphp Oriental<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Australiaphp_Westernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Austráliaphp Ocidental<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Austráliaphp Ocidental<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Austráliaphp Ocidental<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Azerbaijanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Azerbeijão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Azerbeijão<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Azerbeijão<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Azerbeijão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Azoresphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dosphp Açores<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dosphp Açores<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Bakuphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Azerbeijão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Baku<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Baku<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Azerbeijão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Bangladeshphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Bangladesh<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Bangladesh<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Bangladesh<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Beringphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Bering<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Bering<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Bring<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Bhutanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Botão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Botão<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Botão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Boliviaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Bolívia<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Borneophp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Bornéu<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Bornéu<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Brasiliaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Brasília<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Brasília<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>false<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Britishphp"php>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Bruneiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Brunei<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Bruneiphp Darussalam<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Brunei<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Capephp_Verdephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Cabophp Verde<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Cabophp Verde<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Chamorrophp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Chamarro<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Chamarro<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Changbaiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Changbai<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Chathamphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Chatham<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Chatham<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Chilephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Chile<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Chile<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Chinaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp China<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp China<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp China<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Choibalsanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Choibalsan<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Choibalsan<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Christmasphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Ilhaphp dephp Natal<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Cocosphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Cocos<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Colombiaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Colômbia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Colômbia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Cookphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Cook<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Cook<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp Intermédiaphp dephp Verãophp dasphp Ilhasphp Cook<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Cook<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Cubaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Cuba<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Cuba<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Cuba<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Daccaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Bangladesh<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Dacca<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Bangladesh<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Davisphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Davis<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Dominicanphp"php>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"DumontDUrvillephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Dumontphp-dphp'Urville<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Dushanbephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Tajiquistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Dushanbe<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Dushanbe<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Tajiquistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Dutchphp_Guianaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Guianaphp Holandesa<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Eastphp_Timorphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Timorphp Leste<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Timorphp Leste<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Timorphp Leste<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Easterphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Ilhaphp dephp Páscoa<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Ilhaphp dephp Páscoa<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Ecuadorphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Equador<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Europephp_Centralphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horáriophp Padrãophp daphp Europaphp Central<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Europaphp Central<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Europephp_Easternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Europaphp Oriental<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Europaphp Oriental<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Europephp_Westernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Europaphp Ocidental<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Europaphp Ocidental<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Falklandphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Malvinas<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dasphp Ilhasphp Malvinas<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Fijiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Fiji<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Fiji<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dasphp Ilhasphp Fiji<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Fiji<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Frenchphp_Guianaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Guianaphp Francesa<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Frenchphp_Southernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Antártidaphp ephp dosphp Territóriosphp Francesesphp dophp Sul<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Frunzephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Quirguizistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Frunze<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Frunze<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Quirguizistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Galapagosphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Galápagos<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Gambierphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Gambier<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Georgiaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Geórgia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Georgia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Georgia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Geórgia<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Gilbertphp_Islandsphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Gilbert<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"GMTphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Meridianophp dephp Greenwich<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Goosephp_Bayphp"php>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Greenlandphp_Centralphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Gronelândiaphp Central<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Gronelândiaphp Central<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Guamphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Guam<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Gulfphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Golfo<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Hawaiiphp_Aleutianphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Havai<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Hongphp_Kongphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Hongphp Kongphp php-php Regiãophp Administrativaphp Especialphp daphp China<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Hongphp Kong<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Hongphp Kong<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Hongphp Kongphp php-php Regiãophp Administrativaphp Especialphp daphp China<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Hovdphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Hovd<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Hovd<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Indiaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Índia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Índia<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Índia<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Indianphp_Oceanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Oceanophp Índico<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Indochinaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Vietname<php/genericphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Vietname<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Indonesiaphp_Centralphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Indonésiaphp Central<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Indonesiaphp_Easternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Indonésiaphp Oriental<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Indonesiaphp_Westernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Indonésiaphp Ocidental<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Iranphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Irão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Irão<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Irão<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Irão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Irishphp"php>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Irkutskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Irkutsk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Irkutsk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Israelphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Israel<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Israel<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Israel<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Israel<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Japanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Japão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Japão<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Japão<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kamchatkaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Petropavlovskphp-Kamchatski<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Petropavlovskphp-Kamchatski<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Karachiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Paquistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Carachi<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Paquistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kashgarphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Kashgar<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kazakhstanphp_Easternphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Casaquistãophp dophp Leste<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Cazaquistãophp dophp Leste<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kazakhstanphp_Westernphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Casaquistãophp dophp Oeste<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dophp Casaquistãophp dophp Oeste<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kizilordaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Kizilorda<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Kizilorda<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Koreaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Coreia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Coreia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Coreia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kosraephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Kosrae<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Krasnoyarskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Krasnoyarsk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Krasnoyarsk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kuybyshevphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Kuybyshev<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Kuybyshev<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kwajaleinphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Kwajalein<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Kyrgystanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Quirguizistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Quirguizistão<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Quirguizistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Lankaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Sriphp Lanka<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Sriphp Lanka<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Sriphp Lanka<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Liberiaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Libéria<php/genericphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Libéria<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Linephp_Islandsphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Line<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Longphp_Shuphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Longphp-Shu<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Lordphp_Howephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Lordphp Howe<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Lordphp Howe<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Lordphp Howe<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Macauphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Macauphp php-php Regiãophp Administrativaphp Especialphp daphp China<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Macau<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Macau<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Macauphp php-php Regiãophp Administrativaphp Especialphp daphp China<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Magadanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Magadan<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Magadan<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Malayaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Malásia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Malaia<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Malásia<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Malaysiaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Malásia<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Maldivesphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Maldivas<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Marquesasphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Marquesas<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Marshallphp_Islandsphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Marshall<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Mauritiusphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Maurícias<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Mawsonphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Mawson<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Mongoliaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Ulanphp Bator<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Ulanphp Bator<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Moscowphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Moscovo<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Moscovo<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Moscovo<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Myanmarphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Mianmar<php/genericphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Mianmar<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Nauruphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Nauru<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Nepalphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Nepal<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Nepal<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Nepal<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Newphp_Caledoniaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Novaphp Caledónia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Novaphp Caledónia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Novaphp Caledónia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Novaphp Caledónia<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Newphp_Zealandphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Novaphp Zelândia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Novaphp Zelândia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Novaphp Zelândia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Newfoundlandphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horáriophp Padrãophp daphp Terraphp Nova<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horáriophp dephp Verãophp daphp Terraphp Nova<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Niuephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Niue<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Niue<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Niue<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Norfolkphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Ilhaphp Norfolque<php/genericphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Ilhaphp Norfolque<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Northphp_Marianaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Marianaphp dophp Norte<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Marianaphp dophp Norte<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Marianaphp dophp Norte<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Novosibirskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Novosibirsk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Novosibirsk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Omskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Omsk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Omsk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Oralphp"php>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Pakistanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Paquistão<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Paquistão<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Paquistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Palauphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Palau<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Palau<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Palau<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Papuaphp_Newphp_Guineaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Papuaphp Novaphp Guiné<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Papuaphp Novaphp Guiné<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Papuaphp Novaphp Guiné<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Philippinesphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Filipinas<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Filipinas<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dasphp Filipinas<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Filipinas<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Phoenixphp_Islandsphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Fénix<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Pitcairnphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Pitcairn<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Pitcairn<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Pitcairn<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Ponapephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Ponape<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Qyzylordaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Qyzylorda<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Qyzylorda<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Reunionphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp dephp Reunião<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Rotheraphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Rothera<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Sakhalinphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Sakhalin<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Sakhalin<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Samaraphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Samara<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Samara<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Samarkandphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Samarkand<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Samarkand<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Samoaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Samoa<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp daphp Samoa<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Samoa<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Seychellesphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Seicheles<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Shevchenkophp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Shevchenko<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Shevchenko<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Singaporephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Singapura<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp Padrãophp dephp Singapura<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Singapura<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Solomonphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Salomão<php/genericphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dasphp Ilhasphp Salomão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Southphp_Georgiaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Georgiaphp dophp Sul<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Sverdlovskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Sverdlovsk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Sverdlovsk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Syowaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Syowa<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Tahitiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Polinésiaphp Francesa<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Tahiti<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Polinésiaphp Francesa<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Tajikistanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Tajiquistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Tajiquistão<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Tajiquistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Tashkentphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Tashkent<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Tashkent<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Tashkent<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Uzbequistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Tbilisiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Geórgia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Tbilisi<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Tbilisi<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Geórgia<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Tokelauphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Toquelau<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Toquelau<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Toquelau<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Tongaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Tonga<php/genericphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Tonga<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Tonga<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Trukphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Truk<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Turkeyphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp daphp Turquia<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp daphp Turquia<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Turkmenistanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Turquemenistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Turquemenistão<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Turquemenistão<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Turquemenistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Tuvaluphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Tuvalu<php/genericphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Tuvalu<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Uralskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Uralphp'sk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Uralphp'sk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Urumqiphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Urumqi<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Uzbekistanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Uzbequistão<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dophp Uzbequistão<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dophp Uzbequistão<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dophp Uzbequistão<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Vanuatuphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Vanuatu<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Vanuatu<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Vanuatu<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Vladivostokphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Vladivostok<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Vladivostok<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Volgogradphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Volvograd<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Volgograd<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Vostokphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Vostok<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Wakephp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dasphp Ilhasphp Wake<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Wallisphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Wallisphp ephp Futuna<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Wallisphp ephp Futuna<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp dephp Wallisphp ephp Futuna<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Yakutskphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Yakutsk<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Yakutsk<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Yekaterinburgphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Yekaterinburg<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Yekaterinburg<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	php	php<metazonephp typephp=php"Yerevanphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Arménia<php/genericphp>
+php	php	php	php	php	php<standardphp>Horaphp dephp Yerevan<php/standardphp>
+php	php	php	php	php	php<daylightphp>Horaphp dephp Verãophp dephp Yerevan<php/daylightphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<shortphp>
+php	php	php	php	php	php<genericphp>Horaphp daphp Arménia<php/genericphp>
+php	php	php	php	<php/shortphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<symbolsphp>
+php	php	php	php<groupphp>php <php/groupphp>
+php	php	<php/symbolsphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php0php0php php¤<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	<php/currencyFormatsphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"AEDphp"php>
+php	php	php	php	php<displayNamephp>Dirhamphp dosphp Emiradosphp Árabesphp Unidos<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AFAphp"php>
+php	php	php	php	php<displayNamephp>Afeghaniphp php(php1php9php2php7php-php2php0php0php2php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AFNphp"php>
+php	php	php	php	php<displayNamephp>Afeghani<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ANGphp"php>
+php	php	php	php	php<displayNamephp>Florimphp dasphp Antilhasphp Holandesa<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AWGphp"php>
+php	php	php	php	php<displayNamephp>Florimphp dephp Aruba<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BADphp"php>
+php	php	php	php	php<displayNamephp>Dinarphp daphp Bósniaphp-Herzegóvina<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BAMphp"php>
+php	php	php	php	php<displayNamephp>Marcophp bósniophp-herzegóvinophp conversível<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BECphp"php>
+php	php	php	php	php<displayNamephp>Francophp belgaphp php(convertívelphp)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BYBphp"php>
+php	php	php	php	php<displayNamephp>Rublophp novophp bielorussophp php(php1php9php9php4php-php1php9php9php9php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CYPphp"php>
+php	php	php	php	php<displayNamephp>Libraphp dephp Chipre<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CZKphp"php>
+php	php	php	php	php<displayNamephp>Coroaphp daphp Repúblicaphp Checa<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ECVphp"php>
+php	php	php	php	php<displayNamephp>Unidadphp dephp Valorphp Constantephp php(UVCphp)php dophp Equador<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"FJDphp"php>
+php	php	php	php	php<displayNamephp>Dólarphp dasphp Fiji<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GHCphp"php>
+php	php	php	php	php<displayNamephp>Cediphp dophp Gana<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GMDphp"php>
+php	php	php	php	php<displayNamephp>Dalasiphp daphp Gâmbia<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GNFphp"php>
+php	php	php	php	php<displayNamephp>Francophp daphp Guiné<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GTQphp"php>
+php	php	php	php	php<displayNamephp>Quetzalphp daphp Guatemala<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"HNLphp"php>
+php	php	php	php	php<displayNamephp>Lempiraphp dasphp Honduras<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"KWDphp"php>
+php	php	php	php	php<displayNamephp>Dinarphp koweitiano<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"KYDphp"php>
+php	php	php	php	php<displayNamephp>Dólarphp dasphp Ilhasphp Caimão<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MKDphp"php>
+php	php	php	php	php<displayNamephp>Dinarphp macedónio<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MLFphp"php>
+php	php	php	php	php<displayNamephp>Francophp dophp Mali<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MWKphp"php>
+php	php	php	php	php<displayNamephp>Cuachaphp dophp Malawi<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MXPphp"php>
+php	php	php	php	php<displayNamephp>Pesophp Plataphp mexicanophp php(php1php8php6php1php-php1php9php9php2php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MXVphp"php>
+php	php	php	php	php<displayNamephp>Unidadphp dephp Inversionphp php(UDIphp)php mexicana<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"NICphp"php>
+php	php	php	php	php<displayNamephp>Córdobaphp nicaraguano<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"NIOphp"php>
+php	php	php	php	php<displayNamephp>Córdobaphp Ourophp nicaraguano<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"PLNphp"php>
+php	php	php	php	php<displayNamephp>Zlotiphp polaco<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"PLZphp"php>
+php	php	php	php	php<displayNamephp>Zlotiphp polacophp php(php1php9php5php0php-php1php9php9php5php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"PTEphp"php>
+php	php	php	php	php<patternphp>php#php,php#php#php0php.php0php0php php¤php;php-php#php,php#php#php0php.php0php0php php¤<php/patternphp>
+php	php	php	php	php<decimalphp>php$<php/decimalphp>
+php	php	php	php	php<groupphp>php,<php/groupphp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"QARphp"php>
+php	php	php	php	php<displayNamephp>Rialphp dophp Qatar<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SGDphp"php>
+php	php	php	php	php<displayNamephp>Dólarphp dephp Singapura<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"TZSphp"php>
+php	php	php	php	php<displayNamephp>Xelimphp dephp Tanzânia<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"WSTphp"php>
+php	php	php	php	php<displayNamephp>Talaphp dephp Samoaphp Ocidental<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XEUphp"php>
+php	php	php	php	php<displayNamephp>Unidadephp daphp Moedaphp Europeia<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XXXphp"php>
+php	php	php	php	php<displayNamephp>Moedaphp inválidaphp ouphp desconhecida<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"YUDphp"php>
+php	php	php	php	php<displayNamephp>Dinarphp fortephp jugoslavo<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"YUMphp"php>
+php	php	php	php	php<displayNamephp>Superphp Dinarphp jugoslavo<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"YUNphp"php>
+php	php	php	php	php<displayNamephp>Dinarphp conversívelphp jugoslavo<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ZWDphp"php>
+php	php	php	php	php<displayNamephp>Dólarphp dophp Zimbabwe<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+<php/ldmlphp>
 

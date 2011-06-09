@@ -1,1148 +1,1148 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.4 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="nds"/>
-	</identity>
-	<localeDisplayNames>
-		<localeDisplayPattern>
-			<localePattern>{0} ({1})</localePattern>
-			<localeSeparator>, </localeSeparator>
-		</localeDisplayPattern>
-		<languages>
-			<language type="aa">Afar</language>
-			<language type="ab">Abchaasch</language>
-			<language type="ace">Aceh</language>
-			<language type="ach">Acholi</language>
-			<language type="ada">Adangme</language>
-			<language type="ady">Adygeisch</language>
-			<language type="ae">Avestsch</language>
-			<language type="af">Afrikaansch</language>
-			<language type="afa">Afro-Asiaatsche Spraken</language>
-			<language type="afh">Afrihili</language>
-			<language type="ain">Ainu</language>
-			<language type="ak">Akan</language>
-			<language type="akk">Akkadsch</language>
-			<language type="ale">Aleutsch</language>
-			<language type="alg">Algonkin-Spraken</language>
-			<language type="alt">Süüd-Altaisch</language>
-			<language type="am">Amhaarsch</language>
-			<language type="an">Aragoneesch</language>
-			<language type="ang">Ooldengelsch</language>
-			<language type="anp">Angika</language>
-			<language type="apa">Apache</language>
-			<language type="ar">Araabsch</language>
-			<language type="arc">Aramääsch</language>
-			<language type="arn">Araukaansch</language>
-			<language type="arp">Arapaho</language>
-			<language type="art">Kunstspraken</language>
-			<language type="arw">Arawak-Spraken</language>
-			<language type="as">Assameesch</language>
-			<language type="ast">Asturiaansch</language>
-			<language type="ath">Athabasksche Spraken</language>
-			<language type="aus">Austraalsche Spraken</language>
-			<language type="av">Awaarsch</language>
-			<language type="awa">Awadhi</language>
-			<language type="ay">Aymara</language>
-			<language type="az">Aserbaidschaansch</language>
-			<language type="ba">Baschkiersch</language>
-			<language type="bad">Banda</language>
-			<language type="bai">Bamileke</language>
-			<language type="bal">Belutschisch</language>
-			<language type="ban">Balineesch</language>
-			<language type="bas">Basaa</language>
-			<language type="bat">Baltsche Spraken</language>
-			<language type="be">Wittruss’sch</language>
-			<language type="bej">Bedscha</language>
-			<language type="bem">Bemba</language>
-			<language type="ber">Berberspraken</language>
-			<language type="bg">Bulgaarsch</language>
-			<language type="bh">Bihaarsch</language>
-			<language type="bho">Bhodschpuri</language>
-			<language type="bi">Bislama</language>
-			<language type="bik">Bikol</language>
-			<language type="bin">Bini</language>
-			<language type="bla">Siksika</language>
-			<language type="bm">Bambara</language>
-			<language type="bn">Bengaalsch</language>
-			<language type="bnt">Bantuspraken</language>
-			<language type="bo">Tibeetsch</language>
-			<language type="br">Bretoonsch</language>
-			<language type="bra">Braj-Bhakha</language>
-			<language type="bs">Bosnisch</language>
-			<language type="btk">Batak</language>
-			<language type="bua">Burjaatsch</language>
-			<language type="bug">Bugineesch</language>
-			<language type="byn">Blin</language>
-			<language type="ca">Katalaansch</language>
-			<language type="cad">Caddo</language>
-			<language type="cai">Indianerspraken in Zentralamerika</language>
-			<language type="car">Kariebsche Spraken</language>
-			<language type="cau">Kaukaasche Spraken</language>
-			<language type="cch">Atsam</language>
-			<language type="ce">Tschetscheensch</language>
-			<language type="ceb">Cebuano</language>
-			<language type="cel">Keltsche Spraken</language>
-			<language type="ch">Chamorro</language>
-			<language type="chb">Chibcha-Spraken</language>
-			<language type="chg">Tschagataisch</language>
-			<language type="chk">Trukeesch</language>
-			<language type="chm">Mari</language>
-			<language type="chn">Chinook</language>
-			<language type="cho">Choctaw</language>
-			<language type="chp">Chipewyan</language>
-			<language type="chr">Cherokee</language>
-			<language type="chy">Cheyenne</language>
-			<language type="cmc">Cham-Spraken</language>
-			<language type="co">Koorsch</language>
-			<language type="cop">Koptsch</language>
-			<language type="cpe">Kreoolsch-Engelsche Spraken</language>
-			<language type="cpf">Kreoolsch-Franzöösche Spraken</language>
-			<language type="cpp">Kreoolsch-Portugeesche Spraken</language>
-			<language type="cr">Cree</language>
-			<language type="crh">Krimtataarsch</language>
-			<language type="crp">Kreoolsche Spraken</language>
-			<language type="cs">Tschech’sch</language>
-			<language type="csb">Kaschuubsch</language>
-			<language type="cu">Karkenslaavsch</language>
-			<language type="cus">Kuschietsche Spraken</language>
-			<language type="cv">Tschuwasch’sch</language>
-			<language type="cy">Waliesch</language>
-			<language type="da">Däänsch</language>
-			<language type="dak">Dakota</language>
-			<language type="dar">Dargiensch</language>
-			<language type="day">Dajak</language>
-			<language type="de">Düütsch</language>
-			<language type="de_AT">Öösterrieksch Hoochdüütsch</language>
-			<language type="de_CH">Swiezer Hoochdüütsch</language>
-			<language type="del">Delaware</language>
-			<language type="den">Slave</language>
-			<language type="dgr">Dogrib</language>
-			<language type="din">Dinka</language>
-			<language type="doi">Dogri</language>
-			<language type="dra">Drawiedsche Spraken</language>
-			<language type="dsb">Neddersorbsch</language>
-			<language type="dua">Duala</language>
-			<language type="dum">Middelnedderlandsch</language>
-			<language type="dv">Maledievsch</language>
-			<language type="dyu">Dyula</language>
-			<language type="dz">Bhutaansch</language>
-			<language type="ee">Ewe</language>
-			<language type="efi">Efik</language>
-			<language type="egy">Ägyptsch</language>
-			<language type="eka">Ekajuk</language>
-			<language type="el">Greeksch</language>
-			<language type="elx">Elaamsch</language>
-			<language type="en">Engelsch</language>
-			<language type="en_AU">Austraalsch Engelsch</language>
-			<language type="en_CA">Kanaadsch Engelsch</language>
-			<language type="en_GB">Brietsch Engelsch</language>
-			<language type="en_US">Amerikaansch Engelsch</language>
-			<language type="enm">Middelengelsch</language>
-			<language type="eo">Esperanto</language>
-			<language type="es">Spaansch</language>
-			<language type="es_419">Latienamerikaansch Spaansch</language>
-			<language type="es_ES">Ibeersch Spaansch</language>
-			<language type="et">Eestnisch</language>
-			<language type="eu">Basksch</language>
-			<language type="ewo">Ewondo</language>
-			<language type="fa">Pers’sch</language>
-			<language type="fan">Pangwe</language>
-			<language type="fat">Fanti</language>
-			<language type="ff">Ful</language>
-			<language type="fi">Finnsch</language>
-			<language type="fil">Philippiensch</language>
-			<language type="fiu">Finnougrische Spraken</language>
-			<language type="fj">Fidschiaansch</language>
-			<language type="fo">Färöösch</language>
-			<language type="fon">Fon</language>
-			<language type="fr">Franzöösch</language>
-			<language type="fr_CA">Kanaadsch Franzöösch</language>
-			<language type="fr_CH">Swiezer Franzöösch</language>
-			<language type="frm">Middelfranzöösch</language>
-			<language type="fro">Ooldfranzöösch</language>
-			<language type="frr">Noordfreesch</language>
-			<language type="frs">Saterfreesch</language>
-			<language type="fur">Friuulsch</language>
-			<language type="fy">Westfreesch</language>
-			<language type="ga">Iersch</language>
-			<language type="gaa">Ga</language>
-			<language type="gay">Gayo</language>
-			<language type="gba">Gbaya</language>
-			<language type="gd">Schottsch Gäälsch</language>
-			<language type="gem">Germaansche Spraken</language>
-			<language type="gez">Geez</language>
-			<language type="gil">Gilberteesch</language>
-			<language type="gl">Galizisch</language>
-			<language type="gmh">Middelhoochdüütsch</language>
-			<language type="gn">Guarani</language>
-			<language type="goh">Ooldhoochdüütsch</language>
-			<language type="gon">Gondi</language>
-			<language type="gor">Gorontalo</language>
-			<language type="got">Gootsch</language>
-			<language type="grb">Grebo</language>
-			<language type="grc">Ooldgreeksch</language>
-			<language type="gsw">Swiezerdüütsch</language>
-			<language type="gu">Gujarati</language>
-			<language type="gv">Manx</language>
-			<language type="gwi">Kutchin</language>
-			<language type="ha">Haussa</language>
-			<language type="hai">Haida</language>
-			<language type="haw">Hawaiiaansch</language>
-			<language type="he">Hebrääsch</language>
-			<language type="hi">Hindi</language>
-			<language type="hil">Hiligaynon</language>
-			<language type="him">Himachali</language>
-			<language type="hit">Hethitsch</language>
-			<language type="hmn">Miao-Spraken</language>
-			<language type="ho">Hiri-Motu</language>
-			<language type="hr">Kroaatsch</language>
-			<language type="hsb">Böversorbsch</language>
-			<language type="ht">Haitiaansch-Kreoolsch</language>
-			<language type="hu">Ungaarsch</language>
-			<language type="hup">Hupa</language>
-			<language type="hy">Armeensch</language>
-			<language type="hz">Herero</language>
-			<language type="ia">Interlingua</language>
-			<language type="iba">Iban</language>
-			<language type="id">Indoneesch</language>
-			<language type="ie">Interlingue</language>
-			<language type="ig">Igbo</language>
-			<language type="ii">Sichuan Yi</language>
-			<language type="ijo">Ijo</language>
-			<language type="ik">Inupiak</language>
-			<language type="ilo">Ilokano</language>
-			<language type="inc">Indoarische Spraken</language>
-			<language type="ine">Indogermaansche Spraken</language>
-			<language type="inh">Ingusch’sch</language>
-			<language type="io">Ido</language>
-			<language type="ira">Iraansche Spraken</language>
-			<language type="iro">Irokeesche Spraken</language>
-			<language type="is">Ieslandsch</language>
-			<language type="it">Italieensch</language>
-			<language type="iu">Inuktitut</language>
-			<language type="ja">Japaansch</language>
-			<language type="jbo">Lojban</language>
-			<language type="jpr">Jöödsch-Pers’sch</language>
-			<language type="jrb">Jöödsch-Araabsch</language>
-			<language type="jv">Javaansch</language>
-			<language type="ka">Georgsch</language>
-			<language type="kaa">Karakalpaksch</language>
-			<language type="kab">Kabyylsch</language>
-			<language type="kac">Kachin</language>
-			<language type="kaj">Jju</language>
-			<language type="kam">Kamba</language>
-			<language type="kar">Kareensch</language>
-			<language type="kaw">Kawi</language>
-			<language type="kbd">Kabardiensch</language>
-			<language type="kcg">Tyap</language>
-			<language type="kfo">Koro</language>
-			<language type="kg">Kongo</language>
-			<language type="kha">Khasi</language>
-			<language type="khi">Khoisan-Spraken</language>
-			<language type="kho">Saaksch</language>
-			<language type="ki">Kikuyu</language>
-			<language type="kj">Kwanyama</language>
-			<language type="kk">Kasach’sch</language>
-			<language type="kl">Gröönlandsch</language>
-			<language type="km">Kambodschaansch</language>
-			<language type="kmb">Kimbundu</language>
-			<language type="kn">Kannada</language>
-			<language type="ko">Koreaansch</language>
-			<language type="kok">Konkani</language>
-			<language type="kos">Kosraeaansch</language>
-			<language type="kpe">Kpelle</language>
-			<language type="kr">Kanuursch</language>
-			<language type="krc">Karatschaisch-Balkaarsch</language>
-			<language type="krl">Kareelsch</language>
-			<language type="kro">Kru-Spraken</language>
-			<language type="kru">Oraon</language>
-			<language type="ks">Kaschmiersch</language>
-			<language type="ku">Kurdsch</language>
-			<language type="kum">Kumücksch</language>
-			<language type="kut">Kutenai</language>
-			<language type="kv">Komi</language>
-			<language type="kw">Koornsch</language>
-			<language type="ky">Kirgiesch</language>
-			<language type="la">Latiensch</language>
-			<language type="lad">Ladiensch</language>
-			<language type="lah">Lahnda</language>
-			<language type="lam">Lamba</language>
-			<language type="lb">Luxemborgsch</language>
-			<language type="lez">Lesgisch</language>
-			<language type="lg">Ganda</language>
-			<language type="li">Limborgsch</language>
-			<language type="ln">Lingala</language>
-			<language type="lo">Laootsch</language>
-			<language type="lol">Mongo</language>
-			<language type="loz">Rotse</language>
-			<language type="lt">Litausch</language>
-			<language type="lu">Luba</language>
-			<language type="lua">Luba-Lulua</language>
-			<language type="lui">Luiseno</language>
-			<language type="lun">Lunda</language>
-			<language type="luo">Luo</language>
-			<language type="lus">Lushai</language>
-			<language type="lv">Lettsch</language>
-			<language type="mad">Madureesch</language>
-			<language type="mag">Magahi</language>
-			<language type="mai">Maithili</language>
-			<language type="mak">Makassarsch</language>
-			<language type="man">Manding</language>
-			<language type="map">Austroneesche Spraken</language>
-			<language type="mas">Massai</language>
-			<language type="mdf">Mokscha</language>
-			<language type="mdr">Mandareesch</language>
-			<language type="men">Mende</language>
-			<language type="mg">Madagassisch</language>
-			<language type="mga">Middeliersch</language>
-			<language type="mh">Marschalleesch</language>
-			<language type="mi">Maori</language>
-			<language type="mic">Micmac</language>
-			<language type="min">Minangkabau</language>
-			<language type="mis">Verschedene Spraken</language>
-			<language type="mk">Mazedoonsch</language>
-			<language type="mkh">Mon-Khmer-Spraken</language>
-			<language type="ml">Malayalam</language>
-			<language type="mn">Mongoolsch</language>
-			<language type="mnc">Mandschuursch</language>
-			<language type="mni">Manipuri</language>
-			<language type="mno">Manobo</language>
-			<language type="mo">Moldaawsch</language>
-			<language type="moh">Mohawk</language>
-			<language type="mos">Mossi</language>
-			<language type="mr">Marathi</language>
-			<language type="ms">Malaisch</language>
-			<language type="mt">Malteesch</language>
-			<language type="mul">Mehrsprakig</language>
-			<language type="mun">Munda-Spraken</language>
-			<language type="mus">Muskogee-Spraken</language>
-			<language type="mwl">Mirandeesch</language>
-			<language type="mwr">Marwari</language>
-			<language type="my">Birmaansch</language>
-			<language type="myn">Maya-Spraken</language>
-			<language type="myv">Erzya</language>
-			<language type="na">Nauruusch</language>
-			<language type="nah">Nahuatl</language>
-			<language type="nai">Indianerspraken in Noordamerika</language>
-			<language type="nap">Neapolitaansch</language>
-			<language type="nb">Norweegsch Bokmål</language>
-			<language type="nd">Noord-Ndebele</language>
-			<language type="nds">Plattdüütsch</language>
-			<language type="ne">Nepaleesch</language>
-			<language type="new">Newari</language>
-			<language type="ng">Ndonga</language>
-			<language type="nia">Nias</language>
-			<language type="nic">Nigerkordofaansche Spraken</language>
-			<language type="niu">Niue</language>
-			<language type="nl">Nedderlandsch</language>
-			<language type="nl_BE">Fläämsch</language>
-			<language type="nn">Norweegsch Nynorsk</language>
-			<language type="no">Norweegsch</language>
-			<language type="nog">Nogai</language>
-			<language type="non">Ooldnoorsch</language>
-			<language type="nqo">N’Ko</language>
-			<language type="nr">Süüd-Ndebele</language>
-			<language type="nso">Noord-Sotho</language>
-			<language type="nub">Nuubsche Spraken</language>
-			<language type="nv">Navajo</language>
-			<language type="nwc">Oold-Newari</language>
-			<language type="ny">Nyanja</language>
-			<language type="nym">Nyamwezi</language>
-			<language type="nyn">Nyankole</language>
-			<language type="nyo">Nyoro</language>
-			<language type="nzi">Nzima</language>
-			<language type="oc">Okzitaansch</language>
-			<language type="oj">Ojibwa</language>
-			<language type="om">Oromo</language>
-			<language type="or">Orija</language>
-			<language type="os">Ossetsch</language>
-			<language type="osa">Osage</language>
-			<language type="ota">Osmaansch</language>
-			<language type="oto">Otomangue-Spraken</language>
-			<language type="pa">Pandschabsch</language>
-			<language type="paa">Papuaspraken</language>
-			<language type="pag">Pangasinan</language>
-			<language type="pal">Middelpers’sch</language>
-			<language type="pam">Pampanggan</language>
-			<language type="pap">Papiamento</language>
-			<language type="pau">Palausch</language>
-			<language type="peo">Ooldpers’sch</language>
-			<language type="phi">Philippinen-Austroneesche Spraken</language>
-			<language type="phn">Phönieksch</language>
-			<language type="pi">Pali</language>
-			<language type="pl">Poolsch</language>
-			<language type="pon">Ponapeaansch</language>
-			<language type="pra">Prakrit</language>
-			<language type="pro">Ooldprovenzaalsch</language>
-			<language type="ps">Paschtu</language>
-			<language type="pt">Portugeesch</language>
-			<language type="pt_BR">Brasiliaansch Portugeesch</language>
-			<language type="pt_PT">Ibeersch Portugeesch</language>
-			<language type="qu">Quechua</language>
-			<language type="raj">Rajasthani</language>
-			<language type="rap">Oosterinsel-Spraak</language>
-			<language type="rar">Rarotongaansch</language>
-			<language type="rm">Rätoromaansch</language>
-			<language type="rn">Rundi</language>
-			<language type="ro">Rumäänsch</language>
-			<language type="roa">Romaansche Spraken</language>
-			<language type="rom">Romani</language>
-			<language type="root">Wortel</language>
-			<language type="ru">Russ’sch</language>
-			<language type="rup">Aromuunsch</language>
-			<language type="rw">Ruandsch</language>
-			<language type="sa">Sanskrit</language>
-			<language type="sad">Sandawe</language>
-			<language type="sah">Jakuutsch</language>
-			<language type="sai">Indianerspraken in Süüdamerika</language>
-			<language type="sal">Salish</language>
-			<language type="sam">Samaritaansch</language>
-			<language type="sas">Sasak</language>
-			<language type="sat">Santali</language>
-			<language type="sc">Sardsch</language>
-			<language type="scn">Siziliaansch</language>
-			<language type="sco">Schottsch</language>
-			<language type="sd">Sindhi</language>
-			<language type="se">Noord-Saamsch</language>
-			<language type="sel">Selkupsch</language>
-			<language type="sem">Semietsche Spraken</language>
-			<language type="sg">Sango</language>
-			<language type="sga">Oold-Iersch</language>
-			<language type="sgn">Tekenspraken</language>
-			<language type="shn">Schan</language>
-			<language type="si">Singhaleesch</language>
-			<language type="sid">Sidamo</language>
-			<language type="sio">Sioux-Spraken</language>
-			<language type="sit">Sinotibeetsche Spraken</language>
-			<language type="sk">Slowaaksch</language>
-			<language type="sl">Sloweensch</language>
-			<language type="sla">Slaavsche Spraken</language>
-			<language type="sm">Samoaansch</language>
-			<language type="sma">Süüd-Lappsch</language>
-			<language type="smi">Lappsch</language>
-			<language type="smj">Lule-Lappsch</language>
-			<language type="smn">Inari-Lappsch</language>
-			<language type="sms">Skolt-Lappsch</language>
-			<language type="sn">Schona</language>
-			<language type="snk">Soninke</language>
-			<language type="so">Somaalsch</language>
-			<language type="sog">Sogdisch</language>
-			<language type="son">Songhai</language>
-			<language type="sq">Albaansch</language>
-			<language type="sr">Serbsch</language>
-			<language type="srn">Surinaamsch</language>
-			<language type="srr">Serer</language>
-			<language type="ss">Swazi</language>
-			<language type="ssa">Nilosaharaansche Spraken</language>
-			<language type="st">Süüd-Sotho</language>
-			<language type="su">Sundaneesch</language>
-			<language type="suk">Sukuma</language>
-			<language type="sus">Susu</language>
-			<language type="sux">Sumersch</language>
-			<language type="sv">Sweedsch</language>
-			<language type="sw">Suaheli</language>
-			<language type="syc">Oold-Syyrsch</language>
-			<language type="syr">Syyrsch</language>
-			<language type="ta">Tamilsch</language>
-			<language type="tai">Thaispraken</language>
-			<language type="te">Telugu</language>
-			<language type="tem">Temne</language>
-			<language type="ter">Tereno</language>
-			<language type="tet">Tetum</language>
-			<language type="tg">Tadschiksch</language>
-			<language type="th">Thai</language>
-			<language type="ti">Tigrinja</language>
-			<language type="tig">Tigre</language>
-			<language type="tiv">Tiv</language>
-			<language type="tk">Turkmeensch</language>
-			<language type="tkl">Tokelausch</language>
-			<language type="tl">Tagalog</language>
-			<language type="tlh">Klingoonsch</language>
-			<language type="tli">Tlingit</language>
-			<language type="tmh">Tamaschek</language>
-			<language type="tn">Tswana</language>
-			<language type="to">Tongaasch</language>
-			<language type="tog">Tonga (Nyasa)</language>
-			<language type="tpi">Tok Pisin</language>
-			<language type="tr">Törksch</language>
-			<language type="ts">Tsonga</language>
-			<language type="tsi">Tsimshian</language>
-			<language type="tt">Tataarsch</language>
-			<language type="tum">Tumbuka</language>
-			<language type="tup">Tupi-Spraken</language>
-			<language type="tut">Altaische Spraken</language>
-			<language type="tvl">Elliceaansch</language>
-			<language type="tw">Twi</language>
-			<language type="ty">Tahitsch</language>
-			<language type="tyv">Tuwinsch</language>
-			<language type="udm">Udmurtsch</language>
-			<language type="ug">Uiguursch</language>
-			<language type="uga">Ugaritsch</language>
-			<language type="uk">Ukrainsch</language>
-			<language type="umb">Mbundu</language>
-			<language type="und">Unbestimmte Spraak</language>
-			<language type="ur">Urdu</language>
-			<language type="uz">Usbeeksch</language>
-			<language type="vai">Vai</language>
-			<language type="ve">Venda</language>
-			<language type="vi">Vietnameesch</language>
-			<language type="vo">Volapük</language>
-			<language type="vot">Wootsch</language>
-			<language type="wa">Walloonsch</language>
-			<language type="wak">Wakashaansch</language>
-			<language type="wal">Walamo</language>
-			<language type="war">Waray</language>
-			<language type="was">Washo</language>
-			<language type="wen">Sorbsch</language>
-			<language type="wo">Wolof</language>
-			<language type="xal">Kalmücksch</language>
-			<language type="xh">Xhosa</language>
-			<language type="yao">Yao</language>
-			<language type="yap">Yapeesch</language>
-			<language type="yi">Jiddisch</language>
-			<language type="yo">Yoruba</language>
-			<language type="ypk">Yupik</language>
-			<language type="za">Zhuang</language>
-			<language type="zap">Zapoteeksch</language>
-			<language type="zbl">Bliss-Symbolen</language>
-			<language type="zen">Zenaga</language>
-			<language type="zh">Chineesch</language>
-			<language type="zh_Hans">Vereenfacht Chineesch</language>
-			<language type="zh_Hant">Traditschonell Chineesch</language>
-			<language type="znd">Zande</language>
-			<language type="zu">Zulu</language>
-			<language type="zun">Zuni</language>
-			<language type="zxx">Keen Spraakinhold</language>
-			<language type="zza">Zaza</language>
-		</languages>
-		<scripts>
-			<script type="Arab">Araabsch</script>
-			<script type="Armi">Rieksaramääsch</script>
-			<script type="Armn">Armeensch</script>
-			<script type="Avst">Avestsch</script>
-			<script type="Bali">Balineesch</script>
-			<script type="Batk">Bataksch</script>
-			<script type="Beng">Bengaalsch</script>
-			<script type="Blis">Bliss-Symbolen</script>
-			<script type="Bopo">Bopomofo</script>
-			<script type="Brah">Brahmi</script>
-			<script type="Brai">Blinnenschrift</script>
-			<script type="Bugi">Bugineesch</script>
-			<script type="Buhd">Buhid</script>
-			<script type="Cakm">Chakma</script>
-			<script type="Cans">Vereenheidlicht Kanaadsch Sülvenschrift</script>
-			<script type="Cari">Kaarsch</script>
-			<script type="Cham">Cham</script>
-			<script type="Cher">Cherokee</script>
-			<script type="Cirt">Cirth</script>
-			<script type="Copt">Koptsch</script>
-			<script type="Cprt">Zypriootsch</script>
-			<script type="Cyrl">Kyrillsch</script>
-			<script type="Cyrs">Ooldkarkenslaavsch</script>
-			<script type="Deva">Devanagari</script>
-			<script type="Dsrt">Deseret</script>
-			<script type="Egyd">Demootsch</script>
-			<script type="Egyh">Hieraatsch</script>
-			<script type="Egyp">Ägyptsche Hieroglyphen</script>
-			<script type="Ethi">Äthioopsch</script>
-			<script type="Geok">Khutsuri</script>
-			<script type="Geor">Georgsch</script>
-			<script type="Glag">Glagolietsch</script>
-			<script type="Goth">Gootsch</script>
-			<script type="Grek">Greeksch</script>
-			<script type="Gujr">Gujarati</script>
-			<script type="Guru">Gurmukhi</script>
-			<script type="Hang">Hangul</script>
-			<script type="Hani">Chineesch</script>
-			<script type="Hano">Hanunoo</script>
-			<script type="Hans">Vereenfachte Chineesche Schrift</script>
-			<script type="Hant">Traditschonelle Chineesche Schrift</script>
-			<script type="Hebr">Hebrääsch</script>
-			<script type="Hira">Hiragana</script>
-			<script type="Hmng">Pahawh Hmong</script>
-			<script type="Hrkt">Katakana oder Hiragana</script>
-			<script type="Hung">Ooldungaarsch</script>
-			<script type="Inds">Indus</script>
-			<script type="Ital">Oolditaalsch</script>
-			<script type="Java">Javaneesch</script>
-			<script type="Jpan">Japaansch</script>
-			<script type="Kali">Kayah Li</script>
-			<script type="Kana">Katakana</script>
-			<script type="Khar">Kharoshthi</script>
-			<script type="Khmr">Khmer</script>
-			<script type="Knda">Kannada</script>
-			<script type="Kore">Koreaansch</script>
-			<script type="Kthi">Kaithi</script>
-			<script type="Lana">Lanna</script>
-			<script type="Laoo">Laootsch</script>
-			<script type="Latf">Latiensch (Fraktur)</script>
-			<script type="Latg">Latiensch (Gäälsch)</script>
-			<script type="Latn">Latiensch</script>
-			<script type="Lepc">Lepcha</script>
-			<script type="Limb">Limbu</script>
-			<script type="Lina">Linear A</script>
-			<script type="Linb">Linear B</script>
-			<script type="Lyci">Lyyksch</script>
-			<script type="Lydi">Lyydsch</script>
-			<script type="Mand">Mandääsch</script>
-			<script type="Mani">Manichääsch</script>
-			<script type="Maya">Maya-Hieroglyphen</script>
-			<script type="Mero">Meroitsch</script>
-			<script type="Mlym">Malaysch</script>
-			<script type="Mong">Mongoolsch</script>
-			<script type="Moon">Moon</script>
-			<script type="Mtei">Meitei Mayek</script>
-			<script type="Mymr">Birmaansch</script>
-			<script type="Nkoo">N’Ko</script>
-			<script type="Ogam">Ogham</script>
-			<script type="Olck">Ol Chiki</script>
-			<script type="Orkh">Orchon-Runen</script>
-			<script type="Orya">Oriya</script>
-			<script type="Osma">Osmaansch</script>
-			<script type="Perm">Ooldpermsch</script>
-			<script type="Phag">Phags-pa</script>
-			<script type="Phli">Inschriften-Pahlavi</script>
-			<script type="Phlp">Psalter-Pahlavi</script>
-			<script type="Phlv">Book-Pahlavi</script>
-			<script type="Phnx">Phönieksch</script>
-			<script type="Plrd">Pollard-Phönieksch</script>
-			<script type="Prti">Inschriften-Parthsch</script>
-			<script type="Qaai">Arvt Schriftweert</script>
-			<script type="Rjng">Rejang</script>
-			<script type="Roro">Rongorongo</script>
-			<script type="Runr">Runenschrift</script>
-			<script type="Samr">Samarietsch</script>
-			<script type="Sara">Sarati</script>
-			<script type="Saur">Saurashtra</script>
-			<script type="Sgnw">SignWriting</script>
-			<script type="Shaw">Shaw-Alphabet</script>
-			<script type="Sinh">Singhaleesch</script>
-			<script type="Sund">Sundaneesch</script>
-			<script type="Sylo">Syloti Nagri</script>
-			<script type="Syrc">Syyrsch</script>
-			<script type="Syre">Estrangelo-Syyrsch</script>
-			<script type="Syrj">West-Syyrsch</script>
-			<script type="Syrn">Oost-Syyrsch</script>
-			<script type="Tagb">Tagbanwa</script>
-			<script type="Tale">Tai Le</script>
-			<script type="Talu">Tai Lue</script>
-			<script type="Taml">Tamilsch</script>
-			<script type="Tavt">Tai Viet</script>
-			<script type="Telu">Telugu</script>
-			<script type="Teng">Tengwar</script>
-			<script type="Tfng">Tifinagh</script>
-			<script type="Tglg">Tagalog</script>
-			<script type="Thaa">Thaana</script>
-			<script type="Thai">Thai</script>
-			<script type="Tibt">Tibeetsch</script>
-			<script type="Ugar">Ugarietsch</script>
-			<script type="Vaii">Vai</script>
-			<script type="Visp">Visible Speech</script>
-			<script type="Xpeo">Ooldpers’sch</script>
-			<script type="Xsux">Sumeroakkadsch Kielschrift</script>
-			<script type="Yiii">Yi</script>
-			<script type="Zmth">Mathemaatsch Teken</script>
-			<script type="Zsym">Symbolen</script>
-			<script type="Zxxx">Schriftlose Spraken</script>
-			<script type="Zyyy">Unbestimmt</script>
-			<script type="Zzzz">Unbekannt oder Unkodeert</script>
-		</scripts>
-		<territories>
-			<territory type="001">Welt</territory>
-			<territory type="002">Afrika</territory>
-			<territory type="003">Noordamerika</territory>
-			<territory type="005">Süüdamerika</territory>
-			<territory type="009">Ozeanien</territory>
-			<territory type="011">Westafrika</territory>
-			<territory type="013">Middelamerika</territory>
-			<territory type="014">Oostafrika</territory>
-			<territory type="015">Noordafrika</territory>
-			<territory type="017">Zentralafrika</territory>
-			<territory type="018">Süüdlich Afrika</territory>
-			<territory type="019">Amerika</territory>
-			<territory type="029">Karibik</territory>
-			<territory type="030">Oostasien</territory>
-			<territory type="034">Süüdasien</territory>
-			<territory type="035">Süüdoostasien</territory>
-			<territory type="039">Süüdeuropa</territory>
-			<territory type="053">Australien un Neeseeland</territory>
-			<territory type="054">Melanesien</territory>
-			<territory type="061">Polynesien</territory>
-			<territory type="062">Süüd-Zentralasien</territory>
-			<territory type="142">Asien</territory>
-			<territory type="143">Zentralasien</territory>
-			<territory type="145">Westasien</territory>
-			<territory type="150">Europa</territory>
-			<territory type="151">Oosteuropa</territory>
-			<territory type="154">Noordeuropa</territory>
-			<territory type="155">Westeuropa</territory>
-			<territory type="172">Gemeenschop vun Unafhängige Staten</territory>
-			<territory type="419">Latienamerika un Karibik</territory>
-			<territory type="AD">Andorra</territory>
-			<territory type="AE">Vereenigte Araabsche Emiraten</territory>
-			<territory type="AF">Afghanistan</territory>
-			<territory type="AG">Antigua un Barbuda</territory>
-			<territory type="AI">Anguilla</territory>
-			<territory type="AL">Albanien</territory>
-			<territory type="AM">Armenien</territory>
-			<territory type="AN">Nedderlandsche Antillen</territory>
-			<territory type="AO">Angola</territory>
-			<territory type="AQ">Antarktis</territory>
-			<territory type="AR">Argentinien</territory>
-			<territory type="AS">Amerikaansch-Samoa</territory>
-			<territory type="AT">Öösterriek</territory>
-			<territory type="AU">Australien</territory>
-			<territory type="AW">Aruba</territory>
-			<territory type="AX">Ålandeilannen</territory>
-			<territory type="AZ">Aserbaidschan</territory>
-			<territory type="BA">Bosnien un Herzegowina</territory>
-			<territory type="BB">Barbados</territory>
-			<territory type="BD">Bangladesch</territory>
-			<territory type="BE">Belgien</territory>
-			<territory type="BF">Burkina Faso</territory>
-			<territory type="BG">Bulgarien</territory>
-			<territory type="BH">Bahrain</territory>
-			<territory type="BI">Burundi</territory>
-			<territory type="BJ">Benin</territory>
-			<territory type="BL">Saint Barthélemy</territory>
-			<territory type="BM">Bermuda</territory>
-			<territory type="BN">Brunei Darussalam</territory>
-			<territory type="BO">Bolivien</territory>
-			<territory type="BR">Brasilien</territory>
-			<territory type="BS">Bahamas</territory>
-			<territory type="BT">Bhutan</territory>
-			<territory type="BV">Bouvet-Eiland</territory>
-			<territory type="BW">Botswana</territory>
-			<territory type="BY">Wittrussland</territory>
-			<territory type="BZ">Belize</territory>
-			<territory type="CA">Kanada</territory>
-			<territory type="CC">Kokos-Eilannen</territory>
-			<territory type="CD">Demokraatsche Republik Kongo</territory>
-			<territory type="CF">Zentralafrikaansche Republik</territory>
-			<territory type="CG">Republik Kongo</territory>
-			<territory type="CH">Swiez</territory>
-			<territory type="CI">Elfenbeenküst</territory>
-			<territory type="CK">Cook-Eilannen</territory>
-			<territory type="CL">Chile</territory>
-			<territory type="CM">Kamerun</territory>
-			<territory type="CN">China</territory>
-			<territory type="CO">Kolumbien</territory>
-			<territory type="CR">Costa Rica</territory>
-			<territory type="CU">Kuba</territory>
-			<territory type="CV">Kap Verde</territory>
-			<territory type="CX">Wiehnachtseiland</territory>
-			<territory type="CY">Zypern</territory>
-			<territory type="CZ">Tschechien</territory>
-			<territory type="DE">Düütschland</territory>
-			<territory type="DJ">Dschibuti</territory>
-			<territory type="DK">Däänmark</territory>
-			<territory type="DM">Dominica</territory>
-			<territory type="DO">Dominikaansche Republik</territory>
-			<territory type="DZ">Algerien</territory>
-			<territory type="EC">Ecuador</territory>
-			<territory type="EE">Eestland</territory>
-			<territory type="EG">Ägypten</territory>
-			<territory type="EH">Westsahara</territory>
-			<territory type="ER">Eritrea</territory>
-			<territory type="ES">Spanien</territory>
-			<territory type="ET">Äthiopien</territory>
-			<territory type="FI">Finnland</territory>
-			<territory type="FJ">Fidschi</territory>
-			<territory type="FK">Falkland-Eilannen</territory>
-			<territory type="FM">Mikronesien</territory>
-			<territory type="FO">Färöer</territory>
-			<territory type="FR">Frankriek</territory>
-			<territory type="GA">Gabun</territory>
-			<territory type="GB">Vereenigt Königriek</territory>
-			<territory type="GD">Grenada</territory>
-			<territory type="GE">Georgien</territory>
-			<territory type="GF">Franzöösch-Guayana</territory>
-			<territory type="GG">Guernsey</territory>
-			<territory type="GH">Ghana</territory>
-			<territory type="GI">Gibraltar</territory>
-			<territory type="GL">Gröönland</territory>
-			<territory type="GM">Gambia</territory>
-			<territory type="GN">Guinea</territory>
-			<territory type="GP">Guadeloupe</territory>
-			<territory type="GQ">Äquatorialguinea</territory>
-			<territory type="GR">Grekenland</territory>
-			<territory type="GS">Süüdgeorgien un de Südlichen Sandwich-Eilannen</territory>
-			<territory type="GT">Guatemala</territory>
-			<territory type="GU">Guam</territory>
-			<territory type="GW">Guinea-Bissau</territory>
-			<territory type="GY">Guyana</territory>
-			<territory type="HK">Sünnerverwaltensrebeed Hongkong</territory>
-			<territory type="HM">Heard- un McDonald-Eilannen</territory>
-			<territory type="HN">Honduras</territory>
-			<territory type="HR">Kroatien</territory>
-			<territory type="HT">Haiti</territory>
-			<territory type="HU">Ungarn</territory>
-			<territory type="ID">Indonesien</territory>
-			<territory type="IE">Irland</territory>
-			<territory type="IL">Israel</territory>
-			<territory type="IM">Insel Man</territory>
-			<territory type="IN">Indien</territory>
-			<territory type="IO">Britisch Rebeed in’n Indischen Ozean</territory>
-			<territory type="IQ">Irak</territory>
-			<territory type="IR">Iran</territory>
-			<territory type="IS">Iesland</territory>
-			<territory type="IT">Italien</territory>
-			<territory type="JE">Jersey</territory>
-			<territory type="JM">Jamaika</territory>
-			<territory type="JO">Jordanien</territory>
-			<territory type="JP">Japan</territory>
-			<territory type="KE">Kenia</territory>
-			<territory type="KG">Kirgisistan</territory>
-			<territory type="KH">Kambodscha</territory>
-			<territory type="KI">Kiribati</territory>
-			<territory type="KM">Komoren</territory>
-			<territory type="KN">St. Kitts un Nevis</territory>
-			<territory type="KP">Noordkorea</territory>
-			<territory type="KR">Süüdkorea</territory>
-			<territory type="KW">Kuwait</territory>
-			<territory type="KY">Kaiman-Eilannen</territory>
-			<territory type="KZ">Kasachstan</territory>
-			<territory type="LA">Laos</territory>
-			<territory type="LB">Libanon</territory>
-			<territory type="LC">St. Lucia</territory>
-			<territory type="LI">Liechtensteen</territory>
-			<territory type="LK">Sri Lanka</territory>
-			<territory type="LR">Liberia</territory>
-			<territory type="LS">Lesotho</territory>
-			<territory type="LT">Litauen</territory>
-			<territory type="LU">Luxemborg</territory>
-			<territory type="LV">Lettland</territory>
-			<territory type="LY">Libyen</territory>
-			<territory type="MA">Marokko</territory>
-			<territory type="MC">Monaco</territory>
-			<territory type="MD">Moldawien</territory>
-			<territory type="ME">Montenegro</territory>
-			<territory type="MF">Saint Martin</territory>
-			<territory type="MG">Madagaskar</territory>
-			<territory type="MH">Marshall-Eilannen</territory>
-			<territory type="MK">Makedonien</territory>
-			<territory type="ML">Mali</territory>
-			<territory type="MM">Birma</territory>
-			<territory type="MN">Mongolei</territory>
-			<territory type="MO">Sünnerverwaltensrebeed Macao</territory>
-			<territory type="MP">Nöördliche Marianen</territory>
-			<territory type="MQ">Martinique</territory>
-			<territory type="MR">Mauretanien</territory>
-			<territory type="MS">Montserrat</territory>
-			<territory type="MT">Malta</territory>
-			<territory type="MU">Mauritius</territory>
-			<territory type="MV">Malediven</territory>
-			<territory type="MW">Malawi</territory>
-			<territory type="MX">Mexiko</territory>
-			<territory type="MY">Malaysia</territory>
-			<territory type="MZ">Mosambik</territory>
-			<territory type="NA">Namibia</territory>
-			<territory type="NC">Neekaledonien</territory>
-			<territory type="NE">Niger</territory>
-			<territory type="NF">Norfolk</territory>
-			<territory type="NG">Nigeria</territory>
-			<territory type="NI">Nikaragua</territory>
-			<territory type="NL">Nedderlannen</territory>
-			<territory type="NO">Norwegen</territory>
-			<territory type="NP">Nepal</territory>
-			<territory type="NR">Nauru</territory>
-			<territory type="NU">Niue</territory>
-			<territory type="NZ">Neeseeland</territory>
-			<territory type="OM">Oman</territory>
-			<territory type="PA">Panama</territory>
-			<territory type="PE">Peru</territory>
-			<territory type="PF">Franzöösch-Polynesien</territory>
-			<territory type="PG">Papua-Neeguinea</territory>
-			<territory type="PH">Philippinen</territory>
-			<territory type="PK">Pakistan</territory>
-			<territory type="PL">Polen</territory>
-			<territory type="PM">St. Pierre un Miquelon</territory>
-			<territory type="PN">Pitcairn</territory>
-			<territory type="PR">Puerto Rico</territory>
-			<territory type="PS">Palästinensische Rebeden</territory>
-			<territory type="PT">Portugal</territory>
-			<territory type="PW">Palau</territory>
-			<territory type="PY">Paraguay</territory>
-			<territory type="QA">Katar</territory>
-			<territory type="QO">Büter Ozeanien</territory>
-			<territory type="QU">Europääsche Union</territory>
-			<territory type="RE">Reunion</territory>
-			<territory type="RO">Rumänien</territory>
-			<territory type="RS">Serbien</territory>
-			<territory type="RU">Russland</territory>
-			<territory type="RW">Ruanda</territory>
-			<territory type="SA">Saudi-Arabien</territory>
-			<territory type="SB">Salomonen</territory>
-			<territory type="SC">Seychellen</territory>
-			<territory type="SD">Sudan</territory>
-			<territory type="SE">Sweden</territory>
-			<territory type="SG">Singapur</territory>
-			<territory type="SH">St. Helena</territory>
-			<territory type="SI">Slowenien</territory>
-			<territory type="SJ">Svalbard un Jan Mayen</territory>
-			<territory type="SK">Slowakei</territory>
-			<territory type="SL">Sierra Leone</territory>
-			<territory type="SM">San Marino</territory>
-			<territory type="SN">Senegal</territory>
-			<territory type="SO">Somalia</territory>
-			<territory type="SR">Surinam</territory>
-			<territory type="ST">São Tomé un Príncipe</territory>
-			<territory type="SV">El Salvador</territory>
-			<territory type="SY">Syrien</territory>
-			<territory type="SZ">Swasiland</territory>
-			<territory type="TC">Turks- un Caicosinseln</territory>
-			<territory type="TD">Tschad</territory>
-			<territory type="TF">Franzöösche Süüd- un Antarktisrebeden</territory>
-			<territory type="TG">Togo</territory>
-			<territory type="TH">Thailand</territory>
-			<territory type="TJ">Tadschikistan</territory>
-			<territory type="TK">Tokelau</territory>
-			<territory type="TL">Oosttimor</territory>
-			<territory type="TM">Turkmenistan</territory>
-			<territory type="TN">Tunesien</territory>
-			<territory type="TO">Tonga</territory>
-			<territory type="TR">Törkie</territory>
-			<territory type="TT">Trinidad un Tobago</territory>
-			<territory type="TV">Tuvalu</territory>
-			<territory type="TW">Taiwan</territory>
-			<territory type="TZ">Tansania</territory>
-			<territory type="UA">Ukraine</territory>
-			<territory type="UG">Uganda</territory>
-			<territory type="UM">Amerikaansch-Ozeanien</territory>
-			<territory type="US">USA</territory>
-			<territory type="UY">Uruguay</territory>
-			<territory type="UZ">Usbekistan</territory>
-			<territory type="VA">Vatikan</territory>
-			<territory type="VC">St. Vincent un de Grenadinen</territory>
-			<territory type="VE">Venezuela</territory>
-			<territory type="VG">Brietsche Jumfern-Eilannen</territory>
-			<territory type="VI">Amerikaansche Jumfern-Eilannen</territory>
-			<territory type="VN">Vietnam</territory>
-			<territory type="VU">Vanuatu</territory>
-			<territory type="WF">Wallis un Futuna</territory>
-			<territory type="WS">Samoa</territory>
-			<territory type="YE">Jemen</territory>
-			<territory type="YT">Mayotte</territory>
-			<territory type="ZA">Süüdafrika</territory>
-			<territory type="ZM">Sambia</territory>
-			<territory type="ZW">Simbabwe</territory>
-			<territory type="ZZ">Unbekannte oder ungüllige Region</territory>
-		</territories>
-		<variants>
-			<variant type="1901">Ole düütsche Rechtschrievung</variant>
-			<variant type="1994">Standardiseert Resiaansch Rechtschrievung</variant>
-			<variant type="1996">Ne’e düütsche Rechtschrievung</variant>
-			<variant type="1606NICT">Laat Middelfranzöösch bet 1606</variant>
-			<variant type="1694ACAD">Fröh Neefranzöösch</variant>
-			<variant type="AREVELA">Oostarmeensch</variant>
-			<variant type="AREVMDA">Westarmeensch</variant>
-			<variant type="BAKU1926">Vereenheitlicht Törksch Latienalphabet</variant>
-			<variant type="BISKE">San Giorgio-/Bila-Dialekt</variant>
-			<variant type="BOONT">Boontling</variant>
-			<variant type="FONIPA">Phoneetsch (IPA)</variant>
-			<variant type="FONUPA">Phoneetsch (UPA)</variant>
-			<variant type="LIPAW">Lipovaz-Dialekt vun dat Resiaansche</variant>
-			<variant type="MONOTON">Monotoonsch</variant>
-			<variant type="NEDIS">Natisone-Dialekt</variant>
-			<variant type="NJIVA">Gniva-/Njiva-Dialekt</variant>
-			<variant type="OSOJS">Oseacco-/Osojane-Dialekt</variant>
-			<variant type="POLYTON">Polytoonsch</variant>
-			<variant type="POSIX">Computer</variant>
-			<variant type="REVISED">Överarbeidt Rechtschrievung</variant>
-			<variant type="ROZAJ">Resiaansch</variant>
-			<variant type="SAAHO">Saho</variant>
-			<variant type="SCOTLAND">Schottsch Standard-Engelsch</variant>
-			<variant type="SCOUSE">Scouse</variant>
-			<variant type="SOLBA">Stolvizza-/Solbica-Dialekt</variant>
-			<variant type="TARASK">Taraskievica-Rechtschrievung</variant>
-			<variant type="VALENCIA">Valenziaansch</variant>
-		</variants>
-		<keys>
-			<key type="calendar">Klenner</key>
-			<key type="collation">Bookstaven-Folgreeg</key>
-			<key type="currency">Geldteken</key>
-		</keys>
-		<types>
-			<type type="big5han" key="collation">Traditschonell Chineesch Sorteerregeln - Big5</type>
-			<type type="buddhist" key="calendar">Buddhistisch Klenner</type>
-			<type type="chinese" key="calendar">Chineesch Klenner</type>
-			<type type="direct" key="collation">Direkte Sorteerregeln</type>
-			<type type="gb2312han" key="collation">Vereenfacht Chineesch Sorteerregeln - GB2312</type>
-			<type type="gregorian" key="calendar">Gregoriaansch Klenner</type>
-			<type type="hebrew" key="calendar">Hebrääsch Klenner</type>
-			<type type="indian" key="calendar">Indsch Nationalklenner</type>
-			<type type="islamic" key="calendar">Islaamsch Klenner</type>
-			<type type="islamic-civil" key="calendar">Islaamsch Zivilklenner</type>
-			<type type="japanese" key="calendar">Japaansch Klenner</type>
-			<type type="phonebook" key="collation">Telefonbook-Sorteerregeln</type>
-			<type type="pinyin" key="collation">Pinyin-Sorteerregeln</type>
-			<type type="roc" key="calendar">Klenner vun de Republik China</type>
-			<type type="stroke" key="collation">Streekfolg</type>
-			<type type="traditional" key="collation">Traditschonelle Sorteerregeln</type>
-		</types>
-		<measurementSystemNames>
-			<measurementSystemName type="metric">Metrisch</measurementSystemName>
-			<measurementSystemName type="US">US-amerikaansch</measurementSystemName>
-		</measurementSystemNames>
-		<codePatterns>
-			<codePattern type="language">Spraak: {0}</codePattern>
-			<codePattern type="script">Schrift: {0}</codePattern>
-			<codePattern type="territory">Region: {0}</codePattern>
-		</codePatterns>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[a å ä b-o ö p-s ß t u ü v-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à ă â ā æ ç é è ĕ ê ë ę ē í ì ĭ î ï ī ñ ó ò ŏ ô ø ō œ ú ù ŭ û ū ÿ]</exemplarCharacters>
-	</characters>
-	<delimiters>
-		<quotationStart>„</quotationStart>
-		<quotationEnd>“</quotationEnd>
-		<alternateQuotationStart>‚</alternateQuotationStart>
-		<alternateQuotationEnd>‘</alternateQuotationEnd>
-	</delimiters>
-	<dates>
-		<timeZoneNames>
-			<fallbackFormat>{1} ({0})</fallbackFormat>
-			<zone type="Etc/Unknown">
-				<exemplarCity>Unbekannt</exemplarCity>
-			</zone>
-			<zone type="Antarctica/South_Pole">
-				<exemplarCity>Süüdpool</exemplarCity>
-			</zone>
-			<zone type="Antarctica/Vostok">
-				<exemplarCity>Wostok</exemplarCity>
-			</zone>
-			<zone type="Antarctica/DumontDUrville">
-				<exemplarCity>Dumont d’Urville</exemplarCity>
-			</zone>
-			<zone type="Atlantic/Canary">
-				<exemplarCity>Kanaren</exemplarCity>
-			</zone>
-			<zone type="Asia/Ulaanbaatar">
-				<exemplarCity>Ulanbator</exemplarCity>
-			</zone>
-			<zone type="America/Mexico_City">
-				<exemplarCity>Mexiko-Stadt</exemplarCity>
-			</zone>
-			<zone type="Atlantic/Azores">
-				<exemplarCity>Azoren</exemplarCity>
-			</zone>
-			<zone type="Europe/Moscow">
-				<exemplarCity>Moskau</exemplarCity>
-			</zone>
-			<zone type="Europe/Volgograd">
-				<exemplarCity>Wolgograd</exemplarCity>
-			</zone>
-			<zone type="Asia/Yekaterinburg">
-				<exemplarCity>Jekaterinborg</exemplarCity>
-			</zone>
-			<zone type="Asia/Novosibirsk">
-				<exemplarCity>Nowosibirsk</exemplarCity>
-			</zone>
-			<zone type="Asia/Krasnoyarsk">
-				<exemplarCity>Krasnojarsk</exemplarCity>
-			</zone>
-			<zone type="Asia/Yakutsk">
-				<exemplarCity>Jakutsk</exemplarCity>
-			</zone>
-			<zone type="Asia/Vladivostok">
-				<exemplarCity>Wladiwostok</exemplarCity>
-			</zone>
-			<zone type="Asia/Sakhalin">
-				<exemplarCity>Sachalin</exemplarCity>
-			</zone>
-			<zone type="Asia/Kamchatka">
-				<exemplarCity>Kamschatka</exemplarCity>
-			</zone>
-			<zone type="Europe/Uzhgorod">
-				<exemplarCity>Uschgorod</exemplarCity>
-			</zone>
-			<zone type="Europe/Zaporozhye">
-				<exemplarCity>Saporoschje</exemplarCity>
-			</zone>
-			<zone type="America/North_Dakota/New_Salem">
-				<exemplarCity>New Salem, Noord-Dakota</exemplarCity>
-			</zone>
-			<zone type="America/North_Dakota/Center">
-				<exemplarCity>Center, Noord-Dakota</exemplarCity>
-			</zone>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<symbols>
-			<decimal>,</decimal>
-			<group>.</group>
-			<list>;</list>
-			<percentSign>%</percentSign>
-			<nativeZeroDigit>0</nativeZeroDigit>
-			<patternDigit>#</patternDigit>
-			<plusSign>+</plusSign>
-			<minusSign>-</minusSign>
-			<exponential>E</exponential>
-			<perMille>‰</perMille>
-			<infinity>∞</infinity>
-			<nan>NaN</nan>
-		</symbols>
-		<decimalFormats>
-			<decimalFormatLength>
-				<decimalFormat>
-					<pattern>#,##0.###</pattern>
-				</decimalFormat>
-			</decimalFormatLength>
-		</decimalFormats>
-		<scientificFormats>
-			<scientificFormatLength>
-				<scientificFormat>
-					<pattern>#E0</pattern>
-				</scientificFormat>
-			</scientificFormatLength>
-		</scientificFormats>
-		<percentFormats>
-			<percentFormatLength>
-				<percentFormat>
-					<pattern>#,##0 %</pattern>
-				</percentFormat>
-			</percentFormatLength>
-		</percentFormats>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>#,##0.00 ¤</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-			<unitPattern count="other">{0} {1}</unitPattern>
-		</currencyFormats>
-	</numbers>
-	<units>
-		<unit type="day">
-			<unitPattern count="other">{0} Daag</unitPattern>
-		</unit>
-		<unit type="hour">
-			<unitPattern count="other">{0} Stünnen</unitPattern>
-		</unit>
-		<unit type="minute">
-			<unitPattern count="other">{0} Minuten</unitPattern>
-		</unit>
-		<unit type="month">
-			<unitPattern count="other">{0} Maanden</unitPattern>
-		</unit>
-		<unit type="second">
-			<unitPattern count="other">{0} Sekunnen</unitPattern>
-		</unit>
-		<unit type="week">
-			<unitPattern count="other">{0} Weken</unitPattern>
-		</unit>
-		<unit type="year">
-			<unitPattern count="other">{0} Johren</unitPattern>
-		</unit>
-	</units>
-	<posix>
-		<messages>
-			<yesstr>jo:j</yesstr>
-			<nostr>nee:n</nostr>
-		</messages>
-	</posix>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php4php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php4php php$php"php/php>
+php	php	php<languagephp typephp=php"ndsphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<localeDisplayPatternphp>
+php	php	php	php<localePatternphp>php{php0php}php php(php{php1php}php)<php/localePatternphp>
+php	php	php	php<localeSeparatorphp>php,php <php/localeSeparatorphp>
+php	php	<php/localeDisplayPatternphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"aaphp"php>Afar<php/languagephp>
+php	php	php	php<languagephp typephp=php"abphp"php>Abchaasch<php/languagephp>
+php	php	php	php<languagephp typephp=php"acephp"php>Aceh<php/languagephp>
+php	php	php	php<languagephp typephp=php"achphp"php>Acholi<php/languagephp>
+php	php	php	php<languagephp typephp=php"adaphp"php>Adangme<php/languagephp>
+php	php	php	php<languagephp typephp=php"adyphp"php>Adygeisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"aephp"php>Avestsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"afphp"php>Afrikaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"afaphp"php>Afrophp-Asiaatschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"afhphp"php>Afrihili<php/languagephp>
+php	php	php	php<languagephp typephp=php"ainphp"php>Ainu<php/languagephp>
+php	php	php	php<languagephp typephp=php"akphp"php>Akan<php/languagephp>
+php	php	php	php<languagephp typephp=php"akkphp"php>Akkadsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"alephp"php>Aleutsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"algphp"php>Algonkinphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"altphp"php>Süüdphp-Altaisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"amphp"php>Amhaarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"anphp"php>Aragoneesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"angphp"php>Ooldengelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"anpphp"php>Angika<php/languagephp>
+php	php	php	php<languagephp typephp=php"apaphp"php>Apache<php/languagephp>
+php	php	php	php<languagephp typephp=php"arphp"php>Araabsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"arcphp"php>Aramääsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"arnphp"php>Araukaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"arpphp"php>Arapaho<php/languagephp>
+php	php	php	php<languagephp typephp=php"artphp"php>Kunstspraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"arwphp"php>Arawakphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"asphp"php>Assameesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"astphp"php>Asturiaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"athphp"php>Athabaskschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"ausphp"php>Austraalschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"avphp"php>Awaarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"awaphp"php>Awadhi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ayphp"php>Aymara<php/languagephp>
+php	php	php	php<languagephp typephp=php"azphp"php>Aserbaidschaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"baphp"php>Baschkiersch<php/languagephp>
+php	php	php	php<languagephp typephp=php"badphp"php>Banda<php/languagephp>
+php	php	php	php<languagephp typephp=php"baiphp"php>Bamileke<php/languagephp>
+php	php	php	php<languagephp typephp=php"balphp"php>Belutschisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"banphp"php>Balineesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"basphp"php>Basaa<php/languagephp>
+php	php	php	php<languagephp typephp=php"batphp"php>Baltschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"bephp"php>Wittrussphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"bejphp"php>Bedscha<php/languagephp>
+php	php	php	php<languagephp typephp=php"bemphp"php>Bemba<php/languagephp>
+php	php	php	php<languagephp typephp=php"berphp"php>Berberspraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>Bulgaarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>Bihaarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhophp"php>Bhodschpuri<php/languagephp>
+php	php	php	php<languagephp typephp=php"biphp"php>Bislama<php/languagephp>
+php	php	php	php<languagephp typephp=php"bikphp"php>Bikol<php/languagephp>
+php	php	php	php<languagephp typephp=php"binphp"php>Bini<php/languagephp>
+php	php	php	php<languagephp typephp=php"blaphp"php>Siksika<php/languagephp>
+php	php	php	php<languagephp typephp=php"bmphp"php>Bambara<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>Bengaalsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"bntphp"php>Bantuspraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"bophp"php>Tibeetsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>Bretoonsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"braphp"php>Brajphp-Bhakha<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>Bosnisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"btkphp"php>Batak<php/languagephp>
+php	php	php	php<languagephp typephp=php"buaphp"php>Burjaatsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"bugphp"php>Bugineesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"bynphp"php>Blin<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>Katalaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"cadphp"php>Caddo<php/languagephp>
+php	php	php	php<languagephp typephp=php"caiphp"php>Indianersprakenphp inphp Zentralamerika<php/languagephp>
+php	php	php	php<languagephp typephp=php"carphp"php>Kariebschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"cauphp"php>Kaukaaschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"cchphp"php>Atsam<php/languagephp>
+php	php	php	php<languagephp typephp=php"cephp"php>Tschetscheensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"cebphp"php>Cebuano<php/languagephp>
+php	php	php	php<languagephp typephp=php"celphp"php>Keltschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"chphp"php>Chamorro<php/languagephp>
+php	php	php	php<languagephp typephp=php"chbphp"php>Chibchaphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"chgphp"php>Tschagataisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"chkphp"php>Trukeesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"chmphp"php>Mari<php/languagephp>
+php	php	php	php<languagephp typephp=php"chnphp"php>Chinook<php/languagephp>
+php	php	php	php<languagephp typephp=php"chophp"php>Choctaw<php/languagephp>
+php	php	php	php<languagephp typephp=php"chpphp"php>Chipewyan<php/languagephp>
+php	php	php	php<languagephp typephp=php"chrphp"php>Cherokee<php/languagephp>
+php	php	php	php<languagephp typephp=php"chyphp"php>Cheyenne<php/languagephp>
+php	php	php	php<languagephp typephp=php"cmcphp"php>Champhp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"cophp"php>Koorsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"copphp"php>Koptsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"cpephp"php>Kreoolschphp-Engelschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"cpfphp"php>Kreoolschphp-Franzööschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"cppphp"php>Kreoolschphp-Portugeeschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"crphp"php>Cree<php/languagephp>
+php	php	php	php<languagephp typephp=php"crhphp"php>Krimtataarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"crpphp"php>Kreoolschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>Tschechphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"csbphp"php>Kaschuubsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"cuphp"php>Karkenslaavsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"cusphp"php>Kuschietschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"cvphp"php>Tschuwaschphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>Waliesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>Däänsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"dakphp"php>Dakota<php/languagephp>
+php	php	php	php<languagephp typephp=php"darphp"php>Dargiensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"dayphp"php>Dajak<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>Düütsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp_ATphp"php>Öösterriekschphp Hoochdüütsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp_CHphp"php>Swiezerphp Hoochdüütsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"delphp"php>Delaware<php/languagephp>
+php	php	php	php<languagephp typephp=php"denphp"php>Slave<php/languagephp>
+php	php	php	php<languagephp typephp=php"dgrphp"php>Dogrib<php/languagephp>
+php	php	php	php<languagephp typephp=php"dinphp"php>Dinka<php/languagephp>
+php	php	php	php<languagephp typephp=php"doiphp"php>Dogri<php/languagephp>
+php	php	php	php<languagephp typephp=php"draphp"php>Drawiedschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"dsbphp"php>Neddersorbsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"duaphp"php>Duala<php/languagephp>
+php	php	php	php<languagephp typephp=php"dumphp"php>Middelnedderlandsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"dvphp"php>Maledievsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"dyuphp"php>Dyula<php/languagephp>
+php	php	php	php<languagephp typephp=php"dzphp"php>Bhutaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"eephp"php>Ewe<php/languagephp>
+php	php	php	php<languagephp typephp=php"efiphp"php>Efik<php/languagephp>
+php	php	php	php<languagephp typephp=php"egyphp"php>Ägyptsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ekaphp"php>Ekajuk<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>Greeksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"elxphp"php>Elaamsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>Engelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_AUphp"php>Austraalschphp Engelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_CAphp"php>Kanaadschphp Engelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_GBphp"php>Brietschphp Engelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_USphp"php>Amerikaanschphp Engelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"enmphp"php>Middelengelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>Esperanto<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>Spaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp_php4php1php9php"php>Latienamerikaanschphp Spaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp_ESphp"php>Ibeerschphp Spaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>Eestnisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>Basksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ewophp"php>Ewondo<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>Persphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"fanphp"php>Pangwe<php/languagephp>
+php	php	php	php<languagephp typephp=php"fatphp"php>Fanti<php/languagephp>
+php	php	php	php<languagephp typephp=php"ffphp"php>Ful<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>Finnsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>Philippiensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiuphp"php>Finnougrischephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"fjphp"php>Fidschiaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>Färöösch<php/languagephp>
+php	php	php	php<languagephp typephp=php"fonphp"php>Fon<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>Franzöösch<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp_CAphp"php>Kanaadschphp Franzöösch<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp_CHphp"php>Swiezerphp Franzöösch<php/languagephp>
+php	php	php	php<languagephp typephp=php"frmphp"php>Middelfranzöösch<php/languagephp>
+php	php	php	php<languagephp typephp=php"frophp"php>Ooldfranzöösch<php/languagephp>
+php	php	php	php<languagephp typephp=php"frrphp"php>Noordfreesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"frsphp"php>Saterfreesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"furphp"php>Friuulsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>Westfreesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>Iersch<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaaphp"php>Ga<php/languagephp>
+php	php	php	php<languagephp typephp=php"gayphp"php>Gayo<php/languagephp>
+php	php	php	php<languagephp typephp=php"gbaphp"php>Gbaya<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>Schottschphp Gäälsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"gemphp"php>Germaanschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"gezphp"php>Geez<php/languagephp>
+php	php	php	php<languagephp typephp=php"gilphp"php>Gilberteesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>Galizisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"gmhphp"php>Middelhoochdüütsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>Guarani<php/languagephp>
+php	php	php	php<languagephp typephp=php"gohphp"php>Ooldhoochdüütsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"gonphp"php>Gondi<php/languagephp>
+php	php	php	php<languagephp typephp=php"gorphp"php>Gorontalo<php/languagephp>
+php	php	php	php<languagephp typephp=php"gotphp"php>Gootsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"grbphp"php>Grebo<php/languagephp>
+php	php	php	php<languagephp typephp=php"grcphp"php>Ooldgreeksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"gswphp"php>Swiezerdüütsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>Gujarati<php/languagephp>
+php	php	php	php<languagephp typephp=php"gvphp"php>Manx<php/languagephp>
+php	php	php	php<languagephp typephp=php"gwiphp"php>Kutchin<php/languagephp>
+php	php	php	php<languagephp typephp=php"haphp"php>Haussa<php/languagephp>
+php	php	php	php<languagephp typephp=php"haiphp"php>Haida<php/languagephp>
+php	php	php	php<languagephp typephp=php"hawphp"php>Hawaiiaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>Hebrääsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>Hindi<php/languagephp>
+php	php	php	php<languagephp typephp=php"hilphp"php>Hiligaynon<php/languagephp>
+php	php	php	php<languagephp typephp=php"himphp"php>Himachali<php/languagephp>
+php	php	php	php<languagephp typephp=php"hitphp"php>Hethitsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"hmnphp"php>Miaophp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"hophp"php>Hiriphp-Motu<php/languagephp>
+php	php	php	php<languagephp typephp=php"hrphp"php>Kroaatsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"hsbphp"php>Böversorbsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"htphp"php>Haitiaanschphp-Kreoolsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>Ungaarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"hupphp"php>Hupa<php/languagephp>
+php	php	php	php<languagephp typephp=php"hyphp"php>Armeensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"hzphp"php>Herero<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>Interlingua<php/languagephp>
+php	php	php	php<languagephp typephp=php"ibaphp"php>Iban<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>Indoneesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"iephp"php>Interlingue<php/languagephp>
+php	php	php	php<languagephp typephp=php"igphp"php>Igbo<php/languagephp>
+php	php	php	php<languagephp typephp=php"iiphp"php>Sichuanphp Yi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ijophp"php>Ijo<php/languagephp>
+php	php	php	php<languagephp typephp=php"ikphp"php>Inupiak<php/languagephp>
+php	php	php	php<languagephp typephp=php"ilophp"php>Ilokano<php/languagephp>
+php	php	php	php<languagephp typephp=php"incphp"php>Indoarischephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"inephp"php>Indogermaanschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"inhphp"php>Inguschphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"iophp"php>Ido<php/languagephp>
+php	php	php	php<languagephp typephp=php"iraphp"php>Iraanschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"irophp"php>Irokeeschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>Ieslandsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>Italieensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"iuphp"php>Inuktitut<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>Japaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"jbophp"php>Lojban<php/languagephp>
+php	php	php	php<languagephp typephp=php"jprphp"php>Jöödschphp-Persphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"jrbphp"php>Jöödschphp-Araabsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>Javaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>Georgsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaaphp"php>Karakalpaksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kabphp"php>Kabyylsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kacphp"php>Kachin<php/languagephp>
+php	php	php	php<languagephp typephp=php"kajphp"php>Jju<php/languagephp>
+php	php	php	php<languagephp typephp=php"kamphp"php>Kamba<php/languagephp>
+php	php	php	php<languagephp typephp=php"karphp"php>Kareensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kawphp"php>Kawi<php/languagephp>
+php	php	php	php<languagephp typephp=php"kbdphp"php>Kabardiensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kcgphp"php>Tyap<php/languagephp>
+php	php	php	php<languagephp typephp=php"kfophp"php>Koro<php/languagephp>
+php	php	php	php<languagephp typephp=php"kgphp"php>Kongo<php/languagephp>
+php	php	php	php<languagephp typephp=php"khaphp"php>Khasi<php/languagephp>
+php	php	php	php<languagephp typephp=php"khiphp"php>Khoisanphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"khophp"php>Saaksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kiphp"php>Kikuyu<php/languagephp>
+php	php	php	php<languagephp typephp=php"kjphp"php>Kwanyama<php/languagephp>
+php	php	php	php<languagephp typephp=php"kkphp"php>Kasachphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"klphp"php>Gröönlandsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kmphp"php>Kambodschaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kmbphp"php>Kimbundu<php/languagephp>
+php	php	php	php<languagephp typephp=php"knphp"php>Kannada<php/languagephp>
+php	php	php	php<languagephp typephp=php"kophp"php>Koreaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kokphp"php>Konkani<php/languagephp>
+php	php	php	php<languagephp typephp=php"kosphp"php>Kosraeaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kpephp"php>Kpelle<php/languagephp>
+php	php	php	php<languagephp typephp=php"krphp"php>Kanuursch<php/languagephp>
+php	php	php	php<languagephp typephp=php"krcphp"php>Karatschaischphp-Balkaarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"krlphp"php>Kareelsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"krophp"php>Kruphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"kruphp"php>Oraon<php/languagephp>
+php	php	php	php<languagephp typephp=php"ksphp"php>Kaschmiersch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>Kurdsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kumphp"php>Kumücksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kutphp"php>Kutenai<php/languagephp>
+php	php	php	php<languagephp typephp=php"kvphp"php>Komi<php/languagephp>
+php	php	php	php<languagephp typephp=php"kwphp"php>Koornsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>Kirgiesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>Latiensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ladphp"php>Ladiensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"lahphp"php>Lahnda<php/languagephp>
+php	php	php	php<languagephp typephp=php"lamphp"php>Lamba<php/languagephp>
+php	php	php	php<languagephp typephp=php"lbphp"php>Luxemborgsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"lezphp"php>Lesgisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"lgphp"php>Ganda<php/languagephp>
+php	php	php	php<languagephp typephp=php"liphp"php>Limborgsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"lnphp"php>Lingala<php/languagephp>
+php	php	php	php<languagephp typephp=php"lophp"php>Laootsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"lolphp"php>Mongo<php/languagephp>
+php	php	php	php<languagephp typephp=php"lozphp"php>Rotse<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>Litausch<php/languagephp>
+php	php	php	php<languagephp typephp=php"luphp"php>Luba<php/languagephp>
+php	php	php	php<languagephp typephp=php"luaphp"php>Lubaphp-Lulua<php/languagephp>
+php	php	php	php<languagephp typephp=php"luiphp"php>Luiseno<php/languagephp>
+php	php	php	php<languagephp typephp=php"lunphp"php>Lunda<php/languagephp>
+php	php	php	php<languagephp typephp=php"luophp"php>Luo<php/languagephp>
+php	php	php	php<languagephp typephp=php"lusphp"php>Lushai<php/languagephp>
+php	php	php	php<languagephp typephp=php"lvphp"php>Lettsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"madphp"php>Madureesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"magphp"php>Magahi<php/languagephp>
+php	php	php	php<languagephp typephp=php"maiphp"php>Maithili<php/languagephp>
+php	php	php	php<languagephp typephp=php"makphp"php>Makassarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"manphp"php>Manding<php/languagephp>
+php	php	php	php<languagephp typephp=php"mapphp"php>Austroneeschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"masphp"php>Massai<php/languagephp>
+php	php	php	php<languagephp typephp=php"mdfphp"php>Mokscha<php/languagephp>
+php	php	php	php<languagephp typephp=php"mdrphp"php>Mandareesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"menphp"php>Mende<php/languagephp>
+php	php	php	php<languagephp typephp=php"mgphp"php>Madagassisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mgaphp"php>Middeliersch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mhphp"php>Marschalleesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"miphp"php>Maori<php/languagephp>
+php	php	php	php<languagephp typephp=php"micphp"php>Micmac<php/languagephp>
+php	php	php	php<languagephp typephp=php"minphp"php>Minangkabau<php/languagephp>
+php	php	php	php<languagephp typephp=php"misphp"php>Verschedenephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>Mazedoonsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkhphp"php>Monphp-Khmerphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"mlphp"php>Malayalam<php/languagephp>
+php	php	php	php<languagephp typephp=php"mnphp"php>Mongoolsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mncphp"php>Mandschuursch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mniphp"php>Manipuri<php/languagephp>
+php	php	php	php<languagephp typephp=php"mnophp"php>Manobo<php/languagephp>
+php	php	php	php<languagephp typephp=php"mophp"php>Moldaawsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mohphp"php>Mohawk<php/languagephp>
+php	php	php	php<languagephp typephp=php"mosphp"php>Mossi<php/languagephp>
+php	php	php	php<languagephp typephp=php"mrphp"php>Marathi<php/languagephp>
+php	php	php	php<languagephp typephp=php"msphp"php>Malaisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mtphp"php>Malteesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mulphp"php>Mehrsprakig<php/languagephp>
+php	php	php	php<languagephp typephp=php"munphp"php>Mundaphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"musphp"php>Muskogeephp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"mwlphp"php>Mirandeesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mwrphp"php>Marwari<php/languagephp>
+php	php	php	php<languagephp typephp=php"myphp"php>Birmaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"mynphp"php>Mayaphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"myvphp"php>Erzya<php/languagephp>
+php	php	php	php<languagephp typephp=php"naphp"php>Nauruusch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nahphp"php>Nahuatl<php/languagephp>
+php	php	php	php<languagephp typephp=php"naiphp"php>Indianersprakenphp inphp Noordamerika<php/languagephp>
+php	php	php	php<languagephp typephp=php"napphp"php>Neapolitaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nbphp"php>Norweegschphp Bokmål<php/languagephp>
+php	php	php	php<languagephp typephp=php"ndphp"php>Noordphp-Ndebele<php/languagephp>
+php	php	php	php<languagephp typephp=php"ndsphp"php>Plattdüütsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nephp"php>Nepaleesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"newphp"php>Newari<php/languagephp>
+php	php	php	php<languagephp typephp=php"ngphp"php>Ndonga<php/languagephp>
+php	php	php	php<languagephp typephp=php"niaphp"php>Nias<php/languagephp>
+php	php	php	php<languagephp typephp=php"nicphp"php>Nigerkordofaanschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"niuphp"php>Niue<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>Nedderlandsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp_BEphp"php>Fläämsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nnphp"php>Norweegschphp Nynorsk<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>Norweegsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nogphp"php>Nogai<php/languagephp>
+php	php	php	php<languagephp typephp=php"nonphp"php>Ooldnoorsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nqophp"php>Nphp’Ko<php/languagephp>
+php	php	php	php<languagephp typephp=php"nrphp"php>Süüdphp-Ndebele<php/languagephp>
+php	php	php	php<languagephp typephp=php"nsophp"php>Noordphp-Sotho<php/languagephp>
+php	php	php	php<languagephp typephp=php"nubphp"php>Nuubschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"nvphp"php>Navajo<php/languagephp>
+php	php	php	php<languagephp typephp=php"nwcphp"php>Ooldphp-Newari<php/languagephp>
+php	php	php	php<languagephp typephp=php"nyphp"php>Nyanja<php/languagephp>
+php	php	php	php<languagephp typephp=php"nymphp"php>Nyamwezi<php/languagephp>
+php	php	php	php<languagephp typephp=php"nynphp"php>Nyankole<php/languagephp>
+php	php	php	php<languagephp typephp=php"nyophp"php>Nyoro<php/languagephp>
+php	php	php	php<languagephp typephp=php"nziphp"php>Nzima<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>Okzitaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ojphp"php>Ojibwa<php/languagephp>
+php	php	php	php<languagephp typephp=php"omphp"php>Oromo<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>Orija<php/languagephp>
+php	php	php	php<languagephp typephp=php"osphp"php>Ossetsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"osaphp"php>Osage<php/languagephp>
+php	php	php	php<languagephp typephp=php"otaphp"php>Osmaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"otophp"php>Otomanguephp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"paphp"php>Pandschabsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"paaphp"php>Papuaspraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"pagphp"php>Pangasinan<php/languagephp>
+php	php	php	php<languagephp typephp=php"palphp"php>Middelpersphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"pamphp"php>Pampanggan<php/languagephp>
+php	php	php	php<languagephp typephp=php"papphp"php>Papiamento<php/languagephp>
+php	php	php	php<languagephp typephp=php"pauphp"php>Palausch<php/languagephp>
+php	php	php	php<languagephp typephp=php"peophp"php>Ooldpersphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"phiphp"php>Philippinenphp-Austroneeschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"phnphp"php>Phönieksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"piphp"php>Pali<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>Poolsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ponphp"php>Ponapeaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"praphp"php>Prakrit<php/languagephp>
+php	php	php	php<languagephp typephp=php"prophp"php>Ooldprovenzaalsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"psphp"php>Paschtu<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>Portugeesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>Brasiliaanschphp Portugeesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>Ibeerschphp Portugeesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"quphp"php>Quechua<php/languagephp>
+php	php	php	php<languagephp typephp=php"rajphp"php>Rajasthani<php/languagephp>
+php	php	php	php<languagephp typephp=php"rapphp"php>Oosterinselphp-Spraak<php/languagephp>
+php	php	php	php<languagephp typephp=php"rarphp"php>Rarotongaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"rmphp"php>Rätoromaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"rnphp"php>Rundi<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>Rumäänsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"roaphp"php>Romaanschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"romphp"php>Romani<php/languagephp>
+php	php	php	php<languagephp typephp=php"rootphp"php>Wortel<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>Russphp’sch<php/languagephp>
+php	php	php	php<languagephp typephp=php"rupphp"php>Aromuunsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"rwphp"php>Ruandsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"saphp"php>Sanskrit<php/languagephp>
+php	php	php	php<languagephp typephp=php"sadphp"php>Sandawe<php/languagephp>
+php	php	php	php<languagephp typephp=php"sahphp"php>Jakuutsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"saiphp"php>Indianersprakenphp inphp Süüdamerika<php/languagephp>
+php	php	php	php<languagephp typephp=php"salphp"php>Salish<php/languagephp>
+php	php	php	php<languagephp typephp=php"samphp"php>Samaritaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"sasphp"php>Sasak<php/languagephp>
+php	php	php	php<languagephp typephp=php"satphp"php>Santali<php/languagephp>
+php	php	php	php<languagephp typephp=php"scphp"php>Sardsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"scnphp"php>Siziliaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"scophp"php>Schottsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"sdphp"php>Sindhi<php/languagephp>
+php	php	php	php<languagephp typephp=php"sephp"php>Noordphp-Saamsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"selphp"php>Selkupsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"semphp"php>Semietschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"sgphp"php>Sango<php/languagephp>
+php	php	php	php<languagephp typephp=php"sgaphp"php>Ooldphp-Iersch<php/languagephp>
+php	php	php	php<languagephp typephp=php"sgnphp"php>Tekenspraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"shnphp"php>Schan<php/languagephp>
+php	php	php	php<languagephp typephp=php"siphp"php>Singhaleesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"sidphp"php>Sidamo<php/languagephp>
+php	php	php	php<languagephp typephp=php"siophp"php>Siouxphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"sitphp"php>Sinotibeetschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"skphp"php>Slowaaksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"slphp"php>Sloweensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"slaphp"php>Slaavschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"smphp"php>Samoaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"smaphp"php>Süüdphp-Lappsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"smiphp"php>Lappsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"smjphp"php>Lulephp-Lappsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"smnphp"php>Inariphp-Lappsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"smsphp"php>Skoltphp-Lappsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"snphp"php>Schona<php/languagephp>
+php	php	php	php<languagephp typephp=php"snkphp"php>Soninke<php/languagephp>
+php	php	php	php<languagephp typephp=php"sophp"php>Somaalsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"sogphp"php>Sogdisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"sonphp"php>Songhai<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>Albaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"srphp"php>Serbsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"srnphp"php>Surinaamsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"srrphp"php>Serer<php/languagephp>
+php	php	php	php<languagephp typephp=php"ssphp"php>Swazi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ssaphp"php>Nilosaharaanschephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"stphp"php>Süüdphp-Sotho<php/languagephp>
+php	php	php	php<languagephp typephp=php"suphp"php>Sundaneesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"sukphp"php>Sukuma<php/languagephp>
+php	php	php	php<languagephp typephp=php"susphp"php>Susu<php/languagephp>
+php	php	php	php<languagephp typephp=php"suxphp"php>Sumersch<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>Sweedsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"swphp"php>Suaheli<php/languagephp>
+php	php	php	php<languagephp typephp=php"sycphp"php>Ooldphp-Syyrsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"syrphp"php>Syyrsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>Tamilsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"taiphp"php>Thaispraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"tephp"php>Telugu<php/languagephp>
+php	php	php	php<languagephp typephp=php"temphp"php>Temne<php/languagephp>
+php	php	php	php<languagephp typephp=php"terphp"php>Tereno<php/languagephp>
+php	php	php	php<languagephp typephp=php"tetphp"php>Tetum<php/languagephp>
+php	php	php	php<languagephp typephp=php"tgphp"php>Tadschiksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"thphp"php>Thai<php/languagephp>
+php	php	php	php<languagephp typephp=php"tiphp"php>Tigrinja<php/languagephp>
+php	php	php	php<languagephp typephp=php"tigphp"php>Tigre<php/languagephp>
+php	php	php	php<languagephp typephp=php"tivphp"php>Tiv<php/languagephp>
+php	php	php	php<languagephp typephp=php"tkphp"php>Turkmeensch<php/languagephp>
+php	php	php	php<languagephp typephp=php"tklphp"php>Tokelausch<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlphp"php>Tagalog<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlhphp"php>Klingoonsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"tliphp"php>Tlingit<php/languagephp>
+php	php	php	php<languagephp typephp=php"tmhphp"php>Tamaschek<php/languagephp>
+php	php	php	php<languagephp typephp=php"tnphp"php>Tswana<php/languagephp>
+php	php	php	php<languagephp typephp=php"tophp"php>Tongaasch<php/languagephp>
+php	php	php	php<languagephp typephp=php"togphp"php>Tongaphp php(Nyasaphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"tpiphp"php>Tokphp Pisin<php/languagephp>
+php	php	php	php<languagephp typephp=php"trphp"php>Törksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"tsphp"php>Tsonga<php/languagephp>
+php	php	php	php<languagephp typephp=php"tsiphp"php>Tsimshian<php/languagephp>
+php	php	php	php<languagephp typephp=php"ttphp"php>Tataarsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"tumphp"php>Tumbuka<php/languagephp>
+php	php	php	php<languagephp typephp=php"tupphp"php>Tupiphp-Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"tutphp"php>Altaischephp Spraken<php/languagephp>
+php	php	php	php<languagephp typephp=php"tvlphp"php>Elliceaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"twphp"php>Twi<php/languagephp>
+php	php	php	php<languagephp typephp=php"typhp"php>Tahitsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"tyvphp"php>Tuwinsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"udmphp"php>Udmurtsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugphp"php>Uiguursch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugaphp"php>Ugaritsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>Ukrainsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"umbphp"php>Mbundu<php/languagephp>
+php	php	php	php<languagephp typephp=php"undphp"php>Unbestimmtephp Spraak<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>Urdu<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>Usbeeksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"vaiphp"php>Vai<php/languagephp>
+php	php	php	php<languagephp typephp=php"vephp"php>Venda<php/languagephp>
+php	php	php	php<languagephp typephp=php"viphp"php>Vietnameesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"vophp"php>Volapük<php/languagephp>
+php	php	php	php<languagephp typephp=php"votphp"php>Wootsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"waphp"php>Walloonsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"wakphp"php>Wakashaansch<php/languagephp>
+php	php	php	php<languagephp typephp=php"walphp"php>Walamo<php/languagephp>
+php	php	php	php<languagephp typephp=php"warphp"php>Waray<php/languagephp>
+php	php	php	php<languagephp typephp=php"wasphp"php>Washo<php/languagephp>
+php	php	php	php<languagephp typephp=php"wenphp"php>Sorbsch<php/languagephp>
+php	php	php	php<languagephp typephp=php"wophp"php>Wolof<php/languagephp>
+php	php	php	php<languagephp typephp=php"xalphp"php>Kalmücksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"xhphp"php>Xhosa<php/languagephp>
+php	php	php	php<languagephp typephp=php"yaophp"php>Yao<php/languagephp>
+php	php	php	php<languagephp typephp=php"yapphp"php>Yapeesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>Jiddisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"yophp"php>Yoruba<php/languagephp>
+php	php	php	php<languagephp typephp=php"ypkphp"php>Yupik<php/languagephp>
+php	php	php	php<languagephp typephp=php"zaphp"php>Zhuang<php/languagephp>
+php	php	php	php<languagephp typephp=php"zapphp"php>Zapoteeksch<php/languagephp>
+php	php	php	php<languagephp typephp=php"zblphp"php>Blissphp-Symbolen<php/languagephp>
+php	php	php	php<languagephp typephp=php"zenphp"php>Zenaga<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp"php>Chineesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>Vereenfachtphp Chineesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>Traditschonellphp Chineesch<php/languagephp>
+php	php	php	php<languagephp typephp=php"zndphp"php>Zande<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>Zulu<php/languagephp>
+php	php	php	php<languagephp typephp=php"zunphp"php>Zuni<php/languagephp>
+php	php	php	php<languagephp typephp=php"zxxphp"php>Keenphp Spraakinhold<php/languagephp>
+php	php	php	php<languagephp typephp=php"zzaphp"php>Zaza<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Arabphp"php>Araabsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Armiphp"php>Rieksaramääsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Armnphp"php>Armeensch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Avstphp"php>Avestsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Baliphp"php>Balineesch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Batkphp"php>Bataksch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Bengphp"php>Bengaalsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Blisphp"php>Blissphp-Symbolen<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Bopophp"php>Bopomofo<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Brahphp"php>Brahmi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Braiphp"php>Blinnenschrift<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Bugiphp"php>Bugineesch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Buhdphp"php>Buhid<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cakmphp"php>Chakma<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cansphp"php>Vereenheidlichtphp Kanaadschphp Sülvenschrift<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cariphp"php>Kaarsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Champhp"php>Cham<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cherphp"php>Cherokee<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cirtphp"php>Cirth<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Coptphp"php>Koptsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cprtphp"php>Zypriootsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cyrlphp"php>Kyrillsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cyrsphp"php>Ooldkarkenslaavsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Devaphp"php>Devanagari<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Dsrtphp"php>Deseret<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egydphp"php>Demootsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egyhphp"php>Hieraatsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egypphp"php>Ägyptschephp Hieroglyphen<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Ethiphp"php>Äthioopsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Geokphp"php>Khutsuri<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Georphp"php>Georgsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Glagphp"php>Glagolietsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Gothphp"php>Gootsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Grekphp"php>Greeksch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Gujrphp"php>Gujarati<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Guruphp"php>Gurmukhi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hangphp"php>Hangul<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Haniphp"php>Chineesch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hanophp"php>Hanunoo<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hansphp"php>Vereenfachtephp Chineeschephp Schrift<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hantphp"php>Traditschonellephp Chineeschephp Schrift<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hebrphp"php>Hebrääsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hiraphp"php>Hiragana<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hmngphp"php>Pahawhphp Hmong<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hrktphp"php>Katakanaphp oderphp Hiragana<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hungphp"php>Ooldungaarsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Indsphp"php>Indus<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Italphp"php>Oolditaalsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Javaphp"php>Javaneesch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Jpanphp"php>Japaansch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kaliphp"php>Kayahphp Li<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kanaphp"php>Katakana<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kharphp"php>Kharoshthi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Khmrphp"php>Khmer<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kndaphp"php>Kannada<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Korephp"php>Koreaansch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kthiphp"php>Kaithi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lanaphp"php>Lanna<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Laoophp"php>Laootsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latfphp"php>Latienschphp php(Frakturphp)<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latgphp"php>Latienschphp php(Gäälschphp)<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latnphp"php>Latiensch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lepcphp"php>Lepcha<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Limbphp"php>Limbu<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Linaphp"php>Linearphp A<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Linbphp"php>Linearphp B<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lyciphp"php>Lyyksch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lydiphp"php>Lyydsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mandphp"php>Mandääsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Maniphp"php>Manichääsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mayaphp"php>Mayaphp-Hieroglyphen<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Merophp"php>Meroitsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mlymphp"php>Malaysch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mongphp"php>Mongoolsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Moonphp"php>Moon<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mteiphp"php>Meiteiphp Mayek<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mymrphp"php>Birmaansch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Nkoophp"php>Nphp’Ko<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Ogamphp"php>Ogham<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Olckphp"php>Olphp Chiki<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Orkhphp"php>Orchonphp-Runen<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Oryaphp"php>Oriya<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Osmaphp"php>Osmaansch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Permphp"php>Ooldpermsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phagphp"php>Phagsphp-pa<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phliphp"php>Inschriftenphp-Pahlavi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phlpphp"php>Psalterphp-Pahlavi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phlvphp"php>Bookphp-Pahlavi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phnxphp"php>Phönieksch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Plrdphp"php>Pollardphp-Phönieksch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Prtiphp"php>Inschriftenphp-Parthsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Qaaiphp"php>Arvtphp Schriftweert<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Rjngphp"php>Rejang<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Rorophp"php>Rongorongo<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Runrphp"php>Runenschrift<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Samrphp"php>Samarietsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Saraphp"php>Sarati<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Saurphp"php>Saurashtra<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sgnwphp"php>SignWriting<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Shawphp"php>Shawphp-Alphabet<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sinhphp"php>Singhaleesch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sundphp"php>Sundaneesch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sylophp"php>Sylotiphp Nagri<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrcphp"php>Syyrsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrephp"php>Estrangelophp-Syyrsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrjphp"php>Westphp-Syyrsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrnphp"php>Oostphp-Syyrsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tagbphp"php>Tagbanwa<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Talephp"php>Taiphp Le<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Taluphp"php>Taiphp Lue<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tamlphp"php>Tamilsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tavtphp"php>Taiphp Viet<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Teluphp"php>Telugu<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tengphp"php>Tengwar<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tfngphp"php>Tifinagh<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tglgphp"php>Tagalog<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Thaaphp"php>Thaana<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Thaiphp"php>Thai<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tibtphp"php>Tibeetsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Ugarphp"php>Ugarietsch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Vaiiphp"php>Vai<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Vispphp"php>Visiblephp Speech<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Xpeophp"php>Ooldpersphp’sch<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Xsuxphp"php>Sumeroakkadschphp Kielschrift<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Yiiiphp"php>Yi<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zmthphp"php>Mathemaatschphp Teken<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zsymphp"php>Symbolen<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zxxxphp"php>Schriftlosephp Spraken<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zyyyphp"php>Unbestimmt<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zzzzphp"php>Unbekanntphp oderphp Unkodeert<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"php0php0php1php"php>Welt<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php2php"php>Afrika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php3php"php>Noordamerika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php5php"php>Süüdamerika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php9php"php>Ozeanien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php1php"php>Westafrika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php3php"php>Middelamerika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php4php"php>Oostafrika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php5php"php>Noordafrika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php7php"php>Zentralafrika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php8php"php>Süüdlichphp Afrika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php9php"php>Amerika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php2php9php"php>Karibik<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php0php"php>Oostasien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php4php"php>Süüdasien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php5php"php>Süüdoostasien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php9php"php>Süüdeuropa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php5php3php"php>Australienphp unphp Neeseeland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php5php4php"php>Melanesien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php6php1php"php>Polynesien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php6php2php"php>Süüdphp-Zentralasien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php4php2php"php>Asien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php4php3php"php>Zentralasien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php4php5php"php>Westasien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php0php"php>Europa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php1php"php>Oosteuropa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php4php"php>Noordeuropa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php5php"php>Westeuropa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php7php2php"php>Gemeenschopphp vunphp Unafhängigephp Staten<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php4php1php9php"php>Latienamerikaphp unphp Karibik<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ADphp"php>Andorra<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AEphp"php>Vereenigtephp Araabschephp Emiraten<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AFphp"php>Afghanistan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AGphp"php>Antiguaphp unphp Barbuda<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AIphp"php>Anguilla<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ALphp"php>Albanien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AMphp"php>Armenien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ANphp"php>Nedderlandschephp Antillen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AOphp"php>Angola<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AQphp"php>Antarktis<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ARphp"php>Argentinien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ASphp"php>Amerikaanschphp-Samoa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ATphp"php>Öösterriek<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AUphp"php>Australien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AWphp"php>Aruba<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AXphp"php>Ålandeilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AZphp"php>Aserbaidschan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BAphp"php>Bosnienphp unphp Herzegowina<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BBphp"php>Barbados<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BDphp"php>Bangladesch<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BEphp"php>Belgien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BFphp"php>Burkinaphp Faso<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BGphp"php>Bulgarien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BHphp"php>Bahrain<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BIphp"php>Burundi<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BJphp"php>Benin<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BLphp"php>Saintphp Barthélemy<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BMphp"php>Bermuda<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BNphp"php>Bruneiphp Darussalam<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BOphp"php>Bolivien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BRphp"php>Brasilien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BSphp"php>Bahamas<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BTphp"php>Bhutan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BVphp"php>Bouvetphp-Eiland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BWphp"php>Botswana<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BYphp"php>Wittrussland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BZphp"php>Belize<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CAphp"php>Kanada<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CCphp"php>Kokosphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CDphp"php>Demokraatschephp Republikphp Kongo<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CFphp"php>Zentralafrikaanschephp Republik<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CGphp"php>Republikphp Kongo<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CHphp"php>Swiez<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CIphp"php>Elfenbeenküst<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CKphp"php>Cookphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CLphp"php>Chile<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CMphp"php>Kamerun<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CNphp"php>China<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"COphp"php>Kolumbien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CRphp"php>Costaphp Rica<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CUphp"php>Kuba<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CVphp"php>Kapphp Verde<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CXphp"php>Wiehnachtseiland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CYphp"php>Zypern<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CZphp"php>Tschechien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DEphp"php>Düütschland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DJphp"php>Dschibuti<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DKphp"php>Däänmark<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DMphp"php>Dominica<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DOphp"php>Dominikaanschephp Republik<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DZphp"php>Algerien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ECphp"php>Ecuador<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EEphp"php>Eestland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EGphp"php>Ägypten<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EHphp"php>Westsahara<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ERphp"php>Eritrea<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ESphp"php>Spanien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ETphp"php>Äthiopien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FIphp"php>Finnland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FJphp"php>Fidschi<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FKphp"php>Falklandphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FMphp"php>Mikronesien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FOphp"php>Färöer<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FRphp"php>Frankriek<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GAphp"php>Gabun<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GBphp"php>Vereenigtphp Königriek<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GDphp"php>Grenada<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GEphp"php>Georgien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GFphp"php>Franzööschphp-Guayana<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GGphp"php>Guernsey<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GHphp"php>Ghana<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GIphp"php>Gibraltar<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GLphp"php>Gröönland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GMphp"php>Gambia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GNphp"php>Guinea<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GPphp"php>Guadeloupe<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GQphp"php>Äquatorialguinea<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GRphp"php>Grekenland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GSphp"php>Süüdgeorgienphp unphp dephp Südlichenphp Sandwichphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GTphp"php>Guatemala<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GUphp"php>Guam<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GWphp"php>Guineaphp-Bissau<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GYphp"php>Guyana<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HKphp"php>Sünnerverwaltensrebeedphp Hongkong<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HMphp"php>Heardphp-php unphp McDonaldphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HNphp"php>Honduras<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HRphp"php>Kroatien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HTphp"php>Haiti<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HUphp"php>Ungarn<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IDphp"php>Indonesien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IEphp"php>Irland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ILphp"php>Israel<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IMphp"php>Inselphp Man<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"INphp"php>Indien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IOphp"php>Britischphp Rebeedphp inphp’nphp Indischenphp Ozean<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IQphp"php>Irak<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IRphp"php>Iran<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ISphp"php>Iesland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ITphp"php>Italien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JEphp"php>Jersey<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JMphp"php>Jamaika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JOphp"php>Jordanien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JPphp"php>Japan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KEphp"php>Kenia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KGphp"php>Kirgisistan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KHphp"php>Kambodscha<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KIphp"php>Kiribati<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KMphp"php>Komoren<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KNphp"php>Stphp.php Kittsphp unphp Nevis<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KPphp"php>Noordkorea<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KRphp"php>Süüdkorea<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KWphp"php>Kuwait<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KYphp"php>Kaimanphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KZphp"php>Kasachstan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LAphp"php>Laos<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LBphp"php>Libanon<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LCphp"php>Stphp.php Lucia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LIphp"php>Liechtensteen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LKphp"php>Sriphp Lanka<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LRphp"php>Liberia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LSphp"php>Lesotho<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LTphp"php>Litauen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LUphp"php>Luxemborg<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LVphp"php>Lettland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LYphp"php>Libyen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MAphp"php>Marokko<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MCphp"php>Monaco<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MDphp"php>Moldawien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MEphp"php>Montenegro<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MFphp"php>Saintphp Martin<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MGphp"php>Madagaskar<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MHphp"php>Marshallphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MKphp"php>Makedonien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MLphp"php>Mali<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MMphp"php>Birma<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MNphp"php>Mongolei<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MOphp"php>Sünnerverwaltensrebeedphp Macao<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MPphp"php>Nöördlichephp Marianen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MQphp"php>Martinique<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MRphp"php>Mauretanien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MSphp"php>Montserrat<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MTphp"php>Malta<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MUphp"php>Mauritius<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MVphp"php>Malediven<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MWphp"php>Malawi<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MXphp"php>Mexiko<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MYphp"php>Malaysia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MZphp"php>Mosambik<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NAphp"php>Namibia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NCphp"php>Neekaledonien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NEphp"php>Niger<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NFphp"php>Norfolk<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NGphp"php>Nigeria<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NIphp"php>Nikaragua<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NLphp"php>Nedderlannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NOphp"php>Norwegen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NPphp"php>Nepal<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NRphp"php>Nauru<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NUphp"php>Niue<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NZphp"php>Neeseeland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"OMphp"php>Oman<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PAphp"php>Panama<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PEphp"php>Peru<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PFphp"php>Franzööschphp-Polynesien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PGphp"php>Papuaphp-Neeguinea<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PHphp"php>Philippinen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PKphp"php>Pakistan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PLphp"php>Polen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PMphp"php>Stphp.php Pierrephp unphp Miquelon<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PNphp"php>Pitcairn<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PRphp"php>Puertophp Rico<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PSphp"php>Palästinensischephp Rebeden<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PTphp"php>Portugal<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PWphp"php>Palau<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PYphp"php>Paraguay<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QAphp"php>Katar<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QOphp"php>Büterphp Ozeanien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QUphp"php>Europääschephp Union<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"REphp"php>Reunion<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ROphp"php>Rumänien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"RSphp"php>Serbien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"RUphp"php>Russland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"RWphp"php>Ruanda<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SAphp"php>Saudiphp-Arabien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SBphp"php>Salomonen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SCphp"php>Seychellen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SDphp"php>Sudan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SEphp"php>Sweden<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SGphp"php>Singapur<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SHphp"php>Stphp.php Helena<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SIphp"php>Slowenien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SJphp"php>Svalbardphp unphp Janphp Mayen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SKphp"php>Slowakei<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SLphp"php>Sierraphp Leone<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SMphp"php>Sanphp Marino<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SNphp"php>Senegal<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SOphp"php>Somalia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SRphp"php>Surinam<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"STphp"php>Sãophp Toméphp unphp Príncipe<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SVphp"php>Elphp Salvador<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SYphp"php>Syrien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SZphp"php>Swasiland<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TCphp"php>Turksphp-php unphp Caicosinseln<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TDphp"php>Tschad<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TFphp"php>Franzööschephp Süüdphp-php unphp Antarktisrebeden<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TGphp"php>Togo<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"THphp"php>Thailand<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TJphp"php>Tadschikistan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TKphp"php>Tokelau<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TLphp"php>Oosttimor<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TMphp"php>Turkmenistan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TNphp"php>Tunesien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TRphp"php>Törkie<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TTphp"php>Trinidadphp unphp Tobago<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TVphp"php>Tuvalu<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TWphp"php>Taiwan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TZphp"php>Tansania<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UAphp"php>Ukraine<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UGphp"php>Uganda<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UMphp"php>Amerikaanschphp-Ozeanien<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"USphp"php>USA<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UYphp"php>Uruguay<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UZphp"php>Usbekistan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VAphp"php>Vatikan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VCphp"php>Stphp.php Vincentphp unphp dephp Grenadinen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VEphp"php>Venezuela<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VGphp"php>Brietschephp Jumfernphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VIphp"php>Amerikaanschephp Jumfernphp-Eilannen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VNphp"php>Vietnam<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VUphp"php>Vanuatu<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"WFphp"php>Wallisphp unphp Futuna<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"WSphp"php>Samoa<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"YEphp"php>Jemen<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"YTphp"php>Mayotte<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZAphp"php>Süüdafrika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZMphp"php>Sambia<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZWphp"php>Simbabwe<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZZphp"php>Unbekanntephp oderphp ungülligephp Region<php/territoryphp>
+php	php	<php/territoriesphp>
+php	php	php<variantsphp>
+php	php	php	php<variantphp typephp=php"php1php9php0php1php"php>Olephp düütschephp Rechtschrievung<php/variantphp>
+php	php	php	php<variantphp typephp=php"php1php9php9php4php"php>Standardiseertphp Resiaanschphp Rechtschrievung<php/variantphp>
+php	php	php	php<variantphp typephp=php"php1php9php9php6php"php>Nephp’ephp düütschephp Rechtschrievung<php/variantphp>
+php	php	php	php<variantphp typephp=php"php1php6php0php6NICTphp"php>Laatphp Middelfranzööschphp betphp php1php6php0php6<php/variantphp>
+php	php	php	php<variantphp typephp=php"php1php6php9php4ACADphp"php>Fröhphp Neefranzöösch<php/variantphp>
+php	php	php	php<variantphp typephp=php"AREVELAphp"php>Oostarmeensch<php/variantphp>
+php	php	php	php<variantphp typephp=php"AREVMDAphp"php>Westarmeensch<php/variantphp>
+php	php	php	php<variantphp typephp=php"BAKUphp1php9php2php6php"php>Vereenheitlichtphp Törkschphp Latienalphabet<php/variantphp>
+php	php	php	php<variantphp typephp=php"BISKEphp"php>Sanphp Giorgiophp-php/Bilaphp-Dialekt<php/variantphp>
+php	php	php	php<variantphp typephp=php"BOONTphp"php>Boontling<php/variantphp>
+php	php	php	php<variantphp typephp=php"FONIPAphp"php>Phoneetschphp php(IPAphp)<php/variantphp>
+php	php	php	php<variantphp typephp=php"FONUPAphp"php>Phoneetschphp php(UPAphp)<php/variantphp>
+php	php	php	php<variantphp typephp=php"LIPAWphp"php>Lipovazphp-Dialektphp vunphp datphp Resiaansche<php/variantphp>
+php	php	php	php<variantphp typephp=php"MONOTONphp"php>Monotoonsch<php/variantphp>
+php	php	php	php<variantphp typephp=php"NEDISphp"php>Natisonephp-Dialekt<php/variantphp>
+php	php	php	php<variantphp typephp=php"NJIVAphp"php>Gnivaphp-php/Njivaphp-Dialekt<php/variantphp>
+php	php	php	php<variantphp typephp=php"OSOJSphp"php>Oseaccophp-php/Osojanephp-Dialekt<php/variantphp>
+php	php	php	php<variantphp typephp=php"POLYTONphp"php>Polytoonsch<php/variantphp>
+php	php	php	php<variantphp typephp=php"POSIXphp"php>Computer<php/variantphp>
+php	php	php	php<variantphp typephp=php"REVISEDphp"php>Överarbeidtphp Rechtschrievung<php/variantphp>
+php	php	php	php<variantphp typephp=php"ROZAJphp"php>Resiaansch<php/variantphp>
+php	php	php	php<variantphp typephp=php"SAAHOphp"php>Saho<php/variantphp>
+php	php	php	php<variantphp typephp=php"SCOTLANDphp"php>Schottschphp Standardphp-Engelsch<php/variantphp>
+php	php	php	php<variantphp typephp=php"SCOUSEphp"php>Scouse<php/variantphp>
+php	php	php	php<variantphp typephp=php"SOLBAphp"php>Stolvizzaphp-php/Solbicaphp-Dialekt<php/variantphp>
+php	php	php	php<variantphp typephp=php"TARASKphp"php>Taraskievicaphp-Rechtschrievung<php/variantphp>
+php	php	php	php<variantphp typephp=php"VALENCIAphp"php>Valenziaansch<php/variantphp>
+php	php	<php/variantsphp>
+php	php	php<keysphp>
+php	php	php	php<keyphp typephp=php"calendarphp"php>Klenner<php/keyphp>
+php	php	php	php<keyphp typephp=php"collationphp"php>Bookstavenphp-Folgreeg<php/keyphp>
+php	php	php	php<keyphp typephp=php"currencyphp"php>Geldteken<php/keyphp>
+php	php	<php/keysphp>
+php	php	php<typesphp>
+php	php	php	php<typephp typephp=php"bigphp5hanphp"php keyphp=php"collationphp"php>Traditschonellphp Chineeschphp Sorteerregelnphp php-php Bigphp5<php/typephp>
+php	php	php	php<typephp typephp=php"buddhistphp"php keyphp=php"calendarphp"php>Buddhistischphp Klenner<php/typephp>
+php	php	php	php<typephp typephp=php"chinesephp"php keyphp=php"calendarphp"php>Chineeschphp Klenner<php/typephp>
+php	php	php	php<typephp typephp=php"directphp"php keyphp=php"collationphp"php>Direktephp Sorteerregeln<php/typephp>
+php	php	php	php<typephp typephp=php"gbphp2php3php1php2hanphp"php keyphp=php"collationphp"php>Vereenfachtphp Chineeschphp Sorteerregelnphp php-php GBphp2php3php1php2<php/typephp>
+php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>Gregoriaanschphp Klenner<php/typephp>
+php	php	php	php<typephp typephp=php"hebrewphp"php keyphp=php"calendarphp"php>Hebrääschphp Klenner<php/typephp>
+php	php	php	php<typephp typephp=php"indianphp"php keyphp=php"calendarphp"php>Indschphp Nationalklenner<php/typephp>
+php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>Islaamschphp Klenner<php/typephp>
+php	php	php	php<typephp typephp=php"islamicphp-civilphp"php keyphp=php"calendarphp"php>Islaamschphp Zivilklenner<php/typephp>
+php	php	php	php<typephp typephp=php"japanesephp"php keyphp=php"calendarphp"php>Japaanschphp Klenner<php/typephp>
+php	php	php	php<typephp typephp=php"phonebookphp"php keyphp=php"collationphp"php>Telefonbookphp-Sorteerregeln<php/typephp>
+php	php	php	php<typephp typephp=php"pinyinphp"php keyphp=php"collationphp"php>Pinyinphp-Sorteerregeln<php/typephp>
+php	php	php	php<typephp typephp=php"rocphp"php keyphp=php"calendarphp"php>Klennerphp vunphp dephp Republikphp China<php/typephp>
+php	php	php	php<typephp typephp=php"strokephp"php keyphp=php"collationphp"php>Streekfolg<php/typephp>
+php	php	php	php<typephp typephp=php"traditionalphp"php keyphp=php"collationphp"php>Traditschonellephp Sorteerregeln<php/typephp>
+php	php	<php/typesphp>
+php	php	php<measurementSystemNamesphp>
+php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>Metrisch<php/measurementSystemNamephp>
+php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>USphp-amerikaansch<php/measurementSystemNamephp>
+php	php	<php/measurementSystemNamesphp>
+php	php	php<codePatternsphp>
+php	php	php	php<codePatternphp typephp=php"languagephp"php>Spraakphp:php php{php0php}<php/codePatternphp>
+php	php	php	php<codePatternphp typephp=php"scriptphp"php>Schriftphp:php php{php0php}<php/codePatternphp>
+php	php	php	php<codePatternphp typephp=php"territoryphp"php>Regionphp:php php{php0php}<php/codePatternphp>
+php	php	<php/codePatternsphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[aphp åphp äphp bphp-ophp öphp pphp-sphp ßphp tphp uphp üphp vphp-zphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[áphp àphp ăphp âphp āphp æphp çphp éphp èphp ĕphp êphp ëphp ęphp ēphp íphp ìphp ĭphp îphp ïphp īphp ñphp óphp òphp ŏphp ôphp øphp ōphp œphp úphp ùphp ŭphp ûphp ūphp ÿphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<delimitersphp>
+php	php	php<quotationStartphp>php„<php/quotationStartphp>
+php	php	php<quotationEndphp>php“<php/quotationEndphp>
+php	php	php<alternateQuotationStartphp>php‚<php/alternateQuotationStartphp>
+php	php	php<alternateQuotationEndphp>php‘<php/alternateQuotationEndphp>
+php	<php/delimitersphp>
+php	php<datesphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<fallbackFormatphp>php{php1php}php php(php{php0php}php)<php/fallbackFormatphp>
+php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
+php	php	php	php	php<exemplarCityphp>Unbekannt<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Antarcticaphp/Southphp_Polephp"php>
+php	php	php	php	php<exemplarCityphp>Süüdpool<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Antarcticaphp/Vostokphp"php>
+php	php	php	php	php<exemplarCityphp>Wostok<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Antarcticaphp/DumontDUrvillephp"php>
+php	php	php	php	php<exemplarCityphp>Dumontphp dphp’Urville<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Atlanticphp/Canaryphp"php>
+php	php	php	php	php<exemplarCityphp>Kanaren<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Ulaanbaatarphp"php>
+php	php	php	php	php<exemplarCityphp>Ulanbator<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Mexicophp_Cityphp"php>
+php	php	php	php	php<exemplarCityphp>Mexikophp-Stadt<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Atlanticphp/Azoresphp"php>
+php	php	php	php	php<exemplarCityphp>Azoren<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Europephp/Moscowphp"php>
+php	php	php	php	php<exemplarCityphp>Moskau<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Europephp/Volgogradphp"php>
+php	php	php	php	php<exemplarCityphp>Wolgograd<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Yekaterinburgphp"php>
+php	php	php	php	php<exemplarCityphp>Jekaterinborg<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Novosibirskphp"php>
+php	php	php	php	php<exemplarCityphp>Nowosibirsk<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Krasnoyarskphp"php>
+php	php	php	php	php<exemplarCityphp>Krasnojarsk<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Yakutskphp"php>
+php	php	php	php	php<exemplarCityphp>Jakutsk<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Vladivostokphp"php>
+php	php	php	php	php<exemplarCityphp>Wladiwostok<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Sakhalinphp"php>
+php	php	php	php	php<exemplarCityphp>Sachalin<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Asiaphp/Kamchatkaphp"php>
+php	php	php	php	php<exemplarCityphp>Kamschatka<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Europephp/Uzhgorodphp"php>
+php	php	php	php	php<exemplarCityphp>Uschgorod<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Europephp/Zaporozhyephp"php>
+php	php	php	php	php<exemplarCityphp>Saporoschje<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Northphp_Dakotaphp/Newphp_Salemphp"php>
+php	php	php	php	php<exemplarCityphp>Newphp Salemphp,php Noordphp-Dakota<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	php	php<zonephp typephp=php"Americaphp/Northphp_Dakotaphp/Centerphp"php>
+php	php	php	php	php<exemplarCityphp>Centerphp,php Noordphp-Dakota<php/exemplarCityphp>
+php	php	php	<php/zonephp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<symbolsphp>
+php	php	php	php<decimalphp>php,<php/decimalphp>
+php	php	php	php<groupphp>php.<php/groupphp>
+php	php	php	php<listphp>php;<php/listphp>
+php	php	php	php<percentSignphp>php%<php/percentSignphp>
+php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
+php	php	php	php<patternDigitphp>php#<php/patternDigitphp>
+php	php	php	php<plusSignphp>php+<php/plusSignphp>
+php	php	php	php<minusSignphp>php-<php/minusSignphp>
+php	php	php	php<exponentialphp>E<php/exponentialphp>
+php	php	php	php<perMillephp>php‰<php/perMillephp>
+php	php	php	php<infinityphp>php∞<php/infinityphp>
+php	php	php	php<nanphp>NaN<php/nanphp>
+php	php	<php/symbolsphp>
+php	php	php<decimalFormatsphp>
+php	php	php	php<decimalFormatLengthphp>
+php	php	php	php	php<decimalFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php#php#php#<php/patternphp>
+php	php	php	php	<php/decimalFormatphp>
+php	php	php	<php/decimalFormatLengthphp>
+php	php	<php/decimalFormatsphp>
+php	php	php<scientificFormatsphp>
+php	php	php	php<scientificFormatLengthphp>
+php	php	php	php	php<scientificFormatphp>
+php	php	php	php	php	php<patternphp>php#Ephp0<php/patternphp>
+php	php	php	php	<php/scientificFormatphp>
+php	php	php	<php/scientificFormatLengthphp>
+php	php	<php/scientificFormatsphp>
+php	php	php<percentFormatsphp>
+php	php	php	php<percentFormatLengthphp>
+php	php	php	php	php<percentFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php php%<php/patternphp>
+php	php	php	php	<php/percentFormatphp>
+php	php	php	<php/percentFormatLengthphp>
+php	php	<php/percentFormatsphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php0php0php php¤<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php php{php1php}<php/unitPatternphp>
+php	php	<php/currencyFormatsphp>
+php	<php/numbersphp>
+php	php<unitsphp>
+php	php	php<unitphp typephp=php"dayphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Daag<php/unitPatternphp>
+php	php	<php/unitphp>
+php	php	php<unitphp typephp=php"hourphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Stünnen<php/unitPatternphp>
+php	php	<php/unitphp>
+php	php	php<unitphp typephp=php"minutephp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Minuten<php/unitPatternphp>
+php	php	<php/unitphp>
+php	php	php<unitphp typephp=php"monthphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Maanden<php/unitPatternphp>
+php	php	<php/unitphp>
+php	php	php<unitphp typephp=php"secondphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Sekunnen<php/unitPatternphp>
+php	php	<php/unitphp>
+php	php	php<unitphp typephp=php"weekphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Weken<php/unitPatternphp>
+php	php	<php/unitphp>
+php	php	php<unitphp typephp=php"yearphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Johren<php/unitPatternphp>
+php	php	<php/unitphp>
+php	<php/unitsphp>
+php	php<posixphp>
+php	php	php<messagesphp>
+php	php	php	php<yesstrphp>jophp:j<php/yesstrphp>
+php	php	php	php<nostrphp>neephp:n<php/nostrphp>
+php	php	<php/messagesphp>
+php	<php/posixphp>
+<php/ldmlphp>
 

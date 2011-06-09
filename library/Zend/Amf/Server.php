@@ -1,936 +1,936 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Amf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Server.php 23256 2010-10-26 12:51:54Z alexander $
- */
-
-/** @see Zend_Server_Interface */
-require_once 'Zend/Server/Interface.php';
-
-/** @see Zend_Server_Reflection */
-require_once 'Zend/Server/Reflection.php';
-
-/** @see Zend_Amf_Constants */
-require_once 'Zend/Amf/Constants.php';
-
-/** @see Zend_Amf_Value_MessageBody */
-require_once 'Zend/Amf/Value/MessageBody.php';
-
-/** @see Zend_Amf_Value_MessageHeader */
-require_once 'Zend/Amf/Value/MessageHeader.php';
-
-/** @see Zend_Amf_Value_Messaging_CommandMessage */
-require_once 'Zend/Amf/Value/Messaging/CommandMessage.php';
-
-/** @see Zend_Loader_PluginLoader */
-require_once 'Zend/Loader/PluginLoader.php';
-
-/** @see Zend_Amf_Parse_TypeLoader */
-require_once 'Zend/Amf/Parse/TypeLoader.php';
-
-/** @see Zend_Auth */
-require_once 'Zend/Auth.php';
-/**
- * An AMF gateway server implementation to allow the connection of the Adobe Flash Player to
- * Zend Framework
- *
- * @todo       Make the reflection methods cache and autoload.
- * @package    Zend_Amf
- * @subpackage Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Amf_Server implements Zend_Server_Interface
-{
-    /**
-     * Array of dispatchables
-     * @var array
-     */
-    protected $_methods = array();
-
-    /**
-     * Array of classes that can be called without being explicitly loaded
-     *
-     * Keys are class names.
-     *
-     * @var array
-     */
-    protected $_classAllowed = array();
-
-    /**
-     * Loader for classes in added directories
-     * @var Zend_Loader_PluginLoader
-     */
-    protected $_loader;
-
-    /**
-     * @var bool Production flag; whether or not to return exception messages
-     */
-    protected $_production = true;
-
-    /**
-     * Request processed
-     * @var null|Zend_Amf_Request
-     */
-    protected $_request = null;
-
-    /**
-     * Class to use for responses
-     * @var null|Zend_Amf_Response
-     */
-    protected $_response;
-
-    /**
-     * Dispatch table of name => method pairs
-     * @var array
-     */
-    protected $_table = array();
-
-    /**
-     *
-     * @var bool session flag; whether or not to add a session to each response.
-     */
-    protected $_session = false;
-
-    /**
-     * Namespace allows all AMF calls to not clobber other PHP session variables
-     * @var Zend_Session_NameSpace default session namespace zend_amf
-     */
-    protected $_sesionNamespace = 'zend_amf';
-
-    /**
-     * Set the default session.name if php_
-     * @var string
-     */
-    protected $_sessionName = 'PHPSESSID';
-
-    /**
-     * Authentication handler object
-     *
-     * @var Zend_Amf_Auth_Abstract
-     */
-    protected $_auth;
-    /**
-     * ACL handler object
-     *
-     * @var Zend_Acl
-     */
-    protected $_acl;
-    /**
-     * The server constructor
-     */
-    public function __construct()
-    {
-        Zend_Amf_Parse_TypeLoader::setResourceLoader(new Zend_Loader_PluginLoader(array("Zend_Amf_Parse_Resource" => "Zend/Amf/Parse/Resource")));
-    }
-
-    /**
-     * Set authentication adapter
-     *
-     * @param  Zend_Amf_Auth_Abstract $auth
-     * @return Zend_Amf_Server
-     */
-    public function setAuth(Zend_Amf_Auth_Abstract $auth)
-    {
-        $this->_auth = $auth;
-        return $this;
-    }
-   /**
-     * Get authentication adapter
-     *
-     * @return Zend_Amf_Auth_Abstract
-     */
-    public function getAuth()
-    {
-        return $this->_auth;
-    }
-
-    /**
-     * Set ACL adapter
-     *
-     * @param  Zend_Acl $acl
-     * @return Zend_Amf_Server
-     */
-    public function setAcl(Zend_Acl $acl)
-    {
-        $this->_acl = $acl;
-        return $this;
-    }
-   /**
-     * Get ACL adapter
-     *
-     * @return Zend_Acl
-     */
-    public function getAcl()
-    {
-        return $this->_acl;
-    }
-
-    /**
-     * Set production flag
-     *
-     * @param  bool $flag
-     * @return Zend_Amf_Server
-     */
-    public function setProduction($flag)
-    {
-        $this->_production = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Whether or not the server is in production
-     *
-     * @return bool
-     */
-    public function isProduction()
-    {
-        return $this->_production;
-    }
-
-    /**
-     * @param namespace of all incoming sessions defaults to Zend_Amf
-     * @return Zend_Amf_Server
-     */
-    public function setSession($namespace = 'Zend_Amf')
-    {
-        require_once 'Zend/Session.php';
-        $this->_session = true;
-        $this->_sesionNamespace = new Zend_Session_Namespace($namespace);
-        return $this;
-    }
-
-    /**
-     * Whether of not the server is using sessions
-     * @return bool
-     */
-    public function isSession()
-    {
-        return $this->_session;
-    }
-
-    /**
-     * Check if the ACL allows accessing the function or method
-     *
-     * @param string|object $object Object or class being accessed
-     * @param string $function Function or method being accessed
-     * @return unknown_type
-     */
-    protected function _checkAcl($object, $function)
-    {
-        if(!$this->_acl) {
-            return true;
-        }
-        if($object) {
-            $class = is_object($object)?get_class($object):$object;
-            if(!$this->_acl->has($class)) {
-                require_once 'Zend/Acl/Resource.php';
-                $this->_acl->add(new Zend_Acl_Resource($class));
-            }
-            $call = array($object, "initAcl");
-            if(is_callable($call) && !call_user_func($call, $this->_acl)) {
-                // if initAcl returns false, no ACL check
-                return true;
-            }
-        } else {
-            $class = null;
-        }
-
-        $auth = Zend_Auth::getInstance();
-        if($auth->hasIdentity()) {
-            $role = $auth->getIdentity()->role;
-        } else {
-            if($this->_acl->hasRole(Zend_Amf_Constants::GUEST_ROLE)) {
-                $role = Zend_Amf_Constants::GUEST_ROLE;
-            } else {
-                require_once 'Zend/Amf/Server/Exception.php';
-                throw new Zend_Amf_Server_Exception("Unauthenticated access not allowed");
-            }
-        }
-        if($this->_acl->isAllowed($role, $class, $function)) {
-            return true;
-        } else {
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception("Access not allowed");
-        }
-    }
-
-    /**
-     * Get PluginLoader for the Server
-     *
-     * @return Zend_Loader_PluginLoader
-     */
-    protected function getLoader()
-    {
-        if(empty($this->_loader)) {
-            require_once 'Zend/Loader/PluginLoader.php';
-            $this->_loader = new Zend_Loader_PluginLoader();
-        }
-        return $this->_loader;
-    }
-
-    /**
-     * Loads a remote class or method and executes the function and returns
-     * the result
-     *
-     * @param  string $method Is the method to execute
-     * @param  mixed $param values for the method
-     * @return mixed $response the result of executing the method
-     * @throws Zend_Amf_Server_Exception
-     */
-    protected function _dispatch($method, $params = null, $source = null)
-    {
-        if($source) {
-            if(($mapped = Zend_Amf_Parse_TypeLoader::getMappedClassName($source)) !== false) {
-                $source = $mapped;
-            }
-        }
-        $qualifiedName = empty($source) ? $method : $source . '.' . $method;
-
-        if (!isset($this->_table[$qualifiedName])) {
-            // if source is null a method that was not defined was called.
-            if ($source) {
-                $className = str_replace('.', '_', $source);
-                if(class_exists($className, false) && !isset($this->_classAllowed[$className])) {
-                    require_once 'Zend/Amf/Server/Exception.php';
-                    throw new Zend_Amf_Server_Exception('Can not call "' . $className . '" - use setClass()');
-                }
-                try {
-                    $this->getLoader()->load($className);
-                } catch (Exception $e) {
-                    require_once 'Zend/Amf/Server/Exception.php';
-                    throw new Zend_Amf_Server_Exception('Class "' . $className . '" does not exist: '.$e->getMessage(), 0, $e);
-                }
-                // Add the new loaded class to the server.
-                $this->setClass($className, $source);
-            }
-
-            if (!isset($this->_table[$qualifiedName])) {
-                // Source is null or doesn't contain specified method
-                require_once 'Zend/Amf/Server/Exception.php';
-                throw new Zend_Amf_Server_Exception('Method "' . $method . '" does not exist');
-            }
-        }
-
-        $info = $this->_table[$qualifiedName];
-        $argv = $info->getInvokeArguments();
-
-        if (0 < count($argv)) {
-            $params = array_merge($params, $argv);
-        }
-
-        if ($info instanceof Zend_Server_Reflection_Function) {
-            $func = $info->getName();
-            $this->_checkAcl(null, $func);
-            $return = call_user_func_array($func, $params);
-        } elseif ($info instanceof Zend_Server_Reflection_Method) {
-            // Get class
-            $class = $info->getDeclaringClass()->getName();
-            if ('static' == $info->isStatic()) {
-                // for some reason, invokeArgs() does not work the same as
-                // invoke(), and expects the first argument to be an object.
-                // So, using a callback if the method is static.
-                $this->_checkAcl($class, $info->getName());
-                $return = call_user_func_array(array($class, $info->getName()), $params);
-            } else {
-                // Object methods
-                try {
-                    $object = $info->getDeclaringClass()->newInstance();
-                } catch (Exception $e) {
-                    require_once 'Zend/Amf/Server/Exception.php';
-                    throw new Zend_Amf_Server_Exception('Error instantiating class ' . $class . ' to invoke method ' . $info->getName() . ': '.$e->getMessage(), 621, $e);
-                }
-                $this->_checkAcl($object, $info->getName());
-                $return = $info->invokeArgs($object, $params);
-            }
-        } else {
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception('Method missing implementation ' . get_class($info));
-        }
-
-        return $return;
-    }
-
-    /**
-     * Handles each of the 11 different command message types.
-     *
-     * A command message is a flex.messaging.messages.CommandMessage
-     *
-     * @see    Zend_Amf_Value_Messaging_CommandMessage
-     * @param  Zend_Amf_Value_Messaging_CommandMessage $message
-     * @return Zend_Amf_Value_Messaging_AcknowledgeMessage
-     */
-    protected function _loadCommandMessage(Zend_Amf_Value_Messaging_CommandMessage $message)
-    {
-        require_once 'Zend/Amf/Value/Messaging/AcknowledgeMessage.php';
-        switch($message->operation) {
-            case Zend_Amf_Value_Messaging_CommandMessage::DISCONNECT_OPERATION :
-            case Zend_Amf_Value_Messaging_CommandMessage::CLIENT_PING_OPERATION :
-                $return = new Zend_Amf_Value_Messaging_AcknowledgeMessage($message);
-                break;
-            case Zend_Amf_Value_Messaging_CommandMessage::LOGIN_OPERATION :
-                $data = explode(':', base64_decode($message->body));
-                $userid = $data[0];
-                $password = isset($data[1])?$data[1]:"";
-                if(empty($userid)) {
-                    require_once 'Zend/Amf/Server/Exception.php';
-                    throw new Zend_Amf_Server_Exception('Login failed: username not supplied');
-                }
-                if(!$this->_handleAuth($userid, $password)) {
-                    require_once 'Zend/Amf/Server/Exception.php';
-                    throw new Zend_Amf_Server_Exception('Authentication failed');
-                }
-                $return = new Zend_Amf_Value_Messaging_AcknowledgeMessage($message);
-                break;
-           case Zend_Amf_Value_Messaging_CommandMessage::LOGOUT_OPERATION :
-                if($this->_auth) {
-                    Zend_Auth::getInstance()->clearIdentity();
-                }
-                $return = new Zend_Amf_Value_Messaging_AcknowledgeMessage($message);
-                break;
-            default :
-                require_once 'Zend/Amf/Server/Exception.php';
-                throw new Zend_Amf_Server_Exception('CommandMessage::' . $message->operation . ' not implemented');
-                break;
-        }
-        return $return;
-    }
-
-    /**
-     * Create appropriate error message
-     *
-     * @param int $objectEncoding Current AMF encoding
-     * @param string $message Message that was being processed when error happened
-     * @param string $description Error description
-     * @param mixed $detail Detailed data about the error
-     * @param int $code Error code
-     * @param int $line Error line
-     * @return Zend_Amf_Value_Messaging_ErrorMessage|array
-     */
-    protected function _errorMessage($objectEncoding, $message, $description, $detail, $code, $line)
-    {
-        $return = null;
-        switch ($objectEncoding) {
-            case Zend_Amf_Constants::AMF0_OBJECT_ENCODING :
-                return array (
-                        'description' => ($this->isProduction ()) ? '' : $description,
-                        'detail' => ($this->isProduction ()) ? '' : $detail,
-                        'line' => ($this->isProduction ()) ? 0 : $line,
-                        'code' => $code
-                );
-            case Zend_Amf_Constants::AMF3_OBJECT_ENCODING :
-                require_once 'Zend/Amf/Value/Messaging/ErrorMessage.php';
-                $return = new Zend_Amf_Value_Messaging_ErrorMessage ( $message );
-                $return->faultString = $this->isProduction () ? '' : $description;
-                $return->faultCode = $code;
-                $return->faultDetail = $this->isProduction () ? '' : $detail;
-                break;
-        }
-        return $return;
-    }
-
-    /**
-     * Handle AMF authentication
-     *
-     * @param string $userid
-     * @param string $password
-     * @return boolean
-     */
-    protected function _handleAuth( $userid,  $password)
-    {
-        if (!$this->_auth) {
-            return true;
-        }
-        $this->_auth->setCredentials($userid, $password);
-        $auth = Zend_Auth::getInstance();
-        $result = $auth->authenticate($this->_auth);
-        if ($result->isValid()) {
-            if (!$this->isSession()) {
-                $this->setSession();
-            }
-            return true;
-        } else {
-            // authentication failed, good bye
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception(
-                "Authentication failed: " . join("\n",
-                    $result->getMessages()), $result->getCode());
-        }
-
-    }
-
-    /**
-     * Takes the deserialized AMF request and performs any operations.
-     *
-     * @todo   should implement and SPL observer pattern for custom AMF headers
-     * @todo   DescribeService support
-     * @param  Zend_Amf_Request $request
-     * @return Zend_Amf_Response
-     * @throws Zend_Amf_server_Exception|Exception
-     */
-    protected function _handle(Zend_Amf_Request $request)
-    {
-        // Get the object encoding of the request.
-        $objectEncoding = $request->getObjectEncoding();
-
-        // create a response object to place the output from the services.
-        $response = $this->getResponse();
-
-        // set response encoding
-        $response->setObjectEncoding($objectEncoding);
-
-        $responseBody = $request->getAmfBodies();
-
-        $handleAuth = false;
-        if ($this->_auth) {
-            $headers = $request->getAmfHeaders();
-            if (isset($headers[Zend_Amf_Constants::CREDENTIALS_HEADER]) &&
-                isset($headers[Zend_Amf_Constants::CREDENTIALS_HEADER]->userid)) {
-                $handleAuth = true;
-            }
-        }
-
-        // Iterate through each of the service calls in the AMF request
-        foreach($responseBody as $body)
-        {
-            try {
-                if ($handleAuth) {
-                    if ($this->_handleAuth(
-                        $headers[Zend_Amf_Constants::CREDENTIALS_HEADER]->userid,
-                        $headers[Zend_Amf_Constants::CREDENTIALS_HEADER]->password)) {
-                        // use RequestPersistentHeader to clear credentials
-                        $response->addAmfHeader(
-                            new Zend_Amf_Value_MessageHeader(
-                                Zend_Amf_Constants::PERSISTENT_HEADER,
-                                false,
-                                new Zend_Amf_Value_MessageHeader(
-                                    Zend_Amf_Constants::CREDENTIALS_HEADER,
-                                    false, null)));
-                        $handleAuth = false;
-                    }
-                }
-
-                if ($objectEncoding == Zend_Amf_Constants::AMF0_OBJECT_ENCODING) {
-                    // AMF0 Object Encoding
-                    $targetURI = $body->getTargetURI();
-                    $message = '';
-
-                    // Split the target string into its values.
-                    $source = substr($targetURI, 0, strrpos($targetURI, '.'));
-
-                    if ($source) {
-                        // Break off method name from namespace into source
-                        $method = substr(strrchr($targetURI, '.'), 1);
-                        $return = $this->_dispatch($method, $body->getData(), $source);
-                    } else {
-                        // Just have a method name.
-                        $return = $this->_dispatch($targetURI, $body->getData());
-                    }
-                } else {
-                    // AMF3 read message type
-                    $message = $body->getData();
-                    if ($message instanceof Zend_Amf_Value_Messaging_CommandMessage) {
-                        // async call with command message
-                        $return = $this->_loadCommandMessage($message);
-                    } elseif ($message instanceof Zend_Amf_Value_Messaging_RemotingMessage) {
-                        require_once 'Zend/Amf/Value/Messaging/AcknowledgeMessage.php';
-                        $return = new Zend_Amf_Value_Messaging_AcknowledgeMessage($message);
-                        $return->body = $this->_dispatch($message->operation, $message->body, $message->source);
-                    } else {
-                        // Amf3 message sent with netConnection
-                        $targetURI = $body->getTargetURI();
-
-                        // Split the target string into its values.
-                        $source = substr($targetURI, 0, strrpos($targetURI, '.'));
-
-                        if ($source) {
-                            // Break off method name from namespace into source
-                            $method = substr(strrchr($targetURI, '.'), 1);
-                            $return = $this->_dispatch($method, $body->getData(), $source);
-                        } else {
-                            // Just have a method name.
-                            $return = $this->_dispatch($targetURI, $body->getData());
-                        }
-                    }
-                }
-                $responseType = Zend_AMF_Constants::RESULT_METHOD;
-            } catch (Exception $e) {
-                $return = $this->_errorMessage($objectEncoding, $message,
-                    $e->getMessage(), $e->getTraceAsString(),$e->getCode(),  $e->getLine());
-                $responseType = Zend_AMF_Constants::STATUS_METHOD;
-            }
-
-            $responseURI = $body->getResponseURI() . $responseType;
-            $newBody     = new Zend_Amf_Value_MessageBody($responseURI, null, $return);
-            $response->addAmfBody($newBody);
-        }
-        // Add a session header to the body if session is requested.
-        if($this->isSession()) {
-           $currentID = session_id();
-           $joint = "?";
-           if(isset($_SERVER['QUERY_STRING'])) {
-               if(!strpos($_SERVER['QUERY_STRING'], $currentID) !== FALSE) {
-                   if(strrpos($_SERVER['QUERY_STRING'], "?") !== FALSE) {
-                       $joint = "&";
-                   }
-               }
-           }
-
-            // create a new AMF message header with the session id as a variable.
-            $sessionValue = $joint . $this->_sessionName . "=" . $currentID;
-            $sessionHeader = new Zend_Amf_Value_MessageHeader(Zend_Amf_Constants::URL_APPEND_HEADER, false, $sessionValue);
-            $response->addAmfHeader($sessionHeader);
-        }
-
-        // serialize the response and return serialized body.
-        $response->finalize();
-    }
-
-    /**
-     * Handle an AMF call from the gateway.
-     *
-     * @param  null|Zend_Amf_Request $request Optional
-     * @return Zend_Amf_Response
-     */
-    public function handle($request = null)
-    {
-        // Check if request was passed otherwise get it from the server
-        if ($request === null || !$request instanceof Zend_Amf_Request) {
-            $request = $this->getRequest();
-        } else {
-            $this->setRequest($request);
-        }
-        if ($this->isSession()) {
-             // Check if a session is being sent from the amf call
-             if (isset($_COOKIE[$this->_sessionName])) {
-                 session_id($_COOKIE[$this->_sessionName]);
-             }
-        }
-
-        // Check for errors that may have happend in deserialization of Request.
-        try {
-            // Take converted PHP objects and handle service call.
-            // Serialize to Zend_Amf_response for output stream
-            $this->_handle($request);
-            $response = $this->getResponse();
-        } catch (Exception $e) {
-            // Handle any errors in the serialization and service  calls.
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception('Handle error: ' . $e->getMessage() . ' ' . $e->getLine(), 0, $e);
-        }
-
-        // Return the Amf serialized output string
-        return $response;
-    }
-
-    /**
-     * Set request object
-     *
-     * @param  string|Zend_Amf_Request $request
-     * @return Zend_Amf_Server
-     */
-    public function setRequest($request)
-    {
-        if (is_string($request) && class_exists($request)) {
-            $request = new $request();
-            if (!$request instanceof Zend_Amf_Request) {
-                require_once 'Zend/Amf/Server/Exception.php';
-                throw new Zend_Amf_Server_Exception('Invalid request class');
-            }
-        } elseif (!$request instanceof Zend_Amf_Request) {
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception('Invalid request object');
-        }
-        $this->_request = $request;
-        return $this;
-    }
-
-    /**
-     * Return currently registered request object
-     *
-     * @return null|Zend_Amf_Request
-     */
-    public function getRequest()
-    {
-        if (null === $this->_request) {
-            require_once 'Zend/Amf/Request/Http.php';
-            $this->setRequest(new Zend_Amf_Request_Http());
-        }
-
-        return $this->_request;
-    }
-
-    /**
-     * Public access method to private Zend_Amf_Server_Response reference
-     *
-     * @param  string|Zend_Amf_Server_Response $response
-     * @return Zend_Amf_Server
-     */
-    public function setResponse($response)
-    {
-        if (is_string($response) && class_exists($response)) {
-            $response = new $response();
-            if (!$response instanceof Zend_Amf_Response) {
-                require_once 'Zend/Amf/Server/Exception.php';
-                throw new Zend_Amf_Server_Exception('Invalid response class');
-            }
-        } elseif (!$response instanceof Zend_Amf_Response) {
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception('Invalid response object');
-        }
-        $this->_response = $response;
-        return $this;
-    }
-
-    /**
-     * get a reference to the Zend_Amf_response instance
-     *
-     * @return Zend_Amf_Server_Response
-     */
-    public function getResponse()
-    {
-        if (null === ($response = $this->_response)) {
-            require_once 'Zend/Amf/Response/Http.php';
-            $this->setResponse(new Zend_Amf_Response_Http());
-        }
-        return $this->_response;
-    }
-
-    /**
-     * Attach a class or object to the server
-     *
-     * Class may be either a class name or an instantiated object. Reflection
-     * is done on the class or object to determine the available public
-     * methods, and each is attached to the server as and available method. If
-     * a $namespace has been provided, that namespace is used to prefix
-     * AMF service call.
-     *
-     * @param  string|object $class
-     * @param  string $namespace Optional
-     * @param  mixed $arg Optional arguments to pass to a method
-     * @return Zend_Amf_Server
-     * @throws Zend_Amf_Server_Exception on invalid input
-     */
-    public function setClass($class, $namespace = '', $argv = null)
-    {
-        if (is_string($class) && !class_exists($class)){
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception('Invalid method or class');
-        } elseif (!is_string($class) && !is_object($class)) {
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception('Invalid method or class; must be a classname or object');
-        }
-
-        $argv = null;
-        if (2 < func_num_args()) {
-            $argv = array_slice(func_get_args(), 2);
-        }
-
-        // Use the class name as the name space by default.
-
-        if ($namespace == '') {
-            $namespace = is_object($class) ? get_class($class) : $class;
-        }
-
-        $this->_classAllowed[is_object($class) ? get_class($class) : $class] = true;
-
-        $this->_methods[] = Zend_Server_Reflection::reflectClass($class, $argv, $namespace);
-        $this->_buildDispatchTable();
-
-        return $this;
-    }
-
-    /**
-     * Attach a function to the server
-     *
-     * Additional arguments to pass to the function at dispatch may be passed;
-     * any arguments following the namespace will be aggregated and passed at
-     * dispatch time.
-     *
-     * @param  string|array $function Valid callback
-     * @param  string $namespace Optional namespace prefix
-     * @return Zend_Amf_Server
-     * @throws Zend_Amf_Server_Exception
-     */
-    public function addFunction($function, $namespace = '')
-    {
-        if (!is_string($function) && !is_array($function)) {
-            require_once 'Zend/Amf/Server/Exception.php';
-            throw new Zend_Amf_Server_Exception('Unable to attach function');
-        }
-
-        $argv = null;
-        if (2 < func_num_args()) {
-            $argv = array_slice(func_get_args(), 2);
-        }
-
-        $function = (array) $function;
-        foreach ($function as $func) {
-            if (!is_string($func) || !function_exists($func)) {
-                require_once 'Zend/Amf/Server/Exception.php';
-                throw new Zend_Amf_Server_Exception('Unable to attach function');
-            }
-            $this->_methods[] = Zend_Server_Reflection::reflectFunction($func, $argv, $namespace);
-        }
-
-        $this->_buildDispatchTable();
-        return $this;
-    }
-
-
-    /**
-     * Creates an array of directories in which services can reside.
-     * TODO: add support for prefixes?
-     *
-     * @param string $dir
-     */
-    public function addDirectory($dir)
-    {
-        $this->getLoader()->addPrefixPath("", $dir);
-    }
-
-    /**
-     * Returns an array of directories that can hold services.
-     *
-     * @return array
-     */
-    public function getDirectory()
-    {
-        return $this->getLoader()->getPaths("");
-    }
-
-    /**
-     * (Re)Build the dispatch table
-     *
-     * The dispatch table consists of a an array of method name =>
-     * Zend_Server_Reflection_Function_Abstract pairs
-     *
-     * @return void
-     */
-    protected function _buildDispatchTable()
-    {
-        $table = array();
-        foreach ($this->_methods as $key => $dispatchable) {
-            if ($dispatchable instanceof Zend_Server_Reflection_Function_Abstract) {
-                $ns   = $dispatchable->getNamespace();
-                $name = $dispatchable->getName();
-                $name = empty($ns) ? $name : $ns . '.' . $name;
-
-                if (isset($table[$name])) {
-                    require_once 'Zend/Amf/Server/Exception.php';
-                    throw new Zend_Amf_Server_Exception('Duplicate method registered: ' . $name);
-                }
-                $table[$name] = $dispatchable;
-                continue;
-            }
-
-            if ($dispatchable instanceof Zend_Server_Reflection_Class) {
-                foreach ($dispatchable->getMethods() as $method) {
-                    $ns   = $method->getNamespace();
-                    $name = $method->getName();
-                    $name = empty($ns) ? $name : $ns . '.' . $name;
-
-                    if (isset($table[$name])) {
-                        require_once 'Zend/Amf/Server/Exception.php';
-                        throw new Zend_Amf_Server_Exception('Duplicate method registered: ' . $name);
-                    }
-                    $table[$name] = $method;
-                    continue;
-                }
-            }
-        }
-        $this->_table = $table;
-    }
-
-
-
-    /**
-     * Raise a server fault
-     *
-     * Unimplemented
-     *
-     * @param  string|Exception $fault
-     * @return void
-     */
-    public function fault($fault = null, $code = 404)
-    {
-    }
-
-    /**
-     * Returns a list of registered methods
-     *
-     * Returns an array of dispatchables (Zend_Server_Reflection_Function,
-     * _Method, and _Class items).
-     *
-     * @return array
-     */
-    public function getFunctions()
-    {
-        return $this->_table;
-    }
-
-    /**
-     * Set server persistence
-     *
-     * Unimplemented
-     *
-     * @param  mixed $mode
-     * @return void
-     */
-    public function setPersistence($mode)
-    {
-    }
-
-    /**
-     * Load server definition
-     *
-     * Unimplemented
-     *
-     * @param  array $definition
-     * @return void
-     */
-    public function loadFunctions($definition)
-    {
-    }
-
-    /**
-     * Map ActionScript classes to PHP classes
-     *
-     * @param  string $asClass
-     * @param  string $phpClass
-     * @return Zend_Amf_Server
-     */
-    public function setClassMap($asClass, $phpClass)
-    {
-        require_once 'Zend/Amf/Parse/TypeLoader.php';
-        Zend_Amf_Parse_TypeLoader::setMapping($asClass, $phpClass);
-        return $this;
-    }
-
-    /**
-     * List all available methods
-     *
-     * Returns an array of method names.
-     *
-     * @return array
-     */
-    public function listMethods()
-    {
-        return array_keys($this->_table);
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Serverphp.phpphp php2php3php2php5php6php php2php0php1php0php-php1php0php-php2php6php php1php2php:php5php1php:php5php4Zphp alexanderphp php$
+php php*php/
+
+php/php*php*php php@seephp Zendphp_Serverphp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Serverphp/Interfacephp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Serverphp_Reflectionphp php*php/
+requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Amfphp_Constantsphp php*php/
+requirephp_oncephp php'Zendphp/Amfphp/Constantsphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Amfphp_Valuephp_MessageBodyphp php*php/
+requirephp_oncephp php'Zendphp/Amfphp/Valuephp/MessageBodyphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Amfphp_Valuephp_MessageHeaderphp php*php/
+requirephp_oncephp php'Zendphp/Amfphp/Valuephp/MessageHeaderphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp php*php/
+requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/CommandMessagephp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Loaderphp_PluginLoaderphp php*php/
+requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Amfphp_Parsephp_TypeLoaderphp php*php/
+requirephp_oncephp php'Zendphp/Amfphp/Parsephp/TypeLoaderphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Authphp php*php/
+requirephp_oncephp php'Zendphp/Authphp.phpphp'php;
+php/php*php*
+php php*php Anphp AMFphp gatewayphp serverphp implementationphp tophp allowphp thephp connectionphp ofphp thephp Adobephp Flashphp Playerphp to
+php php*php Zendphp Framework
+php php*
+php php*php php@todophp php php php php php php Makephp thephp reflectionphp methodsphp cachephp andphp autoloadphp.
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Amfphp_Serverphp implementsphp Zendphp_Serverphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp dispatchables
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_methodsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp classesphp thatphp canphp bephp calledphp withoutphp beingphp explicitlyphp loaded
+php php php php php php*
+php php php php php php*php Keysphp arephp classphp namesphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_classAllowedphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Loaderphp forphp classesphp inphp addedphp directories
+php php php php php php*php php@varphp Zendphp_Loaderphp_PluginLoader
+php php php php php php*php/
+php php php php protectedphp php$php_loaderphp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp boolphp Productionphp flagphp;php whetherphp orphp notphp tophp returnphp exceptionphp messages
+php php php php php php*php/
+php php php php protectedphp php$php_productionphp php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Requestphp processed
+php php php php php php*php php@varphp nullphp|Zendphp_Amfphp_Request
+php php php php php php*php/
+php php php php protectedphp php$php_requestphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Classphp tophp usephp forphp responses
+php php php php php php*php php@varphp nullphp|Zendphp_Amfphp_Response
+php php php php php php*php/
+php php php php protectedphp php$php_responsephp;
+
+php php php php php/php*php*
+php php php php php php*php Dispatchphp tablephp ofphp namephp php=php>php methodphp pairs
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_tablephp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@varphp boolphp sessionphp flagphp;php whetherphp orphp notphp tophp addphp aphp sessionphp tophp eachphp responsephp.
+php php php php php php*php/
+php php php php protectedphp php$php_sessionphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Namespacephp allowsphp allphp AMFphp callsphp tophp notphp clobberphp otherphp PHPphp sessionphp variables
+php php php php php php*php php@varphp Zendphp_Sessionphp_NameSpacephp defaultphp sessionphp namespacephp zendphp_amf
+php php php php php php*php/
+php php php php protectedphp php$php_sesionNamespacephp php=php php'zendphp_amfphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp sessionphp.namephp ifphp phpphp_
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_sessionNamephp php=php php'PHPSESSIDphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Authenticationphp handlerphp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Amfphp_Authphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_authphp;
+php php php php php/php*php*
+php php php php php php*php ACLphp handlerphp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Acl
+php php php php php php*php/
+php php php php protectedphp php$php_aclphp;
+php php php php php/php*php*
+php php php php php php*php Thephp serverphp constructor
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php Zendphp_Amfphp_Parsephp_TypeLoaderphp:php:setResourceLoaderphp(newphp Zendphp_Loaderphp_PluginLoaderphp(arrayphp(php"Zendphp_Amfphp_Parsephp_Resourcephp"php php=php>php php"Zendphp/Amfphp/Parsephp/Resourcephp"php)php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp authenticationphp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Amfphp_Authphp_Abstractphp php$auth
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setAuthphp(Zendphp_Amfphp_Authphp_Abstractphp php$authphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_authphp php=php php$authphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php php php php/php*php*
+php php php php php php*php Getphp authenticationphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Amfphp_Authphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp getAuthphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_authphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp ACLphp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Aclphp php$acl
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setAclphp(Zendphp_Aclphp php$aclphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_aclphp php=php php$aclphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php php php php/php*php*
+php php php php php php*php Getphp ACLphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Acl
+php php php php php php*php/
+php php php php publicphp functionphp getAclphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_aclphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp productionphp flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setProductionphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_productionphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Whetherphp orphp notphp thephp serverphp isphp inphp production
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isProductionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_productionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp namespacephp ofphp allphp incomingphp sessionsphp defaultsphp tophp Zendphp_Amf
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setSessionphp(php$namespacephp php=php php'Zendphp_Amfphp'php)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp.phpphp'php;
+php php php php php php php php php$thisphp-php>php_sessionphp php=php truephp;
+php php php php php php php php php$thisphp-php>php_sesionNamespacephp php=php newphp Zendphp_Sessionphp_Namespacephp(php$namespacephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Whetherphp ofphp notphp thephp serverphp isphp usingphp sessions
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isSessionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_sessionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp thephp ACLphp allowsphp accessingphp thephp functionphp orphp method
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|objectphp php$objectphp Objectphp orphp classphp beingphp accessed
+php php php php php php*php php@paramphp stringphp php$functionphp Functionphp orphp methodphp beingphp accessed
+php php php php php php*php php@returnphp unknownphp_type
+php php php php php php*php/
+php php php php protectedphp functionphp php_checkAclphp(php$objectphp,php php$functionphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>php_aclphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php ifphp(php$objectphp)php php{
+php php php php php php php php php php php php php$classphp php=php isphp_objectphp(php$objectphp)php?getphp_classphp(php$objectphp)php:php$objectphp;
+php php php php php php php php php php php php ifphp(php!php$thisphp-php>php_aclphp-php>hasphp(php$classphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Aclphp/Resourcephp.phpphp'php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_aclphp-php>addphp(newphp Zendphp_Aclphp_Resourcephp(php$classphp)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$callphp php=php arrayphp(php$objectphp,php php"initAclphp"php)php;
+php php php php php php php php php php php php ifphp(isphp_callablephp(php$callphp)php php&php&php php!callphp_userphp_funcphp(php$callphp,php php$thisphp-php>php_aclphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php ifphp initAclphp returnsphp falsephp,php nophp ACLphp check
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$classphp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$authphp php=php Zendphp_Authphp:php:getInstancephp(php)php;
+php php php php php php php php ifphp(php$authphp-php>hasIdentityphp(php)php)php php{
+php php php php php php php php php php php php php$rolephp php=php php$authphp-php>getIdentityphp(php)php-php>rolephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php ifphp(php$thisphp-php>php_aclphp-php>hasRolephp(Zendphp_Amfphp_Constantsphp:php:GUESTphp_ROLEphp)php)php php{
+php php php php php php php php php php php php php php php php php$rolephp php=php Zendphp_Amfphp_Constantsphp:php:GUESTphp_ROLEphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php"Unauthenticatedphp accessphp notphp allowedphp"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp(php$thisphp-php>php_aclphp-php>isAllowedphp(php$rolephp,php php$classphp,php php$functionphp)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php"Accessphp notphp allowedphp"php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp PluginLoaderphp forphp thephp Server
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
+php php php php php php*php/
+php php php php protectedphp functionphp getLoaderphp(php)
+php php php php php{
+php php php php php php php php ifphp(emptyphp(php$thisphp-php>php_loaderphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>php_loaderphp php=php newphp Zendphp_Loaderphp_PluginLoaderphp(php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_loaderphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadsphp aphp remotephp classphp orphp methodphp andphp executesphp thephp functionphp andphp returns
+php php php php php php*php thephp result
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$methodphp Isphp thephp methodphp tophp execute
+php php php php php php*php php@paramphp php mixedphp php$paramphp valuesphp forphp thephp method
+php php php php php php*php php@returnphp mixedphp php$responsephp thephp resultphp ofphp executingphp thephp method
+php php php php php php*php php@throwsphp Zendphp_Amfphp_Serverphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_dispatchphp(php$methodphp,php php$paramsphp php=php nullphp,php php$sourcephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp(php$sourcephp)php php{
+php php php php php php php php php php php php ifphp(php(php$mappedphp php=php Zendphp_Amfphp_Parsephp_TypeLoaderphp:php:getMappedClassNamephp(php$sourcephp)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$sourcephp php=php php$mappedphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$qualifiedNamephp php=php emptyphp(php$sourcephp)php php?php php$methodphp php:php php$sourcephp php.php php'php.php'php php.php php$methodphp;
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_tablephp[php$qualifiedNamephp]php)php)php php{
+php php php php php php php php php php php php php/php/php ifphp sourcephp isphp nullphp aphp methodphp thatphp wasphp notphp definedphp wasphp calledphp.
+php php php php php php php php php php php php ifphp php(php$sourcephp)php php{
+php php php php php php php php php php php php php php php php php$classNamephp php=php strphp_replacephp(php'php.php'php,php php'php_php'php,php php$sourcephp)php;
+php php php php php php php php php php php php php php php php ifphp(classphp_existsphp(php$classNamephp,php falsephp)php php&php&php php!issetphp(php$thisphp-php>php_classAllowedphp[php$classNamephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Canphp notphp callphp php"php'php php.php php$classNamephp php.php php'php"php php-php usephp setClassphp(php)php'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getLoaderphp(php)php-php>loadphp(php$classNamephp)php;
+php php php php php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Classphp php"php'php php.php php$classNamephp php.php php'php"php doesphp notphp existphp:php php'php.php$ephp-php>getMessagephp(php)php,php php0php,php php$ephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php/php/php Addphp thephp newphp loadedphp classphp tophp thephp serverphp.
+php php php php php php php php php php php php php php php php php$thisphp-php>setClassphp(php$classNamephp,php php$sourcephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_tablephp[php$qualifiedNamephp]php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Sourcephp isphp nullphp orphp doesnphp'tphp containphp specifiedphp method
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Methodphp php"php'php php.php php$methodphp php.php php'php"php doesphp notphp existphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$infophp php=php php$thisphp-php>php_tablephp[php$qualifiedNamephp]php;
+php php php php php php php php php$argvphp php=php php$infophp-php>getInvokeArgumentsphp(php)php;
+
+php php php php php php php php ifphp php(php0php <php countphp(php$argvphp)php)php php{
+php php php php php php php php php php php php php$paramsphp php=php arrayphp_mergephp(php$paramsphp,php php$argvphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$infophp instanceofphp Zendphp_Serverphp_Reflectionphp_Functionphp)php php{
+php php php php php php php php php php php php php$funcphp php=php php$infophp-php>getNamephp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_checkAclphp(nullphp,php php$funcphp)php;
+php php php php php php php php php php php php php$returnphp php=php callphp_userphp_funcphp_arrayphp(php$funcphp,php php$paramsphp)php;
+php php php php php php php php php}php elseifphp php(php$infophp instanceofphp Zendphp_Serverphp_Reflectionphp_Methodphp)php php{
+php php php php php php php php php php php php php/php/php Getphp class
+php php php php php php php php php php php php php$classphp php=php php$infophp-php>getDeclaringClassphp(php)php-php>getNamephp(php)php;
+php php php php php php php php php php php php ifphp php(php'staticphp'php php=php=php php$infophp-php>isStaticphp(php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php forphp somephp reasonphp,php invokeArgsphp(php)php doesphp notphp workphp thephp samephp as
+php php php php php php php php php php php php php php php php php/php/php invokephp(php)php,php andphp expectsphp thephp firstphp argumentphp tophp bephp anphp objectphp.
+php php php php php php php php php php php php php php php php php/php/php Sophp,php usingphp aphp callbackphp ifphp thephp methodphp isphp staticphp.
+php php php php php php php php php php php php php php php php php$thisphp-php>php_checkAclphp(php$classphp,php php$infophp-php>getNamephp(php)php)php;
+php php php php php php php php php php php php php php php php php$returnphp php=php callphp_userphp_funcphp_arrayphp(arrayphp(php$classphp,php php$infophp-php>getNamephp(php)php)php,php php$paramsphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php Objectphp methods
+php php php php php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php php php php php$objectphp php=php php$infophp-php>getDeclaringClassphp(php)php-php>newInstancephp(php)php;
+php php php php php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Errorphp instantiatingphp classphp php'php php.php php$classphp php.php php'php tophp invokephp methodphp php'php php.php php$infophp-php>getNamephp(php)php php.php php'php:php php'php.php$ephp-php>getMessagephp(php)php,php php6php2php1php,php php$ephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$thisphp-php>php_checkAclphp(php$objectphp,php php$infophp-php>getNamephp(php)php)php;
+php php php php php php php php php php php php php php php php php$returnphp php=php php$infophp-php>invokeArgsphp(php$objectphp,php php$paramsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Methodphp missingphp implementationphp php'php php.php getphp_classphp(php$infophp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Handlesphp eachphp ofphp thephp php1php1php differentphp commandphp messagephp typesphp.
+php php php php php php*
+php php php php php php*php Aphp commandphp messagephp isphp aphp flexphp.messagingphp.messagesphp.CommandMessage
+php php php php php php*
+php php php php php php*php php@seephp php php php Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessage
+php php php php php php*php php@paramphp php Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp php$message
+php php php php php php*php php@returnphp Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessage
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadCommandMessagephp(Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp php$messagephp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/AcknowledgeMessagephp.phpphp'php;
+php php php php php php php php switchphp(php$messagephp-php>operationphp)php php{
+php php php php php php php php php php php php casephp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp:php:DISCONNECTphp_OPERATIONphp php:
+php php php php php php php php php php php php casephp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp:php:CLIENTphp_PINGphp_OPERATIONphp php:
+php php php php php php php php php php php php php php php php php$returnphp php=php newphp Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessagephp(php$messagephp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp:php:LOGINphp_OPERATIONphp php:
+php php php php php php php php php php php php php php php php php$dataphp php=php explodephp(php'php:php'php,php basephp6php4php_decodephp(php$messagephp-php>bodyphp)php)php;
+php php php php php php php php php php php php php php php php php$useridphp php=php php$dataphp[php0php]php;
+php php php php php php php php php php php php php php php php php$passwordphp php=php issetphp(php$dataphp[php1php]php)php?php$dataphp[php1php]php:php"php"php;
+php php php php php php php php php php php php php php php php ifphp(emptyphp(php$useridphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Loginphp failedphp:php usernamephp notphp suppliedphp'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp(php!php$thisphp-php>php_handleAuthphp(php$useridphp,php php$passwordphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Authenticationphp failedphp'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$returnphp php=php newphp Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessagephp(php$messagephp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php casephp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp:php:LOGOUTphp_OPERATIONphp php:
+php php php php php php php php php php php php php php php php ifphp(php$thisphp-php>php_authphp)php php{
+php php php php php php php php php php php php php php php php php php php php Zendphp_Authphp:php:getInstancephp(php)php-php>clearIdentityphp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$returnphp php=php newphp Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessagephp(php$messagephp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp php:
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'CommandMessagephp:php:php'php php.php php$messagephp-php>operationphp php.php php'php notphp implementedphp'php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createphp appropriatephp errorphp message
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$objectEncodingphp Currentphp AMFphp encoding
+php php php php php php*php php@paramphp stringphp php$messagephp Messagephp thatphp wasphp beingphp processedphp whenphp errorphp happened
+php php php php php php*php php@paramphp stringphp php$descriptionphp Errorphp description
+php php php php php php*php php@paramphp mixedphp php$detailphp Detailedphp dataphp aboutphp thephp error
+php php php php php php*php php@paramphp intphp php$codephp Errorphp code
+php php php php php php*php php@paramphp intphp php$linephp Errorphp line
+php php php php php php*php php@returnphp Zendphp_Amfphp_Valuephp_Messagingphp_ErrorMessagephp|array
+php php php php php php*php/
+php php php php protectedphp functionphp php_errorMessagephp(php$objectEncodingphp,php php$messagephp,php php$descriptionphp,php php$detailphp,php php$codephp,php php$linephp)
+php php php php php{
+php php php php php php php php php$returnphp php=php nullphp;
+php php php php php php php php switchphp php(php$objectEncodingphp)php php{
+php php php php php php php php php php php php casephp Zendphp_Amfphp_Constantsphp:php:AMFphp0php_OBJECTphp_ENCODINGphp php:
+php php php php php php php php php php php php php php php php returnphp arrayphp php(
+php php php php php php php php php php php php php php php php php php php php php php php php php'descriptionphp'php php=php>php php(php$thisphp-php>isProductionphp php(php)php)php php?php php'php'php php:php php$descriptionphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php'detailphp'php php=php>php php(php$thisphp-php>isProductionphp php(php)php)php php?php php'php'php php:php php$detailphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php'linephp'php php=php>php php(php$thisphp-php>isProductionphp php(php)php)php php?php php0php php:php php$linephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php'codephp'php php=php>php php$code
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php casephp Zendphp_Amfphp_Constantsphp:php:AMFphp3php_OBJECTphp_ENCODINGphp php:
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/ErrorMessagephp.phpphp'php;
+php php php php php php php php php php php php php php php php php$returnphp php=php newphp Zendphp_Amfphp_Valuephp_Messagingphp_ErrorMessagephp php(php php$messagephp php)php;
+php php php php php php php php php php php php php php php php php$returnphp-php>faultStringphp php=php php$thisphp-php>isProductionphp php(php)php php?php php'php'php php:php php$descriptionphp;
+php php php php php php php php php php php php php php php php php$returnphp-php>faultCodephp php=php php$codephp;
+php php php php php php php php php php php php php php php php php$returnphp-php>faultDetailphp php=php php$thisphp-php>isProductionphp php(php)php php?php php'php'php php:php php$detailphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Handlephp AMFphp authentication
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$userid
+php php php php php php*php php@paramphp stringphp php$password
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_handleAuthphp(php php$useridphp,php php php$passwordphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_authphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_authphp-php>setCredentialsphp(php$useridphp,php php$passwordphp)php;
+php php php php php php php php php$authphp php=php Zendphp_Authphp:php:getInstancephp(php)php;
+php php php php php php php php php$resultphp php=php php$authphp-php>authenticatephp(php$thisphp-php>php_authphp)php;
+php php php php php php php php ifphp php(php$resultphp-php>isValidphp(php)php)php php{
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>isSessionphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setSessionphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php authenticationphp failedphp,php goodphp bye
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php"Authenticationphp failedphp:php php"php php.php joinphp(php"php\nphp"php,
+php php php php php php php php php php php php php php php php php php php php php$resultphp-php>getMessagesphp(php)php)php,php php$resultphp-php>getCodephp(php)php)php;
+php php php php php php php php php}
+
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Takesphp thephp deserializedphp AMFphp requestphp andphp performsphp anyphp operationsphp.
+php php php php php php*
+php php php php php php*php php@todophp php php shouldphp implementphp andphp SPLphp observerphp patternphp forphp customphp AMFphp headers
+php php php php php php*php php@todophp php php DescribeServicephp support
+php php php php php php*php php@paramphp php Zendphp_Amfphp_Requestphp php$request
+php php php php php php*php php@returnphp Zendphp_Amfphp_Response
+php php php php php php*php php@throwsphp Zendphp_Amfphp_serverphp_Exceptionphp|Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_handlephp(Zendphp_Amfphp_Requestphp php$requestphp)
+php php php php php{
+php php php php php php php php php/php/php Getphp thephp objectphp encodingphp ofphp thephp requestphp.
+php php php php php php php php php$objectEncodingphp php=php php$requestphp-php>getObjectEncodingphp(php)php;
+
+php php php php php php php php php/php/php createphp aphp responsephp objectphp tophp placephp thephp outputphp fromphp thephp servicesphp.
+php php php php php php php php php$responsephp php=php php$thisphp-php>getResponsephp(php)php;
+
+php php php php php php php php php/php/php setphp responsephp encoding
+php php php php php php php php php$responsephp-php>setObjectEncodingphp(php$objectEncodingphp)php;
+
+php php php php php php php php php$responseBodyphp php=php php$requestphp-php>getAmfBodiesphp(php)php;
+
+php php php php php php php php php$handleAuthphp php=php falsephp;
+php php php php php php php php ifphp php(php$thisphp-php>php_authphp)php php{
+php php php php php php php php php php php php php$headersphp php=php php$requestphp-php>getAmfHeadersphp(php)php;
+php php php php php php php php php php php php ifphp php(issetphp(php$headersphp[Zendphp_Amfphp_Constantsphp:php:CREDENTIALSphp_HEADERphp]php)php php&php&
+php php php php php php php php php php php php php php php php issetphp(php$headersphp[Zendphp_Amfphp_Constantsphp:php:CREDENTIALSphp_HEADERphp]php-php>useridphp)php)php php{
+php php php php php php php php php php php php php php php php php$handleAuthphp php=php truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Iteratephp throughphp eachphp ofphp thephp servicephp callsphp inphp thephp AMFphp request
+php php php php php php php php foreachphp(php$responseBodyphp asphp php$bodyphp)
+php php php php php php php php php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php ifphp php(php$handleAuthphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_handleAuthphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php$headersphp[Zendphp_Amfphp_Constantsphp:php:CREDENTIALSphp_HEADERphp]php-php>useridphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php$headersphp[Zendphp_Amfphp_Constantsphp:php:CREDENTIALSphp_HEADERphp]php-php>passwordphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php usephp RequestPersistentHeaderphp tophp clearphp credentials
+php php php php php php php php php php php php php php php php php php php php php php php php php$responsephp-php>addAmfHeaderphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Amfphp_Valuephp_MessageHeaderphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Amfphp_Constantsphp:php:PERSISTENTphp_HEADERphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php falsephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Amfphp_Valuephp_MessageHeaderphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Amfphp_Constantsphp:php:CREDENTIALSphp_HEADERphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php falsephp,php nullphp)php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$handleAuthphp php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$objectEncodingphp php=php=php Zendphp_Amfphp_Constantsphp:php:AMFphp0php_OBJECTphp_ENCODINGphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php AMFphp0php Objectphp Encoding
+php php php php php php php php php php php php php php php php php php php php php$targetURIphp php=php php$bodyphp-php>getTargetURIphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$messagephp php=php php'php'php;
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Splitphp thephp targetphp stringphp intophp itsphp valuesphp.
+php php php php php php php php php php php php php php php php php php php php php$sourcephp php=php substrphp(php$targetURIphp,php php0php,php strrposphp(php$targetURIphp,php php'php.php'php)php)php;
+
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$sourcephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Breakphp offphp methodphp namephp fromphp namespacephp intophp source
+php php php php php php php php php php php php php php php php php php php php php php php php php$methodphp php=php substrphp(strrchrphp(php$targetURIphp,php php'php.php'php)php,php php1php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_dispatchphp(php$methodphp,php php$bodyphp-php>getDataphp(php)php,php php$sourcephp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Justphp havephp aphp methodphp namephp.
+php php php php php php php php php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_dispatchphp(php$targetURIphp,php php$bodyphp-php>getDataphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php/php AMFphp3php readphp messagephp type
+php php php php php php php php php php php php php php php php php php php php php$messagephp php=php php$bodyphp-php>getDataphp(php)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$messagephp instanceofphp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php asyncphp callphp withphp commandphp message
+php php php php php php php php php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_loadCommandMessagephp(php$messagephp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(php$messagephp instanceofphp Zendphp_Amfphp_Valuephp_Messagingphp_RemotingMessagephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/AcknowledgeMessagephp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$returnphp php=php newphp Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessagephp(php$messagephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$returnphp-php>bodyphp php=php php$thisphp-php>php_dispatchphp(php$messagephp-php>operationphp,php php$messagephp-php>bodyphp,php php$messagephp-php>sourcephp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Amfphp3php messagephp sentphp withphp netConnection
+php php php php php php php php php php php php php php php php php php php php php php php php php$targetURIphp php=php php$bodyphp-php>getTargetURIphp(php)php;
+
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Splitphp thephp targetphp stringphp intophp itsphp valuesphp.
+php php php php php php php php php php php php php php php php php php php php php php php php php$sourcephp php=php substrphp(php$targetURIphp,php php0php,php strrposphp(php$targetURIphp,php php'php.php'php)php)php;
+
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$sourcephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Breakphp offphp methodphp namephp fromphp namespacephp intophp source
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$methodphp php=php substrphp(strrchrphp(php$targetURIphp,php php'php.php'php)php,php php1php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_dispatchphp(php$methodphp,php php$bodyphp-php>getDataphp(php)php,php php$sourcephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Justphp havephp aphp methodphp namephp.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_dispatchphp(php$targetURIphp,php php$bodyphp-php>getDataphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$responseTypephp php=php Zendphp_AMFphp_Constantsphp:php:RESULTphp_METHODphp;
+php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_errorMessagephp(php$objectEncodingphp,php php$messagephp,
+php php php php php php php php php php php php php php php php php php php php php$ephp-php>getMessagephp(php)php,php php$ephp-php>getTraceAsStringphp(php)php,php$ephp-php>getCodephp(php)php,php php php$ephp-php>getLinephp(php)php)php;
+php php php php php php php php php php php php php php php php php$responseTypephp php=php Zendphp_AMFphp_Constantsphp:php:STATUSphp_METHODphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$responseURIphp php=php php$bodyphp-php>getResponseURIphp(php)php php.php php$responseTypephp;
+php php php php php php php php php php php php php$newBodyphp php php php php php=php newphp Zendphp_Amfphp_Valuephp_MessageBodyphp(php$responseURIphp,php nullphp,php php$returnphp)php;
+php php php php php php php php php php php php php$responsephp-php>addAmfBodyphp(php$newBodyphp)php;
+php php php php php php php php php}
+php php php php php php php php php/php/php Addphp aphp sessionphp headerphp tophp thephp bodyphp ifphp sessionphp isphp requestedphp.
+php php php php php php php php ifphp(php$thisphp-php>isSessionphp(php)php)php php{
+php php php php php php php php php php php php$currentIDphp php=php sessionphp_idphp(php)php;
+php php php php php php php php php php php php$jointphp php=php php"php?php"php;
+php php php php php php php php php php php ifphp(issetphp(php$php_SERVERphp[php'QUERYphp_STRINGphp'php]php)php)php php{
+php php php php php php php php php php php php php php php ifphp(php!strposphp(php$php_SERVERphp[php'QUERYphp_STRINGphp'php]php,php php$currentIDphp)php php!php=php=php FALSEphp)php php{
+php php php php php php php php php php php php php php php php php php php ifphp(strrposphp(php$php_SERVERphp[php'QUERYphp_STRINGphp'php]php,php php"php?php"php)php php!php=php=php FALSEphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php$jointphp php=php php"php&php"php;
+php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php createphp aphp newphp AMFphp messagephp headerphp withphp thephp sessionphp idphp asphp aphp variablephp.
+php php php php php php php php php php php php php$sessionValuephp php=php php$jointphp php.php php$thisphp-php>php_sessionNamephp php.php php"php=php"php php.php php$currentIDphp;
+php php php php php php php php php php php php php$sessionHeaderphp php=php newphp Zendphp_Amfphp_Valuephp_MessageHeaderphp(Zendphp_Amfphp_Constantsphp:php:URLphp_APPENDphp_HEADERphp,php falsephp,php php$sessionValuephp)php;
+php php php php php php php php php php php php php$responsephp-php>addAmfHeaderphp(php$sessionHeaderphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php serializephp thephp responsephp andphp returnphp serializedphp bodyphp.
+php php php php php php php php php$responsephp-php>finalizephp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Handlephp anphp AMFphp callphp fromphp thephp gatewayphp.
+php php php php php php*
+php php php php php php*php php@paramphp php nullphp|Zendphp_Amfphp_Requestphp php$requestphp Optional
+php php php php php php*php php@returnphp Zendphp_Amfphp_Response
+php php php php php php*php/
+php php php php publicphp functionphp handlephp(php$requestphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Checkphp ifphp requestphp wasphp passedphp otherwisephp getphp itphp fromphp thephp server
+php php php php php php php php ifphp php(php$requestphp php=php=php=php nullphp php|php|php php!php$requestphp instanceofphp Zendphp_Amfphp_Requestphp)php php{
+php php php php php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>setRequestphp(php$requestphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>isSessionphp(php)php)php php{
+php php php php php php php php php php php php php php/php/php Checkphp ifphp aphp sessionphp isphp beingphp sentphp fromphp thephp amfphp call
+php php php php php php php php php php php php php ifphp php(issetphp(php$php_COOKIEphp[php$thisphp-php>php_sessionNamephp]php)php)php php{
+php php php php php php php php php php php php php php php php php sessionphp_idphp(php$php_COOKIEphp[php$thisphp-php>php_sessionNamephp]php)php;
+php php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Checkphp forphp errorsphp thatphp mayphp havephp happendphp inphp deserializationphp ofphp Requestphp.
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php/php/php Takephp convertedphp PHPphp objectsphp andphp handlephp servicephp callphp.
+php php php php php php php php php php php php php/php/php Serializephp tophp Zendphp_Amfphp_responsephp forphp outputphp stream
+php php php php php php php php php php php php php$thisphp-php>php_handlephp(php$requestphp)php;
+php php php php php php php php php php php php php$responsephp php=php php$thisphp-php>getResponsephp(php)php;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php/php/php Handlephp anyphp errorsphp inphp thephp serializationphp andphp servicephp php callsphp.
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Handlephp errorphp:php php'php php.php php$ephp-php>getMessagephp(php)php php.php php'php php'php php.php php$ephp-php>getLinephp(php)php,php php0php,php php$ephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Returnphp thephp Amfphp serializedphp outputphp string
+php php php php php php php php returnphp php$responsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp requestphp object
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Amfphp_Requestphp php$request
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setRequestphp(php$requestphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$requestphp)php php&php&php classphp_existsphp(php$requestphp)php)php php{
+php php php php php php php php php php php php php$requestphp php=php newphp php$requestphp(php)php;
+php php php php php php php php php php php php ifphp php(php!php$requestphp instanceofphp Zendphp_Amfphp_Requestphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Invalidphp requestphp classphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(php!php$requestphp instanceofphp Zendphp_Amfphp_Requestphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Invalidphp requestphp objectphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_requestphp php=php php$requestphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp currentlyphp registeredphp requestphp object
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|Zendphp_Amfphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp getRequestphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_requestphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Requestphp/Httpphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>setRequestphp(newphp Zendphp_Amfphp_Requestphp_Httpphp(php)php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_requestphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Publicphp accessphp methodphp tophp privatephp Zendphp_Amfphp_Serverphp_Responsephp reference
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Amfphp_Serverphp_Responsephp php$response
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setResponsephp(php$responsephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$responsephp)php php&php&php classphp_existsphp(php$responsephp)php)php php{
+php php php php php php php php php php php php php$responsephp php=php newphp php$responsephp(php)php;
+php php php php php php php php php php php php ifphp php(php!php$responsephp instanceofphp Zendphp_Amfphp_Responsephp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Invalidphp responsephp classphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(php!php$responsephp instanceofphp Zendphp_Amfphp_Responsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Invalidphp responsephp objectphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_responsephp php=php php$responsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getphp aphp referencephp tophp thephp Zendphp_Amfphp_responsephp instance
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Amfphp_Serverphp_Response
+php php php php php php*php/
+php php php php publicphp functionphp getResponsephp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php(php$responsephp php=php php$thisphp-php>php_responsephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Responsephp/Httpphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>setResponsephp(newphp Zendphp_Amfphp_Responsephp_Httpphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_responsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Attachphp aphp classphp orphp objectphp tophp thephp server
+php php php php php php*
+php php php php php php*php Classphp mayphp bephp eitherphp aphp classphp namephp orphp anphp instantiatedphp objectphp.php Reflection
+php php php php php php*php isphp donephp onphp thephp classphp orphp objectphp tophp determinephp thephp availablephp public
+php php php php php php*php methodsphp,php andphp eachphp isphp attachedphp tophp thephp serverphp asphp andphp availablephp methodphp.php If
+php php php php php php*php aphp php$namespacephp hasphp beenphp providedphp,php thatphp namespacephp isphp usedphp tophp prefix
+php php php php php php*php AMFphp servicephp callphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|objectphp php$class
+php php php php php php*php php@paramphp php stringphp php$namespacephp Optional
+php php php php php php*php php@paramphp php mixedphp php$argphp Optionalphp argumentsphp tophp passphp tophp aphp method
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php php@throwsphp Zendphp_Amfphp_Serverphp_Exceptionphp onphp invalidphp input
+php php php php php php*php/
+php php php php publicphp functionphp setClassphp(php$classphp,php php$namespacephp php=php php'php'php,php php$argvphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$classphp)php php&php&php php!classphp_existsphp(php$classphp)php)php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Invalidphp methodphp orphp classphp'php)php;
+php php php php php php php php php}php elseifphp php(php!isphp_stringphp(php$classphp)php php&php&php php!isphp_objectphp(php$classphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Invalidphp methodphp orphp classphp;php mustphp bephp aphp classnamephp orphp objectphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$argvphp php=php nullphp;
+php php php php php php php php ifphp php(php2php <php funcphp_numphp_argsphp(php)php)php php{
+php php php php php php php php php php php php php$argvphp php=php arrayphp_slicephp(funcphp_getphp_argsphp(php)php,php php2php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Usephp thephp classphp namephp asphp thephp namephp spacephp byphp defaultphp.
+
+php php php php php php php php ifphp php(php$namespacephp php=php=php php'php'php)php php{
+php php php php php php php php php php php php php$namespacephp php=php isphp_objectphp(php$classphp)php php?php getphp_classphp(php$classphp)php php:php php$classphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_classAllowedphp[isphp_objectphp(php$classphp)php php?php getphp_classphp(php$classphp)php php:php php$classphp]php php=php truephp;
+
+php php php php php php php php php$thisphp-php>php_methodsphp[php]php php=php Zendphp_Serverphp_Reflectionphp:php:reflectClassphp(php$classphp,php php$argvphp,php php$namespacephp)php;
+php php php php php php php php php$thisphp-php>php_buildDispatchTablephp(php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Attachphp aphp functionphp tophp thephp server
+php php php php php php*
+php php php php php php*php Additionalphp argumentsphp tophp passphp tophp thephp functionphp atphp dispatchphp mayphp bephp passedphp;
+php php php php php php*php anyphp argumentsphp followingphp thephp namespacephp willphp bephp aggregatedphp andphp passedphp at
+php php php php php php*php dispatchphp timephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$functionphp Validphp callback
+php php php php php php*php php@paramphp php stringphp php$namespacephp Optionalphp namespacephp prefix
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php php@throwsphp Zendphp_Amfphp_Serverphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp addFunctionphp(php$functionphp,php php$namespacephp php=php php'php'php)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$functionphp)php php&php&php php!isphp_arrayphp(php$functionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Unablephp tophp attachphp functionphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$argvphp php=php nullphp;
+php php php php php php php php ifphp php(php2php <php funcphp_numphp_argsphp(php)php)php php{
+php php php php php php php php php php php php php$argvphp php=php arrayphp_slicephp(funcphp_getphp_argsphp(php)php,php php2php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$functionphp php=php php(arrayphp)php php$functionphp;
+php php php php php php php php foreachphp php(php$functionphp asphp php$funcphp)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$funcphp)php php|php|php php!functionphp_existsphp(php$funcphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Unablephp tophp attachphp functionphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_methodsphp[php]php php=php Zendphp_Serverphp_Reflectionphp:php:reflectFunctionphp(php$funcphp,php php$argvphp,php php$namespacephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_buildDispatchTablephp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Createsphp anphp arrayphp ofphp directoriesphp inphp whichphp servicesphp canphp residephp.
+php php php php php php*php TODOphp:php addphp supportphp forphp prefixesphp?
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$dir
+php php php php php php*php/
+php php php php publicphp functionphp addDirectoryphp(php$dirphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>getLoaderphp(php)php-php>addPrefixPathphp(php"php"php,php php$dirphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp directoriesphp thatphp canphp holdphp servicesphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getDirectoryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getLoaderphp(php)php-php>getPathsphp(php"php"php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php(Rephp)Buildphp thephp dispatchphp table
+php php php php php php*
+php php php php php php*php Thephp dispatchphp tablephp consistsphp ofphp aphp anphp arrayphp ofphp methodphp namephp php=php>
+php php php php php php*php Zendphp_Serverphp_Reflectionphp_Functionphp_Abstractphp pairs
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_buildDispatchTablephp(php)
+php php php php php{
+php php php php php php php php php$tablephp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_methodsphp asphp php$keyphp php=php>php php$dispatchablephp)php php{
+php php php php php php php php php php php php ifphp php(php$dispatchablephp instanceofphp Zendphp_Serverphp_Reflectionphp_Functionphp_Abstractphp)php php{
+php php php php php php php php php php php php php php php php php$nsphp php php php=php php$dispatchablephp-php>getNamespacephp(php)php;
+php php php php php php php php php php php php php php php php php$namephp php=php php$dispatchablephp-php>getNamephp(php)php;
+php php php php php php php php php php php php php php php php php$namephp php=php emptyphp(php$nsphp)php php?php php$namephp php:php php$nsphp php.php php'php.php'php php.php php$namephp;
+
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$tablephp[php$namephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Duplicatephp methodphp registeredphp:php php'php php.php php$namephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$tablephp[php$namephp]php php=php php$dispatchablephp;
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$dispatchablephp instanceofphp Zendphp_Serverphp_Reflectionphp_Classphp)php php{
+php php php php php php php php php php php php php php php php foreachphp php(php$dispatchablephp-php>getMethodsphp(php)php asphp php$methodphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$nsphp php php php=php php$methodphp-php>getNamespacephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$namephp php=php php$methodphp-php>getNamephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$namephp php=php emptyphp(php$nsphp)php php?php php$namephp php:php php$nsphp php.php php'php.php'php php.php php$namephp;
+
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$tablephp[php$namephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Serverphp_Exceptionphp(php'Duplicatephp methodphp registeredphp:php php'php php.php php$namephp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$tablephp[php$namephp]php php=php php$methodphp;
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_tablephp php=php php$tablephp;
+php php php php php}
+
+
+
+php php php php php/php*php*
+php php php php php php*php Raisephp aphp serverphp fault
+php php php php php php*
+php php php php php php*php Unimplemented
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Exceptionphp php$fault
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp faultphp(php$faultphp php=php nullphp,php php$codephp php=php php4php0php4php)
+php php php php php{
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp listphp ofphp registeredphp methods
+php php php php php php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp dispatchablesphp php(Zendphp_Serverphp_Reflectionphp_Functionphp,
+php php php php php php*php php_Methodphp,php andphp php_Classphp itemsphp)php.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getFunctionsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_tablephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp serverphp persistence
+php php php php php php*
+php php php php php php*php Unimplemented
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$mode
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setPersistencephp(php$modephp)
+php php php php php{
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp serverphp definition
+php php php php php php*
+php php php php php php*php Unimplemented
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$definition
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp loadFunctionsphp(php$definitionphp)
+php php php php php{
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Mapphp ActionScriptphp classesphp tophp PHPphp classes
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$asClass
+php php php php php php*php php@paramphp php stringphp php$phpClass
+php php php php php php*php php@returnphp Zendphp_Amfphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setClassMapphp(php$asClassphp,php php$phpClassphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Parsephp/TypeLoaderphp.phpphp'php;
+php php php php php php php php Zendphp_Amfphp_Parsephp_TypeLoaderphp:php:setMappingphp(php$asClassphp,php php$phpClassphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Listphp allphp availablephp methods
+php php php php php php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp methodphp namesphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp listMethodsphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp_keysphp(php$thisphp-php>php_tablephp)php;
+php php php php php}
+php}

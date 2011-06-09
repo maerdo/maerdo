@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.4 $"/>
-		<generation date="$Date: 2009/05/05 23:06:38 $"/>
-		<language type="mn"/>
-		<script type="Mong"/>
-	</identity>
-	<layout>
-		<orientation lines="left-to-right" characters="top-to-bottom"/>
-	</layout>
-	<characters>
-		<exemplarCharacters>[᠐-᠙ ᠠ-ᡂ]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[a á à ă â å ä ā æ b c ç d e é è ĕ ê ë ē f-i í ì ĭ î ï ī j-n ñ o ó ò ŏ ô ö ø ō œ p-s ß t u ú ù ŭ û ü ū v-y ÿ z]</exemplarCharacters>
-	</characters>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php4php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php8php php$php"php/php>
+php	php	php<languagephp typephp=php"mnphp"php/php>
+php	php	php<scriptphp typephp=php"Mongphp"php/php>
+php	<php/identityphp>
+php	php<layoutphp>
+php	php	php<orientationphp linesphp=php"leftphp-tophp-rightphp"php charactersphp=php"topphp-tophp-bottomphp"php/php>
+php	<php/layoutphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[php᠐php-php᠙php phpᠠphp-phpᡂphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[aphp áphp àphp ăphp âphp åphp äphp āphp æphp bphp cphp çphp dphp ephp éphp èphp ĕphp êphp ëphp ēphp fphp-iphp íphp ìphp ĭphp îphp ïphp īphp jphp-nphp ñphp ophp óphp òphp ŏphp ôphp öphp øphp ōphp œphp pphp-sphp ßphp tphp uphp úphp ùphp ŭphp ûphp üphp ūphp vphp-yphp ÿphp zphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+<php/ldmlphp>

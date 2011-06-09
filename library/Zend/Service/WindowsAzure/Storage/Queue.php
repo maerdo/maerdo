@@ -1,555 +1,555 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://todo     name_todo
- * @version    $Id: Queue.php 23584 2010-12-28 19:51:49Z matthew $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/todophp php php php php namephp_todo
+php php*php php@versionphp php php php php$Idphp:php Queuephp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
+php php*php/
 
-/**
- * @see Zend_Service_WindowsAzure_Credentials_SharedKey
- */
-require_once 'Zend/Service/WindowsAzure/Credentials/SharedKey.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_SharedKey
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/SharedKeyphp.phpphp'php;
 
-/**
- * @see Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract
- */
-require_once 'Zend/Service/WindowsAzure/RetryPolicy/RetryPolicyAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/RetryPolicyphp/RetryPolicyAbstractphp.phpphp'php;
 
-/**
- * @see Zend_Http_Client
- */
-require_once 'Zend/Http/Client.php';
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Client
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
 
-/**
- * @see Zend_Http_Response
- */
-require_once 'Zend/Http/Response.php';
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Response
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Responsephp.phpphp'php;
 
-/**
- * @see Zend_Service_WindowsAzure_Storage
- */
-require_once 'Zend/Service/WindowsAzure/Storage.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storage
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp.phpphp'php;
 
-/**
- * Zend_Service_WindowsAzure_Storage_QueueInstance
- */
-require_once 'Zend/Service/WindowsAzure/Storage/QueueInstance.php';
+php/php*php*
+php php*php Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueInstance
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/QueueInstancephp.phpphp'php;
 
-/**
- * Zend_Service_WindowsAzure_Storage_QueueMessage
- */
-require_once 'Zend/Service/WindowsAzure/Storage/QueueMessage.php';
+php/php*php*
+php php*php Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueMessage
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/QueueMessagephp.phpphp'php;
 
-/**
- * @see Zend_Service_WindowsAzure_Exception
- */
-require_once 'Zend/Service/WindowsAzure/Exception.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Exception
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Exceptionphp.phpphp'php;
 
 
-/**
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_WindowsAzure_Storage_Queue extends Zend_Service_WindowsAzure_Storage
-{
-	/**
-	 * Maximal message size (in bytes)
-	 */
-	const MAX_MESSAGE_SIZE = 8388608;
-	
-	/**
-	 * Maximal message ttl (in seconds)
-	 */
-	const MAX_MESSAGE_TTL = 604800;
-	
-	/**
-	 * Creates a new Zend_Service_WindowsAzure_Storage_Queue instance
-	 *
-	 * @param string $host Storage host name
-	 * @param string $accountName Account name for Windows Azure
-	 * @param string $accountKey Account key for Windows Azure
-	 * @param boolean $usePathStyleUri Use path-style URI's
-	 * @param Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy Retry policy to use when making requests
-	 */
-	public function __construct($host = Zend_Service_WindowsAzure_Storage::URL_DEV_QUEUE, $accountName = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT, $accountKey = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY, $usePathStyleUri = false, Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null)
-	{
-		parent::__construct($host, $accountName, $accountKey, $usePathStyleUri, $retryPolicy);
-		
-		// API version
-		$this->_apiVersion = '2009-09-19';
-	}
-	
-	/**
-	 * Check if a queue exists
-	 *
-	 * @param string $queueName Queue name
-	 * @return boolean
-	 */
-	public function queueExists($queueName = '')
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
-			
-		// List queues
-        $queues = $this->listQueues($queueName, 1);
-        foreach ($queues as $queue) {
-            if ($queue->Name == $queueName) {
-                return true;
-            }
-        }
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Queuephp extendsphp Zendphp_Servicephp_WindowsAzurephp_Storage
+php{
+php	php/php*php*
+php	php php*php Maximalphp messagephp sizephp php(inphp bytesphp)
+php	php php*php/
+php	constphp MAXphp_MESSAGEphp_SIZEphp php=php php8php3php8php8php6php0php8php;
+php	
+php	php/php*php*
+php	php php*php Maximalphp messagephp ttlphp php(inphp secondsphp)
+php	php php*php/
+php	constphp MAXphp_MESSAGEphp_TTLphp php=php php6php0php4php8php0php0php;
+php	
+php	php/php*php*
+php	php php*php Createsphp aphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Queuephp instance
+php	php php*
+php	php php*php php@paramphp stringphp php$hostphp Storagephp hostphp name
+php	php php*php php@paramphp stringphp php$accountNamephp Accountphp namephp forphp Windowsphp Azure
+php	php php*php php@paramphp stringphp php$accountKeyphp Accountphp keyphp forphp Windowsphp Azure
+php	php php*php php@paramphp booleanphp php$usePathStyleUriphp Usephp pathphp-stylephp URIphp's
+php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp Retryphp policyphp tophp usephp whenphp makingphp requests
+php	php php*php/
+php	publicphp functionphp php_php_constructphp(php$hostphp php=php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:URLphp_DEVphp_QUEUEphp,php php$accountNamephp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_ACCOUNTphp,php php$accountKeyphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_KEYphp,php php$usePathStyleUriphp php=php falsephp,php Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp php=php nullphp)
+php	php{
+php	php	parentphp:php:php_php_constructphp(php$hostphp,php php$accountNamephp,php php$accountKeyphp,php php$usePathStyleUriphp,php php$retryPolicyphp)php;
+php	php	
+php	php	php/php/php APIphp version
+php	php	php$thisphp-php>php_apiVersionphp php=php php'php2php0php0php9php-php0php9php-php1php9php'php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Checkphp ifphp aphp queuephp exists
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp Queuephp name
+php	php php*php php@returnphp boolean
+php	php php*php/
+php	publicphp functionphp queueExistsphp(php$queueNamephp php=php php'php'php)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
+php	php	php	
+php	php	php/php/php Listphp queues
+php php php php php php php php php$queuesphp php=php php$thisphp-php>listQueuesphp(php$queueNamephp,php php1php)php;
+php php php php php php php php foreachphp php(php$queuesphp asphp php$queuephp)php php{
+php php php php php php php php php php php php ifphp php(php$queuephp-php>Namephp php=php=php php$queueNamephp)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return false;
-	}
-	
-	/**
-	 * Create queue
-	 *
-	 * @param string $queueName Queue name
-	 * @param array  $metadata  Key/value pairs of meta data
-	 * @return object Queue properties
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function createQueue($queueName = '', $metadata = array())
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
-			
-		// Create metadata headers
-		$headers = array();
-		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
-		
-		// Perform request
-		$response = $this->_performRequest($queueName, '', Zend_Http_Client::PUT, $headers);	
-		if ($response->isSuccessful()) {
-		    return new Zend_Service_WindowsAzure_Storage_QueueInstance(
-		        $queueName,
-		        $metadata
-		    );
-		} else {
-			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
-		}
-	}
-	
-	/**
-	 * Get queue
-	 *
-	 * @param string $queueName  Queue name
-	 * @return Zend_Service_WindowsAzure_Storage_QueueInstance
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function getQueue($queueName = '')
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
-		
-		// Perform request
-		$response = $this->_performRequest($queueName, '?comp=metadata', Zend_Http_Client::GET);	
-		if ($response->isSuccessful()) {
-		    // Parse metadata
-		    $metadata = $this->_parseMetadataHeaders($response->getHeaders());
+php php php php php php php php returnphp falsephp;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Createphp queue
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp Queuephp name
+php	php php*php php@paramphp arrayphp php php$metadataphp php Keyphp/valuephp pairsphp ofphp metaphp data
+php	php php*php php@returnphp objectphp Queuephp properties
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp createQueuephp(php$queueNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
+php	php	php	
+php	php	php/php/php Createphp metadataphp headers
+php	php	php$headersphp php=php arrayphp(php)php;
+php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
+php	php	
+php	php	php/php/php Performphp request
+php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp,php php'php'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp)php;php	
+php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
+php	php	php php php php returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueInstancephp(
+php	php	php php php php php php php php php$queueNamephp,
+php	php	php php php php php php php php php$metadata
+php	php	php php php php php)php;
+php	php	php}php elsephp php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
+php	php	php}
+php	php}
+php	
+php	php/php*php*
+php	php php*php Getphp queue
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp php Queuephp name
+php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueInstance
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp getQueuephp(php$queueNamephp php=php php'php'php)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
+php	php	
+php	php	php/php/php Performphp request
+php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp,php php'php?compphp=metadataphp'php,php Zendphp_Httpphp_Clientphp:php:GETphp)php;php	
+php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
+php	php	php php php php php/php/php Parsephp metadata
+php	php	php php php php php$metadataphp php=php php$thisphp-php>php_parseMetadataHeadersphp(php$responsephp-php>getHeadersphp(php)php)php;
 
-		    // Return queue
-		    $queue = new Zend_Service_WindowsAzure_Storage_QueueInstance(
-		        $queueName,
-		        $metadata
-		    );
-		    $queue->ApproximateMessageCount = intval($response->getHeader('x-ms-approximate-message-count'));
-		    return $queue;
-		} else {
-		    throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
-		}
-	}
-	
-	/**
-	 * Get queue metadata
-	 *
-	 * @param string $queueName  Queue name
-	 * @return array Key/value pairs of meta data
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function getQueueMetadata($queueName = '')
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
-			
-	    return $this->getQueue($queueName)->Metadata;
-	}
-	
-	/**
-	 * Set queue metadata
-	 *
-	 * Calling the Set Queue Metadata operation overwrites all existing metadata that is associated with the queue. It's not possible to modify an individual name/value pair.
-	 *
-	 * @param string $queueName  Queue name
-	 * @param array  $metadata       Key/value pairs of meta data
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function setQueueMetadata($queueName = '', $metadata = array())
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
-		if (count($metadata) == 0) {
-		    return;
-		}
-		
-		// Create metadata headers
-		$headers = array();
-		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
-		
-		// Perform request
-		$response = $this->_performRequest($queueName, '?comp=metadata', Zend_Http_Client::PUT, $headers);
+php	php	php php php php php/php/php Returnphp queue
+php	php	php php php php php$queuephp php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueInstancephp(
+php	php	php php php php php php php php php$queueNamephp,
+php	php	php php php php php php php php php$metadata
+php	php	php php php php php)php;
+php	php	php php php php php$queuephp-php>ApproximateMessageCountphp php=php intvalphp(php$responsephp-php>getHeaderphp(php'xphp-msphp-approximatephp-messagephp-countphp'php)php)php;
+php	php	php php php php returnphp php$queuephp;
+php	php	php}php elsephp php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
+php	php	php}
+php	php}
+php	
+php	php/php*php*
+php	php php*php Getphp queuephp metadata
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp php Queuephp name
+php	php php*php php@returnphp arrayphp Keyphp/valuephp pairsphp ofphp metaphp data
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp getQueueMetadataphp(php$queueNamephp php=php php'php'php)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
+php	php	php	
+php	php php php php returnphp php$thisphp-php>getQueuephp(php$queueNamephp)php-php>Metadataphp;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Setphp queuephp metadata
+php	php php*
+php	php php*php Callingphp thephp Setphp Queuephp Metadataphp operationphp overwritesphp allphp existingphp metadataphp thatphp isphp associatedphp withphp thephp queuephp.php Itphp'sphp notphp possiblephp tophp modifyphp anphp individualphp namephp/valuephp pairphp.
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp php Queuephp name
+php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp setQueueMetadataphp(php$queueNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
+php	php	ifphp php(countphp(php$metadataphp)php php=php=php php0php)php php{
+php	php	php php php php returnphp;
+php	php	php}
+php	php	
+php	php	php/php/php Createphp metadataphp headers
+php	php	php$headersphp php=php arrayphp(php)php;
+php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
+php	php	
+php	php	php/php/php Performphp request
+php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp,php php'php?compphp=metadataphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp)php;
 
-        if (!$response->isSuccessful()) {
-            throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
-        }
-    }
-    
-    /**
-     * Delete queue
-     *
-     * @param string $queueName Queue name
-     * @throws Zend_Service_WindowsAzure_Exception
-     */
-    public function deleteQueue($queueName = '')
-    {
-        if ($queueName === '') {
-            throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-        }
-        if (!self::isValidQueueName($queueName)) {
-            throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-        }
-            
-        // Perform request
-        $response = $this->_performRequest($queueName, '', Zend_Http_Client::DELETE);
-        if (!$response->isSuccessful()) {
-            throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
-        }
-    }
-    
-    /**
-     * List queues
-     *
-     * @param string $prefix     Optional. Filters the results to return only queues whose name begins with the specified prefix.
-     * @param int    $maxResults Optional. Specifies the maximum number of queues to return per call to Azure storage. This does NOT affect list size returned by this function. (maximum: 5000)
-     * @param string $marker     Optional string value that identifies the portion of the list to be returned with the next list operation.
-     * @param string $include    Optional. Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')
-     * @param int    $currentResultCount Current result count (internal use)
-     * @return array
-     * @throws Zend_Service_WindowsAzure_Exception
-     */
-    public function listQueues($prefix = null, $maxResults = null, $marker = null, $include = null, $currentResultCount = 0)
-    {
-        // Build query string
-        $queryString = array('comp=list');
-        if ($prefix !== null) {
-	        $queryString[] = 'prefix=' . $prefix;
-        }
-	    if ($maxResults !== null) {
-	        $queryString[] = 'maxresults=' . $maxResults;
-	    }
-	    if ($marker !== null) {
-	        $queryString[] = 'marker=' . $marker;
-	    }
-		if ($include !== null) {
-	        $queryString[] = 'include=' . $include;
-	    }
-	    $queryString = self::createQueryStringFromArray($queryString);
-	
-		// Perform request
-		$response = $this->_performRequest('', $queryString, Zend_Http_Client::GET);	
-		if ($response->isSuccessful()) {
-			$xmlQueues = $this->_parseResponse($response)->Queues->Queue;
-			$xmlMarker = (string)$this->_parseResponse($response)->NextMarker;
+php php php php php php php php ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
+php php php php php php php php php}
+php php php php php}
+php php php php 
+php php php php php/php*php*
+php php php php php php*php Deletephp queue
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$queueNamephp Queuephp name
+php php php php php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp deleteQueuephp(php$queueNamephp php=php php'php'php)
+php php php php php{
+php php php php php php php php ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php php php php php 
+php php php php php php php php php/php/php Performphp request
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp,php php'php'php,php Zendphp_Httpphp_Clientphp:php:DELETEphp)php;
+php php php php php php php php ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
+php php php php php php php php php}
+php php php php php}
+php php php php 
+php php php php php/php*php*
+php php php php php php*php Listphp queues
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$prefixphp php php php php Optionalphp.php Filtersphp thephp resultsphp tophp returnphp onlyphp queuesphp whosephp namephp beginsphp withphp thephp specifiedphp prefixphp.
+php php php php php php*php php@paramphp intphp php php php php$maxResultsphp Optionalphp.php Specifiesphp thephp maximumphp numberphp ofphp queuesphp tophp returnphp perphp callphp tophp Azurephp storagephp.php Thisphp doesphp NOTphp affectphp listphp sizephp returnedphp byphp thisphp functionphp.php php(maximumphp:php php5php0php0php0php)
+php php php php php php*php php@paramphp stringphp php$markerphp php php php php Optionalphp stringphp valuephp thatphp identifiesphp thephp portionphp ofphp thephp listphp tophp bephp returnedphp withphp thephp nextphp listphp operationphp.
+php php php php php php*php php@paramphp stringphp php$includephp php php php Optionalphp.php Includephp thisphp parameterphp tophp specifyphp thatphp thephp queuephp'sphp metadataphp bephp returnedphp asphp partphp ofphp thephp responsephp bodyphp.php php(allowedphp valuesphp:php php'php'php,php php'metadataphp'php)
+php php php php php php*php php@paramphp intphp php php php php$currentResultCountphp Currentphp resultphp countphp php(internalphp usephp)
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp listQueuesphp(php$prefixphp php=php nullphp,php php$maxResultsphp php=php nullphp,php php$markerphp php=php nullphp,php php$includephp php=php nullphp,php php$currentResultCountphp php=php php0php)
+php php php php php{
+php php php php php php php php php/php/php Buildphp queryphp string
+php php php php php php php php php$queryStringphp php=php arrayphp(php'compphp=listphp'php)php;
+php php php php php php php php ifphp php(php$prefixphp php!php=php=php nullphp)php php{
+php	php php php php php php php php php$queryStringphp[php]php php=php php'prefixphp=php'php php.php php$prefixphp;
+php php php php php php php php php}
+php	php php php php ifphp php(php$maxResultsphp php!php=php=php nullphp)php php{
+php	php php php php php php php php php$queryStringphp[php]php php=php php'maxresultsphp=php'php php.php php$maxResultsphp;
+php	php php php php php}
+php	php php php php ifphp php(php$markerphp php!php=php=php nullphp)php php{
+php	php php php php php php php php php$queryStringphp[php]php php=php php'markerphp=php'php php.php php$markerphp;
+php	php php php php php}
+php	php	ifphp php(php$includephp php!php=php=php nullphp)php php{
+php	php php php php php php php php php$queryStringphp[php]php php=php php'includephp=php'php php.php php$includephp;
+php	php php php php php}
+php	php php php php php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
+php	
+php	php	php/php/php Performphp request
+php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php'php'php,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:GETphp)php;php	
+php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
+php	php	php	php$xmlQueuesphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php-php>Queuesphp-php>Queuephp;
+php	php	php	php$xmlMarkerphp php=php php(stringphp)php$thisphp-php>php_parseResponsephp(php$responsephp)php-php>NextMarkerphp;
 
-			$queues = array();
-			if ($xmlQueues !== null) {
-				for ($i = 0; $i < count($xmlQueues); $i++) {
-					$queues[] = new Zend_Service_WindowsAzure_Storage_QueueInstance(
-						(string)$xmlQueues[$i]->Name,
-						$this->_parseMetadataElement($xmlQueues[$i])
-					);
-				}
-			}
-			$currentResultCount = $currentResultCount + count($queues);
-			if ($maxResults !== null && $currentResultCount < $maxResults) {
-    			if ($xmlMarker !== null && $xmlMarker != '') {
-    			    $queues = array_merge($queues, $this->listQueues($prefix, $maxResults, $xmlMarker, $include, $currentResultCount));
-    			}
-			}
-			if ($maxResults !== null && count($queues) > $maxResults) {
-			    $queues = array_slice($queues, 0, $maxResults);
-			}
-			
-			return $queues;
-		} else {
-			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
-		}
-	}
-	
-	/**
-	 * Put message into queue
-	 *
-	 * @param string $queueName  Queue name
-	 * @param string $message    Message
-	 * @param int    $ttl        Message Time-To-Live (in seconds). Defaults to 7 days if the parameter is omitted.
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function putMessage($queueName = '', $message = '', $ttl = null)
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
-		if (strlen($message) > self::MAX_MESSAGE_SIZE) {
-		    throw new Zend_Service_WindowsAzure_Exception('Message is too big. Message content should be < 8KB.');
-		}
-		if ($message == '') {
-		    throw new Zend_Service_WindowsAzure_Exception('Message is not specified.');
-		}
-		if ($ttl !== null && ($ttl <= 0 || $ttl > self::MAX_MESSAGE_SIZE)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Message TTL is invalid. Maximal TTL is 7 days (' . self::MAX_MESSAGE_SIZE . ' seconds) and should be greater than zero.');
-		}
-		
-	    // Build query string
-		$queryString = array();
-        if ($ttl !== null) {
-	        $queryString[] = 'messagettl=' . $ttl;
-        }
-	    $queryString = self::createQueryStringFromArray($queryString);
-	
-	    // Build body
-	    $rawData = '';
-	    $rawData .= '<QueueMessage>';
-	    $rawData .= '    <MessageText>' . base64_encode($message) . '</MessageText>';
-	    $rawData .= '</QueueMessage>';
-	
-		// Perform request
-		$response = $this->_performRequest($queueName . '/messages', $queryString, Zend_Http_Client::POST, array(), false, $rawData);
+php	php	php	php$queuesphp php=php arrayphp(php)php;
+php	php	php	ifphp php(php$xmlQueuesphp php!php=php=php nullphp)php php{
+php	php	php	php	forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$xmlQueuesphp)php;php php$iphp+php+php)php php{
+php	php	php	php	php	php$queuesphp[php]php php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueInstancephp(
+php	php	php	php	php	php	php(stringphp)php$xmlQueuesphp[php$iphp]php-php>Namephp,
+php	php	php	php	php	php	php$thisphp-php>php_parseMetadataElementphp(php$xmlQueuesphp[php$iphp]php)
+php	php	php	php	php	php)php;
+php	php	php	php	php}
+php	php	php	php}
+php	php	php	php$currentResultCountphp php=php php$currentResultCountphp php+php countphp(php$queuesphp)php;
+php	php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp php&php&php php$currentResultCountphp <php php$maxResultsphp)php php{
+php php php php php	php	php	ifphp php(php$xmlMarkerphp php!php=php=php nullphp php&php&php php$xmlMarkerphp php!php=php php'php'php)php php{
+php php php php php	php	php	php php php php php$queuesphp php=php arrayphp_mergephp(php$queuesphp,php php$thisphp-php>listQueuesphp(php$prefixphp,php php$maxResultsphp,php php$xmlMarkerphp,php php$includephp,php php$currentResultCountphp)php)php;
+php php php php php	php	php	php}
+php	php	php	php}
+php	php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp php&php&php countphp(php$queuesphp)php php>php php$maxResultsphp)php php{
+php	php	php	php php php php php$queuesphp php=php arrayphp_slicephp(php$queuesphp,php php0php,php php$maxResultsphp)php;
+php	php	php	php}
+php	php	php	
+php	php	php	returnphp php$queuesphp;
+php	php	php}php elsephp php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
+php	php	php}
+php	php}
+php	
+php	php/php*php*
+php	php php*php Putphp messagephp intophp queue
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp php Queuephp name
+php	php php*php php@paramphp stringphp php$messagephp php php php Message
+php	php php*php php@paramphp intphp php php php php$ttlphp php php php php php php php Messagephp Timephp-Tophp-Livephp php(inphp secondsphp)php.php Defaultsphp tophp php7php daysphp ifphp thephp parameterphp isphp omittedphp.
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp putMessagephp(php$queueNamephp php=php php'php'php,php php$messagephp php=php php'php'php,php php$ttlphp php=php nullphp)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
+php	php	ifphp php(strlenphp(php$messagephp)php php>php selfphp:php:MAXphp_MESSAGEphp_SIZEphp)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Messagephp isphp toophp bigphp.php Messagephp contentphp shouldphp bephp <php php8KBphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php$messagephp php=php=php php'php'php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Messagephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php$ttlphp php!php=php=php nullphp php&php&php php(php$ttlphp <php=php php0php php|php|php php$ttlphp php>php selfphp:php:MAXphp_MESSAGEphp_SIZEphp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Messagephp TTLphp isphp invalidphp.php Maximalphp TTLphp isphp php7php daysphp php(php'php php.php selfphp:php:MAXphp_MESSAGEphp_SIZEphp php.php php'php secondsphp)php andphp shouldphp bephp greaterphp thanphp zerophp.php'php)php;
+php	php	php}
+php	php	
+php	php php php php php/php/php Buildphp queryphp string
+php	php	php$queryStringphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php$ttlphp php!php=php=php nullphp)php php{
+php	php php php php php php php php php$queryStringphp[php]php php=php php'messagettlphp=php'php php.php php$ttlphp;
+php php php php php php php php php}
+php	php php php php php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
+php	
+php	php php php php php/php/php Buildphp body
+php	php php php php php$rawDataphp php=php php'php'php;
+php	php php php php php$rawDataphp php.php=php php'php<QueueMessagephp>php'php;
+php	php php php php php$rawDataphp php.php=php php'php php php php php<MessageTextphp>php'php php.php basephp6php4php_encodephp(php$messagephp)php php.php php'<php/MessageTextphp>php'php;
+php	php php php php php$rawDataphp php.php=php php'<php/QueueMessagephp>php'php;
+php	
+php	php	php/php/php Performphp request
+php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp php.php php'php/messagesphp'php,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:POSTphp,php arrayphp(php)php,php falsephp,php php$rawDataphp)php;
 
-		if (!$response->isSuccessful()) {
-			throw new Zend_Service_WindowsAzure_Exception('Error putting message into queue.');
-		}
-	}
-	
-	/**
-	 * Get queue messages
-	 *
-	 * @param string $queueName         Queue name
-	 * @param string $numOfMessages     Optional. A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.
-	 * @param int    $visibilityTimeout Optional. An integer value that specifies the message's visibility timeout in seconds. The maximum value is 2 hours. The default message visibility timeout is 30 seconds.
-	 * @param string $peek              Peek only?
-	 * @return array
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function getMessages($queueName = '', $numOfMessages = 1, $visibilityTimeout = null, $peek = false)
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
-		if ($numOfMessages < 1 || $numOfMessages > 32 || intval($numOfMessages) != $numOfMessages) {
-		    throw new Zend_Service_WindowsAzure_Exception('Invalid number of messages to retrieve.');
-		}
-		if ($visibilityTimeout !== null && ($visibilityTimeout <= 0 || $visibilityTimeout > 7200)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Visibility timeout is invalid. Maximum value is 2 hours (7200 seconds) and should be greater than zero.');
-		}
-		
-	    // Build query string
-		$queryString = array();
-    	if ($peek) {
-    	    $queryString[] = 'peekonly=true';
-    	}
-    	if ($numOfMessages > 1) {
-	        $queryString[] = 'numofmessages=' . $numOfMessages;
-    	}
-    	if (!$peek && $visibilityTimeout !== null) {
-	        $queryString[] = 'visibilitytimeout=' . $visibilityTimeout;
-    	}
-	    $queryString = self::createQueryStringFromArray($queryString);
-	
-		// Perform request
-		$response = $this->_performRequest($queueName . '/messages', $queryString, Zend_Http_Client::GET);	
-		if ($response->isSuccessful()) {
-		    // Parse results
-			$result = $this->_parseResponse($response);
-		    if (!$result) {
-		        return array();
-		    }
+php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Errorphp puttingphp messagephp intophp queuephp.php'php)php;
+php	php	php}
+php	php}
+php	
+php	php/php*php*
+php	php php*php Getphp queuephp messages
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp php php php php php php php php Queuephp name
+php	php php*php php@paramphp stringphp php$numOfMessagesphp php php php php Optionalphp.php Aphp nonzerophp integerphp valuephp thatphp specifiesphp thephp numberphp ofphp messagesphp tophp retrievephp fromphp thephp queuephp,php upphp tophp aphp maximumphp ofphp php3php2php.php Byphp defaultphp,php aphp singlephp messagephp isphp retrievedphp fromphp thephp queuephp withphp thisphp operationphp.
+php	php php*php php@paramphp intphp php php php php$visibilityTimeoutphp Optionalphp.php Anphp integerphp valuephp thatphp specifiesphp thephp messagephp'sphp visibilityphp timeoutphp inphp secondsphp.php Thephp maximumphp valuephp isphp php2php hoursphp.php Thephp defaultphp messagephp visibilityphp timeoutphp isphp php3php0php secondsphp.
+php	php php*php php@paramphp stringphp php$peekphp php php php php php php php php php php php php php Peekphp onlyphp?
+php	php php*php php@returnphp array
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp getMessagesphp(php$queueNamephp php=php php'php'php,php php$numOfMessagesphp php=php php1php,php php$visibilityTimeoutphp php=php nullphp,php php$peekphp php=php falsephp)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php$numOfMessagesphp <php php1php php|php|php php$numOfMessagesphp php>php php3php2php php|php|php intvalphp(php$numOfMessagesphp)php php!php=php php$numOfMessagesphp)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Invalidphp numberphp ofphp messagesphp tophp retrievephp.php'php)php;
+php	php	php}
+php	php	ifphp php(php$visibilityTimeoutphp php!php=php=php nullphp php&php&php php(php$visibilityTimeoutphp <php=php php0php php|php|php php$visibilityTimeoutphp php>php php7php2php0php0php)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Visibilityphp timeoutphp isphp invalidphp.php Maximumphp valuephp isphp php2php hoursphp php(php7php2php0php0php secondsphp)php andphp shouldphp bephp greaterphp thanphp zerophp.php'php)php;
+php	php	php}
+php	php	
+php	php php php php php/php/php Buildphp queryphp string
+php	php	php$queryStringphp php=php arrayphp(php)php;
+php php php php php	ifphp php(php$peekphp)php php{
+php php php php php	php php php php php$queryStringphp[php]php php=php php'peekonlyphp=truephp'php;
+php php php php php	php}
+php php php php php	ifphp php(php$numOfMessagesphp php>php php1php)php php{
+php	php php php php php php php php php$queryStringphp[php]php php=php php'numofmessagesphp=php'php php.php php$numOfMessagesphp;
+php php php php php	php}
+php php php php php	ifphp php(php!php$peekphp php&php&php php$visibilityTimeoutphp php!php=php=php nullphp)php php{
+php	php php php php php php php php php$queryStringphp[php]php php=php php'visibilitytimeoutphp=php'php php.php php$visibilityTimeoutphp;
+php php php php php	php}
+php	php php php php php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
+php	
+php	php	php/php/php Performphp request
+php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp php.php php'php/messagesphp'php,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:GETphp)php;php	
+php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
+php	php	php php php php php/php/php Parsephp results
+php	php	php	php$resultphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php;
+php	php	php php php php ifphp php(php!php$resultphp)php php{
+php	php	php php php php php php php php returnphp arrayphp(php)php;
+php	php	php php php php php}
 
-            $xmlMessages = null;
-            if (count($result->QueueMessage) > 1) {
-                $xmlMessages = $result->QueueMessage;
-            } else {
-                $xmlMessages = array($result->QueueMessage);
-            }
+php php php php php php php php php php php php php$xmlMessagesphp php=php nullphp;
+php php php php php php php php php php php php ifphp php(countphp(php$resultphp-php>QueueMessagephp)php php>php php1php)php php{
+php php php php php php php php php php php php php php php php php$xmlMessagesphp php=php php$resultphp-php>QueueMessagephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$xmlMessagesphp php=php arrayphp(php$resultphp-php>QueueMessagephp)php;
+php php php php php php php php php php php php php}
 
-			$messages = array();
-			for ($i = 0; $i < count($xmlMessages); $i++) {
-				$messages[] = new Zend_Service_WindowsAzure_Storage_QueueMessage(
-					(string)$xmlMessages[$i]->MessageId,
-					(string)$xmlMessages[$i]->InsertionTime,
-					(string)$xmlMessages[$i]->ExpirationTime,
-					($peek ? '' : (string)$xmlMessages[$i]->PopReceipt),
-					($peek ? '' : (string)$xmlMessages[$i]->TimeNextVisible),
-					(string)$xmlMessages[$i]->DequeueCount,
-					base64_decode((string)$xmlMessages[$i]->MessageText)
-			    );
-			}
-			
-			return $messages;
-		} else {
-			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
-		}
-	}
-	
-	/**
-	 * Peek queue messages
-	 *
-	 * @param string $queueName         Queue name
-	 * @param string $numOfMessages     Optional. A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.
-	 * @return array
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function peekMessages($queueName = '', $numOfMessages = 1)
-	{
-	    return $this->getMessages($queueName, $numOfMessages, null, true);
-	}
-	
-	/**
-	 * Clear queue messages
-	 *
-	 * @param string $queueName         Queue name
-	 * @throws Zend_Service_WindowsAzure_Exception
-	 */
-	public function clearMessages($queueName = '')
-	{
-		if ($queueName === '') {
-			throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-		}
-		if (!self::isValidQueueName($queueName)) {
-		    throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-		}
+php	php	php	php$messagesphp php=php arrayphp(php)php;
+php	php	php	forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$xmlMessagesphp)php;php php$iphp+php+php)php php{
+php	php	php	php	php$messagesphp[php]php php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueMessagephp(
+php	php	php	php	php	php(stringphp)php$xmlMessagesphp[php$iphp]php-php>MessageIdphp,
+php	php	php	php	php	php(stringphp)php$xmlMessagesphp[php$iphp]php-php>InsertionTimephp,
+php	php	php	php	php	php(stringphp)php$xmlMessagesphp[php$iphp]php-php>ExpirationTimephp,
+php	php	php	php	php	php(php$peekphp php?php php'php'php php:php php(stringphp)php$xmlMessagesphp[php$iphp]php-php>PopReceiptphp)php,
+php	php	php	php	php	php(php$peekphp php?php php'php'php php:php php(stringphp)php$xmlMessagesphp[php$iphp]php-php>TimeNextVisiblephp)php,
+php	php	php	php	php	php(stringphp)php$xmlMessagesphp[php$iphp]php-php>DequeueCountphp,
+php	php	php	php	php	basephp6php4php_decodephp(php(stringphp)php$xmlMessagesphp[php$iphp]php-php>MessageTextphp)
+php	php	php	php php php php php)php;
+php	php	php	php}
+php	php	php	
+php	php	php	returnphp php$messagesphp;
+php	php	php}php elsephp php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
+php	php	php}
+php	php}
+php	
+php	php/php*php*
+php	php php*php Peekphp queuephp messages
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp php php php php php php php php Queuephp name
+php	php php*php php@paramphp stringphp php$numOfMessagesphp php php php php Optionalphp.php Aphp nonzerophp integerphp valuephp thatphp specifiesphp thephp numberphp ofphp messagesphp tophp retrievephp fromphp thephp queuephp,php upphp tophp aphp maximumphp ofphp php3php2php.php Byphp defaultphp,php aphp singlephp messagephp isphp retrievedphp fromphp thephp queuephp withphp thisphp operationphp.
+php	php php*php php@returnphp array
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp peekMessagesphp(php$queueNamephp php=php php'php'php,php php$numOfMessagesphp php=php php1php)
+php	php{
+php	php php php php returnphp php$thisphp-php>getMessagesphp(php$queueNamephp,php php$numOfMessagesphp,php nullphp,php truephp)php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Clearphp queuephp messages
+php	php php*
+php	php php*php php@paramphp stringphp php$queueNamephp php php php php php php php php Queuephp name
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php	php php*php/
+php	publicphp functionphp clearMessagesphp(php$queueNamephp php=php php'php'php)
+php	php{
+php	php	ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php	php	php}
+php	php	ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php	php	php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php	php	php}
 
-        // Perform request
-        $response = $this->_performRequest($queueName . '/messages', '', Zend_Http_Client::DELETE);    
-        if (!$response->isSuccessful()) {
-            throw new Zend_Service_WindowsAzure_Exception('Error clearing messages from queue.');
-        }
-    }
-    
-    /**
-     * Delete queue message
-     *
-     * @param string $queueName                             Queue name
-     * @param Zend_Service_WindowsAzure_Storage_QueueMessage $message Message to delete from queue. A message retrieved using "peekMessages" can NOT be deleted!
-     * @throws Zend_Service_WindowsAzure_Exception
-     */
-    public function deleteMessage($queueName = '', Zend_Service_WindowsAzure_Storage_QueueMessage $message)
-    {
-        if ($queueName === '') {
-            throw new Zend_Service_WindowsAzure_Exception('Queue name is not specified.');
-        }
-        if (!self::isValidQueueName($queueName)) {
-            throw new Zend_Service_WindowsAzure_Exception('Queue name does not adhere to queue naming conventions. See http://msdn.microsoft.com/en-us/library/dd179349.aspx for more information.');
-        }
-        if ($message->PopReceipt == '') {
-            throw new Zend_Service_WindowsAzure_Exception('A message retrieved using "peekMessages" can NOT be deleted! Use "getMessages" instead.');
-        }
+php php php php php php php php php/php/php Performphp request
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp php.php php'php/messagesphp'php,php php'php'php,php Zendphp_Httpphp_Clientphp:php:DELETEphp)php;php php php php 
+php php php php php php php php ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Errorphp clearingphp messagesphp fromphp queuephp.php'php)php;
+php php php php php php php php php}
+php php php php php}
+php php php php 
+php php php php php/php*php*
+php php php php php php*php Deletephp queuephp message
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$queueNamephp php php php php php php php php php php php php php php php php php php php php php php php php php php php php Queuephp name
+php php php php php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueMessagephp php$messagephp Messagephp tophp deletephp fromphp queuephp.php Aphp messagephp retrievedphp usingphp php"peekMessagesphp"php canphp NOTphp bephp deletedphp!
+php php php php php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp deleteMessagephp(php$queueNamephp php=php php'php'php,php Zendphp_Servicephp_WindowsAzurephp_Storagephp_QueueMessagephp php$messagephp)
+php php php php php{
+php php php php php php php php ifphp php(php$queueNamephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp isphp notphp specifiedphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!selfphp:php:isValidQueueNamephp(php$queueNamephp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Queuephp namephp doesphp notphp adherephp tophp queuephp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php4php9php.aspxphp forphp morephp informationphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$messagephp-php>PopReceiptphp php=php=php php'php'php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Aphp messagephp retrievedphp usingphp php"peekMessagesphp"php canphp NOTphp bephp deletedphp!php Usephp php"getMessagesphp"php insteadphp.php'php)php;
+php php php php php php php php php}
 
-        // Perform request
-        $response = $this->_performRequest($queueName . '/messages/' . $message->MessageId, '?popreceipt=' . $message->PopReceipt, Zend_Http_Client::DELETE);    
-        if (!$response->isSuccessful()) {
-            throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
-        }
-    }
-    
-    /**
-     * Is valid queue name?
-     *
-     * @param string $queueName Queue name
-     * @return boolean
-     */
-    public static function isValidQueueName($queueName = '')
-    {
-        if (preg_match("/^[a-z0-9][a-z0-9-]*$/", $queueName) === 0) {
-            return false;
-        }
+php php php php php php php php php/php/php Performphp request
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_performRequestphp(php$queueNamephp php.php php'php/messagesphp/php'php php.php php$messagephp-php>MessageIdphp,php php'php?popreceiptphp=php'php php.php php$messagephp-php>PopReceiptphp,php Zendphp_Httpphp_Clientphp:php:DELETEphp)php;php php php php 
+php php php php php php php php ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
+php php php php php php php php php}
+php php php php php}
+php php php php 
+php php php php php/php*php*
+php php php php php php*php Isphp validphp queuephp namephp?
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$queueNamephp Queuephp name
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp staticphp functionphp isValidQueueNamephp(php$queueNamephp php=php php'php'php)
+php php php php php{
+php php php php php php php php ifphp php(pregphp_matchphp(php"php/php^php[aphp-zphp0php-php9php]php[aphp-zphp0php-php9php-php]php*php$php/php"php,php php$queueNamephp)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if (strpos($queueName, '--') !== false) {
-            return false;
-        }
+php php php php php php php php ifphp php(strposphp(php$queueNamephp,php php'php-php-php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if (strtolower($queueName) != $queueName) {
-            return false;
-        }
+php php php php php php php php ifphp php(strtolowerphp(php$queueNamephp)php php!php=php php$queueNamephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if (strlen($queueName) < 3 || strlen($queueName) > 63) {
-            return false;
-        }
+php php php php php php php php ifphp php(strlenphp(php$queueNamephp)php <php php3php php|php|php strlenphp(php$queueNamephp)php php>php php6php3php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if (substr($queueName, -1) == '-') {
-            return false;
-        }
+php php php php php php php php ifphp php(substrphp(php$queueNamephp,php php-php1php)php php=php=php php'php-php'php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-	/**
-	 * Get error message from Zend_Http_Response
-	 *
-	 * @param Zend_Http_Response $response Repsonse
-	 * @param string $alternativeError Alternative error message
-	 * @return string
-	 */
-	protected function _getErrorMessage(Zend_Http_Response $response, $alternativeError = 'Unknown error.')
-	{
-		$response = $this->_parseResponse($response);
-		if ($response && $response->Message) {
-		    return (string)$response->Message;
-		} else {
-		    return $alternativeError;
-		}
-	}
-}
+php	php/php*php*
+php	php php*php Getphp errorphp messagephp fromphp Zendphp_Httpphp_Response
+php	php php*
+php	php php*php php@paramphp Zendphp_Httpphp_Responsephp php$responsephp Repsonse
+php	php php*php php@paramphp stringphp php$alternativeErrorphp Alternativephp errorphp message
+php	php php*php php@returnphp string
+php	php php*php/
+php	protectedphp functionphp php_getErrorMessagephp(Zendphp_Httpphp_Responsephp php$responsephp,php php$alternativeErrorphp php=php php'Unknownphp errorphp.php'php)
+php	php{
+php	php	php$responsephp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php;
+php	php	ifphp php(php$responsephp php&php&php php$responsephp-php>Messagephp)php php{
+php	php	php php php php returnphp php(stringphp)php$responsephp-php>Messagephp;
+php	php	php}php elsephp php{
+php	php	php php php php returnphp php$alternativeErrorphp;
+php	php	php}
+php	php}
+php}

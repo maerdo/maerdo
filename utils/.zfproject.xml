@@ -1,114 +1,114 @@
-<?xml version="1.0"?>
-<projectProfile type="default" version="1.10">
-  <projectDirectory>
-    <projectProfileFile filesystemName=".zfproject.xml"/>
-    <applicationDirectory classNamePrefix="Application_">
-      <apisDirectory enabled="false"/>
-      <configsDirectory>
-        <applicationConfigFile type="ini"/>
-      </configsDirectory>
-      <controllersDirectory>
-        <controllerFile controllerName="Index">
-          <actionMethod actionName="index"/>
-        </controllerFile>
-        <controllerFile controllerName="Error"/>
-      </controllersDirectory>
-      <formsDirectory enabled="false"/>
-      <layoutsDirectory enabled="false"/>
-      <modelsDirectory/>
-      <modulesDirectory enabled="false">
-        <moduleDirectory moduleName="front">
-          <apisDirectory enabled="false"/>
-          <configsDirectory enabled="false"/>
-          <controllersDirectory>
-            <controllerFile controllerName="Index">
-              <actionMethod actionName="index"/>
-            </controllerFile>
-          </controllersDirectory>
-          <formsDirectory enabled="false"/>
-          <layoutsDirectory enabled="false"/>
-          <modelsDirectory/>
-          <viewsDirectory>
-            <viewScriptsDirectory>
-              <viewControllerScriptsDirectory forControllerName="Index">
-                <viewScriptFile forActionName="index"/>
-              </viewControllerScriptsDirectory>
-              <viewControllerScriptsDirectory forControllerName="Index">
-                <viewScriptFile forActionName="permission"/>
-              </viewControllerScriptsDirectory>
-              <viewControllerScriptsDirectory forControllerName="Index">
-                <viewScriptFile forActionName="login"/>
-              </viewControllerScriptsDirectory>
-              <viewControllerScriptsDirectory forControllerName="Index">
-                <viewScriptFile forActionName="logout"/>
-              </viewControllerScriptsDirectory>
-            </viewScriptsDirectory>
-            <viewHelpersDirectory/>
-            <viewFiltersDirectory/>
-          </viewsDirectory>
-        </moduleDirectory>
-        <moduleDirectory moduleName="maerdo">
-          <apisDirectory enabled="false"/>
-          <configsDirectory enabled="false"/>
-          <controllersDirectory/>
-          <formsDirectory enabled="false"/>
-          <layoutsDirectory enabled="false"/>
-          <modelsDirectory/>
-          <viewsDirectory>
-            <viewScriptsDirectory/>
-            <viewHelpersDirectory/>
-            <viewFiltersDirectory/>
-          </viewsDirectory>
-        </moduleDirectory>
-      </modulesDirectory>
-      <viewsDirectory>
-        <viewScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Index">
-            <viewScriptFile forActionName="index"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Error">
-            <viewScriptFile forActionName="error"/>
-          </viewControllerScriptsDirectory>
-        </viewScriptsDirectory>
-        <viewHelpersDirectory/>
-        <viewFiltersDirectory enabled="false"/>
-      </viewsDirectory>
-      <bootstrapFile filesystemName="Bootstrap.php"/>
-    </applicationDirectory>
-    <dataDirectory enabled="false">
-      <cacheDirectory enabled="false"/>
-      <searchIndexesDirectory enabled="false"/>
-      <localesDirectory enabled="false"/>
-      <logsDirectory enabled="false"/>
-      <sessionsDirectory enabled="false"/>
-      <uploadsDirectory enabled="false"/>
-    </dataDirectory>
-    <docsDirectory>
-      <file filesystemName="README.txt"/>
-    </docsDirectory>
-    <libraryDirectory>
-      <zfStandardLibraryDirectory enabled="false"/>
-    </libraryDirectory>
-    <publicDirectory>
-      <publicStylesheetsDirectory enabled="false"/>
-      <publicScriptsDirectory enabled="false"/>
-      <publicImagesDirectory enabled="false"/>
-      <publicIndexFile filesystemName="index.php"/>
-      <htaccessFile filesystemName=".htaccess"/>
-    </publicDirectory>
-    <projectProvidersDirectory enabled="false"/>
-    <temporaryDirectory enabled="false"/>
-    <testsDirectory>
-      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
-      <testApplicationDirectory>
-        <testApplicationBootstrapFile filesystemName="bootstrap.php"/>
-        <testApplicationControllerDirectory>
-          <testApplicationControllerFile filesystemName="IndexControllerTest.php"/>
-        </testApplicationControllerDirectory>
-      </testApplicationDirectory>
-      <testLibraryDirectory>
-        <testLibraryBootstrapFile filesystemName="bootstrap.php"/>
-      </testLibraryDirectory>
-    </testsDirectory>
-  </projectDirectory>
-</projectProfile>
+<php?xmlphp versionphp=php"php1php.php0php"php?php>
+php<projectProfilephp typephp=php"defaultphp"php versionphp=php"php1php.php1php0php"php>
+php php php<projectDirectoryphp>
+php php php php php<projectProfileFilephp filesystemNamephp=php"php.zfprojectphp.xmlphp"php/php>
+php php php php php<applicationDirectoryphp classNamePrefixphp=php"Applicationphp_php"php>
+php php php php php php php<apisDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<configsDirectoryphp>
+php php php php php php php php php<applicationConfigFilephp typephp=php"iniphp"php/php>
+php php php php php php <php/configsDirectoryphp>
+php php php php php php php<controllersDirectoryphp>
+php php php php php php php php php<controllerFilephp controllerNamephp=php"Indexphp"php>
+php php php php php php php php php php php<actionMethodphp actionNamephp=php"indexphp"php/php>
+php php php php php php php php <php/controllerFilephp>
+php php php php php php php php php<controllerFilephp controllerNamephp=php"Errorphp"php/php>
+php php php php php php <php/controllersDirectoryphp>
+php php php php php php php<formsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<layoutsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<modelsDirectoryphp/php>
+php php php php php php php<modulesDirectoryphp enabledphp=php"falsephp"php>
+php php php php php php php php php<moduleDirectoryphp moduleNamephp=php"frontphp"php>
+php php php php php php php php php php php<apisDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<configsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<controllersDirectoryphp>
+php php php php php php php php php php php php php<controllerFilephp controllerNamephp=php"Indexphp"php>
+php php php php php php php php php php php php php php php<actionMethodphp actionNamephp=php"indexphp"php/php>
+php php php php php php php php php php php php <php/controllerFilephp>
+php php php php php php php php php php <php/controllersDirectoryphp>
+php php php php php php php php php php php<formsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<layoutsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<modelsDirectoryphp/php>
+php php php php php php php php php php php<viewsDirectoryphp>
+php php php php php php php php php php php php php<viewScriptsDirectoryphp>
+php php php php php php php php php php php php php php php<viewControllerScriptsDirectoryphp forControllerNamephp=php"Indexphp"php>
+php php php php php php php php php php php php php php php php php<viewScriptFilephp forActionNamephp=php"indexphp"php/php>
+php php php php php php php php php php php php php php <php/viewControllerScriptsDirectoryphp>
+php php php php php php php php php php php php php php php<viewControllerScriptsDirectoryphp forControllerNamephp=php"Indexphp"php>
+php php php php php php php php php php php php php php php php php<viewScriptFilephp forActionNamephp=php"permissionphp"php/php>
+php php php php php php php php php php php php php php <php/viewControllerScriptsDirectoryphp>
+php php php php php php php php php php php php php php php<viewControllerScriptsDirectoryphp forControllerNamephp=php"Indexphp"php>
+php php php php php php php php php php php php php php php php php<viewScriptFilephp forActionNamephp=php"loginphp"php/php>
+php php php php php php php php php php php php php php <php/viewControllerScriptsDirectoryphp>
+php php php php php php php php php php php php php php php<viewControllerScriptsDirectoryphp forControllerNamephp=php"Indexphp"php>
+php php php php php php php php php php php php php php php php php<viewScriptFilephp forActionNamephp=php"logoutphp"php/php>
+php php php php php php php php php php php php php php <php/viewControllerScriptsDirectoryphp>
+php php php php php php php php php php php php <php/viewScriptsDirectoryphp>
+php php php php php php php php php php php php php<viewHelpersDirectoryphp/php>
+php php php php php php php php php php php php php<viewFiltersDirectoryphp/php>
+php php php php php php php php php php <php/viewsDirectoryphp>
+php php php php php php php php <php/moduleDirectoryphp>
+php php php php php php php php php<moduleDirectoryphp moduleNamephp=php"maerdophp"php>
+php php php php php php php php php php php<apisDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<configsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<controllersDirectoryphp/php>
+php php php php php php php php php php php<formsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<layoutsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php php php php php<modelsDirectoryphp/php>
+php php php php php php php php php php php<viewsDirectoryphp>
+php php php php php php php php php php php php php<viewScriptsDirectoryphp/php>
+php php php php php php php php php php php php php<viewHelpersDirectoryphp/php>
+php php php php php php php php php php php php php<viewFiltersDirectoryphp/php>
+php php php php php php php php php php <php/viewsDirectoryphp>
+php php php php php php php php <php/moduleDirectoryphp>
+php php php php php php <php/modulesDirectoryphp>
+php php php php php php php<viewsDirectoryphp>
+php php php php php php php php php<viewScriptsDirectoryphp>
+php php php php php php php php php php php<viewControllerScriptsDirectoryphp forControllerNamephp=php"Indexphp"php>
+php php php php php php php php php php php php php<viewScriptFilephp forActionNamephp=php"indexphp"php/php>
+php php php php php php php php php php <php/viewControllerScriptsDirectoryphp>
+php php php php php php php php php php php<viewControllerScriptsDirectoryphp forControllerNamephp=php"Errorphp"php>
+php php php php php php php php php php php php php<viewScriptFilephp forActionNamephp=php"errorphp"php/php>
+php php php php php php php php php php <php/viewControllerScriptsDirectoryphp>
+php php php php php php php php <php/viewScriptsDirectoryphp>
+php php php php php php php php php<viewHelpersDirectoryphp/php>
+php php php php php php php php php<viewFiltersDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php <php/viewsDirectoryphp>
+php php php php php php php<bootstrapFilephp filesystemNamephp=php"Bootstrapphp.phpphp"php/php>
+php php php php <php/applicationDirectoryphp>
+php php php php php<dataDirectoryphp enabledphp=php"falsephp"php>
+php php php php php php php<cacheDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<searchIndexesDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<localesDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<logsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<sessionsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<uploadsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php <php/dataDirectoryphp>
+php php php php php<docsDirectoryphp>
+php php php php php php php<filephp filesystemNamephp=php"READMEphp.txtphp"php/php>
+php php php php <php/docsDirectoryphp>
+php php php php php<libraryDirectoryphp>
+php php php php php php php<zfStandardLibraryDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php <php/libraryDirectoryphp>
+php php php php php<publicDirectoryphp>
+php php php php php php php<publicStylesheetsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<publicScriptsDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<publicImagesDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php php php<publicIndexFilephp filesystemNamephp=php"indexphp.phpphp"php/php>
+php php php php php php php<htaccessFilephp filesystemNamephp=php"php.htaccessphp"php/php>
+php php php php <php/publicDirectoryphp>
+php php php php php<projectProvidersDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php<temporaryDirectoryphp enabledphp=php"falsephp"php/php>
+php php php php php<testsDirectoryphp>
+php php php php php php php<testPHPUnitConfigFilephp filesystemNamephp=php"phpunitphp.xmlphp"php/php>
+php php php php php php php<testApplicationDirectoryphp>
+php php php php php php php php php<testApplicationBootstrapFilephp filesystemNamephp=php"bootstrapphp.phpphp"php/php>
+php php php php php php php php php<testApplicationControllerDirectoryphp>
+php php php php php php php php php php php<testApplicationControllerFilephp filesystemNamephp=php"IndexControllerTestphp.phpphp"php/php>
+php php php php php php php php <php/testApplicationControllerDirectoryphp>
+php php php php php php <php/testApplicationDirectoryphp>
+php php php php php php php<testLibraryDirectoryphp>
+php php php php php php php php php<testLibraryBootstrapFilephp filesystemNamephp=php"bootstrapphp.phpphp"php/php>
+php php php php php php <php/testLibraryDirectoryphp>
+php php php php <php/testsDirectoryphp>
+php php <php/projectDirectoryphp>
+<php/projectProfilephp>

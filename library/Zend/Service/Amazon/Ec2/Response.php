@@ -1,163 +1,163 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service_Amazon
- * @subpackage Ec2
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Response.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
+php php*php php@subpackagephp Ecphp2
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Responsephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Http_Response
- */
-require_once 'Zend/Http/Response.php';
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Response
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Responsephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Service_Amazon
- * @subpackage Ec2
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Amazon_Ec2_Response {
-    /**
-     * XML namespace used for EC2 responses.
-     */
-    protected $_xmlNamespace = 'http://ec2.amazonaws.com/doc/2009-04-04/';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
+php php*php php@subpackagephp Ecphp2
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Amazonphp_Ecphp2php_Responsephp php{
+php php php php php/php*php*
+php php php php php php*php XMLphp namespacephp usedphp forphp ECphp2php responsesphp.
+php php php php php php*php/
+php php php php protectedphp php$php_xmlNamespacephp php=php php'httpphp:php/php/ecphp2php.amazonawsphp.comphp/docphp/php2php0php0php9php-php0php4php-php0php4php/php'php;
 
-    /**
-     * The original HTTP response
-     *
-     * This contains the response body and headers.
-     *
-     * @var Zend_Http_Response
-     */
-    private $_httpResponse = null;
+php php php php php/php*php*
+php php php php php php*php Thephp originalphp HTTPphp response
+php php php php php php*
+php php php php php php*php Thisphp containsphp thephp responsephp bodyphp andphp headersphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Httpphp_Response
+php php php php php php*php/
+php php php php privatephp php$php_httpResponsephp php=php nullphp;
 
-    /**
-     * The response document object
-     *
-     * @var DOMDocument
-     */
-    private $_document = null;
+php php php php php/php*php*
+php php php php php php*php Thephp responsephp documentphp object
+php php php php php php*
+php php php php php php*php php@varphp DOMDocument
+php php php php php php*php/
+php php php php privatephp php$php_documentphp php=php nullphp;
 
-    /**
-     * The response XPath
-     *
-     * @var DOMXPath
-     */
-    private $_xpath = null;
+php php php php php/php*php*
+php php php php php php*php Thephp responsephp XPath
+php php php php php php*
+php php php php php php*php php@varphp DOMXPath
+php php php php php php*php/
+php php php php privatephp php$php_xpathphp php=php nullphp;
 
-    /**
-     * Last error code
-     *
-     * @var integer
-     */
-    private $_errorCode = 0;
+php php php php php/php*php*
+php php php php php php*php Lastphp errorphp code
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_errorCodephp php=php php0php;
 
-    /**
-     * Last error message
-     *
-     * @var string
-     */
-    private $_errorMessage = '';
+php php php php php/php*php*
+php php php php php php*php Lastphp errorphp message
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_errorMessagephp php=php php'php'php;
 
-    /**
-     * Creates a new high-level EC2 response object
-     *
-     * @param Zend_Http_Response $httpResponse the HTTP response.
-     */
-    public function __construct(Zend_Http_Response $httpResponse)
-    {
-        $this->_httpResponse = $httpResponse;
-    }
+php php php php php/php*php*
+php php php php php php*php Createsphp aphp newphp highphp-levelphp ECphp2php responsephp object
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Httpphp_Responsephp php$httpResponsephp thephp HTTPphp responsephp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(Zendphp_Httpphp_Responsephp php$httpResponsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_httpResponsephp php=php php$httpResponsephp;
+php php php php php}
 
-    /**
-     * Gets the XPath object for this response
-     *
-     * @return DOMXPath the XPath object for response.
-     */
-    public function getXPath()
-    {
-        if ($this->_xpath === null) {
-            $document = $this->getDocument();
-            if ($document === false) {
-                $this->_xpath = false;
-            } else {
-                $this->_xpath = new DOMXPath($document);
-                $this->_xpath->registerNamespace('ec2',
-                    $this->getNamespace());
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp XPathphp objectphp forphp thisphp response
+php php php php php php*
+php php php php php php*php php@returnphp DOMXPathphp thephp XPathphp objectphp forphp responsephp.
+php php php php php php*php/
+php php php php publicphp functionphp getXPathphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_xpathphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$documentphp php=php php$thisphp-php>getDocumentphp(php)php;
+php php php php php php php php php php php php ifphp php(php$documentphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_xpathphp php=php falsephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_xpathphp php=php newphp DOMXPathphp(php$documentphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_xpathphp-php>registerNamespacephp(php'ecphp2php'php,
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getNamespacephp(php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_xpath;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_xpathphp;
+php php php php php}
 
-    /**
-     * Gets the document object for this response
-     *
-     * @return DOMDocument the DOM Document for this response.
-     */
-    public function getDocument()
-    {
-        try {
-            $body = $this->_httpResponse->getBody();
-        } catch (Zend_Http_Exception $e) {
-            $body = false;
-        }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp documentphp objectphp forphp thisphp response
+php php php php php php*
+php php php php php php*php php@returnphp DOMDocumentphp thephp DOMphp Documentphp forphp thisphp responsephp.
+php php php php php php*php/
+php php php php publicphp functionphp getDocumentphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$bodyphp php=php php$thisphp-php>php_httpResponsephp-php>getBodyphp(php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Httpphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php$bodyphp php=php falsephp;
+php php php php php php php php php}
 
-        if ($this->_document === null) {
-            if ($body !== false) {
-                // turn off libxml error handling
-                $errors = libxml_use_internal_errors();
+php php php php php php php php ifphp php(php$thisphp-php>php_documentphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php$bodyphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php/php/php turnphp offphp libxmlphp errorphp handling
+php php php php php php php php php php php php php php php php php$errorsphp php=php libxmlphp_usephp_internalphp_errorsphp(php)php;
 
-                $this->_document = new DOMDocument();
-                if (!$this->_document->loadXML($body)) {
-                    $this->_document = false;
-                }
+php php php php php php php php php php php php php php php php php$thisphp-php>php_documentphp php=php newphp DOMDocumentphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_documentphp-php>loadXMLphp(php$bodyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_documentphp php=php falsephp;
+php php php php php php php php php php php php php php php php php}
 
-                // reset libxml error handling
-                libxml_clear_errors();
-                libxml_use_internal_errors($errors);
-            } else {
-                $this->_document = false;
-            }
-        }
+php php php php php php php php php php php php php php php php php/php/php resetphp libxmlphp errorphp handling
+php php php php php php php php php php php php php php php php libxmlphp_clearphp_errorsphp(php)php;
+php php php php php php php php php php php php php php php php libxmlphp_usephp_internalphp_errorsphp(php$errorsphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_documentphp php=php falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_document;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_documentphp;
+php php php php php}
 
-    /**
-     * Return the current set XML Namespace.
-     *
-     * @return string
-     */
-    public function getNamespace()
-    {
-        return $this->_xmlNamespace;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp currentphp setphp XMLphp Namespacephp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamespacephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_xmlNamespacephp;
+php php php php php}
 
-    /**
-     * Set a new XML Namespace
-     *
-     * @param string $namespace
-     */
-    public function setNamespace($namespace)
-    {
-        $this->_xmlNamespace = $namespace;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp newphp XMLphp Namespace
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namespace
+php php php php php php*php/
+php php php php publicphp functionphp setNamespacephp(php$namespacephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_xmlNamespacephp php=php php$namespacephp;
+php php php php php}
 
-}
+php}

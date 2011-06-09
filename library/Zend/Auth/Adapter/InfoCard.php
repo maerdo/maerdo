@@ -1,261 +1,261 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Auth
- * @subpackage Zend_Auth_Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: InfoCard.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Auth
+php php*php php@subpackagephp Zendphp_Authphp_Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php InfoCardphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Auth_Adapter_Interface
- */
-require_once 'Zend/Auth/Adapter/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Authphp_Adapterphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Authphp/Adapterphp/Interfacephp.phpphp'php;
 
-/**
- * @see Zend_Auth_Result
- */
-require_once 'Zend/Auth/Result.php';
+php/php*php*
+php php*php php@seephp Zendphp_Authphp_Result
+php php*php/
+requirephp_oncephp php'Zendphp/Authphp/Resultphp.phpphp'php;
 
-/**
- * @see Zend_InfoCard
- */
-require_once 'Zend/InfoCard.php';
+php/php*php*
+php php*php php@seephp Zendphp_InfoCard
+php php*php/
+requirephp_oncephp php'Zendphp/InfoCardphp.phpphp'php;
 
-/**
- * A Zend_Auth Authentication Adapter allowing the use of Information Cards as an
- * authentication mechanism
- *
- * @category   Zend
- * @package    Zend_Auth
- * @subpackage Zend_Auth_Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Auth_Adapter_InfoCard implements Zend_Auth_Adapter_Interface
-{
-    /**
-     * The XML Token being authenticated
-     *
-     * @var string
-     */
-    protected $_xmlToken;
+php/php*php*
+php php*php Aphp Zendphp_Authphp Authenticationphp Adapterphp allowingphp thephp usephp ofphp Informationphp Cardsphp asphp an
+php php*php authenticationphp mechanism
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Auth
+php php*php php@subpackagephp Zendphp_Authphp_Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Authphp_Adapterphp_InfoCardphp implementsphp Zendphp_Authphp_Adapterphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Thephp XMLphp Tokenphp beingphp authenticated
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_xmlTokenphp;
 
-    /**
-     * The instance of Zend_InfoCard
-     *
-     * @var Zend_InfoCard
-     */
-    protected $_infoCard;
+php php php php php/php*php*
+php php php php php php*php Thephp instancephp ofphp Zendphp_InfoCard
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_InfoCard
+php php php php php php*php/
+php php php php protectedphp php$php_infoCardphp;
 
-    /**
-     * Constructor
-     *
-     * @param  string $strXmlDocument The XML Token provided by the client
-     * @return void
-     */
-    public function __construct($strXmlDocument)
-    {
-        $this->_xmlToken = $strXmlDocument;
-        $this->_infoCard = new Zend_InfoCard();
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$strXmlDocumentphp Thephp XMLphp Tokenphp providedphp byphp thephp client
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$strXmlDocumentphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_xmlTokenphp php=php php$strXmlDocumentphp;
+php php php php php php php php php$thisphp-php>php_infoCardphp php=php newphp Zendphp_InfoCardphp(php)php;
+php php php php php}
 
-    /**
-     * Sets the InfoCard component Adapter to use
-     *
-     * @param  Zend_InfoCard_Adapter_Interface $a
-     * @return Zend_Auth_Adapter_InfoCard Provides a fluent interface
-     */
-    public function setAdapter(Zend_InfoCard_Adapter_Interface $a)
-    {
-        $this->_infoCard->setAdapter($a);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp InfoCardphp componentphp Adapterphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_InfoCardphp_Adapterphp_Interfacephp php$a
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_InfoCardphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setAdapterphp(Zendphp_InfoCardphp_Adapterphp_Interfacephp php$aphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_infoCardphp-php>setAdapterphp(php$aphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieves the InfoCard component adapter being used
-     *
-     * @return Zend_InfoCard_Adapter_Interface
-     */
-    public function getAdapter()
-    {
-        return $this->_infoCard->getAdapter();
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp InfoCardphp componentphp adapterphp beingphp used
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Adapterphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_infoCardphp-php>getAdapterphp(php)php;
+php php php php php}
 
-    /**
-     * Retrieves the InfoCard public key cipher object being used
-     *
-     * @return Zend_InfoCard_Cipher_PKI_Interface
-     */
-    public function getPKCipherObject()
-    {
-        return $this->_infoCard->getPKCipherObject();
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp InfoCardphp publicphp keyphp cipherphp objectphp beingphp used
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Cipherphp_PKIphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getPKCipherObjectphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_infoCardphp-php>getPKCipherObjectphp(php)php;
+php php php php php}
 
-    /**
-     * Sets the InfoCard public key cipher object to use
-     *
-     * @param  Zend_InfoCard_Cipher_PKI_Interface $cipherObj
-     * @return Zend_Auth_Adapter_InfoCard Provides a fluent interface
-     */
-    public function setPKICipherObject(Zend_InfoCard_Cipher_PKI_Interface $cipherObj)
-    {
-        $this->_infoCard->setPKICipherObject($cipherObj);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp InfoCardphp publicphp keyphp cipherphp objectphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_InfoCardphp_Cipherphp_PKIphp_Interfacephp php$cipherObj
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_InfoCardphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setPKICipherObjectphp(Zendphp_InfoCardphp_Cipherphp_PKIphp_Interfacephp php$cipherObjphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_infoCardphp-php>setPKICipherObjectphp(php$cipherObjphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieves the Symmetric cipher object being used
-     *
-     * @return Zend_InfoCard_Cipher_Symmetric_Interface
-     */
-    public function getSymCipherObject()
-    {
-        return $this->_infoCard->getSymCipherObject();
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp Symmetricphp cipherphp objectphp beingphp used
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getSymCipherObjectphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_infoCardphp-php>getSymCipherObjectphp(php)php;
+php php php php php}
 
-    /**
-     * Sets the InfoCard symmetric cipher object to use
-     *
-     * @param  Zend_InfoCard_Cipher_Symmetric_Interface $cipherObj
-     * @return Zend_Auth_Adapter_InfoCard Provides a fluent interface
-     */
-    public function setSymCipherObject(Zend_InfoCard_Cipher_Symmetric_Interface $cipherObj)
-    {
-        $this->_infoCard->setSymCipherObject($cipherObj);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp InfoCardphp symmetricphp cipherphp objectphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Interfacephp php$cipherObj
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_InfoCardphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setSymCipherObjectphp(Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Interfacephp php$cipherObjphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_infoCardphp-php>setSymCipherObjectphp(php$cipherObjphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Remove a Certificate Pair by Key ID from the search list
-     *
-     * @param  string $key_id The Certificate Key ID returned from adding the certificate pair
-     * @throws Zend_InfoCard_Exception
-     * @return Zend_Auth_Adapter_InfoCard Provides a fluent interface
-     */
-    public function removeCertificatePair($key_id)
-    {
-        $this->_infoCard->removeCertificatePair($key_id);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp aphp Certificatephp Pairphp byphp Keyphp IDphp fromphp thephp searchphp list
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$keyphp_idphp Thephp Certificatephp Keyphp IDphp returnedphp fromphp addingphp thephp certificatephp pair
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_InfoCardphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp removeCertificatePairphp(php$keyphp_idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_infoCardphp-php>removeCertificatePairphp(php$keyphp_idphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add a Certificate Pair to the list of certificates searched by the component
-     *
-     * @param  string $private_key_file    The path to the private key file for the pair
-     * @param  string $public_key_file     The path to the certificate / public key for the pair
-     * @param  string $type                (optional) The URI for the type of key pair this is (default RSA with OAEP padding)
-     * @param  string $password            (optional) The password for the private key file if necessary
-     * @throws Zend_InfoCard_Exception
-     * @return string A key ID representing this key pair in the component
-     */
-    public function addCertificatePair($private_key_file, $public_key_file, $type = Zend_InfoCard_Cipher::ENC_RSA_OAEP_MGF1P, $password = null)
-    {
-        return $this->_infoCard->addCertificatePair($private_key_file, $public_key_file, $type, $password);
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp Certificatephp Pairphp tophp thephp listphp ofphp certificatesphp searchedphp byphp thephp component
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$privatephp_keyphp_filephp php php php Thephp pathphp tophp thephp privatephp keyphp filephp forphp thephp pair
+php php php php php php*php php@paramphp php stringphp php$publicphp_keyphp_filephp php php php php Thephp pathphp tophp thephp certificatephp php/php publicphp keyphp forphp thephp pair
+php php php php php php*php php@paramphp php stringphp php$typephp php php php php php php php php php php php php php php php php(optionalphp)php Thephp URIphp forphp thephp typephp ofphp keyphp pairphp thisphp isphp php(defaultphp RSAphp withphp OAEPphp paddingphp)
+php php php php php php*php php@paramphp php stringphp php$passwordphp php php php php php php php php php php php php(optionalphp)php Thephp passwordphp forphp thephp privatephp keyphp filephp ifphp necessary
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php php@returnphp stringphp Aphp keyphp IDphp representingphp thisphp keyphp pairphp inphp thephp component
+php php php php php php*php/
+php php php php publicphp functionphp addCertificatePairphp(php$privatephp_keyphp_filephp,php php$publicphp_keyphp_filephp,php php$typephp php=php Zendphp_InfoCardphp_Cipherphp:php:ENCphp_RSAphp_OAEPphp_MGFphp1Pphp,php php$passwordphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_infoCardphp-php>addCertificatePairphp(php$privatephp_keyphp_filephp,php php$publicphp_keyphp_filephp,php php$typephp,php php$passwordphp)php;
+php php php php php}
 
-    /**
-     * Return a Certificate Pair from a key ID
-     *
-     * @param  string $key_id The Key ID of the certificate pair in the component
-     * @throws Zend_InfoCard_Exception
-     * @return array An array containing the path to the private/public key files,
-     *               the type URI and the password if provided
-     */
-    public function getCertificatePair($key_id)
-    {
-        return $this->_infoCard->getCertificatePair($key_id);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp Certificatephp Pairphp fromphp aphp keyphp ID
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$keyphp_idphp Thephp Keyphp IDphp ofphp thephp certificatephp pairphp inphp thephp component
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Exception
+php php php php php php*php php@returnphp arrayphp Anphp arrayphp containingphp thephp pathphp tophp thephp privatephp/publicphp keyphp filesphp,
+php php php php php php*php php php php php php php php php php php php php php php thephp typephp URIphp andphp thephp passwordphp ifphp provided
+php php php php php php*php/
+php php php php publicphp functionphp getCertificatePairphp(php$keyphp_idphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_infoCardphp-php>getCertificatePairphp(php$keyphp_idphp)php;
+php php php php php}
 
-    /**
-     * Set the XML Token to be processed
-     *
-     * @param  string $strXmlToken The XML token to process
-     * @return Zend_Auth_Adapter_InfoCard Provides a fluent interface
-     */
-    public function setXmlToken($strXmlToken)
-    {
-        $this->_xmlToken = $strXmlToken;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp XMLphp Tokenphp tophp bephp processed
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$strXmlTokenphp Thephp XMLphp tokenphp tophp process
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_InfoCardphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setXmlTokenphp(php$strXmlTokenphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_xmlTokenphp php=php php$strXmlTokenphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the XML Token being processed
-     *
-     * @return string The XML token to be processed
-     */
-    public function getXmlToken()
-    {
-        return $this->_xmlToken;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp XMLphp Tokenphp beingphp processed
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp XMLphp tokenphp tophp bephp processed
+php php php php php php*php/
+php php php php publicphp functionphp getXmlTokenphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_xmlTokenphp;
+php php php php php}
 
-    /**
-     * Authenticates the XML token
-     *
-     * @return Zend_Auth_Result The result of the authentication
-     */
-    public function authenticate()
-    {
-        try {
-            $claims = $this->_infoCard->process($this->getXmlToken());
-        } catch(Exception $e) {
-            return new Zend_Auth_Result(Zend_Auth_Result::FAILURE , null, array('Exception Thrown',
-                                                                                $e->getMessage(),
-                                                                                $e->getTraceAsString(),
-                                                                                serialize($e)));
-        }
+php php php php php/php*php*
+php php php php php php*php Authenticatesphp thephp XMLphp token
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Authphp_Resultphp Thephp resultphp ofphp thephp authentication
+php php php php php php*php/
+php php php php publicphp functionphp authenticatephp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$claimsphp php=php php$thisphp-php>php_infoCardphp-php>processphp(php$thisphp-php>getXmlTokenphp(php)php)php;
+php php php php php php php php php}php catchphp(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(Zendphp_Authphp_Resultphp:php:FAILUREphp php,php nullphp,php arrayphp(php'Exceptionphp Thrownphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$ephp-php>getMessagephp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$ephp-php>getTraceAsStringphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php serializephp(php$ephp)php)php)php;
+php php php php php php php php php}
 
-        if(!$claims->isValid()) {
-            switch($claims->getCode()) {
-                case Zend_infoCard_Claims::RESULT_PROCESSING_FAILURE:
-                    return new Zend_Auth_Result(
-                        Zend_Auth_Result::FAILURE,
-                        $claims,
-                        array(
-                            'Processing Failure',
-                            $claims->getErrorMsg()
-                        )
-                    );
-                    break;
-                case Zend_InfoCard_Claims::RESULT_VALIDATION_FAILURE:
-                    return new Zend_Auth_Result(
-                        Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID,
-                        $claims,
-                        array(
-                            'Validation Failure',
-                            $claims->getErrorMsg()
-                        )
-                    );
-                    break;
-                default:
-                    return new Zend_Auth_Result(
-                        Zend_Auth_Result::FAILURE,
-                        $claims,
-                        array(
-                            'Unknown Failure',
-                            $claims->getErrorMsg()
-                        )
-                    );
-                    break;
-            }
-        }
+php php php php php php php php ifphp(php!php$claimsphp-php>isValidphp(php)php)php php{
+php php php php php php php php php php php php switchphp(php$claimsphp-php>getCodephp(php)php)php php{
+php php php php php php php php php php php php php php php php casephp Zendphp_infoCardphp_Claimsphp:php:RESULTphp_PROCESSINGphp_FAILUREphp:
+php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(
+php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Authphp_Resultphp:php:FAILUREphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php$claimsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Processingphp Failurephp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$claimsphp-php>getErrorMsgphp(php)
+php php php php php php php php php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp Zendphp_InfoCardphp_Claimsphp:php:RESULTphp_VALIDATIONphp_FAILUREphp:
+php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(
+php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Authphp_Resultphp:php:FAILUREphp_CREDENTIALphp_INVALIDphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php$claimsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Validationphp Failurephp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$claimsphp-php>getErrorMsgphp(php)
+php php php php php php php php php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(
+php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Authphp_Resultphp:php:FAILUREphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php$claimsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Unknownphp Failurephp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$claimsphp-php>getErrorMsgphp(php)
+php php php php php php php php php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return new Zend_Auth_Result(
-            Zend_Auth_Result::SUCCESS,
-            $claims
-        );
-    }
-}
+php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(
+php php php php php php php php php php php php Zendphp_Authphp_Resultphp:php:SUCCESSphp,
+php php php php php php php php php php php php php$claims
+php php php php php php php php php)php;
+php php php php php}
+php}

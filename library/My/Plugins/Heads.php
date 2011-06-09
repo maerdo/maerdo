@@ -1,4 +1,4 @@
-<?
+<?php
 class My_Plugins_Heads extends Zend_Controller_Plugin_Abstract {
 	
 	public function postDispatch(Zend_Controller_Request_Abstract $request)  {  

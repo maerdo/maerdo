@@ -1,109 +1,109 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: WebResult.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-
-
-/**
- * @see Zend_Service_Yahoo_Result
- */
-require_once 'Zend/Service/Yahoo/Result.php';
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Yahoo
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php WebResultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Yahoo_WebResult extends Zend_Service_Yahoo_Result
-{
-    /**
-     * A summary of the result
-     *
-     * @var string
-     */
-    public $Summary;
-
-    /**
-     * The file type of the result (text, html, pdf, etc.)
-     *
-     * @var string
-     */
-    public $MimeType;
-
-    /**
-     * The modification time of the result (as a unix timestamp)
-     *
-     * @var string
-     */
-    public $ModificationDate;
-
-    /**
-     * The URL for the Yahoo cache of this page, if it exists
-     *
-     * @var string
-     */
-    public $CacheUrl;
-
-    /**
-     * The size of the cache entry
-     *
-     * @var int
-     */
-    public $CacheSize;
-
-    /**
-     * Web result namespace
-     *
-     * @var string
-     */
-    protected $_namespace = 'urn:yahoo:srch';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Yahoophp_Result
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Yahoophp/Resultphp.phpphp'php;
 
 
-    /**
-     * Initializes the web result
-     *
-     * @param  DOMElement $result
-     * @return void
-     */
-    public function __construct(DOMElement $result)
-    {
-        $this->_fields = array('Summary', 'MimeType', 'ModificationDate');
-        parent::__construct($result);
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Yahoo
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Yahoophp_WebResultphp extendsphp Zendphp_Servicephp_Yahoophp_Result
+php{
+php php php php php/php*php*
+php php php php php php*php Aphp summaryphp ofphp thephp result
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$Summaryphp;
 
-        $this->_xpath = new DOMXPath($result->ownerDocument);
-        $this->_xpath->registerNamespace('yh', $this->_namespace);
+php php php php php/php*php*
+php php php php php php*php Thephp filephp typephp ofphp thephp resultphp php(textphp,php htmlphp,php pdfphp,php etcphp.php)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$MimeTypephp;
 
-        // check if the cache section exists
-        $cacheUrl = $this->_xpath->query('./yh:Cache/yh:Url/text()', $result)->item(0);
-        if ($cacheUrl instanceof DOMNode)
-        {
-            $this->CacheUrl = $cacheUrl->data;
-        }
-        $cacheSize = $this->_xpath->query('./yh:Cache/yh:Size/text()', $result)->item(0);
-        if ($cacheSize instanceof DOMNode)
-        {
-            $this->CacheSize = (int) $cacheSize->data;
-        }
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Thephp modificationphp timephp ofphp thephp resultphp php(asphp aphp unixphp timestampphp)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$ModificationDatephp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp URLphp forphp thephp Yahoophp cachephp ofphp thisphp pagephp,php ifphp itphp exists
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$CacheUrlphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp sizephp ofphp thephp cachephp entry
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php publicphp php$CacheSizephp;
+
+php php php php php/php*php*
+php php php php php php*php Webphp resultphp namespace
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namespacephp php=php php'urnphp:yahoophp:srchphp'php;
+
+
+php php php php php/php*php*
+php php php php php php*php Initializesphp thephp webphp result
+php php php php php php*
+php php php php php php*php php@paramphp php DOMElementphp php$result
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$resultphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fieldsphp php=php arrayphp(php'Summaryphp'php,php php'MimeTypephp'php,php php'ModificationDatephp'php)php;
+php php php php php php php php parentphp:php:php_php_constructphp(php$resultphp)php;
+
+php php php php php php php php php$thisphp-php>php_xpathphp php=php newphp DOMXPathphp(php$resultphp-php>ownerDocumentphp)php;
+php php php php php php php php php$thisphp-php>php_xpathphp-php>registerNamespacephp(php'yhphp'php,php php$thisphp-php>php_namespacephp)php;
+
+php php php php php php php php php/php/php checkphp ifphp thephp cachephp sectionphp exists
+php php php php php php php php php$cacheUrlphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php.php/yhphp:Cachephp/yhphp:Urlphp/textphp(php)php'php,php php$resultphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$cacheUrlphp instanceofphp DOMNodephp)
+php php php php php php php php php{
+php php php php php php php php php php php php php$thisphp-php>CacheUrlphp php=php php$cacheUrlphp-php>dataphp;
+php php php php php php php php php}
+php php php php php php php php php$cacheSizephp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php.php/yhphp:Cachephp/yhphp:Sizephp/textphp(php)php'php,php php$resultphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$cacheSizephp instanceofphp DOMNodephp)
+php php php php php php php php php{
+php php php php php php php php php php php php php$thisphp-php>CacheSizephp php=php php(intphp)php php$cacheSizephp-php>dataphp;
+php php php php php php php php php}
+php php php php php}
+php}

@@ -1,250 +1,250 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Measure
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Pressure.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Measure
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Pressurephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Implement needed classes
- */
-require_once 'Zend/Measure/Abstract.php';
-require_once 'Zend/Locale.php';
+php/php*php*
+php php*php Implementphp neededphp classes
+php php*php/
+requirephp_oncephp php'Zendphp/Measurephp/Abstractphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
 
-/**
- * Class for handling pressure conversions
- *
- * @category   Zend
- * @package    Zend_Measure
- * @subpackage Zend_Measure_Pressure
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Measure_Pressure extends Zend_Measure_Abstract
-{
-    const STANDARD = 'NEWTON_PER_SQUARE_METER';
+php/php*php*
+php php*php Classphp forphp handlingphp pressurephp conversions
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Measure
+php php*php php@subpackagephp Zendphp_Measurephp_Pressure
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Measurephp_Pressurephp extendsphp Zendphp_Measurephp_Abstract
+php{
+php php php php constphp STANDARDphp php=php php'NEWTONphp_PERphp_SQUAREphp_METERphp'php;
 
-    const ATMOSPHERE                           = 'ATMOSPHERE';
-    const ATMOSPHERE_TECHNICAL                 = 'ATMOSPHERE_TECHNICAL';
-    const ATTOBAR                              = 'ATTOBAR';
-    const ATTOPASCAL                           = 'ATTOPASCAL';
-    const BAR                                  = 'BAR';
-    const BARAD                                = 'BARAD';
-    const BARYE                                = 'BARYE';
-    const CENTIBAR                             = 'CENTIBAR';
-    const CENTIHG                              = 'CENTIHG';
-    const CENTIMETER_MERCURY_0C                = 'CENTIMETER_MERCURY_0C';
-    const CENTIMETER_WATER_4C                  = 'CENTIMETER_WATER_4C';
-    const CENTIPASCAL                          = 'CENTIPASCAL';
-    const CENTITORR                            = 'CENTITORR';
-    const DECIBAR                              = 'DECIBAR';
-    const DECIPASCAL                           = 'DECIPASCAL';
-    const DECITORR                             = 'DECITORR';
-    const DEKABAR                              = 'DEKABAR';
-    const DEKAPASCAL                           = 'DEKAPASCAL';
-    const DYNE_PER_SQUARE_CENTIMETER           = 'DYNE_PER_SQUARE_CENTIMETER';
-    const EXABAR                               = 'EXABAR';
-    const EXAPASCAL                            = 'EXAPASCAL';
-    const FEMTOBAR                             = 'FEMTOBAR';
-    const FEMTOPASCAL                          = 'FEMTOPASCAL';
-    const FOOT_AIR_0C                          = 'FOOT_AIR_0C';
-    const FOOT_AIR_15C                         = 'FOOT_AIR_15C';
-    const FOOT_HEAD                            = 'FOOT_HEAD';
-    const FOOT_MERCURY_0C                      = 'FOOT_MERCURY_0C';
-    const FOOT_WATER_4C                        = 'FOOT_WATER_4C';
-    const GIGABAR                              = 'GIGABAR';
-    const GIGAPASCAL                           = 'GIGAPASCAL';
-    const GRAM_FORCE_SQUARE_CENTIMETER         = 'GRAM_FORCE_SQUARE_CENTIMETER';
-    const HECTOBAR                             = 'HECTOBAR';
-    const HECTOPASCAL                          = 'HECTOPASCAL';
-    const INCH_AIR_0C                          = 'INCH_AIR_0C';
-    const INCH_AIR_15C                         = 'INCH_AIR_15C';
-    const INCH_MERCURY_0C                      = 'INCH_MERCURY_0C';
-    const INCH_WATER_4C                        = 'INCH_WATER_4C';
-    const KILOBAR                              = 'KILOBAR';
-    const KILOGRAM_FORCE_PER_SQUARE_CENTIMETER = 'KILOGRAM_FORCE_PER_SQUARE_CENTIMETER';
-    const KILOGRAM_FORCE_PER_SQUARE_METER      = 'KILOGRAM_FORCE_PER_SQUARE_METER';
-    const KILOGRAM_FORCE_PER_SQUARE_MILLIMETER = 'KILOGRAM_FORCE_PER_SQUARE_MILLIMETER';
-    const KILONEWTON_PER_SQUARE_METER          = 'KILONEWTON_PER_SQUARE_METER';
-    const KILOPASCAL                           = 'KILOPASCAL';
-    const KILOPOND_PER_SQUARE_CENTIMETER       = 'KILOPOND_PER_SQUARE_CENTIMETER';
-    const KILOPOND_PER_SQUARE_METER            = 'KILOPOND_PER_SQUARE_METER';
-    const KILOPOND_PER_SQUARE_MILLIMETER       = 'KILOPOND_PER_SQUARE_MILLIMETER';
-    const KIP_PER_SQUARE_FOOT                  = 'KIP_PER_SQUARE_FOOT';
-    const KIP_PER_SQUARE_INCH                  = 'KIP_PER_SQUARE_INCH';
-    const MEGABAR                              = 'MEGABAR';
-    const MEGANEWTON_PER_SQUARE_METER          = 'MEGANEWTON_PER_SQUARE_METER';
-    const MEGAPASCAL                           = 'MEGAPASCAL';
-    const METER_AIR_0C                         = 'METER_AIR_0C';
-    const METER_AIR_15C                        = 'METER_AIR_15C';
-    const METER_HEAD                           = 'METER_HEAD';
-    const MICROBAR                             = 'MICROBAR';
-    const MICROMETER_MERCURY_0C                = 'MICROMETER_MERCURY_0C';
-    const MICROMETER_WATER_4C                  = 'MICROMETER_WATER_4C';
-    const MICRON_MERCURY_0C                    = 'MICRON_MERCURY_0C';
-    const MICROPASCAL                          = 'MICROPASCAL';
-    const MILLIBAR                             = 'MILLIBAR';
-    const MILLIHG                              = 'MILLIHG';
-    const MILLIMETER_MERCURY_0C                = 'MILLIMETER_MERCURY_0C';
-    const MILLIMETER_WATER_4C                  = 'MILLIMETER_WATER_4C';
-    const MILLIPASCAL                          = 'MILLIPASCAL';
-    const MILLITORR                            = 'MILLITORR';
-    const NANOBAR                              = 'NANOBAR';
-    const NANOPASCAL                           = 'NANOPASCAL';
-    const NEWTON_PER_SQUARE_METER              = 'NEWTON_PER_SQUARE_METER';
-    const NEWTON_PER_SQUARE_MILLIMETER         = 'NEWTON_PER_SQUARE_MILLIMETER';
-    const OUNCE_PER_SQUARE_INCH                = 'OUNCE_PER_SQUARE_INCH';
-    const PASCAL                               = 'PASCAL';
-    const PETABAR                              = 'PETABAR';
-    const PETAPASCAL                           = 'PETAPASCAL';
-    const PICOBAR                              = 'PICOBAR';
-    const PICOPASCAL                           = 'PICOPASCAL';
-    const PIEZE                                = 'PIEZE';
-    const POUND_PER_SQUARE_FOOT                = 'POUND_PER_SQUARE_FOOT';
-    const POUND_PER_SQUARE_INCH                = 'POUND_PER_SQUARE_INCH';
-    const POUNDAL_PER_SQUARE_FOOT              = 'POUNDAL_PER_SQUARE_FOOT';
-    const STHENE_PER_SQUARE_METER              = 'STHENE_PER_SQUARE_METER';
-    const TECHNICAL_ATMOSPHERE                 = 'TECHNICAL_ATMOSPHERE';
-    const TERABAR                              = 'TERABAR';
-    const TERAPASCAL                           = 'TERAPASCAL';
-    const TON_PER_SQUARE_FOOT                  = 'TON_PER_SQUARE_FOOT';
-    const TON_PER_SQUARE_FOOT_SHORT            = 'TON_PER_SQUARE_FOOT_SHORT';
-    const TON_PER_SQUARE_INCH                  = 'TON_PER_SQUARE_INCH';
-    const TON_PER_SQUARE_INCH_SHORT            = 'TON_PER_SQUARE_INCH_SHORT';
-    const TON_PER_SQUARE_METER                 = 'TON_PER_SQUARE_METER';
-    const TORR                                 = 'TORR';
-    const WATER_COLUMN_CENTIMETER              = 'WATER_COLUMN_CENTIMETER';
-    const WATER_COLUMN_INCH                    = 'WATER_COLUMN_INCH';
-    const WATER_COLUMN_MILLIMETER              = 'WATER_COLUMN_MILLIMETER';
-    const YOCTOBAR                             = 'YOCTOBAR';
-    const YOCTOPASCAL                          = 'YOCTOPASCAL';
-    const YOTTABAR                             = 'YOTTABAR';
-    const YOTTAPASCAL                          = 'YOTTAPASCAL';
-    const ZEPTOBAR                             = 'ZEPTOBAR';
-    const ZEPTOPASCAL                          = 'ZEPTOPASCAL';
-    const ZETTABAR                             = 'ZETTABAR';
-    const ZETTAPASCAL                          = 'ZETTAPASCAL';
+php php php php constphp ATMOSPHEREphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'ATMOSPHEREphp'php;
+php php php php constphp ATMOSPHEREphp_TECHNICALphp php php php php php php php php php php php php php php php php php=php php'ATMOSPHEREphp_TECHNICALphp'php;
+php php php php constphp ATTOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'ATTOBARphp'php;
+php php php php constphp ATTOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'ATTOPASCALphp'php;
+php php php php constphp BARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'BARphp'php;
+php php php php constphp BARADphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'BARADphp'php;
+php php php php constphp BARYEphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'BARYEphp'php;
+php php php php constphp CENTIBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'CENTIBARphp'php;
+php php php php constphp CENTIHGphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'CENTIHGphp'php;
+php php php php constphp CENTIMETERphp_MERCURYphp_php0Cphp php php php php php php php php php php php php php php php php=php php'CENTIMETERphp_MERCURYphp_php0Cphp'php;
+php php php php constphp CENTIMETERphp_WATERphp_php4Cphp php php php php php php php php php php php php php php php php php php=php php'CENTIMETERphp_WATERphp_php4Cphp'php;
+php php php php constphp CENTIPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'CENTIPASCALphp'php;
+php php php php constphp CENTITORRphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'CENTITORRphp'php;
+php php php php constphp DECIBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'DECIBARphp'php;
+php php php php constphp DECIPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'DECIPASCALphp'php;
+php php php php constphp DECITORRphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'DECITORRphp'php;
+php php php php constphp DEKABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'DEKABARphp'php;
+php php php php constphp DEKAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'DEKAPASCALphp'php;
+php php php php constphp DYNEphp_PERphp_SQUAREphp_CENTIMETERphp php php php php php php php php php php php=php php'DYNEphp_PERphp_SQUAREphp_CENTIMETERphp'php;
+php php php php constphp EXABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'EXABARphp'php;
+php php php php constphp EXAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'EXAPASCALphp'php;
+php php php php constphp FEMTOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'FEMTOBARphp'php;
+php php php php constphp FEMTOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'FEMTOPASCALphp'php;
+php php php php constphp FOOTphp_AIRphp_php0Cphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'FOOTphp_AIRphp_php0Cphp'php;
+php php php php constphp FOOTphp_AIRphp_php1php5Cphp php php php php php php php php php php php php php php php php php php php php php php php php php=php php'FOOTphp_AIRphp_php1php5Cphp'php;
+php php php php constphp FOOTphp_HEADphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'FOOTphp_HEADphp'php;
+php php php php constphp FOOTphp_MERCURYphp_php0Cphp php php php php php php php php php php php php php php php php php php php php php php=php php'FOOTphp_MERCURYphp_php0Cphp'php;
+php php php php constphp FOOTphp_WATERphp_php4Cphp php php php php php php php php php php php php php php php php php php php php php php php php=php php'FOOTphp_WATERphp_php4Cphp'php;
+php php php php constphp GIGABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'GIGABARphp'php;
+php php php php constphp GIGAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'GIGAPASCALphp'php;
+php php php php constphp GRAMphp_FORCEphp_SQUAREphp_CENTIMETERphp php php php php php php php php php=php php'GRAMphp_FORCEphp_SQUAREphp_CENTIMETERphp'php;
+php php php php constphp HECTOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'HECTOBARphp'php;
+php php php php constphp HECTOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'HECTOPASCALphp'php;
+php php php php constphp INCHphp_AIRphp_php0Cphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'INCHphp_AIRphp_php0Cphp'php;
+php php php php constphp INCHphp_AIRphp_php1php5Cphp php php php php php php php php php php php php php php php php php php php php php php php php php=php php'INCHphp_AIRphp_php1php5Cphp'php;
+php php php php constphp INCHphp_MERCURYphp_php0Cphp php php php php php php php php php php php php php php php php php php php php php php=php php'INCHphp_MERCURYphp_php0Cphp'php;
+php php php php constphp INCHphp_WATERphp_php4Cphp php php php php php php php php php php php php php php php php php php php php php php php php=php php'INCHphp_WATERphp_php4Cphp'php;
+php php php php constphp KILOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'KILOBARphp'php;
+php php php php constphp KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_CENTIMETERphp php=php php'KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_CENTIMETERphp'php;
+php php php php constphp KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_METERphp php php php php php php=php php'KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_METERphp'php;
+php php php php constphp KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_MILLIMETERphp php=php php'KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_MILLIMETERphp'php;
+php php php php constphp KILONEWTONphp_PERphp_SQUAREphp_METERphp php php php php php php php php php php=php php'KILONEWTONphp_PERphp_SQUAREphp_METERphp'php;
+php php php php constphp KILOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'KILOPASCALphp'php;
+php php php php constphp KILOPONDphp_PERphp_SQUAREphp_CENTIMETERphp php php php php php php php=php php'KILOPONDphp_PERphp_SQUAREphp_CENTIMETERphp'php;
+php php php php constphp KILOPONDphp_PERphp_SQUAREphp_METERphp php php php php php php php php php php php php=php php'KILOPONDphp_PERphp_SQUAREphp_METERphp'php;
+php php php php constphp KILOPONDphp_PERphp_SQUAREphp_MILLIMETERphp php php php php php php php=php php'KILOPONDphp_PERphp_SQUAREphp_MILLIMETERphp'php;
+php php php php constphp KIPphp_PERphp_SQUAREphp_FOOTphp php php php php php php php php php php php php php php php php php php=php php'KIPphp_PERphp_SQUAREphp_FOOTphp'php;
+php php php php constphp KIPphp_PERphp_SQUAREphp_INCHphp php php php php php php php php php php php php php php php php php php=php php'KIPphp_PERphp_SQUAREphp_INCHphp'php;
+php php php php constphp MEGABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MEGABARphp'php;
+php php php php constphp MEGANEWTONphp_PERphp_SQUAREphp_METERphp php php php php php php php php php php=php php'MEGANEWTONphp_PERphp_SQUAREphp_METERphp'php;
+php php php php constphp MEGAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MEGAPASCALphp'php;
+php php php php constphp METERphp_AIRphp_php0Cphp php php php php php php php php php php php php php php php php php php php php php php php php php=php php'METERphp_AIRphp_php0Cphp'php;
+php php php php constphp METERphp_AIRphp_php1php5Cphp php php php php php php php php php php php php php php php php php php php php php php php php=php php'METERphp_AIRphp_php1php5Cphp'php;
+php php php php constphp METERphp_HEADphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'METERphp_HEADphp'php;
+php php php php constphp MICROBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MICROBARphp'php;
+php php php php constphp MICROMETERphp_MERCURYphp_php0Cphp php php php php php php php php php php php php php php php php=php php'MICROMETERphp_MERCURYphp_php0Cphp'php;
+php php php php constphp MICROMETERphp_WATERphp_php4Cphp php php php php php php php php php php php php php php php php php php=php php'MICROMETERphp_WATERphp_php4Cphp'php;
+php php php php constphp MICRONphp_MERCURYphp_php0Cphp php php php php php php php php php php php php php php php php php php php php=php php'MICRONphp_MERCURYphp_php0Cphp'php;
+php php php php constphp MICROPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MICROPASCALphp'php;
+php php php php constphp MILLIBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MILLIBARphp'php;
+php php php php constphp MILLIHGphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MILLIHGphp'php;
+php php php php constphp MILLIMETERphp_MERCURYphp_php0Cphp php php php php php php php php php php php php php php php php=php php'MILLIMETERphp_MERCURYphp_php0Cphp'php;
+php php php php constphp MILLIMETERphp_WATERphp_php4Cphp php php php php php php php php php php php php php php php php php php=php php'MILLIMETERphp_WATERphp_php4Cphp'php;
+php php php php constphp MILLIPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MILLIPASCALphp'php;
+php php php php constphp MILLITORRphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'MILLITORRphp'php;
+php php php php constphp NANOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'NANOBARphp'php;
+php php php php constphp NANOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'NANOPASCALphp'php;
+php php php php constphp NEWTONphp_PERphp_SQUAREphp_METERphp php php php php php php php php php php php php php php=php php'NEWTONphp_PERphp_SQUAREphp_METERphp'php;
+php php php php constphp NEWTONphp_PERphp_SQUAREphp_MILLIMETERphp php php php php php php php php php=php php'NEWTONphp_PERphp_SQUAREphp_MILLIMETERphp'php;
+php php php php constphp OUNCEphp_PERphp_SQUAREphp_INCHphp php php php php php php php php php php php php php php php php=php php'OUNCEphp_PERphp_SQUAREphp_INCHphp'php;
+php php php php constphp PASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'PASCALphp'php;
+php php php php constphp PETABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'PETABARphp'php;
+php php php php constphp PETAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'PETAPASCALphp'php;
+php php php php constphp PICOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'PICOBARphp'php;
+php php php php constphp PICOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'PICOPASCALphp'php;
+php php php php constphp PIEZEphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'PIEZEphp'php;
+php php php php constphp POUNDphp_PERphp_SQUAREphp_FOOTphp php php php php php php php php php php php php php php php php=php php'POUNDphp_PERphp_SQUAREphp_FOOTphp'php;
+php php php php constphp POUNDphp_PERphp_SQUAREphp_INCHphp php php php php php php php php php php php php php php php php=php php'POUNDphp_PERphp_SQUAREphp_INCHphp'php;
+php php php php constphp POUNDALphp_PERphp_SQUAREphp_FOOTphp php php php php php php php php php php php php php php=php php'POUNDALphp_PERphp_SQUAREphp_FOOTphp'php;
+php php php php constphp STHENEphp_PERphp_SQUAREphp_METERphp php php php php php php php php php php php php php php=php php'STHENEphp_PERphp_SQUAREphp_METERphp'php;
+php php php php constphp TECHNICALphp_ATMOSPHEREphp php php php php php php php php php php php php php php php php php=php php'TECHNICALphp_ATMOSPHEREphp'php;
+php php php php constphp TERABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'TERABARphp'php;
+php php php php constphp TERAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'TERAPASCALphp'php;
+php php php php constphp TONphp_PERphp_SQUAREphp_FOOTphp php php php php php php php php php php php php php php php php php php=php php'TONphp_PERphp_SQUAREphp_FOOTphp'php;
+php php php php constphp TONphp_PERphp_SQUAREphp_FOOTphp_SHORTphp php php php php php php php php php php php php=php php'TONphp_PERphp_SQUAREphp_FOOTphp_SHORTphp'php;
+php php php php constphp TONphp_PERphp_SQUAREphp_INCHphp php php php php php php php php php php php php php php php php php php=php php'TONphp_PERphp_SQUAREphp_INCHphp'php;
+php php php php constphp TONphp_PERphp_SQUAREphp_INCHphp_SHORTphp php php php php php php php php php php php php=php php'TONphp_PERphp_SQUAREphp_INCHphp_SHORTphp'php;
+php php php php constphp TONphp_PERphp_SQUAREphp_METERphp php php php php php php php php php php php php php php php php php=php php'TONphp_PERphp_SQUAREphp_METERphp'php;
+php php php php constphp TORRphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'TORRphp'php;
+php php php php constphp WATERphp_COLUMNphp_CENTIMETERphp php php php php php php php php php php php php php php=php php'WATERphp_COLUMNphp_CENTIMETERphp'php;
+php php php php constphp WATERphp_COLUMNphp_INCHphp php php php php php php php php php php php php php php php php php php php php=php php'WATERphp_COLUMNphp_INCHphp'php;
+php php php php constphp WATERphp_COLUMNphp_MILLIMETERphp php php php php php php php php php php php php php php=php php'WATERphp_COLUMNphp_MILLIMETERphp'php;
+php php php php constphp YOCTOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'YOCTOBARphp'php;
+php php php php constphp YOCTOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'YOCTOPASCALphp'php;
+php php php php constphp YOTTABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'YOTTABARphp'php;
+php php php php constphp YOTTAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'YOTTAPASCALphp'php;
+php php php php constphp ZEPTOBARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'ZEPTOBARphp'php;
+php php php php constphp ZEPTOPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'ZEPTOPASCALphp'php;
+php php php php constphp ZETTABARphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'ZETTABARphp'php;
+php php php php constphp ZETTAPASCALphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'ZETTAPASCALphp'php;
 
-    /**
-     * Calculations for all pressure units
-     *
-     * @var array
-     */
-    protected $_units = array(
-        'ATMOSPHERE'            => array('101325.01', 'atm'),
-        'ATMOSPHERE_TECHNICAL'  => array('98066.5',   'atm'),
-        'ATTOBAR'               => array('1.0e-13',   'ab'),
-        'ATTOPASCAL'            => array('1.0e-18',   'aPa'),
-        'BAR'                   => array('100000',    'b'),
-        'BARAD'                 => array('0.1',       'barad'),
-        'BARYE'                 => array('0.1',       'ba'),
-        'CENTIBAR'              => array('1000',      'cb'),
-        'CENTIHG'               => array('1333.2239', 'cHg'),
-        'CENTIMETER_MERCURY_0C' => array('1333.2239', 'cm mercury (0°C)'),
-        'CENTIMETER_WATER_4C'   => array('98.0665',   'cm water (4°C)'),
-        'CENTIPASCAL'           => array('0.01',      'cPa'),
-        'CENTITORR'             => array('1.3332237', 'cTorr'),
-        'DECIBAR'               => array('10000',     'db'),
-        'DECIPASCAL'            => array('0.1',       'dPa'),
-        'DECITORR'              => array('13.332237', 'dTorr'),
-        'DEKABAR'               => array('1000000',   'dab'),
-        'DEKAPASCAL'            => array('10',        'daPa'),
-        'DYNE_PER_SQUARE_CENTIMETER' => array('0.1',  'dyn/cm²'),
-        'EXABAR'                => array('1.0e+23',   'Eb'),
-        'EXAPASCAL'             => array('1.0e+18',   'EPa'),
-        'FEMTOBAR'              => array('1.0e-10',   'fb'),
-        'FEMTOPASCAL'           => array('1.0e-15',   'fPa'),
-        'FOOT_AIR_0C'           => array('3.8640888', 'ft air (0°C)'),
-        'FOOT_AIR_15C'          => array('3.6622931', 'ft air (15°C)'),
-        'FOOT_HEAD'             => array('2989.0669', 'ft head'),
-        'FOOT_MERCURY_0C'       => array('40636.664', 'ft mercury (0°C)'),
-        'FOOT_WATER_4C'         => array('2989.0669', 'ft water (4°C)'),
-        'GIGABAR'               => array('1.0e+14',   'Gb'),
-        'GIGAPASCAL'            => array('1.0e+9',    'GPa'),
-        'GRAM_FORCE_SQUARE_CENTIMETER' => array('98.0665', 'gf'),
-        'HECTOBAR'              => array('1.0e+7',    'hb'),
-        'HECTOPASCAL'           => array('100',       'hPa'),
-        'INCH_AIR_0C'           => array(array('' => '3.8640888', '/' => '12'), 'in air (0°C)'),
-        'INCH_AIR_15C'          => array(array('' => '3.6622931', '/' => '12'), 'in air (15°C)'),
-        'INCH_MERCURY_0C'       => array(array('' => '40636.664', '/' => '12'), 'in mercury (0°C)'),
-        'INCH_WATER_4C'         => array(array('' => '2989.0669', '/' => '12'), 'in water (4°C)'),
-        'KILOBAR'               => array('1.0e+8',    'kb'),
-        'KILOGRAM_FORCE_PER_SQUARE_CENTIMETER' => array('98066.5', 'kgf/cm²'),
-        'KILOGRAM_FORCE_PER_SQUARE_METER'      => array('9.80665', 'kgf/m²'),
-        'KILOGRAM_FORCE_PER_SQUARE_MILLIMETER' => array('9806650', 'kgf/mm²'),
-        'KILONEWTON_PER_SQUARE_METER'          => array('1000',    'kN/m²'),
-        'KILOPASCAL'            => array('1000',      'kPa'),
-        'KILOPOND_PER_SQUARE_CENTIMETER' => array('98066.5', 'kp/cm²'),
-        'KILOPOND_PER_SQUARE_METER'      => array('9.80665', 'kp/m²'),
-        'KILOPOND_PER_SQUARE_MILLIMETER' => array('9806650', 'kp/mm²'),
-        'KIP_PER_SQUARE_FOOT'   => array(array('' => '430.92233', '/' => '0.009'),   'kip/ft²'),
-        'KIP_PER_SQUARE_INCH'   => array(array('' => '62052.81552', '/' => '0.009'), 'kip/in²'),
-        'MEGABAR'               => array('1.0e+11',    'Mb'),
-        'MEGANEWTON_PER_SQUARE_METER' => array('1000000', 'MN/m²'),
-        'MEGAPASCAL'            => array('1000000',    'MPa'),
-        'METER_AIR_0C'          => array('12.677457',  'm air (0°C)'),
-        'METER_AIR_15C'         => array('12.015397',  'm air (15°C)'),
-        'METER_HEAD'            => array('9804.139432', 'm head'),
-        'MICROBAR'              => array('0.1',        'µb'),
-        'MICROMETER_MERCURY_0C' => array('0.13332239', 'µm mercury (0°C)'),
-        'MICROMETER_WATER_4C'   => array('0.00980665', 'µm water (4°C)'),
-        'MICRON_MERCURY_0C'     => array('0.13332239', 'µ mercury (0°C)'),
-        'MICROPASCAL'           => array('0.000001',   'µPa'),
-        'MILLIBAR'              => array('100',        'mb'),
-        'MILLIHG'               => array('133.32239',  'mHg'),
-        'MILLIMETER_MERCURY_0C' => array('133.32239',  'mm mercury (0°C)'),
-        'MILLIMETER_WATER_4C'   => array('9.80665',    'mm water (0°C)'),
-        'MILLIPASCAL'           => array('0.001',      'mPa'),
-        'MILLITORR'             => array('0.13332237', 'mTorr'),
-        'NANOBAR'               => array('0.0001',     'nb'),
-        'NANOPASCAL'            => array('1.0e-9',     'nPa'),
-        'NEWTON_PER_SQUARE_METER'      => array('1',   'N/m²'),
-        'NEWTON_PER_SQUARE_MILLIMETER' => array('1000000',   'N/mm²'),
-        'OUNCE_PER_SQUARE_INCH'        => array('430.92233', 'oz/in²'),
-        'PASCAL'                => array('1',          'Pa'),
-        'PETABAR'               => array('1.0e+20',    'Pb'),
-        'PETAPASCAL'            => array('1.0e+15',    'PPa'),
-        'PICOBAR'               => array('0.0000001',  'pb'),
-        'PICOPASCAL'            => array('1.0e-12',    'pPa'),
-        'PIEZE'                 => array('1000',       'pz'),
-        'POUND_PER_SQUARE_FOOT' => array(array('' => '430.92233', '/' => '9'), 'lb/ft²'),
-        'POUND_PER_SQUARE_INCH' => array('6894.75728', 'lb/in²'),
-        'POUNDAL_PER_SQUARE_FOOT' => array('1.4881639', 'pdl/ft²'),
-        'STHENE_PER_SQUARE_METER' => array('1000',     'sn/m²'),
-        'TECHNICAL_ATMOSPHERE'  => array('98066.5',    'at'),
-        'TERABAR'               => array('1.0e+17',    'Tb'),
-        'TERAPASCAL'            => array('1.0e+12',    'TPa'),
-        'TON_PER_SQUARE_FOOT'   => array(array('' => '120658.2524', '/' => '1.125'),      't/ft²'),
-        'TON_PER_SQUARE_FOOT_SHORT' => array(array('' => '430.92233', '/' => '0.0045'),   't/ft²'),
-        'TON_PER_SQUARE_INCH'   => array(array('' => '17374788.3456', '/' => '1.125'),    't/in²'),
-        'TON_PER_SQUARE_INCH_SHORT' => array(array('' => '62052.81552', '/' => '0.0045'), 't/in²'),
-        'TON_PER_SQUARE_METER'  => array('9806.65',    't/m²'),
-        'TORR'                  => array('133.32237',  'Torr'),
-        'WATER_COLUMN_CENTIMETER' => array('98.0665',  'WC (cm)'),
-        'WATER_COLUMN_INCH'       => array(array('' => '2989.0669', '/' => '12'), 'WC (in)'),
-        'WATER_COLUMN_MILLIMETER' => array('9.80665',  'WC (mm)'),
-        'YOCTOBAR'              => array('1.0e-19',    'yb'),
-        'YOCTOPASCAL'           => array('1.0e-24',    'yPa'),
-        'YOTTABAR'              => array('1.0e+29',    'Yb'),
-        'YOTTAPASCAL'           => array('1.0e+24',    'YPa'),
-        'ZEPTOBAR'              => array('1.0e-16',    'zb'),
-        'ZEPTOPASCAL'           => array('1.0e-21',    'zPa'),
-        'ZETTABAR'              => array('1.0e+26',    'Zb'),
-        'ZETTAPASCAL'           => array('1.0e+21',    'ZPa'),
-        'STANDARD'              => 'NEWTON_PER_SQUARE_METER'
-    );
-}
+php php php php php/php*php*
+php php php php php php*php Calculationsphp forphp allphp pressurephp units
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_unitsphp php=php arrayphp(
+php php php php php php php php php'ATMOSPHEREphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php1php3php2php5php.php0php1php'php,php php'atmphp'php)php,
+php php php php php php php php php'ATMOSPHEREphp_TECHNICALphp'php php php=php>php arrayphp(php'php9php8php0php6php6php.php5php'php,php php php php'atmphp'php)php,
+php php php php php php php php php'ATTOBARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php3php'php,php php php php'abphp'php)php,
+php php php php php php php php php'ATTOPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php8php'php,php php php php'aPaphp'php)php,
+php php php php php php php php php'BARphp'php php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php'php,php php php php php'bphp'php)php,
+php php php php php php php php php'BARADphp'php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php1php'php,php php php php php php php php'baradphp'php)php,
+php php php php php php php php php'BARYEphp'php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php1php'php,php php php php php php php php'baphp'php)php,
+php php php php php php php php php'CENTIBARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php'cbphp'php)php,
+php php php php php php php php php'CENTIHGphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php3php3php3php.php2php2php3php9php'php,php php'cHgphp'php)php,
+php php php php php php php php php'CENTIMETERphp_MERCURYphp_php0Cphp'php php=php>php arrayphp(php'php1php3php3php3php.php2php2php3php9php'php,php php'cmphp mercuryphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'CENTIMETERphp_WATERphp_php4Cphp'php php php php=php>php arrayphp(php'php9php8php.php0php6php6php5php'php,php php php php'cmphp waterphp php(php4php°Cphp)php'php)php,
+php php php php php php php php php'CENTIPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php1php'php,php php php php php php php'cPaphp'php)php,
+php php php php php php php php php'CENTITORRphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php3php3php3php2php2php3php7php'php,php php'cTorrphp'php)php,
+php php php php php php php php php'DECIBARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php'php,php php php php php php'dbphp'php)php,
+php php php php php php php php php'DECIPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php1php'php,php php php php php php php php'dPaphp'php)php,
+php php php php php php php php php'DECITORRphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php3php.php3php3php2php2php3php7php'php,php php'dTorrphp'php)php,
+php php php php php php php php php'DEKABARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php'dabphp'php)php,
+php php php php php php php php php'DEKAPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php'php,php php php php php php php php php'daPaphp'php)php,
+php php php php php php php php php'DYNEphp_PERphp_SQUAREphp_CENTIMETERphp'php php=php>php arrayphp(php'php0php.php1php'php,php php php'dynphp/cmphp²php'php)php,
+php php php php php php php php php'EXABARphp'php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php2php3php'php,php php php php'Ebphp'php)php,
+php php php php php php php php php'EXAPASCALphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php8php'php,php php php php'EPaphp'php)php,
+php php php php php php php php php'FEMTOBARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php0php'php,php php php php'fbphp'php)php,
+php php php php php php php php php'FEMTOPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php5php'php,php php php php'fPaphp'php)php,
+php php php php php php php php php'FOOTphp_AIRphp_php0Cphp'php php php php php php php php php php php php=php>php arrayphp(php'php3php.php8php6php4php0php8php8php8php'php,php php'ftphp airphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'FOOTphp_AIRphp_php1php5Cphp'php php php php php php php php php php php=php>php arrayphp(php'php3php.php6php6php2php2php9php3php1php'php,php php'ftphp airphp php(php1php5php°Cphp)php'php)php,
+php php php php php php php php php'FOOTphp_HEADphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php2php9php8php9php.php0php6php6php9php'php,php php'ftphp headphp'php)php,
+php php php php php php php php php'FOOTphp_MERCURYphp_php0Cphp'php php php php php php php php=php>php arrayphp(php'php4php0php6php3php6php.php6php6php4php'php,php php'ftphp mercuryphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'FOOTphp_WATERphp_php4Cphp'php php php php php php php php php php=php>php arrayphp(php'php2php9php8php9php.php0php6php6php9php'php,php php'ftphp waterphp php(php4php°Cphp)php'php)php,
+php php php php php php php php php'GIGABARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php4php'php,php php php php'Gbphp'php)php,
+php php php php php php php php php'GIGAPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php9php'php,php php php php php'GPaphp'php)php,
+php php php php php php php php php'GRAMphp_FORCEphp_SQUAREphp_CENTIMETERphp'php php=php>php arrayphp(php'php9php8php.php0php6php6php5php'php,php php'gfphp'php)php,
+php php php php php php php php php'HECTOBARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php7php'php,php php php php php'hbphp'php)php,
+php php php php php php php php php'HECTOPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php'php,php php php php php php php php'hPaphp'php)php,
+php php php php php php php php php'INCHphp_AIRphp_php0Cphp'php php php php php php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php3php.php8php6php4php0php8php8php8php'php,php php'php/php'php php=php>php php'php1php2php'php)php,php php'inphp airphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'INCHphp_AIRphp_php1php5Cphp'php php php php php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php3php.php6php6php2php2php9php3php1php'php,php php'php/php'php php=php>php php'php1php2php'php)php,php php'inphp airphp php(php1php5php°Cphp)php'php)php,
+php php php php php php php php php'INCHphp_MERCURYphp_php0Cphp'php php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php4php0php6php3php6php.php6php6php4php'php,php php'php/php'php php=php>php php'php1php2php'php)php,php php'inphp mercuryphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'INCHphp_WATERphp_php4Cphp'php php php php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php2php9php8php9php.php0php6php6php9php'php,php php'php/php'php php=php>php php'php1php2php'php)php,php php'inphp waterphp php(php4php°Cphp)php'php)php,
+php php php php php php php php php'KILOBARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php8php'php,php php php php php'kbphp'php)php,
+php php php php php php php php php'KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_CENTIMETERphp'php php=php>php arrayphp(php'php9php8php0php6php6php.php5php'php,php php'kgfphp/cmphp²php'php)php,
+php php php php php php php php php'KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_METERphp'php php php php php php php=php>php arrayphp(php'php9php.php8php0php6php6php5php'php,php php'kgfphp/mphp²php'php)php,
+php php php php php php php php php'KILOGRAMphp_FORCEphp_PERphp_SQUAREphp_MILLIMETERphp'php php=php>php arrayphp(php'php9php8php0php6php6php5php0php'php,php php'kgfphp/mmphp²php'php)php,
+php php php php php php php php php'KILONEWTONphp_PERphp_SQUAREphp_METERphp'php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php'kNphp/mphp²php'php)php,
+php php php php php php php php php'KILOPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php'kPaphp'php)php,
+php php php php php php php php php'KILOPONDphp_PERphp_SQUAREphp_CENTIMETERphp'php php=php>php arrayphp(php'php9php8php0php6php6php.php5php'php,php php'kpphp/cmphp²php'php)php,
+php php php php php php php php php'KILOPONDphp_PERphp_SQUAREphp_METERphp'php php php php php php php=php>php arrayphp(php'php9php.php8php0php6php6php5php'php,php php'kpphp/mphp²php'php)php,
+php php php php php php php php php'KILOPONDphp_PERphp_SQUAREphp_MILLIMETERphp'php php=php>php arrayphp(php'php9php8php0php6php6php5php0php'php,php php'kpphp/mmphp²php'php)php,
+php php php php php php php php php'KIPphp_PERphp_SQUAREphp_FOOTphp'php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php4php3php0php.php9php2php2php3php3php'php,php php'php/php'php php=php>php php'php0php.php0php0php9php'php)php,php php php php'kipphp/ftphp²php'php)php,
+php php php php php php php php php'KIPphp_PERphp_SQUAREphp_INCHphp'php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php6php2php0php5php2php.php8php1php5php5php2php'php,php php'php/php'php php=php>php php'php0php.php0php0php9php'php)php,php php'kipphp/inphp²php'php)php,
+php php php php php php php php php'MEGABARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php1php'php,php php php php php'Mbphp'php)php,
+php php php php php php php php php'MEGANEWTONphp_PERphp_SQUAREphp_METERphp'php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php'MNphp/mphp²php'php)php,
+php php php php php php php php php'MEGAPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php'MPaphp'php)php,
+php php php php php php php php php'METERphp_AIRphp_php0Cphp'php php php php php php php php php php php=php>php arrayphp(php'php1php2php.php6php7php7php4php5php7php'php,php php php'mphp airphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'METERphp_AIRphp_php1php5Cphp'php php php php php php php php php php=php>php arrayphp(php'php1php2php.php0php1php5php3php9php7php'php,php php php'mphp airphp php(php1php5php°Cphp)php'php)php,
+php php php php php php php php php'METERphp_HEADphp'php php php php php php php php php php php php php=php>php arrayphp(php'php9php8php0php4php.php1php3php9php4php3php2php'php,php php'mphp headphp'php)php,
+php php php php php php php php php'MICROBARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php1php'php,php php php php php php php php php'phpµbphp'php)php,
+php php php php php php php php php'MICROMETERphp_MERCURYphp_php0Cphp'php php=php>php arrayphp(php'php0php.php1php3php3php3php2php2php3php9php'php,php php'phpµmphp mercuryphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'MICROMETERphp_WATERphp_php4Cphp'php php php php=php>php arrayphp(php'php0php.php0php0php9php8php0php6php6php5php'php,php php'phpµmphp waterphp php(php4php°Cphp)php'php)php,
+php php php php php php php php php'MICRONphp_MERCURYphp_php0Cphp'php php php php php php=php>php arrayphp(php'php0php.php1php3php3php3php2php2php3php9php'php,php php'phpµphp mercuryphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'MICROPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php0php0php0php0php1php'php,php php php php'phpµPaphp'php)php,
+php php php php php php php php php'MILLIBARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php'php,php php php php php php php php php'mbphp'php)php,
+php php php php php php php php php'MILLIHGphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php3php3php.php3php2php2php3php9php'php,php php php'mHgphp'php)php,
+php php php php php php php php php'MILLIMETERphp_MERCURYphp_php0Cphp'php php=php>php arrayphp(php'php1php3php3php.php3php2php2php3php9php'php,php php php'mmphp mercuryphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'MILLIMETERphp_WATERphp_php4Cphp'php php php php=php>php arrayphp(php'php9php.php8php0php6php6php5php'php,php php php php php'mmphp waterphp php(php0php°Cphp)php'php)php,
+php php php php php php php php php'MILLIPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php php php'mPaphp'php)php,
+php php php php php php php php php'MILLITORRphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php1php3php3php3php2php2php3php7php'php,php php'mTorrphp'php)php,
+php php php php php php php php php'NANOBARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php0php0php1php'php,php php php php php php'nbphp'php)php,
+php php php php php php php php php'NANOPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php9php'php,php php php php php php'nPaphp'php)php,
+php php php php php php php php php'NEWTONphp_PERphp_SQUAREphp_METERphp'php php php php php php php=php>php arrayphp(php'php1php'php,php php php php'Nphp/mphp²php'php)php,
+php php php php php php php php php'NEWTONphp_PERphp_SQUAREphp_MILLIMETERphp'php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php'Nphp/mmphp²php'php)php,
+php php php php php php php php php'OUNCEphp_PERphp_SQUAREphp_INCHphp'php php php php php php php php php=php>php arrayphp(php'php4php3php0php.php9php2php2php3php3php'php,php php'ozphp/inphp²php'php)php,
+php php php php php php php php php'PASCALphp'php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php'Paphp'php)php,
+php php php php php php php php php'PETABARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php2php0php'php,php php php php php'Pbphp'php)php,
+php php php php php php php php php'PETAPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php5php'php,php php php php php'PPaphp'php)php,
+php php php php php php php php php'PICOBARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php0php0php0php0php0php1php'php,php php php'pbphp'php)php,
+php php php php php php php php php'PICOPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php2php'php,php php php php php'pPaphp'php)php,
+php php php php php php php php php'PIEZEphp'php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php'pzphp'php)php,
+php php php php php php php php php'POUNDphp_PERphp_SQUAREphp_FOOTphp'php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php4php3php0php.php9php2php2php3php3php'php,php php'php/php'php php=php>php php'php9php'php)php,php php'lbphp/ftphp²php'php)php,
+php php php php php php php php php'POUNDphp_PERphp_SQUAREphp_INCHphp'php php=php>php arrayphp(php'php6php8php9php4php.php7php5php7php2php8php'php,php php'lbphp/inphp²php'php)php,
+php php php php php php php php php'POUNDALphp_PERphp_SQUAREphp_FOOTphp'php php=php>php arrayphp(php'php1php.php4php8php8php1php6php3php9php'php,php php'pdlphp/ftphp²php'php)php,
+php php php php php php php php php'STHENEphp_PERphp_SQUAREphp_METERphp'php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php'snphp/mphp²php'php)php,
+php php php php php php php php php'TECHNICALphp_ATMOSPHEREphp'php php php=php>php arrayphp(php'php9php8php0php6php6php.php5php'php,php php php php php'atphp'php)php,
+php php php php php php php php php'TERABARphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php7php'php,php php php php php'Tbphp'php)php,
+php php php php php php php php php'TERAPASCALphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php2php'php,php php php php php'TPaphp'php)php,
+php php php php php php php php php'TONphp_PERphp_SQUAREphp_FOOTphp'php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php2php0php6php5php8php.php2php5php2php4php'php,php php'php/php'php php=php>php php'php1php.php1php2php5php'php)php,php php php php php php php'tphp/ftphp²php'php)php,
+php php php php php php php php php'TONphp_PERphp_SQUAREphp_FOOTphp_SHORTphp'php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php4php3php0php.php9php2php2php3php3php'php,php php'php/php'php php=php>php php'php0php.php0php0php4php5php'php)php,php php php php'tphp/ftphp²php'php)php,
+php php php php php php php php php'TONphp_PERphp_SQUAREphp_INCHphp'php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php7php3php7php4php7php8php8php.php3php4php5php6php'php,php php'php/php'php php=php>php php'php1php.php1php2php5php'php)php,php php php php php'tphp/inphp²php'php)php,
+php php php php php php php php php'TONphp_PERphp_SQUAREphp_INCHphp_SHORTphp'php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php6php2php0php5php2php.php8php1php5php5php2php'php,php php'php/php'php php=php>php php'php0php.php0php0php4php5php'php)php,php php'tphp/inphp²php'php)php,
+php php php php php php php php php'TONphp_PERphp_SQUAREphp_METERphp'php php php=php>php arrayphp(php'php9php8php0php6php.php6php5php'php,php php php php php'tphp/mphp²php'php)php,
+php php php php php php php php php'TORRphp'php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php3php3php.php3php2php2php3php7php'php,php php php'Torrphp'php)php,
+php php php php php php php php php'WATERphp_COLUMNphp_CENTIMETERphp'php php=php>php arrayphp(php'php9php8php.php0php6php6php5php'php,php php php'WCphp php(cmphp)php'php)php,
+php php php php php php php php php'WATERphp_COLUMNphp_INCHphp'php php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php2php9php8php9php.php0php6php6php9php'php,php php'php/php'php php=php>php php'php1php2php'php)php,php php'WCphp php(inphp)php'php)php,
+php php php php php php php php php'WATERphp_COLUMNphp_MILLIMETERphp'php php=php>php arrayphp(php'php9php.php8php0php6php6php5php'php,php php php'WCphp php(mmphp)php'php)php,
+php php php php php php php php php'YOCTOBARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php9php'php,php php php php php'ybphp'php)php,
+php php php php php php php php php'YOCTOPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php2php4php'php,php php php php php'yPaphp'php)php,
+php php php php php php php php php'YOTTABARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php2php9php'php,php php php php php'Ybphp'php)php,
+php php php php php php php php php'YOTTAPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php2php4php'php,php php php php php'YPaphp'php)php,
+php php php php php php php php php'ZEPTOBARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php6php'php,php php php php php'zbphp'php)php,
+php php php php php php php php php'ZEPTOPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php2php1php'php,php php php php php'zPaphp'php)php,
+php php php php php php php php php'ZETTABARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php2php6php'php,php php php php php'Zbphp'php)php,
+php php php php php php php php php'ZETTAPASCALphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php2php1php'php,php php php php php'ZPaphp'php)php,
+php php php php php php php php php'STANDARDphp'php php php php php php php php php php php php php php php=php>php php'NEWTONphp_PERphp_SQUAREphp_METERphp'
+php php php php php)php;
+php}

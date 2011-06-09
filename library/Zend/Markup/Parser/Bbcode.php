@@ -1,504 +1,504 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Markup
- * @subpackage Parser
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Bbcode.php 21127 2010-02-21 15:35:03Z kokx $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@subpackagephp Parser
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Bbcodephp.phpphp php2php1php1php2php7php php2php0php1php0php-php0php2php-php2php1php php1php5php:php3php5php:php0php3Zphp kokxphp php$
+php php*php/
 
-/**
- * @see Zend_Markup_TokenList
- */
-require_once 'Zend/Markup/TokenList.php';
+php/php*php*
+php php*php php@seephp Zendphp_Markupphp_TokenList
+php php*php/
+requirephp_oncephp php'Zendphp/Markupphp/TokenListphp.phpphp'php;
 
-/**
- * @see Zend_Markup_Parser_ParserInterface
- */
-require_once 'Zend/Markup/Parser/ParserInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Markupphp_Parserphp_ParserInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Markupphp/Parserphp/ParserInterfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Markup
- * @subpackage Parser
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
-{
-    const NEWLINE   = "[newline\0]";
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@subpackagephp Parser
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Markupphp_Parserphp_Bbcodephp implementsphp Zendphp_Markupphp_Parserphp_ParserInterface
+php{
+php php php php constphp NEWLINEphp php php php=php php"php[newlinephp\php0php]php"php;
 
-    // there is a parsing difference between the default tags and single tags
-    const TYPE_DEFAULT = 'default';
-    const TYPE_SINGLE  = 'single';
+php php php php php/php/php therephp isphp aphp parsingphp differencephp betweenphp thephp defaultphp tagsphp andphp singlephp tags
+php php php php constphp TYPEphp_DEFAULTphp php=php php'defaultphp'php;
+php php php php constphp TYPEphp_SINGLEphp php php=php php'singlephp'php;
 
-    const NAME_CHARSET = '^\[\]=\s';
+php php php php constphp NAMEphp_CHARSETphp php=php php'php^php\php[php\php]php=php\sphp'php;
 
-    const STATE_SCAN       = 0;
-    const STATE_SCANATTRS  = 1;
-    const STATE_PARSEVALUE = 2;
+php php php php constphp STATEphp_SCANphp php php php php php php php=php php0php;
+php php php php constphp STATEphp_SCANATTRSphp php php=php php1php;
+php php php php constphp STATEphp_PARSEVALUEphp php=php php2php;
 
-    /**
-     * Token tree
-     *
-     * @var Zend_Markup_TokenList
-     */
-    protected $_tree;
+php php php php php/php*php*
+php php php php php php*php Tokenphp tree
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Markupphp_TokenList
+php php php php php php*php/
+php php php php protectedphp php$php_treephp;
 
-    /**
-     * Current token
-     *
-     * @var Zend_Markup_Token
-     */
-    protected $_current;
+php php php php php/php*php*
+php php php php php php*php Currentphp token
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Markupphp_Token
+php php php php php php*php/
+php php php php protectedphp php$php_currentphp;
 
-    /**
-     * Source to tokenize
-     *
-     * @var string
-     */
-    protected $_value = '';
+php php php php php/php*php*
+php php php php php php*php Sourcephp tophp tokenize
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_valuephp php=php php'php'php;
 
-    /**
-     * Length of the value
-     *
-     * @var int
-     */
-    protected $_valueLen = 0;
+php php php php php/php*php*
+php php php php php php*php Lengthphp ofphp thephp value
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_valueLenphp php=php php0php;
 
-    /**
-     * Current pointer
-     *
-     * @var int
-     */
-    protected $_pointer = 0;
+php php php php php/php*php*
+php php php php php php*php Currentphp pointer
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_pointerphp php=php php0php;
 
-    /**
-     * The buffer
-     *
-     * @var string
-     */
-    protected $_buffer = '';
+php php php php php/php*php*
+php php php php php php*php Thephp buffer
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_bufferphp php=php php'php'php;
 
-    /**
-     * Temporary tag storage
-     *
-     * @var array
-     */
-    protected $_temp;
+php php php php php/php*php*
+php php php php php php*php Temporaryphp tagphp storage
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_tempphp;
 
-    /**
-     * Stoppers that we are searching for
-     *
-     * @var array
-     */
-    protected $_searchedStoppers = array();
+php php php php php/php*php*
+php php php php php php*php Stoppersphp thatphp wephp arephp searchingphp for
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_searchedStoppersphp php=php arrayphp(php)php;
 
-    /**
-     * Tag information
-     *
-     * @var array
-     */
-    protected $_tags = array(
-        'Zend_Markup_Root' => array(
-            'type'     => self::TYPE_DEFAULT,
-            'stoppers' => array(),
-        ),
-        '*' => array(
-            'type'     => self::TYPE_DEFAULT,
-            'stoppers' => array(self::NEWLINE, '[/*]', '[/]'),
-        ),
-        'hr' => array(
-            'type'     => self::TYPE_SINGLE,
-            'stoppers' => array(),
-        ),
-        'code' => array(
-            'type'         => self::TYPE_DEFAULT,
-            'stoppers'     => array('[/code]', '[/]'),
-            'parse_inside' => false
-        )
-    );
+php php php php php/php*php*
+php php php php php php*php Tagphp information
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_tagsphp php=php arrayphp(
+php php php php php php php php php'Zendphp_Markupphp_Rootphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php'typephp'php php php php php php=php>php selfphp:php:TYPEphp_DEFAULTphp,
+php php php php php php php php php php php php php'stoppersphp'php php=php>php arrayphp(php)php,
+php php php php php php php php php)php,
+php php php php php php php php php'php*php'php php=php>php arrayphp(
+php php php php php php php php php php php php php'typephp'php php php php php php=php>php selfphp:php:TYPEphp_DEFAULTphp,
+php php php php php php php php php php php php php'stoppersphp'php php=php>php arrayphp(selfphp:php:NEWLINEphp,php php'php[php/php*php]php'php,php php'php[php/php]php'php)php,
+php php php php php php php php php)php,
+php php php php php php php php php'hrphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php'typephp'php php php php php php=php>php selfphp:php:TYPEphp_SINGLEphp,
+php php php php php php php php php php php php php'stoppersphp'php php=php>php arrayphp(php)php,
+php php php php php php php php php)php,
+php php php php php php php php php'codephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php'typephp'php php php php php php php php php php=php>php selfphp:php:TYPEphp_DEFAULTphp,
+php php php php php php php php php php php php php'stoppersphp'php php php php php php=php>php arrayphp(php'php[php/codephp]php'php,php php'php[php/php]php'php)php,
+php php php php php php php php php php php php php'parsephp_insidephp'php php=php>php false
+php php php php php php php php php)
+php php php php php)php;
 
-    /**
-     * Token array
-     *
-     * @var array
-     */
-    protected $_tokens = array();
+php php php php php/php*php*
+php php php php php php*php Tokenphp array
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_tokensphp php=php arrayphp(php)php;
 
-    /**
-     * State
-     *
-     * @var int
-     */
-    protected $_state = self::STATE_SCAN;
+php php php php php/php*php*
+php php php php php php*php State
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_statephp php=php selfphp:php:STATEphp_SCANphp;
 
 
-    /**
-     * Prepare the parsing of a bbcode string, the real parsing is done in {@link _parse()}
-     *
-     * @param  string $value
-     * @return Zend_Markup_TokenList
-     */
-    public function parse($value)
-    {
-        if (!is_string($value)) {
-            /**
-             * @see Zend_Markup_Parser_Exception
-             */
-            require_once 'Zend/Markup/Parser/Exception.php';
-            throw new Zend_Markup_Parser_Exception('Value to parse should be a string.');
-        }
+php php php php php/php*php*
+php php php php php php*php Preparephp thephp parsingphp ofphp aphp bbcodephp stringphp,php thephp realphp parsingphp isphp donephp inphp php{php@linkphp php_parsephp(php)php}
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Markupphp_TokenList
+php php php php php php*php/
+php php php php publicphp functionphp parsephp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Markupphp_Parserphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Markupphp/Parserphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Markupphp_Parserphp_Exceptionphp(php'Valuephp tophp parsephp shouldphp bephp aphp stringphp.php'php)php;
+php php php php php php php php php}
 
-        if (empty($value)) {
-            /**
-             * @see Zend_Markup_Parser_Exception
-             */
-            require_once 'Zend/Markup/Parser/Exception.php';
-            throw new Zend_Markup_Parser_Exception('Value to parse cannot be left empty.');
-        }
+php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Markupphp_Parserphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Markupphp/Parserphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Markupphp_Parserphp_Exceptionphp(php'Valuephp tophp parsephp cannotphp bephp leftphp emptyphp.php'php)php;
+php php php php php php php php php}
 
-        $this->_value = str_replace(array("\r\n", "\r", "\n"), self::NEWLINE, $value);
+php php php php php php php php php$thisphp-php>php_valuephp php=php strphp_replacephp(arrayphp(php"php\rphp\nphp"php,php php"php\rphp"php,php php"php\nphp"php)php,php selfphp:php:NEWLINEphp,php php$valuephp)php;
 
-        // variable initialization for tokenizer
-        $this->_valueLen         = strlen($this->_value);
-        $this->_pointer          = 0;
-        $this->_buffer           = '';
-        $this->_temp             = array();
-        $this->_state            = self::STATE_SCAN;
-        $this->_tokens           = array();
+php php php php php php php php php/php/php variablephp initializationphp forphp tokenizer
+php php php php php php php php php$thisphp-php>php_valueLenphp php php php php php php php php php=php strlenphp(php$thisphp-php>php_valuephp)php;
+php php php php php php php php php$thisphp-php>php_pointerphp php php php php php php php php php php=php php0php;
+php php php php php php php php php$thisphp-php>php_bufferphp php php php php php php php php php php php=php php'php'php;
+php php php php php php php php php$thisphp-php>php_tempphp php php php php php php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_statephp php php php php php php php php php php php php=php selfphp:php:STATEphp_SCANphp;
+php php php php php php php php php$thisphp-php>php_tokensphp php php php php php php php php php php php=php arrayphp(php)php;
 
-        $this->_tokenize();
+php php php php php php php php php$thisphp-php>php_tokenizephp(php)php;
 
-        // variable initialization for treebuilder
-        $this->_searchedStoppers = array();
-        $this->_tree             = new Zend_Markup_TokenList();
-        $this->_current          = new Zend_Markup_Token(
-            '',
-            Zend_Markup_Token::TYPE_NONE,
-            'Zend_Markup_Root'
-        );
+php php php php php php php php php/php/php variablephp initializationphp forphp treebuilder
+php php php php php php php php php$thisphp-php>php_searchedStoppersphp php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_treephp php php php php php php php php php php php php php=php newphp Zendphp_Markupphp_TokenListphp(php)php;
+php php php php php php php php php$thisphp-php>php_currentphp php php php php php php php php php php=php newphp Zendphp_Markupphp_Tokenphp(
+php php php php php php php php php php php php php'php'php,
+php php php php php php php php php php php php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONEphp,
+php php php php php php php php php php php php php'Zendphp_Markupphp_Rootphp'
+php php php php php php php php php)php;
 
-        $this->_tree->addChild($this->_current);
+php php php php php php php php php$thisphp-php>php_treephp-php>addChildphp(php$thisphp-php>php_currentphp)php;
 
-        $this->_createTree();
+php php php php php php php php php$thisphp-php>php_createTreephp(php)php;
 
-        return $this->_tree;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_treephp;
+php php php php php}
 
-    /**
-     * Tokenize
-     *
-     * @param string $input
-     *
-     * @return void
-     */
-    protected function _tokenize()
-    {
-        $attribute = '';
+php php php php php/php*php*
+php php php php php php*php Tokenize
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$input
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_tokenizephp(php)
+php php php php php{
+php php php php php php php php php$attributephp php=php php'php'php;
 
-        while ($this->_pointer < $this->_valueLen) {
-            switch ($this->_state) {
-                case self::STATE_SCAN:
-                    $matches = array();
-                    $regex   = '#\G(?<text>[^\[]*)(?<open>\[(?<name>[' . self::NAME_CHARSET . ']+)?)?#';
-                    preg_match($regex, $this->_value, $matches, null, $this->_pointer);
+php php php php php php php php whilephp php(php$thisphp-php>php_pointerphp <php php$thisphp-php>php_valueLenphp)php php{
+php php php php php php php php php php php php switchphp php(php$thisphp-php>php_statephp)php php{
+php php php php php php php php php php php php php php php php casephp selfphp:php:STATEphp_SCANphp:
+php php php php php php php php php php php php php php php php php php php php php$matchesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$regexphp php php php=php php'php#php\Gphp(php?php<textphp>php[php^php\php[php]php*php)php(php?php<openphp>php\php[php(php?php<namephp>php[php'php php.php selfphp:php:NAMEphp_CHARSETphp php.php php'php]php+php)php?php)php?php#php'php;
+php php php php php php php php php php php php php php php php php php php php pregphp_matchphp(php$regexphp,php php$thisphp-php>php_valuephp,php php$matchesphp,php nullphp,php php$thisphp-php>php_pointerphp)php;
 
-                    $this->_pointer += strlen($matches[0]);
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_pointerphp php+php=php strlenphp(php$matchesphp[php0php]php)php;
 
-                    if (!empty($matches['text'])) {
-                        $this->_buffer .= $matches['text'];
-                    }
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$matchesphp[php'textphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_bufferphp php.php=php php$matchesphp[php'textphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    if (!isset($matches['open'])) {
-                        // great, no tag, we are ending the string
-                        break;
-                    }
-                    if (!isset($matches['name'])) {
-                        $this->_buffer .= $matches['open'];
-                        break;
-                    }
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$matchesphp[php'openphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php greatphp,php nophp tagphp,php wephp arephp endingphp thephp string
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$matchesphp[php'namephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_bufferphp php.php=php php$matchesphp[php'openphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    $this->_temp = array(
-                        'tag'        => '[' . $matches['name'],
-                        'name'       => $matches['name'],
-                        'attributes' => array()
-                    );
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'tagphp'php php php php php php php php php=php>php php'php[php'php php.php php$matchesphp[php'namephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php'namephp'php php php php php php php php=php>php php$matchesphp[php'namephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php'attributesphp'php php=php>php arrayphp(php)
+php php php php php php php php php php php php php php php php php php php php php)php;
 
-                    if ($this->_pointer >= $this->_valueLen) {
-                        // damn, no tag
-                        $this->_buffer .= $this->_temp['tag'];
-                        break 2;
-                    }
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_pointerphp php>php=php php$thisphp-php>php_valueLenphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php damnphp,php nophp tag
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_bufferphp php.php=php php$thisphp-php>php_tempphp[php'tagphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp php2php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    if ($this->_value[$this->_pointer] == '=') {
-                        $this->_pointer++;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_valuephp[php$thisphp-php>php_pointerphp]php php=php=php php'php=php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_pointerphp+php+php;
 
-                        $this->_temp['tag'] .= '=';
-                        $this->_state        = self::STATE_PARSEVALUE;
-                        $attribute           = $this->_temp['name'];
-                    } else {
-                        $this->_state = self::STATE_SCANATTRS;
-                    }
-                    break;
-                case self::STATE_SCANATTRS:
-                    $matches = array();
-                    $regex   = '#\G((?<end>\s*\])|\s+(?<attribute>[' . self::NAME_CHARSET . ']+)(?<eq>=?))#';
-                    if (!preg_match($regex, $this->_value, $matches, null, $this->_pointer)) {
-                        break 2;
-                    }
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'tagphp'php]php php.php=php php'php=php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_statephp php php php php php php php php=php selfphp:php:STATEphp_PARSEVALUEphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php$attributephp php php php php php php php php php php php=php php$thisphp-php>php_tempphp[php'namephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_statephp php=php selfphp:php:STATEphp_SCANATTRSphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:STATEphp_SCANATTRSphp:
+php php php php php php php php php php php php php php php php php php php php php$matchesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$regexphp php php php=php php'php#php\Gphp(php(php?php<endphp>php\sphp*php\php]php)php|php\sphp+php(php?php<attributephp>php[php'php php.php selfphp:php:NAMEphp_CHARSETphp php.php php'php]php+php)php(php?php<eqphp>php=php?php)php)php#php'php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!pregphp_matchphp(php$regexphp,php php$thisphp-php>php_valuephp,php php$matchesphp,php nullphp,php php$thisphp-php>php_pointerphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp php2php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    $this->_pointer += strlen($matches[0]);
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_pointerphp php+php=php strlenphp(php$matchesphp[php0php]php)php;
 
-                    if (!empty($matches['end'])) {
-                        if (!empty($this->_buffer)) {
-                            $this->_tokens[] = array(
-                                'tag' => $this->_buffer,
-                                'type' => Zend_Markup_Token::TYPE_NONE
-                            );
-                            $this->_buffer = '';
-                        }
-                        $this->_temp['tag'] .= $matches['end'];
-                        $this->_temp['type'] = Zend_Markup_Token::TYPE_TAG;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$matchesphp[php'endphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_bufferphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tokensphp[php]php php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'tagphp'php php=php>php php$thisphp-php>php_bufferphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'typephp'php php=php>php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONE
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_bufferphp php=php php'php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'tagphp'php]php php.php=php php$matchesphp[php'endphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'typephp'php]php php=php Zendphp_Markupphp_Tokenphp:php:TYPEphp_TAGphp;
 
-                        $this->_tokens[] = $this->_temp;
-                        $this->_temp     = array();
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tokensphp[php]php php=php php$thisphp-php>php_tempphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp php php php php php=php arrayphp(php)php;
 
-                        $this->_state = self::STATE_SCAN;
-                    } else {
-                        // attribute name
-                        $attribute = $matches['attribute'];
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_statephp php=php selfphp:php:STATEphp_SCANphp;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php attributephp name
+php php php php php php php php php php php php php php php php php php php php php php php php php$attributephp php=php php$matchesphp[php'attributephp'php]php;
 
-                        $this->_temp['tag'] .= $matches[0];
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'tagphp'php]php php.php=php php$matchesphp[php0php]php;
 
-                        $this->_temp['attributes'][$attribute] = '';
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'attributesphp'php]php[php$attributephp]php php=php php'php'php;
 
-                        if (empty($matches['eq'])) {
-                            $this->_state = self::STATE_SCANATTRS;
-                        } else {
-                            $this->_state = self::STATE_PARSEVALUE;
-                        }
-                    }
-                    break;
-                case self::STATE_PARSEVALUE:
-                    $matches = array();
-                    $regex   = '#\G((?<quote>"|\')(?<valuequote>.*?)\\2|(?<value>[^\]\s]+))#';
-                    if (!preg_match($regex, $this->_value, $matches, null, $this->_pointer)) {
-                        $this->_state = self::STATE_SCANATTRS;
-                        break;
-                    }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$matchesphp[php'eqphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_statephp php=php selfphp:php:STATEphp_SCANATTRSphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_statephp php=php selfphp:php:STATEphp_PARSEVALUEphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:STATEphp_PARSEVALUEphp:
+php php php php php php php php php php php php php php php php php php php php php$matchesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$regexphp php php php=php php'php#php\Gphp(php(php?php<quotephp>php"php|php\php'php)php(php?php<valuequotephp>php.php*php?php)php\php\php2php|php(php?php<valuephp>php[php^php\php]php\sphp]php+php)php)php#php'php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!pregphp_matchphp(php$regexphp,php php$thisphp-php>php_valuephp,php php$matchesphp,php nullphp,php php$thisphp-php>php_pointerphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_statephp php=php selfphp:php:STATEphp_SCANATTRSphp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    $this->_pointer += strlen($matches[0]);
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_pointerphp php+php=php strlenphp(php$matchesphp[php0php]php)php;
 
-                    if (!empty($matches['quote'])) {
-                        $this->_temp['attributes'][$attribute] = $matches['valuequote'];
-                    } else {
-                        $this->_temp['attributes'][$attribute] = $matches['value'];
-                    }
-                    $this->_temp['tag'] .= $matches[0];
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$matchesphp[php'quotephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'attributesphp'php]php[php$attributephp]php php=php php$matchesphp[php'valuequotephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'attributesphp'php]php[php$attributephp]php php=php php$matchesphp[php'valuephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tempphp[php'tagphp'php]php php.php=php php$matchesphp[php0php]php;
 
-                    $this->_state = self::STATE_SCANATTRS;
-                    break;
-            }
-        }
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_statephp php=php selfphp:php:STATEphp_SCANATTRSphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (!empty($this->_buffer)) {
-            $this->_tokens[] = array(
-                'tag'  => $this->_buffer,
-                'type' => Zend_Markup_Token::TYPE_NONE
-            );
-        }
-    }
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_bufferphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_tokensphp[php]php php=php arrayphp(
+php php php php php php php php php php php php php php php php php'tagphp'php php php=php>php php$thisphp-php>php_bufferphp,
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONE
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Parse the token array into a tree
-     *
-     * @param array $tokens
-     *
-     * @return void
-     */
-    public function _createTree()
-    {
-        foreach ($this->_tokens as $token) {
-            // first we want to know if this tag is a stopper, or at least a searched one
-            if ($this->_isStopper($token['tag'])) {
-                // find the stopper
-                $oldItems = array();
+php php php php php/php*php*
+php php php php php php*php Parsephp thephp tokenphp arrayphp intophp aphp tree
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$tokens
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_createTreephp(php)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>php_tokensphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php/php/php firstphp wephp wantphp tophp knowphp ifphp thisphp tagphp isphp aphp stopperphp,php orphp atphp leastphp aphp searchedphp one
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_isStopperphp(php$tokenphp[php'tagphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php findphp thephp stopper
+php php php php php php php php php php php php php php php php php$oldItemsphp php=php arrayphp(php)php;
 
-                while (!in_array($token['tag'], $this->_tags[$this->_current->getName()]['stoppers'])) {
-                    $oldItems[]     = clone $this->_current;
-                    $this->_current = $this->_current->getParent();
-                }
+php php php php php php php php php php php php php php php php whilephp php(php!inphp_arrayphp(php$tokenphp[php'tagphp'php]php,php php$thisphp-php>php_tagsphp[php$thisphp-php>php_currentphp-php>getNamephp(php)php]php[php'stoppersphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$oldItemsphp[php]php php php php php php=php clonephp php$thisphp-php>php_currentphp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php$thisphp-php>php_currentphp-php>getParentphp(php)php;
+php php php php php php php php php php php php php php php php php}
 
-                // we found the stopper, so stop the tag
-                $this->_current->setStopper($token['tag']);
-                $this->_removeFromSearchedStoppers($this->_current);
-                $this->_current = $this->_current->getParent();
+php php php php php php php php php php php php php php php php php/php/php wephp foundphp thephp stopperphp,php sophp stopphp thephp tag
+php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp-php>setStopperphp(php$tokenphp[php'tagphp'php]php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_removeFromSearchedStoppersphp(php$thisphp-php>php_currentphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php$thisphp-php>php_currentphp-php>getParentphp(php)php;
 
-                // add the old items again if there are any
-                if (!empty($oldItems)) {
-                    foreach (array_reverse($oldItems) as $item) {
-                        /* @var $token Zend_Markup_Token */
-                        $this->_current->addChild($item);
-                        $item->setParent($this->_current);
-                        $this->_current = $item;
-                    }
-                }
-            } else {
-                if ($token['type'] == Zend_Markup_Token::TYPE_TAG) {
-                    if ($token['tag'] == self::NEWLINE) {
-                        // this is a newline tag, add it as a token
-                        $this->_current->addChild(new Zend_Markup_Token(
-                            "\n",
-                            Zend_Markup_Token::TYPE_NONE,
-                            '',
-                            array(),
-                            $this->_current
-                        ));
-                    } elseif (isset($token['name']) && ($token['name'][0] == '/')) {
-                        // this is a stopper, add it as a empty token
-                        $this->_current->addChild(new Zend_Markup_Token(
-                            $token['tag'],
-                            Zend_Markup_Token::TYPE_NONE,
-                            '',
-                            array(),
-                            $this->_current
-                        ));
-                    } elseif (isset($this->_tags[$this->_current->getName()]['parse_inside'])
-                        && !$this->_tags[$this->_current->getName()]['parse_inside']
-                    ) {
-                        $this->_current->addChild(new Zend_Markup_Token(
-                            $token['tag'],
-                            Zend_Markup_Token::TYPE_NONE,
-                            '',
-                            array(),
-                            $this->_current
-                        ));
-                    } else {
-                        // add the tag
-                        $child = new Zend_Markup_Token(
-                            $token['tag'],
-                            $token['type'],
-                            $token['name'],
-                            $token['attributes'],
-                            $this->_current
-                        );
-                        $this->_current->addChild($child);
+php php php php php php php php php php php php php php php php php/php/php addphp thephp oldphp itemsphp againphp ifphp therephp arephp any
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$oldItemsphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php foreachphp php(arrayphp_reversephp(php$oldItemsphp)php asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php*php php@varphp php$tokenphp Zendphp_Markupphp_Tokenphp php*php/
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp-php>addChildphp(php$itemphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$itemphp-php>setParentphp(php$thisphp-php>php_currentphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php$itemphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php ifphp php(php$tokenphp[php'typephp'php]php php=php=php Zendphp_Markupphp_Tokenphp:php:TYPEphp_TAGphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$tokenphp[php'tagphp'php]php php=php=php selfphp:php:NEWLINEphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php thisphp isphp aphp newlinephp tagphp,php addphp itphp asphp aphp token
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp-php>addChildphp(newphp Zendphp_Markupphp_Tokenphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php"php\nphp"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONEphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_current
+php php php php php php php php php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(issetphp(php$tokenphp[php'namephp'php]php)php php&php&php php(php$tokenphp[php'namephp'php]php[php0php]php php=php=php php'php/php'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php thisphp isphp aphp stopperphp,php addphp itphp asphp aphp emptyphp token
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp-php>addChildphp(newphp Zendphp_Markupphp_Tokenphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tokenphp[php'tagphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONEphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_current
+php php php php php php php php php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_tagsphp[php$thisphp-php>php_currentphp-php>getNamephp(php)php]php[php'parsephp_insidephp'php]php)
+php php php php php php php php php php php php php php php php php php php php php php php php php&php&php php!php$thisphp-php>php_tagsphp[php$thisphp-php>php_currentphp-php>getNamephp(php)php]php[php'parsephp_insidephp'php]
+php php php php php php php php php php php php php php php php php php php php php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp-php>addChildphp(newphp Zendphp_Markupphp_Tokenphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tokenphp[php'tagphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONEphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_current
+php php php php php php php php php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php addphp thephp tag
+php php php php php php php php php php php php php php php php php php php php php php php php php$childphp php=php newphp Zendphp_Markupphp_Tokenphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tokenphp[php'tagphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tokenphp[php'typephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tokenphp[php'namephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tokenphp[php'attributesphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_current
+php php php php php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp-php>addChildphp(php$childphp)php;
 
-                        // add stoppers for this tag, if its has stoppers
-                        if ($this->_getType($token['name']) == self::TYPE_DEFAULT) {
-                            $this->_current = $child;
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php addphp stoppersphp forphp thisphp tagphp,php ifphp itsphp hasphp stoppers
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_getTypephp(php$tokenphp[php'namephp'php]php)php php=php=php selfphp:php:TYPEphp_DEFAULTphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php$childphp;
 
-                            $this->_addToSearchedStoppers($this->_current);
-                        }
-                    }
-                } else {
-                    // no tag, just add it as a simple token
-                    $this->_current->addChild(new Zend_Markup_Token(
-                        $token['tag'],
-                        Zend_Markup_Token::TYPE_NONE,
-                        '',
-                        array(),
-                        $this->_current
-                    ));
-                }
-            }
-        }
-    }
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_addToSearchedStoppersphp(php$thisphp-php>php_currentphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php/php nophp tagphp,php justphp addphp itphp asphp aphp simplephp token
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_currentphp-php>addChildphp(newphp Zendphp_Markupphp_Tokenphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php$tokenphp[php'tagphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONEphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php'php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_current
+php php php php php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Check if there is a tag declaration, and if it isnt there, add it
-     *
-     * @param string $name
-     *
-     * @return void
-     */
-    protected function _checkTagDeclaration($name)
-    {
-        if (!isset($this->_tags[$name])) {
-            $this->_tags[$name] = array(
-                'type'     => self::TYPE_DEFAULT,
-                'stoppers' => array(
-                    '[/' . $name . ']',
-                    '[/]'
-                )
-            );
-        }
-    }
-    /**
-     * Check the tag's type
-     *
-     * @param  string $name
-     * @return string
-     */
-    protected function _getType($name)
-    {
-        $this->_checkTagDeclaration($name);
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp therephp isphp aphp tagphp declarationphp,php andphp ifphp itphp isntphp therephp,php addphp it
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_checkTagDeclarationphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_tagsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_tagsphp[php$namephp]php php=php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php php php=php>php selfphp:php:TYPEphp_DEFAULTphp,
+php php php php php php php php php php php php php php php php php'stoppersphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'php[php/php'php php.php php$namephp php.php php'php]php'php,
+php php php php php php php php php php php php php php php php php php php php php'php[php/php]php'
+php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php}
+php php php php php/php*php*
+php php php php php php*php Checkphp thephp tagphp'sphp type
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getTypephp(php$namephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_checkTagDeclarationphp(php$namephp)php;
 
-        return $this->_tags[$name]['type'];
-    }
+php php php php php php php php returnphp php$thisphp-php>php_tagsphp[php$namephp]php[php'typephp'php]php;
+php php php php php}
 
-    /**
-     * Check if the tag is a stopper
-     *
-     * @param  string $tag
-     * @return bool
-     */
-    protected function _isStopper($tag)
-    {
-        $this->_checkTagDeclaration($this->_current->getName());
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp thephp tagphp isphp aphp stopper
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$tag
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php protectedphp functionphp php_isStopperphp(php$tagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_checkTagDeclarationphp(php$thisphp-php>php_currentphp-php>getNamephp(php)php)php;
 
-        if (!empty($this->_searchedStoppers[$tag])) {
-            return true;
-        }
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_searchedStoppersphp[php$tagphp]php)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Add to searched stoppers
-     *
-     * @param  Zend_Markup_Token $token
-     * @return void
-     */
-    protected function _addToSearchedStoppers(Zend_Markup_Token $token)
-    {
-        $this->_checkTagDeclaration($token->getName());
+php php php php php/php*php*
+php php php php php php*php Addphp tophp searchedphp stoppers
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_addToSearchedStoppersphp(Zendphp_Markupphp_Tokenphp php$tokenphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_checkTagDeclarationphp(php$tokenphp-php>getNamephp(php)php)php;
 
-        foreach ($this->_tags[$token->getName()]['stoppers'] as $stopper) {
-            if (!isset($this->_searchedStoppers[$stopper])) {
-                $this->_searchedStoppers[$stopper] = 0;
-            }
-            ++$this->_searchedStoppers[$stopper];
-        }
-    }
+php php php php php php php php foreachphp php(php$thisphp-php>php_tagsphp[php$tokenphp-php>getNamephp(php)php]php[php'stoppersphp'php]php asphp php$stopperphp)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_searchedStoppersphp[php$stopperphp]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_searchedStoppersphp[php$stopperphp]php php=php php0php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php+php+php$thisphp-php>php_searchedStoppersphp[php$stopperphp]php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Remove from searched stoppers
-     *
-     * @param  Zend_Markup_Token $token
-     * @return void
-     */
-    protected function _removeFromSearchedStoppers(Zend_Markup_Token $token)
-    {
-        $this->_checkTagDeclaration($token->getName());
+php php php php php/php*php*
+php php php php php php*php Removephp fromphp searchedphp stoppers
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_removeFromSearchedStoppersphp(Zendphp_Markupphp_Tokenphp php$tokenphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_checkTagDeclarationphp(php$tokenphp-php>getNamephp(php)php)php;
 
-        foreach ($this->_tags[$token->getName()]['stoppers'] as $stopper) {
-            --$this->_searchedStoppers[$stopper];
-        }
-    }
+php php php php php php php php foreachphp php(php$thisphp-php>php_tagsphp[php$tokenphp-php>getNamephp(php)php]php[php'stoppersphp'php]php asphp php$stopperphp)php php{
+php php php php php php php php php php php php php-php-php$thisphp-php>php_searchedStoppersphp[php$stopperphp]php;
+php php php php php php php php php}
+php php php php php}
 
-}
+php}

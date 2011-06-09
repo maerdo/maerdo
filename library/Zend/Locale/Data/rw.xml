@@ -1,305 +1,305 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.28 $"/>
-		<generation date="$Date: 2009/06/15 17:12:26 $"/>
-		<language type="rw"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="af">Ikinyafurikaneri</language>
-			<language type="am">Inyamuhariki</language>
-			<language type="ar">Icyarabu</language>
-			<language type="as">Icyasamizi</language>
-			<language type="az">Inyazeribayijani</language>
-			<language type="be">Ikibelarusiya</language>
-			<language type="bg">Urunyabuligariya</language>
-			<language type="bh">Inyebihari</language>
-			<language type="bn">Ikibengali</language>
-			<language type="br">Inyebiritoni</language>
-			<language type="bs">Inyebosiniya</language>
-			<language type="ca">Igikatalani</language>
-			<language type="cs">Igiceke</language>
-			<language type="cy">Ikigaluwa</language>
-			<language type="da">Ikidaninwa</language>
-			<language type="de">Ikidage</language>
-			<language type="el">Ikigereki</language>
-			<language type="en">Icyongereza</language>
-			<language type="eo">Icyesiperanto</language>
-			<language type="es">Icyesipanyolo</language>
-			<language type="et">Icyesitoniya</language>
-			<language type="eu">Ikibasiki</language>
-			<language type="fa">Inyeperisi</language>
-			<language type="fi">Igifinilande</language>
-			<language type="fil">Ikinyafilipine</language>
-			<language type="fo">Inyefaroyizi</language>
-			<language type="fr">Igifaransa</language>
-			<language type="fy">Igifiriziyani</language>
-			<language type="ga">Ikirilandi</language>
-			<language type="gd">Ikigaluwa cy'Igisweduwa</language>
-			<language type="gl">Ikigalisiya</language>
-			<language type="gn">Inyaguwarani</language>
-			<language type="gu">Inyegujarati</language>
-			<language type="he">Igiheburayo</language>
-			<language type="hi">Igihindi</language>
-			<language type="hr">Igikorowasiya</language>
-			<language type="hu">Igihongiriya</language>
-			<language type="hy">Ikinyarumeniya</language>
-			<language type="ia">Ururimi Gahuzamiryango</language>
-			<language type="id">Ikinyendoziya</language>
-			<language type="ie">Uruhuzandimi</language>
-			<language type="is">Igisilande</language>
-			<language type="it">Igitaliyani</language>
-			<language type="ja">Ikiyapani</language>
-			<language type="jv">Inyejava</language>
-			<language type="ka">Inyejeworujiya</language>
-			<language type="km">Igikambodiya</language>
-			<language type="kn">Igikanada</language>
-			<language type="ko">Igikoreya</language>
-			<language type="ku">Inyekuridishi</language>
-			<language type="ky">Inkerigizi</language>
-			<language type="la">Ikilatini</language>
-			<language type="ln">Ilingala</language>
-			<language type="lo">Ikilawotiyani</language>
-			<language type="lt">Ikilituwaniya</language>
-			<language type="lv">Ikinyaletoviyani</language>
-			<language type="mk">Ikimasedoniyani</language>
-			<language type="ml">Ikimalayalami</language>
-			<language type="mn">Ikimongoli</language>
-			<language type="mr">Ikimarati</language>
-			<language type="ms">Ikimalayi</language>
-			<language type="mt">Ikimaliteze</language>
-			<language type="ne">Ikinepali</language>
-			<language type="nl">Ikinerilande</language>
-			<language type="nn">Inyenoruveji (Nyonorusiki)</language>
-			<language type="no">Ikinoruveji</language>
-			<language type="oc">Inyogusitani</language>
-			<language type="or">Inyoriya</language>
-			<language type="pa">Igipunjabi</language>
-			<language type="pl">Igipolone</language>
-			<language type="ps">Impashito</language>
-			<language type="pt">Igiporutugali</language>
-			<language type="pt_BR">Inyeporutigali (Brezili)</language>
-			<language type="pt_PT">Inyeporutigali (Igiporutigali)</language>
-			<language type="ro">Ikinyarumaniya</language>
-			<language type="ru">Ikirusiya</language>
-			<language type="sa">Igisansikiri</language>
-			<language type="sd">Igisindi</language>
-			<language type="sh">Inyeseribiya na Korowasiya</language>
-			<language type="si">Inyesimpaleze</language>
-			<language type="sk">Igisilovaki</language>
-			<language type="sl">Ikinyasiloveniya</language>
-			<language type="so">Igisomali</language>
-			<language type="sq">Icyalubaniya</language>
-			<language type="sr">Igiseribe</language>
-			<language type="st">Inyesesoto</language>
-			<language type="su">Inyesudani</language>
-			<language type="sv">Igisuweduwa</language>
-			<language type="sw">Igiswahili</language>
-			<language type="ta">Igitamili</language>
-			<language type="te">Igitelugu</language>
-			<language type="th">Igitayi</language>
-			<language type="ti">Inyatigirinya</language>
-			<language type="tk">Inyeturukimeni</language>
-			<language type="tlh">Inyekilingoni</language>
-			<language type="tr">Igiturukiya</language>
-			<language type="tw">Inyetuwi</language>
-			<language type="ug">Ikiwiguri</language>
-			<language type="uk">Ikinyayukereni</language>
-			<language type="ur">Inyeyurudu</language>
-			<language type="uz">Inyeyuzubeki</language>
-			<language type="vi">Ikinyaviyetinamu</language>
-			<language type="xh">Inyehawusa</language>
-			<language type="yi">Inyeyidishi</language>
-			<language type="zu">Inyezulu</language>
-		</languages>
-		<territories>
-			<territory type="TO">Igitonga</territory>
-		</territories>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[a-z]</exemplarCharacters>
-	</characters>
-	<delimiters>
-		<quotationStart>‘</quotationStart>
-		<quotationEnd>’</quotationEnd>
-		<alternateQuotationStart>«</alternateQuotationStart>
-		<alternateQuotationEnd>»</alternateQuotationEnd>
-	</delimiters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">mut.</month>
-							<month type="2">gas.</month>
-							<month type="3">wer.</month>
-							<month type="4">mat.</month>
-							<month type="5">gic.</month>
-							<month type="6">kam.</month>
-							<month type="7">nya.</month>
-							<month type="8">kan.</month>
-							<month type="9">nze.</month>
-							<month type="10">ukw.</month>
-							<month type="11">ugu.</month>
-							<month type="12">uku.</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Mutarama</month>
-							<month type="2">Gashyantare</month>
-							<month type="3">Werurwe</month>
-							<month type="4">Mata</month>
-							<month type="5">Gicuransi</month>
-							<month type="6">Kamena</month>
-							<month type="7">Nyakanga</month>
-							<month type="8">Kanama</month>
-							<month type="9">Nzeli</month>
-							<month type="10">Ukwakira</month>
-							<month type="11">Ugushyingo</month>
-							<month type="12">Ukuboza</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="narrow">
-							<month type="1">1</month>
-							<month type="2">2</month>
-							<month type="3">3</month>
-							<month type="4">4</month>
-							<month type="5">5</month>
-							<month type="6">6</month>
-							<month type="7">7</month>
-							<month type="8">8</month>
-							<month type="9">9</month>
-							<month type="10">10</month>
-							<month type="11">11</month>
-							<month type="12">12</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">cyu.</day>
-							<day type="mon">mbe.</day>
-							<day type="tue">kab.</day>
-							<day type="wed">gtu.</day>
-							<day type="thu">kan.</day>
-							<day type="fri">gnu.</day>
-							<day type="sat">gnd.</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">Ku cyumweru</day>
-							<day type="mon">Kuwa mbere</day>
-							<day type="tue">Kuwa kabiri</day>
-							<day type="wed">Kuwa gatatu</day>
-							<day type="thu">Kuwa kane</day>
-							<day type="fri">Kuwa gatanu</day>
-							<day type="sat">Kuwa gatandatu</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">1</day>
-							<day type="mon">2</day>
-							<day type="tue">3</day>
-							<day type="wed">4</day>
-							<day type="thu">5</day>
-							<day type="fri">6</day>
-							<day type="sat">7</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<quarters>
-					<quarterContext type="format">
-						<quarterWidth type="abbreviated">
-							<quarter type="1">I1</quarter>
-							<quarter type="2">I2</quarter>
-							<quarter type="3">I3</quarter>
-							<quarter type="4">I4</quarter>
-						</quarterWidth>
-						<quarterWidth type="wide">
-							<quarter type="1">igihembwe cya mbere</quarter>
-							<quarter type="2">igihembwe cya kabiri</quarter>
-							<quarter type="3">igihembwe cya gatatu</quarter>
-							<quarter type="4">igihembwe cya kane</quarter>
-						</quarterWidth>
-					</quarterContext>
-				</quarters>
-				<am>AM</am>
-				<pm>PM</pm>
-				<eras>
-					<eraAbbr>
-						<era type="0">BCE</era>
-						<era type="1">CE</era>
-					</eraAbbr>
-				</eras>
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE, y MMMM dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>y MMMM d</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>y MMM d</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>yy/MM/dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="full">
-						<timeFormat>
-							<pattern>HH:mm:ss zzzz</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="long">
-						<timeFormat>
-							<pattern>HH:mm:ss z</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>HH:mm:ss</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="short">
-						<timeFormat>
-							<pattern>HH:mm</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;-HH:mm</hourFormat>
-			<gmtFormat>GMT{0}</gmtFormat>
-			<regionFormat>{0}</regionFormat>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<symbols>
-			<decimal>,</decimal>
-			<group>.</group>
-		</symbols>
-		<currencies>
-			<currency type="RWF">
-				<symbol>RF</symbol>
-			</currency>
-		</currencies>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php2php8php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php1php7php:php1php2php:php2php6php php$php"php/php>
+php	php	php<languagephp typephp=php"rwphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"afphp"php>Ikinyafurikaneri<php/languagephp>
+php	php	php	php<languagephp typephp=php"amphp"php>Inyamuhariki<php/languagephp>
+php	php	php	php<languagephp typephp=php"arphp"php>Icyarabu<php/languagephp>
+php	php	php	php<languagephp typephp=php"asphp"php>Icyasamizi<php/languagephp>
+php	php	php	php<languagephp typephp=php"azphp"php>Inyazeribayijani<php/languagephp>
+php	php	php	php<languagephp typephp=php"bephp"php>Ikibelarusiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>Urunyabuligariya<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>Inyebihari<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>Ikibengali<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>Inyebiritoni<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>Inyebosiniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>Igikatalani<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>Igiceke<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>Ikigaluwa<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>Ikidaninwa<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>Ikidage<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>Ikigereki<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>Icyongereza<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>Icyesiperanto<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>Icyesipanyolo<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>Icyesitoniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>Ikibasiki<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>Inyeperisi<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>Igifinilande<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>Ikinyafilipine<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>Inyefaroyizi<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>Igifaransa<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>Igifiriziyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>Ikirilandi<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>Ikigaluwaphp cyphp'Igisweduwa<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>Ikigalisiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>Inyaguwarani<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>Inyegujarati<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>Igiheburayo<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>Igihindi<php/languagephp>
+php	php	php	php<languagephp typephp=php"hrphp"php>Igikorowasiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>Igihongiriya<php/languagephp>
+php	php	php	php<languagephp typephp=php"hyphp"php>Ikinyarumeniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>Ururimiphp Gahuzamiryango<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>Ikinyendoziya<php/languagephp>
+php	php	php	php<languagephp typephp=php"iephp"php>Uruhuzandimi<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>Igisilande<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>Igitaliyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>Ikiyapani<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>Inyejava<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>Inyejeworujiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"kmphp"php>Igikambodiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"knphp"php>Igikanada<php/languagephp>
+php	php	php	php<languagephp typephp=php"kophp"php>Igikoreya<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>Inyekuridishi<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>Inkerigizi<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>Ikilatini<php/languagephp>
+php	php	php	php<languagephp typephp=php"lnphp"php>Ilingala<php/languagephp>
+php	php	php	php<languagephp typephp=php"lophp"php>Ikilawotiyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>Ikilituwaniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"lvphp"php>Ikinyaletoviyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>Ikimasedoniyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"mlphp"php>Ikimalayalami<php/languagephp>
+php	php	php	php<languagephp typephp=php"mnphp"php>Ikimongoli<php/languagephp>
+php	php	php	php<languagephp typephp=php"mrphp"php>Ikimarati<php/languagephp>
+php	php	php	php<languagephp typephp=php"msphp"php>Ikimalayi<php/languagephp>
+php	php	php	php<languagephp typephp=php"mtphp"php>Ikimaliteze<php/languagephp>
+php	php	php	php<languagephp typephp=php"nephp"php>Ikinepali<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>Ikinerilande<php/languagephp>
+php	php	php	php<languagephp typephp=php"nnphp"php>Inyenoruvejiphp php(Nyonorusikiphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>Ikinoruveji<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>Inyogusitani<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>Inyoriya<php/languagephp>
+php	php	php	php<languagephp typephp=php"paphp"php>Igipunjabi<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>Igipolone<php/languagephp>
+php	php	php	php<languagephp typephp=php"psphp"php>Impashito<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>Igiporutugali<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>Inyeporutigaliphp php(Breziliphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>Inyeporutigaliphp php(Igiporutigaliphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>Ikinyarumaniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>Ikirusiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"saphp"php>Igisansikiri<php/languagephp>
+php	php	php	php<languagephp typephp=php"sdphp"php>Igisindi<php/languagephp>
+php	php	php	php<languagephp typephp=php"shphp"php>Inyeseribiyaphp naphp Korowasiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"siphp"php>Inyesimpaleze<php/languagephp>
+php	php	php	php<languagephp typephp=php"skphp"php>Igisilovaki<php/languagephp>
+php	php	php	php<languagephp typephp=php"slphp"php>Ikinyasiloveniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"sophp"php>Igisomali<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>Icyalubaniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"srphp"php>Igiseribe<php/languagephp>
+php	php	php	php<languagephp typephp=php"stphp"php>Inyesesoto<php/languagephp>
+php	php	php	php<languagephp typephp=php"suphp"php>Inyesudani<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>Igisuweduwa<php/languagephp>
+php	php	php	php<languagephp typephp=php"swphp"php>Igiswahili<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>Igitamili<php/languagephp>
+php	php	php	php<languagephp typephp=php"tephp"php>Igitelugu<php/languagephp>
+php	php	php	php<languagephp typephp=php"thphp"php>Igitayi<php/languagephp>
+php	php	php	php<languagephp typephp=php"tiphp"php>Inyatigirinya<php/languagephp>
+php	php	php	php<languagephp typephp=php"tkphp"php>Inyeturukimeni<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlhphp"php>Inyekilingoni<php/languagephp>
+php	php	php	php<languagephp typephp=php"trphp"php>Igiturukiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"twphp"php>Inyetuwi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugphp"php>Ikiwiguri<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>Ikinyayukereni<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>Inyeyurudu<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>Inyeyuzubeki<php/languagephp>
+php	php	php	php<languagephp typephp=php"viphp"php>Ikinyaviyetinamu<php/languagephp>
+php	php	php	php<languagephp typephp=php"xhphp"php>Inyehawusa<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>Inyeyidishi<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>Inyezulu<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"TOphp"php>Igitonga<php/territoryphp>
+php	php	<php/territoriesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[aphp-zphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<delimitersphp>
+php	php	php<quotationStartphp>php‘<php/quotationStartphp>
+php	php	php<quotationEndphp>php’<php/quotationEndphp>
+php	php	php<alternateQuotationStartphp>php«<php/alternateQuotationStartphp>
+php	php	php<alternateQuotationEndphp>php»<php/alternateQuotationEndphp>
+php	<php/delimitersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>mutphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>gasphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>werphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>matphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>gicphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>kamphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>nyaphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>kanphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>nzephp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>ukwphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>uguphp.<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>ukuphp.<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Mutarama<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Gashyantare<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Werurwe<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Mata<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Gicuransi<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Kamena<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Nyakanga<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Kanama<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Nzeli<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Ukwakira<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Ugushyingo<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Ukuboza<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>php1<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>php2<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>php3<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>php4<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>php5<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>php6<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>php7<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>php8<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>php9<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>php1php0<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>php1php1<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>php1php2<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>cyuphp.<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>mbephp.<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>kabphp.<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>gtuphp.<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>kanphp.<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>gnuphp.<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>gndphp.<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Kuphp cyumweru<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Kuwaphp mbere<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Kuwaphp kabiri<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Kuwaphp gatatu<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Kuwaphp kane<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Kuwaphp gatanu<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Kuwaphp gatandatu<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>php1<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>php2<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>php3<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>php4<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>php5<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>php6<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>php7<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<quartersphp>
+php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Iphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Iphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Iphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Iphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>igihembwephp cyaphp mbere<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>igihembwephp cyaphp kabiri<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>igihembwephp cyaphp gatatu<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>igihembwephp cyaphp kane<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	<php/quarterContextphp>
+php	php	php	php	<php/quartersphp>
+php	php	php	php	php<amphp>AM<php/amphp>
+php	php	php	php	php<pmphp>PM<php/pmphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>BCE<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>CE<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp,php yphp MMMMphp dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp MMMMphp d<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp MMMphp d<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yyphp/MMphp/dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
+php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
+php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<symbolsphp>
+php	php	php	php<decimalphp>php,<php/decimalphp>
+php	php	php	php<groupphp>php.<php/groupphp>
+php	php	<php/symbolsphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"RWFphp"php>
+php	php	php	php	php<symbolphp>RF<php/symbolphp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+<php/ldmlphp>

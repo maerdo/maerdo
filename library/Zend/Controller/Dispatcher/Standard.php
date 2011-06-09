@@ -1,499 +1,499 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Dispatcher
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Standard.php 22038 2010-04-28 18:54:22Z matthew $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Dispatcher
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Standardphp.phpphp php2php2php0php3php8php php2php0php1php0php-php0php4php-php2php8php php1php8php:php5php4php:php2php2Zphp matthewphp php$
+php php*php/
 
-/** Zend_Loader */
-require_once 'Zend/Loader.php';
+php/php*php*php Zendphp_Loaderphp php*php/
+requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
 
-/** Zend_Controller_Dispatcher_Abstract */
-require_once 'Zend/Controller/Dispatcher/Abstract.php';
+php/php*php*php Zendphp_Controllerphp_Dispatcherphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Dispatcherphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Dispatcher
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abstract
-{
-    /**
-     * Current dispatchable directory
-     * @var string
-     */
-    protected $_curDirectory;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Dispatcher
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Controllerphp_Dispatcherphp_Standardphp extendsphp Zendphp_Controllerphp_Dispatcherphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Currentphp dispatchablephp directory
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_curDirectoryphp;
 
-    /**
-     * Current module (formatted)
-     * @var string
-     */
-    protected $_curModule;
+php php php php php/php*php*
+php php php php php php*php Currentphp modulephp php(formattedphp)
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_curModulephp;
 
-    /**
-     * Controller directory(ies)
-     * @var array
-     */
-    protected $_controllerDirectory = array();
+php php php php php/php*php*
+php php php php php php*php Controllerphp directoryphp(iesphp)
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_controllerDirectoryphp php=php arrayphp(php)php;
 
-    /**
-     * Constructor: Set current module to default value
-     *
-     * @param  array $params
-     * @return void
-     */
-    public function __construct(array $params = array())
-    {
-        parent::__construct($params);
-        $this->_curModule = $this->getDefaultModule();
-    }
+php php php php php/php*php*
+php php php php php php*php Constructorphp:php Setphp currentphp modulephp tophp defaultphp value
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php$paramsphp)php;
+php php php php php php php php php$thisphp-php>php_curModulephp php=php php$thisphp-php>getDefaultModulephp(php)php;
+php php php php php}
 
-    /**
-     * Add a single path to the controller directory stack
-     *
-     * @param string $path
-     * @param string $module
-     * @return Zend_Controller_Dispatcher_Standard
-     */
-    public function addControllerDirectory($path, $module = null)
-    {
-        if (null === $module) {
-            $module = $this->_defaultModule;
-        }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp singlephp pathphp tophp thephp controllerphp directoryphp stack
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$path
+php php php php php php*php php@paramphp stringphp php$module
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Standard
+php php php php php php*php/
+php php php php publicphp functionphp addControllerDirectoryphp(php$pathphp,php php$modulephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$modulephp)php php{
+php php php php php php php php php php php php php$modulephp php=php php$thisphp-php>php_defaultModulephp;
+php php php php php php php php php}
 
-        $module = (string) $module;
-        $path   = rtrim((string) $path, '/\\');
+php php php php php php php php php$modulephp php=php php(stringphp)php php$modulephp;
+php php php php php php php php php$pathphp php php php=php rtrimphp(php(stringphp)php php$pathphp,php php'php/php\php\php'php)php;
 
-        $this->_controllerDirectory[$module] = $path;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_controllerDirectoryphp[php$modulephp]php php=php php$pathphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set controller directory
-     *
-     * @param array|string $directory
-     * @return Zend_Controller_Dispatcher_Standard
-     */
-    public function setControllerDirectory($directory, $module = null)
-    {
-        $this->_controllerDirectory = array();
+php php php php php/php*php*
+php php php php php php*php Setphp controllerphp directory
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp|stringphp php$directory
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Standard
+php php php php php php*php/
+php php php php publicphp functionphp setControllerDirectoryphp(php$directoryphp,php php$modulephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_controllerDirectoryphp php=php arrayphp(php)php;
 
-        if (is_string($directory)) {
-            $this->addControllerDirectory($directory, $module);
-        } elseif (is_array($directory)) {
-            foreach ((array) $directory as $module => $path) {
-                $this->addControllerDirectory($path, $module);
-            }
-        } else {
-            require_once 'Zend/Controller/Exception.php';
-            throw new Zend_Controller_Exception('Controller directory spec must be either a string or an array');
-        }
+php php php php php php php php ifphp php(isphp_stringphp(php$directoryphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>addControllerDirectoryphp(php$directoryphp,php php$modulephp)php;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$directoryphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php(arrayphp)php php$directoryphp asphp php$modulephp php=php>php php$pathphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>addControllerDirectoryphp(php$pathphp,php php$modulephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php'Controllerphp directoryphp specphp mustphp bephp eitherphp aphp stringphp orphp anphp arrayphp'php)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Return the currently set directories for Zend_Controller_Action class
-     * lookup
-     *
-     * If a module is specified, returns just that directory.
-     *
-     * @param  string $module Module name
-     * @return array|string Returns array of all directories by default, single
-     * module directory if module argument provided
-     */
-    public function getControllerDirectory($module = null)
-    {
-        if (null === $module) {
-            return $this->_controllerDirectory;
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp currentlyphp setphp directoriesphp forphp Zendphp_Controllerphp_Actionphp class
+php php php php php php*php lookup
+php php php php php php*
+php php php php php php*php Ifphp aphp modulephp isphp specifiedphp,php returnsphp justphp thatphp directoryphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$modulephp Modulephp name
+php php php php php php*php php@returnphp arrayphp|stringphp Returnsphp arrayphp ofphp allphp directoriesphp byphp defaultphp,php single
+php php php php php php*php modulephp directoryphp ifphp modulephp argumentphp provided
+php php php php php php*php/
+php php php php publicphp functionphp getControllerDirectoryphp(php$modulephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$modulephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_controllerDirectoryphp;
+php php php php php php php php php}
 
-        $module = (string) $module;
-        if (array_key_exists($module, $this->_controllerDirectory)) {
-            return $this->_controllerDirectory[$module];
-        }
+php php php php php php php php php$modulephp php=php php(stringphp)php php$modulephp;
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$modulephp,php php$thisphp-php>php_controllerDirectoryphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_controllerDirectoryphp[php$modulephp]php;
+php php php php php php php php php}
 
-        return null;
-    }
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Remove a controller directory by module name
-     *
-     * @param  string $module
-     * @return bool
-     */
-    public function removeControllerDirectory($module)
-    {
-        $module = (string) $module;
-        if (array_key_exists($module, $this->_controllerDirectory)) {
-            unset($this->_controllerDirectory[$module]);
-            return true;
-        }
-        return false;
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp aphp controllerphp directoryphp byphp modulephp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$module
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp removeControllerDirectoryphp(php$modulephp)
+php php php php php{
+php php php php php php php php php$modulephp php=php php(stringphp)php php$modulephp;
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$modulephp,php php$thisphp-php>php_controllerDirectoryphp)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_controllerDirectoryphp[php$modulephp]php)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Format the module name.
-     *
-     * @param string $unformatted
-     * @return string
-     */
-    public function formatModuleName($unformatted)
-    {
-        if (($this->_defaultModule == $unformatted) && !$this->getParam('prefixDefaultModule')) {
-            return $unformatted;
-        }
+php php php php php/php*php*
+php php php php php php*php Formatphp thephp modulephp namephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$unformatted
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp formatModuleNamephp(php$unformattedphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$thisphp-php>php_defaultModulephp php=php=php php$unformattedphp)php php&php&php php!php$thisphp-php>getParamphp(php'prefixDefaultModulephp'php)php)php php{
+php php php php php php php php php php php php returnphp php$unformattedphp;
+php php php php php php php php php}
 
-        return ucfirst($this->_formatName($unformatted));
-    }
+php php php php php php php php returnphp ucfirstphp(php$thisphp-php>php_formatNamephp(php$unformattedphp)php)php;
+php php php php php}
 
-    /**
-     * Format action class name
-     *
-     * @param string $moduleName Name of the current module
-     * @param string $className Name of the action class
-     * @return string Formatted class name
-     */
-    public function formatClassName($moduleName, $className)
-    {
-        return $this->formatModuleName($moduleName) . '_' . $className;
-    }
+php php php php php/php*php*
+php php php php php php*php Formatphp actionphp classphp name
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$moduleNamephp Namephp ofphp thephp currentphp module
+php php php php php php*php php@paramphp stringphp php$classNamephp Namephp ofphp thephp actionphp class
+php php php php php php*php php@returnphp stringphp Formattedphp classphp name
+php php php php php php*php/
+php php php php publicphp functionphp formatClassNamephp(php$moduleNamephp,php php$classNamephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>formatModuleNamephp(php$moduleNamephp)php php.php php'php_php'php php.php php$classNamephp;
+php php php php php}
 
-    /**
-     * Convert a class name to a filename
-     *
-     * @param string $class
-     * @return string
-     */
-    public function classToFilename($class)
-    {
-        return str_replace('_', DIRECTORY_SEPARATOR, $class) . '.php';
-    }
+php php php php php/php*php*
+php php php php php php*php Convertphp aphp classphp namephp tophp aphp filename
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$class
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp classToFilenamephp(php$classphp)
+php php php php php{
+php php php php php php php php returnphp strphp_replacephp(php'php_php'php,php DIRECTORYphp_SEPARATORphp,php php$classphp)php php.php php'php.phpphp'php;
+php php php php php}
 
-    /**
-     * Returns TRUE if the Zend_Controller_Request_Abstract object can be
-     * dispatched to a controller.
-     *
-     * Use this method wisely. By default, the dispatcher will fall back to the
-     * default controller (either in the module specified or the global default)
-     * if a given controller does not exist. This method returning false does
-     * not necessarily indicate the dispatcher will not still dispatch the call.
-     *
-     * @param Zend_Controller_Request_Abstract $action
-     * @return boolean
-     */
-    public function isDispatchable(Zend_Controller_Request_Abstract $request)
-    {
-        $className = $this->getControllerClass($request);
-        if (!$className) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp TRUEphp ifphp thephp Zendphp_Controllerphp_Requestphp_Abstractphp objectphp canphp be
+php php php php php php*php dispatchedphp tophp aphp controllerphp.
+php php php php php php*
+php php php php php php*php Usephp thisphp methodphp wiselyphp.php Byphp defaultphp,php thephp dispatcherphp willphp fallphp backphp tophp the
+php php php php php php*php defaultphp controllerphp php(eitherphp inphp thephp modulephp specifiedphp orphp thephp globalphp defaultphp)
+php php php php php php*php ifphp aphp givenphp controllerphp doesphp notphp existphp.php Thisphp methodphp returningphp falsephp does
+php php php php php php*php notphp necessarilyphp indicatephp thephp dispatcherphp willphp notphp stillphp dispatchphp thephp callphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Requestphp_Abstractphp php$action
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isDispatchablephp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp)
+php php php php php{
+php php php php php php php php php$classNamephp php=php php$thisphp-php>getControllerClassphp(php$requestphp)php;
+php php php php php php php php ifphp php(php!php$classNamephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $finalClass  = $className;
-        if (($this->_defaultModule != $this->_curModule)
-            || $this->getParam('prefixDefaultModule'))
-        {
-            $finalClass = $this->formatClassName($this->_curModule, $className);
-        }
-        if (class_exists($finalClass, false)) {
-            return true;
-        }
+php php php php php php php php php$finalClassphp php php=php php$classNamephp;
+php php php php php php php php ifphp php(php(php$thisphp-php>php_defaultModulephp php!php=php php$thisphp-php>php_curModulephp)
+php php php php php php php php php php php php php|php|php php$thisphp-php>getParamphp(php'prefixDefaultModulephp'php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$finalClassphp php=php php$thisphp-php>formatClassNamephp(php$thisphp-php>php_curModulephp,php php$classNamephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(classphp_existsphp(php$finalClassphp,php falsephp)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        $fileSpec    = $this->classToFilename($className);
-        $dispatchDir = $this->getDispatchDirectory();
-        $test        = $dispatchDir . DIRECTORY_SEPARATOR . $fileSpec;
-        return Zend_Loader::isReadable($test);
-    }
+php php php php php php php php php$fileSpecphp php php php php=php php$thisphp-php>classToFilenamephp(php$classNamephp)php;
+php php php php php php php php php$dispatchDirphp php=php php$thisphp-php>getDispatchDirectoryphp(php)php;
+php php php php php php php php php$testphp php php php php php php php php=php php$dispatchDirphp php.php DIRECTORYphp_SEPARATORphp php.php php$fileSpecphp;
+php php php php php php php php returnphp Zendphp_Loaderphp:php:isReadablephp(php$testphp)php;
+php php php php php}
 
-    /**
-     * Dispatch to a controller/action
-     *
-     * By default, if a controller is not dispatchable, dispatch() will throw
-     * an exception. If you wish to use the default controller instead, set the
-     * param 'useDefaultControllerAlways' via {@link setParam()}.
-     *
-     * @param Zend_Controller_Request_Abstract $request
-     * @param Zend_Controller_Response_Abstract $response
-     * @return void
-     * @throws Zend_Controller_Dispatcher_Exception
-     */
-    public function dispatch(Zend_Controller_Request_Abstract $request, Zend_Controller_Response_Abstract $response)
-    {
-        $this->setResponse($response);
+php php php php php/php*php*
+php php php php php php*php Dispatchphp tophp aphp controllerphp/action
+php php php php php php*
+php php php php php php*php Byphp defaultphp,php ifphp aphp controllerphp isphp notphp dispatchablephp,php dispatchphp(php)php willphp throw
+php php php php php php*php anphp exceptionphp.php Ifphp youphp wishphp tophp usephp thephp defaultphp controllerphp insteadphp,php setphp the
+php php php php php php*php paramphp php'useDefaultControllerAlwaysphp'php viaphp php{php@linkphp setParamphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Requestphp_Abstractphp php$request
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Responsephp_Abstractphp php$response
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Controllerphp_Dispatcherphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp dispatchphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp,php Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setResponsephp(php$responsephp)php;
 
-        /**
-         * Get controller class
-         */
-        if (!$this->isDispatchable($request)) {
-            $controller = $request->getControllerName();
-            if (!$this->getParam('useDefaultControllerAlways') && !empty($controller)) {
-                require_once 'Zend/Controller/Dispatcher/Exception.php';
-                throw new Zend_Controller_Dispatcher_Exception('Invalid controller specified (' . $request->getControllerName() . ')');
-            }
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Getphp controllerphp class
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!php$thisphp-php>isDispatchablephp(php$requestphp)php)php php{
+php php php php php php php php php php php php php$controllerphp php=php php$requestphp-php>getControllerNamephp(php)php;
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>getParamphp(php'useDefaultControllerAlwaysphp'php)php php&php&php php!emptyphp(php$controllerphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Dispatcherphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Dispatcherphp_Exceptionphp(php'Invalidphp controllerphp specifiedphp php(php'php php.php php$requestphp-php>getControllerNamephp(php)php php.php php'php)php'php)php;
+php php php php php php php php php php php php php}
 
-            $className = $this->getDefaultControllerClass($request);
-        } else {
-            $className = $this->getControllerClass($request);
-            if (!$className) {
-                $className = $this->getDefaultControllerClass($request);
-            }
-        }
+php php php php php php php php php php php php php$classNamephp php=php php$thisphp-php>getDefaultControllerClassphp(php$requestphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$classNamephp php=php php$thisphp-php>getControllerClassphp(php$requestphp)php;
+php php php php php php php php php php php php ifphp php(php!php$classNamephp)php php{
+php php php php php php php php php php php php php php php php php$classNamephp php=php php$thisphp-php>getDefaultControllerClassphp(php$requestphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        /**
-         * Load the controller class file
-         */
-        $className = $this->loadClass($className);
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Loadphp thephp controllerphp classphp file
+php php php php php php php php php php*php/
+php php php php php php php php php$classNamephp php=php php$thisphp-php>loadClassphp(php$classNamephp)php;
 
-        /**
-         * Instantiate controller with request, response, and invocation
-         * arguments; throw exception if it's not an action controller
-         */
-        $controller = new $className($request, $this->getResponse(), $this->getParams());
-        if (!($controller instanceof Zend_Controller_Action_Interface) &&
-            !($controller instanceof Zend_Controller_Action)) {
-            require_once 'Zend/Controller/Dispatcher/Exception.php';
-            throw new Zend_Controller_Dispatcher_Exception(
-                'Controller "' . $className . '" is not an instance of Zend_Controller_Action_Interface'
-            );
-        }
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Instantiatephp controllerphp withphp requestphp,php responsephp,php andphp invocation
+php php php php php php php php php php*php argumentsphp;php throwphp exceptionphp ifphp itphp'sphp notphp anphp actionphp controller
+php php php php php php php php php php*php/
+php php php php php php php php php$controllerphp php=php newphp php$classNamephp(php$requestphp,php php$thisphp-php>getResponsephp(php)php,php php$thisphp-php>getParamsphp(php)php)php;
+php php php php php php php php ifphp php(php!php(php$controllerphp instanceofphp Zendphp_Controllerphp_Actionphp_Interfacephp)php php&php&
+php php php php php php php php php php php php php!php(php$controllerphp instanceofphp Zendphp_Controllerphp_Actionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Dispatcherphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Dispatcherphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Controllerphp php"php'php php.php php$classNamephp php.php php'php"php isphp notphp anphp instancephp ofphp Zendphp_Controllerphp_Actionphp_Interfacephp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        /**
-         * Retrieve the action name
-         */
-        $action = $this->getActionMethod($request);
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Retrievephp thephp actionphp name
+php php php php php php php php php php*php/
+php php php php php php php php php$actionphp php=php php$thisphp-php>getActionMethodphp(php$requestphp)php;
 
-        /**
-         * Dispatch the method call
-         */
-        $request->setDispatched(true);
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Dispatchphp thephp methodphp call
+php php php php php php php php php php*php/
+php php php php php php php php php$requestphp-php>setDispatchedphp(truephp)php;
 
-        // by default, buffer output
-        $disableOb = $this->getParam('disableOutputBuffering');
-        $obLevel   = ob_get_level();
-        if (empty($disableOb)) {
-            ob_start();
-        }
+php php php php php php php php php/php/php byphp defaultphp,php bufferphp output
+php php php php php php php php php$disableObphp php=php php$thisphp-php>getParamphp(php'disableOutputBufferingphp'php)php;
+php php php php php php php php php$obLevelphp php php php=php obphp_getphp_levelphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$disableObphp)php)php php{
+php php php php php php php php php php php php obphp_startphp(php)php;
+php php php php php php php php php}
 
-        try {
-            $controller->dispatch($action);
-        } catch (Exception $e) {
-            // Clean output buffer on error
-            $curObLevel = ob_get_level();
-            if ($curObLevel > $obLevel) {
-                do {
-                    ob_get_clean();
-                    $curObLevel = ob_get_level();
-                } while ($curObLevel > $obLevel);
-            }
-            throw $e;
-        }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$controllerphp-php>dispatchphp(php$actionphp)php;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php/php/php Cleanphp outputphp bufferphp onphp error
+php php php php php php php php php php php php php$curObLevelphp php=php obphp_getphp_levelphp(php)php;
+php php php php php php php php php php php php ifphp php(php$curObLevelphp php>php php$obLevelphp)php php{
+php php php php php php php php php php php php php php php php dophp php{
+php php php php php php php php php php php php php php php php php php php php obphp_getphp_cleanphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$curObLevelphp php=php obphp_getphp_levelphp(php)php;
+php php php php php php php php php php php php php php php php php}php whilephp php(php$curObLevelphp php>php php$obLevelphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
 
-        if (empty($disableOb)) {
-            $content = ob_get_clean();
-            $response->appendBody($content);
-        }
+php php php php php php php php ifphp php(emptyphp(php$disableObphp)php)php php{
+php php php php php php php php php php php php php$contentphp php=php obphp_getphp_cleanphp(php)php;
+php php php php php php php php php php php php php$responsephp-php>appendBodyphp(php$contentphp)php;
+php php php php php php php php php}
 
-        // Destroy the page controller instance and reflection objects
-        $controller = null;
-    }
+php php php php php php php php php/php/php Destroyphp thephp pagephp controllerphp instancephp andphp reflectionphp objects
+php php php php php php php php php$controllerphp php=php nullphp;
+php php php php php}
 
-    /**
-     * Load a controller class
-     *
-     * Attempts to load the controller class file from
-     * {@link getControllerDirectory()}.  If the controller belongs to a
-     * module, looks for the module prefix to the controller class.
-     *
-     * @param string $className
-     * @return string Class name loaded
-     * @throws Zend_Controller_Dispatcher_Exception if class not loaded
-     */
-    public function loadClass($className)
-    {
-        $finalClass  = $className;
-        if (($this->_defaultModule != $this->_curModule)
-            || $this->getParam('prefixDefaultModule'))
-        {
-            $finalClass = $this->formatClassName($this->_curModule, $className);
-        }
-        if (class_exists($finalClass, false)) {
-            return $finalClass;
-        }
+php php php php php/php*php*
+php php php php php php*php Loadphp aphp controllerphp class
+php php php php php php*
+php php php php php php*php Attemptsphp tophp loadphp thephp controllerphp classphp filephp from
+php php php php php php*php php{php@linkphp getControllerDirectoryphp(php)php}php.php php Ifphp thephp controllerphp belongsphp tophp a
+php php php php php php*php modulephp,php looksphp forphp thephp modulephp prefixphp tophp thephp controllerphp classphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$className
+php php php php php php*php php@returnphp stringphp Classphp namephp loaded
+php php php php php php*php php@throwsphp Zendphp_Controllerphp_Dispatcherphp_Exceptionphp ifphp classphp notphp loaded
+php php php php php php*php/
+php php php php publicphp functionphp loadClassphp(php$classNamephp)
+php php php php php{
+php php php php php php php php php$finalClassphp php php=php php$classNamephp;
+php php php php php php php php ifphp php(php(php$thisphp-php>php_defaultModulephp php!php=php php$thisphp-php>php_curModulephp)
+php php php php php php php php php php php php php|php|php php$thisphp-php>getParamphp(php'prefixDefaultModulephp'php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$finalClassphp php=php php$thisphp-php>formatClassNamephp(php$thisphp-php>php_curModulephp,php php$classNamephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(classphp_existsphp(php$finalClassphp,php falsephp)php)php php{
+php php php php php php php php php php php php returnphp php$finalClassphp;
+php php php php php php php php php}
 
-        $dispatchDir = $this->getDispatchDirectory();
-        $loadFile    = $dispatchDir . DIRECTORY_SEPARATOR . $this->classToFilename($className);
+php php php php php php php php php$dispatchDirphp php=php php$thisphp-php>getDispatchDirectoryphp(php)php;
+php php php php php php php php php$loadFilephp php php php php=php php$dispatchDirphp php.php DIRECTORYphp_SEPARATORphp php.php php$thisphp-php>classToFilenamephp(php$classNamephp)php;
 
-        if (Zend_Loader::isReadable($loadFile)) {
-            include_once $loadFile;
-        } else {
-            require_once 'Zend/Controller/Dispatcher/Exception.php';
-            throw new Zend_Controller_Dispatcher_Exception('Cannot load controller class "' . $className . '" from file "' . $loadFile . "'");
-        }
+php php php php php php php php ifphp php(Zendphp_Loaderphp:php:isReadablephp(php$loadFilephp)php)php php{
+php php php php php php php php php php php php includephp_oncephp php$loadFilephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Dispatcherphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Dispatcherphp_Exceptionphp(php'Cannotphp loadphp controllerphp classphp php"php'php php.php php$classNamephp php.php php'php"php fromphp filephp php"php'php php.php php$loadFilephp php.php php"php'php"php)php;
+php php php php php php php php php}
 
-        if (!class_exists($finalClass, false)) {
-            require_once 'Zend/Controller/Dispatcher/Exception.php';
-            throw new Zend_Controller_Dispatcher_Exception('Invalid controller class ("' . $finalClass . '")');
-        }
+php php php php php php php php ifphp php(php!classphp_existsphp(php$finalClassphp,php falsephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Dispatcherphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Dispatcherphp_Exceptionphp(php'Invalidphp controllerphp classphp php(php"php'php php.php php$finalClassphp php.php php'php"php)php'php)php;
+php php php php php php php php php}
 
-        return $finalClass;
-    }
+php php php php php php php php returnphp php$finalClassphp;
+php php php php php}
 
-    /**
-     * Get controller class name
-     *
-     * Try request first; if not found, try pulling from request parameter;
-     * if still not found, fallback to default
-     *
-     * @param Zend_Controller_Request_Abstract $request
-     * @return string|false Returns class name on success
-     */
-    public function getControllerClass(Zend_Controller_Request_Abstract $request)
-    {
-        $controllerName = $request->getControllerName();
-        if (empty($controllerName)) {
-            if (!$this->getParam('useDefaultControllerAlways')) {
-                return false;
-            }
-            $controllerName = $this->getDefaultControllerName();
-            $request->setControllerName($controllerName);
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp controllerphp classphp name
+php php php php php php*
+php php php php php php*php Tryphp requestphp firstphp;php ifphp notphp foundphp,php tryphp pullingphp fromphp requestphp parameterphp;
+php php php php php php*php ifphp stillphp notphp foundphp,php fallbackphp tophp default
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Requestphp_Abstractphp php$request
+php php php php php php*php php@returnphp stringphp|falsephp Returnsphp classphp namephp onphp success
+php php php php php php*php/
+php php php php publicphp functionphp getControllerClassphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp)
+php php php php php{
+php php php php php php php php php$controllerNamephp php=php php$requestphp-php>getControllerNamephp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$controllerNamephp)php)php php{
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>getParamphp(php'useDefaultControllerAlwaysphp'php)php)php php{
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$controllerNamephp php=php php$thisphp-php>getDefaultControllerNamephp(php)php;
+php php php php php php php php php php php php php$requestphp-php>setControllerNamephp(php$controllerNamephp)php;
+php php php php php php php php php}
 
-        $className = $this->formatControllerName($controllerName);
+php php php php php php php php php$classNamephp php=php php$thisphp-php>formatControllerNamephp(php$controllerNamephp)php;
 
-        $controllerDirs      = $this->getControllerDirectory();
-        $module = $request->getModuleName();
-        if ($this->isValidModule($module)) {
-            $this->_curModule    = $module;
-            $this->_curDirectory = $controllerDirs[$module];
-        } elseif ($this->isValidModule($this->_defaultModule)) {
-            $request->setModuleName($this->_defaultModule);
-            $this->_curModule    = $this->_defaultModule;
-            $this->_curDirectory = $controllerDirs[$this->_defaultModule];
-        } else {
-            require_once 'Zend/Controller/Exception.php';
-            throw new Zend_Controller_Exception('No default module defined for this application');
-        }
+php php php php php php php php php$controllerDirsphp php php php php php php=php php$thisphp-php>getControllerDirectoryphp(php)php;
+php php php php php php php php php$modulephp php=php php$requestphp-php>getModuleNamephp(php)php;
+php php php php php php php php ifphp php(php$thisphp-php>isValidModulephp(php$modulephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_curModulephp php php php php=php php$modulephp;
+php php php php php php php php php php php php php$thisphp-php>php_curDirectoryphp php=php php$controllerDirsphp[php$modulephp]php;
+php php php php php php php php php}php elseifphp php(php$thisphp-php>isValidModulephp(php$thisphp-php>php_defaultModulephp)php)php php{
+php php php php php php php php php php php php php$requestphp-php>setModuleNamephp(php$thisphp-php>php_defaultModulephp)php;
+php php php php php php php php php php php php php$thisphp-php>php_curModulephp php php php php=php php$thisphp-php>php_defaultModulephp;
+php php php php php php php php php php php php php$thisphp-php>php_curDirectoryphp php=php php$controllerDirsphp[php$thisphp-php>php_defaultModulephp]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php'Nophp defaultphp modulephp definedphp forphp thisphp applicationphp'php)php;
+php php php php php php php php php}
 
-        return $className;
-    }
+php php php php php php php php returnphp php$classNamephp;
+php php php php php}
 
-    /**
-     * Determine if a given module is valid
-     *
-     * @param  string $module
-     * @return bool
-     */
-    public function isValidModule($module)
-    {
-        if (!is_string($module)) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Determinephp ifphp aphp givenphp modulephp isphp valid
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$module
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isValidModulephp(php$modulephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$modulephp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $module        = strtolower($module);
-        $controllerDir = $this->getControllerDirectory();
-        foreach (array_keys($controllerDir) as $moduleName) {
-            if ($module == strtolower($moduleName)) {
-                return true;
-            }
-        }
+php php php php php php php php php$modulephp php php php php php php php php=php strtolowerphp(php$modulephp)php;
+php php php php php php php php php$controllerDirphp php=php php$thisphp-php>getControllerDirectoryphp(php)php;
+php php php php php php php php foreachphp php(arrayphp_keysphp(php$controllerDirphp)php asphp php$moduleNamephp)php php{
+php php php php php php php php php php php php ifphp php(php$modulephp php=php=php strtolowerphp(php$moduleNamephp)php)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Retrieve default controller class
-     *
-     * Determines whether the default controller to use lies within the
-     * requested module, or if the global default should be used.
-     *
-     * By default, will only use the module default unless that controller does
-     * not exist; if this is the case, it falls back to the default controller
-     * in the default module.
-     *
-     * @param Zend_Controller_Request_Abstract $request
-     * @return string
-     */
-    public function getDefaultControllerClass(Zend_Controller_Request_Abstract $request)
-    {
-        $controller = $this->getDefaultControllerName();
-        $default    = $this->formatControllerName($controller);
-        $request->setControllerName($controller)
-                ->setActionName(null);
+php php php php php/php*php*
+php php php php php php*php Retrievephp defaultphp controllerphp class
+php php php php php php*
+php php php php php php*php Determinesphp whetherphp thephp defaultphp controllerphp tophp usephp liesphp withinphp the
+php php php php php php*php requestedphp modulephp,php orphp ifphp thephp globalphp defaultphp shouldphp bephp usedphp.
+php php php php php php*
+php php php php php php*php Byphp defaultphp,php willphp onlyphp usephp thephp modulephp defaultphp unlessphp thatphp controllerphp does
+php php php php php php*php notphp existphp;php ifphp thisphp isphp thephp casephp,php itphp fallsphp backphp tophp thephp defaultphp controller
+php php php php php php*php inphp thephp defaultphp modulephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Requestphp_Abstractphp php$request
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultControllerClassphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp)
+php php php php php{
+php php php php php php php php php$controllerphp php=php php$thisphp-php>getDefaultControllerNamephp(php)php;
+php php php php php php php php php$defaultphp php php php php=php php$thisphp-php>formatControllerNamephp(php$controllerphp)php;
+php php php php php php php php php$requestphp-php>setControllerNamephp(php$controllerphp)
+php php php php php php php php php php php php php php php php php-php>setActionNamephp(nullphp)php;
 
-        $module              = $request->getModuleName();
-        $controllerDirs      = $this->getControllerDirectory();
-        $this->_curModule    = $this->_defaultModule;
-        $this->_curDirectory = $controllerDirs[$this->_defaultModule];
-        if ($this->isValidModule($module)) {
-            $found = false;
-            if (class_exists($default, false)) {
-                $found = true;
-            } else {
-                $moduleDir = $controllerDirs[$module];
-                $fileSpec  = $moduleDir . DIRECTORY_SEPARATOR . $this->classToFilename($default);
-                if (Zend_Loader::isReadable($fileSpec)) {
-                    $found = true;
-                    $this->_curDirectory = $moduleDir;
-                }
-            }
-            if ($found) {
-                $request->setModuleName($module);
-                $this->_curModule    = $this->formatModuleName($module);
-            }
-        } else {
-            $request->setModuleName($this->_defaultModule);
-        }
+php php php php php php php php php$modulephp php php php php php php php php php php php php php php=php php$requestphp-php>getModuleNamephp(php)php;
+php php php php php php php php php$controllerDirsphp php php php php php php=php php$thisphp-php>getControllerDirectoryphp(php)php;
+php php php php php php php php php$thisphp-php>php_curModulephp php php php php=php php$thisphp-php>php_defaultModulephp;
+php php php php php php php php php$thisphp-php>php_curDirectoryphp php=php php$controllerDirsphp[php$thisphp-php>php_defaultModulephp]php;
+php php php php php php php php ifphp php(php$thisphp-php>isValidModulephp(php$modulephp)php)php php{
+php php php php php php php php php php php php php$foundphp php=php falsephp;
+php php php php php php php php php php php php ifphp php(classphp_existsphp(php$defaultphp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php$foundphp php=php truephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$moduleDirphp php=php php$controllerDirsphp[php$modulephp]php;
+php php php php php php php php php php php php php php php php php$fileSpecphp php php=php php$moduleDirphp php.php DIRECTORYphp_SEPARATORphp php.php php$thisphp-php>classToFilenamephp(php$defaultphp)php;
+php php php php php php php php php php php php php php php php ifphp php(Zendphp_Loaderphp:php:isReadablephp(php$fileSpecphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$foundphp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_curDirectoryphp php=php php$moduleDirphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$foundphp)php php{
+php php php php php php php php php php php php php php php php php$requestphp-php>setModuleNamephp(php$modulephp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_curModulephp php php php php=php php$thisphp-php>formatModuleNamephp(php$modulephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$requestphp-php>setModuleNamephp(php$thisphp-php>php_defaultModulephp)php;
+php php php php php php php php php}
 
-        return $default;
-    }
+php php php php php php php php returnphp php$defaultphp;
+php php php php php}
 
-    /**
-     * Return the value of the currently selected dispatch directory (as set by
-     * {@link getController()})
-     *
-     * @return string
-     */
-    public function getDispatchDirectory()
-    {
-        return $this->_curDirectory;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp valuephp ofphp thephp currentlyphp selectedphp dispatchphp directoryphp php(asphp setphp by
+php php php php php php*php php{php@linkphp getControllerphp(php)php}php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDispatchDirectoryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_curDirectoryphp;
+php php php php php}
 
-    /**
-     * Determine the action name
-     *
-     * First attempt to retrieve from request; then from request params
-     * using action key; default to default action
-     *
-     * Returns formatted action name
-     *
-     * @param Zend_Controller_Request_Abstract $request
-     * @return string
-     */
-    public function getActionMethod(Zend_Controller_Request_Abstract $request)
-    {
-        $action = $request->getActionName();
-        if (empty($action)) {
-            $action = $this->getDefaultAction();
-            $request->setActionName($action);
-        }
+php php php php php/php*php*
+php php php php php php*php Determinephp thephp actionphp name
+php php php php php php*
+php php php php php php*php Firstphp attemptphp tophp retrievephp fromphp requestphp;php thenphp fromphp requestphp params
+php php php php php php*php usingphp actionphp keyphp;php defaultphp tophp defaultphp action
+php php php php php php*
+php php php php php php*php Returnsphp formattedphp actionphp name
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Controllerphp_Requestphp_Abstractphp php$request
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getActionMethodphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp)
+php php php php php{
+php php php php php php php php php$actionphp php=php php$requestphp-php>getActionNamephp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$actionphp)php)php php{
+php php php php php php php php php php php php php$actionphp php=php php$thisphp-php>getDefaultActionphp(php)php;
+php php php php php php php php php php php php php$requestphp-php>setActionNamephp(php$actionphp)php;
+php php php php php php php php php}
 
-        return $this->formatActionName($action);
-    }
-}
+php php php php php php php php returnphp php$thisphp-php>formatActionNamephp(php$actionphp)php;
+php php php php php}
+php}

@@ -1,188 +1,188 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Registry.php 23545 2010-12-18 01:42:57Z ramon $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Registryphp.phpphp php2php3php5php4php5php php2php0php1php0php-php1php2php-php1php8php php0php1php:php4php2php:php5php7Zphp ramonphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Registry */
-require_once 'Zend/Registry.php';
+php/php*php*php Zendphp_Registryphp php*php/
+requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
 
-/** Zend_View_Helper_Placeholder_Container_Abstract */
-require_once 'Zend/View/Helper/Placeholder/Container/Abstract.php';
+php/php*php*php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Placeholderphp/Containerphp/Abstractphp.phpphp'php;
 
-/** Zend_View_Helper_Placeholder_Container */
-require_once 'Zend/View/Helper/Placeholder/Container.php';
+php/php*php*php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Placeholderphp/Containerphp.phpphp'php;
 
-/**
- * Registry for placeholder containers
- *
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_Placeholder_Registry
-{
-    /**
-     * Zend_Registry key under which placeholder registry exists
-     * @const string
-     */
-    const REGISTRY_KEY = 'Zend_View_Helper_Placeholder_Registry';
+php/php*php*
+php php*php Registryphp forphp placeholderphp containers
+php php*
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_Placeholderphp_Registry
+php{
+php php php php php/php*php*
+php php php php php php*php Zendphp_Registryphp keyphp underphp whichphp placeholderphp registryphp exists
+php php php php php php*php php@constphp string
+php php php php php php*php/
+php php php php constphp REGISTRYphp_KEYphp php=php php'Zendphp_Viewphp_Helperphp_Placeholderphp_Registryphp'php;
 
-    /**
-     * Default container class
-     * @var string
-     */
-    protected $_containerClass = 'Zend_View_Helper_Placeholder_Container';
+php php php php php/php*php*
+php php php php php php*php Defaultphp containerphp class
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_containerClassphp php=php php'Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp'php;
 
-    /**
-     * Placeholder containers
-     * @var array
-     */
-    protected $_items = array();
+php php php php php/php*php*
+php php php php php php*php Placeholderphp containers
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_itemsphp php=php arrayphp(php)php;
 
-    /**
-     * Retrieve or create registry instnace
-     *
-     * @return void
-     */
-    public static function getRegistry()
-    {
-        if (Zend_Registry::isRegistered(self::REGISTRY_KEY)) {
-            $registry = Zend_Registry::get(self::REGISTRY_KEY);
-        } else {
-            $registry = new self();
-            Zend_Registry::set(self::REGISTRY_KEY, $registry);
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp orphp createphp registryphp instnace
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getRegistryphp(php)
+php php php php php{
+php php php php php php php php ifphp php(Zendphp_Registryphp:php:isRegisteredphp(selfphp:php:REGISTRYphp_KEYphp)php)php php{
+php php php php php php php php php php php php php$registryphp php=php Zendphp_Registryphp:php:getphp(selfphp:php:REGISTRYphp_KEYphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$registryphp php=php newphp selfphp(php)php;
+php php php php php php php php php php php php Zendphp_Registryphp:php:setphp(selfphp:php:REGISTRYphp_KEYphp,php php$registryphp)php;
+php php php php php php php php php}
 
-        return $registry;
-    }
+php php php php php php php php returnphp php$registryphp;
+php php php php php}
 
-    /**
-     * createContainer
-     *
-     * @param  string $key
-     * @param  array $value
-     * @return Zend_View_Helper_Placeholder_Container_Abstract
-     */
-    public function createContainer($key, array $value = array())
-    {
-        $key = (string) $key;
+php php php php php/php*php*
+php php php php php php*php createContainer
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@paramphp php arrayphp php$value
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp createContainerphp(php$keyphp,php arrayphp php$valuephp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
 
-        $this->_items[$key] = new $this->_containerClass($value);
-        return $this->_items[$key];
-    }
+php php php php php php php php php$thisphp-php>php_itemsphp[php$keyphp]php php=php newphp php$thisphp-php>php_containerClassphp(php$valuephp)php;
+php php php php php php php php returnphp php$thisphp-php>php_itemsphp[php$keyphp]php;
+php php php php php}
 
-    /**
-     * Retrieve a placeholder container
-     *
-     * @param  string $key
-     * @return Zend_View_Helper_Placeholder_Container_Abstract
-     */
-    public function getContainer($key)
-    {
-        $key = (string) $key;
-        if (isset($this->_items[$key])) {
-            return $this->_items[$key];
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp placeholderphp container
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp getContainerphp(php$keyphp)
+php php php php php{
+php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_itemsphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_itemsphp[php$keyphp]php;
+php php php php php php php php php}
 
-        $container = $this->createContainer($key);
+php php php php php php php php php$containerphp php=php php$thisphp-php>createContainerphp(php$keyphp)php;
 
-        return $container;
-    }
+php php php php php php php php returnphp php$containerphp;
+php php php php php}
 
-    /**
-     * Does a particular container exist?
-     *
-     * @param  string $key
-     * @return bool
-     */
-    public function containerExists($key)
-    {
-        $key = (string) $key;
-        $return =  array_key_exists($key, $this->_items);
-        return $return;
-    }
+php php php php php/php*php*
+php php php php php php*php Doesphp aphp particularphp containerphp existphp?
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp containerExistsphp(php$keyphp)
+php php php php php{
+php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
+php php php php php php php php php$returnphp php=php php arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_itemsphp)php;
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Set the container for an item in the registry
-     *
-     * @param  string $key
-     * @param  Zend_View_Placeholder_Container_Abstract $container
-     * @return Zend_View_Placeholder_Registry
-     */
-    public function setContainer($key, Zend_View_Helper_Placeholder_Container_Abstract $container)
-    {
-        $key = (string) $key;
-        $this->_items[$key] = $container;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp containerphp forphp anphp itemphp inphp thephp registry
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@paramphp php Zendphp_Viewphp_Placeholderphp_Containerphp_Abstractphp php$container
+php php php php php php*php php@returnphp Zendphp_Viewphp_Placeholderphp_Registry
+php php php php php php*php/
+php php php php publicphp functionphp setContainerphp(php$keyphp,php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp php$containerphp)
+php php php php php{
+php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
+php php php php php php php php php$thisphp-php>php_itemsphp[php$keyphp]php php=php php$containerphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Delete a container
-     *
-     * @param  string $key
-     * @return bool
-     */
-    public function deleteContainer($key)
-    {
-        $key = (string) $key;
-        if (isset($this->_items[$key])) {
-            unset($this->_items[$key]);
-            return true;
-        }
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp container
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp deleteContainerphp(php$keyphp)
+php php php php php{
+php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_itemsphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_itemsphp[php$keyphp]php)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Set the container class to use
-     *
-     * @param  string $name
-     * @return Zend_View_Helper_Placeholder_Registry
-     */
-    public function setContainerClass($name)
-    {
-        if (!class_exists($name)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($name);
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp containerphp classphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Placeholderphp_Registry
+php php php php php php*php/
+php php php php publicphp functionphp setContainerClassphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!classphp_existsphp(php$namephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$namephp)php;
+php php php php php php php php php}
 
-        $reflection = new ReflectionClass($name);
-        if (!$reflection->isSubclassOf(new ReflectionClass('Zend_View_Helper_Placeholder_Container_Abstract'))) {
-            require_once 'Zend/View/Helper/Placeholder/Registry/Exception.php';
-            $e = new Zend_View_Helper_Placeholder_Registry_Exception('Invalid Container class specified');
-            $e->setView($this->view);
-            throw $e;
-        }
+php php php php php php php php php$reflectionphp php=php newphp ReflectionClassphp(php$namephp)php;
+php php php php php php php php ifphp php(php!php$reflectionphp-php>isSubclassOfphp(newphp ReflectionClassphp(php'Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp'php)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Placeholderphp/Registryphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Helperphp_Placeholderphp_Registryphp_Exceptionphp(php'Invalidphp Containerphp classphp specifiedphp'php)php;
+php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
 
-        $this->_containerClass = $name;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_containerClassphp php=php php$namephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve the container class
-     *
-     * @return string
-     */
-    public function getContainerClass()
-    {
-        return $this->_containerClass;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp containerphp class
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getContainerClassphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_containerClassphp;
+php php php php php}
+php}

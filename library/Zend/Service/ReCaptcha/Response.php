@@ -1,159 +1,159 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage ReCaptcha
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp ReCaptcha
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Zend_Service_ReCaptcha_Response
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage ReCaptcha
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Response.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Service_ReCaptcha_Response
-{
-    /**
-     * Status
-     *
-     * true if the response is valid or false otherwise
-     *
-     * @var boolean
-     */
-    protected $_status = null;
+php/php*php*
+php php*php Zendphp_Servicephp_ReCaptchaphp_Response
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp ReCaptcha
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Responsephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Servicephp_ReCaptchaphp_Response
+php{
+php php php php php/php*php*
+php php php php php php*php Status
+php php php php php php*
+php php php php php php*php truephp ifphp thephp responsephp isphp validphp orphp falsephp otherwise
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_statusphp php=php nullphp;
 
-    /**
-     * Error code
-     *
-     * The error code if the status is false. The different error codes can be found in the
-     * recaptcha API docs.
-     *
-     * @var string
-     */
-    protected $_errorCode = null;
+php php php php php/php*php*
+php php php php php php*php Errorphp code
+php php php php php php*
+php php php php php php*php Thephp errorphp codephp ifphp thephp statusphp isphp falsephp.php Thephp differentphp errorphp codesphp canphp bephp foundphp inphp the
+php php php php php php*php recaptchaphp APIphp docsphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_errorCodephp php=php nullphp;
 
-    /**
-     * Class constructor used to construct a response
-     *
-     * @param string $status
-     * @param string $errorCode
-     * @param Zend_Http_Response $httpResponse If this is set the content will override $status and $errorCode
-     */
-    public function __construct($status = null, $errorCode = null, Zend_Http_Response $httpResponse = null)
-    {
-        if ($status !== null) {
-            $this->setStatus($status);
-        }
+php php php php php/php*php*
+php php php php php php*php Classphp constructorphp usedphp tophp constructphp aphp response
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$status
+php php php php php php*php php@paramphp stringphp php$errorCode
+php php php php php php*php php@paramphp Zendphp_Httpphp_Responsephp php$httpResponsephp Ifphp thisphp isphp setphp thephp contentphp willphp overridephp php$statusphp andphp php$errorCode
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$statusphp php=php nullphp,php php$errorCodephp php=php nullphp,php Zendphp_Httpphp_Responsephp php$httpResponsephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$statusphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setStatusphp(php$statusphp)php;
+php php php php php php php php php}
 
-        if ($errorCode !== null) {
-            $this->setErrorCode($errorCode);
-        }
+php php php php php php php php ifphp php(php$errorCodephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setErrorCodephp(php$errorCodephp)php;
+php php php php php php php php php}
 
-        if ($httpResponse !== null) {
-            $this->setFromHttpResponse($httpResponse);
-        }
-    }
+php php php php php php php php ifphp php(php$httpResponsephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setFromHttpResponsephp(php$httpResponsephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set the status
-     *
-     * @param string $status
-     * @return Zend_Service_ReCaptcha_Response
-     */
-    public function setStatus($status)
-    {
-        if ($status === 'true') {
-            $this->_status = true;
-        } else {
-            $this->_status = false;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp status
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$status
+php php php php php php*php php@returnphp Zendphp_Servicephp_ReCaptchaphp_Response
+php php php php php php*php/
+php php php php publicphp functionphp setStatusphp(php$statusphp)
+php php php php php{
+php php php php php php php php ifphp php(php$statusphp php=php=php=php php'truephp'php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_statusphp php=php truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_statusphp php=php falsephp;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the status
-     *
-     * @return boolean
-     */
-    public function getStatus()
-    {
-        return $this->_status;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp status
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getStatusphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_statusphp;
+php php php php php}
 
-    /**
-     * Alias for getStatus()
-     *
-     * @return boolean
-     */
-    public function isValid()
-    {
-        return $this->getStatus();
-    }
+php php php php php/php*php*
+php php php php php php*php Aliasphp forphp getStatusphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getStatusphp(php)php;
+php php php php php}
 
-    /**
-     * Set the error code
-     *
-     * @param string $errorCode
-     * @return Zend_Service_ReCaptcha_Response
-     */
-    public function setErrorCode($errorCode)
-    {
-        $this->_errorCode = $errorCode;
+php php php php php/php*php*
+php php php php php php*php Setphp thephp errorphp code
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$errorCode
+php php php php php php*php php@returnphp Zendphp_Servicephp_ReCaptchaphp_Response
+php php php php php php*php/
+php php php php publicphp functionphp setErrorCodephp(php$errorCodephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_errorCodephp php=php php$errorCodephp;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the error code
-     *
-     * @return string
-     */
-    public function getErrorCode()
-    {
-        return $this->_errorCode;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp errorphp code
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getErrorCodephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_errorCodephp;
+php php php php php}
 
-    /**
-     * Populate this instance based on a Zend_Http_Response object
-     *
-     * @param Zend_Http_Response $response
-     * @return Zend_Service_ReCaptcha_Response
-     */
-    public function setFromHttpResponse(Zend_Http_Response $response)
-    {
-        $body = $response->getBody();
+php php php php php/php*php*
+php php php php php php*php Populatephp thisphp instancephp basedphp onphp aphp Zendphp_Httpphp_Responsephp object
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Httpphp_Responsephp php$response
+php php php php php php*php php@returnphp Zendphp_Servicephp_ReCaptchaphp_Response
+php php php php php php*php/
+php php php php publicphp functionphp setFromHttpResponsephp(Zendphp_Httpphp_Responsephp php$responsephp)
+php php php php php{
+php php php php php php php php php$bodyphp php=php php$responsephp-php>getBodyphp(php)php;
 
-        $parts = explode("\n", $body, 2);
+php php php php php php php php php$partsphp php=php explodephp(php"php\nphp"php,php php$bodyphp,php php2php)php;
 
-        if (count($parts) !== 2) {
-            $status = 'false';
-            $errorCode = '';
-        } else {
-            list($status, $errorCode) = $parts;
-        }
+php php php php php php php php ifphp php(countphp(php$partsphp)php php!php=php=php php2php)php php{
+php php php php php php php php php php php php php$statusphp php=php php'falsephp'php;
+php php php php php php php php php php php php php$errorCodephp php=php php'php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php listphp(php$statusphp,php php$errorCodephp)php php=php php$partsphp;
+php php php php php php php php php}
 
-        $this->setStatus($status);
-        $this->setErrorCode($errorCode);
+php php php php php php php php php$thisphp-php>setStatusphp(php$statusphp)php;
+php php php php php php php php php$thisphp-php>setErrorCodephp(php$errorCodephp)php;
 
-        return $this;
-    }
-}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php}

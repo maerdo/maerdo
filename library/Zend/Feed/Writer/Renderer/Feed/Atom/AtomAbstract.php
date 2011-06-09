@@ -1,446 +1,446 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: AtomAbstract.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php AtomAbstractphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/** @see Zend_Feed_Writer_Feed */
-require_once 'Zend/Feed/Writer/Feed.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Feedphp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Feedphp.phpphp'php;
 
-/** @see Zend_Version */
-require_once 'Zend/Version.php';
+php/php*php*php php@seephp Zendphp_Versionphp php*php/
+requirephp_oncephp php'Zendphp/Versionphp.phpphp'php;
 
-/** @see Zend_Feed_Writer_Renderer_RendererInterface */
-require_once 'Zend/Feed/Writer/Renderer/RendererInterface.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Rendererphp_RendererInterfacephp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/RendererInterfacephp.phpphp'php;
 
-/** @see Zend_Feed_Writer_Renderer_Entry_Atom */
-require_once 'Zend/Feed/Writer/Renderer/Entry/Atom.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Rendererphp_Entryphp_Atomphp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/Entryphp/Atomphp.phpphp'php;
 
-/** @see Zend_Feed_Writer_Renderer_RendererAbstract */
-require_once 'Zend/Feed/Writer/Renderer/RendererAbstract.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Rendererphp_RendererAbstractphp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/RendererAbstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
-    extends Zend_Feed_Writer_Renderer_RendererAbstract
-{
-    /**
-     * Constructor
-     *
-     * @param  Zend_Feed_Writer_Feed $container
-     * @return void
-     */
-    public function __construct ($container)
-    {
-        parent::__construct($container);
-    }
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Feedphp_Writerphp_Rendererphp_Feedphp_Atomphp_AtomAbstract
+php php php php extendsphp Zendphp_Feedphp_Writerphp_Rendererphp_RendererAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Feedphp_Writerphp_Feedphp php$container
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp php(php$containerphp)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php$containerphp)php;
+php php php php php}
 
-    /**
-     * Set feed language
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setLanguage(DOMDocument $dom, DOMElement $root)
-    {
-        if ($this->getDataContainer()->getLanguage()) {
-            $root->setAttribute('xml:lang', $this->getDataContainer()
-                ->getLanguage());
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp language
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setLanguagephp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>getDataContainerphp(php)php-php>getLanguagephp(php)php)php php{
+php php php php php php php php php php php php php$rootphp-php>setAttributephp(php'xmlphp:langphp'php,php php$thisphp-php>getDataContainerphp(php)
+php php php php php php php php php php php php php php php php php-php>getLanguagephp(php)php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set feed title
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setTitle(DOMDocument $dom, DOMElement $root)
-    {
-        if(!$this->getDataContainer()->getTitle()) {
-            require_once 'Zend/Feed/Exception.php';
-            $message = 'Atom 1.0 feed elements MUST contain exactly one'
-            . ' atom:title element but a title has not been set';
-            $exception = new Zend_Feed_Exception($message);
-            if (!$this->_ignoreExceptions) {
-                throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp title
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setTitlephp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getTitlephp(php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$messagephp php=php php'Atomphp php1php.php0php feedphp elementsphp MUSTphp containphp exactlyphp onephp'
+php php php php php php php php php php php php php.php php'php atomphp:titlephp elementphp butphp aphp titlephp hasphp notphp beenphp setphp'php;
+php php php php php php php php php php php php php$exceptionphp php=php newphp Zendphp_Feedphp_Exceptionphp(php$messagephp)php;
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_ignoreExceptionsphp)php php{
+php php php php php php php php php php php php php php php php throwphp php$exceptionphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_exceptionsphp[php]php php=php php$exceptionphp;
+php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $title = $dom->createElement('title');
-        $root->appendChild($title);
-        $title->setAttribute('type', 'text');
-        $text = $dom->createTextNode($this->getDataContainer()->getTitle());
-        $title->appendChild($text);
-    }
+php php php php php php php php php$titlephp php=php php$domphp-php>createElementphp(php'titlephp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$titlephp)php;
+php php php php php php php php php$titlephp-php>setAttributephp(php'typephp'php,php php'textphp'php)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$thisphp-php>getDataContainerphp(php)php-php>getTitlephp(php)php)php;
+php php php php php php php php php$titlephp-php>appendChildphp(php$textphp)php;
+php php php php php}
 
-    /**
-     * Set feed description
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setDescription(DOMDocument $dom, DOMElement $root)
-    {
-        if(!$this->getDataContainer()->getDescription()) {
-            return;
-        }
-        $subtitle = $dom->createElement('subtitle');
-        $root->appendChild($subtitle);
-        $subtitle->setAttribute('type', 'text');
-        $text = $dom->createTextNode($this->getDataContainer()->getDescription());
-        $subtitle->appendChild($text);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp description
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setDescriptionphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getDescriptionphp(php)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php php$subtitlephp php=php php$domphp-php>createElementphp(php'subtitlephp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$subtitlephp)php;
+php php php php php php php php php$subtitlephp-php>setAttributephp(php'typephp'php,php php'textphp'php)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$thisphp-php>getDataContainerphp(php)php-php>getDescriptionphp(php)php)php;
+php php php php php php php php php$subtitlephp-php>appendChildphp(php$textphp)php;
+php php php php php}
 
-    /**
-     * Set date feed was last modified
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setDateModified(DOMDocument $dom, DOMElement $root)
-    {
-        if(!$this->getDataContainer()->getDateModified()) {
-            require_once 'Zend/Feed/Exception.php';
-            $message = 'Atom 1.0 feed elements MUST contain exactly one'
-            . ' atom:updated element but a modification date has not been set';
-            $exception = new Zend_Feed_Exception($message);
-            if (!$this->_ignoreExceptions) {
-                throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp datephp feedphp wasphp lastphp modified
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setDateModifiedphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getDateModifiedphp(php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$messagephp php=php php'Atomphp php1php.php0php feedphp elementsphp MUSTphp containphp exactlyphp onephp'
+php php php php php php php php php php php php php.php php'php atomphp:updatedphp elementphp butphp aphp modificationphp datephp hasphp notphp beenphp setphp'php;
+php php php php php php php php php php php php php$exceptionphp php=php newphp Zendphp_Feedphp_Exceptionphp(php$messagephp)php;
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_ignoreExceptionsphp)php php{
+php php php php php php php php php php php php php php php php throwphp php$exceptionphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_exceptionsphp[php]php php=php php$exceptionphp;
+php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $updated = $dom->createElement('updated');
-        $root->appendChild($updated);
-        $text = $dom->createTextNode(
-            $this->getDataContainer()->getDateModified()->get(Zend_Date::ISO_8601)
-        );
-        $updated->appendChild($text);
-    }
+php php php php php php php php php$updatedphp php=php php$domphp-php>createElementphp(php'updatedphp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$updatedphp)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(
+php php php php php php php php php php php php php$thisphp-php>getDataContainerphp(php)php-php>getDateModifiedphp(php)php-php>getphp(Zendphp_Datephp:php:ISOphp_php8php6php0php1php)
+php php php php php php php php php)php;
+php php php php php php php php php$updatedphp-php>appendChildphp(php$textphp)php;
+php php php php php}
 
-    /**
-     * Set feed generator string
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setGenerator(DOMDocument $dom, DOMElement $root)
-    {
-        if(!$this->getDataContainer()->getGenerator()) {
-            $this->getDataContainer()->setGenerator('Zend_Feed_Writer',
-                Zend_Version::VERSION, 'http://framework.zend.com');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp generatorphp string
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setGeneratorphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getGeneratorphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>getDataContainerphp(php)php-php>setGeneratorphp(php'Zendphp_Feedphp_Writerphp'php,
+php php php php php php php php php php php php php php php php Zendphp_Versionphp:php:VERSIONphp,php php'httpphp:php/php/frameworkphp.zendphp.comphp'php)php;
+php php php php php php php php php}
 
-        $gdata = $this->getDataContainer()->getGenerator();
-        $generator = $dom->createElement('generator');
-        $root->appendChild($generator);
-        $text = $dom->createTextNode($gdata['name']);
-        $generator->appendChild($text);
-        if (array_key_exists('uri', $gdata)) {
-            $generator->setAttribute('uri', $gdata['uri']);
-        }
-        if (array_key_exists('version', $gdata)) {
-            $generator->setAttribute('version', $gdata['version']);
-        }
-    }
+php php php php php php php php php$gdataphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getGeneratorphp(php)php;
+php php php php php php php php php$generatorphp php=php php$domphp-php>createElementphp(php'generatorphp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$generatorphp)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$gdataphp[php'namephp'php]php)php;
+php php php php php php php php php$generatorphp-php>appendChildphp(php$textphp)php;
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'uriphp'php,php php$gdataphp)php)php php{
+php php php php php php php php php php php php php$generatorphp-php>setAttributephp(php'uriphp'php,php php$gdataphp[php'uriphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'versionphp'php,php php$gdataphp)php)php php{
+php php php php php php php php php php php php php$generatorphp-php>setAttributephp(php'versionphp'php,php php$gdataphp[php'versionphp'php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set link to feed
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setLink(DOMDocument $dom, DOMElement $root)
-    {
-        if(!$this->getDataContainer()->getLink()) {
-            return;
-        }
-        $link = $dom->createElement('link');
-        $root->appendChild($link);
-        $link->setAttribute('rel', 'alternate');
-        $link->setAttribute('type', 'text/html');
-        $link->setAttribute('href', $this->getDataContainer()->getLink());
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp linkphp tophp feed
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setLinkphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getLinkphp(php)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php php$linkphp php=php php$domphp-php>createElementphp(php'linkphp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$linkphp)php;
+php php php php php php php php php$linkphp-php>setAttributephp(php'relphp'php,php php'alternatephp'php)php;
+php php php php php php php php php$linkphp-php>setAttributephp(php'typephp'php,php php'textphp/htmlphp'php)php;
+php php php php php php php php php$linkphp-php>setAttributephp(php'hrefphp'php,php php$thisphp-php>getDataContainerphp(php)php-php>getLinkphp(php)php)php;
+php php php php php}
 
-    /**
-     * Set feed links
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
-    {
-        $flinks = $this->getDataContainer()->getFeedLinks();
-        if(!$flinks || !array_key_exists('atom', $flinks)) {
-            require_once 'Zend/Feed/Exception.php';
-            $message = 'Atom 1.0 feed elements SHOULD contain one atom:link '
-            . 'element with a rel attribute value of "self".  This is the '
-            . 'preferred URI for retrieving Atom Feed Documents representing '
-            . 'this Atom feed but a feed link has not been set';
-            $exception = new Zend_Feed_Exception($message);
-            if (!$this->_ignoreExceptions) {
-                throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp links
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setFeedLinksphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$flinksphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getFeedLinksphp(php)php;
+php php php php php php php php ifphp(php!php$flinksphp php|php|php php!arrayphp_keyphp_existsphp(php'atomphp'php,php php$flinksphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$messagephp php=php php'Atomphp php1php.php0php feedphp elementsphp SHOULDphp containphp onephp atomphp:linkphp php'
+php php php php php php php php php php php php php.php php'elementphp withphp aphp relphp attributephp valuephp ofphp php"selfphp"php.php php Thisphp isphp thephp php'
+php php php php php php php php php php php php php.php php'preferredphp URIphp forphp retrievingphp Atomphp Feedphp Documentsphp representingphp php'
+php php php php php php php php php php php php php.php php'thisphp Atomphp feedphp butphp aphp feedphp linkphp hasphp notphp beenphp setphp'php;
+php php php php php php php php php php php php php$exceptionphp php=php newphp Zendphp_Feedphp_Exceptionphp(php$messagephp)php;
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_ignoreExceptionsphp)php php{
+php php php php php php php php php php php php php php php php throwphp php$exceptionphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_exceptionsphp[php]php php=php php$exceptionphp;
+php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        foreach ($flinks as $type => $href) {
-            $mime = 'application/' . strtolower($type) . '+xml';
-            $flink = $dom->createElement('link');
-            $root->appendChild($flink);
-            $flink->setAttribute('rel', 'self');
-            $flink->setAttribute('type', $mime);
-            $flink->setAttribute('href', $href);
-        }
-    }
+php php php php php php php php foreachphp php(php$flinksphp asphp php$typephp php=php>php php$hrefphp)php php{
+php php php php php php php php php php php php php$mimephp php=php php'applicationphp/php'php php.php strtolowerphp(php$typephp)php php.php php'php+xmlphp'php;
+php php php php php php php php php php php php php$flinkphp php=php php$domphp-php>createElementphp(php'linkphp'php)php;
+php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$flinkphp)php;
+php php php php php php php php php php php php php$flinkphp-php>setAttributephp(php'relphp'php,php php'selfphp'php)php;
+php php php php php php php php php php php php php$flinkphp-php>setAttributephp(php'typephp'php,php php$mimephp)php;
+php php php php php php php php php php php php php$flinkphp-php>setAttributephp(php'hrefphp'php,php php$hrefphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set feed authors
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setAuthors(DOMDocument $dom, DOMElement $root)
-    {
-        $authors = $this->_container->getAuthors();
-        if (!$authors || empty($authors)) {
-            /**
-             * Technically we should defer an exception until we can check
-             * that all entries contain an author. If any entry is missing
-             * an author, then a missing feed author element is invalid
-             */
-            return;
-        }
-        foreach ($authors as $data) {
-            $author = $this->_dom->createElement('author');
-            $name = $this->_dom->createElement('name');
-            $author->appendChild($name);
-            $root->appendChild($author);
-            $text = $dom->createTextNode($data['name']);
-            $name->appendChild($text);
-            if (array_key_exists('email', $data)) {
-                $email = $this->_dom->createElement('email');
-                $author->appendChild($email);
-                $text = $dom->createTextNode($data['email']);
-                $email->appendChild($text);
-            }
-            if (array_key_exists('uri', $data)) {
-                $uri = $this->_dom->createElement('uri');
-                $author->appendChild($uri);
-                $text = $dom->createTextNode($data['uri']);
-                $uri->appendChild($text);
-            }
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp authors
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setAuthorsphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$authorsphp php=php php$thisphp-php>php_containerphp-php>getAuthorsphp(php)php;
+php php php php php php php php ifphp php(php!php$authorsphp php|php|php emptyphp(php$authorsphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Technicallyphp wephp shouldphp deferphp anphp exceptionphp untilphp wephp canphp check
+php php php php php php php php php php php php php php*php thatphp allphp entriesphp containphp anphp authorphp.php Ifphp anyphp entryphp isphp missing
+php php php php php php php php php php php php php php*php anphp authorphp,php thenphp aphp missingphp feedphp authorphp elementphp isphp invalid
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$authorsphp asphp php$dataphp)php php{
+php php php php php php php php php php php php php$authorphp php=php php$thisphp-php>php_domphp-php>createElementphp(php'authorphp'php)php;
+php php php php php php php php php php php php php$namephp php=php php$thisphp-php>php_domphp-php>createElementphp(php'namephp'php)php;
+php php php php php php php php php php php php php$authorphp-php>appendChildphp(php$namephp)php;
+php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$authorphp)php;
+php php php php php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$dataphp[php'namephp'php]php)php;
+php php php php php php php php php php php php php$namephp-php>appendChildphp(php$textphp)php;
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'emailphp'php,php php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php php$emailphp php=php php$thisphp-php>php_domphp-php>createElementphp(php'emailphp'php)php;
+php php php php php php php php php php php php php php php php php$authorphp-php>appendChildphp(php$emailphp)php;
+php php php php php php php php php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$dataphp[php'emailphp'php]php)php;
+php php php php php php php php php php php php php php php php php$emailphp-php>appendChildphp(php$textphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'uriphp'php,php php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php php$uriphp php=php php$thisphp-php>php_domphp-php>createElementphp(php'uriphp'php)php;
+php php php php php php php php php php php php php php php php php$authorphp-php>appendChildphp(php$uriphp)php;
+php php php php php php php php php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$dataphp[php'uriphp'php]php)php;
+php php php php php php php php php php php php php php php php php$uriphp-php>appendChildphp(php$textphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set feed identifier
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setId(DOMDocument $dom, DOMElement $root)
-    {
-        if(!$this->getDataContainer()->getId()
-        && !$this->getDataContainer()->getLink()) {
-            require_once 'Zend/Feed/Exception.php';
-            $message = 'Atom 1.0 feed elements MUST contain exactly one '
-            . 'atom:id element, or as an alternative, we can use the same '
-            . 'value as atom:link however neither a suitable link nor an '
-            . 'id have been set';
-            $exception = new Zend_Feed_Exception($message);
-            if (!$this->_ignoreExceptions) {
-                throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp identifier
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setIdphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getIdphp(php)
+php php php php php php php php php&php&php php!php$thisphp-php>getDataContainerphp(php)php-php>getLinkphp(php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$messagephp php=php php'Atomphp php1php.php0php feedphp elementsphp MUSTphp containphp exactlyphp onephp php'
+php php php php php php php php php php php php php.php php'atomphp:idphp elementphp,php orphp asphp anphp alternativephp,php wephp canphp usephp thephp samephp php'
+php php php php php php php php php php php php php.php php'valuephp asphp atomphp:linkphp howeverphp neitherphp aphp suitablephp linkphp norphp anphp php'
+php php php php php php php php php php php php php.php php'idphp havephp beenphp setphp'php;
+php php php php php php php php php php php php php$exceptionphp php=php newphp Zendphp_Feedphp_Exceptionphp(php$messagephp)php;
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_ignoreExceptionsphp)php php{
+php php php php php php php php php php php php php php php php throwphp php$exceptionphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_exceptionsphp[php]php php=php php$exceptionphp;
+php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (!$this->getDataContainer()->getId()) {
-            $this->getDataContainer()->setId(
-                $this->getDataContainer()->getLink());
-        }
-        $id = $dom->createElement('id');
-        $root->appendChild($id);
-        $text = $dom->createTextNode($this->getDataContainer()->getId());
-        $id->appendChild($text);
-    }
+php php php php php php php php ifphp php(php!php$thisphp-php>getDataContainerphp(php)php-php>getIdphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>getDataContainerphp(php)php-php>setIdphp(
+php php php php php php php php php php php php php php php php php$thisphp-php>getDataContainerphp(php)php-php>getLinkphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php php$idphp php=php php$domphp-php>createElementphp(php'idphp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$idphp)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$thisphp-php>getDataContainerphp(php)php-php>getIdphp(php)php)php;
+php php php php php php php php php$idphp-php>appendChildphp(php$textphp)php;
+php php php php php}
 
-    /**
-     * Set feed copyright
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setCopyright(DOMDocument $dom, DOMElement $root)
-    {
-        $copyright = $this->getDataContainer()->getCopyright();
-        if (!$copyright) {
-            return;
-        }
-        $copy = $dom->createElement('rights');
-        $root->appendChild($copy);
-        $text = $dom->createTextNode($copyright);
-        $copy->appendChild($text);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp copyright
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setCopyrightphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$copyrightphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getCopyrightphp(php)php;
+php php php php php php php php ifphp php(php!php$copyrightphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php php$copyphp php=php php$domphp-php>createElementphp(php'rightsphp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$copyphp)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$copyrightphp)php;
+php php php php php php php php php$copyphp-php>appendChildphp(php$textphp)php;
+php php php php php}
 
-    /**
-     * Set feed level logo (image)
-     *
-     * @param DOMDocument $dom
-     * @param DOMElement $root
-     * @return void
-     */
-    protected function _setImage(DOMDocument $dom, DOMElement $root)
-    {
-        $image = $this->getDataContainer()->getImage();
-        if (!$image) {
-            return;
-        }
-        $img = $dom->createElement('logo');
-        $root->appendChild($img);
-        $text = $dom->createTextNode($image['uri']);
-        $img->appendChild($text);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp levelphp logophp php(imagephp)
+php php php php php php*
+php php php php php php*php php@paramphp DOMDocumentphp php$dom
+php php php php php php*php php@paramphp DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setImagephp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$imagephp php=php php$thisphp-php>getDataContainerphp(php)php-php>getImagephp(php)php;
+php php php php php php php php ifphp php(php!php$imagephp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php php$imgphp php=php php$domphp-php>createElementphp(php'logophp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$imgphp)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$imagephp[php'uriphp'php]php)php;
+php php php php php php php php php$imgphp-php>appendChildphp(php$textphp)php;
+php php php php php}
 
-    /**
-     * Set feed level icon (image)
-     *
-     * @param DOMDocument $dom
-     * @param DOMElement $root
-     * @return void
-     */
-    protected function _setIcon(DOMDocument $dom, DOMElement $root)
-    {
-        $image = $this->getDataContainer()->getIcon();
-        if (!$image) {
-            return;
-        }
-        $img = $dom->createElement('icon');
-        $root->appendChild($img);
-        $text = $dom->createTextNode($image['uri']);
-        $img->appendChild($text);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp levelphp iconphp php(imagephp)
+php php php php php php*
+php php php php php php*php php@paramphp DOMDocumentphp php$dom
+php php php php php php*php php@paramphp DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setIconphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$imagephp php=php php$thisphp-php>getDataContainerphp(php)php-php>getIconphp(php)php;
+php php php php php php php php ifphp php(php!php$imagephp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php php$imgphp php=php php$domphp-php>createElementphp(php'iconphp'php)php;
+php php php php php php php php php$rootphp-php>appendChildphp(php$imgphp)php;
+php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$imagephp[php'uriphp'php]php)php;
+php php php php php php php php php$imgphp-php>appendChildphp(php$textphp)php;
+php php php php php}
 
-    /**
-     * Set date feed was created
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
-    {
-        if(!$this->getDataContainer()->getDateCreated()) {
-            return;
-        }
-        if(!$this->getDataContainer()->getDateModified()) {
-            $this->getDataContainer()->setDateModified(
-                $this->getDataContainer()->getDateCreated()
-            );
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp datephp feedphp wasphp created
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setDateCreatedphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getDateCreatedphp(php)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php ifphp(php!php$thisphp-php>getDataContainerphp(php)php-php>getDateModifiedphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>getDataContainerphp(php)php-php>setDateModifiedphp(
+php php php php php php php php php php php php php php php php php$thisphp-php>getDataContainerphp(php)php-php>getDateCreatedphp(php)
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set base URL to feed links
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setBaseUrl(DOMDocument $dom, DOMElement $root)
-    {
-        $baseUrl = $this->getDataContainer()->getBaseUrl();
-        if (!$baseUrl) {
-            return;
-        }
-        $root->setAttribute('xml:base', $baseUrl);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp basephp URLphp tophp feedphp links
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setBaseUrlphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$baseUrlphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getBaseUrlphp(php)php;
+php php php php php php php php ifphp php(php!php$baseUrlphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php php$rootphp-php>setAttributephp(php'xmlphp:basephp'php,php php$baseUrlphp)php;
+php php php php php}
 
-    /**
-     * Set hubs to which this feed pushes
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setHubs(DOMDocument $dom, DOMElement $root)
-    {
-        $hubs = $this->getDataContainer()->getHubs();
-        if (!$hubs) {
-            return;
-        }
-        foreach ($hubs as $hubUrl) {
-            $hub = $dom->createElement('link');
-            $hub->setAttribute('rel', 'hub');
-            $hub->setAttribute('href', $hubUrl);
-            $root->appendChild($hub);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp hubsphp tophp whichphp thisphp feedphp pushes
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setHubsphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$hubsphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getHubsphp(php)php;
+php php php php php php php php ifphp php(php!php$hubsphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$hubsphp asphp php$hubUrlphp)php php{
+php php php php php php php php php php php php php$hubphp php=php php$domphp-php>createElementphp(php'linkphp'php)php;
+php php php php php php php php php php php php php$hubphp-php>setAttributephp(php'relphp'php,php php'hubphp'php)php;
+php php php php php php php php php php php php php$hubphp-php>setAttributephp(php'hrefphp'php,php php$hubUrlphp)php;
+php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$hubphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set feed cateories
-     *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
-     * @return void
-     */
-    protected function _setCategories(DOMDocument $dom, DOMElement $root)
-    {
-        $categories = $this->getDataContainer()->getCategories();
-        if (!$categories) {
-            return;
-        }
-        foreach ($categories as $cat) {
-            $category = $dom->createElement('category');
-            $category->setAttribute('term', $cat['term']);
-            if (isset($cat['label'])) {
-                $category->setAttribute('label', $cat['label']);
-            } else {
-                $category->setAttribute('label', $cat['term']);
-            }
-            if (isset($cat['scheme'])) {
-                $category->setAttribute('scheme', $cat['scheme']);
-            }
-            $root->appendChild($category);
-        }
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp cateories
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php$dom
+php php php php php php*php php@paramphp php DOMElementphp php$root
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setCategoriesphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
+php php php php php{
+php php php php php php php php php$categoriesphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getCategoriesphp(php)php;
+php php php php php php php php ifphp php(php!php$categoriesphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$categoriesphp asphp php$catphp)php php{
+php php php php php php php php php php php php php$categoryphp php=php php$domphp-php>createElementphp(php'categoryphp'php)php;
+php php php php php php php php php php php php php$categoryphp-php>setAttributephp(php'termphp'php,php php$catphp[php'termphp'php]php)php;
+php php php php php php php php php php php php ifphp php(issetphp(php$catphp[php'labelphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$categoryphp-php>setAttributephp(php'labelphp'php,php php$catphp[php'labelphp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$categoryphp-php>setAttributephp(php'labelphp'php,php php$catphp[php'termphp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$catphp[php'schemephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$categoryphp-php>setAttributephp(php'schemephp'php,php php$catphp[php'schemephp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$categoryphp)php;
+php php php php php php php php php}
+php php php php php}
+php}

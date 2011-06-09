@@ -1,22 +1,22 @@
-[form]
+php[formphp]
 
-disableLoadDefaultDecorators = true
-decorators.formElements.decorator = "FormElements"
-decorators.description.decorator = "Description" 
+disableLoadDefaultDecoratorsphp php=php true
+decoratorsphp.formElementsphp.decoratorphp php=php php"FormElementsphp"
+decoratorsphp.descriptionphp.decoratorphp php=php php"Descriptionphp"php 
 
-decorators.table.decorator = "HtmlTag"
-decorators.table.options.tag = "table"
-decorators.table.options.class = "forms"
+decoratorsphp.tablephp.decoratorphp php=php php"HtmlTagphp"
+decoratorsphp.tablephp.optionsphp.tagphp php=php php"tablephp"
+decoratorsphp.tablephp.optionsphp.classphp php=php php"formsphp"
 
-elementDecorators.helper.decorator     = viewHelper
-elementDecorators.errors.decorator     = errors
+elementDecoratorsphp.helperphp.decoratorphp php php php php php=php viewHelper
+elementDecoratorsphp.errorsphp.decoratorphp php php php php php=php errors
 
-elementDecorators.data.decorator.data  = htmlTag
-elementDecorators.data.options.tag     = td
-elementDecorators.data.options.class   = element
+elementDecoratorsphp.dataphp.decoratorphp.dataphp php php=php htmlTag
+elementDecoratorsphp.dataphp.optionsphp.tagphp php php php php php=php td
+elementDecoratorsphp.dataphp.optionsphp.classphp php php php=php element
 
-elementDecorators.label.decorator      = label
-elementDecorators.label.options.tag    = td
+elementDecoratorsphp.labelphp.decoratorphp php php php php php php=php label
+elementDecoratorsphp.labelphp.optionsphp.tagphp php php php php=php td
 
-elementDecorators.row.decorator.row    = htmlTag
-elementDecorators.row.options.tag      = tr 
+elementDecoratorsphp.rowphp.decoratorphp.rowphp php php php php=php htmlTag
+elementDecoratorsphp.rowphp.optionsphp.tagphp php php php php php php=php trphp 

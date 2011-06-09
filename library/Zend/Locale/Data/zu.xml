@@ -1,328 +1,328 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.31 $"/>
-		<generation date="$Date: 2009/05/05 23:06:41 $"/>
-		<language type="zu"/>
-	</identity>
-	<fallback>en_ZA</fallback>
-	<localeDisplayNames>
-		<languages>
-			<language type="af">isiBhunu</language>
-			<language type="am">Isi-Amaharikhi</language>
-			<language type="ar">isi-Alabhu</language>
-			<language type="as">Assamese</language>
-			<language type="az">Isi-Azebhayijani</language>
-			<language type="be">IsiBhelarashiyani</language>
-			<language type="bg">Isi-Bulgaria</language>
-			<language type="bh">IsiBhihari</language>
-			<language type="bn">IsiBhengali</language>
-			<language type="br">isihlobo sase Britain</language>
-			<language type="bs">IsiBhosiniyani</language>
-			<language type="ca">IsiKhathalani</language>
-			<language type="cs">Isi-Czech</language>
-			<language type="cy">IsiWelshi</language>
-			<language type="da">IsiDenishi</language>
-			<language type="de">isiJalimani</language>
-			<language type="el">IsiGreki</language>
-			<language type="en">isiNgisi</language>
-			<language type="eo">Isi-Esperanto</language>
-			<language type="es">isiSpeyini</language>
-			<language type="et">Isi-Esistoniya</language>
-			<language type="eu">Isi-Basque</language>
-			<language type="fa">IsiPheshiyani</language>
-			<language type="fi">isiFinnish</language>
-			<language type="fil">IsiThagalogi</language>
-			<language type="fo">Isifaro</language>
-			<language type="fr">isiFulentshi</language>
-			<language type="fy">IsiFriziyani</language>
-			<language type="ga">Isi-Irishi</language>
-			<language type="gd">I-Scots Gaelic</language>
-			<language type="gl">Isi-Galashiya</language>
-			<language type="gn">Gurani</language>
-			<language type="gu">IsiGujarati</language>
-			<language type="he">IsiHebheru</language>
-			<language type="hi">isiHindi</language>
-			<language type="hr">Isi-Croatia</language>
-			<language type="hu">IsiHangari</language>
-			<language type="hy">Armenian</language>
-			<language type="ia">Izilimi ezihlangene</language>
-			<language type="id">Isi-Indonesia</language>
-			<language type="ie">Izilimu</language>
-			<language type="is">Isi-Icelandic</language>
-			<language type="it">isItalian</language>
-			<language type="ja">IsiJaphani</language>
-			<language type="jv">IsiJavanisi</language>
-			<language type="ka">IsiJojiyani</language>
-			<language type="km">Cambodian</language>
-			<language type="kn">Ikhanada</language>
-			<language type="ko">IsiKoriya</language>
-			<language type="ku">ulimu lwama Kudishi</language>
-			<language type="ky">Kyrgyz</language>
-			<language type="la">IsiLathini</language>
-			<language type="ln">Lingala</language>
-			<language type="lo">Laothian</language>
-			<language type="lt">Isi-Lithuanian</language>
-			<language type="lv">Isi-Latvian</language>
-			<language type="mk">IsiMakhedoniya</language>
-			<language type="ml">IsiMalayami</language>
-			<language type="mn">Mongolian</language>
-			<language type="mr">IsiMarathi</language>
-			<language type="ms">IsiMalayi</language>
-			<language type="mt">IsiMalithize</language>
-			<language type="ne">IsiNepali</language>
-			<language type="nl">Isi-Dutch</language>
-			<language type="nn">IsiNowejiyani (Nynorsk)</language>
-			<language type="no">IsiNoweyi</language>
-			<language type="oc">Isi-Osithani</language>
-			<language type="or">Oriya</language>
-			<language type="pa">IsiPhunjabi</language>
-			<language type="pl">IsiPholisi</language>
-			<language type="ps">Pashto</language>
-			<language type="pt">IsiPotukezi</language>
-			<language type="pt_BR">Isiputukezi (Brazil)</language>
-			<language type="pt_PT">IsiPotukezi (Ephothugali)</language>
-			<language type="ro">IsiRomani</language>
-			<language type="ru">IsiRashiya</language>
-			<language type="sa">Sanskrit</language>
-			<language type="sd">Sindhi</language>
-			<language type="sh">Serbo-Croatian</language>
-			<language type="si">IsiSinhalese</language>
-			<language type="sk">IsiSlovaki</language>
-			<language type="sl">IsiSlovakiyani</language>
-			<language type="so">Somali</language>
-			<language type="sq">Isi-Albania</language>
-			<language type="sr">Isi-Sebhiya</language>
-			<language type="st">isiSuthu</language>
-			<language type="su">IsiSundanizi</language>
-			<language type="sv">IsiSwidishi</language>
-			<language type="sw">isiSwahili</language>
-			<language type="ta">IsiThamil</language>
-			<language type="te">IsiThelugu</language>
-			<language type="th">IsiThayi</language>
-			<language type="ti">IsiTigrinya</language>
-			<language type="tk">umuntu wase Turkmenistan.</language>
-			<language type="tlh">IsiKlingoni</language>
-			<language type="tr">IsiThekishi</language>
-			<language type="tw">Twi</language>
-			<language type="ug">Uighur</language>
-			<language type="uk">Isi-Ukrain</language>
-			<language type="ur">Isi-Udu</language>
-			<language type="uz">Isi-Uzibheki</language>
-			<language type="vi">IsiVietnamise</language>
-			<language type="xh">isiXhosa</language>
-			<language type="yi">ulimu olwi Yidish</language>
-			<language type="zu">isiZulu</language>
-		</languages>
-		<territories>
-			<territory type="ZA">iNingizimu Afrika</territory>
-		</territories>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[a b {bh} c {ch} d {dl} {dy} e-g {gc} {gq} {gx} h {hh} {hl} i-k {kh} {kl} {kp} l-n {nc} {ngc} {ngq} {ngx} {nhl} {nk} {nkc} {nkq} {nkx} {nq} {ntsh} {nx} {ny} o p {ph} q {qh} r {rh} s {sh} t {th} {tl} {ts} {tsh} u-x {xh} y z]</exemplarCharacters>
-		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
-	</characters>
-	<delimiters>
-		<quotationStart>‘</quotationStart>
-		<quotationEnd>’</quotationEnd>
-		<alternateQuotationStart>“</alternateQuotationStart>
-		<alternateQuotationEnd>”</alternateQuotationEnd>
-	</delimiters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">Jan</month>
-							<month type="2">Feb</month>
-							<month type="3">Mas</month>
-							<month type="4">Apr</month>
-							<month type="5">Mey</month>
-							<month type="6">Jun</month>
-							<month type="7">Jul</month>
-							<month type="8">Aga</month>
-							<month type="9">Sep</month>
-							<month type="10">Okt</month>
-							<month type="11">Nov</month>
-							<month type="12">Dis</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Januwari</month>
-							<month type="2">Februwari</month>
-							<month type="3">Mashi</month>
-							<month type="4">Apreli</month>
-							<month type="5">Meyi</month>
-							<month type="6">Juni</month>
-							<month type="7">Julayi</month>
-							<month type="8">Agasti</month>
-							<month type="9">Septhemba</month>
-							<month type="10">Okthoba</month>
-							<month type="11">Novemba</month>
-							<month type="12">Disemba</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="narrow">
-							<month type="1">J</month>
-							<month type="2">F</month>
-							<month type="3">M</month>
-							<month type="4">A</month>
-							<month type="5">M</month>
-							<month type="6">J</month>
-							<month type="7">J</month>
-							<month type="8">A</month>
-							<month type="9">S</month>
-							<month type="10">O</month>
-							<month type="11">N</month>
-							<month type="12">D</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">uJanuwari</month>
-							<month type="2">uFebruwari</month>
-							<month type="3">uMashi</month>
-							<month type="4">u-Apreli</month>
-							<month type="5">uMeyi</month>
-							<month type="6">uJuni</month>
-							<month type="7">uJulayi</month>
-							<month type="8">uAgasti</month>
-							<month type="9">uSepthemba</month>
-							<month type="10">u-Okthoba</month>
-							<month type="11">uNovemba</month>
-							<month type="12">uDisemba</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">Son</day>
-							<day type="mon">Mso</day>
-							<day type="tue">Bil</day>
-							<day type="wed">Tha</day>
-							<day type="thu">Sin</day>
-							<day type="fri">Hla</day>
-							<day type="sat">Mgq</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">Sonto</day>
-							<day type="mon">Msombuluko</day>
-							<day type="tue">Lwesibili</day>
-							<day type="wed">Lwesithathu</day>
-							<day type="thu">uLwesine</day>
-							<day type="fri">Lwesihlanu</day>
-							<day type="sat">Mgqibelo</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">S</day>
-							<day type="mon">M</day>
-							<day type="tue">B</day>
-							<day type="wed">T</day>
-							<day type="thu">S</day>
-							<day type="fri">H</day>
-							<day type="sat">M</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<eras>
-					<eraAbbr>
-						<era type="0">BC</era>
-						<era type="1">AD</era>
-					</eraAbbr>
-				</eras>
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE dd MMMM y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>d MMMM y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>d MMM y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>yyyy-MM-dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="full">
-						<timeFormat>
-							<pattern>h:mm:ss a zzzz</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="long">
-						<timeFormat>
-							<pattern>h:mm:ss a z</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>h:mm:ss a</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="short">
-						<timeFormat>
-							<pattern>h:mm a</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;-HH:mm</hourFormat>
-			<gmtFormat>GMT{0}</gmtFormat>
-			<regionFormat>{0}</regionFormat>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<symbols>
-			<decimal>,</decimal>
-			<group> </group>
-		</symbols>
-		<decimalFormats>
-			<decimalFormatLength>
-				<decimalFormat>
-					<pattern>#,##0.###</pattern>
-				</decimalFormat>
-			</decimalFormatLength>
-		</decimalFormats>
-		<scientificFormats>
-			<scientificFormatLength>
-				<scientificFormat>
-					<pattern>#E0</pattern>
-				</scientificFormat>
-			</scientificFormatLength>
-		</scientificFormats>
-		<percentFormats>
-			<percentFormatLength>
-				<percentFormat>
-					<pattern>#,##0%</pattern>
-				</percentFormat>
-			</percentFormatLength>
-		</percentFormats>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>¤#,##0.00</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-		</currencyFormats>
-	</numbers>
-	<posix>
-		<messages>
-			<yesstr>yebo:y</yesstr>
-			<nostr>cha:c</nostr>
-		</messages>
-	</posix>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php1php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php4php1php php$php"php/php>
+php	php	php<languagephp typephp=php"zuphp"php/php>
+php	<php/identityphp>
+php	php<fallbackphp>enphp_ZA<php/fallbackphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"afphp"php>isiBhunu<php/languagephp>
+php	php	php	php<languagephp typephp=php"amphp"php>Isiphp-Amaharikhi<php/languagephp>
+php	php	php	php<languagephp typephp=php"arphp"php>isiphp-Alabhu<php/languagephp>
+php	php	php	php<languagephp typephp=php"asphp"php>Assamese<php/languagephp>
+php	php	php	php<languagephp typephp=php"azphp"php>Isiphp-Azebhayijani<php/languagephp>
+php	php	php	php<languagephp typephp=php"bephp"php>IsiBhelarashiyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>Isiphp-Bulgaria<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>IsiBhihari<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>IsiBhengali<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>isihlobophp sasephp Britain<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>IsiBhosiniyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>IsiKhathalani<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>Isiphp-Czech<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>IsiWelshi<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>IsiDenishi<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>isiJalimani<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>IsiGreki<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>isiNgisi<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>Isiphp-Esperanto<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>isiSpeyini<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>Isiphp-Esistoniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>Isiphp-Basque<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>IsiPheshiyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>isiFinnish<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>IsiThagalogi<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>Isifaro<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>isiFulentshi<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>IsiFriziyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>Isiphp-Irishi<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>Iphp-Scotsphp Gaelic<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>Isiphp-Galashiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>Gurani<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>IsiGujarati<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>IsiHebheru<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>isiHindi<php/languagephp>
+php	php	php	php<languagephp typephp=php"hrphp"php>Isiphp-Croatia<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>IsiHangari<php/languagephp>
+php	php	php	php<languagephp typephp=php"hyphp"php>Armenian<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>Izilimiphp ezihlangene<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>Isiphp-Indonesia<php/languagephp>
+php	php	php	php<languagephp typephp=php"iephp"php>Izilimu<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>Isiphp-Icelandic<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>isItalian<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>IsiJaphani<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>IsiJavanisi<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>IsiJojiyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"kmphp"php>Cambodian<php/languagephp>
+php	php	php	php<languagephp typephp=php"knphp"php>Ikhanada<php/languagephp>
+php	php	php	php<languagephp typephp=php"kophp"php>IsiKoriya<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>ulimuphp lwamaphp Kudishi<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>Kyrgyz<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>IsiLathini<php/languagephp>
+php	php	php	php<languagephp typephp=php"lnphp"php>Lingala<php/languagephp>
+php	php	php	php<languagephp typephp=php"lophp"php>Laothian<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>Isiphp-Lithuanian<php/languagephp>
+php	php	php	php<languagephp typephp=php"lvphp"php>Isiphp-Latvian<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>IsiMakhedoniya<php/languagephp>
+php	php	php	php<languagephp typephp=php"mlphp"php>IsiMalayami<php/languagephp>
+php	php	php	php<languagephp typephp=php"mnphp"php>Mongolian<php/languagephp>
+php	php	php	php<languagephp typephp=php"mrphp"php>IsiMarathi<php/languagephp>
+php	php	php	php<languagephp typephp=php"msphp"php>IsiMalayi<php/languagephp>
+php	php	php	php<languagephp typephp=php"mtphp"php>IsiMalithize<php/languagephp>
+php	php	php	php<languagephp typephp=php"nephp"php>IsiNepali<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>Isiphp-Dutch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nnphp"php>IsiNowejiyaniphp php(Nynorskphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>IsiNoweyi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>Isiphp-Osithani<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>Oriya<php/languagephp>
+php	php	php	php<languagephp typephp=php"paphp"php>IsiPhunjabi<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>IsiPholisi<php/languagephp>
+php	php	php	php<languagephp typephp=php"psphp"php>Pashto<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>IsiPotukezi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>Isiputukeziphp php(Brazilphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>IsiPotukeziphp php(Ephothugaliphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>IsiRomani<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>IsiRashiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"saphp"php>Sanskrit<php/languagephp>
+php	php	php	php<languagephp typephp=php"sdphp"php>Sindhi<php/languagephp>
+php	php	php	php<languagephp typephp=php"shphp"php>Serbophp-Croatian<php/languagephp>
+php	php	php	php<languagephp typephp=php"siphp"php>IsiSinhalese<php/languagephp>
+php	php	php	php<languagephp typephp=php"skphp"php>IsiSlovaki<php/languagephp>
+php	php	php	php<languagephp typephp=php"slphp"php>IsiSlovakiyani<php/languagephp>
+php	php	php	php<languagephp typephp=php"sophp"php>Somali<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>Isiphp-Albania<php/languagephp>
+php	php	php	php<languagephp typephp=php"srphp"php>Isiphp-Sebhiya<php/languagephp>
+php	php	php	php<languagephp typephp=php"stphp"php>isiSuthu<php/languagephp>
+php	php	php	php<languagephp typephp=php"suphp"php>IsiSundanizi<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>IsiSwidishi<php/languagephp>
+php	php	php	php<languagephp typephp=php"swphp"php>isiSwahili<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>IsiThamil<php/languagephp>
+php	php	php	php<languagephp typephp=php"tephp"php>IsiThelugu<php/languagephp>
+php	php	php	php<languagephp typephp=php"thphp"php>IsiThayi<php/languagephp>
+php	php	php	php<languagephp typephp=php"tiphp"php>IsiTigrinya<php/languagephp>
+php	php	php	php<languagephp typephp=php"tkphp"php>umuntuphp wasephp Turkmenistanphp.<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlhphp"php>IsiKlingoni<php/languagephp>
+php	php	php	php<languagephp typephp=php"trphp"php>IsiThekishi<php/languagephp>
+php	php	php	php<languagephp typephp=php"twphp"php>Twi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugphp"php>Uighur<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>Isiphp-Ukrain<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>Isiphp-Udu<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>Isiphp-Uzibheki<php/languagephp>
+php	php	php	php<languagephp typephp=php"viphp"php>IsiVietnamise<php/languagephp>
+php	php	php	php<languagephp typephp=php"xhphp"php>isiXhosa<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>ulimuphp olwiphp Yidish<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>isiZulu<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"ZAphp"php>iNingizimuphp Afrika<php/territoryphp>
+php	php	<php/territoriesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[aphp bphp php{bhphp}php cphp php{chphp}php dphp php{dlphp}php php{dyphp}php ephp-gphp php{gcphp}php php{gqphp}php php{gxphp}php hphp php{hhphp}php php{hlphp}php iphp-kphp php{khphp}php php{klphp}php php{kpphp}php lphp-nphp php{ncphp}php php{ngcphp}php php{ngqphp}php php{ngxphp}php php{nhlphp}php php{nkphp}php php{nkcphp}php php{nkqphp}php php{nkxphp}php php{nqphp}php php{ntshphp}php php{nxphp}php php{nyphp}php ophp pphp php{phphp}php qphp php{qhphp}php rphp php{rhphp}php sphp php{shphp}php tphp php{thphp}php php{tlphp}php php{tsphp}php php{tshphp}php uphp-xphp php{xhphp}php yphp zphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"currencySymbolphp"php>php[aphp-zphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<delimitersphp>
+php	php	php<quotationStartphp>php‘<php/quotationStartphp>
+php	php	php<quotationEndphp>php’<php/quotationEndphp>
+php	php	php<alternateQuotationStartphp>php“<php/alternateQuotationStartphp>
+php	php	php<alternateQuotationEndphp>php”<php/alternateQuotationEndphp>
+php	<php/delimitersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Jan<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Feb<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Mas<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Apr<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Mey<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Jun<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Jul<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Aga<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Sep<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Okt<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Nov<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Dis<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Januwari<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Februwari<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Mashi<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Apreli<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Meyi<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Juni<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Julayi<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Agasti<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Septhemba<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Okthoba<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Novemba<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Disemba<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>J<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>F<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>M<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>A<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>M<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>J<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>J<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>A<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>S<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>O<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>N<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>D<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>uJanuwari<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>uFebruwari<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>uMashi<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>uphp-Apreli<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>uMeyi<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>uJuni<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>uJulayi<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>uAgasti<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>uSepthemba<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>uphp-Okthoba<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>uNovemba<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>uDisemba<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Son<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Mso<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Bil<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Tha<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Sin<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Hla<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Mgq<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Sonto<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Msombuluko<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Lwesibili<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Lwesithathu<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>uLwesine<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Lwesihlanu<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Mgqibelo<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>S<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>M<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>B<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>T<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>S<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>H<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>M<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>BC<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>AD<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp ddphp MMMMphp y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp MMMMphp y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp MMMphp y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yyyyphp-MMphp-dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp zzzz<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp z<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp a<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp a<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
+php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
+php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<symbolsphp>
+php	php	php	php<decimalphp>php,<php/decimalphp>
+php	php	php	php<groupphp>php <php/groupphp>
+php	php	<php/symbolsphp>
+php	php	php<decimalFormatsphp>
+php	php	php	php<decimalFormatLengthphp>
+php	php	php	php	php<decimalFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php#php#php#<php/patternphp>
+php	php	php	php	<php/decimalFormatphp>
+php	php	php	<php/decimalFormatLengthphp>
+php	php	<php/decimalFormatsphp>
+php	php	php<scientificFormatsphp>
+php	php	php	php<scientificFormatLengthphp>
+php	php	php	php	php<scientificFormatphp>
+php	php	php	php	php	php<patternphp>php#Ephp0<php/patternphp>
+php	php	php	php	<php/scientificFormatphp>
+php	php	php	<php/scientificFormatLengthphp>
+php	php	<php/scientificFormatsphp>
+php	php	php<percentFormatsphp>
+php	php	php	php<percentFormatLengthphp>
+php	php	php	php	php<percentFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php%<php/patternphp>
+php	php	php	php	<php/percentFormatphp>
+php	php	php	<php/percentFormatLengthphp>
+php	php	<php/percentFormatsphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	<php/currencyFormatsphp>
+php	<php/numbersphp>
+php	php<posixphp>
+php	php	php<messagesphp>
+php	php	php	php<yesstrphp>yebophp:y<php/yesstrphp>
+php	php	php	php<nostrphp>chaphp:c<php/nostrphp>
+php	php	<php/messagesphp>
+php	<php/posixphp>
+<php/ldmlphp>
 

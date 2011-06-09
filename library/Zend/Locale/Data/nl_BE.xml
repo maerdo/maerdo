@@ -1,80 +1,80 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.69 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="nl"/>
-		<territory type="BE"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="lv">Lets</language>
-			<language type="oc">Occitaans (na 1500); Provençaals</language>
-			<language type="sh">Servo-Kroatisch</language>
-			<language type="ssa">Nilo-Saharaans</language>
-		</languages>
-		<territories>
-			<territory type="013">Centraal-Amerika</territory>
-			<territory type="IM">Het Eiland Man</territory>
-			<territory type="MV">Malediven</territory>
-			<territory type="SB">Salomoneilanden</territory>
-		</territories>
-		<types>
-			<type type="traditional" key="collation">Traditioneel</type>
-		</types>
-	</localeDisplayNames>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<dateFormats>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>d-MMM-y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>d/MM/yy</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<dateTimeFormats>
-					<intervalFormats>
-						<intervalFormatItem id="Md">
-							<greatestDifference id="d">d/MM - d/MM</greatestDifference>
-							<greatestDifference id="M">d/MM - d/MM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MEd">
-							<greatestDifference id="d">E d/MM - E d/MM</greatestDifference>
-							<greatestDifference id="M">E d/MM - E d/MM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yM">
-							<greatestDifference id="M">MM/yy - MM/yy</greatestDifference>
-							<greatestDifference id="y">MM/yy - MM/yy</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMd">
-							<greatestDifference id="d">d/MM/yy - d/MM/yy</greatestDifference>
-							<greatestDifference id="M">d/MM/yy - d/MM/yy</greatestDifference>
-							<greatestDifference id="y">d/MM/yy - d/MM/yy</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E d/MM/yy - E d/MM/yy</greatestDifference>
-							<greatestDifference id="M">E d/MM/yy - E d/MM/yy</greatestDifference>
-							<greatestDifference id="y">E d/MM/yy - E d/MM/yy</greatestDifference>
-						</intervalFormatItem>
-					</intervalFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-	</dates>
-	<numbers>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>#,##0.00 ¤</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-		</currencyFormats>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php9php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php3php php$php"php/php>
+php	php	php<languagephp typephp=php"nlphp"php/php>
+php	php	php<territoryphp typephp=php"BEphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"lvphp"php>Lets<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>Occitaansphp php(naphp php1php5php0php0php)php;php Provençaals<php/languagephp>
+php	php	php	php<languagephp typephp=php"shphp"php>Servophp-Kroatisch<php/languagephp>
+php	php	php	php<languagephp typephp=php"ssaphp"php>Nilophp-Saharaans<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"php0php1php3php"php>Centraalphp-Amerika<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IMphp"php>Hetphp Eilandphp Man<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MVphp"php>Malediven<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SBphp"php>Salomoneilanden<php/territoryphp>
+php	php	<php/territoriesphp>
+php	php	php<typesphp>
+php	php	php	php<typephp typephp=php"traditionalphp"php keyphp=php"collationphp"php>Traditioneel<php/typephp>
+php	php	<php/typesphp>
+php	<php/localeDisplayNamesphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp-MMMphp-y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp/MMphp/yy<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<intervalFormatsphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp/MMphp php-php dphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp/MMphp php-php dphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp dphp/MMphp php-php Ephp dphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp dphp/MMphp php-php Ephp dphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp/yyphp php-php MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMphp/yyphp php-php MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp/MMphp/yyphp php-php dphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp/MMphp/yyphp php-php dphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>dphp/MMphp/yyphp php-php dphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp dphp/MMphp/yyphp php-php Ephp dphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp dphp/MMphp/yyphp php-php Ephp dphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp dphp/MMphp/yyphp php-php Ephp dphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	<php/intervalFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php0php0php php¤<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	<php/currencyFormatsphp>
+php	<php/numbersphp>
+<php/ldmlphp>
 

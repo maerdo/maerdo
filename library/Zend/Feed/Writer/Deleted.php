@@ -1,202 +1,202 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Deleted.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Deletedphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-require_once 'Zend/Feed/Writer/Feed/FeedAbstract.php';
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Feedphp/FeedAbstractphp.phpphp'php;
 
- /**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Feed_Writer_Deleted
-{
+php php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Feedphp_Writerphp_Deleted
+php{
 
-    /**
-     * Internal array containing all data associated with this entry or item.
-     *
-     * @var array
-     */
-    protected $_data = array();
+php php php php php/php*php*
+php php php php php php*php Internalphp arrayphp containingphp allphp dataphp associatedphp withphp thisphp entryphp orphp itemphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_dataphp php=php arrayphp(php)php;
 
-    /**
-     * Holds the value "atom" or "rss" depending on the feed type set when
-     * when last exported.
-     *
-     * @var string
-     */
-    protected $_type = null;
+php php php php php/php*php*
+php php php php php php*php Holdsphp thephp valuephp php"atomphp"php orphp php"rssphp"php dependingphp onphp thephp feedphp typephp setphp when
+php php php php php php*php whenphp lastphp exportedphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_typephp php=php nullphp;
 
-    /**
-     * Set the feed character encoding
-     *
-     * @return string|null
-     */
-    public function setEncoding($encoding)
-    {
-        if (empty($encoding) || !is_string($encoding)) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('Invalid parameter: parameter must be a non-empty string');
-        }
-        $this->_data['encoding'] = $encoding;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp feedphp characterphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp setEncodingphp(php$encodingphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$encodingphp)php php|php|php php!isphp_stringphp(php$encodingphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Invalidphp parameterphp:php parameterphp mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'encodingphp'php]php php=php php$encodingphp;
+php php php php php}
 
-    /**
-     * Get the feed character encoding
-     *
-     * @return string|null
-     */
-    public function getEncoding()
-    {
-        if (!array_key_exists('encoding', $this->_data)) {
-            return 'UTF-8';
-        }
-        return $this->_data['encoding'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp characterphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'encodingphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php'UTFphp-php8php'php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'encodingphp'php]php;
+php php php php php}
 
-    /**
-     * Unset a specific data point
-     *
-     * @param string $name
-     */
-    public function remove($name)
-    {
-        if (isset($this->_data[$name])) {
-            unset($this->_data[$name]);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Unsetphp aphp specificphp dataphp point
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php/
+php php php php publicphp functionphp removephp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_dataphp[php$namephp]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set the current feed type being exported to "rss" or "atom". This allows
-     * other objects to gracefully choose whether to execute or not, depending
-     * on their appropriateness for the current type, e.g. renderers.
-     *
-     * @param string $type
-     */
-    public function setType($type)
-    {
-        $this->_type = $type;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp currentphp feedphp typephp beingphp exportedphp tophp php"rssphp"php orphp php"atomphp"php.php Thisphp allows
+php php php php php php*php otherphp objectsphp tophp gracefullyphp choosephp whetherphp tophp executephp orphp notphp,php depending
+php php php php php php*php onphp theirphp appropriatenessphp forphp thephp currentphp typephp,php ephp.gphp.php renderersphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$type
+php php php php php php*php/
+php php php php publicphp functionphp setTypephp(php$typephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_typephp php=php php$typephp;
+php php php php php}
 
-    /**
-     * Retrieve the current or last feed type exported.
-     *
-     * @return string Value will be "rss" or "atom"
-     */
-    public function getType()
-    {
-        return $this->_type;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp currentphp orphp lastphp feedphp typephp exportedphp.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Valuephp willphp bephp php"rssphp"php orphp php"atomphp"
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_typephp;
+php php php php php}
 
-    public function setReference($reference)
-    {
-        if (empty($reference) || !is_string($reference)) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('Invalid parameter: reference must be a non-empty string');
-        }
-        $this->_data['reference'] = $reference;
-    }
+php php php php publicphp functionphp setReferencephp(php$referencephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$referencephp)php php|php|php php!isphp_stringphp(php$referencephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Invalidphp parameterphp:php referencephp mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'referencephp'php]php php=php php$referencephp;
+php php php php php}
 
-    public function getReference()
-    {
-        if (!array_key_exists('reference', $this->_data)) {
-            return null;
-        }
-        return $this->_data['reference'];
-    }
+php php php php publicphp functionphp getReferencephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'referencephp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'referencephp'php]php;
+php php php php php}
 
-    public function setWhen($date = null)
-    {
-        $zdate = null;
-        if ($date === null) {
-            $zdate = new Zend_Date;
-        } elseif (ctype_digit($date) && strlen($date) == 10) {
-            $zdate = new Zend_Date($date, Zend_Date::TIMESTAMP);
-        } elseif ($date instanceof Zend_Date) {
-            $zdate = $date;
-        } else {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('Invalid Zend_Date object or UNIX Timestamp passed as parameter');
-        }
-        $this->_data['when'] = $zdate;
-    }
+php php php php publicphp functionphp setWhenphp(php$datephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$zdatephp php=php nullphp;
+php php php php php php php php ifphp php(php$datephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$zdatephp php=php newphp Zendphp_Datephp;
+php php php php php php php php php}php elseifphp php(ctypephp_digitphp(php$datephp)php php&php&php strlenphp(php$datephp)php php=php=php php1php0php)php php{
+php php php php php php php php php php php php php$zdatephp php=php newphp Zendphp_Datephp(php$datephp,php Zendphp_Datephp:php:TIMESTAMPphp)php;
+php php php php php php php php php}php elseifphp php(php$datephp instanceofphp Zendphp_Datephp)php php{
+php php php php php php php php php php php php php$zdatephp php=php php$datephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Invalidphp Zendphp_Datephp objectphp orphp UNIXphp Timestampphp passedphp asphp parameterphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'whenphp'php]php php=php php$zdatephp;
+php php php php php}
 
-    public function getWhen()
-    {
-        if (!array_key_exists('when', $this->_data)) {
-            return null;
-        }
-        return $this->_data['when'];
-    }
+php php php php publicphp functionphp getWhenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'whenphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'whenphp'php]php;
+php php php php php}
 
-    public function setBy(array $by)
-    {
-        $author = array();
-        if (!array_key_exists('name', $by)
-            || empty($by['name'])
-            || !is_string($by['name'])
-        ) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('Invalid parameter: author array must include a "name" key with a non-empty string value');
-        }
-        $author['name'] = $by['name'];
-        if (isset($by['email'])) {
-            if (empty($by['email']) || !is_string($by['email'])) {
-                require_once 'Zend/Feed/Exception.php';
-                throw new Zend_Feed_Exception('Invalid parameter: "email" array value must be a non-empty string');
-            }
-            $author['email'] = $by['email'];
-        }
-        if (isset($by['uri'])) {
-            if (empty($by['uri'])
-                || !is_string($by['uri'])
-                || !Zend_Uri::check($by['uri'])
-            ) {
-                require_once 'Zend/Feed/Exception.php';
-                throw new Zend_Feed_Exception('Invalid parameter: "uri" array value must be a non-empty string and valid URI/IRI');
-            }
-            $author['uri'] = $by['uri'];
-        }
-        $this->_data['by'] = $author;
-    }
+php php php php publicphp functionphp setByphp(arrayphp php$byphp)
+php php php php php{
+php php php php php php php php php$authorphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'namephp'php,php php$byphp)
+php php php php php php php php php php php php php|php|php emptyphp(php$byphp[php'namephp'php]php)
+php php php php php php php php php php php php php|php|php php!isphp_stringphp(php$byphp[php'namephp'php]php)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Invalidphp parameterphp:php authorphp arrayphp mustphp includephp aphp php"namephp"php keyphp withphp aphp nonphp-emptyphp stringphp valuephp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$authorphp[php'namephp'php]php php=php php$byphp[php'namephp'php]php;
+php php php php php php php php ifphp php(issetphp(php$byphp[php'emailphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$byphp[php'emailphp'php]php)php php|php|php php!isphp_stringphp(php$byphp[php'emailphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Invalidphp parameterphp:php php"emailphp"php arrayphp valuephp mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$authorphp[php'emailphp'php]php php=php php$byphp[php'emailphp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$byphp[php'uriphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$byphp[php'uriphp'php]php)
+php php php php php php php php php php php php php php php php php|php|php php!isphp_stringphp(php$byphp[php'uriphp'php]php)
+php php php php php php php php php php php php php php php php php|php|php php!Zendphp_Uriphp:php:checkphp(php$byphp[php'uriphp'php]php)
+php php php php php php php php php php php php php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Invalidphp parameterphp:php php"uriphp"php arrayphp valuephp mustphp bephp aphp nonphp-emptyphp stringphp andphp validphp URIphp/IRIphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$authorphp[php'uriphp'php]php php=php php$byphp[php'uriphp'php]php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'byphp'php]php php=php php$authorphp;
+php php php php php}
 
-    public function getBy()
-    {
-        if (!array_key_exists('by', $this->_data)) {
-            return null;
-        }
-        return $this->_data['by'];
-    }
+php php php php publicphp functionphp getByphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'byphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'byphp'php]php;
+php php php php php}
 
-    public function setComment($comment)
-    {
-        $this->_data['comment'] = $comment;
-    }
+php php php php publicphp functionphp setCommentphp(php$commentphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataphp[php'commentphp'php]php php=php php$commentphp;
+php php php php php}
 
-    public function getComment()
-    {
-        if (!array_key_exists('comment', $this->_data)) {
-            return null;
-        }
-        return $this->_data['comment'];
-    }
+php php php php publicphp functionphp getCommentphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'commentphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'commentphp'php]php;
+php php php php php}
 
-}
+php}

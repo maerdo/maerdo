@@ -1,79 +1,79 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Table
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Table.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Table
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Tablephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Db_Table_Abstract
- */
-require_once 'Zend/Db/Table/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Tablephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Abstractphp.phpphp'php;
 
-/**
- * @see Zend_Db_Table_Definition
- */
-require_once 'Zend/Db/Table/Definition.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Tablephp_Definition
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Definitionphp.phpphp'php;
 
-/**
- * Class for SQL table interface.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Table
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Db_Table extends Zend_Db_Table_Abstract
-{
+php/php*php*
+php php*php Classphp forphp SQLphp tablephp interfacephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Table
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Dbphp_Tablephp extendsphp Zendphp_Dbphp_Tablephp_Abstract
+php{
 
-    /**
-     * __construct() - For concrete implementation of Zend_Db_Table
-     *
-     * @param string|array $config string can reference a Zend_Registry key for a db adapter
-     *                             OR it can reference the name of a table
-     * @param array|Zend_Db_Table_Definition $definition
-     */
-    public function __construct($config = array(), $definition = null)
-    {
-        if ($definition !== null && is_array($definition)) {
-            $definition = new Zend_Db_Table_Definition($definition);
-        }
+php php php php php/php*php*
+php php php php php php*php php_php_constructphp(php)php php-php Forphp concretephp implementationphp ofphp Zendphp_Dbphp_Table
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$configphp stringphp canphp referencephp aphp Zendphp_Registryphp keyphp forphp aphp dbphp adapter
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ORphp itphp canphp referencephp thephp namephp ofphp aphp table
+php php php php php php*php php@paramphp arrayphp|Zendphp_Dbphp_Tablephp_Definitionphp php$definition
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$configphp php=php arrayphp(php)php,php php$definitionphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$definitionphp php!php=php=php nullphp php&php&php isphp_arrayphp(php$definitionphp)php)php php{
+php php php php php php php php php php php php php$definitionphp php=php newphp Zendphp_Dbphp_Tablephp_Definitionphp(php$definitionphp)php;
+php php php php php php php php php}
 
-        if (is_string($config)) {
-            if (Zend_Registry::isRegistered($config)) {
-                trigger_error(__CLASS__ . '::' . __METHOD__ . '(\'registryName\') is not valid usage of Zend_Db_Table, '
-                    . 'try extending Zend_Db_Table_Abstract in your extending classes.',
-                    E_USER_NOTICE
-                    );
-                $config = array(self::ADAPTER => $config);
-            } else {
-                // process this as table with or without a definition
-                if ($definition instanceof Zend_Db_Table_Definition
-                    && $definition->hasTableConfig($config)) {
-                    // this will have DEFINITION_CONFIG_NAME & DEFINITION
-                    $config = $definition->getTableConfig($config);
-                } else {
-                    $config = array(self::NAME => $config);
-                }
-            }
-        }
+php php php php php php php php ifphp php(isphp_stringphp(php$configphp)php)php php{
+php php php php php php php php php php php php ifphp php(Zendphp_Registryphp:php:isRegisteredphp(php$configphp)php)php php{
+php php php php php php php php php php php php php php php php triggerphp_errorphp(php_php_CLASSphp_php_php php.php php'php:php:php'php php.php php_php_METHODphp_php_php php.php php'php(php\php'registryNamephp\php'php)php isphp notphp validphp usagephp ofphp Zendphp_Dbphp_Tablephp,php php'
+php php php php php php php php php php php php php php php php php php php php php.php php'tryphp extendingphp Zendphp_Dbphp_Tablephp_Abstractphp inphp yourphp extendingphp classesphp.php'php,
+php php php php php php php php php php php php php php php php php php php php Ephp_USERphp_NOTICE
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php$configphp php=php arrayphp(selfphp:php:ADAPTERphp php=php>php php$configphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php processphp thisphp asphp tablephp withphp orphp withoutphp aphp definition
+php php php php php php php php php php php php php php php php ifphp php(php$definitionphp instanceofphp Zendphp_Dbphp_Tablephp_Definition
+php php php php php php php php php php php php php php php php php php php php php&php&php php$definitionphp-php>hasTableConfigphp(php$configphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php thisphp willphp havephp DEFINITIONphp_CONFIGphp_NAMEphp php&php DEFINITION
+php php php php php php php php php php php php php php php php php php php php php$configphp php=php php$definitionphp-php>getTableConfigphp(php$configphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$configphp php=php arrayphp(selfphp:php:NAMEphp php=php>php php$configphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        parent::__construct($config);
-    }
-}
+php php php php php php php php parentphp:php:php_php_constructphp(php$configphp)php;
+php php php php php}
+php}

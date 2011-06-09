@@ -1,188 +1,188 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Flickr
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ResultSet.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-
-
-/**
- * @see Zend_Service_Flickr_Result
- */
-require_once 'Zend/Service/Flickr/Result.php';
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Flickr
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ResultSetphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Flickr
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Flickr_ResultSet implements SeekableIterator
-{
-    /**
-     * Total number of available results
-     *
-     * @var int
-     */
-    public $totalResultsAvailable;
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Flickrphp_Result
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Flickrphp/Resultphp.phpphp'php;
 
-    /**
-     * Number of results in this result set
-     *
-     * @var int
-     */
-    public $totalResultsReturned;
 
-    /**
-     * The offset of this result set in the total set of available results
-     *
-     * @var int
-     */
-    public $firstResultPosition;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Flickr
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Flickrphp_ResultSetphp implementsphp SeekableIterator
+php{
+php php php php php/php*php*
+php php php php php php*php Totalphp numberphp ofphp availablephp results
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php publicphp php$totalResultsAvailablephp;
 
-    /**
-     * Results storage
-     *
-     * @var DOMNodeList
-     */
-    protected $_results = null;
+php php php php php/php*php*
+php php php php php php*php Numberphp ofphp resultsphp inphp thisphp resultphp set
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php publicphp php$totalResultsReturnedphp;
 
-    /**
-     * Reference to Zend_Service_Flickr object with which the request was made
-     *
-     * @var Zend_Service_Flickr
-     */
-    private $_flickr;
+php php php php php/php*php*
+php php php php php php*php Thephp offsetphp ofphp thisphp resultphp setphp inphp thephp totalphp setphp ofphp availablephp results
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php publicphp php$firstResultPositionphp;
 
-    /**
-     * Current index for the Iterator
-     *
-     * @var int
-     */
-    private $_currentIndex = 0;
+php php php php php/php*php*
+php php php php php php*php Resultsphp storage
+php php php php php php*
+php php php php php php*php php@varphp DOMNodeList
+php php php php php php*php/
+php php php php protectedphp php$php_resultsphp php=php nullphp;
 
-    /**
-     * Parse the Flickr Result Set
-     *
-     * @param  DOMDocument         $dom
-     * @param  Zend_Service_Flickr $flickr
-     * @return void
-     */
-    public function __construct(DOMDocument $dom, Zend_Service_Flickr $flickr)
-    {
-        $this->_flickr = $flickr;
+php php php php php/php*php*
+php php php php php php*php Referencephp tophp Zendphp_Servicephp_Flickrphp objectphp withphp whichphp thephp requestphp wasphp made
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Flickr
+php php php php php php*php/
+php php php php privatephp php$php_flickrphp;
 
-        $xpath = new DOMXPath($dom);
+php php php php php/php*php*
+php php php php php php*php Currentphp indexphp forphp thephp Iterator
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php privatephp php$php_currentIndexphp php=php php0php;
 
-        $photos = $xpath->query('//photos')->item(0);
+php php php php php/php*php*
+php php php php php php*php Parsephp thephp Flickrphp Resultphp Set
+php php php php php php*
+php php php php php php*php php@paramphp php DOMDocumentphp php php php php php php php php php$dom
+php php php php php php*php php@paramphp php Zendphp_Servicephp_Flickrphp php$flickr
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(DOMDocumentphp php$domphp,php Zendphp_Servicephp_Flickrphp php$flickrphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_flickrphp php=php php$flickrphp;
 
-        $page    = $photos->getAttribute('page');
-        $pages   = $photos->getAttribute('pages');
-        $perPage = $photos->getAttribute('perpage');
-        $total   = $photos->getAttribute('total');
+php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$domphp)php;
 
-        $this->totalResultsReturned  = ($page == $pages || $pages == 0) ? ($total - ($page - 1) * $perPage) : (int) $perPage;
-        $this->firstResultPosition   = ($page - 1) * $perPage + 1;
-        $this->totalResultsAvailable = (int) $total;
+php php php php php php php php php$photosphp php=php php$xpathphp-php>queryphp(php'php/php/photosphp'php)php-php>itemphp(php0php)php;
 
-        if ($total > 0) {
-            $this->_results = $xpath->query('//photo');
-        }
-    }
+php php php php php php php php php$pagephp php php php php=php php$photosphp-php>getAttributephp(php'pagephp'php)php;
+php php php php php php php php php$pagesphp php php php=php php$photosphp-php>getAttributephp(php'pagesphp'php)php;
+php php php php php php php php php$perPagephp php=php php$photosphp-php>getAttributephp(php'perpagephp'php)php;
+php php php php php php php php php$totalphp php php php=php php$photosphp-php>getAttributephp(php'totalphp'php)php;
 
-    /**
-     * Total Number of results returned
-     *
-     * @return int Total number of results returned
-     */
-    public function totalResults()
-    {
-        return $this->totalResultsReturned;
-    }
+php php php php php php php php php$thisphp-php>totalResultsReturnedphp php php=php php(php$pagephp php=php=php php$pagesphp php|php|php php$pagesphp php=php=php php0php)php php?php php(php$totalphp php-php php(php$pagephp php-php php1php)php php*php php$perPagephp)php php:php php(intphp)php php$perPagephp;
+php php php php php php php php php$thisphp-php>firstResultPositionphp php php php=php php(php$pagephp php-php php1php)php php*php php$perPagephp php+php php1php;
+php php php php php php php php php$thisphp-php>totalResultsAvailablephp php=php php(intphp)php php$totalphp;
 
-    /**
-     * Implements SeekableIterator::current()
-     *
-     * @return Zend_Service_Flickr_Result
-     */
-    public function current()
-    {
-        return new Zend_Service_Flickr_Result($this->_results->item($this->_currentIndex), $this->_flickr);
-    }
+php php php php php php php php ifphp php(php$totalphp php>php php0php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_resultsphp php=php php$xpathphp-php>queryphp(php'php/php/photophp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Implements SeekableIterator::key()
-     *
-     * @return int
-     */
-    public function key()
-    {
-        return $this->_currentIndex;
-    }
+php php php php php/php*php*
+php php php php php php*php Totalphp Numberphp ofphp resultsphp returned
+php php php php php php*
+php php php php php php*php php@returnphp intphp Totalphp numberphp ofphp resultsphp returned
+php php php php php php*php/
+php php php php publicphp functionphp totalResultsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>totalResultsReturnedphp;
+php php php php php}
 
-    /**
-     * Implements SeekableIterator::next()
-     *
-     * @return void
-     */
-    public function next()
-    {
-        $this->_currentIndex += 1;
-    }
+php php php php php/php*php*
+php php php php php php*php Implementsphp SeekableIteratorphp:php:currentphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Servicephp_Flickrphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp currentphp(php)
+php php php php php{
+php php php php php php php php returnphp newphp Zendphp_Servicephp_Flickrphp_Resultphp(php$thisphp-php>php_resultsphp-php>itemphp(php$thisphp-php>php_currentIndexphp)php,php php$thisphp-php>php_flickrphp)php;
+php php php php php}
 
-    /**
-     * Implements SeekableIterator::rewind()
-     *
-     * @return void
-     */
-    public function rewind()
-    {
-        $this->_currentIndex = 0;
-    }
+php php php php php/php*php*
+php php php php php php*php Implementsphp SeekableIteratorphp:php:keyphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp keyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_currentIndexphp;
+php php php php php}
 
-    /**
-     * Implements SeekableIterator::seek()
-     *
-     * @param  int $index
-     * @throws OutOfBoundsException
-     * @return void
-     */
-    public function seek($index)
-    {
-        $indexInt = (int) $index;
-        if ($indexInt >= 0 && (null === $this->_results || $indexInt < $this->_results->length)) {
-            $this->_currentIndex = $indexInt;
-        } else {
-            throw new OutOfBoundsException("Illegal index '$index'");
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Implementsphp SeekableIteratorphp:php:nextphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp nextphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_currentIndexphp php+php=php php1php;
+php php php php php}
 
-    /**
-     * Implements SeekableIterator::valid()
-     *
-     * @return boolean
-     */
-    public function valid()
-    {
-        return null !== $this->_results && $this->_currentIndex < $this->_results->length;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Implementsphp SeekableIteratorphp:php:rewindphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp rewindphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_currentIndexphp php=php php0php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Implementsphp SeekableIteratorphp:php:seekphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$index
+php php php php php php*php php@throwsphp OutOfBoundsException
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp seekphp(php$indexphp)
+php php php php php{
+php php php php php php php php php$indexIntphp php=php php(intphp)php php$indexphp;
+php php php php php php php php ifphp php(php$indexIntphp php>php=php php0php php&php&php php(nullphp php=php=php=php php$thisphp-php>php_resultsphp php|php|php php$indexIntphp <php php$thisphp-php>php_resultsphp-php>lengthphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_currentIndexphp php=php php$indexIntphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php throwphp newphp OutOfBoundsExceptionphp(php"Illegalphp indexphp php'php$indexphp'php"php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Implementsphp SeekableIteratorphp:php:validphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp validphp(php)
+php php php php php{
+php php php php php php php php returnphp nullphp php!php=php=php php$thisphp-php>php_resultsphp php&php&php php$thisphp-php>php_currentIndexphp <php php$thisphp-php>php_resultsphp-php>lengthphp;
+php php php php php}
+php}
 

@@ -1,267 +1,267 @@
-<?php
-/**
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage StorageService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp StorageService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-require_once 'Zend/Cloud/StorageService/Adapter.php';
-require_once 'Zend/Cloud/StorageService/Exception.php';
+requirephp_oncephp php'Zendphp/Cloudphp/StorageServicephp/Adapterphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Cloudphp/StorageServicephp/Exceptionphp.phpphp'php;
 
-/**
- * FileSystem adapter for unstructured cloud storage.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage StorageService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_StorageService_Adapter
-{
+php/php*php*
+php php*php FileSystemphp adapterphp forphp unstructuredphp cloudphp storagephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp StorageService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cloudphp_StorageServicephp_Adapterphp_FileSystemphp implementsphp Zendphp_Cloudphp_StorageServicephp_Adapter
+php{
 
-    /**
-     * Options array keys for the file system adapter.
-     */
-    const LOCAL_DIRECTORY = 'local_directory';
+php php php php php/php*php*
+php php php php php php*php Optionsphp arrayphp keysphp forphp thephp filephp systemphp adapterphp.
+php php php php php php*php/
+php php php php constphp LOCALphp_DIRECTORYphp php=php php'localphp_directoryphp'php;
 
-    /**
-     * The directory for the data
-     * @var string
-     */
-    protected $_directory = null;
+php php php php php/php*php*
+php php php php php php*php Thephp directoryphp forphp thephp data
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_directoryphp php=php nullphp;
 
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($options)) {
-            throw new Zend_Cloud_StorageService_Exception('Invalid options provided');
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Invalidphp optionsphp providedphp'php)php;
+php php php php php php php php php}
 
-        if (isset($options[self::LOCAL_DIRECTORY])) {
-            $this->_directory = $options[self::LOCAL_DIRECTORY];
-        } else {
-            $this->_directory = realpath(sys_get_temp_dir());
-        }
-    }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:LOCALphp_DIRECTORYphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_directoryphp php=php php$optionsphp[selfphp:php:LOCALphp_DIRECTORYphp]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_directoryphp php=php realpathphp(sysphp_getphp_tempphp_dirphp(php)php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Get an item from the storage service.
-     *
-     * TODO: Support streaming
-     *
-     * @param  string $path
-     * @param  array $options
-     * @return false|string
-     */
-    public function fetchItem($path, $options = array())
-    {
-        $filepath = $this->_getFullPath($path);
-        $path     = realpath($filepath);
+php php php php php/php*php*
+php php php php php php*php Getphp anphp itemphp fromphp thephp storagephp servicephp.
+php php php php php php*
+php php php php php php*php TODOphp:php Supportphp streaming
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp falsephp|string
+php php php php php php*php/
+php php php php publicphp functionphp fetchItemphp(php$pathphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$filepathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php php$pathphp php php php php php=php realpathphp(php$filepathphp)php;
 
-        if (!$path) {
-            return false;
-        }
+php php php php php php php php ifphp php(php!php$pathphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return file_get_contents($path);
-    }
+php php php php php php php php returnphp filephp_getphp_contentsphp(php$pathphp)php;
+php php php php php}
 
-    /**
-     * Store an item in the storage service.
-     *
-     * WARNING: This operation overwrites any item that is located at
-     * $destinationPath.
-     *
-     * @TODO Support streams
-     *
-     * @param  string $destinationPath
-     * @param  mixed $data
-     * @param  array $options
-     * @return void
-     */
-    public function storeItem($destinationPath, $data, $options = array())
-    {
-        $path = $this->_getFullPath($destinationPath);
-        file_put_contents($path, $data);
-        chmod($path, 0777);
-    }
+php php php php php/php*php*
+php php php php php php*php Storephp anphp itemphp inphp thephp storagephp servicephp.
+php php php php php php*
+php php php php php php*php WARNINGphp:php Thisphp operationphp overwritesphp anyphp itemphp thatphp isphp locatedphp at
+php php php php php php*php php$destinationPathphp.
+php php php php php php*
+php php php php php php*php php@TODOphp Supportphp streams
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$destinationPath
+php php php php php php*php php@paramphp php mixedphp php$data
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp storeItemphp(php$destinationPathphp,php php$dataphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$pathphp php=php php$thisphp-php>php_getFullPathphp(php$destinationPathphp)php;
+php php php php php php php php filephp_putphp_contentsphp(php$pathphp,php php$dataphp)php;
+php php php php php php php php chmodphp(php$pathphp,php php0php7php7php7php)php;
+php php php php php}
 
-    /**
-     * Delete an item in the storage service.
-     *
-     * @param  string $path
-     * @param  array $options
-     * @return void
-     */
-    public function deleteItem($path, $options = array())
-    {
-        if (!isset($path)) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Deletephp anphp itemphp inphp thephp storagephp servicephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteItemphp(php$pathphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$pathphp)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        $filepath = $this->_getFullPath($path);
-        if (file_exists($filepath)) {
-            unlink($filepath);
-        }
-    }
+php php php php php php php php php$filepathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php ifphp php(filephp_existsphp(php$filepathphp)php)php php{
+php php php php php php php php php php php php unlinkphp(php$filepathphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Copy an item in the storage service to a given path.
-     *
-     * WARNING: This operation is *very* expensive for services that do not
-     * support copying an item natively.
-     *
-     * @TODO Support streams for those services that don't support natively
-     *
-     * @param  string $sourcePath
-     * @param  string $destination path
-     * @param  array $options
-     * @return void
-     */
-    public function copyItem($sourcePath, $destinationPath, $options = array())
-    {
-        copy($this->_getFullPath($sourcePath), $this->_getFullPath($destinationPath));
-    }
+php php php php php/php*php*
+php php php php php php*php Copyphp anphp itemphp inphp thephp storagephp servicephp tophp aphp givenphp pathphp.
+php php php php php php*
+php php php php php php*php WARNINGphp:php Thisphp operationphp isphp php*veryphp*php expensivephp forphp servicesphp thatphp dophp not
+php php php php php php*php supportphp copyingphp anphp itemphp nativelyphp.
+php php php php php php*
+php php php php php php*php php@TODOphp Supportphp streamsphp forphp thosephp servicesphp thatphp donphp'tphp supportphp natively
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$sourcePath
+php php php php php php*php php@paramphp php stringphp php$destinationphp path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp copyItemphp(php$sourcePathphp,php php$destinationPathphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php copyphp(php$thisphp-php>php_getFullPathphp(php$sourcePathphp)php,php php$thisphp-php>php_getFullPathphp(php$destinationPathphp)php)php;
+php php php php php}
 
-    /**
-     * Move an item in the storage service to a given path.
-     *
-     * WARNING: This operation is *very* expensive for services that do not
-     * support moving an item natively.
-     *
-     * @TODO Support streams for those services that don't support natively
-     *
-     * @param  string $sourcePath
-     * @param  string $destination path
-     * @param  array $options
-     * @return void
-     */
-    public function moveItem($sourcePath, $destinationPath, $options = array())
-    {
-        rename($this->_getFullPath($sourcePath), $this->_getFullPath($destinationPath));
-    }
+php php php php php/php*php*
+php php php php php php*php Movephp anphp itemphp inphp thephp storagephp servicephp tophp aphp givenphp pathphp.
+php php php php php php*
+php php php php php php*php WARNINGphp:php Thisphp operationphp isphp php*veryphp*php expensivephp forphp servicesphp thatphp dophp not
+php php php php php php*php supportphp movingphp anphp itemphp nativelyphp.
+php php php php php php*
+php php php php php php*php php@TODOphp Supportphp streamsphp forphp thosephp servicesphp thatphp donphp'tphp supportphp natively
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$sourcePath
+php php php php php php*php php@paramphp php stringphp php$destinationphp path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp moveItemphp(php$sourcePathphp,php php$destinationPathphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php renamephp(php$thisphp-php>php_getFullPathphp(php$sourcePathphp)php,php php$thisphp-php>php_getFullPathphp(php$destinationPathphp)php)php;
+php php php php php}
 
-        /**
-     * Rename an item in the storage service to a given name.
-     *
-     *
-     * @param  string $path
-     * @param  string $name
-     * @param  array $options
-     * @return void
-     */
-    public function renameItem($path, $name, $options = null)
-    {
-        rename(
-            $this->_getFullPath($path),
-            dirname($this->_getFullPath($path)) . DIRECTORY_SEPARATOR . $name
-        );
-    }
+php php php php php php php php php/php*php*
+php php php php php php*php Renamephp anphp itemphp inphp thephp storagephp servicephp tophp aphp givenphp namephp.
+php php php php php php*
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp renameItemphp(php$pathphp,php php$namephp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php renamephp(
+php php php php php php php php php php php php php$thisphp-php>php_getFullPathphp(php$pathphp)php,
+php php php php php php php php php php php php dirnamephp(php$thisphp-php>php_getFullPathphp(php$pathphp)php)php php.php DIRECTORYphp_SEPARATORphp php.php php$name
+php php php php php php php php php)php;
+php php php php php}
 
-    /**
-     * List items in the given directory in the storage service
-     *
-     * The $path must be a directory
-     *
-     *
-     * @param  string $path Must be a directory
-     * @param  array $options
-     * @return array A list of item names
-     */
-    public function listItems($path, $options = null)
-    {
-        $listing = scandir($this->_getFullPath($path));
+php php php php php/php*php*
+php php php php php php*php Listphp itemsphp inphp thephp givenphp directoryphp inphp thephp storagephp service
+php php php php php php*
+php php php php php php*php Thephp php$pathphp mustphp bephp aphp directory
+php php php php php php*
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$pathphp Mustphp bephp aphp directory
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp arrayphp Aphp listphp ofphp itemphp names
+php php php php php php*php/
+php php php php publicphp functionphp listItemsphp(php$pathphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$listingphp php=php scandirphp(php$thisphp-php>php_getFullPathphp(php$pathphp)php)php;
 
-        // Remove the hidden navigation directories
-        $listing = array_diff($listing, array('.', '..'));
+php php php php php php php php php/php/php Removephp thephp hiddenphp navigationphp directories
+php php php php php php php php php$listingphp php=php arrayphp_diffphp(php$listingphp,php arrayphp(php'php.php'php,php php'php.php.php'php)php)php;
 
-        return $listing;
-    }
+php php php php php php php php returnphp php$listingphp;
+php php php php php}
 
-    /**
-     * Get a key/value array of metadata for the given path.
-     *
-     * @param  string $path
-     * @param  array $options
-     * @return array
-     */
-    public function fetchMetadata($path, $options = array())
-    {
-        $fullPath = $this->_getFullPath($path);
-        $metadata = null;
-        if (file_exists($fullPath)) {
-            $metadata = stat(realpath($fullPath));
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp aphp keyphp/valuephp arrayphp ofphp metadataphp forphp thephp givenphp pathphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp fetchMetadataphp(php$pathphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$fullPathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php php$metadataphp php=php nullphp;
+php php php php php php php php ifphp php(filephp_existsphp(php$fullPathphp)php)php php{
+php php php php php php php php php php php php php$metadataphp php=php statphp(realpathphp(php$fullPathphp)php)php;
+php php php php php php php php php}
 
-        return isset($metadata) ? $metadata : false;
-    }
+php php php php php php php php returnphp issetphp(php$metadataphp)php php?php php$metadataphp php:php falsephp;
+php php php php php}
 
-    /**
-     * Store a key/value array of metadata at the given path.
-     * WARNING: This operation overwrites any metadata that is located at
-     * $destinationPath.
-     *
-     * @param  string $destinationPath
-     * @param  array $options
-     * @return void
-     */
-    public function storeMetadata($destinationPath, $metadata, $options = array())
-    {
-        require_once 'Zend/Cloud/OperationNotAvailableException.php';
-        throw new Zend_Cloud_OperationNotAvailableException('Storing metadata not implemented');
-    }
+php php php php php/php*php*
+php php php php php php*php Storephp aphp keyphp/valuephp arrayphp ofphp metadataphp atphp thephp givenphp pathphp.
+php php php php php php*php WARNINGphp:php Thisphp operationphp overwritesphp anyphp metadataphp thatphp isphp locatedphp at
+php php php php php php*php php$destinationPathphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$destinationPath
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp storeMetadataphp(php$destinationPathphp,php php$metadataphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Cloudphp/OperationNotAvailableExceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Cloudphp_OperationNotAvailableExceptionphp(php'Storingphp metadataphp notphp implementedphp'php)php;
+php php php php php}
 
-    /**
-     * Delete a key/value array of metadata at the given path.
-     *
-     * @param  string $path
-     * @param  array $options
-     * @return void
-     */
-    public function deleteMetadata($path)
-    {
-        require_once 'Zend/Cloud/OperationNotAvailableException.php';
-        throw new Zend_Cloud_OperationNotAvailableException('Deleting metadata not implemented');
-    }
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp keyphp/valuephp arrayphp ofphp metadataphp atphp thephp givenphp pathphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteMetadataphp(php$pathphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Cloudphp/OperationNotAvailableExceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Cloudphp_OperationNotAvailableExceptionphp(php'Deletingphp metadataphp notphp implementedphp'php)php;
+php php php php php}
 
-    /**
-     * Return the full path for the file.
-     *
-     * @param string $path
-     * @return string
-     */
-    private function _getFullPath($path)
-    {
-        return $this->_directory . DIRECTORY_SEPARATOR . $path;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp fullphp pathphp forphp thephp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$path
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php privatephp functionphp php_getFullPathphp(php$pathphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_directoryphp php.php DIRECTORYphp_SEPARATORphp php.php php$pathphp;
+php php php php php}
 
-    /**
-     * Get the concrete client.
-     * @return strings
-     */
-    public function getClient()
-    {
-         return $this->_directory;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp thephp concretephp clientphp.
+php php php php php php*php php@returnphp strings
+php php php php php php*php/
+php php php php publicphp functionphp getClientphp(php)
+php php php php php{
+php php php php php php php php php returnphp php$thisphp-php>php_directoryphp;
+php php php php php}
+php}

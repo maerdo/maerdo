@@ -1,143 +1,143 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service_Amazon
- * @subpackage Ec2
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Reserved.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
+php php*php php@subpackagephp Ecphp2
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Reservedphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Service_Amazon_Ec2_Abstract
- */
-require_once 'Zend/Service/Amazon/Ec2/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Amazonphp_Ecphp2php_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Amazonphp/Ecphp2php/Abstractphp.phpphp'php;
 
-/**
- * Allows you to interface with the reserved instances on Amazon Ec2
- *
- * @category   Zend
- * @package    Zend_Service_Amazon
- * @subpackage Ec2
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Amazon_Ec2_Instance_Reserved extends Zend_Service_Amazon_Ec2_Abstract
-{
-    /**
-     * Describes Reserved Instances that you purchased.
-     *
-     * @param string|array $instanceId        IDs of the Reserved Instance to describe.
-     * @return array
-     */
-    public function describeInstances($instanceId)
-    {
-        $params = array();
-        $params['Action'] = 'DescribeReservedInstances';
+php/php*php*
+php php*php Allowsphp youphp tophp interfacephp withphp thephp reservedphp instancesphp onphp Amazonphp Ecphp2
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
+php php*php php@subpackagephp Ecphp2
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Amazonphp_Ecphp2php_Instancephp_Reservedphp extendsphp Zendphp_Servicephp_Amazonphp_Ecphp2php_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Describesphp Reservedphp Instancesphp thatphp youphp purchasedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$instanceIdphp php php php php php php php IDsphp ofphp thephp Reservedphp Instancephp tophp describephp.
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp describeInstancesphp(php$instanceIdphp)
+php php php php php{
+php php php php php php php php php$paramsphp php=php arrayphp(php)php;
+php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'DescribeReservedInstancesphp'php;
 
-        if(is_array($instanceId) && !empty($instanceId)) {
-            foreach($instanceId as $k=>$name) {
-                $params['ReservedInstancesId.' . ($k+1)] = $name;
-            }
-        } elseif($instanceId) {
-            $params['ReservedInstancesId.1'] = $instanceId;
-        }
+php php php php php php php php ifphp(isphp_arrayphp(php$instanceIdphp)php php&php&php php!emptyphp(php$instanceIdphp)php)php php{
+php php php php php php php php php php php php foreachphp(php$instanceIdphp asphp php$kphp=php>php$namephp)php php{
+php php php php php php php php php php php php php php php php php$paramsphp[php'ReservedInstancesIdphp.php'php php.php php(php$kphp+php1php)php]php php=php php$namephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp(php$instanceIdphp)php php{
+php php php php php php php php php php php php php$paramsphp[php'ReservedInstancesIdphp.php1php'php]php php=php php$instanceIdphp;
+php php php php php php php php php}
 
-        $response = $this->sendRequest($params);
+php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
 
-        $xpath = $response->getXPath();
-        $items = $xpath->query('//ec2:reservedInstancesSet/ec2:item');
+php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+php php php php php php php php php$itemsphp php=php php$xpathphp-php>queryphp(php'php/php/ecphp2php:reservedInstancesSetphp/ecphp2php:itemphp'php)php;
 
-        $return = array();
-        foreach($items as $item) {
-            $i = array();
-            $i['reservedInstancesId'] = $xpath->evaluate('string(ec2:reservedInstancesId/text())', $item);
-            $i['instanceType'] = $xpath->evaluate('string(ec2:instanceType/text())', $item);
-            $i['availabilityZone'] = $xpath->evaluate('string(ec2:availabilityZone/text())', $item);
-            $i['duration'] = $xpath->evaluate('string(ec2:duration/text())', $item);
-            $i['fixedPrice'] = $xpath->evaluate('string(ec2:fixedPrice/text())', $item);
-            $i['usagePrice'] = $xpath->evaluate('string(ec2:usagePrice/text())', $item);
-            $i['productDescription'] = $xpath->evaluate('string(ec2:productDescription/text())', $item);
-            $i['instanceCount'] = $xpath->evaluate('string(ec2:instanceCount/text())', $item);
-            $i['state'] = $xpath->evaluate('string(ec2:state/text())', $item);
+php php php php php php php php php$returnphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp(php$itemsphp asphp php$itemphp)php php{
+php php php php php php php php php php php php php$iphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php$iphp[php'reservedInstancesIdphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:reservedInstancesIdphp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'instanceTypephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:instanceTypephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'availabilityZonephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:availabilityZonephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'durationphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:durationphp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'fixedPricephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:fixedPricephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'usagePricephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:usagePricephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'productDescriptionphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:productDescriptionphp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'instanceCountphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:instanceCountphp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'statephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:statephp/textphp(php)php)php'php,php php$itemphp)php;
 
-            $return[] = $i;
-            unset($i);
-        }
+php php php php php php php php php php php php php$returnphp[php]php php=php php$iphp;
+php php php php php php php php php php php php unsetphp(php$iphp)php;
+php php php php php php php php php}
 
-        return $return;
-    }
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Describes Reserved Instance offerings that are available for purchase.
-     * With Amazon EC2 Reserved Instances, you purchase the right to launch Amazon
-     * EC2 instances for a period of time (without getting insufficient capacity
-     * errors) and pay a lower usage rate for the actual time used.
-     *
-     * @return array
-     */
-    public function describeOfferings()
-    {
-        $params = array();
-        $params['Action'] = 'DescribeReservedInstancesOfferings';
+php php php php php/php*php*
+php php php php php php*php Describesphp Reservedphp Instancephp offeringsphp thatphp arephp availablephp forphp purchasephp.
+php php php php php php*php Withphp Amazonphp ECphp2php Reservedphp Instancesphp,php youphp purchasephp thephp rightphp tophp launchphp Amazon
+php php php php php php*php ECphp2php instancesphp forphp aphp periodphp ofphp timephp php(withoutphp gettingphp insufficientphp capacity
+php php php php php php*php errorsphp)php andphp payphp aphp lowerphp usagephp ratephp forphp thephp actualphp timephp usedphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp describeOfferingsphp(php)
+php php php php php{
+php php php php php php php php php$paramsphp php=php arrayphp(php)php;
+php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'DescribeReservedInstancesOfferingsphp'php;
 
-        $response = $this->sendRequest($params);
+php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
 
-        $xpath = $response->getXPath();
-        $items = $xpath->query('//ec2:reservedInstancesOfferingsSet/ec2:item');
+php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+php php php php php php php php php$itemsphp php=php php$xpathphp-php>queryphp(php'php/php/ecphp2php:reservedInstancesOfferingsSetphp/ecphp2php:itemphp'php)php;
 
-        $return = array();
-        foreach($items as $item) {
-            $i = array();
-            $i['reservedInstancesOfferingId'] = $xpath->evaluate('string(ec2:reservedInstancesOfferingId/text())', $item);
-            $i['instanceType'] = $xpath->evaluate('string(ec2:instanceType/text())', $item);
-            $i['availabilityZone'] = $xpath->evaluate('string(ec2:availabilityZone/text())', $item);
-            $i['duration'] = $xpath->evaluate('string(ec2:duration/text())', $item);
-            $i['fixedPrice'] = $xpath->evaluate('string(ec2:fixedPrice/text())', $item);
-            $i['usagePrice'] = $xpath->evaluate('string(ec2:usagePrice/text())', $item);
-            $i['productDescription'] = $xpath->evaluate('string(ec2:productDescription/text())', $item);
+php php php php php php php php php$returnphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp(php$itemsphp asphp php$itemphp)php php{
+php php php php php php php php php php php php php$iphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php$iphp[php'reservedInstancesOfferingIdphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:reservedInstancesOfferingIdphp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'instanceTypephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:instanceTypephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'availabilityZonephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:availabilityZonephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'durationphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:durationphp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'fixedPricephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:fixedPricephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'usagePricephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:usagePricephp/textphp(php)php)php'php,php php$itemphp)php;
+php php php php php php php php php php php php php$iphp[php'productDescriptionphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:productDescriptionphp/textphp(php)php)php'php,php php$itemphp)php;
 
-            $return[] = $i;
-            unset($i);
-        }
+php php php php php php php php php php php php php$returnphp[php]php php=php php$iphp;
+php php php php php php php php php php php php unsetphp(php$iphp)php;
+php php php php php php php php php}
 
-        return $return;
-    }
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Purchases a Reserved Instance for use with your account. With Amazon EC2
-     * Reserved Instances, you purchase the right to launch Amazon EC2 instances
-     * for a period of time (without getting insufficient capacity errors) and
-     * pay a lower usage rate for the actual time used.
-     *
-     * @param string $offeringId            The offering ID of the Reserved Instance to purchase
-     * @param integer $intanceCount         The number of Reserved Instances to purchase.
-     * @return string                       The ID of the purchased Reserved Instances.
-     */
-    public function purchaseOffering($offeringId, $intanceCount = 1)
-    {
-        $params = array();
-        $params['Action'] = 'PurchaseReservedInstancesOffering';
-        $params['OfferingId.1'] = $offeringId;
-        $params['instanceCount.1'] = intval($intanceCount);
+php php php php php/php*php*
+php php php php php php*php Purchasesphp aphp Reservedphp Instancephp forphp usephp withphp yourphp accountphp.php Withphp Amazonphp ECphp2
+php php php php php php*php Reservedphp Instancesphp,php youphp purchasephp thephp rightphp tophp launchphp Amazonphp ECphp2php instances
+php php php php php php*php forphp aphp periodphp ofphp timephp php(withoutphp gettingphp insufficientphp capacityphp errorsphp)php and
+php php php php php php*php payphp aphp lowerphp usagephp ratephp forphp thephp actualphp timephp usedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$offeringIdphp php php php php php php php php php php php Thephp offeringphp IDphp ofphp thephp Reservedphp Instancephp tophp purchase
+php php php php php php*php php@paramphp integerphp php$intanceCountphp php php php php php php php php Thephp numberphp ofphp Reservedphp Instancesphp tophp purchasephp.
+php php php php php php*php php@returnphp stringphp php php php php php php php php php php php php php php php php php php php php php php Thephp IDphp ofphp thephp purchasedphp Reservedphp Instancesphp.
+php php php php php php*php/
+php php php php publicphp functionphp purchaseOfferingphp(php$offeringIdphp,php php$intanceCountphp php=php php1php)
+php php php php php{
+php php php php php php php php php$paramsphp php=php arrayphp(php)php;
+php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'PurchaseReservedInstancesOfferingphp'php;
+php php php php php php php php php$paramsphp[php'OfferingIdphp.php1php'php]php php=php php$offeringIdphp;
+php php php php php php php php php$paramsphp[php'instanceCountphp.php1php'php]php php=php intvalphp(php$intanceCountphp)php;
 
-        $response = $this->sendRequest($params);
+php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
 
-        $xpath = $response->getXPath();
-        $reservedInstancesId = $xpath->evaluate('string(//ec2:reservedInstancesId/text())');
+php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+php php php php php php php php php$reservedInstancesIdphp php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:reservedInstancesIdphp/textphp(php)php)php'php)php;
 
-        return $reservedInstancesId;
-    }
-}
+php php php php php php php php returnphp php$reservedInstancesIdphp;
+php php php php php}
+php}

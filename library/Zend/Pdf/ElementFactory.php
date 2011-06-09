@@ -1,446 +1,446 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ElementFactory.php 22797 2010-08-06 15:02:12Z alexander $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ElementFactoryphp.phpphp php2php2php7php9php7php php2php0php1php0php-php0php8php-php0php6php php1php5php:php0php2php:php1php2Zphp alexanderphp php$
+php php*php/
 
 
-/** Zend_Pdf_ElementFactory_Interface */
-require_once 'Zend/Pdf/ElementFactory/Interface.php';
+php/php*php*php Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/ElementFactoryphp/Interfacephp.phpphp'php;
 
-/**
- * PDF element factory.
- * Responsibility is to log PDF changes
- *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Pdf_ElementFactory implements Zend_Pdf_ElementFactory_Interface
-{
-    /**
-     * List of the modified objects.
-     * Also contains new and removed objects
-     *
-     * Array: ojbectNumber => Zend_Pdf_Element_Object
-     *
-     * @var array
-     */
-    private $_modifiedObjects = array();
+php/php*php*
+php php*php PDFphp elementphp factoryphp.
+php php*php Responsibilityphp isphp tophp logphp PDFphp changes
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Pdfphp_ElementFactoryphp implementsphp Zendphp_Pdfphp_ElementFactoryphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp thephp modifiedphp objectsphp.
+php php php php php php*php Alsophp containsphp newphp andphp removedphp objects
+php php php php php php*
+php php php php php php*php Arrayphp:php ojbectNumberphp php=php>php Zendphp_Pdfphp_Elementphp_Object
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_modifiedObjectsphp php=php arrayphp(php)php;
 
-    /**
-     * List of the removed objects
-     *
-     * Array: ojbectNumber => Zend_Pdf_Element_Object
-     *
-     * @var SplObjectStorage
-     */
-    private $_removedObjects;
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp thephp removedphp objects
+php php php php php php*
+php php php php php php*php Arrayphp:php ojbectNumberphp php=php>php Zendphp_Pdfphp_Elementphp_Object
+php php php php php php*
+php php php php php php*php php@varphp SplObjectStorage
+php php php php php php*php/
+php php php php privatephp php$php_removedObjectsphp;
 
-    /**
-     * List of registered objects.
-     * Used for resources clean up when factory is destroyed.
-     *
-     * Array of Zend_Pdf_Element objects
-     *
-     * @var array
-     */
-    private $_registeredObjects = array();
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp registeredphp objectsphp.
+php php php php php php*php Usedphp forphp resourcesphp cleanphp upphp whenphp factoryphp isphp destroyedphp.
+php php php php php php*
+php php php php php php*php Arrayphp ofphp Zendphp_Pdfphp_Elementphp objects
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_registeredObjectsphp php=php arrayphp(php)php;
 
-    /**
-     * PDF object counter.
-     * Actually it's an object number for new PDF object
-     *
-     * @var integer
-     */
-    private $_objectCount;
-
-
-    /**
-     * List of the attached object factories.
-     * Array of Zend_Pdf_ElementFactory_Interface objects
-     *
-     * @var array
-     */
-    private $_attachedFactories = array();
+php php php php php/php*php*
+php php php php php php*php PDFphp objectphp counterphp.
+php php php php php php*php Actuallyphp itphp'sphp anphp objectphp numberphp forphp newphp PDFphp object
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_objectCountphp;
 
 
-    /**
-     * Factory internal id
-     *
-     * @var integer
-     */
-    private $_factoryId;
-
-    /**
-     * Identity, used for factory id generation
-     *
-     * @var integer
-     */
-    private static $_identity = 0;
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp thephp attachedphp objectphp factoriesphp.
+php php php php php php*php Arrayphp ofphp Zendphp_Pdfphp_ElementFactoryphp_Interfacephp objects
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_attachedFactoriesphp php=php arrayphp(php)php;
 
 
-    /**
-     * Internal cache to save calculated shifts
-     *
-     * @var array
-     */
-    private $_shiftCalculationCache = array();
+php php php php php/php*php*
+php php php php php php*php Factoryphp internalphp id
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_factoryIdphp;
+
+php php php php php/php*php*
+php php php php php php*php Identityphp,php usedphp forphp factoryphp idphp generation
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp staticphp php$php_identityphp php=php php0php;
 
 
-    /**
-     * Object constructor
-     *
-     * @param integer $objCount
-     */
-    public function __construct($objCount)
-    {
-        $this->_objectCount    = (int)$objCount;
-        $this->_factoryId      = self::$_identity++;
-        $this->_removedObjects = new SplObjectStorage();
-    }
+php php php php php/php*php*
+php php php php php php*php Internalphp cachephp tophp savephp calculatedphp shifts
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_shiftCalculationCachephp php=php arrayphp(php)php;
 
 
-    /**
-     * Get factory
-     *
-     * @return Zend_Pdf_ElementFactory_Interface
-     */
-    public function getFactory()
-    {
-        return $this;
-    }
-
-    /**
-     * Factory generator
-     *
-     * @param integer $objCount
-     * @return Zend_Pdf_ElementFactory_Interface
-     */
-    static public function createFactory($objCount)
-    {
-        require_once 'Zend/Pdf/ElementFactory/Proxy.php';
-        return new Zend_Pdf_ElementFactory_Proxy(new Zend_Pdf_ElementFactory($objCount));
-    }
-
-    /**
-     * Close factory and clean-up resources
-     *
-     * @internal
-     */
-    public function close()
-    {
-        $this->_modifiedObjects   = null;
-        $this->_removedObjects    = null;
-        $this->_attachedFactories = null;
-
-        foreach ($this->_registeredObjects as $obj) {
-            $obj->cleanUp();
-        }
-        $this->_registeredObjects = null;
-    }
-
-    /**
-     * Get source factory object
-     *
-     * @return Zend_Pdf_ElementFactory
-     */
-    public function resolve()
-    {
-        return $this;
-    }
-
-    /**
-     * Get factory ID
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->_factoryId;
-    }
-
-    /**
-     * Set object counter
-     *
-     * @param integer $objCount
-     */
-    public function setObjectCount($objCount)
-    {
-        $this->_objectCount = (int)$objCount;
-    }
-
-    /**
-     * Get object counter
-     *
-     * @return integer
-     */
-    public function getObjectCount()
-    {
-        $count = $this->_objectCount;
-
-        foreach ($this->_attachedFactories as $attached) {
-            $count += $attached->getObjectCount() - 1; // -1 as "0" object is a special case and shared between factories
-        }
-
-        return $count;
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$objCount
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$objCountphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_objectCountphp php php php php=php php(intphp)php$objCountphp;
+php php php php php php php php php$thisphp-php>php_factoryIdphp php php php php php php=php selfphp:php:php$php_identityphp+php+php;
+php php php php php php php php php$thisphp-php>php_removedObjectsphp php=php newphp SplObjectStoragephp(php)php;
+php php php php php}
 
 
-    /**
-     * Attach factory to the current;
-     *
-     * @param Zend_Pdf_ElementFactory_Interface $factory
-     */
-    public function attach(Zend_Pdf_ElementFactory_Interface $factory)
-    {
-        if ( $factory === $this || isset($this->_attachedFactories[$factory->getId()])) {
-            /**
-             * Don't attach factory twice.
-             * We do not check recusively because of nature of attach operation
-             * (Pages are always attached to the Documents, Fonts are always attached
-             * to the pages even if pages already use Document level object factory and so on)
-             */
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp factory
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_ElementFactoryphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getFactoryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-        $this->_attachedFactories[$factory->getId()] = $factory;
-    }
+php php php php php/php*php*
+php php php php php php*php Factoryphp generator
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$objCount
+php php php php php php*php php@returnphp Zendphp_Pdfphp_ElementFactoryphp_Interface
+php php php php php php*php/
+php php php php staticphp publicphp functionphp createFactoryphp(php$objCountphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/ElementFactoryphp/Proxyphp.phpphp'php;
+php php php php php php php php returnphp newphp Zendphp_Pdfphp_ElementFactoryphp_Proxyphp(newphp Zendphp_Pdfphp_ElementFactoryphp(php$objCountphp)php)php;
+php php php php php}
 
+php php php php php/php*php*
+php php php php php php*php Closephp factoryphp andphp cleanphp-upphp resources
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php/
+php php php php publicphp functionphp closephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_modifiedObjectsphp php php php=php nullphp;
+php php php php php php php php php$thisphp-php>php_removedObjectsphp php php php php=php nullphp;
+php php php php php php php php php$thisphp-php>php_attachedFactoriesphp php=php nullphp;
 
-    /**
-     * Calculate object enumeration shift.
-     *
-     * @param Zend_Pdf_ElementFactory_Interface $factory
-     * @return integer
-     */
-    public function calculateShift(Zend_Pdf_ElementFactory_Interface $factory)
-    {
-        if ($factory === $this) {
-            return 0;
-        }
+php php php php php php php php foreachphp php(php$thisphp-php>php_registeredObjectsphp asphp php$objphp)php php{
+php php php php php php php php php php php php php$objphp-php>cleanUpphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_registeredObjectsphp php=php nullphp;
+php php php php php}
 
-        if (isset($this->_shiftCalculationCache[$factory->_factoryId])) {
-            return $this->_shiftCalculationCache[$factory->_factoryId];
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp sourcephp factoryphp object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_ElementFactory
+php php php php php php*php/
+php php php php publicphp functionphp resolvephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-        $shift = $this->_objectCount - 1;
+php php php php php/php*php*
+php php php php php php*php Getphp factoryphp ID
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getIdphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_factoryIdphp;
+php php php php php}
 
-        foreach ($this->_attachedFactories as $subFactory) {
-            $subFactoryShift = $subFactory->calculateShift($factory);
+php php php php php/php*php*
+php php php php php php*php Setphp objectphp counter
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$objCount
+php php php php php php*php/
+php php php php publicphp functionphp setObjectCountphp(php$objCountphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_objectCountphp php=php php(intphp)php$objCountphp;
+php php php php php}
 
-            if ($subFactoryShift != -1) {
-                // context found
-                $this->_shiftCalculationCache[$factory->_factoryId] = $shift + $subFactoryShift;
-                return $shift + $subFactoryShift;
-            } else {
-                $shift += $subFactory->getObjectCount()-1;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp objectphp counter
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getObjectCountphp(php)
+php php php php php{
+php php php php php php php php php$countphp php=php php$thisphp-php>php_objectCountphp;
 
-        $this->_shiftCalculationCache[$factory->_factoryId] = -1;
-        return -1;
-    }
+php php php php php php php php foreachphp php(php$thisphp-php>php_attachedFactoriesphp asphp php$attachedphp)php php{
+php php php php php php php php php php php php php$countphp php+php=php php$attachedphp-php>getObjectCountphp(php)php php-php php1php;php php/php/php php-php1php asphp php"php0php"php objectphp isphp aphp specialphp casephp andphp sharedphp betweenphp factories
+php php php php php php php php php}
 
-    /**
-     * Clean enumeration shift cache.
-     * Has to be used after PDF render operation to let followed updates be correct.
-     */
-    public function cleanEnumerationShiftCache()
-    {
-        $this->_shiftCalculationCache = array();
-
-        foreach ($this->_attachedFactories as $attached) {
-            $attached->cleanEnumerationShiftCache();
-        }
-    }
-
-    /**
-     * Retrive object enumeration shift.
-     *
-     * @param Zend_Pdf_ElementFactory_Interface $factory
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    public function getEnumerationShift(Zend_Pdf_ElementFactory_Interface $factory)
-    {
-        if (($shift = $this->calculateShift($factory)) == -1) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Wrong object context');
-        }
-
-        return $shift;
-    }
-
-    /**
-     * Mark object as modified in context of current factory.
-     *
-     * @param Zend_Pdf_Element_Object $obj
-     * @throws Zend_Pdf_Exception
-     */
-    public function markAsModified(Zend_Pdf_Element_Object $obj)
-    {
-        if ($obj->getFactory() !== $this) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Object is not generated by this factory');
-        }
-
-        $this->_modifiedObjects[$obj->getObjNum()] = $obj;
-    }
+php php php php php php php php returnphp php$countphp;
+php php php php php}
 
 
-    /**
-     * Remove object in context of current factory.
-     *
-     * @param Zend_Pdf_Element_Object $obj
-     * @throws Zend_Pdf_Exception
-     */
-    public function remove(Zend_Pdf_Element_Object $obj)
-    {
-        if (!$obj->compareFactory($this)) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Object is not generated by this factory');
-        }
+php php php php php/php*php*
+php php php php php php*php Attachphp factoryphp tophp thephp currentphp;
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factory
+php php php php php php*php/
+php php php php publicphp functionphp attachphp(Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factoryphp)
+php php php php php{
+php php php php php php php php ifphp php(php php$factoryphp php=php=php=php php$thisphp php|php|php issetphp(php$thisphp-php>php_attachedFactoriesphp[php$factoryphp-php>getIdphp(php)php]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Donphp'tphp attachphp factoryphp twicephp.
+php php php php php php php php php php php php php php*php Wephp dophp notphp checkphp recusivelyphp becausephp ofphp naturephp ofphp attachphp operation
+php php php php php php php php php php php php php php*php php(Pagesphp arephp alwaysphp attachedphp tophp thephp Documentsphp,php Fontsphp arephp alwaysphp attached
+php php php php php php php php php php php php php php*php tophp thephp pagesphp evenphp ifphp pagesphp alreadyphp usephp Documentphp levelphp objectphp factoryphp andphp sophp onphp)
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        $this->_modifiedObjects[$obj->getObjNum()] = $obj;
-        $this->_removedObjects->attach($obj);
-    }
-
-
-    /**
-     * Generate new Zend_Pdf_Element_Object
-     *
-     * @todo Reusage of the freed object. It's not a support of new feature, but only improvement.
-     *
-     * @param Zend_Pdf_Element $objectValue
-     * @return Zend_Pdf_Element_Object
-     */
-    public function newObject(Zend_Pdf_Element $objectValue)
-    {
-        require_once 'Zend/Pdf/Element/Object.php';
-        $obj = new Zend_Pdf_Element_Object($objectValue, $this->_objectCount++, 0, $this);
-        $this->_modifiedObjects[$obj->getObjNum()] = $obj;
-        return $obj;
-    }
-
-    /**
-     * Generate new Zend_Pdf_Element_Object_Stream
-     *
-     * @todo Reusage of the freed object. It's not a support of new feature, but only improvement.
-     *
-     * @param mixed $objectValue
-     * @return Zend_Pdf_Element_Object_Stream
-     */
-    public function newStreamObject($streamValue)
-    {
-        require_once 'Zend/Pdf/Element/Object/Stream.php';
-        $obj = new Zend_Pdf_Element_Object_Stream($streamValue, $this->_objectCount++, 0, $this);
-        $this->_modifiedObjects[$obj->getObjNum()] = $obj;
-        return $obj;
-    }
+php php php php php php php php php$thisphp-php>php_attachedFactoriesphp[php$factoryphp-php>getIdphp(php)php]php php=php php$factoryphp;
+php php php php php}
 
 
-    /**
-     * Enumerate modified objects.
-     * Returns array of Zend_Pdf_UpdateInfoContainer
-     *
-     * @param Zend_Pdf_ElementFactory_Interface $rootFactory
-     * @return array
-     */
-    public function listModifiedObjects($rootFactory = null)
-    {
-        if ($rootFactory == null) {
-            $rootFactory = $this;
-            $shift = 0;
-        } else {
-            $shift = $rootFactory->getEnumerationShift($this);
-        }
+php php php php php/php*php*
+php php php php php php*php Calculatephp objectphp enumerationphp shiftphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factory
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp calculateShiftphp(Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factoryphp)
+php php php php php{
+php php php php php php php php ifphp php(php$factoryphp php=php=php=php php$thisphp)php php{
+php php php php php php php php php php php php returnphp php0php;
+php php php php php php php php php}
 
-        ksort($this->_modifiedObjects);
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_shiftCalculationCachephp[php$factoryphp-php>php_factoryIdphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_shiftCalculationCachephp[php$factoryphp-php>php_factoryIdphp]php;
+php php php php php php php php php}
 
-        $result = array();
-        require_once 'Zend/Pdf/UpdateInfoContainer.php';
-        foreach ($this->_modifiedObjects as $objNum => $obj) {
-            if ($this->_removedObjects->contains($obj)) {
-                            $result[$objNum+$shift] = new Zend_Pdf_UpdateInfoContainer($objNum + $shift,
-                                                                           $obj->getGenNum()+1,
-                                                                           true);
-            } else {
-                $result[$objNum+$shift] = new Zend_Pdf_UpdateInfoContainer($objNum + $shift,
-                                                                           $obj->getGenNum(),
-                                                                           false,
-                                                                           $obj->dump($rootFactory));
-            }
-        }
+php php php php php php php php php$shiftphp php=php php$thisphp-php>php_objectCountphp php-php php1php;
 
-        foreach ($this->_attachedFactories as $factory) {
-            $result += $factory->listModifiedObjects($rootFactory);
-        }
+php php php php php php php php foreachphp php(php$thisphp-php>php_attachedFactoriesphp asphp php$subFactoryphp)php php{
+php php php php php php php php php php php php php$subFactoryShiftphp php=php php$subFactoryphp-php>calculateShiftphp(php$factoryphp)php;
 
-        return $result;
-    }
+php php php php php php php php php php php php ifphp php(php$subFactoryShiftphp php!php=php php-php1php)php php{
+php php php php php php php php php php php php php php php php php/php/php contextphp found
+php php php php php php php php php php php php php php php php php$thisphp-php>php_shiftCalculationCachephp[php$factoryphp-php>php_factoryIdphp]php php=php php$shiftphp php+php php$subFactoryShiftphp;
+php php php php php php php php php php php php php php php php returnphp php$shiftphp php+php php$subFactoryShiftphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$shiftphp php+php=php php$subFactoryphp-php>getObjectCountphp(php)php-php1php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-    /**
-     * Register object in the factory
-     *
-     * It's used to clear "parent object" referencies when factory is closed and clean up resources
-     *
-     * @param string $refString
-     * @param Zend_Pdf_Element_Object $obj
-     */
-    public function registerObject(Zend_Pdf_Element_Object $obj, $refString)
-    {
-        $this->_registeredObjects[$refString] = $obj;
-    }
+php php php php php php php php php$thisphp-php>php_shiftCalculationCachephp[php$factoryphp-php>php_factoryIdphp]php php=php php-php1php;
+php php php php php php php php returnphp php-php1php;
+php php php php php}
 
-    /**
-     * Fetch object specified by reference
-     *
-     * @param string $refString
-     * @return Zend_Pdf_Element_Object|null
-     */
-    public function fetchObject($refString)
-    {
-        if (!isset($this->_registeredObjects[$refString])) {
-            return null;
-        }
-        return $this->_registeredObjects[$refString];
-    }
+php php php php php/php*php*
+php php php php php php*php Cleanphp enumerationphp shiftphp cachephp.
+php php php php php php*php Hasphp tophp bephp usedphp afterphp PDFphp renderphp operationphp tophp letphp followedphp updatesphp bephp correctphp.
+php php php php php php*php/
+php php php php publicphp functionphp cleanEnumerationShiftCachephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_shiftCalculationCachephp php=php arrayphp(php)php;
+
+php php php php php php php php foreachphp php(php$thisphp-php>php_attachedFactoriesphp asphp php$attachedphp)php php{
+php php php php php php php php php php php php php$attachedphp-php>cleanEnumerationShiftCachephp(php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrivephp objectphp enumerationphp shiftphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factory
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getEnumerationShiftphp(Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factoryphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$shiftphp php=php php$thisphp-php>calculateShiftphp(php$factoryphp)php)php php=php=php php-php1php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp objectphp contextphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$shiftphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Markphp objectphp asphp modifiedphp inphp contextphp ofphp currentphp factoryphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Objectphp php$obj
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp markAsModifiedphp(Zendphp_Pdfphp_Elementphp_Objectphp php$objphp)
+php php php php php{
+php php php php php php php php ifphp php(php$objphp-php>getFactoryphp(php)php php!php=php=php php$thisphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Objectphp isphp notphp generatedphp byphp thisphp factoryphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_modifiedObjectsphp[php$objphp-php>getObjNumphp(php)php]php php=php php$objphp;
+php php php php php}
 
 
-    /**
-     * Check if PDF file was modified
-     *
-     * @return boolean
-     */
-    public function isModified()
-    {
-        if (count($this->_modifiedObjects) != 0) {
-            return true;
-        }
+php php php php php/php*php*
+php php php php php php*php Removephp objectphp inphp contextphp ofphp currentphp factoryphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Objectphp php$obj
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp removephp(Zendphp_Pdfphp_Elementphp_Objectphp php$objphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$objphp-php>compareFactoryphp(php$thisphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Objectphp isphp notphp generatedphp byphp thisphp factoryphp'php)php;
+php php php php php php php php php}
 
-        foreach ($this->_attachedFactories as $subFactory) {
-            if ($subFactory->isModified()) {
-                return true;
-            }
-        }
+php php php php php php php php php$thisphp-php>php_modifiedObjectsphp[php$objphp-php>getObjNumphp(php)php]php php=php php$objphp;
+php php php php php php php php php$thisphp-php>php_removedObjectsphp-php>attachphp(php$objphp)php;
+php php php php php}
 
-        return false;
-    }
-}
+
+php php php php php/php*php*
+php php php php php php*php Generatephp newphp Zendphp_Pdfphp_Elementphp_Object
+php php php php php php*
+php php php php php php*php php@todophp Reusagephp ofphp thephp freedphp objectphp.php Itphp'sphp notphp aphp supportphp ofphp newphp featurephp,php butphp onlyphp improvementphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp php$objectValue
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Elementphp_Object
+php php php php php php*php/
+php php php php publicphp functionphp newObjectphp(Zendphp_Pdfphp_Elementphp php$objectValuephp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Objectphp.phpphp'php;
+php php php php php php php php php$objphp php=php newphp Zendphp_Pdfphp_Elementphp_Objectphp(php$objectValuephp,php php$thisphp-php>php_objectCountphp+php+php,php php0php,php php$thisphp)php;
+php php php php php php php php php$thisphp-php>php_modifiedObjectsphp[php$objphp-php>getObjNumphp(php)php]php php=php php$objphp;
+php php php php php php php php returnphp php$objphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Generatephp newphp Zendphp_Pdfphp_Elementphp_Objectphp_Stream
+php php php php php php*
+php php php php php php*php php@todophp Reusagephp ofphp thephp freedphp objectphp.php Itphp'sphp notphp aphp supportphp ofphp newphp featurephp,php butphp onlyphp improvementphp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$objectValue
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Elementphp_Objectphp_Stream
+php php php php php php*php/
+php php php php publicphp functionphp newStreamObjectphp(php$streamValuephp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Objectphp/Streamphp.phpphp'php;
+php php php php php php php php php$objphp php=php newphp Zendphp_Pdfphp_Elementphp_Objectphp_Streamphp(php$streamValuephp,php php$thisphp-php>php_objectCountphp+php+php,php php0php,php php$thisphp)php;
+php php php php php php php php php$thisphp-php>php_modifiedObjectsphp[php$objphp-php>getObjNumphp(php)php]php php=php php$objphp;
+php php php php php php php php returnphp php$objphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Enumeratephp modifiedphp objectsphp.
+php php php php php php*php Returnsphp arrayphp ofphp Zendphp_Pdfphp_UpdateInfoContainer
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$rootFactory
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp listModifiedObjectsphp(php$rootFactoryphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$rootFactoryphp php=php=php nullphp)php php{
+php php php php php php php php php php php php php$rootFactoryphp php=php php$thisphp;
+php php php php php php php php php php php php php$shiftphp php=php php0php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$shiftphp php=php php$rootFactoryphp-php>getEnumerationShiftphp(php$thisphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ksortphp(php$thisphp-php>php_modifiedObjectsphp)php;
+
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/UpdateInfoContainerphp.phpphp'php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_modifiedObjectsphp asphp php$objNumphp php=php>php php$objphp)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_removedObjectsphp-php>containsphp(php$objphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$objNumphp+php$shiftphp]php php=php newphp Zendphp_Pdfphp_UpdateInfoContainerphp(php$objNumphp php+php php$shiftphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$objphp-php>getGenNumphp(php)php+php1php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php truephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$resultphp[php$objNumphp+php$shiftphp]php php=php newphp Zendphp_Pdfphp_UpdateInfoContainerphp(php$objNumphp php+php php$shiftphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$objphp-php>getGenNumphp(php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php falsephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$objphp-php>dumpphp(php$rootFactoryphp)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$thisphp-php>php_attachedFactoriesphp asphp php$factoryphp)php php{
+php php php php php php php php php php php php php$resultphp php+php=php php$factoryphp-php>listModifiedObjectsphp(php$rootFactoryphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Registerphp objectphp inphp thephp factory
+php php php php php php*
+php php php php php php*php Itphp'sphp usedphp tophp clearphp php"parentphp objectphp"php referenciesphp whenphp factoryphp isphp closedphp andphp cleanphp upphp resources
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$refString
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Objectphp php$obj
+php php php php php php*php/
+php php php php publicphp functionphp registerObjectphp(Zendphp_Pdfphp_Elementphp_Objectphp php$objphp,php php$refStringphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_registeredObjectsphp[php$refStringphp]php php=php php$objphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchphp objectphp specifiedphp byphp reference
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$refString
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Elementphp_Objectphp|null
+php php php php php php*php/
+php php php php publicphp functionphp fetchObjectphp(php$refStringphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_registeredObjectsphp[php$refStringphp]php)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_registeredObjectsphp[php$refStringphp]php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp PDFphp filephp wasphp modified
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isModifiedphp(php)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_modifiedObjectsphp)php php!php=php php0php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$thisphp-php>php_attachedFactoriesphp asphp php$subFactoryphp)php php{
+php php php php php php php php php php php php ifphp php(php$subFactoryphp-php>isModifiedphp(php)php)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}
 

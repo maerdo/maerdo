@@ -1,70 +1,70 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Amf
- * @subpackage Parse
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: MysqlResult.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Parse
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php MysqlResultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * This class will convert mysql result resource to array suitable for passing
- * to the external entities.
- *
- * @package    Zend_Amf
- * @subpackage Parse
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Amf_Parse_Resource_MysqlResult
-{
-    /**
-     * @var array List of Mysql types with PHP counterparts
-     *
-     * Key => Value is Mysql type (exact string) => PHP type
-     */
-    static public $fieldTypes = array(
-        "int" => "int",
-        "timestamp" => "int",
-        "year" => "int",
-        "real" => "float",
-    );
-    /**
-     * Parse resource into array
-     *
-     * @param resource $resource
-     * @return array
-     */
-    public function parse($resource) {
-        $result = array();
-        $fieldcnt = mysql_num_fields($resource);
-        $fields_transform = array();
-        for($i=0;$i<$fieldcnt;$i++) {
-            $type = mysql_field_type($resource, $i);
-            if(isset(self::$fieldTypes[$type])) {
-                $fields_transform[mysql_field_name($resource, $i)] = self::$fieldTypes[$type];
-            }
-        }
+php/php*php*
+php php*php Thisphp classphp willphp convertphp mysqlphp resultphp resourcephp tophp arrayphp suitablephp forphp passing
+php php*php tophp thephp externalphp entitiesphp.
+php php*
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Parse
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Amfphp_Parsephp_Resourcephp_MysqlResult
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Listphp ofphp Mysqlphp typesphp withphp PHPphp counterparts
+php php php php php php*
+php php php php php php*php Keyphp php=php>php Valuephp isphp Mysqlphp typephp php(exactphp stringphp)php php=php>php PHPphp type
+php php php php php php*php/
+php php php php staticphp publicphp php$fieldTypesphp php=php arrayphp(
+php php php php php php php php php"intphp"php php=php>php php"intphp"php,
+php php php php php php php php php"timestampphp"php php=php>php php"intphp"php,
+php php php php php php php php php"yearphp"php php=php>php php"intphp"php,
+php php php php php php php php php"realphp"php php=php>php php"floatphp"php,
+php php php php php)php;
+php php php php php/php*php*
+php php php php php php*php Parsephp resourcephp intophp array
+php php php php php php*
+php php php php php php*php php@paramphp resourcephp php$resource
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp parsephp(php$resourcephp)php php{
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php php$fieldcntphp php=php mysqlphp_numphp_fieldsphp(php$resourcephp)php;
+php php php php php php php php php$fieldsphp_transformphp php=php arrayphp(php)php;
+php php php php php php php php forphp(php$iphp=php0php;php$i<php$fieldcntphp;php$iphp+php+php)php php{
+php php php php php php php php php php php php php$typephp php=php mysqlphp_fieldphp_typephp(php$resourcephp,php php$iphp)php;
+php php php php php php php php php php php php ifphp(issetphp(selfphp:php:php$fieldTypesphp[php$typephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$fieldsphp_transformphp[mysqlphp_fieldphp_namephp(php$resourcephp,php php$iphp)php]php php=php selfphp:php:php$fieldTypesphp[php$typephp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        while($row = mysql_fetch_object($resource)) {
-            foreach($fields_transform as $fieldname => $fieldtype) {
-               settype($row->$fieldname, $fieldtype);
-            }
-            $result[] = $row;
-        }
-        return $result;
-    }
-}
+php php php php php php php php whilephp(php$rowphp php=php mysqlphp_fetchphp_objectphp(php$resourcephp)php)php php{
+php php php php php php php php php php php php foreachphp(php$fieldsphp_transformphp asphp php$fieldnamephp php=php>php php$fieldtypephp)php php{
+php php php php php php php php php php php php php php php settypephp(php$rowphp-php>php$fieldnamephp,php php$fieldtypephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$resultphp[php]php php=php php$rowphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+php}

@@ -1,269 +1,269 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Router
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Regex.php 20096 2010-01-06 02:05:09Z bkarwin $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Router
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Regexphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Controller_Router_Route_Abstract */
-require_once 'Zend/Controller/Router/Route/Abstract.php';
+php/php*php*php Zendphp_Controllerphp_Routerphp_Routephp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Routephp/Abstractphp.phpphp'php;
 
-/**
- * Regex Route
- *
- * @package    Zend_Controller
- * @subpackage Router
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Controller_Router_Route_Regex extends Zend_Controller_Router_Route_Abstract
-{
-    protected $_regex = null;
-    protected $_defaults = array();
-    protected $_reverse = null;
-    protected $_map = array();
-    protected $_values = array();
+php/php*php*
+php php*php Regexphp Route
+php php*
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Router
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Controllerphp_Routerphp_Routephp_Regexphp extendsphp Zendphp_Controllerphp_Routerphp_Routephp_Abstract
+php{
+php php php php protectedphp php$php_regexphp php=php nullphp;
+php php php php protectedphp php$php_defaultsphp php=php arrayphp(php)php;
+php php php php protectedphp php$php_reversephp php=php nullphp;
+php php php php protectedphp php$php_mapphp php=php arrayphp(php)php;
+php php php php protectedphp php$php_valuesphp php=php arrayphp(php)php;
 
-    /**
-     * Instantiates route based on passed Zend_Config structure
-     *
-     * @param Zend_Config $config Configuration object
-     */
-    public static function getInstance(Zend_Config $config)
-    {
-        $defs = ($config->defaults instanceof Zend_Config) ? $config->defaults->toArray() : array();
-        $map = ($config->map instanceof Zend_Config) ? $config->map->toArray() : array();
-        $reverse = (isset($config->reverse)) ? $config->reverse : null;
-        return new self($config->route, $defs, $map, $reverse);
-    }
+php php php php php/php*php*
+php php php php php php*php Instantiatesphp routephp basedphp onphp passedphp Zendphp_Configphp structure
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Configphp php$configphp Configurationphp object
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getInstancephp(Zendphp_Configphp php$configphp)
+php php php php php{
+php php php php php php php php php$defsphp php=php php(php$configphp-php>defaultsphp instanceofphp Zendphp_Configphp)php php?php php$configphp-php>defaultsphp-php>toArrayphp(php)php php:php arrayphp(php)php;
+php php php php php php php php php$mapphp php=php php(php$configphp-php>mapphp instanceofphp Zendphp_Configphp)php php?php php$configphp-php>mapphp-php>toArrayphp(php)php php:php arrayphp(php)php;
+php php php php php php php php php$reversephp php=php php(issetphp(php$configphp-php>reversephp)php)php php?php php$configphp-php>reversephp php:php nullphp;
+php php php php php php php php returnphp newphp selfphp(php$configphp-php>routephp,php php$defsphp,php php$mapphp,php php$reversephp)php;
+php php php php php}
 
-    public function __construct($route, $defaults = array(), $map = array(), $reverse = null)
-    {
-        $this->_regex    = $route;
-        $this->_defaults = (array) $defaults;
-        $this->_map      = (array) $map;
-        $this->_reverse  = $reverse;
-    }
+php php php php publicphp functionphp php_php_constructphp(php$routephp,php php$defaultsphp php=php arrayphp(php)php,php php$mapphp php=php arrayphp(php)php,php php$reversephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_regexphp php php php php=php php$routephp;
+php php php php php php php php php$thisphp-php>php_defaultsphp php=php php(arrayphp)php php$defaultsphp;
+php php php php php php php php php$thisphp-php>php_mapphp php php php php php php=php php(arrayphp)php php$mapphp;
+php php php php php php php php php$thisphp-php>php_reversephp php php=php php$reversephp;
+php php php php php}
 
-    public function getVersion() {
-        return 1;
-    }
+php php php php publicphp functionphp getVersionphp(php)php php{
+php php php php php php php php returnphp php1php;
+php php php php php}
 
-    /**
-     * Matches a user submitted path with a previously defined route.
-     * Assigns and returns an array of defaults on a successful match.
-     *
-     * @param  string $path Path used to match against this routing map
-     * @return array|false  An array of assigned values or a false on a mismatch
-     */
-    public function match($path, $partial = false)
-    {
-        if (!$partial) {
-            $path = trim(urldecode($path), '/');
-            $regex = '#^' . $this->_regex . '$#i';
-        } else {
-            $regex = '#^' . $this->_regex . '#i';
-        }
+php php php php php/php*php*
+php php php php php php*php Matchesphp aphp userphp submittedphp pathphp withphp aphp previouslyphp definedphp routephp.
+php php php php php php*php Assignsphp andphp returnsphp anphp arrayphp ofphp defaultsphp onphp aphp successfulphp matchphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$pathphp Pathphp usedphp tophp matchphp againstphp thisphp routingphp map
+php php php php php php*php php@returnphp arrayphp|falsephp php Anphp arrayphp ofphp assignedphp valuesphp orphp aphp falsephp onphp aphp mismatch
+php php php php php php*php/
+php php php php publicphp functionphp matchphp(php$pathphp,php php$partialphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$partialphp)php php{
+php php php php php php php php php php php php php$pathphp php=php trimphp(urldecodephp(php$pathphp)php,php php'php/php'php)php;
+php php php php php php php php php php php php php$regexphp php=php php'php#php^php'php php.php php$thisphp-php>php_regexphp php.php php'php$php#iphp'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$regexphp php=php php'php#php^php'php php.php php$thisphp-php>php_regexphp php.php php'php#iphp'php;
+php php php php php php php php php}
 
-        $res = preg_match($regex, $path, $values);
+php php php php php php php php php$resphp php=php pregphp_matchphp(php$regexphp,php php$pathphp,php php$valuesphp)php;
 
-        if ($res === 0) {
-            return false;
-        }
+php php php php php php php php ifphp php(php$resphp php=php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if ($partial) {
-            $this->setMatchedPath($values[0]);
-        }
+php php php php php php php php ifphp php(php$partialphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setMatchedPathphp(php$valuesphp[php0php]php)php;
+php php php php php php php php php}
 
-        // array_filter_key()? Why isn't this in a standard PHP function set yet? :)
-        foreach ($values as $i => $value) {
-            if (!is_int($i) || $i === 0) {
-                unset($values[$i]);
-            }
-        }
+php php php php php php php php php/php/php arrayphp_filterphp_keyphp(php)php?php Whyphp isnphp'tphp thisphp inphp aphp standardphp PHPphp functionphp setphp yetphp?php php:php)
+php php php php php php php php foreachphp php(php$valuesphp asphp php$iphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_intphp(php$iphp)php php|php|php php$iphp php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$valuesphp[php$iphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $this->_values = $values;
+php php php php php php php php php$thisphp-php>php_valuesphp php=php php$valuesphp;
 
-        $values   = $this->_getMappedValues($values);
-        $defaults = $this->_getMappedValues($this->_defaults, false, true);
-        $return   = $values + $defaults;
+php php php php php php php php php$valuesphp php php php=php php$thisphp-php>php_getMappedValuesphp(php$valuesphp)php;
+php php php php php php php php php$defaultsphp php=php php$thisphp-php>php_getMappedValuesphp(php$thisphp-php>php_defaultsphp,php falsephp,php truephp)php;
+php php php php php php php php php$returnphp php php php=php php$valuesphp php+php php$defaultsphp;
 
-        return $return;
-    }
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Maps numerically indexed array values to it's associative mapped counterpart.
-     * Or vice versa. Uses user provided map array which consists of index => name
-     * parameter mapping. If map is not found, it returns original array.
-     *
-     * Method strips destination type of keys form source array. Ie. if source array is
-     * indexed numerically then every associative key will be stripped. Vice versa if reversed
-     * is set to true.
-     *
-     * @param  array   $values Indexed or associative array of values to map
-     * @param  boolean $reversed False means translation of index to association. True means reverse.
-     * @param  boolean $preserve Should wrong type of keys be preserved or stripped.
-     * @return array   An array of mapped values
-     */
-    protected function _getMappedValues($values, $reversed = false, $preserve = false)
-    {
-        if (count($this->_map) == 0) {
-            return $values;
-        }
+php php php php php/php*php*
+php php php php php php*php Mapsphp numericallyphp indexedphp arrayphp valuesphp tophp itphp'sphp associativephp mappedphp counterpartphp.
+php php php php php php*php Orphp vicephp versaphp.php Usesphp userphp providedphp mapphp arrayphp whichphp consistsphp ofphp indexphp php=php>php name
+php php php php php php*php parameterphp mappingphp.php Ifphp mapphp isphp notphp foundphp,php itphp returnsphp originalphp arrayphp.
+php php php php php php*
+php php php php php php*php Methodphp stripsphp destinationphp typephp ofphp keysphp formphp sourcephp arrayphp.php Iephp.php ifphp sourcephp arrayphp is
+php php php php php php*php indexedphp numericallyphp thenphp everyphp associativephp keyphp willphp bephp strippedphp.php Vicephp versaphp ifphp reversed
+php php php php php php*php isphp setphp tophp truephp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php php$valuesphp Indexedphp orphp associativephp arrayphp ofphp valuesphp tophp map
+php php php php php php*php php@paramphp php booleanphp php$reversedphp Falsephp meansphp translationphp ofphp indexphp tophp associationphp.php Truephp meansphp reversephp.
+php php php php php php*php php@paramphp php booleanphp php$preservephp Shouldphp wrongphp typephp ofphp keysphp bephp preservedphp orphp strippedphp.
+php php php php php php*php php@returnphp arrayphp php php Anphp arrayphp ofphp mappedphp values
+php php php php php php*php/
+php php php php protectedphp functionphp php_getMappedValuesphp(php$valuesphp,php php$reversedphp php=php falsephp,php php$preservephp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_mapphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php$valuesphp;
+php php php php php php php php php}
 
-        $return = array();
+php php php php php php php php php$returnphp php=php arrayphp(php)php;
 
-        foreach ($values as $key => $value) {
-            if (is_int($key) && !$reversed) {
-                if (array_key_exists($key, $this->_map)) {
-                    $index = $this->_map[$key];
-                } elseif (false === ($index = array_search($key, $this->_map))) {
-                    $index = $key;
-                }
-                $return[$index] = $values[$key];
-            } elseif ($reversed) {
-                $index = $key;
-                if (!is_int($key)) {
-                    if (array_key_exists($key, $this->_map)) {
-                        $index = $this->_map[$key];
-                    } else {
-                        $index = array_search($key, $this->_map, true);
-                    }
-                }
-                if (false !== $index) {
-                    $return[$index] = $values[$key];
-                }
-            } elseif ($preserve) {
-                $return[$key] = $value;
-            }
-        }
+php php php php php php php php foreachphp php(php$valuesphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(isphp_intphp(php$keyphp)php php&php&php php!php$reversedphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_mapphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$indexphp php=php php$thisphp-php>php_mapphp[php$keyphp]php;
+php php php php php php php php php php php php php php php php php}php elseifphp php(falsephp php=php=php=php php(php$indexphp php=php arrayphp_searchphp(php$keyphp,php php$thisphp-php>php_mapphp)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$indexphp php=php php$keyphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$returnphp[php$indexphp]php php=php php$valuesphp[php$keyphp]php;
+php php php php php php php php php php php php php}php elseifphp php(php$reversedphp)php php{
+php php php php php php php php php php php php php php php php php$indexphp php=php php$keyphp;
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_intphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_mapphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$indexphp php=php php$thisphp-php>php_mapphp[php$keyphp]php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$indexphp php=php arrayphp_searchphp(php$keyphp,php php$thisphp-php>php_mapphp,php truephp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(falsephp php!php=php=php php$indexphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$returnphp[php$indexphp]php php=php php$valuesphp[php$keyphp]php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elseifphp php(php$preservephp)php php{
+php php php php php php php php php php php php php php php php php$returnphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $return;
-    }
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Assembles a URL path defined by this route
-     *
-     * @param  array $data An array of name (or index) and value pairs used as parameters
-     * @return string Route path with user submitted parameters
-     */
-    public function assemble($data = array(), $reset = false, $encode = false, $partial = false)
-    {
-        if ($this->_reverse === null) {
-            require_once 'Zend/Controller/Router/Exception.php';
-            throw new Zend_Controller_Router_Exception('Cannot assemble. Reversed route is not specified.');
-        }
+php php php php php/php*php*
+php php php php php php*php Assemblesphp aphp URLphp pathphp definedphp byphp thisphp route
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$dataphp Anphp arrayphp ofphp namephp php(orphp indexphp)php andphp valuephp pairsphp usedphp asphp parameters
+php php php php php php*php php@returnphp stringphp Routephp pathphp withphp userphp submittedphp parameters
+php php php php php php*php/
+php php php php publicphp functionphp assemblephp(php$dataphp php=php arrayphp(php)php,php php$resetphp php=php falsephp,php php$encodephp php=php falsephp,php php$partialphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_reversephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Routerphp_Exceptionphp(php'Cannotphp assemblephp.php Reversedphp routephp isphp notphp specifiedphp.php'php)php;
+php php php php php php php php php}
 
-        $defaultValuesMapped  = $this->_getMappedValues($this->_defaults, true, false);
-        $matchedValuesMapped  = $this->_getMappedValues($this->_values, true, false);
-        $dataValuesMapped     = $this->_getMappedValues($data, true, false);
+php php php php php php php php php$defaultValuesMappedphp php php=php php$thisphp-php>php_getMappedValuesphp(php$thisphp-php>php_defaultsphp,php truephp,php falsephp)php;
+php php php php php php php php php$matchedValuesMappedphp php php=php php$thisphp-php>php_getMappedValuesphp(php$thisphp-php>php_valuesphp,php truephp,php falsephp)php;
+php php php php php php php php php$dataValuesMappedphp php php php php php=php php$thisphp-php>php_getMappedValuesphp(php$dataphp,php truephp,php falsephp)php;
 
-        // handle resets, if so requested (By null value) to do so
-        if (($resetKeys = array_search(null, $dataValuesMapped, true)) !== false) {
-            foreach ((array) $resetKeys as $resetKey) {
-                if (isset($matchedValuesMapped[$resetKey])) {
-                    unset($matchedValuesMapped[$resetKey]);
-                    unset($dataValuesMapped[$resetKey]);
-                }
-            }
-        }
+php php php php php php php php php/php/php handlephp resetsphp,php ifphp sophp requestedphp php(Byphp nullphp valuephp)php tophp dophp so
+php php php php php php php php ifphp php(php(php$resetKeysphp php=php arrayphp_searchphp(nullphp,php php$dataValuesMappedphp,php truephp)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php foreachphp php(php(arrayphp)php php$resetKeysphp asphp php$resetKeyphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$matchedValuesMappedphp[php$resetKeyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$matchedValuesMappedphp[php$resetKeyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$dataValuesMappedphp[php$resetKeyphp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // merge all the data together, first defaults, then values matched, then supplied
-        $mergedData = $defaultValuesMapped;
-        $mergedData = $this->_arrayMergeNumericKeys($mergedData, $matchedValuesMapped);
-        $mergedData = $this->_arrayMergeNumericKeys($mergedData, $dataValuesMapped);
+php php php php php php php php php/php/php mergephp allphp thephp dataphp togetherphp,php firstphp defaultsphp,php thenphp valuesphp matchedphp,php thenphp supplied
+php php php php php php php php php$mergedDataphp php=php php$defaultValuesMappedphp;
+php php php php php php php php php$mergedDataphp php=php php$thisphp-php>php_arrayMergeNumericKeysphp(php$mergedDataphp,php php$matchedValuesMappedphp)php;
+php php php php php php php php php$mergedDataphp php=php php$thisphp-php>php_arrayMergeNumericKeysphp(php$mergedDataphp,php php$dataValuesMappedphp)php;
 
-        if ($encode) {
-            foreach ($mergedData as $key => &$value) {
-                $value = urlencode($value);
-            }
-        }
+php php php php php php php php ifphp php(php$encodephp)php php{
+php php php php php php php php php php php php foreachphp php(php$mergedDataphp asphp php$keyphp php=php>php php&php$valuephp)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php urlencodephp(php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        ksort($mergedData);
+php php php php php php php php ksortphp(php$mergedDataphp)php;
 
-        $return = @vsprintf($this->_reverse, $mergedData);
+php php php php php php php php php$returnphp php=php php@vsprintfphp(php$thisphp-php>php_reversephp,php php$mergedDataphp)php;
 
-        if ($return === false) {
-            require_once 'Zend/Controller/Router/Exception.php';
-            throw new Zend_Controller_Router_Exception('Cannot assemble. Too few arguments?');
-        }
+php php php php php php php php ifphp php(php$returnphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Routerphp_Exceptionphp(php'Cannotphp assemblephp.php Toophp fewphp argumentsphp?php'php)php;
+php php php php php php php php php}
 
-        return $return;
+php php php php php php php php returnphp php$returnphp;
 
-    }
+php php php php php}
 
-    /**
-     * Return a single parameter of route's defaults
-     *
-     * @param string $name Array key of the parameter
-     * @return string Previously set default
-     */
-    public function getDefault($name) {
-        if (isset($this->_defaults[$name])) {
-            return $this->_defaults[$name];
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp singlephp parameterphp ofphp routephp'sphp defaults
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namephp Arrayphp keyphp ofphp thephp parameter
+php php php php php php*php php@returnphp stringphp Previouslyphp setphp default
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultphp(php$namephp)php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_defaultsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_defaultsphp[php$namephp]php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Return an array of defaults
-     *
-     * @return array Route defaults
-     */
-    public function getDefaults() {
-        return $this->_defaults;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp defaults
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Routephp defaults
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultsphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_defaultsphp;
+php php php php php}
 
-    /**
-     * Get all variables which are used by the route
-     *
-     * @return array
-     */
-    public function getVariables()
-    {
-        $variables = array();
+php php php php php/php*php*
+php php php php php php*php Getphp allphp variablesphp whichphp arephp usedphp byphp thephp route
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getVariablesphp(php)
+php php php php php{
+php php php php php php php php php$variablesphp php=php arrayphp(php)php;
 
-        foreach ($this->_map as $key => $value) {
-            if (is_numeric($key)) {
-                $variables[] = $value;
-            } else {
-                $variables[] = $key;
-            }
-        }
+php php php php php php php php foreachphp php(php$thisphp-php>php_mapphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(isphp_numericphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php$variablesphp[php]php php=php php$valuephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$variablesphp[php]php php=php php$keyphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $variables;
-    }
+php php php php php php php php returnphp php$variablesphp;
+php php php php php}
 
-    /**
-     * _arrayMergeNumericKeys() - allows for a strict key (numeric's included) array_merge.
-     * php's array_merge() lacks the ability to merge with numeric keys.
-     *
-     * @param array $array1
-     * @param array $array2
-     * @return array
-     */
-    protected function _arrayMergeNumericKeys(Array $array1, Array $array2)
-    {
-        $returnArray = $array1;
-        foreach ($array2 as $array2Index => $array2Value) {
-            $returnArray[$array2Index] = $array2Value;
-        }
-        return $returnArray;
-    }
+php php php php php/php*php*
+php php php php php php*php php_arrayMergeNumericKeysphp(php)php php-php allowsphp forphp aphp strictphp keyphp php(numericphp'sphp includedphp)php arrayphp_mergephp.
+php php php php php php*php phpphp'sphp arrayphp_mergephp(php)php lacksphp thephp abilityphp tophp mergephp withphp numericphp keysphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$arrayphp1
+php php php php php php*php php@paramphp arrayphp php$arrayphp2
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_arrayMergeNumericKeysphp(Arrayphp php$arrayphp1php,php Arrayphp php$arrayphp2php)
+php php php php php{
+php php php php php php php php php$returnArrayphp php=php php$arrayphp1php;
+php php php php php php php php foreachphp php(php$arrayphp2php asphp php$arrayphp2Indexphp php=php>php php$arrayphp2Valuephp)php php{
+php php php php php php php php php php php php php$returnArrayphp[php$arrayphp2Indexphp]php php=php php$arrayphp2Valuephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$returnArrayphp;
+php php php php php}
 
 
-}
+php}

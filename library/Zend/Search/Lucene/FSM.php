@@ -1,443 +1,443 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: FSM.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php FSMphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Search_Lucene_FSMAction */
-require_once 'Zend/Search/Lucene/FSMAction.php';
+php/php*php*php Zendphp_Searchphp_Lucenephp_FSMActionphp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/FSMActionphp.phpphp'php;
 
-/**
- * Abstract Finite State Machine
- *
- * Take a look on Wikipedia state machine description: http://en.wikipedia.org/wiki/Finite_state_machine
- *
- * Any type of Transducers (Moore machine or Mealy machine) also may be implemented by using this abstract FSM.
- * process() methods invokes a specified actions which may construct FSM output.
- * Actions may be also used to signal, that we have reached Accept State
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Search_Lucene_FSM
-{
-    /**
-     * Machine States alphabet
-     *
-     * @var array
-     */
-    private $_states = array();
+php/php*php*
+php php*php Abstractphp Finitephp Statephp Machine
+php php*
+php php*php Takephp aphp lookphp onphp Wikipediaphp statephp machinephp descriptionphp:php httpphp:php/php/enphp.wikipediaphp.orgphp/wikiphp/Finitephp_statephp_machine
+php php*
+php php*php Anyphp typephp ofphp Transducersphp php(Moorephp machinephp orphp Mealyphp machinephp)php alsophp mayphp bephp implementedphp byphp usingphp thisphp abstractphp FSMphp.
+php php*php processphp(php)php methodsphp invokesphp aphp specifiedphp actionsphp whichphp mayphp constructphp FSMphp outputphp.
+php php*php Actionsphp mayphp bephp alsophp usedphp tophp signalphp,php thatphp wephp havephp reachedphp Acceptphp State
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Searchphp_Lucenephp_FSM
+php{
+php php php php php/php*php*
+php php php php php php*php Machinephp Statesphp alphabet
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_statesphp php=php arrayphp(php)php;
 
-    /**
-     * Current state
-     *
-     * @var integer|string
-     */
-    private $_currentState = null;
+php php php php php/php*php*
+php php php php php php*php Currentphp state
+php php php php php php*
+php php php php php php*php php@varphp integerphp|string
+php php php php php php*php/
+php php php php privatephp php$php_currentStatephp php=php nullphp;
 
-    /**
-     * Input alphabet
-     *
-     * @var array
-     */
-    private $_inputAphabet = array();
+php php php php php/php*php*
+php php php php php php*php Inputphp alphabet
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_inputAphabetphp php=php arrayphp(php)php;
 
-    /**
-     * State transition table
-     *
-     * [sourceState][input] => targetState
-     *
-     * @var array
-     */
-    private $_rules = array();
+php php php php php/php*php*
+php php php php php php*php Statephp transitionphp table
+php php php php php php*
+php php php php php php*php php[sourceStatephp]php[inputphp]php php=php>php targetState
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_rulesphp php=php arrayphp(php)php;
 
-    /**
-     * List of entry actions
-     * Each action executes when entering the state
-     *
-     * [state] => action
-     *
-     * @var array
-     */
-    private $_entryActions =  array();
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp entryphp actions
+php php php php php php*php Eachphp actionphp executesphp whenphp enteringphp thephp state
+php php php php php php*
+php php php php php php*php php[statephp]php php=php>php action
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_entryActionsphp php=php php arrayphp(php)php;
 
-    /**
-     * List of exit actions
-     * Each action executes when exiting the state
-     *
-     * [state] => action
-     *
-     * @var array
-     */
-    private $_exitActions =  array();
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp exitphp actions
+php php php php php php*php Eachphp actionphp executesphp whenphp exitingphp thephp state
+php php php php php php*
+php php php php php php*php php[statephp]php php=php>php action
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_exitActionsphp php=php php arrayphp(php)php;
 
-    /**
-     * List of input actions
-     * Each action executes when entering the state
-     *
-     * [state][input] => action
-     *
-     * @var array
-     */
-    private $_inputActions =  array();
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp inputphp actions
+php php php php php php*php Eachphp actionphp executesphp whenphp enteringphp thephp state
+php php php php php php*
+php php php php php php*php php[statephp]php[inputphp]php php=php>php action
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_inputActionsphp php=php php arrayphp(php)php;
 
-    /**
-     * List of input actions
-     * Each action executes when entering the state
-     *
-     * [state1][state2] => action
-     *
-     * @var array
-     */
-    private $_transitionActions =  array();
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp inputphp actions
+php php php php php php*php Eachphp actionphp executesphp whenphp enteringphp thephp state
+php php php php php php*
+php php php php php php*php php[statephp1php]php[statephp2php]php php=php>php action
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_transitionActionsphp php=php php arrayphp(php)php;
 
-    /**
-     * Finite State machine constructor
-     *
-     * $states is an array of integers or strings with a list of possible machine states
-     * constructor treats fist list element as a sturt state (assignes it to $_current state).
-     * It may be reassigned by setState() call.
-     * States list may be empty and can be extended later by addState() or addStates() calls.
-     *
-     * $inputAphabet is the same as $states, but represents input alphabet
-     * it also may be extended later by addInputSymbols() or addInputSymbol() calls.
-     *
-     * $rules parameter describes FSM transitions and has a structure:
-     * array( array(sourseState, input, targetState[, inputAction]),
-     *        array(sourseState, input, targetState[, inputAction]),
-     *        array(sourseState, input, targetState[, inputAction]),
-     *        ...
-     *      )
-     * Rules also can be added later by addRules() and addRule() calls.
-     *
-     * FSM actions are very flexible and may be defined by addEntryAction(), addExitAction(),
-     * addInputAction() and addTransitionAction() calls.
-     *
-     * @param array $states
-     * @param array $inputAphabet
-     * @param array $rules
-     */
-    public function __construct($states = array(), $inputAphabet = array(), $rules = array())
-    {
-        $this->addStates($states);
-        $this->addInputSymbols($inputAphabet);
-        $this->addRules($rules);
-    }
+php php php php php/php*php*
+php php php php php php*php Finitephp Statephp machinephp constructor
+php php php php php php*
+php php php php php php*php php$statesphp isphp anphp arrayphp ofphp integersphp orphp stringsphp withphp aphp listphp ofphp possiblephp machinephp states
+php php php php php php*php constructorphp treatsphp fistphp listphp elementphp asphp aphp sturtphp statephp php(assignesphp itphp tophp php$php_currentphp statephp)php.
+php php php php php php*php Itphp mayphp bephp reassignedphp byphp setStatephp(php)php callphp.
+php php php php php php*php Statesphp listphp mayphp bephp emptyphp andphp canphp bephp extendedphp laterphp byphp addStatephp(php)php orphp addStatesphp(php)php callsphp.
+php php php php php php*
+php php php php php php*php php$inputAphabetphp isphp thephp samephp asphp php$statesphp,php butphp representsphp inputphp alphabet
+php php php php php php*php itphp alsophp mayphp bephp extendedphp laterphp byphp addInputSymbolsphp(php)php orphp addInputSymbolphp(php)php callsphp.
+php php php php php php*
+php php php php php php*php php$rulesphp parameterphp describesphp FSMphp transitionsphp andphp hasphp aphp structurephp:
+php php php php php php*php arrayphp(php arrayphp(sourseStatephp,php inputphp,php targetStatephp[php,php inputActionphp]php)php,
+php php php php php php*php php php php php php php php arrayphp(sourseStatephp,php inputphp,php targetStatephp[php,php inputActionphp]php)php,
+php php php php php php*php php php php php php php php arrayphp(sourseStatephp,php inputphp,php targetStatephp[php,php inputActionphp]php)php,
+php php php php php php*php php php php php php php php php.php.php.
+php php php php php php*php php php php php php php)
+php php php php php php*php Rulesphp alsophp canphp bephp addedphp laterphp byphp addRulesphp(php)php andphp addRulephp(php)php callsphp.
+php php php php php php*
+php php php php php php*php FSMphp actionsphp arephp veryphp flexiblephp andphp mayphp bephp definedphp byphp addEntryActionphp(php)php,php addExitActionphp(php)php,
+php php php php php php*php addInputActionphp(php)php andphp addTransitionActionphp(php)php callsphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$states
+php php php php php php*php php@paramphp arrayphp php$inputAphabet
+php php php php php php*php php@paramphp arrayphp php$rules
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$statesphp php=php arrayphp(php)php,php php$inputAphabetphp php=php arrayphp(php)php,php php$rulesphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>addStatesphp(php$statesphp)php;
+php php php php php php php php php$thisphp-php>addInputSymbolsphp(php$inputAphabetphp)php;
+php php php php php php php php php$thisphp-php>addRulesphp(php$rulesphp)php;
+php php php php php}
 
-    /**
-     * Add states to the state machine
-     *
-     * @param array $states
-     */
-    public function addStates($states)
-    {
-        foreach ($states as $state) {
-            $this->addState($state);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp statesphp tophp thephp statephp machine
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$states
+php php php php php php*php/
+php php php php publicphp functionphp addStatesphp(php$statesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$statesphp asphp php$statephp)php php{
+php php php php php php php php php php php php php$thisphp-php>addStatephp(php$statephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Add state to the state machine
-     *
-     * @param integer|string $state
-     */
-    public function addState($state)
-    {
-        $this->_states[$state] = $state;
+php php php php php/php*php*
+php php php php php php*php Addphp statephp tophp thephp statephp machine
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$state
+php php php php php php*php/
+php php php php publicphp functionphp addStatephp(php$statephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_statesphp[php$statephp]php php=php php$statephp;
 
-        if ($this->_currentState === null) {
-            $this->_currentState = $state;
-        }
-    }
+php php php php php php php php ifphp php(php$thisphp-php>php_currentStatephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_currentStatephp php=php php$statephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set FSM state.
-     * No any action is invoked
-     *
-     * @param integer|string $state
-     * @throws Zend_Search_Exception
-     */
-    public function setState($state)
-    {
-        if (!isset($this->_states[$state])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('State \'' . $state . '\' is not on of the possible FSM states.');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp FSMphp statephp.
+php php php php php php*php Nophp anyphp actionphp isphp invoked
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$state
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setStatephp(php$statephp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$statephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Statephp php\php'php'php php.php php$statephp php.php php'php\php'php isphp notphp onphp ofphp thephp possiblephp FSMphp statesphp.php'php)php;
+php php php php php php php php php}
 
-        $this->_currentState = $state;
-    }
+php php php php php php php php php$thisphp-php>php_currentStatephp php=php php$statephp;
+php php php php php}
 
-    /**
-     * Get FSM state.
-     *
-     * @return integer|string $state|null
-     */
-    public function getState()
-    {
-        return $this->_currentState;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp FSMphp statephp.
+php php php php php php*
+php php php php php php*php php@returnphp integerphp|stringphp php$statephp|null
+php php php php php php*php/
+php php php php publicphp functionphp getStatephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_currentStatephp;
+php php php php php}
 
-    /**
-     * Add symbols to the input alphabet
-     *
-     * @param array $inputAphabet
-     */
-    public function addInputSymbols($inputAphabet)
-    {
-        foreach ($inputAphabet as $inputSymbol) {
-            $this->addInputSymbol($inputSymbol);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp symbolsphp tophp thephp inputphp alphabet
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$inputAphabet
+php php php php php php*php/
+php php php php publicphp functionphp addInputSymbolsphp(php$inputAphabetphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$inputAphabetphp asphp php$inputSymbolphp)php php{
+php php php php php php php php php php php php php$thisphp-php>addInputSymbolphp(php$inputSymbolphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Add symbol to the input alphabet
-     *
-     * @param integer|string $inputSymbol
-     */
-    public function addInputSymbol($inputSymbol)
-    {
-        $this->_inputAphabet[$inputSymbol] = $inputSymbol;
-    }
-
-
-    /**
-     * Add transition rules
-     *
-     * array structure:
-     * array( array(sourseState, input, targetState[, inputAction]),
-     *        array(sourseState, input, targetState[, inputAction]),
-     *        array(sourseState, input, targetState[, inputAction]),
-     *        ...
-     *      )
-     *
-     * @param array $rules
-     */
-    public function addRules($rules)
-    {
-        foreach ($rules as $rule) {
-            $this->addrule($rule[0], $rule[1], $rule[2], isset($rule[3])?$rule[3]:null);
-        }
-    }
-
-    /**
-     * Add symbol to the input alphabet
-     *
-     * @param integer|string $sourceState
-     * @param integer|string $input
-     * @param integer|string $targetState
-     * @param Zend_Search_Lucene_FSMAction|null $inputAction
-     * @throws Zend_Search_Exception
-     */
-    public function addRule($sourceState, $input, $targetState, $inputAction = null)
-    {
-        if (!isset($this->_states[$sourceState])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined source state (' . $sourceState . ').');
-        }
-        if (!isset($this->_states[$targetState])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined target state (' . $targetState . ').');
-        }
-        if (!isset($this->_inputAphabet[$input])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined input symbol (' . $input . ').');
-        }
-
-        if (!isset($this->_rules[$sourceState])) {
-            $this->_rules[$sourceState] = array();
-        }
-        if (isset($this->_rules[$sourceState][$input])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Rule for {state,input} pair (' . $sourceState . ', '. $input . ') is already defined.');
-        }
-
-        $this->_rules[$sourceState][$input] = $targetState;
+php php php php php/php*php*
+php php php php php php*php Addphp symbolphp tophp thephp inputphp alphabet
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$inputSymbol
+php php php php php php*php/
+php php php php publicphp functionphp addInputSymbolphp(php$inputSymbolphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_inputAphabetphp[php$inputSymbolphp]php php=php php$inputSymbolphp;
+php php php php php}
 
 
-        if ($inputAction !== null) {
-            $this->addInputAction($sourceState, $input, $inputAction);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp transitionphp rules
+php php php php php php*
+php php php php php php*php arrayphp structurephp:
+php php php php php php*php arrayphp(php arrayphp(sourseStatephp,php inputphp,php targetStatephp[php,php inputActionphp]php)php,
+php php php php php php*php php php php php php php php arrayphp(sourseStatephp,php inputphp,php targetStatephp[php,php inputActionphp]php)php,
+php php php php php php*php php php php php php php php arrayphp(sourseStatephp,php inputphp,php targetStatephp[php,php inputActionphp]php)php,
+php php php php php php*php php php php php php php php php.php.php.
+php php php php php php*php php php php php php php)
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$rules
+php php php php php php*php/
+php php php php publicphp functionphp addRulesphp(php$rulesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$rulesphp asphp php$rulephp)php php{
+php php php php php php php php php php php php php$thisphp-php>addrulephp(php$rulephp[php0php]php,php php$rulephp[php1php]php,php php$rulephp[php2php]php,php issetphp(php$rulephp[php3php]php)php?php$rulephp[php3php]php:nullphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp symbolphp tophp thephp inputphp alphabet
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$sourceState
+php php php php php php*php php@paramphp integerphp|stringphp php$input
+php php php php php php*php php@paramphp integerphp|stringphp php$targetState
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_FSMActionphp|nullphp php$inputAction
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp addRulephp(php$sourceStatephp,php php$inputphp,php php$targetStatephp,php php$inputActionphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$sourceStatephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp sourcephp statephp php(php'php php.php php$sourceStatephp php.php php'php)php.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$targetStatephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp targetphp statephp php(php'php php.php php$targetStatephp php.php php'php)php.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_inputAphabetphp[php$inputphp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp inputphp symbolphp php(php'php php.php php$inputphp php.php php'php)php.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_rulesphp[php$sourceStatephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_rulesphp[php$sourceStatephp]php php=php arrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_rulesphp[php$sourceStatephp]php[php$inputphp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Rulephp forphp php{statephp,inputphp}php pairphp php(php'php php.php php$sourceStatephp php.php php'php,php php'php.php php$inputphp php.php php'php)php isphp alreadyphp definedphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_rulesphp[php$sourceStatephp]php[php$inputphp]php php=php php$targetStatephp;
 
 
-    /**
-     * Add state entry action.
-     * Several entry actions are allowed.
-     * Action execution order is defined by addEntryAction() calls
-     *
-     * @param integer|string $state
-     * @param Zend_Search_Lucene_FSMAction $action
-     */
-    public function addEntryAction($state, Zend_Search_Lucene_FSMAction $action)
-    {
-        if (!isset($this->_states[$state])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined state (' . $state. ').');
-        }
-
-        if (!isset($this->_entryActions[$state])) {
-            $this->_entryActions[$state] = array();
-        }
-
-        $this->_entryActions[$state][] = $action;
-    }
-
-    /**
-     * Add state exit action.
-     * Several exit actions are allowed.
-     * Action execution order is defined by addEntryAction() calls
-     *
-     * @param integer|string $state
-     * @param Zend_Search_Lucene_FSMAction $action
-     */
-    public function addExitAction($state, Zend_Search_Lucene_FSMAction $action)
-    {
-        if (!isset($this->_states[$state])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined state (' . $state. ').');
-        }
-
-        if (!isset($this->_exitActions[$state])) {
-            $this->_exitActions[$state] = array();
-        }
-
-        $this->_exitActions[$state][] = $action;
-    }
-
-    /**
-     * Add input action (defined by {state, input} pair).
-     * Several input actions are allowed.
-     * Action execution order is defined by addInputAction() calls
-     *
-     * @param integer|string $state
-     * @param integer|string $input
-     * @param Zend_Search_Lucene_FSMAction $action
-     */
-    public function addInputAction($state, $inputSymbol, Zend_Search_Lucene_FSMAction $action)
-    {
-        if (!isset($this->_states[$state])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined state (' . $state. ').');
-        }
-        if (!isset($this->_inputAphabet[$inputSymbol])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined input symbol (' . $inputSymbol. ').');
-        }
-
-        if (!isset($this->_inputActions[$state])) {
-            $this->_inputActions[$state] = array();
-        }
-        if (!isset($this->_inputActions[$state][$inputSymbol])) {
-            $this->_inputActions[$state][$inputSymbol] = array();
-        }
-
-        $this->_inputActions[$state][$inputSymbol][] = $action;
-    }
-
-    /**
-     * Add transition action (defined by {state, input} pair).
-     * Several transition actions are allowed.
-     * Action execution order is defined by addTransitionAction() calls
-     *
-     * @param integer|string $sourceState
-     * @param integer|string $targetState
-     * @param Zend_Search_Lucene_FSMAction $action
-     */
-    public function addTransitionAction($sourceState, $targetState, Zend_Search_Lucene_FSMAction $action)
-    {
-        if (!isset($this->_states[$sourceState])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined source state (' . $sourceState. ').');
-        }
-        if (!isset($this->_states[$targetState])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined source state (' . $targetState. ').');
-        }
-
-        if (!isset($this->_transitionActions[$sourceState])) {
-            $this->_transitionActions[$sourceState] = array();
-        }
-        if (!isset($this->_transitionActions[$sourceState][$targetState])) {
-            $this->_transitionActions[$sourceState][$targetState] = array();
-        }
-
-        $this->_transitionActions[$sourceState][$targetState][] = $action;
-    }
+php php php php php php php php ifphp php(php$inputActionphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>addInputActionphp(php$sourceStatephp,php php$inputphp,php php$inputActionphp)php;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Process an input
-     *
-     * @param mixed $input
-     * @throws Zend_Search_Exception
-     */
-    public function process($input)
-    {
-        if (!isset($this->_rules[$this->_currentState])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('There is no any rule for current state (' . $this->_currentState . ').');
-        }
-        if (!isset($this->_rules[$this->_currentState][$input])) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('There is no any rule for {current state, input} pair (' . $this->_currentState . ', ' . $input . ').');
-        }
+php php php php php/php*php*
+php php php php php php*php Addphp statephp entryphp actionphp.
+php php php php php php*php Severalphp entryphp actionsphp arephp allowedphp.
+php php php php php php*php Actionphp executionphp orderphp isphp definedphp byphp addEntryActionphp(php)php calls
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$state
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_FSMActionphp php$action
+php php php php php php*php/
+php php php php publicphp functionphp addEntryActionphp(php$statephp,php Zendphp_Searchphp_Lucenephp_FSMActionphp php$actionphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$statephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp statephp php(php'php php.php php$statephp.php php'php)php.php'php)php;
+php php php php php php php php php}
 
-        $sourceState = $this->_currentState;
-        $targetState = $this->_rules[$this->_currentState][$input];
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_entryActionsphp[php$statephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_entryActionsphp[php$statephp]php php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        if ($sourceState != $targetState  &&  isset($this->_exitActions[$sourceState])) {
-            foreach ($this->_exitActions[$sourceState] as $action) {
-                $action->doAction();
-            }
-        }
-        if (isset($this->_inputActions[$sourceState]) &&
-            isset($this->_inputActions[$sourceState][$input])) {
-            foreach ($this->_inputActions[$sourceState][$input] as $action) {
-                $action->doAction();
-            }
-        }
+php php php php php php php php php$thisphp-php>php_entryActionsphp[php$statephp]php[php]php php=php php$actionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp statephp exitphp actionphp.
+php php php php php php*php Severalphp exitphp actionsphp arephp allowedphp.
+php php php php php php*php Actionphp executionphp orderphp isphp definedphp byphp addEntryActionphp(php)php calls
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$state
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_FSMActionphp php$action
+php php php php php php*php/
+php php php php publicphp functionphp addExitActionphp(php$statephp,php Zendphp_Searchphp_Lucenephp_FSMActionphp php$actionphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$statephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp statephp php(php'php php.php php$statephp.php php'php)php.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_exitActionsphp[php$statephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_exitActionsphp[php$statephp]php php=php arrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_exitActionsphp[php$statephp]php[php]php php=php php$actionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp inputphp actionphp php(definedphp byphp php{statephp,php inputphp}php pairphp)php.
+php php php php php php*php Severalphp inputphp actionsphp arephp allowedphp.
+php php php php php php*php Actionphp executionphp orderphp isphp definedphp byphp addInputActionphp(php)php calls
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$state
+php php php php php php*php php@paramphp integerphp|stringphp php$input
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_FSMActionphp php$action
+php php php php php php*php/
+php php php php publicphp functionphp addInputActionphp(php$statephp,php php$inputSymbolphp,php Zendphp_Searchphp_Lucenephp_FSMActionphp php$actionphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$statephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp statephp php(php'php php.php php$statephp.php php'php)php.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_inputAphabetphp[php$inputSymbolphp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp inputphp symbolphp php(php'php php.php php$inputSymbolphp.php php'php)php.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_inputActionsphp[php$statephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_inputActionsphp[php$statephp]php php=php arrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_inputActionsphp[php$statephp]php[php$inputSymbolphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_inputActionsphp[php$statephp]php[php$inputSymbolphp]php php=php arrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_inputActionsphp[php$statephp]php[php$inputSymbolphp]php[php]php php=php php$actionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp transitionphp actionphp php(definedphp byphp php{statephp,php inputphp}php pairphp)php.
+php php php php php php*php Severalphp transitionphp actionsphp arephp allowedphp.
+php php php php php php*php Actionphp executionphp orderphp isphp definedphp byphp addTransitionActionphp(php)php calls
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$sourceState
+php php php php php php*php php@paramphp integerphp|stringphp php$targetState
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_FSMActionphp php$action
+php php php php php php*php/
+php php php php publicphp functionphp addTransitionActionphp(php$sourceStatephp,php php$targetStatephp,php Zendphp_Searchphp_Lucenephp_FSMActionphp php$actionphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$sourceStatephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp sourcephp statephp php(php'php php.php php$sourceStatephp.php php'php)php.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_statesphp[php$targetStatephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Undefinedphp sourcephp statephp php(php'php php.php php$targetStatephp.php php'php)php.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php php=php arrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php[php$targetStatephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php[php$targetStatephp]php php=php arrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php[php$targetStatephp]php[php]php php=php php$actionphp;
+php php php php php}
 
 
-        $this->_currentState = $targetState;
+php php php php php/php*php*
+php php php php php php*php Processphp anphp input
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$input
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp processphp(php$inputphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_rulesphp[php$thisphp-php>php_currentStatephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Therephp isphp nophp anyphp rulephp forphp currentphp statephp php(php'php php.php php$thisphp-php>php_currentStatephp php.php php'php)php.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_rulesphp[php$thisphp-php>php_currentStatephp]php[php$inputphp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Therephp isphp nophp anyphp rulephp forphp php{currentphp statephp,php inputphp}php pairphp php(php'php php.php php$thisphp-php>php_currentStatephp php.php php'php,php php'php php.php php$inputphp php.php php'php)php.php'php)php;
+php php php php php php php php php}
 
-        if (isset($this->_transitionActions[$sourceState]) &&
-            isset($this->_transitionActions[$sourceState][$targetState])) {
-            foreach ($this->_transitionActions[$sourceState][$targetState] as $action) {
-                $action->doAction();
-            }
-        }
-        if ($sourceState != $targetState  &&  isset($this->_entryActions[$targetState])) {
-            foreach ($this->_entryActions[$targetState] as $action) {
-                $action->doAction();
-            }
-        }
-    }
+php php php php php php php php php$sourceStatephp php=php php$thisphp-php>php_currentStatephp;
+php php php php php php php php php$targetStatephp php=php php$thisphp-php>php_rulesphp[php$thisphp-php>php_currentStatephp]php[php$inputphp]php;
 
-    public function reset()
-    {
-        if (count($this->_states) == 0) {
-            require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('There is no any state defined for FSM.');
-        }
+php php php php php php php php ifphp php(php$sourceStatephp php!php=php php$targetStatephp php php&php&php php issetphp(php$thisphp-php>php_exitActionsphp[php$sourceStatephp]php)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_exitActionsphp[php$sourceStatephp]php asphp php$actionphp)php php{
+php php php php php php php php php php php php php php php php php$actionphp-php>doActionphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_inputActionsphp[php$sourceStatephp]php)php php&php&
+php php php php php php php php php php php php issetphp(php$thisphp-php>php_inputActionsphp[php$sourceStatephp]php[php$inputphp]php)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_inputActionsphp[php$sourceStatephp]php[php$inputphp]php asphp php$actionphp)php php{
+php php php php php php php php php php php php php php php php php$actionphp-php>doActionphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $this->_currentState = $this->_states[0];
-    }
-}
+
+php php php php php php php php php$thisphp-php>php_currentStatephp php=php php$targetStatephp;
+
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php)php php&php&
+php php php php php php php php php php php php issetphp(php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php[php$targetStatephp]php)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_transitionActionsphp[php$sourceStatephp]php[php$targetStatephp]php asphp php$actionphp)php php{
+php php php php php php php php php php php php php php php php php$actionphp-php>doActionphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$sourceStatephp php!php=php php$targetStatephp php php&php&php php issetphp(php$thisphp-php>php_entryActionsphp[php$targetStatephp]php)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_entryActionsphp[php$targetStatephp]php asphp php$actionphp)php php{
+php php php php php php php php php php php php php php php php php$actionphp-php>doActionphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php publicphp functionphp resetphp(php)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_statesphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Exceptionphp(php'Therephp isphp nophp anyphp statephp definedphp forphp FSMphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_currentStatephp php=php php$thisphp-php>php_statesphp[php0php]php;
+php php php php php}
+php}
 

@@ -1,238 +1,238 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tag
- * @subpackage ItemList
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ItemList.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tag
+php php*php php@subpackagephp ItemList
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ItemListphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Tag_Taggable
- */
-require_once 'Zend/Tag/Taggable.php';
+php/php*php*
+php php*php php@seephp Zendphp_Tagphp_Taggable
+php php*php/
+requirephp_oncephp php'Zendphp/Tagphp/Taggablephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Tag
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
-{
-    /**
-     * Items in this list
-     *
-     * @var array
-     */
-    protected $_items = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tag
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Tagphp_ItemListphp implementsphp Countablephp,php SeekableIteratorphp,php ArrayAccess
+php{
+php php php php php/php*php*
+php php php php php php*php Itemsphp inphp thisphp list
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_itemsphp php=php arrayphp(php)php;
 
-    /**
-     * Count all items
-     *
-     * @return integer
-     */
-    public function count()
-    {
-        return count($this->_items);
-    }
+php php php php php/php*php*
+php php php php php php*php Countphp allphp items
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp countphp(php)
+php php php php php{
+php php php php php php php php returnphp countphp(php$thisphp-php>php_itemsphp)php;
+php php php php php}
 
-    /**
-     * Spread values in the items relative to their weight
-     *
-     * @param  array $values
-     * @throws Zend_Tag_Exception When value list is empty
-     * @return void
-     */
-    public function spreadWeightValues(array $values)
-    {
-        // Don't allow an empty value list
-        if (count($values) === 0) {
-            require_once 'Zend/Tag/Exception.php';
-            throw new Zend_Tag_Exception('Value list may not be empty');
-        }
+php php php php php/php*php*
+php php php php php php*php Spreadphp valuesphp inphp thephp itemsphp relativephp tophp theirphp weight
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$values
+php php php php php php*php php@throwsphp Zendphp_Tagphp_Exceptionphp Whenphp valuephp listphp isphp empty
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp spreadWeightValuesphp(arrayphp php$valuesphp)
+php php php php php{
+php php php php php php php php php/php/php Donphp'tphp allowphp anphp emptyphp valuephp list
+php php php php php php php php ifphp php(countphp(php$valuesphp)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Exceptionphp(php'Valuephp listphp mayphp notphp bephp emptyphp'php)php;
+php php php php php php php php php}
 
-        // Re-index the array
-        $values = array_values($values);
+php php php php php php php php php/php/php Rephp-indexphp thephp array
+php php php php php php php php php$valuesphp php=php arrayphp_valuesphp(php$valuesphp)php;
 
-        // If just a single value is supplied simply assign it to to all tags
-        if (count($values) === 1) {
-            foreach ($this->_items as $item) {
-                $item->setParam('weightValue', $values[0]);
-            }
-        } else {
-            // Calculate min- and max-weight
-            $minWeight = null;
-            $maxWeight = null;
+php php php php php php php php php/php/php Ifphp justphp aphp singlephp valuephp isphp suppliedphp simplyphp assignphp itphp tophp tophp allphp tags
+php php php php php php php php ifphp php(countphp(php$valuesphp)php php=php=php=php php1php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_itemsphp asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php php$itemphp-php>setParamphp(php'weightValuephp'php,php php$valuesphp[php0php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Calculatephp minphp-php andphp maxphp-weight
+php php php php php php php php php php php php php$minWeightphp php=php nullphp;
+php php php php php php php php php php php php php$maxWeightphp php=php nullphp;
 
-            foreach ($this->_items as $item) {
-                if ($minWeight === null && $maxWeight === null) {
-                    $minWeight = $item->getWeight();
-                    $maxWeight = $item->getWeight();
-                } else {
-                    $minWeight = min($minWeight, $item->getWeight());
-                    $maxWeight = max($maxWeight, $item->getWeight());
-                }
-            }
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_itemsphp asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$minWeightphp php=php=php=php nullphp php&php&php php$maxWeightphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$minWeightphp php=php php$itemphp-php>getWeightphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$maxWeightphp php=php php$itemphp-php>getWeightphp(php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$minWeightphp php=php minphp(php$minWeightphp,php php$itemphp-php>getWeightphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php php$maxWeightphp php=php maxphp(php$maxWeightphp,php php$itemphp-php>getWeightphp(php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            // Calculate the thresholds
-            $steps      = count($values);
-            $delta      = ($maxWeight - $minWeight) / ($steps - 1);
-            $thresholds = array();
+php php php php php php php php php php php php php/php/php Calculatephp thephp thresholds
+php php php php php php php php php php php php php$stepsphp php php php php php php=php countphp(php$valuesphp)php;
+php php php php php php php php php php php php php$deltaphp php php php php php php=php php(php$maxWeightphp php-php php$minWeightphp)php php/php php(php$stepsphp php-php php1php)php;
+php php php php php php php php php php php php php$thresholdsphp php=php arrayphp(php)php;
 
-            for ($i = 0; $i < $steps; $i++) {
-                $thresholds[$i] = floor(100 * log(($minWeight + $i * $delta) + 2));
-            }
+php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$stepsphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$thresholdsphp[php$iphp]php php=php floorphp(php1php0php0php php*php logphp(php(php$minWeightphp php+php php$iphp php*php php$deltaphp)php php+php php2php)php)php;
+php php php php php php php php php php php php php}
 
-            // Then assign the weight values
-            foreach ($this->_items as $item) {
-                $threshold = floor(100 * log($item->getWeight() + 2));
+php php php php php php php php php php php php php/php/php Thenphp assignphp thephp weightphp values
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_itemsphp asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php php$thresholdphp php=php floorphp(php1php0php0php php*php logphp(php$itemphp-php>getWeightphp(php)php php+php php2php)php)php;
 
-                for ($i = 0; $i < $steps; $i++) {
-                    if ($threshold <= $thresholds[$i]) {
-                        $item->setParam('weightValue', $values[$i]);
-                        break;
-                    }
-                }
-            }
-        }
-    }
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$stepsphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thresholdphp <php=php php$thresholdsphp[php$iphp]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$itemphp-php>setParamphp(php'weightValuephp'php,php php$valuesphp[php$iphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Seek to an absolute positio
-     *
-     * @param  integer $index
-     * @throws OutOfBoundsException When the seek position is invalid
-     * @return void
-     */
-    public function seek($index)
-    {
-        $this->rewind();
-        $position = 0;
+php php php php php/php*php*
+php php php php php php*php Seekphp tophp anphp absolutephp positio
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$index
+php php php php php php*php php@throwsphp OutOfBoundsExceptionphp Whenphp thephp seekphp positionphp isphp invalid
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp seekphp(php$indexphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>rewindphp(php)php;
+php php php php php php php php php$positionphp php=php php0php;
 
-        while ($position < $index && $this->valid()) {
-            $this->next();
-            $position++;
-        }
+php php php php php php php php whilephp php(php$positionphp <php php$indexphp php&php&php php$thisphp-php>validphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>nextphp(php)php;
+php php php php php php php php php php php php php$positionphp+php+php;
+php php php php php php php php php}
 
-        if (!$this->valid()) {
-            throw new OutOfBoundsException('Invalid seek position');
-        }
-    }
+php php php php php php php php ifphp php(php!php$thisphp-php>validphp(php)php)php php{
+php php php php php php php php php php php php throwphp newphp OutOfBoundsExceptionphp(php'Invalidphp seekphp positionphp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Return the current element
-     *
-     * @return mixed
-     */
-    public function current()
-    {
-        return current($this->_items);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp currentphp element
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp currentphp(php)
+php php php php php{
+php php php php php php php php returnphp currentphp(php$thisphp-php>php_itemsphp)php;
+php php php php php}
 
-    /**
-     * Move forward to next element
-     *
-     * @return mixed
-     */
-    public function next()
-    {
-        return next($this->_items);
-    }
+php php php php php/php*php*
+php php php php php php*php Movephp forwardphp tophp nextphp element
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp nextphp(php)
+php php php php php{
+php php php php php php php php returnphp nextphp(php$thisphp-php>php_itemsphp)php;
+php php php php php}
 
-    /**
-     * Return the key of the current element
-     *
-     * @return mixed
-     */
-    public function key()
-    {
-        return key($this->_items);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp keyphp ofphp thephp currentphp element
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp keyphp(php)
+php php php php php{
+php php php php php php php php returnphp keyphp(php$thisphp-php>php_itemsphp)php;
+php php php php php}
 
-    /**
-     * Check if there is a current element after calls to rewind() or next()
-     *
-     * @return boolean
-     */
-    public function valid()
-    {
-        return ($this->current() !== false);
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp elementphp afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp validphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php$thisphp-php>currentphp(php)php php!php=php=php falsephp)php;
+php php php php php}
 
-    /**
-     * Rewind the Iterator to the first element
-     *
-     * @return void
-     */
-    public function rewind()
-    {
-        reset($this->_items);
-    }
+php php php php php/php*php*
+php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp element
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp rewindphp(php)
+php php php php php{
+php php php php php php php php resetphp(php$thisphp-php>php_itemsphp)php;
+php php php php php}
 
-    /**
-     * Check if an offset exists
-     *
-     * @param  mixed $offset
-     * @return boolean
-     */
-    public function offsetExists($offset) {
-        return array_key_exists($offset, $this->_items);
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp anphp offsetphp exists
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$offset
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp offsetExistsphp(php$offsetphp)php php{
+php php php php php php php php returnphp arrayphp_keyphp_existsphp(php$offsetphp,php php$thisphp-php>php_itemsphp)php;
+php php php php php}
 
-    /**
-     * Get the value of an offset
-     *
-     * @param  mixed $offset
-     * @return Zend_Tag_Taggable
-     */
-    public function offsetGet($offset) {
-        return $this->_items[$offset];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp ofphp anphp offset
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$offset
+php php php php php php*php php@returnphp Zendphp_Tagphp_Taggable
+php php php php php php*php/
+php php php php publicphp functionphp offsetGetphp(php$offsetphp)php php{
+php php php php php php php php returnphp php$thisphp-php>php_itemsphp[php$offsetphp]php;
+php php php php php}
 
-    /**
-     * Append a new item
-     *
-     * @param  mixed          $offset
-     * @param  Zend_Tag_Taggable $item
-     * @throws OutOfBoundsException When item does not implement Zend_Tag_Taggable
-     * @return void
-     */
-    public function offsetSet($offset, $item) {
-        // We need to make that check here, as the method signature must be
-        // compatible with ArrayAccess::offsetSet()
-        if (!($item instanceof Zend_Tag_Taggable)) {
-            require_once 'Zend/Tag/Exception.php';
-            throw new Zend_Tag_Exception('Item must implement Zend_Tag_Taggable');
-        }
+php php php php php/php*php*
+php php php php php php*php Appendphp aphp newphp item
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php php php php php php php php php php$offset
+php php php php php php*php php@paramphp php Zendphp_Tagphp_Taggablephp php$item
+php php php php php php*php php@throwsphp OutOfBoundsExceptionphp Whenphp itemphp doesphp notphp implementphp Zendphp_Tagphp_Taggable
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp offsetSetphp(php$offsetphp,php php$itemphp)php php{
+php php php php php php php php php/php/php Wephp needphp tophp makephp thatphp checkphp herephp,php asphp thephp methodphp signaturephp mustphp be
+php php php php php php php php php/php/php compatiblephp withphp ArrayAccessphp:php:offsetSetphp(php)
+php php php php php php php php ifphp php(php!php(php$itemphp instanceofphp Zendphp_Tagphp_Taggablephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Exceptionphp(php'Itemphp mustphp implementphp Zendphp_Tagphp_Taggablephp'php)php;
+php php php php php php php php php}
 
-        if ($offset === null) {
-            $this->_items[] = $item;
-        } else {
-            $this->_items[$offset] = $item;
-        }
-    }
+php php php php php php php php ifphp php(php$offsetphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_itemsphp[php]php php=php php$itemphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_itemsphp[php$offsetphp]php php=php php$itemphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Unset an item
-     *
-     * @param  mixed $offset
-     * @return void
-     */
-    public function offsetUnset($offset) {
-        unset($this->_items[$offset]);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Unsetphp anphp item
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$offset
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp offsetUnsetphp(php$offsetphp)php php{
+php php php php php php php php unsetphp(php$thisphp-php>php_itemsphp[php$offsetphp]php)php;
+php php php php php}
+php}

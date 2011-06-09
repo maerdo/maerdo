@@ -1,577 +1,577 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Oracle.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Oraclephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Db_Statement
- */
-require_once 'Zend/Db/Statement.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Statement
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Statementphp.phpphp'php;
 
-/**
- * Extends for Oracle.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Db_Statement_Oracle extends Zend_Db_Statement
-{
+php/php*php*
+php php*php Extendsphp forphp Oraclephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Dbphp_Statementphp_Oraclephp extendsphp Zendphp_Dbphp_Statement
+php{
 
-    /**
-     * Column names.
-     */
-    protected $_keys;
+php php php php php/php*php*
+php php php php php php*php Columnphp namesphp.
+php php php php php php*php/
+php php php php protectedphp php$php_keysphp;
 
-    /**
-     * Fetched result values.
-     */
-    protected $_values;
+php php php php php/php*php*
+php php php php php php*php Fetchedphp resultphp valuesphp.
+php php php php php php*php/
+php php php php protectedphp php$php_valuesphp;
 
-    /**
-     * Check if LOB field are returned as string
-     * instead of OCI-Lob object
-     *
-     * @var boolean
-     */
-    protected $_lobAsString = false;
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp LOBphp fieldphp arephp returnedphp asphp string
+php php php php php php*php insteadphp ofphp OCIphp-Lobphp object
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_lobAsStringphp php=php falsephp;
 
-    /**
-     * Activate/deactivate return of LOB as string
-     *
-     * @param string $lob_as_string
-     * @return Zend_Db_Statement_Oracle
-     */
-    public function setLobAsString($lob_as_string)
-    {
-        $this->_lobAsString = (bool) $lob_as_string;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Activatephp/deactivatephp returnphp ofphp LOBphp asphp string
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$lobphp_asphp_string
+php php php php php php*php php@returnphp Zendphp_Dbphp_Statementphp_Oracle
+php php php php php php*php/
+php php php php publicphp functionphp setLobAsStringphp(php$lobphp_asphp_stringphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_lobAsStringphp php=php php(boolphp)php php$lobphp_asphp_stringphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Return whether or not LOB are returned as string
-     *
-     * @return boolean
-     */
-    public function getLobAsString()
-    {
-        return $this->_lobAsString;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp whetherphp orphp notphp LOBphp arephp returnedphp asphp string
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getLobAsStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_lobAsStringphp;
+php php php php php}
 
-    /**
-     * Prepares statement handle
-     *
-     * @param string $sql
-     * @return void
-     * @throws Zend_Db_Statement_Oracle_Exception
-     */
-    protected function _prepare($sql)
-    {
-        $connection = $this->_adapter->getConnection();
-        $this->_stmt = oci_parse($connection, $sql);
-        if (!$this->_stmt) {
-            /**
-             * @see Zend_Db_Statement_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception(oci_error($connection));
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Preparesphp statementphp handle
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sql
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Oraclephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_preparephp(php$sqlphp)
+php php php php php{
+php php php php php php php php php$connectionphp php=php php$thisphp-php>php_adapterphp-php>getConnectionphp(php)php;
+php php php php php php php php php$thisphp-php>php_stmtphp php=php ociphp_parsephp(php$connectionphp,php php$sqlphp)php;
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Statementphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$connectionphp)php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Binds a parameter to the specified variable name.
-     *
-     * @param mixed $parameter Name the parameter, either integer or string.
-     * @param mixed $variable  Reference to PHP variable containing the value.
-     * @param mixed $type      OPTIONAL Datatype of SQL parameter.
-     * @param mixed $length    OPTIONAL Length of SQL parameter.
-     * @param mixed $options   OPTIONAL Other options.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    protected function _bindParam($parameter, &$variable, $type = null, $length = null, $options = null)
-    {
-        // default value
-        if ($type === NULL) {
-            $type = SQLT_CHR;
-        }
+php php php php php/php*php*
+php php php php php php*php Bindsphp aphp parameterphp tophp thephp specifiedphp variablephp namephp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$parameterphp Namephp thephp parameterphp,php eitherphp integerphp orphp stringphp.
+php php php php php php*php php@paramphp mixedphp php$variablephp php Referencephp tophp PHPphp variablephp containingphp thephp valuephp.
+php php php php php php*php php@paramphp mixedphp php$typephp php php php php php OPTIONALphp Datatypephp ofphp SQLphp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$lengthphp php php php OPTIONALphp Lengthphp ofphp SQLphp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$optionsphp php php OPTIONALphp Otherphp optionsphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_bindParamphp(php$parameterphp,php php&php$variablephp,php php$typephp php=php nullphp,php php$lengthphp php=php nullphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php defaultphp value
+php php php php php php php php ifphp php(php$typephp php=php=php=php NULLphp)php php{
+php php php php php php php php php php php php php$typephp php=php SQLTphp_CHRphp;
+php php php php php php php php php}
 
-        // default value
-        if ($length === NULL) {
-            $length = -1;
-        }
+php php php php php php php php php/php/php defaultphp value
+php php php php php php php php ifphp php(php$lengthphp php=php=php=php NULLphp)php php{
+php php php php php php php php php php php php php$lengthphp php=php php-php1php;
+php php php php php php php php php}
 
-        $retval = @oci_bind_by_name($this->_stmt, $parameter, $variable, $length, $type);
-        if ($retval === false) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception(oci_error($this->_stmt));
-        }
+php php php php php php php php php$retvalphp php=php php@ociphp_bindphp_byphp_namephp(php$thisphp-php>php_stmtphp,php php$parameterphp,php php$variablephp,php php$lengthphp,php php$typephp)php;
+php php php php php php php php ifphp php(php$retvalphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Closes the cursor, allowing the statement to be executed again.
-     *
-     * @return bool
-     */
-    public function closeCursor()
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Closesphp thephp cursorphp,php allowingphp thephp statementphp tophp bephp executedphp againphp.
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp closeCursorphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        oci_free_statement($this->_stmt);
-        $this->_stmt = false;
-        return true;
-    }
+php php php php php php php php ociphp_freephp_statementphp(php$thisphp-php>php_stmtphp)php;
+php php php php php php php php php$thisphp-php>php_stmtphp php=php falsephp;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Returns the number of columns in the result set.
-     * Returns null if the statement has no result set metadata.
-     *
-     * @return int The number of columns.
-     */
-    public function columnCount()
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp columnsphp inphp thephp resultphp setphp.
+php php php php php php*php Returnsphp nullphp ifphp thephp statementphp hasphp nophp resultphp setphp metadataphp.
+php php php php php php*
+php php php php php php*php php@returnphp intphp Thephp numberphp ofphp columnsphp.
+php php php php php php*php/
+php php php php publicphp functionphp columnCountphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return oci_num_fields($this->_stmt);
-    }
-
-
-    /**
-     * Retrieves the error code, if any, associated with the last operation on
-     * the statement handle.
-     *
-     * @return string error code.
-     */
-    public function errorCode()
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
-
-        $error = oci_error($this->_stmt);
-
-        if (!$error) {
-            return false;
-        }
-
-        return $error['code'];
-    }
+php php php php php php php php returnphp ociphp_numphp_fieldsphp(php$thisphp-php>php_stmtphp)php;
+php php php php php}
 
 
-    /**
-     * Retrieves an array of error information, if any, associated with the
-     * last operation on the statement handle.
-     *
-     * @return array
-     */
-    public function errorInfo()
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp errorphp codephp,php ifphp anyphp,php associatedphp withphp thephp lastphp operationphp on
+php php php php php php*php thephp statementphp handlephp.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp errorphp codephp.
+php php php php php php*php/
+php php php php publicphp functionphp errorCodephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $error = oci_error($this->_stmt);
-        if (!$error) {
-            return false;
-        }
+php php php php php php php php php$errorphp php=php ociphp_errorphp(php$thisphp-php>php_stmtphp)php;
 
-        if (isset($error['sqltext'])) {
-            return array(
-                $error['code'],
-                $error['message'],
-                $error['offset'],
-                $error['sqltext'],
-            );
-        } else {
-            return array(
-                $error['code'],
-                $error['message'],
-            );
-        }
-    }
+php php php php php php php php ifphp php(php!php$errorphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$errorphp[php'codephp'php]php;
+php php php php php}
 
 
-    /**
-     * Executes a prepared statement.
-     *
-     * @param array $params OPTIONAL Values to bind to parameter placeholders.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function _execute(array $params = null)
-    {
-        $connection = $this->_adapter->getConnection();
+php php php php php/php*php*
+php php php php php php*php Retrievesphp anphp arrayphp ofphp errorphp informationphp,php ifphp anyphp,php associatedphp withphp the
+php php php php php php*php lastphp operationphp onphp thephp statementphp handlephp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp errorInfophp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if (!$this->_stmt) {
-            return false;
-        }
+php php php php php php php php php$errorphp php=php ociphp_errorphp(php$thisphp-php>php_stmtphp)php;
+php php php php php php php php ifphp php(php!php$errorphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if ($params !== null) {
-            if (!is_array($params)) {
-                $params = array($params);
-            }
-            $error = false;
-            foreach (array_keys($params) as $name) {
-                if (!@oci_bind_by_name($this->_stmt, $name, $params[$name], -1)) {
-                    $error = true;
-                    break;
-                }
-            }
-            if ($error) {
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                throw new Zend_Db_Statement_Oracle_Exception(oci_error($this->_stmt));
-            }
-        }
-
-        $retval = @oci_execute($this->_stmt, $this->_adapter->_getExecuteMode());
-        if ($retval === false) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception(oci_error($this->_stmt));
-        }
-
-        $this->_keys = Array();
-        if ($field_num = oci_num_fields($this->_stmt)) {
-            for ($i = 1; $i <= $field_num; $i++) {
-                $name = oci_field_name($this->_stmt, $i);
-                $this->_keys[] = $name;
-            }
-        }
-
-        $this->_values = Array();
-        if ($this->_keys) {
-            $this->_values = array_fill(0, count($this->_keys), null);
-        }
-
-        return $retval;
-    }
-
-    /**
-     * Fetches a row from the result set.
-     *
-     * @param int $style  OPTIONAL Fetch mode for this fetch operation.
-     * @param int $cursor OPTIONAL Absolute, relative, or other.
-     * @param int $offset OPTIONAL Number for absolute or relative cursors.
-     * @return mixed Array, object, or scalar depending on fetch mode.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetch($style = null, $cursor = null, $offset = null)
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
-
-        if ($style === null) {
-            $style = $this->_fetchMode;
-        }
-
-        $lob_as_string = $this->getLobAsString() ? OCI_RETURN_LOBS : 0;
-
-        switch ($style) {
-            case Zend_Db::FETCH_NUM:
-                $row = oci_fetch_array($this->_stmt, OCI_NUM | OCI_RETURN_NULLS | $lob_as_string);
-                break;
-            case Zend_Db::FETCH_ASSOC:
-                $row = oci_fetch_array($this->_stmt, OCI_ASSOC | OCI_RETURN_NULLS | $lob_as_string);
-                break;
-            case Zend_Db::FETCH_BOTH:
-                $row = oci_fetch_array($this->_stmt, OCI_BOTH | OCI_RETURN_NULLS | $lob_as_string);
-                break;
-            case Zend_Db::FETCH_OBJ:
-                $row = oci_fetch_object($this->_stmt);
-                break;
-            case Zend_Db::FETCH_BOUND:
-                $row = oci_fetch_array($this->_stmt, OCI_BOTH | OCI_RETURN_NULLS | $lob_as_string);
-                if ($row !== false) {
-                    return $this->_fetchBound($row);
-                }
-                break;
-            default:
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                throw new Zend_Db_Statement_Oracle_Exception(
-                    array(
-                        'code'    => 'HYC00',
-                        'message' => "Invalid fetch mode '$style' specified"
-                    )
-                );
-                break;
-        }
-
-        if (! $row && $error = oci_error($this->_stmt)) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception($error);
-        }
-
-        if (is_array($row) && array_key_exists('zend_db_rownum', $row)) {
-            unset($row['zend_db_rownum']);
-        }
-
-        return $row;
-    }
-
-    /**
-     * Returns an array containing all of the result set rows.
-     *
-     * @param int $style OPTIONAL Fetch mode.
-     * @param int $col   OPTIONAL Column number, if fetch mode is by column.
-     * @return array Collection of rows, each in a format by the fetch mode.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetchAll($style = null, $col = 0)
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
-
-        // make sure we have a fetch mode
-        if ($style === null) {
-            $style = $this->_fetchMode;
-        }
-
-        $flags = OCI_FETCHSTATEMENT_BY_ROW;
-
-        switch ($style) {
-            case Zend_Db::FETCH_BOTH:
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                throw new Zend_Db_Statement_Oracle_Exception(
-                    array(
-                        'code'    => 'HYC00',
-                        'message' => "OCI8 driver does not support fetchAll(FETCH_BOTH), use fetch() in a loop instead"
-                    )
-                );
-                // notreached
-                $flags |= OCI_NUM;
-                $flags |= OCI_ASSOC;
-                break;
-            case Zend_Db::FETCH_NUM:
-                $flags |= OCI_NUM;
-                break;
-            case Zend_Db::FETCH_ASSOC:
-                $flags |= OCI_ASSOC;
-                break;
-            case Zend_Db::FETCH_OBJ:
-                break;
-            case Zend_Db::FETCH_COLUMN:
-                $flags = $flags &~ OCI_FETCHSTATEMENT_BY_ROW;
-                $flags |= OCI_FETCHSTATEMENT_BY_COLUMN;
-                $flags |= OCI_NUM;
-                break;
-            default:
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                throw new Zend_Db_Statement_Oracle_Exception(
-                    array(
-                        'code'    => 'HYC00',
-                        'message' => "Invalid fetch mode '$style' specified"
-                    )
-                );
-                break;
-        }
-
-        $result = Array();
-        if ($flags != OCI_FETCHSTATEMENT_BY_ROW) { /* not Zend_Db::FETCH_OBJ */
-            if (! ($rows = oci_fetch_all($this->_stmt, $result, 0, -1, $flags) )) {
-                if ($error = oci_error($this->_stmt)) {
-                    /**
-                     * @see Zend_Db_Adapter_Oracle_Exception
-                     */
-                    require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                    throw new Zend_Db_Statement_Oracle_Exception($error);
-                }
-                if (!$rows) {
-                    return array();
-                }
-            }
-            if ($style == Zend_Db::FETCH_COLUMN) {
-                $result = $result[$col];
-            }
-            foreach ($result as &$row) {
-                if (is_array($row) && array_key_exists('zend_db_rownum', $row)) {
-                    unset($row['zend_db_rownum']);
-                }
-            }
-        } else {
-            while (($row = oci_fetch_object($this->_stmt)) !== false) {
-                $result [] = $row;
-            }
-            if ($error = oci_error($this->_stmt)) {
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                throw new Zend_Db_Statement_Oracle_Exception($error);
-            }
-        }
-
-        return $result;
-    }
+php php php php php php php php ifphp php(issetphp(php$errorphp[php'sqltextphp'php]php)php)php php{
+php php php php php php php php php php php php returnphp arrayphp(
+php php php php php php php php php php php php php php php php php$errorphp[php'codephp'php]php,
+php php php php php php php php php php php php php php php php php$errorphp[php'messagephp'php]php,
+php php php php php php php php php php php php php php php php php$errorphp[php'offsetphp'php]php,
+php php php php php php php php php php php php php php php php php$errorphp[php'sqltextphp'php]php,
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp arrayphp(
+php php php php php php php php php php php php php php php php php$errorphp[php'codephp'php]php,
+php php php php php php php php php php php php php php php php php$errorphp[php'messagephp'php]php,
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Returns a single column from the next row of a result set.
-     *
-     * @param int $col OPTIONAL Position of the column to fetch.
-     * @return string
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetchColumn($col = 0)
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Executesphp aphp preparedphp statementphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$paramsphp OPTIONALphp Valuesphp tophp bindphp tophp parameterphp placeholdersphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_executephp(arrayphp php$paramsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$connectionphp php=php php$thisphp-php>php_adapterphp-php>getConnectionphp(php)php;
 
-        if (!oci_fetch($this->_stmt)) {
-            // if no error, there is simply no record
-            if (!$error = oci_error($this->_stmt)) {
-                return false;
-            }
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception($error);
-        }
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $data = oci_result($this->_stmt, $col+1); //1-based
-        if ($data === false) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception(oci_error($this->_stmt));
-        }
+php php php php php php php php ifphp php(php$paramsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$paramsphp)php)php php{
+php php php php php php php php php php php php php php php php php$paramsphp php=php arrayphp(php$paramsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$errorphp php=php falsephp;
+php php php php php php php php php php php php foreachphp php(arrayphp_keysphp(php$paramsphp)php asphp php$namephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!php@ociphp_bindphp_byphp_namephp(php$thisphp-php>php_stmtphp,php php$namephp,php php$paramsphp[php$namephp]php,php php-php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$errorphp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$errorphp)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($this->getLobAsString()) {
-            // instanceof doesn't allow '-', we must use a temporary string
-            $type = 'OCI-Lob';
-            if ($data instanceof $type) {
-                $data = $data->read($data->size());
-            }
-        }
+php php php php php php php php php$retvalphp php=php php@ociphp_executephp(php$thisphp-php>php_stmtphp,php php$thisphp-php>php_adapterphp-php>php_getExecuteModephp(php)php)php;
+php php php php php php php php ifphp php(php$retvalphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php;
+php php php php php php php php php}
 
-        return $data;
-    }
+php php php php php php php php php$thisphp-php>php_keysphp php=php Arrayphp(php)php;
+php php php php php php php php ifphp php(php$fieldphp_numphp php=php ociphp_numphp_fieldsphp(php$thisphp-php>php_stmtphp)php)php php{
+php php php php php php php php php php php php forphp php(php$iphp php=php php1php;php php$iphp <php=php php$fieldphp_numphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$namephp php=php ociphp_fieldphp_namephp(php$thisphp-php>php_stmtphp,php php$iphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_keysphp[php]php php=php php$namephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-    /**
-     * Fetches the next row and returns it as an object.
-     *
-     * @param string $class  OPTIONAL Name of the class to create.
-     * @param array  $config OPTIONAL Constructor arguments for the class.
-     * @return mixed One object instance of the specified class.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetchObject($class = 'stdClass', array $config = array())
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
+php php php php php php php php php$thisphp-php>php_valuesphp php=php Arrayphp(php)php;
+php php php php php php php php ifphp php(php$thisphp-php>php_keysphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_valuesphp php=php arrayphp_fillphp(php0php,php countphp(php$thisphp-php>php_keysphp)php,php nullphp)php;
+php php php php php php php php php}
 
-        $obj = oci_fetch_object($this->_stmt);
+php php php php php php php php returnphp php$retvalphp;
+php php php php php}
 
-        if ($error = oci_error($this->_stmt)) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception($error);
-        }
+php php php php php/php*php*
+php php php php php php*php Fetchesphp aphp rowphp fromphp thephp resultphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$stylephp php OPTIONALphp Fetchphp modephp forphp thisphp fetchphp operationphp.
+php php php php php php*php php@paramphp intphp php$cursorphp OPTIONALphp Absolutephp,php relativephp,php orphp otherphp.
+php php php php php php*php php@paramphp intphp php$offsetphp OPTIONALphp Numberphp forphp absolutephp orphp relativephp cursorsphp.
+php php php php php php*php php@returnphp mixedphp Arrayphp,php objectphp,php orphp scalarphp dependingphp onphp fetchphp modephp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchphp(php$stylephp php=php nullphp,php php$cursorphp php=php nullphp,php php$offsetphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        /* @todo XXX handle parameters */
+php php php php php php php php ifphp php(php$stylephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$stylephp php=php php$thisphp-php>php_fetchModephp;
+php php php php php php php php php}
 
-        return $obj;
-    }
+php php php php php php php php php$lobphp_asphp_stringphp php=php php$thisphp-php>getLobAsStringphp(php)php php?php OCIphp_RETURNphp_LOBSphp php:php php0php;
 
-    /**
-     * Retrieves the next rowset (result set) for a SQL statement that has
-     * multiple result sets.  An example is a stored procedure that returns
-     * the results of multiple queries.
-     *
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function nextRowset()
-    {
-        /**
-         * @see Zend_Db_Statement_Oracle_Exception
-         */
-        require_once 'Zend/Db/Statement/Oracle/Exception.php';
-        throw new Zend_Db_Statement_Oracle_Exception(
-            array(
-                'code'    => 'HYC00',
-                'message' => 'Optional feature not implemented'
-            )
-        );
-    }
+php php php php php php php php switchphp php(php$stylephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_NUMphp:
+php php php php php php php php php php php php php php php php php$rowphp php=php ociphp_fetchphp_arrayphp(php$thisphp-php>php_stmtphp,php OCIphp_NUMphp php|php OCIphp_RETURNphp_NULLSphp php|php php$lobphp_asphp_stringphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_ASSOCphp:
+php php php php php php php php php php php php php php php php php$rowphp php=php ociphp_fetchphp_arrayphp(php$thisphp-php>php_stmtphp,php OCIphp_ASSOCphp php|php OCIphp_RETURNphp_NULLSphp php|php php$lobphp_asphp_stringphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_BOTHphp:
+php php php php php php php php php php php php php php php php php$rowphp php=php ociphp_fetchphp_arrayphp(php$thisphp-php>php_stmtphp,php OCIphp_BOTHphp php|php OCIphp_RETURNphp_NULLSphp php|php php$lobphp_asphp_stringphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_OBJphp:
+php php php php php php php php php php php php php php php php php$rowphp php=php ociphp_fetchphp_objectphp(php$thisphp-php>php_stmtphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_BOUNDphp:
+php php php php php php php php php php php php php php php php php$rowphp php=php ociphp_fetchphp_arrayphp(php$thisphp-php>php_stmtphp,php OCIphp_BOTHphp php|php OCIphp_RETURNphp_NULLSphp php|php php$lobphp_asphp_stringphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$rowphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_fetchBoundphp(php$rowphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'codephp'php php php php php=php>php php'HYCphp0php0php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php'messagephp'php php=php>php php"Invalidphp fetchphp modephp php'php$stylephp'php specifiedphp"
+php php php php php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-    /**
-     * Returns the number of rows affected by the execution of the
-     * last INSERT, DELETE, or UPDATE statement executed by this
-     * statement object.
-     *
-     * @return int     The number of rows affected.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function rowCount()
-    {
-        if (!$this->_stmt) {
-            return false;
-        }
+php php php php php php php php ifphp php(php!php php$rowphp php&php&php php$errorphp php=php ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(php$errorphp)php;
+php php php php php php php php php}
 
-        $num_rows = oci_num_rows($this->_stmt);
+php php php php php php php php ifphp php(isphp_arrayphp(php$rowphp)php php&php&php arrayphp_keyphp_existsphp(php'zendphp_dbphp_rownumphp'php,php php$rowphp)php)php php{
+php php php php php php php php php php php php unsetphp(php$rowphp[php'zendphp_dbphp_rownumphp'php]php)php;
+php php php php php php php php php}
 
-        if ($num_rows === false) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Statement/Oracle/Exception.php';
-            throw new Zend_Db_Statement_Oracle_Exception(oci_error($this->_stmt));
-        }
+php php php php php php php php returnphp php$rowphp;
+php php php php php}
 
-        return $num_rows;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp containingphp allphp ofphp thephp resultphp setphp rowsphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$stylephp OPTIONALphp Fetchphp modephp.
+php php php php php php*php php@paramphp intphp php$colphp php php OPTIONALphp Columnphp numberphp,php ifphp fetchphp modephp isphp byphp columnphp.
+php php php php php php*php php@returnphp arrayphp Collectionphp ofphp rowsphp,php eachphp inphp aphp formatphp byphp thephp fetchphp modephp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchAllphp(php$stylephp php=php nullphp,php php$colphp php=php php0php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-}
+php php php php php php php php php/php/php makephp surephp wephp havephp aphp fetchphp mode
+php php php php php php php php ifphp php(php$stylephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$stylephp php=php php$thisphp-php>php_fetchModephp;
+php php php php php php php php php}
+
+php php php php php php php php php$flagsphp php=php OCIphp_FETCHSTATEMENTphp_BYphp_ROWphp;
+
+php php php php php php php php switchphp php(php$stylephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_BOTHphp:
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'codephp'php php php php php=php>php php'HYCphp0php0php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php'messagephp'php php=php>php php"OCIphp8php driverphp doesphp notphp supportphp fetchAllphp(FETCHphp_BOTHphp)php,php usephp fetchphp(php)php inphp aphp loopphp insteadphp"
+php php php php php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php/php/php notreached
+php php php php php php php php php php php php php php php php php$flagsphp php|php=php OCIphp_NUMphp;
+php php php php php php php php php php php php php php php php php$flagsphp php|php=php OCIphp_ASSOCphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_NUMphp:
+php php php php php php php php php php php php php php php php php$flagsphp php|php=php OCIphp_NUMphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_ASSOCphp:
+php php php php php php php php php php php php php php php php php$flagsphp php|php=php OCIphp_ASSOCphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_OBJphp:
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_COLUMNphp:
+php php php php php php php php php php php php php php php php php$flagsphp php=php php$flagsphp php&php~php OCIphp_FETCHSTATEMENTphp_BYphp_ROWphp;
+php php php php php php php php php php php php php php php php php$flagsphp php|php=php OCIphp_FETCHSTATEMENTphp_BYphp_COLUMNphp;
+php php php php php php php php php php php php php php php php php$flagsphp php|php=php OCIphp_NUMphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'codephp'php php php php php=php>php php'HYCphp0php0php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php'messagephp'php php=php>php php"Invalidphp fetchphp modephp php'php$stylephp'php specifiedphp"
+php php php php php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+
+php php php php php php php php php$resultphp php=php Arrayphp(php)php;
+php php php php php php php php ifphp php(php$flagsphp php!php=php OCIphp_FETCHSTATEMENTphp_BYphp_ROWphp)php php{php php/php*php notphp Zendphp_Dbphp:php:FETCHphp_OBJphp php*php/
+php php php php php php php php php php php php ifphp php(php!php php(php$rowsphp php=php ociphp_fetchphp_allphp(php$thisphp-php>php_stmtphp,php php$resultphp,php php0php,php php-php1php,php php$flagsphp)php php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$errorphp php=php ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(php$errorphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php!php$rowsphp)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp arrayphp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$stylephp php=php=php Zendphp_Dbphp:php:FETCHphp_COLUMNphp)php php{
+php php php php php php php php php php php php php php php php php$resultphp php=php php$resultphp[php$colphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php foreachphp php(php$resultphp asphp php&php$rowphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$rowphp)php php&php&php arrayphp_keyphp_existsphp(php'zendphp_dbphp_rownumphp'php,php php$rowphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$rowphp[php'zendphp_dbphp_rownumphp'php]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php whilephp php(php(php$rowphp php=php ociphp_fetchphp_objectphp(php$thisphp-php>php_stmtphp)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$resultphp php[php]php php=php php$rowphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$errorphp php=php ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(php$errorphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp singlephp columnphp fromphp thephp nextphp rowphp ofphp aphp resultphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$colphp OPTIONALphp Positionphp ofphp thephp columnphp tophp fetchphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchColumnphp(php$colphp php=php php0php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!ociphp_fetchphp(php$thisphp-php>php_stmtphp)php)php php{
+php php php php php php php php php php php php php/php/php ifphp nophp errorphp,php therephp isphp simplyphp nophp record
+php php php php php php php php php php php php ifphp php(php!php$errorphp php=php ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(php$errorphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$dataphp php=php ociphp_resultphp(php$thisphp-php>php_stmtphp,php php$colphp+php1php)php;php php/php/php1php-based
+php php php php php php php php ifphp php(php$dataphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>getLobAsStringphp(php)php)php php{
+php php php php php php php php php php php php php/php/php instanceofphp doesnphp'tphp allowphp php'php-php'php,php wephp mustphp usephp aphp temporaryphp string
+php php php php php php php php php php php php php$typephp php=php php'OCIphp-Lobphp'php;
+php php php php php php php php php php php php ifphp php(php$dataphp instanceofphp php$typephp)php php{
+php php php php php php php php php php php php php php php php php$dataphp php=php php$dataphp-php>readphp(php$dataphp-php>sizephp(php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchesphp thephp nextphp rowphp andphp returnsphp itphp asphp anphp objectphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$classphp php OPTIONALphp Namephp ofphp thephp classphp tophp createphp.
+php php php php php php*php php@paramphp arrayphp php php$configphp OPTIONALphp Constructorphp argumentsphp forphp thephp classphp.
+php php php php php php*php php@returnphp mixedphp Onephp objectphp instancephp ofphp thephp specifiedphp classphp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchObjectphp(php$classphp php=php php'stdClassphp'php,php arrayphp php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php$objphp php=php ociphp_fetchphp_objectphp(php$thisphp-php>php_stmtphp)php;
+
+php php php php php php php php ifphp php(php$errorphp php=php ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(php$errorphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php php@todophp XXXphp handlephp parametersphp php*php/
+
+php php php php php php php php returnphp php$objphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp nextphp rowsetphp php(resultphp setphp)php forphp aphp SQLphp statementphp thatphp has
+php php php php php php*php multiplephp resultphp setsphp.php php Anphp examplephp isphp aphp storedphp procedurephp thatphp returns
+php php php php php php*php thephp resultsphp ofphp multiplephp queriesphp.
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp nextRowsetphp(php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Statementphp_Oraclephp_Exception
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(
+php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php'codephp'php php php php php=php>php php'HYCphp0php0php'php,
+php php php php php php php php php php php php php php php php php'messagephp'php php=php>php php'Optionalphp featurephp notphp implementedphp'
+php php php php php php php php php php php php php)
+php php php php php php php php php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp rowsphp affectedphp byphp thephp executionphp ofphp the
+php php php php php php*php lastphp INSERTphp,php DELETEphp,php orphp UPDATEphp statementphp executedphp byphp this
+php php php php php php*php statementphp objectphp.
+php php php php php php*
+php php php php php php*php php@returnphp intphp php php php php Thephp numberphp ofphp rowsphp affectedphp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp rowCountphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_stmtphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php$numphp_rowsphp php=php ociphp_numphp_rowsphp(php$thisphp-php>php_stmtphp)php;
+
+php php php php php php php php ifphp php(php$numphp_rowsphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$thisphp-php>php_stmtphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$numphp_rowsphp;
+php php php php php}
+
+php}

@@ -1,404 +1,404 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Size.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Sizephp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * Validator for the maximum size of a file up to a max of 2GB
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_File_Size extends Zend_Validate_Abstract
-{
-    /**#@+
-     * @const string Error constants
-     */
-    const TOO_BIG   = 'fileSizeTooBig';
-    const TOO_SMALL = 'fileSizeTooSmall';
-    const NOT_FOUND = 'fileSizeNotFound';
-    /**#@-*/
+php/php*php*
+php php*php Validatorphp forphp thephp maximumphp sizephp ofphp aphp filephp upphp tophp aphp maxphp ofphp php2GB
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Filephp_Sizephp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php php/php*php*php#php@php+
+php php php php php php*php php@constphp stringphp Errorphp constants
+php php php php php php*php/
+php php php php constphp TOOphp_BIGphp php php php=php php'fileSizeTooBigphp'php;
+php php php php constphp TOOphp_SMALLphp php=php php'fileSizeTooSmallphp'php;
+php php php php constphp NOTphp_FOUNDphp php=php php'fileSizeNotFoundphp'php;
+php php php php php/php*php*php#php@php-php*php/
 
-    /**
-     * @var array Error message templates
-     */
-    protected $_messageTemplates = array(
-        self::TOO_BIG   => "Maximum allowed size for file '%value%' is '%max%' but '%size%' detected",
-        self::TOO_SMALL => "Minimum expected size for file '%value%' is '%min%' but '%size%' detected",
-        self::NOT_FOUND => "File '%value%' is not readable or does not exist",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templates
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:TOOphp_BIGphp php php php=php>php php"Maximumphp allowedphp sizephp forphp filephp php'php%valuephp%php'php isphp php'php%maxphp%php'php butphp php'php%sizephp%php'php detectedphp"php,
+php php php php php php php php selfphp:php:TOOphp_SMALLphp php=php>php php"Minimumphp expectedphp sizephp forphp filephp php'php%valuephp%php'php isphp php'php%minphp%php'php butphp php'php%sizephp%php'php detectedphp"php,
+php php php php php php php php selfphp:php:NOTphp_FOUNDphp php=php>php php"Filephp php'php%valuephp%php'php isphp notphp readablephp orphp doesphp notphp existphp"php,
+php php php php php)php;
 
-    /**
-     * @var array Error message template variables
-     */
-    protected $_messageVariables = array(
-        'min'  => '_min',
-        'max'  => '_max',
-        'size' => '_size',
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templatephp variables
+php php php php php php*php/
+php php php php protectedphp php$php_messageVariablesphp php=php arrayphp(
+php php php php php php php php php'minphp'php php php=php>php php'php_minphp'php,
+php php php php php php php php php'maxphp'php php php=php>php php'php_maxphp'php,
+php php php php php php php php php'sizephp'php php=php>php php'php_sizephp'php,
+php php php php php)php;
 
-    /**
-     * Minimum filesize
-     * @var integer
-     */
-    protected $_min;
+php php php php php/php*php*
+php php php php php php*php Minimumphp filesize
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_minphp;
 
-    /**
-     * Maximum filesize
-     *
-     * If null, there is no maximum filesize
-     *
-     * @var integer|null
-     */
-    protected $_max;
+php php php php php/php*php*
+php php php php php php*php Maximumphp filesize
+php php php php php php*
+php php php php php php*php Ifphp nullphp,php therephp isphp nophp maximumphp filesize
+php php php php php php*
+php php php php php php*php php@varphp integerphp|null
+php php php php php php*php/
+php php php php protectedphp php$php_maxphp;
 
-    /**
-     * Detected size
-     *
-     * @var integer
-     */
-    protected $_size;
+php php php php php/php*php*
+php php php php php php*php Detectedphp size
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_sizephp;
 
-    /**
-     * Use bytestring ?
-     *
-     * @var boolean
-     */
-    protected $_useByteString = true;
+php php php php php/php*php*
+php php php php php php*php Usephp bytestringphp php?
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_useByteStringphp php=php truephp;
 
-    /**
-     * Sets validator options
-     *
-     * If $options is a integer, it will be used as maximum filesize
-     * As Array is accepts the following keys:
-     * 'min': Minimum filesize
-     * 'max': Maximum filesize
-     * 'bytestring': Use bytestring or real size for messages
-     *
-     * @param  integer|array $options Options for the adapter
-     */
-    public function __construct($options)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } elseif (is_string($options) || is_numeric($options)) {
-            $options = array('max' => $options);
-        } elseif (!is_array($options)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception ('Invalid options to validator provided');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp validatorphp options
+php php php php php php*
+php php php php php php*php Ifphp php$optionsphp isphp aphp integerphp,php itphp willphp bephp usedphp asphp maximumphp filesize
+php php php php php php*php Asphp Arrayphp isphp acceptsphp thephp followingphp keysphp:
+php php php php php php*php php'minphp'php:php Minimumphp filesize
+php php php php php php*php php'maxphp'php:php Maximumphp filesize
+php php php php php php*php php'bytestringphp'php:php Usephp bytestringphp orphp realphp sizephp forphp messages
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp|arrayphp php$optionsphp Optionsphp forphp thephp adapter
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$optionsphp)php php|php|php isphp_numericphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'maxphp'php php=php>php php$optionsphp)php;
+php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp php(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
+php php php php php php php php php}
 
-        if (1 < func_num_args()) {
-            $argv = func_get_args();
-            array_shift($argv);
-            $options['max'] = array_shift($argv);
-            if (!empty($argv)) {
-                $options['bytestring'] = array_shift($argv);
-            }
-        }
+php php php php php php php php ifphp php(php1php <php funcphp_numphp_argsphp(php)php)php php{
+php php php php php php php php php php php php php$argvphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php php$optionsphp[php'maxphp'php]php php=php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argvphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'bytestringphp'php]php php=php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (isset($options['bytestring'])) {
-            $this->setUseByteString($options['bytestring']);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'bytestringphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setUseByteStringphp(php$optionsphp[php'bytestringphp'php]php)php;
+php php php php php php php php php}
 
-        if (isset($options['min'])) {
-            $this->setMin($options['min']);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'minphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMinphp(php$optionsphp[php'minphp'php]php)php;
+php php php php php php php php php}
 
-        if (isset($options['max'])) {
-            $this->setMax($options['max']);
-        }
-    }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'maxphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMaxphp(php$optionsphp[php'maxphp'php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the minimum filesize
-     *
-     * @param  boolean $byteString Use bytestring ?
-     * @return integer
-     */
-    public function setUseByteString($byteString = true)
-    {
-        $this->_useByteString = (bool) $byteString;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp minimumphp filesize
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$byteStringphp Usephp bytestringphp php?
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp setUseByteStringphp(php$byteStringphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_useByteStringphp php=php php(boolphp)php php$byteStringphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Will bytestring be used?
-     *
-     * @return boolean
-     */
-    public function useByteString()
-    {
-        return $this->_useByteString;
-    }
+php php php php php/php*php*
+php php php php php php*php Willphp bytestringphp bephp usedphp?
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp useByteStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_useByteStringphp;
+php php php php php}
 
-    /**
-     * Returns the minimum filesize
-     *
-     * @param  bool $raw Whether or not to force return of the raw value (defaults off)
-     * @return integer|string
-     */
-    public function getMin($raw = false)
-    {
-        $min = $this->_min;
-        if (!$raw && $this->useByteString()) {
-            $min = $this->_toByteString($min);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp minimumphp filesize
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$rawphp Whetherphp orphp notphp tophp forcephp returnphp ofphp thephp rawphp valuephp php(defaultsphp offphp)
+php php php php php php*php php@returnphp integerphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getMinphp(php$rawphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$minphp php=php php$thisphp-php>php_minphp;
+php php php php php php php php ifphp php(php!php$rawphp php&php&php php$thisphp-php>useByteStringphp(php)php)php php{
+php php php php php php php php php php php php php$minphp php=php php$thisphp-php>php_toByteStringphp(php$minphp)php;
+php php php php php php php php php}
 
-        return $min;
-    }
+php php php php php php php php returnphp php$minphp;
+php php php php php}
 
-    /**
-     * Sets the minimum filesize
-     *
-     * @param  integer $min The minimum filesize
-     * @throws Zend_Validate_Exception When min is greater than max
-     * @return Zend_Validate_File_Size Provides a fluent interface
-     */
-    public function setMin($min)
-    {
-        if (!is_string($min) and !is_numeric($min)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception ('Invalid options to validator provided');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp minimumphp filesize
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$minphp Thephp minimumphp filesize
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp Whenphp minphp isphp greaterphp thanphp max
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Sizephp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setMinphp(php$minphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$minphp)php andphp php!isphp_numericphp(php$minphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp php(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
+php php php php php php php php php}
 
-        $min = (integer) $this->_fromByteString($min);
-        $max = $this->getMax(true);
-        if (($max !== null) && ($min > $max)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception("The minimum must be less than or equal to the maximum filesize, but $min >"
-                                            . " $max");
-        }
+php php php php php php php php php$minphp php=php php(integerphp)php php$thisphp-php>php_fromByteStringphp(php$minphp)php;
+php php php php php php php php php$maxphp php=php php$thisphp-php>getMaxphp(truephp)php;
+php php php php php php php php ifphp php(php(php$maxphp php!php=php=php nullphp)php php&php&php php(php$minphp php>php php$maxphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp minimumphp mustphp bephp lessphp thanphp orphp equalphp tophp thephp maximumphp filesizephp,php butphp php$minphp php>php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php php$maxphp"php)php;
+php php php php php php php php php}
 
-        $this->_min = $min;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_minphp php=php php$minphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the maximum filesize
-     *
-     * @param  bool $raw Whether or not to force return of the raw value (defaults off)
-     * @return integer|string
-     */
-    public function getMax($raw = false)
-    {
-        $max = $this->_max;
-        if (!$raw && $this->useByteString()) {
-            $max = $this->_toByteString($max);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp maximumphp filesize
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$rawphp Whetherphp orphp notphp tophp forcephp returnphp ofphp thephp rawphp valuephp php(defaultsphp offphp)
+php php php php php php*php php@returnphp integerphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getMaxphp(php$rawphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$maxphp php=php php$thisphp-php>php_maxphp;
+php php php php php php php php ifphp php(php!php$rawphp php&php&php php$thisphp-php>useByteStringphp(php)php)php php{
+php php php php php php php php php php php php php$maxphp php=php php$thisphp-php>php_toByteStringphp(php$maxphp)php;
+php php php php php php php php php}
 
-        return $max;
-    }
+php php php php php php php php returnphp php$maxphp;
+php php php php php}
 
-    /**
-     * Sets the maximum filesize
-     *
-     * @param  integer $max The maximum filesize
-     * @throws Zend_Validate_Exception When max is smaller than min
-     * @return Zend_Validate_StringLength Provides a fluent interface
-     */
-    public function setMax($max)
-    {
-        if (!is_string($max) && !is_numeric($max)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception ('Invalid options to validator provided');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp maximumphp filesize
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$maxphp Thephp maximumphp filesize
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp Whenphp maxphp isphp smallerphp thanphp min
+php php php php php php*php php@returnphp Zendphp_Validatephp_StringLengthphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setMaxphp(php$maxphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$maxphp)php php&php&php php!isphp_numericphp(php$maxphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp php(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
+php php php php php php php php php}
 
-        $max = (integer) $this->_fromByteString($max);
-        $min = $this->getMin(true);
-        if (($min !== null) && ($max < $min)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception("The maximum must be greater than or equal to the minimum filesize, but "
-                                            . "$max < $min");
-        }
+php php php php php php php php php$maxphp php=php php(integerphp)php php$thisphp-php>php_fromByteStringphp(php$maxphp)php;
+php php php php php php php php php$minphp php=php php$thisphp-php>getMinphp(truephp)php;
+php php php php php php php php ifphp php(php(php$minphp php!php=php=php nullphp)php php&php&php php(php$maxphp <php php$minphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp maximumphp mustphp bephp greaterphp thanphp orphp equalphp tophp thephp minimumphp filesizephp,php butphp php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php$maxphp <php php$minphp"php)php;
+php php php php php php php php php}
 
-        $this->_max = $max;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_maxphp php=php php$maxphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve current detected file size
-     *
-     * @return int
-     */
-    protected function _getSize()
-    {
-        return $this->_size;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp currentphp detectedphp filephp size
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php protectedphp functionphp php_getSizephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_sizephp;
+php php php php php}
 
-    /**
-     * Set current size
-     *
-     * @param  int $size
-     * @return Zend_Validate_File_Size
-     */
-    protected function _setSize($size)
-    {
-        $this->_size = $size;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp currentphp size
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$size
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Size
+php php php php php php*php/
+php php php php protectedphp functionphp php_setSizephp(php$sizephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_sizephp php=php php$sizephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if and only if the filesize of $value is at least min and
-     * not bigger than max (when max is not null).
-     *
-     * @param  string $value Real file to check for size
-     * @param  array  $file  File data from Zend_File_Transfer
-     * @return boolean
-     */
-    public function isValid($value, $file = null)
-    {
-        // Is file readable ?
-        require_once 'Zend/Loader.php';
-        if (!Zend_Loader::isReadable($value)) {
-            return $this->_throw($file, self::NOT_FOUND);
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp filesizephp ofphp php$valuephp isphp atphp leastphp minphp and
+php php php php php php*php notphp biggerphp thanphp maxphp php(whenphp maxphp isphp notphp nullphp)php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Realphp filephp tophp checkphp forphp size
+php php php php php php*php php@paramphp php arrayphp php php$filephp php Filephp dataphp fromphp Zendphp_Filephp_Transfer
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$filephp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Isphp filephp readablephp php?
+php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php ifphp php(php!Zendphp_Loaderphp:php:isReadablephp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_FOUNDphp)php;
+php php php php php php php php php}
 
-        // limited to 4GB files
-        $size        = sprintf("%u", @filesize($value));
-        $this->_size = $size;
+php php php php php php php php php/php/php limitedphp tophp php4GBphp files
+php php php php php php php php php$sizephp php php php php php php php php=php sprintfphp(php"php%uphp"php,php php@filesizephp(php$valuephp)php)php;
+php php php php php php php php php$thisphp-php>php_sizephp php=php php$sizephp;
 
-        // Check to see if it's smaller than min size
-        $min = $this->getMin(true);
-        $max = $this->getMax(true);
-        if (($min !== null) && ($size < $min)) {
-            if ($this->useByteString()) {
-                $this->_min  = $this->_toByteString($min);
-                $this->_size = $this->_toByteString($size);
-                $this->_throw($file, self::TOO_SMALL);
-                $this->_min  = $min;
-                $this->_size = $size;
-            } else {
-                $this->_throw($file, self::TOO_SMALL);
-            }
-        }
+php php php php php php php php php/php/php Checkphp tophp seephp ifphp itphp'sphp smallerphp thanphp minphp size
+php php php php php php php php php$minphp php=php php$thisphp-php>getMinphp(truephp)php;
+php php php php php php php php php$maxphp php=php php$thisphp-php>getMaxphp(truephp)php;
+php php php php php php php php ifphp php(php(php$minphp php!php=php=php nullphp)php php&php&php php(php$sizephp <php php$minphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>useByteStringphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_minphp php php=php php$thisphp-php>php_toByteStringphp(php$minphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$thisphp-php>php_toByteStringphp(php$sizephp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_SMALLphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_minphp php php=php php$minphp;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$sizephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_SMALLphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // Check to see if it's larger than max size
-        if (($max !== null) && ($max < $size)) {
-            if ($this->useByteString()) {
-                $this->_max  = $this->_toByteString($max);
-                $this->_size = $this->_toByteString($size);
-                $this->_throw($file, self::TOO_BIG);
-                $this->_max  = $max;
-                $this->_size = $size;
-            } else {
-                $this->_throw($file, self::TOO_BIG);
-            }
-        }
+php php php php php php php php php/php/php Checkphp tophp seephp ifphp itphp'sphp largerphp thanphp maxphp size
+php php php php php php php php ifphp php(php(php$maxphp php!php=php=php nullphp)php php&php&php php(php$maxphp <php php$sizephp)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>useByteStringphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_maxphp php php=php php$thisphp-php>php_toByteStringphp(php$maxphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$thisphp-php>php_toByteStringphp(php$sizephp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_BIGphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_maxphp php php=php php$maxphp;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$sizephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_BIGphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (count($this->_messages) > 0) {
-            return false;
-        }
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_messagesphp)php php>php php0php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Returns the formatted size
-     *
-     * @param  integer $size
-     * @return string
-     */
-    protected function _toByteString($size)
-    {
-        $sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-        for ($i=0; $size >= 1024 && $i < 9; $i++) {
-            $size /= 1024;
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp formattedphp size
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$size
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_toByteStringphp(php$sizephp)
+php php php php php{
+php php php php php php php php php$sizesphp php=php arrayphp(php'Bphp'php,php php'kBphp'php,php php'MBphp'php,php php'GBphp'php,php php'TBphp'php,php php'PBphp'php,php php'EBphp'php,php php'ZBphp'php,php php'YBphp'php)php;
+php php php php php php php php forphp php(php$iphp=php0php;php php$sizephp php>php=php php1php0php2php4php php&php&php php$iphp <php php9php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php$sizephp php/php=php php1php0php2php4php;
+php php php php php php php php php}
 
-        return round($size, 2) . $sizes[$i];
-    }
+php php php php php php php php returnphp roundphp(php$sizephp,php php2php)php php.php php$sizesphp[php$iphp]php;
+php php php php php}
 
-    /**
-     * Returns the unformatted size
-     *
-     * @param  string $size
-     * @return integer
-     */
-    protected function _fromByteString($size)
-    {
-        if (is_numeric($size)) {
-            return (integer) $size;
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp unformattedphp size
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$size
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php protectedphp functionphp php_fromByteStringphp(php$sizephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_numericphp(php$sizephp)php)php php{
+php php php php php php php php php php php php returnphp php(integerphp)php php$sizephp;
+php php php php php php php php php}
 
-        $type  = trim(substr($size, -2, 1));
+php php php php php php php php php$typephp php php=php trimphp(substrphp(php$sizephp,php php-php2php,php php1php)php)php;
 
-        $value = substr($size, 0, -1);
-        if (!is_numeric($value)) {
-            $value = substr($value, 0, -1);
-        }
+php php php php php php php php php$valuephp php=php substrphp(php$sizephp,php php0php,php php-php1php)php;
+php php php php php php php php ifphp php(php!isphp_numericphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$valuephp php=php substrphp(php$valuephp,php php0php,php php-php1php)php;
+php php php php php php php php php}
 
-        switch (strtoupper($type)) {
-            case 'Y':
-                $value *= (1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024);
-                break;
-            case 'Z':
-                $value *= (1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024);
-                break;
-            case 'E':
-                $value *= (1024 * 1024 * 1024 * 1024 * 1024 * 1024);
-                break;
-            case 'P':
-                $value *= (1024 * 1024 * 1024 * 1024 * 1024);
-                break;
-            case 'T':
-                $value *= (1024 * 1024 * 1024 * 1024);
-                break;
-            case 'G':
-                $value *= (1024 * 1024 * 1024);
-                break;
-            case 'M':
-                $value *= (1024 * 1024);
-                break;
-            case 'K':
-                $value *= 1024;
-                break;
-            default:
-                break;
-        }
+php php php php php php php php switchphp php(strtoupperphp(php$typephp)php)php php{
+php php php php php php php php php php php php casephp php'Yphp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php(php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Zphp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php(php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Ephp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php(php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Pphp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php(php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Tphp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php(php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Gphp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php(php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Mphp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php(php1php0php2php4php php*php php1php0php2php4php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Kphp'php:
+php php php php php php php php php php php php php php php php php$valuephp php*php=php php1php0php2php4php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-        return $value;
-    }
+php php php php php php php php returnphp php$valuephp;
+php php php php php}
 
-    /**
-     * Throws an error of the given type
-     *
-     * @param  string $file
-     * @param  string $errorType
-     * @return false
-     */
-    protected function _throw($file, $errorType)
-    {
-        if ($file !== null) {
-            $this->_value = $file['name'];
-        }
+php php php php php/php*php*
+php php php php php php*php Throwsphp anphp errorphp ofphp thephp givenphp type
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$file
+php php php php php php*php php@paramphp php stringphp php$errorType
+php php php php php php*php php@returnphp false
+php php php php php php*php/
+php php php php protectedphp functionphp php_throwphp(php$filephp,php php$errorTypephp)
+php php php php php{
+php php php php php php php php ifphp php(php$filephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_valuephp php=php php$filephp[php'namephp'php]php;
+php php php php php php php php php}
 
-        $this->_error($errorType);
-        return false;
-    }
-}
+php php php php php php php php php$thisphp-php>php_errorphp(php$errorTypephp)php;
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

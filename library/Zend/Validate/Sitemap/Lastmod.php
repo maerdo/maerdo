@@ -1,88 +1,88 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @subpackage Sitemap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Lastmod.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@subpackagephp Sitemap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Lastmodphp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * Validates whether a given value is valid as a sitemap <lastmod> value
- *
- * @link       http://www.sitemaps.org/protocol.php Sitemaps XML format
- *
- * @category   Zend
- * @package    Zend_Validate
- * @subpackage Sitemap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_Sitemap_Lastmod extends Zend_Validate_Abstract
-{
-    /**
-     * Regular expression to use when validating
-     *
-     */
-    const LASTMOD_REGEX = '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])(T([0-1][0-9]|2[0-3])(:[0-5][0-9])(:[0-5][0-9])?(\\+|-)([0-1][0-9]|2[0-3]):[0-5][0-9])?$/';
+php/php*php*
+php php*php Validatesphp whetherphp aphp givenphp valuephp isphp validphp asphp aphp sitemapphp php<lastmodphp>php value
+php php*
+php php*php php@linkphp php php php php php php httpphp:php/php/wwwphp.sitemapsphp.orgphp/protocolphp.phpphp Sitemapsphp XMLphp format
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@subpackagephp Sitemap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Sitemapphp_Lastmodphp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Regularphp expressionphp tophp usephp whenphp validating
+php php php php php php*
+php php php php php php*php/
+php php php php constphp LASTMODphp_REGEXphp php=php php'php/php^php[php0php-php9php]php{php4php}php-php(php0php[php1php-php9php]php|php1php[php0php-php2php]php)php-php(php0php[php1php-php9php]php|php[php1php-php2php]php[php0php-php9php]php|php3php[php0php-php1php]php)php(Tphp(php[php0php-php1php]php[php0php-php9php]php|php2php[php0php-php3php]php)php(php:php[php0php-php5php]php[php0php-php9php]php)php(php:php[php0php-php5php]php[php0php-php9php]php)php?php(php\php\php+php|php-php)php(php[php0php-php1php]php[php0php-php9php]php|php2php[php0php-php3php]php)php:php[php0php-php5php]php[php0php-php9php]php)php?php$php/php'php;
 
-    /**
-     * Validation key for not valid
-     *
-     */
-    const NOT_VALID = 'sitemapLastmodNotValid';
-    const INVALID   = 'sitemapLastmodInvalid';
+php php php php php/php*php*
+php php php php php php*php Validationphp keyphp forphp notphp valid
+php php php php php php*
+php php php php php php*php/
+php php php php constphp NOTphp_VALIDphp php=php php'sitemapLastmodNotValidphp'php;
+php php php php constphp INVALIDphp php php php=php php'sitemapLastmodInvalidphp'php;
 
-    /**
-     * Validation failure message template definitions
-     *
-     * @var array
-     */
-    protected $_messageTemplates = array(
-        self::NOT_VALID => "'%value%' is no valid sitemap lastmod",
-        self::INVALID   => "Invalid type given. String expected",
-    );
+php php php php php/php*php*
+php php php php php php*php Validationphp failurephp messagephp templatephp definitions
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:NOTphp_VALIDphp php=php>php php"php'php%valuephp%php'php isphp nophp validphp sitemapphp lastmodphp"php,
+php php php php php php php php selfphp:php:INVALIDphp php php php=php>php php"Invalidphp typephp givenphp.php Stringphp expectedphp"php,
+php php php php php)php;
 
-    /**
-     * Validates if a string is valid as a sitemap lastmod
-     *
-     * @link http://www.sitemaps.org/protocol.php#lastmoddef <lastmod>
-     *
-     * @param  string  $value  value to validate
-     * @return boolean
-     */
-    public function isValid($value)
-    {
-        if (!is_string($value)) {
-            $this->_error(self::INVALID);
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Validatesphp ifphp aphp stringphp isphp validphp asphp aphp sitemapphp lastmod
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/wwwphp.sitemapsphp.orgphp/protocolphp.phpphp#lastmoddefphp php<lastmodphp>
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$valuephp php valuephp tophp validate
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $this->_setValue($value);
-        $result = @preg_match(self::LASTMOD_REGEX, $value);
-        if ($result != 1) {
-            $this->_error(self::NOT_VALID);
-            return false;
-        }
+php php php php php php php php php$thisphp-php>php_setValuephp(php$valuephp)php;
+php php php php php php php php php$resultphp php=php php@pregphp_matchphp(selfphp:php:LASTMODphp_REGEXphp,php php$valuephp)php;
+php php php php php php php php ifphp php(php$resultphp php!php=php php1php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:NOTphp_VALIDphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
-}
+php php php php php php php php returnphp truephp;
+php php php php php}
+php}

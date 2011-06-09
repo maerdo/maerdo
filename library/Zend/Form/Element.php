@@ -1,2250 +1,2250 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/** @see Zend_Filter */
-require_once 'Zend/Filter.php';
-
-/** @see Zend_Form */
-require_once 'Zend/Form.php';
-
-/** @see Zend_Validate_Interface */
-require_once 'Zend/Validate/Interface.php';
-
-/** @see Zend_Validate_Abstract */
-require_once 'Zend/Validate/Abstract.php';
-
-/**
- * Zend_Form_Element
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Element
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Element.php 22464 2010-06-19 17:31:21Z alab $
- */
-class Zend_Form_Element implements Zend_Validate_Interface
-{
-    /**
-     * Element Constants
-     */
-    const DECORATOR = 'DECORATOR';
-    const FILTER    = 'FILTER';
-    const VALIDATE  = 'VALIDATE';
-
-    /**
-     * Default view helper to use
-     * @var string
-     */
-    public $helper = 'formText';
-
-    /**
-     * 'Allow empty' flag
-     * @var bool
-     */
-    protected $_allowEmpty = true;
-
-    /**
-     * Flag indicating whether or not to insert NotEmpty validator when element is required
-     * @var bool
-     */
-    protected $_autoInsertNotEmptyValidator = true;
-
-    /**
-     * Array to which element belongs
-     * @var string
-     */
-    protected $_belongsTo;
-
-    /**
-     * Element decorators
-     * @var array
-     */
-    protected $_decorators = array();
-
-    /**
-     * Element description
-     * @var string
-     */
-    protected $_description;
-
-    /**
-     * Should we disable loading the default decorators?
-     * @var bool
-     */
-    protected $_disableLoadDefaultDecorators = false;
-
-    /**
-     * Custom error messages
-     * @var array
-     */
-    protected $_errorMessages = array();
-
-    /**
-     * Validation errors
-     * @var array
-     */
-    protected $_errors = array();
-
-    /**
-     * Separator to use when concatenating aggregate error messages (for
-     * elements having array values)
-     * @var string
-     */
-    protected $_errorMessageSeparator = '; ';
-
-    /**
-     * Element filters
-     * @var array
-     */
-    protected $_filters = array();
-
-    /**
-     * Ignore flag (used when retrieving values at form level)
-     * @var bool
-     */
-    protected $_ignore = false;
-
-    /**
-     * Does the element represent an array?
-     * @var bool
-     */
-    protected $_isArray = false;
-
-    /**
-     * Is the error marked as in an invalid state?
-     * @var bool
-     */
-    protected $_isError = false;
-
-    /**
-     * Has the element been manually marked as invalid?
-     * @var bool
-     */
-    protected $_isErrorForced = false;
-
-    /**
-     * Element label
-     * @var string
-     */
-    protected $_label;
-
-    /**
-     * Plugin loaders for filter and validator chains
-     * @var array
-     */
-    protected $_loaders = array();
-
-    /**
-     * Formatted validation error messages
-     * @var array
-     */
-    protected $_messages = array();
-
-    /**
-     * Element name
-     * @var string
-     */
-    protected $_name;
-
-    /**
-     * Order of element
-     * @var int
-     */
-    protected $_order;
-
-    /**
-     * Required flag
-     * @var bool
-     */
-    protected $_required = false;
-
-    /**
-     * @var Zend_Translate
-     */
-    protected $_translator;
-
-    /**
-     * Is translation disabled?
-     * @var bool
-     */
-    protected $_translatorDisabled = false;
-
-    /**
-     * Element type
-     * @var string
-     */
-    protected $_type;
-
-    /**
-     * Array of initialized validators
-     * @var array Validators
-     */
-    protected $_validators = array();
-
-    /**
-     * Array of un-initialized validators
-     * @var array
-     */
-    protected $_validatorRules = array();
-
-    /**
-     * Element value
-     * @var mixed
-     */
-    protected $_value;
-
-    /**
-     * @var Zend_View_Interface
-     */
-    protected $_view;
-
-    /**
-     * Is a specific decorator being rendered via the magic renderDecorator()?
-     *
-     * This is to allow execution of logic inside the render() methods of child
-     * elements during the magic call while skipping the parent render() method.
-     *
-     * @var bool
-     */
-    protected $_isPartialRendering = false;
-
-    /**
-     * Constructor
-     *
-     * $spec may be:
-     * - string: name of element
-     * - array: options with which to configure element
-     * - Zend_Config: Zend_Config with options for configuring element
-     *
-     * @param  string|array|Zend_Config $spec
-     * @param  array|Zend_Config $options
-     * @return void
-     * @throws Zend_Form_Exception if no element name after initialization
-     */
-    public function __construct($spec, $options = null)
-    {
-        if (is_string($spec)) {
-            $this->setName($spec);
-        } elseif (is_array($spec)) {
-            $this->setOptions($spec);
-        } elseif ($spec instanceof Zend_Config) {
-            $this->setConfig($spec);
-        }
-
-        if (is_string($spec) && is_array($options)) {
-            $this->setOptions($options);
-        } elseif (is_string($spec) && ($options instanceof Zend_Config)) {
-            $this->setConfig($options);
-        }
-
-        if (null === $this->getName()) {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception('Zend_Form_Element requires each element to have a name');
-        }
-
-        /**
-         * Extensions
-         */
-        $this->init();
-
-        /**
-         * Register ViewHelper decorator by default
-         */
-        $this->loadDefaultDecorators();
-    }
-
-    /**
-     * Initialize object; used by extending classes
-     *
-     * @return void
-     */
-    public function init()
-    {
-    }
-
-    /**
-     * Set flag to disable loading default decorators
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element
-     */
-    public function setDisableLoadDefaultDecorators($flag)
-    {
-        $this->_disableLoadDefaultDecorators = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Should we load the default decorators?
-     *
-     * @return bool
-     */
-    public function loadDefaultDecoratorsIsDisabled()
-    {
-        return $this->_disableLoadDefaultDecorators;
-    }
-
-    /**
-     * Load default decorators
-     *
-     * @return Zend_Form_Element
-     */
-    public function loadDefaultDecorators()
-    {
-        if ($this->loadDefaultDecoratorsIsDisabled()) {
-            return $this;
-        }
-
-        $decorators = $this->getDecorators();
-        if (empty($decorators)) {
-            $getId = create_function('$decorator',
-                                     'return $decorator->getElement()->getId()
-                                             . "-element";');
-            $this->addDecorator('ViewHelper')
-                 ->addDecorator('Errors')
-                 ->addDecorator('Description', array('tag' => 'p', 'class' => 'description'))
-                 ->addDecorator('HtmlTag', array('tag' => 'dd',
-                                                 'id'  => array('callback' => $getId)))
-                 ->addDecorator('Label', array('tag' => 'dt'));
-        }
-        return $this;
-    }
-
-    /**
-     * Set object state from options array
-     *
-     * @param  array $options
-     * @return Zend_Form_Element
-     */
-    public function setOptions(array $options)
-    {
-        if (isset($options['prefixPath'])) {
-            $this->addPrefixPaths($options['prefixPath']);
-            unset($options['prefixPath']);
-        }
-
-        if (isset($options['disableTranslator'])) {
-            $this->setDisableTranslator($options['disableTranslator']);
-            unset($options['disableTranslator']);
-        }
-
-        unset($options['options']);
-        unset($options['config']);
-
-        foreach ($options as $key => $value) {
-            $method = 'set' . ucfirst($key);
-
-            if (in_array($method, array('setTranslator', 'setPluginLoader', 'setView'))) {
-                if (!is_object($value)) {
-                    continue;
-                }
-            }
-
-            if (method_exists($this, $method)) {
-                // Setter exists; use it
-                $this->$method($value);
-            } else {
-                // Assume it's metadata
-                $this->setAttrib($key, $value);
-            }
-        }
-        return $this;
-    }
-
-    /**
-     * Set object state from Zend_Config object
-     *
-     * @param  Zend_Config $config
-     * @return Zend_Form_Element
-     */
-    public function setConfig(Zend_Config $config)
-    {
-        return $this->setOptions($config->toArray());
-    }
-
-
-    // Localization:
-
-    /**
-     * Set translator object for localization
-     *
-     * @param  Zend_Translate|null $translator
-     * @return Zend_Form_Element
-     */
-    public function setTranslator($translator = null)
-    {
-        if (null === $translator) {
-            $this->_translator = null;
-        } elseif ($translator instanceof Zend_Translate_Adapter) {
-            $this->_translator = $translator;
-        } elseif ($translator instanceof Zend_Translate) {
-            $this->_translator = $translator->getAdapter();
-        } else {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception('Invalid translator specified');
-        }
-        return $this;
-    }
-
-    /**
-     * Retrieve localization translator object
-     *
-     * @return Zend_Translate_Adapter|null
-     */
-    public function getTranslator()
-    {
-        if ($this->translatorIsDisabled()) {
-            return null;
-        }
-
-        if (null === $this->_translator) {
-            return Zend_Form::getDefaultTranslator();
-        }
-        return $this->_translator;
-    }
-
-    /**
-     * Does this element have its own specific translator?
-     *
-     * @return bool
-     */
-    public function hasTranslator()
-    {
-        return (bool)$this->_translator;
-    }
-
-    /**
-     * Indicate whether or not translation should be disabled
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element
-     */
-    public function setDisableTranslator($flag)
-    {
-        $this->_translatorDisabled = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Is translation disabled?
-     *
-     * @return bool
-     */
-    public function translatorIsDisabled()
-    {
-        return $this->_translatorDisabled;
-    }
-
-    // Metadata
-
-    /**
-     * Filter a name to only allow valid variable characters
-     *
-     * @param  string $value
-     * @param  bool $allowBrackets
-     * @return string
-     */
-    public function filterName($value, $allowBrackets = false)
-    {
-        $charset = '^a-zA-Z0-9_\x7f-\xff';
-        if ($allowBrackets) {
-            $charset .= '\[\]';
-        }
-        return preg_replace('/[' . $charset . ']/', '', (string) $value);
-    }
-
-    /**
-     * Set element name
-     *
-     * @param  string $name
-     * @return Zend_Form_Element
-     */
-    public function setName($name)
-    {
-        $name = $this->filterName($name);
-        if ('' === $name) {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception('Invalid name provided; must contain only valid variable characters and be non-empty');
-        }
-
-        $this->_name = $name;
-        return $this;
-    }
-
-    /**
-     * Return element name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->_name;
-    }
-
-    /**
-     * Get fully qualified name
-     *
-     * Places name as subitem of array and/or appends brackets.
-     *
-     * @return string
-     */
-    public function getFullyQualifiedName()
-    {
-        $name = $this->getName();
-
-        if (null !== ($belongsTo = $this->getBelongsTo())) {
-            $name = $belongsTo . '[' . $name . ']';
-        }
-
-        if ($this->isArray()) {
-            $name .= '[]';
-        }
-
-        return $name;
-    }
-
-    /**
-     * Get element id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        if (isset($this->id)) {
-            return $this->id;
-        }
-
-        $id = $this->getFullyQualifiedName();
-
-        // Bail early if no array notation detected
-        if (!strstr($id, '[')) {
-            return $id;
-        }
-
-        // Strip array notation
-        if ('[]' == substr($id, -2)) {
-            $id = substr($id, 0, strlen($id) - 2);
-        }
-        $id = str_replace('][', '-', $id);
-        $id = str_replace(array(']', '['), '-', $id);
-        $id = trim($id, '-');
-
-        return $id;
-    }
-
-    /**
-     * Set element value
-     *
-     * @param  mixed $value
-     * @return Zend_Form_Element
-     */
-    public function setValue($value)
-    {
-        $this->_value = $value;
-        return $this;
-    }
-
-    /**
-     * Filter a value
-     *
-     * @param  string $value
-     * @param  string $key
-     * @return void
-     */
-    protected function _filterValue(&$value, &$key)
-    {
-        foreach ($this->getFilters() as $filter) {
-            $value = $filter->filter($value);
-        }
-    }
-
-    /**
-     * Retrieve filtered element value
-     *
-     * @return mixed
-     */
-    public function getValue()
-    {
-        $valueFiltered = $this->_value;
-
-        if ($this->isArray() && is_array($valueFiltered)) {
-            array_walk_recursive($valueFiltered, array($this, '_filterValue'));
-        } else {
-            $this->_filterValue($valueFiltered, $valueFiltered);
-        }
-
-        return $valueFiltered;
-    }
-
-    /**
-     * Retrieve unfiltered element value
-     *
-     * @return mixed
-     */
-    public function getUnfilteredValue()
-    {
-        return $this->_value;
-    }
-
-    /**
-     * Set element label
-     *
-     * @param  string $label
-     * @return Zend_Form_Element
-     */
-    public function setLabel($label)
-    {
-        $this->_label = (string) $label;
-        return $this;
-    }
-
-    /**
-     * Retrieve element label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        $translator = $this->getTranslator();
-        if (null !== $translator) {
-            return $translator->translate($this->_label);
-        }
-
-        return $this->_label;
-    }
-
-    /**
-     * Set element order
-     *
-     * @param  int $order
-     * @return Zend_Form_Element
-     */
-    public function setOrder($order)
-    {
-        $this->_order = (int) $order;
-        return $this;
-    }
-
-    /**
-     * Retrieve element order
-     *
-     * @return int
-     */
-    public function getOrder()
-    {
-        return $this->_order;
-    }
-
-    /**
-     * Set required flag
-     *
-     * @param  bool $flag Default value is true
-     * @return Zend_Form_Element
-     */
-    public function setRequired($flag = true)
-    {
-        $this->_required = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Is the element required?
-     *
-     * @return bool
-     */
-    public function isRequired()
-    {
-        return $this->_required;
-    }
-
-    /**
-     * Set flag indicating whether a NotEmpty validator should be inserted when element is required
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element
-     */
-    public function setAutoInsertNotEmptyValidator($flag)
-    {
-        $this->_autoInsertNotEmptyValidator = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Get flag indicating whether a NotEmpty validator should be inserted when element is required
-     *
-     * @return bool
-     */
-    public function autoInsertNotEmptyValidator()
-    {
-        return $this->_autoInsertNotEmptyValidator;
-    }
-
-    /**
-     * Set element description
-     *
-     * @param  string $description
-     * @return Zend_Form_Element
-     */
-    public function setDescription($description)
-    {
-        $this->_description = (string) $description;
-        return $this;
-    }
-
-    /**
-     * Retrieve element description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->_description;
-    }
-
-    /**
-     * Set 'allow empty' flag
-     *
-     * When the allow empty flag is enabled and the required flag is false, the
-     * element will validate with empty values.
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element
-     */
-    public function setAllowEmpty($flag)
-    {
-        $this->_allowEmpty = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Get 'allow empty' flag
-     *
-     * @return bool
-     */
-    public function getAllowEmpty()
-    {
-        return $this->_allowEmpty;
-    }
-
-    /**
-     * Set ignore flag (used when retrieving values at form level)
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element
-     */
-    public function setIgnore($flag)
-    {
-        $this->_ignore = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Get ignore flag (used when retrieving values at form level)
-     *
-     * @return bool
-     */
-    public function getIgnore()
-    {
-        return $this->_ignore;
-    }
-
-    /**
-     * Set flag indicating if element represents an array
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element
-     */
-    public function setIsArray($flag)
-    {
-        $this->_isArray = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Is the element representing an array?
-     *
-     * @return bool
-     */
-    public function isArray()
-    {
-        return $this->_isArray;
-    }
-
-    /**
-     * Set array to which element belongs
-     *
-     * @param  string $array
-     * @return Zend_Form_Element
-     */
-    public function setBelongsTo($array)
-    {
-        $array = $this->filterName($array, true);
-        if (!empty($array)) {
-            $this->_belongsTo = $array;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Return array name to which element belongs
-     *
-     * @return string
-     */
-    public function getBelongsTo()
-    {
-        return $this->_belongsTo;
-    }
-
-    /**
-     * Return element type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        if (null === $this->_type) {
-            $this->_type = get_class($this);
-        }
-
-        return $this->_type;
-    }
-
-    /**
-     * Set element attribute
-     *
-     * @param  string $name
-     * @param  mixed $value
-     * @return Zend_Form_Element
-     * @throws Zend_Form_Exception for invalid $name values
-     */
-    public function setAttrib($name, $value)
-    {
-        $name = (string) $name;
-        if ('_' == $name[0]) {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception(sprintf('Invalid attribute "%s"; must not contain a leading underscore', $name));
-        }
-
-        if (null === $value) {
-            unset($this->$name);
-        } else {
-            $this->$name = $value;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set multiple attributes at once
-     *
-     * @param  array $attribs
-     * @return Zend_Form_Element
-     */
-    public function setAttribs(array $attribs)
-    {
-        foreach ($attribs as $key => $value) {
-            $this->setAttrib($key, $value);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Retrieve element attribute
-     *
-     * @param  string $name
-     * @return string
-     */
-    public function getAttrib($name)
-    {
-        $name = (string) $name;
-        if (isset($this->$name)) {
-            return $this->$name;
-        }
-
-        return null;
-    }
-
-    /**
-     * Return all attributes
-     *
-     * @return array
-     */
-    public function getAttribs()
-    {
-        $attribs = get_object_vars($this);
-        foreach ($attribs as $key => $value) {
-            if ('_' == substr($key, 0, 1)) {
-                unset($attribs[$key]);
-            }
-        }
-
-        return $attribs;
-    }
-
-    /**
-     * Overloading: retrieve object property
-     *
-     * Prevents access to properties beginning with '_'.
-     *
-     * @param  string $key
-     * @return mixed
-     */
-    public function __get($key)
-    {
-        if ('_' == $key[0]) {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception(sprintf('Cannot retrieve value for protected/private property "%s"', $key));
-        }
-
-        if (!isset($this->$key)) {
-            return null;
-        }
-
-        return $this->$key;
-    }
-
-    /**
-     * Overloading: set object property
-     *
-     * @param  string $key
-     * @param  mixed $value
-     * @return voide
-     */
-    public function __set($key, $value)
-    {
-        $this->setAttrib($key, $value);
-    }
-
-    /**
-     * Overloading: allow rendering specific decorators
-     *
-     * Call renderDecoratorName() to render a specific decorator.
-     *
-     * @param  string $method
-     * @param  array $args
-     * @return string
-     * @throws Zend_Form_Exception for invalid decorator or invalid method call
-     */
-    public function __call($method, $args)
-    {
-        if ('render' == substr($method, 0, 6)) {
-            $this->_isPartialRendering = true;
-            $this->render();
-            $this->_isPartialRendering = false;
-            $decoratorName = substr($method, 6);
-            if (false !== ($decorator = $this->getDecorator($decoratorName))) {
-                $decorator->setElement($this);
-                $seed = '';
-                if (0 < count($args)) {
-                    $seed = array_shift($args);
-                }
-                return $decorator->render($seed);
-            }
-
-            require_once 'Zend/Form/Element/Exception.php';
-            throw new Zend_Form_Element_Exception(sprintf('Decorator by name %s does not exist', $decoratorName));
-        }
-
-        require_once 'Zend/Form/Element/Exception.php';
-        throw new Zend_Form_Element_Exception(sprintf('Method %s does not exist', $method));
-    }
-
-    // Loaders
-
-    /**
-     * Set plugin loader to use for validator or filter chain
-     *
-     * @param  Zend_Loader_PluginLoader_Interface $loader
-     * @param  string $type 'decorator', 'filter', or 'validate'
-     * @return Zend_Form_Element
-     * @throws Zend_Form_Exception on invalid type
-     */
-    public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)
-    {
-        $type = strtoupper($type);
-        switch ($type) {
-            case self::DECORATOR:
-            case self::FILTER:
-            case self::VALIDATE:
-                $this->_loaders[$type] = $loader;
-                return $this;
-            default:
-                require_once 'Zend/Form/Exception.php';
-                throw new Zend_Form_Exception(sprintf('Invalid type "%s" provided to setPluginLoader()', $type));
-        }
-    }
-
-    /**
-     * Retrieve plugin loader for validator or filter chain
-     *
-     * Instantiates with default rules if none available for that type. Use
-     * 'decorator', 'filter', or 'validate' for $type.
-     *
-     * @param  string $type
-     * @return Zend_Loader_PluginLoader
-     * @throws Zend_Loader_Exception on invalid type.
-     */
-    public function getPluginLoader($type)
-    {
-        $type = strtoupper($type);
-        switch ($type) {
-            case self::FILTER:
-            case self::VALIDATE:
-                $prefixSegment = ucfirst(strtolower($type));
-                $pathSegment   = $prefixSegment;
-            case self::DECORATOR:
-                if (!isset($prefixSegment)) {
-                    $prefixSegment = 'Form_Decorator';
-                    $pathSegment   = 'Form/Decorator';
-                }
-                if (!isset($this->_loaders[$type])) {
-                    require_once 'Zend/Loader/PluginLoader.php';
-                    $this->_loaders[$type] = new Zend_Loader_PluginLoader(
-                        array('Zend_' . $prefixSegment . '_' => 'Zend/' . $pathSegment . '/')
-                    );
-                }
-                return $this->_loaders[$type];
-            default:
-                require_once 'Zend/Form/Exception.php';
-                throw new Zend_Form_Exception(sprintf('Invalid type "%s" provided to getPluginLoader()', $type));
-        }
-    }
-
-    /**
-     * Add prefix path for plugin loader
-     *
-     * If no $type specified, assumes it is a base path for both filters and
-     * validators, and sets each according to the following rules:
-     * - decorators: $prefix = $prefix . '_Decorator'
-     * - filters: $prefix = $prefix . '_Filter'
-     * - validators: $prefix = $prefix . '_Validate'
-     *
-     * Otherwise, the path prefix is set on the appropriate plugin loader.
-     *
-     * @param  string $prefix
-     * @param  string $path
-     * @param  string $type
-     * @return Zend_Form_Element
-     * @throws Zend_Form_Exception for invalid type
-     */
-    public function addPrefixPath($prefix, $path, $type = null)
-    {
-        $type = strtoupper($type);
-        switch ($type) {
-            case self::DECORATOR:
-            case self::FILTER:
-            case self::VALIDATE:
-                $loader = $this->getPluginLoader($type);
-                $loader->addPrefixPath($prefix, $path);
-                return $this;
-            case null:
-                $prefix = rtrim($prefix, '_');
-                $path   = rtrim($path, DIRECTORY_SEPARATOR);
-                foreach (array(self::DECORATOR, self::FILTER, self::VALIDATE) as $type) {
-                    $cType        = ucfirst(strtolower($type));
-                    $pluginPath   = $path . DIRECTORY_SEPARATOR . $cType . DIRECTORY_SEPARATOR;
-                    $pluginPrefix = $prefix . '_' . $cType;
-                    $loader       = $this->getPluginLoader($type);
-                    $loader->addPrefixPath($pluginPrefix, $pluginPath);
-                }
-                return $this;
-            default:
-                require_once 'Zend/Form/Exception.php';
-                throw new Zend_Form_Exception(sprintf('Invalid type "%s" provided to getPluginLoader()', $type));
-        }
-    }
-
-    /**
-     * Add many prefix paths at once
-     *
-     * @param  array $spec
-     * @return Zend_Form_Element
-     */
-    public function addPrefixPaths(array $spec)
-    {
-        if (isset($spec['prefix']) && isset($spec['path'])) {
-            return $this->addPrefixPath($spec['prefix'], $spec['path']);
-        }
-        foreach ($spec as $type => $paths) {
-            if (is_numeric($type) && is_array($paths)) {
-                $type = null;
-                if (isset($paths['prefix']) && isset($paths['path'])) {
-                    if (isset($paths['type'])) {
-                        $type = $paths['type'];
-                    }
-                    $this->addPrefixPath($paths['prefix'], $paths['path'], $type);
-                }
-            } elseif (!is_numeric($type)) {
-                if (!isset($paths['prefix']) || !isset($paths['path'])) {
-                    foreach ($paths as $prefix => $spec) {
-                        if (is_array($spec)) {
-                            foreach ($spec as $path) {
-                                if (!is_string($path)) {
-                                    continue;
-                                }
-                                $this->addPrefixPath($prefix, $path, $type);
-                            }
-                        } elseif (is_string($spec)) {
-                            $this->addPrefixPath($prefix, $spec, $type);
-                        }
-                    }
-                } else {
-                    $this->addPrefixPath($paths['prefix'], $paths['path'], $type);
-                }
-            }
-        }
-        return $this;
-    }
-
-    // Validation
-
-    /**
-     * Add validator to validation chain
-     *
-     * Note: will overwrite existing validators if they are of the same class.
-     *
-     * @param  string|Zend_Validate_Interface $validator
-     * @param  bool $breakChainOnFailure
-     * @param  array $options
-     * @return Zend_Form_Element
-     * @throws Zend_Form_Exception if invalid validator type
-     */
-    public function addValidator($validator, $breakChainOnFailure = false, $options = array())
-    {
-        if ($validator instanceof Zend_Validate_Interface) {
-            $name = get_class($validator);
-
-            if (!isset($validator->zfBreakChainOnFailure)) {
-                $validator->zfBreakChainOnFailure = $breakChainOnFailure;
-            }
-        } elseif (is_string($validator)) {
-            $name      = $validator;
-            $validator = array(
-                'validator' => $validator,
-                'breakChainOnFailure' => $breakChainOnFailure,
-                'options'             => $options,
-            );
-        } else {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception('Invalid validator provided to addValidator; must be string or Zend_Validate_Interface');
-        }
-
-
-        $this->_validators[$name] = $validator;
-
-        return $this;
-    }
-
-    /**
-     * Add multiple validators
-     *
-     * @param  array $validators
-     * @return Zend_Form_Element
-     */
-    public function addValidators(array $validators)
-    {
-        foreach ($validators as $validatorInfo) {
-            if (is_string($validatorInfo)) {
-                $this->addValidator($validatorInfo);
-            } elseif ($validatorInfo instanceof Zend_Validate_Interface) {
-                $this->addValidator($validatorInfo);
-            } elseif (is_array($validatorInfo)) {
-                $argc                = count($validatorInfo);
-                $breakChainOnFailure = false;
-                $options             = array();
-                if (isset($validatorInfo['validator'])) {
-                    $validator = $validatorInfo['validator'];
-                    if (isset($validatorInfo['breakChainOnFailure'])) {
-                        $breakChainOnFailure = $validatorInfo['breakChainOnFailure'];
-                    }
-                    if (isset($validatorInfo['options'])) {
-                        $options = $validatorInfo['options'];
-                    }
-                    $this->addValidator($validator, $breakChainOnFailure, $options);
-                } else {
-                    switch (true) {
-                        case (0 == $argc):
-                            break;
-                        case (1 <= $argc):
-                            $validator  = array_shift($validatorInfo);
-                        case (2 <= $argc):
-                            $breakChainOnFailure = array_shift($validatorInfo);
-                        case (3 <= $argc):
-                            $options = array_shift($validatorInfo);
-                        default:
-                            $this->addValidator($validator, $breakChainOnFailure, $options);
-                            break;
-                    }
-                }
-            } else {
-                require_once 'Zend/Form/Exception.php';
-                throw new Zend_Form_Exception('Invalid validator passed to addValidators()');
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set multiple validators, overwriting previous validators
-     *
-     * @param  array $validators
-     * @return Zend_Form_Element
-     */
-    public function setValidators(array $validators)
-    {
-        $this->clearValidators();
-        return $this->addValidators($validators);
-    }
-
-    /**
-     * Retrieve a single validator by name
-     *
-     * @param  string $name
-     * @return Zend_Validate_Interface|false False if not found, validator otherwise
-     */
-    public function getValidator($name)
-    {
-        if (!isset($this->_validators[$name])) {
-            $len = strlen($name);
-            foreach ($this->_validators as $localName => $validator) {
-                if ($len > strlen($localName)) {
-                    continue;
-                }
-                if (0 === substr_compare($localName, $name, -$len, $len, true)) {
-                    if (is_array($validator)) {
-                        return $this->_loadValidator($validator);
-                    }
-                    return $validator;
-                }
-            }
-            return false;
-        }
-
-        if (is_array($this->_validators[$name])) {
-            return $this->_loadValidator($this->_validators[$name]);
-        }
-
-        return $this->_validators[$name];
-    }
-
-    /**
-     * Retrieve all validators
-     *
-     * @return array
-     */
-    public function getValidators()
-    {
-        $validators = array();
-        foreach ($this->_validators as $key => $value) {
-            if ($value instanceof Zend_Validate_Interface) {
-                $validators[$key] = $value;
-                continue;
-            }
-            $validator = $this->_loadValidator($value);
-            $validators[get_class($validator)] = $validator;
-        }
-        return $validators;
-    }
-
-    /**
-     * Remove a single validator by name
-     *
-     * @param  string $name
-     * @return bool
-     */
-    public function removeValidator($name)
-    {
-        if (isset($this->_validators[$name])) {
-            unset($this->_validators[$name]);
-        } else {
-            $len = strlen($name);
-            foreach (array_keys($this->_validators) as $validator) {
-                if ($len > strlen($validator)) {
-                    continue;
-                }
-                if (0 === substr_compare($validator, $name, -$len, $len, true)) {
-                    unset($this->_validators[$validator]);
-                    break;
-                }
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Clear all validators
-     *
-     * @return Zend_Form_Element
-     */
-    public function clearValidators()
-    {
-        $this->_validators = array();
-        return $this;
-    }
-
-    /**
-     * Validate element value
-     *
-     * If a translation adapter is registered, any error messages will be
-     * translated according to the current locale, using the given error code;
-     * if no matching translation is found, the original message will be
-     * utilized.
-     *
-     * Note: The *filtered* value is validated.
-     *
-     * @param  mixed $value
-     * @param  mixed $context
-     * @return boolean
-     */
-    public function isValid($value, $context = null)
-    {
-        $this->setValue($value);
-        $value = $this->getValue();
-
-        if ((('' === $value) || (null === $value))
-            && !$this->isRequired()
-            && $this->getAllowEmpty()
-        ) {
-            return true;
-        }
-
-        if ($this->isRequired()
-            && $this->autoInsertNotEmptyValidator()
-            && !$this->getValidator('NotEmpty'))
-        {
-            $validators = $this->getValidators();
-            $notEmpty   = array('validator' => 'NotEmpty', 'breakChainOnFailure' => true);
-            array_unshift($validators, $notEmpty);
-            $this->setValidators($validators);
-        }
-
-        // Find the correct translator. Zend_Validate_Abstract::getDefaultTranslator()
-        // will get either the static translator attached to Zend_Validate_Abstract
-        // or the 'Zend_Translate' from Zend_Registry.
-        if (Zend_Validate_Abstract::hasDefaultTranslator() &&
-            !Zend_Form::hasDefaultTranslator())
-        {
-            $translator = Zend_Validate_Abstract::getDefaultTranslator();
-            if ($this->hasTranslator()) {
-                // only pick up this element's translator if it was attached directly.
-                $translator = $this->getTranslator();
-            }
-        } else {
-            $translator = $this->getTranslator();
-        }
-
-        $this->_messages = array();
-        $this->_errors   = array();
-        $result          = true;
-        $isArray         = $this->isArray();
-        foreach ($this->getValidators() as $key => $validator) {
-            if (method_exists($validator, 'setTranslator')) {
-                if (method_exists($validator, 'hasTranslator')) {
-                    if (!$validator->hasTranslator()) {
-                        $validator->setTranslator($translator);
-                    }
-                } else {
-                    $validator->setTranslator($translator);
-                }
-            }
-
-            if (method_exists($validator, 'setDisableTranslator')) {
-                $validator->setDisableTranslator($this->translatorIsDisabled());
-            }
-
-            if ($isArray && is_array($value)) {
-                $messages = array();
-                $errors   = array();
-                foreach ($value as $val) {
-                    if (!$validator->isValid($val, $context)) {
-                        $result = false;
-                        if ($this->_hasErrorMessages()) {
-                            $messages = $this->_getErrorMessages();
-                            $errors   = $messages;
-                        } else {
-                            $messages = array_merge($messages, $validator->getMessages());
-                            $errors   = array_merge($errors,   $validator->getErrors());
-                        }
-                    }
-                }
-                if ($result) {
-                    continue;
-                }
-            } elseif ($validator->isValid($value, $context)) {
-                continue;
-            } else {
-                $result = false;
-                if ($this->_hasErrorMessages()) {
-                    $messages = $this->_getErrorMessages();
-                    $errors   = $messages;
-                } else {
-                    $messages = $validator->getMessages();
-                    $errors   = array_keys($messages);
-                }
-            }
-
-            $result          = false;
-            $this->_messages = array_merge($this->_messages, $messages);
-            $this->_errors   = array_merge($this->_errors,   $errors);
-
-            if ($validator->zfBreakChainOnFailure) {
-                break;
-            }
-        }
-
-        // If element manually flagged as invalid, return false
-        if ($this->_isErrorForced) {
-            return false;
-        }
-
-        return $result;
-    }
-
-    /**
-     * Add a custom error message to return in the event of failed validation
-     *
-     * @param  string $message
-     * @return Zend_Form_Element
-     */
-    public function addErrorMessage($message)
-    {
-        $this->_errorMessages[] = (string) $message;
-        return $this;
-    }
-
-    /**
-     * Add multiple custom error messages to return in the event of failed validation
-     *
-     * @param  array $messages
-     * @return Zend_Form_Element
-     */
-    public function addErrorMessages(array $messages)
-    {
-        foreach ($messages as $message) {
-            $this->addErrorMessage($message);
-        }
-        return $this;
-    }
-
-    /**
-     * Same as addErrorMessages(), but clears custom error message stack first
-     *
-     * @param  array $messages
-     * @return Zend_Form_Element
-     */
-    public function setErrorMessages(array $messages)
-    {
-        $this->clearErrorMessages();
-        return $this->addErrorMessages($messages);
-    }
-
-    /**
-     * Retrieve custom error messages
-     *
-     * @return array
-     */
-    public function getErrorMessages()
-    {
-        return $this->_errorMessages;
-    }
-
-    /**
-     * Clear custom error messages stack
-     *
-     * @return Zend_Form_Element
-     */
-    public function clearErrorMessages()
-    {
-        $this->_errorMessages = array();
-        return $this;
-    }
-
-    /**
-     * Get errorMessageSeparator
-     *
-     * @return string
-     */
-    public function getErrorMessageSeparator()
-    {
-        return $this->_errorMessageSeparator;
-    }
-
-    /**
-     * Set errorMessageSeparator
-     *
-     * @param  string $separator
-     * @return Zend_Form_Element
-     */
-    public function setErrorMessageSeparator($separator)
-    {
-        $this->_errorMessageSeparator = $separator;
-        return $this;
-    }
-
-    /**
-     * Mark the element as being in a failed validation state
-     *
-     * @return Zend_Form_Element
-     */
-    public function markAsError()
-    {
-        $messages       = $this->getMessages();
-        $customMessages = $this->_getErrorMessages();
-        $messages       = $messages + $customMessages;
-        if (empty($messages)) {
-            $this->_isError = true;
-        } else {
-            $this->_messages = $messages;
-        }
-        $this->_isErrorForced = true;
-        return $this;
-    }
-
-    /**
-     * Add an error message and mark element as failed validation
-     *
-     * @param  string $message
-     * @return Zend_Form_Element
-     */
-    public function addError($message)
-    {
-        $this->addErrorMessage($message);
-        $this->markAsError();
-        return $this;
-    }
-
-    /**
-     * Add multiple error messages and flag element as failed validation
-     *
-     * @param  array $messages
-     * @return Zend_Form_Element
-     */
-    public function addErrors(array $messages)
-    {
-        foreach ($messages as $message) {
-            $this->addError($message);
-        }
-        return $this;
-    }
-
-    /**
-     * Overwrite any previously set error messages and flag as failed validation
-     *
-     * @param  array $messages
-     * @return Zend_Form_Element
-     */
-    public function setErrors(array $messages)
-    {
-        $this->clearErrorMessages();
-        return $this->addErrors($messages);
-    }
-
-    /**
-     * Are there errors registered?
-     *
-     * @return bool
-     */
-    public function hasErrors()
-    {
-        return (!empty($this->_messages) || $this->_isError);
-    }
-
-    /**
-     * Retrieve validator chain errors
-     *
-     * @return array
-     */
-    public function getErrors()
-    {
-        return $this->_errors;
-    }
-
-    /**
-     * Retrieve error messages
-     *
-     * @return array
-     */
-    public function getMessages()
-    {
-        return $this->_messages;
-    }
-
-
-    // Filtering
-
-    /**
-     * Add a filter to the element
-     *
-     * @param  string|Zend_Filter_Interface $filter
-     * @return Zend_Form_Element
-     */
-    public function addFilter($filter, $options = array())
-    {
-        if ($filter instanceof Zend_Filter_Interface) {
-            $name = get_class($filter);
-        } elseif (is_string($filter)) {
-            $name = $filter;
-            $filter = array(
-                'filter'  => $filter,
-                'options' => $options,
-            );
-            $this->_filters[$name] = $filter;
-        } else {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception('Invalid filter provided to addFilter; must be string or Zend_Filter_Interface');
-        }
-
-        $this->_filters[$name] = $filter;
-
-        return $this;
-    }
-
-    /**
-     * Add filters to element
-     *
-     * @param  array $filters
-     * @return Zend_Form_Element
-     */
-    public function addFilters(array $filters)
-    {
-        foreach ($filters as $filterInfo) {
-            if (is_string($filterInfo)) {
-                $this->addFilter($filterInfo);
-            } elseif ($filterInfo instanceof Zend_Filter_Interface) {
-                $this->addFilter($filterInfo);
-            } elseif (is_array($filterInfo)) {
-                $argc                = count($filterInfo);
-                $options             = array();
-                if (isset($filterInfo['filter'])) {
-                    $filter = $filterInfo['filter'];
-                    if (isset($filterInfo['options'])) {
-                        $options = $filterInfo['options'];
-                    }
-                    $this->addFilter($filter, $options);
-                } else {
-                    switch (true) {
-                        case (0 == $argc):
-                            break;
-                        case (1 <= $argc):
-                            $filter  = array_shift($filterInfo);
-                        case (2 <= $argc):
-                            $options = array_shift($filterInfo);
-                        default:
-                            $this->addFilter($filter, $options);
-                            break;
-                    }
-                }
-            } else {
-                require_once 'Zend/Form/Exception.php';
-                throw new Zend_Form_Exception('Invalid filter passed to addFilters()');
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Add filters to element, overwriting any already existing
-     *
-     * @param  array $filters
-     * @return Zend_Form_Element
-     */
-    public function setFilters(array $filters)
-    {
-        $this->clearFilters();
-        return $this->addFilters($filters);
-    }
-
-    /**
-     * Retrieve a single filter by name
-     *
-     * @param  string $name
-     * @return Zend_Filter_Interface
-     */
-    public function getFilter($name)
-    {
-        if (!isset($this->_filters[$name])) {
-            $len = strlen($name);
-            foreach ($this->_filters as $localName => $filter) {
-                if ($len > strlen($localName)) {
-                    continue;
-                }
-
-                if (0 === substr_compare($localName, $name, -$len, $len, true)) {
-                    if (is_array($filter)) {
-                        return $this->_loadFilter($filter);
-                    }
-                    return $filter;
-                }
-            }
-            return false;
-        }
-
-        if (is_array($this->_filters[$name])) {
-            return $this->_loadFilter($this->_filters[$name]);
-        }
-
-        return $this->_filters[$name];
-    }
-
-    /**
-     * Get all filters
-     *
-     * @return array
-     */
-    public function getFilters()
-    {
-        $filters = array();
-        foreach ($this->_filters as $key => $value) {
-            if ($value instanceof Zend_Filter_Interface) {
-                $filters[$key] = $value;
-                continue;
-            }
-            $filter = $this->_loadFilter($value);
-            $filters[get_class($filter)] = $filter;
-        }
-        return $filters;
-    }
-
-    /**
-     * Remove a filter by name
-     *
-     * @param  string $name
-     * @return Zend_Form_Element
-     */
-    public function removeFilter($name)
-    {
-        if (isset($this->_filters[$name])) {
-            unset($this->_filters[$name]);
-        } else {
-            $len = strlen($name);
-            foreach (array_keys($this->_filters) as $filter) {
-                if ($len > strlen($filter)) {
-                    continue;
-                }
-                if (0 === substr_compare($filter, $name, -$len, $len, true)) {
-                    unset($this->_filters[$filter]);
-                    break;
-                }
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Clear all filters
-     *
-     * @return Zend_Form_Element
-     */
-    public function clearFilters()
-    {
-        $this->_filters = array();
-        return $this;
-    }
-
-    // Rendering
-
-    /**
-     * Set view object
-     *
-     * @param  Zend_View_Interface $view
-     * @return Zend_Form_Element
-     */
-    public function setView(Zend_View_Interface $view = null)
-    {
-        $this->_view = $view;
-        return $this;
-    }
-
-    /**
-     * Retrieve view object
-     *
-     * Retrieves from ViewRenderer if none previously set.
-     *
-     * @return null|Zend_View_Interface
-     */
-    public function getView()
-    {
-        if (null === $this->_view) {
-            require_once 'Zend/Controller/Action/HelperBroker.php';
-            $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
-            $this->setView($viewRenderer->view);
-        }
-        return $this->_view;
-    }
-
-    /**
-     * Instantiate a decorator based on class name or class name fragment
-     *
-     * @param  string $name
-     * @param  null|array $options
-     * @return Zend_Form_Decorator_Interface
-     */
-    protected function _getDecorator($name, $options)
-    {
-        $class = $this->getPluginLoader(self::DECORATOR)->load($name);
-        if (null === $options) {
-            $decorator = new $class;
-        } else {
-            $decorator = new $class($options);
-        }
-
-        return $decorator;
-    }
-
-    /**
-     * Add a decorator for rendering the element
-     *
-     * @param  string|Zend_Form_Decorator_Interface $decorator
-     * @param  array|Zend_Config $options Options with which to initialize decorator
-     * @return Zend_Form_Element
-     */
-    public function addDecorator($decorator, $options = null)
-    {
-        if ($decorator instanceof Zend_Form_Decorator_Interface) {
-            $name = get_class($decorator);
-        } elseif (is_string($decorator)) {
-            $name      = $decorator;
-            $decorator = array(
-                'decorator' => $name,
-                'options'   => $options,
-            );
-        } elseif (is_array($decorator)) {
-            foreach ($decorator as $name => $spec) {
-                break;
-            }
-            if (is_numeric($name)) {
-                require_once 'Zend/Form/Exception.php';
-                throw new Zend_Form_Exception('Invalid alias provided to addDecorator; must be alphanumeric string');
-            }
-            if (is_string($spec)) {
-                $decorator = array(
-                    'decorator' => $spec,
-                    'options'   => $options,
-                );
-            } elseif ($spec instanceof Zend_Form_Decorator_Interface) {
-                $decorator = $spec;
-            }
-        } else {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception('Invalid decorator provided to addDecorator; must be string or Zend_Form_Decorator_Interface');
-        }
-
-        $this->_decorators[$name] = $decorator;
-
-        return $this;
-    }
-
-    /**
-     * Add many decorators at once
-     *
-     * @param  array $decorators
-     * @return Zend_Form_Element
-     */
-    public function addDecorators(array $decorators)
-    {
-        foreach ($decorators as $decoratorName => $decoratorInfo) {
-            if (is_string($decoratorInfo) ||
-                $decoratorInfo instanceof Zend_Form_Decorator_Interface) {
-                if (!is_numeric($decoratorName)) {
-                    $this->addDecorator(array($decoratorName => $decoratorInfo));
-                } else {
-                    $this->addDecorator($decoratorInfo);
-                }
-            } elseif (is_array($decoratorInfo)) {
-                $argc    = count($decoratorInfo);
-                $options = array();
-                if (isset($decoratorInfo['decorator'])) {
-                    $decorator = $decoratorInfo['decorator'];
-                    if (isset($decoratorInfo['options'])) {
-                        $options = $decoratorInfo['options'];
-                    }
-                    $this->addDecorator($decorator, $options);
-                } else {
-                    switch (true) {
-                        case (0 == $argc):
-                            break;
-                        case (1 <= $argc):
-                            $decorator  = array_shift($decoratorInfo);
-                        case (2 <= $argc):
-                            $options = array_shift($decoratorInfo);
-                        default:
-                            $this->addDecorator($decorator, $options);
-                            break;
-                    }
-                }
-            } else {
-                require_once 'Zend/Form/Exception.php';
-                throw new Zend_Form_Exception('Invalid decorator passed to addDecorators()');
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Overwrite all decorators
-     *
-     * @param  array $decorators
-     * @return Zend_Form_Element
-     */
-    public function setDecorators(array $decorators)
-    {
-        $this->clearDecorators();
-        return $this->addDecorators($decorators);
-    }
-
-    /**
-     * Retrieve a registered decorator
-     *
-     * @param  string $name
-     * @return false|Zend_Form_Decorator_Abstract
-     */
-    public function getDecorator($name)
-    {
-        if (!isset($this->_decorators[$name])) {
-            $len = strlen($name);
-            foreach ($this->_decorators as $localName => $decorator) {
-                if ($len > strlen($localName)) {
-                    continue;
-                }
-
-                if (0 === substr_compare($localName, $name, -$len, $len, true)) {
-                    if (is_array($decorator)) {
-                        return $this->_loadDecorator($decorator, $localName);
-                    }
-                    return $decorator;
-                }
-            }
-            return false;
-        }
-
-        if (is_array($this->_decorators[$name])) {
-            return $this->_loadDecorator($this->_decorators[$name], $name);
-        }
-
-        return $this->_decorators[$name];
-    }
-
-    /**
-     * Retrieve all decorators
-     *
-     * @return array
-     */
-    public function getDecorators()
-    {
-        foreach ($this->_decorators as $key => $value) {
-            if (is_array($value)) {
-                $this->_loadDecorator($value, $key);
-            }
-        }
-        return $this->_decorators;
-    }
-
-    /**
-     * Remove a single decorator
-     *
-     * @param  string $name
-     * @return Zend_Form_Element
-     */
-    public function removeDecorator($name)
-    {
-        if (isset($this->_decorators[$name])) {
-            unset($this->_decorators[$name]);
-        } else {
-            $len = strlen($name);
-            foreach (array_keys($this->_decorators) as $decorator) {
-                if ($len > strlen($decorator)) {
-                    continue;
-                }
-                if (0 === substr_compare($decorator, $name, -$len, $len, true)) {
-                    unset($this->_decorators[$decorator]);
-                    break;
-                }
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Clear all decorators
-     *
-     * @return Zend_Form_Element
-     */
-    public function clearDecorators()
-    {
-        $this->_decorators = array();
-        return $this;
-    }
-
-    /**
-     * Render form element
-     *
-     * @param  Zend_View_Interface $view
-     * @return string
-     */
-    public function render(Zend_View_Interface $view = null)
-    {
-        if ($this->_isPartialRendering) {
-            return '';
-        }
-
-        if (null !== $view) {
-            $this->setView($view);
-        }
-
-        $content = '';
-        foreach ($this->getDecorators() as $decorator) {
-            $decorator->setElement($this);
-            $content = $decorator->render($content);
-        }
-        return $content;
-    }
-
-    /**
-     * String representation of form element
-     *
-     * Proxies to {@link render()}.
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        try {
-            $return = $this->render();
-            return $return;
-        } catch (Exception $e) {
-            trigger_error($e->getMessage(), E_USER_WARNING);
-            return '';
-        }
-    }
-
-    /**
-     * Lazy-load a filter
-     *
-     * @param  array $filter
-     * @return Zend_Filter_Interface
-     */
-    protected function _loadFilter(array $filter)
-    {
-        $origName = $filter['filter'];
-        $name     = $this->getPluginLoader(self::FILTER)->load($filter['filter']);
-
-        if (array_key_exists($name, $this->_filters)) {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception(sprintf('Filter instance already exists for filter "%s"', $origName));
-        }
-
-        if (empty($filter['options'])) {
-            $instance = new $name;
-        } else {
-            $r = new ReflectionClass($name);
-            if ($r->hasMethod('__construct')) {
-                $instance = $r->newInstanceArgs((array) $filter['options']);
-            } else {
-                $instance = $r->newInstance();
-            }
-        }
-
-        if ($origName != $name) {
-            $filterNames  = array_keys($this->_filters);
-            $order        = array_flip($filterNames);
-            $order[$name] = $order[$origName];
-            $filtersExchange = array();
-            unset($order[$origName]);
-            asort($order);
-            foreach ($order as $key => $index) {
-                if ($key == $name) {
-                    $filtersExchange[$key] = $instance;
-                    continue;
-                }
-                $filtersExchange[$key] = $this->_filters[$key];
-            }
-            $this->_filters = $filtersExchange;
-        } else {
-            $this->_filters[$name] = $instance;
-        }
-
-        return $instance;
-    }
-
-    /**
-     * Lazy-load a validator
-     *
-     * @param  array $validator Validator definition
-     * @return Zend_Validate_Interface
-     */
-    protected function _loadValidator(array $validator)
-    {
-        $origName = $validator['validator'];
-        $name     = $this->getPluginLoader(self::VALIDATE)->load($validator['validator']);
-
-        if (array_key_exists($name, $this->_validators)) {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception(sprintf('Validator instance already exists for validator "%s"', $origName));
-        }
-
-        $messages = false;
-        if (isset($validator['options']) && array_key_exists('messages', (array)$validator['options'])) {
-            $messages = $validator['options']['messages'];
-            unset($validator['options']['messages']);
-        }
-
-        if (empty($validator['options'])) {
-            $instance = new $name;
-        } else {
-            $r = new ReflectionClass($name);
-            if ($r->hasMethod('__construct')) {
-                $numeric = false;
-                if (is_array($validator['options'])) {
-                    $keys    = array_keys($validator['options']);
-                    foreach($keys as $key) {
-                        if (is_numeric($key)) {
-                            $numeric = true;
-                            break;
-                        }
-                    }
-                }
-
-                if ($numeric) {
-                    $instance = $r->newInstanceArgs((array) $validator['options']);
-                } else {
-                    $instance = $r->newInstance($validator['options']);
-                }
-            } else {
-                $instance = $r->newInstance();
-            }
-        }
-
-        if ($messages) {
-            if (is_array($messages)) {
-                $instance->setMessages($messages);
-            } elseif (is_string($messages)) {
-                $instance->setMessage($messages);
-            }
-        }
-        $instance->zfBreakChainOnFailure = $validator['breakChainOnFailure'];
-
-        if ($origName != $name) {
-            $validatorNames     = array_keys($this->_validators);
-            $order              = array_flip($validatorNames);
-            $order[$name]       = $order[$origName];
-            $validatorsExchange = array();
-            unset($order[$origName]);
-            asort($order);
-            foreach ($order as $key => $index) {
-                if ($key == $name) {
-                    $validatorsExchange[$key] = $instance;
-                    continue;
-                }
-                $validatorsExchange[$key] = $this->_validators[$key];
-            }
-            $this->_validators = $validatorsExchange;
-        } else {
-            $this->_validators[$name] = $instance;
-        }
-
-        return $instance;
-    }
-
-    /**
-     * Lazy-load a decorator
-     *
-     * @param  array $decorator Decorator type and options
-     * @param  mixed $name Decorator name or alias
-     * @return Zend_Form_Decorator_Interface
-     */
-    protected function _loadDecorator(array $decorator, $name)
-    {
-        $sameName = false;
-        if ($name == $decorator['decorator']) {
-            $sameName = true;
-        }
-
-        $instance = $this->_getDecorator($decorator['decorator'], $decorator['options']);
-        if ($sameName) {
-            $newName            = get_class($instance);
-            $decoratorNames     = array_keys($this->_decorators);
-            $order              = array_flip($decoratorNames);
-            $order[$newName]    = $order[$name];
-            $decoratorsExchange = array();
-            unset($order[$name]);
-            asort($order);
-            foreach ($order as $key => $index) {
-                if ($key == $newName) {
-                    $decoratorsExchange[$key] = $instance;
-                    continue;
-                }
-                $decoratorsExchange[$key] = $this->_decorators[$key];
-            }
-            $this->_decorators = $decoratorsExchange;
-        } else {
-            $this->_decorators[$name] = $instance;
-        }
-
-        return $instance;
-    }
-
-    /**
-     * Retrieve error messages and perform translation and value substitution
-     *
-     * @return array
-     */
-    protected function _getErrorMessages()
-    {
-        $translator = $this->getTranslator();
-        $messages   = $this->getErrorMessages();
-        $value      = $this->getValue();
-        foreach ($messages as $key => $message) {
-            if (null !== $translator) {
-                $message = $translator->translate($message);
-            }
-            if (($this->isArray() || is_array($value))
-                && !empty($value)
-            ) {
-                $aggregateMessages = array();
-                foreach ($value as $val) {
-                    $aggregateMessages[] = str_replace('%value%', $val, $message);
-                }
-                $messages[$key] = implode($this->getErrorMessageSeparator(), $aggregateMessages);
-            } else {
-                $messages[$key] = str_replace('%value%', $value, $message);
-            }
-        }
-        return $messages;
-    }
-
-    /**
-     * Are there custom error messages registered?
-     *
-     * @return bool
-     */
-    protected function _hasErrorMessages()
-    {
-        return !empty($this->_errorMessages);
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+
+php/php*php*php php@seephp Zendphp_Filterphp php*php/
+requirephp_oncephp php'Zendphp/Filterphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Formphp php*php/
+requirephp_oncephp php'Zendphp/Formphp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Validatephp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Interfacephp.phpphp'php;
+
+php/php*php*php php@seephp Zendphp_Validatephp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
+
+php/php*php*
+php php*php Zendphp_Formphp_Element
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Element
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Elementphp.phpphp php2php2php4php6php4php php2php0php1php0php-php0php6php-php1php9php php1php7php:php3php1php:php2php1Zphp alabphp php$
+php php*php/
+classphp Zendphp_Formphp_Elementphp implementsphp Zendphp_Validatephp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Elementphp Constants
+php php php php php php*php/
+php php php php constphp DECORATORphp php=php php'DECORATORphp'php;
+php php php php constphp FILTERphp php php php php=php php'FILTERphp'php;
+php php php php constphp VALIDATEphp php php=php php'VALIDATEphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Defaultphp viewphp helperphp tophp use
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$helperphp php=php php'formTextphp'php;
+
+php php php php php/php*php*
+php php php php php php*php php'Allowphp emptyphp'php flag
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_allowEmptyphp php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp whetherphp orphp notphp tophp insertphp NotEmptyphp validatorphp whenphp elementphp isphp required
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_autoInsertNotEmptyValidatorphp php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Arrayphp tophp whichphp elementphp belongs
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_belongsTophp;
+
+php php php php php/php*php*
+php php php php php php*php Elementphp decorators
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_decoratorsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Elementphp description
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_descriptionphp;
+
+php php php php php/php*php*
+php php php php php php*php Shouldphp wephp disablephp loadingphp thephp defaultphp decoratorsphp?
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_disableLoadDefaultDecoratorsphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Customphp errorphp messages
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_errorMessagesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Validationphp errors
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_errorsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Separatorphp tophp usephp whenphp concatenatingphp aggregatephp errorphp messagesphp php(for
+php php php php php php*php elementsphp havingphp arrayphp valuesphp)
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_errorMessageSeparatorphp php=php php'php;php php'php;
+
+php php php php php/php*php*
+php php php php php php*php Elementphp filters
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_filtersphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Ignorephp flagphp php(usedphp whenphp retrievingphp valuesphp atphp formphp levelphp)
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_ignorephp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Doesphp thephp elementphp representphp anphp arrayphp?
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isArrayphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Isphp thephp errorphp markedphp asphp inphp anphp invalidphp statephp?
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isErrorphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Hasphp thephp elementphp beenphp manuallyphp markedphp asphp invalidphp?
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isErrorForcedphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Elementphp label
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_labelphp;
+
+php php php php php/php*php*
+php php php php php php*php Pluginphp loadersphp forphp filterphp andphp validatorphp chains
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_loadersphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Formattedphp validationphp errorphp messages
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messagesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Elementphp name
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namephp;
+
+php php php php php/php*php*
+php php php php php php*php Orderphp ofphp element
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_orderphp;
+
+php php php php php/php*php*
+php php php php php php*php Requiredphp flag
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_requiredphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Translate
+php php php php php php*php/
+php php php php protectedphp php$php_translatorphp;
+
+php php php php php/php*php*
+php php php php php php*php Isphp translationphp disabledphp?
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_translatorDisabledphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Elementphp type
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_typephp;
+
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp initializedphp validators
+php php php php php php*php php@varphp arrayphp Validators
+php php php php php php*php/
+php php php php protectedphp php$php_validatorsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp unphp-initializedphp validators
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_validatorRulesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Elementphp value
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php protectedphp php$php_valuephp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Viewphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_viewphp;
+
+php php php php php/php*php*
+php php php php php php*php Isphp aphp specificphp decoratorphp beingphp renderedphp viaphp thephp magicphp renderDecoratorphp(php)php?
+php php php php php php*
+php php php php php php*php Thisphp isphp tophp allowphp executionphp ofphp logicphp insidephp thephp renderphp(php)php methodsphp ofphp child
+php php php php php php*php elementsphp duringphp thephp magicphp callphp whilephp skippingphp thephp parentphp renderphp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isPartialRenderingphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php$specphp mayphp bephp:
+php php php php php php*php php-php stringphp:php namephp ofphp element
+php php php php php php*php php-php arrayphp:php optionsphp withphp whichphp tophp configurephp element
+php php php php php php*php php-php Zendphp_Configphp:php Zendphp_Configphp withphp optionsphp forphp configuringphp element
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Configphp php$spec
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp ifphp nophp elementphp namephp afterphp initialization
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$specphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$specphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setNamephp(php$specphp)php;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$specphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$specphp)php;
+php php php php php php php php php}php elseifphp php(php$specphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$specphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_stringphp(php$specphp)php php&php&php isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$specphp)php php&php&php php(php$optionsphp instanceofphp Zendphp_Configphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$optionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>getNamephp(php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Zendphp_Formphp_Elementphp requiresphp eachphp elementphp tophp havephp aphp namephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Extensions
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>initphp(php)php;
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Registerphp ViewHelperphp decoratorphp byphp default
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>loadDefaultDecoratorsphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializephp objectphp;php usedphp byphp extendingphp classes
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp flagphp tophp disablephp loadingphp defaultphp decorators
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setDisableLoadDefaultDecoratorsphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_disableLoadDefaultDecoratorsphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Shouldphp wephp loadphp thephp defaultphp decoratorsphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp loadDefaultDecoratorsIsDisabledphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_disableLoadDefaultDecoratorsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp defaultphp decorators
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp loadDefaultDecoratorsphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>loadDefaultDecoratorsIsDisabledphp(php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+
+php php php php php php php php php$decoratorsphp php=php php$thisphp-php>getDecoratorsphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$decoratorsphp)php)php php{
+php php php php php php php php php php php php php$getIdphp php=php createphp_functionphp(php'php$decoratorphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'returnphp php$decoratorphp-php>getElementphp(php)php-php>getIdphp(php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php-elementphp"php;php'php)php;
+php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php'ViewHelperphp'php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Errorsphp'php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Descriptionphp'php,php arrayphp(php'tagphp'php php=php>php php'pphp'php,php php'classphp'php php=php>php php'descriptionphp'php)php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'HtmlTagphp'php,php arrayphp(php'tagphp'php php=php>php php'ddphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'idphp'php php php=php>php arrayphp(php'callbackphp'php php=php>php php$getIdphp)php)php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Labelphp'php,php arrayphp(php'tagphp'php php=php>php php'dtphp'php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp objectphp statephp fromphp optionsphp array
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'prefixPathphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>addPrefixPathsphp(php$optionsphp[php'prefixPathphp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'prefixPathphp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'disableTranslatorphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setDisableTranslatorphp(php$optionsphp[php'disableTranslatorphp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'disableTranslatorphp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php unsetphp(php$optionsphp[php'optionsphp'php]php)php;
+php php php php php php php php unsetphp(php$optionsphp[php'configphp'php]php)php;
+
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php ucfirstphp(php$keyphp)php;
+
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$methodphp,php arrayphp(php'setTranslatorphp'php,php php'setPluginLoaderphp'php,php php'setViewphp'php)php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_objectphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Setterphp existsphp;php usephp it
+php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php Assumephp itphp'sphp metadata
+php php php php php php php php php php php php php php php php php$thisphp-php>setAttribphp(php$keyphp,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp objectphp statephp fromphp Zendphp_Configphp object
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>setOptionsphp(php$configphp-php>toArrayphp(php)php)php;
+php php php php php}
+
+
+php php php php php/php/php Localizationphp:
+
+php php php php php/php*php*
+php php php php php php*php Setphp translatorphp objectphp forphp localization
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Translatephp|nullphp php$translator
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setTranslatorphp(php$translatorphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$translatorphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php nullphp;
+php php php php php php php php php}php elseifphp php(php$translatorphp instanceofphp Zendphp_Translatephp_Adapterphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php php$translatorphp;
+php php php php php php php php php}php elseifphp php(php$translatorphp instanceofphp Zendphp_Translatephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php php$translatorphp-php>getAdapterphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp translatorphp specifiedphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp localizationphp translatorphp object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getTranslatorphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>translatorIsDisabledphp(php)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_translatorphp)php php{
+php php php php php php php php php php php php returnphp Zendphp_Formphp:php:getDefaultTranslatorphp(php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_translatorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Doesphp thisphp elementphp havephp itsphp ownphp specificphp translatorphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasTranslatorphp(php)
+php php php php php{
+php php php php php php php php returnphp php(boolphp)php$thisphp-php>php_translatorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Indicatephp whetherphp orphp notphp translationphp shouldphp bephp disabled
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setDisableTranslatorphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_translatorDisabledphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Isphp translationphp disabledphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp translatorIsDisabledphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_translatorDisabledphp;
+php php php php php}
+
+php php php php php/php/php Metadata
+
+php php php php php/php*php*
+php php php php php php*php Filterphp aphp namephp tophp onlyphp allowphp validphp variablephp characters
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@paramphp php boolphp php$allowBrackets
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp filterNamephp(php$valuephp,php php$allowBracketsphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$charsetphp php=php php'php^aphp-zAphp-Zphp0php-php9php_php\xphp7fphp-php\xffphp'php;
+php php php php php php php php ifphp php(php$allowBracketsphp)php php{
+php php php php php php php php php php php php php$charsetphp php.php=php php'php\php[php\php]php'php;
+php php php php php php php php php}
+php php php php php php php php returnphp pregphp_replacephp(php'php/php[php'php php.php php$charsetphp php.php php'php]php/php'php,php php'php'php,php php(stringphp)php php$valuephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp elementphp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setNamephp(php$namephp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>filterNamephp(php$namephp)php;
+php php php php php php php php ifphp php(php'php'php php=php=php=php php$namephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp namephp providedphp;php mustphp containphp onlyphp validphp variablephp charactersphp andphp bephp nonphp-emptyphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_namephp php=php php$namephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp elementphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_namephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp fullyphp qualifiedphp name
+php php php php php php*
+php php php php php php*php Placesphp namephp asphp subitemphp ofphp arrayphp andphp/orphp appendsphp bracketsphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getFullyQualifiedNamephp(php)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>getNamephp(php)php;
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$belongsTophp php=php php$thisphp-php>getBelongsTophp(php)php)php)php php{
+php php php php php php php php php php php php php$namephp php=php php$belongsTophp php.php php'php[php'php php.php php$namephp php.php php'php]php'php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php)php php{
+php php php php php php php php php php php php php$namephp php.php=php php'php[php]php'php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$namephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp elementphp id
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getIdphp(php)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>idphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>idphp;
+php php php php php php php php php}
+
+php php php php php php php php php$idphp php=php php$thisphp-php>getFullyQualifiedNamephp(php)php;
+
+php php php php php php php php php/php/php Bailphp earlyphp ifphp nophp arrayphp notationphp detected
+php php php php php php php php ifphp php(php!strstrphp(php$idphp,php php'php[php'php)php)php php{
+php php php php php php php php php php php php returnphp php$idphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Stripphp arrayphp notation
+php php php php php php php php ifphp php(php'php[php]php'php php=php=php substrphp(php$idphp,php php-php2php)php)php php{
+php php php php php php php php php php php php php$idphp php=php substrphp(php$idphp,php php0php,php strlenphp(php$idphp)php php-php php2php)php;
+php php php php php php php php php}
+php php php php php php php php php$idphp php=php strphp_replacephp(php'php]php[php'php,php php'php-php'php,php php$idphp)php;
+php php php php php php php php php$idphp php=php strphp_replacephp(arrayphp(php'php]php'php,php php'php[php'php)php,php php'php-php'php,php php$idphp)php;
+php php php php php php php php php$idphp php=php trimphp(php$idphp,php php'php-php'php)php;
+
+php php php php php php php php returnphp php$idphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp elementphp value
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setValuephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_valuephp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Filterphp aphp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_filterValuephp(php&php$valuephp,php php&php$keyphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>getFiltersphp(php)php asphp php$filterphp)php php{
+php php php php php php php php php php php php php$valuephp php=php php$filterphp-php>filterphp(php$valuephp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp filteredphp elementphp value
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getValuephp(php)
+php php php php php{
+php php php php php php php php php$valueFilteredphp php=php php$thisphp-php>php_valuephp;
+
+php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php php&php&php isphp_arrayphp(php$valueFilteredphp)php)php php{
+php php php php php php php php php php php php arrayphp_walkphp_recursivephp(php$valueFilteredphp,php arrayphp(php$thisphp,php php'php_filterValuephp'php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_filterValuephp(php$valueFilteredphp,php php$valueFilteredphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$valueFilteredphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp unfilteredphp elementphp value
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getUnfilteredValuephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_valuephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp elementphp label
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$label
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setLabelphp(php$labelphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_labelphp php=php php(stringphp)php php$labelphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp elementphp label
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getLabelphp(php)
+php php php php php{
+php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
+php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp)php php{
+php php php php php php php php php php php php returnphp php$translatorphp-php>translatephp(php$thisphp-php>php_labelphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_labelphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp elementphp order
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$order
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setOrderphp(php$orderphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_orderphp php=php php(intphp)php php$orderphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp elementphp order
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp getOrderphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_orderphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp requiredphp flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flagphp Defaultphp valuephp isphp true
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setRequiredphp(php$flagphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_requiredphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Isphp thephp elementphp requiredphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isRequiredphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_requiredphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp flagphp indicatingphp whetherphp aphp NotEmptyphp validatorphp shouldphp bephp insertedphp whenphp elementphp isphp required
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setAutoInsertNotEmptyValidatorphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_autoInsertNotEmptyValidatorphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp flagphp indicatingphp whetherphp aphp NotEmptyphp validatorphp shouldphp bephp insertedphp whenphp elementphp isphp required
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp autoInsertNotEmptyValidatorphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_autoInsertNotEmptyValidatorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp elementphp description
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$description
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setDescriptionphp(php$descriptionphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_descriptionphp php=php php(stringphp)php php$descriptionphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp elementphp description
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDescriptionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_descriptionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp php'allowphp emptyphp'php flag
+php php php php php php*
+php php php php php php*php Whenphp thephp allowphp emptyphp flagphp isphp enabledphp andphp thephp requiredphp flagphp isphp falsephp,php the
+php php php php php php*php elementphp willphp validatephp withphp emptyphp valuesphp.
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setAllowEmptyphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_allowEmptyphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp php'allowphp emptyphp'php flag
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getAllowEmptyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_allowEmptyphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp ignorephp flagphp php(usedphp whenphp retrievingphp valuesphp atphp formphp levelphp)
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setIgnorephp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_ignorephp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp ignorephp flagphp php(usedphp whenphp retrievingphp valuesphp atphp formphp levelphp)
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getIgnorephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_ignorephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp flagphp indicatingphp ifphp elementphp representsphp anphp array
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setIsArrayphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_isArrayphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Isphp thephp elementphp representingphp anphp arrayphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isArrayphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isArrayphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp arrayphp tophp whichphp elementphp belongs
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$array
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setBelongsTophp(php$arrayphp)
+php php php php php{
+php php php php php php php php php$arrayphp php=php php$thisphp-php>filterNamephp(php$arrayphp,php truephp)php;
+php php php php php php php php ifphp php(php!emptyphp(php$arrayphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_belongsTophp php=php php$arrayphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp arrayphp namephp tophp whichphp elementphp belongs
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getBelongsTophp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_belongsTophp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp elementphp type
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_typephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_typephp php=php getphp_classphp(php$thisphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_typephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp elementphp attribute
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp forphp invalidphp php$namephp values
+php php php php php php*php/
+php php php php publicphp functionphp setAttribphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
+php php php php php php php php ifphp php(php'php_php'php php=php=php php$namephp[php0php]php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp attributephp php"php%sphp"php;php mustphp notphp containphp aphp leadingphp underscorephp'php,php php$namephp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php=php=php=php php$valuephp)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php$namephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php$namephp php=php php$valuephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp multiplephp attributesphp atphp once
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$attribs
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setAttribsphp(arrayphp php$attribsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$attribsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$thisphp-php>setAttribphp(php$keyphp,php php$valuephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp elementphp attribute
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getAttribphp(php$namephp)
+php php php php php{
+php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php$namephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php$namephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp allphp attributes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getAttribsphp(php)
+php php php php php{
+php php php php php php php php php$attribsphp php=php getphp_objectphp_varsphp(php$thisphp)php;
+php php php php php php php php foreachphp php(php$attribsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php'php_php'php php=php=php substrphp(php$keyphp,php php0php,php php1php)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$attribsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$attribsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Overloadingphp:php retrievephp objectphp property
+php php php php php php*
+php php php php php php*php Preventsphp accessphp tophp propertiesphp beginningphp withphp php'php_php'php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp php_php_getphp(php$keyphp)
+php php php php php{
+php php php php php php php php ifphp php(php'php_php'php php=php=php php$keyphp[php0php]php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Cannotphp retrievephp valuephp forphp protectedphp/privatephp propertyphp php"php%sphp"php'php,php php$keyphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php$keyphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php$keyphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Overloadingphp:php setphp objectphp property
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp voide
+php php php php php php*php/
+php php php php publicphp functionphp php_php_setphp(php$keyphp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setAttribphp(php$keyphp,php php$valuephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Overloadingphp:php allowphp renderingphp specificphp decorators
+php php php php php php*
+php php php php php php*php Callphp renderDecoratorNamephp(php)php tophp renderphp aphp specificphp decoratorphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$method
+php php php php php php*php php@paramphp php arrayphp php$args
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp forphp invalidphp decoratorphp orphp invalidphp methodphp call
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
+php php php php php{
+php php php php php php php php ifphp php(php'renderphp'php php=php=php substrphp(php$methodphp,php php0php,php php6php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_isPartialRenderingphp php=php truephp;
+php php php php php php php php php php php php php$thisphp-php>renderphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_isPartialRenderingphp php=php falsephp;
+php php php php php php php php php php php php php$decoratorNamephp php=php substrphp(php$methodphp,php php6php)php;
+php php php php php php php php php php php php ifphp php(falsephp php!php=php=php php(php$decoratorphp php=php php$thisphp-php>getDecoratorphp(php$decoratorNamephp)php)php)php php{
+php php php php php php php php php php php php php php php php php$decoratorphp-php>setElementphp(php$thisphp)php;
+php php php php php php php php php php php php php php php php php$seedphp php=php php'php'php;
+php php php php php php php php php php php php php php php php ifphp php(php0php <php countphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$seedphp php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$decoratorphp-php>renderphp(php$seedphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Elementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Elementphp_Exceptionphp(sprintfphp(php'Decoratorphp byphp namephp php%sphp doesphp notphp existphp'php,php php$decoratorNamephp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Elementphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Formphp_Elementphp_Exceptionphp(sprintfphp(php'Methodphp php%sphp doesphp notphp existphp'php,php php$methodphp)php)php;
+php php php php php}
+
+php php php php php/php/php Loaders
+
+php php php php php/php*php*
+php php php php php php*php Setphp pluginphp loaderphp tophp usephp forphp validatorphp orphp filterphp chain
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loader
+php php php php php php*php php@paramphp php stringphp php$typephp php'decoratorphp'php,php php'filterphp'php,php orphp php'validatephp'
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp onphp invalidphp type
+php php php php php php*php/
+php php php php publicphp functionphp setPluginLoaderphp(Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loaderphp,php php$typephp)
+php php php php php{
+php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
+php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php casephp selfphp:php:DECORATORphp:
+php php php php php php php php php php php php casephp selfphp:php:FILTERphp:
+php php php php php php php php php php php php casephp selfphp:php:VALIDATEphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_loadersphp[php$typephp]php php=php php$loaderphp;
+php php php php php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp typephp php"php%sphp"php providedphp tophp setPluginLoaderphp(php)php'php,php php$typephp)php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp pluginphp loaderphp forphp validatorphp orphp filterphp chain
+php php php php php php*
+php php php php php php*php Instantiatesphp withphp defaultphp rulesphp ifphp nonephp availablephp forphp thatphp typephp.php Use
+php php php php php php*php php'decoratorphp'php,php php'filterphp'php,php orphp php'validatephp'php forphp php$typephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
+php php php php php php*php php@throwsphp Zendphp_Loaderphp_Exceptionphp onphp invalidphp typephp.
+php php php php php php*php/
+php php php php publicphp functionphp getPluginLoaderphp(php$typephp)
+php php php php php{
+php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
+php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php casephp selfphp:php:FILTERphp:
+php php php php php php php php php php php php casephp selfphp:php:VALIDATEphp:
+php php php php php php php php php php php php php php php php php$prefixSegmentphp php=php ucfirstphp(strtolowerphp(php$typephp)php)php;
+php php php php php php php php php php php php php php php php php$pathSegmentphp php php php=php php$prefixSegmentphp;
+php php php php php php php php php php php php casephp selfphp:php:DECORATORphp:
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$prefixSegmentphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$prefixSegmentphp php=php php'Formphp_Decoratorphp'php;
+php php php php php php php php php php php php php php php php php php php php php$pathSegmentphp php php php=php php'Formphp/Decoratorphp'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_loadersphp[php$typephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_loadersphp[php$typephp]php php=php newphp Zendphp_Loaderphp_PluginLoaderphp(
+php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php'Zendphp_php'php php.php php$prefixSegmentphp php.php php'php_php'php php=php>php php'Zendphp/php'php php.php php$pathSegmentphp php.php php'php/php'php)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_loadersphp[php$typephp]php;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp typephp php"php%sphp"php providedphp tophp getPluginLoaderphp(php)php'php,php php$typephp)php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp prefixphp pathphp forphp pluginphp loader
+php php php php php php*
+php php php php php php*php Ifphp nophp php$typephp specifiedphp,php assumesphp itphp isphp aphp basephp pathphp forphp bothphp filtersphp and
+php php php php php php*php validatorsphp,php andphp setsphp eachphp accordingphp tophp thephp followingphp rulesphp:
+php php php php php php*php php-php decoratorsphp:php php$prefixphp php=php php$prefixphp php.php php'php_Decoratorphp'
+php php php php php php*php php-php filtersphp:php php$prefixphp php=php php$prefixphp php.php php'php_Filterphp'
+php php php php php php*php php-php validatorsphp:php php$prefixphp php=php php$prefixphp php.php php'php_Validatephp'
+php php php php php php*
+php php php php php php*php Otherwisephp,php thephp pathphp prefixphp isphp setphp onphp thephp appropriatephp pluginphp loaderphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$prefix
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp forphp invalidphp type
+php php php php php php*php/
+php php php php publicphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
+php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php casephp selfphp:php:DECORATORphp:
+php php php php php php php php php php php php casephp selfphp:php:FILTERphp:
+php php php php php php php php php php php php casephp selfphp:php:VALIDATEphp:
+php php php php php php php php php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(php$typephp)php;
+php php php php php php php php php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
+php php php php php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php php php php casephp nullphp:
+php php php php php php php php php php php php php php php php php$prefixphp php=php rtrimphp(php$prefixphp,php php'php_php'php)php;
+php php php php php php php php php php php php php php php php php$pathphp php php php=php rtrimphp(php$pathphp,php DIRECTORYphp_SEPARATORphp)php;
+php php php php php php php php php php php php php php php php foreachphp php(arrayphp(selfphp:php:DECORATORphp,php selfphp:php:FILTERphp,php selfphp:php:VALIDATEphp)php asphp php$typephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$cTypephp php php php php php php php php=php ucfirstphp(strtolowerphp(php$typephp)php)php;
+php php php php php php php php php php php php php php php php php php php php php$pluginPathphp php php php=php php$pathphp php.php DIRECTORYphp_SEPARATORphp php.php php$cTypephp php.php DIRECTORYphp_SEPARATORphp;
+php php php php php php php php php php php php php php php php php php php php php$pluginPrefixphp php=php php$prefixphp php.php php'php_php'php php.php php$cTypephp;
+php php php php php php php php php php php php php php php php php php php php php$loaderphp php php php php php php php=php php$thisphp-php>getPluginLoaderphp(php$typephp)php;
+php php php php php php php php php php php php php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$pluginPrefixphp,php php$pluginPathphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp typephp php"php%sphp"php providedphp tophp getPluginLoaderphp(php)php'php,php php$typephp)php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp manyphp prefixphp pathsphp atphp once
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$spec
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addPrefixPathsphp(arrayphp php$specphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$specphp[php'prefixphp'php]php)php php&php&php issetphp(php$specphp[php'pathphp'php]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>addPrefixPathphp(php$specphp[php'prefixphp'php]php,php php$specphp[php'pathphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$specphp asphp php$typephp php=php>php php$pathsphp)php php{
+php php php php php php php php php php php php ifphp php(isphp_numericphp(php$typephp)php php&php&php isphp_arrayphp(php$pathsphp)php)php php{
+php php php php php php php php php php php php php php php php php$typephp php=php nullphp;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$pathsphp[php'prefixphp'php]php)php php&php&php issetphp(php$pathsphp[php'pathphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$pathsphp[php'typephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$pathsphp[php'typephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$pathsphp[php'prefixphp'php]php,php php$pathsphp[php'pathphp'php]php,php php$typephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elseifphp php(php!isphp_numericphp(php$typephp)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$pathsphp[php'prefixphp'php]php)php php|php|php php!issetphp(php$pathsphp[php'pathphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$pathsphp asphp php$prefixphp php=php>php php$specphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$specphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php foreachphp php(php$specphp asphp php$pathphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$pathphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(isphp_stringphp(php$specphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$prefixphp,php php$specphp,php php$typephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$pathsphp[php'prefixphp'php]php,php php$pathsphp[php'pathphp'php]php,php php$typephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php/php Validation
+
+php php php php php/php*php*
+php php php php php php*php Addphp validatorphp tophp validationphp chain
+php php php php php php*
+php php php php php php*php Notephp:php willphp overwritephp existingphp validatorsphp ifphp theyphp arephp ofphp thephp samephp classphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Validatephp_Interfacephp php$validator
+php php php php php php*php php@paramphp php boolphp php$breakChainOnFailure
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp ifphp invalidphp validatorphp type
+php php php php php php*php/
+php php php php publicphp functionphp addValidatorphp(php$validatorphp,php php$breakChainOnFailurephp php=php falsephp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$validatorphp instanceofphp Zendphp_Validatephp_Interfacephp)php php{
+php php php php php php php php php php php php php$namephp php=php getphp_classphp(php$validatorphp)php;
+
+php php php php php php php php php php php php ifphp php(php!issetphp(php$validatorphp-php>zfBreakChainOnFailurephp)php)php php{
+php php php php php php php php php php php php php php php php php$validatorphp-php>zfBreakChainOnFailurephp php=php php$breakChainOnFailurephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$validatorphp)php)php php{
+php php php php php php php php php php php php php$namephp php php php php php php=php php$validatorphp;
+php php php php php php php php php php php php php$validatorphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php'validatorphp'php php=php>php php$validatorphp,
+php php php php php php php php php php php php php php php php php'breakChainOnFailurephp'php php=php>php php$breakChainOnFailurephp,
+php php php php php php php php php php php php php php php php php'optionsphp'php php php php php php php php php php php php php php=php>php php$optionsphp,
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp validatorphp providedphp tophp addValidatorphp;php mustphp bephp stringphp orphp Zendphp_Validatephp_Interfacephp'php)php;
+php php php php php php php php php}
+
+
+php php php php php php php php php$thisphp-php>php_validatorsphp[php$namephp]php php=php php$validatorphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp multiplephp validators
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$validators
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addValidatorsphp(arrayphp php$validatorsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$validatorsphp asphp php$validatorInfophp)php php{
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$validatorInfophp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>addValidatorphp(php$validatorInfophp)php;
+php php php php php php php php php php php php php}php elseifphp php(php$validatorInfophp instanceofphp Zendphp_Validatephp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>addValidatorphp(php$validatorInfophp)php;
+php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$validatorInfophp)php)php php{
+php php php php php php php php php php php php php php php php php$argcphp php php php php php php php php php php php php php php php php=php countphp(php$validatorInfophp)php;
+php php php php php php php php php php php php php php php php php$breakChainOnFailurephp php=php falsephp;
+php php php php php php php php php php php php php php php php php$optionsphp php php php php php php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$validatorInfophp[php'validatorphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$validatorphp php=php php$validatorInfophp[php'validatorphp'php]php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$validatorInfophp[php'breakChainOnFailurephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$breakChainOnFailurephp php=php php$validatorInfophp[php'breakChainOnFailurephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$validatorInfophp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php php$validatorInfophp[php'optionsphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addValidatorphp(php$validatorphp,php php$breakChainOnFailurephp,php php$optionsphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php switchphp php(truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php0php php=php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php1php <php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$validatorphp php php=php arrayphp_shiftphp(php$validatorInfophp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php2php <php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$breakChainOnFailurephp php=php arrayphp_shiftphp(php$validatorInfophp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php3php <php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$validatorInfophp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addValidatorphp(php$validatorphp,php php$breakChainOnFailurephp,php php$optionsphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp validatorphp passedphp tophp addValidatorsphp(php)php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp multiplephp validatorsphp,php overwritingphp previousphp validators
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$validators
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setValidatorsphp(arrayphp php$validatorsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>clearValidatorsphp(php)php;
+php php php php php php php php returnphp php$thisphp-php>addValidatorsphp(php$validatorsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp singlephp validatorphp byphp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Validatephp_Interfacephp|falsephp Falsephp ifphp notphp foundphp,php validatorphp otherwise
+php php php php php php*php/
+php php php php publicphp functionphp getValidatorphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_validatorsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php php$lenphp php=php strlenphp(php$namephp)php;
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_validatorsphp asphp php$localNamephp php=php>php php$validatorphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lenphp php>php strlenphp(php$localNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php substrphp_comparephp(php$localNamephp,php php$namephp,php php-php$lenphp,php php$lenphp,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$validatorphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_loadValidatorphp(php$validatorphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php returnphp php$validatorphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_validatorsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_loadValidatorphp(php$thisphp-php>php_validatorsphp[php$namephp]php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_validatorsphp[php$namephp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp allphp validators
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getValidatorsphp(php)
+php php php php php{
+php php php php php php php php php$validatorsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_validatorsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Validatephp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php$validatorsphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$validatorphp php=php php$thisphp-php>php_loadValidatorphp(php$valuephp)php;
+php php php php php php php php php php php php php$validatorsphp[getphp_classphp(php$validatorphp)php]php php=php php$validatorphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$validatorsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp aphp singlephp validatorphp byphp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp removeValidatorphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_validatorsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_validatorsphp[php$namephp]php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$lenphp php=php strlenphp(php$namephp)php;
+php php php php php php php php php php php php foreachphp php(arrayphp_keysphp(php$thisphp-php>php_validatorsphp)php asphp php$validatorphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lenphp php>php strlenphp(php$validatorphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php substrphp_comparephp(php$validatorphp,php php$namephp,php php-php$lenphp,php php$lenphp,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_validatorsphp[php$validatorphp]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp allphp validators
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp clearValidatorsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_validatorsphp php=php arrayphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Validatephp elementphp value
+php php php php php php*
+php php php php php php*php Ifphp aphp translationphp adapterphp isphp registeredphp,php anyphp errorphp messagesphp willphp be
+php php php php php php*php translatedphp accordingphp tophp thephp currentphp localephp,php usingphp thephp givenphp errorphp codephp;
+php php php php php php*php ifphp nophp matchingphp translationphp isphp foundphp,php thephp originalphp messagephp willphp be
+php php php php php php*php utilizedphp.
+php php php php php php*
+php php php php php php*php Notephp:php Thephp php*filteredphp*php valuephp isphp validatedphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@paramphp php mixedphp php$context
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$contextphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setValuephp(php$valuephp)php;
+php php php php php php php php php$valuephp php=php php$thisphp-php>getValuephp(php)php;
+
+php php php php php php php php ifphp php(php(php(php'php'php php=php=php=php php$valuephp)php php|php|php php(nullphp php=php=php=php php$valuephp)php)
+php php php php php php php php php php php php php&php&php php!php$thisphp-php>isRequiredphp(php)
+php php php php php php php php php php php php php&php&php php$thisphp-php>getAllowEmptyphp(php)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>isRequiredphp(php)
+php php php php php php php php php php php php php&php&php php$thisphp-php>autoInsertNotEmptyValidatorphp(php)
+php php php php php php php php php php php php php&php&php php!php$thisphp-php>getValidatorphp(php'NotEmptyphp'php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$validatorsphp php=php php$thisphp-php>getValidatorsphp(php)php;
+php php php php php php php php php php php php php$notEmptyphp php php php=php arrayphp(php'validatorphp'php php=php>php php'NotEmptyphp'php,php php'breakChainOnFailurephp'php php=php>php truephp)php;
+php php php php php php php php php php php php arrayphp_unshiftphp(php$validatorsphp,php php$notEmptyphp)php;
+php php php php php php php php php php php php php$thisphp-php>setValidatorsphp(php$validatorsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Findphp thephp correctphp translatorphp.php Zendphp_Validatephp_Abstractphp:php:getDefaultTranslatorphp(php)
+php php php php php php php php php/php/php willphp getphp eitherphp thephp staticphp translatorphp attachedphp tophp Zendphp_Validatephp_Abstract
+php php php php php php php php php/php/php orphp thephp php'Zendphp_Translatephp'php fromphp Zendphp_Registryphp.
+php php php php php php php php ifphp php(Zendphp_Validatephp_Abstractphp:php:hasDefaultTranslatorphp(php)php php&php&
+php php php php php php php php php php php php php!Zendphp_Formphp:php:hasDefaultTranslatorphp(php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$translatorphp php=php Zendphp_Validatephp_Abstractphp:php:getDefaultTranslatorphp(php)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>hasTranslatorphp(php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php onlyphp pickphp upphp thisphp elementphp'sphp translatorphp ifphp itphp wasphp attachedphp directlyphp.
+php php php php php php php php php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_messagesphp php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_errorsphp php php php=php arrayphp(php)php;
+php php php php php php php php php$resultphp php php php php php php php php php php=php truephp;
+php php php php php php php php php$isArrayphp php php php php php php php php php=php php$thisphp-php>isArrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>getValidatorsphp(php)php asphp php$keyphp php=php>php php$validatorphp)php php{
+php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$validatorphp,php php'setTranslatorphp'php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$validatorphp,php php'hasTranslatorphp'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$validatorphp-php>hasTranslatorphp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$validatorphp-php>setTranslatorphp(php$translatorphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$validatorphp-php>setTranslatorphp(php$translatorphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$validatorphp,php php'setDisableTranslatorphp'php)php)php php{
+php php php php php php php php php php php php php php php php php$validatorphp-php>setDisableTranslatorphp(php$thisphp-php>translatorIsDisabledphp(php)php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$isArrayphp php&php&php isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$messagesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php$errorsphp php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$valphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$validatorphp-php>isValidphp(php$valphp,php php$contextphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_hasErrorMessagesphp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$messagesphp php=php php$thisphp-php>php_getErrorMessagesphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$errorsphp php php php=php php$messagesphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$messagesphp php=php arrayphp_mergephp(php$messagesphp,php php$validatorphp-php>getMessagesphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$errorsphp php php php=php arrayphp_mergephp(php$errorsphp,php php php php$validatorphp-php>getErrorsphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php$resultphp)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elseifphp php(php$validatorphp-php>isValidphp(php$valuephp,php php$contextphp)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$resultphp php=php falsephp;
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_hasErrorMessagesphp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$messagesphp php=php php$thisphp-php>php_getErrorMessagesphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$errorsphp php php php=php php$messagesphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$messagesphp php=php php$validatorphp-php>getMessagesphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$errorsphp php php php=php arrayphp_keysphp(php$messagesphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$resultphp php php php php php php php php php php=php falsephp;
+php php php php php php php php php php php php php$thisphp-php>php_messagesphp php=php arrayphp_mergephp(php$thisphp-php>php_messagesphp,php php$messagesphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_errorsphp php php php=php arrayphp_mergephp(php$thisphp-php>php_errorsphp,php php php php$errorsphp)php;
+
+php php php php php php php php php php php php ifphp php(php$validatorphp-php>zfBreakChainOnFailurephp)php php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Ifphp elementphp manuallyphp flaggedphp asphp invalidphp,php returnphp false
+php php php php php php php php ifphp php(php$thisphp-php>php_isErrorForcedphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp aphp customphp errorphp messagephp tophp returnphp inphp thephp eventphp ofphp failedphp validation
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$message
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addErrorMessagephp(php$messagephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_errorMessagesphp[php]php php=php php(stringphp)php php$messagephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp multiplephp customphp errorphp messagesphp tophp returnphp inphp thephp eventphp ofphp failedphp validation
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$messages
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addErrorMessagesphp(arrayphp php$messagesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$messagesphp asphp php$messagephp)php php{
+php php php php php php php php php php php php php$thisphp-php>addErrorMessagephp(php$messagephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Samephp asphp addErrorMessagesphp(php)php,php butphp clearsphp customphp errorphp messagephp stackphp first
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$messages
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setErrorMessagesphp(arrayphp php$messagesphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>clearErrorMessagesphp(php)php;
+php php php php php php php php returnphp php$thisphp-php>addErrorMessagesphp(php$messagesphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp customphp errorphp messages
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getErrorMessagesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_errorMessagesphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp customphp errorphp messagesphp stack
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp clearErrorMessagesphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_errorMessagesphp php=php arrayphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp errorMessageSeparator
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getErrorMessageSeparatorphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_errorMessageSeparatorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp errorMessageSeparator
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$separator
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setErrorMessageSeparatorphp(php$separatorphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_errorMessageSeparatorphp php=php php$separatorphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Markphp thephp elementphp asphp beingphp inphp aphp failedphp validationphp state
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp markAsErrorphp(php)
+php php php php php{
+php php php php php php php php php$messagesphp php php php php php php php=php php$thisphp-php>getMessagesphp(php)php;
+php php php php php php php php php$customMessagesphp php=php php$thisphp-php>php_getErrorMessagesphp(php)php;
+php php php php php php php php php$messagesphp php php php php php php php=php php$messagesphp php+php php$customMessagesphp;
+php php php php php php php php ifphp php(emptyphp(php$messagesphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_isErrorphp php=php truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_messagesphp php=php php$messagesphp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_isErrorForcedphp php=php truephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp anphp errorphp messagephp andphp markphp elementphp asphp failedphp validation
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$message
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addErrorphp(php$messagephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>addErrorMessagephp(php$messagephp)php;
+php php php php php php php php php$thisphp-php>markAsErrorphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp multiplephp errorphp messagesphp andphp flagphp elementphp asphp failedphp validation
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$messages
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addErrorsphp(arrayphp php$messagesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$messagesphp asphp php$messagephp)php php{
+php php php php php php php php php php php php php$thisphp-php>addErrorphp(php$messagephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Overwritephp anyphp previouslyphp setphp errorphp messagesphp andphp flagphp asphp failedphp validation
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$messages
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setErrorsphp(arrayphp php$messagesphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>clearErrorMessagesphp(php)php;
+php php php php php php php php returnphp php$thisphp-php>addErrorsphp(php$messagesphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Arephp therephp errorsphp registeredphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasErrorsphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php!emptyphp(php$thisphp-php>php_messagesphp)php php|php|php php$thisphp-php>php_isErrorphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp validatorphp chainphp errors
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getErrorsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_errorsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp errorphp messages
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getMessagesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_messagesphp;
+php php php php php}
+
+
+php php php php php/php/php Filtering
+
+php php php php php/php*php*
+php php php php php php*php Addphp aphp filterphp tophp thephp element
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Filterphp_Interfacephp php$filter
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addFilterphp(php$filterphp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$filterphp instanceofphp Zendphp_Filterphp_Interfacephp)php php{
+php php php php php php php php php php php php php$namephp php=php getphp_classphp(php$filterphp)php;
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$filterphp)php)php php{
+php php php php php php php php php php php php php$namephp php=php php$filterphp;
+php php php php php php php php php php php php php$filterphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php'filterphp'php php php=php>php php$filterphp,
+php php php php php php php php php php php php php php php php php'optionsphp'php php=php>php php$optionsphp,
+php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php$thisphp-php>php_filtersphp[php$namephp]php php=php php$filterphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp filterphp providedphp tophp addFilterphp;php mustphp bephp stringphp orphp Zendphp_Filterphp_Interfacephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_filtersphp[php$namephp]php php=php php$filterphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp filtersphp tophp element
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$filters
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addFiltersphp(arrayphp php$filtersphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$filtersphp asphp php$filterInfophp)php php{
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$filterInfophp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>addFilterphp(php$filterInfophp)php;
+php php php php php php php php php php php php php}php elseifphp php(php$filterInfophp instanceofphp Zendphp_Filterphp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>addFilterphp(php$filterInfophp)php;
+php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$filterInfophp)php)php php{
+php php php php php php php php php php php php php php php php php$argcphp php php php php php php php php php php php php php php php php=php countphp(php$filterInfophp)php;
+php php php php php php php php php php php php php php php php php$optionsphp php php php php php php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterInfophp[php'filterphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$filterphp php=php php$filterInfophp[php'filterphp'php]php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterInfophp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php php$filterInfophp[php'optionsphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addFilterphp(php$filterphp,php php$optionsphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php switchphp php(truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php0php php=php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php1php <php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$filterphp php php=php arrayphp_shiftphp(php$filterInfophp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php2php <php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$filterInfophp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addFilterphp(php$filterphp,php php$optionsphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp filterphp passedphp tophp addFiltersphp(php)php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp filtersphp tophp elementphp,php overwritingphp anyphp alreadyphp existing
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$filters
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setFiltersphp(arrayphp php$filtersphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>clearFiltersphp(php)php;
+php php php php php php php php returnphp php$thisphp-php>addFiltersphp(php$filtersphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp singlephp filterphp byphp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Filterphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getFilterphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_filtersphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php php$lenphp php=php strlenphp(php$namephp)php;
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_filtersphp asphp php$localNamephp php=php>php php$filterphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lenphp php>php strlenphp(php$localNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php substrphp_comparephp(php$localNamephp,php php$namephp,php php-php$lenphp,php php$lenphp,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$filterphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_loadFilterphp(php$filterphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php returnphp php$filterphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_filtersphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_loadFilterphp(php$thisphp-php>php_filtersphp[php$namephp]php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_filtersphp[php$namephp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp allphp filters
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getFiltersphp(php)
+php php php php php{
+php php php php php php php php php$filtersphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_filtersphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Filterphp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php$filtersphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$filterphp php=php php$thisphp-php>php_loadFilterphp(php$valuephp)php;
+php php php php php php php php php php php php php$filtersphp[getphp_classphp(php$filterphp)php]php php=php php$filterphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$filtersphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp aphp filterphp byphp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp removeFilterphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_filtersphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_filtersphp[php$namephp]php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$lenphp php=php strlenphp(php$namephp)php;
+php php php php php php php php php php php php foreachphp php(arrayphp_keysphp(php$thisphp-php>php_filtersphp)php asphp php$filterphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lenphp php>php strlenphp(php$filterphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php substrphp_comparephp(php$filterphp,php php$namephp,php php-php$lenphp,php php$lenphp,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_filtersphp[php$filterphp]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp allphp filters
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp clearFiltersphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_filtersphp php=php arrayphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php/php Rendering
+
+php php php php php/php*php*
+php php php php php php*php Setphp viewphp object
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setViewphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_viewphp php=php php$viewphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp viewphp object
+php php php php php php*
+php php php php php php*php Retrievesphp fromphp ViewRendererphp ifphp nonephp previouslyphp setphp.
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|Zendphp_Viewphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getViewphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_viewphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/HelperBrokerphp.phpphp'php;
+php php php php php php php php php php php php php$viewRendererphp php=php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:getStaticHelperphp(php'viewRendererphp'php)php;
+php php php php php php php php php php php php php$thisphp-php>setViewphp(php$viewRendererphp-php>viewphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_viewphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Instantiatephp aphp decoratorphp basedphp onphp classphp namephp orphp classphp namephp fragment
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php nullphp|arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_getDecoratorphp(php$namephp,php php$optionsphp)
+php php php php php{
+php php php php php php php php php$classphp php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:DECORATORphp)php-php>loadphp(php$namephp)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$optionsphp)php php{
+php php php php php php php php php php php php php$decoratorphp php=php newphp php$classphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$decoratorphp php=php newphp php$classphp(php$optionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$decoratorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp aphp decoratorphp forphp renderingphp thephp element
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Formphp_Decoratorphp_Interfacephp php$decorator
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Optionsphp withphp whichphp tophp initializephp decorator
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addDecoratorphp(php$decoratorphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$decoratorphp instanceofphp Zendphp_Formphp_Decoratorphp_Interfacephp)php php{
+php php php php php php php php php php php php php$namephp php=php getphp_classphp(php$decoratorphp)php;
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$decoratorphp)php)php php{
+php php php php php php php php php php php php php$namephp php php php php php php=php php$decoratorphp;
+php php php php php php php php php php php php php$decoratorphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php'decoratorphp'php php=php>php php$namephp,
+php php php php php php php php php php php php php php php php php'optionsphp'php php php php=php>php php$optionsphp,
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$decoratorphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$decoratorphp asphp php$namephp php=php>php php$specphp)php php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(isphp_numericphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp aliasphp providedphp tophp addDecoratorphp;php mustphp bephp alphanumericphp stringphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$specphp)php)php php{
+php php php php php php php php php php php php php php php php php$decoratorphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'decoratorphp'php php=php>php php$specphp,
+php php php php php php php php php php php php php php php php php php php php php'optionsphp'php php php php=php>php php$optionsphp,
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php}php elseifphp php(php$specphp instanceofphp Zendphp_Formphp_Decoratorphp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php$decoratorphp php=php php$specphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp decoratorphp providedphp tophp addDecoratorphp;php mustphp bephp stringphp orphp Zendphp_Formphp_Decoratorphp_Interfacephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_decoratorsphp[php$namephp]php php=php php$decoratorphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp manyphp decoratorsphp atphp once
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$decorators
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp addDecoratorsphp(arrayphp php$decoratorsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$decoratorsphp asphp php$decoratorNamephp php=php>php php$decoratorInfophp)php php{
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$decoratorInfophp)php php|php|
+php php php php php php php php php php php php php php php php php$decoratorInfophp instanceofphp Zendphp_Formphp_Decoratorphp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_numericphp(php$decoratorNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(arrayphp(php$decoratorNamephp php=php>php php$decoratorInfophp)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php$decoratorInfophp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$decoratorInfophp)php)php php{
+php php php php php php php php php php php php php php php php php$argcphp php php php php=php countphp(php$decoratorInfophp)php;
+php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$decoratorInfophp[php'decoratorphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$decoratorphp php=php php$decoratorInfophp[php'decoratorphp'php]php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$decoratorInfophp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php php$decoratorInfophp[php'optionsphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php$decoratorphp,php php$optionsphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php switchphp php(truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php0php php=php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php1php <php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$decoratorphp php php=php arrayphp_shiftphp(php$decoratorInfophp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php2php <php=php php$argcphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$decoratorInfophp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php$decoratorphp,php php$optionsphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp decoratorphp passedphp tophp addDecoratorsphp(php)php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Overwritephp allphp decorators
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$decorators
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp setDecoratorsphp(arrayphp php$decoratorsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>clearDecoratorsphp(php)php;
+php php php php php php php php returnphp php$thisphp-php>addDecoratorsphp(php$decoratorsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp registeredphp decorator
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp falsephp|Zendphp_Formphp_Decoratorphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp getDecoratorphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_decoratorsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php php$lenphp php=php strlenphp(php$namephp)php;
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_decoratorsphp asphp php$localNamephp php=php>php php$decoratorphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lenphp php>php strlenphp(php$localNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php substrphp_comparephp(php$localNamephp,php php$namephp,php php-php$lenphp,php php$lenphp,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$decoratorphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_loadDecoratorphp(php$decoratorphp,php php$localNamephp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php returnphp php$decoratorphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_decoratorsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_loadDecoratorphp(php$thisphp-php>php_decoratorsphp[php$namephp]php,php php$namephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_decoratorsphp[php$namephp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp allphp decorators
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getDecoratorsphp(php)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>php_decoratorsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_loadDecoratorphp(php$valuephp,php php$keyphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_decoratorsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp aphp singlephp decorator
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp removeDecoratorphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_decoratorsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_decoratorsphp[php$namephp]php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$lenphp php=php strlenphp(php$namephp)php;
+php php php php php php php php php php php php foreachphp php(arrayphp_keysphp(php$thisphp-php>php_decoratorsphp)php asphp php$decoratorphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lenphp php>php strlenphp(php$decoratorphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php substrphp_comparephp(php$decoratorphp,php php$namephp,php php-php$lenphp,php php$lenphp,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_decoratorsphp[php$decoratorphp]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp allphp decorators
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp clearDecoratorsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_decoratorsphp php=php arrayphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Renderphp formphp element
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_isPartialRenderingphp)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$viewphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setViewphp(php$viewphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$contentphp php=php php'php'php;
+php php php php php php php php foreachphp php(php$thisphp-php>getDecoratorsphp(php)php asphp php$decoratorphp)php php{
+php php php php php php php php php php php php php$decoratorphp-php>setElementphp(php$thisphp)php;
+php php php php php php php php php php php php php$contentphp php=php php$decoratorphp-php>renderphp(php$contentphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$contentphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Stringphp representationphp ofphp formphp element
+php php php php php php*
+php php php php php php*php Proxiesphp tophp php{php@linkphp renderphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>renderphp(php)php;
+php php php php php php php php php php php php returnphp php$returnphp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php triggerphp_errorphp(php$ephp-php>getMessagephp(php)php,php Ephp_USERphp_WARNINGphp)php;
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Lazyphp-loadphp aphp filter
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$filter
+php php php php php php*php php@returnphp Zendphp_Filterphp_Interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadFilterphp(arrayphp php$filterphp)
+php php php php php{
+php php php php php php php php php$origNamephp php=php php$filterphp[php'filterphp'php]php;
+php php php php php php php php php$namephp php php php php php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:FILTERphp)php-php>loadphp(php$filterphp[php'filterphp'php]php)php;
+
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_filtersphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Filterphp instancephp alreadyphp existsphp forphp filterphp php"php%sphp"php'php,php php$origNamephp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$filterphp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php$instancephp php=php newphp php$namephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$rphp php=php newphp ReflectionClassphp(php$namephp)php;
+php php php php php php php php php php php php ifphp php(php$rphp-php>hasMethodphp(php'php_php_constructphp'php)php)php php{
+php php php php php php php php php php php php php php php php php$instancephp php=php php$rphp-php>newInstanceArgsphp(php(arrayphp)php php$filterphp[php'optionsphp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$instancephp php=php php$rphp-php>newInstancephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$origNamephp php!php=php php$namephp)php php{
+php php php php php php php php php php php php php$filterNamesphp php php=php arrayphp_keysphp(php$thisphp-php>php_filtersphp)php;
+php php php php php php php php php php php php php$orderphp php php php php php php php php=php arrayphp_flipphp(php$filterNamesphp)php;
+php php php php php php php php php php php php php$orderphp[php$namephp]php php=php php$orderphp[php$origNamephp]php;
+php php php php php php php php php php php php php$filtersExchangephp php=php arrayphp(php)php;
+php php php php php php php php php php php php unsetphp(php$orderphp[php$origNamephp]php)php;
+php php php php php php php php php php php php asortphp(php$orderphp)php;
+php php php php php php php php php php php php foreachphp php(php$orderphp asphp php$keyphp php=php>php php$indexphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php$namephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$filtersExchangephp[php$keyphp]php php=php php$instancephp;
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$filtersExchangephp[php$keyphp]php php=php php$thisphp-php>php_filtersphp[php$keyphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_filtersphp php=php php$filtersExchangephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_filtersphp[php$namephp]php php=php php$instancephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$instancephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Lazyphp-loadphp aphp validator
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$validatorphp Validatorphp definition
+php php php php php php*php php@returnphp Zendphp_Validatephp_Interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadValidatorphp(arrayphp php$validatorphp)
+php php php php php{
+php php php php php php php php php$origNamephp php=php php$validatorphp[php'validatorphp'php]php;
+php php php php php php php php php$namephp php php php php php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:VALIDATEphp)php-php>loadphp(php$validatorphp[php'validatorphp'php]php)php;
+
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_validatorsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Validatorphp instancephp alreadyphp existsphp forphp validatorphp php"php%sphp"php'php,php php$origNamephp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$messagesphp php=php falsephp;
+php php php php php php php php ifphp php(issetphp(php$validatorphp[php'optionsphp'php]php)php php&php&php arrayphp_keyphp_existsphp(php'messagesphp'php,php php(arrayphp)php$validatorphp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php$messagesphp php=php php$validatorphp[php'optionsphp'php]php[php'messagesphp'php]php;
+php php php php php php php php php php php php unsetphp(php$validatorphp[php'optionsphp'php]php[php'messagesphp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$validatorphp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php$instancephp php=php newphp php$namephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$rphp php=php newphp ReflectionClassphp(php$namephp)php;
+php php php php php php php php php php php php ifphp php(php$rphp-php>hasMethodphp(php'php_php_constructphp'php)php)php php{
+php php php php php php php php php php php php php php php php php$numericphp php=php falsephp;
+php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$validatorphp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keysphp php php php php=php arrayphp_keysphp(php$validatorphp[php'optionsphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php foreachphp(php$keysphp asphp php$keyphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_numericphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$numericphp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$numericphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$instancephp php=php php$rphp-php>newInstanceArgsphp(php(arrayphp)php php$validatorphp[php'optionsphp'php]php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$instancephp php=php php$rphp-php>newInstancephp(php$validatorphp[php'optionsphp'php]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$instancephp php=php php$rphp-php>newInstancephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$messagesphp)php php{
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$messagesphp)php)php php{
+php php php php php php php php php php php php php php php php php$instancephp-php>setMessagesphp(php$messagesphp)php;
+php php php php php php php php php php php php php}php elseifphp php(isphp_stringphp(php$messagesphp)php)php php{
+php php php php php php php php php php php php php php php php php$instancephp-php>setMessagephp(php$messagesphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$instancephp-php>zfBreakChainOnFailurephp php=php php$validatorphp[php'breakChainOnFailurephp'php]php;
+
+php php php php php php php php ifphp php(php$origNamephp php!php=php php$namephp)php php{
+php php php php php php php php php php php php php$validatorNamesphp php php php php php=php arrayphp_keysphp(php$thisphp-php>php_validatorsphp)php;
+php php php php php php php php php php php php php$orderphp php php php php php php php php php php php php php php=php arrayphp_flipphp(php$validatorNamesphp)php;
+php php php php php php php php php php php php php$orderphp[php$namephp]php php php php php php php php=php php$orderphp[php$origNamephp]php;
+php php php php php php php php php php php php php$validatorsExchangephp php=php arrayphp(php)php;
+php php php php php php php php php php php php unsetphp(php$orderphp[php$origNamephp]php)php;
+php php php php php php php php php php php php asortphp(php$orderphp)php;
+php php php php php php php php php php php php foreachphp php(php$orderphp asphp php$keyphp php=php>php php$indexphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php$namephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$validatorsExchangephp[php$keyphp]php php=php php$instancephp;
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$validatorsExchangephp[php$keyphp]php php=php php$thisphp-php>php_validatorsphp[php$keyphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_validatorsphp php=php php$validatorsExchangephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_validatorsphp[php$namephp]php php=php php$instancephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$instancephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Lazyphp-loadphp aphp decorator
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$decoratorphp Decoratorphp typephp andphp options
+php php php php php php*php php@paramphp php mixedphp php$namephp Decoratorphp namephp orphp alias
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadDecoratorphp(arrayphp php$decoratorphp,php php$namephp)
+php php php php php{
+php php php php php php php php php$sameNamephp php=php falsephp;
+php php php php php php php php ifphp php(php$namephp php=php=php php$decoratorphp[php'decoratorphp'php]php)php php{
+php php php php php php php php php php php php php$sameNamephp php=php truephp;
+php php php php php php php php php}
+
+php php php php php php php php php$instancephp php=php php$thisphp-php>php_getDecoratorphp(php$decoratorphp[php'decoratorphp'php]php,php php$decoratorphp[php'optionsphp'php]php)php;
+php php php php php php php php ifphp php(php$sameNamephp)php php{
+php php php php php php php php php php php php php$newNamephp php php php php php php php php php php php php=php getphp_classphp(php$instancephp)php;
+php php php php php php php php php php php php php$decoratorNamesphp php php php php php=php arrayphp_keysphp(php$thisphp-php>php_decoratorsphp)php;
+php php php php php php php php php php php php php$orderphp php php php php php php php php php php php php php php=php arrayphp_flipphp(php$decoratorNamesphp)php;
+php php php php php php php php php php php php php$orderphp[php$newNamephp]php php php php php=php php$orderphp[php$namephp]php;
+php php php php php php php php php php php php php$decoratorsExchangephp php=php arrayphp(php)php;
+php php php php php php php php php php php php unsetphp(php$orderphp[php$namephp]php)php;
+php php php php php php php php php php php php asortphp(php$orderphp)php;
+php php php php php php php php php php php php foreachphp php(php$orderphp asphp php$keyphp php=php>php php$indexphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php$newNamephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$decoratorsExchangephp[php$keyphp]php php=php php$instancephp;
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$decoratorsExchangephp[php$keyphp]php php=php php$thisphp-php>php_decoratorsphp[php$keyphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_decoratorsphp php=php php$decoratorsExchangephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_decoratorsphp[php$namephp]php php=php php$instancephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$instancephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp errorphp messagesphp andphp performphp translationphp andphp valuephp substitution
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_getErrorMessagesphp(php)
+php php php php php{
+php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
+php php php php php php php php php$messagesphp php php php=php php$thisphp-php>getErrorMessagesphp(php)php;
+php php php php php php php php php$valuephp php php php php php php=php php$thisphp-php>getValuephp(php)php;
+php php php php php php php php foreachphp php(php$messagesphp asphp php$keyphp php=php>php php$messagephp)php php{
+php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp)php php{
+php php php php php php php php php php php php php php php php php$messagephp php=php php$translatorphp-php>translatephp(php$messagephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php(php$thisphp-php>isArrayphp(php)php php|php|php isphp_arrayphp(php$valuephp)php)
+php php php php php php php php php php php php php php php php php&php&php php!emptyphp(php$valuephp)
+php php php php php php php php php php php php php)php php{
+php php php php php php php php php php php php php php php php php$aggregateMessagesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$valphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$aggregateMessagesphp[php]php php=php strphp_replacephp(php'php%valuephp%php'php,php php$valphp,php php$messagephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$messagesphp[php$keyphp]php php=php implodephp(php$thisphp-php>getErrorMessageSeparatorphp(php)php,php php$aggregateMessagesphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$messagesphp[php$keyphp]php php=php strphp_replacephp(php'php%valuephp%php'php,php php$valuephp,php php$messagephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$messagesphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Arephp therephp customphp errorphp messagesphp registeredphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php protectedphp functionphp php_hasErrorMessagesphp(php)
+php php php php php{
+php php php php php php php php returnphp php!emptyphp(php$thisphp-php>php_errorMessagesphp)php;
+php php php php php}
+php}

@@ -1,279 +1,279 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Isbn.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Isbnphp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_Isbn extends Zend_Validate_Abstract
-{
-    const AUTO    = 'auto';
-    const ISBN10  = '10';
-    const ISBN13  = '13';
-    const INVALID = 'isbnInvalid';
-    const NO_ISBN = 'isbnNoIsbn';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Isbnphp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php constphp AUTOphp php php php php=php php'autophp'php;
+php php php php constphp ISBNphp1php0php php php=php php'php1php0php'php;
+php php php php constphp ISBNphp1php3php php php=php php'php1php3php'php;
+php php php php constphp INVALIDphp php=php php'isbnInvalidphp'php;
+php php php php constphp NOphp_ISBNphp php=php php'isbnNoIsbnphp'php;
 
-    /**
-     * Validation failure message template definitions.
-     *
-     * @var array
-     */
-    protected $_messageTemplates = array(
-        self::INVALID => "Invalid type given. String or integer expected",
-        self::NO_ISBN => "'%value%' is no valid ISBN number",
-    );
+php php php php php/php*php*
+php php php php php php*php Validationphp failurephp messagephp templatephp definitionsphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:INVALIDphp php=php>php php"Invalidphp typephp givenphp.php Stringphp orphp integerphp expectedphp"php,
+php php php php php php php php selfphp:php:NOphp_ISBNphp php=php>php php"php'php%valuephp%php'php isphp nophp validphp ISBNphp numberphp"php,
+php php php php php)php;
 
-    /**
-     * Allowed type.
-     *
-     * @var string
-     */
-    protected $_type = self::AUTO;
+php php php php php/php*php*
+php php php php php php*php Allowedphp typephp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_typephp php=php selfphp:php:AUTOphp;
 
-    /**
-     * Separator character.
-     *
-     * @var string
-     */
-    protected $_separator = '';
+php php php php php/php*php*
+php php php php php php*php Separatorphp characterphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_separatorphp php=php php'php'php;
 
-    /**
-     * Set up options.
-     *
-     * @param  Zend_Config|array $options
-     * @throws Zend_Validate_Exception When $options is not valid
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        // prepare options
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
-        if (!is_array($options)) {
-            /**
-             * @see Zend_Validate_Exception
-             */
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Invalid options provided.');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp upphp optionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp Whenphp php$optionsphp isphp notphp valid
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php/php/php preparephp options
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Validatephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Invalidphp optionsphp providedphp.php'php)php;
+php php php php php php php php php}
 
-        // set type
-        if (array_key_exists('type', $options)) {
-            $this->setType($options['type']);
-        }
+php php php php php php php php php/php/php setphp type
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'typephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setTypephp(php$optionsphp[php'typephp'php]php)php;
+php php php php php php php php php}
 
-        // set separator
-        if (array_key_exists('separator', $options)) {
-            $this->setSeparator($options['separator']);
-        }
-    }
+php php php php php php php php php/php/php setphp separator
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'separatorphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setSeparatorphp(php$optionsphp[php'separatorphp'php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Detect input format.
-     *
-     * @return string
-     */
-    protected function _detectFormat()
-    {
-        // prepare separator and pattern list
-        $sep      = quotemeta($this->_separator);
-        $patterns = array();
-        $lengths  = array();
+php php php php php/php*php*
+php php php php php php*php Detectphp inputphp formatphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_detectFormatphp(php)
+php php php php php{
+php php php php php php php php php/php/php preparephp separatorphp andphp patternphp list
+php php php php php php php php php$sepphp php php php php php php=php quotemetaphp(php$thisphp-php>php_separatorphp)php;
+php php php php php php php php php$patternsphp php=php arrayphp(php)php;
+php php php php php php php php php$lengthsphp php php=php arrayphp(php)php;
 
-        // check for ISBN-10
-        if ($this->_type == self::ISBN10 || $this->_type == self::AUTO) {
-            if (empty($sep)) {
-                $pattern = '/^[0-9]{9}[0-9X]{1}$/';
-                $length  = 10;
-            } else {
-                $pattern = "/^[0-9]{1,7}[{$sep}]{1}[0-9]{1,7}[{$sep}]{1}[0-9]{1,7}[{$sep}]{1}[0-9X]{1}$/";
-                $length  = 13;
-            }
+php php php php php php php php php/php/php checkphp forphp ISBNphp-php1php0
+php php php php php php php php ifphp php(php$thisphp-php>php_typephp php=php=php selfphp:php:ISBNphp1php0php php|php|php php$thisphp-php>php_typephp php=php=php selfphp:php:AUTOphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$sepphp)php)php php{
+php php php php php php php php php php php php php php php php php$patternphp php=php php'php/php^php[php0php-php9php]php{php9php}php[php0php-php9Xphp]php{php1php}php$php/php'php;
+php php php php php php php php php php php php php php php php php$lengthphp php php=php php1php0php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$patternphp php=php php"php/php^php[php0php-php9php]php{php1php,php7php}php[php{php$sepphp}php]php{php1php}php[php0php-php9php]php{php1php,php7php}php[php{php$sepphp}php]php{php1php}php[php0php-php9php]php{php1php,php7php}php[php{php$sepphp}php]php{php1php}php[php0php-php9Xphp]php{php1php}php$php/php"php;
+php php php php php php php php php php php php php php php php php$lengthphp php php=php php1php3php;
+php php php php php php php php php php php php php}
 
-            $patterns[$pattern] = self::ISBN10;
-            $lengths[$pattern]  = $length;
-        }
+php php php php php php php php php php php php php$patternsphp[php$patternphp]php php=php selfphp:php:ISBNphp1php0php;
+php php php php php php php php php php php php php$lengthsphp[php$patternphp]php php php=php php$lengthphp;
+php php php php php php php php php}
 
-        // check for ISBN-13
-        if ($this->_type == self::ISBN13 || $this->_type == self::AUTO) {
-            if (empty($sep)) {
-                $pattern = '/^[0-9]{13}$/';
-                $length  = 13;
-            } else {
-                $pattern = "/^[0-9]{1,9}[{$sep}]{1}[0-9]{1,5}[{$sep}]{1}[0-9]{1,9}[{$sep}]{1}[0-9]{1,9}[{$sep}]{1}[0-9]{1}$/";
-                $length  = 17;
-            }
+php php php php php php php php php/php/php checkphp forphp ISBNphp-php1php3
+php php php php php php php php ifphp php(php$thisphp-php>php_typephp php=php=php selfphp:php:ISBNphp1php3php php|php|php php$thisphp-php>php_typephp php=php=php selfphp:php:AUTOphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$sepphp)php)php php{
+php php php php php php php php php php php php php php php php php$patternphp php=php php'php/php^php[php0php-php9php]php{php1php3php}php$php/php'php;
+php php php php php php php php php php php php php php php php php$lengthphp php php=php php1php3php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$patternphp php=php php"php/php^php[php0php-php9php]php{php1php,php9php}php[php{php$sepphp}php]php{php1php}php[php0php-php9php]php{php1php,php5php}php[php{php$sepphp}php]php{php1php}php[php0php-php9php]php{php1php,php9php}php[php{php$sepphp}php]php{php1php}php[php0php-php9php]php{php1php,php9php}php[php{php$sepphp}php]php{php1php}php[php0php-php9php]php{php1php}php$php/php"php;
+php php php php php php php php php php php php php php php php php$lengthphp php php=php php1php7php;
+php php php php php php php php php php php php php}
 
-            $patterns[$pattern] = self::ISBN13;
-            $lengths[$pattern]  = $length;
-        }
+php php php php php php php php php php php php php$patternsphp[php$patternphp]php php=php selfphp:php:ISBNphp1php3php;
+php php php php php php php php php php php php php$lengthsphp[php$patternphp]php php php=php php$lengthphp;
+php php php php php php php php php}
 
-        // check pattern list
-        foreach ($patterns as $pattern => $type) {
-            if ((strlen($this->_value) == $lengths[$pattern]) && preg_match($pattern, $this->_value)) {
-                return $type;
-            }
-        }
+php php php php php php php php php/php/php checkphp patternphp list
+php php php php php php php php foreachphp php(php$patternsphp asphp php$patternphp php=php>php php$typephp)php php{
+php php php php php php php php php php php php ifphp php(php(strlenphp(php$thisphp-php>php_valuephp)php php=php=php php$lengthsphp[php$patternphp]php)php php&php&php pregphp_matchphp(php$patternphp,php php$thisphp-php>php_valuephp)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$typephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return null;
-    }
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface.
-     *
-     * Returns true if and only if $value is a valid ISBN.
-     *
-     * @param  string $value
-     * @return boolean
-     */
-    public function isValid($value)
-    {
-        if (!is_string($value) && !is_int($value)) {
-            $this->_error(self::INVALID);
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interfacephp.
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp php$valuephp isphp aphp validphp ISBNphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php php&php&php php!isphp_intphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $value = (string) $value;
-        $this->_setValue($value);
+php php php php php php php php php$valuephp php=php php(stringphp)php php$valuephp;
+php php php php php php php php php$thisphp-php>php_setValuephp(php$valuephp)php;
 
-        switch ($this->_detectFormat()) {
-            case self::ISBN10:
-                // sum
-                $isbn10 = str_replace($this->_separator, '', $value);
-                $sum    = 0;
-                for ($i = 0; $i < 9; $i++) {
-                    $sum += (10 - $i) * $isbn10{$i};
-                }
+php php php php php php php php switchphp php(php$thisphp-php>php_detectFormatphp(php)php)php php{
+php php php php php php php php php php php php casephp selfphp:php:ISBNphp1php0php:
+php php php php php php php php php php php php php php php php php/php/php sum
+php php php php php php php php php php php php php php php php php$isbnphp1php0php php=php strphp_replacephp(php$thisphp-php>php_separatorphp,php php'php'php,php php$valuephp)php;
+php php php php php php php php php php php php php php php php php$sumphp php php php php=php php0php;
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php9php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$sumphp php+php=php php(php1php0php php-php php$iphp)php php*php php$isbnphp1php0php{php$iphp}php;
+php php php php php php php php php php php php php php php php php}
 
-                // checksum
-                $checksum = 11 - ($sum % 11);
-                if ($checksum == 11) {
-                    $checksum = '0';
-                } elseif ($checksum == 10) {
-                    $checksum = 'X';
-                }
-                break;
+php php php php php php php php php php php php php php php php php/php/php checksum
+php php php php php php php php php php php php php php php php php$checksumphp php=php php1php1php php-php php(php$sumphp php%php php1php1php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$checksumphp php=php=php php1php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php$checksumphp php=php php'php0php'php;
+php php php php php php php php php php php php php php php php php}php elseifphp php(php$checksumphp php=php=php php1php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$checksumphp php=php php'Xphp'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php breakphp;
 
-            case self::ISBN13:
-                // sum
-                $isbn13 = str_replace($this->_separator, '', $value);
-                $sum    = 0;
-                for ($i = 0; $i < 12; $i++) {
-                    if ($i % 2 == 0) {
-                        $sum += $isbn13{$i};
-                    } else {
-                        $sum += 3 * $isbn13{$i};
-                    }
-                }
-                // checksum
-                $checksum = 10 - ($sum % 10);
-                if ($checksum == 10) {
-                    $checksum = '0';
-                }
-                break;
+php php php php php php php php php php php php casephp selfphp:php:ISBNphp1php3php:
+php php php php php php php php php php php php php php php php php/php/php sum
+php php php php php php php php php php php php php php php php php$isbnphp1php3php php=php strphp_replacephp(php$thisphp-php>php_separatorphp,php php'php'php,php php$valuephp)php;
+php php php php php php php php php php php php php php php php php$sumphp php php php php=php php0php;
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php1php2php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$iphp php%php php2php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$sumphp php+php=php php$isbnphp1php3php{php$iphp}php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$sumphp php+php=php php3php php*php php$isbnphp1php3php{php$iphp}php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php/php/php checksum
+php php php php php php php php php php php php php php php php php$checksumphp php=php php1php0php php-php php(php$sumphp php%php php1php0php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$checksumphp php=php=php php1php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$checksumphp php=php php'php0php'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php breakphp;
 
-            default:
-                $this->_error(self::NO_ISBN);
-                return false;
-        }
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:NOphp_ISBNphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        // validate
-        if (substr($this->_value, -1) != $checksum) {
-            $this->_error(self::NO_ISBN);
-            return false;
-        }
-        return true;
-    }
+php php php php php php php php php/php/php validate
+php php php php php php php php ifphp php(substrphp(php$thisphp-php>php_valuephp,php php-php1php)php php!php=php php$checksumphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:NOphp_ISBNphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Set separator characters.
-     *
-     * It is allowed only empty string, hyphen and space.
-     *
-     * @param  string $separator
-     * @throws Zend_Validate_Exception When $separator is not valid
-     * @return Zend_Validate_Isbn Provides a fluent interface
-     */
-    public function setSeparator($separator)
-    {
-        // check separator
-        if (!in_array($separator, array('-', ' ', ''))) {
-            /**
-             * @see Zend_Validate_Exception
-             */
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Invalid ISBN separator.');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp separatorphp charactersphp.
+php php php php php php*
+php php php php php php*php Itphp isphp allowedphp onlyphp emptyphp stringphp,php hyphenphp andphp spacephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$separator
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp Whenphp php$separatorphp isphp notphp valid
+php php php php php php*php php@returnphp Zendphp_Validatephp_Isbnphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setSeparatorphp(php$separatorphp)
+php php php php php{
+php php php php php php php php php/php/php checkphp separator
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$separatorphp,php arrayphp(php'php-php'php,php php'php php'php,php php'php'php)php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Validatephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Invalidphp ISBNphp separatorphp.php'php)php;
+php php php php php php php php php}
 
-        $this->_separator = $separator;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_separatorphp php=php php$separatorphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get separator characters.
-     *
-     * @return string
-     */
-    public function getSeparator()
-    {
-        return $this->_separator;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp separatorphp charactersphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getSeparatorphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_separatorphp;
+php php php php php}
 
-    /**
-     * Set allowed ISBN type.
-     *
-     * @param  string $type
-     * @throws Zend_Validate_Exception When $type is not valid
-     * @return Zend_Validate_Isbn Provides a fluent interface
-     */
-    public function setType($type)
-    {
-        // check type
-        if (!in_array($type, array(self::AUTO, self::ISBN10, self::ISBN13))) {
-            /**
-             * @see Zend_Validate_Exception
-             */
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Invalid ISBN type');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp allowedphp ISBNphp typephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp Whenphp php$typephp isphp notphp valid
+php php php php php php*php php@returnphp Zendphp_Validatephp_Isbnphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setTypephp(php$typephp)
+php php php php php{
+php php php php php php php php php/php/php checkphp type
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$typephp,php arrayphp(selfphp:php:AUTOphp,php selfphp:php:ISBNphp1php0php,php selfphp:php:ISBNphp1php3php)php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Validatephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Invalidphp ISBNphp typephp'php)php;
+php php php php php php php php php}
 
-        $this->_type = $type;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_typephp php=php php$typephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get allowed ISBN type.
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->_type;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp allowedphp ISBNphp typephp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_typephp;
+php php php php php}
+php}

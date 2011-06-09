@@ -1,94 +1,94 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: GetTokensResponse.php 20166 2010-01-09 19:00:17Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp DeveloperGarden
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php GetTokensResponsephp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Service_DeveloperGarden_Response_ResponseAbstract
- */
-require_once 'Zend/Service/DeveloperGarden/Response/ResponseAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_ResponseAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/ResponseAbstractphp.phpphp'php;
 
-/**
- * @see Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface
- */
-require_once 'Zend/Service/DeveloperGarden/Response/SecurityTokenServer/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/SecurityTokenServerphp/Interfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_DeveloperGarden_Response_SecurityTokenServer_GetTokensResponse
-    extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
-    implements Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface
-{
-    /**
-     * the security token
-     * @var Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse
-     */
-    public $securityToken = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp DeveloperGarden
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@authorphp php php php php Marcophp Kaiser
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_GetTokensResponse
+php php php php extendsphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_ResponseAbstract
+php php php php implementsphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php thephp securityphp token
+php php php php php php*php php@varphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponse
+php php php php php php*php/
+php php php php publicphp php$securityTokenphp php=php nullphp;
 
-    /**
-     * returns the security token
-     *
-     * @return string
-     */
-    public function getTokenData()
-    {
-        return $this->getSecurityToken();
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp securityphp token
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTokenDataphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getSecurityTokenphp(php)php;
+php php php php php}
 
-    /**
-     * returns the security token
-     *
-     * @return string
-     */
-    public function getSecurityToken()
-    {
-        if (!$this->securityToken instanceof Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse) {
-            require_once 'Zend/Service/DeveloperGarden/Response/SecurityTokenServer/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Exception(
-                'No valid securityToken found.'
-            );
-        }
-        return $this->securityToken->getTokenData();
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp securityphp token
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getSecurityTokenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>securityTokenphp instanceofphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/SecurityTokenServerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Nophp validphp securityTokenphp foundphp.php'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>securityTokenphp-php>getTokenDataphp(php)php;
+php php php php php}
 
-    /**
-     * returns true if the stored token data is valid
-     *
-     * @return boolean
-     */
-    public function isValid()
-    {
-        /**
-         * @todo implement the true token validation check
-         */
-        if (isset($this->securityToken)
-            && !empty($this->securityToken->tokenData)
-        ) {
-            return true;
-        }
-        return false;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php returnsphp truephp ifphp thephp storedphp tokenphp dataphp isphp valid
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@todophp implementphp thephp truephp tokenphp validationphp check
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>securityTokenphp)
+php php php php php php php php php php php php php&php&php php!emptyphp(php$thisphp-php>securityTokenphp-php>tokenDataphp)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

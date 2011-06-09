@@ -1,102 +1,102 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Json
- * @subpackage Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Cache.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Json
+php php*php php@subpackagephp Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Cachephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Server_Cache */
-require_once 'Zend/Server/Cache.php';
+php/php*php*php Zendphp_Serverphp_Cachephp php*php/
+requirephp_oncephp php'Zendphp/Serverphp/Cachephp.phpphp'php;
 
-/**
- * Zend_Json_Server_Cache: cache Zend_Json_Server server definition and SMD
- *
- * @category   Zend
- * @package    Zend_Json
- * @subpackage Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Json_Server_Cache extends Zend_Server_Cache
-{
-    /**
-     * Cache a service map description (SMD) to a file
-     *
-     * Returns true on success, false on failure
-     *
-     * @param  string $filename
-     * @param  Zend_Json_Server $server
-     * @return boolean
-     */
-    public static function saveSmd($filename, Zend_Json_Server $server)
-    {
-        if (!is_string($filename)
-            || (!file_exists($filename) && !is_writable(dirname($filename))))
-        {
-            return false;
-        }
+php/php*php*
+php php*php Zendphp_Jsonphp_Serverphp_Cachephp:php cachephp Zendphp_Jsonphp_Serverphp serverphp definitionphp andphp SMD
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Json
+php php*php php@subpackagephp Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Jsonphp_Serverphp_Cachephp extendsphp Zendphp_Serverphp_Cache
+php{
+php php php php php/php*php*
+php php php php php php*php Cachephp aphp servicephp mapphp descriptionphp php(SMDphp)php tophp aphp file
+php php php php php php*
+php php php php php php*php Returnsphp truephp onphp successphp,php falsephp onphp failure
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$filename
+php php php php php php*php php@paramphp php Zendphp_Jsonphp_Serverphp php$server
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp staticphp functionphp saveSmdphp(php$filenamephp,php Zendphp_Jsonphp_Serverphp php$serverphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$filenamephp)
+php php php php php php php php php php php php php|php|php php(php!filephp_existsphp(php$filenamephp)php php&php&php php!isphp_writablephp(dirnamephp(php$filenamephp)php)php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        if (0 === @file_put_contents($filename, $server->getServiceMap()->toJson())) {
-            return false;
-        }
+php php php php php php php php ifphp php(php0php php=php=php=php php@filephp_putphp_contentsphp(php$filenamephp,php php$serverphp-php>getServiceMapphp(php)php-php>toJsonphp(php)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Retrieve a cached SMD
-     *
-     * On success, returns the cached SMD (a JSON string); an failure, returns
-     * boolean false.
-     *
-     * @param  string $filename
-     * @return string|false
-     */
-    public static function getSmd($filename)
-    {
-        if (!is_string($filename)
-            || !file_exists($filename)
-            || !is_readable($filename))
-        {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp cachedphp SMD
+php php php php php php*
+php php php php php php*php Onphp successphp,php returnsphp thephp cachedphp SMDphp php(aphp JSONphp stringphp)php;php anphp failurephp,php returns
+php php php php php php*php booleanphp falsephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$filename
+php php php php php php*php php@returnphp stringphp|false
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getSmdphp(php$filenamephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$filenamephp)
+php php php php php php php php php php php php php|php|php php!filephp_existsphp(php$filenamephp)
+php php php php php php php php php php php php php|php|php php!isphp_readablephp(php$filenamephp)php)
+php php php php php php php php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
 
-        if (false === ($smd = @file_get_contents($filename))) {
-            return false;
-        }
+php php php php php php php php ifphp php(falsephp php=php=php=php php(php$smdphp php=php php@filephp_getphp_contentsphp(php$filenamephp)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return $smd;
-    }
+php php php php php php php php returnphp php$smdphp;
+php php php php php}
 
-    /**
-     * Delete a file containing a cached SMD
-     *
-     * @param  string $filename
-     * @return bool
-     */
-    public static function deleteSmd($filename)
-    {
-        if (is_string($filename) && file_exists($filename)) {
-            unlink($filename);
-            return true;
-        }
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp filephp containingphp aphp cachedphp SMD
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$filename
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp staticphp functionphp deleteSmdphp(php$filenamephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$filenamephp)php php&php&php filephp_existsphp(php$filenamephp)php)php php{
+php php php php php php php php php php php php unlinkphp(php$filenamephp)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
-}
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

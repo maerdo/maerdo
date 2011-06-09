@@ -1,203 +1,203 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Exists.php 20352 2010-01-17 17:55:38Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Existsphp.phpphp php2php0php3php5php2php php2php0php1php0php-php0php1php-php1php7php php1php7php:php5php5php:php3php8Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * Validator which checks if the file already exists in the directory
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_File_Exists extends Zend_Validate_Abstract
-{
-    /**
-     * @const string Error constants
-     */
-    const DOES_NOT_EXIST = 'fileExistsDoesNotExist';
+php/php*php*
+php php*php Validatorphp whichphp checksphp ifphp thephp filephp alreadyphp existsphp inphp thephp directory
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Filephp_Existsphp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@constphp stringphp Errorphp constants
+php php php php php php*php/
+php php php php constphp DOESphp_NOTphp_EXISTphp php=php php'fileExistsDoesNotExistphp'php;
 
-    /**
-     * @var array Error message templates
-     */
-    protected $_messageTemplates = array(
-        self::DOES_NOT_EXIST => "File '%value%' does not exist",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templates
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:DOESphp_NOTphp_EXISTphp php=php>php php"Filephp php'php%valuephp%php'php doesphp notphp existphp"php,
+php php php php php)php;
 
-    /**
-     * Internal list of directories
-     * @var string
-     */
-    protected $_directory = '';
+php php php php php/php*php*
+php php php php php php*php Internalphp listphp ofphp directories
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_directoryphp php=php php'php'php;
 
-    /**
-     * @var array Error message template variables
-     */
-    protected $_messageVariables = array(
-        'directory' => '_directory'
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templatephp variables
+php php php php php php*php/
+php php php php protectedphp php$php_messageVariablesphp php=php arrayphp(
+php php php php php php php php php'directoryphp'php php=php>php php'php_directoryphp'
+php php php php php)php;
 
-    /**
-     * Sets validator options
-     *
-     * @param  string|array|Zend_Config $directory
-     * @return void
-     */
-    public function __construct($directory = array())
-    {
-        if ($directory instanceof Zend_Config) {
-            $directory = $directory->toArray();
-        } else if (is_string($directory)) {
-            $directory = explode(',', $directory);
-        } else if (!is_array($directory)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception ('Invalid options to validator provided');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp validatorphp options
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Configphp php$directory
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$directoryphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$directoryphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$directoryphp php=php php$directoryphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(isphp_stringphp(php$directoryphp)php)php php{
+php php php php php php php php php php php php php$directoryphp php=php explodephp(php'php,php'php,php php$directoryphp)php;
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$directoryphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp php(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
+php php php php php php php php php}
 
-        $this->setDirectory($directory);
-    }
+php php php php php php php php php$thisphp-php>setDirectoryphp(php$directoryphp)php;
+php php php php php}
 
-    /**
-     * Returns the set file directories which are checked
-     *
-     * @param  boolean $asArray Returns the values as array, when false an concated string is returned
-     * @return string
-     */
-    public function getDirectory($asArray = false)
-    {
-        $asArray   = (bool) $asArray;
-        $directory = (string) $this->_directory;
-        if ($asArray) {
-            $directory = explode(',', $directory);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp filephp directoriesphp whichphp arephp checked
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$asArrayphp Returnsphp thephp valuesphp asphp arrayphp,php whenphp falsephp anphp concatedphp stringphp isphp returned
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDirectoryphp(php$asArrayphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$asArrayphp php php php=php php(boolphp)php php$asArrayphp;
+php php php php php php php php php$directoryphp php=php php(stringphp)php php$thisphp-php>php_directoryphp;
+php php php php php php php php ifphp php(php$asArrayphp)php php{
+php php php php php php php php php php php php php$directoryphp php=php explodephp(php'php,php'php,php php$directoryphp)php;
+php php php php php php php php php}
 
-        return $directory;
-    }
+php php php php php php php php returnphp php$directoryphp;
+php php php php php}
 
-    /**
-     * Sets the file directory which will be checked
-     *
-     * @param  string|array $directory The directories to validate
-     * @return Zend_Validate_File_Extension Provides a fluent interface
-     */
-    public function setDirectory($directory)
-    {
-        $this->_directory = null;
-        $this->addDirectory($directory);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp filephp directoryphp whichphp willphp bephp checked
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$directoryphp Thephp directoriesphp tophp validate
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Extensionphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setDirectoryphp(php$directoryphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_directoryphp php=php nullphp;
+php php php php php php php php php$thisphp-php>addDirectoryphp(php$directoryphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Adds the file directory which will be checked
-     *
-     * @param  string|array $directory The directory to add for validation
-     * @return Zend_Validate_File_Extension Provides a fluent interface
-     */
-    public function addDirectory($directory)
-    {
-        $directories = $this->getDirectory(true);
+php php php php php/php*php*
+php php php php php php*php Addsphp thephp filephp directoryphp whichphp willphp bephp checked
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$directoryphp Thephp directoryphp tophp addphp forphp validation
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Extensionphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addDirectoryphp(php$directoryphp)
+php php php php php{
+php php php php php php php php php$directoriesphp php=php php$thisphp-php>getDirectoryphp(truephp)php;
 
-        if (is_string($directory)) {
-            $directory = explode(',', $directory);
-        } else if (!is_array($directory)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception ('Invalid options to validator provided');
-        }
+php php php php php php php php ifphp php(isphp_stringphp(php$directoryphp)php)php php{
+php php php php php php php php php php php php php$directoryphp php=php explodephp(php'php,php'php,php php$directoryphp)php;
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$directoryphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp php(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
+php php php php php php php php php}
 
-        foreach ($directory as $content) {
-            if (empty($content) || !is_string($content)) {
-                continue;
-            }
+php php php php php php php php foreachphp php(php$directoryphp asphp php$contentphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$contentphp)php php|php|php php!isphp_stringphp(php$contentphp)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            $directories[] = trim($content);
-        }
-        $directories = array_unique($directories);
+php php php php php php php php php php php php php$directoriesphp[php]php php=php trimphp(php$contentphp)php;
+php php php php php php php php php}
+php php php php php php php php php$directoriesphp php=php arrayphp_uniquephp(php$directoriesphp)php;
 
-        // Sanity check to ensure no empty values
-        foreach ($directories as $key => $dir) {
-            if (empty($dir)) {
-                unset($directories[$key]);
-            }
-        }
+php php php php php php php php php/php/php Sanityphp checkphp tophp ensurephp nophp emptyphp values
+php php php php php php php php foreachphp php(php$directoriesphp asphp php$keyphp php=php>php php$dirphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$dirphp)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$directoriesphp[php$keyphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $this->_directory = implode(',', $directories);
+php php php php php php php php php$thisphp-php>php_directoryphp php=php implodephp(php'php,php'php,php php$directoriesphp)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if and only if the file already exists in the set directories
-     *
-     * @param  string  $value Real file to check for existance
-     * @param  array   $file  File data from Zend_File_Transfer
-     * @return boolean
-     */
-    public function isValid($value, $file = null)
-    {
-        $directories = $this->getDirectory(true);
-        if (($file !== null) and (!empty($file['destination']))) {
-            $directories[] = $file['destination'];
-        } else if (!isset($file['name'])) {
-            $file['name'] = $value;
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp filephp alreadyphp existsphp inphp thephp setphp directories
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$valuephp Realphp filephp tophp checkphp forphp existance
+php php php php php php*php php@paramphp php arrayphp php php php$filephp php Filephp dataphp fromphp Zendphp_Filephp_Transfer
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$filephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$directoriesphp php=php php$thisphp-php>getDirectoryphp(truephp)php;
+php php php php php php php php ifphp php(php(php$filephp php!php=php=php nullphp)php andphp php(php!emptyphp(php$filephp[php'destinationphp'php]php)php)php)php php{
+php php php php php php php php php php php php php$directoriesphp[php]php php=php php$filephp[php'destinationphp'php]php;
+php php php php php php php php php}php elsephp ifphp php(php!issetphp(php$filephp[php'namephp'php]php)php)php php{
+php php php php php php php php php php php php php$filephp[php'namephp'php]php php=php php$valuephp;
+php php php php php php php php php}
 
-        $check = false;
-        foreach ($directories as $directory) {
-            if (empty($directory)) {
-                continue;
-            }
+php php php php php php php php php$checkphp php=php falsephp;
+php php php php php php php php foreachphp php(php$directoriesphp asphp php$directoryphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$directoryphp)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            $check = true;
-            if (!file_exists($directory . DIRECTORY_SEPARATOR . $file['name'])) {
-                return $this->_throw($file, self::DOES_NOT_EXIST);
-            }
-        }
+php php php php php php php php php php php php php$checkphp php=php truephp;
+php php php php php php php php php php php php ifphp php(php!filephp_existsphp(php$directoryphp php.php DIRECTORYphp_SEPARATORphp php.php php$filephp[php'namephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:DOESphp_NOTphp_EXISTphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (!$check) {
-            return $this->_throw($file, self::DOES_NOT_EXIST);
-        }
+php php php php php php php php ifphp php(php!php$checkphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:DOESphp_NOTphp_EXISTphp)php;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Throws an error of the given type
-     *
-     * @param  string $file
-     * @param  string $errorType
-     * @return false
-     */
-    protected function _throw($file, $errorType)
-    {
-        if ($file !== null) {
-            $this->_value = $file['name'];
-        }
+php php php php php/php*php*
+php php php php php php*php Throwsphp anphp errorphp ofphp thephp givenphp type
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$file
+php php php php php php*php php@paramphp php stringphp php$errorType
+php php php php php php*php php@returnphp false
+php php php php php php*php/
+php php php php protectedphp functionphp php_throwphp(php$filephp,php php$errorTypephp)
+php php php php php{
+php php php php php php php php ifphp php(php$filephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_valuephp php=php php$filephp[php'namephp'php]php;
+php php php php php php php php php}
 
-        $this->_error($errorType);
-        return false;
-    }
-}
+php php php php php php php php php$thisphp-php>php_errorphp(php$errorTypephp)php;
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

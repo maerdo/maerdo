@@ -1,485 +1,485 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Statement.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Statementphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Db
- */
-require_once 'Zend/Db.php';
+php/php*php*
+php php*php php@seephp Zendphp_Db
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp.phpphp'php;
 
-/**
- * @see Zend_Db_Statement_Interface
- */
-require_once 'Zend/Db/Statement/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Statementphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Interfacephp.phpphp'php;
 
-/**
- * Abstract class to emulate a PDOStatement for native database adapters.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
-{
+php/php*php*
+php php*php Abstractphp classphp tophp emulatephp aphp PDOStatementphp forphp nativephp databasephp adaptersphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Dbphp_Statementphp implementsphp Zendphp_Dbphp_Statementphp_Interface
+php{
 
-    /**
-     * @var resource|object The driver level statement object/resource
-     */
-    protected $_stmt = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp resourcephp|objectphp Thephp driverphp levelphp statementphp objectphp/resource
+php php php php php php*php/
+php php php php protectedphp php$php_stmtphp php=php nullphp;
 
-    /**
-     * @var Zend_Db_Adapter_Abstract
-     */
-    protected $_adapter = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_adapterphp php=php nullphp;
 
-    /**
-     * The current fetch mode.
-     *
-     * @var integer
-     */
-    protected $_fetchMode = Zend_Db::FETCH_ASSOC;
+php php php php php/php*php*
+php php php php php php*php Thephp currentphp fetchphp modephp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_fetchModephp php=php Zendphp_Dbphp:php:FETCHphp_ASSOCphp;
 
-    /**
-     * Attributes.
-     *
-     * @var array
-     */
-    protected $_attribute = array();
+php php php php php/php*php*
+php php php php php php*php Attributesphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_attributephp php=php arrayphp(php)php;
 
-    /**
-     * Column result bindings.
-     *
-     * @var array
-     */
-    protected $_bindColumn = array();
+php php php php php/php*php*
+php php php php php php*php Columnphp resultphp bindingsphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_bindColumnphp php=php arrayphp(php)php;
 
-    /**
-     * Query parameter bindings; covers bindParam() and bindValue().
-     *
-     * @var array
-     */
-    protected $_bindParam = array();
+php php php php php/php*php*
+php php php php php php*php Queryphp parameterphp bindingsphp;php coversphp bindParamphp(php)php andphp bindValuephp(php)php.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_bindParamphp php=php arrayphp(php)php;
 
-    /**
-     * SQL string split into an array at placeholders.
-     *
-     * @var array
-     */
-    protected $_sqlSplit = array();
+php php php php php/php*php*
+php php php php php php*php SQLphp stringphp splitphp intophp anphp arrayphp atphp placeholdersphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_sqlSplitphp php=php arrayphp(php)php;
 
-    /**
-     * Parameter placeholders in the SQL string by position in the split array.
-     *
-     * @var array
-     */
-    protected $_sqlParam = array();
+php php php php php/php*php*
+php php php php php php*php Parameterphp placeholdersphp inphp thephp SQLphp stringphp byphp positionphp inphp thephp splitphp arrayphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_sqlParamphp php=php arrayphp(php)php;
 
-    /**
-     * @var Zend_Db_Profiler_Query
-     */
-    protected $_queryId = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Dbphp_Profilerphp_Query
+php php php php php php*php/
+php php php php protectedphp php$php_queryIdphp php=php nullphp;
 
-    /**
-     * Constructor for a statement.
-     *
-     * @param Zend_Db_Adapter_Abstract $adapter
-     * @param mixed $sql Either a string or Zend_Db_Select.
-     */
-    public function __construct($adapter, $sql)
-    {
-        $this->_adapter = $adapter;
-        if ($sql instanceof Zend_Db_Select) {
-            $sql = $sql->assemble();
-        }
-        $this->_parseParameters($sql);
-        $this->_prepare($sql);
+php php php php php/php*php*
+php php php php php php*php Constructorphp forphp aphp statementphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Dbphp_Adapterphp_Abstractphp php$adapter
+php php php php php php*php php@paramphp mixedphp php$sqlphp Eitherphp aphp stringphp orphp Zendphp_Dbphp_Selectphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$adapterphp,php php$sqlphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
+php php php php php php php php ifphp php(php$sqlphp instanceofphp Zendphp_Dbphp_Selectphp)php php{
+php php php php php php php php php php php php php$sqlphp php=php php$sqlphp-php>assemblephp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_parseParametersphp(php$sqlphp)php;
+php php php php php php php php php$thisphp-php>php_preparephp(php$sqlphp)php;
 
-        $this->_queryId = $this->_adapter->getProfiler()->queryStart($sql);
-    }
+php php php php php php php php php$thisphp-php>php_queryIdphp php=php php$thisphp-php>php_adapterphp-php>getProfilerphp(php)php-php>queryStartphp(php$sqlphp)php;
+php php php php php}
 
-    /**
-     * Internal method called by abstract statment constructor to setup
-     * the driver level statement
-     *
-     * @return void
-     */
-    protected function _prepare($sql)
-    {
-        return;
-    }
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp calledphp byphp abstractphp statmentphp constructorphp tophp setup
+php php php php php php*php thephp driverphp levelphp statement
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_preparephp(php$sqlphp)
+php php php php php{
+php php php php php php php php returnphp;
+php php php php php}
 
-    /**
-     * @param string $sql
-     * @return void
-     */
-    protected function _parseParameters($sql)
-    {
-        $sql = $this->_stripQuoted($sql);
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$sql
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_parseParametersphp(php$sqlphp)
+php php php php php{
+php php php php php php php php php$sqlphp php=php php$thisphp-php>php_stripQuotedphp(php$sqlphp)php;
 
-        // split into text and params
-        $this->_sqlSplit = preg_split('/(\?|\:[a-zA-Z0-9_]+)/',
-            $sql, -1, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY);
+php php php php php php php php php/php/php splitphp intophp textphp andphp params
+php php php php php php php php php$thisphp-php>php_sqlSplitphp php=php pregphp_splitphp(php'php/php(php\php?php|php\php:php[aphp-zAphp-Zphp0php-php9php_php]php+php)php/php'php,
+php php php php php php php php php php php php php$sqlphp,php php-php1php,php PREGphp_SPLITphp_DELIMphp_CAPTUREphp|PREGphp_SPLITphp_NOphp_EMPTYphp)php;
 
-        // map params
-        $this->_sqlParam = array();
-        foreach ($this->_sqlSplit as $key => $val) {
-            if ($val == '?') {
-                if ($this->_adapter->supportsParameters('positional') === false) {
-                    /**
-                     * @see Zend_Db_Statement_Exception
-                     */
-                    require_once 'Zend/Db/Statement/Exception.php';
-                    throw new Zend_Db_Statement_Exception("Invalid bind-variable position '$val'");
-                }
-            } else if ($val[0] == ':') {
-                if ($this->_adapter->supportsParameters('named') === false) {
-                    /**
-                     * @see Zend_Db_Statement_Exception
-                     */
-                    require_once 'Zend/Db/Statement/Exception.php';
-                    throw new Zend_Db_Statement_Exception("Invalid bind-variable name '$val'");
-                }
-            }
-            $this->_sqlParam[] = $val;
-        }
+php php php php php php php php php/php/php mapphp params
+php php php php php php php php php$thisphp-php>php_sqlParamphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_sqlSplitphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php ifphp php(php$valphp php=php=php php'php?php'php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_adapterphp-php>supportsParametersphp(php'positionalphp'php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php"Invalidphp bindphp-variablephp positionphp php'php$valphp'php"php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp ifphp php(php$valphp[php0php]php php=php=php php'php:php'php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_adapterphp-php>supportsParametersphp(php'namedphp'php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php"Invalidphp bindphp-variablephp namephp php'php$valphp'php"php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_sqlParamphp[php]php php=php php$valphp;
+php php php php php php php php php}
 
-        // set up for binding
-        $this->_bindParam = array();
-    }
+php php php php php php php php php/php/php setphp upphp forphp binding
+php php php php php php php php php$thisphp-php>php_bindParamphp php=php arrayphp(php)php;
+php php php php php}
 
-    /**
-     * Remove parts of a SQL string that contain quoted strings
-     * of values or identifiers.
-     *
-     * @param string $sql
-     * @return string
-     */
-    protected function _stripQuoted($sql)
-    {
-        // get the character for delimited id quotes,
-        // this is usually " but in MySQL is `
-        $d = $this->_adapter->quoteIdentifier('a');
-        $d = $d[0];
+php php php php php/php*php*
+php php php php php php*php Removephp partsphp ofphp aphp SQLphp stringphp thatphp containphp quotedphp strings
+php php php php php php*php ofphp valuesphp orphp identifiersphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sql
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_stripQuotedphp(php$sqlphp)
+php php php php php{
+php php php php php php php php php/php/php getphp thephp characterphp forphp delimitedphp idphp quotesphp,
+php php php php php php php php php/php/php thisphp isphp usuallyphp php"php butphp inphp MySQLphp isphp php`
+php php php php php php php php php$dphp php=php php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(php'aphp'php)php;
+php php php php php php php php php$dphp php=php php$dphp[php0php]php;
 
-        // get the value used as an escaped delimited id quote,
-        // e.g. \" or "" or \`
-        $de = $this->_adapter->quoteIdentifier($d);
-        $de = substr($de, 1, 2);
-        $de = str_replace('\\', '\\\\', $de);
+php php php php php php php php php/php/php getphp thephp valuephp usedphp asphp anphp escapedphp delimitedphp idphp quotephp,
+php php php php php php php php php/php/php ephp.gphp.php php\php"php orphp php"php"php orphp php\php`
+php php php php php php php php php$dephp php=php php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(php$dphp)php;
+php php php php php php php php php$dephp php=php substrphp(php$dephp,php php1php,php php2php)php;
+php php php php php php php php php$dephp php=php strphp_replacephp(php'php\php\php'php,php php'php\php\php\php\php'php,php php$dephp)php;
 
-        // get the character for value quoting
-        // this should be '
-        $q = $this->_adapter->quote('a');
-        $q = $q[0];
+php php php php php php php php php/php/php getphp thephp characterphp forphp valuephp quoting
+php php php php php php php php php/php/php thisphp shouldphp bephp php'
+php php php php php php php php php$qphp php=php php$thisphp-php>php_adapterphp-php>quotephp(php'aphp'php)php;
+php php php php php php php php php$qphp php=php php$qphp[php0php]php;
 
-        // get the value used as an escaped quote,
-        // e.g. \' or ''
-        $qe = $this->_adapter->quote($q);
-        $qe = substr($qe, 1, 2);
-        $qe = str_replace('\\', '\\\\', $qe);
+php php php php php php php php php/php/php getphp thephp valuephp usedphp asphp anphp escapedphp quotephp,
+php php php php php php php php php/php/php ephp.gphp.php php\php'php orphp php'php'
+php php php php php php php php php$qephp php=php php$thisphp-php>php_adapterphp-php>quotephp(php$qphp)php;
+php php php php php php php php php$qephp php=php substrphp(php$qephp,php php1php,php php2php)php;
+php php php php php php php php php$qephp php=php strphp_replacephp(php'php\php\php'php,php php'php\php\php\php\php'php,php php$qephp)php;
 
-        // get a version of the SQL statement with all quoted
-        // values and delimited identifiers stripped out
-        // remove "foo\"bar"
-        $sql = preg_replace("/$q($qe|\\\\{2}|[^$q])*$q/", '', $sql);
-        // remove 'foo\'bar'
-        if (!empty($q)) {
-            $sql = preg_replace("/$q($qe|[^$q])*$q/", '', $sql);
-        }
+php php php php php php php php php/php/php getphp aphp versionphp ofphp thephp SQLphp statementphp withphp allphp quoted
+php php php php php php php php php/php/php valuesphp andphp delimitedphp identifiersphp strippedphp out
+php php php php php php php php php/php/php removephp php"foophp\php"barphp"
+php php php php php php php php php$sqlphp php=php pregphp_replacephp(php"php/php$qphp(php$qephp|php\php\php\php\php{php2php}php|php[php^php$qphp]php)php*php$qphp/php"php,php php'php'php,php php$sqlphp)php;
+php php php php php php php php php/php/php removephp php'foophp\php'barphp'
+php php php php php php php php ifphp php(php!emptyphp(php$qphp)php)php php{
+php php php php php php php php php php php php php$sqlphp php=php pregphp_replacephp(php"php/php$qphp(php$qephp|php[php^php$qphp]php)php*php$qphp/php"php,php php'php'php,php php$sqlphp)php;
+php php php php php php php php php}
 
-        return $sql;
-    }
+php php php php php php php php returnphp php$sqlphp;
+php php php php php}
 
-    /**
-     * Bind a column of the statement result set to a PHP variable.
-     *
-     * @param string $column Name the column in the result set, either by
-     *                       position or by name.
-     * @param mixed  $param  Reference to the PHP variable containing the value.
-     * @param mixed  $type   OPTIONAL
-     * @return bool
-     */
-    public function bindColumn($column, &$param, $type = null)
-    {
-        $this->_bindColumn[$column] =& $param;
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Bindphp aphp columnphp ofphp thephp statementphp resultphp setphp tophp aphp PHPphp variablephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$columnphp Namephp thephp columnphp inphp thephp resultphp setphp,php eitherphp by
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php positionphp orphp byphp namephp.
+php php php php php php*php php@paramphp mixedphp php php$paramphp php Referencephp tophp thephp PHPphp variablephp containingphp thephp valuephp.
+php php php php php php*php php@paramphp mixedphp php php$typephp php php OPTIONAL
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp bindColumnphp(php$columnphp,php php&php$paramphp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_bindColumnphp[php$columnphp]php php=php&php php$paramphp;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Binds a parameter to the specified variable name.
-     *
-     * @param mixed $parameter Name the parameter, either integer or string.
-     * @param mixed $variable  Reference to PHP variable containing the value.
-     * @param mixed $type      OPTIONAL Datatype of SQL parameter.
-     * @param mixed $length    OPTIONAL Length of SQL parameter.
-     * @param mixed $options   OPTIONAL Other options.
-     * @return bool
-     */
-    public function bindParam($parameter, &$variable, $type = null, $length = null, $options = null)
-    {
-        if (!is_int($parameter) && !is_string($parameter)) {
-            /**
-             * @see Zend_Db_Statement_Exception
-             */
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception('Invalid bind-variable position');
-        }
+php php php php php/php*php*
+php php php php php php*php Bindsphp aphp parameterphp tophp thephp specifiedphp variablephp namephp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$parameterphp Namephp thephp parameterphp,php eitherphp integerphp orphp stringphp.
+php php php php php php*php php@paramphp mixedphp php$variablephp php Referencephp tophp PHPphp variablephp containingphp thephp valuephp.
+php php php php php php*php php@paramphp mixedphp php$typephp php php php php php OPTIONALphp Datatypephp ofphp SQLphp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$lengthphp php php php OPTIONALphp Lengthphp ofphp SQLphp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$optionsphp php php OPTIONALphp Otherphp optionsphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp bindParamphp(php$parameterphp,php php&php$variablephp,php php$typephp php=php nullphp,php php$lengthphp php=php nullphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_intphp(php$parameterphp)php php&php&php php!isphp_stringphp(php$parameterphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php'Invalidphp bindphp-variablephp positionphp'php)php;
+php php php php php php php php php}
 
-        $position = null;
-        if (($intval = (int) $parameter) > 0 && $this->_adapter->supportsParameters('positional')) {
-            if ($intval >= 1 || $intval <= count($this->_sqlParam)) {
-                $position = $intval;
-            }
-        } else if ($this->_adapter->supportsParameters('named')) {
-            if ($parameter[0] != ':') {
-                $parameter = ':' . $parameter;
-            }
-            if (in_array($parameter, $this->_sqlParam) !== false) {
-                $position = $parameter;
-            }
-        }
+php php php php php php php php php$positionphp php=php nullphp;
+php php php php php php php php ifphp php(php(php$intvalphp php=php php(intphp)php php$parameterphp)php php>php php0php php&php&php php$thisphp-php>php_adapterphp-php>supportsParametersphp(php'positionalphp'php)php)php php{
+php php php php php php php php php php php php ifphp php(php$intvalphp php>php=php php1php php|php|php php$intvalphp <php=php countphp(php$thisphp-php>php_sqlParamphp)php)php php{
+php php php php php php php php php php php php php php php php php$positionphp php=php php$intvalphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_adapterphp-php>supportsParametersphp(php'namedphp'php)php)php php{
+php php php php php php php php php php php php ifphp php(php$parameterphp[php0php]php php!php=php php'php:php'php)php php{
+php php php php php php php php php php php php php php php php php$parameterphp php=php php'php:php'php php.php php$parameterphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$parameterphp,php php$thisphp-php>php_sqlParamphp)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$positionphp php=php php$parameterphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($position === null) {
-            /**
-             * @see Zend_Db_Statement_Exception
-             */
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception("Invalid bind-variable position '$parameter'");
-        }
+php php php php php php php php ifphp php(php$positionphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php"Invalidphp bindphp-variablephp positionphp php'php$parameterphp'php"php)php;
+php php php php php php php php php}
 
-        // Finally we are assured that $position is valid
-        $this->_bindParam[$position] =& $variable;
-        return $this->_bindParam($position, $variable, $type, $length, $options);
-    }
+php php php php php php php php php/php/php Finallyphp wephp arephp assuredphp thatphp php$positionphp isphp valid
+php php php php php php php php php$thisphp-php>php_bindParamphp[php$positionphp]php php=php&php php$variablephp;
+php php php php php php php php returnphp php$thisphp-php>php_bindParamphp(php$positionphp,php php$variablephp,php php$typephp,php php$lengthphp,php php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Binds a value to a parameter.
-     *
-     * @param mixed $parameter Name the parameter, either integer or string.
-     * @param mixed $value     Scalar value to bind to the parameter.
-     * @param mixed $type      OPTIONAL Datatype of the parameter.
-     * @return bool
-     */
-    public function bindValue($parameter, $value, $type = null)
-    {
-        return $this->bindParam($parameter, $value, $type);
-    }
+php php php php php/php*php*
+php php php php php php*php Bindsphp aphp valuephp tophp aphp parameterphp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$parameterphp Namephp thephp parameterphp,php eitherphp integerphp orphp stringphp.
+php php php php php php*php php@paramphp mixedphp php$valuephp php php php php Scalarphp valuephp tophp bindphp tophp thephp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$typephp php php php php php OPTIONALphp Datatypephp ofphp thephp parameterphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp bindValuephp(php$parameterphp,php php$valuephp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>bindParamphp(php$parameterphp,php php$valuephp,php php$typephp)php;
+php php php php php}
 
-    /**
-     * Executes a prepared statement.
-     *
-     * @param array $params OPTIONAL Values to bind to parameter placeholders.
-     * @return bool
-     */
-    public function execute(array $params = null)
-    {
-        /*
-         * Simple case - no query profiler to manage.
-         */
-        if ($this->_queryId === null) {
-            return $this->_execute($params);
-        }
+php php php php php/php*php*
+php php php php php php*php Executesphp aphp preparedphp statementphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$paramsphp OPTIONALphp Valuesphp tophp bindphp tophp parameterphp placeholdersphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp executephp(arrayphp php$paramsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php*
+php php php php php php php php php php*php Simplephp casephp php-php nophp queryphp profilerphp tophp managephp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$thisphp-php>php_queryIdphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_executephp(php$paramsphp)php;
+php php php php php php php php php}
 
-        /*
-         * Do the same thing, but with query profiler
-         * management before and after the execute.
-         */
-        $prof = $this->_adapter->getProfiler();
-        $qp = $prof->getQueryProfile($this->_queryId);
-        if ($qp->hasEnded()) {
-            $this->_queryId = $prof->queryClone($qp);
-            $qp = $prof->getQueryProfile($this->_queryId);
-        }
-        if ($params !== null) {
-            $qp->bindParams($params);
-        } else {
-            $qp->bindParams($this->_bindParam);
-        }
-        $qp->start($this->_queryId);
+php php php php php php php php php/php*
+php php php php php php php php php php*php Dophp thephp samephp thingphp,php butphp withphp queryphp profiler
+php php php php php php php php php php*php managementphp beforephp andphp afterphp thephp executephp.
+php php php php php php php php php php*php/
+php php php php php php php php php$profphp php=php php$thisphp-php>php_adapterphp-php>getProfilerphp(php)php;
+php php php php php php php php php$qpphp php=php php$profphp-php>getQueryProfilephp(php$thisphp-php>php_queryIdphp)php;
+php php php php php php php php ifphp php(php$qpphp-php>hasEndedphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_queryIdphp php=php php$profphp-php>queryClonephp(php$qpphp)php;
+php php php php php php php php php php php php php$qpphp php=php php$profphp-php>getQueryProfilephp(php$thisphp-php>php_queryIdphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$paramsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$qpphp-php>bindParamsphp(php$paramsphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$qpphp-php>bindParamsphp(php$thisphp-php>php_bindParamphp)php;
+php php php php php php php php php}
+php php php php php php php php php$qpphp-php>startphp(php$thisphp-php>php_queryIdphp)php;
 
-        $retval = $this->_execute($params);
+php php php php php php php php php$retvalphp php=php php$thisphp-php>php_executephp(php$paramsphp)php;
 
-        $prof->queryEnd($this->_queryId);
+php php php php php php php php php$profphp-php>queryEndphp(php$thisphp-php>php_queryIdphp)php;
 
-        return $retval;
-    }
+php php php php php php php php returnphp php$retvalphp;
+php php php php php}
 
-    /**
-     * Returns an array containing all of the result set rows.
-     *
-     * @param int $style OPTIONAL Fetch mode.
-     * @param int $col   OPTIONAL Column number, if fetch mode is by column.
-     * @return array Collection of rows, each in a format by the fetch mode.
-     */
-    public function fetchAll($style = null, $col = null)
-    {
-        $data = array();
-        if ($style === Zend_Db::FETCH_COLUMN && $col === null) {
-            $col = 0;
-        }
-        if ($col === null) {
-            while ($row = $this->fetch($style)) {
-                $data[] = $row;
-            }
-        } else {
-            while (false !== ($val = $this->fetchColumn($col))) {
-                $data[] = $val;
-            }
-        }
-        return $data;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp containingphp allphp ofphp thephp resultphp setphp rowsphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$stylephp OPTIONALphp Fetchphp modephp.
+php php php php php php*php php@paramphp intphp php$colphp php php OPTIONALphp Columnphp numberphp,php ifphp fetchphp modephp isphp byphp columnphp.
+php php php php php php*php php@returnphp arrayphp Collectionphp ofphp rowsphp,php eachphp inphp aphp formatphp byphp thephp fetchphp modephp.
+php php php php php php*php/
+php php php php publicphp functionphp fetchAllphp(php$stylephp php=php nullphp,php php$colphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$dataphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php$stylephp php=php=php=php Zendphp_Dbphp:php:FETCHphp_COLUMNphp php&php&php php$colphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$colphp php=php php0php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$colphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php whilephp php(php$rowphp php=php php$thisphp-php>fetchphp(php$stylephp)php)php php{
+php php php php php php php php php php php php php php php php php$dataphp[php]php php=php php$rowphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php whilephp php(falsephp php!php=php=php php(php$valphp php=php php$thisphp-php>fetchColumnphp(php$colphp)php)php)php php{
+php php php php php php php php php php php php php php php php php$dataphp[php]php php=php php$valphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
 
-    /**
-     * Returns a single column from the next row of a result set.
-     *
-     * @param int $col OPTIONAL Position of the column to fetch.
-     * @return string One value from the next row of result set, or false.
-     */
-    public function fetchColumn($col = 0)
-    {
-        $data = array();
-        $col = (int) $col;
-        $row = $this->fetch(Zend_Db::FETCH_NUM);
-        if (!is_array($row)) {
-            return false;
-        }
-        return $row[$col];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp singlephp columnphp fromphp thephp nextphp rowphp ofphp aphp resultphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$colphp OPTIONALphp Positionphp ofphp thephp columnphp tophp fetchphp.
+php php php php php php*php php@returnphp stringphp Onephp valuephp fromphp thephp nextphp rowphp ofphp resultphp setphp,php orphp falsephp.
+php php php php php php*php/
+php php php php publicphp functionphp fetchColumnphp(php$colphp php=php php0php)
+php php php php php{
+php php php php php php php php php$dataphp php=php arrayphp(php)php;
+php php php php php php php php php$colphp php=php php(intphp)php php$colphp;
+php php php php php php php php php$rowphp php=php php$thisphp-php>fetchphp(Zendphp_Dbphp:php:FETCHphp_NUMphp)php;
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$rowphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$rowphp[php$colphp]php;
+php php php php php}
 
-    /**
-     * Fetches the next row and returns it as an object.
-     *
-     * @param string $class  OPTIONAL Name of the class to create.
-     * @param array  $config OPTIONAL Constructor arguments for the class.
-     * @return mixed One object instance of the specified class, or false.
-     */
-    public function fetchObject($class = 'stdClass', array $config = array())
-    {
-        $obj = new $class($config);
-        $row = $this->fetch(Zend_Db::FETCH_ASSOC);
-        if (!is_array($row)) {
-            return false;
-        }
-        foreach ($row as $key => $val) {
-            $obj->$key = $val;
-        }
-        return $obj;
-    }
+php php php php php/php*php*
+php php php php php php*php Fetchesphp thephp nextphp rowphp andphp returnsphp itphp asphp anphp objectphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$classphp php OPTIONALphp Namephp ofphp thephp classphp tophp createphp.
+php php php php php php*php php@paramphp arrayphp php php$configphp OPTIONALphp Constructorphp argumentsphp forphp thephp classphp.
+php php php php php php*php php@returnphp mixedphp Onephp objectphp instancephp ofphp thephp specifiedphp classphp,php orphp falsephp.
+php php php php php php*php/
+php php php php publicphp functionphp fetchObjectphp(php$classphp php=php php'stdClassphp'php,php arrayphp php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$objphp php=php newphp php$classphp(php$configphp)php;
+php php php php php php php php php$rowphp php=php php$thisphp-php>fetchphp(Zendphp_Dbphp:php:FETCHphp_ASSOCphp)php;
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$rowphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$rowphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php$objphp-php>php$keyphp php=php php$valphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$objphp;
+php php php php php}
 
-    /**
-     * Retrieve a statement attribute.
-     *
-     * @param string $key Attribute name.
-     * @return mixed      Attribute value.
-     */
-    public function getAttribute($key)
-    {
-        if (array_key_exists($key, $this->_attribute)) {
-            return $this->_attribute[$key];
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp statementphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$keyphp Attributephp namephp.
+php php php php php php*php php@returnphp mixedphp php php php php php Attributephp valuephp.
+php php php php php php*php/
+php php php php publicphp functionphp getAttributephp(php$keyphp)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_attributephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_attributephp[php$keyphp]php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set a statement attribute.
-     *
-     * @param string $key Attribute name.
-     * @param mixed  $val Attribute value.
-     * @return bool
-     */
-    public function setAttribute($key, $val)
-    {
-        $this->_attribute[$key] = $val;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp statementphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$keyphp Attributephp namephp.
+php php php php php php*php php@paramphp mixedphp php php$valphp Attributephp valuephp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp setAttributephp(php$keyphp,php php$valphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_attributephp[php$keyphp]php php=php php$valphp;
+php php php php php}
 
-    /**
-     * Set the default fetch mode for this statement.
-     *
-     * @param int   $mode The fetch mode.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function setFetchMode($mode)
-    {
-        switch ($mode) {
-            case Zend_Db::FETCH_NUM:
-            case Zend_Db::FETCH_ASSOC:
-            case Zend_Db::FETCH_BOTH:
-            case Zend_Db::FETCH_OBJ:
-                $this->_fetchMode = $mode;
-                break;
-            case Zend_Db::FETCH_BOUND:
-            default:
-                $this->closeCursor();
-                /**
-                 * @see Zend_Db_Statement_Exception
-                 */
-                require_once 'Zend/Db/Statement/Exception.php';
-                throw new Zend_Db_Statement_Exception('invalid fetch mode');
-                break;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp fetchphp modephp forphp thisphp statementphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php php php$modephp Thephp fetchphp modephp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setFetchModephp(php$modephp)
+php php php php php{
+php php php php php php php php switchphp php(php$modephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_NUMphp:
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_ASSOCphp:
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_BOTHphp:
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_OBJphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_fetchModephp php=php php$modephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_BOUNDphp:
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>closeCursorphp(php)php;
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php'invalidphp fetchphp modephp'php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Helper function to map retrieved row
-     * to bound column variables
-     *
-     * @param array $row
-     * @return bool True
-     */
-    public function _fetchBound($row)
-    {
-        foreach ($row as $key => $value) {
-            // bindColumn() takes 1-based integer positions
-            // but fetch() returns 0-based integer indexes
-            if (is_int($key)) {
-                $key++;
-            }
-            // set results only to variables that were bound previously
-            if (isset($this->_bindColumn[$key])) {
-                $this->_bindColumn[$key] = $value;
-            }
-        }
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Helperphp functionphp tophp mapphp retrievedphp row
+php php php php php php*php tophp boundphp columnphp variables
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$row
+php php php php php php*php php@returnphp boolphp True
+php php php php php php*php/
+php php php php publicphp functionphp php_fetchBoundphp(php$rowphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$rowphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php/php/php bindColumnphp(php)php takesphp php1php-basedphp integerphp positions
+php php php php php php php php php php php php php/php/php butphp fetchphp(php)php returnsphp php0php-basedphp integerphp indexes
+php php php php php php php php php php php php ifphp php(isphp_intphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php$keyphp+php+php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php/php/php setphp resultsphp onlyphp tophp variablesphp thatphp werephp boundphp previously
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_bindColumnphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_bindColumnphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Gets the Zend_Db_Adapter_Abstract for this
-     * particular Zend_Db_Statement object.
-     *
-     * @return Zend_Db_Adapter_Abstract
-     */
-    public function getAdapter()
-    {
-        return $this->_adapter;
-    }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp Zendphp_Dbphp_Adapterphp_Abstractphp forphp this
+php php php php php php*php particularphp Zendphp_Dbphp_Statementphp objectphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
+php php php php php}
 
-    /**
-     * Gets the resource or object setup by the
-     * _parse
-     * @return unknown_type
-     */
-    public function getDriverStatement()
-    {
-        return $this->_stmt;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp resourcephp orphp objectphp setupphp byphp the
+php php php php php php*php php_parse
+php php php php php php*php php@returnphp unknownphp_type
+php php php php php php*php/
+php php php php publicphp functionphp getDriverStatementphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_stmtphp;
+php php php php php}
+php}

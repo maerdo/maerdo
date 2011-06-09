@@ -1,119 +1,119 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Amf
- * @subpackage Value
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: CommandMessage.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Value
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php CommandMessagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Amf_Value_Messaging_AsyncMessage
- */
-require_once 'Zend/Amf/Value/Messaging/AsyncMessage.php';
+php/php*php*
+php php*php php@seephp Zendphp_Amfphp_Valuephp_Messagingphp_AsyncMessage
+php php*php/
+requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/AsyncMessagephp.phpphp'php;
 
-/**
- * A message that represents an infrastructure command passed between
- * client and server. Subscribe/unsubscribe operations result in
- * CommandMessage transmissions, as do polling operations.
- *
- * Corresponds to flex.messaging.messages.CommandMessage
- *
- * Note: THESE VALUES MUST BE THE SAME ON CLIENT AND SERVER
- *
- * @package    Zend_Amf
- * @subpackage Value
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Amf_Value_Messaging_CommandMessage extends Zend_Amf_Value_Messaging_AsyncMessage
-{
-    /**
-     *  This operation is used to subscribe to a remote destination.
-     */
-    const SUBSCRIBE_OPERATION = 0;
+php/php*php*
+php php*php Aphp messagephp thatphp representsphp anphp infrastructurephp commandphp passedphp between
+php php*php clientphp andphp serverphp.php Subscribephp/unsubscribephp operationsphp resultphp in
+php php*php CommandMessagephp transmissionsphp,php asphp dophp pollingphp operationsphp.
+php php*
+php php*php Correspondsphp tophp flexphp.messagingphp.messagesphp.CommandMessage
+php php*
+php php*php Notephp:php THESEphp VALUESphp MUSTphp BEphp THEphp SAMEphp ONphp CLIENTphp ANDphp SERVER
+php php*
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Value
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp extendsphp Zendphp_Amfphp_Valuephp_Messagingphp_AsyncMessage
+php{
+php php php php php/php*php*
+php php php php php php*php php Thisphp operationphp isphp usedphp tophp subscribephp tophp aphp remotephp destinationphp.
+php php php php php php*php/
+php php php php constphp SUBSCRIBEphp_OPERATIONphp php=php php0php;
 
-    /**
-     * This operation is used to unsubscribe from a remote destination.
-     */
-    const UNSUSBSCRIBE_OPERATION = 1;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp unsubscribephp fromphp aphp remotephp destinationphp.
+php php php php php php*php/
+php php php php constphp UNSUSBSCRIBEphp_OPERATIONphp php=php php1php;
 
-    /**
-     * This operation is used to poll a remote destination for pending,
-     * undelivered messages.
-     */
-    const POLL_OPERATION = 2;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp pollphp aphp remotephp destinationphp forphp pendingphp,
+php php php php php php*php undeliveredphp messagesphp.
+php php php php php php*php/
+php php php php constphp POLLphp_OPERATIONphp php=php php2php;
 
-    /**
-     * This operation is used by a remote destination to sync missed or cached messages
-     * back to a client as a result of a client issued poll command.
-     */
-    const CLIENT_SYNC_OPERATION = 4;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp byphp aphp remotephp destinationphp tophp syncphp missedphp orphp cachedphp messages
+php php php php php php*php backphp tophp aphp clientphp asphp aphp resultphp ofphp aphp clientphp issuedphp pollphp commandphp.
+php php php php php php*php/
+php php php php constphp CLIENTphp_SYNCphp_OPERATIONphp php=php php4php;
 
-    /**
-     * This operation is used to test connectivity over the current channel to
-     * the remote endpoint.
-     */
-    const CLIENT_PING_OPERATION = 5;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp testphp connectivityphp overphp thephp currentphp channelphp to
+php php php php php php*php thephp remotephp endpointphp.
+php php php php php php*php/
+php php php php constphp CLIENTphp_PINGphp_OPERATIONphp php=php php5php;
 
-    /**
-     * This operation is used to request a list of failover endpoint URIs
-     * for the remote destination based on cluster membership.
-     */
-    const CLUSTER_REQUEST_OPERATION = 7;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp requestphp aphp listphp ofphp failoverphp endpointphp URIs
+php php php php php php*php forphp thephp remotephp destinationphp basedphp onphp clusterphp membershipphp.
+php php php php php php*php/
+php php php php constphp CLUSTERphp_REQUESTphp_OPERATIONphp php=php php7php;
 
-    /**
-     * This operation is used to send credentials to the endpoint so that
-     * the user can be logged in over the current channel.
-     * The credentials need to be Base64 encoded and stored in the <code>body</code>
-     * of the message.
-     */
-    const LOGIN_OPERATION = 8;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp sendphp credentialsphp tophp thephp endpointphp sophp that
+php php php php php php*php thephp userphp canphp bephp loggedphp inphp overphp thephp currentphp channelphp.
+php php php php php php*php Thephp credentialsphp needphp tophp bephp Basephp6php4php encodedphp andphp storedphp inphp thephp php<codephp>body<php/codephp>
+php php php php php php*php ofphp thephp messagephp.
+php php php php php php*php/
+php php php php constphp LOGINphp_OPERATIONphp php=php php8php;
 
-    /**
-     * This operation is used to log the user out of the current channel, and
-     * will invalidate the server session if the channel is HTTP based.
-     */
-    const LOGOUT_OPERATION = 9;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp logphp thephp userphp outphp ofphp thephp currentphp channelphp,php and
+php php php php php php*php willphp invalidatephp thephp serverphp sessionphp ifphp thephp channelphp isphp HTTPphp basedphp.
+php php php php php php*php/
+php php php php constphp LOGOUTphp_OPERATIONphp php=php php9php;
 
-    /**
-     * This operation is used to indicate that the client's subscription to a
-     * remote destination has been invalidated.
-     */
-    const SESSION_INVALIDATE_OPERATION = 10;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp indicatephp thatphp thephp clientphp'sphp subscriptionphp tophp a
+php php php php php php*php remotephp destinationphp hasphp beenphp invalidatedphp.
+php php php php php php*php/
+php php php php constphp SESSIONphp_INVALIDATEphp_OPERATIONphp php=php php1php0php;
 
-    /**
-     * This operation is used by the MultiTopicConsumer to subscribe/unsubscribe
-     * from multiple subtopics/selectors in the same message.
-     */
-    const MULTI_SUBSCRIBE_OPERATION = 11;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp byphp thephp MultiTopicConsumerphp tophp subscribephp/unsubscribe
+php php php php php php*php fromphp multiplephp subtopicsphp/selectorsphp inphp thephp samephp messagephp.
+php php php php php php*php/
+php php php php constphp MULTIphp_SUBSCRIBEphp_OPERATIONphp php=php php1php1php;
 
-    /**
-     * This operation is used to indicate that a channel has disconnected
-     */
-    const DISCONNECT_OPERATION = 12;
+php php php php php/php*php*
+php php php php php php*php Thisphp operationphp isphp usedphp tophp indicatephp thatphp aphp channelphp hasphp disconnected
+php php php php php php*php/
+php php php php constphp DISCONNECTphp_OPERATIONphp php=php php1php2php;
 
-    /**
-     * This is the default operation for new CommandMessage instances.
-     */
-    const UNKNOWN_OPERATION = 10000;
+php php php php php/php*php*
+php php php php php php*php Thisphp isphp thephp defaultphp operationphp forphp newphp CommandMessagephp instancesphp.
+php php php php php php*php/
+php php php php constphp UNKNOWNphp_OPERATIONphp php=php php1php0php0php0php0php;
 
-    /**
-     * The operation to execute for messages of this type
-     * @var int
-     */
-    public $operation = self::UNKNOWN_OPERATION;
-}
+php php php php php/php*php*
+php php php php php php*php Thephp operationphp tophp executephp forphp messagesphp ofphp thisphp type
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php publicphp php$operationphp php=php selfphp:php:UNKNOWNphp_OPERATIONphp;
+php}

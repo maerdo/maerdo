@@ -1,111 +1,111 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Cipher
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Aes256cbc.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Cipher
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Aesphp2php5php6cbcphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Zend_InfoCard_Cipher_Symmetric_Adapter_Abstract
- */
-require_once 'Zend/InfoCard/Cipher/Symmetric/Adapter/Abstract.php';
+php/php*php*
+php php*php Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Adapterphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Symmetricphp/Adapterphp/Abstractphp.phpphp'php;
 
-/**
- * Zend_InfoCard_Cipher_Symmetric_Aes256cbc_Interface
- */
-require_once 'Zend/InfoCard/Cipher/Symmetric/Aes256cbc/Interface.php';
+php/php*php*
+php php*php Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Aesphp2php5php6cbcphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Symmetricphp/Aesphp2php5php6cbcphp/Interfacephp.phpphp'php;
 
-/**
- * Implements AES256 with CBC encryption implemented using the mCrypt extension
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Cipher
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_InfoCard_Cipher_Symmetric_Adapter_Aes256cbc
-    extends Zend_InfoCard_Cipher_Symmetric_Adapter_Abstract
-    implements Zend_InfoCard_Cipher_Symmetric_Aes256cbc_Interface
-{
-    /**
-     * The MCRYPT Cipher constant for this encryption
-     */
-    const MCRYPT_CIPHER = MCRYPT_RIJNDAEL_128;
+php/php*php*
+php php*php Implementsphp AESphp2php5php6php withphp CBCphp encryptionphp implementedphp usingphp thephp mCryptphp extension
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Cipher
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Adapterphp_Aesphp2php5php6cbc
+php php php php extendsphp Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Adapterphp_Abstract
+php php php php implementsphp Zendphp_InfoCardphp_Cipherphp_Symmetricphp_Aesphp2php5php6cbcphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Thephp MCRYPTphp Cipherphp constantphp forphp thisphp encryption
+php php php php php php*php/
+php php php php constphp MCRYPTphp_CIPHERphp php=php MCRYPTphp_RIJNDAELphp_php1php2php8php;
 
-    /**
-     * The MCRYPT Mode constant for this encryption
-     */
-    const MCRYPT_MODE   = MCRYPT_MODE_CBC;
+php php php php php/php*php*
+php php php php php php*php Thephp MCRYPTphp Modephp constantphp forphp thisphp encryption
+php php php php php php*php/
+php php php php constphp MCRYPTphp_MODEphp php php php=php MCRYPTphp_MODEphp_CBCphp;
 
-    /**
-     * The default length of the IV to use
-     */
-    const IV_LENGTH     = 16;
+php php php php php/php*php*
+php php php php php php*php Thephp defaultphp lengthphp ofphp thephp IVphp tophp use
+php php php php php php*php/
+php php php php constphp IVphp_LENGTHphp php php php php php=php php1php6php;
 
-    /**
-     * The object constructor
-     *
-     * @throws Zend_InfoCard_Cipher_Exception
-     */
-    public function __construct()
-    {
-        // Can't test for this
-        // @codeCoverageIgnoreStart
-        if(!extension_loaded('mcrypt')) {
-            require_once 'Zend/InfoCard/Cipher/Exception.php';
-            throw new Zend_InfoCard_Cipher_Exception("Use of the AES256CBC Cipher requires the mcrypt extension");
-        }
-        // @codeCoveregIgnoreEnd
-    }
+php php php php php/php*php*
+php php php php php php*php Thephp objectphp constructor
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Cipherphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php php/php/php Canphp'tphp testphp forphp this
+php php php php php php php php php/php/php php@codeCoverageIgnoreStart
+php php php php php php php php ifphp(php!extensionphp_loadedphp(php'mcryptphp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Cipherphp_Exceptionphp(php"Usephp ofphp thephp AESphp2php5php6CBCphp Cipherphp requiresphp thephp mcryptphp extensionphp"php)php;
+php php php php php php php php php}
+php php php php php php php php php/php/php php@codeCoveregIgnoreEnd
+php php php php php}
 
-    /**
-     * Decrypts data using the AES Algorithm using the mCrypt extension
-     *
-     * @throws Zend_InfoCard_Cipher_Exception
-     * @param string $encryptedData The encrypted data in binary format
-     * @param string $decryptionKey The decryption key
-     * @param integer $iv_length The IV length to use
-     * @return string the decrypted data with any terminating nulls removed
-     */
-    public function decrypt($encryptedData, $decryptionKey, $iv_length = null)
-    {
+php php php php php/php*php*
+php php php php php php*php Decryptsphp dataphp usingphp thephp AESphp Algorithmphp usingphp thephp mCryptphp extension
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Cipherphp_Exception
+php php php php php php*php php@paramphp stringphp php$encryptedDataphp Thephp encryptedphp dataphp inphp binaryphp format
+php php php php php php*php php@paramphp stringphp php$decryptionKeyphp Thephp decryptionphp key
+php php php php php php*php php@paramphp integerphp php$ivphp_lengthphp Thephp IVphp lengthphp tophp use
+php php php php php php*php php@returnphp stringphp thephp decryptedphp dataphp withphp anyphp terminatingphp nullsphp removed
+php php php php php php*php/
+php php php php publicphp functionphp decryptphp(php$encryptedDataphp,php php$decryptionKeyphp,php php$ivphp_lengthphp php=php nullphp)
+php php php php php{
 
-        $iv_length = ($iv_length === null) ? self::IV_LENGTH : $iv_length;
+php php php php php php php php php$ivphp_lengthphp php=php php(php$ivphp_lengthphp php=php=php=php nullphp)php php?php selfphp:php:IVphp_LENGTHphp php:php php$ivphp_lengthphp;
 
-        $mcrypt_iv = null;
+php php php php php php php php php$mcryptphp_ivphp php=php nullphp;
 
-        if($iv_length > 0) {
-             $mcrypt_iv = substr($encryptedData, 0, $iv_length);
-            $encryptedData = substr($encryptedData, $iv_length);
-        }
+php php php php php php php php ifphp(php$ivphp_lengthphp php>php php0php)php php{
+php php php php php php php php php php php php php php$mcryptphp_ivphp php=php substrphp(php$encryptedDataphp,php php0php,php php$ivphp_lengthphp)php;
+php php php php php php php php php php php php php$encryptedDataphp php=php substrphp(php$encryptedDataphp,php php$ivphp_lengthphp)php;
+php php php php php php php php php}
 
-        $decrypted = mcrypt_decrypt(self::MCRYPT_CIPHER, $decryptionKey, $encryptedData, self::MCRYPT_MODE, $mcrypt_iv);
+php php php php php php php php php$decryptedphp php=php mcryptphp_decryptphp(selfphp:php:MCRYPTphp_CIPHERphp,php php$decryptionKeyphp,php php$encryptedDataphp,php selfphp:php:MCRYPTphp_MODEphp,php php$mcryptphp_ivphp)php;
 
-        if(!$decrypted) {
-            require_once 'Zend/InfoCard/Cipher/Exception.php';
-            throw new Zend_InfoCard_Cipher_Exception("Failed to decrypt data using AES256CBC Algorithm");
-        }
+php php php php php php php php ifphp(php!php$decryptedphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Cipherphp_Exceptionphp(php"Failedphp tophp decryptphp dataphp usingphp AESphp2php5php6CBCphp Algorithmphp"php)php;
+php php php php php php php php php}
 
-        $decryptedLength = strlen($decrypted);
-        $paddingLength = substr($decrypted, $decryptedLength -1, 1);
-        $decrypted = substr($decrypted, 0, $decryptedLength - ord($paddingLength));
+php php php php php php php php php$decryptedLengthphp php=php strlenphp(php$decryptedphp)php;
+php php php php php php php php php$paddingLengthphp php=php substrphp(php$decryptedphp,php php$decryptedLengthphp php-php1php,php php1php)php;
+php php php php php php php php php$decryptedphp php=php substrphp(php$decryptedphp,php php0php,php php$decryptedLengthphp php-php ordphp(php$paddingLengthphp)php)php;
 
-        return rtrim($decrypted, "\0");
-    }
-}
+php php php php php php php php returnphp rtrimphp(php$decryptedphp,php php"php\php0php"php)php;
+php php php php php}
+php}

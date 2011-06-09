@@ -1,210 +1,210 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Multidb.php 23486 2010-12-10 04:05:30Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Multidbphp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
+php php*php/
 
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
+requirephp_oncephp php'Zendphp/Applicationphp/Resourcephp/ResourceAbstractphp.phpphp'php;
 
-require_once 'Zend/Db/Table.php';
+requirephp_oncephp php'Zendphp/Dbphp/Tablephp.phpphp'php;
 
-/**
- */
+php/php*php*
+php php*php/
 
-/**
- * Cache Manager resource
- *
- * Example configuration:
- * <pre>
- *   resources.multidb.defaultMetadataCache = "database"
- *
- *   resources.multidb.db1.adapter = "pdo_mysql"
- *   resources.multidb.db1.host = "localhost"
- *   resources.multidb.db1.username = "webuser"
- *   resources.multidb.db1.password = "XXXX"
- *   resources.multidb.db1.dbname = "db1"
- *   resources.multidb.db1.default = true
- *
- *   resources.multidb.db2.adapter = "pdo_pgsql"
- *   resources.multidb.db2.host = "example.com"
- *   resources.multidb.db2.username = "dba"
- *   resources.multidb.db2.password = "notthatpublic"
- *   resources.multidb.db2.dbname = "db2"
- * </pre>
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Application_Resource_Multidb extends Zend_Application_Resource_ResourceAbstract
-{
-    /**
-     * Associative array containing all configured db's
-     *
-     * @var array
-     */
-    protected $_dbs = array();
+php/php*php*
+php php*php Cachephp Managerphp resource
+php php*
+php php*php Examplephp configurationphp:
+php php*php php<prephp>
+php php*php php php resourcesphp.multidbphp.defaultMetadataCachephp php=php php"databasephp"
+php php*
+php php*php php php resourcesphp.multidbphp.dbphp1php.adapterphp php=php php"pdophp_mysqlphp"
+php php*php php php resourcesphp.multidbphp.dbphp1php.hostphp php=php php"localhostphp"
+php php*php php php resourcesphp.multidbphp.dbphp1php.usernamephp php=php php"webuserphp"
+php php*php php php resourcesphp.multidbphp.dbphp1php.passwordphp php=php php"XXXXphp"
+php php*php php php resourcesphp.multidbphp.dbphp1php.dbnamephp php=php php"dbphp1php"
+php php*php php php resourcesphp.multidbphp.dbphp1php.defaultphp php=php true
+php php*
+php php*php php php resourcesphp.multidbphp.dbphp2php.adapterphp php=php php"pdophp_pgsqlphp"
+php php*php php php resourcesphp.multidbphp.dbphp2php.hostphp php=php php"examplephp.comphp"
+php php*php php php resourcesphp.multidbphp.dbphp2php.usernamephp php=php php"dbaphp"
+php php*php php php resourcesphp.multidbphp.dbphp2php.passwordphp php=php php"notthatpublicphp"
+php php*php php php resourcesphp.multidbphp.dbphp2php.dbnamephp php=php php"dbphp2php"
+php php*php <php/prephp>
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Applicationphp_Resourcephp_Multidbphp extendsphp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Associativephp arrayphp containingphp allphp configuredphp dbphp's
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_dbsphp php=php arrayphp(php)php;
 
-    /**
-     * An instance of the default db, if set
-     *
-     * @var null|Zend_Db_Adapter_Abstract
-     */
-    protected $_defaultDb;
+php php php php php/php*php*
+php php php php php php*php Anphp instancephp ofphp thephp defaultphp dbphp,php ifphp set
+php php php php php php*
+php php php php php php*php php@varphp nullphp|Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_defaultDbphp;
 
-    /**
-     * Initialize the Database Connections (instances of Zend_Db_Table_Abstract)
-     *
-     * @return Zend_Application_Resource_Multidb
-     */
-    public function init()
-    {
-        $options = $this->getOptions();
+php php php php php/php*php*
+php php php php php php*php Initializephp thephp Databasephp Connectionsphp php(instancesphp ofphp Zendphp_Dbphp_Tablephp_Abstractphp)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Resourcephp_Multidb
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php php$thisphp-php>getOptionsphp(php)php;
 
-        if (isset($options['defaultMetadataCache'])) {
-            $this->_setDefaultMetadataCache($options['defaultMetadataCache']);
-            unset($options['defaultMetadataCache']);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'defaultMetadataCachephp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_setDefaultMetadataCachephp(php$optionsphp[php'defaultMetadataCachephp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'defaultMetadataCachephp'php]php)php;
+php php php php php php php php php}
 
-        foreach ($options as $id => $params) {
-            $adapter = $params['adapter'];
-            $default = (int) (
-                isset($params['isDefaultTableAdapter']) && $params['isDefaultTableAdapter']
-                || isset($params['default']) && $params['default']
-            );
-            unset(
-                $params['adapter'],
-                $params['default'],
-                $params['isDefaultTableAdapter']
-            );
+php php php php php php php php foreachphp php(php$optionsphp asphp php$idphp php=php>php php$paramsphp)php php{
+php php php php php php php php php php php php php$adapterphp php=php php$paramsphp[php'adapterphp'php]php;
+php php php php php php php php php php php php php$defaultphp php=php php(intphp)php php(
+php php php php php php php php php php php php php php php php issetphp(php$paramsphp[php'isDefaultTableAdapterphp'php]php)php php&php&php php$paramsphp[php'isDefaultTableAdapterphp'php]
+php php php php php php php php php php php php php php php php php|php|php issetphp(php$paramsphp[php'defaultphp'php]php)php php&php&php php$paramsphp[php'defaultphp'php]
+php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php unsetphp(
+php php php php php php php php php php php php php php php php php$paramsphp[php'adapterphp'php]php,
+php php php php php php php php php php php php php php php php php$paramsphp[php'defaultphp'php]php,
+php php php php php php php php php php php php php php php php php$paramsphp[php'isDefaultTableAdapterphp'php]
+php php php php php php php php php php php php php)php;
 
-            $this->_dbs[$id] = Zend_Db::factory($adapter, $params);
+php php php php php php php php php php php php php$thisphp-php>php_dbsphp[php$idphp]php php=php Zendphp_Dbphp:php:factoryphp(php$adapterphp,php php$paramsphp)php;
 
-            if ($default) {
-                $this->_setDefault($this->_dbs[$id]);
-            }
-        }
+php php php php php php php php php php php php ifphp php(php$defaultphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_setDefaultphp(php$thisphp-php>php_dbsphp[php$idphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Determine if the given db(identifier) is the default db.
-     *
-     * @param  string|Zend_Db_Adapter_Abstract $db The db to determine whether it's set as default
-     * @return boolean True if the given parameter is configured as default. False otherwise
-     */
-    public function isDefault($db)
-    {
-        if(!$db instanceof Zend_Db_Adapter_Abstract) {
-            $db = $this->getDb($db);
-        }
+php php php php php/php*php*
+php php php php php php*php Determinephp ifphp thephp givenphp dbphp(identifierphp)php isphp thephp defaultphp dbphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Dbphp_Adapterphp_Abstractphp php$dbphp Thephp dbphp tophp determinephp whetherphp itphp'sphp setphp asphp default
+php php php php php php*php php@returnphp booleanphp Truephp ifphp thephp givenphp parameterphp isphp configuredphp asphp defaultphp.php Falsephp otherwise
+php php php php php php*php/
+php php php php publicphp functionphp isDefaultphp(php$dbphp)
+php php php php php{
+php php php php php php php php ifphp(php!php$dbphp instanceofphp Zendphp_Dbphp_Adapterphp_Abstractphp)php php{
+php php php php php php php php php php php php php$dbphp php=php php$thisphp-php>getDbphp(php$dbphp)php;
+php php php php php php php php php}
 
-        return $db === $this->_defaultDb;
-    }
+php php php php php php php php returnphp php$dbphp php=php=php=php php$thisphp-php>php_defaultDbphp;
+php php php php php}
 
-    /**
-     * Retrieve the specified database connection
-     *
-     * @param  null|string|Zend_Db_Adapter_Abstract $db The adapter to retrieve.
-     *                                               Null to retrieve the default connection
-     * @return Zend_Db_Adapter_Abstract
-     * @throws Zend_Application_Resource_Exception if the given parameter could not be found
-     */
-    public function getDb($db = null)
-    {
-        if ($db === null) {
-            return $this->getDefaultDb();
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp specifiedphp databasephp connection
+php php php php php php*
+php php php php php php*php php@paramphp php nullphp|stringphp|Zendphp_Dbphp_Adapterphp_Abstractphp php$dbphp Thephp adapterphp tophp retrievephp.
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Nullphp tophp retrievephp thephp defaultphp connection
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php php@throwsphp Zendphp_Applicationphp_Resourcephp_Exceptionphp ifphp thephp givenphp parameterphp couldphp notphp bephp found
+php php php php php php*php/
+php php php php publicphp functionphp getDbphp(php$dbphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$dbphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>getDefaultDbphp(php)php;
+php php php php php php php php php}
 
-        if (isset($this->_dbs[$db])) {
-            return $this->_dbs[$db];
-        }
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dbsphp[php$dbphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dbsphp[php$dbphp]php;
+php php php php php php php php php}
 
-        throw new Zend_Application_Resource_Exception(
-            'A DB adapter was tried to retrieve, but was not configured'
-        );
-    }
+php php php php php php php php throwphp newphp Zendphp_Applicationphp_Resourcephp_Exceptionphp(
+php php php php php php php php php php php php php'Aphp DBphp adapterphp wasphp triedphp tophp retrievephp,php butphp wasphp notphp configuredphp'
+php php php php php php php php php)php;
+php php php php php}
 
-    /**
-     * Get the default db connection
-     *
-     * @param  boolean $justPickOne If true, a random (the first one in the stack)
-     *                           connection is returned if no default was set.
-     *                           If false, null is returned if no default was set.
-     * @return null|Zend_Db_Adapter_Abstract
-     */
-    public function getDefaultDb($justPickOne = true)
-    {
-        if ($this->_defaultDb !== null) {
-            return $this->_defaultDb;
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp defaultphp dbphp connection
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$justPickOnephp Ifphp truephp,php aphp randomphp php(thephp firstphp onephp inphp thephp stackphp)
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php connectionphp isphp returnedphp ifphp nophp defaultphp wasphp setphp.
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php Ifphp falsephp,php nullphp isphp returnedphp ifphp nophp defaultphp wasphp setphp.
+php php php php php php*php php@returnphp nullphp|Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultDbphp(php$justPickOnephp php=php truephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_defaultDbphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_defaultDbphp;
+php php php php php php php php php}
 
-        if ($justPickOne) {
-            return reset($this->_dbs); // Return first db in db pool
-        }
+php php php php php php php php ifphp php(php$justPickOnephp)php php{
+php php php php php php php php php php php php returnphp resetphp(php$thisphp-php>php_dbsphp)php;php php/php/php Returnphp firstphp dbphp inphp dbphp pool
+php php php php php php php php php}
 
-        return null;
-    }
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Set the default db adapter
-     *
-     * @var Zend_Db_Adapter_Abstract $adapter Adapter to set as default
-     */
-    protected function _setDefault(Zend_Db_Adapter_Abstract $adapter)
-    {
-        Zend_Db_Table::setDefaultAdapter($adapter);
-        $this->_defaultDb = $adapter;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp dbphp adapter
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Dbphp_Adapterphp_Abstractphp php$adapterphp Adapterphp tophp setphp asphp default
+php php php php php php*php/
+php php php php protectedphp functionphp php_setDefaultphp(Zendphp_Dbphp_Adapterphp_Abstractphp php$adapterphp)
+php php php php php{
+php php php php php php php php Zendphp_Dbphp_Tablephp:php:setDefaultAdapterphp(php$adapterphp)php;
+php php php php php php php php php$thisphp-php>php_defaultDbphp php=php php$adapterphp;
+php php php php php}
 
-   /**
-     * Set the default metadata cache
-     *
-     * @param string|Zend_Cache_Core $cache
-     * @return Zend_Application_Resource_Multidb
-     */
-    protected function _setDefaultMetadataCache($cache)
-    {
-        $metadataCache = null;
+php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp metadataphp cache
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|Zendphp_Cachephp_Corephp php$cache
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Resourcephp_Multidb
+php php php php php php*php/
+php php php php protectedphp functionphp php_setDefaultMetadataCachephp(php$cachephp)
+php php php php php{
+php php php php php php php php php$metadataCachephp php=php nullphp;
 
-        if (is_string($cache)) {
-            $bootstrap = $this->getBootstrap();
-            if ($bootstrap instanceof Zend_Application_Bootstrap_ResourceBootstrapper &&
-                $bootstrap->hasPluginResource('CacheManager')
-            ) {
-                $cacheManager = $bootstrap->bootstrap('CacheManager')
-                    ->getResource('CacheManager');
-                if (null !== $cacheManager && $cacheManager->hasCache($cache)) {
-                    $metadataCache = $cacheManager->getCache($cache);
-                }
-            }
-        } else if ($cache instanceof Zend_Cache_Core) {
-            $metadataCache = $cache;
-        }
+php php php php php php php php ifphp php(isphp_stringphp(php$cachephp)php)php php{
+php php php php php php php php php php php php php$bootstrapphp php=php php$thisphp-php>getBootstrapphp(php)php;
+php php php php php php php php php php php php ifphp php(php$bootstrapphp instanceofphp Zendphp_Applicationphp_Bootstrapphp_ResourceBootstrapperphp php&php&
+php php php php php php php php php php php php php php php php php$bootstrapphp-php>hasPluginResourcephp(php'CacheManagerphp'php)
+php php php php php php php php php php php php php)php php{
+php php php php php php php php php php php php php php php php php$cacheManagerphp php=php php$bootstrapphp-php>bootstrapphp(php'CacheManagerphp'php)
+php php php php php php php php php php php php php php php php php php php php php-php>getResourcephp(php'CacheManagerphp'php)php;
+php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$cacheManagerphp php&php&php php$cacheManagerphp-php>hasCachephp(php$cachephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$metadataCachephp php=php php$cacheManagerphp-php>getCachephp(php$cachephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php$cachephp instanceofphp Zendphp_Cachephp_Corephp)php php{
+php php php php php php php php php php php php php$metadataCachephp php=php php$cachephp;
+php php php php php php php php php}
 
-        if ($metadataCache instanceof Zend_Cache_Core) {
-            Zend_Db_Table::setDefaultMetadataCache($metadataCache);
-        }
+php php php php php php php php ifphp php(php$metadataCachephp instanceofphp Zendphp_Cachephp_Corephp)php php{
+php php php php php php php php php php php php Zendphp_Dbphp_Tablephp:php:setDefaultMetadataCachephp(php$metadataCachephp)php;
+php php php php php php php php php}
 
-        return $this;
-    }
-}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php}

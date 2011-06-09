@@ -1,154 +1,154 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Queue
- * @subpackage Stomp
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: FrameInterface.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Queue
+php php*php php@subpackagephp Stomp
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php FrameInterfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * This class represents a Stomp Frame Interface
- *
- * @category   Zend
- * @package    Zend_Queue
- * @subpackage Stomp
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Queue_Stomp_FrameInterface
-{
-    /**
-     * Get the status of the auto content length
-     *
-     * If AutoContentLength is true this code will automatically put the
-     * content-length header in, even if it is already set by the user.
-     *
-     * This is done to make the message sending more reliable.
-     *
-     * @return boolean
-     */
-    public function getAutoContentLength();
+php/php*php*
+php php*php Thisphp classphp representsphp aphp Stompphp Framephp Interface
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Queue
+php php*php php@subpackagephp Stomp
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Queuephp_Stompphp_FrameInterface
+php{
+php php php php php/php*php*
+php php php php php php*php Getphp thephp statusphp ofphp thephp autophp contentphp length
+php php php php php php*
+php php php php php php*php Ifphp AutoContentLengthphp isphp truephp thisphp codephp willphp automaticallyphp putphp the
+php php php php php php*php contentphp-lengthphp headerphp inphp,php evenphp ifphp itphp isphp alreadyphp setphp byphp thephp userphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp donephp tophp makephp thephp messagephp sendingphp morephp reliablephp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getAutoContentLengthphp(php)php;
 
-    /**
-     * setAutoContentLength()
-     *
-     * Set the value on or off.
-     *
-     * @param boolean $auto
-     * @return $this;
-     * @throws Zend_Queue_Exception
-     */
-    public function setAutoContentLength($auto);
+php php php php php/php*php*
+php php php php php php*php setAutoContentLengthphp(php)
+php php php php php php*
+php php php php php php*php Setphp thephp valuephp onphp orphp offphp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$auto
+php php php php php php*php php@returnphp php$thisphp;
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setAutoContentLengthphp(php$autophp)php;
 
-    /**
-     * Get the headers
-     *
-     * @return array
-     */
-    public function getHeaders();
+php php php php php/php*php*
+php php php php php php*php Getphp thephp headers
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getHeadersphp(php)php;
 
-    /**
-     * Set the headers
-     *
-     * Throws an exception if the array values are not strings.
-     *
-     * @param array $headers
-     * @return $this
-     * @throws Zend_Queue_Exception
-     */
-    public function setHeaders(array $headers);
+php php php php php/php*php*
+php php php php php php*php Setphp thephp headers
+php php php php php php*
+php php php php php php*php Throwsphp anphp exceptionphp ifphp thephp arrayphp valuesphp arephp notphp stringsphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$headers
+php php php php php php*php php@returnphp php$this
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setHeadersphp(arrayphp php$headersphp)php;
 
-    /**
-     * Returns a value for a header
-     * returns false if the header does not exist
-     *
-     * @param string $header
-     * @return $string
-     * @throws Zend_Queue_Exception
-     */
-    public function getHeader($header);
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp valuephp forphp aphp header
+php php php php php php*php returnsphp falsephp ifphp thephp headerphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$header
+php php php php php php*php php@returnphp php$string
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getHeaderphp(php$headerphp)php;
 
-    /**
-     * Returns a value for a header
-     * returns false if the header does not exist
-     *
-     * @param string $header
-     * @param string $value
-     * @return $this
-     * @throws Zend_Queue_Exception
-     */
-    public function setHeader($header, $value);
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp valuephp forphp aphp header
+php php php php php php*php returnsphp falsephp ifphp thephp headerphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$header
+php php php php php php*php php@paramphp stringphp php$value
+php php php php php php*php php@returnphp php$this
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setHeaderphp(php$headerphp,php php$valuephp)php;
 
-    /**
-     * Return the body for this frame
-     * returns false if the body does not exist
-     *
-     * @return $this
-     */
-    public function getBody();
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp bodyphp forphp thisphp frame
+php php php php php php*php returnsphp falsephp ifphp thephp bodyphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@returnphp php$this
+php php php php php php*php/
+php php php php publicphp functionphp getBodyphp(php)php;
 
-    /**
-     * Set the body for this frame
-     * returns false if the body does not exist
-     *
-     * Set to null for no body.
-     *
-     * @param string|null $body
-     * @return $this
-     * @throws Zend_Queue_Exception
-     */
-    public function setBody($body);
+php php php php php/php*php*
+php php php php php php*php Setphp thephp bodyphp forphp thisphp frame
+php php php php php php*php returnsphp falsephp ifphp thephp bodyphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php Setphp tophp nullphp forphp nophp bodyphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|nullphp php$body
+php php php php php php*php php@returnphp php$this
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setBodyphp(php$bodyphp)php;
 
-    /**
-     * Return the command for this frame
-     * return false if the command does not exist
-     *
-     * @return $this
-     */
-    public function getCommand();
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp commandphp forphp thisphp frame
+php php php php php php*php returnphp falsephp ifphp thephp commandphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@returnphp php$this
+php php php php php php*php/
+php php php php publicphp functionphp getCommandphp(php)php;
 
-    /**
-     * Set the body for this frame
-     * returns false if the body does not exist
-     *
-     * @return $this
-     * @throws Zend_Queue_Exception
-     */
-    public function setCommand($command);
+php php php php php/php*php*
+php php php php php php*php Setphp thephp bodyphp forphp thisphp frame
+php php php php php php*php returnsphp falsephp ifphp thephp bodyphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@returnphp php$this
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setCommandphp(php$commandphp)php;
 
 
-    /**
-     * Takes the current parameters and returns a Stomp Frame
-     *
-     * @throws Zend_Queue_Exception
-     * @return string
-     */
-    public function toFrame();
+php php php php php/php*php*
+php php php php php php*php Takesphp thephp currentphp parametersphp andphp returnsphp aphp Stompphp Frame
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toFramephp(php)php;
 
-    /**
-     * @see toFrame()
-     */
-    public function __toString();
+php php php php php/php*php*
+php php php php php php*php php@seephp toFramephp(php)
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)php;
 
-    /**
-     * Accepts a frame and deconstructs the frame into its' component parts
-     *
-     * @param string $frame - a stomp frame
-     * @return $this
-     */
-    public function fromFrame($frame);
-}
+php php php php php/php*php*
+php php php php php php*php Acceptsphp aphp framephp andphp deconstructsphp thephp framephp intophp itsphp'php componentphp parts
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$framephp php-php aphp stompphp frame
+php php php php php php*php php@returnphp php$this
+php php php php php php*php/
+php php php php publicphp functionphp fromFramephp(php$framephp)php;
+php}

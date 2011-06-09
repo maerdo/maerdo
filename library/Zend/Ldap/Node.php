@@ -1,1101 +1,1101 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @subpackage Node
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Node.php 22662 2010-07-24 17:37:36Z mabe $
- */
-
-/**
- * @see Zend_Ldap
- */
-require_once 'Zend/Ldap.php';
-/**
- * @see Zend_Ldap_Node_Abstract
- */
-require_once 'Zend/Ldap/Node/Abstract.php';
-
-/**
- * Zend_Ldap_Node provides an object oriented view into a LDAP node.
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @subpackage Node
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, RecursiveIterator
-{
-    /**
-     * Holds the node's new DN if node is renamed.
-     *
-     * @var Zend_Ldap_Dn
-     */
-    protected $_newDn;
-    /**
-     * Holds the node's orginal attributes (as loaded).
-     *
-     * @var array
-     */
-    protected $_originalData;
-    /**
-     * This node will be added
-     *
-     * @var boolean
-     */
-    protected $_new;
-    /**
-     * This node will be deleted
-     *
-     * @var boolean
-     */
-    protected $_delete;
-    /**
-     * Holds the connection to the LDAP server if in connected mode.
-     *
-     * @var Zend_Ldap
-     */
-    protected $_ldap;
-
-    /**
-     * Holds an array of the current node's children.
-     *
-     * @var array
-     */
-    protected $_children;
-
-    /**
-     * Controls iteration status
-     *
-     * @var boolean
-     */
-    private $_iteratorRewind = false;
-
-    /**
-     * Constructor.
-     *
-     * Constructor is protected to enforce the use of factory methods.
-     *
-     * @param  Zend_Ldap_Dn $dn
-     * @param  array        $data
-     * @param  boolean      $fromDataSource
-     * @param  Zend_Ldap    $ldap
-     * @throws Zend_Ldap_Exception
-     */
-    protected function __construct(Zend_Ldap_Dn $dn, array $data, $fromDataSource, Zend_Ldap $ldap = null)
-    {
-        parent::__construct($dn, $data, $fromDataSource);
-        if ($ldap !== null) $this->attachLdap($ldap);
-        else $this->detachLdap();
-    }
-
-    /**
-     * Serialization callback
-     *
-     * Only DN and attributes will be serialized.
-     *
-     * @return array
-     */
-    public function __sleep()
-    {
-        return array('_dn', '_currentData', '_newDn', '_originalData',
-            '_new', '_delete', '_children');
-    }
-
-    /**
-     * Deserialization callback
-     *
-     * Enforces a detached node.
-     *
-     * @return null
-     */
-    public function __wakeup()
-    {
-        $this->detachLdap();
-    }
-
-    /**
-     * Gets the current LDAP connection.
-     *
-     * @return Zend_Ldap
-     * @throws Zend_Ldap_Exception
-     */
-    public function getLdap()
-    {
-        if ($this->_ldap === null) {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'No LDAP connection specified.', Zend_Ldap_Exception::LDAP_OTHER);
-        }
-        else return $this->_ldap;
-    }
-
-    /**
-     * Attach node to an LDAP connection
-     *
-     * This is an offline method.
-     *
-     * @uses   Zend_Ldap_Dn::isChildOf()
-     * @param  Zend_Ldap $ldap
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function attachLdap(Zend_Ldap $ldap)
-    {
-        if (!Zend_Ldap_Dn::isChildOf($this->_getDn(), $ldap->getBaseDn())) {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'LDAP connection is not responsible for given node.',
-                Zend_Ldap_Exception::LDAP_OTHER);
-        }
-
-        if ($ldap !== $this->_ldap) {
-            $this->_ldap = $ldap;
-            if (is_array($this->_children)) {
-                foreach ($this->_children as $child) {
-                    $child->attachLdap($ldap);
-                }
-            }
-        }
-        return $this;
-    }
-
-    /**
-     * Detach node from LDAP connection
-     *
-     * This is an offline method.
-     *
-     * @return Zend_Ldap_Node Provides a fluid interface
-     */
-    public function detachLdap()
-    {
-        $this->_ldap = null;
-        if (is_array($this->_children)) {
-            foreach ($this->_children as $child) {
-                $child->detachLdap();
-            }
-        }
-        return $this;
-    }
-
-    /**
-     * Checks if the current node is attached to a LDAP server.
-     *
-     * This is an offline method.
-     *
-     * @return boolean
-     */
-    public function isAttached()
-    {
-        return ($this->_ldap !== null);
-    }
-
-    /**
-     * @param  array   $data
-     * @param  boolean $fromDataSource
-     * @throws Zend_Ldap_Exception
-     */
-    protected function _loadData(array $data, $fromDataSource)
-    {
-        parent::_loadData($data, $fromDataSource);
-        if ($fromDataSource === true) {
-            $this->_originalData = $data;
-        } else {
-            $this->_originalData = array();
-        }
-        $this->_children = null;
-        $this->_markAsNew(($fromDataSource === true) ? false : true);
-        $this->_markAsToBeDeleted(false);
-    }
-
-    /**
-     * Factory method to create a new detached Zend_Ldap_Node for a given DN.
-     *
-     * @param  string|array|Zend_Ldap_Dn $dn
-     * @param  array                     $objectClass
-     * @return Zend_Ldap_Node
-     * @throws Zend_Ldap_Exception
-     */
-    public static function create($dn, array $objectClass = array())
-    {
-        if (is_string($dn) || is_array($dn)) {
-            $dn = Zend_Ldap_Dn::factory($dn);
-        } else if ($dn instanceof Zend_Ldap_Dn) {
-            $dn = clone $dn;
-        } else {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, '$dn is of a wrong data type.');
-        }
-        $new = new self($dn, array(), false, null);
-        $new->_ensureRdnAttributeValues();
-        $new->setAttribute('objectClass', $objectClass);
-        return $new;
-    }
-
-    /**
-     * Factory method to create an attached Zend_Ldap_Node for a given DN.
-     *
-     * @param  string|array|Zend_Ldap_Dn $dn
-     * @param  Zend_Ldap                 $ldap
-     * @return Zend_Ldap_Node|null
-     * @throws Zend_Ldap_Exception
-     */
-    public static function fromLdap($dn, Zend_Ldap $ldap)
-    {
-        if (is_string($dn) || is_array($dn)) {
-            $dn = Zend_Ldap_Dn::factory($dn);
-        } else if ($dn instanceof Zend_Ldap_Dn) {
-            $dn = clone $dn;
-        } else {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, '$dn is of a wrong data type.');
-        }
-        $data = $ldap->getEntry($dn, array('*', '+'), true);
-        if ($data === null) {
-            return null;
-        }
-        $entry = new self($dn, $data, true, $ldap);
-        return $entry;
-    }
-
-    /**
-     * Factory method to create a detached Zend_Ldap_Node from array data.
-     *
-     * @param  array   $data
-     * @param  boolean $fromDataSource
-     * @return Zend_Ldap_Node
-     * @throws Zend_Ldap_Exception
-     */
-    public static function fromArray(array $data, $fromDataSource = false)
-    {
-        if (!array_key_exists('dn', $data)) {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, '\'dn\' key is missing in array.');
-        }
-        if (is_string($data['dn']) || is_array($data['dn'])) {
-            $dn = Zend_Ldap_Dn::factory($data['dn']);
-        } else if ($data['dn'] instanceof Zend_Ldap_Dn) {
-            $dn = clone $data['dn'];
-        } else {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, '\'dn\' key is of a wrong data type.');
-        }
-        $fromDataSource = ($fromDataSource === true) ? true : false;
-        $new = new self($dn, $data, $fromDataSource, null);
-        $new->_ensureRdnAttributeValues();
-        return $new;
-    }
-
-    /**
-     * Ensures that teh RDN attributes are correctly set.
-     *
-     * @return void
-     */
-    protected function _ensureRdnAttributeValues()
-    {
-        foreach ($this->getRdnArray() as $key => $value) {
-            Zend_Ldap_Attribute::setAttribute($this->_currentData, $key, $value, false);
-        }
-    }
-
-    /**
-     * Marks this node as new.
-     *
-     * Node will be added (instead of updated) on calling update() if $new is true.
-     *
-     * @param boolean $new
-     */
-    protected function _markAsNew($new)
-    {
-        $this->_new = ($new === false) ? false : true;
-    }
-
-    /**
-     * Tells if the node is consiedered as new (not present on the server)
-     *
-     * Please note, that this doesn't tell you if the node is present on the server.
-     * Use {@link exits()} to see if a node is already there.
-     *
-     * @return boolean
-     */
-    public function isNew()
-    {
-        return $this->_new;
-    }
-
-    /**
-     * Marks this node as to be deleted.
-     *
-     * Node will be deleted on calling update() if $delete is true.
-     *
-     * @param boolean $delete
-     */
-    protected function _markAsToBeDeleted($delete)
-    {
-        $this->_delete = ($delete === true) ? true : false;
-    }
-
-
-    /**
-    * Is this node going to be deleted once update() is called?
-    *
-    * @return boolean
-    */
-    public function willBeDeleted()
-    {
-        return $this->_delete;
-    }
-
-    /**
-     * Marks this node as to be deleted
-     *
-     * Node will be deleted on calling update() if $delete is true.
-     *
-     * @return Zend_Ldap_Node Provides a fluid interface
-     */
-    public function delete()
-    {
-        $this->_markAsToBeDeleted(true);
-        return $this;
-    }
-
-    /**
-    * Is this node going to be moved once update() is called?
-    *
-    * @return boolean
-    */
-    public function willBeMoved()
-    {
-        if ($this->isNew() || $this->willBeDeleted()) {
-            return false;
-        } else if ($this->_newDn !== null) {
-            return ($this->_dn != $this->_newDn);
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Sends all pending changes to the LDAP server
-     *
-     * @param  Zend_Ldap $ldap
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function update(Zend_Ldap $ldap = null)
-    {
-        if ($ldap !== null) {
-            $this->attachLdap($ldap);
-        }
-        $ldap = $this->getLdap();
-        if (!($ldap instanceof Zend_Ldap)) {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'No LDAP connection available');
-        }
-
-        if ($this->willBeDeleted()) {
-            if ($ldap->exists($this->_dn)) {
-                $ldap->delete($this->_dn);
-            }
-            return $this;
-        }
-
-        if ($this->isNew()) {
-            $data = $this->getData();
-            $ldap->add($this->_getDn(), $data);
-            $this->_loadData($data, true);
-            return $this;
-        }
-
-        $changedData = $this->getChangedData();
-        if ($this->willBeMoved()) {
-            $recursive = $this->hasChildren();
-            $ldap->rename($this->_dn, $this->_newDn, $recursive, false);
-            foreach ($this->_newDn->getRdn() as $key => $value) {
-                if (array_key_exists($key, $changedData)) {
-                    unset($changedData[$key]);
-                }
-            }
-            $this->_dn = $this->_newDn;
-            $this->_newDn = null;
-        }
-        if (count($changedData) > 0) {
-            $ldap->update($this->_getDn(), $changedData);
-        }
-        $this->_originalData = $this->_currentData;
-        return $this;
-    }
-
-    /**
-     * Gets the DN of the current node as a Zend_Ldap_Dn.
-     *
-     * This is an offline method.
-     *
-     * @return Zend_Ldap_Dn
-     */
-    protected function _getDn()
-    {
-        return ($this->_newDn === null) ? parent::_getDn() : $this->_newDn;
-    }
-
-    /**
-     * Gets the current DN of the current node as a Zend_Ldap_Dn.
-     * The method returns a clone of the node's DN to prohibit modification.
-     *
-     * This is an offline method.
-     *
-     * @return Zend_Ldap_Dn
-     */
-    public function getCurrentDn()
-    {
-        $dn = clone parent::_getDn();
-        return $dn;
-    }
-
-    /**
-     * Sets the new DN for this node
-     *
-     * This is an offline method.
-     *
-     * @param  Zend_Ldap_Dn|string|array $newDn
-     * @throws Zend_Ldap_Exception
-     * @return Zend_Ldap_Node Provides a fluid interface
-     */
-    public function setDn($newDn)
-    {
-        if ($newDn instanceof Zend_Ldap_Dn) {
-            $this->_newDn = clone $newDn;
-        } else {
-            $this->_newDn = Zend_Ldap_Dn::factory($newDn);
-        }
-        $this->_ensureRdnAttributeValues();
-        return $this;
-    }
-
-    /**
-     * {@see setDn()}
-     *
-     * This is an offline method.
-     *
-     * @param  Zend_Ldap_Dn|string|array $newDn
-     * @throws Zend_Ldap_Exception
-     * @return Zend_Ldap_Node Provides a fluid interface
-     */
-    public function move($newDn)
-    {
-        return $this->setDn($newDn);
-    }
-
-    /**
-     * {@see setDn()}
-     *
-     * This is an offline method.
-     *
-     * @param  Zend_Ldap_Dn|string|array $newDn
-     * @throws Zend_Ldap_Exception
-     * @return Zend_Ldap_Node Provides a fluid interface
-     */
-    public function rename($newDn)
-    {
-        return $this->setDn($newDn);
-    }
-
-    /**
-     * Sets the objectClass.
-     *
-     * This is an offline method.
-     *
-     * @param  array|string $value
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function setObjectClass($value)
-    {
-        $this->setAttribute('objectClass', $value);
-        return $this;
-    }
-
-    /**
-     * Appends to the objectClass.
-     *
-     * This is an offline method.
-     *
-     * @param  array|string $value
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function appendObjectClass($value)
-    {
-        $this->appendToAttribute('objectClass', $value);
-        return $this;
-    }
-
-    /**
-     * Returns a LDIF representation of the current node
-     *
-     * @param  array $options Additional options used during encoding
-     * @return string
-     */
-    public function toLdif(array $options = array())
-    {
-        $attributes = array_merge(array('dn' => $this->getDnString()), $this->getData(false));
-        /**
-         * Zend_Ldap_Ldif_Encoder
-         */
-        require_once 'Zend/Ldap/Ldif/Encoder.php';
-        return Zend_Ldap_Ldif_Encoder::encode($attributes, $options);
-    }
-
-    /**
-     * Gets changed node data.
-     *
-     * The array contains all changed attributes.
-     * This format can be used in {@link Zend_Ldap::add()} and {@link Zend_Ldap::update()}.
-     *
-     * This is an offline method.
-     *
-     * @return array
-     */
-    public function getChangedData()
-    {
-        $changed = array();
-        foreach ($this->_currentData as $key => $value) {
-            if (!array_key_exists($key, $this->_originalData) && !empty($value)) {
-                $changed[$key] = $value;
-            } else if ($this->_originalData[$key] !== $this->_currentData[$key]) {
-                $changed[$key] = $value;
-            }
-        }
-        return $changed;
-    }
-
-    /**
-     * Returns all changes made.
-     *
-     * This is an offline method.
-     *
-     * @return array
-     */
-    public function getChanges()
-    {
-        $changes = array(
-            'add'     => array(),
-            'delete'  => array(),
-            'replace' => array());
-        foreach ($this->_currentData as $key => $value) {
-            if (!array_key_exists($key, $this->_originalData) && !empty($value)) {
-                $changes['add'][$key] = $value;
-            } else if (count($this->_originalData[$key]) === 0 && !empty($value)) {
-                $changes['add'][$key] = $value;
-            } else if ($this->_originalData[$key] !== $this->_currentData[$key]) {
-                if (empty($value)) {
-                    $changes['delete'][$key] = $value;
-                } else {
-                    $changes['replace'][$key] = $value;
-                }
-            }
-        }
-        return $changes;
-    }
-
-    /**
-     * Sets a LDAP attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string $name
-     * @param  mixed  $value
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function setAttribute($name, $value)
-    {
-        $this->_setAttribute($name, $value, false);
-        return $this;
-    }
-
-    /**
-     * Appends to a LDAP attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string $name
-     * @param  mixed  $value
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function appendToAttribute($name, $value)
-    {
-        $this->_setAttribute($name, $value, true);
-        return $this;
-    }
-
-    /**
-     * Checks if the attribute can be set and sets it accordingly.
-     *
-     * @param  string  $name
-     * @param  mixed   $value
-     * @param  boolean $append
-     * @throws Zend_Ldap_Exception
-     */
-    protected function _setAttribute($name, $value, $append)
-    {
-        $this->_assertChangeableAttribute($name);
-        Zend_Ldap_Attribute::setAttribute($this->_currentData, $name, $value, $append);
-    }
-
-    /**
-     * Sets a LDAP date/time attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string        $name
-     * @param  integer|array $value
-     * @param  boolean       $utc
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function setDateTimeAttribute($name, $value, $utc = false)
-    {
-        $this->_setDateTimeAttribute($name, $value, $utc, false);
-        return $this;
-    }
-
-    /**
-     * Appends to a LDAP date/time attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string        $name
-     * @param  integer|array $value
-     * @param  boolean       $utc
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function appendToDateTimeAttribute($name, $value, $utc = false)
-    {
-        $this->_setDateTimeAttribute($name, $value, $utc, true);
-        return $this;
-    }
-
-    /**
-     * Checks if the attribute can be set and sets it accordingly.
-     *
-     * @param  string        $name
-     * @param  integer|array $value
-     * @param  boolean       $utc
-     * @param  boolean       $append
-     * @throws Zend_Ldap_Exception
-     */
-    protected function _setDateTimeAttribute($name, $value, $utc, $append)
-    {
-        $this->_assertChangeableAttribute($name);
-        Zend_Ldap_Attribute::setDateTimeAttribute($this->_currentData, $name, $value, $utc, $append);
-    }
-
-    /**
-     * Sets a LDAP password.
-     *
-     * @param  string $password
-     * @param  string $hashType
-     * @param  string $attribName
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function setPasswordAttribute($password, $hashType = Zend_Ldap_Attribute::PASSWORD_HASH_MD5,
-        $attribName = 'userPassword')
-    {
-        $this->_assertChangeableAttribute($attribName);
-        Zend_Ldap_Attribute::setPassword($this->_currentData, $password, $hashType, $attribName);
-        return $this;
-    }
-
-    /**
-     * Deletes a LDAP attribute.
-     *
-     * This method deletes the attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string $name
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function deleteAttribute($name)
-    {
-        if ($this->existsAttribute($name, true)) {
-            $this->_setAttribute($name, null, false);
-        }
-        return $this;
-    }
-
-    /**
-     * Removes duplicate values from a LDAP attribute
-     *
-     * @param  string $attribName
-     * @return void
-     */
-    public function removeDuplicatesFromAttribute($attribName)
-    {
-        Zend_Ldap_Attribute::removeDuplicatesFromAttribute($this->_currentData, $attribName);
-    }
-
-    /**
-     * Remove given values from a LDAP attribute
-     *
-     * @param  string      $attribName
-     * @param  mixed|array $value
-     * @return void
-     */
-    public function removeFromAttribute($attribName, $value)
-    {
-        Zend_Ldap_Attribute::removeFromAttribute($this->_currentData, $attribName, $value);
-    }
-
-    /**
-     * @param  string $name
-     * @return boolean
-     * @throws Zend_Ldap_Exception
-     */
-    protected function _assertChangeableAttribute($name)
-    {
-        $name = strtolower($name);
-        $rdn = $this->getRdnArray(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
-        if ($name == 'dn') {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'DN cannot be changed.');
-        }
-        else if (array_key_exists($name, $rdn)) {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'Cannot change attribute because it\'s part of the RDN');
-        } else if (in_array($name, self::$_systemAttributes)) {
-            /**
-             * @see Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'Cannot change attribute because it\'s read-only');
-        }
-        else return true;
-    }
-
-    /**
-     * Sets a LDAP attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string $name
-     * @param  mixed  $value
-     * @return null
-     * @throws Zend_Ldap_Exception
-     */
-    public function __set($name, $value)
-    {
-        $this->setAttribute($name, $value);
-    }
-
-    /**
-     * Deletes a LDAP attribute.
-     *
-     * This method deletes the attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string $name
-     * @return null
-     * @throws Zend_Ldap_Exception
-     */
-    public function __unset($name)
-    {
-        $this->deleteAttribute($name);
-    }
-
-    /**
-     * Sets a LDAP attribute.
-     * Implements ArrayAccess.
-     *
-     * This is an offline method.
-     *
-     * @param  string $name
-     * @param  mixed  $value
-     * @return null
-     * @throws Zend_Ldap_Exception
-     */
-    public function offsetSet($name, $value)
-    {
-        $this->setAttribute($name, $value);
-    }
-
-    /**
-     * Deletes a LDAP attribute.
-     * Implements ArrayAccess.
-     *
-     * This method deletes the attribute.
-     *
-     * This is an offline method.
-     *
-     * @param  string $name
-     * @return null
-     * @throws Zend_Ldap_Exception
-     */
-    public function offsetUnset($name)
-    {
-        $this->deleteAttribute($name);
-    }
-
-    /**
-     * Check if node exists on LDAP.
-     *
-     * This is an online method.
-     *
-     * @param  Zend_Ldap $ldap
-     * @return boolean
-     * @throws Zend_Ldap_Exception
-     */
-    public function exists(Zend_Ldap $ldap = null)
-    {
-        if ($ldap !== null) {
-            $this->attachLdap($ldap);
-        }
-        $ldap = $this->getLdap();
-        return $ldap->exists($this->_getDn());
-    }
-
-    /**
-     * Reload node attributes from LDAP.
-     *
-     * This is an online method.
-     *
-     * @param  Zend_Ldap $ldap
-     * @return Zend_Ldap_Node Provides a fluid interface
-     * @throws Zend_Ldap_Exception
-     */
-    public function reload(Zend_Ldap $ldap = null)
-    {
-        if ($ldap !== null) {
-            $this->attachLdap($ldap);
-        }
-        $ldap = $this->getLdap();
-        parent::reload($ldap);
-        return $this;
-    }
-
-    /**
-     * Search current subtree with given options.
-     *
-     * This is an online method.
-     *
-     * @param  string|Zend_Ldap_Filter_Abstract $filter
-     * @param  integer                          $scope
-     * @param  string                           $sort
-     * @return Zend_Ldap_Node_Collection
-     * @throws Zend_Ldap_Exception
-     */
-    public function searchSubtree($filter, $scope = Zend_Ldap::SEARCH_SCOPE_SUB, $sort = null)
-    {
-        /**
-         * @see Zend_Ldap_Node_Collection
-         */
-        require_once 'Zend/Ldap/Node/Collection.php';
-        return $this->getLdap()->search($filter, $this->_getDn(), $scope, array('*', '+'), $sort,
-            'Zend_Ldap_Node_Collection');
-    }
-
-    /**
-     * Count items in current subtree found by given filter.
-     *
-     * This is an online method.
-     *
-     * @param  string|Zend_Ldap_Filter_Abstract $filter
-     * @param  integer                          $scope
-     * @return integer
-     * @throws Zend_Ldap_Exception
-     */
-    public function countSubtree($filter, $scope = Zend_Ldap::SEARCH_SCOPE_SUB)
-    {
-        return $this->getLdap()->count($filter, $this->_getDn(), $scope);
-    }
-
-    /**
-     * Count children of current node.
-     *
-     * This is an online method.
-     *
-     * @return integer
-     * @throws Zend_Ldap_Exception
-     */
-    public function countChildren()
-    {
-        return $this->countSubtree('(objectClass=*)', Zend_Ldap::SEARCH_SCOPE_ONE);
-    }
-
-    /**
-     * Gets children of current node.
-     *
-     * This is an online method.
-     *
-     * @param  string|Zend_Ldap_Filter_Abstract $filter
-     * @param  string                           $sort
-     * @return Zend_Ldap_Node_Collection
-     * @throws Zend_Ldap_Exception
-     */
-    public function searchChildren($filter, $sort = null)
-    {
-        return $this->searchSubtree($filter, Zend_Ldap::SEARCH_SCOPE_ONE, $sort);
-    }
-
-    /**
-     * Checks if current node has children.
-     * Returns whether the current element has children.
-     *
-     * Can be used offline but returns false if children have not been retrieved yet.
-     *
-     * @return boolean
-     * @throws Zend_Ldap_Exception
-     */
-    public function hasChildren()
-    {
-        if (!is_array($this->_children)) {
-            if ($this->isAttached()) {
-                return ($this->countChildren() > 0);
-            } else {
-                return false;
-            }
-        } else {
-            return (count($this->_children) > 0);
-        }
-    }
-
-    /**
-     * Returns the children for the current node.
-     *
-     * Can be used offline but returns an empty array if children have not been retrieved yet.
-     *
-     * @return Zend_Ldap_Node_ChildrenIterator
-     * @throws Zend_Ldap_Exception
-     */
-    public function getChildren()
-    {
-        if (!is_array($this->_children)) {
-            $this->_children = array();
-            if ($this->isAttached()) {
-                $children = $this->searchChildren('(objectClass=*)', null);
-                foreach ($children as $child) {
-                    $this->_children[$child->getRdnString(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER)] = $child;
-                }
-            }
-        }
-        /**
-         * @see Zend_Ldap_Node_ChildrenIterator
-         */
-        require_once 'Zend/Ldap/Node/ChildrenIterator.php';
-        return new Zend_Ldap_Node_ChildrenIterator($this->_children);
-    }
-
-    /**
-     * Returns the parent of the current node.
-     *
-     * @param  Zend_Ldap $ldap
-     * @return Zend_Ldap_Node
-     * @throws Zend_Ldap_Exception
-     */
-    public function getParent(Zend_Ldap $ldap = null)
-    {
-        if ($ldap !== null) {
-            $this->attachLdap($ldap);
-        }
-        $ldap = $this->getLdap();
-        $parentDn = $this->_getDn()->getParentDn(1);
-        return self::fromLdap($parentDn, $ldap);
-    }
-
-    /**
-     * Return the current attribute.
-     * Implements Iterator
-     *
-     * @return array
-     */
-    public function current()
-    {
-        return $this;
-    }
-
-    /**
-     * Return the attribute name.
-     * Implements Iterator
-     *
-     * @return string
-     */
-    public function key()
-    {
-        return $this->getRdnString();
-    }
-
-    /**
-     * Move forward to next attribute.
-     * Implements Iterator
-     */
-    public function next()
-    {
-        $this->_iteratorRewind = false;
-    }
-
-    /**
-     * Rewind the Iterator to the first attribute.
-     * Implements Iterator
-     */
-    public function rewind()
-    {
-        $this->_iteratorRewind = true;
-    }
-
-    /**
-     * Check if there is a current attribute
-     * after calls to rewind() or next().
-     * Implements Iterator
-     *
-     * @return boolean
-     */
-    public function valid()
-    {
-        return $this->_iteratorRewind;
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@subpackagephp Node
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Nodephp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Ldap
+php php*php/
+requirephp_oncephp php'Zendphp/Ldapphp.phpphp'php;
+php/php*php*
+php php*php php@seephp Zendphp_Ldapphp_Nodephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Ldapphp/Nodephp/Abstractphp.phpphp'php;
+
+php/php*php*
+php php*php Zendphp_Ldapphp_Nodephp providesphp anphp objectphp orientedphp viewphp intophp aphp LDAPphp nodephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@subpackagephp Node
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Ldapphp_Nodephp extendsphp Zendphp_Ldapphp_Nodephp_Abstractphp implementsphp Iteratorphp,php RecursiveIterator
+php{
+php php php php php/php*php*
+php php php php php php*php Holdsphp thephp nodephp'sphp newphp DNphp ifphp nodephp isphp renamedphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Ldapphp_Dn
+php php php php php php*php/
+php php php php protectedphp php$php_newDnphp;
+php php php php php/php*php*
+php php php php php php*php Holdsphp thephp nodephp'sphp orginalphp attributesphp php(asphp loadedphp)php.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_originalDataphp;
+php php php php php/php*php*
+php php php php php php*php Thisphp nodephp willphp bephp added
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_newphp;
+php php php php php/php*php*
+php php php php php php*php Thisphp nodephp willphp bephp deleted
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_deletephp;
+php php php php php/php*php*
+php php php php php php*php Holdsphp thephp connectionphp tophp thephp LDAPphp serverphp ifphp inphp connectedphp modephp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Ldap
+php php php php php php*php/
+php php php php protectedphp php$php_ldapphp;
+
+php php php php php/php*php*
+php php php php php php*php Holdsphp anphp arrayphp ofphp thephp currentphp nodephp'sphp childrenphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_childrenphp;
+
+php php php php php/php*php*
+php php php php php php*php Controlsphp iterationphp status
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php privatephp php$php_iteratorRewindphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Constructorphp.
+php php php php php php*
+php php php php php php*php Constructorphp isphp protectedphp tophp enforcephp thephp usephp ofphp factoryphp methodsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp_Dnphp php$dn
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php$data
+php php php php php php*php php@paramphp php booleanphp php php php php php php$fromDataSource
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php php php php$ldap
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_php_constructphp(Zendphp_Ldapphp_Dnphp php$dnphp,php arrayphp php$dataphp,php php$fromDataSourcephp,php Zendphp_Ldapphp php$ldapphp php=php nullphp)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php$dnphp,php php$dataphp,php php$fromDataSourcephp)php;
+php php php php php php php php ifphp php(php$ldapphp php!php=php=php nullphp)php php$thisphp-php>attachLdapphp(php$ldapphp)php;
+php php php php php php php php elsephp php$thisphp-php>detachLdapphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Serializationphp callback
+php php php php php php*
+php php php php php php*php Onlyphp DNphp andphp attributesphp willphp bephp serializedphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp php_php_sleepphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp(php'php_dnphp'php,php php'php_currentDataphp'php,php php'php_newDnphp'php,php php'php_originalDataphp'php,
+php php php php php php php php php php php php php'php_newphp'php,php php'php_deletephp'php,php php'php_childrenphp'php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Deserializationphp callback
+php php php php php php*
+php php php php php php*php Enforcesphp aphp detachedphp nodephp.
+php php php php php php*
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php publicphp functionphp php_php_wakeupphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>detachLdapphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp currentphp LDAPphp connectionphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldap
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getLdapphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_ldapphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Nophp LDAPphp connectionphp specifiedphp.php'php,php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_OTHERphp)php;
+php php php php php php php php php}
+php php php php php php php php elsephp returnphp php$thisphp-php>php_ldapphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Attachphp nodephp tophp anphp LDAPphp connection
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@usesphp php php Zendphp_Ldapphp_Dnphp:php:isChildOfphp(php)
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp attachLdapphp(Zendphp_Ldapphp php$ldapphp)
+php php php php php{
+php php php php php php php php ifphp php(php!Zendphp_Ldapphp_Dnphp:php:isChildOfphp(php$thisphp-php>php_getDnphp(php)php,php php$ldapphp-php>getBaseDnphp(php)php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'LDAPphp connectionphp isphp notphp responsiblephp forphp givenphp nodephp.php'php,
+php php php php php php php php php php php php php php php php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_OTHERphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$ldapphp php!php=php=php php$thisphp-php>php_ldapphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_ldapphp php=php php$ldapphp;
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_childrenphp)php)php php{
+php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_childrenphp asphp php$childphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$childphp-php>attachLdapphp(php$ldapphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Detachphp nodephp fromphp LDAPphp connection
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php/
+php php php php publicphp functionphp detachLdapphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_ldapphp php=php nullphp;
+php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_childrenphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_childrenphp asphp php$childphp)php php{
+php php php php php php php php php php php php php php php php php$childphp-php>detachLdapphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp thephp currentphp nodephp isphp attachedphp tophp aphp LDAPphp serverphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isAttachedphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php$thisphp-php>php_ldapphp php!php=php=php nullphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp php arrayphp php php php$data
+php php php php php php*php php@paramphp php booleanphp php$fromDataSource
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadDataphp(arrayphp php$dataphp,php php$fromDataSourcephp)
+php php php php php{
+php php php php php php php php parentphp:php:php_loadDataphp(php$dataphp,php php$fromDataSourcephp)php;
+php php php php php php php php ifphp php(php$fromDataSourcephp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_originalDataphp php=php php$dataphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_originalDataphp php=php arrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_childrenphp php=php nullphp;
+php php php php php php php php php$thisphp-php>php_markAsNewphp(php(php$fromDataSourcephp php=php=php=php truephp)php php?php falsephp php:php truephp)php;
+php php php php php php php php php$thisphp-php>php_markAsToBeDeletedphp(falsephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Factoryphp methodphp tophp createphp aphp newphp detachedphp Zendphp_Ldapphp_Nodephp forphp aphp givenphp DNphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Ldapphp_Dnphp php$dn
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php php php php php php php php php php php php php php$objectClass
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Node
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp createphp(php$dnphp,php arrayphp php$objectClassphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$dnphp)php php|php|php isphp_arrayphp(php$dnphp)php)php php{
+php php php php php php php php php php php php php$dnphp php=php Zendphp_Ldapphp_Dnphp:php:factoryphp(php$dnphp)php;
+php php php php php php php php php}php elsephp ifphp php(php$dnphp instanceofphp Zendphp_Ldapphp_Dnphp)php php{
+php php php php php php php php php php php php php$dnphp php=php clonephp php$dnphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'php$dnphp isphp ofphp aphp wrongphp dataphp typephp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$newphp php=php newphp selfphp(php$dnphp,php arrayphp(php)php,php falsephp,php nullphp)php;
+php php php php php php php php php$newphp-php>php_ensureRdnAttributeValuesphp(php)php;
+php php php php php php php php php$newphp-php>setAttributephp(php'objectClassphp'php,php php$objectClassphp)php;
+php php php php php php php php returnphp php$newphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Factoryphp methodphp tophp createphp anphp attachedphp Zendphp_Ldapphp_Nodephp forphp aphp givenphp DNphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Ldapphp_Dnphp php$dn
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php php php php php php php php php php php php php php php php php$ldap
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp|null
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromLdapphp(php$dnphp,php Zendphp_Ldapphp php$ldapphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$dnphp)php php|php|php isphp_arrayphp(php$dnphp)php)php php{
+php php php php php php php php php php php php php$dnphp php=php Zendphp_Ldapphp_Dnphp:php:factoryphp(php$dnphp)php;
+php php php php php php php php php}php elsephp ifphp php(php$dnphp instanceofphp Zendphp_Ldapphp_Dnphp)php php{
+php php php php php php php php php php php php php$dnphp php=php clonephp php$dnphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'php$dnphp isphp ofphp aphp wrongphp dataphp typephp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$dataphp php=php php$ldapphp-php>getEntryphp(php$dnphp,php arrayphp(php'php*php'php,php php'php+php'php)php,php truephp)php;
+php php php php php php php php ifphp php(php$dataphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php php$entryphp php=php newphp selfphp(php$dnphp,php php$dataphp,php truephp,php php$ldapphp)php;
+php php php php php php php php returnphp php$entryphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Factoryphp methodphp tophp createphp aphp detachedphp Zendphp_Ldapphp_Nodephp fromphp arrayphp dataphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php php$data
+php php php php php php*php php@paramphp php booleanphp php$fromDataSource
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Node
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromArrayphp(arrayphp php$dataphp,php php$fromDataSourcephp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'dnphp'php,php php$dataphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'php\php'dnphp\php'php keyphp isphp missingphp inphp arrayphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(isphp_stringphp(php$dataphp[php'dnphp'php]php)php php|php|php isphp_arrayphp(php$dataphp[php'dnphp'php]php)php)php php{
+php php php php php php php php php php php php php$dnphp php=php Zendphp_Ldapphp_Dnphp:php:factoryphp(php$dataphp[php'dnphp'php]php)php;
+php php php php php php php php php}php elsephp ifphp php(php$dataphp[php'dnphp'php]php instanceofphp Zendphp_Ldapphp_Dnphp)php php{
+php php php php php php php php php php php php php$dnphp php=php clonephp php$dataphp[php'dnphp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'php\php'dnphp\php'php keyphp isphp ofphp aphp wrongphp dataphp typephp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$fromDataSourcephp php=php php(php$fromDataSourcephp php=php=php=php truephp)php php?php truephp php:php falsephp;
+php php php php php php php php php$newphp php=php newphp selfphp(php$dnphp,php php$dataphp,php php$fromDataSourcephp,php nullphp)php;
+php php php php php php php php php$newphp-php>php_ensureRdnAttributeValuesphp(php)php;
+php php php php php php php php returnphp php$newphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Ensuresphp thatphp tehphp RDNphp attributesphp arephp correctlyphp setphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_ensureRdnAttributeValuesphp(php)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>getRdnArrayphp(php)php asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php Zendphp_Ldapphp_Attributephp:php:setAttributephp(php$thisphp-php>php_currentDataphp,php php$keyphp,php php$valuephp,php falsephp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Marksphp thisphp nodephp asphp newphp.
+php php php php php php*
+php php php php php php*php Nodephp willphp bephp addedphp php(insteadphp ofphp updatedphp)php onphp callingphp updatephp(php)php ifphp php$newphp isphp truephp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$new
+php php php php php php*php/
+php php php php protectedphp functionphp php_markAsNewphp(php$newphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_newphp php=php php(php$newphp php=php=php=php falsephp)php php?php falsephp php:php truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Tellsphp ifphp thephp nodephp isphp consiederedphp asphp newphp php(notphp presentphp onphp thephp serverphp)
+php php php php php php*
+php php php php php php*php Pleasephp notephp,php thatphp thisphp doesnphp'tphp tellphp youphp ifphp thephp nodephp isphp presentphp onphp thephp serverphp.
+php php php php php php*php Usephp php{php@linkphp exitsphp(php)php}php tophp seephp ifphp aphp nodephp isphp alreadyphp therephp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isNewphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_newphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Marksphp thisphp nodephp asphp tophp bephp deletedphp.
+php php php php php php*
+php php php php php php*php Nodephp willphp bephp deletedphp onphp callingphp updatephp(php)php ifphp php$deletephp isphp truephp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$delete
+php php php php php php*php/
+php php php php protectedphp functionphp php_markAsToBeDeletedphp(php$deletephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_deletephp php=php php(php$deletephp php=php=php=php truephp)php php?php truephp php:php falsephp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php*php Isphp thisphp nodephp goingphp tophp bephp deletedphp oncephp updatephp(php)php isphp calledphp?
+php php php php php*
+php php php php php*php php@returnphp boolean
+php php php php php*php/
+php php php php publicphp functionphp willBeDeletedphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_deletephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Marksphp thisphp nodephp asphp tophp bephp deleted
+php php php php php php*
+php php php php php php*php Nodephp willphp bephp deletedphp onphp callingphp updatephp(php)php ifphp php$deletephp isphp truephp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php/
+php php php php publicphp functionphp deletephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_markAsToBeDeletedphp(truephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php*php Isphp thisphp nodephp goingphp tophp bephp movedphp oncephp updatephp(php)php isphp calledphp?
+php php php php php*
+php php php php php*php php@returnphp boolean
+php php php php php*php/
+php php php php publicphp functionphp willBeMovedphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>isNewphp(php)php php|php|php php$thisphp-php>willBeDeletedphp(php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_newDnphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php(php$thisphp-php>php_dnphp php!php=php php$thisphp-php>php_newDnphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Sendsphp allphp pendingphp changesphp tophp thephp LDAPphp server
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp updatephp(Zendphp_Ldapphp php$ldapphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$ldapphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>attachLdapphp(php$ldapphp)php;
+php php php php php php php php php}
+php php php php php php php php php$ldapphp php=php php$thisphp-php>getLdapphp(php)php;
+php php php php php php php php ifphp php(php!php(php$ldapphp instanceofphp Zendphp_Ldapphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Nophp LDAPphp connectionphp availablephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>willBeDeletedphp(php)php)php php{
+php php php php php php php php php php php php ifphp php(php$ldapphp-php>existsphp(php$thisphp-php>php_dnphp)php)php php{
+php php php php php php php php php php php php php php php php php$ldapphp-php>deletephp(php$thisphp-php>php_dnphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>isNewphp(php)php)php php{
+php php php php php php php php php php php php php$dataphp php=php php$thisphp-php>getDataphp(php)php;
+php php php php php php php php php php php php php$ldapphp-php>addphp(php$thisphp-php>php_getDnphp(php)php,php php$dataphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_loadDataphp(php$dataphp,php truephp)php;
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+
+php php php php php php php php php$changedDataphp php=php php$thisphp-php>getChangedDataphp(php)php;
+php php php php php php php php ifphp php(php$thisphp-php>willBeMovedphp(php)php)php php{
+php php php php php php php php php php php php php$recursivephp php=php php$thisphp-php>hasChildrenphp(php)php;
+php php php php php php php php php php php php php$ldapphp-php>renamephp(php$thisphp-php>php_dnphp,php php$thisphp-php>php_newDnphp,php php$recursivephp,php falsephp)php;
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_newDnphp-php>getRdnphp(php)php asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$changedDataphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$changedDataphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_dnphp php=php php$thisphp-php>php_newDnphp;
+php php php php php php php php php php php php php$thisphp-php>php_newDnphp php=php nullphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(countphp(php$changedDataphp)php php>php php0php)php php{
+php php php php php php php php php php php php php$ldapphp-php>updatephp(php$thisphp-php>php_getDnphp(php)php,php php$changedDataphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_originalDataphp php=php php$thisphp-php>php_currentDataphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp DNphp ofphp thephp currentphp nodephp asphp aphp Zendphp_Ldapphp_Dnphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dn
+php php php php php php*php/
+php php php php protectedphp functionphp php_getDnphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php$thisphp-php>php_newDnphp php=php=php=php nullphp)php php?php parentphp:php:php_getDnphp(php)php php:php php$thisphp-php>php_newDnphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp currentphp DNphp ofphp thephp currentphp nodephp asphp aphp Zendphp_Ldapphp_Dnphp.
+php php php php php php*php Thephp methodphp returnsphp aphp clonephp ofphp thephp nodephp'sphp DNphp tophp prohibitphp modificationphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dn
+php php php php php php*php/
+php php php php publicphp functionphp getCurrentDnphp(php)
+php php php php php{
+php php php php php php php php php$dnphp php=php clonephp parentphp:php:php_getDnphp(php)php;
+php php php php php php php php returnphp php$dnphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp newphp DNphp forphp thisphp node
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp_Dnphp|stringphp|arrayphp php$newDn
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setDnphp(php$newDnphp)
+php php php php php{
+php php php php php php php php ifphp php(php$newDnphp instanceofphp Zendphp_Ldapphp_Dnphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_newDnphp php=php clonephp php$newDnphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_newDnphp php=php Zendphp_Ldapphp_Dnphp:php:factoryphp(php$newDnphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_ensureRdnAttributeValuesphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php{php@seephp setDnphp(php)php}
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp_Dnphp|stringphp|arrayphp php$newDn
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php/
+php php php php publicphp functionphp movephp(php$newDnphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>setDnphp(php$newDnphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php{php@seephp setDnphp(php)php}
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp_Dnphp|stringphp|arrayphp php$newDn
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php/
+php php php php publicphp functionphp renamephp(php$newDnphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>setDnphp(php$newDnphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp objectClassphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setObjectClassphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setAttributephp(php'objectClassphp'php,php php$valuephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Appendsphp tophp thephp objectClassphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp appendObjectClassphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>appendToAttributephp(php'objectClassphp'php,php php$valuephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp LDIFphp representationphp ofphp thephp currentphp node
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Additionalphp optionsphp usedphp duringphp encoding
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toLdifphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$attributesphp php=php arrayphp_mergephp(arrayphp(php'dnphp'php php=php>php php$thisphp-php>getDnStringphp(php)php)php,php php$thisphp-php>getDataphp(falsephp)php)php;
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Zendphp_Ldapphp_Ldifphp_Encoder
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Ldifphp/Encoderphp.phpphp'php;
+php php php php php php php php returnphp Zendphp_Ldapphp_Ldifphp_Encoderphp:php:encodephp(php$attributesphp,php php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp changedphp nodephp dataphp.
+php php php php php php*
+php php php php php php*php Thephp arrayphp containsphp allphp changedphp attributesphp.
+php php php php php php*php Thisphp formatphp canphp bephp usedphp inphp php{php@linkphp Zendphp_Ldapphp:php:addphp(php)php}php andphp php{php@linkphp Zendphp_Ldapphp:php:updatephp(php)php}php.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getChangedDataphp(php)
+php php php php php{
+php php php php php php php php php$changedphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_currentDataphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_originalDataphp)php php&php&php php!emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$changedphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_originalDataphp[php$keyphp]php php!php=php=php php$thisphp-php>php_currentDataphp[php$keyphp]php)php php{
+php php php php php php php php php php php php php php php php php$changedphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$changedphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp changesphp madephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getChangesphp(php)
+php php php php php{
+php php php php php php php php php$changesphp php=php arrayphp(
+php php php php php php php php php php php php php'addphp'php php php php php php=php>php arrayphp(php)php,
+php php php php php php php php php php php php php'deletephp'php php php=php>php arrayphp(php)php,
+php php php php php php php php php php php php php'replacephp'php php=php>php arrayphp(php)php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_currentDataphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_originalDataphp)php php&php&php php!emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$changesphp[php'addphp'php]php[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(countphp(php$thisphp-php>php_originalDataphp[php$keyphp]php)php php=php=php=php php0php php&php&php php!emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$changesphp[php'addphp'php]php[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_originalDataphp[php$keyphp]php php!php=php=php php$thisphp-php>php_currentDataphp[php$keyphp]php)php php{
+php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$changesphp[php'deletephp'php]php[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$changesphp[php'replacephp'php]php[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$changesphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp LDAPphp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setAttributephp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setAttributephp(php$namephp,php php$valuephp,php falsephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Appendsphp tophp aphp LDAPphp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp appendToAttributephp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setAttributephp(php$namephp,php php$valuephp,php truephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp thephp attributephp canphp bephp setphp andphp setsphp itphp accordinglyphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$name
+php php php php php php*php php@paramphp php mixedphp php php php$value
+php php php php php php*php php@paramphp php booleanphp php$append
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_setAttributephp(php$namephp,php php$valuephp,php php$appendphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_assertChangeableAttributephp(php$namephp)php;
+php php php php php php php php Zendphp_Ldapphp_Attributephp:php:setAttributephp(php$thisphp-php>php_currentDataphp,php php$namephp,php php$valuephp,php php$appendphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp LDAPphp datephp/timephp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php$name
+php php php php php php*php php@paramphp php integerphp|arrayphp php$value
+php php php php php php*php php@paramphp php booleanphp php php php php php php php$utc
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setDateTimeAttributephp(php$namephp,php php$valuephp,php php$utcphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setDateTimeAttributephp(php$namephp,php php$valuephp,php php$utcphp,php falsephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Appendsphp tophp aphp LDAPphp datephp/timephp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php$name
+php php php php php php*php php@paramphp php integerphp|arrayphp php$value
+php php php php php php*php php@paramphp php booleanphp php php php php php php php$utc
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp appendToDateTimeAttributephp(php$namephp,php php$valuephp,php php$utcphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setDateTimeAttributephp(php$namephp,php php$valuephp,php php$utcphp,php truephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp thephp attributephp canphp bephp setphp andphp setsphp itphp accordinglyphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php$name
+php php php php php php*php php@paramphp php integerphp|arrayphp php$value
+php php php php php php*php php@paramphp php booleanphp php php php php php php php$utc
+php php php php php php*php php@paramphp php booleanphp php php php php php php php$append
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_setDateTimeAttributephp(php$namephp,php php$valuephp,php php$utcphp,php php$appendphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_assertChangeableAttributephp(php$namephp)php;
+php php php php php php php php Zendphp_Ldapphp_Attributephp:php:setDateTimeAttributephp(php$thisphp-php>php_currentDataphp,php php$namephp,php php$valuephp,php php$utcphp,php php$appendphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp LDAPphp passwordphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$password
+php php php php php php*php php@paramphp php stringphp php$hashType
+php php php php php php*php php@paramphp php stringphp php$attribName
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setPasswordAttributephp(php$passwordphp,php php$hashTypephp php=php Zendphp_Ldapphp_Attributephp:php:PASSWORDphp_HASHphp_MDphp5php,
+php php php php php php php php php$attribNamephp php=php php'userPasswordphp'php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_assertChangeableAttributephp(php$attribNamephp)php;
+php php php php php php php php Zendphp_Ldapphp_Attributephp:php:setPasswordphp(php$thisphp-php>php_currentDataphp,php php$passwordphp,php php$hashTypephp,php php$attribNamephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Deletesphp aphp LDAPphp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp methodphp deletesphp thephp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp deleteAttributephp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>existsAttributephp(php$namephp,php truephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_setAttributephp(php$namephp,php nullphp,php falsephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removesphp duplicatephp valuesphp fromphp aphp LDAPphp attribute
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$attribName
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp removeDuplicatesFromAttributephp(php$attribNamephp)
+php php php php php{
+php php php php php php php php Zendphp_Ldapphp_Attributephp:php:removeDuplicatesFromAttributephp(php$thisphp-php>php_currentDataphp,php php$attribNamephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp givenphp valuesphp fromphp aphp LDAPphp attribute
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php$attribName
+php php php php php php*php php@paramphp php mixedphp|arrayphp php$value
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp removeFromAttributephp(php$attribNamephp,php php$valuephp)
+php php php php php{
+php php php php php php php php Zendphp_Ldapphp_Attributephp:php:removeFromAttributephp(php$thisphp-php>php_currentDataphp,php php$attribNamephp,php php$valuephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp boolean
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_assertChangeableAttributephp(php$namephp)
+php php php php php{
+php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
+php php php php php php php php php$rdnphp php=php php$thisphp-php>getRdnArrayphp(Zendphp_Ldapphp_Dnphp:php:ATTRphp_CASEFOLDphp_LOWERphp)php;
+php php php php php php php php ifphp php(php$namephp php=php=php php'dnphp'php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'DNphp cannotphp bephp changedphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php elsephp ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$rdnphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Cannotphp changephp attributephp becausephp itphp\php'sphp partphp ofphp thephp RDNphp'php)php;
+php php php php php php php php php}php elsephp ifphp php(inphp_arrayphp(php$namephp,php selfphp:php:php$php_systemAttributesphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Cannotphp changephp attributephp becausephp itphp\php'sphp readphp-onlyphp'php)php;
+php php php php php php php php php}
+php php php php php php php php elsephp returnphp truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp LDAPphp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php php$value
+php php php php php php*php php@returnphp null
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_setphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setAttributephp(php$namephp,php php$valuephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Deletesphp aphp LDAPphp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp methodphp deletesphp thephp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp null
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_unsetphp(php$namephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>deleteAttributephp(php$namephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp LDAPphp attributephp.
+php php php php php php*php Implementsphp ArrayAccessphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php php$value
+php php php php php php*php php@returnphp null
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp offsetSetphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setAttributephp(php$namephp,php php$valuephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Deletesphp aphp LDAPphp attributephp.
+php php php php php php*php Implementsphp ArrayAccessphp.
+php php php php php php*
+php php php php php php*php Thisphp methodphp deletesphp thephp attributephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp offlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp null
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp offsetUnsetphp(php$namephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>deleteAttributephp(php$namephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp nodephp existsphp onphp LDAPphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp onlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
+php php php php php php*php php@returnphp boolean
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp existsphp(Zendphp_Ldapphp php$ldapphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$ldapphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>attachLdapphp(php$ldapphp)php;
+php php php php php php php php php}
+php php php php php php php php php$ldapphp php=php php$thisphp-php>getLdapphp(php)php;
+php php php php php php php php returnphp php$ldapphp-php>existsphp(php$thisphp-php>php_getDnphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Reloadphp nodephp attributesphp fromphp LDAPphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp onlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp Providesphp aphp fluidphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp reloadphp(Zendphp_Ldapphp php$ldapphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$ldapphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>attachLdapphp(php$ldapphp)php;
+php php php php php php php php php}
+php php php php php php php php php$ldapphp php=php php$thisphp-php>getLdapphp(php)php;
+php php php php php php php php parentphp:php:reloadphp(php$ldapphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchphp currentphp subtreephp withphp givenphp optionsphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp onlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Ldapphp_Filterphp_Abstractphp php$filter
+php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php php php php php php php php php php php php php php php php$scope
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php php php php php php php php php php php php php$sort
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp_Collection
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp searchSubtreephp(php$filterphp,php php$scopephp php=php Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_SUBphp,php php$sortphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Nodephp_Collection
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Nodephp/Collectionphp.phpphp'php;
+php php php php php php php php returnphp php$thisphp-php>getLdapphp(php)php-php>searchphp(php$filterphp,php php$thisphp-php>php_getDnphp(php)php,php php$scopephp,php arrayphp(php'php*php'php,php php'php+php'php)php,php php$sortphp,
+php php php php php php php php php php php php php'Zendphp_Ldapphp_Nodephp_Collectionphp'php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Countphp itemsphp inphp currentphp subtreephp foundphp byphp givenphp filterphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp onlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Ldapphp_Filterphp_Abstractphp php$filter
+php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php php php php php php php php php php php php php php php php$scope
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp countSubtreephp(php$filterphp,php php$scopephp php=php Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_SUBphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getLdapphp(php)php-php>countphp(php$filterphp,php php$thisphp-php>php_getDnphp(php)php,php php$scopephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Countphp childrenphp ofphp currentphp nodephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp onlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp countChildrenphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>countSubtreephp(php'php(objectClassphp=php*php)php'php,php Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_ONEphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp childrenphp ofphp currentphp nodephp.
+php php php php php php*
+php php php php php php*php Thisphp isphp anphp onlinephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Ldapphp_Filterphp_Abstractphp php$filter
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php php php php php php php php php php php php php$sort
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp_Collection
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp searchChildrenphp(php$filterphp,php php$sortphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>searchSubtreephp(php$filterphp,php Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_ONEphp,php php$sortphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp currentphp nodephp hasphp childrenphp.
+php php php php php php*php Returnsphp whetherphp thephp currentphp elementphp hasphp childrenphp.
+php php php php php php*
+php php php php php php*php Canphp bephp usedphp offlinephp butphp returnsphp falsephp ifphp childrenphp havephp notphp beenphp retrievedphp yetphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp hasChildrenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$thisphp-php>php_childrenphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>isAttachedphp(php)php)php php{
+php php php php php php php php php php php php php php php php returnphp php(php$thisphp-php>countChildrenphp(php)php php>php php0php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php(countphp(php$thisphp-php>php_childrenphp)php php>php php0php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp childrenphp forphp thephp currentphp nodephp.
+php php php php php php*
+php php php php php php*php Canphp bephp usedphp offlinephp butphp returnsphp anphp emptyphp arrayphp ifphp childrenphp havephp notphp beenphp retrievedphp yetphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp_ChildrenIterator
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getChildrenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$thisphp-php>php_childrenphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_childrenphp php=php arrayphp(php)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>isAttachedphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$childrenphp php=php php$thisphp-php>searchChildrenphp(php'php(objectClassphp=php*php)php'php,php nullphp)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$childrenphp asphp php$childphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_childrenphp[php$childphp-php>getRdnStringphp(Zendphp_Ldapphp_Dnphp:php:ATTRphp_CASEFOLDphp_LOWERphp)php]php php=php php$childphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Nodephp_ChildrenIterator
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Nodephp/ChildrenIteratorphp.phpphp'php;
+php php php php php php php php returnphp newphp Zendphp_Ldapphp_Nodephp_ChildrenIteratorphp(php$thisphp-php>php_childrenphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp parentphp ofphp thephp currentphp nodephp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Node
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getParentphp(Zendphp_Ldapphp php$ldapphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$ldapphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>attachLdapphp(php$ldapphp)php;
+php php php php php php php php php}
+php php php php php php php php php$ldapphp php=php php$thisphp-php>getLdapphp(php)php;
+php php php php php php php php php$parentDnphp php=php php$thisphp-php>php_getDnphp(php)php-php>getParentDnphp(php1php)php;
+php php php php php php php php returnphp selfphp:php:fromLdapphp(php$parentDnphp,php php$ldapphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp currentphp attributephp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp currentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp attributephp namephp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp keyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getRdnStringphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Movephp forwardphp tophp nextphp attributephp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*php/
+php php php php publicphp functionphp nextphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_iteratorRewindphp php=php falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp attributephp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*php/
+php php php php publicphp functionphp rewindphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_iteratorRewindphp php=php truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp attribute
+php php php php php php*php afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)php.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp validphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_iteratorRewindphp;
+php php php php php}
+php}

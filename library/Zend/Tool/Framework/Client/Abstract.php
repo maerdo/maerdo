@@ -1,333 +1,333 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Loader_Autoloader
- */
-require_once 'Zend/Loader/Autoloader.php';
+php/php*php*
+php php*php php@seephp Zendphp_Loaderphp_Autoloader
+php php*php/
+requirephp_oncephp php'Zendphp/Loaderphp/Autoloaderphp.phpphp'php;
 
-/**
- * @see Zend_Tool_Framework_Registry_EnabledInterface
- */
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Registryphp/EnabledInterfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framework_Registry_EnabledInterface
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Abstractphp implementsphp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterface
+php{
 
-    /**
-     * @var Zend_Tool_Framework_Registry
-     */
-    protected $_registry = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Registry
+php php php php php php*php/
+php php php php protectedphp php$php_registryphp php=php nullphp;
 
-    /**
-     * @var callback|null
-     */
-    protected $_interactiveCallback = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp callbackphp|null
+php php php php php php*php/
+php php php php protectedphp php$php_interactiveCallbackphp php=php nullphp;
 
-    /**
-     * @var bool
-     */
-    protected $_isInitialized = false;
+php php php php php/php*php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isInitializedphp php=php falsephp;
 
-    /**
-     * @var Zend_Log
-     */
-    protected $_debugLogger = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Log
+php php php php php php*php/
+php php php php protectedphp php$php_debugLoggerphp php=php nullphp;
 
-    public function __construct($options = array())
-    {
-        // require autoloader
-        Zend_Loader_Autoloader::getInstance();
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php/php/php requirephp autoloader
+php php php php php php php php Zendphp_Loaderphp_Autoloaderphp:php:getInstancephp(php)php;
 
-        // this might look goofy, but this is setting up the
-        // registry for dependency injection into the client
-        $registry = new Zend_Tool_Framework_Registry();
-        $registry->setClient($this);
+php php php php php php php php php/php/php thisphp mightphp lookphp goofyphp,php butphp thisphp isphp settingphp upphp the
+php php php php php php php php php/php/php registryphp forphp dependencyphp injectionphp intophp thephp client
+php php php php php php php php php$registryphp php=php newphp Zendphp_Toolphp_Frameworkphp_Registryphp(php)php;
+php php php php php php php php php$registryphp-php>setClientphp(php$thisphp)php;
 
-        // NOTE: at this moment, $this->_registry should contain the registry object
+php php php php php php php php php/php/php NOTEphp:php atphp thisphp momentphp,php php$thisphp-php>php_registryphp shouldphp containphp thephp registryphp object
 
-        if ($options) {
-            $this->setOptions($options);
-        }
-    }
+php php php php php php php php ifphp php(php$optionsphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    public function setOptions(Array $options)
-    {
-        foreach ($options as $optionName => $optionValue) {
-            $setMethodName = 'set' . $optionName;
-            if (method_exists($this, $setMethodName)) {
-                $this->{$setMethodName}($optionValue);
-            }
-        }
-    }
+php php php php publicphp functionphp setOptionsphp(Arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$optionsphp asphp php$optionNamephp php=php>php php$optionValuephp)php php{
+php php php php php php php php php php php php php$setMethodNamephp php=php php'setphp'php php.php php$optionNamephp;
+php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$setMethodNamephp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php{php$setMethodNamephp}php(php$optionValuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * getName() - Return the client name which can be used to
-     * query the manifest if need be.
-     *
-     * @return string The client name
-     */
-    abstract public function getName();
+php php php php php/php*php*
+php php php php php php*php getNamephp(php)php php-php Returnphp thephp clientphp namephp whichphp canphp bephp usedphp to
+php php php php php php*php queryphp thephp manifestphp ifphp needphp bephp.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp clientphp name
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getNamephp(php)php;
 
-    /**
-     * initialized() - This will initialize the client for use
-     *
-     */
-    public function initialize()
-    {
-        // if its already initialized, no need to initialize again
-        if ($this->_isInitialized) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php initializedphp(php)php php-php Thisphp willphp initializephp thephp clientphp forphp use
+php php php php php php*
+php php php php php php*php/
+php php php php publicphp functionphp initializephp(php)
+php php php php php{
+php php php php php php php php php/php/php ifphp itsphp alreadyphp initializedphp,php nophp needphp tophp initializephp again
+php php php php php php php php ifphp php(php$thisphp-php>php_isInitializedphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        // run any preInit
-        $this->_preInit();
+php php php php php php php php php/php/php runphp anyphp preInit
+php php php php php php php php php$thisphp-php>php_preInitphp(php)php;
 
-        $manifest = $this->_registry->getManifestRepository();
-        $manifest->addManifest(new Zend_Tool_Framework_Client_Manifest());
+php php php php php php php php php$manifestphp php=php php$thisphp-php>php_registryphp-php>getManifestRepositoryphp(php)php;
+php php php php php php php php php$manifestphp-php>addManifestphp(newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Manifestphp(php)php)php;
 
-        // setup the debug log
-        if (!$this->_debugLogger instanceof Zend_Log) {
-            require_once 'Zend/Log.php';
-            require_once 'Zend/Log/Writer/Null.php';
-            $this->_debugLogger = new Zend_Log(new Zend_Log_Writer_Null());
-        }
+php php php php php php php php php/php/php setupphp thephp debugphp log
+php php php php php php php php ifphp php(php!php$thisphp-php>php_debugLoggerphp instanceofphp Zendphp_Logphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp.phpphp'php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Writerphp/Nullphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>php_debugLoggerphp php=php newphp Zendphp_Logphp(newphp Zendphp_Logphp_Writerphp_Nullphp(php)php)php;
+php php php php php php php php php}
 
-        // let the loader load, then the repositories process whats been loaded
-        $this->_registry->getLoader()->load();
+php php php php php php php php php/php/php letphp thephp loaderphp loadphp,php thenphp thephp repositoriesphp processphp whatsphp beenphp loaded
+php php php php php php php php php$thisphp-php>php_registryphp-php>getLoaderphp(php)php-php>loadphp(php)php;
 
-        // process the action repository
-        $this->_registry->getActionRepository()->process();
+php php php php php php php php php/php/php processphp thephp actionphp repository
+php php php php php php php php php$thisphp-php>php_registryphp-php>getActionRepositoryphp(php)php-php>processphp(php)php;
 
-        // process the provider repository
-        $this->_registry->getProviderRepository()->process();
+php php php php php php php php php/php/php processphp thephp providerphp repository
+php php php php php php php php php$thisphp-php>php_registryphp-php>getProviderRepositoryphp(php)php-php>processphp(php)php;
 
-        // process the manifest repository
-        $this->_registry->getManifestRepository()->process();
+php php php php php php php php php/php/php processphp thephp manifestphp repository
+php php php php php php php php php$thisphp-php>php_registryphp-php>getManifestRepositoryphp(php)php-php>processphp(php)php;
 
-        if ($this instanceof Zend_Tool_Framework_Client_Interactive_InputInterface) {
-            require_once 'Zend/Tool/Framework/Client/Interactive/InputHandler.php';
-        }
+php php php php php php php php ifphp php(php$thisphp instanceofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputInterfacephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Interactivephp/InputHandlerphp.phpphp'php;
+php php php php php php php php php}
 
-        if ($this instanceof Zend_Tool_Framework_Client_Interactive_OutputInterface) {
-            $this->_registry->getResponse()->setContentCallback(array($this, 'handleInteractiveOutput'));
-        }
+php php php php php php php php ifphp php(php$thisphp instanceofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_OutputInterfacephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>setContentCallbackphp(arrayphp(php$thisphp,php php'handleInteractiveOutputphp'php)php)php;
+php php php php php php php php php}
 
-    }
+php php php php php}
 
 
-    /**
-     * This method should be implemented by the client implementation to
-     * construct and set custom inflectors, request and response objects.
-     */
-    protected function _preInit()
-    {
-    }
+php php php php php/php*php*
+php php php php php php*php Thisphp methodphp shouldphp bephp implementedphp byphp thephp clientphp implementationphp to
+php php php php php php*php constructphp andphp setphp customphp inflectorsphp,php requestphp andphp responsephp objectsphp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_preInitphp(php)
+php php php php php{
+php php php php php}
 
-    /**
-     * This method *must* be implemented by the client implementation to
-     * parse out and setup the request objects action, provider and parameter
-     * information.
-     */
-    abstract protected function _preDispatch();
+php php php php php/php*php*
+php php php php php php*php Thisphp methodphp php*mustphp*php bephp implementedphp byphp thephp clientphp implementationphp to
+php php php php php php*php parsephp outphp andphp setupphp thephp requestphp objectsphp actionphp,php providerphp andphp parameter
+php php php php php php*php informationphp.
+php php php php php php*php/
+php php php php abstractphp protectedphp functionphp php_preDispatchphp(php)php;
 
-    /**
-     * This method should be implemented by the client implementation to
-     * take the output of the response object and return it (in an client
-     * specific way) back to the Tooling Client.
-     */
-    protected function _postDispatch()
-    {
-    }
+php php php php php/php*php*
+php php php php php php*php Thisphp methodphp shouldphp bephp implementedphp byphp thephp clientphp implementationphp to
+php php php php php php*php takephp thephp outputphp ofphp thephp responsephp objectphp andphp returnphp itphp php(inphp anphp client
+php php php php php php*php specificphp wayphp)php backphp tophp thephp Toolingphp Clientphp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_postDispatchphp(php)
+php php php php php{
+php php php php php}
 
-    /**
-     * setRegistry() - Required by the Zend_Tool_Framework_Registry_EnabledInterface
-     * interface which ensures proper registry dependency resolution
-     *
-     * @param Zend_Tool_Framework_Registry_Interface $registry
-     * @return Zend_Tool_Framework_Client_Abstract
-     */
-    public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
-    {
-        $this->_registry = $registry;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setRegistryphp(php)php php-php Requiredphp byphp thephp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterface
+php php php php php php*php interfacephp whichphp ensuresphp properphp registryphp dependencyphp resolution
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registry
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setRegistryphp(Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registryphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_registryphp php=php php$registryphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getRegistry();
-     *
-     * @return Zend_Tool_Framework_Registry_Interface
-     */
-    public function getRegistry()
-    {
-        return $this->_registry;
-    }
+php php php php php/php*php*
+php php php php php php*php getRegistryphp(php)php;
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Registryphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getRegistryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_registryphp;
+php php php php php}
 
-    /**
-     * hasInteractiveInput() - Convienence method for determining if this
-     * client can handle interactive input, and thus be able to run the
-     * promptInteractiveInput
-     *
-     * @return bool
-     */
-    public function hasInteractiveInput()
-    {
-        return ($this instanceof Zend_Tool_Framework_Client_Interactive_InputInterface);
-    }
+php php php php php/php*php*
+php php php php php php*php hasInteractiveInputphp(php)php php-php Convienencephp methodphp forphp determiningphp ifphp this
+php php php php php php*php clientphp canphp handlephp interactivephp inputphp,php andphp thusphp bephp ablephp tophp runphp the
+php php php php php php*php promptInteractiveInput
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasInteractiveInputphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php$thisphp instanceofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputInterfacephp)php;
+php php php php php}
 
-    public function promptInteractiveInput($inputRequest)
-    {
-        if (!$this->hasInteractiveInput()) {
-            require_once 'Zend/Tool/Framework/Client/Exception.php';
-            throw new Zend_Tool_Framework_Client_Exception('promptInteractive() cannot be called on a non-interactive client.');
-        }
+php php php php publicphp functionphp promptInteractiveInputphp(php$inputRequestphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>hasInteractiveInputphp(php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'promptInteractivephp(php)php cannotphp bephp calledphp onphp aphp nonphp-interactivephp clientphp.php'php)php;
+php php php php php php php php php}
 
-        $inputHandler = new Zend_Tool_Framework_Client_Interactive_InputHandler();
-        $inputHandler->setClient($this);
-        $inputHandler->setInputRequest($inputRequest);
-        return $inputHandler->handle();
+php php php php php php php php php$inputHandlerphp php=php newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputHandlerphp(php)php;
+php php php php php php php php php$inputHandlerphp-php>setClientphp(php$thisphp)php;
+php php php php php php php php php$inputHandlerphp-php>setInputRequestphp(php$inputRequestphp)php;
+php php php php php php php php returnphp php$inputHandlerphp-php>handlephp(php)php;
 
-    }
+php php php php php}
 
-    /**
-     * This method should be called in order to "handle" a Tooling Client
-     * request that has come to the client that has been implemented.
-     */
-    public function dispatch()
-    {
-        $this->initialize();
+php php php php php/php*php*
+php php php php php php*php Thisphp methodphp shouldphp bephp calledphp inphp orderphp tophp php"handlephp"php aphp Toolingphp Client
+php php php php php php*php requestphp thatphp hasphp comephp tophp thephp clientphp thatphp hasphp beenphp implementedphp.
+php php php php php php*php/
+php php php php publicphp functionphp dispatchphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>initializephp(php)php;
 
-        try {
+php php php php php php php php tryphp php{
 
-            $this->_preDispatch();
+php php php php php php php php php php php php php$thisphp-php>php_preDispatchphp(php)php;
 
-            if ($this->_registry->getRequest()->isDispatchable()) {
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>isDispatchablephp(php)php)php php{
 
-                if ($this->_registry->getRequest()->getActionName() == null) {
-                    require_once 'Zend/Tool/Framework/Client/Exception.php';
-                    throw new Zend_Tool_Framework_Client_Exception('Client failed to setup the action name.');
-                }
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>getActionNamephp(php)php php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Clientphp failedphp tophp setupphp thephp actionphp namephp.php'php)php;
+php php php php php php php php php php php php php php php php php}
 
-                if ($this->_registry->getRequest()->getProviderName() == null) {
-                    require_once 'Zend/Tool/Framework/Client/Exception.php';
-                    throw new Zend_Tool_Framework_Client_Exception('Client failed to setup the provider name.');
-                }
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>getProviderNamephp(php)php php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Clientphp failedphp tophp setupphp thephp providerphp namephp.php'php)php;
+php php php php php php php php php php php php php php php php php}
 
-                $this->_handleDispatch();
+php php php php php php php php php php php php php php php php php$thisphp-php>php_handleDispatchphp(php)php;
 
-            }
+php php php php php php php php php php php php php}
 
-        } catch (Exception $exception) {
-            $this->_registry->getResponse()->setException($exception);
-        }
+php php php php php php php php php}php catchphp php(Exceptionphp php$exceptionphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>setExceptionphp(php$exceptionphp)php;
+php php php php php php php php php}
 
-        $this->_postDispatch();
-    }
+php php php php php php php php php$thisphp-php>php_postDispatchphp(php)php;
+php php php php php}
 
-    public function convertToClientNaming($string)
-    {
-        return $string;
-    }
+php php php php publicphp functionphp convertToClientNamingphp(php$stringphp)
+php php php php php{
+php php php php php php php php returnphp php$stringphp;
+php php php php php}
 
-    public function convertFromClientNaming($string)
-    {
-        return $string;
-    }
+php php php php publicphp functionphp convertFromClientNamingphp(php$stringphp)
+php php php php php{
+php php php php php php php php returnphp php$stringphp;
+php php php php php}
 
-    protected function _handleDispatch()
-    {
-        // get the provider repository
-        $providerRepository = $this->_registry->getProviderRepository();
+php php php php protectedphp functionphp php_handleDispatchphp(php)
+php php php php php{
+php php php php php php php php php/php/php getphp thephp providerphp repository
+php php php php php php php php php$providerRepositoryphp php=php php$thisphp-php>php_registryphp-php>getProviderRepositoryphp(php)php;
 
-        $request = $this->_registry->getRequest();
+php php php php php php php php php$requestphp php=php php$thisphp-php>php_registryphp-php>getRequestphp(php)php;
 
-        // get the dispatchable provider signature
-        $providerSignature = $providerRepository->getProviderSignature($request->getProviderName());
+php php php php php php php php php/php/php getphp thephp dispatchablephp providerphp signature
+php php php php php php php php php$providerSignaturephp php=php php$providerRepositoryphp-php>getProviderSignaturephp(php$requestphp-php>getProviderNamephp(php)php)php;
 
-        // get the actual provider
-        $provider = $providerSignature->getProvider();
+php php php php php php php php php/php/php getphp thephp actualphp provider
+php php php php php php php php php$providerphp php=php php$providerSignaturephp-php>getProviderphp(php)php;
 
-        // ensure that we can pretend if this is a pretend request
-        if ($request->isPretend() && (!$provider instanceof Zend_Tool_Framework_Provider_Pretendable)) {
-            require_once 'Zend/Tool/Framework/Client/Exception.php';
-            throw new Zend_Tool_Framework_Client_Exception('Dispatcher error - provider does not support pretend');
-        }
+php php php php php php php php php/php/php ensurephp thatphp wephp canphp pretendphp ifphp thisphp isphp aphp pretendphp request
+php php php php php php php php ifphp php(php$requestphp-php>isPretendphp(php)php php&php&php php(php!php$providerphp instanceofphp Zendphp_Toolphp_Frameworkphp_Providerphp_Pretendablephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Dispatcherphp errorphp php-php providerphp doesphp notphp supportphp pretendphp'php)php;
+php php php php php php php php php}
 
-        // get the action name
-        $actionName = $this->_registry->getRequest()->getActionName();
-        $specialtyName = $this->_registry->getRequest()->getSpecialtyName();
+php php php php php php php php php/php/php getphp thephp actionphp name
+php php php php php php php php php$actionNamephp php=php php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>getActionNamephp(php)php;
+php php php php php php php php php$specialtyNamephp php=php php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>getSpecialtyNamephp(php)php;
 
-        if (!$actionableMethod = $providerSignature->getActionableMethodByActionName($actionName, $specialtyName)) {
-            require_once 'Zend/Tool/Framework/Client/Exception.php';
-            throw new Zend_Tool_Framework_Client_Exception('Dispatcher error - actionable method not found');
-        }
+php php php php php php php php ifphp php(php!php$actionableMethodphp php=php php$providerSignaturephp-php>getActionableMethodByActionNamephp(php$actionNamephp,php php$specialtyNamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Dispatcherphp errorphp php-php actionablephp methodphp notphp foundphp'php)php;
+php php php php php php php php php}
 
-        // get the actual method and param information
-        $methodName       = $actionableMethod['methodName'];
-        $methodParameters = $actionableMethod['parameterInfo'];
+php php php php php php php php php/php/php getphp thephp actualphp methodphp andphp paramphp information
+php php php php php php php php php$methodNamephp php php php php php php php=php php$actionableMethodphp[php'methodNamephp'php]php;
+php php php php php php php php php$methodParametersphp php=php php$actionableMethodphp[php'parameterInfophp'php]php;
 
-        // get the provider params
-        $requestParameters = $this->_registry->getRequest()->getProviderParameters();
+php php php php php php php php php/php/php getphp thephp providerphp params
+php php php php php php php php php$requestParametersphp php=php php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>getProviderParametersphp(php)php;
 
-        // @todo This seems hackish, determine if there is a better way
-        $callParameters = array();
-        foreach ($methodParameters as $methodParameterName => $methodParameterValue) {
-            if (!array_key_exists($methodParameterName, $requestParameters) && $methodParameterValue['optional'] == false) {
-                if ($this instanceof Zend_Tool_Framework_Client_Interactive_InputInterface) {
-                    $promptSting = $this->getMissingParameterPromptString($provider, $actionableMethod['action'], $methodParameterValue['name']);
-                    $parameterPromptValue = $this->promptInteractiveInput($promptSting)->getContent();
-                    if ($parameterPromptValue == null) {
-                        require_once 'Zend/Tool/Framework/Client/Exception.php';
-                        throw new Zend_Tool_Framework_Client_Exception('Value supplied for required parameter "' . $methodParameterValue['name'] . '" is empty');
-                    }
-                    $callParameters[] = $parameterPromptValue;
-                } else {
-                    require_once 'Zend/Tool/Framework/Client/Exception.php';
-                    throw new Zend_Tool_Framework_Client_Exception('A required parameter "' . $methodParameterValue['name'] . '" was not supplied.');
-                }
-            } else {
-                $callParameters[] = (array_key_exists($methodParameterName, $requestParameters)) ? $requestParameters[$methodParameterName] : $methodParameterValue['default'];
-            }
-        }
+php php php php php php php php php/php/php php@todophp Thisphp seemsphp hackishphp,php determinephp ifphp therephp isphp aphp betterphp way
+php php php php php php php php php$callParametersphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$methodParametersphp asphp php$methodParameterNamephp php=php>php php$methodParameterValuephp)php php{
+php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$methodParameterNamephp,php php$requestParametersphp)php php&php&php php$methodParameterValuephp[php'optionalphp'php]php php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp instanceofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputInterfacephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$promptStingphp php=php php$thisphp-php>getMissingParameterPromptStringphp(php$providerphp,php php$actionableMethodphp[php'actionphp'php]php,php php$methodParameterValuephp[php'namephp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php php$parameterPromptValuephp php=php php$thisphp-php>promptInteractiveInputphp(php$promptStingphp)php-php>getContentphp(php)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$parameterPromptValuephp php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Valuephp suppliedphp forphp requiredphp parameterphp php"php'php php.php php$methodParameterValuephp[php'namephp'php]php php.php php'php"php isphp emptyphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$callParametersphp[php]php php=php php$parameterPromptValuephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Aphp requiredphp parameterphp php"php'php php.php php$methodParameterValuephp[php'namephp'php]php php.php php'php"php wasphp notphp suppliedphp.php'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$callParametersphp[php]php php=php php(arrayphp_keyphp_existsphp(php$methodParameterNamephp,php php$requestParametersphp)php)php php?php php$requestParametersphp[php$methodParameterNamephp]php php:php php$methodParameterValuephp[php'defaultphp'php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $this->_handleDispatchExecution($provider, $methodName, $callParameters);
-    }
+php php php php php php php php php$thisphp-php>php_handleDispatchExecutionphp(php$providerphp,php php$methodNamephp,php php$callParametersphp)php;
+php php php php php}
 
-    protected function _handleDispatchExecution($class, $methodName, $callParameters)
-    {
-        if (method_exists($class, $methodName)) {
-            call_user_func_array(array($class, $methodName), $callParameters);
-        } elseif (method_exists($class, $methodName . 'Action')) {
-            call_user_func_array(array($class, $methodName . 'Action'), $callParameters);
-        } else {
-            require_once 'Zend/Tool/Framework/Client/Exception.php';
-            throw new Zend_Tool_Framework_Client_Exception('Not a supported method.');
-        }
-    }
+php php php php protectedphp functionphp php_handleDispatchExecutionphp(php$classphp,php php$methodNamephp,php php$callParametersphp)
+php php php php php{
+php php php php php php php php ifphp php(methodphp_existsphp(php$classphp,php php$methodNamephp)php)php php{
+php php php php php php php php php php php php callphp_userphp_funcphp_arrayphp(arrayphp(php$classphp,php php$methodNamephp)php,php php$callParametersphp)php;
+php php php php php php php php php}php elseifphp php(methodphp_existsphp(php$classphp,php php$methodNamephp php.php php'Actionphp'php)php)php php{
+php php php php php php php php php php php php callphp_userphp_funcphp_arrayphp(arrayphp(php$classphp,php php$methodNamephp php.php php'Actionphp'php)php,php php$callParametersphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Notphp aphp supportedphp methodphp.php'php)php;
+php php php php php php php php php}
+php php php php php}
 
-}
+php}

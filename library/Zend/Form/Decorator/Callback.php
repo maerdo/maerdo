@@ -1,128 +1,128 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Form_Decorator_Abstract */
-require_once 'Zend/Form/Decorator/Abstract.php';
+php/php*php*php Zendphp_Formphp_Decoratorphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Abstractphp.phpphp'php;
 
-/**
- * Zend_Form_Decorator_Callback
- *
- * Execute an arbitrary callback to decorate an element. Callbacks should take
- * three arguments, $content, $element, and $options:
- *
- * function mycallback($content, $element, array $options)
- * {
- * }
- *
- * and should return a string. ($options are whatever options were provided to
- * the decorator.)
- *
- * To specify a callback, pass a valid callback as the 'callback' option.
- *
- * Callback results will be either appended, prepended, or replace the provided
- * content. To replace the content, specify a placement of boolean false;
- * defaults to append content.
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Callback.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Form_Decorator_Callback extends Zend_Form_Decorator_Abstract
-{
-    /**
-     * Callback
-     * @var string|array
-     */
-    protected $_callback;
+php/php*php*
+php php*php Zendphp_Formphp_Decoratorphp_Callback
+php php*
+php php*php Executephp anphp arbitraryphp callbackphp tophp decoratephp anphp elementphp.php Callbacksphp shouldphp take
+php php*php threephp argumentsphp,php php$contentphp,php php$elementphp,php andphp php$optionsphp:
+php php*
+php php*php functionphp mycallbackphp(php$contentphp,php php$elementphp,php arrayphp php$optionsphp)
+php php*php php{
+php php*php php}
+php php*
+php php*php andphp shouldphp returnphp aphp stringphp.php php(php$optionsphp arephp whateverphp optionsphp werephp providedphp to
+php php*php thephp decoratorphp.php)
+php php*
+php php*php Tophp specifyphp aphp callbackphp,php passphp aphp validphp callbackphp asphp thephp php'callbackphp'php optionphp.
+php php*
+php php*php Callbackphp resultsphp willphp bephp eitherphp appendedphp,php prependedphp,php orphp replacephp thephp provided
+php php*php contentphp.php Tophp replacephp thephp contentphp,php specifyphp aphp placementphp ofphp booleanphp falsephp;
+php php*php defaultsphp tophp appendphp contentphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Callbackphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Formphp_Decoratorphp_Callbackphp extendsphp Zendphp_Formphp_Decoratorphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Callback
+php php php php php php*php php@varphp stringphp|array
+php php php php php php*php/
+php php php php protectedphp php$php_callbackphp;
 
-    /**
-     * Set callback
-     *
-     * @param  callback $callback
-     * @return Zend_Form_Decorator_Callback
-     * @throws Zend_Form_Exception
-     */
-    public function setCallback($callback)
-    {
-        if (!is_callable($callback)) {
-            require_once 'Zend/Form/Exception.php';
-            throw new Zend_Form_Exception('Invalid callback provided to callback decorator');
-        }
-        $this->_callback = $callback;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp callback
+php php php php php php*
+php php php php php php*php php@paramphp php callbackphp php$callback
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Callback
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setCallbackphp(php$callbackphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_callablephp(php$callbackphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp callbackphp providedphp tophp callbackphp decoratorphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_callbackphp php=php php$callbackphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get registered callback
-     *
-     * If not previously registered, checks to see if it exists in registered
-     * options.
-     *
-     * @return null|string|array
-     */
-    public function getCallback()
-    {
-        if (null === $this->_callback) {
-            if (null !== ($callback = $this->getOption('callback'))) {
-                $this->setCallback($callback);
-                $this->removeOption('callback');
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp registeredphp callback
+php php php php php php*
+php php php php php php*php Ifphp notphp previouslyphp registeredphp,php checksphp tophp seephp ifphp itphp existsphp inphp registered
+php php php php php php*php optionsphp.
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|stringphp|array
+php php php php php php*php/
+php php php php publicphp functionphp getCallbackphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_callbackphp)php php{
+php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php(php$callbackphp php=php php$thisphp-php>getOptionphp(php'callbackphp'php)php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setCallbackphp(php$callbackphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>removeOptionphp(php'callbackphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_callback;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_callbackphp;
+php php php php php}
 
-    /**
-     * Render
-     *
-     * If no callback registered, returns callback. Otherwise, gets return
-     * value of callback and either appends, prepends, or replaces passed in
-     * content.
-     *
-     * @param  string $content
-     * @return string
-     */
-    public function render($content)
-    {
-        $callback = $this->getCallback();
-        if (null === $callback) {
-            return $content;
-        }
+php php php php php/php*php*
+php php php php php php*php Render
+php php php php php php*
+php php php php php php*php Ifphp nophp callbackphp registeredphp,php returnsphp callbackphp.php Otherwisephp,php getsphp return
+php php php php php php*php valuephp ofphp callbackphp andphp eitherphp appendsphp,php prependsphp,php orphp replacesphp passedphp in
+php php php php php php*php contentphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$content
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php$contentphp)
+php php php php php{
+php php php php php php php php php$callbackphp php=php php$thisphp-php>getCallbackphp(php)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$callbackphp)php php{
+php php php php php php php php php php php php returnphp php$contentphp;
+php php php php php php php php php}
 
-        $placement = $this->getPlacement();
-        $separator = $this->getSeparator();
+php php php php php php php php php$placementphp php=php php$thisphp-php>getPlacementphp(php)php;
+php php php php php php php php php$separatorphp php=php php$thisphp-php>getSeparatorphp(php)php;
 
-        $response = call_user_func($callback, $content, $this->getElement(), $this->getOptions());
+php php php php php php php php php$responsephp php=php callphp_userphp_funcphp(php$callbackphp,php php$contentphp,php php$thisphp-php>getElementphp(php)php,php php$thisphp-php>getOptionsphp(php)php)php;
 
-        switch ($placement) {
-            case self::APPEND:
-                return $content . $separator . $response;
-            case self::PREPEND:
-                return $response . $separator . $content;
-            default:
-                // replace content
-                return $response;
-        }
-    }
-}
+php php php php php php php php switchphp php(php$placementphp)php php{
+php php php php php php php php php php php php casephp selfphp:php:APPENDphp:
+php php php php php php php php php php php php php php php php returnphp php$contentphp php.php php$separatorphp php.php php$responsephp;
+php php php php php php php php php php php php casephp selfphp:php:PREPENDphp:
+php php php php php php php php php php php php php php php php returnphp php$responsephp php.php php$separatorphp php.php php$contentphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php/php/php replacephp content
+php php php php php php php php php php php php php php php php returnphp php$responsephp;
+php php php php php php php php php}
+php php php php php}
+php}

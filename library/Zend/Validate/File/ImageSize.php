@@ -1,364 +1,364 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: ImageSize.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php ImageSizephp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * Validator for the image size of a image file
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
-{
-    /**
-     * @const string Error constants
-     */
-    const WIDTH_TOO_BIG    = 'fileImageSizeWidthTooBig';
-    const WIDTH_TOO_SMALL  = 'fileImageSizeWidthTooSmall';
-    const HEIGHT_TOO_BIG   = 'fileImageSizeHeightTooBig';
-    const HEIGHT_TOO_SMALL = 'fileImageSizeHeightTooSmall';
-    const NOT_DETECTED     = 'fileImageSizeNotDetected';
-    const NOT_READABLE     = 'fileImageSizeNotReadable';
+php/php*php*
+php php*php Validatorphp forphp thephp imagephp sizephp ofphp aphp imagephp file
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Filephp_ImageSizephp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@constphp stringphp Errorphp constants
+php php php php php php*php/
+php php php php constphp WIDTHphp_TOOphp_BIGphp php php php php=php php'fileImageSizeWidthTooBigphp'php;
+php php php php constphp WIDTHphp_TOOphp_SMALLphp php php=php php'fileImageSizeWidthTooSmallphp'php;
+php php php php constphp HEIGHTphp_TOOphp_BIGphp php php php=php php'fileImageSizeHeightTooBigphp'php;
+php php php php constphp HEIGHTphp_TOOphp_SMALLphp php=php php'fileImageSizeHeightTooSmallphp'php;
+php php php php constphp NOTphp_DETECTEDphp php php php php php=php php'fileImageSizeNotDetectedphp'php;
+php php php php constphp NOTphp_READABLEphp php php php php php=php php'fileImageSizeNotReadablephp'php;
 
-    /**
-     * @var array Error message template
-     */
-    protected $_messageTemplates = array(
-        self::WIDTH_TOO_BIG    => "Maximum allowed width for image '%value%' should be '%maxwidth%' but '%width%' detected",
-        self::WIDTH_TOO_SMALL  => "Minimum expected width for image '%value%' should be '%minwidth%' but '%width%' detected",
-        self::HEIGHT_TOO_BIG   => "Maximum allowed height for image '%value%' should be '%maxheight%' but '%height%' detected",
-        self::HEIGHT_TOO_SMALL => "Minimum expected height for image '%value%' should be '%minheight%' but '%height%' detected",
-        self::NOT_DETECTED     => "The size of image '%value%' could not be detected",
-        self::NOT_READABLE     => "File '%value%' is not readable or does not exist",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp template
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:WIDTHphp_TOOphp_BIGphp php php php php=php>php php"Maximumphp allowedphp widthphp forphp imagephp php'php%valuephp%php'php shouldphp bephp php'php%maxwidthphp%php'php butphp php'php%widthphp%php'php detectedphp"php,
+php php php php php php php php selfphp:php:WIDTHphp_TOOphp_SMALLphp php php=php>php php"Minimumphp expectedphp widthphp forphp imagephp php'php%valuephp%php'php shouldphp bephp php'php%minwidthphp%php'php butphp php'php%widthphp%php'php detectedphp"php,
+php php php php php php php php selfphp:php:HEIGHTphp_TOOphp_BIGphp php php php=php>php php"Maximumphp allowedphp heightphp forphp imagephp php'php%valuephp%php'php shouldphp bephp php'php%maxheightphp%php'php butphp php'php%heightphp%php'php detectedphp"php,
+php php php php php php php php selfphp:php:HEIGHTphp_TOOphp_SMALLphp php=php>php php"Minimumphp expectedphp heightphp forphp imagephp php'php%valuephp%php'php shouldphp bephp php'php%minheightphp%php'php butphp php'php%heightphp%php'php detectedphp"php,
+php php php php php php php php selfphp:php:NOTphp_DETECTEDphp php php php php php=php>php php"Thephp sizephp ofphp imagephp php'php%valuephp%php'php couldphp notphp bephp detectedphp"php,
+php php php php php php php php selfphp:php:NOTphp_READABLEphp php php php php php=php>php php"Filephp php'php%valuephp%php'php isphp notphp readablephp orphp doesphp notphp existphp"php,
+php php php php php)php;
 
-    /**
-     * @var array Error message template variables
-     */
-    protected $_messageVariables = array(
-        'minwidth'  => '_minwidth',
-        'maxwidth'  => '_maxwidth',
-        'minheight' => '_minheight',
-        'maxheight' => '_maxheight',
-        'width'     => '_width',
-        'height'    => '_height'
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templatephp variables
+php php php php php php*php/
+php php php php protectedphp php$php_messageVariablesphp php=php arrayphp(
+php php php php php php php php php'minwidthphp'php php php=php>php php'php_minwidthphp'php,
+php php php php php php php php php'maxwidthphp'php php php=php>php php'php_maxwidthphp'php,
+php php php php php php php php php'minheightphp'php php=php>php php'php_minheightphp'php,
+php php php php php php php php php'maxheightphp'php php=php>php php'php_maxheightphp'php,
+php php php php php php php php php'widthphp'php php php php php php=php>php php'php_widthphp'php,
+php php php php php php php php php'heightphp'php php php php php=php>php php'php_heightphp'
+php php php php php)php;
 
-    /**
-     * Minimum image width
-     *
-     * @var integer
-     */
-    protected $_minwidth;
+php php php php php/php*php*
+php php php php php php*php Minimumphp imagephp width
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_minwidthphp;
 
-    /**
-     * Maximum image width
-     *
-     * @var integer
-     */
-    protected $_maxwidth;
+php php php php php/php*php*
+php php php php php php*php Maximumphp imagephp width
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_maxwidthphp;
 
-    /**
-     * Minimum image height
-     *
-     * @var integer
-     */
-    protected $_minheight;
+php php php php php/php*php*
+php php php php php php*php Minimumphp imagephp height
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_minheightphp;
 
-    /**
-     * Maximum image height
-     *
-     * @var integer
-     */
-    protected $_maxheight;
+php php php php php/php*php*
+php php php php php php*php Maximumphp imagephp height
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_maxheightphp;
 
-    /**
-     * Detected width
-     *
-     * @var integer
-     */
-    protected $_width;
+php php php php php/php*php*
+php php php php php php*php Detectedphp width
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_widthphp;
 
-    /**
-     * Detected height
-     *
-     * @var integer
-     */
-    protected $_height;
+php php php php php/php*php*
+php php php php php php*php Detectedphp height
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_heightphp;
 
-    /**
-     * Sets validator options
-     *
-     * Accepts the following option keys:
-     * - minheight
-     * - minwidth
-     * - maxheight
-     * - maxwidth
-     *
-     * @param  Zend_Config|array $options
-     * @return void
-     */
-    public function __construct($options)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } elseif (1 < func_num_args()) {
-            if (!is_array($options)) {
-                $options = array('minwidth' => $options);
-            }
-            $argv = func_get_args();
-            array_shift($argv);
-            $options['minheight'] = array_shift($argv);
-            if (!empty($argv)) {
-                $options['maxwidth'] = array_shift($argv);
-                if (!empty($argv)) {
-                    $options['maxheight'] = array_shift($argv);
-                }
-            }
-        } else if (!is_array($options)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception ('Invalid options to validator provided');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp validatorphp options
+php php php php php php*
+php php php php php php*php Acceptsphp thephp followingphp optionphp keysphp:
+php php php php php php*php php-php minheight
+php php php php php php*php php-php minwidth
+php php php php php php*php php-php maxheight
+php php php php php php*php php-php maxwidth
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elseifphp php(php1php <php funcphp_numphp_argsphp(php)php)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'minwidthphp'php php=php>php php$optionsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$argvphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php php$optionsphp[php'minheightphp'php]php php=php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argvphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'maxwidthphp'php]php php=php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$argvphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'maxheightphp'php]php php=php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp php(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
+php php php php php php php php php}
 
-        if (isset($options['minheight']) || isset($options['minwidth'])) {
-            $this->setImageMin($options);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'minheightphp'php]php)php php|php|php issetphp(php$optionsphp[php'minwidthphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setImageMinphp(php$optionsphp)php;
+php php php php php php php php php}
 
-        if (isset($options['maxheight']) || isset($options['maxwidth'])) {
-            $this->setImageMax($options);
-        }
-    }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'maxheightphp'php]php)php php|php|php issetphp(php$optionsphp[php'maxwidthphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setImageMaxphp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the set minimum image sizes
-     *
-     * @return array
-     */
-    public function getImageMin()
-    {
-        return array('minwidth' => $this->_minwidth, 'minheight' => $this->_minheight);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp minimumphp imagephp sizes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getImageMinphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp(php'minwidthphp'php php=php>php php$thisphp-php>php_minwidthphp,php php'minheightphp'php php=php>php php$thisphp-php>php_minheightphp)php;
+php php php php php}
 
-    /**
-     * Returns the set maximum image sizes
-     *
-     * @return array
-     */
-    public function getImageMax()
-    {
-        return array('maxwidth' => $this->_maxwidth, 'maxheight' => $this->_maxheight);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp maximumphp imagephp sizes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getImageMaxphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp(php'maxwidthphp'php php=php>php php$thisphp-php>php_maxwidthphp,php php'maxheightphp'php php=php>php php$thisphp-php>php_maxheightphp)php;
+php php php php php}
 
-    /**
-     * Returns the set image width sizes
-     *
-     * @return array
-     */
-    public function getImageWidth()
-    {
-        return array('minwidth' => $this->_minwidth, 'maxwidth' => $this->_maxwidth);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp imagephp widthphp sizes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getImageWidthphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp(php'minwidthphp'php php=php>php php$thisphp-php>php_minwidthphp,php php'maxwidthphp'php php=php>php php$thisphp-php>php_maxwidthphp)php;
+php php php php php}
 
-    /**
-     * Returns the set image height sizes
-     *
-     * @return array
-     */
-    public function getImageHeight()
-    {
-        return array('minheight' => $this->_minheight, 'maxheight' => $this->_maxheight);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp imagephp heightphp sizes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getImageHeightphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp(php'minheightphp'php php=php>php php$thisphp-php>php_minheightphp,php php'maxheightphp'php php=php>php php$thisphp-php>php_maxheightphp)php;
+php php php php php}
 
-    /**
-     * Sets the minimum image size
-     *
-     * @param  array $options               The minimum image dimensions
-     * @throws Zend_Validate_Exception      When minwidth is greater than maxwidth
-     * @throws Zend_Validate_Exception      When minheight is greater than maxheight
-     * @return Zend_Validate_File_ImageSize Provides a fluent interface
-     */
-    public function setImageMin($options)
-    {
-        if (isset($options['minwidth'])) {
-            if (($this->_maxwidth !== null) and ($options['minwidth'] > $this->_maxwidth)) {
-                require_once 'Zend/Validate/Exception.php';
-                throw new Zend_Validate_Exception("The minimum image width must be less than or equal to the "
-                    . " maximum image width, but {$options['minwidth']} > {$this->_maxwidth}");
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp minimumphp imagephp size
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp php php php php php php php php php php php php php php Thephp minimumphp imagephp dimensions
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp php php php php php Whenphp minwidthphp isphp greaterphp thanphp maxwidth
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp php php php php php Whenphp minheightphp isphp greaterphp thanphp maxheight
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_ImageSizephp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setImageMinphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'minwidthphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php(php$thisphp-php>php_maxwidthphp php!php=php=php nullphp)php andphp php(php$optionsphp[php'minwidthphp'php]php php>php php$thisphp-php>php_maxwidthphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp minimumphp imagephp widthphp mustphp bephp lessphp thanphp orphp equalphp tophp thephp php"
+php php php php php php php php php php php php php php php php php php php php php.php php"php maximumphp imagephp widthphp,php butphp php{php$optionsphp[php'minwidthphp'php]php}php php>php php{php$thisphp-php>php_maxwidthphp}php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (isset($options['maxheight'])) {
-            if (($this->_maxheight !== null) and ($options['minheight'] > $this->_maxheight)) {
-                require_once 'Zend/Validate/Exception.php';
-                throw new Zend_Validate_Exception("The minimum image height must be less than or equal to the "
-                    . " maximum image height, but {$options['minheight']} > {$this->_maxheight}");
-            }
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'maxheightphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php(php$thisphp-php>php_maxheightphp php!php=php=php nullphp)php andphp php(php$optionsphp[php'minheightphp'php]php php>php php$thisphp-php>php_maxheightphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp minimumphp imagephp heightphp mustphp bephp lessphp thanphp orphp equalphp tophp thephp php"
+php php php php php php php php php php php php php php php php php php php php php.php php"php maximumphp imagephp heightphp,php butphp php{php$optionsphp[php'minheightphp'php]php}php php>php php{php$thisphp-php>php_maxheightphp}php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (isset($options['minwidth'])) {
-            $this->_minwidth  = (int) $options['minwidth'];
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'minwidthphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_minwidthphp php php=php php(intphp)php php$optionsphp[php'minwidthphp'php]php;
+php php php php php php php php php}
 
-        if (isset($options['minheight'])) {
-            $this->_minheight = (int) $options['minheight'];
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'minheightphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_minheightphp php=php php(intphp)php php$optionsphp[php'minheightphp'php]php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets the maximum image size
-     *
-     * @param  array $options          The maximum image dimensions
-     * @throws Zend_Validate_Exception When maxwidth is smaller than minwidth
-     * @throws Zend_Validate_Exception When maxheight is smaller than minheight
-     * @return Zend_Validate_StringLength Provides a fluent interface
-     */
-    public function setImageMax($options)
-    {
-        if (isset($options['maxwidth'])) {
-            if (($this->_minwidth !== null) and ($options['maxwidth'] < $this->_minwidth)) {
-                require_once 'Zend/Validate/Exception.php';
-                throw new Zend_Validate_Exception("The maximum image width must be greater than or equal to the "
-                    . "minimum image width, but {$options['maxwidth']} < {$this->_minwidth}");
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp maximumphp imagephp size
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp php php php php php php php php php Thephp maximumphp imagephp dimensions
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp Whenphp maxwidthphp isphp smallerphp thanphp minwidth
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exceptionphp Whenphp maxheightphp isphp smallerphp thanphp minheight
+php php php php php php*php php@returnphp Zendphp_Validatephp_StringLengthphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setImageMaxphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'maxwidthphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php(php$thisphp-php>php_minwidthphp php!php=php=php nullphp)php andphp php(php$optionsphp[php'maxwidthphp'php]php <php php$thisphp-php>php_minwidthphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp maximumphp imagephp widthphp mustphp bephp greaterphp thanphp orphp equalphp tophp thephp php"
+php php php php php php php php php php php php php php php php php php php php php.php php"minimumphp imagephp widthphp,php butphp php{php$optionsphp[php'maxwidthphp'php]php}php <php php{php$thisphp-php>php_minwidthphp}php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (isset($options['maxheight'])) {
-            if (($this->_minheight !== null) and ($options['maxheight'] < $this->_minheight)) {
-                require_once 'Zend/Validate/Exception.php';
-                throw new Zend_Validate_Exception("The maximum image height must be greater than or equal to the "
-                    . "minimum image height, but {$options['maxheight']} < {$this->_minwidth}");
-            }
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'maxheightphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php(php$thisphp-php>php_minheightphp php!php=php=php nullphp)php andphp php(php$optionsphp[php'maxheightphp'php]php <php php$thisphp-php>php_minheightphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp maximumphp imagephp heightphp mustphp bephp greaterphp thanphp orphp equalphp tophp thephp php"
+php php php php php php php php php php php php php php php php php php php php php.php php"minimumphp imagephp heightphp,php butphp php{php$optionsphp[php'maxheightphp'php]php}php <php php{php$thisphp-php>php_minwidthphp}php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (isset($options['maxwidth'])) {
-            $this->_maxwidth  = (int) $options['maxwidth'];
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'maxwidthphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_maxwidthphp php php=php php(intphp)php php$optionsphp[php'maxwidthphp'php]php;
+php php php php php php php php php}
 
-        if (isset($options['maxheight'])) {
-            $this->_maxheight = (int) $options['maxheight'];
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'maxheightphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_maxheightphp php=php php(intphp)php php$optionsphp[php'maxheightphp'php]php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets the mimimum and maximum image width
-     *
-     * @param  array $options               The image width dimensions
-     * @return Zend_Validate_File_ImageSize Provides a fluent interface
-     */
-    public function setImageWidth($options)
-    {
-        $this->setImageMin($options);
-        $this->setImageMax($options);
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp mimimumphp andphp maximumphp imagephp width
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp php php php php php php php php php php php php php php Thephp imagephp widthphp dimensions
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_ImageSizephp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setImageWidthphp(php$optionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setImageMinphp(php$optionsphp)php;
+php php php php php php php php php$thisphp-php>setImageMaxphp(php$optionsphp)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets the mimimum and maximum image height
-     *
-     * @param  array $options               The image height dimensions
-     * @return Zend_Validate_File_ImageSize Provides a fluent interface
-     */
-    public function setImageHeight($options)
-    {
-        $this->setImageMin($options);
-        $this->setImageMax($options);
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp mimimumphp andphp maximumphp imagephp height
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp php php php php php php php php php php php php php php Thephp imagephp heightphp dimensions
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_ImageSizephp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setImageHeightphp(php$optionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setImageMinphp(php$optionsphp)php;
+php php php php php php php php php$thisphp-php>setImageMaxphp(php$optionsphp)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if and only if the imagesize of $value is at least min and
-     * not bigger than max
-     *
-     * @param  string $value Real file to check for image size
-     * @param  array  $file  File data from Zend_File_Transfer
-     * @return boolean
-     */
-    public function isValid($value, $file = null)
-    {
-        // Is file readable ?
-        require_once 'Zend/Loader.php';
-        if (!Zend_Loader::isReadable($value)) {
-            return $this->_throw($file, self::NOT_READABLE);
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp imagesizephp ofphp php$valuephp isphp atphp leastphp minphp and
+php php php php php php*php notphp biggerphp thanphp max
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Realphp filephp tophp checkphp forphp imagephp size
+php php php php php php*php php@paramphp php arrayphp php php$filephp php Filephp dataphp fromphp Zendphp_Filephp_Transfer
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$filephp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Isphp filephp readablephp php?
+php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php ifphp php(php!Zendphp_Loaderphp:php:isReadablephp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_READABLEphp)php;
+php php php php php php php php php}
 
-        $size = @getimagesize($value);
-        $this->_setValue($file);
+php php php php php php php php php$sizephp php=php php@getimagesizephp(php$valuephp)php;
+php php php php php php php php php$thisphp-php>php_setValuephp(php$filephp)php;
 
-        if (empty($size) or ($size[0] === 0) or ($size[1] === 0)) {
-            return $this->_throw($file, self::NOT_DETECTED);
-        }
+php php php php php php php php ifphp php(emptyphp(php$sizephp)php orphp php(php$sizephp[php0php]php php=php=php=php php0php)php orphp php(php$sizephp[php1php]php php=php=php=php php0php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_DETECTEDphp)php;
+php php php php php php php php php}
 
-        $this->_width  = $size[0];
-        $this->_height = $size[1];
-        if ($this->_width < $this->_minwidth) {
-            $this->_throw($file, self::WIDTH_TOO_SMALL);
-        }
+php php php php php php php php php$thisphp-php>php_widthphp php php=php php$sizephp[php0php]php;
+php php php php php php php php php$thisphp-php>php_heightphp php=php php$sizephp[php1php]php;
+php php php php php php php php ifphp php(php$thisphp-php>php_widthphp <php php$thisphp-php>php_minwidthphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:WIDTHphp_TOOphp_SMALLphp)php;
+php php php php php php php php php}
 
-        if (($this->_maxwidth !== null) and ($this->_maxwidth < $this->_width)) {
-            $this->_throw($file, self::WIDTH_TOO_BIG);
-        }
+php php php php php php php php ifphp php(php(php$thisphp-php>php_maxwidthphp php!php=php=php nullphp)php andphp php(php$thisphp-php>php_maxwidthphp <php php$thisphp-php>php_widthphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:WIDTHphp_TOOphp_BIGphp)php;
+php php php php php php php php php}
 
-        if ($this->_height < $this->_minheight) {
-            $this->_throw($file, self::HEIGHT_TOO_SMALL);
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_heightphp <php php$thisphp-php>php_minheightphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:HEIGHTphp_TOOphp_SMALLphp)php;
+php php php php php php php php php}
 
-        if (($this->_maxheight !== null) and ($this->_maxheight < $this->_height)) {
-            $this->_throw($file, self::HEIGHT_TOO_BIG);
-        }
+php php php php php php php php ifphp php(php(php$thisphp-php>php_maxheightphp php!php=php=php nullphp)php andphp php(php$thisphp-php>php_maxheightphp <php php$thisphp-php>php_heightphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:HEIGHTphp_TOOphp_BIGphp)php;
+php php php php php php php php php}
 
-        if (count($this->_messages) > 0) {
-            return false;
-        }
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_messagesphp)php php>php php0php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Throws an error of the given type
-     *
-     * @param  string $file
-     * @param  string $errorType
-     * @return false
-     */
-    protected function _throw($file, $errorType)
-    {
-        if ($file !== null) {
-            $this->_value = $file['name'];
-        }
+php php php php php/php*php*
+php php php php php php*php Throwsphp anphp errorphp ofphp thephp givenphp type
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$file
+php php php php php php*php php@paramphp php stringphp php$errorType
+php php php php php php*php php@returnphp false
+php php php php php php*php/
+php php php php protectedphp functionphp php_throwphp(php$filephp,php php$errorTypephp)
+php php php php php{
+php php php php php php php php ifphp php(php$filephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_valuephp php=php php$filephp[php'namephp'php]php;
+php php php php php php php php php}
 
-        $this->_error($errorType);
-        return false;
-    }
-}
+php php php php php php php php php$thisphp-php>php_errorphp(php$errorTypephp)php;
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

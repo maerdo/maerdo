@@ -1,66 +1,66 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service_Amazon
- * @subpackage SimpleDb
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
+php php*php php@subpackagephp SimpleDb
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * @see Zend_Service_Amazon_Exception
- */
-require_once 'Zend/Service/Amazon/Exception.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Amazonphp_Exception
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Amazonphp/Exceptionphp.phpphp'php;
 
-/**
- * The Custom Exception class that allows you to have access to the AWS Error Code.
- *
- * @category   Zend
- * @package    Zend_Service_Amazon
- * @subpackage SimpleDb
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Amazon_SimpleDb_Exception extends Zend_Service_Amazon_Exception
-{
-    /**
-     * @var string
-     */
-    private $_awsErrorCode = '';
+php/php*php*
+php php*php Thephp Customphp Exceptionphp classphp thatphp allowsphp youphp tophp havephp accessphp tophp thephp AWSphp Errorphp Codephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
+php php*php php@subpackagephp SimpleDb
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Amazonphp_SimpleDbphp_Exceptionphp extendsphp Zendphp_Servicephp_Amazonphp_Exception
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_awsErrorCodephp php=php php'php'php;
 
-    /**
-     * Constructor
-     *
-     * @param string $message
-     * @param int $code
-     * @param string $awsErrorCode
-     * @return void
-     */
-    public function __construct($message, $code = 0, $awsErrorCode = '')
-    {
-        parent::__construct($message, $code);
-        $this->_awsErrorCode = $awsErrorCode;
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$message
+php php php php php php*php php@paramphp intphp php$code
+php php php php php php*php php@paramphp stringphp php$awsErrorCode
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$messagephp,php php$codephp php=php php0php,php php$awsErrorCodephp php=php php'php'php)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php$messagephp,php php$codephp)php;
+php php php php php php php php php$thisphp-php>php_awsErrorCodephp php=php php$awsErrorCodephp;
+php php php php php}
 
-    /**
-     * Get AWS error code
-     *
-     * @return string
-     */
-    public function getErrorCode()
-    {
-        return $this->_awsErrorCode;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp AWSphp errorphp code
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getErrorCodephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_awsErrorCodephp;
+php php php php php}
+php}

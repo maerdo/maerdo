@@ -1,989 +1,989 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ViewRenderer.php 20261 2010-01-13 18:55:25Z matthew $
- */
-
-/**
- * @see Zend_Controller_Action_Helper_Abstract
- */
-require_once 'Zend/Controller/Action/Helper/Abstract.php';
-
-/**
- * @see Zend_View
- */
-require_once 'Zend/View.php';
-
-/**
- * View script integration
- *
- * Zend_Controller_Action_Helper_ViewRenderer provides transparent view
- * integration for action controllers. It allows you to create a view object
- * once, and populate it throughout all actions. Several global options may be
- * set:
- *
- * - noController: if set true, render() will not look for view scripts in
- *   subdirectories named after the controller
- * - viewSuffix: what view script filename suffix to use
- *
- * The helper autoinitializes the action controller view preDispatch(). It
- * determines the path to the class file, and then determines the view base
- * directory from there. It also uses the module name as a class prefix for
- * helpers and views such that if your module name is 'Search', it will set the
- * helper class prefix to 'Search_View_Helper' and the filter class prefix to ;
- * 'Search_View_Filter'.
- *
- * Usage:
- * <code>
- * // In your bootstrap:
- * Zend_Controller_Action_HelperBroker::addHelper(new Zend_Controller_Action_Helper_ViewRenderer());
- *
- * // In your action controller methods:
- * $viewHelper = $this->_helper->getHelper('view');
- *
- * // Don't use controller subdirectories
- * $viewHelper->setNoController(true);
- *
- * // Specify a different script to render:
- * $this->_helper->viewRenderer('form');
- *
- * </code>
- *
- * @uses       Zend_Controller_Action_Helper_Abstract
- * @package    Zend_Controller
- * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_Helper_Abstract
-{
-    /**
-     * @var Zend_View_Interface
-     */
-    public $view;
-
-    /**
-     * Word delimiters
-     * @var array
-     */
-    protected $_delimiters;
-
-    /**
-     * @var Zend_Filter_Inflector
-     */
-    protected $_inflector;
-
-    /**
-     * Inflector target
-     * @var string
-     */
-    protected $_inflectorTarget = '';
-
-    /**
-     * Current module directory
-     * @var string
-     */
-    protected $_moduleDir = '';
-
-    /**
-     * Whether or not to autorender using controller name as subdirectory;
-     * global setting (not reset at next invocation)
-     * @var boolean
-     */
-    protected $_neverController = false;
-
-    /**
-     * Whether or not to autorender postDispatch; global setting (not reset at
-     * next invocation)
-     * @var boolean
-     */
-    protected $_neverRender     = false;
-
-    /**
-     * Whether or not to use a controller name as a subdirectory when rendering
-     * @var boolean
-     */
-    protected $_noController    = false;
-
-    /**
-     * Whether or not to autorender postDispatch; per controller/action setting (reset
-     * at next invocation)
-     * @var boolean
-     */
-    protected $_noRender        = false;
-
-    /**
-     * Characters representing path delimiters in the controller
-     * @var string|array
-     */
-    protected $_pathDelimiters;
-
-    /**
-     * Which named segment of the response to utilize
-     * @var string
-     */
-    protected $_responseSegment = null;
-
-    /**
-     * Which action view script to render
-     * @var string
-     */
-    protected $_scriptAction    = null;
-
-    /**
-     * View object basePath
-     * @var string
-     */
-    protected $_viewBasePathSpec = ':moduleDir/views';
-
-    /**
-     * View script path specification string
-     * @var string
-     */
-    protected $_viewScriptPathSpec = ':controller/:action.:suffix';
-
-    /**
-     * View script path specification string, minus controller segment
-     * @var string
-     */
-    protected $_viewScriptPathNoControllerSpec = ':action.:suffix';
-
-    /**
-     * View script suffix
-     * @var string
-     */
-    protected $_viewSuffix      = 'phtml';
-
-    /**
-     * Constructor
-     *
-     * Optionally set view object and options.
-     *
-     * @param  Zend_View_Interface $view
-     * @param  array               $options
-     * @return void
-     */
-    public function __construct(Zend_View_Interface $view = null, array $options = array())
-    {
-        if (null !== $view) {
-            $this->setView($view);
-        }
-
-        if (!empty($options)) {
-            $this->_setOptions($options);
-        }
-    }
-
-    /**
-     * Clone - also make sure the view is cloned.
-     *
-     * @return void
-     */
-    public function __clone()
-    {
-        if (isset($this->view) && $this->view instanceof Zend_View_Interface) {
-            $this->view = clone $this->view;
-
-        }
-    }
-
-    /**
-     * Set the view object
-     *
-     * @param  Zend_View_Interface $view
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setView(Zend_View_Interface $view)
-    {
-        $this->view = $view;
-        return $this;
-    }
-
-    /**
-     * Get current module name
-     *
-     * @return string
-     */
-    public function getModule()
-    {
-        $request = $this->getRequest();
-        $module  = $request->getModuleName();
-        if (null === $module) {
-            $module = $this->getFrontController()->getDispatcher()->getDefaultModule();
-        }
-
-        return $module;
-    }
-
-    /**
-     * Get module directory
-     *
-     * @throws Zend_Controller_Action_Exception
-     * @return string
-     */
-    public function getModuleDirectory()
-    {
-        $module    = $this->getModule();
-        $moduleDir = $this->getFrontController()->getControllerDirectory($module);
-        if ((null === $moduleDir) || is_array($moduleDir)) {
-            /**
-             * @see Zend_Controller_Action_Exception
-             */
-            require_once 'Zend/Controller/Action/Exception.php';
-            throw new Zend_Controller_Action_Exception('ViewRenderer cannot locate module directory for module "' . $module . '"');
-        }
-        $this->_moduleDir = dirname($moduleDir);
-        return $this->_moduleDir;
-    }
-
-    /**
-     * Get inflector
-     *
-     * @return Zend_Filter_Inflector
-     */
-    public function getInflector()
-    {
-        if (null === $this->_inflector) {
-            /**
-             * @see Zend_Filter_Inflector
-             */
-            require_once 'Zend/Filter/Inflector.php';
-            /**
-             * @see Zend_Filter_PregReplace
-             */
-            require_once 'Zend/Filter/PregReplace.php';
-            /**
-             * @see Zend_Filter_Word_UnderscoreToSeparator
-             */
-            require_once 'Zend/Filter/Word/UnderscoreToSeparator.php';
-            $this->_inflector = new Zend_Filter_Inflector();
-            $this->_inflector->setStaticRuleReference('moduleDir', $this->_moduleDir) // moduleDir must be specified before the less specific 'module'
-                 ->addRules(array(
-                     ':module'     => array('Word_CamelCaseToDash', 'StringToLower'),
-                     ':controller' => array('Word_CamelCaseToDash', new Zend_Filter_Word_UnderscoreToSeparator('/'), 'StringToLower', new Zend_Filter_PregReplace('/\./', '-')),
-                     ':action'     => array('Word_CamelCaseToDash', new Zend_Filter_PregReplace('#[^a-z0-9' . preg_quote('/', '#') . ']+#i', '-'), 'StringToLower'),
-                 ))
-                 ->setStaticRuleReference('suffix', $this->_viewSuffix)
-                 ->setTargetReference($this->_inflectorTarget);
-        }
-
-        // Ensure that module directory is current
-        $this->getModuleDirectory();
-
-        return $this->_inflector;
-    }
-
-    /**
-     * Set inflector
-     *
-     * @param  Zend_Filter_Inflector $inflector
-     * @param  boolean               $reference Whether the moduleDir, target, and suffix should be set as references to ViewRenderer properties
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setInflector(Zend_Filter_Inflector $inflector, $reference = false)
-    {
-        $this->_inflector = $inflector;
-        if ($reference) {
-            $this->_inflector->setStaticRuleReference('suffix', $this->_viewSuffix)
-                 ->setStaticRuleReference('moduleDir', $this->_moduleDir)
-                 ->setTargetReference($this->_inflectorTarget);
-        }
-        return $this;
-    }
-
-    /**
-     * Set inflector target
-     *
-     * @param  string $target
-     * @return void
-     */
-    protected function _setInflectorTarget($target)
-    {
-        $this->_inflectorTarget = (string) $target;
-    }
-
-    /**
-     * Set internal module directory representation
-     *
-     * @param  string $dir
-     * @return void
-     */
-    protected function _setModuleDir($dir)
-    {
-        $this->_moduleDir = (string) $dir;
-    }
-
-    /**
-     * Get internal module directory representation
-     *
-     * @return string
-     */
-    protected function _getModuleDir()
-    {
-        return $this->_moduleDir;
-    }
-
-    /**
-     * Generate a class prefix for helper and filter classes
-     *
-     * @return string
-     */
-    protected function _generateDefaultPrefix()
-    {
-        $default = 'Zend_View';
-        if (null === $this->_actionController) {
-            return $default;
-        }
-
-        $class = get_class($this->_actionController);
-
-        if (!strstr($class, '_')) {
-            return $default;
-        }
-
-        $module = $this->getModule();
-        if ('default' == $module) {
-            return $default;
-        }
-
-        $prefix = substr($class, 0, strpos($class, '_')) . '_View';
-
-        return $prefix;
-    }
-
-    /**
-     * Retrieve base path based on location of current action controller
-     *
-     * @return string
-     */
-    protected function _getBasePath()
-    {
-        if (null === $this->_actionController) {
-            return './views';
-        }
-
-        $inflector = $this->getInflector();
-        $this->_setInflectorTarget($this->getViewBasePathSpec());
-
-        $dispatcher = $this->getFrontController()->getDispatcher();
-        $request = $this->getRequest();
-
-        $parts = array(
-            'module'     => (($moduleName = $request->getModuleName()) != '') ? $dispatcher->formatModuleName($moduleName) : $moduleName,
-            'controller' => $request->getControllerName(),
-            'action'     => $dispatcher->formatActionName($request->getActionName())
-            );
-
-        $path = $inflector->filter($parts);
-        return $path;
-    }
-
-    /**
-     * Set options
-     *
-     * @param  array $options
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    protected function _setOptions(array $options)
-    {
-        foreach ($options as $key => $value)
-        {
-            switch ($key) {
-                case 'neverRender':
-                case 'neverController':
-                case 'noController':
-                case 'noRender':
-                    $property = '_' . $key;
-                    $this->{$property} = ($value) ? true : false;
-                    break;
-                case 'responseSegment':
-                case 'scriptAction':
-                case 'viewBasePathSpec':
-                case 'viewScriptPathSpec':
-                case 'viewScriptPathNoControllerSpec':
-                case 'viewSuffix':
-                    $property = '_' . $key;
-                    $this->{$property} = (string) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Initialize the view object
-     *
-     * $options may contain the following keys:
-     * - neverRender - flag dis/enabling postDispatch() autorender (affects all subsequent calls)
-     * - noController - flag indicating whether or not to look for view scripts in subdirectories named after the controller
-     * - noRender - flag indicating whether or not to autorender postDispatch()
-     * - responseSegment - which named response segment to render a view script to
-     * - scriptAction - what action script to render
-     * - viewBasePathSpec - specification to use for determining view base path
-     * - viewScriptPathSpec - specification to use for determining view script paths
-     * - viewScriptPathNoControllerSpec - specification to use for determining view script paths when noController flag is set
-     * - viewSuffix - what view script filename suffix to use
-     *
-     * @param  string $path
-     * @param  string $prefix
-     * @param  array  $options
-     * @throws Zend_Controller_Action_Exception
-     * @return void
-     */
-    public function initView($path = null, $prefix = null, array $options = array())
-    {
-        if (null === $this->view) {
-            $this->setView(new Zend_View());
-        }
-
-        // Reset some flags every time
-        $options['noController'] = (isset($options['noController'])) ? $options['noController'] : false;
-        $options['noRender']     = (isset($options['noRender'])) ? $options['noRender'] : false;
-        $this->_scriptAction     = null;
-        $this->_responseSegment  = null;
-
-        // Set options first; may be used to determine other initializations
-        $this->_setOptions($options);
-
-        // Get base view path
-        if (empty($path)) {
-            $path = $this->_getBasePath();
-            if (empty($path)) {
-                /**
-                 * @see Zend_Controller_Action_Exception
-                 */
-                require_once 'Zend/Controller/Action/Exception.php';
-                throw new Zend_Controller_Action_Exception('ViewRenderer initialization failed: retrieved view base path is empty');
-            }
-        }
-
-        if (null === $prefix) {
-            $prefix = $this->_generateDefaultPrefix();
-        }
-
-        // Determine if this path has already been registered
-        $currentPaths = $this->view->getScriptPaths();
-        $path         = str_replace(array('/', '\\'), '/', $path);
-        $pathExists   = false;
-        foreach ($currentPaths as $tmpPath) {
-            $tmpPath = str_replace(array('/', '\\'), '/', $tmpPath);
-            if (strstr($tmpPath, $path)) {
-                $pathExists = true;
-                break;
-            }
-        }
-        if (!$pathExists) {
-            $this->view->addBasePath($path, $prefix);
-        }
-
-        // Register view with action controller (unless already registered)
-        if ((null !== $this->_actionController) && (null === $this->_actionController->view)) {
-            $this->_actionController->view       = $this->view;
-            $this->_actionController->viewSuffix = $this->_viewSuffix;
-        }
-    }
-
-    /**
-     * init - initialize view
-     *
-     * @return void
-     */
-    public function init()
-    {
-        if ($this->getFrontController()->getParam('noViewRenderer')) {
-            return;
-        }
-
-        $this->initView();
-    }
-
-    /**
-     * Set view basePath specification
-     *
-     * Specification can contain one or more of the following:
-     * - :moduleDir - current module directory
-     * - :controller - name of current controller in the request
-     * - :action - name of current action in the request
-     * - :module - name of current module in the request
-     *
-     * @param  string $path
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setViewBasePathSpec($path)
-    {
-        $this->_viewBasePathSpec = (string) $path;
-        return $this;
-    }
-
-    /**
-     * Retrieve the current view basePath specification string
-     *
-     * @return string
-     */
-    public function getViewBasePathSpec()
-    {
-        return $this->_viewBasePathSpec;
-    }
-
-    /**
-     * Set view script path specification
-     *
-     * Specification can contain one or more of the following:
-     * - :moduleDir - current module directory
-     * - :controller - name of current controller in the request
-     * - :action - name of current action in the request
-     * - :module - name of current module in the request
-     *
-     * @param  string $path
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setViewScriptPathSpec($path)
-    {
-        $this->_viewScriptPathSpec = (string) $path;
-        return $this;
-    }
-
-    /**
-     * Retrieve the current view script path specification string
-     *
-     * @return string
-     */
-    public function getViewScriptPathSpec()
-    {
-        return $this->_viewScriptPathSpec;
-    }
-
-    /**
-     * Set view script path specification (no controller variant)
-     *
-     * Specification can contain one or more of the following:
-     * - :moduleDir - current module directory
-     * - :controller - name of current controller in the request
-     * - :action - name of current action in the request
-     * - :module - name of current module in the request
-     *
-     * :controller will likely be ignored in this variant.
-     *
-     * @param  string $path
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setViewScriptPathNoControllerSpec($path)
-    {
-        $this->_viewScriptPathNoControllerSpec = (string) $path;
-        return $this;
-    }
-
-    /**
-     * Retrieve the current view script path specification string (no controller variant)
-     *
-     * @return string
-     */
-    public function getViewScriptPathNoControllerSpec()
-    {
-        return $this->_viewScriptPathNoControllerSpec;
-    }
-
-    /**
-     * Get a view script based on an action and/or other variables
-     *
-     * Uses values found in current request if no values passed in $vars.
-     *
-     * If {@link $_noController} is set, uses {@link $_viewScriptPathNoControllerSpec};
-     * otherwise, uses {@link $_viewScriptPathSpec}.
-     *
-     * @param  string $action
-     * @param  array  $vars
-     * @return string
-     */
-    public function getViewScript($action = null, array $vars = array())
-    {
-        $request = $this->getRequest();
-        if ((null === $action) && (!isset($vars['action']))) {
-            $action = $this->getScriptAction();
-            if (null === $action) {
-                $action = $request->getActionName();
-            }
-            $vars['action'] = $action;
-        } elseif (null !== $action) {
-            $vars['action'] = $action;
-        }
-
-        $inflector = $this->getInflector();
-        if ($this->getNoController() || $this->getNeverController()) {
-            $this->_setInflectorTarget($this->getViewScriptPathNoControllerSpec());
-        } else {
-            $this->_setInflectorTarget($this->getViewScriptPathSpec());
-        }
-        return $this->_translateSpec($vars);
-    }
-
-    /**
-     * Set the neverRender flag (i.e., globally dis/enable autorendering)
-     *
-     * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setNeverRender($flag = true)
-    {
-        $this->_neverRender = ($flag) ? true : false;
-        return $this;
-    }
-
-    /**
-     * Retrieve neverRender flag value
-     *
-     * @return boolean
-     */
-    public function getNeverRender()
-    {
-        return $this->_neverRender;
-    }
-
-    /**
-     * Set the noRender flag (i.e., whether or not to autorender)
-     *
-     * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setNoRender($flag = true)
-    {
-        $this->_noRender = ($flag) ? true : false;
-        return $this;
-    }
-
-    /**
-     * Retrieve noRender flag value
-     *
-     * @return boolean
-     */
-    public function getNoRender()
-    {
-        return $this->_noRender;
-    }
-
-    /**
-     * Set the view script to use
-     *
-     * @param  string $name
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setScriptAction($name)
-    {
-        $this->_scriptAction = (string) $name;
-        return $this;
-    }
-
-    /**
-     * Retrieve view script name
-     *
-     * @return string
-     */
-    public function getScriptAction()
-    {
-        return $this->_scriptAction;
-    }
-
-    /**
-     * Set the response segment name
-     *
-     * @param  string $name
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setResponseSegment($name)
-    {
-        if (null === $name) {
-            $this->_responseSegment = null;
-        } else {
-            $this->_responseSegment = (string) $name;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Retrieve named response segment name
-     *
-     * @return string
-     */
-    public function getResponseSegment()
-    {
-        return $this->_responseSegment;
-    }
-
-    /**
-     * Set the noController flag (i.e., whether or not to render into controller subdirectories)
-     *
-     * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setNoController($flag = true)
-    {
-        $this->_noController = ($flag) ? true : false;
-        return $this;
-    }
-
-    /**
-     * Retrieve noController flag value
-     *
-     * @return boolean
-     */
-    public function getNoController()
-    {
-        return $this->_noController;
-    }
-
-    /**
-     * Set the neverController flag (i.e., whether or not to render into controller subdirectories)
-     *
-     * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setNeverController($flag = true)
-    {
-        $this->_neverController = ($flag) ? true : false;
-        return $this;
-    }
-
-    /**
-     * Retrieve neverController flag value
-     *
-     * @return boolean
-     */
-    public function getNeverController()
-    {
-        return $this->_neverController;
-    }
-
-    /**
-     * Set view script suffix
-     *
-     * @param  string $suffix
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setViewSuffix($suffix)
-    {
-        $this->_viewSuffix = (string) $suffix;
-        return $this;
-    }
-
-    /**
-     * Get view script suffix
-     *
-     * @return string
-     */
-    public function getViewSuffix()
-    {
-        return $this->_viewSuffix;
-    }
-
-    /**
-     * Set options for rendering a view script
-     *
-     * @param  string  $action       View script to render
-     * @param  string  $name         Response named segment to render to
-     * @param  boolean $noController Whether or not to render within a subdirectory named after the controller
-     * @return Zend_Controller_Action_Helper_ViewRenderer Provides a fluent interface
-     */
-    public function setRender($action = null, $name = null, $noController = null)
-    {
-        if (null !== $action) {
-            $this->setScriptAction($action);
-        }
-
-        if (null !== $name) {
-            $this->setResponseSegment($name);
-        }
-
-        if (null !== $noController) {
-            $this->setNoController($noController);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Inflect based on provided vars
-     *
-     * Allowed variables are:
-     * - :moduleDir - current module directory
-     * - :module - current module name
-     * - :controller - current controller name
-     * - :action - current action name
-     * - :suffix - view script file suffix
-     *
-     * @param  array $vars
-     * @return string
-     */
-    protected function _translateSpec(array $vars = array())
-    {
-        $inflector  = $this->getInflector();
-        $request    = $this->getRequest();
-        $dispatcher = $this->getFrontController()->getDispatcher();
-        $module     = $dispatcher->formatModuleName($request->getModuleName());
-        $controller = $request->getControllerName();
-        $action     = $dispatcher->formatActionName($request->getActionName());
-
-        $params     = compact('module', 'controller', 'action');
-        foreach ($vars as $key => $value) {
-            switch ($key) {
-                case 'module':
-                case 'controller':
-                case 'action':
-                case 'moduleDir':
-                case 'suffix':
-                    $params[$key] = (string) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        if (isset($params['suffix'])) {
-            $origSuffix = $this->getViewSuffix();
-            $this->setViewSuffix($params['suffix']);
-        }
-        if (isset($params['moduleDir'])) {
-            $origModuleDir = $this->_getModuleDir();
-            $this->_setModuleDir($params['moduleDir']);
-        }
-
-        $filtered = $inflector->filter($params);
-
-        if (isset($params['suffix'])) {
-            $this->setViewSuffix($origSuffix);
-        }
-        if (isset($params['moduleDir'])) {
-            $this->_setModuleDir($origModuleDir);
-        }
-
-        return $filtered;
-    }
-
-    /**
-     * Render a view script (optionally to a named response segment)
-     *
-     * Sets the noRender flag to true when called.
-     *
-     * @param  string $script
-     * @param  string $name
-     * @return void
-     */
-    public function renderScript($script, $name = null)
-    {
-        if (null === $name) {
-            $name = $this->getResponseSegment();
-        }
-
-        $this->getResponse()->appendBody(
-            $this->view->render($script),
-            $name
-        );
-
-        $this->setNoRender();
-    }
-
-    /**
-     * Render a view based on path specifications
-     *
-     * Renders a view based on the view script path specifications.
-     *
-     * @param  string  $action
-     * @param  string  $name
-     * @param  boolean $noController
-     * @return void
-     */
-    public function render($action = null, $name = null, $noController = null)
-    {
-        $this->setRender($action, $name, $noController);
-        $path = $this->getViewScript();
-        $this->renderScript($path, $name);
-    }
-
-    /**
-     * Render a script based on specification variables
-     *
-     * Pass an action, and one or more specification variables (view script suffix)
-     * to determine the view script path, and render that script.
-     *
-     * @param  string $action
-     * @param  array  $vars
-     * @param  string $name
-     * @return void
-     */
-    public function renderBySpec($action = null, array $vars = array(), $name = null)
-    {
-        if (null !== $name) {
-            $this->setResponseSegment($name);
-        }
-
-        $path = $this->getViewScript($action, $vars);
-
-        $this->renderScript($path);
-    }
-
-    /**
-     * postDispatch - auto render a view
-     *
-     * Only autorenders if:
-     * - _noRender is false
-     * - action controller is present
-     * - request has not been re-dispatched (i.e., _forward() has not been called)
-     * - response is not a redirect
-     *
-     * @return void
-     */
-    public function postDispatch()
-    {
-        if ($this->_shouldRender()) {
-            $this->render();
-        }
-    }
-
-    /**
-     * Should the ViewRenderer render a view script?
-     *
-     * @return boolean
-     */
-    protected function _shouldRender()
-    {
-        return (!$this->getFrontController()->getParam('noViewRenderer')
-            && !$this->_neverRender
-            && !$this->_noRender
-            && (null !== $this->_actionController)
-            && $this->getRequest()->isDispatched()
-            && !$this->getResponse()->isRedirect()
-        );
-    }
-
-    /**
-     * Use this helper as a method; proxies to setRender()
-     *
-     * @param  string  $action
-     * @param  string  $name
-     * @param  boolean $noController
-     * @return void
-     */
-    public function direct($action = null, $name = null, $noController = null)
-    {
-        $this->setRender($action, $name, $noController);
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ViewRendererphp.phpphp php2php0php2php6php1php php2php0php1php0php-php0php1php-php1php3php php1php8php:php5php5php:php2php5Zphp matthewphp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Helperphp/Abstractphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_View
+php php*php/
+requirephp_oncephp php'Zendphp/Viewphp.phpphp'php;
+
+php/php*php*
+php php*php Viewphp scriptphp integration
+php php*
+php php*php Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp providesphp transparentphp view
+php php*php integrationphp forphp actionphp controllersphp.php Itphp allowsphp youphp tophp createphp aphp viewphp object
+php php*php oncephp,php andphp populatephp itphp throughoutphp allphp actionsphp.php Severalphp globalphp optionsphp mayphp be
+php php*php setphp:
+php php*
+php php*php php-php noControllerphp:php ifphp setphp truephp,php renderphp(php)php willphp notphp lookphp forphp viewphp scriptsphp in
+php php*php php php subdirectoriesphp namedphp afterphp thephp controller
+php php*php php-php viewSuffixphp:php whatphp viewphp scriptphp filenamephp suffixphp tophp use
+php php*
+php php*php Thephp helperphp autoinitializesphp thephp actionphp controllerphp viewphp preDispatchphp(php)php.php It
+php php*php determinesphp thephp pathphp tophp thephp classphp filephp,php andphp thenphp determinesphp thephp viewphp base
+php php*php directoryphp fromphp therephp.php Itphp alsophp usesphp thephp modulephp namephp asphp aphp classphp prefixphp for
+php php*php helpersphp andphp viewsphp suchphp thatphp ifphp yourphp modulephp namephp isphp php'Searchphp'php,php itphp willphp setphp the
+php php*php helperphp classphp prefixphp tophp php'Searchphp_Viewphp_Helperphp'php andphp thephp filterphp classphp prefixphp tophp php;
+php php*php php'Searchphp_Viewphp_Filterphp'php.
+php php*
+php php*php Usagephp:
+php php*php php<codephp>
+php php*php php/php/php Inphp yourphp bootstrapphp:
+php php*php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:addHelperphp(newphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp(php)php)php;
+php php*
+php php*php php/php/php Inphp yourphp actionphp controllerphp methodsphp:
+php php*php php$viewHelperphp php=php php$thisphp-php>php_helperphp-php>getHelperphp(php'viewphp'php)php;
+php php*
+php php*php php/php/php Donphp'tphp usephp controllerphp subdirectories
+php php*php php$viewHelperphp-php>setNoControllerphp(truephp)php;
+php php*
+php php*php php/php/php Specifyphp aphp differentphp scriptphp tophp renderphp:
+php php*php php$thisphp-php>php_helperphp-php>viewRendererphp(php'formphp'php)php;
+php php*
+php php*php <php/codephp>
+php php*
+php php*php php@usesphp php php php php php php Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp extendsphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Viewphp_Interface
+php php php php php php*php/
+php php php php publicphp php$viewphp;
+
+php php php php php/php*php*
+php php php php php php*php Wordphp delimiters
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_delimitersphp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Filterphp_Inflector
+php php php php php php*php/
+php php php php protectedphp php$php_inflectorphp;
+
+php php php php php/php*php*
+php php php php php php*php Inflectorphp target
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_inflectorTargetphp php=php php'php'php;
+
+php php php php php/php*php*
+php php php php php php*php Currentphp modulephp directory
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_moduleDirphp php=php php'php'php;
+
+php php php php php/php*php*
+php php php php php php*php Whetherphp orphp notphp tophp autorenderphp usingphp controllerphp namephp asphp subdirectoryphp;
+php php php php php php*php globalphp settingphp php(notphp resetphp atphp nextphp invocationphp)
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_neverControllerphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Whetherphp orphp notphp tophp autorenderphp postDispatchphp;php globalphp settingphp php(notphp resetphp at
+php php php php php php*php nextphp invocationphp)
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_neverRenderphp php php php php php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Whetherphp orphp notphp tophp usephp aphp controllerphp namephp asphp aphp subdirectoryphp whenphp rendering
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_noControllerphp php php php php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Whetherphp orphp notphp tophp autorenderphp postDispatchphp;php perphp controllerphp/actionphp settingphp php(reset
+php php php php php php*php atphp nextphp invocationphp)
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_noRenderphp php php php php php php php php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Charactersphp representingphp pathphp delimitersphp inphp thephp controller
+php php php php php php*php php@varphp stringphp|array
+php php php php php php*php/
+php php php php protectedphp php$php_pathDelimitersphp;
+
+php php php php php/php*php*
+php php php php php php*php Whichphp namedphp segmentphp ofphp thephp responsephp tophp utilize
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_responseSegmentphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Whichphp actionphp viewphp scriptphp tophp render
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_scriptActionphp php php php php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Viewphp objectphp basePath
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_viewBasePathSpecphp php=php php'php:moduleDirphp/viewsphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Viewphp scriptphp pathphp specificationphp string
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_viewScriptPathSpecphp php=php php'php:controllerphp/php:actionphp.php:suffixphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Viewphp scriptphp pathphp specificationphp stringphp,php minusphp controllerphp segment
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_viewScriptPathNoControllerSpecphp php=php php'php:actionphp.php:suffixphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Viewphp scriptphp suffix
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_viewSuffixphp php php php php php php=php php'phtmlphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php Optionallyphp setphp viewphp objectphp andphp optionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php php php php php php php php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$viewphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setViewphp(php$viewphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_setOptionsphp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clonephp php-php alsophp makephp surephp thephp viewphp isphp clonedphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_clonephp(php)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>viewphp)php php&php&php php$thisphp-php>viewphp instanceofphp Zendphp_Viewphp_Interfacephp)php php{
+php php php php php php php php php php php php php$thisphp-php>viewphp php=php clonephp php$thisphp-php>viewphp;
+
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp viewphp object
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setViewphp(Zendphp_Viewphp_Interfacephp php$viewphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>viewphp php=php php$viewphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp currentphp modulephp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getModulephp(php)
+php php php php php{
+php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
+php php php php php php php php php$modulephp php php=php php$requestphp-php>getModuleNamephp(php)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$modulephp)php php{
+php php php php php php php php php php php php php$modulephp php=php php$thisphp-php>getFrontControllerphp(php)php-php>getDispatcherphp(php)php-php>getDefaultModulephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$modulephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp modulephp directory
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Controllerphp_Actionphp_Exception
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getModuleDirectoryphp(php)
+php php php php php{
+php php php php php php php php php$modulephp php php php php=php php$thisphp-php>getModulephp(php)php;
+php php php php php php php php php$moduleDirphp php=php php$thisphp-php>getFrontControllerphp(php)php-php>getControllerDirectoryphp(php$modulephp)php;
+php php php php php php php php ifphp php(php(nullphp php=php=php=php php$moduleDirphp)php php|php|php isphp_arrayphp(php$moduleDirphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Controllerphp_Actionphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Actionphp_Exceptionphp(php'ViewRendererphp cannotphp locatephp modulephp directoryphp forphp modulephp php"php'php php.php php$modulephp php.php php'php"php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_moduleDirphp php=php dirnamephp(php$moduleDirphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_moduleDirphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp inflector
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Filterphp_Inflector
+php php php php php php*php/
+php php php php publicphp functionphp getInflectorphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_inflectorphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Filterphp_Inflector
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Inflectorphp.phpphp'php;
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Filterphp_PregReplace
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/PregReplacephp.phpphp'php;
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Filterphp_Wordphp_UnderscoreToSeparator
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Wordphp/UnderscoreToSeparatorphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>php_inflectorphp php=php newphp Zendphp_Filterphp_Inflectorphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_inflectorphp-php>setStaticRuleReferencephp(php'moduleDirphp'php,php php$thisphp-php>php_moduleDirphp)php php/php/php moduleDirphp mustphp bephp specifiedphp beforephp thephp lessphp specificphp php'modulephp'
+php php php php php php php php php php php php php php php php php php-php>addRulesphp(arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php'php:modulephp'php php php php php php=php>php arrayphp(php'Wordphp_CamelCaseToDashphp'php,php php'StringToLowerphp'php)php,
+php php php php php php php php php php php php php php php php php php php php php php'php:controllerphp'php php=php>php arrayphp(php'Wordphp_CamelCaseToDashphp'php,php newphp Zendphp_Filterphp_Wordphp_UnderscoreToSeparatorphp(php'php/php'php)php,php php'StringToLowerphp'php,php newphp Zendphp_Filterphp_PregReplacephp(php'php/php\php.php/php'php,php php'php-php'php)php)php,
+php php php php php php php php php php php php php php php php php php php php php php'php:actionphp'php php php php php php=php>php arrayphp(php'Wordphp_CamelCaseToDashphp'php,php newphp Zendphp_Filterphp_PregReplacephp(php'php#php[php^aphp-zphp0php-php9php'php php.php pregphp_quotephp(php'php/php'php,php php'php#php'php)php php.php php'php]php+php#iphp'php,php php'php-php'php)php,php php'StringToLowerphp'php)php,
+php php php php php php php php php php php php php php php php php php)php)
+php php php php php php php php php php php php php php php php php php-php>setStaticRuleReferencephp(php'suffixphp'php,php php$thisphp-php>php_viewSuffixphp)
+php php php php php php php php php php php php php php php php php php-php>setTargetReferencephp(php$thisphp-php>php_inflectorTargetphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Ensurephp thatphp modulephp directoryphp isphp current
+php php php php php php php php php$thisphp-php>getModuleDirectoryphp(php)php;
+
+php php php php php php php php returnphp php$thisphp-php>php_inflectorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp inflector
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Filterphp_Inflectorphp php$inflector
+php php php php php php*php php@paramphp php booleanphp php php php php php php php php php php php php php php php$referencephp Whetherphp thephp moduleDirphp,php targetphp,php andphp suffixphp shouldphp bephp setphp asphp referencesphp tophp ViewRendererphp properties
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setInflectorphp(Zendphp_Filterphp_Inflectorphp php$inflectorphp,php php$referencephp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_inflectorphp php=php php$inflectorphp;
+php php php php php php php php ifphp php(php$referencephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_inflectorphp-php>setStaticRuleReferencephp(php'suffixphp'php,php php$thisphp-php>php_viewSuffixphp)
+php php php php php php php php php php php php php php php php php php-php>setStaticRuleReferencephp(php'moduleDirphp'php,php php$thisphp-php>php_moduleDirphp)
+php php php php php php php php php php php php php php php php php php-php>setTargetReferencephp(php$thisphp-php>php_inflectorTargetphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp inflectorphp target
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$target
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setInflectorTargetphp(php$targetphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_inflectorTargetphp php=php php(stringphp)php php$targetphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp internalphp modulephp directoryphp representation
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$dir
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setModuleDirphp(php$dirphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_moduleDirphp php=php php(stringphp)php php$dirphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp internalphp modulephp directoryphp representation
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getModuleDirphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_moduleDirphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Generatephp aphp classphp prefixphp forphp helperphp andphp filterphp classes
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_generateDefaultPrefixphp(php)
+php php php php php{
+php php php php php php php php php$defaultphp php=php php'Zendphp_Viewphp'php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_actionControllerphp)php php{
+php php php php php php php php php php php php returnphp php$defaultphp;
+php php php php php php php php php}
+
+php php php php php php php php php$classphp php=php getphp_classphp(php$thisphp-php>php_actionControllerphp)php;
+
+php php php php php php php php ifphp php(php!strstrphp(php$classphp,php php'php_php'php)php)php php{
+php php php php php php php php php php php php returnphp php$defaultphp;
+php php php php php php php php php}
+
+php php php php php php php php php$modulephp php=php php$thisphp-php>getModulephp(php)php;
+php php php php php php php php ifphp php(php'defaultphp'php php=php=php php$modulephp)php php{
+php php php php php php php php php php php php returnphp php$defaultphp;
+php php php php php php php php php}
+
+php php php php php php php php php$prefixphp php=php substrphp(php$classphp,php php0php,php strposphp(php$classphp,php php'php_php'php)php)php php.php php'php_Viewphp'php;
+
+php php php php php php php php returnphp php$prefixphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp basephp pathphp basedphp onphp locationphp ofphp currentphp actionphp controller
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getBasePathphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_actionControllerphp)php php{
+php php php php php php php php php php php php returnphp php'php.php/viewsphp'php;
+php php php php php php php php php}
+
+php php php php php php php php php$inflectorphp php=php php$thisphp-php>getInflectorphp(php)php;
+php php php php php php php php php$thisphp-php>php_setInflectorTargetphp(php$thisphp-php>getViewBasePathSpecphp(php)php)php;
+
+php php php php php php php php php$dispatcherphp php=php php$thisphp-php>getFrontControllerphp(php)php-php>getDispatcherphp(php)php;
+php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
+
+php php php php php php php php php$partsphp php=php arrayphp(
+php php php php php php php php php php php php php'modulephp'php php php php php php=php>php php(php(php$moduleNamephp php=php php$requestphp-php>getModuleNamephp(php)php)php php!php=php php'php'php)php php?php php$dispatcherphp-php>formatModuleNamephp(php$moduleNamephp)php php:php php$moduleNamephp,
+php php php php php php php php php php php php php'controllerphp'php php=php>php php$requestphp-php>getControllerNamephp(php)php,
+php php php php php php php php php php php php php'actionphp'php php php php php php=php>php php$dispatcherphp-php>formatActionNamephp(php$requestphp-php>getActionNamephp(php)php)
+php php php php php php php php php php php php php)php;
+
+php php php php php php php php php$pathphp php=php php$inflectorphp-php>filterphp(php$partsphp)php;
+php php php php php php php php returnphp php$pathphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)
+php php php php php php php php php{
+php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php casephp php'neverRenderphp'php:
+php php php php php php php php php php php php php php php php casephp php'neverControllerphp'php:
+php php php php php php php php php php php php php php php php casephp php'noControllerphp'php:
+php php php php php php php php php php php php php php php php casephp php'noRenderphp'php:
+php php php php php php php php php php php php php php php php php php php php php$propertyphp php=php php'php_php'php php.php php$keyphp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php{php$propertyphp}php php=php php(php$valuephp)php php?php truephp php:php falsephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'responseSegmentphp'php:
+php php php php php php php php php php php php php php php php casephp php'scriptActionphp'php:
+php php php php php php php php php php php php php php php php casephp php'viewBasePathSpecphp'php:
+php php php php php php php php php php php php php php php php casephp php'viewScriptPathSpecphp'php:
+php php php php php php php php php php php php php php php php casephp php'viewScriptPathNoControllerSpecphp'php:
+php php php php php php php php php php php php php php php php casephp php'viewSuffixphp'php:
+php php php php php php php php php php php php php php php php php php php php php$propertyphp php=php php'php_php'php php.php php$keyphp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php{php$propertyphp}php php=php php(stringphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializephp thephp viewphp object
+php php php php php php*
+php php php php php php*php php$optionsphp mayphp containphp thephp followingphp keysphp:
+php php php php php php*php php-php neverRenderphp php-php flagphp disphp/enablingphp postDispatchphp(php)php autorenderphp php(affectsphp allphp subsequentphp callsphp)
+php php php php php php*php php-php noControllerphp php-php flagphp indicatingphp whetherphp orphp notphp tophp lookphp forphp viewphp scriptsphp inphp subdirectoriesphp namedphp afterphp thephp controller
+php php php php php php*php php-php noRenderphp php-php flagphp indicatingphp whetherphp orphp notphp tophp autorenderphp postDispatchphp(php)
+php php php php php php*php php-php responseSegmentphp php-php whichphp namedphp responsephp segmentphp tophp renderphp aphp viewphp scriptphp to
+php php php php php php*php php-php scriptActionphp php-php whatphp actionphp scriptphp tophp render
+php php php php php php*php php-php viewBasePathSpecphp php-php specificationphp tophp usephp forphp determiningphp viewphp basephp path
+php php php php php php*php php-php viewScriptPathSpecphp php-php specificationphp tophp usephp forphp determiningphp viewphp scriptphp paths
+php php php php php php*php php-php viewScriptPathNoControllerSpecphp php-php specificationphp tophp usephp forphp determiningphp viewphp scriptphp pathsphp whenphp noControllerphp flagphp isphp set
+php php php php php php*php php-php viewSuffixphp php-php whatphp viewphp scriptphp filenamephp suffixphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php stringphp php$prefix
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@throwsphp Zendphp_Controllerphp_Actionphp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp initViewphp(php$pathphp php=php nullphp,php php$prefixphp php=php nullphp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>viewphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setViewphp(newphp Zendphp_Viewphp(php)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Resetphp somephp flagsphp everyphp time
+php php php php php php php php php$optionsphp[php'noControllerphp'php]php php=php php(issetphp(php$optionsphp[php'noControllerphp'php]php)php)php php?php php$optionsphp[php'noControllerphp'php]php php:php falsephp;
+php php php php php php php php php$optionsphp[php'noRenderphp'php]php php php php php php=php php(issetphp(php$optionsphp[php'noRenderphp'php]php)php)php php?php php$optionsphp[php'noRenderphp'php]php php:php falsephp;
+php php php php php php php php php$thisphp-php>php_scriptActionphp php php php php php=php nullphp;
+php php php php php php php php php$thisphp-php>php_responseSegmentphp php php=php nullphp;
+
+php php php php php php php php php/php/php Setphp optionsphp firstphp;php mayphp bephp usedphp tophp determinephp otherphp initializations
+php php php php php php php php php$thisphp-php>php_setOptionsphp(php$optionsphp)php;
+
+php php php php php php php php php/php/php Getphp basephp viewphp path
+php php php php php php php php ifphp php(emptyphp(php$pathphp)php)php php{
+php php php php php php php php php php php php php$pathphp php=php php$thisphp-php>php_getBasePathphp(php)php;
+php php php php php php php php php php php php ifphp php(emptyphp(php$pathphp)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Controllerphp_Actionphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Actionphp_Exceptionphp(php'ViewRendererphp initializationphp failedphp:php retrievedphp viewphp basephp pathphp isphp emptyphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php=php=php=php php$prefixphp)php php{
+php php php php php php php php php php php php php$prefixphp php=php php$thisphp-php>php_generateDefaultPrefixphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Determinephp ifphp thisphp pathphp hasphp alreadyphp beenphp registered
+php php php php php php php php php$currentPathsphp php=php php$thisphp-php>viewphp-php>getScriptPathsphp(php)php;
+php php php php php php php php php$pathphp php php php php php php php php php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php php'php/php'php,php php$pathphp)php;
+php php php php php php php php php$pathExistsphp php php php=php falsephp;
+php php php php php php php php foreachphp php(php$currentPathsphp asphp php$tmpPathphp)php php{
+php php php php php php php php php php php php php$tmpPathphp php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php php'php/php'php,php php$tmpPathphp)php;
+php php php php php php php php php php php php ifphp php(strstrphp(php$tmpPathphp,php php$pathphp)php)php php{
+php php php php php php php php php php php php php php php php php$pathExistsphp php=php truephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$pathExistsphp)php php{
+php php php php php php php php php php php php php$thisphp-php>viewphp-php>addBasePathphp(php$pathphp,php php$prefixphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Registerphp viewphp withphp actionphp controllerphp php(unlessphp alreadyphp registeredphp)
+php php php php php php php php ifphp php(php(nullphp php!php=php=php php$thisphp-php>php_actionControllerphp)php php&php&php php(nullphp php=php=php=php php$thisphp-php>php_actionControllerphp-php>viewphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_actionControllerphp-php>viewphp php php php php php php php=php php$thisphp-php>viewphp;
+php php php php php php php php php php php php php$thisphp-php>php_actionControllerphp-php>viewSuffixphp php=php php$thisphp-php>php_viewSuffixphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php initphp php-php initializephp view
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>getFrontControllerphp(php)php-php>getParamphp(php'noViewRendererphp'php)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>initViewphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp viewphp basePathphp specification
+php php php php php php*
+php php php php php php*php Specificationphp canphp containphp onephp orphp morephp ofphp thephp followingphp:
+php php php php php php*php php-php php:moduleDirphp php-php currentphp modulephp directory
+php php php php php php*php php-php php:controllerphp php-php namephp ofphp currentphp controllerphp inphp thephp request
+php php php php php php*php php-php php:actionphp php-php namephp ofphp currentphp actionphp inphp thephp request
+php php php php php php*php php-php php:modulephp php-php namephp ofphp currentphp modulephp inphp thephp request
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setViewBasePathSpecphp(php$pathphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_viewBasePathSpecphp php=php php(stringphp)php php$pathphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp currentphp viewphp basePathphp specificationphp string
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getViewBasePathSpecphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_viewBasePathSpecphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp viewphp scriptphp pathphp specification
+php php php php php php*
+php php php php php php*php Specificationphp canphp containphp onephp orphp morephp ofphp thephp followingphp:
+php php php php php php*php php-php php:moduleDirphp php-php currentphp modulephp directory
+php php php php php php*php php-php php:controllerphp php-php namephp ofphp currentphp controllerphp inphp thephp request
+php php php php php php*php php-php php:actionphp php-php namephp ofphp currentphp actionphp inphp thephp request
+php php php php php php*php php-php php:modulephp php-php namephp ofphp currentphp modulephp inphp thephp request
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setViewScriptPathSpecphp(php$pathphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_viewScriptPathSpecphp php=php php(stringphp)php php$pathphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp currentphp viewphp scriptphp pathphp specificationphp string
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getViewScriptPathSpecphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_viewScriptPathSpecphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp viewphp scriptphp pathphp specificationphp php(nophp controllerphp variantphp)
+php php php php php php*
+php php php php php php*php Specificationphp canphp containphp onephp orphp morephp ofphp thephp followingphp:
+php php php php php php*php php-php php:moduleDirphp php-php currentphp modulephp directory
+php php php php php php*php php-php php:controllerphp php-php namephp ofphp currentphp controllerphp inphp thephp request
+php php php php php php*php php-php php:actionphp php-php namephp ofphp currentphp actionphp inphp thephp request
+php php php php php php*php php-php php:modulephp php-php namephp ofphp currentphp modulephp inphp thephp request
+php php php php php php*
+php php php php php php*php php:controllerphp willphp likelyphp bephp ignoredphp inphp thisphp variantphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setViewScriptPathNoControllerSpecphp(php$pathphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_viewScriptPathNoControllerSpecphp php=php php(stringphp)php php$pathphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp currentphp viewphp scriptphp pathphp specificationphp stringphp php(nophp controllerphp variantphp)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getViewScriptPathNoControllerSpecphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_viewScriptPathNoControllerSpecphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp aphp viewphp scriptphp basedphp onphp anphp actionphp andphp/orphp otherphp variables
+php php php php php php*
+php php php php php php*php Usesphp valuesphp foundphp inphp currentphp requestphp ifphp nophp valuesphp passedphp inphp php$varsphp.
+php php php php php php*
+php php php php php php*php Ifphp php{php@linkphp php$php_noControllerphp}php isphp setphp,php usesphp php{php@linkphp php$php_viewScriptPathNoControllerSpecphp}php;
+php php php php php php*php otherwisephp,php usesphp php{php@linkphp php$php_viewScriptPathSpecphp}php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$action
+php php php php php php*php php@paramphp php arrayphp php php$vars
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getViewScriptphp(php$actionphp php=php nullphp,php arrayphp php$varsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
+php php php php php php php php ifphp php(php(nullphp php=php=php=php php$actionphp)php php&php&php php(php!issetphp(php$varsphp[php'actionphp'php]php)php)php)php php{
+php php php php php php php php php php php php php$actionphp php=php php$thisphp-php>getScriptActionphp(php)php;
+php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$actionphp)php php{
+php php php php php php php php php php php php php php php php php$actionphp php=php php$requestphp-php>getActionNamephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$varsphp[php'actionphp'php]php php=php php$actionphp;
+php php php php php php php php php}php elseifphp php(nullphp php!php=php=php php$actionphp)php php{
+php php php php php php php php php php php php php$varsphp[php'actionphp'php]php php=php php$actionphp;
+php php php php php php php php php}
+
+php php php php php php php php php$inflectorphp php=php php$thisphp-php>getInflectorphp(php)php;
+php php php php php php php php ifphp php(php$thisphp-php>getNoControllerphp(php)php php|php|php php$thisphp-php>getNeverControllerphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_setInflectorTargetphp(php$thisphp-php>getViewScriptPathNoControllerSpecphp(php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_setInflectorTargetphp(php$thisphp-php>getViewScriptPathSpecphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_translateSpecphp(php$varsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp neverRenderphp flagphp php(iphp.ephp.php,php globallyphp disphp/enablephp autorenderingphp)
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$flag
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setNeverRenderphp(php$flagphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_neverRenderphp php=php php(php$flagphp)php php?php truephp php:php falsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp neverRenderphp flagphp value
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getNeverRenderphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_neverRenderphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp noRenderphp flagphp php(iphp.ephp.php,php whetherphp orphp notphp tophp autorenderphp)
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$flag
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setNoRenderphp(php$flagphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_noRenderphp php=php php(php$flagphp)php php?php truephp php:php falsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp noRenderphp flagphp value
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getNoRenderphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_noRenderphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp viewphp scriptphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setScriptActionphp(php$namephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_scriptActionphp php=php php(stringphp)php php$namephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp viewphp scriptphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getScriptActionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_scriptActionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp responsephp segmentphp name
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setResponseSegmentphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_responseSegmentphp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_responseSegmentphp php=php php(stringphp)php php$namephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp namedphp responsephp segmentphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getResponseSegmentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_responseSegmentphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp noControllerphp flagphp php(iphp.ephp.php,php whetherphp orphp notphp tophp renderphp intophp controllerphp subdirectoriesphp)
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$flag
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setNoControllerphp(php$flagphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_noControllerphp php=php php(php$flagphp)php php?php truephp php:php falsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp noControllerphp flagphp value
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getNoControllerphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_noControllerphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp neverControllerphp flagphp php(iphp.ephp.php,php whetherphp orphp notphp tophp renderphp intophp controllerphp subdirectoriesphp)
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$flag
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setNeverControllerphp(php$flagphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_neverControllerphp php=php php(php$flagphp)php php?php truephp php:php falsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp neverControllerphp flagphp value
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getNeverControllerphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_neverControllerphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp viewphp scriptphp suffix
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$suffix
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setViewSuffixphp(php$suffixphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_viewSuffixphp php=php php(stringphp)php php$suffixphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp viewphp scriptphp suffix
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getViewSuffixphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_viewSuffixphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp optionsphp forphp renderingphp aphp viewphp script
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$actionphp php php php php php php Viewphp scriptphp tophp render
+php php php php php php*php php@paramphp php stringphp php php$namephp php php php php php php php php Responsephp namedphp segmentphp tophp renderphp to
+php php php php php php*php php@paramphp php booleanphp php$noControllerphp Whetherphp orphp notphp tophp renderphp withinphp aphp subdirectoryphp namedphp afterphp thephp controller
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setRenderphp(php$actionphp php=php nullphp,php php$namephp php=php nullphp,php php$noControllerphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$actionphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setScriptActionphp(php$actionphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$namephp)php php{
+php php php php php php php php php php php php php$thisphp-php>setResponseSegmentphp(php$namephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$noControllerphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setNoControllerphp(php$noControllerphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Inflectphp basedphp onphp providedphp vars
+php php php php php php*
+php php php php php php*php Allowedphp variablesphp arephp:
+php php php php php php*php php-php php:moduleDirphp php-php currentphp modulephp directory
+php php php php php php*php php-php php:modulephp php-php currentphp modulephp name
+php php php php php php*php php-php php:controllerphp php-php currentphp controllerphp name
+php php php php php php*php php-php php:actionphp php-php currentphp actionphp name
+php php php php php php*php php-php php:suffixphp php-php viewphp scriptphp filephp suffix
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$vars
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_translateSpecphp(arrayphp php$varsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$inflectorphp php php=php php$thisphp-php>getInflectorphp(php)php;
+php php php php php php php php php$requestphp php php php php=php php$thisphp-php>getRequestphp(php)php;
+php php php php php php php php php$dispatcherphp php=php php$thisphp-php>getFrontControllerphp(php)php-php>getDispatcherphp(php)php;
+php php php php php php php php php$modulephp php php php php php=php php$dispatcherphp-php>formatModuleNamephp(php$requestphp-php>getModuleNamephp(php)php)php;
+php php php php php php php php php$controllerphp php=php php$requestphp-php>getControllerNamephp(php)php;
+php php php php php php php php php$actionphp php php php php php=php php$dispatcherphp-php>formatActionNamephp(php$requestphp-php>getActionNamephp(php)php)php;
+
+php php php php php php php php php$paramsphp php php php php php=php compactphp(php'modulephp'php,php php'controllerphp'php,php php'actionphp'php)php;
+php php php php php php php php foreachphp php(php$varsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php casephp php'modulephp'php:
+php php php php php php php php php php php php php php php php casephp php'controllerphp'php:
+php php php php php php php php php php php php php php php php casephp php'actionphp'php:
+php php php php php php php php php php php php php php php php casephp php'moduleDirphp'php:
+php php php php php php php php php php php php php php php php casephp php'suffixphp'php:
+php php php php php php php php php php php php php php php php php php php php php$paramsphp[php$keyphp]php php=php php(stringphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'suffixphp'php]php)php)php php{
+php php php php php php php php php php php php php$origSuffixphp php=php php$thisphp-php>getViewSuffixphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>setViewSuffixphp(php$paramsphp[php'suffixphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'moduleDirphp'php]php)php)php php{
+php php php php php php php php php php php php php$origModuleDirphp php=php php$thisphp-php>php_getModuleDirphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_setModuleDirphp(php$paramsphp[php'moduleDirphp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$filteredphp php=php php$inflectorphp-php>filterphp(php$paramsphp)php;
+
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'suffixphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setViewSuffixphp(php$origSuffixphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'moduleDirphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_setModuleDirphp(php$origModuleDirphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$filteredphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Renderphp aphp viewphp scriptphp php(optionallyphp tophp aphp namedphp responsephp segmentphp)
+php php php php php php*
+php php php php php php*php Setsphp thephp noRenderphp flagphp tophp truephp whenphp calledphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$script
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp renderScriptphp(php$scriptphp,php php$namephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
+php php php php php php php php php php php php php$namephp php=php php$thisphp-php>getResponseSegmentphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>getResponsephp(php)php-php>appendBodyphp(
+php php php php php php php php php php php php php$thisphp-php>viewphp-php>renderphp(php$scriptphp)php,
+php php php php php php php php php php php php php$name
+php php php php php php php php php)php;
+
+php php php php php php php php php$thisphp-php>setNoRenderphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Renderphp aphp viewphp basedphp onphp pathphp specifications
+php php php php php php*
+php php php php php php*php Rendersphp aphp viewphp basedphp onphp thephp viewphp scriptphp pathphp specificationsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$action
+php php php php php php*php php@paramphp php stringphp php php$name
+php php php php php php*php php@paramphp php booleanphp php$noController
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php$actionphp php=php nullphp,php php$namephp php=php nullphp,php php$noControllerphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setRenderphp(php$actionphp,php php$namephp,php php$noControllerphp)php;
+php php php php php php php php php$pathphp php=php php$thisphp-php>getViewScriptphp(php)php;
+php php php php php php php php php$thisphp-php>renderScriptphp(php$pathphp,php php$namephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Renderphp aphp scriptphp basedphp onphp specificationphp variables
+php php php php php php*
+php php php php php php*php Passphp anphp actionphp,php andphp onephp orphp morephp specificationphp variablesphp php(viewphp scriptphp suffixphp)
+php php php php php php*php tophp determinephp thephp viewphp scriptphp pathphp,php andphp renderphp thatphp scriptphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$action
+php php php php php php*php php@paramphp php arrayphp php php$vars
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp renderBySpecphp(php$actionphp php=php nullphp,php arrayphp php$varsphp php=php arrayphp(php)php,php php$namephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$namephp)php php{
+php php php php php php php php php php php php php$thisphp-php>setResponseSegmentphp(php$namephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$pathphp php=php php$thisphp-php>getViewScriptphp(php$actionphp,php php$varsphp)php;
+
+php php php php php php php php php$thisphp-php>renderScriptphp(php$pathphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php postDispatchphp php-php autophp renderphp aphp view
+php php php php php php*
+php php php php php php*php Onlyphp autorendersphp ifphp:
+php php php php php php*php php-php php_noRenderphp isphp false
+php php php php php php*php php-php actionphp controllerphp isphp present
+php php php php php php*php php-php requestphp hasphp notphp beenphp rephp-dispatchedphp php(iphp.ephp.php,php php_forwardphp(php)php hasphp notphp beenphp calledphp)
+php php php php php php*php php-php responsephp isphp notphp aphp redirect
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp postDispatchphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_shouldRenderphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>renderphp(php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Shouldphp thephp ViewRendererphp renderphp aphp viewphp scriptphp?
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_shouldRenderphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php!php$thisphp-php>getFrontControllerphp(php)php-php>getParamphp(php'noViewRendererphp'php)
+php php php php php php php php php php php php php&php&php php!php$thisphp-php>php_neverRender
+php php php php php php php php php php php php php&php&php php!php$thisphp-php>php_noRender
+php php php php php php php php php php php php php&php&php php(nullphp php!php=php=php php$thisphp-php>php_actionControllerphp)
+php php php php php php php php php php php php php&php&php php$thisphp-php>getRequestphp(php)php-php>isDispatchedphp(php)
+php php php php php php php php php php php php php&php&php php!php$thisphp-php>getResponsephp(php)php-php>isRedirectphp(php)
+php php php php php php php php php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Usephp thisphp helperphp asphp aphp methodphp;php proxiesphp tophp setRenderphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$action
+php php php php php php*php php@paramphp php stringphp php php$name
+php php php php php php*php php@paramphp php booleanphp php$noController
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp directphp(php$actionphp php=php nullphp,php php$namephp php=php nullphp,php php$noControllerphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setRenderphp(php$actionphp,php php$namephp,php php$noControllerphp)php;
+php php php php php}
+php}

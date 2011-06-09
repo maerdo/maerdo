@@ -1,155 +1,155 @@
-<?php
-/**
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage DocumentService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp DocumentService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Common interface for document storage services in the cloud. This interface
- * supports most document services and provides some flexibility for
- * vendor-specific features and requirements via an optional $options array in
- * each method signature. Classes implementing this interface should implement
- * URI construction for collections and documents from the parameters given in each
- * method and the account data passed in to the constructor. Classes
- * implementing this interface are also responsible for security; access control
- * isn't currently supported in this interface, although we are considering
- * access control support in future versions of the interface.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage DocumentService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Cloud_DocumentService_Adapter
-{
-    // HTTP adapter to use for connections
-    const HTTP_ADAPTER = 'http_adapter';
+php/php*php*
+php php*php Commonphp interfacephp forphp documentphp storagephp servicesphp inphp thephp cloudphp.php Thisphp interface
+php php*php supportsphp mostphp documentphp servicesphp andphp providesphp somephp flexibilityphp for
+php php*php vendorphp-specificphp featuresphp andphp requirementsphp viaphp anphp optionalphp php$optionsphp arrayphp in
+php php*php eachphp methodphp signaturephp.php Classesphp implementingphp thisphp interfacephp shouldphp implement
+php php*php URIphp constructionphp forphp collectionsphp andphp documentsphp fromphp thephp parametersphp givenphp inphp each
+php php*php methodphp andphp thephp accountphp dataphp passedphp inphp tophp thephp constructorphp.php Classes
+php php*php implementingphp thisphp interfacephp arephp alsophp responsiblephp forphp securityphp;php accessphp control
+php php*php isnphp'tphp currentlyphp supportedphp inphp thisphp interfacephp,php althoughphp wephp arephp considering
+php php*php accessphp controlphp supportphp inphp futurephp versionsphp ofphp thephp interfacephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp DocumentService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Cloudphp_DocumentServicephp_Adapter
+php{
+php php php php php/php/php HTTPphp adapterphp tophp usephp forphp connections
+php php php php constphp HTTPphp_ADAPTERphp php=php php'httpphp_adapterphp'php;
 
-    /**
-     * Create collection.
-     *
-     * @param  string $name
-     * @param  array  $options
-     * @return array
-     */
-    public function createCollection($name, $options = null);
+php php php php php/php*php*
+php php php php php php*php Createphp collectionphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp createCollectionphp(php$namephp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Delete collection.
-     *
-     * @param  string $name
-     * @param  array  $options
-     * @return void
-     */
-    public function deleteCollection($name, $options = null);
+php php php php php/php*php*
+php php php php php php*php Deletephp collectionphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteCollectionphp(php$namephp,php php$optionsphp php=php nullphp)php;
 
-       /**
-     * List collections.
-     *
-     * @param  array  $options
-     * @return array List of collection names
-     */
-    public function listCollections($options = null);
+php php php php php php php php/php*php*
+php php php php php php*php Listphp collectionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp arrayphp Listphp ofphp collectionphp names
+php php php php php php*php/
+php php php php publicphp functionphp listCollectionsphp(php$optionsphp php=php nullphp)php;
 
-    /**
-     * List all documents in a collection
-     *
-     * @param  string $collectionName
-     * @param  null|array $options
-     * @return Zend_Cloud_DocumentService_DocumentSet
-     */
-    public function listDocuments($collectionName, array $options = null);
+php php php php php/php*php*
+php php php php php php*php Listphp allphp documentsphp inphp aphp collection
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionName
+php php php php php php*php php@paramphp php nullphp|arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_DocumentSet
+php php php php php php*php/
+php php php php publicphp functionphp listDocumentsphp(php$collectionNamephp,php arrayphp php$optionsphp php=php nullphp)php;
 
-    /**
-     * Insert document
-     *
-     * @param  string $collectionName Collection name
-     * @param  Zend_Cloud_DocumentService_Document $document Document to insert
-     * @param  array $options
-     * @return boolean
-     */
-    public function insertDocument($collectionName, $document, $options = null);
+php php php php php/php*php*
+php php php php php php*php Insertphp document
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionNamephp Collectionphp name
+php php php php php php*php php@paramphp php Zendphp_Cloudphp_DocumentServicephp_Documentphp php$documentphp Documentphp tophp insert
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp insertDocumentphp(php$collectionNamephp,php php$documentphp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Replace document
-     * The new document replaces the existing document with the same ID.
-     *
-     * @param string $collectionName Collection name
-     * @param Zend_Cloud_DocumentService_Document $document
-     * @param array $options
-     */
-    public function replaceDocument($collectionName, $document, $options = null);
+php php php php php/php*php*
+php php php php php php*php Replacephp document
+php php php php php php*php Thephp newphp documentphp replacesphp thephp existingphp documentphp withphp thephp samephp IDphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$collectionNamephp Collectionphp name
+php php php php php php*php php@paramphp Zendphp_Cloudphp_DocumentServicephp_Documentphp php$document
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php/
+php php php php publicphp functionphp replaceDocumentphp(php$collectionNamephp,php php$documentphp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Update document
-     * The fields of the existing documents will be updated.
-     * Fields not specified in the set will be left as-is.
-     *
-     * @param  string $collectionName
-     * @param  mixed|Zend_Cloud_DocumentService_Document $documentID Document ID, adapter-dependent, or document containing updates
-     * @param  array|Zend_Cloud_DocumentService_Document $fieldset Set of fields to update
-     * @param  array                   $options
-     * @return boolean
-     */
-    public function updateDocument($collectionName, $documentID, $fieldset = null, $options = null);
+php php php php php/php*php*
+php php php php php php*php Updatephp document
+php php php php php php*php Thephp fieldsphp ofphp thephp existingphp documentsphp willphp bephp updatedphp.
+php php php php php php*php Fieldsphp notphp specifiedphp inphp thephp setphp willphp bephp leftphp asphp-isphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionName
+php php php php php php*php php@paramphp php mixedphp|Zendphp_Cloudphp_DocumentServicephp_Documentphp php$documentIDphp Documentphp IDphp,php adapterphp-dependentphp,php orphp documentphp containingphp updates
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Cloudphp_DocumentServicephp_Documentphp php$fieldsetphp Setphp ofphp fieldsphp tophp update
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php php php php php php php php php php php php$options
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp updateDocumentphp(php$collectionNamephp,php php$documentIDphp,php php$fieldsetphp php=php nullphp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Delete document
-     *
-     * @param string $collectionName Collection name
-     * @param mixed  $documentID Document ID, adapter-dependent
-     * @param array  $options
-     * @return void
-     */
-    public function deleteDocument($collectionName, $documentID, $options = null);
+php php php php php/php*php*
+php php php php php php*php Deletephp document
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$collectionNamephp Collectionphp name
+php php php php php php*php php@paramphp mixedphp php php$documentIDphp Documentphp IDphp,php adapterphp-dependent
+php php php php php php*php php@paramphp arrayphp php php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteDocumentphp(php$collectionNamephp,php php$documentIDphp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Fetch single document by ID
-     *
-     * Will return false if the document does not exist
-     *
-     * @param string $collectionName Collection name
-     * @param mixed $documentID Document ID, adapter-dependent
-     * @param array $options
-     * @return Zend_Cloud_DocumentService_Document
-     */
-    public function fetchDocument($collectionName, $documentID, $options = null);
+php php php php php/php*php*
+php php php php php php*php Fetchphp singlephp documentphp byphp ID
+php php php php php php*
+php php php php php php*php Willphp returnphp falsephp ifphp thephp documentphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$collectionNamephp Collectionphp name
+php php php php php php*php php@paramphp mixedphp php$documentIDphp Documentphp IDphp,php adapterphp-dependent
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_Document
+php php php php php php*php/
+php php php php publicphp functionphp fetchDocumentphp(php$collectionNamephp,php php$documentIDphp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Query for documents stored in the document service. If a string is passed in
-     * $query, the query string will be passed directly to the service.
-     *
-     * @param  string $collectionName Collection name
-     * @param  string $query
-     * @param  array $options
-     * @return array Array of field sets
-     */
-    public function query($collectionName, $query, $options = null);
+php php php php php/php*php*
+php php php php php php*php Queryphp forphp documentsphp storedphp inphp thephp documentphp servicephp.php Ifphp aphp stringphp isphp passedphp in
+php php php php php php*php php$queryphp,php thephp queryphp stringphp willphp bephp passedphp directlyphp tophp thephp servicephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionNamephp Collectionphp name
+php php php php php php*php php@paramphp php stringphp php$query
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp fieldphp sets
+php php php php php php*php/
+php php php php publicphp functionphp queryphp(php$collectionNamephp,php php$queryphp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Create query statement
-     *
-     * @param string $fields
-     * @return Zend_Cloud_DocumentService_Query
-     */
-    public function select($fields = null);
+php php php php php/php*php*
+php php php php php php*php Createphp queryphp statement
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$fields
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_Query
+php php php php php php*php/
+php php php php publicphp functionphp selectphp(php$fieldsphp php=php nullphp)php;
 
-    /**
-     * Get the concrete service client
-     */
-    public function getClient();
-}
+php php php php php/php*php*
+php php php php php php*php Getphp thephp concretephp servicephp client
+php php php php php php*php/
+php php php php publicphp functionphp getClientphp(php)php;
+php}

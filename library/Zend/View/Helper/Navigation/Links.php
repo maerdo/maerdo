@@ -1,783 +1,783 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Links.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-
-/**
- * @see Zend_View_Helper_Navigation_HelperAbstract
- */
-require_once 'Zend/View/Helper/Navigation/HelperAbstract.php';
-
-/**
- * Helper for printing <link> elements
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_Navigation_Links
-    extends Zend_View_Helper_Navigation_HelperAbstract
-{
-    /**#@+
-     * Constants used for specifying which link types to find and render
-     *
-     * @var int
-     */
-    const RENDER_ALTERNATE  = 0x0001;
-    const RENDER_STYLESHEET = 0x0002;
-    const RENDER_START      = 0x0004;
-    const RENDER_NEXT       = 0x0008;
-    const RENDER_PREV       = 0x0010;
-    const RENDER_CONTENTS   = 0x0020;
-    const RENDER_INDEX      = 0x0040;
-    const RENDER_GLOSSARY   = 0x0080;
-    const RENDER_COPYRIGHT  = 0x0100;
-    const RENDER_CHAPTER    = 0x0200;
-    const RENDER_SECTION    = 0x0400;
-    const RENDER_SUBSECTION = 0x0800;
-    const RENDER_APPENDIX   = 0x1000;
-    const RENDER_HELP       = 0x2000;
-    const RENDER_BOOKMARK   = 0x4000;
-    const RENDER_CUSTOM     = 0x8000;
-    const RENDER_ALL        = 0xffff;
-    /**#@+**/
-
-    /**
-     * Maps render constants to W3C link types
-     *
-     * @var array
-     */
-    protected static $_RELATIONS = array(
-        self::RENDER_ALTERNATE  => 'alternate',
-        self::RENDER_STYLESHEET => 'stylesheet',
-        self::RENDER_START      => 'start',
-        self::RENDER_NEXT       => 'next',
-        self::RENDER_PREV       => 'prev',
-        self::RENDER_CONTENTS   => 'contents',
-        self::RENDER_INDEX      => 'index',
-        self::RENDER_GLOSSARY   => 'glossary',
-        self::RENDER_COPYRIGHT  => 'copyright',
-        self::RENDER_CHAPTER    => 'chapter',
-        self::RENDER_SECTION    => 'section',
-        self::RENDER_SUBSECTION => 'subsection',
-        self::RENDER_APPENDIX   => 'appendix',
-        self::RENDER_HELP       => 'help',
-        self::RENDER_BOOKMARK   => 'bookmark'
-    );
-
-    /**
-     * The helper's render flag
-     *
-     * @see render()
-     * @see setRenderFlag()
-     * @var int
-     */
-    protected $_renderFlag = self::RENDER_ALL;
-
-    /**
-     * Root container
-     *
-     * Used for preventing methods to traverse above the container given to
-     * the {@link render()} method.
-     *
-     * @see _findRoot()
-     *
-     * @var Zend_Navigation_Container
-     */
-    protected $_root;
-
-    /**
-     * View helper entry point:
-     * Retrieves helper and optionally sets container to operate on
-     *
-     * @param  Zend_Navigation_Container $container  [optional] container to
-     *                                               operate on
-     * @return Zend_View_Helper_Navigation_Links     fluent interface, returns
-     *                                               self
-     */
-    public function links(Zend_Navigation_Container $container = null)
-    {
-        if (null !== $container) {
-            $this->setContainer($container);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Magic overload: Proxy calls to {@link findRelation()} or container
-     *
-     * Examples of finder calls:
-     * <code>
-     * // METHOD                  // SAME AS
-     * $h->findRelNext($page);    // $h->findRelation($page, 'rel', 'next')
-     * $h->findRevSection($page); // $h->findRelation($page, 'rev', 'section');
-     * $h->findRelFoo($page);     // $h->findRelation($page, 'rel', 'foo');
-     * </code>
-     *
-     * @param  string $method             method name
-     * @param  array  $arguments          method arguments
-     * @throws Zend_Navigation_Exception  if method does not exist in container
-     */
-    public function __call($method, array $arguments = array())
-    {
-        if (@preg_match('/find(Rel|Rev)(.+)/', $method, $match)) {
-            return $this->findRelation($arguments[0],
-                                       strtolower($match[1]),
-                                       strtolower($match[2]));
-        }
-
-        return parent::__call($method, $arguments);
-    }
-
-    // Accessors:
-
-    /**
-     * Sets the helper's render flag
-     *
-     * The helper uses the bitwise '&' operator against the hex values of the
-     * render constants. This means that the flag can is "bitwised" value of
-     * the render constants. Examples:
-     * <code>
-     * // render all links except glossary
-     * $flag = Zend_View_Helper_Navigation_Links:RENDER_ALL ^
-     *         Zend_View_Helper_Navigation_Links:RENDER_GLOSSARY;
-     * $helper->setRenderFlag($flag);
-     *
-     * // render only chapters and sections
-     * $flag = Zend_View_Helper_Navigation_Links:RENDER_CHAPTER |
-     *         Zend_View_Helper_Navigation_Links:RENDER_SECTION;
-     * $helper->setRenderFlag($flag);
-     *
-     * // render only relations that are not native W3C relations
-     * $helper->setRenderFlag(Zend_View_Helper_Navigation_Links:RENDER_CUSTOM);
-     *
-     * // render all relations (default)
-     * $helper->setRenderFlag(Zend_View_Helper_Navigation_Links:RENDER_ALL);
-     * </code>
-     *
-     * Note that custom relations can also be rendered directly using the
-     * {@link renderLink()} method.
-     *
-     * @param  int $renderFlag                    render flag
-     * @return Zend_View_Helper_Navigation_Links  fluent interface, returns self
-     */
-    public function setRenderFlag($renderFlag)
-    {
-        $this->_renderFlag = (int) $renderFlag;
-        return $this;
-    }
-
-    /**
-     * Returns the helper's render flag
-     *
-     * @return int  render flag
-     */
-    public function getRenderFlag()
-    {
-        return $this->_renderFlag;
-    }
-
-    // Finder methods:
-
-    /**
-     * Finds all relations (forward and reverse) for the given $page
-     *
-     * The form of the returned array:
-     * <code>
-     * // $page denotes an instance of Zend_Navigation_Page
-     * $returned = array(
-     *     'rel' => array(
-     *         'alternate' => array($page, $page, $page),
-     *         'start'     => array($page),
-     *         'next'      => array($page),
-     *         'prev'      => array($page),
-     *         'canonical' => array($page)
-     *     ),
-     *     'rev' => array(
-     *         'section'   => array($page)
-     *     )
-     * );
-     * </code>
-     *
-     * @param  Zend_Navigation_Page $page  page to find links for
-     * @return array                       related pages
-     */
-    public function findAllRelations(Zend_Navigation_Page $page,
-                                     $flag = null)
-    {
-        if (!is_int($flag)) {
-            $flag = self::RENDER_ALL;
-        }
-
-        $result = array('rel' => array(), 'rev' => array());
-        $native = array_values(self::$_RELATIONS);
-
-        foreach (array_keys($result) as $rel) {
-            $meth = 'getDefined' . ucfirst($rel);
-            $types = array_merge($native, array_diff($page->$meth(), $native));
-
-            foreach ($types as $type) {
-                if (!$relFlag = array_search($type, self::$_RELATIONS)) {
-                    $relFlag = self::RENDER_CUSTOM;
-                }
-                if (!($flag & $relFlag)) {
-                    continue;
-                }
-                if ($found = $this->findRelation($page, $rel, $type)) {
-                    if (!is_array($found)) {
-                        $found = array($found);
-                    }
-                    $result[$rel][$type] = $found;
-                }
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * Finds relations of the given $rel=$type from $page
-     *
-     * This method will first look for relations in the page instance, then
-     * by searching the root container if nothing was found in the page.
-     *
-     * @param  Zend_Navigation_Page $page       page to find relations for
-     * @param  string              $rel         relation, "rel" or "rev"
-     * @param  string              $type        link type, e.g. 'start', 'next'
-     * @return Zend_Navigaiton_Page|array|null  page(s), or null if not found
-     * @throws Zend_View_Exception              if $rel is not "rel" or "rev"
-     */
-    public function findRelation(Zend_Navigation_Page $page, $rel, $type)
-    {
-        if (!in_array($rel, array('rel', 'rev'))) {
-            require_once 'Zend/View/Exception.php';
-            $e = new Zend_View_Exception(sprintf(
-                'Invalid argument: $rel must be "rel" or "rev"; "%s" given',
-                $rel));
-            $e->setView($this->view);
-            throw $e;
-        }
-
-        if (!$result = $this->_findFromProperty($page, $rel, $type)) {
-            $result = $this->_findFromSearch($page, $rel, $type);
-        }
-
-        return $result;
-    }
-
-    /**
-     * Finds relations of given $type for $page by checking if the
-     * relation is specified as a property of $page
-     *
-     * @param  Zend_Navigation_Page $page       page to find relations for
-     * @param  string              $rel         relation, 'rel' or 'rev'
-     * @param  string              $type        link type, e.g. 'start', 'next'
-     * @return Zend_Navigation_Page|array|null  page(s), or null if not found
-     */
-    protected function _findFromProperty(Zend_Navigation_Page $page, $rel, $type)
-    {
-        $method = 'get' . ucfirst($rel);
-        if ($result = $page->$method($type)) {
-            if ($result = $this->_convertToPages($result)) {
-                if (!is_array($result)) {
-                    $result = array($result);
-                }
-
-                foreach ($result as $key => $page) {
-                    if (!$this->accept($page)) {
-                        unset($result[$key]);
-                    }
-                }
-
-                return count($result) == 1 ? $result[0] : $result;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds relations of given $rel=$type for $page by using the helper to
-     * search for the relation in the root container
-     *
-     * @param  Zend_Navigation_Page $page  page to find relations for
-     * @param  string              $rel    relation, 'rel' or 'rev'
-     * @param  string              $type   link type, e.g. 'start', 'next', etc
-     * @return array|null                  array of pages, or null if not found
-     */
-    protected function _findFromSearch(Zend_Navigation_Page $page, $rel, $type)
-    {
-        $found = null;
-
-        $method = 'search' . ucfirst($rel) . ucfirst($type);
-        if (method_exists($this, $method)) {
-            $found = $this->$method($page);
-        }
-
-        return $found;
-    }
-
-    // Search methods:
-
-    /**
-     * Searches the root container for the forward 'start' relation of the given
-     * $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to the first document in a collection of documents. This link type
-     * tells search engines which document is considered by the author to be the
-     * starting point of the collection.
-     *
-     * @param  Zend_Navigation_Page $page  page to find relation for
-     * @return Zend_Navigation_Page|null   page or null
-     */
-    public function searchRelStart(Zend_Navigation_Page $page)
-    {
-        $found = $this->_findRoot($page);
-        if (!$found instanceof Zend_Navigation_Page) {
-            $found->rewind();
-            $found = $found->current();
-        }
-
-        if ($found === $page || !$this->accept($found)) {
-            $found = null;
-        }
-
-        return $found;
-    }
-
-    /**
-     * Searches the root container for the forward 'next' relation of the given
-     * $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to the next document in a linear sequence of documents. User
-     * agents may choose to preload the "next" document, to reduce the perceived
-     * load time.
-     *
-     * @param  Zend_Navigation_Page $page  page to find relation for
-     * @return Zend_Navigation_Page|null   page(s) or null
-     */
-    public function searchRelNext(Zend_Navigation_Page $page)
-    {
-        $found = null;
-        $break = false;
-        $iterator = new RecursiveIteratorIterator($this->_findRoot($page),
-                RecursiveIteratorIterator::SELF_FIRST);
-        foreach ($iterator as $intermediate) {
-            if ($intermediate === $page) {
-                // current page; break at next accepted page
-                $break = true;
-                continue;
-            }
-
-            if ($break && $this->accept($intermediate)) {
-                $found = $intermediate;
-                break;
-            }
-        }
-
-        return $found;
-    }
-
-    /**
-     * Searches the root container for the forward 'prev' relation of the given
-     * $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to the previous document in an ordered series of documents. Some
-     * user agents also support the synonym "Previous".
-     *
-     * @param  Zend_Navigation_Page $page  page to find relation for
-     * @return Zend_Navigation_Page|null   page or null
-     */
-    public function searchRelPrev(Zend_Navigation_Page $page)
-    {
-        $found = null;
-        $prev = null;
-        $iterator = new RecursiveIteratorIterator(
-                $this->_findRoot($page),
-                RecursiveIteratorIterator::SELF_FIRST);
-        foreach ($iterator as $intermediate) {
-            if (!$this->accept($intermediate)) {
-                continue;
-            }
-            if ($intermediate === $page) {
-                $found = $prev;
-                break;
-            }
-
-            $prev = $intermediate;
-        }
-
-        return $found;
-    }
-
-    /**
-     * Searches the root container for forward 'chapter' relations of the given
-     * $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to a document serving as a chapter in a collection of documents.
-     *
-     * @param  Zend_Navigation_Page $page       page to find relation for
-     * @return Zend_Navigation_Page|array|null  page(s) or null
-     */
-    public function searchRelChapter(Zend_Navigation_Page $page)
-    {
-        $found = array();
-
-        // find first level of pages
-        $root = $this->_findRoot($page);
-
-        // find start page(s)
-        $start = $this->findRelation($page, 'rel', 'start');
-        if (!is_array($start)) {
-            $start = array($start);
-        }
-
-        foreach ($root as $chapter) {
-            // exclude self and start page from chapters
-            if ($chapter !== $page &&
-                !in_array($chapter, $start) &&
-                $this->accept($chapter)) {
-                $found[] = $chapter;
-            }
-        }
-
-        switch (count($found)) {
-            case 0:
-                return null;
-            case 1:
-                return $found[0];
-            default:
-                return $found;
-        }
-    }
-
-    /**
-     * Searches the root container for forward 'section' relations of the given
-     * $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to a document serving as a section in a collection of documents.
-     *
-     * @param  Zend_Navigation_Page $page       page to find relation for
-     * @return Zend_Navigation_Page|array|null  page(s) or null
-     */
-    public function searchRelSection(Zend_Navigation_Page $page)
-    {
-        $found = array();
-
-        // check if given page has pages and is a chapter page
-        if ($page->hasPages() && $this->_findRoot($page)->hasPage($page)) {
-            foreach ($page as $section) {
-                if ($this->accept($section)) {
-                    $found[] = $section;
-                }
-            }
-        }
-
-        switch (count($found)) {
-            case 0:
-                return null;
-            case 1:
-                return $found[0];
-            default:
-                return $found;
-        }
-    }
-
-    /**
-     * Searches the root container for forward 'subsection' relations of the
-     * given $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to a document serving as a subsection in a collection of
-     * documents.
-     *
-     * @param  Zend_Navigation_Page $page       page to find relation for
-     * @return Zend_Navigation_Page|array|null  page(s) or null
-     */
-    public function searchRelSubsection(Zend_Navigation_Page $page)
-    {
-        $found = array();
-
-        if ($page->hasPages()) {
-            // given page has child pages, loop chapters
-            foreach ($this->_findRoot($page) as $chapter) {
-                // is page a section?
-                if ($chapter->hasPage($page)) {
-                    foreach ($page as $subsection) {
-                        if ($this->accept($subsection)) {
-                            $found[] = $subsection;
-                        }
-                    }
-                }
-            }
-        }
-
-        switch (count($found)) {
-            case 0:
-                return null;
-            case 1:
-                return $found[0];
-            default:
-                return $found;
-        }
-    }
-
-    /**
-     * Searches the root container for the reverse 'section' relation of the
-     * given $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to a document serving as a section in a collection of documents.
-     *
-     * @param  Zend_Navigation_Page $page  page to find relation for
-     * @return Zend_Navigation_Page|null   page(s) or null
-     */
-    public function searchRevSection(Zend_Navigation_Page $page)
-    {
-        $found = null;
-
-        if ($parent = $page->getParent()) {
-            if ($parent instanceof Zend_Navigation_Page &&
-                $this->_findRoot($page)->hasPage($parent)) {
-                $found = $parent;
-            }
-        }
-
-        return $found;
-    }
-
-    /**
-     * Searches the root container for the reverse 'section' relation of the
-     * given $page
-     *
-     * From {@link http://www.w3.org/TR/html4/types.html#type-links}:
-     * Refers to a document serving as a subsection in a collection of
-     * documents.
-     *
-     * @param  Zend_Navigation_Page $page  page to find relation for
-     * @return Zend_Navigation_Page|null   page(s) or null
-     */
-    public function searchRevSubsection(Zend_Navigation_Page $page)
-    {
-        $found = null;
-
-        if ($parent = $page->getParent()) {
-            if ($parent instanceof Zend_Navigation_Page) {
-                $root = $this->_findRoot($page);
-                foreach ($root as $chapter) {
-                    if ($chapter->hasPage($parent)) {
-                        $found = $parent;
-                        break;
-                    }
-                }
-            }
-        }
-
-        return $found;
-    }
-
-    // Util methods:
-
-    /**
-     * Returns the root container of the given page
-     *
-     * When rendering a container, the render method still store the given
-     * container as the root container, and unset it when done rendering. This
-     * makes sure finder methods will not traverse above the container given
-     * to the render method.
-     *
-     * @param  Zend_Navigaiton_Page $page  page to find root for
-     * @return Zend_Navigation_Container   the root container of the given page
-     */
-    protected function _findRoot(Zend_Navigation_Page $page)
-    {
-        if ($this->_root) {
-            return $this->_root;
-        }
-
-        $root = $page;
-
-        while ($parent = $page->getParent()) {
-            $root = $parent;
-            if ($parent instanceof Zend_Navigation_Page) {
-                $page = $parent;
-            } else {
-                break;
-            }
-        }
-
-        return $root;
-    }
-
-    /**
-     * Converts a $mixed value to an array of pages
-     *
-     * @param  mixed $mixed                     mixed value to get page(s) from
-     * @param  bool  $recursive                 whether $value should be looped
-     *                                          if it is an array or a config
-     * @return Zend_Navigation_Page|array|null  empty if unable to convert
-     */
-    protected function _convertToPages($mixed, $recursive = true)
-    {
-        if (is_object($mixed)) {
-            if ($mixed instanceof Zend_Navigation_Page) {
-                // value is a page instance; return directly
-                return $mixed;
-            } elseif ($mixed instanceof Zend_Navigation_Container) {
-                // value is a container; return pages in it
-                $pages = array();
-                foreach ($mixed as $page) {
-                    $pages[] = $page;
-                }
-                return $pages;
-            } elseif ($mixed instanceof Zend_Config) {
-                // convert config object to array and extract
-                return $this->_convertToPages($mixed->toArray(), $recursive);
-            }
-        } elseif (is_string($mixed)) {
-            // value is a string; make an URI page
-            return Zend_Navigation_Page::factory(array(
-                'type' => 'uri',
-                'uri'  => $mixed
-            ));
-        } elseif (is_array($mixed) && !empty($mixed)) {
-            if ($recursive && is_numeric(key($mixed))) {
-                // first key is numeric; assume several pages
-                $pages = array();
-                foreach ($mixed as $value) {
-                    if ($value = $this->_convertToPages($value, false)) {
-                        $pages[] = $value;
-                    }
-                }
-                return $pages;
-            } else {
-                // pass array to factory directly
-                try {
-                    $page = Zend_Navigation_Page::factory($mixed);
-                    return $page;
-                } catch (Exception $e) {
-                }
-            }
-        }
-
-        // nothing found
-        return null;
-    }
-
-    // Render methods:
-
-    /**
-     * Renders the given $page as a link element, with $attrib = $relation
-     *
-     * @param  Zend_Navigation_Page $page      the page to render the link for
-     * @param  string               $attrib    the attribute to use for $type,
-     *                                         either 'rel' or 'rev'
-     * @param  string               $relation  relation type, muse be one of;
-     *                                         alternate, appendix, bookmark,
-     *                                         chapter, contents, copyright,
-     *                                         glossary, help, home, index, next,
-     *                                         prev, section, start, stylesheet,
-     *                                         subsection
-     * @return string                          rendered link element
-     * @throws Zend_View_Exception             if $attrib is invalid
-     */
-    public function renderLink(Zend_Navigation_Page $page, $attrib, $relation)
-    {
-        if (!in_array($attrib, array('rel', 'rev'))) {
-            require_once 'Zend/View/Exception.php';
-            $e = new Zend_View_Exception(sprintf(
-                    'Invalid relation attribute "%s", must be "rel" or "rev"',
-                    $attrib));
-            $e->setView($this->view);
-            throw $e;
-        }
-
-        if (!$href = $page->getHref()) {
-            return '';
-        }
-
-        // TODO: add more attribs
-        // http://www.w3.org/TR/html401/struct/links.html#h-12.2
-        $attribs = array(
-            $attrib  => $relation,
-            'href'   => $href,
-            'title'  => $page->getLabel()
-        );
-
-        return '<link' .
-               $this->_htmlAttribs($attribs) .
-               $this->getClosingBracket();
-    }
-
-    // Zend_View_Helper_Navigation_Helper:
-
-    /**
-     * Renders helper
-     *
-     * Implements {@link Zend_View_Helper_Navigation_Helper::render()}.
-     *
-     * @param  Zend_Navigation_Container $container  [optional] container to
-     *                                               render. Default is to
-     *                                               render the container
-     *                                               registered in the helper.
-     * @return string                                helper output
-     */
-    public function render(Zend_Navigation_Container $container = null)
-    {
-        if (null === $container) {
-            $container = $this->getContainer();
-        }
-
-        if ($active = $this->findActive($container)) {
-            $active = $active['page'];
-        } else {
-            // no active page
-            return '';
-        }
-
-        $output = '';
-        $indent = $this->getIndent();
-        $this->_root = $container;
-
-        $result = $this->findAllRelations($active, $this->getRenderFlag());
-        foreach ($result as $attrib => $types) {
-            foreach ($types as $relation => $pages) {
-                foreach ($pages as $page) {
-                    if ($r = $this->renderLink($page, $attrib, $relation)) {
-                        $output .= $indent . $r . self::EOL;
-                    }
-                }
-            }
-        }
-
-        $this->_root = null;
-
-        // return output (trim last newline by spec)
-        return strlen($output) ? rtrim($output, self::EOL) : '';
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Linksphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Viewphp_Helperphp_Navigationphp_HelperAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Navigationphp/HelperAbstractphp.phpphp'php;
+
+php/php*php*
+php php*php Helperphp forphp printingphp php<linkphp>php elements
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_Navigationphp_Links
+php php php php extendsphp Zendphp_Viewphp_Helperphp_Navigationphp_HelperAbstract
+php{
+php php php php php/php*php*php#php@php+
+php php php php php php*php Constantsphp usedphp forphp specifyingphp whichphp linkphp typesphp tophp findphp andphp render
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php constphp RENDERphp_ALTERNATEphp php php=php php0xphp0php0php0php1php;
+php php php php constphp RENDERphp_STYLESHEETphp php=php php0xphp0php0php0php2php;
+php php php php constphp RENDERphp_STARTphp php php php php php php=php php0xphp0php0php0php4php;
+php php php php constphp RENDERphp_NEXTphp php php php php php php php=php php0xphp0php0php0php8php;
+php php php php constphp RENDERphp_PREVphp php php php php php php php=php php0xphp0php0php1php0php;
+php php php php constphp RENDERphp_CONTENTSphp php php php=php php0xphp0php0php2php0php;
+php php php php constphp RENDERphp_INDEXphp php php php php php php=php php0xphp0php0php4php0php;
+php php php php constphp RENDERphp_GLOSSARYphp php php php=php php0xphp0php0php8php0php;
+php php php php constphp RENDERphp_COPYRIGHTphp php php=php php0xphp0php1php0php0php;
+php php php php constphp RENDERphp_CHAPTERphp php php php php=php php0xphp0php2php0php0php;
+php php php php constphp RENDERphp_SECTIONphp php php php php=php php0xphp0php4php0php0php;
+php php php php constphp RENDERphp_SUBSECTIONphp php=php php0xphp0php8php0php0php;
+php php php php constphp RENDERphp_APPENDIXphp php php php=php php0xphp1php0php0php0php;
+php php php php constphp RENDERphp_HELPphp php php php php php php php=php php0xphp2php0php0php0php;
+php php php php constphp RENDERphp_BOOKMARKphp php php php=php php0xphp4php0php0php0php;
+php php php php constphp RENDERphp_CUSTOMphp php php php php php=php php0xphp8php0php0php0php;
+php php php php constphp RENDERphp_ALLphp php php php php php php php php=php php0xffffphp;
+php php php php php/php*php*php#php@php+php*php*php/
+
+php php php php php/php*php*
+php php php php php php*php Mapsphp renderphp constantsphp tophp Wphp3Cphp linkphp types
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_RELATIONSphp php=php arrayphp(
+php php php php php php php php selfphp:php:RENDERphp_ALTERNATEphp php php=php>php php'alternatephp'php,
+php php php php php php php php selfphp:php:RENDERphp_STYLESHEETphp php=php>php php'stylesheetphp'php,
+php php php php php php php php selfphp:php:RENDERphp_STARTphp php php php php php php=php>php php'startphp'php,
+php php php php php php php php selfphp:php:RENDERphp_NEXTphp php php php php php php php=php>php php'nextphp'php,
+php php php php php php php php selfphp:php:RENDERphp_PREVphp php php php php php php php=php>php php'prevphp'php,
+php php php php php php php php selfphp:php:RENDERphp_CONTENTSphp php php php=php>php php'contentsphp'php,
+php php php php php php php php selfphp:php:RENDERphp_INDEXphp php php php php php php=php>php php'indexphp'php,
+php php php php php php php php selfphp:php:RENDERphp_GLOSSARYphp php php php=php>php php'glossaryphp'php,
+php php php php php php php php selfphp:php:RENDERphp_COPYRIGHTphp php php=php>php php'copyrightphp'php,
+php php php php php php php php selfphp:php:RENDERphp_CHAPTERphp php php php php=php>php php'chapterphp'php,
+php php php php php php php php selfphp:php:RENDERphp_SECTIONphp php php php php=php>php php'sectionphp'php,
+php php php php php php php php selfphp:php:RENDERphp_SUBSECTIONphp php=php>php php'subsectionphp'php,
+php php php php php php php php selfphp:php:RENDERphp_APPENDIXphp php php php=php>php php'appendixphp'php,
+php php php php php php php php selfphp:php:RENDERphp_HELPphp php php php php php php php=php>php php'helpphp'php,
+php php php php php php php php selfphp:php:RENDERphp_BOOKMARKphp php php php=php>php php'bookmarkphp'
+php php php php php)php;
+
+php php php php php/php*php*
+php php php php php php*php Thephp helperphp'sphp renderphp flag
+php php php php php php*
+php php php php php php*php php@seephp renderphp(php)
+php php php php php php*php php@seephp setRenderFlagphp(php)
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_renderFlagphp php=php selfphp:php:RENDERphp_ALLphp;
+
+php php php php php/php*php*
+php php php php php php*php Rootphp container
+php php php php php php*
+php php php php php php*php Usedphp forphp preventingphp methodsphp tophp traversephp abovephp thephp containerphp givenphp to
+php php php php php php*php thephp php{php@linkphp renderphp(php)php}php methodphp.
+php php php php php php*
+php php php php php php*php php@seephp php_findRootphp(php)
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Navigationphp_Container
+php php php php php php*php/
+php php php php protectedphp php$php_rootphp;
+
+php php php php php/php*php*
+php php php php php php*php Viewphp helperphp entryphp pointphp:
+php php php php php php*php Retrievesphp helperphp andphp optionallyphp setsphp containerphp tophp operatephp on
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Containerphp php$containerphp php php[optionalphp]php containerphp to
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php operatephp on
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp php php php php fluentphp interfacephp,php returns
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
+php php php php php php*php/
+php php php php publicphp functionphp linksphp(Zendphp_Navigationphp_Containerphp php$containerphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$containerphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setContainerphp(php$containerphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Magicphp overloadphp:php Proxyphp callsphp tophp php{php@linkphp findRelationphp(php)php}php orphp container
+php php php php php php*
+php php php php php php*php Examplesphp ofphp finderphp callsphp:
+php php php php php php*php php<codephp>
+php php php php php php*php php/php/php METHODphp php php php php php php php php php php php php php php php php php php/php/php SAMEphp AS
+php php php php php php*php php$hphp-php>findRelNextphp(php$pagephp)php;php php php php php/php/php php$hphp-php>findRelationphp(php$pagephp,php php'relphp'php,php php'nextphp'php)
+php php php php php php*php php$hphp-php>findRevSectionphp(php$pagephp)php;php php/php/php php$hphp-php>findRelationphp(php$pagephp,php php'revphp'php,php php'sectionphp'php)php;
+php php php php php php*php php$hphp-php>findRelFoophp(php$pagephp)php;php php php php php php/php/php php$hphp-php>findRelationphp(php$pagephp,php php'relphp'php,php php'foophp'php)php;
+php php php php php php*php <php/codephp>
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$methodphp php php php php php php php php php php php php methodphp name
+php php php php php php*php php@paramphp php arrayphp php php$argumentsphp php php php php php php php php php methodphp arguments
+php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp methodphp doesphp notphp existphp inphp container
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php arrayphp php$argumentsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php@pregphp_matchphp(php'php/findphp(Relphp|Revphp)php(php.php+php)php/php'php,php php$methodphp,php php$matchphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>findRelationphp(php$argumentsphp[php0php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php strtolowerphp(php$matchphp[php1php]php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php strtolowerphp(php$matchphp[php2php]php)php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp parentphp:php:php_php_callphp(php$methodphp,php php$argumentsphp)php;
+php php php php php}
+
+php php php php php/php/php Accessorsphp:
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp helperphp'sphp renderphp flag
+php php php php php php*
+php php php php php php*php Thephp helperphp usesphp thephp bitwisephp php'php&php'php operatorphp againstphp thephp hexphp valuesphp ofphp the
+php php php php php php*php renderphp constantsphp.php Thisphp meansphp thatphp thephp flagphp canphp isphp php"bitwisedphp"php valuephp of
+php php php php php php*php thephp renderphp constantsphp.php Examplesphp:
+php php php php php php*php php<codephp>
+php php php php php php*php php/php/php renderphp allphp linksphp exceptphp glossary
+php php php php php php*php php$flagphp php=php Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp:RENDERphp_ALLphp php^
+php php php php php php*php php php php php php php php php Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp:RENDERphp_GLOSSARYphp;
+php php php php php php*php php$helperphp-php>setRenderFlagphp(php$flagphp)php;
+php php php php php php*
+php php php php php php*php php/php/php renderphp onlyphp chaptersphp andphp sections
+php php php php php php*php php$flagphp php=php Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp:RENDERphp_CHAPTERphp php|
+php php php php php php*php php php php php php php php php Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp:RENDERphp_SECTIONphp;
+php php php php php php*php php$helperphp-php>setRenderFlagphp(php$flagphp)php;
+php php php php php php*
+php php php php php php*php php/php/php renderphp onlyphp relationsphp thatphp arephp notphp nativephp Wphp3Cphp relations
+php php php php php php*php php$helperphp-php>setRenderFlagphp(Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp:RENDERphp_CUSTOMphp)php;
+php php php php php php*
+php php php php php php*php php/php/php renderphp allphp relationsphp php(defaultphp)
+php php php php php php*php php$helperphp-php>setRenderFlagphp(Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp:RENDERphp_ALLphp)php;
+php php php php php php*php <php/codephp>
+php php php php php php*
+php php php php php php*php Notephp thatphp customphp relationsphp canphp alsophp bephp renderedphp directlyphp usingphp the
+php php php php php php*php php{php@linkphp renderLinkphp(php)php}php methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$renderFlagphp php php php php php php php php php php php php php php php php php php php renderphp flag
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Linksphp php fluentphp interfacephp,php returnsphp self
+php php php php php php*php/
+php php php php publicphp functionphp setRenderFlagphp(php$renderFlagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_renderFlagphp php=php php(intphp)php php$renderFlagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp helperphp'sphp renderphp flag
+php php php php php php*
+php php php php php php*php php@returnphp intphp php renderphp flag
+php php php php php php*php/
+php php php php publicphp functionphp getRenderFlagphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_renderFlagphp;
+php php php php php}
+
+php php php php php/php/php Finderphp methodsphp:
+
+php php php php php/php*php*
+php php php php php php*php Findsphp allphp relationsphp php(forwardphp andphp reversephp)php forphp thephp givenphp php$page
+php php php php php php*
+php php php php php php*php Thephp formphp ofphp thephp returnedphp arrayphp:
+php php php php php php*php php<codephp>
+php php php php php php*php php/php/php php$pagephp denotesphp anphp instancephp ofphp Zendphp_Navigationphp_Page
+php php php php php php*php php$returnedphp php=php arrayphp(
+php php php php php php*php php php php php php'relphp'php php=php>php arrayphp(
+php php php php php php*php php php php php php php php php php'alternatephp'php php=php>php arrayphp(php$pagephp,php php$pagephp,php php$pagephp)php,
+php php php php php php*php php php php php php php php php php'startphp'php php php php php php=php>php arrayphp(php$pagephp)php,
+php php php php php php*php php php php php php php php php php'nextphp'php php php php php php php=php>php arrayphp(php$pagephp)php,
+php php php php php php*php php php php php php php php php php'prevphp'php php php php php php php=php>php arrayphp(php$pagephp)php,
+php php php php php php*php php php php php php php php php php'canonicalphp'php php=php>php arrayphp(php$pagephp)
+php php php php php php*php php php php php php)php,
+php php php php php php*php php php php php php'revphp'php php=php>php arrayphp(
+php php php php php php*php php php php php php php php php php'sectionphp'php php php php=php>php arrayphp(php$pagephp)
+php php php php php php*php php php php php php)
+php php php php php php*php php)php;
+php php php php php php*php <php/codephp>
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp findphp linksphp for
+php php php php php php*php php@returnphp arrayphp php php php php php php php php php php php php php php php php php php php php php php relatedphp pages
+php php php php php php*php/
+php php php php publicphp functionphp findAllRelationsphp(Zendphp_Navigationphp_Pagephp php$pagephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$flagphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_intphp(php$flagphp)php)php php{
+php php php php php php php php php php php php php$flagphp php=php selfphp:php:RENDERphp_ALLphp;
+php php php php php php php php php}
+
+php php php php php php php php php$resultphp php=php arrayphp(php'relphp'php php=php>php arrayphp(php)php,php php'revphp'php php=php>php arrayphp(php)php)php;
+php php php php php php php php php$nativephp php=php arrayphp_valuesphp(selfphp:php:php$php_RELATIONSphp)php;
+
+php php php php php php php php foreachphp php(arrayphp_keysphp(php$resultphp)php asphp php$relphp)php php{
+php php php php php php php php php php php php php$methphp php=php php'getDefinedphp'php php.php ucfirstphp(php$relphp)php;
+php php php php php php php php php php php php php$typesphp php=php arrayphp_mergephp(php$nativephp,php arrayphp_diffphp(php$pagephp-php>php$methphp(php)php,php php$nativephp)php)php;
+
+php php php php php php php php php php php php foreachphp php(php$typesphp asphp php$typephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!php$relFlagphp php=php arrayphp_searchphp(php$typephp,php selfphp:php:php$php_RELATIONSphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$relFlagphp php=php selfphp:php:RENDERphp_CUSTOMphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php!php(php$flagphp php&php php$relFlagphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php$foundphp php=php php$thisphp-php>findRelationphp(php$pagephp,php php$relphp,php php$typephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$foundphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$foundphp php=php arrayphp(php$foundphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php$relphp]php[php$typephp]php php=php php$foundphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Findsphp relationsphp ofphp thephp givenphp php$relphp=php$typephp fromphp php$page
+php php php php php php*
+php php php php php php*php Thisphp methodphp willphp firstphp lookphp forphp relationsphp inphp thephp pagephp instancephp,php then
+php php php php php php*php byphp searchingphp thephp rootphp containerphp ifphp nothingphp wasphp foundphp inphp thephp pagephp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php php php php php php pagephp tophp findphp relationsphp for
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$relphp php php php php php php php php relationphp,php php"relphp"php orphp php"revphp"
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$typephp php php php php php php php linkphp typephp,php ephp.gphp.php php'startphp'php,php php'nextphp'
+php php php php php php*php php@returnphp Zendphp_Navigaitonphp_Pagephp|arrayphp|nullphp php pagephp(sphp)php,php orphp nullphp ifphp notphp found
+php php php php php php*php php@throwsphp Zendphp_Viewphp_Exceptionphp php php php php php php php php php php php php php ifphp php$relphp isphp notphp php"relphp"php orphp php"revphp"
+php php php php php php*php/
+php php php php publicphp functionphp findRelationphp(Zendphp_Navigationphp_Pagephp php$pagephp,php php$relphp,php php$typephp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$relphp,php arrayphp(php'relphp'php,php php'revphp'php)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(sprintfphp(
+php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$relphp mustphp bephp php"relphp"php orphp php"revphp"php;php php"php%sphp"php givenphp'php,
+php php php php php php php php php php php php php php php php php$relphp)php)php;
+php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$resultphp php=php php$thisphp-php>php_findFromPropertyphp(php$pagephp,php php$relphp,php php$typephp)php)php php{
+php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_findFromSearchphp(php$pagephp,php php$relphp,php php$typephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Findsphp relationsphp ofphp givenphp php$typephp forphp php$pagephp byphp checkingphp ifphp the
+php php php php php php*php relationphp isphp specifiedphp asphp aphp propertyphp ofphp php$page
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php php php php php php pagephp tophp findphp relationsphp for
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$relphp php php php php php php php php relationphp,php php'relphp'php orphp php'revphp'
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$typephp php php php php php php php linkphp typephp,php ephp.gphp.php php'startphp'php,php php'nextphp'
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|arrayphp|nullphp php pagephp(sphp)php,php orphp nullphp ifphp notphp found
+php php php php php php*php/
+php php php php protectedphp functionphp php_findFromPropertyphp(Zendphp_Navigationphp_Pagephp php$pagephp,php php$relphp,php php$typephp)
+php php php php php{
+php php php php php php php php php$methodphp php=php php'getphp'php php.php ucfirstphp(php$relphp)php;
+php php php php php php php php ifphp php(php$resultphp php=php php$pagephp-php>php$methodphp(php$typephp)php)php php{
+php php php php php php php php php php php php ifphp php(php$resultphp php=php php$thisphp-php>php_convertToPagesphp(php$resultphp)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$resultphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$resultphp php=php arrayphp(php$resultphp)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php foreachphp php(php$resultphp asphp php$keyphp php=php>php php$pagephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>acceptphp(php$pagephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$resultphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php returnphp countphp(php$resultphp)php php=php=php php1php php?php php$resultphp[php0php]php php:php php$resultphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Findsphp relationsphp ofphp givenphp php$relphp=php$typephp forphp php$pagephp byphp usingphp thephp helperphp to
+php php php php php php*php searchphp forphp thephp relationphp inphp thephp rootphp container
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp findphp relationsphp for
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$relphp php php php relationphp,php php'relphp'php orphp php'revphp'
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php$typephp php php linkphp typephp,php ephp.gphp.php php'startphp'php,php php'nextphp'php,php etc
+php php php php php php*php php@returnphp arrayphp|nullphp php php php php php php php php php php php php php php php php php arrayphp ofphp pagesphp,php orphp nullphp ifphp notphp found
+php php php php php php*php/
+php php php php protectedphp functionphp php_findFromSearchphp(Zendphp_Navigationphp_Pagephp php$pagephp,php php$relphp,php php$typephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php nullphp;
+
+php php php php php php php php php$methodphp php=php php'searchphp'php php.php ucfirstphp(php$relphp)php php.php ucfirstphp(php$typephp)php;
+php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
+php php php php php php php php php php php php php$foundphp php=php php$thisphp-php>php$methodphp(php$pagephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$foundphp;
+php php php php php}
+
+php php php php php/php/php Searchphp methodsphp:
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp thephp forwardphp php'startphp'php relationphp ofphp thephp given
+php php php php php php*php php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp thephp firstphp documentphp inphp aphp collectionphp ofphp documentsphp.php Thisphp linkphp type
+php php php php php php*php tellsphp searchphp enginesphp whichphp documentphp isphp consideredphp byphp thephp authorphp tophp bephp the
+php php php php php php*php startingphp pointphp ofphp thephp collectionphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|nullphp php php pagephp orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRelStartphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php php$thisphp-php>php_findRootphp(php$pagephp)php;
+php php php php php php php php ifphp php(php!php$foundphp instanceofphp Zendphp_Navigationphp_Pagephp)php php{
+php php php php php php php php php php php php php$foundphp-php>rewindphp(php)php;
+php php php php php php php php php php php php php$foundphp php=php php$foundphp-php>currentphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$foundphp php=php=php=php php$pagephp php|php|php php!php$thisphp-php>acceptphp(php$foundphp)php)php php{
+php php php php php php php php php php php php php$foundphp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$foundphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp thephp forwardphp php'nextphp'php relationphp ofphp thephp given
+php php php php php php*php php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp thephp nextphp documentphp inphp aphp linearphp sequencephp ofphp documentsphp.php User
+php php php php php php*php agentsphp mayphp choosephp tophp preloadphp thephp php"nextphp"php documentphp,php tophp reducephp thephp perceived
+php php php php php php*php loadphp timephp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|nullphp php php pagephp(sphp)php orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRelNextphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php nullphp;
+php php php php php php php php php$breakphp php=php falsephp;
+php php php php php php php php php$iteratorphp php=php newphp RecursiveIteratorIteratorphp(php$thisphp-php>php_findRootphp(php$pagephp)php,
+php php php php php php php php php php php php php php php php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
+php php php php php php php php foreachphp php(php$iteratorphp asphp php$intermediatephp)php php{
+php php php php php php php php php php php php ifphp php(php$intermediatephp php=php=php=php php$pagephp)php php{
+php php php php php php php php php php php php php php php php php/php/php currentphp pagephp;php breakphp atphp nextphp acceptedphp page
+php php php php php php php php php php php php php php php php php$breakphp php=php truephp;
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$breakphp php&php&php php$thisphp-php>acceptphp(php$intermediatephp)php)php php{
+php php php php php php php php php php php php php php php php php$foundphp php=php php$intermediatephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$foundphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp thephp forwardphp php'prevphp'php relationphp ofphp thephp given
+php php php php php php*php php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp thephp previousphp documentphp inphp anphp orderedphp seriesphp ofphp documentsphp.php Some
+php php php php php php*php userphp agentsphp alsophp supportphp thephp synonymphp php"Previousphp"php.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|nullphp php php pagephp orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRelPrevphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php nullphp;
+php php php php php php php php php$prevphp php=php nullphp;
+php php php php php php php php php$iteratorphp php=php newphp RecursiveIteratorIteratorphp(
+php php php php php php php php php php php php php php php php php$thisphp-php>php_findRootphp(php$pagephp)php,
+php php php php php php php php php php php php php php php php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
+php php php php php php php php foreachphp php(php$iteratorphp asphp php$intermediatephp)php php{
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>acceptphp(php$intermediatephp)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$intermediatephp php=php=php=php php$pagephp)php php{
+php php php php php php php php php php php php php php php php php$foundphp php=php php$prevphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$prevphp php=php php$intermediatephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$foundphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp forwardphp php'chapterphp'php relationsphp ofphp thephp given
+php php php php php php*php php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp aphp documentphp servingphp asphp aphp chapterphp inphp aphp collectionphp ofphp documentsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php php php php php php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|arrayphp|nullphp php pagephp(sphp)php orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRelChapterphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php arrayphp(php)php;
+
+php php php php php php php php php/php/php findphp firstphp levelphp ofphp pages
+php php php php php php php php php$rootphp php=php php$thisphp-php>php_findRootphp(php$pagephp)php;
+
+php php php php php php php php php/php/php findphp startphp pagephp(sphp)
+php php php php php php php php php$startphp php=php php$thisphp-php>findRelationphp(php$pagephp,php php'relphp'php,php php'startphp'php)php;
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$startphp)php)php php{
+php php php php php php php php php php php php php$startphp php=php arrayphp(php$startphp)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$rootphp asphp php$chapterphp)php php{
+php php php php php php php php php php php php php/php/php excludephp selfphp andphp startphp pagephp fromphp chapters
+php php php php php php php php php php php php ifphp php(php$chapterphp php!php=php=php php$pagephp php&php&
+php php php php php php php php php php php php php php php php php!inphp_arrayphp(php$chapterphp,php php$startphp)php php&php&
+php php php php php php php php php php php php php php php php php$thisphp-php>acceptphp(php$chapterphp)php)php php{
+php php php php php php php php php php php php php php php php php$foundphp[php]php php=php php$chapterphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php switchphp php(countphp(php$foundphp)php)php php{
+php php php php php php php php php php php php casephp php0php:
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php returnphp php$foundphp[php0php]php;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp php$foundphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp forwardphp php'sectionphp'php relationsphp ofphp thephp given
+php php php php php php*php php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp aphp documentphp servingphp asphp aphp sectionphp inphp aphp collectionphp ofphp documentsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php php php php php php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|arrayphp|nullphp php pagephp(sphp)php orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRelSectionphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php arrayphp(php)php;
+
+php php php php php php php php php/php/php checkphp ifphp givenphp pagephp hasphp pagesphp andphp isphp aphp chapterphp page
+php php php php php php php php ifphp php(php$pagephp-php>hasPagesphp(php)php php&php&php php$thisphp-php>php_findRootphp(php$pagephp)php-php>hasPagephp(php$pagephp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$pagephp asphp php$sectionphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>acceptphp(php$sectionphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$foundphp[php]php php=php php$sectionphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php switchphp php(countphp(php$foundphp)php)php php{
+php php php php php php php php php php php php casephp php0php:
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php returnphp php$foundphp[php0php]php;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp php$foundphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp forwardphp php'subsectionphp'php relationsphp ofphp the
+php php php php php php*php givenphp php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp aphp documentphp servingphp asphp aphp subsectionphp inphp aphp collectionphp of
+php php php php php php*php documentsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php php php php php php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|arrayphp|nullphp php pagephp(sphp)php orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRelSubsectionphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php arrayphp(php)php;
+
+php php php php php php php php ifphp php(php$pagephp-php>hasPagesphp(php)php)php php{
+php php php php php php php php php php php php php/php/php givenphp pagephp hasphp childphp pagesphp,php loopphp chapters
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_findRootphp(php$pagephp)php asphp php$chapterphp)php php{
+php php php php php php php php php php php php php php php php php/php/php isphp pagephp aphp sectionphp?
+php php php php php php php php php php php php php php php php ifphp php(php$chapterphp-php>hasPagephp(php$pagephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$pagephp asphp php$subsectionphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>acceptphp(php$subsectionphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$foundphp[php]php php=php php$subsectionphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php switchphp php(countphp(php$foundphp)php)php php{
+php php php php php php php php php php php php casephp php0php:
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php returnphp php$foundphp[php0php]php;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp php$foundphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp thephp reversephp php'sectionphp'php relationphp ofphp the
+php php php php php php*php givenphp php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp aphp documentphp servingphp asphp aphp sectionphp inphp aphp collectionphp ofphp documentsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|nullphp php php pagephp(sphp)php orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRevSectionphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php nullphp;
+
+php php php php php php php php ifphp php(php$parentphp php=php php$pagephp-php>getParentphp(php)php)php php{
+php php php php php php php php php php php php ifphp php(php$parentphp instanceofphp Zendphp_Navigationphp_Pagephp php&php&
+php php php php php php php php php php php php php php php php php$thisphp-php>php_findRootphp(php$pagephp)php-php>hasPagephp(php$parentphp)php)php php{
+php php php php php php php php php php php php php php php php php$foundphp php=php php$parentphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$foundphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchesphp thephp rootphp containerphp forphp thephp reversephp php'sectionphp'php relationphp ofphp the
+php php php php php php*php givenphp php$page
+php php php php php php*
+php php php php php php*php Fromphp php{php@linkphp httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/typesphp.htmlphp#typephp-linksphp}php:
+php php php php php php*php Refersphp tophp aphp documentphp servingphp asphp aphp subsectionphp inphp aphp collectionphp of
+php php php php php php*php documentsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp findphp relationphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|nullphp php php pagephp(sphp)php orphp null
+php php php php php php*php/
+php php php php publicphp functionphp searchRevSubsectionphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$foundphp php=php nullphp;
+
+php php php php php php php php ifphp php(php$parentphp php=php php$pagephp-php>getParentphp(php)php)php php{
+php php php php php php php php php php php php ifphp php(php$parentphp instanceofphp Zendphp_Navigationphp_Pagephp)php php{
+php php php php php php php php php php php php php php php php php$rootphp php=php php$thisphp-php>php_findRootphp(php$pagephp)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$rootphp asphp php$chapterphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$chapterphp-php>hasPagephp(php$parentphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$foundphp php=php php$parentphp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$foundphp;
+php php php php php}
+
+php php php php php/php/php Utilphp methodsphp:
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp rootphp containerphp ofphp thephp givenphp page
+php php php php php php*
+php php php php php php*php Whenphp renderingphp aphp containerphp,php thephp renderphp methodphp stillphp storephp thephp given
+php php php php php php*php containerphp asphp thephp rootphp containerphp,php andphp unsetphp itphp whenphp donephp renderingphp.php This
+php php php php php php*php makesphp surephp finderphp methodsphp willphp notphp traversephp abovephp thephp containerphp given
+php php php php php php*php tophp thephp renderphp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigaitonphp_Pagephp php$pagephp php pagephp tophp findphp rootphp for
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Containerphp php php thephp rootphp containerphp ofphp thephp givenphp page
+php php php php php php*php/
+php php php php protectedphp functionphp php_findRootphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_rootphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_rootphp;
+php php php php php php php php php}
+
+php php php php php php php php php$rootphp php=php php$pagephp;
+
+php php php php php php php php whilephp php(php$parentphp php=php php$pagephp-php>getParentphp(php)php)php php{
+php php php php php php php php php php php php php$rootphp php=php php$parentphp;
+php php php php php php php php php php php php ifphp php(php$parentphp instanceofphp Zendphp_Navigationphp_Pagephp)php php{
+php php php php php php php php php php php php php php php php php$pagephp php=php php$parentphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$rootphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Convertsphp aphp php$mixedphp valuephp tophp anphp arrayphp ofphp pages
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$mixedphp php php php php php php php php php php php php php php php php php php php php mixedphp valuephp tophp getphp pagephp(sphp)php from
+php php php php php php*php php@paramphp php boolphp php php$recursivephp php php php php php php php php php php php php php php php php whetherphp php$valuephp shouldphp bephp looped
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp itphp isphp anphp arrayphp orphp aphp config
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|arrayphp|nullphp php emptyphp ifphp unablephp tophp convert
+php php php php php php*php/
+php php php php protectedphp functionphp php_convertToPagesphp(php$mixedphp,php php$recursivephp php=php truephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_objectphp(php$mixedphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$mixedphp instanceofphp Zendphp_Navigationphp_Pagephp)php php{
+php php php php php php php php php php php php php php php php php/php/php valuephp isphp aphp pagephp instancephp;php returnphp directly
+php php php php php php php php php php php php php php php php returnphp php$mixedphp;
+php php php php php php php php php php php php php}php elseifphp php(php$mixedphp instanceofphp Zendphp_Navigationphp_Containerphp)php php{
+php php php php php php php php php php php php php php php php php/php/php valuephp isphp aphp containerphp;php returnphp pagesphp inphp it
+php php php php php php php php php php php php php php php php php$pagesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$mixedphp asphp php$pagephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$pagesphp[php]php php=php php$pagephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$pagesphp;
+php php php php php php php php php php php php php}php elseifphp php(php$mixedphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php php php php php/php/php convertphp configphp objectphp tophp arrayphp andphp extract
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_convertToPagesphp(php$mixedphp-php>toArrayphp(php)php,php php$recursivephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$mixedphp)php)php php{
+php php php php php php php php php php php php php/php/php valuephp isphp aphp stringphp;php makephp anphp URIphp page
+php php php php php php php php php php php php returnphp Zendphp_Navigationphp_Pagephp:php:factoryphp(arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php'uriphp'php,
+php php php php php php php php php php php php php php php php php'uriphp'php php php=php>php php$mixed
+php php php php php php php php php php php php php)php)php;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$mixedphp)php php&php&php php!emptyphp(php$mixedphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$recursivephp php&php&php isphp_numericphp(keyphp(php$mixedphp)php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php firstphp keyphp isphp numericphp;php assumephp severalphp pages
+php php php php php php php php php php php php php php php php php$pagesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$mixedphp asphp php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$valuephp php=php php$thisphp-php>php_convertToPagesphp(php$valuephp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$pagesphp[php]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$pagesphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php passphp arrayphp tophp factoryphp directly
+php php php php php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php php php php php$pagephp php=php Zendphp_Navigationphp_Pagephp:php:factoryphp(php$mixedphp)php;
+php php php php php php php php php php php php php php php php php php php php returnphp php$pagephp;
+php php php php php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php nothingphp found
+php php php php php php php php returnphp nullphp;
+php php php php php}
+
+php php php php php/php/php Renderphp methodsphp:
+
+php php php php php/php*php*
+php php php php php php*php Rendersphp thephp givenphp php$pagephp asphp aphp linkphp elementphp,php withphp php$attribphp php=php php$relation
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php php php php php thephp pagephp tophp renderphp thephp linkphp for
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php$attribphp php php php thephp attributephp tophp usephp forphp php$typephp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php eitherphp php'relphp'php orphp php'revphp'
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php$relationphp php relationphp typephp,php musephp bephp onephp ofphp;
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php alternatephp,php appendixphp,php bookmarkphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php chapterphp,php contentsphp,php copyrightphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php glossaryphp,php helpphp,php homephp,php indexphp,php nextphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php prevphp,php sectionphp,php startphp,php stylesheetphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php subsection
+php php php php php php*php php@returnphp stringphp php php php php php php php php php php php php php php php php php php php php php php php php php renderedphp linkphp element
+php php php php php php*php php@throwsphp Zendphp_Viewphp_Exceptionphp php php php php php php php php php php php php ifphp php$attribphp isphp invalid
+php php php php php php*php/
+php php php php publicphp functionphp renderLinkphp(Zendphp_Navigationphp_Pagephp php$pagephp,php php$attribphp,php php$relationphp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$attribphp,php arrayphp(php'relphp'php,php php'revphp'php)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(sprintfphp(
+php php php php php php php php php php php php php php php php php php php php php'Invalidphp relationphp attributephp php"php%sphp"php,php mustphp bephp php"relphp"php orphp php"revphp"php'php,
+php php php php php php php php php php php php php php php php php php php php php$attribphp)php)php;
+php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$hrefphp php=php php$pagephp-php>getHrefphp(php)php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php TODOphp:php addphp morephp attribs
+php php php php php php php php php/php/php httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php0php1php/structphp/linksphp.htmlphp#hphp-php1php2php.php2
+php php php php php php php php php$attribsphp php=php arrayphp(
+php php php php php php php php php php php php php$attribphp php php=php>php php$relationphp,
+php php php php php php php php php php php php php'hrefphp'php php php php=php>php php$hrefphp,
+php php php php php php php php php php php php php'titlephp'php php php=php>php php$pagephp-php>getLabelphp(php)
+php php php php php php php php php)php;
+
+php php php php php php php php returnphp php'php<linkphp'php php.
+php php php php php php php php php php php php php php php php$thisphp-php>php_htmlAttribsphp(php$attribsphp)php php.
+php php php php php php php php php php php php php php php php$thisphp-php>getClosingBracketphp(php)php;
+php php php php php}
+
+php php php php php/php/php Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp:
+
+php php php php php/php*php*
+php php php php php php*php Rendersphp helper
+php php php php php php*
+php php php php php php*php Implementsphp php{php@linkphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp:php:renderphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Containerphp php$containerphp php php[optionalphp]php containerphp to
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php renderphp.php Defaultphp isphp to
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php renderphp thephp container
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php registeredphp inphp thephp helperphp.
+php php php php php php*php php@returnphp stringphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php helperphp output
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(Zendphp_Navigationphp_Containerphp php$containerphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$containerphp)php php{
+php php php php php php php php php php php php php$containerphp php=php php$thisphp-php>getContainerphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$activephp php=php php$thisphp-php>findActivephp(php$containerphp)php)php php{
+php php php php php php php php php php php php php$activephp php=php php$activephp[php'pagephp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php nophp activephp page
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php php$outputphp php=php php'php'php;
+php php php php php php php php php$indentphp php=php php$thisphp-php>getIndentphp(php)php;
+php php php php php php php php php$thisphp-php>php_rootphp php=php php$containerphp;
+
+php php php php php php php php php$resultphp php=php php$thisphp-php>findAllRelationsphp(php$activephp,php php$thisphp-php>getRenderFlagphp(php)php)php;
+php php php php php php php php foreachphp php(php$resultphp asphp php$attribphp php=php>php php$typesphp)php php{
+php php php php php php php php php php php php foreachphp php(php$typesphp asphp php$relationphp php=php>php php$pagesphp)php php{
+php php php php php php php php php php php php php php php php foreachphp php(php$pagesphp asphp php$pagephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$rphp php=php php$thisphp-php>renderLinkphp(php$pagephp,php php$attribphp,php php$relationphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$indentphp php.php php$rphp php.php selfphp:php:EOLphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_rootphp php=php nullphp;
+
+php php php php php php php php php/php/php returnphp outputphp php(trimphp lastphp newlinephp byphp specphp)
+php php php php php php php php returnphp strlenphp(php$outputphp)php php?php rtrimphp(php$outputphp,php selfphp:php:EOLphp)php php:php php'php'php;
+php php php php php}
+php}

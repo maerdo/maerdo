@@ -1,332 +1,332 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Form_Decorator_Abstract */
-require_once 'Zend/Form/Decorator/Abstract.php';
+php/php*php*php Zendphp_Formphp_Decoratorphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Abstractphp.phpphp'php;
 
-/**
- * Zend_Form_Decorator_Label
- *
- * Accepts the options:
- * - separator: separator to use between label and content (defaults to PHP_EOL)
- * - placement: whether to append or prepend label to content (defaults to prepend)
- * - tag: if set, used to wrap the label in an additional HTML tag
- * - opt(ional)Prefix: a prefix to the label to use when the element is optional
- * - opt(iona)lSuffix: a suffix to the label to use when the element is optional
- * - req(uired)Prefix: a prefix to the label to use when the element is required
- * - req(uired)Suffix: a suffix to the label to use when the element is required
- *
- * Any other options passed will be used as HTML attributes of the label tag.
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Label.php 22128 2010-05-06 11:18:02Z alab $
- */
-class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
-{
-    /**
-     * Default placement: prepend
-     * @var string
-     */
-    protected $_placement = 'PREPEND';
+php/php*php*
+php php*php Zendphp_Formphp_Decoratorphp_Label
+php php*
+php php*php Acceptsphp thephp optionsphp:
+php php*php php-php separatorphp:php separatorphp tophp usephp betweenphp labelphp andphp contentphp php(defaultsphp tophp PHPphp_EOLphp)
+php php*php php-php placementphp:php whetherphp tophp appendphp orphp prependphp labelphp tophp contentphp php(defaultsphp tophp prependphp)
+php php*php php-php tagphp:php ifphp setphp,php usedphp tophp wrapphp thephp labelphp inphp anphp additionalphp HTMLphp tag
+php php*php php-php optphp(ionalphp)Prefixphp:php aphp prefixphp tophp thephp labelphp tophp usephp whenphp thephp elementphp isphp optional
+php php*php php-php optphp(ionaphp)lSuffixphp:php aphp suffixphp tophp thephp labelphp tophp usephp whenphp thephp elementphp isphp optional
+php php*php php-php reqphp(uiredphp)Prefixphp:php aphp prefixphp tophp thephp labelphp tophp usephp whenphp thephp elementphp isphp required
+php php*php php-php reqphp(uiredphp)Suffixphp:php aphp suffixphp tophp thephp labelphp tophp usephp whenphp thephp elementphp isphp required
+php php*
+php php*php Anyphp otherphp optionsphp passedphp willphp bephp usedphp asphp HTMLphp attributesphp ofphp thephp labelphp tagphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Labelphp.phpphp php2php2php1php2php8php php2php0php1php0php-php0php5php-php0php6php php1php1php:php1php8php:php0php2Zphp alabphp php$
+php php*php/
+classphp Zendphp_Formphp_Decoratorphp_Labelphp extendsphp Zendphp_Formphp_Decoratorphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Defaultphp placementphp:php prepend
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_placementphp php=php php'PREPENDphp'php;
 
-    /**
-     * HTML tag with which to surround label
-     * @var string
-     */
-    protected $_tag;
+php php php php php/php*php*
+php php php php php php*php HTMLphp tagphp withphp whichphp tophp surroundphp label
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_tagphp;
 
-    /**
-     * Set element ID
-     *
-     * @param  string $id
-     * @return Zend_Form_Decorator_Label
-     */
-    public function setId($id)
-    {
-        $this->setOption('id', $id);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp elementphp ID
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$id
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Label
+php php php php php php*php/
+php php php php publicphp functionphp setIdphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setOptionphp(php'idphp'php,php php$idphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve element ID (used in 'for' attribute)
-     *
-     * If none set in decorator, looks first for element 'id' attribute, and
-     * defaults to element name.
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        $id = $this->getOption('id');
-        if (null === $id) {
-            if (null !== ($element = $this->getElement())) {
-                $id = $element->getId();
-                $this->setId($id);
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp elementphp IDphp php(usedphp inphp php'forphp'php attributephp)
+php php php php php php*
+php php php php php php*php Ifphp nonephp setphp inphp decoratorphp,php looksphp firstphp forphp elementphp php'idphp'php attributephp,php and
+php php php php php php*php defaultsphp tophp elementphp namephp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getIdphp(php)
+php php php php php{
+php php php php php php php php php$idphp php=php php$thisphp-php>getOptionphp(php'idphp'php)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$idphp)php php{
+php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php(php$elementphp php=php php$thisphp-php>getElementphp(php)php)php)php php{
+php php php php php php php php php php php php php php php php php$idphp php=php php$elementphp-php>getIdphp(php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>setIdphp(php$idphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $id;
-    }
+php php php php php php php php returnphp php$idphp;
+php php php php php}
 
-    /**
-     * Set HTML tag with which to surround label
-     *
-     * @param  string $tag
-     * @return Zend_Form_Decorator_Label
-     */
-    public function setTag($tag)
-    {
-        if (empty($tag)) {
-            $this->_tag = null;
-        } else {
-            $this->_tag = (string) $tag;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp HTMLphp tagphp withphp whichphp tophp surroundphp label
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$tag
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Label
+php php php php php php*php/
+php php php php publicphp functionphp setTagphp(php$tagphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$tagphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_tagphp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_tagphp php=php php(stringphp)php php$tagphp;
+php php php php php php php php php}
 
-        $this->removeOption('tag');
+php php php php php php php php php$thisphp-php>removeOptionphp(php'tagphp'php)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get HTML tag, if any, with which to surround label
-     *
-     * @return void
-     */
-    public function getTag()
-    {
-        if (null === $this->_tag) {
-            $tag = $this->getOption('tag');
-            if (null !== $tag) {
-                $this->removeOption('tag');
-                $this->setTag($tag);
-            }
-            return $tag;
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp HTMLphp tagphp,php ifphp anyphp,php withphp whichphp tophp surroundphp label
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp getTagphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_tagphp)php php{
+php php php php php php php php php php php php php$tagphp php=php php$thisphp-php>getOptionphp(php'tagphp'php)php;
+php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$tagphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>removeOptionphp(php'tagphp'php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>setTagphp(php$tagphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$tagphp;
+php php php php php php php php php}
 
-        return $this->_tag;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_tagphp;
+php php php php php}
 
-    /**
-     * Get class with which to define label
-     *
-     * Appends either 'optional' or 'required' to class, depending on whether
-     * or not the element is required.
-     *
-     * @return string
-     */
-    public function getClass()
-    {
-        $class   = '';
-        $element = $this->getElement();
+php php php php php/php*php*
+php php php php php php*php Getphp classphp withphp whichphp tophp definephp label
+php php php php php php*
+php php php php php php*php Appendsphp eitherphp php'optionalphp'php orphp php'requiredphp'php tophp classphp,php dependingphp onphp whether
+php php php php php php*php orphp notphp thephp elementphp isphp requiredphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getClassphp(php)
+php php php php php{
+php php php php php php php php php$classphp php php php=php php'php'php;
+php php php php php php php php php$elementphp php=php php$thisphp-php>getElementphp(php)php;
 
-        $decoratorClass = $this->getOption('class');
-        if (!empty($decoratorClass)) {
-            $class .= ' ' . $decoratorClass;
-        }
+php php php php php php php php php$decoratorClassphp php=php php$thisphp-php>getOptionphp(php'classphp'php)php;
+php php php php php php php php ifphp php(php!emptyphp(php$decoratorClassphp)php)php php{
+php php php php php php php php php php php php php$classphp php.php=php php'php php'php php.php php$decoratorClassphp;
+php php php php php php php php php}
 
-        $type  = $element->isRequired() ? 'required' : 'optional';
+php php php php php php php php php$typephp php php=php php$elementphp-php>isRequiredphp(php)php php?php php'requiredphp'php php:php php'optionalphp'php;
 
-        if (!strstr($class, $type)) {
-            $class .= ' ' . $type;
-            $class = trim($class);
-        }
+php php php php php php php php ifphp php(php!strstrphp(php$classphp,php php$typephp)php)php php{
+php php php php php php php php php php php php php$classphp php.php=php php'php php'php php.php php$typephp;
+php php php php php php php php php php php php php$classphp php=php trimphp(php$classphp)php;
+php php php php php php php php php}
 
-        return $class;
-    }
+php php php php php php php php returnphp php$classphp;
+php php php php php}
 
-    /**
-     * Load an optional/required suffix/prefix key
-     *
-     * @param  string $key
-     * @return void
-     */
-    protected function _loadOptReqKey($key)
-    {
-        if (!isset($this->$key)) {
-            $value = $this->getOption($key);
-            $this->$key = (string) $value;
-            if (null !== $value) {
-                $this->removeOption($key);
-            }
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Loadphp anphp optionalphp/requiredphp suffixphp/prefixphp key
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadOptReqKeyphp(php$keyphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php$keyphp)php)php php{
+php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>getOptionphp(php$keyphp)php;
+php php php php php php php php php php php php php$thisphp-php>php$keyphp php=php php(stringphp)php php$valuephp;
+php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>removeOptionphp(php$keyphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Overloading
-     *
-     * Currently overloads:
-     *
-     * - getOpt(ional)Prefix()
-     * - getOpt(ional)Suffix()
-     * - getReq(uired)Prefix()
-     * - getReq(uired)Suffix()
-     * - setOpt(ional)Prefix()
-     * - setOpt(ional)Suffix()
-     * - setReq(uired)Prefix()
-     * - setReq(uired)Suffix()
-     *
-     * @param  string $method
-     * @param  array $args
-     * @return mixed
-     * @throws Zend_Form_Exception for unsupported methods
-     */
-    public function __call($method, $args)
-    {
-        $tail = substr($method, -6);
-        $head = substr($method, 0, 3);
-        if (in_array($head, array('get', 'set'))
-            && (('Prefix' == $tail) || ('Suffix' == $tail))
-        ) {
-            $position = substr($method, -6);
-            $type     = strtolower(substr($method, 3, 3));
-            switch ($type) {
-                case 'req':
-                    $key = 'required' . $position;
-                    break;
-                case 'opt':
-                    $key = 'optional' . $position;
-                    break;
-                default:
-                    require_once 'Zend/Form/Exception.php';
-                    throw new Zend_Form_Exception(sprintf('Invalid method "%s" called in Label decorator, and detected as type %s', $method, $type));
-            }
+php php php php php/php*php*
+php php php php php php*php Overloading
+php php php php php php*
+php php php php php php*php Currentlyphp overloadsphp:
+php php php php php php*
+php php php php php php*php php-php getOptphp(ionalphp)Prefixphp(php)
+php php php php php php*php php-php getOptphp(ionalphp)Suffixphp(php)
+php php php php php php*php php-php getReqphp(uiredphp)Prefixphp(php)
+php php php php php php*php php-php getReqphp(uiredphp)Suffixphp(php)
+php php php php php php*php php-php setOptphp(ionalphp)Prefixphp(php)
+php php php php php php*php php-php setOptphp(ionalphp)Suffixphp(php)
+php php php php php php*php php-php setReqphp(uiredphp)Prefixphp(php)
+php php php php php php*php php-php setReqphp(uiredphp)Suffixphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$method
+php php php php php php*php php@paramphp php arrayphp php$args
+php php php php php php*php php@returnphp mixed
+php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp forphp unsupportedphp methods
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
+php php php php php{
+php php php php php php php php php$tailphp php=php substrphp(php$methodphp,php php-php6php)php;
+php php php php php php php php php$headphp php=php substrphp(php$methodphp,php php0php,php php3php)php;
+php php php php php php php php ifphp php(inphp_arrayphp(php$headphp,php arrayphp(php'getphp'php,php php'setphp'php)php)
+php php php php php php php php php php php php php&php&php php(php(php'Prefixphp'php php=php=php php$tailphp)php php|php|php php(php'Suffixphp'php php=php=php php$tailphp)php)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php php$positionphp php=php substrphp(php$methodphp,php php-php6php)php;
+php php php php php php php php php php php php php$typephp php php php php php=php strtolowerphp(substrphp(php$methodphp,php php3php,php php3php)php)php;
+php php php php php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php php php php php casephp php'reqphp'php:
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'requiredphp'php php.php php$positionphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'optphp'php:
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php'optionalphp'php php.php php$positionphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp methodphp php"php%sphp"php calledphp inphp Labelphp decoratorphp,php andphp detectedphp asphp typephp php%sphp'php,php php$methodphp,php php$typephp)php)php;
+php php php php php php php php php php php php php}
 
-            switch ($head) {
-                case 'set':
-                    if (0 === count($args)) {
-                        require_once 'Zend/Form/Exception.php';
-                        throw new Zend_Form_Exception(sprintf('Method "%s" requires at least one argument; none provided', $method));
-                    }
-                    $value = array_shift($args);
-                    $this->$key = $value;
-                    return $this;
-                case 'get':
-                default:
-                    if (null === ($element = $this->getElement())) {
-                        $this->_loadOptReqKey($key);
-                    } elseif (isset($element->$key)) {
-                        $this->$key = (string) $element->$key;
-                    } else {
-                        $this->_loadOptReqKey($key);
-                    }
-                    return $this->$key;
-            }
-        }
+php php php php php php php php php php php php switchphp php(php$headphp)php php{
+php php php php php php php php php php php php php php php php casephp php'setphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php countphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Methodphp php"php%sphp"php requiresphp atphp leastphp onephp argumentphp;php nonephp providedphp'php,php php$methodphp)php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php$keyphp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php php php php php php php php casephp php'getphp'php:
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php(php$elementphp php=php php$thisphp-php>getElementphp(php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_loadOptReqKeyphp(php$keyphp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(issetphp(php$elementphp-php>php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php$keyphp php=php php(stringphp)php php$elementphp-php>php$keyphp;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_loadOptReqKeyphp(php$keyphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php$keyphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        require_once 'Zend/Form/Exception.php';
-        throw new Zend_Form_Exception(sprintf('Invalid method "%s" called in Label decorator', $method));
-    }
+php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp methodphp php"php%sphp"php calledphp inphp Labelphp decoratorphp'php,php php$methodphp)php)php;
+php php php php php}
 
-    /**
-     * Get label to render
-     *
-     * @return void
-     */
-    public function getLabel()
-    {
-        if (null === ($element = $this->getElement())) {
-            return '';
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp labelphp tophp render
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp getLabelphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php(php$elementphp php=php php$thisphp-php>getElementphp(php)php)php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
 
-        $label = $element->getLabel();
-        $label = trim($label);
+php php php php php php php php php$labelphp php=php php$elementphp-php>getLabelphp(php)php;
+php php php php php php php php php$labelphp php=php trimphp(php$labelphp)php;
 
-        if (empty($label)) {
-            return '';
-        }
+php php php php php php php php ifphp php(emptyphp(php$labelphp)php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
 
-        if (null !== ($translator = $element->getTranslator())) {
-            $label = $translator->translate($label);
-        }
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$translatorphp php=php php$elementphp-php>getTranslatorphp(php)php)php)php php{
+php php php php php php php php php php php php php$labelphp php=php php$translatorphp-php>translatephp(php$labelphp)php;
+php php php php php php php php php}
 
-        $optPrefix = $this->getOptPrefix();
-        $optSuffix = $this->getOptSuffix();
-        $reqPrefix = $this->getReqPrefix();
-        $reqSuffix = $this->getReqSuffix();
-        $separator = $this->getSeparator();
+php php php php php php php php php$optPrefixphp php=php php$thisphp-php>getOptPrefixphp(php)php;
+php php php php php php php php php$optSuffixphp php=php php$thisphp-php>getOptSuffixphp(php)php;
+php php php php php php php php php$reqPrefixphp php=php php$thisphp-php>getReqPrefixphp(php)php;
+php php php php php php php php php$reqSuffixphp php=php php$thisphp-php>getReqSuffixphp(php)php;
+php php php php php php php php php$separatorphp php=php php$thisphp-php>getSeparatorphp(php)php;
 
-        if (!empty($label)) {
-            if ($element->isRequired()) {
-                $label = $reqPrefix . $label . $reqSuffix;
-            } else {
-                $label = $optPrefix . $label . $optSuffix;
-            }
-        }
+php php php php php php php php ifphp php(php!emptyphp(php$labelphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$elementphp-php>isRequiredphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$labelphp php=php php$reqPrefixphp php.php php$labelphp php.php php$reqSuffixphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$labelphp php=php php$optPrefixphp php.php php$labelphp php.php php$optSuffixphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $label;
-    }
-
-
-    /**
-     * Render a label
-     *
-     * @param  string $content
-     * @return string
-     */
-    public function render($content)
-    {
-        $element = $this->getElement();
-        $view    = $element->getView();
-        if (null === $view) {
-            return $content;
-        }
-
-        $label     = $this->getLabel();
-        $separator = $this->getSeparator();
-        $placement = $this->getPlacement();
-        $tag       = $this->getTag();
-        $id        = $this->getId();
-        $class     = $this->getClass();
-        $options   = $this->getOptions();
+php php php php php php php php returnphp php$labelphp;
+php php php php php}
 
 
-        if (empty($label) && empty($tag)) {
-            return $content;
-        }
+php php php php php/php*php*
+php php php php php php*php Renderphp aphp label
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$content
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php$contentphp)
+php php php php php{
+php php php php php php php php php$elementphp php=php php$thisphp-php>getElementphp(php)php;
+php php php php php php php php php$viewphp php php php php=php php$elementphp-php>getViewphp(php)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$viewphp)php php{
+php php php php php php php php php php php php returnphp php$contentphp;
+php php php php php php php php php}
 
-        if (!empty($label)) {
-            $options['class'] = $class;
-            $label = $view->formLabel($element->getFullyQualifiedName(), trim($label), $options);
-        } else {
-            $label = '&#160;';
-        }
+php php php php php php php php php$labelphp php php php php php=php php$thisphp-php>getLabelphp(php)php;
+php php php php php php php php php$separatorphp php=php php$thisphp-php>getSeparatorphp(php)php;
+php php php php php php php php php$placementphp php=php php$thisphp-php>getPlacementphp(php)php;
+php php php php php php php php php$tagphp php php php php php php php=php php$thisphp-php>getTagphp(php)php;
+php php php php php php php php php$idphp php php php php php php php php=php php$thisphp-php>getIdphp(php)php;
+php php php php php php php php php$classphp php php php php php=php php$thisphp-php>getClassphp(php)php;
+php php php php php php php php php$optionsphp php php php=php php$thisphp-php>getOptionsphp(php)php;
 
-        if (null !== $tag) {
-            require_once 'Zend/Form/Decorator/HtmlTag.php';
-            $decorator = new Zend_Form_Decorator_HtmlTag();
-            $decorator->setOptions(array('tag' => $tag,
-                                         'id'  => $id . '-label'));
 
-            $label = $decorator->render($label);
-        }
+php php php php php php php php ifphp php(emptyphp(php$labelphp)php php&php&php emptyphp(php$tagphp)php)php php{
+php php php php php php php php php php php php returnphp php$contentphp;
+php php php php php php php php php}
 
-        switch ($placement) {
-            case self::APPEND:
-                return $content . $separator . $label;
-            case self::PREPEND:
-                return $label . $separator . $content;
-        }
-    }
-}
+php php php php php php php php ifphp php(php!emptyphp(php$labelphp)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'classphp'php]php php=php php$classphp;
+php php php php php php php php php php php php php$labelphp php=php php$viewphp-php>formLabelphp(php$elementphp-php>getFullyQualifiedNamephp(php)php,php trimphp(php$labelphp)php,php php$optionsphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$labelphp php=php php'php&php#php1php6php0php;php'php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$tagphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/HtmlTagphp.phpphp'php;
+php php php php php php php php php php php php php$decoratorphp php=php newphp Zendphp_Formphp_Decoratorphp_HtmlTagphp(php)php;
+php php php php php php php php php php php php php$decoratorphp-php>setOptionsphp(arrayphp(php'tagphp'php php=php>php php$tagphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'idphp'php php php=php>php php$idphp php.php php'php-labelphp'php)php)php;
+
+php php php php php php php php php php php php php$labelphp php=php php$decoratorphp-php>renderphp(php$labelphp)php;
+php php php php php php php php php}
+
+php php php php php php php php switchphp php(php$placementphp)php php{
+php php php php php php php php php php php php casephp selfphp:php:APPENDphp:
+php php php php php php php php php php php php php php php php returnphp php$contentphp php.php php$separatorphp php.php php$labelphp;
+php php php php php php php php php php php php casephp selfphp:php:PREPENDphp:
+php php php php php php php php php php php php php php php php returnphp php$labelphp php.php php$separatorphp php.php php$contentphp;
+php php php php php php php php php}
+php php php php php}
+php}

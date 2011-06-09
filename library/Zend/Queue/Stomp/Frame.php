@@ -1,363 +1,363 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Queue
- * @subpackage Stomp
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Frame.php 22662 2010-07-24 17:37:36Z mabe $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Queue
+php php*php php@subpackagephp Stomp
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Framephp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
+php php*php/
 
-/**
- * @see Zend_Queue_Stomp_FrameInterface
- */
-require_once 'Zend/Queue/Stomp/FrameInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Queuephp_Stompphp_FrameInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Queuephp/Stompphp/FrameInterfacephp.phpphp'php;
 
-/**
- * This class represents a Stomp Frame
- *
- * @category   Zend
- * @package    Zend_Queue
- * @subpackage Stomp
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Queue_Stomp_Frame
-    implements Zend_Queue_Stomp_FrameInterface
-{
-    const END_OF_FRAME   = "\x00\n";
-    const CONTENT_LENGTH = 'content-length';
-    const EOL            = "\n";
+php/php*php*
+php php*php Thisphp classphp representsphp aphp Stompphp Frame
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Queue
+php php*php php@subpackagephp Stomp
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Queuephp_Stompphp_Frame
+php php php php implementsphp Zendphp_Queuephp_Stompphp_FrameInterface
+php{
+php php php php constphp ENDphp_OFphp_FRAMEphp php php php=php php"php\xphp0php0php\nphp"php;
+php php php php constphp CONTENTphp_LENGTHphp php=php php'contentphp-lengthphp'php;
+php php php php constphp EOLphp php php php php php php php php php php php php=php php"php\nphp"php;
 
-    /**
-     * Headers for the frame
-     *
-     * @var array
-     */
-    protected $_headers = array();
+php php php php php/php*php*
+php php php php php php*php Headersphp forphp thephp frame
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_headersphp php=php arrayphp(php)php;
 
-    /**
-     * The command for the frame
-     *
-     * @var string
-     */
-    protected $_command = null;
+php php php php php/php*php*
+php php php php php php*php Thephp commandphp forphp thephp frame
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_commandphp php=php nullphp;
 
-    /**
-     * The body of the frame
-     *
-     * @var string
-     */
-    protected $_body = null;
+php php php php php/php*php*
+php php php php php php*php Thephp bodyphp ofphp thephp frame
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_bodyphp php=php nullphp;
 
-    /**
-     * Do the content-length automatically?
-     */
-    protected $_autoContentLength = null;
+php php php php php/php*php*
+php php php php php php*php Dophp thephp contentphp-lengthphp automaticallyphp?
+php php php php php php*php/
+php php php php protectedphp php$php_autoContentLengthphp php=php nullphp;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->setHeaders(array());
-        $this->setBody(null);
-        $this->setCommand(null);
-        $this->setAutoContentLength(true);
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>setHeadersphp(arrayphp(php)php)php;
+php php php php php php php php php$thisphp-php>setBodyphp(nullphp)php;
+php php php php php php php php php$thisphp-php>setCommandphp(nullphp)php;
+php php php php php php php php php$thisphp-php>setAutoContentLengthphp(truephp)php;
+php php php php php}
 
-    /**
-     * get the status of the auto content length
-     *
-     * If AutoContentLength is true this code will automatically put the
-     * content-length header in, even if it is already set by the user.
-     *
-     * This is done to make the message sending more reliable.
-     *
-     * @return boolean
-     */
-    public function getAutoContentLength()
-    {
-        return $this->_autoContentLength;
-    }
+php php php php php/php*php*
+php php php php php php*php getphp thephp statusphp ofphp thephp autophp contentphp length
+php php php php php php*
+php php php php php php*php Ifphp AutoContentLengthphp isphp truephp thisphp codephp willphp automaticallyphp putphp the
+php php php php php php*php contentphp-lengthphp headerphp inphp,php evenphp ifphp itphp isphp alreadyphp setphp byphp thephp userphp.
+php php php php php php*
+php php php php php php*php Thisphp isphp donephp tophp makephp thephp messagephp sendingphp morephp reliablephp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getAutoContentLengthphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_autoContentLengthphp;
+php php php php php}
 
-    /**
-     * setAutoContentLength()
-     *
-     * Set the value on or off.
-     *
-     * @param boolean $auto
-     * @return $this;
-     * @throws Zend_Queue_Exception
-     */
-    public function setAutoContentLength($auto)
-    {
-        if (!is_bool($auto)) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('$auto is not a boolean');
-        }
+php php php php php/php*php*
+php php php php php php*php setAutoContentLengthphp(php)
+php php php php php php*
+php php php php php php*php Setphp thephp valuephp onphp orphp offphp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$auto
+php php php php php php*php php@returnphp php$thisphp;
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setAutoContentLengthphp(php$autophp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_boolphp(php$autophp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'php$autophp isphp notphp aphp booleanphp'php)php;
+php php php php php php php php php}
 
-        $this->_autoContentLength = $auto;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_autoContentLengthphp php=php php$autophp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the headers
-     *
-     * @return array
-     */
-    public function getHeaders()
-    {
-        return $this->_headers;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp headers
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getHeadersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_headersphp;
+php php php php php}
 
-    /**
-     * Set the headers
-     *
-     * Throws an exception if the array values are not strings.
-     *
-     * @param array $headers
-     * @return $this
-     * @throws Zend_Queue_Exception
-     */
-    public function setHeaders(array $headers)
-    {
-        foreach ($headers as $header => $value) {
-            $this->setHeader($header, $value);
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp headers
+php php php php php php*
+php php php php php php*php Throwsphp anphp exceptionphp ifphp thephp arrayphp valuesphp arephp notphp stringsphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$headers
+php php php php php php*php php@returnphp php$this
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setHeadersphp(arrayphp php$headersphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$headersphp asphp php$headerphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$thisphp-php>setHeaderphp(php$headerphp,php php$valuephp)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets a value for a header
-     *
-     * @param  string $header
-     * @param  string $value
-     * @return Zend_Queue_Stomp_Frame
-     * @throws Zend_Queue_Exception
-     */
-    public function setHeader($header, $value) {
-        if (!is_string($header)) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('$header is not a string: ' . print_r($header, true));
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp valuephp forphp aphp header
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$header
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Queuephp_Stompphp_Frame
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setHeaderphp(php$headerphp,php php$valuephp)php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$headerphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'php$headerphp isphp notphp aphp stringphp:php php'php php.php printphp_rphp(php$headerphp,php truephp)php)php;
+php php php php php php php php php}
 
-        if (!is_scalar($value)) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('$value is not a string: ' . print_r($value, true));
-        }
+php php php php php php php php ifphp php(php!isphp_scalarphp(php$valuephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'php$valuephp isphp notphp aphp stringphp:php php'php php.php printphp_rphp(php$valuephp,php truephp)php)php;
+php php php php php php php php php}
 
-        $this->_headers[$header] = $value;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_headersphp[php$headerphp]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
 
-    /**
-     * Returns a value for a header
-     *
-     * Returns false if the header does not exist.
-     *
-     * @param  string $header
-     * @return string|false
-     * @throws Zend_Queue_Exception
-     */
-    public function getHeader($header)
-    {
-        if (!is_string($header)) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('$header is not a string');
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp valuephp forphp aphp header
+php php php php php php*
+php php php php php php*php Returnsphp falsephp ifphp thephp headerphp doesphp notphp existphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$header
+php php php php php php*php php@returnphp stringphp|false
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getHeaderphp(php$headerphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$headerphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'php$headerphp isphp notphp aphp stringphp'php)php;
+php php php php php php php php php}
 
-        return isset($this->_headers[$header])
-            ? $this->_headers[$header]
-            : false;
-    }
+php php php php php php php php returnphp issetphp(php$thisphp-php>php_headersphp[php$headerphp]php)
+php php php php php php php php php php php php php?php php$thisphp-php>php_headersphp[php$headerphp]
+php php php php php php php php php php php php php:php falsephp;
+php php php php php}
 
-    /**
-     * Return the body for this frame
-     *
-     * Returns false if the body does not exist
-     *
-     * @return false|string
-     */
-    public function getBody()
-    {
-        return $this->_body === null
-            ? false
-            : $this->_body;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp bodyphp forphp thisphp frame
+php php php php php php*
+php php php php php php*php Returnsphp falsephp ifphp thephp bodyphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@returnphp falsephp|string
+php php php php php php*php/
+php php php php publicphp functionphp getBodyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_bodyphp php=php=php=php null
+php php php php php php php php php php php php php?php false
+php php php php php php php php php php php php php:php php$thisphp-php>php_bodyphp;
+php php php php php}
 
-    /**
-     * Set the body for this frame
-     *
-     * Set to null for no body.
-     *
-     * @param  string|null $body
-     * @return Zend_Queue_Stomp_Frame
-     * @throws Zend_Queue_Exception
-     */
-    public function setBody($body)
-    {
-        if (!is_string($body) && $body !== null) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('$body is not a string or null');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp bodyphp forphp thisphp frame
+php php php php php php*
+php php php php php php*php Setphp tophp nullphp forphp nophp bodyphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|nullphp php$body
+php php php php php php*php php@returnphp Zendphp_Queuephp_Stompphp_Frame
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setBodyphp(php$bodyphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$bodyphp)php php&php&php php$bodyphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'php$bodyphp isphp notphp aphp stringphp orphp nullphp'php)php;
+php php php php php php php php php}
 
-        $this->_body = $body;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_bodyphp php=php php$bodyphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Return the command for this frame
-     *
-     * Return false if the command does not exist
-     *
-     * @return string|false
-     */
-    public function getCommand()
-    {
-        return $this->_command === null
-            ? false
-            : $this->_command;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp commandphp forphp thisphp frame
+php php php php php php*
+php php php php php php*php Returnphp falsephp ifphp thephp commandphp doesphp notphp exist
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|false
+php php php php php php*php/
+php php php php publicphp functionphp getCommandphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_commandphp php=php=php=php null
+php php php php php php php php php php php php php?php false
+php php php php php php php php php php php php php:php php$thisphp-php>php_commandphp;
+php php php php php}
 
-    /**
-     * Set the body for this frame
-     *
-     * @param  string|null
-     * @return Zend_Queue_Stomp_Frame
-     * @throws Zend_Queue_Exception
-     */
-    public function setCommand($command)
-    {
-        if (!is_string($command) && $command !== null) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('$command is not a string or null');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp bodyphp forphp thisphp frame
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|null
+php php php php php php*php php@returnphp Zendphp_Queuephp_Stompphp_Frame
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setCommandphp(php$commandphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$commandphp)php php&php&php php$commandphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'php$commandphp isphp notphp aphp stringphp orphp nullphp'php)php;
+php php php php php php php php php}
 
-        $this->_command = $command;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_commandphp php=php php$commandphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Takes the current parameters and returns a Stomp Frame
-     *
-     * @return string
-     * @throws Zend_Queue_Exception
-     */
-    public function toFrame()
-    {
-        if ($this->getCommand() === false) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('You must set the command');
-        }
+php php php php php/php*php*
+php php php php php php*php Takesphp thephp currentphp parametersphp andphp returnsphp aphp Stompphp Frame
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp toFramephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>getCommandphp(php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'Youphp mustphp setphp thephp commandphp'php)php;
+php php php php php php php php php}
 
-        $command = $this->getCommand();
-        $headers = $this->getHeaders();
-        $body    = $this->getBody();
-        $frame   = '';
+php php php php php php php php php$commandphp php=php php$thisphp-php>getCommandphp(php)php;
+php php php php php php php php php$headersphp php=php php$thisphp-php>getHeadersphp(php)php;
+php php php php php php php php php$bodyphp php php php php=php php$thisphp-php>getBodyphp(php)php;
+php php php php php php php php php$framephp php php php=php php'php'php;
 
-        // add a content-length to the SEND command.
-        // @see http://stomp.codehaus.org/Protocol
-        if ($this->getAutoContentLength()) {
-            $headers[self::CONTENT_LENGTH] = strlen($this->getBody());
-        }
+php php php php php php php php php/php/php addphp aphp contentphp-lengthphp tophp thephp SENDphp commandphp.
+php php php php php php php php php/php/php php@seephp httpphp:php/php/stompphp.codehausphp.orgphp/Protocol
+php php php php php php php php ifphp php(php$thisphp-php>getAutoContentLengthphp(php)php)php php{
+php php php php php php php php php php php php php$headersphp[selfphp:php:CONTENTphp_LENGTHphp]php php=php strlenphp(php$thisphp-php>getBodyphp(php)php)php;
+php php php php php php php php php}
 
-        // Command
-        $frame = $command . self::EOL;
+php php php php php php php php php/php/php Command
+php php php php php php php php php$framephp php=php php$commandphp php.php selfphp:php:EOLphp;
 
-        // Headers
-        foreach ($headers as $key=>$value) {
-            $frame .= $key . ': ' . $value . self::EOL;
-        }
+php php php php php php php php php/php/php Headers
+php php php php php php php php foreachphp php(php$headersphp asphp php$keyphp=php>php$valuephp)php php{
+php php php php php php php php php php php php php$framephp php.php=php php$keyphp php.php php'php:php php'php php.php php$valuephp php.php selfphp:php:EOLphp;
+php php php php php php php php php}
 
-        // Seperator
-        $frame .= self::EOL; // blank line required by protocol
+php php php php php php php php php/php/php Seperator
+php php php php php php php php php$framephp php.php=php selfphp:php:EOLphp;php php/php/php blankphp linephp requiredphp byphp protocol
 
-        // add the body if any
-        if ($body !== false) {
-            $frame .= $body;
-        }
-        $frame .= self::END_OF_FRAME;
+php php php php php php php php php/php/php addphp thephp bodyphp ifphp any
+php php php php php php php php ifphp php(php$bodyphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$framephp php.php=php php$bodyphp;
+php php php php php php php php php}
+php php php php php php php php php$framephp php.php=php selfphp:php:ENDphp_OFphp_FRAMEphp;
 
-        return $frame;
-    }
+php php php php php php php php returnphp php$framephp;
+php php php php php}
 
-    /**
-     * @see toFrame()
-     * @return string
-     */
-    public function __toString()
-    {
-        try {
-            $return = $this->toFrame();
-        } catch (Zend_Queue_Exception $e) {
-            $return = '';
-        }
-        return $return;
-    }
+php php php php php/php*php*
+php php php php php php*php php@seephp toFramephp(php)
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>toFramephp(php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php$returnphp php=php php'php'php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Accepts a frame and deconstructs the frame into its component parts
-     *
-     * @param  string $frame - a stomp frame
-     * @return $this
-     */
-    public function fromFrame($frame)
-    {
-        if (!is_string($frame)) {
-            require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception('$frame is not a string');
-        }
+php php php php php/php*php*
+php php php php php php*php Acceptsphp aphp framephp andphp deconstructsphp thephp framephp intophp itsphp componentphp parts
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$framephp php-php aphp stompphp frame
+php php php php php php*php php@returnphp php$this
+php php php php php php*php/
+php php php php publicphp functionphp fromFramephp(php$framephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$framephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'php$framephp isphp notphp aphp stringphp'php)php;
+php php php php php php php php php}
 
-        $headers = array();
-        $body    = null;
-        $command = false;
-        $header  = '';
+php php php php php php php php php$headersphp php=php arrayphp(php)php;
+php php php php php php php php php$bodyphp php php php php=php nullphp;
+php php php php php php php php php$commandphp php=php falsephp;
+php php php php php php php php php$headerphp php php=php php'php'php;
 
-        // separate the headers and the body
-        $match = self::EOL . self::EOL;
-        if (preg_match('/' . $match . '/', $frame)) {
-            list ($header, $body) = explode($match, $frame, 2);
-        } else {
-            $header = $frame;
-        }
+php php php php php php php php php/php/php separatephp thephp headersphp andphp thephp body
+php php php php php php php php php$matchphp php=php selfphp:php:EOLphp php.php selfphp:php:EOLphp;
+php php php php php php php php ifphp php(pregphp_matchphp(php'php/php'php php.php php$matchphp php.php php'php/php'php,php php$framephp)php)php php{
+php php php php php php php php php php php php listphp php(php$headerphp,php php$bodyphp)php php=php explodephp(php$matchphp,php php$framephp,php php2php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$headerphp php=php php$framephp;
+php php php php php php php php php}
 
-        // blow up headers
-        $headers = explode(self::EOL, $header);
-        unset($header);
+php php php php php php php php php/php/php blowphp upphp headers
+php php php php php php php php php$headersphp php=php explodephp(selfphp:php:EOLphp,php php$headerphp)php;
+php php php php php php php php unsetphp(php$headerphp)php;
 
-        // get the command (first line)
-        $this->setCommand(array_shift($headers));
+php php php php php php php php php/php/php getphp thephp commandphp php(firstphp linephp)
+php php php php php php php php php$thisphp-php>setCommandphp(arrayphp_shiftphp(php$headersphp)php)php;
 
-        // set each of the headers.
-        foreach ($headers as $header) {
-            if (strpos($header, ':') > 0) {
-                list($name, $value) = explode(':', $header, 2);
-                $this->setHeader($name, $value);
-            }
-        }
+php php php php php php php php php/php/php setphp eachphp ofphp thephp headersphp.
+php php php php php php php php foreachphp php(php$headersphp asphp php$headerphp)php php{
+php php php php php php php php php php php php ifphp php(strposphp(php$headerphp,php php'php:php'php)php php>php php0php)php php{
+php php php php php php php php php php php php php php php php listphp(php$namephp,php php$valuephp)php php=php explodephp(php'php:php'php,php php$headerphp,php php2php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>setHeaderphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // crop the body if content-length is present
-        if ($this->getHeader(self::CONTENT_LENGTH) !== false ) {
-            $length = (int) $this->getHeader(self::CONTENT_LENGTH);
-            $body   = substr($body, 0, $length);
-        }
+php php php php php php php php php/php/php cropphp thephp bodyphp ifphp contentphp-lengthphp isphp present
+php php php php php php php php ifphp php(php$thisphp-php>getHeaderphp(selfphp:php:CONTENTphp_LENGTHphp)php php!php=php=php falsephp php)php php{
+php php php php php php php php php php php php php$lengthphp php=php php(intphp)php php$thisphp-php>getHeaderphp(selfphp:php:CONTENTphp_LENGTHphp)php;
+php php php php php php php php php php php php php$bodyphp php php php=php substrphp(php$bodyphp,php php0php,php php$lengthphp)php;
+php php php php php php php php php}
 
-        $this->setBody($body);
-        return $this;
-    }
-}
+php php php php php php php php php$thisphp-php>setBodyphp(php$bodyphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php}

@@ -1,420 +1,420 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Measure
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Number.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Measure
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Numberphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Implement needed classes
- */
-require_once 'Zend/Measure/Abstract.php';
-require_once 'Zend/Locale.php';
+php/php*php*
+php php*php Implementphp neededphp classes
+php php*php/
+requirephp_oncephp php'Zendphp/Measurephp/Abstractphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
 
-/**
- * Class for handling number conversions
- *
- * This class can only handle numbers without precision
- *
- * @category   Zend
- * @package    Zend_Measure
- * @subpackage Zend_Measure_Number
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Measure_Number extends Zend_Measure_Abstract
-{
-    const STANDARD = 'DECIMAL';
+php/php*php*
+php php*php Classphp forphp handlingphp numberphp conversions
+php php*
+php php*php Thisphp classphp canphp onlyphp handlephp numbersphp withoutphp precision
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Measure
+php php*php php@subpackagephp Zendphp_Measurephp_Number
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Measurephp_Numberphp extendsphp Zendphp_Measurephp_Abstract
+php{
+php php php php constphp STANDARDphp php=php php'DECIMALphp'php;
 
-    const BINARY      = 'BINARY';
-    const TERNARY     = 'TERNARY';
-    const QUATERNARY  = 'QUATERNARY';
-    const QUINARY     = 'QUINARY';
-    const SENARY      = 'SENARY';
-    const SEPTENARY   = 'SEPTENARY';
-    const OCTAL       = 'OCTAL';
-    const NONARY      = 'NONARY';
-    const DECIMAL     = 'DECIMAL';
-    const DUODECIMAL  = 'DUODECIMAL';
-    const HEXADECIMAL = 'HEXADECIMAL';
-    const ROMAN       = 'ROMAN';
+php php php php constphp BINARYphp php php php php php php=php php'BINARYphp'php;
+php php php php constphp TERNARYphp php php php php php=php php'TERNARYphp'php;
+php php php php constphp QUATERNARYphp php php=php php'QUATERNARYphp'php;
+php php php php constphp QUINARYphp php php php php php=php php'QUINARYphp'php;
+php php php php constphp SENARYphp php php php php php php=php php'SENARYphp'php;
+php php php php constphp SEPTENARYphp php php php=php php'SEPTENARYphp'php;
+php php php php constphp OCTALphp php php php php php php php=php php'OCTALphp'php;
+php php php php constphp NONARYphp php php php php php php=php php'NONARYphp'php;
+php php php php constphp DECIMALphp php php php php php=php php'DECIMALphp'php;
+php php php php constphp DUODECIMALphp php php=php php'DUODECIMALphp'php;
+php php php php constphp HEXADECIMALphp php=php php'HEXADECIMALphp'php;
+php php php php constphp ROMANphp php php php php php php php=php php'ROMANphp'php;
 
-    /**
-     * Calculations for all number units
-     *
-     * @var array
-     */
-    protected $_units = array(
-        'BINARY'      => array(2,  '⑵'),
-        'TERNARY'     => array(3,  '⑶'),
-        'QUATERNARY'  => array(4,  '⑷'),
-        'QUINARY'     => array(5,  '⑸'),
-        'SENARY'      => array(6,  '⑹'),
-        'SEPTENARY'   => array(7,  '⑺'),
-        'OCTAL'       => array(8,  '⑻'),
-        'NONARY'      => array(9,  '⑼'),
-        'DECIMAL'     => array(10, '⑽'),
-        'DUODECIMAL'  => array(12, '⑿'),
-        'HEXADECIMAL' => array(16, '⒃'),
-        'ROMAN'       => array(99, ''),
-        'STANDARD'    => 'DECIMAL'
-    );
+php php php php php/php*php*
+php php php php php php*php Calculationsphp forphp allphp numberphp units
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_unitsphp php=php arrayphp(
+php php php php php php php php php'BINARYphp'php php php php php php php=php>php arrayphp(php2php,php php php'php⑵php'php)php,
+php php php php php php php php php'TERNARYphp'php php php php php php=php>php arrayphp(php3php,php php php'php⑶php'php)php,
+php php php php php php php php php'QUATERNARYphp'php php php=php>php arrayphp(php4php,php php php'php⑷php'php)php,
+php php php php php php php php php'QUINARYphp'php php php php php php=php>php arrayphp(php5php,php php php'php⑸php'php)php,
+php php php php php php php php php'SENARYphp'php php php php php php php=php>php arrayphp(php6php,php php php'php⑹php'php)php,
+php php php php php php php php php'SEPTENARYphp'php php php php=php>php arrayphp(php7php,php php php'php⑺php'php)php,
+php php php php php php php php php'OCTALphp'php php php php php php php php=php>php arrayphp(php8php,php php php'php⑻php'php)php,
+php php php php php php php php php'NONARYphp'php php php php php php php=php>php arrayphp(php9php,php php php'php⑼php'php)php,
+php php php php php php php php php'DECIMALphp'php php php php php php=php>php arrayphp(php1php0php,php php'php⑽php'php)php,
+php php php php php php php php php'DUODECIMALphp'php php php=php>php arrayphp(php1php2php,php php'php⑿php'php)php,
+php php php php php php php php php'HEXADECIMALphp'php php=php>php arrayphp(php1php6php,php php'php⒃php'php)php,
+php php php php php php php php php'ROMANphp'php php php php php php php php=php>php arrayphp(php9php9php,php php'php'php)php,
+php php php php php php php php php'STANDARDphp'php php php php php=php>php php'DECIMALphp'
+php php php php php)php;
 
-    /**
-     * Definition of all roman signs
-     *
-     * @var array $_roman
-     */
-    private static $_roman = array(
-        'I' => 1,
-        'A' => 4,
-        'V' => 5,
-        'B' => 9,
-        'X' => 10,
-        'E' => 40,
-        'L' => 50,
-        'F' => 90,
-        'C' => 100,
-        'G' => 400,
-        'D' => 500,
-        'H' => 900,
-        'M' => 1000,
-        'J' => 4000,
-        'P' => 5000,
-        'K' => 9000,
-        'Q' => 10000,
-        'N' => 40000,
-        'R' => 50000,
-        'W' => 90000,
-        'S' => 100000,
-        'Y' => 400000,
-        'T' => 500000,
-        'Z' => 900000,
-        'U' => 1000000
-    );
+php php php php php/php*php*
+php php php php php php*php Definitionphp ofphp allphp romanphp signs
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php$php_roman
+php php php php php php*php/
+php php php php privatephp staticphp php$php_romanphp php=php arrayphp(
+php php php php php php php php php'Iphp'php php=php>php php1php,
+php php php php php php php php php'Aphp'php php=php>php php4php,
+php php php php php php php php php'Vphp'php php=php>php php5php,
+php php php php php php php php php'Bphp'php php=php>php php9php,
+php php php php php php php php php'Xphp'php php=php>php php1php0php,
+php php php php php php php php php'Ephp'php php=php>php php4php0php,
+php php php php php php php php php'Lphp'php php=php>php php5php0php,
+php php php php php php php php php'Fphp'php php=php>php php9php0php,
+php php php php php php php php php'Cphp'php php=php>php php1php0php0php,
+php php php php php php php php php'Gphp'php php=php>php php4php0php0php,
+php php php php php php php php php'Dphp'php php=php>php php5php0php0php,
+php php php php php php php php php'Hphp'php php=php>php php9php0php0php,
+php php php php php php php php php'Mphp'php php=php>php php1php0php0php0php,
+php php php php php php php php php'Jphp'php php=php>php php4php0php0php0php,
+php php php php php php php php php'Pphp'php php=php>php php5php0php0php0php,
+php php php php php php php php php'Kphp'php php=php>php php9php0php0php0php,
+php php php php php php php php php'Qphp'php php=php>php php1php0php0php0php0php,
+php php php php php php php php php'Nphp'php php=php>php php4php0php0php0php0php,
+php php php php php php php php php'Rphp'php php=php>php php5php0php0php0php0php,
+php php php php php php php php php'Wphp'php php=php>php php9php0php0php0php0php,
+php php php php php php php php php'Sphp'php php=php>php php1php0php0php0php0php0php,
+php php php php php php php php php'Yphp'php php=php>php php4php0php0php0php0php0php,
+php php php php php php php php php'Tphp'php php=php>php php5php0php0php0php0php0php,
+php php php php php php php php php'Zphp'php php=php>php php9php0php0php0php0php0php,
+php php php php php php php php php'Uphp'php php=php>php php1php0php0php0php0php0php0
+php php php php php)php;
 
-    /**
-     * Convertion table for roman signs
-     *
-     * @var array $_romanconvert
-     */
-    private static $_romanconvert = array(
-        '/_V/' => '/P/',
-        '/_X/' => '/Q/',
-        '/_L/' => '/R/',
-        '/_C/' => '/S/',
-        '/_D/' => '/T/',
-        '/_M/' => '/U/',
-        '/IV/' => '/A/',
-        '/IX/' => '/B/',
-        '/XL/' => '/E/',
-        '/XC/' => '/F/',
-        '/CD/' => '/G/',
-        '/CM/' => '/H/',
-        '/M_V/'=> '/J/',
-        '/MQ/' => '/K/',
-        '/QR/' => '/N/',
-        '/QS/' => '/W/',
-        '/ST/' => '/Y/',
-        '/SU/' => '/Z/'
-    );
+php php php php php/php*php*
+php php php php php php*php Convertionphp tablephp forphp romanphp signs
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php$php_romanconvert
+php php php php php php*php/
+php php php php privatephp staticphp php$php_romanconvertphp php=php arrayphp(
+php php php php php php php php php'php/php_Vphp/php'php php=php>php php'php/Pphp/php'php,
+php php php php php php php php php'php/php_Xphp/php'php php=php>php php'php/Qphp/php'php,
+php php php php php php php php php'php/php_Lphp/php'php php=php>php php'php/Rphp/php'php,
+php php php php php php php php php'php/php_Cphp/php'php php=php>php php'php/Sphp/php'php,
+php php php php php php php php php'php/php_Dphp/php'php php=php>php php'php/Tphp/php'php,
+php php php php php php php php php'php/php_Mphp/php'php php=php>php php'php/Uphp/php'php,
+php php php php php php php php php'php/IVphp/php'php php=php>php php'php/Aphp/php'php,
+php php php php php php php php php'php/IXphp/php'php php=php>php php'php/Bphp/php'php,
+php php php php php php php php php'php/XLphp/php'php php=php>php php'php/Ephp/php'php,
+php php php php php php php php php'php/XCphp/php'php php=php>php php'php/Fphp/php'php,
+php php php php php php php php php'php/CDphp/php'php php=php>php php'php/Gphp/php'php,
+php php php php php php php php php'php/CMphp/php'php php=php>php php'php/Hphp/php'php,
+php php php php php php php php php'php/Mphp_Vphp/php'php=php>php php'php/Jphp/php'php,
+php php php php php php php php php'php/MQphp/php'php php=php>php php'php/Kphp/php'php,
+php php php php php php php php php'php/QRphp/php'php php=php>php php'php/Nphp/php'php,
+php php php php php php php php php'php/QSphp/php'php php=php>php php'php/Wphp/php'php,
+php php php php php php php php php'php/STphp/php'php php=php>php php'php/Yphp/php'php,
+php php php php php php php php php'php/SUphp/php'php php=php>php php'php/Zphp/php'
+php php php php php)php;
 
-    /**
-     * Zend_Measure_Abstract is an abstract class for the different measurement types
-     *
-     * @param  integer            $value  Value
-     * @param  string             $type   (Optional) A Zend_Measure_Number Type
-     * @param  string|Zend_Locale $locale (Optional) A Zend_Locale
-     * @throws Zend_Measure_Exception When language is unknown
-     * @throws Zend_Measure_Exception When type is unknown
-     */
-    public function __construct($value, $type, $locale = null)
-    {
-        if (($type !== null) and (Zend_Locale::isLocale($type, null, false))) {
-            $locale = $type;
-            $type = null;
-        }
+php php php php php/php*php*
+php php php php php php*php Zendphp_Measurephp_Abstractphp isphp anphp abstractphp classphp forphp thephp differentphp measurementphp types
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php php$valuephp php Value
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$typephp php php php(Optionalphp)php Aphp Zendphp_Measurephp_Numberphp Type
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php(Optionalphp)php Aphp Zendphp_Locale
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exceptionphp Whenphp languagephp isphp unknown
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exceptionphp Whenphp typephp isphp unknown
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$valuephp,php php$typephp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$typephp php!php=php=php nullphp)php andphp php(Zendphp_Localephp:php:isLocalephp(php$typephp,php nullphp,php falsephp)php)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$typephp;
+php php php php php php php php php php php php php$typephp php=php nullphp;
+php php php php php php php php php}
 
-        if ($locale === null) {
-            $locale = new Zend_Locale();
-        }
+php php php php php php php php ifphp php(php$localephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$localephp php=php newphp Zendphp_Localephp(php)php;
+php php php php php php php php php}
 
-        if (!Zend_Locale::isLocale($locale, true, false)) {
-            if (!Zend_Locale::isLocale($locale, true, false)) {
-                require_once 'Zend/Measure/Exception.php';
-                throw new Zend_Measure_Exception("Language (" . (string) $locale . ") is unknown");
-            }
+php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php truephp,php falsephp)php)php php{
+php php php php php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php truephp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Languagephp php(php"php php.php php(stringphp)php php$localephp php.php php"php)php isphp unknownphp"php)php;
+php php php php php php php php php php php php php}
 
-            $locale = new Zend_Locale($locale);
-        }
+php php php php php php php php php php php php php$localephp php=php newphp Zendphp_Localephp(php$localephp)php;
+php php php php php php php php php}
 
-        $this->_locale = (string) $locale;
+php php php php php php php php php$thisphp-php>php_localephp php=php php(stringphp)php php$localephp;
 
-        if ($type === null) {
-            $type = $this->_units['STANDARD'];
-        }
+php php php php php php php php ifphp php(php$typephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$typephp php=php php$thisphp-php>php_unitsphp[php'STANDARDphp'php]php;
+php php php php php php php php php}
 
-        if (isset($this->_units[$type]) === false) {
-            require_once 'Zend/Measure/Exception.php';
-            throw new Zend_Measure_Exception("Type ($type) is unknown");
-        }
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_unitsphp[php$typephp]php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Typephp php(php$typephp)php isphp unknownphp"php)php;
+php php php php php php php php php}
 
-        $this->setValue($value, $type, $this->_locale);
-    }
+php php php php php php php php php$thisphp-php>setValuephp(php$valuephp,php php$typephp,php php$thisphp-php>php_localephp)php;
+php php php php php}
 
-    /**
-     * Set a new value
-     *
-     * @param  integer            $value  Value
-     * @param  string             $type   (Optional) A Zend_Measure_Number Type
-     * @param  string|Zend_Locale $locale (Optional) A Zend_Locale Type
-     * @throws Zend_Measure_Exception
-     */
-    public function setValue($value, $type = null, $locale = null)
-    {
-        if (empty($locale)) {
-            $locale = $this->_locale;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp newphp value
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php php$valuephp php Value
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$typephp php php php(Optionalphp)php Aphp Zendphp_Measurephp_Numberphp Type
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php(Optionalphp)php Aphp Zendphp_Localephp Type
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setValuephp(php$valuephp,php php$typephp php=php nullphp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$localephp)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_localephp;
+php php php php php php php php php}
 
-        if (empty($this->_units[$type])) {
-            require_once 'Zend/Measure/Exception.php';
-            throw new Zend_Measure_Exception('unknown type of number:' . $type);
-        }
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_unitsphp[php$typephp]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php'unknownphp typephp ofphp numberphp:php'php php.php php$typephp)php;
+php php php php php php php php php}
 
-        switch($type) {
-            case 'BINARY':
-                preg_match('/[01]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php switchphp(php$typephp)php php{
+php php php php php php php php php php php php casephp php'BINARYphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'TERNARY':
-                preg_match('/[012]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'TERNARYphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'QUATERNARY':
-                preg_match('/[0123]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'QUATERNARYphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'QUINARY':
-                preg_match('/[01234]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'QUINARYphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php4php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'SENARY':
-                preg_match('/[012345]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'SENARYphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php4php5php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'SEPTENARY':
-                preg_match('/[0123456]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'SEPTENARYphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php4php5php6php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'OCTAL':
-                preg_match('/[01234567]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'OCTALphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php4php5php6php7php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'NONARY':
-                preg_match('/[012345678]+/', $value, $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'NONARYphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php4php5php6php7php8php]php+php/php'php,php php$valuephp,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'DUODECIMAL':
-                preg_match('/[0123456789AB]+/', strtoupper($value), $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'DUODECIMALphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php4php5php6php7php8php9ABphp]php+php/php'php,php strtoupperphp(php$valuephp)php,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'HEXADECIMAL':
-                preg_match('/[0123456789ABCDEF]+/', strtoupper($value), $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'HEXADECIMALphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[php0php1php2php3php4php5php6php7php8php9ABCDEFphp]php+php/php'php,php strtoupperphp(php$valuephp)php,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 'ROMAN':
-                preg_match('/[IVXLCDM_]+/', strtoupper($value), $ergebnis);
-                $value = $ergebnis[0];
-                break;
+php php php php php php php php php php php php casephp php'ROMANphp'php:
+php php php php php php php php php php php php php php php php pregphp_matchphp(php'php/php[IVXLCDMphp_php]php+php/php'php,php strtoupperphp(php$valuephp)php,php php$ergebnisphp)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$ergebnisphp[php0php]php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            default:
-                try {
-                    $value = Zend_Locale_Format::getInteger($value, array('locale' => $locale));
-                } catch (Exception $e) {
-                    require_once 'Zend/Measure/Exception.php';
-                    throw new Zend_Measure_Exception($e->getMessage(), $e->getCode(), $e);
-                }
-                if (call_user_func(Zend_Locale_Math::$comp, $value, 0) < 0) {
-                    $value = call_user_func(Zend_Locale_Math::$sqrt, call_user_func(Zend_Locale_Math::$pow, $value, 2));
-                }
-                break;
-        }
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php Zendphp_Localephp_Formatphp:php:getIntegerphp(php$valuephp,php arrayphp(php'localephp'php php=php>php php$localephp)php)php;
+php php php php php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$compphp,php php$valuephp,php php0php)php <php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$sqrtphp,php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$powphp,php php$valuephp,php php2php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-        $this->_value = $value;
-        $this->_type  = $type;
-    }
+php php php php php php php php php$thisphp-php>php_valuephp php=php php$valuephp;
+php php php php php php php php php$thisphp-php>php_typephp php php=php php$typephp;
+php php php php php}
 
-    /**
-     * Convert input to decimal value string
-     *
-     * @param  integer $input Input string
-     * @param  string  $type  Type from which to convert to decimal
-     * @return string
-     */
-    private function _toDecimal($input, $type)
-    {
-        $value = '';
-        // Convert base xx values
-        if ($this->_units[$type][0] <= 16) {
-            $split  = str_split($input);
-            $length = strlen($input);
-            for ($x = 0; $x < $length; ++$x) {
-                $split[$x] = hexdec($split[$x]);
-                $value     = call_user_func(Zend_Locale_Math::$add, $value,
-                            call_user_func(Zend_Locale_Math::$mul, $split[$x],
-                            call_user_func(Zend_Locale_Math::$pow, $this->_units[$type][0], ($length - $x - 1))));
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Convertphp inputphp tophp decimalphp valuephp string
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$inputphp Inputphp string
+php php php php php php*php php@paramphp php stringphp php php$typephp php Typephp fromphp whichphp tophp convertphp tophp decimal
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php privatephp functionphp php_toDecimalphp(php$inputphp,php php$typephp)
+php php php php php{
+php php php php php php php php php$valuephp php=php php'php'php;
+php php php php php php php php php/php/php Convertphp basephp xxphp values
+php php php php php php php php ifphp php(php$thisphp-php>php_unitsphp[php$typephp]php[php0php]php <php=php php1php6php)php php{
+php php php php php php php php php php php php php$splitphp php php=php strphp_splitphp(php$inputphp)php;
+php php php php php php php php php php php php php$lengthphp php=php strlenphp(php$inputphp)php;
+php php php php php php php php php php php php forphp php(php$xphp php=php php0php;php php$xphp <php php$lengthphp;php php+php+php$xphp)php php{
+php php php php php php php php php php php php php php php php php$splitphp[php$xphp]php php=php hexdecphp(php$splitphp[php$xphp]php)php;
+php php php php php php php php php php php php php php php php php$valuephp php php php php php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$addphp,php php$valuephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$mulphp,php php$splitphp[php$xphp]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$powphp,php php$thisphp-php>php_unitsphp[php$typephp]php[php0php]php,php php(php$lengthphp php-php php$xphp php-php php1php)php)php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // Convert roman numbers
-        if ($type === 'ROMAN') {
-            $input = strtoupper($input);
-            $input = preg_replace(array_keys(self::$_romanconvert), array_values(self::$_romanconvert), $input);
+php php php php php php php php php/php/php Convertphp romanphp numbers
+php php php php php php php php ifphp php(php$typephp php=php=php=php php'ROMANphp'php)php php{
+php php php php php php php php php php php php php$inputphp php=php strtoupperphp(php$inputphp)php;
+php php php php php php php php php php php php php$inputphp php=php pregphp_replacephp(arrayphp_keysphp(selfphp:php:php$php_romanconvertphp)php,php arrayphp_valuesphp(selfphp:php:php$php_romanconvertphp)php,php php$inputphp)php;
 
-            $split = preg_split('//', strrev($input), -1, PREG_SPLIT_NO_EMPTY);
+php php php php php php php php php php php php php$splitphp php=php pregphp_splitphp(php'php/php/php'php,php strrevphp(php$inputphp)php,php php-php1php,php PREGphp_SPLITphp_NOphp_EMPTYphp)php;
 
-            for ($x =0; $x < sizeof($split); $x++) {
-                if ($split[$x] == '/') {
-                    continue;
-                }
+php php php php php php php php php php php php forphp php(php$xphp php=php0php;php php$xphp <php sizeofphp(php$splitphp)php;php php$xphp+php+php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$splitphp[php$xphp]php php=php=php php'php/php'php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
 
-                $num = self::$_roman[$split[$x]];
-                if (($x > 0 and ($split[$x-1] != '/') and ($num < self::$_roman[$split[$x-1]]))) {
-                    $num -= $num;
-                }
+php php php php php php php php php php php php php php php php php$numphp php=php selfphp:php:php$php_romanphp[php$splitphp[php$xphp]php]php;
+php php php php php php php php php php php php php php php php ifphp php(php(php$xphp php>php php0php andphp php(php$splitphp[php$xphp-php1php]php php!php=php php'php/php'php)php andphp php(php$numphp <php selfphp:php:php$php_romanphp[php$splitphp[php$xphp-php1php]php]php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$numphp php-php=php php$numphp;
+php php php php php php php php php php php php php php php php php}
 
-                $value += $num;
-            }
+php php php php php php php php php php php php php php php php php$valuephp php+php=php php$numphp;
+php php php php php php php php php php php php php}
 
-            str_replace('/', '', $value);
-        }
+php php php php php php php php php php php php strphp_replacephp(php'php/php'php,php php'php'php,php php$valuephp)php;
+php php php php php php php php php}
 
-        return $value;
-    }
+php php php php php php php php returnphp php$valuephp;
+php php php php php}
 
-    /**
-     * Convert input to type value string
-     *
-     * @param  integer $value Input string
-     * @param  string  $type  Type to convert to
-     * @return string
-     * @throws Zend_Measure_Exception When more than 200 digits are calculated
-     */
-    private function _fromDecimal($value, $type)
-    {
-        $tempvalue = $value;
-        if ($this->_units[$type][0] <= 16) {
-            $newvalue = '';
-            $count    = 200;
-            $base     = $this->_units[$type][0];
+php php php php php/php*php*
+php php php php php php*php Convertphp inputphp tophp typephp valuephp string
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$valuephp Inputphp string
+php php php php php php*php php@paramphp php stringphp php php$typephp php Typephp tophp convertphp to
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exceptionphp Whenphp morephp thanphp php2php0php0php digitsphp arephp calculated
+php php php php php php*php/
+php php php php privatephp functionphp php_fromDecimalphp(php$valuephp,php php$typephp)
+php php php php php{
+php php php php php php php php php$tempvaluephp php=php php$valuephp;
+php php php php php php php php ifphp php(php$thisphp-php>php_unitsphp[php$typephp]php[php0php]php <php=php php1php6php)php php{
+php php php php php php php php php php php php php$newvaluephp php=php php'php'php;
+php php php php php php php php php php php php php$countphp php php php php=php php2php0php0php;
+php php php php php php php php php php php php php$basephp php php php php php=php php$thisphp-php>php_unitsphp[php$typephp]php[php0php]php;
 
-            while (call_user_func(Zend_Locale_Math::$comp, $value, 0, 25) <> 0) {
-                $target = call_user_func(Zend_Locale_Math::$mod, $value, $base);
+php php php php php php php php php php php php whilephp php(callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$compphp,php php$valuephp,php php0php,php php2php5php)php <php>php php0php)php php{
+php php php php php php php php php php php php php php php php php$targetphp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$modphp,php php$valuephp,php php$basephp)php;
 
-                $newvalue = strtoupper(dechex($target)) . $newvalue;
+php php php php php php php php php php php php php php php php php$newvaluephp php=php strtoupperphp(dechexphp(php$targetphp)php)php php.php php$newvaluephp;
 
-                $value = call_user_func(Zend_Locale_Math::$sub, $value, $target, 0);
-                $value = call_user_func(Zend_Locale_Math::$div, $value, $base, 0);
+php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$subphp,php php$valuephp,php php$targetphp,php php0php)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$divphp,php php$valuephp,php php$basephp,php php0php)php;
 
-                --$count;
-                if ($count === 0) {
-                    require_once 'Zend/Measure/Exception.php';
-                    throw new Zend_Measure_Exception("Your value '$tempvalue' cannot be processed because it extends 200 digits");
-                }
-            }
+php php php php php php php php php php php php php php php php php-php-php$countphp;
+php php php php php php php php php php php php php php php php ifphp php(php$countphp php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Yourphp valuephp php'php$tempvaluephp'php cannotphp bephp processedphp becausephp itphp extendsphp php2php0php0php digitsphp"php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            if ($newvalue === '') {
-                $newvalue = '0';
-            }
-        }
+php php php php php php php php php php php php ifphp php(php$newvaluephp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php php php php php php$newvaluephp php=php php'php0php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($type === 'ROMAN') {
-            $i        = 0;
-            $newvalue = '';
-            $romanval = array_values(array_reverse(self::$_roman));
-            $romankey = array_keys(array_reverse(self::$_roman));
-            $count    = 200;
-            while (call_user_func(Zend_Locale_Math::$comp, $value, 0, 25) <> 0) {
-                while ($value >= $romanval[$i]) {
-                    $value    -= $romanval[$i];
-                    $newvalue .= $romankey[$i];
+php php php php php php php php ifphp php(php$typephp php=php=php=php php'ROMANphp'php)php php{
+php php php php php php php php php php php php php$iphp php php php php php php php php=php php0php;
+php php php php php php php php php php php php php$newvaluephp php=php php'php'php;
+php php php php php php php php php php php php php$romanvalphp php=php arrayphp_valuesphp(arrayphp_reversephp(selfphp:php:php$php_romanphp)php)php;
+php php php php php php php php php php php php php$romankeyphp php=php arrayphp_keysphp(arrayphp_reversephp(selfphp:php:php$php_romanphp)php)php;
+php php php php php php php php php php php php php$countphp php php php php=php php2php0php0php;
+php php php php php php php php php php php php whilephp php(callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$compphp,php php$valuephp,php php0php,php php2php5php)php <php>php php0php)php php{
+php php php php php php php php php php php php php php php php whilephp php(php$valuephp php>php=php php$romanvalphp[php$iphp]php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php php php php-php=php php$romanvalphp[php$iphp]php;
+php php php php php php php php php php php php php php php php php php php php php$newvaluephp php.php=php php$romankeyphp[php$iphp]php;
 
-                    if ($value < 1) {
-                        break;
-                    }
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$valuephp <php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    --$count;
-                    if ($count === 0) {
-                        require_once 'Zend/Measure/Exception.php';
-                        throw new Zend_Measure_Exception("Your value '$tempvalue' cannot be processed because it extends 200 digits");
-                    }
-                }
+php php php php php php php php php php php php php php php php php php php php php-php-php$countphp;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$countphp php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php"Yourphp valuephp php'php$tempvaluephp'php cannotphp bephp processedphp becausephp itphp extendsphp php2php0php0php digitsphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
 
-                $i++;
-            }
+php php php php php php php php php php php php php php php php php$iphp+php+php;
+php php php php php php php php php php php php php}
 
-            $newvalue = str_replace('/', '', preg_replace(array_values(self::$_romanconvert), array_keys(self::$_romanconvert), $newvalue));
-        }
+php php php php php php php php php php php php php$newvaluephp php=php strphp_replacephp(php'php/php'php,php php'php'php,php pregphp_replacephp(arrayphp_valuesphp(selfphp:php:php$php_romanconvertphp)php,php arrayphp_keysphp(selfphp:php:php$php_romanconvertphp)php,php php$newvaluephp)php)php;
+php php php php php php php php php}
 
-        return $newvalue;
-    }
+php php php php php php php php returnphp php$newvaluephp;
+php php php php php}
 
-    /**
-     * Set a new type, and convert the value
-     *
-     * @param  string $type New type to set
-     * @throws Zend_Measure_Exception When a unknown type is given
-     * @return void
-     */
-    public function setType($type)
-    {
-        if (empty($this->_units[$type]) === true) {
-            require_once 'Zend/Measure/Exception.php';
-            throw new Zend_Measure_Exception('Unknown type of number:' . $type);
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp newphp typephp,php andphp convertphp thephp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$typephp Newphp typephp tophp set
+php php php php php php*php php@throwsphp Zendphp_Measurephp_Exceptionphp Whenphp aphp unknownphp typephp isphp given
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setTypephp(php$typephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_unitsphp[php$typephp]php)php php=php=php=php truephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Measurephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Measurephp_Exceptionphp(php'Unknownphp typephp ofphp numberphp:php'php php.php php$typephp)php;
+php php php php php php php php php}
 
-        $value = $this->_toDecimal($this->getValue(-1), $this->getType(-1));
-        $value = $this->_fromDecimal($value, $type);
+php php php php php php php php php$valuephp php=php php$thisphp-php>php_toDecimalphp(php$thisphp-php>getValuephp(php-php1php)php,php php$thisphp-php>getTypephp(php-php1php)php)php;
+php php php php php php php php php$valuephp php=php php$thisphp-php>php_fromDecimalphp(php$valuephp,php php$typephp)php;
 
-        $this->_value = $value;
-        $this->_type  = $type;
-    }
+php php php php php php php php php$thisphp-php>php_valuephp php=php php$valuephp;
+php php php php php php php php php$thisphp-php>php_typephp php php=php php$typephp;
+php php php php php}
 
-    /**
-     * Alias function for setType returning the converted unit
-     * Default is 0 as this class only handles numbers without precision
-     *
-     * @param  string  $type  Type to convert to
-     * @param  integer $round (Optional) Precision to add, will always be 0
-     * @return string
-     */
-    public function convertTo($type, $round = 0, $locale = null)
-    {
-        $this->setType($type);
-        return $this->toString($round, $locale);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Aliasphp functionphp forphp setTypephp returningphp thephp convertedphp unit
+php php php php php php*php Defaultphp isphp php0php asphp thisphp classphp onlyphp handlesphp numbersphp withoutphp precision
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$typephp php Typephp tophp convertphp to
+php php php php php php*php php@paramphp php integerphp php$roundphp php(Optionalphp)php Precisionphp tophp addphp,php willphp alwaysphp bephp php0
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp convertTophp(php$typephp,php php$roundphp php=php php0php,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setTypephp(php$typephp)php;
+php php php php php php php php returnphp php$thisphp-php>toStringphp(php$roundphp,php php$localephp)php;
+php php php php php}
+php}

@@ -1,391 +1,391 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Compression.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Compressionphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** Zend_Pdf_Filter_Interface */
-require_once 'Zend/Pdf/Filter/Interface.php';
+php/php*php*php Zendphp_Pdfphp_Filterphp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Interfacephp.phpphp'php;
 
-/**
- * ASCII85 stream filter
- *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
-{
-    /**
-     * Paeth prediction function
-     *
-     * @param integer $a
-     * @param integer $b
-     * @param integer $c
-     * @return integer
-     */
-    private static function _paeth($a, $b, $c)
-    {
-        // $a - left, $b - above, $c - upper left
-        $p  = $a + $b - $c;       // initial estimate
-        $pa = abs($p - $a);       // distances to a, b, c
-        $pb = abs($p - $b);
-        $pc = abs($p - $c);
+php/php*php*
+php php*php ASCIIphp8php5php streamphp filter
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Pdfphp_Filterphp_Compressionphp implementsphp Zendphp_Pdfphp_Filterphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Paethphp predictionphp function
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$a
+php php php php php php*php php@paramphp integerphp php$b
+php php php php php php*php php@paramphp integerphp php$c
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_paethphp(php$aphp,php php$bphp,php php$cphp)
+php php php php php{
+php php php php php php php php php/php/php php$aphp php-php leftphp,php php$bphp php-php abovephp,php php$cphp php-php upperphp left
+php php php php php php php php php$pphp php php=php php$aphp php+php php$bphp php-php php$cphp;php php php php php php php php/php/php initialphp estimate
+php php php php php php php php php$paphp php=php absphp(php$pphp php-php php$aphp)php;php php php php php php php php/php/php distancesphp tophp aphp,php bphp,php c
+php php php php php php php php php$pbphp php=php absphp(php$pphp php-php php$bphp)php;
+php php php php php php php php php$pcphp php=php absphp(php$pphp php-php php$cphp)php;
 
-        // return nearest of a,b,c,
-        // breaking ties in order a,b,c.
-        if ($pa <= $pb && $pa <= $pc) {
-            return $a;
-        } else if ($pb <= $pc) {
-            return $b;
-        } else {
-            return $c;
-        }
-    }
-
-
-    /**
-     * Get Predictor decode param value
-     *
-     * @param array $params
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    private static function _getPredictorValue(&$params)
-    {
-        if (isset($params['Predictor'])) {
-            $predictor = $params['Predictor'];
-
-            if ($predictor != 1   &&  $predictor != 2   &&
-                $predictor != 10  &&  $predictor != 11  &&   $predictor != 12  &&
-                $predictor != 13  &&  $predictor != 14  &&   $predictor != 15) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Invalid value of \'Predictor\' decode param - ' . $predictor . '.' );
-            }
-            return $predictor;
-        } else {
-            return 1;
-        }
-    }
-
-    /**
-     * Get Colors decode param value
-     *
-     * @param array $params
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    private static function _getColorsValue(&$params)
-    {
-        if (isset($params['Colors'])) {
-            $colors = $params['Colors'];
-
-            if ($colors != 1  &&  $colors != 2  &&  $colors != 3  &&  $colors != 4) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Invalid value of \'Color\' decode param - ' . $colors . '.' );
-            }
-            return $colors;
-        } else {
-            return 1;
-        }
-    }
-
-    /**
-     * Get BitsPerComponent decode param value
-     *
-     * @param array $params
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    private static function _getBitsPerComponentValue(&$params)
-    {
-        if (isset($params['BitsPerComponent'])) {
-            $bitsPerComponent = $params['BitsPerComponent'];
-
-            if ($bitsPerComponent != 1  &&  $bitsPerComponent != 2  &&
-                $bitsPerComponent != 4  &&  $bitsPerComponent != 8  &&
-                $bitsPerComponent != 16 ) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Invalid value of \'BitsPerComponent\' decode param - ' . $bitsPerComponent . '.' );
-            }
-            return $bitsPerComponent;
-        } else {
-            return 8;
-        }
-    }
-
-    /**
-     * Get Columns decode param value
-     *
-     * @param array $params
-     * @return integer
-     */
-    private static function _getColumnsValue(&$params)
-    {
-        if (isset($params['Columns'])) {
-            return $params['Columns'];
-        } else {
-            return 1;
-        }
-    }
+php php php php php php php php php/php/php returnphp nearestphp ofphp aphp,bphp,cphp,
+php php php php php php php php php/php/php breakingphp tiesphp inphp orderphp aphp,bphp,cphp.
+php php php php php php php php ifphp php(php$paphp <php=php php$pbphp php&php&php php$paphp <php=php php$pcphp)php php{
+php php php php php php php php php php php php returnphp php$aphp;
+php php php php php php php php php}php elsephp ifphp php(php$pbphp <php=php php$pcphp)php php{
+php php php php php php php php php php php php returnphp php$bphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php$cphp;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Convert stream data according to the filter params set before encoding.
-     *
-     * @param string $data
-     * @param array $params
-     * @return string
-     * @throws Zend_Pdf_Exception
-     */
-    protected static function _applyEncodeParams($data, $params) {
-        $predictor        = self::_getPredictorValue($params);
-        $colors           = self::_getColorsValue($params);
-        $bitsPerComponent = self::_getBitsPerComponentValue($params);
-        $columns          = self::_getColumnsValue($params);
+php php php php php/php*php*
+php php php php php php*php Getphp Predictorphp decodephp paramphp value
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$params
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_getPredictorValuephp(php&php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'Predictorphp'php]php)php)php php{
+php php php php php php php php php php php php php$predictorphp php=php php$paramsphp[php'Predictorphp'php]php;
 
-        /** None of prediction */
-        if ($predictor == 1) {
-            return $data;
-        }
+php php php php php php php php php php php php ifphp php(php$predictorphp php!php=php php1php php php php&php&php php php$predictorphp php!php=php php2php php php php&php&
+php php php php php php php php php php php php php php php php php$predictorphp php!php=php php1php0php php php&php&php php php$predictorphp php!php=php php1php1php php php&php&php php php php$predictorphp php!php=php php1php2php php php&php&
+php php php php php php php php php php php php php php php php php$predictorphp php!php=php php1php3php php php&php&php php php$predictorphp php!php=php php1php4php php php&php&php php php php$predictorphp php!php=php php1php5php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Invalidphp valuephp ofphp php\php'Predictorphp\php'php decodephp paramphp php-php php'php php.php php$predictorphp php.php php'php.php'php php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$predictorphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php1php;
+php php php php php php php php php}
+php php php php php}
 
-        /** TIFF Predictor 2 */
-        if ($predictor == 2) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Not implemented yet' );
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp Colorsphp decodephp paramphp value
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$params
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_getColorsValuephp(php&php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'Colorsphp'php]php)php)php php{
+php php php php php php php php php php php php php$colorsphp php=php php$paramsphp[php'Colorsphp'php]php;
 
-        /** Optimal PNG prediction */
-        if ($predictor == 15) {
-            /** Use Paeth prediction as optimal */
-            $predictor = 14;
-        }
+php php php php php php php php php php php php ifphp php(php$colorsphp php!php=php php1php php php&php&php php php$colorsphp php!php=php php2php php php&php&php php php$colorsphp php!php=php php3php php php&php&php php php$colorsphp php!php=php php4php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Invalidphp valuephp ofphp php\php'Colorphp\php'php decodephp paramphp php-php php'php php.php php$colorsphp php.php php'php.php'php php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$colorsphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php1php;
+php php php php php php php php php}
+php php php php php}
 
-        /** PNG prediction */
-        if ($predictor == 10 ||  /** None of prediction */
-            $predictor == 11 ||  /** Sub prediction     */
-            $predictor == 12 ||  /** Up prediction      */
-            $predictor == 13 ||  /** Average prediction */
-            $predictor == 14     /** Paeth prediction   */
-            ) {
-            $predictor -= 10;
+php php php php php/php*php*
+php php php php php php*php Getphp BitsPerComponentphp decodephp paramphp value
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$params
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_getBitsPerComponentValuephp(php&php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'BitsPerComponentphp'php]php)php)php php{
+php php php php php php php php php php php php php$bitsPerComponentphp php=php php$paramsphp[php'BitsPerComponentphp'php]php;
 
-            if($bitsPerComponent == 16) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception("PNG Prediction with bit depth greater than 8 not yet supported.");
-            }
+php php php php php php php php php php php php ifphp php(php$bitsPerComponentphp php!php=php php1php php php&php&php php php$bitsPerComponentphp php!php=php php2php php php&php&
+php php php php php php php php php php php php php php php php php$bitsPerComponentphp php!php=php php4php php php&php&php php php$bitsPerComponentphp php!php=php php8php php php&php&
+php php php php php php php php php php php php php php php php php$bitsPerComponentphp php!php=php php1php6php php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Invalidphp valuephp ofphp php\php'BitsPerComponentphp\php'php decodephp paramphp php-php php'php php.php php$bitsPerComponentphp php.php php'php.php'php php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$bitsPerComponentphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php8php;
+php php php php php php php php php}
+php php php php php}
 
-            $bitsPerSample  = $bitsPerComponent*$colors;
-            $bytesPerSample = (int)(($bitsPerSample + 7)/8);           // (int)ceil(...) emulation
-            $bytesPerRow    = (int)(($bitsPerSample*$columns + 7)/8);  // (int)ceil(...) emulation
-            $rows           = strlen($data)/$bytesPerRow;
-            $output         = '';
-            $offset         = 0;
+php php php php php/php*php*
+php php php php php php*php Getphp Columnsphp decodephp paramphp value
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$params
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_getColumnsValuephp(php&php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'Columnsphp'php]php)php)php php{
+php php php php php php php php php php php php returnphp php$paramsphp[php'Columnsphp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php1php;
+php php php php php php php php php}
+php php php php php}
 
-            if (!is_integer($rows)) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Wrong data length.');
-            }
 
-            switch ($predictor) {
-                case 0: // None of prediction
-                    for ($count = 0; $count < $rows; $count++) {
-                        $output .= chr($predictor);
-                        $output .= substr($data, $offset, $bytesPerRow);
-                        $offset += $bytesPerRow;
-                    }
-                    break;
+php php php php php/php*php*
+php php php php php php*php Convertphp streamphp dataphp accordingphp tophp thephp filterphp paramsphp setphp beforephp encodingphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp arrayphp php$params
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_applyEncodeParamsphp(php$dataphp,php php$paramsphp)php php{
+php php php php php php php php php$predictorphp php php php php php php php php=php selfphp:php:php_getPredictorValuephp(php$paramsphp)php;
+php php php php php php php php php$colorsphp php php php php php php php php php php php=php selfphp:php:php_getColorsValuephp(php$paramsphp)php;
+php php php php php php php php php$bitsPerComponentphp php=php selfphp:php:php_getBitsPerComponentValuephp(php$paramsphp)php;
+php php php php php php php php php$columnsphp php php php php php php php php php php=php selfphp:php:php_getColumnsValuephp(php$paramsphp)php;
 
-                case 1: // Sub prediction
-                    for ($count = 0; $count < $rows; $count++) {
-                        $output .= chr($predictor);
+php php php php php php php php php/php*php*php Nonephp ofphp predictionphp php*php/
+php php php php php php php php ifphp php(php$predictorphp php=php=php php1php)php php{
+php php php php php php php php php php php php returnphp php$dataphp;
+php php php php php php php php php}
 
-                        $lastSample = array_fill(0, $bytesPerSample, 0);
-                        for ($count2 = 0; $count2 < $bytesPerRow; $count2++) {
-                            $newByte = ord($data[$offset++]);
-                            // Note. chr() automatically cuts input to 8 bit
-                            $output .= chr($newByte - $lastSample[$count2 % $bytesPerSample]);
-                            $lastSample[$count2 % $bytesPerSample] = $newByte;
-                        }
-                    }
-                    break;
+php php php php php php php php php/php*php*php TIFFphp Predictorphp php2php php*php/
+php php php php php php php php ifphp php(php$predictorphp php=php=php php2php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Notphp implementedphp yetphp'php php)php;
+php php php php php php php php php}
 
-                case 2: // Up prediction
-                    $lastRow = array_fill(0, $bytesPerRow, 0);
-                    for ($count = 0; $count < $rows; $count++) {
-                        $output .= chr($predictor);
+php php php php php php php php php/php*php*php Optimalphp PNGphp predictionphp php*php/
+php php php php php php php php ifphp php(php$predictorphp php=php=php php1php5php)php php{
+php php php php php php php php php php php php php/php*php*php Usephp Paethphp predictionphp asphp optimalphp php*php/
+php php php php php php php php php php php php php$predictorphp php=php php1php4php;
+php php php php php php php php php}
 
-                        for ($count2 = 0; $count2 < $bytesPerRow; $count2++) {
-                            $newByte = ord($data[$offset++]);
-                            // Note. chr() automatically cuts input to 8 bit
-                            $output .= chr($newByte - $lastRow[$count2]);
-                            $lastRow[$count2] = $newByte;
-                        }
-                    }
-                    break;
+php php php php php php php php php/php*php*php PNGphp predictionphp php*php/
+php php php php php php php php ifphp php(php$predictorphp php=php=php php1php0php php|php|php php php/php*php*php Nonephp ofphp predictionphp php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php1php php|php|php php php/php*php*php Subphp predictionphp php php php php php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php2php php|php|php php php/php*php*php Upphp predictionphp php php php php php php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php3php php|php|php php php/php*php*php Averagephp predictionphp php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php4php php php php php php/php*php*php Paethphp predictionphp php php php*php/
+php php php php php php php php php php php php php)php php{
+php php php php php php php php php php php php php$predictorphp php-php=php php1php0php;
 
-                case 3: // Average prediction
-                    $lastRow = array_fill(0, $bytesPerRow, 0);
-                    for ($count = 0; $count < $rows; $count++) {
-                        $output .= chr($predictor);
+php php php php php php php php php php php php ifphp(php$bitsPerComponentphp php=php=php php1php6php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"PNGphp Predictionphp withphp bitphp depthphp greaterphp thanphp php8php notphp yetphp supportedphp.php"php)php;
+php php php php php php php php php php php php php}
 
-                        $lastSample = array_fill(0, $bytesPerSample, 0);
-                        for ($count2 = 0; $count2 < $bytesPerRow; $count2++) {
-                            $newByte = ord($data[$offset++]);
-                            // Note. chr() automatically cuts input to 8 bit
-                            $output .= chr($newByte - floor(( $lastSample[$count2 % $bytesPerSample] + $lastRow[$count2])/2));
-                            $lastSample[$count2 % $bytesPerSample] = $lastRow[$count2] = $newByte;
-                        }
-                    }
-                    break;
+php php php php php php php php php php php php php$bitsPerSamplephp php php=php php$bitsPerComponentphp*php$colorsphp;
+php php php php php php php php php php php php php$bytesPerSamplephp php=php php(intphp)php(php(php$bitsPerSamplephp php+php php7php)php/php8php)php;php php php php php php php php php php php php/php/php php(intphp)ceilphp(php.php.php.php)php emulation
+php php php php php php php php php php php php php$bytesPerRowphp php php php php=php php(intphp)php(php(php$bitsPerSamplephp*php$columnsphp php+php php7php)php/php8php)php;php php php/php/php php(intphp)ceilphp(php.php.php.php)php emulation
+php php php php php php php php php php php php php$rowsphp php php php php php php php php php php php=php strlenphp(php$dataphp)php/php$bytesPerRowphp;
+php php php php php php php php php php php php php$outputphp php php php php php php php php php=php php'php'php;
+php php php php php php php php php php php php php$offsetphp php php php php php php php php php=php php0php;
 
-                case 4: // Paeth prediction
-                    $lastRow    = array_fill(0, $bytesPerRow, 0);
-                    $currentRow = array();
-                    for ($count = 0; $count < $rows; $count++) {
-                        $output .= chr($predictor);
+php php php php php php php php php php php php ifphp php(php!isphp_integerphp(php$rowsphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp dataphp lengthphp.php'php)php;
+php php php php php php php php php php php php php}
 
-                        $lastSample = array_fill(0, $bytesPerSample, 0);
-                        for ($count2 = 0; $count2 < $bytesPerRow; $count2++) {
-                            $newByte = ord($data[$offset++]);
-                            // Note. chr() automatically cuts input to 8 bit
-                            $output .= chr($newByte - self::_paeth( $lastSample[$count2 % $bytesPerSample],
-                                                                    $lastRow[$count2],
-                                                                    ($count2 - $bytesPerSample  <  0)?
-                                                                         0 : $lastRow[$count2 - $bytesPerSample] ));
-                            $lastSample[$count2 % $bytesPerSample] = $currentRow[$count2] = $newByte;
-                        }
-                        $lastRow = $currentRow;
-                    }
-                    break;
-            }
-            return $output;
-        }
+php php php php php php php php php php php php switchphp php(php$predictorphp)php php{
+php php php php php php php php php php php php php php php php casephp php0php:php php/php/php Nonephp ofphp prediction
+php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$rowsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$predictorphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php substrphp(php$dataphp,php php$offsetphp,php php$bytesPerRowphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$offsetphp php+php=php php$bytesPerRowphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.' );
-    }
+php php php php php php php php php php php php php php php php casephp php1php:php php/php/php Subphp prediction
+php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$rowsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$predictorphp)php;
 
-    /**
-     * Convert stream data according to the filter params set after decoding.
-     *
-     * @param string $data
-     * @param array $params
-     * @return string
-     */
-    protected static function _applyDecodeParams($data, $params) {
-        $predictor        = self::_getPredictorValue($params);
-        $colors           = self::_getColorsValue($params);
-        $bitsPerComponent = self::_getBitsPerComponentValue($params);
-        $columns          = self::_getColumnsValue($params);
+php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp php=php arrayphp_fillphp(php0php,php php$bytesPerSamplephp,php php0php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$newBytephp php=php ordphp(php$dataphp[php$offsetphp+php+php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Notephp.php chrphp(php)php automaticallyphp cutsphp inputphp tophp php8php bit
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$newBytephp php-php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$newBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-        /** None of prediction */
-        if ($predictor == 1) {
-            return $data;
-        }
+php php php php php php php php php php php php php php php php casephp php2php:php php/php/php Upphp prediction
+php php php php php php php php php php php php php php php php php php php php php$lastRowphp php=php arrayphp_fillphp(php0php,php php$bytesPerRowphp,php php0php)php;
+php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$rowsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$predictorphp)php;
 
-        /** TIFF Predictor 2 */
-        if ($predictor == 2) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Not implemented yet' );
-        }
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$newBytephp php=php ordphp(php$dataphp[php$offsetphp+php+php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Notephp.php chrphp(php)php automaticallyphp cutsphp inputphp tophp php8php bit
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$newBytephp php-php php$lastRowphp[php$countphp2php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastRowphp[php$countphp2php]php php=php php$newBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-        /**
-         * PNG prediction
-         * Prediction code is duplicated on each row.
-         * Thus all cases can be brought to one
-         */
-        if ($predictor == 10 ||  /** None of prediction */
-            $predictor == 11 ||  /** Sub prediction     */
-            $predictor == 12 ||  /** Up prediction      */
-            $predictor == 13 ||  /** Average prediction */
-            $predictor == 14 ||  /** Paeth prediction   */
-            $predictor == 15     /** Optimal prediction */) {
+php php php php php php php php php php php php php php php php casephp php3php:php php/php/php Averagephp prediction
+php php php php php php php php php php php php php php php php php php php php php$lastRowphp php=php arrayphp_fillphp(php0php,php php$bytesPerRowphp,php php0php)php;
+php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$rowsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$predictorphp)php;
 
-            $bitsPerSample  = $bitsPerComponent*$colors;
-            $bytesPerSample = ceil($bitsPerSample/8);
-            $bytesPerRow    = ceil($bitsPerSample*$columns/8);
-            $rows           = ceil(strlen($data)/($bytesPerRow + 1));
-            $output         = '';
-            $offset         = 0;
+php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp php=php arrayphp_fillphp(php0php,php php$bytesPerSamplephp,php php0php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$newBytephp php=php ordphp(php$dataphp[php$offsetphp+php+php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Notephp.php chrphp(php)php automaticallyphp cutsphp inputphp tophp php8php bit
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$newBytephp php-php floorphp(php(php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php+php php$lastRowphp[php$countphp2php]php)php/php2php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$lastRowphp[php$countphp2php]php php=php php$newBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-            $lastRow = array_fill(0, $bytesPerRow, 0);
-            for ($count = 0; $count < $rows; $count++) {
-                $lastSample = array_fill(0, $bytesPerSample, 0);
-                switch (ord($data[$offset++])) {
-                    case 0: // None of prediction
-                        $output .= substr($data, $offset, $bytesPerRow);
-                        for ($count2 = 0; $count2 < $bytesPerRow  &&  $offset < strlen($data); $count2++) {
-                            $lastSample[$count2 % $bytesPerSample] = $lastRow[$count2] = ord($data[$offset++]);
-                        }
-                        break;
+php php php php php php php php php php php php php php php php casephp php4php:php php/php/php Paethphp prediction
+php php php php php php php php php php php php php php php php php php php php php$lastRowphp php php php php=php arrayphp_fillphp(php0php,php php$bytesPerRowphp,php php0php)php;
+php php php php php php php php php php php php php php php php php php php php php$currentRowphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$rowsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$predictorphp)php;
 
-                    case 1: // Sub prediction
-                        for ($count2 = 0; $count2 < $bytesPerRow  &&  $offset < strlen($data); $count2++) {
-                            $decodedByte = (ord($data[$offset++]) + $lastSample[$count2 % $bytesPerSample]) & 0xFF;
-                            $lastSample[$count2 % $bytesPerSample] = $lastRow[$count2] = $decodedByte;
-                            $output .= chr($decodedByte);
-                        }
-                        break;
+php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp php=php arrayphp_fillphp(php0php,php php$bytesPerSamplephp,php php0php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$newBytephp php=php ordphp(php$dataphp[php$offsetphp+php+php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Notephp.php chrphp(php)php automaticallyphp cutsphp inputphp tophp php8php bit
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$newBytephp php-php selfphp:php:php_paethphp(php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastRowphp[php$countphp2php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$countphp2php php-php php$bytesPerSamplephp php <php php php0php)php?
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php0php php:php php$lastRowphp[php$countphp2php php-php php$bytesPerSamplephp]php php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$currentRowphp[php$countphp2php]php php=php php$newBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$lastRowphp php=php php$currentRowphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$outputphp;
+php php php php php php php php php}
 
-                    case 2: // Up prediction
-                        for ($count2 = 0; $count2 < $bytesPerRow  &&  $offset < strlen($data); $count2++) {
-                            $decodedByte = (ord($data[$offset++]) + $lastRow[$count2]) & 0xFF;
-                            $lastSample[$count2 % $bytesPerSample] = $lastRow[$count2] = $decodedByte;
-                            $output .= chr($decodedByte);
-                        }
-                        break;
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unknownphp predictionphp algorithmphp php-php php'php php.php php$predictorphp php.php php'php.php'php php)php;
+php php php php php}
 
-                    case 3: // Average prediction
-                        for ($count2 = 0; $count2 < $bytesPerRow  &&  $offset < strlen($data); $count2++) {
-                            $decodedByte = (ord($data[$offset++]) +
-                                            floor(( $lastSample[$count2 % $bytesPerSample] + $lastRow[$count2])/2)
-                                           ) & 0xFF;
-                            $lastSample[$count2 % $bytesPerSample] = $lastRow[$count2] = $decodedByte;
-                            $output .= chr($decodedByte);
-                        }
-                        break;
+php php php php php/php*php*
+php php php php php php*php Convertphp streamphp dataphp accordingphp tophp thephp filterphp paramsphp setphp afterphp decodingphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp arrayphp php$params
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_applyDecodeParamsphp(php$dataphp,php php$paramsphp)php php{
+php php php php php php php php php$predictorphp php php php php php php php php=php selfphp:php:php_getPredictorValuephp(php$paramsphp)php;
+php php php php php php php php php$colorsphp php php php php php php php php php php php=php selfphp:php:php_getColorsValuephp(php$paramsphp)php;
+php php php php php php php php php$bitsPerComponentphp php=php selfphp:php:php_getBitsPerComponentValuephp(php$paramsphp)php;
+php php php php php php php php php$columnsphp php php php php php php php php php php=php selfphp:php:php_getColumnsValuephp(php$paramsphp)php;
 
-                    case 4: // Paeth prediction
-                        $currentRow = array();
-                        for ($count2 = 0; $count2 < $bytesPerRow  &&  $offset < strlen($data); $count2++) {
-                            $decodedByte = (ord($data[$offset++]) +
-                                            self::_paeth($lastSample[$count2 % $bytesPerSample],
-                                                         $lastRow[$count2],
-                                                         ($count2 - $bytesPerSample  <  0)?
-                                                              0 : $lastRow[$count2 - $bytesPerSample])
-                                           ) & 0xFF;
-                            $lastSample[$count2 % $bytesPerSample] = $currentRow[$count2] = $decodedByte;
-                            $output .= chr($decodedByte);
-                        }
-                        $lastRow = $currentRow;
-                        break;
+php php php php php php php php php/php*php*php Nonephp ofphp predictionphp php*php/
+php php php php php php php php ifphp php(php$predictorphp php=php=php php1php)php php{
+php php php php php php php php php php php php returnphp php$dataphp;
+php php php php php php php php php}
 
-                    default:
-                        require_once 'Zend/Pdf/Exception.php';
-                        throw new Zend_Pdf_Exception('Unknown prediction tag.');
-                }
-            }
-            return $output;
-        }
+php php php php php php php php php/php*php*php TIFFphp Predictorphp php2php php*php/
+php php php php php php php php ifphp php(php$predictorphp php=php=php php2php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Notphp implementedphp yetphp'php php)php;
+php php php php php php php php php}
 
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.' );
-    }
-}
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php PNGphp prediction
+php php php php php php php php php php*php Predictionphp codephp isphp duplicatedphp onphp eachphp rowphp.
+php php php php php php php php php php*php Thusphp allphp casesphp canphp bephp broughtphp tophp one
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$predictorphp php=php=php php1php0php php|php|php php php/php*php*php Nonephp ofphp predictionphp php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php1php php|php|php php php/php*php*php Subphp predictionphp php php php php php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php2php php|php|php php php/php*php*php Upphp predictionphp php php php php php php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php3php php|php|php php php/php*php*php Averagephp predictionphp php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php4php php|php|php php php/php*php*php Paethphp predictionphp php php php*php/
+php php php php php php php php php php php php php$predictorphp php=php=php php1php5php php php php php php/php*php*php Optimalphp predictionphp php*php/php)php php{
+
+php php php php php php php php php php php php php$bitsPerSamplephp php php=php php$bitsPerComponentphp*php$colorsphp;
+php php php php php php php php php php php php php$bytesPerSamplephp php=php ceilphp(php$bitsPerSamplephp/php8php)php;
+php php php php php php php php php php php php php$bytesPerRowphp php php php php=php ceilphp(php$bitsPerSamplephp*php$columnsphp/php8php)php;
+php php php php php php php php php php php php php$rowsphp php php php php php php php php php php php=php ceilphp(strlenphp(php$dataphp)php/php(php$bytesPerRowphp php+php php1php)php)php;
+php php php php php php php php php php php php php$outputphp php php php php php php php php php=php php'php'php;
+php php php php php php php php php php php php php$offsetphp php php php php php php php php php=php php0php;
+
+php php php php php php php php php php php php php$lastRowphp php=php arrayphp_fillphp(php0php,php php$bytesPerRowphp,php php0php)php;
+php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$rowsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$lastSamplephp php=php arrayphp_fillphp(php0php,php php$bytesPerSamplephp,php php0php)php;
+php php php php php php php php php php php php php php php php switchphp php(ordphp(php$dataphp[php$offsetphp+php+php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php casephp php0php:php php/php/php Nonephp ofphp prediction
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php substrphp(php$dataphp,php php$offsetphp,php php$bytesPerRowphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp php php&php&php php php$offsetphp <php strlenphp(php$dataphp)php;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$lastRowphp[php$countphp2php]php php=php ordphp(php$dataphp[php$offsetphp+php+php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php casephp php1php:php php/php/php Subphp prediction
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp php php&php&php php php$offsetphp <php strlenphp(php$dataphp)php;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$decodedBytephp php=php php(ordphp(php$dataphp[php$offsetphp+php+php]php)php php+php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php)php php&php php0xFFphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$lastRowphp[php$countphp2php]php php=php php$decodedBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$decodedBytephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php casephp php2php:php php/php/php Upphp prediction
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp php php&php&php php php$offsetphp <php strlenphp(php$dataphp)php;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$decodedBytephp php=php php(ordphp(php$dataphp[php$offsetphp+php+php]php)php php+php php$lastRowphp[php$countphp2php]php)php php&php php0xFFphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$lastRowphp[php$countphp2php]php php=php php$decodedBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$decodedBytephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php casephp php3php:php php/php/php Averagephp prediction
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp php php&php&php php php$offsetphp <php strlenphp(php$dataphp)php;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$decodedBytephp php=php php(ordphp(php$dataphp[php$offsetphp+php+php]php)php php+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php floorphp(php(php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php+php php$lastRowphp[php$countphp2php]php)php/php2php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php)php php&php php0xFFphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$lastRowphp[php$countphp2php]php php=php php$decodedBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$decodedBytephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php casephp php4php:php php/php/php Paethphp prediction
+php php php php php php php php php php php php php php php php php php php php php php php php php$currentRowphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$bytesPerRowphp php php&php&php php php$offsetphp <php strlenphp(php$dataphp)php;php php$countphp2php+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$decodedBytephp php=php php(ordphp(php$dataphp[php$offsetphp+php+php]php)php php+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:php_paethphp(php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastRowphp[php$countphp2php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$countphp2php php-php php$bytesPerSamplephp php <php php php0php)php?
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php0php php:php php$lastRowphp[php$countphp2php php-php php$bytesPerSamplephp]php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php)php php&php php0xFFphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastSamplephp[php$countphp2php php%php php$bytesPerSamplephp]php php=php php$currentRowphp[php$countphp2php]php php=php php$decodedBytephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php chrphp(php$decodedBytephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$lastRowphp php=php php$currentRowphp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unknownphp predictionphp tagphp.php'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$outputphp;
+php php php php php php php php php}
+
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unknownphp predictionphp algorithmphp php-php php'php php.php php$predictorphp php.php php'php.php'php php)php;
+php php php php php}
+php}

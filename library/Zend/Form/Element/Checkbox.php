@@ -1,203 +1,203 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Element
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Element
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Form_Element_Xhtml */
-require_once 'Zend/Form/Element/Xhtml.php';
+php/php*php*php Zendphp_Formphp_Elementphp_Xhtmlphp php*php/
+requirephp_oncephp php'Zendphp/Formphp/Elementphp/Xhtmlphp.phpphp'php;
 
-/**
- * Checkbox form element
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Element
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Checkbox.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
-{
-    /**
-     * Is the checkbox checked?
-     * @var bool
-     */
-    public $checked = false;
+php/php*php*
+php php*php Checkboxphp formphp element
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Element
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Checkboxphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Formphp_Elementphp_Checkboxphp extendsphp Zendphp_Formphp_Elementphp_Xhtml
+php{
+php php php php php/php*php*
+php php php php php php*php Isphp thephp checkboxphp checkedphp?
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php publicphp php$checkedphp php=php falsephp;
 
-    /**
-     * Use formCheckbox view helper by default
-     * @var string
-     */
-    public $helper = 'formCheckbox';
+php php php php php/php*php*
+php php php php php php*php Usephp formCheckboxphp viewphp helperphp byphp default
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$helperphp php=php php'formCheckboxphp'php;
 
-    /**
-     * Options that will be passed to the view helper
-     * @var array
-     */
-    public $options = array(
-        'checkedValue'   => '1',
-        'uncheckedValue' => '0',
-    );
+php php php php php/php*php*
+php php php php php php*php Optionsphp thatphp willphp bephp passedphp tophp thephp viewphp helper
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php publicphp php$optionsphp php=php arrayphp(
+php php php php php php php php php'checkedValuephp'php php php php=php>php php'php1php'php,
+php php php php php php php php php'uncheckedValuephp'php php=php>php php'php0php'php,
+php php php php php)php;
 
-    /**
-     * Value when checked
-     * @var string
-     */
-    protected $_checkedValue = '1';
+php php php php php/php*php*
+php php php php php php*php Valuephp whenphp checked
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_checkedValuephp php=php php'php1php'php;
 
-    /**
-     * Value when not checked
-     * @var string
-     */
-    protected $_uncheckedValue = '0';
+php php php php php/php*php*
+php php php php php php*php Valuephp whenphp notphp checked
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_uncheckedValuephp php=php php'php0php'php;
 
-    /**
-     * Current value
-     * @var string 0 or 1
-     */
-    protected $_value = '0';
+php php php php php/php*php*
+php php php php php php*php Currentphp value
+php php php php php php*php php@varphp stringphp php0php orphp php1
+php php php php php php*php/
+php php php php protectedphp php$php_valuephp php=php php'php0php'php;
 
-    /**
-     * Set options
-     *
-     * Intercept checked and unchecked values and set them early; test stored
-     * value against checked and unchecked values after configuration.
-     *
-     * @param  array $options
-     * @return Zend_Form_Element_Checkbox
-     */
-    public function setOptions(array $options)
-    {
-        if (array_key_exists('checkedValue', $options)) {
-            $this->setCheckedValue($options['checkedValue']);
-            unset($options['checkedValue']);
-        }
-        if (array_key_exists('uncheckedValue', $options)) {
-            $this->setUncheckedValue($options['uncheckedValue']);
-            unset($options['uncheckedValue']);
-        }
-        parent::setOptions($options);
+php php php php php/php*php*
+php php php php php php*php Setphp options
+php php php php php php*
+php php php php php php*php Interceptphp checkedphp andphp uncheckedphp valuesphp andphp setphp themphp earlyphp;php testphp stored
+php php php php php php*php valuephp againstphp checkedphp andphp uncheckedphp valuesphp afterphp configurationphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Checkbox
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'checkedValuephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setCheckedValuephp(php$optionsphp[php'checkedValuephp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'checkedValuephp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'uncheckedValuephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setUncheckedValuephp(php$optionsphp[php'uncheckedValuephp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'uncheckedValuephp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php parentphp:php:setOptionsphp(php$optionsphp)php;
 
-        $curValue = $this->getValue();
-        $test     = array($this->getCheckedValue(), $this->getUncheckedValue());
-        if (!in_array($curValue, $test)) {
-            $this->setValue($curValue);
-        }
+php php php php php php php php php$curValuephp php=php php$thisphp-php>getValuephp(php)php;
+php php php php php php php php php$testphp php php php php php=php arrayphp(php$thisphp-php>getCheckedValuephp(php)php,php php$thisphp-php>getUncheckedValuephp(php)php)php;
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$curValuephp,php php$testphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setValuephp(php$curValuephp)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set value
-     *
-     * If value matches checked value, sets to that value, and sets the checked
-     * flag to true.
-     *
-     * Any other value causes the unchecked value to be set as the current
-     * value, and the checked flag to be set as false.
-     *
-     *
-     * @param  mixed $value
-     * @return Zend_Form_Element_Checkbox
-     */
-    public function setValue($value)
-    {
-        if ($value == $this->getCheckedValue()) {
-            parent::setValue($value);
-            $this->checked = true;
-        } else {
-            parent::setValue($this->getUncheckedValue());
-            $this->checked = false;
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp value
+php php php php php php*
+php php php php php php*php Ifphp valuephp matchesphp checkedphp valuephp,php setsphp tophp thatphp valuephp,php andphp setsphp thephp checked
+php php php php php php*php flagphp tophp truephp.
+php php php php php php*
+php php php php php php*php Anyphp otherphp valuephp causesphp thephp uncheckedphp valuephp tophp bephp setphp asphp thephp current
+php php php php php php*php valuephp,php andphp thephp checkedphp flagphp tophp bephp setphp asphp falsephp.
+php php php php php php*
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Checkbox
+php php php php php php*php/
+php php php php publicphp functionphp setValuephp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php$valuephp php=php=php php$thisphp-php>getCheckedValuephp(php)php)php php{
+php php php php php php php php php php php php parentphp:php:setValuephp(php$valuephp)php;
+php php php php php php php php php php php php php$thisphp-php>checkedphp php=php truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php parentphp:php:setValuephp(php$thisphp-php>getUncheckedValuephp(php)php)php;
+php php php php php php php php php php php php php$thisphp-php>checkedphp php=php falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set checked value
-     *
-     * @param  string $value
-     * @return Zend_Form_Element_Checkbox
-     */
-    public function setCheckedValue($value)
-    {
-        $this->_checkedValue = (string) $value;
-        $this->options['checkedValue'] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp checkedphp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Checkbox
+php php php php php php*php/
+php php php php publicphp functionphp setCheckedValuephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_checkedValuephp php=php php(stringphp)php php$valuephp;
+php php php php php php php php php$thisphp-php>optionsphp[php'checkedValuephp'php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get value when checked
-     *
-     * @return string
-     */
-    public function getCheckedValue()
-    {
-        return $this->_checkedValue;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp valuephp whenphp checked
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getCheckedValuephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_checkedValuephp;
+php php php php php}
 
-    /**
-     * Set unchecked value
-     *
-     * @param  string $value
-     * @return Zend_Form_Element_Checkbox
-     */
-    public function setUncheckedValue($value)
-    {
-        $this->_uncheckedValue = (string) $value;
-        $this->options['uncheckedValue'] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp uncheckedphp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Checkbox
+php php php php php php*php/
+php php php php publicphp functionphp setUncheckedValuephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_uncheckedValuephp php=php php(stringphp)php php$valuephp;
+php php php php php php php php php$thisphp-php>optionsphp[php'uncheckedValuephp'php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get value when not checked
-     *
-     * @return string
-     */
-    public function getUncheckedValue()
-    {
-        return $this->_uncheckedValue;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp valuephp whenphp notphp checked
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getUncheckedValuephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_uncheckedValuephp;
+php php php php php}
 
-    /**
-     * Set checked flag
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element_Checkbox
-     */
-    public function setChecked($flag)
-    {
-        $this->checked = (bool) $flag;
-        if ($this->checked) {
-            $this->setValue($this->getCheckedValue());
-        } else {
-            $this->setValue($this->getUncheckedValue());
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp checkedphp flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Checkbox
+php php php php php php*php/
+php php php php publicphp functionphp setCheckedphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>checkedphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php ifphp php(php$thisphp-php>checkedphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setValuephp(php$thisphp-php>getCheckedValuephp(php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>setValuephp(php$thisphp-php>getUncheckedValuephp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get checked flag
-     *
-     * @return bool
-     */
-    public function isChecked()
-    {
-        return $this->checked;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp checkedphp flag
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isCheckedphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>checkedphp;
+php php php php php}
+php}

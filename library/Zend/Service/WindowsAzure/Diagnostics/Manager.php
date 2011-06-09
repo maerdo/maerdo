@@ -1,190 +1,190 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
- * @subpackage Diagnostics
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
+php php*php php@subpackagephp Diagnostics
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp$
+php php*php/
 
-/**
- * @see Zend_Service_WindowsAzure_Storage_Blob
- */
-require_once 'Zend/Service/WindowsAzure/Storage/Blob.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blob
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/Blobphp.phpphp'php;
 
-/**
- * @see Zend_Service_WindowsAzure_Diagnostics_Exception
- */
-require_once 'Zend/Service/WindowsAzure/Diagnostics/Exception.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exception
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Diagnosticsphp/Exceptionphp.phpphp'php;
 
-/**
- * @see Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
- */
-require_once 'Zend/Service/WindowsAzure/Diagnostics/ConfigurationInstance.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstance
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Diagnosticsphp/ConfigurationInstancephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
- * @subpackage Diagnostics
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_WindowsAzure_Diagnostics_Manager
-{
-	/**
-	 * Blob storage client
-	 *
-	 * @var Zend_Service_WindowsAzure_Storage_Blob
-	 */
-	protected $_blobStorageClient = null;
-	
-	/**
-	 * Control container name
-	 *
-	 * @var string
-	 */
-	protected $_controlContainer = '';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
+php php*php php@subpackagephp Diagnostics
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Manager
+php{
+php	php/php*php*
+php	php php*php Blobphp storagephp client
+php	php php*
+php	php php*php php@varphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blob
+php	php php*php/
+php	protectedphp php$php_blobStorageClientphp php=php nullphp;
+php	
+php	php/php*php*
+php	php php*php Controlphp containerphp name
+php	php php*
+php	php php*php php@varphp string
+php	php php*php/
+php	protectedphp php$php_controlContainerphp php=php php'php'php;
 
-	/**
-	 * Create a new instance of Zend_Service_WindowsAzure_Diagnostics_Manager
-	 *
-	 * @param Zend_Service_WindowsAzure_Storage_Blob $blobStorageClient Blob storage client
-	 * @param string $controlContainer Control container name
-	 */
-	public function __construct(Zend_Service_WindowsAzure_Storage_Blob $blobStorageClient = null, $controlContainer = 'wad-control-container')
-	{
-		$this->_blobStorageClient = $blobStorageClient;
-		$this->_controlContainer  = $controlContainer;
-        $this->_ensureStorageInitialized();
-    }
+php	php/php*php*
+php	php php*php Createphp aphp newphp instancephp ofphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Manager
+php	php php*
+php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp php$blobStorageClientphp Blobphp storagephp client
+php	php php*php php@paramphp stringphp php$controlContainerphp Controlphp containerphp name
+php	php php*php/
+php	publicphp functionphp php_php_constructphp(Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp php$blobStorageClientphp php=php nullphp,php php$controlContainerphp php=php php'wadphp-controlphp-containerphp'php)
+php	php{
+php	php	php$thisphp-php>php_blobStorageClientphp php=php php$blobStorageClientphp;
+php	php	php$thisphp-php>php_controlContainerphp php php=php php$controlContainerphp;
+php php php php php php php php php$thisphp-php>php_ensureStorageInitializedphp(php)php;
+php php php php php}
 
-	/**
-	 * Ensure storage has been initialized
-	 */
-	protected function _ensureStorageInitialized()
-	{
-		if (!$this->_blobStorageClient->containerExists($this->_controlContainer)) {
-			$this->_blobStorageClient->createContainer($this->_controlContainer);
-		}
-	}
-	
-	/**
-	 * Get default configuration values
-	 *
-	 * @return Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
-	 */
-	public function getDefaultConfiguration()
-	{
-		return new Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance();
-	}
-	
-	/**
-	 * Checks if a configuration for a specific role instance exists.
-	 *
-	 * @param string $roleInstance Role instance name, can be found in $_SERVER['RdRoleId'] when hosted on Windows Azure.
-	 * @return boolean
-	 * @throws Zend_Service_WindowsAzure_Diagnostics_Exception
-	 */
-	public function configurationForRoleInstanceExists($roleInstance = null)
-	{
-		if ($roleInstance === null) {
-			throw new Zend_Service_WindowsAzure_Diagnostics_Exception('Role instance should be specified. Try reading $_SERVER[\'RdRoleId\'] for this information if the application is hosted on Windows Azure Fabric or Development Fabric.');
-		}
+php	php/php*php*
+php	php php*php Ensurephp storagephp hasphp beenphp initialized
+php	php php*php/
+php	protectedphp functionphp php_ensureStorageInitializedphp(php)
+php	php{
+php	php	ifphp php(php!php$thisphp-php>php_blobStorageClientphp-php>containerExistsphp(php$thisphp-php>php_controlContainerphp)php)php php{
+php	php	php	php$thisphp-php>php_blobStorageClientphp-php>createContainerphp(php$thisphp-php>php_controlContainerphp)php;
+php	php	php}
+php	php}
+php	
+php	php/php*php*
+php	php php*php Getphp defaultphp configurationphp values
+php	php php*
+php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstance
+php	php php*php/
+php	publicphp functionphp getDefaultConfigurationphp(php)
+php	php{
+php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstancephp(php)php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Checksphp ifphp aphp configurationphp forphp aphp specificphp rolephp instancephp existsphp.
+php	php php*
+php	php php*php php@paramphp stringphp php$roleInstancephp Rolephp instancephp namephp,php canphp bephp foundphp inphp php$php_SERVERphp[php'RdRoleIdphp'php]php whenphp hostedphp onphp Windowsphp Azurephp.
+php	php php*php php@returnphp boolean
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exception
+php	php php*php/
+php	publicphp functionphp configurationForRoleInstanceExistsphp(php$roleInstancephp php=php nullphp)
+php	php{
+php	php	ifphp php(php$roleInstancephp php=php=php=php nullphp)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exceptionphp(php'Rolephp instancephp shouldphp bephp specifiedphp.php Tryphp readingphp php$php_SERVERphp[php\php'RdRoleIdphp\php'php]php forphp thisphp informationphp ifphp thephp applicationphp isphp hostedphp onphp Windowsphp Azurephp Fabricphp orphp Developmentphp Fabricphp.php'php)php;
+php	php	php}
 
-		return $this->_blobStorageClient->blobExists($this->_controlContainer, $roleInstance);
-	}
-	
-	/**
-	 * Checks if a configuration for current role instance exists. Only works on Development Fabric or Windows Azure Fabric.
-	 *
-	 * @return boolean
-	 * @throws Zend_Service_WindowsAzure_Diagnostics_Exception
-	 */
-	public function configurationForCurrentRoleInstanceExists()
-	{
-		if (!isset($_SERVER['RdRoleId'])) {
-			throw new Zend_Service_WindowsAzure_Diagnostics_Exception('Server variable \'RdRoleId\' is unknown. Please verify the application is running in Development Fabric or Windows Azure Fabric.');
-		}
+php	php	returnphp php$thisphp-php>php_blobStorageClientphp-php>blobExistsphp(php$thisphp-php>php_controlContainerphp,php php$roleInstancephp)php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Checksphp ifphp aphp configurationphp forphp currentphp rolephp instancephp existsphp.php Onlyphp worksphp onphp Developmentphp Fabricphp orphp Windowsphp Azurephp Fabricphp.
+php	php php*
+php	php php*php php@returnphp boolean
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exception
+php	php php*php/
+php	publicphp functionphp configurationForCurrentRoleInstanceExistsphp(php)
+php	php{
+php	php	ifphp php(php!issetphp(php$php_SERVERphp[php'RdRoleIdphp'php]php)php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exceptionphp(php'Serverphp variablephp php\php'RdRoleIdphp\php'php isphp unknownphp.php Pleasephp verifyphp thephp applicationphp isphp runningphp inphp Developmentphp Fabricphp orphp Windowsphp Azurephp Fabricphp.php'php)php;
+php	php	php}
 
-		return $this->_blobStorageClient->blobExists($this->_controlContainer, $_SERVER['RdRoleId']);
-	}
-	
-	/**
-	 * Get configuration for current role instance. Only works on Development Fabric or Windows Azure Fabric.
-	 *
-	 * @return Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
-	 * @throws Zend_Service_WindowsAzure_Diagnostics_Exception
-	 */
-	public function getConfigurationForCurrentRoleInstance()
-	{
-		if (!isset($_SERVER['RdRoleId'])) {
-			throw new Zend_Service_WindowsAzure_Diagnostics_Exception('Server variable \'RdRoleId\' is unknown. Please verify the application is running in Development Fabric or Windows Azure Fabric.');
-		}
-		return $this->getConfigurationForRoleInstance($_SERVER['RdRoleId']);
-	}
-	
-	/**
-	 * Set configuration for current role instance. Only works on Development Fabric or Windows Azure Fabric.
-	 *
-	 * @param Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance $configuration Configuration to apply
-	 * @throws Zend_Service_WindowsAzure_Diagnostics_Exception
-	 */
-	public function setConfigurationForCurrentRoleInstance(Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance $configuration)
-	{
-		if (!isset($_SERVER['RdRoleId'])) {
-			throw new Zend_Service_WindowsAzure_Diagnostics_Exception('Server variable \'RdRoleId\' is unknown. Please verify the application is running in Development Fabric or Windows Azure Fabric.');
-		}
-		$this->setConfigurationForRoleInstance($_SERVER['RdRoleId'], $configuration);
-	}
-	
-	/**
-	 * Get configuration for a specific role instance
-	 *
-	 * @param string $roleInstance Role instance name, can be found in $_SERVER['RdRoleId'] when hosted on Windows Azure.
-	 * @return Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
-	 * @throws Zend_Service_WindowsAzure_Diagnostics_Exception
-	 */
-	public function getConfigurationForRoleInstance($roleInstance = null)
-	{
-		if ($roleInstance === null) {
-			throw new Zend_Service_WindowsAzure_Diagnostics_Exception('Role instance should be specified. Try reading $_SERVER[\'RdRoleId\'] for this information if the application is hosted on Windows Azure Fabric or Development Fabric.');
-		}
+php	php	returnphp php$thisphp-php>php_blobStorageClientphp-php>blobExistsphp(php$thisphp-php>php_controlContainerphp,php php$php_SERVERphp[php'RdRoleIdphp'php]php)php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Getphp configurationphp forphp currentphp rolephp instancephp.php Onlyphp worksphp onphp Developmentphp Fabricphp orphp Windowsphp Azurephp Fabricphp.
+php	php php*
+php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstance
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exception
+php	php php*php/
+php	publicphp functionphp getConfigurationForCurrentRoleInstancephp(php)
+php	php{
+php	php	ifphp php(php!issetphp(php$php_SERVERphp[php'RdRoleIdphp'php]php)php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exceptionphp(php'Serverphp variablephp php\php'RdRoleIdphp\php'php isphp unknownphp.php Pleasephp verifyphp thephp applicationphp isphp runningphp inphp Developmentphp Fabricphp orphp Windowsphp Azurephp Fabricphp.php'php)php;
+php	php	php}
+php	php	returnphp php$thisphp-php>getConfigurationForRoleInstancephp(php$php_SERVERphp[php'RdRoleIdphp'php]php)php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Setphp configurationphp forphp currentphp rolephp instancephp.php Onlyphp worksphp onphp Developmentphp Fabricphp orphp Windowsphp Azurephp Fabricphp.
+php	php php*
+php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstancephp php$configurationphp Configurationphp tophp apply
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exception
+php	php php*php/
+php	publicphp functionphp setConfigurationForCurrentRoleInstancephp(Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstancephp php$configurationphp)
+php	php{
+php	php	ifphp php(php!issetphp(php$php_SERVERphp[php'RdRoleIdphp'php]php)php)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exceptionphp(php'Serverphp variablephp php\php'RdRoleIdphp\php'php isphp unknownphp.php Pleasephp verifyphp thephp applicationphp isphp runningphp inphp Developmentphp Fabricphp orphp Windowsphp Azurephp Fabricphp.php'php)php;
+php	php	php}
+php	php	php$thisphp-php>setConfigurationForRoleInstancephp(php$php_SERVERphp[php'RdRoleIdphp'php]php,php php$configurationphp)php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Getphp configurationphp forphp aphp specificphp rolephp instance
+php	php php*
+php	php php*php php@paramphp stringphp php$roleInstancephp Rolephp instancephp namephp,php canphp bephp foundphp inphp php$php_SERVERphp[php'RdRoleIdphp'php]php whenphp hostedphp onphp Windowsphp Azurephp.
+php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstance
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exception
+php	php php*php/
+php	publicphp functionphp getConfigurationForRoleInstancephp(php$roleInstancephp php=php nullphp)
+php	php{
+php	php	ifphp php(php$roleInstancephp php=php=php=php nullphp)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exceptionphp(php'Rolephp instancephp shouldphp bephp specifiedphp.php Tryphp readingphp php$php_SERVERphp[php\php'RdRoleIdphp\php'php]php forphp thisphp informationphp ifphp thephp applicationphp isphp hostedphp onphp Windowsphp Azurephp Fabricphp orphp Developmentphp Fabricphp.php'php)php;
+php	php	php}
 
-        if ($this->_blobStorageClient->blobExists($this->_controlContainer, $roleInstance)) {
-            $configurationInstance = new Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance();
-            $configurationInstance->loadXml( $this->_blobStorageClient->getBlobData($this->_controlContainer, $roleInstance) );
-            return $configurationInstance;
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_blobStorageClientphp-php>blobExistsphp(php$thisphp-php>php_controlContainerphp,php php$roleInstancephp)php)php php{
+php php php php php php php php php php php php php$configurationInstancephp php=php newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstancephp(php)php;
+php php php php php php php php php php php php php$configurationInstancephp-php>loadXmlphp(php php$thisphp-php>php_blobStorageClientphp-php>getBlobDataphp(php$thisphp-php>php_controlContainerphp,php php$roleInstancephp)php php)php;
+php php php php php php php php php php php php returnphp php$configurationInstancephp;
+php php php php php php php php php}
 
-		return new Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance();
-	}
-	
-	/**
-	 * Set configuration for a specific role instance
-	 *
-	 * @param string $roleInstance Role instance name, can be found in $_SERVER['RdRoleId'] when hosted on Windows Azure.
-	 * @param Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance $configuration Configuration to apply
-	 * @throws Zend_Service_WindowsAzure_Diagnostics_Exception
-	 */
-	public function setConfigurationForRoleInstance($roleInstance = null, Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance $configuration)
-	{
-		if ($roleInstance === null) {
-			throw new Zend_Service_WindowsAzure_Diagnostics_Exception('Role instance should be specified. Try reading $_SERVER[\'RdRoleId\'] for this information if the application is hosted on Windows Azure Fabric or Development Fabric.');
-		}
+php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstancephp(php)php;
+php	php}
+php	
+php	php/php*php*
+php	php php*php Setphp configurationphp forphp aphp specificphp rolephp instance
+php	php php*
+php	php php*php php@paramphp stringphp php$roleInstancephp Rolephp instancephp namephp,php canphp bephp foundphp inphp php$php_SERVERphp[php'RdRoleIdphp'php]php whenphp hostedphp onphp Windowsphp Azurephp.
+php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstancephp php$configurationphp Configurationphp tophp apply
+php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exception
+php	php php*php/
+php	publicphp functionphp setConfigurationForRoleInstancephp(php$roleInstancephp php=php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_ConfigurationInstancephp php$configurationphp)
+php	php{
+php	php	ifphp php(php$roleInstancephp php=php=php=php nullphp)php php{
+php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Diagnosticsphp_Exceptionphp(php'Rolephp instancephp shouldphp bephp specifiedphp.php Tryphp readingphp php$php_SERVERphp[php\php'RdRoleIdphp\php'php]php forphp thisphp informationphp ifphp thephp applicationphp isphp hostedphp onphp Windowsphp Azurephp Fabricphp orphp Developmentphp Fabricphp.php'php)php;
+php	php	php}
 
-        $this->_blobStorageClient->putBlobData($this->_controlContainer, $roleInstance, $configuration->toXml(), array(), null, array('Content-Type' => 'text/xml'));
-    }
-}
+php php php php php php php php php$thisphp-php>php_blobStorageClientphp-php>putBlobDataphp(php$thisphp-php>php_controlContainerphp,php php$roleInstancephp,php php$configurationphp-php>toXmlphp(php)php,php arrayphp(php)php,php nullphp,php arrayphp(php'Contentphp-Typephp'php php=php>php php'textphp/xmlphp'php)php)php;
+php php php php php}
+php}

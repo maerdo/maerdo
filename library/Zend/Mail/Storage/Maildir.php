@@ -1,475 +1,475 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Maildir.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Maildirphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @see Zend_Mail_Storage_Abstract
- */
-require_once 'Zend/Mail/Storage/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Storagephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Abstractphp.phpphp'php;
 
-/**
- * @see Zend_Mail_Message_File
- */
-require_once 'Zend/Mail/Message/File.php';
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Messagephp_File
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Messagephp/Filephp.phpphp'php;
 
-/**
- * @see Zend_Mail_Storage
- */
-require_once 'Zend/Mail/Storage.php';
-
-
-/**
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
-{
-    /**
-     * used message class, change it in an extened class to extend the returned message class
-     * @var string
-     */
-    protected $_messageClass = 'Zend_Mail_Message_File';
-
-    /**
-     * data of found message files in maildir dir
-     * @var array
-     */
-    protected $_files = array();
-
-    /**
-     * known flag chars in filenames
-     *
-     * This list has to be in alphabetical order for setFlags()
-     *
-     * @var array
-     */
-    protected static $_knownFlags = array('D' => Zend_Mail_Storage::FLAG_DRAFT,
-                                          'F' => Zend_Mail_Storage::FLAG_FLAGGED,
-                                          'P' => Zend_Mail_Storage::FLAG_PASSED,
-                                          'R' => Zend_Mail_Storage::FLAG_ANSWERED,
-                                          'S' => Zend_Mail_Storage::FLAG_SEEN,
-                                          'T' => Zend_Mail_Storage::FLAG_DELETED);
-
-    // TODO: getFlags($id) for fast access if headers are not needed (i.e. just setting flags)?
-
-    /**
-     * Count messages all messages in current box
-     *
-     * @return int number of messages
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function countMessages($flags = null)
-    {
-        if ($flags === null) {
-            return count($this->_files);
-        }
-
-        $count = 0;
-        if (!is_array($flags)) {
-            foreach ($this->_files as $file) {
-                if (isset($file['flaglookup'][$flags])) {
-                    ++$count;
-                }
-            }
-            return $count;
-        }
-
-        $flags = array_flip($flags);
-           foreach ($this->_files as $file) {
-               foreach ($flags as $flag => $v) {
-                   if (!isset($file['flaglookup'][$flag])) {
-                       continue 2;
-                   }
-               }
-               ++$count;
-           }
-           return $count;
-    }
-
-    /**
-     * Get one or all fields from file structure. Also checks if message is valid
-     *
-     * @param  int         $id    message number
-     * @param  string|null $field wanted field
-     * @return string|array wanted field or all fields as array
-     * @throws Zend_Mail_Storage_Exception
-     */
-    protected function _getFileData($id, $field = null)
-    {
-        if (!isset($this->_files[$id - 1])) {
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('id does not exist');
-        }
-
-        if (!$field) {
-            return $this->_files[$id - 1];
-        }
-
-        if (!isset($this->_files[$id - 1][$field])) {
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('field does not exist');
-        }
-
-        return $this->_files[$id - 1][$field];
-    }
-
-    /**
-     * Get a list of messages with number and size
-     *
-     * @param  int|null $id number of message or null for all messages
-     * @return int|array size of given message of list with all messages as array(num => size)
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function getSize($id = null)
-    {
-        if ($id !== null) {
-            $filedata = $this->_getFileData($id);
-            return isset($filedata['size']) ? $filedata['size'] : filesize($filedata['filename']);
-        }
-
-        $result = array();
-        foreach ($this->_files as $num => $data) {
-            $result[$num + 1] = isset($data['size']) ? $data['size'] : filesize($data['filename']);
-        }
-
-        return $result;
-    }
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Storage
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Storagephp.phpphp'php;
 
 
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Mailphp_Storagephp_Maildirphp extendsphp Zendphp_Mailphp_Storagephp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php usedphp messagephp classphp,php changephp itphp inphp anphp extenedphp classphp tophp extendphp thephp returnedphp messagephp class
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_messageClassphp php=php php'Zendphp_Mailphp_Messagephp_Filephp'php;
 
-    /**
-     * Fetch a message
-     *
-     * @param  int $id number of message
-     * @return Zend_Mail_Message_File
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function getMessage($id)
-    {
-        // TODO that's ugly, would be better to let the message class decide
-        if (strtolower($this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
-            return new $this->_messageClass(array('file'  => $this->_getFileData($id, 'filename'),
-                                                  'flags' => $this->_getFileData($id, 'flags')));
-        }
+php php php php php/php*php*
+php php php php php php*php dataphp ofphp foundphp messagephp filesphp inphp maildirphp dir
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_filesphp php=php arrayphp(php)php;
 
-        return new $this->_messageClass(array('handler' => $this, 'id' => $id, 'headers' => $this->getRawHeader($id),
-                                              'flags'   => $this->_getFileData($id, 'flags')));
-    }
+php php php php php/php*php*
+php php php php php php*php knownphp flagphp charsphp inphp filenames
+php php php php php php*
+php php php php php php*php Thisphp listphp hasphp tophp bephp inphp alphabeticalphp orderphp forphp setFlagsphp(php)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_knownFlagsphp php=php arrayphp(php'Dphp'php php=php>php Zendphp_Mailphp_Storagephp:php:FLAGphp_DRAFTphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Fphp'php php=php>php Zendphp_Mailphp_Storagephp:php:FLAGphp_FLAGGEDphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Pphp'php php=php>php Zendphp_Mailphp_Storagephp:php:FLAGphp_PASSEDphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Rphp'php php=php>php Zendphp_Mailphp_Storagephp:php:FLAGphp_ANSWEREDphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Sphp'php php=php>php Zendphp_Mailphp_Storagephp:php:FLAGphp_SEENphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Tphp'php php=php>php Zendphp_Mailphp_Storagephp:php:FLAGphp_DELETEDphp)php;
 
-    /*
-     * Get raw header of message or part
-     *
-     * @param  int               $id       number of message
-     * @param  null|array|string $part     path to part or null for messsage header
-     * @param  int               $topLines include this many lines with header (after an empty line)
-     * @return string raw header
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function getRawHeader($id, $part = null, $topLines = 0)
-    {
-        if ($part !== null) {
-            // TODO: implement
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('not implemented');
-        }
+php php php php php/php/php TODOphp:php getFlagsphp(php$idphp)php forphp fastphp accessphp ifphp headersphp arephp notphp neededphp php(iphp.ephp.php justphp settingphp flagsphp)php?
 
-        $fh = fopen($this->_getFileData($id, 'filename'), 'r');
+php php php php php/php*php*
+php php php php php php*php Countphp messagesphp allphp messagesphp inphp currentphp box
+php php php php php php*
+php php php php php php*php php@returnphp intphp numberphp ofphp messages
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp countMessagesphp(php$flagsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$flagsphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp countphp(php$thisphp-php>php_filesphp)php;
+php php php php php php php php php}
 
-        $content = '';
-        while (!feof($fh)) {
-            $line = fgets($fh);
-            if (!trim($line)) {
-                break;
-            }
-            $content .= $line;
-        }
+php php php php php php php php php$countphp php=php php0php;
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$flagsphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_filesphp asphp php$filephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filephp[php'flaglookupphp'php]php[php$flagsphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php+php+php$countphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$countphp;
+php php php php php php php php php}
 
-        fclose($fh);
-        return $content;
-    }
+php php php php php php php php php$flagsphp php=php arrayphp_flipphp(php$flagsphp)php;
+php php php php php php php php php php php foreachphp php(php$thisphp-php>php_filesphp asphp php$filephp)php php{
+php php php php php php php php php php php php php php php foreachphp php(php$flagsphp asphp php$flagphp php=php>php php$vphp)php php{
+php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$filephp[php'flaglookupphp'php]php[php$flagphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php continuephp php2php;
+php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php+php+php$countphp;
+php php php php php php php php php php php php}
+php php php php php php php php php php php returnphp php$countphp;
+php php php php php}
 
-    /*
-     * Get raw content of message or part
-     *
-     * @param  int               $id   number of message
-     * @param  null|array|string $part path to part or null for messsage content
-     * @return string raw content
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function getRawContent($id, $part = null)
-    {
-        if ($part !== null) {
-            // TODO: implement
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('not implemented');
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp onephp orphp allphp fieldsphp fromphp filephp structurephp.php Alsophp checksphp ifphp messagephp isphp valid
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php php php php php php php$idphp php php php messagephp number
+php php php php php php*php php@paramphp php stringphp|nullphp php$fieldphp wantedphp field
+php php php php php php*php php@returnphp stringphp|arrayphp wantedphp fieldphp orphp allphp fieldsphp asphp array
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_getFileDataphp(php$idphp,php php$fieldphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_filesphp[php$idphp php-php php1php]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'idphp doesphp notphp existphp'php)php;
+php php php php php php php php php}
 
-        $fh = fopen($this->_getFileData($id, 'filename'), 'r');
+php php php php php php php php ifphp php(php!php$fieldphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_filesphp[php$idphp php-php php1php]php;
+php php php php php php php php php}
 
-        while (!feof($fh)) {
-            $line = fgets($fh);
-            if (!trim($line)) {
-                break;
-            }
-        }
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_filesphp[php$idphp php-php php1php]php[php$fieldphp]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'fieldphp doesphp notphp existphp'php)php;
+php php php php php php php php php}
 
-        $content = stream_get_contents($fh);
-        fclose($fh);
-        return $content;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_filesphp[php$idphp php-php php1php]php[php$fieldphp]php;
+php php php php php}
 
-    /**
-     * Create instance with parameters
-     * Supported parameters are:
-     *   - dirname dirname of mbox file
-     *
-     * @param  $params array mail reader specific parameters
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function __construct($params)
-    {
-        if (is_array($params)) {
-            $params = (object)$params;
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp aphp listphp ofphp messagesphp withphp numberphp andphp size
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|nullphp php$idphp numberphp ofphp messagephp orphp nullphp forphp allphp messages
+php php php php php php*php php@returnphp intphp|arrayphp sizephp ofphp givenphp messagephp ofphp listphp withphp allphp messagesphp asphp arrayphp(numphp php=php>php sizephp)
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getSizephp(php$idphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$idphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$filedataphp php=php php$thisphp-php>php_getFileDataphp(php$idphp)php;
+php php php php php php php php php php php php returnphp issetphp(php$filedataphp[php'sizephp'php]php)php php?php php$filedataphp[php'sizephp'php]php php:php filesizephp(php$filedataphp[php'filenamephp'php]php)php;
+php php php php php php php php php}
 
-        if (!isset($params->dirname) || !is_dir($params->dirname)) {
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('no valid dirname given in params');
-        }
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_filesphp asphp php$numphp php=php>php php$dataphp)php php{
+php php php php php php php php php php php php php$resultphp[php$numphp php+php php1php]php php=php issetphp(php$dataphp[php'sizephp'php]php)php php?php php$dataphp[php'sizephp'php]php php:php filesizephp(php$dataphp[php'filenamephp'php]php)php;
+php php php php php php php php php}
 
-        if (!$this->_isMaildir($params->dirname)) {
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('invalid maildir given');
-        }
-
-        $this->_has['top'] = true;
-        $this->_has['flags'] = true;
-        $this->_openMaildir($params->dirname);
-    }
-
-    /**
-     * check if a given dir is a valid maildir
-     *
-     * @param string $dirname name of dir
-     * @return bool dir is valid maildir
-     */
-    protected function _isMaildir($dirname)
-    {
-        if (file_exists($dirname . '/new') && !is_dir($dirname . '/new')) {
-            return false;
-        }
-        if (file_exists($dirname . '/tmp') && !is_dir($dirname . '/tmp')) {
-            return false;
-        }
-        return is_dir($dirname . '/cur');
-    }
-
-    /**
-     * open given dir as current maildir
-     *
-     * @param string $dirname name of maildir
-     * @return null
-     * @throws Zend_Mail_Storage_Exception
-     */
-    protected function _openMaildir($dirname)
-    {
-        if ($this->_files) {
-            $this->close();
-        }
-
-        $dh = @opendir($dirname . '/cur/');
-        if (!$dh) {
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('cannot open maildir');
-        }
-        $this->_getMaildirFiles($dh, $dirname . '/cur/');
-        closedir($dh);
-
-        $dh = @opendir($dirname . '/new/');
-        if ($dh) {
-            $this->_getMaildirFiles($dh, $dirname . '/new/', array(Zend_Mail_Storage::FLAG_RECENT));
-            closedir($dh);
-        } else if (file_exists($dirname . '/new/')) {
-            /**
-             * @see Zend_Mail_Storage_Exception
-             */
-            require_once 'Zend/Mail/Storage/Exception.php';
-            throw new Zend_Mail_Storage_Exception('cannot read recent mails in maildir');
-        }
-    }
-
-    /**
-     * find all files in opened dir handle and add to maildir files
-     *
-     * @param resource $dh            dir handle used for search
-     * @param string   $dirname       dirname of dir in $dh
-     * @param array    $default_flags default flags for given dir
-     * @return null
-     */
-    protected function _getMaildirFiles($dh, $dirname, $default_flags = array())
-    {
-        while (($entry = readdir($dh)) !== false) {
-            if ($entry[0] == '.' || !is_file($dirname . $entry)) {
-                continue;
-            }
-
-            @list($uniq, $info) = explode(':', $entry, 2);
-            @list(,$size) = explode(',', $uniq, 2);
-            if ($size && $size[0] == 'S' && $size[1] == '=') {
-                $size = substr($size, 2);
-            }
-            if (!ctype_digit($size)) {
-                $size = null;
-            }
-            @list($version, $flags) = explode(',', $info, 2);
-            if ($version != 2) {
-                $flags = '';
-            }
-
-            $named_flags = $default_flags;
-            $length = strlen($flags);
-            for ($i = 0; $i < $length; ++$i) {
-                $flag = $flags[$i];
-                $named_flags[$flag] = isset(self::$_knownFlags[$flag]) ? self::$_knownFlags[$flag] : $flag;
-            }
-
-            $data = array('uniq'       => $uniq,
-                          'flags'      => $named_flags,
-                          'flaglookup' => array_flip($named_flags),
-                          'filename'   => $dirname . $entry);
-            if ($size !== null) {
-                $data['size'] = (int)$size;
-            }
-            $this->_files[] = $data;
-        }
-    }
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
 
-    /**
-     * Close resource for mail lib. If you need to control, when the resource
-     * is closed. Otherwise the destructor would call this.
-     *
-     * @return void
-     */
-    public function close()
-    {
-        $this->_files = array();
-    }
+
+php php php php php/php*php*
+php php php php php php*php Fetchphp aphp message
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$idphp numberphp ofphp message
+php php php php php php*php php@returnphp Zendphp_Mailphp_Messagephp_File
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getMessagephp(php$idphp)
+php php php php php{
+php php php php php php php php php/php/php TODOphp thatphp'sphp uglyphp,php wouldphp bephp betterphp tophp letphp thephp messagephp classphp decide
+php php php php php php php php ifphp php(strtolowerphp(php$thisphp-php>php_messageClassphp)php php=php=php php'zendphp_mailphp_messagephp_filephp'php php|php|php isphp_subclassphp_ofphp(php$thisphp-php>php_messageClassphp,php php'zendphp_mailphp_messagephp_filephp'php)php)php php{
+php php php php php php php php php php php php returnphp newphp php$thisphp-php>php_messageClassphp(arrayphp(php'filephp'php php php=php>php php$thisphp-php>php_getFileDataphp(php$idphp,php php'filenamephp'php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'flagsphp'php php=php>php php$thisphp-php>php_getFileDataphp(php$idphp,php php'flagsphp'php)php)php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp newphp php$thisphp-php>php_messageClassphp(arrayphp(php'handlerphp'php php=php>php php$thisphp,php php'idphp'php php=php>php php$idphp,php php'headersphp'php php=php>php php$thisphp-php>getRawHeaderphp(php$idphp)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'flagsphp'php php php php=php>php php$thisphp-php>php_getFileDataphp(php$idphp,php php'flagsphp'php)php)php)php;
+php php php php php}
+
+php php php php php/php*
+php php php php php php*php Getphp rawphp headerphp ofphp messagephp orphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php php php php php numberphp ofphp message
+php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp php php php php pathphp tophp partphp orphp nullphp forphp messsagephp header
+php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$topLinesphp includephp thisphp manyphp linesphp withphp headerphp php(afterphp anphp emptyphp linephp)
+php php php php php php*php php@returnphp stringphp rawphp header
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getRawHeaderphp(php$idphp,php php$partphp php=php nullphp,php php$topLinesphp php=php php0php)
+php php php php php{
+php php php php php php php php ifphp php(php$partphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php TODOphp:php implement
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'notphp implementedphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$fhphp php=php fopenphp(php$thisphp-php>php_getFileDataphp(php$idphp,php php'filenamephp'php)php,php php'rphp'php)php;
+
+php php php php php php php php php$contentphp php=php php'php'php;
+php php php php php php php php whilephp php(php!feofphp(php$fhphp)php)php php{
+php php php php php php php php php php php php php$linephp php=php fgetsphp(php$fhphp)php;
+php php php php php php php php php php php php ifphp php(php!trimphp(php$linephp)php)php php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$contentphp php.php=php php$linephp;
+php php php php php php php php php}
+
+php php php php php php php php fclosephp(php$fhphp)php;
+php php php php php php php php returnphp php$contentphp;
+php php php php php}
+
+php php php php php/php*
+php php php php php php*php Getphp rawphp contentphp ofphp messagephp orphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php numberphp ofphp message
+php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp pathphp tophp partphp orphp nullphp forphp messsagephp content
+php php php php php php*php php@returnphp stringphp rawphp content
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getRawContentphp(php$idphp,php php$partphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$partphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php TODOphp:php implement
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'notphp implementedphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$fhphp php=php fopenphp(php$thisphp-php>php_getFileDataphp(php$idphp,php php'filenamephp'php)php,php php'rphp'php)php;
+
+php php php php php php php php whilephp php(php!feofphp(php$fhphp)php)php php{
+php php php php php php php php php php php php php$linephp php=php fgetsphp(php$fhphp)php;
+php php php php php php php php php php php php ifphp php(php!trimphp(php$linephp)php)php php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$contentphp php=php streamphp_getphp_contentsphp(php$fhphp)php;
+php php php php php php php php fclosephp(php$fhphp)php;
+php php php php php php php php returnphp php$contentphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createphp instancephp withphp parameters
+php php php php php php*php Supportedphp parametersphp arephp:
+php php php php php php*php php php php-php dirnamephp dirnamephp ofphp mboxphp file
+php php php php php php*
+php php php php php php*php php@paramphp php php$paramsphp arrayphp mailphp readerphp specificphp parameters
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$paramsphp)php)php php{
+php php php php php php php php php php php php php$paramsphp php=php php(objectphp)php$paramsphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$paramsphp-php>dirnamephp)php php|php|php php!isphp_dirphp(php$paramsphp-php>dirnamephp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'nophp validphp dirnamephp givenphp inphp paramsphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$thisphp-php>php_isMaildirphp(php$paramsphp-php>dirnamephp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'invalidphp maildirphp givenphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_hasphp[php'topphp'php]php php=php truephp;
+php php php php php php php php php$thisphp-php>php_hasphp[php'flagsphp'php]php php=php truephp;
+php php php php php php php php php$thisphp-php>php_openMaildirphp(php$paramsphp-php>dirnamephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php checkphp ifphp aphp givenphp dirphp isphp aphp validphp maildir
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$dirnamephp namephp ofphp dir
+php php php php php php*php php@returnphp boolphp dirphp isphp validphp maildir
+php php php php php php*php/
+php php php php protectedphp functionphp php_isMaildirphp(php$dirnamephp)
+php php php php php{
+php php php php php php php php ifphp php(filephp_existsphp(php$dirnamephp php.php php'php/newphp'php)php php&php&php php!isphp_dirphp(php$dirnamephp php.php php'php/newphp'php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(filephp_existsphp(php$dirnamephp php.php php'php/tmpphp'php)php php&php&php php!isphp_dirphp(php$dirnamephp php.php php'php/tmpphp'php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp isphp_dirphp(php$dirnamephp php.php php'php/curphp'php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php openphp givenphp dirphp asphp currentphp maildir
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$dirnamephp namephp ofphp maildir
+php php php php php php*php php@returnphp null
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_openMaildirphp(php$dirnamephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_filesphp)php php{
+php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$dhphp php=php php@opendirphp(php$dirnamephp php.php php'php/curphp/php'php)php;
+php php php php php php php php ifphp php(php!php$dhphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'cannotphp openphp maildirphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_getMaildirFilesphp(php$dhphp,php php$dirnamephp php.php php'php/curphp/php'php)php;
+php php php php php php php php closedirphp(php$dhphp)php;
+
+php php php php php php php php php$dhphp php=php php@opendirphp(php$dirnamephp php.php php'php/newphp/php'php)php;
+php php php php php php php php ifphp php(php$dhphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_getMaildirFilesphp(php$dhphp,php php$dirnamephp php.php php'php/newphp/php'php,php arrayphp(Zendphp_Mailphp_Storagephp:php:FLAGphp_RECENTphp)php)php;
+php php php php php php php php php php php php closedirphp(php$dhphp)php;
+php php php php php php php php php}php elsephp ifphp php(filephp_existsphp(php$dirnamephp php.php php'php/newphp/php'php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'cannotphp readphp recentphp mailsphp inphp maildirphp'php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php findphp allphp filesphp inphp openedphp dirphp handlephp andphp addphp tophp maildirphp files
+php php php php php php*
+php php php php php php*php php@paramphp resourcephp php$dhphp php php php php php php php php php php php dirphp handlephp usedphp forphp search
+php php php php php php*php php@paramphp stringphp php php php$dirnamephp php php php php php php dirnamephp ofphp dirphp inphp php$dh
+php php php php php php*php php@paramphp arrayphp php php php php$defaultphp_flagsphp defaultphp flagsphp forphp givenphp dir
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php protectedphp functionphp php_getMaildirFilesphp(php$dhphp,php php$dirnamephp,php php$defaultphp_flagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php whilephp php(php(php$entryphp php=php readdirphp(php$dhphp)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(php$entryphp[php0php]php php=php=php php'php.php'php php|php|php php!isphp_filephp(php$dirnamephp php.php php$entryphp)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php@listphp(php$uniqphp,php php$infophp)php php=php explodephp(php'php:php'php,php php$entryphp,php php2php)php;
+php php php php php php php php php php php php php@listphp(php,php$sizephp)php php=php explodephp(php'php,php'php,php php$uniqphp,php php2php)php;
+php php php php php php php php php php php php ifphp php(php$sizephp php&php&php php$sizephp[php0php]php php=php=php php'Sphp'php php&php&php php$sizephp[php1php]php php=php=php php'php=php'php)php php{
+php php php php php php php php php php php php php php php php php$sizephp php=php substrphp(php$sizephp,php php2php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php!ctypephp_digitphp(php$sizephp)php)php php{
+php php php php php php php php php php php php php php php php php$sizephp php=php nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php@listphp(php$versionphp,php php$flagsphp)php php=php explodephp(php'php,php'php,php php$infophp,php php2php)php;
+php php php php php php php php php php php php ifphp php(php$versionphp php!php=php php2php)php php{
+php php php php php php php php php php php php php php php php php$flagsphp php=php php'php'php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$namedphp_flagsphp php=php php$defaultphp_flagsphp;
+php php php php php php php php php php php php php$lengthphp php=php strlenphp(php$flagsphp)php;
+php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$lengthphp;php php+php+php$iphp)php php{
+php php php php php php php php php php php php php php php php php$flagphp php=php php$flagsphp[php$iphp]php;
+php php php php php php php php php php php php php php php php php$namedphp_flagsphp[php$flagphp]php php=php issetphp(selfphp:php:php$php_knownFlagsphp[php$flagphp]php)php php?php selfphp:php:php$php_knownFlagsphp[php$flagphp]php php:php php$flagphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$dataphp php=php arrayphp(php'uniqphp'php php php php php php php php=php>php php$uniqphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php'flagsphp'php php php php php php php=php>php php$namedphp_flagsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php'flaglookupphp'php php=php>php arrayphp_flipphp(php$namedphp_flagsphp)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php'filenamephp'php php php php=php>php php$dirnamephp php.php php$entryphp)php;
+php php php php php php php php php php php php ifphp php(php$sizephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$dataphp[php'sizephp'php]php php=php php(intphp)php$sizephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_filesphp[php]php php=php php$dataphp;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Waste some CPU cycles doing nothing.
-     *
-     * @return void
-     */
-    public function noop()
-    {
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Closephp resourcephp forphp mailphp libphp.php Ifphp youphp needphp tophp controlphp,php whenphp thephp resource
+php php php php php php*php isphp closedphp.php Otherwisephp thephp destructorphp wouldphp callphp thisphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp closephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_filesphp php=php arrayphp(php)php;
+php php php php php}
 
 
-    /**
-     * stub for not supported message deletion
-     *
-     * @return null
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function removeMessage($id)
-    {
-        /**
-         * @see Zend_Mail_Storage_Exception
-         */
-        require_once 'Zend/Mail/Storage/Exception.php';
-        throw new Zend_Mail_Storage_Exception('maildir is (currently) read-only');
-    }
+php php php php php/php*php*
+php php php php php php*php Wastephp somephp CPUphp cyclesphp doingphp nothingphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp noopphp(php)
+php php php php php{
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * get unique id for one or all messages
-     *
-     * if storage does not support unique ids it's the same as the message number
-     *
-     * @param int|null $id message number
-     * @return array|string message number for given message or all messages as array
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function getUniqueId($id = null)
-    {
-        if ($id) {
-            return $this->_getFileData($id, 'uniq');
-        }
 
-        $ids = array();
-        foreach ($this->_files as $num => $file) {
-            $ids[$num + 1] = $file['uniq'];
-        }
-        return $ids;
-    }
+php php php php php/php*php*
+php php php php php php*php stubphp forphp notphp supportedphp messagephp deletion
+php php php php php php*
+php php php php php php*php php@returnphp null
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp removeMessagephp(php$idphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'maildirphp isphp php(currentlyphp)php readphp-onlyphp'php)php;
+php php php php php}
 
-    /**
-     * get a message number from a unique id
-     *
-     * I.e. if you have a webmailer that supports deleting messages you should use unique ids
-     * as parameter and use this method to translate it to message number right before calling removeMessage()
-     *
-     * @param string $id unique id
-     * @return int message number
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function getNumberByUniqueId($id)
-    {
-        foreach ($this->_files as $num => $file) {
-            if ($file['uniq'] == $id) {
-                return $num + 1;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php getphp uniquephp idphp forphp onephp orphp allphp messages
+php php php php php php*
+php php php php php php*php ifphp storagephp doesphp notphp supportphp uniquephp idsphp itphp'sphp thephp samephp asphp thephp messagephp number
+php php php php php php*
+php php php php php php*php php@paramphp intphp|nullphp php$idphp messagephp number
+php php php php php php*php php@returnphp arrayphp|stringphp messagephp numberphp forphp givenphp messagephp orphp allphp messagesphp asphp array
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getUniqueIdphp(php$idphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$idphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_getFileDataphp(php$idphp,php php'uniqphp'php)php;
+php php php php php php php php php}
 
-        /**
-         * @see Zend_Mail_Storage_Exception
-         */
-        require_once 'Zend/Mail/Storage/Exception.php';
-        throw new Zend_Mail_Storage_Exception('unique id not found');
-    }
-}
+php php php php php php php php php$idsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_filesphp asphp php$numphp php=php>php php$filephp)php php{
+php php php php php php php php php php php php php$idsphp[php$numphp php+php php1php]php php=php php$filephp[php'uniqphp'php]php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$idsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getphp aphp messagephp numberphp fromphp aphp uniquephp id
+php php php php php php*
+php php php php php php*php Iphp.ephp.php ifphp youphp havephp aphp webmailerphp thatphp supportsphp deletingphp messagesphp youphp shouldphp usephp uniquephp ids
+php php php php php php*php asphp parameterphp andphp usephp thisphp methodphp tophp translatephp itphp tophp messagephp numberphp rightphp beforephp callingphp removeMessagephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp uniquephp id
+php php php php php php*php php@returnphp intphp messagephp number
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getNumberByUniqueIdphp(php$idphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>php_filesphp asphp php$numphp php=php>php php$filephp)php php{
+php php php php php php php php php php php php ifphp php(php$filephp[php'uniqphp'php]php php=php=php php$idphp)php php{
+php php php php php php php php php php php php php php php php returnphp php$numphp php+php php1php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'uniquephp idphp notphp foundphp'php)php;
+php php php php php}
+php}

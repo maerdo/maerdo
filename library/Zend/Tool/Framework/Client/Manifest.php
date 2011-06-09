@@ -1,206 +1,206 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Manifest.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Manifestphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Framework_Manifest_MetadataManifestable
- */
-require_once 'Zend/Tool/Framework/Manifest/MetadataManifestable.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Manifestphp_MetadataManifestable
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Manifestphp/MetadataManifestablephp.phpphp'php;
 
-/**
- * @see Zend_Filter
- */
-require_once 'Zend/Filter.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filter
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp.phpphp'php;
 
-/**
- * @see Zend_Filter_Word_CamelCaseToDash
- */
-require_once 'Zend/Filter/Word/CamelCaseToDash.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Wordphp_CamelCaseToDash
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Wordphp/CamelCaseToDashphp.phpphp'php;
 
-/**
- * @see Zend_Filter_StringToLower
- */
-require_once 'Zend/Filter/StringToLower.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_StringToLower
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/StringToLowerphp.phpphp'php;
 
-/**
- * @see Zend_Tool_Framework_Metadata_Tool
- */
-require_once 'Zend/Tool/Framework/Metadata/Tool.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Metadataphp_Tool
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Metadataphp/Toolphp.phpphp'php;
 
-/**
- * @see Zend_Tool_Framework_Registry_EnabledInterface
- */
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Registryphp/EnabledInterfacephp.phpphp'php;
 
-/**
- * Zend_Tool_Framework_Client_ConsoleClient_Manifest
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Framework_Client_Manifest
-    implements Zend_Tool_Framework_Registry_EnabledInterface,
-               Zend_Tool_Framework_Manifest_MetadataManifestable
-{
+php/php*php*
+php php*php Zendphp_Toolphp_Frameworkphp_Clientphp_ConsoleClientphp_Manifest
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Manifest
+php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterfacephp,
+php php php php php php php php php php php php php php php Zendphp_Toolphp_Frameworkphp_Manifestphp_MetadataManifestable
+php{
 
-    /**
-     * @var Zend_Tool_Framework_Registry_Interface
-     */
-    protected $_registry = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Registryphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_registryphp php=php nullphp;
 
-    /**
-     * setRegistry() - Required for the Zend_Tool_Framework_Registry_EnabledInterface interface
-     *
-     * @param Zend_Tool_Framework_Registry_Interface $registry
-     * @return Zend_Tool_Framework_Client_Console_Manifest
-     */
-    public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
-    {
-        $this->_registry = $registry;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setRegistryphp(php)php php-php Requiredphp forphp thephp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterfacephp interface
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registry
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_Manifest
+php php php php php php*php/
+php php php php publicphp functionphp setRegistryphp(Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registryphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_registryphp php=php php$registryphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getMetadata() is required by the Manifest Interface.
-     *
-     * These are the following metadatas that will be setup:
-     *
-     * normalizedActionName
-     *   - metadata for actions
-     *   - value will be a dashed name for the action named in 'actionName'
-     * normalizedProviderName
-     *   - metadata for providers
-     *   - value will be a dashed-name for the provider named in 'providerName'
-     * normalizedProviderSpecialtyNames
-     *   - metadata for providers
-     * normalizedActionableMethodLongParameters
-     *   - metadata for providers
-     * normalizedActionableMethodShortParameters
-     *   - metadata for providers
-     *
-     * @return array Array of Metadatas
-     */
-    public function getMetadata()
-    {
-        $metadatas = array();
+php php php php php/php*php*
+php php php php php php*php getMetadataphp(php)php isphp requiredphp byphp thephp Manifestphp Interfacephp.
+php php php php php php*
+php php php php php php*php Thesephp arephp thephp followingphp metadatasphp thatphp willphp bephp setupphp:
+php php php php php php*
+php php php php php php*php normalizedActionName
+php php php php php php*php php php php-php metadataphp forphp actions
+php php php php php php*php php php php-php valuephp willphp bephp aphp dashedphp namephp forphp thephp actionphp namedphp inphp php'actionNamephp'
+php php php php php php*php normalizedProviderName
+php php php php php php*php php php php-php metadataphp forphp providers
+php php php php php php*php php php php-php valuephp willphp bephp aphp dashedphp-namephp forphp thephp providerphp namedphp inphp php'providerNamephp'
+php php php php php php*php normalizedProviderSpecialtyNames
+php php php php php php*php php php php-php metadataphp forphp providers
+php php php php php php*php normalizedActionableMethodLongParameters
+php php php php php php*php php php php-php metadataphp forphp providers
+php php php php php php*php normalizedActionableMethodShortParameters
+php php php php php php*php php php php-php metadataphp forphp providers
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp Metadatas
+php php php php php php*php/
+php php php php publicphp functionphp getMetadataphp(php)
+php php php php php{
+php php php php php php php php php$metadatasphp php=php arrayphp(php)php;
 
-        // setup the camelCase to dashed filter to use since cli expects dashed named
-        $lowerFilter = new Zend_Filter();
-        $lowerFilter->addFilter(new Zend_Filter_StringToLower());
+php php php php php php php php php/php/php setupphp thephp camelCasephp tophp dashedphp filterphp tophp usephp sincephp cliphp expectsphp dashedphp named
+php php php php php php php php php$lowerFilterphp php=php newphp Zendphp_Filterphp(php)php;
+php php php php php php php php php$lowerFilterphp-php>addFilterphp(newphp Zendphp_Filterphp_StringToLowerphp(php)php)php;
 
-        // get the registry to get the action and provider repository
-        $actionRepository   = $this->_registry->getActionRepository();
-        $providerRepository = $this->_registry->getProviderRepository();
+php php php php php php php php php/php/php getphp thephp registryphp tophp getphp thephp actionphp andphp providerphp repository
+php php php php php php php php php$actionRepositoryphp php php php=php php$thisphp-php>php_registryphp-php>getActionRepositoryphp(php)php;
+php php php php php php php php php$providerRepositoryphp php=php php$thisphp-php>php_registryphp-php>getProviderRepositoryphp(php)php;
 
-        // loop through all actions and create a metadata for each
-        foreach ($actionRepository->getActions() as $action) {
-            // each action metadata will be called
-            $metadatas[] = new Zend_Tool_Framework_Metadata_Tool(array(
-                'name'            => 'normalizedActionName',
-                'value'           => $lowerFilter->filter($action->getName()),
-                'reference'       => $action,
-                'actionName'      => $action->getName(),
-                'clientName'      => 'all'
-                ));
-        }
+php php php php php php php php php/php/php loopphp throughphp allphp actionsphp andphp createphp aphp metadataphp forphp each
+php php php php php php php php foreachphp php(php$actionRepositoryphp-php>getActionsphp(php)php asphp php$actionphp)php php{
+php php php php php php php php php php php php php/php/php eachphp actionphp metadataphp willphp bephp called
+php php php php php php php php php php php php php$metadatasphp[php]php php=php newphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Toolphp(arrayphp(
+php php php php php php php php php php php php php php php php php'namephp'php php php php php php php php php php php php php=php>php php'normalizedActionNamephp'php,
+php php php php php php php php php php php php php php php php php'valuephp'php php php php php php php php php php php php=php>php php$lowerFilterphp-php>filterphp(php$actionphp-php>getNamephp(php)php)php,
+php php php php php php php php php php php php php php php php php'referencephp'php php php php php php php php=php>php php$actionphp,
+php php php php php php php php php php php php php php php php php'actionNamephp'php php php php php php php=php>php php$actionphp-php>getNamephp(php)php,
+php php php php php php php php php php php php php php php php php'clientNamephp'php php php php php php php=php>php php'allphp'
+php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php}
 
-        foreach ($providerRepository->getProviderSignatures() as $providerSignature) {
+php php php php php php php php foreachphp php(php$providerRepositoryphp-php>getProviderSignaturesphp(php)php asphp php$providerSignaturephp)php php{
 
-            // create the metadata for the provider's cliProviderName
-            $metadatas[] = new Zend_Tool_Framework_Metadata_Tool(array(
-                'name'            => 'normalizedProviderName',
-                'value'           => $lowerFilter->filter($providerSignature->getName()),
-                'reference'       => $providerSignature,
-                'clientName'      => 'all',
-                'providerName'    => $providerSignature->getName()
-                ));
+php php php php php php php php php php php php php/php/php createphp thephp metadataphp forphp thephp providerphp'sphp cliProviderName
+php php php php php php php php php php php php php$metadatasphp[php]php php=php newphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Toolphp(arrayphp(
+php php php php php php php php php php php php php php php php php'namephp'php php php php php php php php php php php php php=php>php php'normalizedProviderNamephp'php,
+php php php php php php php php php php php php php php php php php'valuephp'php php php php php php php php php php php php=php>php php$lowerFilterphp-php>filterphp(php$providerSignaturephp-php>getNamephp(php)php)php,
+php php php php php php php php php php php php php php php php php'referencephp'php php php php php php php php=php>php php$providerSignaturephp,
+php php php php php php php php php php php php php php php php php'clientNamephp'php php php php php php php=php>php php'allphp'php,
+php php php php php php php php php php php php php php php php php'providerNamephp'php php php php php=php>php php$providerSignaturephp-php>getNamephp(php)
+php php php php php php php php php php php php php php php php php)php)php;
 
-            // create the metadatas for the per provider specialites in providerSpecaltyNames
-            foreach ($providerSignature->getSpecialties() as $specialty) {
+php php php php php php php php php php php php php/php/php createphp thephp metadatasphp forphp thephp perphp providerphp specialitesphp inphp providerSpecaltyNames
+php php php php php php php php php php php php foreachphp php(php$providerSignaturephp-php>getSpecialtiesphp(php)php asphp php$specialtyphp)php php{
 
-                if ($specialty == '_Global') {
-                    continue;
-                }
+php php php php php php php php php php php php php php php php ifphp php(php$specialtyphp php=php=php php'php_Globalphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
 
-                $metadatas[] = new Zend_Tool_Framework_Metadata_Tool(array(
-                    'name'            => 'normalizedSpecialtyName',
-                    'value'           => $lowerFilter->filter($specialty),
-                    'reference'       => $providerSignature,
-                    'clientName'      => 'all',
-                    'providerName'    => $providerSignature->getName(),
-                    'specialtyName'   => $specialty
-                    ));
+php php php php php php php php php php php php php php php php php$metadatasphp[php]php php=php newphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Toolphp(arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'namephp'php php php php php php php php php php php php php=php>php php'normalizedSpecialtyNamephp'php,
+php php php php php php php php php php php php php php php php php php php php php'valuephp'php php php php php php php php php php php php=php>php php$lowerFilterphp-php>filterphp(php$specialtyphp)php,
+php php php php php php php php php php php php php php php php php php php php php'referencephp'php php php php php php php php=php>php php$providerSignaturephp,
+php php php php php php php php php php php php php php php php php php php php php'clientNamephp'php php php php php php php=php>php php'allphp'php,
+php php php php php php php php php php php php php php php php php php php php php'providerNamephp'php php php php php=php>php php$providerSignaturephp-php>getNamephp(php)php,
+php php php php php php php php php php php php php php php php php php php php php'specialtyNamephp'php php php php=php>php php$specialty
+php php php php php php php php php php php php php php php php php php php php php)php)php;
 
-            }
+php php php php php php php php php php php php php}
 
-            // $actionableMethod is keyed by the methodName (but not used)
-            foreach ($providerSignature->getActionableMethods() as $actionableMethodData) {
+php php php php php php php php php php php php php/php/php php$actionableMethodphp isphp keyedphp byphp thephp methodNamephp php(butphp notphp usedphp)
+php php php php php php php php php php php php foreachphp php(php$providerSignaturephp-php>getActionableMethodsphp(php)php asphp php$actionableMethodDataphp)php php{
 
-                $methodLongParams  = array();
-                $methodShortParams = array();
+php php php php php php php php php php php php php php php php php$methodLongParamsphp php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php$methodShortParamsphp php=php arrayphp(php)php;
 
-                // $actionableMethodData get both the long and short names
-                foreach ($actionableMethodData['parameterInfo'] as $parameterInfoData) {
+php php php php php php php php php php php php php php php php php/php/php php$actionableMethodDataphp getphp bothphp thephp longphp andphp shortphp names
+php php php php php php php php php php php php php php php php foreachphp php(php$actionableMethodDataphp[php'parameterInfophp'php]php asphp php$parameterInfoDataphp)php php{
 
-                    // filter to dashed
-                    $methodLongParams[$parameterInfoData['name']] = $lowerFilter->filter($parameterInfoData['name']);
+php php php php php php php php php php php php php php php php php php php php php/php/php filterphp tophp dashed
+php php php php php php php php php php php php php php php php php php php php php$methodLongParamsphp[php$parameterInfoDataphp[php'namephp'php]php]php php=php php$lowerFilterphp-php>filterphp(php$parameterInfoDataphp[php'namephp'php]php)php;
 
-                    // simply lower the character, (its only 1 char after all)
-                    $methodShortParams[$parameterInfoData['name']] = strtolower($parameterInfoData['name'][0]);
+php php php php php php php php php php php php php php php php php php php php php/php/php simplyphp lowerphp thephp characterphp,php php(itsphp onlyphp php1php charphp afterphp allphp)
+php php php php php php php php php php php php php php php php php php php php php$methodShortParamsphp[php$parameterInfoDataphp[php'namephp'php]php]php php=php strtolowerphp(php$parameterInfoDataphp[php'namephp'php]php[php0php]php)php;
 
-                }
+php php php php php php php php php php php php php php php php php}
 
-                // create metadata for the long name cliActionableMethodLongParameters
-                $metadatas[] = new Zend_Tool_Framework_Metadata_Tool(array(
-                    'name'            => 'normalizedActionableMethodLongParams',
-                    'value'           => $methodLongParams,
-                    'clientName'      => 'console',
-                    'providerName'    => $providerSignature->getName(),
-                    'specialtyName'   => $actionableMethodData['specialty'],
-                    'actionName'      => $actionableMethodData['actionName'],
-                    'reference'       => &$actionableMethodData
-                    ));
+php php php php php php php php php php php php php php php php php/php/php createphp metadataphp forphp thephp longphp namephp cliActionableMethodLongParameters
+php php php php php php php php php php php php php php php php php$metadatasphp[php]php php=php newphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Toolphp(arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'namephp'php php php php php php php php php php php php php=php>php php'normalizedActionableMethodLongParamsphp'php,
+php php php php php php php php php php php php php php php php php php php php php'valuephp'php php php php php php php php php php php php=php>php php$methodLongParamsphp,
+php php php php php php php php php php php php php php php php php php php php php'clientNamephp'php php php php php php php=php>php php'consolephp'php,
+php php php php php php php php php php php php php php php php php php php php php'providerNamephp'php php php php php=php>php php$providerSignaturephp-php>getNamephp(php)php,
+php php php php php php php php php php php php php php php php php php php php php'specialtyNamephp'php php php php=php>php php$actionableMethodDataphp[php'specialtyphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php'actionNamephp'php php php php php php php=php>php php$actionableMethodDataphp[php'actionNamephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php'referencephp'php php php php php php php php=php>php php&php$actionableMethodData
+php php php php php php php php php php php php php php php php php php php php php)php)php;
 
-                // create metadata for the short name cliActionableMethodShortParameters
-                $metadatas[] = new Zend_Tool_Framework_Metadata_Tool(array(
-                    'name'            => 'normalizedActionableMethodShortParams',
-                    'value'           => $methodShortParams,
-                    'clientName'      => 'console',
-                    'providerName'    => $providerSignature->getName(),
-                    'specialtyName'   => $actionableMethodData['specialty'],
-                    'actionName'      => $actionableMethodData['actionName'],
-                    'reference'       => &$actionableMethodData
-                    ));
+php php php php php php php php php php php php php php php php php/php/php createphp metadataphp forphp thephp shortphp namephp cliActionableMethodShortParameters
+php php php php php php php php php php php php php php php php php$metadatasphp[php]php php=php newphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Toolphp(arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'namephp'php php php php php php php php php php php php php=php>php php'normalizedActionableMethodShortParamsphp'php,
+php php php php php php php php php php php php php php php php php php php php php'valuephp'php php php php php php php php php php php php=php>php php$methodShortParamsphp,
+php php php php php php php php php php php php php php php php php php php php php'clientNamephp'php php php php php php php=php>php php'consolephp'php,
+php php php php php php php php php php php php php php php php php php php php php'providerNamephp'php php php php php=php>php php$providerSignaturephp-php>getNamephp(php)php,
+php php php php php php php php php php php php php php php php php php php php php'specialtyNamephp'php php php php=php>php php$actionableMethodDataphp[php'specialtyphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php'actionNamephp'php php php php php php php=php>php php$actionableMethodDataphp[php'actionNamephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php'referencephp'php php php php php php php php=php>php php&php$actionableMethodData
+php php php php php php php php php php php php php php php php php php php php php)php)php;
 
-            }
+php php php php php php php php php php php php php}
 
-        }
+php php php php php php php php php}
 
-        return $metadatas;
-    }
+php php php php php php php php returnphp php$metadatasphp;
+php php php php php}
 
-    public function getIndex()
-    {
-        return 100000;
-    }
+php php php php publicphp functionphp getIndexphp(php)
+php php php php php{
+php php php php php php php php returnphp php1php0php0php0php0php0php;
+php php php php php}
 
-}
+php}

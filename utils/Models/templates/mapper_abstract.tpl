@@ -1,34 +1,34 @@
-<?="<?php\n"?>
+<php?php=php"<php?phpphp\nphp"php?php>
 
-class <?=$params['module']?>_Model_Mappers_Abstract {
+classphp <php?php=php$paramsphp[php'modulephp'php]php?php>php_Modelphp_Mappersphp_Abstractphp php{
 
-    
-    protected $_dbTable;
-          
-    public function setDbTable($dbTable) { 
-       if (is_string($dbTable)) {
-           $dbTable = new $dbTable();
-        }
-        if (!$dbTable instanceof Zend_Db_Table_Abstract) {
-            throw new Exception('Invalid table data gateway provided');
-        }
-        $this->_dbTable = $dbTable;
-           return $this;
-     }
+php php php php 
+php php php php protectedphp php$php_dbTablephp;
+php php php php php php php php php php 
+php php php php publicphp functionphp setDbTablephp(php$dbTablephp)php php{php 
+php php php php php php php ifphp php(isphp_stringphp(php$dbTablephp)php)php php{
+php php php php php php php php php php php php$dbTablephp php=php newphp php$dbTablephp(php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$dbTablephp instanceofphp Zendphp_Dbphp_Tablephp_Abstractphp)php php{
+php php php php php php php php php php php php throwphp newphp Exceptionphp(php'Invalidphp tablephp dataphp gatewayphp providedphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dbTablephp php=php php$dbTablephp;
+php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php}
 
-	public function insert($data) {
-        return $this->getDbTable()->insert($data);
-    }         
-    
-        
-   
-  
- 	public function delete($where) {
-        return $this->getDbTable()->delete($where);
-    }
+php	publicphp functionphp insertphp(php$dataphp)php php{
+php php php php php php php php returnphp php$thisphp-php>getDbTablephp(php)php-php>insertphp(php$dataphp)php;
+php php php php php}php php php php php php php php php 
+php php php php 
+php php php php php php php php 
+php php php 
+php php 
+php php	publicphp functionphp deletephp(php$wherephp)php php{
+php php php php php php php php returnphp php$thisphp-php>getDbTablephp(php)php-php>deletephp(php$wherephp)php;
+php php php php php}
 
- 	public function update($data,$where) {
-		return $this->getDbTable()->update($data, $where);
-    } 
+php php	publicphp functionphp updatephp(php$dataphp,php$wherephp)php php{
+php	php	returnphp php$thisphp-php>getDbTablephp(php)php-php>updatephp(php$dataphp,php php$wherephp)php;
+php php php php php}php 
 
-}
+php}

@@ -1,211 +1,211 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ListingInfo.php 22791 2010-08-04 16:11:47Z renanbr $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Ebay
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ListingInfophp.phpphp php2php2php7php9php1php php2php0php1php0php-php0php8php-php0php4php php1php6php:php1php1php:php4php7Zphp renanbrphp php$
+php php*php/
 
-/**
- * @see Zend_Service_Ebay_Finding_Abstract
- */
-require_once 'Zend/Service/Ebay/Finding/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
- */
-class Zend_Service_Ebay_Finding_ListingInfo extends Zend_Service_Ebay_Finding_Abstract
-{
-    /**
-     * Shows whether or not the seller will accept a best offer for the
-     * associated item.
-     *
-     * Best Offer allows a buyer to make a lower-priced binding offer on a fixed
-     * price item. Buyers cannot see how many offers have been made (only the
-     * seller can see this information). To make a best offer on a listing, use
-     * the eBay Web site.
-     *
-     * @var boolean
-     */
-    public $bestOfferEnabled;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Ebay
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@usesphp php php php php php php Zendphp_Servicephp_Ebayphp_Findingphp_Abstract
+php php*php/
+classphp Zendphp_Servicephp_Ebayphp_Findingphp_ListingInfophp extendsphp Zendphp_Servicephp_Ebayphp_Findingphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Showsphp whetherphp orphp notphp thephp sellerphp willphp acceptphp aphp bestphp offerphp forphp the
+php php php php php php*php associatedphp itemphp.
+php php php php php php*
+php php php php php php*php Bestphp Offerphp allowsphp aphp buyerphp tophp makephp aphp lowerphp-pricedphp bindingphp offerphp onphp aphp fixed
+php php php php php php*php pricephp itemphp.php Buyersphp cannotphp seephp howphp manyphp offersphp havephp beenphp madephp php(onlyphp the
+php php php php php php*php sellerphp canphp seephp thisphp informationphp)php.php Tophp makephp aphp bestphp offerphp onphp aphp listingphp,php use
+php php php php php php*php thephp eBayphp Webphp sitephp.
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php publicphp php$bestOfferEnabledphp;
 
-    /**
-     * Used with competitive-bid auctions, the associated item includes a Buy It
-     * Now option if this value returns true.
-     *
-     * Buy It Now lets a user purchase the item at a fixed price, effectively
-     * ending the auction. On most sites, the Buy It Now option is removed (and
-     * this value returns false) once a valid bid is made on the associated item
-     * (a valid bid could be a bid above the reserve price).
-     *
-     * @var boolean
-     */
-    public $buyItNowAvailable;
+php php php php php/php*php*
+php php php php php php*php Usedphp withphp competitivephp-bidphp auctionsphp,php thephp associatedphp itemphp includesphp aphp Buyphp It
+php php php php php php*php Nowphp optionphp ifphp thisphp valuephp returnsphp truephp.
+php php php php php php*
+php php php php php php*php Buyphp Itphp Nowphp letsphp aphp userphp purchasephp thephp itemphp atphp aphp fixedphp pricephp,php effectively
+php php php php php php*php endingphp thephp auctionphp.php Onphp mostphp sitesphp,php thephp Buyphp Itphp Nowphp optionphp isphp removedphp php(and
+php php php php php php*php thisphp valuephp returnsphp falsephp)php oncephp aphp validphp bidphp isphp madephp onphp thephp associatedphp item
+php php php php php php*php php(aphp validphp bidphp couldphp bephp aphp bidphp abovephp thephp reservephp pricephp)php.
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php publicphp php$buyItNowAvailablephp;
 
-    /**
-     * The Buy It Now Price of the item (if any), in the currency of the site on
-     * which the item was listed.
-     *
-     * You can use this field to determine if the item was originally listed
-     * with Buy It Now, even if the Buy It Now option is no longer available for
-     * the item.
-     *
-     * For Basic Fixed-Price (FixedPrice), Store Inventory (StoreInventory), and
-     * Ad Format (AdFormat) listings, currentPrice is the current fixed price.
-     *
-     * Only returned if an item was listed with Buy It Now.
-     *
-     * @var float
-     */
-    public $buyItNowPrice;
+php php php php php/php*php*
+php php php php php php*php Thephp Buyphp Itphp Nowphp Pricephp ofphp thephp itemphp php(ifphp anyphp)php,php inphp thephp currencyphp ofphp thephp sitephp on
+php php php php php php*php whichphp thephp itemphp wasphp listedphp.
+php php php php php php*
+php php php php php php*php Youphp canphp usephp thisphp fieldphp tophp determinephp ifphp thephp itemphp wasphp originallyphp listed
+php php php php php php*php withphp Buyphp Itphp Nowphp,php evenphp ifphp thephp Buyphp Itphp Nowphp optionphp isphp nophp longerphp availablephp for
+php php php php php php*php thephp itemphp.
+php php php php php php*
+php php php php php php*php Forphp Basicphp Fixedphp-Pricephp php(FixedPricephp)php,php Storephp Inventoryphp php(StoreInventoryphp)php,php and
+php php php php php php*php Adphp Formatphp php(AdFormatphp)php listingsphp,php currentPricephp isphp thephp currentphp fixedphp pricephp.
+php php php php php php*
+php php php php php php*php Onlyphp returnedphp ifphp anphp itemphp wasphp listedphp withphp Buyphp Itphp Nowphp.
+php php php php php php*
+php php php php php php*php php@varphp float
+php php php php php php*php/
+php php php php publicphp php$buyItNowPricephp;
 
-    /**
-     * The listing's Buy It Now Price (if any), converted into the currency of
-     * the site to which you sent your search request.
-     *
-     * For active items, refresh this value every 24 hours to pick up changes in
-     * conversion rates (if this value has been converted).
-     *
-     * Price fields are returned as doubles, not necessarily in the traditional
-     * monetary format of the site's country. For example, a US Dollar value
-     * might be returned as 3.880001 instead of 3.88.
-     *
-     * Only returned if an item was listed with Buy It Now.
-     *
-     * @var float
-     */
-    public $convertedBuyItNowPrice;
+php php php php php/php*php*
+php php php php php php*php Thephp listingphp'sphp Buyphp Itphp Nowphp Pricephp php(ifphp anyphp)php,php convertedphp intophp thephp currencyphp of
+php php php php php php*php thephp sitephp tophp whichphp youphp sentphp yourphp searchphp requestphp.
+php php php php php php*
+php php php php php php*php Forphp activephp itemsphp,php refreshphp thisphp valuephp everyphp php2php4php hoursphp tophp pickphp upphp changesphp in
+php php php php php php*php conversionphp ratesphp php(ifphp thisphp valuephp hasphp beenphp convertedphp)php.
+php php php php php php*
+php php php php php php*php Pricephp fieldsphp arephp returnedphp asphp doublesphp,php notphp necessarilyphp inphp thephp traditional
+php php php php php php*php monetaryphp formatphp ofphp thephp sitephp'sphp countryphp.php Forphp examplephp,php aphp USphp Dollarphp value
+php php php php php php*php mightphp bephp returnedphp asphp php3php.php8php8php0php0php0php1php insteadphp ofphp php3php.php8php8php.
+php php php php php php*
+php php php php php php*php Onlyphp returnedphp ifphp anphp itemphp wasphp listedphp withphp Buyphp Itphp Nowphp.
+php php php php php php*
+php php php php php php*php php@varphp float
+php php php php php php*php/
+php php php php publicphp php$convertedBuyItNowPricephp;
 
-    /**
-     * Time stamp specifying when the listing is scheduled to end, or the actual
-     * end time if the item listing has ended.
-     *
-     * This value is returned in GMT, the ISO 8601 date and time format
-     * (YYYY-MM-DDTHH:MM:SS.SSSZ). See the "dateTime" type for information about
-     * the time format, and for details on converting to and from the GMT time
-     * zone.
-     *
-     * @var integer
-     */
-    public $endTime;
+php php php php php/php*php*
+php php php php php php*php Timephp stampphp specifyingphp whenphp thephp listingphp isphp scheduledphp tophp endphp,php orphp thephp actual
+php php php php php php*php endphp timephp ifphp thephp itemphp listingphp hasphp endedphp.
+php php php php php php*
+php php php php php php*php Thisphp valuephp isphp returnedphp inphp GMTphp,php thephp ISOphp php8php6php0php1php datephp andphp timephp format
+php php php php php php*php php(YYYYphp-MMphp-DDTHHphp:MMphp:SSphp.SSSZphp)php.php Seephp thephp php"dateTimephp"php typephp forphp informationphp about
+php php php php php php*php thephp timephp formatphp,php andphp forphp detailsphp onphp convertingphp tophp andphp fromphp thephp GMTphp time
+php php php php php php*php zonephp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$endTimephp;
 
-    /**
-     * If true, a generic gift icon displays next the listing's title in search
-     * and browse pages.
-     *
-     * @var boolean
-     */
-    public $gift;
+php php php php php/php*php*
+php php php php php php*php Ifphp truephp,php aphp genericphp giftphp iconphp displaysphp nextphp thephp listingphp'sphp titlephp inphp search
+php php php php php php*php andphp browsephp pagesphp.
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php publicphp php$giftphp;
 
-    /**
-     * The format of the listing, such as online auction, fixed price, or
-     * advertisement.
-     *
-     * Applicable values:
-     *
-     *     AdFormat
-     *     Advertisement to solicit inquiries on listings such as real estate.
-     *     Permits no bidding on that item, service, or property. To express
-     *     interest, a buyer fills out a contact form that eBay forwards to the
-     *     seller as a lead. This format does not enable buyers and sellers to
-     *     transact online through eBay and eBay Feedback is not available for
-     *     ad format listings.
-     *
-     *     Auction
-     *     Competitive-bid online auction format. Buyers engage in competitive
-     *     bidding, although Buy It Now may be offered as long as no valid bids
-     *     have been placed. Online auctions are listed on eBay.com; they can
-     *     also be listed in a seller's eBay Store if the seller is a Store
-     *     owner.
-     *
-     *     AuctionWithBIN
-     *     Same as Auction format, but Buy It Now is enabled. AuctionWithBIN
-     *     changes to Auction if a valid bid has been placed on the item. Valid
-     *     bids include bids that are equal to or above any specified reserve
-     *     price.
-     *
-     *     Classified
-     *     Classified Ads connect buyers and sellers, who then complete the sale
-     *     outside of eBay. This format does not enable buyers and sellers to
-     *     transact online through eBay and eBay Feedback is not available for
-     *     these listing types.
-     *
-     *     FixedPrice
-     *     A fixed-price listing. Auction-style bidding is not allowed. On some
-     *     sites, this auction format is also known as "Buy It Now Only" (not to
-     *     be confused with the Buy It Now option available with
-     *     competitive-bidding auctions). Fixed-price listings appear on
-     *     eBay.com; they can also be listed in a seller's eBay Store if the
-     *     seller is a Store owner.
-     *
-     *     StoreInventory
-     *     A fixed-price format for eBay Store sellers. Store Inventory listings
-     *     appear after other listings in regular browse and search item
-     *     listings on eBay. Store items have a lower Insertion Fee and longer
-     *     listing durations. This selling type can only be specified by sellers
-     *     who have an eBay Store. Store Inventory listings are listed on
-     *     eBay.com as well as in the seller's eBay Store.
-     *
-     * @var string
-     */
-    public $listingType;
+php php php php php/php*php*
+php php php php php php*php Thephp formatphp ofphp thephp listingphp,php suchphp asphp onlinephp auctionphp,php fixedphp pricephp,php or
+php php php php php php*php advertisementphp.
+php php php php php php*
+php php php php php php*php Applicablephp valuesphp:
+php php php php php php*
+php php php php php php*php php php php php AdFormat
+php php php php php php*php php php php php Advertisementphp tophp solicitphp inquiriesphp onphp listingsphp suchphp asphp realphp estatephp.
+php php php php php php*php php php php php Permitsphp nophp biddingphp onphp thatphp itemphp,php servicephp,php orphp propertyphp.php Tophp express
+php php php php php php*php php php php php interestphp,php aphp buyerphp fillsphp outphp aphp contactphp formphp thatphp eBayphp forwardsphp tophp the
+php php php php php php*php php php php php sellerphp asphp aphp leadphp.php Thisphp formatphp doesphp notphp enablephp buyersphp andphp sellersphp to
+php php php php php php*php php php php php transactphp onlinephp throughphp eBayphp andphp eBayphp Feedbackphp isphp notphp availablephp for
+php php php php php php*php php php php php adphp formatphp listingsphp.
+php php php php php php*
+php php php php php php*php php php php php Auction
+php php php php php php*php php php php php Competitivephp-bidphp onlinephp auctionphp formatphp.php Buyersphp engagephp inphp competitive
+php php php php php php*php php php php php biddingphp,php althoughphp Buyphp Itphp Nowphp mayphp bephp offeredphp asphp longphp asphp nophp validphp bids
+php php php php php php*php php php php php havephp beenphp placedphp.php Onlinephp auctionsphp arephp listedphp onphp eBayphp.comphp;php theyphp can
+php php php php php php*php php php php php alsophp bephp listedphp inphp aphp sellerphp'sphp eBayphp Storephp ifphp thephp sellerphp isphp aphp Store
+php php php php php php*php php php php php ownerphp.
+php php php php php php*
+php php php php php php*php php php php php AuctionWithBIN
+php php php php php php*php php php php php Samephp asphp Auctionphp formatphp,php butphp Buyphp Itphp Nowphp isphp enabledphp.php AuctionWithBIN
+php php php php php php*php php php php php changesphp tophp Auctionphp ifphp aphp validphp bidphp hasphp beenphp placedphp onphp thephp itemphp.php Valid
+php php php php php php*php php php php php bidsphp includephp bidsphp thatphp arephp equalphp tophp orphp abovephp anyphp specifiedphp reserve
+php php php php php php*php php php php php pricephp.
+php php php php php php*
+php php php php php php*php php php php php Classified
+php php php php php php*php php php php php Classifiedphp Adsphp connectphp buyersphp andphp sellersphp,php whophp thenphp completephp thephp sale
+php php php php php php*php php php php php outsidephp ofphp eBayphp.php Thisphp formatphp doesphp notphp enablephp buyersphp andphp sellersphp to
+php php php php php php*php php php php php transactphp onlinephp throughphp eBayphp andphp eBayphp Feedbackphp isphp notphp availablephp for
+php php php php php php*php php php php php thesephp listingphp typesphp.
+php php php php php php*
+php php php php php php*php php php php php FixedPrice
+php php php php php php*php php php php php Aphp fixedphp-pricephp listingphp.php Auctionphp-stylephp biddingphp isphp notphp allowedphp.php Onphp some
+php php php php php php*php php php php php sitesphp,php thisphp auctionphp formatphp isphp alsophp knownphp asphp php"Buyphp Itphp Nowphp Onlyphp"php php(notphp to
+php php php php php php*php php php php php bephp confusedphp withphp thephp Buyphp Itphp Nowphp optionphp availablephp with
+php php php php php php*php php php php php competitivephp-biddingphp auctionsphp)php.php Fixedphp-pricephp listingsphp appearphp on
+php php php php php php*php php php php php eBayphp.comphp;php theyphp canphp alsophp bephp listedphp inphp aphp sellerphp'sphp eBayphp Storephp ifphp the
+php php php php php php*php php php php php sellerphp isphp aphp Storephp ownerphp.
+php php php php php php*
+php php php php php php*php php php php php StoreInventory
+php php php php php php*php php php php php Aphp fixedphp-pricephp formatphp forphp eBayphp Storephp sellersphp.php Storephp Inventoryphp listings
+php php php php php php*php php php php php appearphp afterphp otherphp listingsphp inphp regularphp browsephp andphp searchphp item
+php php php php php php*php php php php php listingsphp onphp eBayphp.php Storephp itemsphp havephp aphp lowerphp Insertionphp Feephp andphp longer
+php php php php php php*php php php php php listingphp durationsphp.php Thisphp sellingphp typephp canphp onlyphp bephp specifiedphp byphp sellers
+php php php php php php*php php php php php whophp havephp anphp eBayphp Storephp.php Storephp Inventoryphp listingsphp arephp listedphp on
+php php php php php php*php php php php php eBayphp.comphp asphp wellphp asphp inphp thephp sellerphp'sphp eBayphp Storephp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$listingTypephp;
 
-    /**
-     * Time stamp that eBay recorded as the moment the listing was made
-     * available.
-     *
-     * This value is returned in GMT, the ISO 8601 date and time format
-     * (YYYY-MM-DDTHH:MM:SS.SSSZ). See the "dateTime" type for information about
-     * the time format, and for details on converting to and from the GMT time
-     * zone. Note that it is possible for startTime to be different from the
-     * value returned by GetSingleItem.
-     *
-     * @var integer
-     */
-    public $startTime;
+php php php php php/php*php*
+php php php php php php*php Timephp stampphp thatphp eBayphp recordedphp asphp thephp momentphp thephp listingphp wasphp made
+php php php php php php*php availablephp.
+php php php php php php*
+php php php php php php*php Thisphp valuephp isphp returnedphp inphp GMTphp,php thephp ISOphp php8php6php0php1php datephp andphp timephp format
+php php php php php php*php php(YYYYphp-MMphp-DDTHHphp:MMphp:SSphp.SSSZphp)php.php Seephp thephp php"dateTimephp"php typephp forphp informationphp about
+php php php php php php*php thephp timephp formatphp,php andphp forphp detailsphp onphp convertingphp tophp andphp fromphp thephp GMTphp time
+php php php php php php*php zonephp.php Notephp thatphp itphp isphp possiblephp forphp startTimephp tophp bephp differentphp fromphp the
+php php php php php php*php valuephp returnedphp byphp GetSingleItemphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$startTimephp;
 
-    /**
-     * @return void
-     */
-    protected function _init()
-    {
-        parent::_init();
-        $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
+php php php php php/php*php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_initphp(php)
+php php php php php{
+php php php php php php php php parentphp:php:php_initphp(php)php;
+php php php php php php php php php$nsphp php=php Zendphp_Servicephp_Ebayphp_Findingphp:php:XMLNSphp_FINDINGphp;
 
-        $this->bestOfferEnabled       = $this->_query(".//$ns:bestOfferEnabled[1]", 'boolean');
-        $this->buyItNowAvailable      = $this->_query(".//$ns:buyItNowAvailable[1]", 'boolean');
-        $this->buyItNowPrice          = $this->_query(".//$ns:buyItNowPrice[1]", 'float');
-        $this->convertedBuyItNowPrice = $this->_query(".//$ns:convertedBuyItNowPrice[1]", 'float');
-        $this->endTime                = $this->_query(".//$ns:endTime[1]", 'string');
-        $this->gift                   = $this->_query(".//$ns:gift[1]", 'boolean');
-        $this->listingType            = $this->_query(".//$ns:listingType[1]", 'string');
-        $this->startTime              = $this->_query(".//$ns:startTime[1]", 'string');
+php php php php php php php php php$thisphp-php>bestOfferEnabledphp php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:bestOfferEnabledphp[php1php]php"php,php php'booleanphp'php)php;
+php php php php php php php php php$thisphp-php>buyItNowAvailablephp php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:buyItNowAvailablephp[php1php]php"php,php php'booleanphp'php)php;
+php php php php php php php php php$thisphp-php>buyItNowPricephp php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:buyItNowPricephp[php1php]php"php,php php'floatphp'php)php;
+php php php php php php php php php$thisphp-php>convertedBuyItNowPricephp php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:convertedBuyItNowPricephp[php1php]php"php,php php'floatphp'php)php;
+php php php php php php php php php$thisphp-php>endTimephp php php php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:endTimephp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>giftphp php php php php php php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:giftphp[php1php]php"php,php php'booleanphp'php)php;
+php php php php php php php php php$thisphp-php>listingTypephp php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:listingTypephp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>startTimephp php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:startTimephp[php1php]php"php,php php'stringphp'php)php;
 
-        $this->_attributes['buyItNowPrice'] = array(
-            'currencyId' => $this->_query(".//$ns:buyItNowPrice[1]/@currencyId[1]", 'string')
-        );
+php php php php php php php php php$thisphp-php>php_attributesphp[php'buyItNowPricephp'php]php php=php arrayphp(
+php php php php php php php php php php php php php'currencyIdphp'php php=php>php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:buyItNowPricephp[php1php]php/php@currencyIdphp[php1php]php"php,php php'stringphp'php)
+php php php php php php php php php)php;
 
-        $this->_attributes['convertedBuyItNowPrice'] = array(
-            'currencyId' => $this->_query(".//$ns:convertedBuyItNowPrice[1]/@currencyId[1]", 'string')
-        );
-    }
-}
+php php php php php php php php php$thisphp-php>php_attributesphp[php'convertedBuyItNowPricephp'php]php php=php arrayphp(
+php php php php php php php php php php php php php'currencyIdphp'php php=php>php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:convertedBuyItNowPricephp[php1php]php/php@currencyIdphp[php1php]php"php,php php'stringphp'php)
+php php php php php php php php php)php;
+php php php php php}
+php}

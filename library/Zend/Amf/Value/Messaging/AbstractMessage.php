@@ -1,92 +1,92 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Amf
- * @subpackage Value
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: AbstractMessage.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Value
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php AbstractMessagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * This is the default Implementation of Message, which provides
- * a convenient base for behavior and association of common endpoints
- *
- * @package    Zend_Amf
- * @subpackage Value
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Amf_Value_Messaging_AbstractMessage
-{
-    /**
-     * @var string Client identifier
-     */
-    public $clientId;
+php/php*php*
+php php*php Thisphp isphp thephp defaultphp Implementationphp ofphp Messagephp,php whichphp provides
+php php*php aphp convenientphp basephp forphp behaviorphp andphp associationphp ofphp commonphp endpoints
+php php*
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Value
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Amfphp_Valuephp_Messagingphp_AbstractMessage
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Clientphp identifier
+php php php php php php*php/
+php php php php publicphp php$clientIdphp;
 
-    /**
-     * @var string Destination
-     */
-    public $destination;
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Destination
+php php php php php php*php/
+php php php php publicphp php$destinationphp;
 
-    /**
-     * @var string Message identifier
-     */
-    public $messageId;
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Messagephp identifier
+php php php php php php*php/
+php php php php publicphp php$messageIdphp;
 
-    /**
-     * @var int Message timestamp
-     */
-    public $timestamp;
+php php php php php/php*php*
+php php php php php php*php php@varphp intphp Messagephp timestamp
+php php php php php php*php/
+php php php php publicphp php$timestampphp;
 
-    /**
-     * @var int Message TTL
-     */
-    public $timeToLive;
+php php php php php/php*php*
+php php php php php php*php php@varphp intphp Messagephp TTL
+php php php php php php*php/
+php php php php publicphp php$timeToLivephp;
 
-    /**
-     * @var object Message headers
-     */
-    public $headers;
+php php php php php/php*php*
+php php php php php php*php php@varphp objectphp Messagephp headers
+php php php php php php*php/
+php php php php publicphp php$headersphp;
 
-    /**
-     * @var string Message body
-     */
-    public $body;
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Messagephp body
+php php php php php php*php/
+php php php php publicphp php$bodyphp;
 
-    /**
-     * generate a unique id
-     *
-     * Format is: ########-####-####-####-############
-     * Where # is an uppercase letter or number
-     * example: 6D9DC7EC-A273-83A9-ABE3-00005FD752D6
-     *
-     * @return string
-     */
-    public function generateId()
-    {
-        return sprintf(
-            '%08X-%04X-%04X-%02X%02X-%012X',
-            mt_rand(),
-            mt_rand(0, 65535),
-            bindec(substr_replace(
-                sprintf('%016b', mt_rand(0, 65535)), '0100', 11, 4)
-            ),
-            bindec(substr_replace(sprintf('%08b', mt_rand(0, 255)), '01', 5, 2)),
-            mt_rand(0, 255),
-            mt_rand()
-        );
-    }
-}
+php php php php php/php*php*
+php php php php php php*php generatephp aphp uniquephp id
+php php php php php php*
+php php php php php php*php Formatphp isphp:php php#php#php#php#php#php#php#php#php-php#php#php#php#php-php#php#php#php#php-php#php#php#php#php-php#php#php#php#php#php#php#php#php#php#php#php#
+php php php php php php*php Wherephp php#php isphp anphp uppercasephp letterphp orphp number
+php php php php php php*php examplephp:php php6Dphp9DCphp7ECphp-Aphp2php7php3php-php8php3Aphp9php-ABEphp3php-php0php0php0php0php5FDphp7php5php2Dphp6
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp generateIdphp(php)
+php php php php php{
+php php php php php php php php returnphp sprintfphp(
+php php php php php php php php php php php php php'php%php0php8Xphp-php%php0php4Xphp-php%php0php4Xphp-php%php0php2Xphp%php0php2Xphp-php%php0php1php2Xphp'php,
+php php php php php php php php php php php php mtphp_randphp(php)php,
+php php php php php php php php php php php php mtphp_randphp(php0php,php php6php5php5php3php5php)php,
+php php php php php php php php php php php php bindecphp(substrphp_replacephp(
+php php php php php php php php php php php php php php php php sprintfphp(php'php%php0php1php6bphp'php,php mtphp_randphp(php0php,php php6php5php5php3php5php)php)php,php php'php0php1php0php0php'php,php php1php1php,php php4php)
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php bindecphp(substrphp_replacephp(sprintfphp(php'php%php0php8bphp'php,php mtphp_randphp(php0php,php php2php5php5php)php)php,php php'php0php1php'php,php php5php,php php2php)php)php,
+php php php php php php php php php php php php mtphp_randphp(php0php,php php2php5php5php)php,
+php php php php php php php php php php php php mtphp_randphp(php)
+php php php php php php php php php)php;
+php php php php php}
+php}

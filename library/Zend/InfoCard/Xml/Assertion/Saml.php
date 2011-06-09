@@ -1,284 +1,284 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Saml.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Samlphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Zend_InfoCard_Xml_Element
- */
-require_once 'Zend/InfoCard/Xml/Element.php';
+php/php*php*
+php php*php Zendphp_InfoCardphp_Xmlphp_Element
+php php*php/
+requirephp_oncephp php'Zendphp/InfoCardphp/Xmlphp/Elementphp.phpphp'php;
 
-/**
- * Zend_InfoCard_Xml_Assertion_Interface
- */
-require_once 'Zend/InfoCard/Xml/Assertion/Interface.php';
+php/php*php*
+php php*php Zendphp_InfoCardphp_Xmlphp_Assertionphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/InfoCardphp/Xmlphp/Assertionphp/Interfacephp.phpphp'php;
 
-/**
- * A Xml Assertion Document in SAML Token format
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_InfoCard_Xml_Assertion_Saml
-    extends Zend_InfoCard_Xml_Element
-    implements Zend_InfoCard_Xml_Assertion_Interface
-{
+php/php*php*
+php php*php Aphp Xmlphp Assertionphp Documentphp inphp SAMLphp Tokenphp format
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_InfoCardphp_Xmlphp_Assertionphp_Saml
+php php php php extendsphp Zendphp_InfoCardphp_Xmlphp_Element
+php php php php implementsphp Zendphp_InfoCardphp_Xmlphp_Assertionphp_Interface
+php{
 
-    /**
-     * Audience Restriction Condition
-     */
-    const CONDITION_AUDIENCE = 'AudienceRestrictionCondition';
+php php php php php/php*php*
+php php php php php php*php Audiencephp Restrictionphp Condition
+php php php php php php*php/
+php php php php constphp CONDITIONphp_AUDIENCEphp php=php php'AudienceRestrictionConditionphp'php;
 
-    /**
-     * The URI for a 'bearer' confirmation
-     */
-    const CONFIRMATION_BEARER = 'urn:oasis:names:tc:SAML:1.0:cm:bearer';
+php php php php php/php*php*
+php php php php php php*php Thephp URIphp forphp aphp php'bearerphp'php confirmation
+php php php php php php*php/
+php php php php constphp CONFIRMATIONphp_BEARERphp php=php php'urnphp:oasisphp:namesphp:tcphp:SAMLphp:php1php.php0php:cmphp:bearerphp'php;
 
-    /**
-     * The amount of time in seconds to buffer when checking conditions to ensure
-     * that differences between client/server clocks don't interfer too much
-     */
-    const CONDITION_TIME_ADJ = 3600; // +- 5 minutes
+php php php php php/php*php*
+php php php php php php*php Thephp amountphp ofphp timephp inphp secondsphp tophp bufferphp whenphp checkingphp conditionsphp tophp ensure
+php php php php php php*php thatphp differencesphp betweenphp clientphp/serverphp clocksphp donphp'tphp interferphp toophp much
+php php php php php php*php/
+php php php php constphp CONDITIONphp_TIMEphp_ADJphp php=php php3php6php0php0php;php php/php/php php+php-php php5php minutes
 
-    protected function _getServerName() {
-        return $_SERVER['SERVER_NAME'];
-    }
+php php php php protectedphp functionphp php_getServerNamephp(php)php php{
+php php php php php php php php returnphp php$php_SERVERphp[php'SERVERphp_NAMEphp'php]php;
+php php php php php}
 
-    protected function _getServerPort() {
-        return $_SERVER['SERVER_PORT'];
-    }
+php php php php protectedphp functionphp php_getServerPortphp(php)php php{
+php php php php php php php php returnphp php$php_SERVERphp[php'SERVERphp_PORTphp'php]php;
+php php php php php}
 
-    /**
-     * Validate the conditions array returned from the getConditions() call
-     *
-     * @param array $conditions An array of condtions for the assertion taken from getConditions()
-     * @return mixed Boolean true on success, an array of condition, error message on failure
-     */
-    public function validateConditions(Array $conditions)
-    {
+php php php php php/php*php*
+php php php php php php*php Validatephp thephp conditionsphp arrayphp returnedphp fromphp thephp getConditionsphp(php)php call
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$conditionsphp Anphp arrayphp ofphp condtionsphp forphp thephp assertionphp takenphp fromphp getConditionsphp(php)
+php php php php php php*php php@returnphp mixedphp Booleanphp truephp onphp successphp,php anphp arrayphp ofphp conditionphp,php errorphp messagephp onphp failure
+php php php php php php*php/
+php php php php publicphp functionphp validateConditionsphp(Arrayphp php$conditionsphp)
+php php php php php{
 
-        $currentTime = time();
+php php php php php php php php php$currentTimephp php=php timephp(php)php;
 
-        if(!empty($conditions)) {
+php php php php php php php php ifphp(php!emptyphp(php$conditionsphp)php)php php{
 
-            foreach($conditions as $condition => $conditionValue) {
-                switch(strtolower($condition)) {
-                    case 'audiencerestrictioncondition':
+php php php php php php php php php php php php foreachphp(php$conditionsphp asphp php$conditionphp php=php>php php$conditionValuephp)php php{
+php php php php php php php php php php php php php php php php switchphp(strtolowerphp(php$conditionphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php casephp php'audiencerestrictionconditionphp'php:
 
-                        $serverName = $this->_getServerName();
-                        $serverPort = $this->_getServerPort();
+php php php php php php php php php php php php php php php php php php php php php php php php php$serverNamephp php=php php$thisphp-php>php_getServerNamephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$serverPortphp php=php php$thisphp-php>php_getServerPortphp(php)php;
 
-                        $self_aliases[] = $serverName;
-                        $self_aliases[] = "{{$serverName}:{$serverPort}";
+php php php php php php php php php php php php php php php php php php php php php php php php php$selfphp_aliasesphp[php]php php=php php$serverNamephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php$selfphp_aliasesphp[php]php php=php php"php{php{php$serverNamephp}php:php{php$serverPortphp}php"php;
 
-                        $found = false;
-                        if(is_array($conditionValue)) {
-                            foreach($conditionValue as $audience) {
+php php php php php php php php php php php php php php php php php php php php php php php php php$foundphp php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(isphp_arrayphp(php$conditionValuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php foreachphp(php$conditionValuephp asphp php$audiencephp)php php{
 
-                                list(,,$audience) = explode('/', $audience);
-                                if(in_array($audience, $self_aliases)) {
-                                    $found = true;
-                                    break;
-                                }
-                            }
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php listphp(php,php,php$audiencephp)php php=php explodephp(php'php/php'php,php php$audiencephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(inphp_arrayphp(php$audiencephp,php php$selfphp_aliasesphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$foundphp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        if(!$found) {
-                            return array($condition, 'Could not find self in allowed audience list');
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php!php$foundphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnphp arrayphp(php$conditionphp,php php'Couldphp notphp findphp selfphp inphp allowedphp audiencephp listphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        break;
-                    case 'notbefore':
-                        $notbeforetime = strtotime($conditionValue);
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp php'notbeforephp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php$notbeforetimephp php=php strtotimephp(php$conditionValuephp)php;
 
-                        if($currentTime < $notbeforetime) {
-                            if($currentTime + self::CONDITION_TIME_ADJ < $notbeforetime) {
-                                return array($condition, 'Current time is before specified window');
-                            }
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$currentTimephp <php php$notbeforetimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$currentTimephp php+php selfphp:php:CONDITIONphp_TIMEphp_ADJphp <php php$notbeforetimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnphp arrayphp(php$conditionphp,php php'Currentphp timephp isphp beforephp specifiedphp windowphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        break;
-                    case 'notonorafter':
-                        $notonoraftertime = strtotime($conditionValue);
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp php'notonorafterphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php$notonoraftertimephp php=php strtotimephp(php$conditionValuephp)php;
 
-                        if($currentTime >= $notonoraftertime) {
-                            if($currentTime - self::CONDITION_TIME_ADJ >= $notonoraftertime) {
-                                return array($condition, 'Current time is after specified window');
-                            }
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$currentTimephp php>php=php php$notonoraftertimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$currentTimephp php-php selfphp:php:CONDITIONphp_TIMEphp_ADJphp php>php=php php$notonoraftertimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnphp arrayphp(php$conditionphp,php php'Currentphp timephp isphp afterphp specifiedphp windowphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        break;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                }
-            }
-        }
-        return true;
-    }
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Get the Assertion URI for this type of Assertion
-     *
-     * @return string the Assertion URI
-     */
-    public function getAssertionURI()
-    {
-        return Zend_InfoCard_Xml_Assertion::TYPE_SAML;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Assertionphp URIphp forphp thisphp typephp ofphp Assertion
+php php php php php php*
+php php php php php php*php php@returnphp stringphp thephp Assertionphp URI
+php php php php php php*php/
+php php php php publicphp functionphp getAssertionURIphp(php)
+php php php php php{
+php php php php php php php php returnphp Zendphp_InfoCardphp_Xmlphp_Assertionphp:php:TYPEphp_SAMLphp;
+php php php php php}
 
-    /**
-     * Get the Major Version of the SAML Assertion
-     *
-     * @return integer The major version number
-     */
-    public function getMajorVersion()
-    {
-        return (int)(string)$this['MajorVersion'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Majorphp Versionphp ofphp thephp SAMLphp Assertion
+php php php php php php*
+php php php php php php*php php@returnphp integerphp Thephp majorphp versionphp number
+php php php php php php*php/
+php php php php publicphp functionphp getMajorVersionphp(php)
+php php php php php{
+php php php php php php php php returnphp php(intphp)php(stringphp)php$thisphp[php'MajorVersionphp'php]php;
+php php php php php}
 
-    /**
-     * The Minor Version of the SAML Assertion
-     *
-     * @return integer The minor version number
-     */
-    public function getMinorVersion()
-    {
-        return (int)(string)$this['MinorVersion'];
-    }
+php php php php php/php*php*
+php php php php php php*php Thephp Minorphp Versionphp ofphp thephp SAMLphp Assertion
+php php php php php php*
+php php php php php php*php php@returnphp integerphp Thephp minorphp versionphp number
+php php php php php php*php/
+php php php php publicphp functionphp getMinorVersionphp(php)
+php php php php php{
+php php php php php php php php returnphp php(intphp)php(stringphp)php$thisphp[php'MinorVersionphp'php]php;
+php php php php php}
 
-    /**
-     * Get the Assertion ID of the assertion
-     *
-     * @return string The Assertion ID
-     */
-    public function getAssertionID()
-    {
-        return (string)$this['AssertionID'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Assertionphp IDphp ofphp thephp assertion
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp Assertionphp ID
+php php php php php php*php/
+php php php php publicphp functionphp getAssertionIDphp(php)
+php php php php php{
+php php php php php php php php returnphp php(stringphp)php$thisphp[php'AssertionIDphp'php]php;
+php php php php php}
 
-    /**
-     * Get the Issuer URI of the assertion
-     *
-     * @return string the URI of the assertion Issuer
-     */
-    public function getIssuer()
-    {
-        return (string)$this['Issuer'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Issuerphp URIphp ofphp thephp assertion
+php php php php php php*
+php php php php php php*php php@returnphp stringphp thephp URIphp ofphp thephp assertionphp Issuer
+php php php php php php*php/
+php php php php publicphp functionphp getIssuerphp(php)
+php php php php php{
+php php php php php php php php returnphp php(stringphp)php$thisphp[php'Issuerphp'php]php;
+php php php php php}
 
-    /**
-     * Get the Timestamp of when the assertion was issued
-     *
-     * @return integer a UNIX timestamp representing when the assertion was issued
-     */
-    public function getIssuedTimestamp()
-    {
-        return strtotime((string)$this['IssueInstant']);
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Timestampphp ofphp whenphp thephp assertionphp wasphp issued
+php php php php php php*
+php php php php php php*php php@returnphp integerphp aphp UNIXphp timestampphp representingphp whenphp thephp assertionphp wasphp issued
+php php php php php php*php/
+php php php php publicphp functionphp getIssuedTimestampphp(php)
+php php php php php{
+php php php php php php php php returnphp strtotimephp(php(stringphp)php$thisphp[php'IssueInstantphp'php]php)php;
+php php php php php}
 
-    /**
-     * Return an array of conditions which the assertions are predicated on
-     *
-     * @throws Zend_InfoCard_Xml_Exception
-     * @return array an array of conditions
-     */
-    public function getConditions()
-    {
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp conditionsphp whichphp thephp assertionsphp arephp predicatedphp on
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
+php php php php php php*php php@returnphp arrayphp anphp arrayphp ofphp conditions
+php php php php php php*php/
+php php php php publicphp functionphp getConditionsphp(php)
+php php php php php{
 
-        list($conditions) = $this->xpath("//saml:Conditions");
+php php php php php php php php listphp(php$conditionsphp)php php=php php$thisphp-php>xpathphp(php"php/php/samlphp:Conditionsphp"php)php;
 
-        if(!($conditions instanceof Zend_InfoCard_Xml_Element)) {
-            throw new Zend_InfoCard_Xml_Exception("Unable to find the saml:Conditions block");
-        }
+php php php php php php php php ifphp(php!php(php$conditionsphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp findphp thephp samlphp:Conditionsphp blockphp"php)php;
+php php php php php php php php php}
 
-        $retval = array();
+php php php php php php php php php$retvalphp php=php arrayphp(php)php;
 
-        foreach($conditions->children('urn:oasis:names:tc:SAML:1.0:assertion') as $key => $value) {
-            switch($key) {
-                case self::CONDITION_AUDIENCE:
-                    foreach($value->children('urn:oasis:names:tc:SAML:1.0:assertion') as $audience_key => $audience_value) {
-                        if($audience_key == 'Audience') {
-                            $retval[$key][] = (string)$audience_value;
-                        }
-                    }
-                    break;
-            }
-        }
+php php php php php php php php foreachphp(php$conditionsphp-php>childrenphp(php'urnphp:oasisphp:namesphp:tcphp:SAMLphp:php1php.php0php:assertionphp'php)php asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp(php$keyphp)php php{
+php php php php php php php php php php php php php php php php casephp selfphp:php:CONDITIONphp_AUDIENCEphp:
+php php php php php php php php php php php php php php php php php php php php foreachphp(php$valuephp-php>childrenphp(php'urnphp:oasisphp:namesphp:tcphp:SAMLphp:php1php.php0php:assertionphp'php)php asphp php$audiencephp_keyphp php=php>php php$audiencephp_valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$audiencephp_keyphp php=php=php php'Audiencephp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$retvalphp[php$keyphp]php[php]php php=php php(stringphp)php$audiencephp_valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $retval['NotBefore'] = (string)$conditions['NotBefore'];
-        $retval['NotOnOrAfter'] = (string)$conditions['NotOnOrAfter'];
+php php php php php php php php php$retvalphp[php'NotBeforephp'php]php php=php php(stringphp)php$conditionsphp[php'NotBeforephp'php]php;
+php php php php php php php php php$retvalphp[php'NotOnOrAfterphp'php]php php=php php(stringphp)php$conditionsphp[php'NotOnOrAfterphp'php]php;
 
-        return $retval;
-    }
+php php php php php php php php returnphp php$retvalphp;
+php php php php php}
 
-    /**
-     * Get they KeyInfo element for the Subject KeyInfo block
-     *
-     * @todo Not Yet Implemented
-     * @ignore
-     */
-    public function getSubjectKeyInfo()
-    {
-        /**
-         * @todo Not sure if this is part of the scope for now..
-         */
+php php php php php/php*php*
+php php php php php php*php Getphp theyphp KeyInfophp elementphp forphp thephp Subjectphp KeyInfophp block
+php php php php php php*
+php php php php php php*php php@todophp Notphp Yetphp Implemented
+php php php php php php*php php@ignore
+php php php php php php*php/
+php php php php publicphp functionphp getSubjectKeyInfophp(php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@todophp Notphp surephp ifphp thisphp isphp partphp ofphp thephp scopephp forphp nowphp.php.
+php php php php php php php php php php*php/
 
-        if($this->getConfirmationMethod() == self::CONFIRMATION_BEARER) {
-            throw new Zend_InfoCard_Xml_Exception("Cannot get Subject Key Info when Confirmation Method was Bearer");
-        }
-    }
+php php php php php php php php ifphp(php$thisphp-php>getConfirmationMethodphp(php)php php=php=php selfphp:php:CONFIRMATIONphp_BEARERphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Cannotphp getphp Subjectphp Keyphp Infophp whenphp Confirmationphp Methodphp wasphp Bearerphp"php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Return the Confirmation Method URI used in the Assertion
-     *
-     * @return string The confirmation method URI
-     */
-    public function getConfirmationMethod()
-    {
-        list($confirmation) = $this->xPath("//saml:ConfirmationMethod");
-        return (string)$confirmation;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp Confirmationphp Methodphp URIphp usedphp inphp thephp Assertion
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp confirmationphp methodphp URI
+php php php php php php*php/
+php php php php publicphp functionphp getConfirmationMethodphp(php)
+php php php php php{
+php php php php php php php php listphp(php$confirmationphp)php php=php php$thisphp-php>xPathphp(php"php/php/samlphp:ConfirmationMethodphp"php)php;
+php php php php php php php php returnphp php(stringphp)php$confirmationphp;
+php php php php php}
 
-    /**
-     * Return an array of attributes (claims) contained within the assertion
-     *
-     * @return array An array of attributes / claims within the assertion
-     */
-    public function getAttributes()
-    {
-        $attributes = $this->xPath('//saml:Attribute');
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp attributesphp php(claimsphp)php containedphp withinphp thephp assertion
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Anphp arrayphp ofphp attributesphp php/php claimsphp withinphp thephp assertion
+php php php php php php*php/
+php php php php publicphp functionphp getAttributesphp(php)
+php php php php php{
+php php php php php php php php php$attributesphp php=php php$thisphp-php>xPathphp(php'php/php/samlphp:Attributephp'php)php;
 
-        $retval = array();
-        foreach($attributes as $key => $value) {
+php php php php php php php php php$retvalphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp(php$attributesphp asphp php$keyphp php=php>php php$valuephp)php php{
 
-            $retkey = (string)$value['AttributeNamespace'].'/'.(string)$value['AttributeName'];
+php php php php php php php php php php php php php$retkeyphp php=php php(stringphp)php$valuephp[php'AttributeNamespacephp'php]php.php'php/php'php.php(stringphp)php$valuephp[php'AttributeNamephp'php]php;
 
-            $retval[$retkey]['name'] = (string)$value['AttributeName'];
-            $retval[$retkey]['namespace'] = (string)$value['AttributeNamespace'];
+php php php php php php php php php php php php php$retvalphp[php$retkeyphp]php[php'namephp'php]php php=php php(stringphp)php$valuephp[php'AttributeNamephp'php]php;
+php php php php php php php php php php php php php$retvalphp[php$retkeyphp]php[php'namespacephp'php]php php=php php(stringphp)php$valuephp[php'AttributeNamespacephp'php]php;
 
-            list($aValue) = $value->children('urn:oasis:names:tc:SAML:1.0:assertion');
-            $retval[$retkey]['value'] = (string)$aValue;
-        }
+php php php php php php php php php php php php listphp(php$aValuephp)php php=php php$valuephp-php>childrenphp(php'urnphp:oasisphp:namesphp:tcphp:SAMLphp:php1php.php0php:assertionphp'php)php;
+php php php php php php php php php php php php php$retvalphp[php$retkeyphp]php[php'valuephp'php]php php=php php(stringphp)php$aValuephp;
+php php php php php php php php php}
 
-        return $retval;
-    }
-}
+php php php php php php php php returnphp php$retvalphp;
+php php php php php}
+php}

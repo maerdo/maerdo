@@ -1,480 +1,480 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Json
- * @subpackage Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Smd.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Json
+php php*php php@subpackagephp Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Smdphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Json
- * @subpackage Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Json_Server_Smd
-{
-    const ENV_JSONRPC_1 = 'JSON-RPC-1.0';
-    const ENV_JSONRPC_2 = 'JSON-RPC-2.0';
-    const SMD_VERSION   = '2.0';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Json
+php php*php php@subpackagephp Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Jsonphp_Serverphp_Smd
+php{
+php php php php constphp ENVphp_JSONRPCphp_php1php php=php php'JSONphp-RPCphp-php1php.php0php'php;
+php php php php constphp ENVphp_JSONRPCphp_php2php php=php php'JSONphp-RPCphp-php2php.php0php'php;
+php php php php constphp SMDphp_VERSIONphp php php php=php php'php2php.php0php'php;
 
-    /**
-     * Content type
-     * @var string
-     */
-    protected $_contentType = 'application/json';
+php php php php php/php*php*
+php php php php php php*php Contentphp type
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_contentTypephp php=php php'applicationphp/jsonphp'php;
 
-    /**
-     * Content type regex
-     * @var string
-     */
-    protected $_contentTypeRegex = '#[a-z]+/[a-z][a-z-]+#i';
+php php php php php/php*php*
+php php php php php php*php Contentphp typephp regex
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_contentTypeRegexphp php=php php'php#php[aphp-zphp]php+php/php[aphp-zphp]php[aphp-zphp-php]php+php#iphp'php;
 
-    /**
-     * Service description
-     * @var string
-     */
-    protected $_description;
+php php php php php/php*php*
+php php php php php php*php Servicephp description
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_descriptionphp;
 
-    /**
-     * Generate Dojo-compatible SMD
-     * @var bool
-     */
-    protected $_dojoCompatible = false;
+php php php php php/php*php*
+php php php php php php*php Generatephp Dojophp-compatiblephp SMD
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_dojoCompatiblephp php=php falsephp;
 
-    /**
-     * Current envelope
-     * @var string
-     */
-    protected $_envelope = self::ENV_JSONRPC_1;
+php php php php php/php*php*
+php php php php php php*php Currentphp envelope
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_envelopephp php=php selfphp:php:ENVphp_JSONRPCphp_php1php;
 
-    /**
-     * Allowed envelope types
-     * @var array
-     */
-    protected $_envelopeTypes = array(
-        self::ENV_JSONRPC_1,
-        self::ENV_JSONRPC_2,
-    );
+php php php php php/php*php*
+php php php php php php*php Allowedphp envelopephp types
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_envelopeTypesphp php=php arrayphp(
+php php php php php php php php selfphp:php:ENVphp_JSONRPCphp_php1php,
+php php php php php php php php selfphp:php:ENVphp_JSONRPCphp_php2php,
+php php php php php)php;
 
-    /**
-     * Service id
-     * @var string
-     */
-    protected $_id;
+php php php php php/php*php*
+php php php php php php*php Servicephp id
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_idphp;
 
-    /**
-     * Services offerred
-     * @var array
-     */
-    protected $_services = array();
+php php php php php/php*php*
+php php php php php php*php Servicesphp offerred
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_servicesphp php=php arrayphp(php)php;
 
-    /**
-     * Service target
-     * @var string
-     */
-    protected $_target;
+php php php php php/php*php*
+php php php php php php*php Servicephp target
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_targetphp;
 
-    /**
-     * Global transport
-     * @var string
-     */
-    protected $_transport = 'POST';
+php php php php php/php*php*
+php php php php php php*php Globalphp transport
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_transportphp php=php php'POSTphp'php;
 
-    /**
-     * Allowed transport types
-     * @var array
-     */
-    protected $_transportTypes = array('POST');
+php php php php php/php*php*
+php php php php php php*php Allowedphp transportphp types
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_transportTypesphp php=php arrayphp(php'POSTphp'php)php;
 
-    /**
-     * Set object state via options
-     *
-     * @param  array $options
-     * @return Zend_Json_Server_Smd
-     */
-    public function setOptions(array $options)
-    {
-        $methods = get_class_methods($this);
-        foreach ($options as $key => $value) {
-            $method = 'set' . ucfirst($key);
-            if (in_array($method, $methods)) {
-                $this->$method($value);
-            }
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp objectphp statephp viaphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php php$methodsphp php=php getphp_classphp_methodsphp(php$thisphp)php;
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php ucfirstphp(php$keyphp)php;
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$methodphp,php php$methodsphp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set transport
-     *
-     * @param  string $transport
-     * @return Zend_Json_Server_Smd
-     */
-    public function setTransport($transport)
-    {
-        if (!in_array($transport, $this->_transportTypes)) {
-            require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception(sprintf('Invalid transport "%s" specified', $transport));
-        }
-        $this->_transport = $transport;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp transport
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$transport
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setTransportphp(php$transportphp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$transportphp,php php$thisphp-php>php_transportTypesphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Serverphp_Exceptionphp(sprintfphp(php'Invalidphp transportphp php"php%sphp"php specifiedphp'php,php php$transportphp)php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_transportphp php=php php$transportphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get transport
-     *
-     * @return string
-     */
-    public function getTransport()
-    {
-        return $this->_transport;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp transport
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTransportphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_transportphp;
+php php php php php}
 
-    /**
-     * Set envelope
-     *
-     * @param  string $envelopeType
-     * @return Zend_Json_Server_Smd
-     */
-    public function setEnvelope($envelopeType)
-    {
-        if (!in_array($envelopeType, $this->_envelopeTypes)) {
-            require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception(sprintf('Invalid envelope type "%s"', $envelopeType));
-        }
-        $this->_envelope = $envelopeType;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp envelope
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$envelopeType
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setEnvelopephp(php$envelopeTypephp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$envelopeTypephp,php php$thisphp-php>php_envelopeTypesphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Serverphp_Exceptionphp(sprintfphp(php'Invalidphp envelopephp typephp php"php%sphp"php'php,php php$envelopeTypephp)php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_envelopephp php=php php$envelopeTypephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve envelope
-     *
-     * @return string
-     */
-    public function getEnvelope()
-    {
-        return $this->_envelope;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp envelope
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEnvelopephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_envelopephp;
+php php php php php}
 
-    // Content-Type of response; default to application/json
-    /**
-     * Set content type
-     *
-     * @param  string $type
-     * @return Zend_Json_Server_Smd
-     */
-    public function setContentType($type)
-    {
-        if (!preg_match($this->_contentTypeRegex, $type)) {
-            require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception(sprintf('Invalid content type "%s" specified', $type));
-        }
-        $this->_contentType = $type;
-        return $this;
-    }
+php php php php php/php/php Contentphp-Typephp ofphp responsephp;php defaultphp tophp applicationphp/json
+php php php php php/php*php*
+php php php php php php*php Setphp contentphp type
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setContentTypephp(php$typephp)
+php php php php php{
+php php php php php php php php ifphp php(php!pregphp_matchphp(php$thisphp-php>php_contentTypeRegexphp,php php$typephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Serverphp_Exceptionphp(sprintfphp(php'Invalidphp contentphp typephp php"php%sphp"php specifiedphp'php,php php$typephp)php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_contentTypephp php=php php$typephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve content type
-     *
-     * @return string
-     */
-    public function getContentType()
-    {
-        return $this->_contentType;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp contentphp type
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getContentTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_contentTypephp;
+php php php php php}
 
-    /**
-     * Set service target
-     *
-     * @param  string $target
-     * @return Zend_Json_Server_Smd
-     */
-    public function setTarget($target)
-    {
-        $this->_target = (string) $target;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp servicephp target
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$target
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setTargetphp(php$targetphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_targetphp php=php php(stringphp)php php$targetphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve service target
-     *
-     * @return string
-     */
-    public function getTarget()
-    {
-        return $this->_target;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp servicephp target
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTargetphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_targetphp;
+php php php php php}
 
-    /**
-     * Set service ID
-     *
-     * @param  string $Id
-     * @return Zend_Json_Server_Smd
-     */
-    public function setId($id)
-    {
-        $this->_id = (string) $id;
-        return $this->_id;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp servicephp ID
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$Id
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setIdphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_idphp php=php php(stringphp)php php$idphp;
+php php php php php php php php returnphp php$thisphp-php>php_idphp;
+php php php php php}
 
-    /**
-     * Get service id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->_id;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp servicephp id
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getIdphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_idphp;
+php php php php php}
 
-    /**
-     * Set service description
-     *
-     * @param  string $description
-     * @return Zend_Json_Server_Smd
-     */
-    public function setDescription($description)
-    {
-        $this->_description = (string) $description;
-        return $this->_description;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp servicephp description
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$description
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setDescriptionphp(php$descriptionphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_descriptionphp php=php php(stringphp)php php$descriptionphp;
+php php php php php php php php returnphp php$thisphp-php>php_descriptionphp;
+php php php php php}
 
-    /**
-     * Get service description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->_description;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp servicephp description
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDescriptionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_descriptionphp;
+php php php php php}
 
-    /**
-     * Indicate whether or not to generate Dojo-compatible SMD
-     *
-     * @param  bool $flag
-     * @return Zend_Json_Server_Smd
-     */
-    public function setDojoCompatible($flag)
-    {
-        $this->_dojoCompatible = (bool) $flag;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Indicatephp whetherphp orphp notphp tophp generatephp Dojophp-compatiblephp SMD
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setDojoCompatiblephp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dojoCompatiblephp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Is this a Dojo compatible SMD?
-     *
-     * @return bool
-     */
-    public function isDojoCompatible()
-    {
-        return $this->_dojoCompatible;
-    }
+php php php php php/php*php*
+php php php php php php*php Isphp thisphp aphp Dojophp compatiblephp SMDphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isDojoCompatiblephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dojoCompatiblephp;
+php php php php php}
 
-    /**
-     * Add Service
-     *
-     * @param Zend_Json_Server_Smd_Service|array $service
-     * @return void
-     */
-    public function addService($service)
-    {
-        require_once 'Zend/Json/Server/Smd/Service.php';
+php php php php php/php*php*
+php php php php php php*php Addphp Service
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Jsonphp_Serverphp_Smdphp_Servicephp|arrayphp php$service
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp addServicephp(php$servicephp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Serverphp/Smdphp/Servicephp.phpphp'php;
 
-        if ($service instanceof Zend_Json_Server_Smd_Service) {
-            $name = $service->getName();
-        } elseif (is_array($service)) {
-            $service = new Zend_Json_Server_Smd_Service($service);
-            $name = $service->getName();
-        } else {
-            require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception('Invalid service passed to addService()');
-        }
+php php php php php php php php ifphp php(php$servicephp instanceofphp Zendphp_Jsonphp_Serverphp_Smdphp_Servicephp)php php{
+php php php php php php php php php php php php php$namephp php=php php$servicephp-php>getNamephp(php)php;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$servicephp)php)php php{
+php php php php php php php php php php php php php$servicephp php=php newphp Zendphp_Jsonphp_Serverphp_Smdphp_Servicephp(php$servicephp)php;
+php php php php php php php php php php php php php$namephp php=php php$servicephp-php>getNamephp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Serverphp_Exceptionphp(php'Invalidphp servicephp passedphp tophp addServicephp(php)php'php)php;
+php php php php php php php php php}
 
-        if (array_key_exists($name, $this->_services)) {
-            require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception('Attempt to register a service already registered detected');
-        }
-        $this->_services[$name] = $service;
-        return $this;
-    }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_servicesphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Serverphp_Exceptionphp(php'Attemptphp tophp registerphp aphp servicephp alreadyphp registeredphp detectedphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_servicesphp[php$namephp]php php=php php$servicephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add many services
-     *
-     * @param  array $services
-     * @return Zend_Json_Server_Smd
-     */
-    public function addServices(array $services)
-    {
-        foreach ($services as $service) {
-            $this->addService($service);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp manyphp services
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$services
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp addServicesphp(arrayphp php$servicesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$servicesphp asphp php$servicephp)php php{
+php php php php php php php php php php php php php$thisphp-php>addServicephp(php$servicephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Overwrite existing services with new ones
-     *
-     * @param  array $services
-     * @return Zend_Json_Server_Smd
-     */
-    public function setServices(array $services)
-    {
-        $this->_services = array();
-        return $this->addServices($services);
-    }
+php php php php php/php*php*
+php php php php php php*php Overwritephp existingphp servicesphp withphp newphp ones
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$services
+php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smd
+php php php php php php*php/
+php php php php publicphp functionphp setServicesphp(arrayphp php$servicesphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_servicesphp php=php arrayphp(php)php;
+php php php php php php php php returnphp php$thisphp-php>addServicesphp(php$servicesphp)php;
+php php php php php}
 
-    /**
-     * Get service object
-     *
-     * @param  string $name
-     * @return false|Zend_Json_Server_Smd_Service
-     */
-    public function getService($name)
-    {
-        if (array_key_exists($name, $this->_services)) {
-            return $this->_services[$name];
-        }
-        return false;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp servicephp object
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp falsephp|Zendphp_Jsonphp_Serverphp_Smdphp_Service
+php php php php php php*php/
+php php php php publicphp functionphp getServicephp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_servicesphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_servicesphp[php$namephp]php;
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Return services
-     *
-     * @return array
-     */
-    public function getServices()
-    {
-        return $this->_services;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp services
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getServicesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_servicesphp;
+php php php php php}
 
-    /**
-     * Remove service
-     *
-     * @param  string $name
-     * @return boolean
-     */
-    public function removeService($name)
-    {
-        if (array_key_exists($name, $this->_services)) {
-            unset($this->_services[$name]);
-            return true;
-        }
-        return false;
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp service
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp removeServicephp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_servicesphp)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_servicesphp[php$namephp]php)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Cast to array
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        if ($this->isDojoCompatible()) {
-            return $this->toDojoArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Castphp tophp array
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp toArrayphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>isDojoCompatiblephp(php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>toDojoArrayphp(php)php;
+php php php php php php php php php}
 
-        $transport   = $this->getTransport();
-        $envelope    = $this->getEnvelope();
-        $contentType = $this->getContentType();
-        $SMDVersion  = self::SMD_VERSION;
-        $service = compact('transport', 'envelope', 'contentType', 'SMDVersion');
+php php php php php php php php php$transportphp php php php=php php$thisphp-php>getTransportphp(php)php;
+php php php php php php php php php$envelopephp php php php php=php php$thisphp-php>getEnvelopephp(php)php;
+php php php php php php php php php$contentTypephp php=php php$thisphp-php>getContentTypephp(php)php;
+php php php php php php php php php$SMDVersionphp php php=php selfphp:php:SMDphp_VERSIONphp;
+php php php php php php php php php$servicephp php=php compactphp(php'transportphp'php,php php'envelopephp'php,php php'contentTypephp'php,php php'SMDVersionphp'php)php;
 
-        if (null !== ($target = $this->getTarget())) {
-            $service['target']     = $target;
-        }
-        if (null !== ($id = $this->getId())) {
-            $service['id'] = $id;
-        }
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$targetphp php=php php$thisphp-php>getTargetphp(php)php)php)php php{
+php php php php php php php php php php php php php$servicephp[php'targetphp'php]php php php php php php=php php$targetphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$idphp php=php php$thisphp-php>getIdphp(php)php)php)php php{
+php php php php php php php php php php php php php$servicephp[php'idphp'php]php php=php php$idphp;
+php php php php php php php php php}
 
-        $services = $this->getServices();
-        if (!empty($services)) {
-            $service['services'] = array();
-            foreach ($services as $name => $svc) {
-                $svc->setEnvelope($envelope);
-                $service['services'][$name] = $svc->toArray();
-            }
-            $service['methods'] = $service['services'];
-        }
+php php php php php php php php php$servicesphp php=php php$thisphp-php>getServicesphp(php)php;
+php php php php php php php php ifphp php(php!emptyphp(php$servicesphp)php)php php{
+php php php php php php php php php php php php php$servicephp[php'servicesphp'php]php php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$servicesphp asphp php$namephp php=php>php php$svcphp)php php{
+php php php php php php php php php php php php php php php php php$svcphp-php>setEnvelopephp(php$envelopephp)php;
+php php php php php php php php php php php php php php php php php$servicephp[php'servicesphp'php]php[php$namephp]php php=php php$svcphp-php>toArrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$servicephp[php'methodsphp'php]php php=php php$servicephp[php'servicesphp'php]php;
+php php php php php php php php php}
 
-        return $service;
-    }
+php php php php php php php php returnphp php$servicephp;
+php php php php php}
 
-    /**
-     * Export to DOJO-compatible SMD array
-     *
-     * @return array
-     */
-    public function toDojoArray()
-    {
-        $SMDVersion  = '.1';
-        $serviceType = 'JSON-RPC';
-        $service = compact('SMDVersion', 'serviceType');
+php php php php php/php*php*
+php php php php php php*php Exportphp tophp DOJOphp-compatiblephp SMDphp array
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp toDojoArrayphp(php)
+php php php php php{
+php php php php php php php php php$SMDVersionphp php php=php php'php.php1php'php;
+php php php php php php php php php$serviceTypephp php=php php'JSONphp-RPCphp'php;
+php php php php php php php php php$servicephp php=php compactphp(php'SMDVersionphp'php,php php'serviceTypephp'php)php;
 
-        $target = $this->getTarget();
+php php php php php php php php php$targetphp php=php php$thisphp-php>getTargetphp(php)php;
 
-        $services = $this->getServices();
-        if (!empty($services)) {
-            $service['methods'] = array();
-            foreach ($services as $name => $svc) {
-                $method = array(
-                    'name'       => $name,
-                    'serviceURL' => $target,
-                );
-                $params = array();
-                foreach ($svc->getParams() as $param) {
-                    $paramName = array_key_exists('name', $param) ? $param['name'] : $param['type'];
-                    $params[] = array(
-                        'name' => $paramName,
-                        'type' => $param['type'],
-                    );
-                }
-                if (!empty($params)) {
-                    $method['parameters'] = $params;
-                }
-                $service['methods'][] = $method;
-            }
-        }
+php php php php php php php php php$servicesphp php=php php$thisphp-php>getServicesphp(php)php;
+php php php php php php php php ifphp php(php!emptyphp(php$servicesphp)php)php php{
+php php php php php php php php php php php php php$servicephp[php'methodsphp'php]php php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$servicesphp asphp php$namephp php=php>php php$svcphp)php php{
+php php php php php php php php php php php php php php php php php$methodphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'namephp'php php php php php php php php=php>php php$namephp,
+php php php php php php php php php php php php php php php php php php php php php'serviceURLphp'php php=php>php php$targetphp,
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php$paramsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$svcphp-php>getParamsphp(php)php asphp php$paramphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$paramNamephp php=php arrayphp_keyphp_existsphp(php'namephp'php,php php$paramphp)php php?php php$paramphp[php'namephp'php]php php:php php$paramphp[php'typephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$paramsphp[php]php php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'namephp'php php=php>php php$paramNamephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php'typephp'php php=php>php php$paramphp[php'typephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$paramsphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$methodphp[php'parametersphp'php]php php=php php$paramsphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$servicephp[php'methodsphp'php]php[php]php php=php php$methodphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $service;
-    }
+php php php php php php php php returnphp php$servicephp;
+php php php php php}
 
-    /**
-     * Cast to JSON
-     *
-     * @return string
-     */
-    public function toJson()
-    {
-        require_once 'Zend/Json.php';
-        return Zend_Json::encode($this->toArray());
-    }
+php php php php php/php*php*
+php php php php php php*php Castphp tophp JSON
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toJsonphp(php)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
+php php php php php php php php returnphp Zendphp_Jsonphp:php:encodephp(php$thisphp-php>toArrayphp(php)php)php;
+php php php php php}
 
-    /**
-     * Cast to string (JSON)
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->toJson();
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Castphp tophp stringphp php(JSONphp)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>toJsonphp(php)php;
+php php php php php}
+php}
 

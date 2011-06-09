@@ -1,465 +1,465 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @subpackage PHP
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: File.php 23562 2010-12-19 23:23:22Z mjh_ca $
- */
-
-/**
- * @see Zend_CodeGenerator_Php_Abstract
- */
-require_once 'Zend/CodeGenerator/Php/Abstract.php';
-
-/**
- * @see Zend_CodeGenerator_Php_Class
- */
-require_once 'Zend/CodeGenerator/Php/Class.php';
-
-/**
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
-{
-
-    /**
-     * @var array Array of Zend_CodeGenerator_Php_File
-     */
-    protected static $_fileCodeGenerators = array();
-
-    /**#@+
-     * @var string
-     */
-    protected static $_markerDocblock = '/* Zend_CodeGenerator_Php_File-DocblockMarker */';
-    protected static $_markerRequire = '/* Zend_CodeGenerator_Php_File-RequireMarker: {?} */';
-    protected static $_markerClass = '/* Zend_CodeGenerator_Php_File-ClassMarker: {?} */';
-    /**#@-*/
-
-    /**
-     * @var string
-     */
-    protected $_filename = null;
-
-    /**
-     * @var Zend_CodeGenerator_Php_Docblock
-     */
-    protected $_docblock = null;
-
-    /**
-     * @var array
-     */
-    protected $_requiredFiles = array();
-
-    /**
-     * @var array
-     */
-    protected $_classes = array();
-
-    /**
-     * @var string
-     */
-    protected $_body = null;
-
-    public static function registerFileCodeGenerator(Zend_CodeGenerator_Php_File $fileCodeGenerator, $fileName = null)
-    {
-        if ($fileName == null) {
-            $fileName = $fileCodeGenerator->getFilename();
-        }
-
-        if ($fileName == '') {
-            require_once 'Zend/CodeGenerator/Php/Exception.php';
-            throw new Zend_CodeGenerator_Php_Exception('FileName does not exist.');
-        }
-
-        // cannot use realpath since the file might not exist, but we do need to have the index
-        // in the same DIRECTORY_SEPARATOR that realpath would use:
-        $fileName = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $fileName);
-
-        self::$_fileCodeGenerators[$fileName] = $fileCodeGenerator;
-
-    }
-
-    /**
-     * fromReflectedFileName() - use this if you intend on generating code generation objects based on the same file.
-     * This will keep previous changes to the file in tact during the same PHP process
-     *
-     * @param string $filePath
-     * @param bool $usePreviousCodeGeneratorIfItExists
-     * @param bool $includeIfNotAlreadyIncluded
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public static function fromReflectedFileName($filePath, $usePreviousCodeGeneratorIfItExists = true, $includeIfNotAlreadyIncluded = true)
-    {
-        $realpath = realpath($filePath);
-
-        if ($realpath === false) {
-            if ( ($realpath = Zend_Reflection_file::findRealpathInIncludePath($filePath)) === false) {
-                require_once 'Zend/CodeGenerator/Php/Exception.php';
-                throw new Zend_CodeGenerator_Php_Exception('No file for ' . $realpath . ' was found.');
-            }
-        }
-
-        if ($usePreviousCodeGeneratorIfItExists && isset(self::$_fileCodeGenerators[$realpath])) {
-            return self::$_fileCodeGenerators[$realpath];
-        }
-
-        if ($includeIfNotAlreadyIncluded && !in_array($realpath, get_included_files())) {
-            include $realpath;
-        }
-
-        $codeGenerator = self::fromReflection(($fileReflector = new Zend_Reflection_File($realpath)));
-
-        if (!isset(self::$_fileCodeGenerators[$fileReflector->getFileName()])) {
-            self::$_fileCodeGenerators[$fileReflector->getFileName()] = $codeGenerator;
-        }
-
-        return $codeGenerator;
-    }
-
-    /**
-     * fromReflection()
-     *
-     * @param Zend_Reflection_File $reflectionFile
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public static function fromReflection(Zend_Reflection_File $reflectionFile)
-    {
-        $file = new self();
-
-        $file->setSourceContent($reflectionFile->getContents());
-        $file->setSourceDirty(false);
-
-        $body = $reflectionFile->getContents();
-
-        // @todo this whole area needs to be reworked with respect to how body lines are processed
-        foreach ($reflectionFile->getClasses() as $class) {
-            $file->setClass(Zend_CodeGenerator_Php_Class::fromReflection($class));
-            $classStartLine = $class->getStartLine(true);
-            $classEndLine = $class->getEndLine();
-
-            $bodyLines = explode("\n", $body);
-            $bodyReturn = array();
-            for ($lineNum = 1; $lineNum <= count($bodyLines); $lineNum++) {
-                if ($lineNum == $classStartLine) {
-                    $bodyReturn[] = str_replace('?', $class->getName(), self::$_markerClass);  //'/* Zend_CodeGenerator_Php_File-ClassMarker: {' . $class->getName() . '} */';
-                    $lineNum = $classEndLine;
-                } else {
-                    $bodyReturn[] = $bodyLines[$lineNum - 1]; // adjust for index -> line conversion
-                }
-            }
-            $body = implode("\n", $bodyReturn);
-            unset($bodyLines, $bodyReturn, $classStartLine, $classEndLine);
-        }
-
-        if (($reflectionFile->getDocComment() != '')) {
-            $docblock = $reflectionFile->getDocblock();
-            $file->setDocblock(Zend_CodeGenerator_Php_Docblock::fromReflection($docblock));
-
-            $bodyLines = explode("\n", $body);
-            $bodyReturn = array();
-            for ($lineNum = 1; $lineNum <= count($bodyLines); $lineNum++) {
-                if ($lineNum == $docblock->getStartLine()) {
-                    $bodyReturn[] = str_replace('?', $class->getName(), self::$_markerDocblock);  //'/* Zend_CodeGenerator_Php_File-ClassMarker: {' . $class->getName() . '} */';
-                    $lineNum = $docblock->getEndLine();
-                } else {
-                    $bodyReturn[] = $bodyLines[$lineNum - 1]; // adjust for index -> line conversion
-                }
-            }
-            $body = implode("\n", $bodyReturn);
-            unset($bodyLines, $bodyReturn, $classStartLine, $classEndLine);
-        }
-
-        $file->setBody($body);
-
-        return $file;
-    }
-
-    /**
-     * setDocblock() Set the docblock
-     *
-     * @param Zend_CodeGenerator_Php_Docblock|array|string $docblock
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public function setDocblock($docblock)
-    {
-        if (is_string($docblock)) {
-            $docblock = array('shortDescription' => $docblock);
-        }
-
-        if (is_array($docblock)) {
-            $docblock = new Zend_CodeGenerator_Php_Docblock($docblock);
-        } elseif (!$docblock instanceof Zend_CodeGenerator_Php_Docblock) {
-            require_once 'Zend/CodeGenerator/Php/Exception.php';
-            throw new Zend_CodeGenerator_Php_Exception('setDocblock() is expecting either a string, array or an instance of Zend_CodeGenerator_Php_Docblock');
-        }
-
-        $this->_docblock = $docblock;
-        return $this;
-    }
-
-    /**
-     * Get docblock
-     *
-     * @return Zend_CodeGenerator_Php_Docblock
-     */
-    public function getDocblock()
-    {
-        return $this->_docblock;
-    }
-
-    /**
-     * setRequiredFiles
-     *
-     * @param array $requiredFiles
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public function setRequiredFiles($requiredFiles)
-    {
-        $this->_requiredFiles = $requiredFiles;
-        return $this;
-    }
-
-    /**
-     * getRequiredFiles()
-     *
-     * @return array
-     */
-    public function getRequiredFiles()
-    {
-        return $this->_requiredFiles;
-    }
-
-    /**
-     * setClasses()
-     *
-     * @param array $classes
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public function setClasses(Array $classes)
-    {
-        foreach ($classes as $class) {
-            $this->setClass($class);
-        }
-        return $this;
-    }
-
-    /**
-     * getClass()
-     *
-     * @param string $name
-     * @return Zend_CodeGenerator_Php_Class
-     */
-    public function getClass($name = null)
-    {
-        if ($name == null) {
-            reset($this->_classes);
-            return current($this->_classes);
-        }
-
-        return $this->_classes[$name];
-    }
-
-    /**
-     * setClass()
-     *
-     * @param Zend_CodeGenerator_Php_Class|array $class
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public function setClass($class)
-    {
-        if (is_array($class)) {
-            $class = new Zend_CodeGenerator_Php_Class($class);
-            $className = $class->getName();
-        } elseif ($class instanceof Zend_CodeGenerator_Php_Class) {
-            $className = $class->getName();
-        } else {
-            require_once 'Zend/CodeGenerator/Php/Exception.php';
-            throw new Zend_CodeGenerator_Php_Exception('Expecting either an array or an instance of Zend_CodeGenerator_Php_Class');
-        }
-
-        // @todo check for dup here
-
-        $this->_classes[$className] = $class;
-        return $this;
-    }
-
-    /**
-     * setFilename()
-     *
-     * @param string $filename
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public function setFilename($filename)
-    {
-        $this->_filename = $filename;
-        return $this;
-    }
-
-    /**
-     * getFilename()
-     *
-     * @return string
-     */
-    public function getFilename()
-    {
-        return $this->_filename;
-    }
-
-    /**
-     * getClasses()
-     *
-     * @return array Array of Zend_CodeGenerator_Php_Class
-     */
-    public function getClasses()
-    {
-        return $this->_classes;
-    }
-
-    /**
-     * setBody()
-     *
-     * @param string $body
-     * @return Zend_CodeGenerator_Php_File
-     */
-    public function setBody($body)
-    {
-        $this->_body = $body;
-        return $this;
-    }
-
-    /**
-     * getBody()
-     *
-     * @return string
-     */
-    public function getBody()
-    {
-        return $this->_body;
-    }
-
-    /**
-     * isSourceDirty()
-     *
-     * @return bool
-     */
-    public function isSourceDirty()
-    {
-        if (($docblock = $this->getDocblock()) && $docblock->isSourceDirty()) {
-            return true;
-        }
-
-        foreach ($this->_classes as $class) {
-            if ($class->isSourceDirty()) {
-                return true;
-            }
-        }
-
-        return parent::isSourceDirty();
-    }
-
-    /**
-     * generate()
-     *
-     * @return string
-     */
-    public function generate()
-    {
-        if ($this->isSourceDirty() === false) {
-            return $this->_sourceContent;
-        }
-
-        $output = '';
-
-        // start with the body (if there), or open tag
-        if (preg_match('#(?:\s*)<\?php#', $this->getBody()) == false) {
-            $output = '<?php' . self::LINE_FEED;
-        }
-
-        // if there are markers, put the body into the output
-        $body = $this->getBody();
-        if (preg_match('#/\* Zend_CodeGenerator_Php_File-(.*?)Marker:#', $body)) {
-            $output .= $body;
-            $body    = '';
-        }
-
-        // Add file docblock, if any
-        if (null !== ($docblock = $this->getDocblock())) {
-            $docblock->setIndentation('');
-            $regex = preg_quote(self::$_markerDocblock, '#');
-            if (preg_match('#'.$regex.'#', $output)) {
-                $output  = preg_replace('#'.$regex.'#', $docblock->generate(), $output, 1);
-            } else {
-                $output .= $docblock->generate() . self::LINE_FEED;
-            }
-        }
-
-        // newline
-        $output .= self::LINE_FEED;
-
-        // process required files
-        // @todo marker replacement for required files
-        $requiredFiles = $this->getRequiredFiles();
-        if (!empty($requiredFiles)) {
-            foreach ($requiredFiles as $requiredFile) {
-                $output .= 'require_once \'' . $requiredFile . '\';' . self::LINE_FEED;
-            }
-
-            $output .= self::LINE_FEED;
-        }
-
-        // process classes
-        $classes = $this->getClasses();
-        if (!empty($classes)) {
-            foreach ($classes as $class) {
-                $regex = str_replace('?', $class->getName(), self::$_markerClass);
-                $regex = preg_quote($regex, '#');
-                if (preg_match('#'.$regex.'#', $output)) {
-                    $output = preg_replace('#'.$regex.'#', $class->generate(), $output, 1);
-                } else {
-                    $output .= $class->generate() . self::LINE_FEED;
-                }
-            }
-
-        }
-
-        if (!empty($body)) {
-
-            // add an extra space betwee clsses and
-            if (!empty($classes)) {
-                $output .= self::LINE_FEED;
-            }
-
-            $output .= $body;
-        }
-
-        return $output;
-    }
-
-    public function write()
-    {
-        if ($this->_filename == '' || !is_writable(dirname($this->_filename))) {
-            require_once 'Zend/CodeGenerator/Php/Exception.php';
-            throw new Zend_CodeGenerator_Php_Exception('This code generator object is not writable.');
-        }
-        file_put_contents($this->_filename, $this->generate());
-        return $this;
-    }
-
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_CodeGenerator
+php php*php php@subpackagephp PHP
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Filephp.phpphp php2php3php5php6php2php php2php0php1php0php-php1php2php-php1php9php php2php3php:php2php3php:php2php2Zphp mjhphp_caphp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_CodeGeneratorphp_Phpphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Abstractphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_CodeGeneratorphp_Phpphp_Class
+php php*php/
+requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Classphp.phpphp'php;
+
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_CodeGenerator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_CodeGeneratorphp_Phpphp_Filephp extendsphp Zendphp_CodeGeneratorphp_Phpphp_Abstract
+php{
+
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Arrayphp ofphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_fileCodeGeneratorsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*php#php@php+
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_markerDocblockphp php=php php'php/php*php Zendphp_CodeGeneratorphp_Phpphp_Filephp-DocblockMarkerphp php*php/php'php;
+php php php php protectedphp staticphp php$php_markerRequirephp php=php php'php/php*php Zendphp_CodeGeneratorphp_Phpphp_Filephp-RequireMarkerphp:php php{php?php}php php*php/php'php;
+php php php php protectedphp staticphp php$php_markerClassphp php=php php'php/php*php Zendphp_CodeGeneratorphp_Phpphp_Filephp-ClassMarkerphp:php php{php?php}php php*php/php'php;
+php php php php php/php*php*php#php@php-php*php/
+
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_filenamephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_CodeGeneratorphp_Phpphp_Docblock
+php php php php php php*php/
+php php php php protectedphp php$php_docblockphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_requiredFilesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_classesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_bodyphp php=php nullphp;
+
+php php php php publicphp staticphp functionphp registerFileCodeGeneratorphp(Zendphp_CodeGeneratorphp_Phpphp_Filephp php$fileCodeGeneratorphp,php php$fileNamephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$fileNamephp php=php=php nullphp)php php{
+php php php php php php php php php php php php php$fileNamephp php=php php$fileCodeGeneratorphp-php>getFilenamephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$fileNamephp php=php=php php'php'php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_CodeGeneratorphp_Phpphp_Exceptionphp(php'FileNamephp doesphp notphp existphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php cannotphp usephp realpathphp sincephp thephp filephp mightphp notphp existphp,php butphp wephp dophp needphp tophp havephp thephp index
+php php php php php php php php php/php/php inphp thephp samephp DIRECTORYphp_SEPARATORphp thatphp realpathphp wouldphp usephp:
+php php php php php php php php php$fileNamephp php=php strphp_replacephp(arrayphp(php'php\php\php'php,php php'php/php'php)php,php DIRECTORYphp_SEPARATORphp,php php$fileNamephp)php;
+
+php php php php php php php php selfphp:php:php$php_fileCodeGeneratorsphp[php$fileNamephp]php php=php php$fileCodeGeneratorphp;
+
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php fromReflectedFileNamephp(php)php php-php usephp thisphp ifphp youphp intendphp onphp generatingphp codephp generationphp objectsphp basedphp onphp thephp samephp filephp.
+php php php php php php*php Thisphp willphp keepphp previousphp changesphp tophp thephp filephp inphp tactphp duringphp thephp samephp PHPphp process
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$filePath
+php php php php php php*php php@paramphp boolphp php$usePreviousCodeGeneratorIfItExists
+php php php php php php*php php@paramphp boolphp php$includeIfNotAlreadyIncluded
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromReflectedFileNamephp(php$filePathphp,php php$usePreviousCodeGeneratorIfItExistsphp php=php truephp,php php$includeIfNotAlreadyIncludedphp php=php truephp)
+php php php php php{
+php php php php php php php php php$realpathphp php=php realpathphp(php$filePathphp)php;
+
+php php php php php php php php ifphp php(php$realpathphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(php php(php$realpathphp php=php Zendphp_Reflectionphp_filephp:php:findRealpathInIncludePathphp(php$filePathphp)php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_CodeGeneratorphp_Phpphp_Exceptionphp(php'Nophp filephp forphp php'php php.php php$realpathphp php.php php'php wasphp foundphp.php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$usePreviousCodeGeneratorIfItExistsphp php&php&php issetphp(selfphp:php:php$php_fileCodeGeneratorsphp[php$realpathphp]php)php)php php{
+php php php php php php php php php php php php returnphp selfphp:php:php$php_fileCodeGeneratorsphp[php$realpathphp]php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$includeIfNotAlreadyIncludedphp php&php&php php!inphp_arrayphp(php$realpathphp,php getphp_includedphp_filesphp(php)php)php)php php{
+php php php php php php php php php php php php includephp php$realpathphp;
+php php php php php php php php php}
+
+php php php php php php php php php$codeGeneratorphp php=php selfphp:php:fromReflectionphp(php(php$fileReflectorphp php=php newphp Zendphp_Reflectionphp_Filephp(php$realpathphp)php)php)php;
+
+php php php php php php php php ifphp php(php!issetphp(selfphp:php:php$php_fileCodeGeneratorsphp[php$fileReflectorphp-php>getFileNamephp(php)php]php)php)php php{
+php php php php php php php php php php php php selfphp:php:php$php_fileCodeGeneratorsphp[php$fileReflectorphp-php>getFileNamephp(php)php]php php=php php$codeGeneratorphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$codeGeneratorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php fromReflectionphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Reflectionphp_Filephp php$reflectionFile
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromReflectionphp(Zendphp_Reflectionphp_Filephp php$reflectionFilephp)
+php php php php php{
+php php php php php php php php php$filephp php=php newphp selfphp(php)php;
+
+php php php php php php php php php$filephp-php>setSourceContentphp(php$reflectionFilephp-php>getContentsphp(php)php)php;
+php php php php php php php php php$filephp-php>setSourceDirtyphp(falsephp)php;
+
+php php php php php php php php php$bodyphp php=php php$reflectionFilephp-php>getContentsphp(php)php;
+
+php php php php php php php php php/php/php php@todophp thisphp wholephp areaphp needsphp tophp bephp reworkedphp withphp respectphp tophp howphp bodyphp linesphp arephp processed
+php php php php php php php php foreachphp php(php$reflectionFilephp-php>getClassesphp(php)php asphp php$classphp)php php{
+php php php php php php php php php php php php php$filephp-php>setClassphp(Zendphp_CodeGeneratorphp_Phpphp_Classphp:php:fromReflectionphp(php$classphp)php)php;
+php php php php php php php php php php php php php$classStartLinephp php=php php$classphp-php>getStartLinephp(truephp)php;
+php php php php php php php php php php php php php$classEndLinephp php=php php$classphp-php>getEndLinephp(php)php;
+
+php php php php php php php php php php php php php$bodyLinesphp php=php explodephp(php"php\nphp"php,php php$bodyphp)php;
+php php php php php php php php php php php php php$bodyReturnphp php=php arrayphp(php)php;
+php php php php php php php php php php php php forphp php(php$lineNumphp php=php php1php;php php$lineNumphp <php=php countphp(php$bodyLinesphp)php;php php$lineNumphp+php+php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lineNumphp php=php=php php$classStartLinephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$bodyReturnphp[php]php php=php strphp_replacephp(php'php?php'php,php php$classphp-php>getNamephp(php)php,php selfphp:php:php$php_markerClassphp)php;php php php/php/php'php/php*php Zendphp_CodeGeneratorphp_Phpphp_Filephp-ClassMarkerphp:php php{php'php php.php php$classphp-php>getNamephp(php)php php.php php'php}php php*php/php'php;
+php php php php php php php php php php php php php php php php php php php php php$lineNumphp php=php php$classEndLinephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$bodyReturnphp[php]php php=php php$bodyLinesphp[php$lineNumphp php-php php1php]php;php php/php/php adjustphp forphp indexphp php-php>php linephp conversion
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$bodyphp php=php implodephp(php"php\nphp"php,php php$bodyReturnphp)php;
+php php php php php php php php php php php php unsetphp(php$bodyLinesphp,php php$bodyReturnphp,php php$classStartLinephp,php php$classEndLinephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(php$reflectionFilephp-php>getDocCommentphp(php)php php!php=php php'php'php)php)php php{
+php php php php php php php php php php php php php$docblockphp php=php php$reflectionFilephp-php>getDocblockphp(php)php;
+php php php php php php php php php php php php php$filephp-php>setDocblockphp(Zendphp_CodeGeneratorphp_Phpphp_Docblockphp:php:fromReflectionphp(php$docblockphp)php)php;
+
+php php php php php php php php php php php php php$bodyLinesphp php=php explodephp(php"php\nphp"php,php php$bodyphp)php;
+php php php php php php php php php php php php php$bodyReturnphp php=php arrayphp(php)php;
+php php php php php php php php php php php php forphp php(php$lineNumphp php=php php1php;php php$lineNumphp <php=php countphp(php$bodyLinesphp)php;php php$lineNumphp+php+php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lineNumphp php=php=php php$docblockphp-php>getStartLinephp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$bodyReturnphp[php]php php=php strphp_replacephp(php'php?php'php,php php$classphp-php>getNamephp(php)php,php selfphp:php:php$php_markerDocblockphp)php;php php php/php/php'php/php*php Zendphp_CodeGeneratorphp_Phpphp_Filephp-ClassMarkerphp:php php{php'php php.php php$classphp-php>getNamephp(php)php php.php php'php}php php*php/php'php;
+php php php php php php php php php php php php php php php php php php php php php$lineNumphp php=php php$docblockphp-php>getEndLinephp(php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$bodyReturnphp[php]php php=php php$bodyLinesphp[php$lineNumphp php-php php1php]php;php php/php/php adjustphp forphp indexphp php-php>php linephp conversion
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$bodyphp php=php implodephp(php"php\nphp"php,php php$bodyReturnphp)php;
+php php php php php php php php php php php php unsetphp(php$bodyLinesphp,php php$bodyReturnphp,php php$classStartLinephp,php php$classEndLinephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$filephp-php>setBodyphp(php$bodyphp)php;
+
+php php php php php php php php returnphp php$filephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setDocblockphp(php)php Setphp thephp docblock
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp|arrayphp|stringphp php$docblock
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setDocblockphp(php$docblockphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$docblockphp)php)php php{
+php php php php php php php php php php php php php$docblockphp php=php arrayphp(php'shortDescriptionphp'php php=php>php php$docblockphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$docblockphp)php)php php{
+php php php php php php php php php php php php php$docblockphp php=php newphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp(php$docblockphp)php;
+php php php php php php php php php}php elseifphp php(php!php$docblockphp instanceofphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_CodeGeneratorphp_Phpphp_Exceptionphp(php'setDocblockphp(php)php isphp expectingphp eitherphp aphp stringphp,php arrayphp orphp anphp instancephp ofphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_docblockphp php=php php$docblockphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp docblock
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Docblock
+php php php php php php*php/
+php php php php publicphp functionphp getDocblockphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_docblockphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setRequiredFiles
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$requiredFiles
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setRequiredFilesphp(php$requiredFilesphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_requiredFilesphp php=php php$requiredFilesphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getRequiredFilesphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getRequiredFilesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_requiredFilesphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setClassesphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$classes
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setClassesphp(Arrayphp php$classesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$classesphp asphp php$classphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setClassphp(php$classphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getClassphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Class
+php php php php php php*php/
+php php php php publicphp functionphp getClassphp(php$namephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$namephp php=php=php nullphp)php php{
+php php php php php php php php php php php php resetphp(php$thisphp-php>php_classesphp)php;
+php php php php php php php php php php php php returnphp currentphp(php$thisphp-php>php_classesphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_classesphp[php$namephp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setClassphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_CodeGeneratorphp_Phpphp_Classphp|arrayphp php$class
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setClassphp(php$classphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$classphp)php)php php{
+php php php php php php php php php php php php php$classphp php=php newphp Zendphp_CodeGeneratorphp_Phpphp_Classphp(php$classphp)php;
+php php php php php php php php php php php php php$classNamephp php=php php$classphp-php>getNamephp(php)php;
+php php php php php php php php php}php elseifphp php(php$classphp instanceofphp Zendphp_CodeGeneratorphp_Phpphp_Classphp)php php{
+php php php php php php php php php php php php php$classNamephp php=php php$classphp-php>getNamephp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_CodeGeneratorphp_Phpphp_Exceptionphp(php'Expectingphp eitherphp anphp arrayphp orphp anphp instancephp ofphp Zendphp_CodeGeneratorphp_Phpphp_Classphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php php@todophp checkphp forphp dupphp here
+
+php php php php php php php php php$thisphp-php>php_classesphp[php$classNamephp]php php=php php$classphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setFilenamephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$filename
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setFilenamephp(php$filenamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_filenamephp php=php php$filenamephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getFilenamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getFilenamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_filenamephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getClassesphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp Zendphp_CodeGeneratorphp_Phpphp_Class
+php php php php php php*php/
+php php php php publicphp functionphp getClassesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_classesphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setBodyphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$body
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setBodyphp(php$bodyphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_bodyphp php=php php$bodyphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getBodyphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getBodyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_bodyphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php isSourceDirtyphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isSourceDirtyphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php(php$docblockphp php=php php$thisphp-php>getDocblockphp(php)php)php php&php&php php$docblockphp-php>isSourceDirtyphp(php)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$thisphp-php>php_classesphp asphp php$classphp)php php{
+php php php php php php php php php php php php ifphp php(php$classphp-php>isSourceDirtyphp(php)php)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp parentphp:php:isSourceDirtyphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php generatephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp generatephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>isSourceDirtyphp(php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_sourceContentphp;
+php php php php php php php php php}
+
+php php php php php php php php php$outputphp php=php php'php'php;
+
+php php php php php php php php php/php/php startphp withphp thephp bodyphp php(ifphp therephp)php,php orphp openphp tag
+php php php php php php php php ifphp php(pregphp_matchphp(php'php#php(php?php:php\sphp*php)<php\php?phpphp#php'php,php php$thisphp-php>getBodyphp(php)php)php php=php=php falsephp)php php{
+php php php php php php php php php php php php php$outputphp php=php php'<php?phpphp'php php.php selfphp:php:LINEphp_FEEDphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php ifphp therephp arephp markersphp,php putphp thephp bodyphp intophp thephp output
+php php php php php php php php php$bodyphp php=php php$thisphp-php>getBodyphp(php)php;
+php php php php php php php php ifphp php(pregphp_matchphp(php'php#php/php\php*php Zendphp_CodeGeneratorphp_Phpphp_Filephp-php(php.php*php?php)Markerphp:php#php'php,php php$bodyphp)php)php php{
+php php php php php php php php php php php php php$outputphp php.php=php php$bodyphp;
+php php php php php php php php php php php php php$bodyphp php php php php=php php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Addphp filephp docblockphp,php ifphp any
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$docblockphp php=php php$thisphp-php>getDocblockphp(php)php)php)php php{
+php php php php php php php php php php php php php$docblockphp-php>setIndentationphp(php'php'php)php;
+php php php php php php php php php php php php php$regexphp php=php pregphp_quotephp(selfphp:php:php$php_markerDocblockphp,php php'php#php'php)php;
+php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php#php'php.php$regexphp.php'php#php'php,php php$outputphp)php)php php{
+php php php php php php php php php php php php php php php php php$outputphp php php=php pregphp_replacephp(php'php#php'php.php$regexphp.php'php#php'php,php php$docblockphp-php>generatephp(php)php,php php$outputphp,php php1php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$outputphp php.php=php php$docblockphp-php>generatephp(php)php php.php selfphp:php:LINEphp_FEEDphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php newline
+php php php php php php php php php$outputphp php.php=php selfphp:php:LINEphp_FEEDphp;
+
+php php php php php php php php php/php/php processphp requiredphp files
+php php php php php php php php php/php/php php@todophp markerphp replacementphp forphp requiredphp files
+php php php php php php php php php$requiredFilesphp php=php php$thisphp-php>getRequiredFilesphp(php)php;
+php php php php php php php php ifphp php(php!emptyphp(php$requiredFilesphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$requiredFilesphp asphp php$requiredFilephp)php php{
+php php php php php php php php php php php php php php php php php$outputphp php.php=php php'requirephp_oncephp php\php'php'php php.php php$requiredFilephp php.php php'php\php'php;php'php php.php selfphp:php:LINEphp_FEEDphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$outputphp php.php=php selfphp:php:LINEphp_FEEDphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php processphp classes
+php php php php php php php php php$classesphp php=php php$thisphp-php>getClassesphp(php)php;
+php php php php php php php php ifphp php(php!emptyphp(php$classesphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$classesphp asphp php$classphp)php php{
+php php php php php php php php php php php php php php php php php$regexphp php=php strphp_replacephp(php'php?php'php,php php$classphp-php>getNamephp(php)php,php selfphp:php:php$php_markerClassphp)php;
+php php php php php php php php php php php php php php php php php$regexphp php=php pregphp_quotephp(php$regexphp,php php'php#php'php)php;
+php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php#php'php.php$regexphp.php'php#php'php,php php$outputphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$outputphp php=php pregphp_replacephp(php'php#php'php.php$regexphp.php'php#php'php,php php$classphp-php>generatephp(php)php,php php$outputphp,php php1php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$classphp-php>generatephp(php)php php.php selfphp:php:LINEphp_FEEDphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!emptyphp(php$bodyphp)php)php php{
+
+php php php php php php php php php php php php php/php/php addphp anphp extraphp spacephp betweephp clssesphp and
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$classesphp)php)php php{
+php php php php php php php php php php php php php php php php php$outputphp php.php=php selfphp:php:LINEphp_FEEDphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$outputphp php.php=php php$bodyphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$outputphp;
+php php php php php}
+
+php php php php publicphp functionphp writephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_filenamephp php=php=php php'php'php php|php|php php!isphp_writablephp(dirnamephp(php$thisphp-php>php_filenamephp)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_CodeGeneratorphp_Phpphp_Exceptionphp(php'Thisphp codephp generatorphp objectphp isphp notphp writablephp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php filephp_putphp_contentsphp(php$thisphp-php>php_filenamephp,php php$thisphp-php>generatephp(php)php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php}

@@ -1,468 +1,468 @@
-<?php
-/**
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage DocumentService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp DocumentService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-require_once 'Zend/Cloud/DocumentService/Adapter/AbstractAdapter.php';
-require_once 'Zend/Cloud/DocumentService/Adapter/SimpleDb/Query.php';
-require_once 'Zend/Cloud/DocumentService/Exception.php';
-require_once 'Zend/Service/Amazon/SimpleDb.php';
-require_once 'Zend/Service/Amazon/SimpleDb/Attribute.php';
+requirephp_oncephp php'Zendphp/Cloudphp/DocumentServicephp/Adapterphp/AbstractAdapterphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Cloudphp/DocumentServicephp/Adapterphp/SimpleDbphp/Queryphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Cloudphp/DocumentServicephp/Exceptionphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Servicephp/Amazonphp/SimpleDbphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Servicephp/Amazonphp/SimpleDbphp/Attributephp.phpphp'php;
 
-/**
- * SimpleDB adapter for document service.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage DocumentService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cloud_DocumentService_Adapter_SimpleDb
-    extends Zend_Cloud_DocumentService_Adapter_AbstractAdapter
-{
-    /*
-     * Options array keys for the SimpleDB adapter.
-     */
-    const AWS_ACCESS_KEY   = 'aws_accesskey';
-    const AWS_SECRET_KEY   = 'aws_secretkey';
+php/php*php*
+php php*php SimpleDBphp adapterphp forphp documentphp servicephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp DocumentService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDb
+php php php php extendsphp Zendphp_Cloudphp_DocumentServicephp_Adapterphp_AbstractAdapter
+php{
+php php php php php/php*
+php php php php php php*php Optionsphp arrayphp keysphp forphp thephp SimpleDBphp adapterphp.
+php php php php php php*php/
+php php php php constphp AWSphp_ACCESSphp_KEYphp php php php=php php'awsphp_accesskeyphp'php;
+php php php php constphp AWSphp_SECRETphp_KEYphp php php php=php php'awsphp_secretkeyphp'php;
 
-    const ITEM_NAME        = 'ItemName';
+php php php php constphp ITEMphp_NAMEphp php php php php php php php php=php php'ItemNamephp'php;
 
-    const MERGE_OPTION     = "merge";
-    const RETURN_DOCUMENTS = "return_documents";
+php php php php constphp MERGEphp_OPTIONphp php php php php php=php php"mergephp"php;
+php php php php constphp RETURNphp_DOCUMENTSphp php=php php"returnphp_documentsphp"php;
 
-    const DEFAULT_QUERY_CLASS = 'Zend_Cloud_DocumentService_Adapter_SimpleDb_Query';
+php php php php constphp DEFAULTphp_QUERYphp_CLASSphp php=php php'Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDbphp_Queryphp'php;
 
 
-    /**
-     * SQS service instance.
-     * @var Zend_Service_Amazon_SimpleDb
-     */
-    protected $_simpleDb;
+php php php php php/php*php*
+php php php php php php*php SQSphp servicephp instancephp.
+php php php php php php*php php@varphp Zendphp_Servicephp_Amazonphp_SimpleDb
+php php php php php php*php/
+php php php php protectedphp php$php_simpleDbphp;
 
-    /**
-     * Class to utilize for new query objects
-     * @var string
-     */
-    protected $_queryClass = 'Zend_Cloud_DocumentService_Adapter_SimpleDb_Query';
+php php php php php/php*php*
+php php php php php php*php Classphp tophp utilizephp forphp newphp queryphp objects
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_queryClassphp php=php php'Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDbphp_Queryphp'php;
 
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($options)) {
-            throw new Zend_Cloud_DocumentService_Exception('Invalid options provided to constructor');
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Invalidphp optionsphp providedphp tophp constructorphp'php)php;
+php php php php php php php php php}
 
-        $this->_simpleDb = new Zend_Service_Amazon_SimpleDb(
-            $options[self::AWS_ACCESS_KEY], $options[self::AWS_SECRET_KEY]
-        );
+php php php php php php php php php$thisphp-php>php_simpleDbphp php=php newphp Zendphp_Servicephp_Amazonphp_SimpleDbphp(
+php php php php php php php php php php php php php$optionsphp[selfphp:php:AWSphp_ACCESSphp_KEYphp]php,php php$optionsphp[selfphp:php:AWSphp_SECRETphp_KEYphp]
+php php php php php php php php php)php;
 
-        if (isset($options[self::HTTP_ADAPTER])) {
-            $this->_sqs->getHttpClient()->setAdapter($options[self::HTTP_ADAPTER]);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:HTTPphp_ADAPTERphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_sqsphp-php>getHttpClientphp(php)php-php>setAdapterphp(php$optionsphp[selfphp:php:HTTPphp_ADAPTERphp]php)php;
+php php php php php php php php php}
 
-        if (isset($options[self::DOCUMENT_CLASS])) {
-            $this->setDocumentClass($options[self::DOCUMENT_CLASS]);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:DOCUMENTphp_CLASSphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setDocumentClassphp(php$optionsphp[selfphp:php:DOCUMENTphp_CLASSphp]php)php;
+php php php php php php php php php}
 
-        if (isset($options[self::DOCUMENTSET_CLASS])) {
-            $this->setDocumentSetClass($options[self::DOCUMENTSET_CLASS]);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:DOCUMENTSETphp_CLASSphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setDocumentSetClassphp(php$optionsphp[selfphp:php:DOCUMENTSETphp_CLASSphp]php)php;
+php php php php php php php php php}
 
-        if (isset($options[self::QUERY_CLASS])) {
-            $this->setQueryClass($options[self::QUERY_CLASS]);
-        }
-    }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:QUERYphp_CLASSphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setQueryClassphp(php$optionsphp[selfphp:php:QUERYphp_CLASSphp]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Create collection.
-     *
-     * @param  string $name
-     * @param  array  $options
-     * @return void
-     */
-    public function createCollection($name, $options = null)
-    {
-        try {
-            $this->_simpleDb->createDomain($name);
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on domain creation: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Createphp collectionphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp createCollectionphp(php$namephp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_simpleDbphp-php>createDomainphp(php$namephp)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp domainphp creationphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Delete collection.
-     *
-     * @param  string $name
-     * @param  array  $options
-     * @return void
-     */
-    public function deleteCollection($name, $options = null)
-    {
-        try {
-            $this->_simpleDb->deleteDomain($name);
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on collection deletion: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Deletephp collectionphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteCollectionphp(php$namephp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_simpleDbphp-php>deleteDomainphp(php$namephp)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp collectionphp deletionphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * List collections.
-     *
-     * @param  array  $options
-     * @return array
-     */
-    public function listCollections($options = null)
-    {
-        try {
-            // TODO package this in Pages
-            $domains = $this->_simpleDb->listDomains()->getData();
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on collection deletion: '.$e->getMessage(), $e->getCode(), $e);
-        }
+php php php php php/php*php*
+php php php php php php*php Listphp collectionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp listCollectionsphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php/php/php TODOphp packagephp thisphp inphp Pages
+php php php php php php php php php php php php php$domainsphp php=php php$thisphp-php>php_simpleDbphp-php>listDomainsphp(php)php-php>getDataphp(php)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp collectionphp deletionphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
 
-        return $domains;
-    }
+php php php php php php php php returnphp php$domainsphp;
+php php php php php}
 
-    /**
-     * List documents
-     *
-     * Returns a key/value array of document names to document objects.
-     *
-     * @param  string $collectionName Name of collection for which to list documents
-     * @param  array|null $options
-     * @return Zend_Cloud_DocumentService_DocumentSet
-     */
-    public function listDocuments($collectionName, array $options = null)
-    {
-        $query = $this->select('*')->from($collectionName);
-        $items = $this->query($collectionName, $query, $options);
-        return $items;
-    }
+php php php php php/php*php*
+php php php php php php*php Listphp documents
+php php php php php php*
+php php php php php php*php Returnsphp aphp keyphp/valuephp arrayphp ofphp documentphp namesphp tophp documentphp objectsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionNamephp Namephp ofphp collectionphp forphp whichphp tophp listphp documents
+php php php php php php*php php@paramphp php arrayphp|nullphp php$options
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_DocumentSet
+php php php php php php*php/
+php php php php publicphp functionphp listDocumentsphp(php$collectionNamephp,php arrayphp php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$queryphp php=php php$thisphp-php>selectphp(php'php*php'php)php-php>fromphp(php$collectionNamephp)php;
+php php php php php php php php php$itemsphp php=php php$thisphp-php>queryphp(php$collectionNamephp,php php$queryphp,php php$optionsphp)php;
+php php php php php php php php returnphp php$itemsphp;
+php php php php php}
 
-    /**
-     * Insert document
-     *
-     * @param  string $collectionName Collection into which to insert document
-     * @param  array|Zend_Cloud_DocumentService_Document $document
-     * @param  array $options
-     * @return void
-     */
-    public function insertDocument($collectionName, $document, $options = null)
-    {
-        if (is_array($document)) {
-            $document =  $this->_getDocumentFromArray($document);
-        }
+php php php php php/php*php*
+php php php php php php*php Insertphp document
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionNamephp Collectionphp intophp whichphp tophp insertphp document
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Cloudphp_DocumentServicephp_Documentphp php$document
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp insertDocumentphp(php$collectionNamephp,php php$documentphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$documentphp)php)php php{
+php php php php php php php php php php php php php$documentphp php=php php php$thisphp-php>php_getDocumentFromArrayphp(php$documentphp)php;
+php php php php php php php php php}
 
-        if (!$document instanceof Zend_Cloud_DocumentService_Document) {
-            throw new Zend_Cloud_DocumentService_Exception('Invalid document supplied');
-        }
+php php php php php php php php ifphp php(php!php$documentphp instanceofphp Zendphp_Cloudphp_DocumentServicephp_Documentphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Invalidphp documentphp suppliedphp'php)php;
+php php php php php php php php php}
 
-        try {
-            $this->_simpleDb->putAttributes(
-                $collectionName,
-                $document->getID(),
-                $this->_makeAttributes($document->getID(), $document->getFields())
-            );
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on document insertion: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_simpleDbphp-php>putAttributesphp(
+php php php php php php php php php php php php php php php php php$collectionNamephp,
+php php php php php php php php php php php php php php php php php$documentphp-php>getIDphp(php)php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_makeAttributesphp(php$documentphp-php>getIDphp(php)php,php php$documentphp-php>getFieldsphp(php)php)
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp documentphp insertionphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Replace an existing document with a new version
-     *
-     * @param  string $collectionName
-     * @param  array|Zend_Cloud_DocumentService_Document $document
-     * @param  array $options
-     * @return void
-     */
-    public function replaceDocument($collectionName, $document, $options = null)
-    {
-        if (is_array($document)) {
-            $document =  $this->_getDocumentFromArray($document);
-        }
+php php php php php/php*php*
+php php php php php php*php Replacephp anphp existingphp documentphp withphp aphp newphp version
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionName
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Cloudphp_DocumentServicephp_Documentphp php$document
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp replaceDocumentphp(php$collectionNamephp,php php$documentphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$documentphp)php)php php{
+php php php php php php php php php php php php php$documentphp php=php php php$thisphp-php>php_getDocumentFromArrayphp(php$documentphp)php;
+php php php php php php php php php}
 
-        if (!$document instanceof Zend_Cloud_DocumentService_Document) {
-            throw new Zend_Cloud_DocumentService_Exception('Invalid document supplied');
-        }
+php php php php php php php php ifphp php(php!php$documentphp instanceofphp Zendphp_Cloudphp_DocumentServicephp_Documentphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Invalidphp documentphp suppliedphp'php)php;
+php php php php php php php php php}
 
-        // Delete document first, then insert. PutAttributes always keeps any
-        // fields not referenced in the payload, but present in the document
-        $documentId = $document->getId();
-        $fields     = $document->getFields();
-        $docClass   = get_class($document);
-        $this->deleteDocument($collectionName, $document, $options);
+php php php php php php php php php/php/php Deletephp documentphp firstphp,php thenphp insertphp.php PutAttributesphp alwaysphp keepsphp any
+php php php php php php php php php/php/php fieldsphp notphp referencedphp inphp thephp payloadphp,php butphp presentphp inphp thephp document
+php php php php php php php php php$documentIdphp php=php php$documentphp-php>getIdphp(php)php;
+php php php php php php php php php$fieldsphp php php php php php=php php$documentphp-php>getFieldsphp(php)php;
+php php php php php php php php php$docClassphp php php php=php getphp_classphp(php$documentphp)php;
+php php php php php php php php php$thisphp-php>deleteDocumentphp(php$collectionNamephp,php php$documentphp,php php$optionsphp)php;
 
-        $document   = new $docClass($fields, $documentId);
-        $this->insertDocument($collectionName, $document);
-    }
+php php php php php php php php php$documentphp php php php=php newphp php$docClassphp(php$fieldsphp,php php$documentIdphp)php;
+php php php php php php php php php$thisphp-php>insertDocumentphp(php$collectionNamephp,php php$documentphp)php;
+php php php php php}
 
-    /**
-     * Update document. The new document replaces the existing document.
-     *
-     * Option 'merge' specifies to add all attributes (if true) or
-     * specific attributes ("attr" => true) instead of replacing them.
-     * By default, attributes are replaced.
-     *
-     * @param  string $collectionName
-     * @param  mixed|Zend_Cloud_DocumentService_Document $documentId Document ID, adapter-dependent
-     * @param  array|Zend_Cloud_DocumentService_Document $fieldset Set of fields to update
-     * @param  array                   $options
-     * @return boolean
-     */
-    public function updateDocument($collectionName, $documentId, $fieldset = null, $options = null)
-    {
-        if (null === $fieldset && $documentId instanceof Zend_Cloud_DocumentService_Document) {
-            $fieldset   = $documentId->getFields();
-            if (empty($documentId)) {
-                $documentId = $documentId->getId();
-            }
-        } elseif ($fieldset instanceof Zend_Cloud_DocumentService_Document) {
-            if (empty($documentId)) {
-                $documentId = $fieldset->getId();
-            }
-            $fieldset = $fieldset->getFields();
-        }
+php php php php php/php*php*
+php php php php php php*php Updatephp documentphp.php Thephp newphp documentphp replacesphp thephp existingphp documentphp.
+php php php php php php*
+php php php php php php*php Optionphp php'mergephp'php specifiesphp tophp addphp allphp attributesphp php(ifphp truephp)php or
+php php php php php php*php specificphp attributesphp php(php"attrphp"php php=php>php truephp)php insteadphp ofphp replacingphp themphp.
+php php php php php php*php Byphp defaultphp,php attributesphp arephp replacedphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionName
+php php php php php php*php php@paramphp php mixedphp|Zendphp_Cloudphp_DocumentServicephp_Documentphp php$documentIdphp Documentphp IDphp,php adapterphp-dependent
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Cloudphp_DocumentServicephp_Documentphp php$fieldsetphp Setphp ofphp fieldsphp tophp update
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php php php php php php php php php php php php$options
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp updateDocumentphp(php$collectionNamephp,php php$documentIdphp,php php$fieldsetphp php=php nullphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$fieldsetphp php&php&php php$documentIdphp instanceofphp Zendphp_Cloudphp_DocumentServicephp_Documentphp)php php{
+php php php php php php php php php php php php php$fieldsetphp php php php=php php$documentIdphp-php>getFieldsphp(php)php;
+php php php php php php php php php php php php ifphp php(emptyphp(php$documentIdphp)php)php php{
+php php php php php php php php php php php php php php php php php$documentIdphp php=php php$documentIdphp-php>getIdphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(php$fieldsetphp instanceofphp Zendphp_Cloudphp_DocumentServicephp_Documentphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$documentIdphp)php)php php{
+php php php php php php php php php php php php php php php php php$documentIdphp php=php php$fieldsetphp-php>getIdphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$fieldsetphp php=php php$fieldsetphp-php>getFieldsphp(php)php;
+php php php php php php php php php}
 
-        $replace = array();
-        if (empty($options[self::MERGE_OPTION])) {
-            // no merge option - we replace all
-            foreach ($fieldset as $key => $value) {
-                $replace[$key] = true;
-            }
-        } elseif (is_array($options[self::MERGE_OPTION])) {
-            foreach ($fieldset as $key => $value) {
-                if (empty($options[self::MERGE_OPTION][$key])) {
-                    // if there's merge key, we add it, otherwise we replace it
-                    $replace[$key] = true;
-                }
-            }
-        } // otherwise $replace is empty - all is merged
+php php php php php php php php php$replacephp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$optionsphp[selfphp:php:MERGEphp_OPTIONphp]php)php)php php{
+php php php php php php php php php php php php php/php/php nophp mergephp optionphp php-php wephp replacephp all
+php php php php php php php php php php php php foreachphp php(php$fieldsetphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php$replacephp[php$keyphp]php php=php truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$optionsphp[selfphp:php:MERGEphp_OPTIONphp]php)php)php php{
+php php php php php php php php php php php php foreachphp php(php$fieldsetphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$optionsphp[selfphp:php:MERGEphp_OPTIONphp]php[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php ifphp therephp'sphp mergephp keyphp,php wephp addphp itphp,php otherwisephp wephp replacephp it
+php php php php php php php php php php php php php php php php php php php php php$replacephp[php$keyphp]php php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php php/php/php otherwisephp php$replacephp isphp emptyphp php-php allphp isphp merged
 
-        try {
-            $this->_simpleDb->putAttributes(
-                $collectionName,
-                $documentId,
-                $this->_makeAttributes($documentId, $fieldset),
-                $replace
-            );
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on document update: '.$e->getMessage(), $e->getCode(), $e);
-        }
-        return true;
-    }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_simpleDbphp-php>putAttributesphp(
+php php php php php php php php php php php php php php php php php$collectionNamephp,
+php php php php php php php php php php php php php php php php php$documentIdphp,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_makeAttributesphp(php$documentIdphp,php php$fieldsetphp)php,
+php php php php php php php php php php php php php php php php php$replace
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp documentphp updatephp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Delete document.
-     *
-     * @param  string $collectionName Collection from which to delete document
-     * @param  mixed  $document Document ID or Document object.
-     * @param  array  $options
-     * @return boolean
-     */
-    public function deleteDocument($collectionName, $document, $options = null)
-    {
-        if ($document instanceof Zend_Cloud_DocumentService_Document) {
-            $document = $document->getId();
-        }
-        try {
-            $this->_simpleDb->deleteAttributes($collectionName, $document);
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on document deletion: '.$e->getMessage(), $e->getCode(), $e);
-        }
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Deletephp documentphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionNamephp Collectionphp fromphp whichphp tophp deletephp document
+php php php php php php*php php@paramphp php mixedphp php php$documentphp Documentphp IDphp orphp Documentphp objectphp.
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp deleteDocumentphp(php$collectionNamephp,php php$documentphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$documentphp instanceofphp Zendphp_Cloudphp_DocumentServicephp_Documentphp)php php{
+php php php php php php php php php php php php php$documentphp php=php php$documentphp-php>getIdphp(php)php;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_simpleDbphp-php>deleteAttributesphp(php$collectionNamephp,php php$documentphp)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp documentphp deletionphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Fetch single document by ID
-     *
-     * @param  string $collectionName Collection name
-     * @param  mixed $documentId Document ID, adapter-dependent
-     * @param  array $options
-     * @return Zend_Cloud_DocumentService_Document
-     */
-    public function fetchDocument($collectionName, $documentId, $options = null)
-    {
-        try {
-            $attributes = $this->_simpleDb->getAttributes($collectionName, $documentId);
-            if ($attributes == false || count($attributes) == 0) {
-                return false;
-            }
-            return $this->_resolveAttributes($attributes, true);
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on fetching document: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Fetchphp singlephp documentphp byphp ID
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionNamephp Collectionphp name
+php php php php php php*php php@paramphp php mixedphp php$documentIdphp Documentphp IDphp,php adapterphp-dependent
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_Document
+php php php php php php*php/
+php php php php publicphp functionphp fetchDocumentphp(php$collectionNamephp,php php$documentIdphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$attributesphp php=php php$thisphp-php>php_simpleDbphp-php>getAttributesphp(php$collectionNamephp,php php$documentIdphp)php;
+php php php php php php php php php php php php ifphp php(php$attributesphp php=php=php falsephp php|php|php countphp(php$attributesphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$thisphp-php>php_resolveAttributesphp(php$attributesphp,php truephp)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp fetchingphp documentphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Query for documents stored in the document service. If a string is passed in
-     * $query, the query string will be passed directly to the service.
-     *
-     * @param  string $collectionName Collection name
-     * @param  string $query
-     * @param  array $options
-     * @return array Zend_Cloud_DocumentService_DocumentSet
-     */
-    public function query($collectionName, $query, $options = null)
-    {
-        $returnDocs = isset($options[self::RETURN_DOCUMENTS])
-                    ? (bool) $options[self::RETURN_DOCUMENTS]
-                    : true;
+php php php php php/php*php*
+php php php php php php*php Queryphp forphp documentsphp storedphp inphp thephp documentphp servicephp.php Ifphp aphp stringphp isphp passedphp in
+php php php php php php*php php$queryphp,php thephp queryphp stringphp willphp bephp passedphp directlyphp tophp thephp servicephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$collectionNamephp Collectionphp name
+php php php php php php*php php@paramphp php stringphp php$query
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp arrayphp Zendphp_Cloudphp_DocumentServicephp_DocumentSet
+php php php php php php*php/
+php php php php publicphp functionphp queryphp(php$collectionNamephp,php php$queryphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$returnDocsphp php=php issetphp(php$optionsphp[selfphp:php:RETURNphp_DOCUMENTSphp]php)
+php php php php php php php php php php php php php php php php php php php php php?php php(boolphp)php php$optionsphp[selfphp:php:RETURNphp_DOCUMENTSphp]
+php php php php php php php php php php php php php php php php php php php php php:php truephp;
 
-        try {
-            if ($query instanceof Zend_Cloud_DocumentService_Adapter_SimpleDb_Query) {
-                $query = $query->assemble($collectionName);
-            }
-            $result = $this->_simpleDb->select($query);
-        } catch(Zend_Service_Amazon_Exception $e) {
-            throw new Zend_Cloud_DocumentService_Exception('Error on document query: '.$e->getMessage(), $e->getCode(), $e);
-        }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$queryphp instanceofphp Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDbphp_Queryphp)php php{
+php php php php php php php php php php php php php php php php php$queryphp php=php php$queryphp-php>assemblephp(php$collectionNamephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_simpleDbphp-php>selectphp(php$queryphp)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Amazonphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Errorphp onphp documentphp queryphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
 
-        return $this->_getDocumentSetFromResultSet($result, $returnDocs);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_getDocumentSetFromResultSetphp(php$resultphp,php php$returnDocsphp)php;
+php php php php php}
 
-    /**
-     * Create query statement
-     *
-     * @param  string $fields
-     * @return Zend_Cloud_DocumentService_Adapter_SimpleDb_Query
-     */
-    public function select($fields = null)
-    {
-        $queryClass = $this->getQueryClass();
-        if (!class_exists($queryClass)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($queryClass);
-        }
+php php php php php/php*php*
+php php php php php php*php Createphp queryphp statement
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$fields
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDbphp_Query
+php php php php php php*php/
+php php php php publicphp functionphp selectphp(php$fieldsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$queryClassphp php=php php$thisphp-php>getQueryClassphp(php)php;
+php php php php php php php php ifphp php(php!classphp_existsphp(php$queryClassphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$queryClassphp)php;
+php php php php php php php php php}
 
-        $query = new $queryClass($this);
-        $defaultClass = self::DEFAULT_QUERY_CLASS;
-        if (!$query instanceof $defaultClass) {
-            throw new Zend_Cloud_DocumentService_Exception('Query class must extend ' . self::DEFAULT_QUERY_CLASS);
-        }
+php php php php php php php php php$queryphp php=php newphp php$queryClassphp(php$thisphp)php;
+php php php php php php php php php$defaultClassphp php=php selfphp:php:DEFAULTphp_QUERYphp_CLASSphp;
+php php php php php php php php ifphp php(php!php$queryphp instanceofphp php$defaultClassphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Queryphp classphp mustphp extendphp php'php php.php selfphp:php:DEFAULTphp_QUERYphp_CLASSphp)php;
+php php php php php php php php php}
 
-        $query->select($fields);
-        return $query;
-    }
+php php php php php php php php php$queryphp-php>selectphp(php$fieldsphp)php;
+php php php php php php php php returnphp php$queryphp;
+php php php php php}
 
-    /**
-     * Get the concrete service client
-     *
-     * @return Zend_Service_Amazon_SimpleDb
-     */
-    public function getClient()
-    {
-        return $this->_simpleDb;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp concretephp servicephp client
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Servicephp_Amazonphp_SimpleDb
+php php php php php php*php/
+php php php php publicphp functionphp getClientphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_simpleDbphp;
+php php php php php}
 
-    /**
-     * Convert array of key-value pairs to array of Amazon attributes
-     *
-     * @param string $name
-     * @param array $attributes
-     * @return array
-     */
-    protected function _makeAttributes($name, $attributes)
-    {
-        $result = array();
-        foreach ($attributes as $key => $attr) {
-            $result[] = new Zend_Service_Amazon_SimpleDb_Attribute($name, $key, $attr);
-        }
-        return $result;
-    }
+php php php php php/php*php*
+php php php php php php*php Convertphp arrayphp ofphp keyphp-valuephp pairsphp tophp arrayphp ofphp Amazonphp attributes
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@paramphp arrayphp php$attributes
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_makeAttributesphp(php$namephp,php php$attributesphp)
+php php php php php{
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$attributesphp asphp php$keyphp php=php>php php$attrphp)php php{
+php php php php php php php php php php php php php$resultphp[php]php php=php newphp Zendphp_Servicephp_Amazonphp_SimpleDbphp_Attributephp(php$namephp,php php$keyphp,php php$attrphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * Convert array of Amazon attributes to array of key-value pairs
-     *
-     * @param array $attributes
-     * @return array
-     */
-    protected function _resolveAttributes($attributes, $returnDocument = false)
-    {
-        $result = array();
-        foreach ($attributes as $attr) {
-            $value = $attr->getValues();
-            if (count($value) == 0) {
-                $value = null;
-            } elseif (count($value) == 1) {
-                $value = $value[0];
-            }
-            $result[$attr->getName()] = $value;
-        }
+php php php php php/php*php*
+php php php php php php*php Convertphp arrayphp ofphp Amazonphp attributesphp tophp arrayphp ofphp keyphp-valuephp pairs
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$attributes
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_resolveAttributesphp(php$attributesphp,php php$returnDocumentphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$attributesphp asphp php$attrphp)php php{
+php php php php php php php php php php php php php$valuephp php=php php$attrphp-php>getValuesphp(php)php;
+php php php php php php php php php php php php ifphp php(countphp(php$valuephp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php nullphp;
+php php php php php php php php php php php php php}php elseifphp php(countphp(php$valuephp)php php=php=php php1php)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php php$valuephp[php0php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$resultphp[php$attrphp-php>getNamephp(php)php]php php=php php$valuephp;
+php php php php php php php php php}
 
-        // Return as document object?
-        if ($returnDocument) {
-            $documentClass = $this->getDocumentClass();
-            return new $documentClass($result, $attr->getItemName());
-        }
+php php php php php php php php php/php/php Returnphp asphp documentphp objectphp?
+php php php php php php php php ifphp php(php$returnDocumentphp)php php{
+php php php php php php php php php php php php php$documentClassphp php=php php$thisphp-php>getDocumentClassphp(php)php;
+php php php php php php php php php php php php returnphp newphp php$documentClassphp(php$resultphp,php php$attrphp-php>getItemNamephp(php)php)php;
+php php php php php php php php php}
 
-        return $result;
-    }
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * Create suitable document from array of fields
-     *
-     * @param array $document
-     * @return Zend_Cloud_DocumentService_Document
-     */
-    protected function _getDocumentFromArray($document)
-    {
-        if (!isset($document[Zend_Cloud_DocumentService_Document::KEY_FIELD])) {
-            if (isset($document[self::ITEM_NAME])) {
-                $key = $document[self::ITEM_NAME];
-                unset($document[self::ITEM_NAME]);
-            } else {
-                throw new Zend_Cloud_DocumentService_Exception('Fields array should contain the key field '.Zend_Cloud_DocumentService_Document::KEY_FIELD);
-            }
-        } else {
-            $key = $document[Zend_Cloud_DocumentService_Document::KEY_FIELD];
-            unset($document[Zend_Cloud_DocumentService_Document::KEY_FIELD]);
-        }
+php php php php php/php*php*
+php php php php php php*php Createphp suitablephp documentphp fromphp arrayphp ofphp fields
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$document
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_Document
+php php php php php php*php/
+php php php php protectedphp functionphp php_getDocumentFromArrayphp(php$documentphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$documentphp[Zendphp_Cloudphp_DocumentServicephp_Documentphp:php:KEYphp_FIELDphp]php)php)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$documentphp[selfphp:php:ITEMphp_NAMEphp]php)php)php php{
+php php php php php php php php php php php php php php php php php$keyphp php=php php$documentphp[selfphp:php:ITEMphp_NAMEphp]php;
+php php php php php php php php php php php php php php php php unsetphp(php$documentphp[selfphp:php:ITEMphp_NAMEphp]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php'Fieldsphp arrayphp shouldphp containphp thephp keyphp fieldphp php'php.Zendphp_Cloudphp_DocumentServicephp_Documentphp:php:KEYphp_FIELDphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$keyphp php=php php$documentphp[Zendphp_Cloudphp_DocumentServicephp_Documentphp:php:KEYphp_FIELDphp]php;
+php php php php php php php php php php php php unsetphp(php$documentphp[Zendphp_Cloudphp_DocumentServicephp_Documentphp:php:KEYphp_FIELDphp]php)php;
+php php php php php php php php php}
 
-        $documentClass = $this->getDocumentClass();
-        return new $documentClass($document, $key);
-    }
+php php php php php php php php php$documentClassphp php=php php$thisphp-php>getDocumentClassphp(php)php;
+php php php php php php php php returnphp newphp php$documentClassphp(php$documentphp,php php$keyphp)php;
+php php php php php}
 
-    /**
-     * Create a DocumentSet from a SimpleDb resultset
-     *
-     * @param  Zend_Service_Amazon_SimpleDb_Page $resultSet
-     * @param  bool $returnDocs
-     * @return Zend_Cloud_DocumentService_DocumentSet
-     */
-    protected function _getDocumentSetFromResultSet(Zend_Service_Amazon_SimpleDb_Page $resultSet, $returnDocs = true)
-    {
-        $docs = array();
-        foreach ($resultSet->getData() as $item) {
-            $docs[] = $this->_resolveAttributes($item, $returnDocs);
-        }
+php php php php php/php*php*
+php php php php php php*php Createphp aphp DocumentSetphp fromphp aphp SimpleDbphp resultset
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Servicephp_Amazonphp_SimpleDbphp_Pagephp php$resultSet
+php php php php php php*php php@paramphp php boolphp php$returnDocs
+php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_DocumentSet
+php php php php php php*php/
+php php php php protectedphp functionphp php_getDocumentSetFromResultSetphp(Zendphp_Servicephp_Amazonphp_SimpleDbphp_Pagephp php$resultSetphp,php php$returnDocsphp php=php truephp)
+php php php php php{
+php php php php php php php php php$docsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$resultSetphp-php>getDataphp(php)php asphp php$itemphp)php php{
+php php php php php php php php php php php php php$docsphp[php]php php=php php$thisphp-php>php_resolveAttributesphp(php$itemphp,php php$returnDocsphp)php;
+php php php php php php php php php}
 
-        $setClass = $this->getDocumentSetClass();
-        return new $setClass($docs);
-    }
-}
+php php php php php php php php php$setClassphp php=php php$thisphp-php>getDocumentSetClassphp(php)php;
+php php php php php php php php returnphp newphp php$setClassphp(php$docsphp)php;
+php php php php php}
+php}

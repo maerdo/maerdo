@@ -1,643 +1,643 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Oracle.php 23573 2010-12-23 18:20:00Z mikaelkael $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Oraclephp.phpphp php2php3php5php7php3php php2php0php1php0php-php1php2php-php2php3php php1php8php:php2php0php:php0php0Zphp mikaelkaelphp php$
+php php*php/
 
-/**
- * @see Zend_Db_Adapter_Abstract
- */
-require_once 'Zend/Db/Adapter/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Adapterphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Abstractphp.phpphp'php;
 
-/**
- * @see Zend_Db_Statement_Oracle
- */
-require_once 'Zend/Db/Statement/Oracle.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Statementphp_Oracle
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Oraclephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
-{
-    /**
-     * User-provided configuration.
-     *
-     * Basic keys are:
-     *
-     * username => (string) Connect to the database as this username.
-     * password => (string) Password associated with the username.
-     * dbname   => Either the name of the local Oracle instance, or the
-     *             name of the entry in tnsnames.ora to which you want to connect.
-     * persistent => (boolean) Set TRUE to use a persistent connection
-     * @var array
-     */
-    protected $_config = array(
-        'dbname'       => null,
-        'username'     => null,
-        'password'     => null,
-        'persistent'   => false
-    );
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Dbphp_Adapterphp_Oraclephp extendsphp Zendphp_Dbphp_Adapterphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Userphp-providedphp configurationphp.
+php php php php php php*
+php php php php php php*php Basicphp keysphp arephp:
+php php php php php php*
+php php php php php php*php usernamephp php=php>php php(stringphp)php Connectphp tophp thephp databasephp asphp thisphp usernamephp.
+php php php php php php*php passwordphp php=php>php php(stringphp)php Passwordphp associatedphp withphp thephp usernamephp.
+php php php php php php*php dbnamephp php php php=php>php Eitherphp thephp namephp ofphp thephp localphp Oraclephp instancephp,php orphp the
+php php php php php php*php php php php php php php php php php php php php namephp ofphp thephp entryphp inphp tnsnamesphp.oraphp tophp whichphp youphp wantphp tophp connectphp.
+php php php php php php*php persistentphp php=php>php php(booleanphp)php Setphp TRUEphp tophp usephp aphp persistentphp connection
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_configphp php=php arrayphp(
+php php php php php php php php php'dbnamephp'php php php php php php php php=php>php nullphp,
+php php php php php php php php php'usernamephp'php php php php php php=php>php nullphp,
+php php php php php php php php php'passwordphp'php php php php php php=php>php nullphp,
+php php php php php php php php php'persistentphp'php php php php=php>php false
+php php php php php)php;
 
-    /**
-     * Keys are UPPERCASE SQL datatypes or the constants
-     * Zend_Db::INT_TYPE, Zend_Db::BIGINT_TYPE, or Zend_Db::FLOAT_TYPE.
-     *
-     * Values are:
-     * 0 = 32-bit integer
-     * 1 = 64-bit integer
-     * 2 = float or decimal
-     *
-     * @var array Associative array of datatypes to values 0, 1, or 2.
-     */
-    protected $_numericDataTypes = array(
-        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
-        Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
-        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
-        'BINARY_DOUBLE'      => Zend_Db::FLOAT_TYPE,
-        'BINARY_FLOAT'       => Zend_Db::FLOAT_TYPE,
-        'NUMBER'             => Zend_Db::FLOAT_TYPE,
-    );
+php php php php php/php*php*
+php php php php php php*php Keysphp arephp UPPERCASEphp SQLphp datatypesphp orphp thephp constants
+php php php php php php*php Zendphp_Dbphp:php:INTphp_TYPEphp,php Zendphp_Dbphp:php:BIGINTphp_TYPEphp,php orphp Zendphp_Dbphp:php:FLOATphp_TYPEphp.
+php php php php php php*
+php php php php php php*php Valuesphp arephp:
+php php php php php php*php php0php php=php php3php2php-bitphp integer
+php php php php php php*php php1php php=php php6php4php-bitphp integer
+php php php php php php*php php2php php=php floatphp orphp decimal
+php php php php php php*
+php php php php php php*php php@varphp arrayphp Associativephp arrayphp ofphp datatypesphp tophp valuesphp php0php,php php1php,php orphp php2php.
+php php php php php php*php/
+php php php php protectedphp php$php_numericDataTypesphp php=php arrayphp(
+php php php php php php php php Zendphp_Dbphp:php:INTphp_TYPEphp php php php php=php>php Zendphp_Dbphp:php:INTphp_TYPEphp,
+php php php php php php php php Zendphp_Dbphp:php:BIGINTphp_TYPEphp php=php>php Zendphp_Dbphp:php:BIGINTphp_TYPEphp,
+php php php php php php php php Zendphp_Dbphp:php:FLOATphp_TYPEphp php php=php>php Zendphp_Dbphp:php:FLOATphp_TYPEphp,
+php php php php php php php php php'BINARYphp_DOUBLEphp'php php php php php php php=php>php Zendphp_Dbphp:php:FLOATphp_TYPEphp,
+php php php php php php php php php'BINARYphp_FLOATphp'php php php php php php php php=php>php Zendphp_Dbphp:php:FLOATphp_TYPEphp,
+php php php php php php php php php'NUMBERphp'php php php php php php php php php php php php php php=php>php Zendphp_Dbphp:php:FLOATphp_TYPEphp,
+php php php php php)php;
 
-    /**
-     * @var integer
-     */
-    protected $_execute_mode = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_executephp_modephp php=php nullphp;
 
-    /**
-     * Default class name for a DB statement.
-     *
-     * @var string
-     */
-    protected $_defaultStmtClass = 'Zend_Db_Statement_Oracle';
+php php php php php/php*php*
+php php php php php php*php Defaultphp classphp namephp forphp aphp DBphp statementphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_defaultStmtClassphp php=php php'Zendphp_Dbphp_Statementphp_Oraclephp'php;
 
-    /**
-     * Check if LOB field are returned as string
-     * instead of OCI-Lob object
-     *
-     * @var boolean
-     */
-    protected $_lobAsString = null;
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp LOBphp fieldphp arephp returnedphp asphp string
+php php php php php php*php insteadphp ofphp OCIphp-Lobphp object
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_lobAsStringphp php=php nullphp;
 
-    /**
-     * Creates a connection resource.
-     *
-     * @return void
-     * @throws Zend_Db_Adapter_Oracle_Exception
-     */
-    protected function _connect()
-    {
-        if (is_resource($this->_connection)) {
-            // connection already exists
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Createsphp aphp connectionphp resourcephp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_connectphp(php)
+php php php php php{
+php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>php_connectionphp)php)php php{
+php php php php php php php php php php php php php/php/php connectionphp alreadyphp exists
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        if (!extension_loaded('oci8')) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-            throw new Zend_Db_Adapter_Oracle_Exception('The OCI8 extension is required for this adapter but the extension is not loaded');
-        }
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'ociphp8php'php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(php'Thephp OCIphp8php extensionphp isphp requiredphp forphp thisphp adapterphp butphp thephp extensionphp isphp notphp loadedphp'php)php;
+php php php php php php php php php}
 
-        $this->_setExecuteMode(OCI_COMMIT_ON_SUCCESS);
+php php php php php php php php php$thisphp-php>php_setExecuteModephp(OCIphp_COMMITphp_ONphp_SUCCESSphp)php;
 
-        $connectionFuncName = ($this->_config['persistent'] == true) ? 'oci_pconnect' : 'oci_connect';
+php php php php php php php php php$connectionFuncNamephp php=php php(php$thisphp-php>php_configphp[php'persistentphp'php]php php=php=php truephp)php php?php php'ociphp_pconnectphp'php php:php php'ociphp_connectphp'php;
 
-        $this->_connection = @$connectionFuncName(
-                $this->_config['username'],
-                $this->_config['password'],
-                $this->_config['dbname'],
-                $this->_config['charset']);
+php php php php php php php php php$thisphp-php>php_connectionphp php=php php@php$connectionFuncNamephp(
+php php php php php php php php php php php php php php php php php$thisphp-php>php_configphp[php'usernamephp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_configphp[php'passwordphp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_configphp[php'dbnamephp'php]php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_configphp[php'charsetphp'php]php)php;
 
-        // check the connection
-        if (!$this->_connection) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-            throw new Zend_Db_Adapter_Oracle_Exception(oci_error());
-        }
-    }
+php php php php php php php php php/php/php checkphp thephp connection
+php php php php php php php php ifphp php(php!php$thisphp-php>php_connectionphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(ociphp_errorphp(php)php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Test if a connection is active
-     *
-     * @return boolean
-     */
-    public function isConnected()
-    {
-        return ((bool) (is_resource($this->_connection)
-                    && (get_resource_type($this->_connection) == 'oci8 connection'
-                     || get_resource_type($this->_connection) == 'oci8 persistent connection')));
-    }
+php php php php php/php*php*
+php php php php php php*php Testphp ifphp aphp connectionphp isphp active
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isConnectedphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php(boolphp)php php(isphp_resourcephp(php$thisphp-php>php_connectionphp)
+php php php php php php php php php php php php php php php php php php php php php&php&php php(getphp_resourcephp_typephp(php$thisphp-php>php_connectionphp)php php=php=php php'ociphp8php connectionphp'
+php php php php php php php php php php php php php php php php php php php php php php|php|php getphp_resourcephp_typephp(php$thisphp-php>php_connectionphp)php php=php=php php'ociphp8php persistentphp connectionphp'php)php)php)php;
+php php php php php}
 
-    /**
-     * Force the connection to close.
-     *
-     * @return void
-     */
-    public function closeConnection()
-    {
-        if ($this->isConnected()) {
-            oci_close($this->_connection);
-        }
-        $this->_connection = null;
-    }
+php php php php php/php*php*
+php php php php php php*php Forcephp thephp connectionphp tophp closephp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp closeConnectionphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>isConnectedphp(php)php)php php{
+php php php php php php php php php php php php ociphp_closephp(php$thisphp-php>php_connectionphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_connectionphp php=php nullphp;
+php php php php php}
 
-    /**
-     * Activate/deactivate return of LOB as string
-     *
-     * @param string $lob_as_string
-     * @return Zend_Db_Adapter_Oracle
-     */
-    public function setLobAsString($lobAsString)
-    {
-        $this->_lobAsString = (bool) $lobAsString;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Activatephp/deactivatephp returnphp ofphp LOBphp asphp string
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$lobphp_asphp_string
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Oracle
+php php php php php php*php/
+php php php php publicphp functionphp setLobAsStringphp(php$lobAsStringphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_lobAsStringphp php=php php(boolphp)php php$lobAsStringphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Return whether or not LOB are returned as string
-     *
-     * @return boolean
-     */
-    public function getLobAsString()
-    {
-        if ($this->_lobAsString === null) {
-            // if never set by user, we use driver option if it exists otherwise false
-            if (isset($this->_config['driver_options']) &&
-                isset($this->_config['driver_options']['lob_as_string'])) {
-                $this->_lobAsString = (bool) $this->_config['driver_options']['lob_as_string'];
-            } else {
-                $this->_lobAsString = false;
-            }
-        }
-        return $this->_lobAsString;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp whetherphp orphp notphp LOBphp arephp returnedphp asphp string
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getLobAsStringphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_lobAsStringphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php ifphp neverphp setphp byphp userphp,php wephp usephp driverphp optionphp ifphp itphp existsphp otherwisephp false
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_configphp[php'driverphp_optionsphp'php]php)php php&php&
+php php php php php php php php php php php php php php php php issetphp(php$thisphp-php>php_configphp[php'driverphp_optionsphp'php]php[php'lobphp_asphp_stringphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_lobAsStringphp php=php php(boolphp)php php$thisphp-php>php_configphp[php'driverphp_optionsphp'php]php[php'lobphp_asphp_stringphp'php]php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_lobAsStringphp php=php falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_lobAsStringphp;
+php php php php php}
 
-    /**
-     * Returns an SQL statement for preparation.
-     *
-     * @param string $sql The SQL statement with placeholders.
-     * @return Zend_Db_Statement_Oracle
-     */
-    public function prepare($sql)
-    {
-        $this->_connect();
-        $stmtClass = $this->_defaultStmtClass;
-        if (!class_exists($stmtClass)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($stmtClass);
-        }
-        $stmt = new $stmtClass($this, $sql);
-        if ($stmt instanceof Zend_Db_Statement_Oracle) {
-            $stmt->setLobAsString($this->getLobAsString());
-        }
-        $stmt->setFetchMode($this->_fetchMode);
-        return $stmt;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp SQLphp statementphp forphp preparationphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sqlphp Thephp SQLphp statementphp withphp placeholdersphp.
+php php php php php php*php php@returnphp Zendphp_Dbphp_Statementphp_Oracle
+php php php php php php*php/
+php php php php publicphp functionphp preparephp(php$sqlphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_connectphp(php)php;
+php php php php php php php php php$stmtClassphp php=php php$thisphp-php>php_defaultStmtClassphp;
+php php php php php php php php ifphp php(php!classphp_existsphp(php$stmtClassphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$stmtClassphp)php;
+php php php php php php php php php}
+php php php php php php php php php$stmtphp php=php newphp php$stmtClassphp(php$thisphp,php php$sqlphp)php;
+php php php php php php php php ifphp php(php$stmtphp instanceofphp Zendphp_Dbphp_Statementphp_Oraclephp)php php{
+php php php php php php php php php php php php php$stmtphp-php>setLobAsStringphp(php$thisphp-php>getLobAsStringphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php php$stmtphp-php>setFetchModephp(php$thisphp-php>php_fetchModephp)php;
+php php php php php php php php returnphp php$stmtphp;
+php php php php php}
 
-    /**
-     * Quote a raw string.
-     *
-     * @param string $value     Raw string
-     * @return string           Quoted string
-     */
-    protected function _quote($value)
-    {
-        if (is_int($value) || is_float($value)) {
-            return $value;
-        }
-        $value = str_replace("'", "''", $value);
-        return "'" . addcslashes($value, "\000\n\r\\\032") . "'";
-    }
+php php php php php/php*php*
+php php php php php php*php Quotephp aphp rawphp stringphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$valuephp php php php php Rawphp string
+php php php php php php*php php@returnphp stringphp php php php php php php php php php php Quotedphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_quotephp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_intphp(php$valuephp)php php|php|php isphp_floatphp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$valuephp;
+php php php php php php php php php}
+php php php php php php php php php$valuephp php=php strphp_replacephp(php"php'php"php,php php"php'php'php"php,php php$valuephp)php;
+php php php php php php php php returnphp php"php'php"php php.php addcslashesphp(php$valuephp,php php"php\php0php0php0php\nphp\rphp\php\php\php0php3php2php"php)php php.php php"php'php"php;
+php php php php php}
 
-    /**
-     * Quote a table identifier and alias.
-     *
-     * @param string|array|Zend_Db_Expr $ident The identifier or expression.
-     * @param string $alias An alias for the table.
-     * @param boolean $auto If true, heed the AUTO_QUOTE_IDENTIFIERS config option.
-     * @return string The quoted identifier and alias.
-     */
-    public function quoteTableAs($ident, $alias = null, $auto = false)
-    {
-        // Oracle doesn't allow the 'AS' keyword between the table identifier/expression and alias.
-        return $this->_quoteIdentifierAs($ident, $alias, $auto, ' ');
-    }
+php php php php php/php*php*
+php php php php php php*php Quotephp aphp tablephp identifierphp andphp aliasphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp|Zendphp_Dbphp_Exprphp php$identphp Thephp identifierphp orphp expressionphp.
+php php php php php php*php php@paramphp stringphp php$aliasphp Anphp aliasphp forphp thephp tablephp.
+php php php php php php*php php@paramphp booleanphp php$autophp Ifphp truephp,php heedphp thephp AUTOphp_QUOTEphp_IDENTIFIERSphp configphp optionphp.
+php php php php php php*php php@returnphp stringphp Thephp quotedphp identifierphp andphp aliasphp.
+php php php php php php*php/
+php php php php publicphp functionphp quoteTableAsphp(php$identphp,php php$aliasphp php=php nullphp,php php$autophp php=php falsephp)
+php php php php php{
+php php php php php php php php php/php/php Oraclephp doesnphp'tphp allowphp thephp php'ASphp'php keywordphp betweenphp thephp tablephp identifierphp/expressionphp andphp aliasphp.
+php php php php php php php php returnphp php$thisphp-php>php_quoteIdentifierAsphp(php$identphp,php php$aliasphp,php php$autophp,php php'php php'php)php;
+php php php php php}
 
-    /**
-     * Return the most recent value from the specified sequence in the database.
-     * This is supported only on RDBMS brands that support sequences
-     * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
-     *
-     * @param string $sequenceName
-     * @return string
-     */
-    public function lastSequenceId($sequenceName)
-    {
-        $this->_connect();
-        $sql = 'SELECT '.$this->quoteIdentifier($sequenceName, true).'.CURRVAL FROM dual';
-        $value = $this->fetchOne($sql);
-        return $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp mostphp recentphp valuephp fromphp thephp specifiedphp sequencephp inphp thephp databasephp.
+php php php php php php*php Thisphp isphp supportedphp onlyphp onphp RDBMSphp brandsphp thatphp supportphp sequences
+php php php php php php*php php(ephp.gphp.php Oraclephp,php PostgreSQLphp,php DBphp2php)php.php php Otherphp RDBMSphp brandsphp returnphp nullphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sequenceName
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp lastSequenceIdphp(php$sequenceNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_connectphp(php)php;
+php php php php php php php php php$sqlphp php=php php'SELECTphp php'php.php$thisphp-php>quoteIdentifierphp(php$sequenceNamephp,php truephp)php.php'php.CURRVALphp FROMphp dualphp'php;
+php php php php php php php php php$valuephp php=php php$thisphp-php>fetchOnephp(php$sqlphp)php;
+php php php php php php php php returnphp php$valuephp;
+php php php php php}
 
-    /**
-     * Generate a new value from the specified sequence in the database, and return it.
-     * This is supported only on RDBMS brands that support sequences
-     * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
-     *
-     * @param string $sequenceName
-     * @return string
-     */
-    public function nextSequenceId($sequenceName)
-    {
-        $this->_connect();
-        $sql = 'SELECT '.$this->quoteIdentifier($sequenceName, true).'.NEXTVAL FROM dual';
-        $value = $this->fetchOne($sql);
-        return $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Generatephp aphp newphp valuephp fromphp thephp specifiedphp sequencephp inphp thephp databasephp,php andphp returnphp itphp.
+php php php php php php*php Thisphp isphp supportedphp onlyphp onphp RDBMSphp brandsphp thatphp supportphp sequences
+php php php php php php*php php(ephp.gphp.php Oraclephp,php PostgreSQLphp,php DBphp2php)php.php php Otherphp RDBMSphp brandsphp returnphp nullphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sequenceName
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp nextSequenceIdphp(php$sequenceNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_connectphp(php)php;
+php php php php php php php php php$sqlphp php=php php'SELECTphp php'php.php$thisphp-php>quoteIdentifierphp(php$sequenceNamephp,php truephp)php.php'php.NEXTVALphp FROMphp dualphp'php;
+php php php php php php php php php$valuephp php=php php$thisphp-php>fetchOnephp(php$sqlphp)php;
+php php php php php php php php returnphp php$valuephp;
+php php php php php}
 
-    /**
-     * Gets the last ID generated automatically by an IDENTITY/AUTOINCREMENT column.
-     *
-     * As a convention, on RDBMS brands that support sequences
-     * (e.g. Oracle, PostgreSQL, DB2), this method forms the name of a sequence
-     * from the arguments and returns the last id generated by that sequence.
-     * On RDBMS brands that support IDENTITY/AUTOINCREMENT columns, this method
-     * returns the last value generated for such a column, and the table name
-     * argument is disregarded.
-     *
-     * Oracle does not support IDENTITY columns, so if the sequence is not
-     * specified, this method returns null.
-     *
-     * @param string $tableName   OPTIONAL Name of table.
-     * @param string $primaryKey  OPTIONAL Name of primary key column.
-     * @return string
-     */
-    public function lastInsertId($tableName = null, $primaryKey = null)
-    {
-        if ($tableName !== null) {
-            $sequenceName = $tableName;
-            if ($primaryKey) {
-                $sequenceName .= "_$primaryKey";
-            }
-            $sequenceName .= '_seq';
-            return $this->lastSequenceId($sequenceName);
-        }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp lastphp IDphp generatedphp automaticallyphp byphp anphp IDENTITYphp/AUTOINCREMENTphp columnphp.
+php php php php php php*
+php php php php php php*php Asphp aphp conventionphp,php onphp RDBMSphp brandsphp thatphp supportphp sequences
+php php php php php php*php php(ephp.gphp.php Oraclephp,php PostgreSQLphp,php DBphp2php)php,php thisphp methodphp formsphp thephp namephp ofphp aphp sequence
+php php php php php php*php fromphp thephp argumentsphp andphp returnsphp thephp lastphp idphp generatedphp byphp thatphp sequencephp.
+php php php php php php*php Onphp RDBMSphp brandsphp thatphp supportphp IDENTITYphp/AUTOINCREMENTphp columnsphp,php thisphp method
+php php php php php php*php returnsphp thephp lastphp valuephp generatedphp forphp suchphp aphp columnphp,php andphp thephp tablephp name
+php php php php php php*php argumentphp isphp disregardedphp.
+php php php php php php*
+php php php php php php*php Oraclephp doesphp notphp supportphp IDENTITYphp columnsphp,php sophp ifphp thephp sequencephp isphp not
+php php php php php php*php specifiedphp,php thisphp methodphp returnsphp nullphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$tableNamephp php php OPTIONALphp Namephp ofphp tablephp.
+php php php php php php*php php@paramphp stringphp php$primaryKeyphp php OPTIONALphp Namephp ofphp primaryphp keyphp columnphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp lastInsertIdphp(php$tableNamephp php=php nullphp,php php$primaryKeyphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$tableNamephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$sequenceNamephp php=php php$tableNamephp;
+php php php php php php php php php php php php ifphp php(php$primaryKeyphp)php php{
+php php php php php php php php php php php php php php php php php$sequenceNamephp php.php=php php"php_php$primaryKeyphp"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$sequenceNamephp php.php=php php'php_seqphp'php;
+php php php php php php php php php php php php returnphp php$thisphp-php>lastSequenceIdphp(php$sequenceNamephp)php;
+php php php php php php php php php}
 
-        // No support for IDENTITY columns; return null
-        return null;
-    }
+php php php php php php php php php/php/php Nophp supportphp forphp IDENTITYphp columnsphp;php returnphp null
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Returns a list of the tables in the database.
-     *
-     * @return array
-     */
-    public function listTables()
-    {
-        $this->_connect();
-        $data = $this->fetchCol('SELECT table_name FROM all_tables');
-        return $data;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp listphp ofphp thephp tablesphp inphp thephp databasephp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp listTablesphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_connectphp(php)php;
+php php php php php php php php php$dataphp php=php php$thisphp-php>fetchColphp(php'SELECTphp tablephp_namephp FROMphp allphp_tablesphp'php)php;
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
 
-    /**
-     * Returns the column descriptions for a table.
-     *
-     * The return value is an associative array keyed by the column name,
-     * as returned by the RDBMS.
-     *
-     * The value of each array element is an associative array
-     * with the following keys:
-     *
-     * SCHEMA_NAME      => string; name of schema
-     * TABLE_NAME       => string;
-     * COLUMN_NAME      => string; column name
-     * COLUMN_POSITION  => number; ordinal position of column in table
-     * DATA_TYPE        => string; SQL datatype name of column
-     * DEFAULT          => string; default expression of column, null if none
-     * NULLABLE         => boolean; true if column can have nulls
-     * LENGTH           => number; length of CHAR/VARCHAR
-     * SCALE            => number; scale of NUMERIC/DECIMAL
-     * PRECISION        => number; precision of NUMERIC/DECIMAL
-     * UNSIGNED         => boolean; unsigned property of an integer type
-     * PRIMARY          => boolean; true if column is part of the primary key
-     * PRIMARY_POSITION => integer; position of column in primary key
-     * IDENTITY         => integer; true if column is auto-generated with unique values
-     *
-     * @todo Discover integer unsigned property.
-     *
-     * @param string $tableName
-     * @param string $schemaName OPTIONAL
-     * @return array
-     */
-    public function describeTable($tableName, $schemaName = null)
-    {
-        $version = $this->getServerVersion();
-        if (($version === null) || version_compare($version, '9.0.0', '>=')) {
-            $sql = "SELECT TC.TABLE_NAME, TC.OWNER, TC.COLUMN_NAME, TC.DATA_TYPE,
-                    TC.DATA_DEFAULT, TC.NULLABLE, TC.COLUMN_ID, TC.DATA_LENGTH,
-                    TC.DATA_SCALE, TC.DATA_PRECISION, C.CONSTRAINT_TYPE, CC.POSITION
-                FROM ALL_TAB_COLUMNS TC
-                LEFT JOIN (ALL_CONS_COLUMNS CC JOIN ALL_CONSTRAINTS C
-                    ON (CC.CONSTRAINT_NAME = C.CONSTRAINT_NAME AND CC.TABLE_NAME = C.TABLE_NAME AND CC.OWNER = C.OWNER AND C.CONSTRAINT_TYPE = 'P'))
-                  ON TC.TABLE_NAME = CC.TABLE_NAME AND TC.COLUMN_NAME = CC.COLUMN_NAME
-                WHERE UPPER(TC.TABLE_NAME) = UPPER(:TBNAME)";
-            $bind[':TBNAME'] = $tableName;
-            if ($schemaName) {
-                $sql .= ' AND UPPER(TC.OWNER) = UPPER(:SCNAME)';
-                $bind[':SCNAME'] = $schemaName;
-            }
-            $sql .= ' ORDER BY TC.COLUMN_ID';
-        } else {
-            $subSql="SELECT AC.OWNER, AC.TABLE_NAME, ACC.COLUMN_NAME, AC.CONSTRAINT_TYPE, ACC.POSITION
-                from ALL_CONSTRAINTS AC, ALL_CONS_COLUMNS ACC
-                  WHERE ACC.CONSTRAINT_NAME = AC.CONSTRAINT_NAME
-                    AND ACC.TABLE_NAME = AC.TABLE_NAME
-                    AND ACC.OWNER = AC.OWNER
-                    AND AC.CONSTRAINT_TYPE = 'P'
-                    AND UPPER(AC.TABLE_NAME) = UPPER(:TBNAME)";
-            $bind[':TBNAME'] = $tableName;
-            if ($schemaName) {
-                $subSql .= ' AND UPPER(ACC.OWNER) = UPPER(:SCNAME)';
-                $bind[':SCNAME'] = $schemaName;
-            }
-            $sql="SELECT TC.TABLE_NAME, TC.OWNER, TC.COLUMN_NAME, TC.DATA_TYPE,
-                    TC.DATA_DEFAULT, TC.NULLABLE, TC.COLUMN_ID, TC.DATA_LENGTH,
-                    TC.DATA_SCALE, TC.DATA_PRECISION, CC.CONSTRAINT_TYPE, CC.POSITION
-                FROM ALL_TAB_COLUMNS TC, ($subSql) CC
-                WHERE UPPER(TC.TABLE_NAME) = UPPER(:TBNAME)
-                  AND TC.OWNER = CC.OWNER(+) AND TC.TABLE_NAME = CC.TABLE_NAME(+) AND TC.COLUMN_NAME = CC.COLUMN_NAME(+)";
-            if ($schemaName) {
-                $sql .= ' AND UPPER(TC.OWNER) = UPPER(:SCNAME)';
-            }
-            $sql .= ' ORDER BY TC.COLUMN_ID';
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp columnphp descriptionsphp forphp aphp tablephp.
+php php php php php php*
+php php php php php php*php Thephp returnphp valuephp isphp anphp associativephp arrayphp keyedphp byphp thephp columnphp namephp,
+php php php php php php*php asphp returnedphp byphp thephp RDBMSphp.
+php php php php php php*
+php php php php php php*php Thephp valuephp ofphp eachphp arrayphp elementphp isphp anphp associativephp array
+php php php php php php*php withphp thephp followingphp keysphp:
+php php php php php php*
+php php php php php php*php SCHEMAphp_NAMEphp php php php php php php=php>php stringphp;php namephp ofphp schema
+php php php php php php*php TABLEphp_NAMEphp php php php php php php php=php>php stringphp;
+php php php php php php*php COLUMNphp_NAMEphp php php php php php php=php>php stringphp;php columnphp name
+php php php php php php*php COLUMNphp_POSITIONphp php php=php>php numberphp;php ordinalphp positionphp ofphp columnphp inphp table
+php php php php php php*php DATAphp_TYPEphp php php php php php php php php=php>php stringphp;php SQLphp datatypephp namephp ofphp column
+php php php php php php*php DEFAULTphp php php php php php php php php php php=php>php stringphp;php defaultphp expressionphp ofphp columnphp,php nullphp ifphp none
+php php php php php php*php NULLABLEphp php php php php php php php php php=php>php booleanphp;php truephp ifphp columnphp canphp havephp nulls
+php php php php php php*php LENGTHphp php php php php php php php php php php php=php>php numberphp;php lengthphp ofphp CHARphp/VARCHAR
+php php php php php php*php SCALEphp php php php php php php php php php php php php=php>php numberphp;php scalephp ofphp NUMERICphp/DECIMAL
+php php php php php php*php PRECISIONphp php php php php php php php php=php>php numberphp;php precisionphp ofphp NUMERICphp/DECIMAL
+php php php php php php*php UNSIGNEDphp php php php php php php php php php=php>php booleanphp;php unsignedphp propertyphp ofphp anphp integerphp type
+php php php php php php*php PRIMARYphp php php php php php php php php php php=php>php booleanphp;php truephp ifphp columnphp isphp partphp ofphp thephp primaryphp key
+php php php php php php*php PRIMARYphp_POSITIONphp php=php>php integerphp;php positionphp ofphp columnphp inphp primaryphp key
+php php php php php php*php IDENTITYphp php php php php php php php php php=php>php integerphp;php truephp ifphp columnphp isphp autophp-generatedphp withphp uniquephp values
+php php php php php php*
+php php php php php php*php php@todophp Discoverphp integerphp unsignedphp propertyphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$tableName
+php php php php php php*php php@paramphp stringphp php$schemaNamephp OPTIONAL
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp describeTablephp(php$tableNamephp,php php$schemaNamephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$versionphp php=php php$thisphp-php>getServerVersionphp(php)php;
+php php php php php php php php ifphp php(php(php$versionphp php=php=php=php nullphp)php php|php|php versionphp_comparephp(php$versionphp,php php'php9php.php0php.php0php'php,php php'php>php=php'php)php)php php{
+php php php php php php php php php php php php php$sqlphp php=php php"SELECTphp TCphp.TABLEphp_NAMEphp,php TCphp.OWNERphp,php TCphp.COLUMNphp_NAMEphp,php TCphp.DATAphp_TYPEphp,
+php php php php php php php php php php php php php php php php php php php php TCphp.DATAphp_DEFAULTphp,php TCphp.NULLABLEphp,php TCphp.COLUMNphp_IDphp,php TCphp.DATAphp_LENGTHphp,
+php php php php php php php php php php php php php php php php php php php php TCphp.DATAphp_SCALEphp,php TCphp.DATAphp_PRECISIONphp,php Cphp.CONSTRAINTphp_TYPEphp,php CCphp.POSITION
+php php php php php php php php php php php php php php php php FROMphp ALLphp_TABphp_COLUMNSphp TC
+php php php php php php php php php php php php php php php php LEFTphp JOINphp php(ALLphp_CONSphp_COLUMNSphp CCphp JOINphp ALLphp_CONSTRAINTSphp C
+php php php php php php php php php php php php php php php php php php php php ONphp php(CCphp.CONSTRAINTphp_NAMEphp php=php Cphp.CONSTRAINTphp_NAMEphp ANDphp CCphp.TABLEphp_NAMEphp php=php Cphp.TABLEphp_NAMEphp ANDphp CCphp.OWNERphp php=php Cphp.OWNERphp ANDphp Cphp.CONSTRAINTphp_TYPEphp php=php php'Pphp'php)php)
+php php php php php php php php php php php php php php php php php php ONphp TCphp.TABLEphp_NAMEphp php=php CCphp.TABLEphp_NAMEphp ANDphp TCphp.COLUMNphp_NAMEphp php=php CCphp.COLUMNphp_NAME
+php php php php php php php php php php php php php php php php WHEREphp UPPERphp(TCphp.TABLEphp_NAMEphp)php php=php UPPERphp(php:TBNAMEphp)php"php;
+php php php php php php php php php php php php php$bindphp[php'php:TBNAMEphp'php]php php=php php$tableNamephp;
+php php php php php php php php php php php php ifphp php(php$schemaNamephp)php php{
+php php php php php php php php php php php php php php php php php$sqlphp php.php=php php'php ANDphp UPPERphp(TCphp.OWNERphp)php php=php UPPERphp(php:SCNAMEphp)php'php;
+php php php php php php php php php php php php php php php php php$bindphp[php'php:SCNAMEphp'php]php php=php php$schemaNamephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$sqlphp php.php=php php'php ORDERphp BYphp TCphp.COLUMNphp_IDphp'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$subSqlphp=php"SELECTphp ACphp.OWNERphp,php ACphp.TABLEphp_NAMEphp,php ACCphp.COLUMNphp_NAMEphp,php ACphp.CONSTRAINTphp_TYPEphp,php ACCphp.POSITION
+php php php php php php php php php php php php php php php php fromphp ALLphp_CONSTRAINTSphp ACphp,php ALLphp_CONSphp_COLUMNSphp ACC
+php php php php php php php php php php php php php php php php php php WHEREphp ACCphp.CONSTRAINTphp_NAMEphp php=php ACphp.CONSTRAINTphp_NAME
+php php php php php php php php php php php php php php php php php php php php ANDphp ACCphp.TABLEphp_NAMEphp php=php ACphp.TABLEphp_NAME
+php php php php php php php php php php php php php php php php php php php php ANDphp ACCphp.OWNERphp php=php ACphp.OWNER
+php php php php php php php php php php php php php php php php php php php php ANDphp ACphp.CONSTRAINTphp_TYPEphp php=php php'Pphp'
+php php php php php php php php php php php php php php php php php php php php ANDphp UPPERphp(ACphp.TABLEphp_NAMEphp)php php=php UPPERphp(php:TBNAMEphp)php"php;
+php php php php php php php php php php php php php$bindphp[php'php:TBNAMEphp'php]php php=php php$tableNamephp;
+php php php php php php php php php php php php ifphp php(php$schemaNamephp)php php{
+php php php php php php php php php php php php php php php php php$subSqlphp php.php=php php'php ANDphp UPPERphp(ACCphp.OWNERphp)php php=php UPPERphp(php:SCNAMEphp)php'php;
+php php php php php php php php php php php php php php php php php$bindphp[php'php:SCNAMEphp'php]php php=php php$schemaNamephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$sqlphp=php"SELECTphp TCphp.TABLEphp_NAMEphp,php TCphp.OWNERphp,php TCphp.COLUMNphp_NAMEphp,php TCphp.DATAphp_TYPEphp,
+php php php php php php php php php php php php php php php php php php php php TCphp.DATAphp_DEFAULTphp,php TCphp.NULLABLEphp,php TCphp.COLUMNphp_IDphp,php TCphp.DATAphp_LENGTHphp,
+php php php php php php php php php php php php php php php php php php php php TCphp.DATAphp_SCALEphp,php TCphp.DATAphp_PRECISIONphp,php CCphp.CONSTRAINTphp_TYPEphp,php CCphp.POSITION
+php php php php php php php php php php php php php php php php FROMphp ALLphp_TABphp_COLUMNSphp TCphp,php php(php$subSqlphp)php CC
+php php php php php php php php php php php php php php php php WHEREphp UPPERphp(TCphp.TABLEphp_NAMEphp)php php=php UPPERphp(php:TBNAMEphp)
+php php php php php php php php php php php php php php php php php php ANDphp TCphp.OWNERphp php=php CCphp.OWNERphp(php+php)php ANDphp TCphp.TABLEphp_NAMEphp php=php CCphp.TABLEphp_NAMEphp(php+php)php ANDphp TCphp.COLUMNphp_NAMEphp php=php CCphp.COLUMNphp_NAMEphp(php+php)php"php;
+php php php php php php php php php php php php ifphp php(php$schemaNamephp)php php{
+php php php php php php php php php php php php php php php php php$sqlphp php.php=php php'php ANDphp UPPERphp(TCphp.OWNERphp)php php=php UPPERphp(php:SCNAMEphp)php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$sqlphp php.php=php php'php ORDERphp BYphp TCphp.COLUMNphp_IDphp'php;
+php php php php php php php php php}
 
-        $stmt = $this->query($sql, $bind);
+php php php php php php php php php$stmtphp php=php php$thisphp-php>queryphp(php$sqlphp,php php$bindphp)php;
 
-        /**
-         * Use FETCH_NUM so we are not dependent on the CASE attribute of the PDO connection
-         */
-        $result = $stmt->fetchAll(Zend_Db::FETCH_NUM);
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Usephp FETCHphp_NUMphp sophp wephp arephp notphp dependentphp onphp thephp CASEphp attributephp ofphp thephp PDOphp connection
+php php php php php php php php php php*php/
+php php php php php php php php php$resultphp php=php php$stmtphp-php>fetchAllphp(Zendphp_Dbphp:php:FETCHphp_NUMphp)php;
 
-        $table_name      = 0;
-        $owner           = 1;
-        $column_name     = 2;
-        $data_type       = 3;
-        $data_default    = 4;
-        $nullable        = 5;
-        $column_id       = 6;
-        $data_length     = 7;
-        $data_scale      = 8;
-        $data_precision  = 9;
-        $constraint_type = 10;
-        $position        = 11;
+php php php php php php php php php$tablephp_namephp php php php php php php=php php0php;
+php php php php php php php php php$ownerphp php php php php php php php php php php php=php php1php;
+php php php php php php php php php$columnphp_namephp php php php php php=php php2php;
+php php php php php php php php php$dataphp_typephp php php php php php php php=php php3php;
+php php php php php php php php php$dataphp_defaultphp php php php php=php php4php;
+php php php php php php php php php$nullablephp php php php php php php php php=php php5php;
+php php php php php php php php php$columnphp_idphp php php php php php php php=php php6php;
+php php php php php php php php php$dataphp_lengthphp php php php php php=php php7php;
+php php php php php php php php php$dataphp_scalephp php php php php php php=php php8php;
+php php php php php php php php php$dataphp_precisionphp php php=php php9php;
+php php php php php php php php php$constraintphp_typephp php=php php1php0php;
+php php php php php php php php php$positionphp php php php php php php php php=php php1php1php;
 
-        $desc = array();
-        foreach ($result as $key => $row) {
-            list ($primary, $primaryPosition, $identity) = array(false, null, false);
-            if ($row[$constraint_type] == 'P') {
-                $primary = true;
-                $primaryPosition = $row[$position];
-                /**
-                 * Oracle does not support auto-increment keys.
-                 */
-                $identity = false;
-            }
-            $desc[$this->foldCase($row[$column_name])] = array(
-                'SCHEMA_NAME'      => $this->foldCase($row[$owner]),
-                'TABLE_NAME'       => $this->foldCase($row[$table_name]),
-                'COLUMN_NAME'      => $this->foldCase($row[$column_name]),
-                'COLUMN_POSITION'  => $row[$column_id],
-                'DATA_TYPE'        => $row[$data_type],
-                'DEFAULT'          => $row[$data_default],
-                'NULLABLE'         => (bool) ($row[$nullable] == 'Y'),
-                'LENGTH'           => $row[$data_length],
-                'SCALE'            => $row[$data_scale],
-                'PRECISION'        => $row[$data_precision],
-                'UNSIGNED'         => null, // @todo
-                'PRIMARY'          => $primary,
-                'PRIMARY_POSITION' => $primaryPosition,
-                'IDENTITY'         => $identity
-            );
-        }
-        return $desc;
-    }
+php php php php php php php php php$descphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$resultphp asphp php$keyphp php=php>php php$rowphp)php php{
+php php php php php php php php php php php php listphp php(php$primaryphp,php php$primaryPositionphp,php php$identityphp)php php=php arrayphp(falsephp,php nullphp,php falsephp)php;
+php php php php php php php php php php php php ifphp php(php$rowphp[php$constraintphp_typephp]php php=php=php php'Pphp'php)php php{
+php php php php php php php php php php php php php php php php php$primaryphp php=php truephp;
+php php php php php php php php php php php php php php php php php$primaryPositionphp php=php php$rowphp[php$positionphp]php;
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php Oraclephp doesphp notphp supportphp autophp-incrementphp keysphp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php$identityphp php=php falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$descphp[php$thisphp-php>foldCasephp(php$rowphp[php$columnphp_namephp]php)php]php php=php arrayphp(
+php php php php php php php php php php php php php php php php php'SCHEMAphp_NAMEphp'php php php php php php php=php>php php$thisphp-php>foldCasephp(php$rowphp[php$ownerphp]php)php,
+php php php php php php php php php php php php php php php php php'TABLEphp_NAMEphp'php php php php php php php php=php>php php$thisphp-php>foldCasephp(php$rowphp[php$tablephp_namephp]php)php,
+php php php php php php php php php php php php php php php php php'COLUMNphp_NAMEphp'php php php php php php php=php>php php$thisphp-php>foldCasephp(php$rowphp[php$columnphp_namephp]php)php,
+php php php php php php php php php php php php php php php php php'COLUMNphp_POSITIONphp'php php php=php>php php$rowphp[php$columnphp_idphp]php,
+php php php php php php php php php php php php php php php php php'DATAphp_TYPEphp'php php php php php php php php php=php>php php$rowphp[php$dataphp_typephp]php,
+php php php php php php php php php php php php php php php php php'DEFAULTphp'php php php php php php php php php php php=php>php php$rowphp[php$dataphp_defaultphp]php,
+php php php php php php php php php php php php php php php php php'NULLABLEphp'php php php php php php php php php php=php>php php(boolphp)php php(php$rowphp[php$nullablephp]php php=php=php php'Yphp'php)php,
+php php php php php php php php php php php php php php php php php'LENGTHphp'php php php php php php php php php php php php=php>php php$rowphp[php$dataphp_lengthphp]php,
+php php php php php php php php php php php php php php php php php'SCALEphp'php php php php php php php php php php php php php=php>php php$rowphp[php$dataphp_scalephp]php,
+php php php php php php php php php php php php php php php php php'PRECISIONphp'php php php php php php php php php=php>php php$rowphp[php$dataphp_precisionphp]php,
+php php php php php php php php php php php php php php php php php'UNSIGNEDphp'php php php php php php php php php php=php>php nullphp,php php/php/php php@todo
+php php php php php php php php php php php php php php php php php'PRIMARYphp'php php php php php php php php php php php=php>php php$primaryphp,
+php php php php php php php php php php php php php php php php php'PRIMARYphp_POSITIONphp'php php=php>php php$primaryPositionphp,
+php php php php php php php php php php php php php php php php php'IDENTITYphp'php php php php php php php php php php=php>php php$identity
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$descphp;
+php php php php php}
 
-    /**
-     * Leave autocommit mode and begin a transaction.
-     *
-     * @return void
-     */
-    protected function _beginTransaction()
-    {
-        $this->_setExecuteMode(OCI_DEFAULT);
-    }
+php php php php php/php*php*
+php php php php php php*php Leavephp autocommitphp modephp andphp beginphp aphp transactionphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_beginTransactionphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setExecuteModephp(OCIphp_DEFAULTphp)php;
+php php php php php}
 
-    /**
-     * Commit a transaction and return to autocommit mode.
-     *
-     * @return void
-     * @throws Zend_Db_Adapter_Oracle_Exception
-     */
-    protected function _commit()
-    {
-        if (!oci_commit($this->_connection)) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-            throw new Zend_Db_Adapter_Oracle_Exception(oci_error($this->_connection));
-        }
-        $this->_setExecuteMode(OCI_COMMIT_ON_SUCCESS);
-    }
+php php php php php/php*php*
+php php php php php php*php Commitphp aphp transactionphp andphp returnphp tophp autocommitphp modephp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_commitphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!ociphp_commitphp(php$thisphp-php>php_connectionphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$thisphp-php>php_connectionphp)php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_setExecuteModephp(OCIphp_COMMITphp_ONphp_SUCCESSphp)php;
+php php php php php}
 
-    /**
-     * Roll back a transaction and return to autocommit mode.
-     *
-     * @return void
-     * @throws Zend_Db_Adapter_Oracle_Exception
-     */
-    protected function _rollBack()
-    {
-        if (!oci_rollback($this->_connection)) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-            throw new Zend_Db_Adapter_Oracle_Exception(oci_error($this->_connection));
-        }
-        $this->_setExecuteMode(OCI_COMMIT_ON_SUCCESS);
-    }
+php php php php php/php*php*
+php php php php php php*php Rollphp backphp aphp transactionphp andphp returnphp tophp autocommitphp modephp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_rollBackphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!ociphp_rollbackphp(php$thisphp-php>php_connectionphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(ociphp_errorphp(php$thisphp-php>php_connectionphp)php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_setExecuteModephp(OCIphp_COMMITphp_ONphp_SUCCESSphp)php;
+php php php php php}
 
-    /**
-     * Set the fetch mode.
-     *
-     * @todo Support FETCH_CLASS and FETCH_INTO.
-     *
-     * @param integer $mode A fetch mode.
-     * @return void
-     * @throws Zend_Db_Adapter_Oracle_Exception
-     */
-    public function setFetchMode($mode)
-    {
-        switch ($mode) {
-            case Zend_Db::FETCH_NUM:   // seq array
-            case Zend_Db::FETCH_ASSOC: // assoc array
-            case Zend_Db::FETCH_BOTH:  // seq+assoc array
-            case Zend_Db::FETCH_OBJ:   // object
-                $this->_fetchMode = $mode;
-                break;
-            case Zend_Db::FETCH_BOUND: // bound to PHP variable
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-                throw new Zend_Db_Adapter_Oracle_Exception('FETCH_BOUND is not supported yet');
-                break;
-            default:
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-                throw new Zend_Db_Adapter_Oracle_Exception("Invalid fetch mode '$mode' specified");
-                break;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp fetchphp modephp.
+php php php php php php*
+php php php php php php*php php@todophp Supportphp FETCHphp_CLASSphp andphp FETCHphp_INTOphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$modephp Aphp fetchphp modephp.
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setFetchModephp(php$modephp)
+php php php php php{
+php php php php php php php php switchphp php(php$modephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_NUMphp:php php php php/php/php seqphp array
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_ASSOCphp:php php/php/php assocphp array
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_BOTHphp:php php php/php/php seqphp+assocphp array
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_OBJphp:php php php php/php/php object
+php php php php php php php php php php php php php php php php php$thisphp-php>php_fetchModephp php=php php$modephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Dbphp:php:FETCHphp_BOUNDphp:php php/php/php boundphp tophp PHPphp variable
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(php'FETCHphp_BOUNDphp isphp notphp supportedphp yetphp'php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(php"Invalidphp fetchphp modephp php'php$modephp'php specifiedphp"php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Adds an adapter-specific LIMIT clause to the SELECT statement.
-     *
-     * @param string $sql
-     * @param integer $count
-     * @param integer $offset OPTIONAL
-     * @return string
-     * @throws Zend_Db_Adapter_Oracle_Exception
-     */
-    public function limit($sql, $count, $offset = 0)
-    {
-        $count = intval($count);
-        if ($count <= 0) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-            throw new Zend_Db_Adapter_Oracle_Exception("LIMIT argument count=$count is not valid");
-        }
+php php php php php/php*php*
+php php php php php php*php Addsphp anphp adapterphp-specificphp LIMITphp clausephp tophp thephp SELECTphp statementphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sql
+php php php php php php*php php@paramphp integerphp php$count
+php php php php php php*php php@paramphp integerphp php$offsetphp OPTIONAL
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp limitphp(php$sqlphp,php php$countphp,php php$offsetphp php=php php0php)
+php php php php php{
+php php php php php php php php php$countphp php=php intvalphp(php$countphp)php;
+php php php php php php php php ifphp php(php$countphp <php=php php0php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(php"LIMITphp argumentphp countphp=php$countphp isphp notphp validphp"php)php;
+php php php php php php php php php}
 
-        $offset = intval($offset);
-        if ($offset < 0) {
-            /**
-             * @see Zend_Db_Adapter_Oracle_Exception
-             */
-            require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-            throw new Zend_Db_Adapter_Oracle_Exception("LIMIT argument offset=$offset is not valid");
-        }
+php php php php php php php php php$offsetphp php=php intvalphp(php$offsetphp)php;
+php php php php php php php php ifphp php(php$offsetphp <php php0php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(php"LIMITphp argumentphp offsetphp=php$offsetphp isphp notphp validphp"php)php;
+php php php php php php php php php}
 
-        /**
-         * Oracle does not implement the LIMIT clause as some RDBMS do.
-         * We have to simulate it with subqueries and ROWNUM.
-         * Unfortunately because we use the column wildcard "*",
-         * this puts an extra column into the query result set.
-         */
-        $limit_sql = "SELECT z2.*
-            FROM (
-                SELECT z1.*, ROWNUM AS \"zend_db_rownum\"
-                FROM (
-                    " . $sql . "
-                ) z1
-            ) z2
-            WHERE z2.\"zend_db_rownum\" BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
-        return $limit_sql;
-    }
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Oraclephp doesphp notphp implementphp thephp LIMITphp clausephp asphp somephp RDBMSphp dophp.
+php php php php php php php php php php*php Wephp havephp tophp simulatephp itphp withphp subqueriesphp andphp ROWNUMphp.
+php php php php php php php php php php*php Unfortunatelyphp becausephp wephp usephp thephp columnphp wildcardphp php"php*php"php,
+php php php php php php php php php php*php thisphp putsphp anphp extraphp columnphp intophp thephp queryphp resultphp setphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$limitphp_sqlphp php=php php"SELECTphp zphp2php.php*
+php php php php php php php php php php php php FROMphp php(
+php php php php php php php php php php php php php php php php SELECTphp zphp1php.php*php,php ROWNUMphp ASphp php\php"zendphp_dbphp_rownumphp\php"
+php php php php php php php php php php php php php php php php FROMphp php(
+php php php php php php php php php php php php php php php php php php php php php"php php.php php$sqlphp php.php php"
+php php php php php php php php php php php php php php php php php)php zphp1
+php php php php php php php php php php php php php)php zphp2
+php php php php php php php php php php php php WHEREphp zphp2php.php\php"zendphp_dbphp_rownumphp\php"php BETWEENphp php"php php.php php(php$offsetphp+php1php)php php.php php"php ANDphp php"php php.php php(php$offsetphp+php$countphp)php;
+php php php php php php php php returnphp php$limitphp_sqlphp;
+php php php php php}
 
-    /**
-     * @param integer $mode
-     * @throws Zend_Db_Adapter_Oracle_Exception
-     */
-    private function _setExecuteMode($mode)
-    {
-        switch($mode) {
-            case OCI_COMMIT_ON_SUCCESS:
-            case OCI_DEFAULT:
-            case OCI_DESCRIBE_ONLY:
-                $this->_execute_mode = $mode;
-                break;
-            default:
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Adapter/Oracle/Exception.php';
-                throw new Zend_Db_Adapter_Oracle_Exception("Invalid execution mode '$mode' specified");
-                break;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php php@paramphp integerphp php$mode
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php*php/
+php php php php privatephp functionphp php_setExecuteModephp(php$modephp)
+php php php php php{
+php php php php php php php php switchphp(php$modephp)php php{
+php php php php php php php php php php php php casephp OCIphp_COMMITphp_ONphp_SUCCESSphp:
+php php php php php php php php php php php php casephp OCIphp_DEFAULTphp:
+php php php php php php php php php php php php casephp OCIphp_DESCRIBEphp_ONLYphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_executephp_modephp php=php php$modephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Adapterphp_Oraclephp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Oraclephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Adapterphp_Oraclephp_Exceptionphp(php"Invalidphp executionphp modephp php'php$modephp'php specifiedphp"php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * @return int
-     */
-    public function _getExecuteMode()
-    {
-        return $this->_execute_mode;
-    }
+php php php php php/php*php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp php_getExecuteModephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_executephp_modephp;
+php php php php php}
 
-    /**
-     * Check if the adapter supports real SQL parameters.
-     *
-     * @param string $type 'positional' or 'named'
-     * @return bool
-     */
-    public function supportsParameters($type)
-    {
-        switch ($type) {
-            case 'named':
-                return true;
-            case 'positional':
-            default:
-                return false;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp thephp adapterphp supportsphp realphp SQLphp parametersphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$typephp php'positionalphp'php orphp php'namedphp'
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp supportsParametersphp(php$typephp)
+php php php php php{
+php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php casephp php'namedphp'php:
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php casephp php'positionalphp'php:
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Retrieve server version in PHP style
-     *
-     * @return string
-     */
-    public function getServerVersion()
-    {
-        $this->_connect();
-        $version = oci_server_version($this->_connection);
-        if ($version !== false) {
-            $matches = null;
-            if (preg_match('/((?:[0-9]{1,2}\.){1,3}[0-9]{1,2})/', $version, $matches)) {
-                return $matches[1];
-            } else {
-                return null;
-            }
-        } else {
-            return null;
-        }
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Retrievephp serverphp versionphp inphp PHPphp style
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getServerVersionphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_connectphp(php)php;
+php php php php php php php php php$versionphp php=php ociphp_serverphp_versionphp(php$thisphp-php>php_connectionphp)php;
+php php php php php php php php ifphp php(php$versionphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$matchesphp php=php nullphp;
+php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php(php(php?php:php[php0php-php9php]php{php1php,php2php}php\php.php)php{php1php,php3php}php[php0php-php9php]php{php1php,php2php}php)php/php'php,php php$versionphp,php php$matchesphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$matchesphp[php1php]php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php}
+php}

@@ -1,87 +1,87 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ProjectProvidersDirectory.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ProjectProvidersDirectoryphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Project_Context_Filesystem_Directory
- */
-require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_Directory
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Filesystemphp/Directoryphp.phpphp'php;
 
-/**
- * @see Zend_Tool_Project_Context_System_Interface
- */
-require_once 'Zend/Tool/Project/Context/System/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Systemphp/Interfacephp.phpphp'php;
 
-/**
- * @see Zend_Tool_Project_Context_System_NotOverwritable
- */
-require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_NotOverwritable
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Systemphp/NotOverwritablephp.phpphp'php;
 
-/**
- * This class is the front most class for utilizing Zend_Tool_Project
- *
- * A profile is a hierarchical set of resources that keep track of
- * items within a specific project.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Project_Context_System_ProjectProvidersDirectory
-    extends Zend_Tool_Project_Context_Filesystem_Directory
-    implements Zend_Tool_Project_Context_System_Interface,
-               Zend_Tool_Project_Context_System_NotOverwritable
-{
+php/php*php*
+php php*php Thisphp classphp isphp thephp frontphp mostphp classphp forphp utilizingphp Zendphp_Toolphp_Project
+php php*
+php php*php Aphp profilephp isphp aphp hierarchicalphp setphp ofphp resourcesphp thatphp keepphp trackphp of
+php php*php itemsphp withinphp aphp specificphp projectphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_ProjectProvidersDirectory
+php php php php extendsphp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_Directory
+php php php php implementsphp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_Interfacephp,
+php php php php php php php php php php php php php php php Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_NotOverwritable
+php{
 
-    /**
-     * @var string
-     */
-    protected $_filesystemName = 'providers';
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_filesystemNamephp php=php php'providersphp'php;
 
-    /**
-     * getName()
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'ProjectProvidersDirectory';
-    }
+php php php php php/php*php*
+php php php php php php*php getNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php'ProjectProvidersDirectoryphp'php;
+php php php php php}
 
-    public function loadProviders(Zend_Tool_Framework_Registry_Interface $registry)
-    {
-        if (file_exists($this->getPath())) {
+php php php php publicphp functionphp loadProvidersphp(Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registryphp)
+php php php php php{
+php php php php php php php php ifphp php(filephp_existsphp(php$thisphp-php>getPathphp(php)php)php)php php{
 
-            $providerRepository = $registry->getProviderRepository();
+php php php php php php php php php php php php php$providerRepositoryphp php=php php$registryphp-php>getProviderRepositoryphp(php)php;
 
-            foreach (new DirectoryIterator($this->getPath()) as $item) {
-                if ($item->isFile() && (($suffixStart = strpos($item->getFilename(), 'Provider.php')) !== false)) {
-                    $className = substr($item->getFilename(), 0, $suffixStart+8);
-                    // $loadableFiles[$className] = $item->getPathname();
-                    include_once $item->getPathname();
-                    $providerRepository->addProvider(new $className());
-                }
-            }
-        }
-    }
+php php php php php php php php php php php php foreachphp php(newphp DirectoryIteratorphp(php$thisphp-php>getPathphp(php)php)php asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$itemphp-php>isFilephp(php)php php&php&php php(php(php$suffixStartphp php=php strposphp(php$itemphp-php>getFilenamephp(php)php,php php'Providerphp.phpphp'php)php)php php!php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$classNamephp php=php substrphp(php$itemphp-php>getFilenamephp(php)php,php php0php,php php$suffixStartphp+php8php)php;
+php php php php php php php php php php php php php php php php php php php php php/php/php php$loadableFilesphp[php$classNamephp]php php=php php$itemphp-php>getPathnamephp(php)php;
+php php php php php php php php php php php php php php php php php php php php includephp_oncephp php$itemphp-php>getPathnamephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$providerRepositoryphp-php>addProviderphp(newphp php$classNamephp(php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-}
+php}

@@ -1,275 +1,275 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Repository.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Repositoryphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Framework_Provider_Signature
- */
-require_once 'Zend/Tool/Framework/Provider/Signature.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Providerphp_Signature
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Providerphp/Signaturephp.phpphp'php;
 
-/**
- * @see Zend_Tool_Framework_Registry_EnabledInterface
- */
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Registryphp/EnabledInterfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Framework_Provider_Repository
-    implements Zend_Tool_Framework_Registry_EnabledInterface, IteratorAggregate, Countable
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Frameworkphp_Providerphp_Repository
+php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterfacephp,php IteratorAggregatephp,php Countable
+php{
 
-    /**
-     * @var Zend_Tool_Framework_Registry
-     */
-    protected $_registry = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Registry
+php php php php php php*php/
+php php php php protectedphp php$php_registryphp php=php nullphp;
 
-    /**
-     * @var bool
-     */
-    protected $_processOnAdd = false;
+php php php php php/php*php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_processOnAddphp php=php falsephp;
 
-    /**
-     * @var Zend_Tool_Framework_Provider_Interface[]
-     */
-    protected $_unprocessedProviders = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp[php]
+php php php php php php*php/
+php php php php protectedphp php$php_unprocessedProvidersphp php=php arrayphp(php)php;
 
-    /**
-     * @var Zend_Tool_Framework_Provider_Signature[]
-     */
-    protected $_providerSignatures = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Providerphp_Signaturephp[php]
+php php php php php php*php/
+php php php php protectedphp php$php_providerSignaturesphp php=php arrayphp(php)php;
 
-    /**
-     * @var array Array of Zend_Tool_Framework_Provider_Inteface
-     */
-    protected $_providers = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Arrayphp ofphp Zendphp_Toolphp_Frameworkphp_Providerphp_Inteface
+php php php php php php*php/
+php php php php protectedphp php$php_providersphp php=php arrayphp(php)php;
 
-    /**
-     * setRegistry()
-     *
-     * @param Zend_Tool_Framework_Registry_Interface $registry
-     * @return unknown
-     */
-    public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
-    {
-        $this->_registry = $registry;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setRegistryphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registry
+php php php php php php*php php@returnphp unknown
+php php php php php php*php/
+php php php php publicphp functionphp setRegistryphp(Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registryphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_registryphp php=php php$registryphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set the ProcessOnAdd flag
-     *
-     * @param unknown_type $processOnAdd
-     * @return unknown
-     */
-    public function setProcessOnAdd($processOnAdd = true)
-    {
-        $this->_processOnAdd = (bool) $processOnAdd;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp ProcessOnAddphp flag
+php php php php php php*
+php php php php php php*php php@paramphp unknownphp_typephp php$processOnAdd
+php php php php php php*php php@returnphp unknown
+php php php php php php*php/
+php php php php publicphp functionphp setProcessOnAddphp(php$processOnAddphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_processOnAddphp php=php php(boolphp)php php$processOnAddphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add a provider to the repository for processing
-     *
-     * @param Zend_Tool_Framework_Provider_Interface $provider
-     * @return Zend_Tool_Framework_Provider_Repository
-     */
-    public function addProvider(Zend_Tool_Framework_Provider_Interface $provider, $overwriteExistingProvider = false)
-    {
-        if ($provider instanceof Zend_Tool_Framework_Registry_EnabledInterface) {
-            $provider->setRegistry($this->_registry);
-        }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp providerphp tophp thephp repositoryphp forphp processing
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp php$provider
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Providerphp_Repository
+php php php php php php*php/
+php php php php publicphp functionphp addProviderphp(Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp php$providerphp,php php$overwriteExistingProviderphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$providerphp instanceofphp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterfacephp)php php{
+php php php php php php php php php php php php php$providerphp-php>setRegistryphp(php$thisphp-php>php_registryphp)php;
+php php php php php php php php php}
 
-        if (method_exists($provider, 'getName')) {
-            $providerName = $provider->getName();
-        } else {
-            $providerName = $this->_parseName($provider);
-        }
+php php php php php php php php ifphp php(methodphp_existsphp(php$providerphp,php php'getNamephp'php)php)php php{
+php php php php php php php php php php php php php$providerNamephp php=php php$providerphp-php>getNamephp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$providerNamephp php=php php$thisphp-php>php_parseNamephp(php$providerphp)php;
+php php php php php php php php php}
 
-        // if a provider by the given name already exist, and its not set as overwritable, throw exception
-        if (!$overwriteExistingProvider &&
-            (array_key_exists($providerName, $this->_unprocessedProviders)
-                || array_key_exists($providerName, $this->_providers)))
-        {
-            require_once 'Zend/Tool/Framework/Provider/Exception.php';
-            throw new Zend_Tool_Framework_Provider_Exception('A provider by the name ' . $providerName
-                . ' is already registered and $overrideExistingProvider is set to false.');
-        }
+php php php php php php php php php/php/php ifphp aphp providerphp byphp thephp givenphp namephp alreadyphp existphp,php andphp itsphp notphp setphp asphp overwritablephp,php throwphp exception
+php php php php php php php php ifphp php(php!php$overwriteExistingProviderphp php&php&
+php php php php php php php php php php php php php(arrayphp_keyphp_existsphp(php$providerNamephp,php php$thisphp-php>php_unprocessedProvidersphp)
+php php php php php php php php php php php php php php php php php|php|php arrayphp_keyphp_existsphp(php$providerNamephp,php php$thisphp-php>php_providersphp)php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Providerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Providerphp_Exceptionphp(php'Aphp providerphp byphp thephp namephp php'php php.php php$providerName
+php php php php php php php php php php php php php php php php php.php php'php isphp alreadyphp registeredphp andphp php$overrideExistingProviderphp isphp setphp tophp falsephp.php'php)php;
+php php php php php php php php php}
 
-        $this->_unprocessedProviders[$providerName] = $provider;
+php php php php php php php php php$thisphp-php>php_unprocessedProvidersphp[php$providerNamephp]php php=php php$providerphp;
 
-        // if process has already been called, process immediately.
-        if ($this->_processOnAdd) {
-            $this->process();
-        }
+php php php php php php php php php/php/php ifphp processphp hasphp alreadyphp beenphp calledphp,php processphp immediatelyphp.
+php php php php php php php php ifphp php(php$thisphp-php>php_processOnAddphp)php php{
+php php php php php php php php php php php php php$thisphp-php>processphp(php)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    public function hasProvider($providerOrClassName, $processedOnly = true)
-    {
-        if ($providerOrClassName instanceof Zend_Tool_Framework_Provider_Interface) {
-            $targetProviderClassName = get_class($providerOrClassName);
-        } else {
-            $targetProviderClassName = (string) $providerOrClassName;
-        }
+php php php php publicphp functionphp hasProviderphp(php$providerOrClassNamephp,php php$processedOnlyphp php=php truephp)
+php php php php php{
+php php php php php php php php ifphp php(php$providerOrClassNamephp instanceofphp Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp)php php{
+php php php php php php php php php php php php php$targetProviderClassNamephp php=php getphp_classphp(php$providerOrClassNamephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$targetProviderClassNamephp php=php php(stringphp)php php$providerOrClassNamephp;
+php php php php php php php php php}
 
-        if (!$processedOnly) {
-            foreach ($this->_unprocessedProviders as $unprocessedProvider) {
-                if (get_class($unprocessedProvider) == $targetProviderClassName) {
-                    return true;
-                }
-            }
-        }
+php php php php php php php php ifphp php(php!php$processedOnlyphp)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_unprocessedProvidersphp asphp php$unprocessedProviderphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(getphp_classphp(php$unprocessedProviderphp)php php=php=php php$targetProviderClassNamephp)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        foreach ($this->_providers as $processedProvider) {
-            if (get_class($processedProvider) == $targetProviderClassName) {
-                return true;
-            }
-        }
+php php php php php php php php foreachphp php(php$thisphp-php>php_providersphp asphp php$processedProviderphp)php php{
+php php php php php php php php php php php php ifphp php(getphp_classphp(php$processedProviderphp)php php=php=php php$targetProviderClassNamephp)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Process all of the unprocessed providers
-     *
-     */
-    public function process()
-    {
+php php php php php/php*php*
+php php php php php php*php Processphp allphp ofphp thephp unprocessedphp providers
+php php php php php php*
+php php php php php php*php/
+php php php php publicphp functionphp processphp(php)
+php php php php php{
 
-        // process all providers in the unprocessedProviders array
-        //foreach ($this->_unprocessedProviders as $providerName => $provider) {
-        reset($this->_unprocessedProviders);
-        while ($this->_unprocessedProviders) {
+php php php php php php php php php/php/php processphp allphp providersphp inphp thephp unprocessedProvidersphp array
+php php php php php php php php php/php/foreachphp php(php$thisphp-php>php_unprocessedProvidersphp asphp php$providerNamephp php=php>php php$providerphp)php php{
+php php php php php php php php resetphp(php$thisphp-php>php_unprocessedProvidersphp)php;
+php php php php php php php php whilephp php(php$thisphp-php>php_unprocessedProvidersphp)php php{
 
-            $providerName = key($this->_unprocessedProviders);
-            $provider = array_shift($this->_unprocessedProviders);
+php php php php php php php php php php php php php$providerNamephp php=php keyphp(php$thisphp-php>php_unprocessedProvidersphp)php;
+php php php php php php php php php php php php php$providerphp php=php arrayphp_shiftphp(php$thisphp-php>php_unprocessedProvidersphp)php;
 
-            // create a signature for the provided provider
-            $providerSignature = new Zend_Tool_Framework_Provider_Signature($provider);
+php php php php php php php php php php php php php/php/php createphp aphp signaturephp forphp thephp providedphp provider
+php php php php php php php php php php php php php$providerSignaturephp php=php newphp Zendphp_Toolphp_Frameworkphp_Providerphp_Signaturephp(php$providerphp)php;
 
-            if ($providerSignature instanceof Zend_Tool_Framework_Registry_EnabledInterface) {
-                $providerSignature->setRegistry($this->_registry);
-            }
+php php php php php php php php php php php php ifphp php(php$providerSignaturephp instanceofphp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterfacephp)php php{
+php php php php php php php php php php php php php php php php php$providerSignaturephp-php>setRegistryphp(php$thisphp-php>php_registryphp)php;
+php php php php php php php php php php php php php}
 
-            $providerSignature->process();
+php php php php php php php php php php php php php$providerSignaturephp-php>processphp(php)php;
 
-            // ensure the name is lowercased for easier searching
-            $providerName = strtolower($providerName);
+php php php php php php php php php php php php php/php/php ensurephp thephp namephp isphp lowercasedphp forphp easierphp searching
+php php php php php php php php php php php php php$providerNamephp php=php strtolowerphp(php$providerNamephp)php;
 
-            // add to the appropraite place
-            $this->_providerSignatures[$providerName] = $providerSignature;
-            $this->_providers[$providerName]          = $providerSignature->getProvider();
+php php php php php php php php php php php php php/php/php addphp tophp thephp appropraitephp place
+php php php php php php php php php php php php php$thisphp-php>php_providerSignaturesphp[php$providerNamephp]php php=php php$providerSignaturephp;
+php php php php php php php php php php php php php$thisphp-php>php_providersphp[php$providerNamephp]php php php php php php php php php php php=php php$providerSignaturephp-php>getProviderphp(php)php;
 
-            if ($provider instanceof Zend_Tool_Framework_Provider_Initializable) {
-                $provider->initialize();
-            }
+php php php php php php php php php php php php ifphp php(php$providerphp instanceofphp Zendphp_Toolphp_Frameworkphp_Providerphp_Initializablephp)php php{
+php php php php php php php php php php php php php php php php php$providerphp-php>initializephp(php)php;
+php php php php php php php php php php php php php}
 
-        }
+php php php php php php php php php}
 
-    }
+php php php php php}
 
-    /**
-     * getProviders() Get all the providers in the repository
-     *
-     * @return array
-     */
-    public function getProviders()
-    {
-        return $this->_providers;
-    }
+php php php php php/php*php*
+php php php php php php*php getProvidersphp(php)php Getphp allphp thephp providersphp inphp thephp repository
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getProvidersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_providersphp;
+php php php php php}
 
-    /**
-     * getProviderSignatures() Get all the provider signatures
-     *
-     * @return array
-     */
-    public function getProviderSignatures()
-    {
-        return $this->_providerSignatures;
-    }
+php php php php php/php*php*
+php php php php php php*php getProviderSignaturesphp(php)php Getphp allphp thephp providerphp signatures
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getProviderSignaturesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_providerSignaturesphp;
+php php php php php}
 
-    /**
-     * getProvider()
-     *
-     * @param string $providerName
-     * @return Zend_Tool_Framework_Provider_Interface
-     */
-    public function getProvider($providerName)
-    {
-        return $this->_providers[strtolower($providerName)];
-    }
+php php php php php/php*php*
+php php php php php php*php getProviderphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$providerName
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Providerphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getProviderphp(php$providerNamephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_providersphp[strtolowerphp(php$providerNamephp)php]php;
+php php php php php}
 
-    /**
-     * getProviderSignature()
-     *
-     * @param string $providerName
-     * @return Zend_Tool_Framework_Provider_Signature
-     */
-    public function getProviderSignature($providerName)
-    {
-        return $this->_providerSignatures[strtolower($providerName)];
-    }
+php php php php php/php*php*
+php php php php php php*php getProviderSignaturephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$providerName
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Providerphp_Signature
+php php php php php php*php/
+php php php php publicphp functionphp getProviderSignaturephp(php$providerNamephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_providerSignaturesphp[strtolowerphp(php$providerNamephp)php]php;
+php php php php php}
 
-    /**
-     * count() - return the number of providers
-     *
-     * @return int
-     */
-    public function count()
-    {
-        return count($this->_providers);
-    }
+php php php php php/php*php*
+php php php php php php*php countphp(php)php php-php returnphp thephp numberphp ofphp providers
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp countphp(php)
+php php php php php{
+php php php php php php php php returnphp countphp(php$thisphp-php>php_providersphp)php;
+php php php php php}
 
-    /**
-     * getIterator() - Required by the IteratorAggregate Interface
-     *
-     * @return ArrayIterator
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->getProviders());
-    }
+php php php php php/php*php*
+php php php php php php*php getIteratorphp(php)php php-php Requiredphp byphp thephp IteratorAggregatephp Interface
+php php php php php php*
+php php php php php php*php php@returnphp ArrayIterator
+php php php php php php*php/
+php php php php publicphp functionphp getIteratorphp(php)
+php php php php php{
+php php php php php php php php returnphp newphp ArrayIteratorphp(php$thisphp-php>getProvidersphp(php)php)php;
+php php php php php}
 
-    /**
-     * _parseName - internal method to determine the name of an action when one is not explicity provided.
-     *
-     * @param Zend_Tool_Framework_Action_Interface $action
-     * @return string
-     */
-    protected function _parseName(Zend_Tool_Framework_Provider_Interface $provider)
-    {
-        $className = get_class($provider);
-        $providerName = $className;
-        if (strpos($providerName, '_') !== false) {
-            $providerName = substr($providerName, strrpos($providerName, '_')+1);
-        }
-        if (substr($providerName, -8) == 'Provider') {
-            $providerName = substr($providerName, 0, strlen($providerName)-8);
-        }
-        return $providerName;
-    }
+php php php php php/php*php*
+php php php php php php*php php_parseNamephp php-php internalphp methodphp tophp determinephp thephp namephp ofphp anphp actionphp whenphp onephp isphp notphp explicityphp providedphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Actionphp_Interfacephp php$action
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_parseNamephp(Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp php$providerphp)
+php php php php php{
+php php php php php php php php php$classNamephp php=php getphp_classphp(php$providerphp)php;
+php php php php php php php php php$providerNamephp php=php php$classNamephp;
+php php php php php php php php ifphp php(strposphp(php$providerNamephp,php php'php_php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$providerNamephp php=php substrphp(php$providerNamephp,php strrposphp(php$providerNamephp,php php'php_php'php)php+php1php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(substrphp(php$providerNamephp,php php-php8php)php php=php=php php'Providerphp'php)php php{
+php php php php php php php php php php php php php$providerNamephp php=php substrphp(php$providerNamephp,php php0php,php strlenphp(php$providerNamephp)php-php8php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$providerNamephp;
+php php php php php}
 
-}
+php}

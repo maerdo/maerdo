@@ -1,549 +1,549 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage Exif
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Tags.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Gdata
+php php*php php@subpackagephp Exif
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Tagsphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Gdata_Extension
- */
-require_once 'Zend/Gdata/Extension.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Extension
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Extensionphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif
- */
-require_once 'Zend/Gdata/Exif.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exif
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_Distance
- */
-require_once 'Zend/Gdata/Exif/Extension/Distance.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_Distance
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/Distancephp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_Exposure
- */
-require_once 'Zend/Gdata/Exif/Extension/Exposure.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_Exposure
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/Exposurephp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_Flash
- */
-require_once 'Zend/Gdata/Exif/Extension/Flash.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_Flash
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/Flashphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_FocalLength
- */
-require_once 'Zend/Gdata/Exif/Extension/FocalLength.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_FocalLength
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/FocalLengthphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_FStop
- */
-require_once 'Zend/Gdata/Exif/Extension/FStop.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_FStop
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/FStopphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_ImageUniqueId
- */
-require_once 'Zend/Gdata/Exif/Extension/ImageUniqueId.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_ImageUniqueId
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/ImageUniqueIdphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_Iso
- */
-require_once 'Zend/Gdata/Exif/Extension/Iso.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_Iso
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/Isophp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_Make
- */
-require_once 'Zend/Gdata/Exif/Extension/Make.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_Make
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/Makephp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_Model
- */
-require_once 'Zend/Gdata/Exif/Extension/Model.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_Model
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/Modelphp.phpphp'php;
 
-/**
- * @see Zend_Gdata_Exif_Extension_Time
- */
-require_once 'Zend/Gdata/Exif/Extension/Time.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Exifphp_Extensionphp_Time
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Exifphp/Extensionphp/Timephp.phpphp'php;
 
-/**
- * Represents the exif:tags element used by the Gdata Exif extensions.
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage Exif
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Gdata_Exif_Extension_Tags extends Zend_Gdata_Extension
-{
+php/php*php*
+php php*php Representsphp thephp exifphp:tagsphp elementphp usedphp byphp thephp Gdataphp Exifphp extensionsphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Gdata
+php php*php php@subpackagephp Exif
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp extendsphp Zendphp_Gdataphp_Extension
+php{
 
-    protected $_rootNamespace = 'exif';
-    protected $_rootElement = 'tags';
+php php php php protectedphp php$php_rootNamespacephp php=php php'exifphp'php;
+php php php php protectedphp php$php_rootElementphp php=php php'tagsphp'php;
 
-    /**
-     * exif:distance value
-     *
-     * @var Zend_Gdata_Exif_Extension_Distance
-     */
-    protected $_distance = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:distancephp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_Distance
+php php php php php php*php/
+php php php php protectedphp php$php_distancephp php=php nullphp;
 
-    /**
-     * exif:exposure value
-     *
-     * @var Zend_Gdata_Exif_Extension_Exposure
-     */
-    protected $_exposure = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:exposurephp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_Exposure
+php php php php php php*php/
+php php php php protectedphp php$php_exposurephp php=php nullphp;
 
-    /**
-     * exif:flash value
-     *
-     * @var Zend_Gdata_Exif_Extension_Flash
-     */
-    protected $_flash = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:flashphp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_Flash
+php php php php php php*php/
+php php php php protectedphp php$php_flashphp php=php nullphp;
 
-    /**
-     * exif:focalLength value
-     *
-     * @var Zend_Gdata_Exif_Extension_FocalLength
-     */
-    protected $_focalLength = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:focalLengthphp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_FocalLength
+php php php php php php*php/
+php php php php protectedphp php$php_focalLengthphp php=php nullphp;
 
-    /**
-     * exif:fStop value
-     *
-     * @var Zend_Gdata_Exif_Extension_FStop
-     */
-    protected $_fStop = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:fStopphp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_FStop
+php php php php php php*php/
+php php php php protectedphp php$php_fStopphp php=php nullphp;
 
-    /**
-     * exif:imageUniqueID value
-     *
-     * @var Zend_Gdata_Exif_Extension_ImageUniqueId
-     */
-    protected $_imageUniqueId = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:imageUniqueIDphp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_ImageUniqueId
+php php php php php php*php/
+php php php php protectedphp php$php_imageUniqueIdphp php=php nullphp;
 
-    /**
-     * exif:iso value
-     *
-     * @var Zend_Gdata_Exif_Extension_Iso
-     */
-    protected $_iso = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:isophp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_Iso
+php php php php php php*php/
+php php php php protectedphp php$php_isophp php=php nullphp;
 
-    /**
-     * exif:make value
-     *
-     * @var Zend_Gdata_Exif_Extension_Make
-     */
-    protected $_make = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:makephp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_Make
+php php php php php php*php/
+php php php php protectedphp php$php_makephp php=php nullphp;
 
-    /**
-     * exif:model value
-     *
-     * @var Zend_Gdata_Exif_Extension_Model
-     */
-    protected $_model = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:modelphp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_Model
+php php php php php php*php/
+php php php php protectedphp php$php_modelphp php=php nullphp;
 
-    /**
-     * exif:time value
-     *
-     * @var Zend_Gdata_Exif_Extension_Time
-     */
-    protected $_time = null;
+php php php php php/php*php*
+php php php php php php*php exifphp:timephp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Gdataphp_Exifphp_Extensionphp_Time
+php php php php php php*php/
+php php php php protectedphp php$php_timephp php=php nullphp;
 
-    /**
-     * Constructs a new Zend_Gdata_Exif_Extension_Tags object.
-     *
-     * @param Zend_Gdata_Exif_Extension_Distance $distance (optional) The exif:distance
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_Exposure $exposure (optional) The exif:exposure
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_Flash $flash (optional) The exif:flash
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_FocalLength$focalLength (optional) The exif:focallength
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_FStop $fStop (optional) The exif:fstop
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_ImageUniqueId $imageUniqueId (optional) The exif:imageUniqueID
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_Iso $iso (optional) The exif:iso
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_Make $make (optional) The exif:make
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_Model $model (optional) The exif:model
-     *          value to be set in the constructed object.
-     * @param Zend_Gdata_Exif_Extension_Time $time (optional) The exif:time
-     *          value to be set in the constructed object.
-     */
-    public function __construct($distance = null, $exposure = null,
-            $flash = null, $focalLength = null, $fStop = null,
-            $imageUniqueId = null, $iso = null, $make = null,
-            $model = null, $time = null)
-    {
-        $this->registerAllNamespaces(Zend_Gdata_Exif::$namespaces);
-        parent::__construct();
-        $this->setDistance($distance);
-        $this->setExposure($exposure);
-        $this->setFlash($flash);
-        $this->setFocalLength($focalLength);
-        $this->setFStop($fStop);
-        $this->setImageUniqueId($imageUniqueId);
-        $this->setIso($iso);
-        $this->setMake($make);
-        $this->setModel($model);
-        $this->setTime($time);
-    }
+php php php php php/php*php*
+php php php php php php*php Constructsphp aphp newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp objectphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Distancephp php$distancephp php(optionalphp)php Thephp exifphp:distance
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Exposurephp php$exposurephp php(optionalphp)php Thephp exifphp:exposure
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Flashphp php$flashphp php(optionalphp)php Thephp exifphp:flash
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_FocalLengthphp$focalLengthphp php(optionalphp)php Thephp exifphp:focallength
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_FStopphp php$fStopphp php(optionalphp)php Thephp exifphp:fstop
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_ImageUniqueIdphp php$imageUniqueIdphp php(optionalphp)php Thephp exifphp:imageUniqueID
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Isophp php$isophp php(optionalphp)php Thephp exifphp:iso
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Makephp php$makephp php(optionalphp)php Thephp exifphp:make
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Modelphp php$modelphp php(optionalphp)php Thephp exifphp:model
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Timephp php$timephp php(optionalphp)php Thephp exifphp:time
+php php php php php php*php php php php php php php php php php valuephp tophp bephp setphp inphp thephp constructedphp objectphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$distancephp php=php nullphp,php php$exposurephp php=php nullphp,
+php php php php php php php php php php php php php$flashphp php=php nullphp,php php$focalLengthphp php=php nullphp,php php$fStopphp php=php nullphp,
+php php php php php php php php php php php php php$imageUniqueIdphp php=php nullphp,php php$isophp php=php nullphp,php php$makephp php=php nullphp,
+php php php php php php php php php php php php php$modelphp php=php nullphp,php php$timephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>registerAllNamespacesphp(Zendphp_Gdataphp_Exifphp:php:php$namespacesphp)php;
+php php php php php php php php parentphp:php:php_php_constructphp(php)php;
+php php php php php php php php php$thisphp-php>setDistancephp(php$distancephp)php;
+php php php php php php php php php$thisphp-php>setExposurephp(php$exposurephp)php;
+php php php php php php php php php$thisphp-php>setFlashphp(php$flashphp)php;
+php php php php php php php php php$thisphp-php>setFocalLengthphp(php$focalLengthphp)php;
+php php php php php php php php php$thisphp-php>setFStopphp(php$fStopphp)php;
+php php php php php php php php php$thisphp-php>setImageUniqueIdphp(php$imageUniqueIdphp)php;
+php php php php php php php php php$thisphp-php>setIsophp(php$isophp)php;
+php php php php php php php php php$thisphp-php>setMakephp(php$makephp)php;
+php php php php php php php php php$thisphp-php>setModelphp(php$modelphp)php;
+php php php php php php php php php$thisphp-php>setTimephp(php$timephp)php;
+php php php php php}
 
-    /**
-     * Retrieves a DOMElement which corresponds to this element and all
-     * child properties.  This is used to build an entry back into a DOM
-     * and eventually XML text for application storage/persistence.
-     *
-     * @param DOMDocument $doc The DOMDocument used to construct DOMElements
-     * @return DOMElement The DOMElement representing this element and all
-     *          child properties.
-     */
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
-    {
-        $element = parent::getDOM($doc, $majorVersion, $minorVersion);
-        if ($this->_distance !== null) {
-            $element->appendChild($this->_distance->getDOM($element->ownerDocument));
-        }
-        if ($this->_exposure !== null) {
-            $element->appendChild($this->_exposure->getDOM($element->ownerDocument));
-        }
-        if ($this->_flash !== null) {
-            $element->appendChild($this->_flash->getDOM($element->ownerDocument));
-        }
-        if ($this->_focalLength !== null) {
-            $element->appendChild($this->_focalLength->getDOM($element->ownerDocument));
-        }
-        if ($this->_fStop !== null) {
-            $element->appendChild($this->_fStop->getDOM($element->ownerDocument));
-        }
-        if ($this->_imageUniqueId !== null) {
-            $element->appendChild($this->_imageUniqueId->getDOM($element->ownerDocument));
-        }
-        if ($this->_iso !== null) {
-            $element->appendChild($this->_iso->getDOM($element->ownerDocument));
-        }
-        if ($this->_make !== null) {
-            $element->appendChild($this->_make->getDOM($element->ownerDocument));
-        }
-        if ($this->_model !== null) {
-            $element->appendChild($this->_model->getDOM($element->ownerDocument));
-        }
-        if ($this->_time !== null) {
-            $element->appendChild($this->_time->getDOM($element->ownerDocument));
-        }
-        return $element;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp aphp DOMElementphp whichphp correspondsphp tophp thisphp elementphp andphp all
+php php php php php php*php childphp propertiesphp.php php Thisphp isphp usedphp tophp buildphp anphp entryphp backphp intophp aphp DOM
+php php php php php php*php andphp eventuallyphp XMLphp textphp forphp applicationphp storagephp/persistencephp.
+php php php php php php*
+php php php php php php*php php@paramphp DOMDocumentphp php$docphp Thephp DOMDocumentphp usedphp tophp constructphp DOMElements
+php php php php php php*php php@returnphp DOMElementphp Thephp DOMElementphp representingphp thisphp elementphp andphp all
+php php php php php php*php php php php php php php php php php childphp propertiesphp.
+php php php php php php*php/
+php php php php publicphp functionphp getDOMphp(php$docphp php=php nullphp,php php$majorVersionphp php=php php1php,php php$minorVersionphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$elementphp php=php parentphp:php:getDOMphp(php$docphp,php php$majorVersionphp,php php$minorVersionphp)php;
+php php php php php php php php ifphp php(php$thisphp-php>php_distancephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_distancephp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_exposurephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_exposurephp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_flashphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_flashphp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_focalLengthphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_focalLengthphp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_fStopphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_fStopphp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_imageUniqueIdphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_imageUniqueIdphp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_isophp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_isophp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_makephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_makephp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_modelphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_modelphp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_timephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_timephp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$elementphp;
+php php php php php}
 
-    /**
-     * Creates individual Entry objects of the appropriate type and
-     * stores them as members of this entry based upon DOM data.
-     *
-     * @param DOMNode $child The DOMNode to process
-     */
-    protected function takeChildFromDOM($child)
-    {
-        $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
-        switch ($absoluteNodeName) {
-            case $this->lookupNamespace('exif') . ':' . 'distance';
-                $distance = new Zend_Gdata_Exif_Extension_Distance();
-                $distance->transferFromDOM($child);
-                $this->_distance = $distance;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'exposure';
-                $exposure = new Zend_Gdata_Exif_Extension_Exposure();
-                $exposure->transferFromDOM($child);
-                $this->_exposure = $exposure;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'flash';
-                $flash = new Zend_Gdata_Exif_Extension_Flash();
-                $flash->transferFromDOM($child);
-                $this->_flash = $flash;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'focallength';
-                $focalLength = new Zend_Gdata_Exif_Extension_FocalLength();
-                $focalLength->transferFromDOM($child);
-                $this->_focalLength = $focalLength;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'fstop';
-                $fStop = new Zend_Gdata_Exif_Extension_FStop();
-                $fStop->transferFromDOM($child);
-                $this->_fStop = $fStop;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'imageUniqueID';
-                $imageUniqueId = new Zend_Gdata_Exif_Extension_ImageUniqueId();
-                $imageUniqueId->transferFromDOM($child);
-                $this->_imageUniqueId = $imageUniqueId;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'iso';
-                $iso = new Zend_Gdata_Exif_Extension_Iso();
-                $iso->transferFromDOM($child);
-                $this->_iso = $iso;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'make';
-                $make = new Zend_Gdata_Exif_Extension_Make();
-                $make->transferFromDOM($child);
-                $this->_make = $make;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'model';
-                $model = new Zend_Gdata_Exif_Extension_Model();
-                $model->transferFromDOM($child);
-                $this->_model = $model;
-                break;
-            case $this->lookupNamespace('exif') . ':' . 'time';
-                $time = new Zend_Gdata_Exif_Extension_Time();
-                $time->transferFromDOM($child);
-                $this->_time = $time;
-                break;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Createsphp individualphp Entryphp objectsphp ofphp thephp appropriatephp typephp and
+php php php php php php*php storesphp themphp asphp membersphp ofphp thisphp entryphp basedphp uponphp DOMphp dataphp.
+php php php php php php*
+php php php php php php*php php@paramphp DOMNodephp php$childphp Thephp DOMNodephp tophp process
+php php php php php php*php/
+php php php php protectedphp functionphp takeChildFromDOMphp(php$childphp)
+php php php php php{
+php php php php php php php php php$absoluteNodeNamephp php=php php$childphp-php>namespaceURIphp php.php php'php:php'php php.php php$childphp-php>localNamephp;
+php php php php php php php php switchphp php(php$absoluteNodeNamephp)php php{
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'distancephp'php;
+php php php php php php php php php php php php php php php php php$distancephp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Distancephp(php)php;
+php php php php php php php php php php php php php php php php php$distancephp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_distancephp php=php php$distancephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'exposurephp'php;
+php php php php php php php php php php php php php php php php php$exposurephp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Exposurephp(php)php;
+php php php php php php php php php php php php php php php php php$exposurephp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_exposurephp php=php php$exposurephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'flashphp'php;
+php php php php php php php php php php php php php php php php php$flashphp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Flashphp(php)php;
+php php php php php php php php php php php php php php php php php$flashphp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_flashphp php=php php$flashphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'focallengthphp'php;
+php php php php php php php php php php php php php php php php php$focalLengthphp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_FocalLengthphp(php)php;
+php php php php php php php php php php php php php php php php php$focalLengthphp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_focalLengthphp php=php php$focalLengthphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'fstopphp'php;
+php php php php php php php php php php php php php php php php php$fStopphp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_FStopphp(php)php;
+php php php php php php php php php php php php php php php php php$fStopphp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_fStopphp php=php php$fStopphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'imageUniqueIDphp'php;
+php php php php php php php php php php php php php php php php php$imageUniqueIdphp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_ImageUniqueIdphp(php)php;
+php php php php php php php php php php php php php php php php php$imageUniqueIdphp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_imageUniqueIdphp php=php php$imageUniqueIdphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'isophp'php;
+php php php php php php php php php php php php php php php php php$isophp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Isophp(php)php;
+php php php php php php php php php php php php php php php php php$isophp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_isophp php=php php$isophp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'makephp'php;
+php php php php php php php php php php php php php php php php php$makephp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Makephp(php)php;
+php php php php php php php php php php php php php php php php php$makephp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_makephp php=php php$makephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'modelphp'php;
+php php php php php php php php php php php php php php php php php$modelphp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Modelphp(php)php;
+php php php php php php php php php php php php php php php php php$modelphp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_modelphp php=php php$modelphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'exifphp'php)php php.php php'php:php'php php.php php'timephp'php;
+php php php php php php php php php php php php php php php php php$timephp php=php newphp Zendphp_Gdataphp_Exifphp_Extensionphp_Timephp(php)php;
+php php php php php php php php php php php php php php php php php$timephp-php>transferFromDOMphp(php$childphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_timephp php=php php$timephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Get the value for this element's distance attribute.
-     *
-     * @see setDistance
-     * @return Zend_Gdata_Exif_Extension_Distance The requested attribute.
-     */
-    public function getDistance()
-    {
-        return $this->_distance;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp distancephp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setDistance
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Distancephp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getDistancephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_distancephp;
+php php php php php}
 
-    /**
-     * Set the value for this element's distance attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_Distance $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setDistance($value)
-    {
-        $this->_distance = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp distancephp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Distancephp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setDistancephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_distancephp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's exposure attribute.
-     *
-     * @see setExposure
-     * @return Zend_Gdata_Exif_Extension_Exposure The requested attribute.
-     */
-    public function getExposure()
-    {
-        return $this->_exposure;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp exposurephp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setExposure
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Exposurephp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getExposurephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_exposurephp;
+php php php php php}
 
-    /**
-     * Set the value for this element's exposure attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_Exposure $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setExposure($value)
-    {
-        $this->_exposure = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp exposurephp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Exposurephp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setExposurephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_exposurephp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's flash attribute.
-     *
-     * @see setFlash
-     * @return Zend_Gdata_Exif_Extension_Flash The requested attribute.
-     */
-    public function getFlash()
-    {
-        return $this->_flash;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp flashphp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setFlash
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Flashphp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getFlashphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_flashphp;
+php php php php php}
 
-    /**
-     * Set the value for this element's flash attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_Flash $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setFlash($value)
-    {
-        $this->_flash = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp flashphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Flashphp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setFlashphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_flashphp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's name attribute.
-     *
-     * @see setFocalLength
-     * @return Zend_Gdata_Exif_Extension_FocalLength The requested attribute.
-     */
-    public function getFocalLength()
-    {
-        return $this->_focalLength;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp namephp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setFocalLength
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_FocalLengthphp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getFocalLengthphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_focalLengthphp;
+php php php php php}
 
-    /**
-     * Set the value for this element's focalLength attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_FocalLength $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setFocalLength($value)
-    {
-        $this->_focalLength = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp focalLengthphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_FocalLengthphp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setFocalLengthphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_focalLengthphp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's fStop attribute.
-     *
-     * @see setFStop
-     * @return Zend_Gdata_Exif_Extension_FStop The requested attribute.
-     */
-    public function getFStop()
-    {
-        return $this->_fStop;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp fStopphp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setFStop
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_FStopphp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getFStopphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_fStopphp;
+php php php php php}
 
-    /**
-     * Set the value for this element's fStop attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_FStop $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setFStop($value)
-    {
-        $this->_fStop = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp fStopphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_FStopphp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setFStopphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fStopphp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's imageUniqueId attribute.
-     *
-     * @see setImageUniqueId
-     * @return Zend_Gdata_Exif_Extension_ImageUniqueId The requested attribute.
-     */
-    public function getImageUniqueId()
-    {
-        return $this->_imageUniqueId;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp imageUniqueIdphp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setImageUniqueId
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_ImageUniqueIdphp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getImageUniqueIdphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_imageUniqueIdphp;
+php php php php php}
 
-    /**
-     * Set the value for this element's imageUniqueId attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_ImageUniqueId $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setImageUniqueId($value)
-    {
-        $this->_imageUniqueId = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp imageUniqueIdphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_ImageUniqueIdphp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setImageUniqueIdphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_imageUniqueIdphp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's iso attribute.
-     *
-     * @see setIso
-     * @return Zend_Gdata_Exif_Extension_Iso The requested attribute.
-     */
-    public function getIso()
-    {
-        return $this->_iso;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp isophp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setIso
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Isophp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getIsophp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isophp;
+php php php php php}
 
-    /**
-     * Set the value for this element's iso attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_Iso $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setIso($value)
-    {
-        $this->_iso = $value;
-        return $this;
-    }
-    /**
-     * Get the value for this element's make attribute.
-     *
-     * @see setMake
-     * @return Zend_Gdata_Exif_Extension_Make The requested attribute.
-     */
-    public function getMake()
-    {
-        return $this->_make;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp isophp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Isophp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setIsophp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_isophp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp makephp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setMake
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Makephp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getMakephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_makephp;
+php php php php php}
 
-    /**
-     * Set the value for this element's make attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_Make $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setMake($value)
-    {
-        $this->_make = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp makephp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Makephp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setMakephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_makephp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's model attribute.
-     *
-     * @see setModel
-     * @return Zend_Gdata_Exif_Extension_Model The requested attribute.
-     */
-    public function getModel()
-    {
-        return $this->_model;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp modelphp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setModel
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Modelphp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getModelphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_modelphp;
+php php php php php}
 
-    /**
-     * Set the value for this element's model attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_Model $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setModel($value)
-    {
-        $this->_model = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp modelphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Modelphp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setModelphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_modelphp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the value for this element's time attribute.
-     *
-     * @see setTime
-     * @return Zend_Gdata_Exif_Extension_Time The requested attribute.
-     */
-    public function getTime()
-    {
-        return $this->_time;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp forphp thisphp elementphp'sphp timephp attributephp.
+php php php php php php*
+php php php php php php*php php@seephp setTime
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Timephp Thephp requestedphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp getTimephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_timephp;
+php php php php php}
 
-    /**
-     * Set the value for this element's time attribute.
-     *
-     * @param Zend_Gdata_Exif_Extension_Time $value The desired value for this attribute.
-     * @return Zend_Gdata_Exif_Extension_Tags Provides a fluent interface
-     */
-    public function setTime($value)
-    {
-        $this->_time = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp valuephp forphp thisphp elementphp'sphp timephp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Gdataphp_Exifphp_Extensionphp_Timephp php$valuephp Thephp desiredphp valuephp forphp thisphp attributephp.
+php php php php php php*php php@returnphp Zendphp_Gdataphp_Exifphp_Extensionphp_Tagsphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setTimephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_timephp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-}
+php}

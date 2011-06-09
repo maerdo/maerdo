@@ -1,187 +1,187 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: SharedKey.php 23584 2010-12-28 19:51:49Z matthew $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php SharedKeyphp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
+php php*php/
 
-/**
- * @see Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
- */
-require_once 'Zend/Service/WindowsAzure/Credentials/CredentialsAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/CredentialsAbstractphp.phpphp'php;
 
-/**
- * @see Zend_Service_WindowsAzure_Storage
- */
-require_once 'Zend/Service/WindowsAzure/Storage.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storage
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp.phpphp'php;
 
-/**
- * @see Zend_Http_Client
- */
-require_once 'Zend/Http/Client.php';
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Client
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
 
-/**
- * @see Zend_Service_WindowsAzure_Credentials_Exception
- */
-require_once 'Zend/Service/WindowsAzure/Credentials/Exception.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_Exception
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/Exceptionphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_WindowsAzure_Credentials_SharedKey
-    extends Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
-{
-    /**
-     * Sign request URL with credentials
-     *
-     * @param string $requestUrl Request URL
-     * @param string $resourceType Resource type
-     * @param string $requiredPermission Required permission
-     * @return string Signed request URL
-     */
-    public function signRequestUrl(
-        $requestUrl = '',
-        $resourceType = Zend_Service_WindowsAzure_Storage::RESOURCE_UNKNOWN,
-        $requiredPermission = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ
-    ) {
-        return $requestUrl;
-    }
-    
-    /**
-     * Sign request headers with credentials
-     *
-     * @param string $httpVerb HTTP verb the request will use
-     * @param string $path Path for the request
-     * @param string $queryString Query string for the request
-     * @param array $headers x-ms headers to add
-     * @param boolean $forTableStorage Is the request for table storage?
-     * @param string $resourceType Resource type
-     * @param string $requiredPermission Required permission
-     * @param mixed  $rawData Raw post data
-     * @return array Array of headers
-     */
-    public function signRequestHeaders(
-        $httpVerb = Zend_Http_Client::GET,
-        $path = '/',
-        $queryString = '',
-        $headers = null,
-        $forTableStorage = false,
-        $resourceType = Zend_Service_WindowsAzure_Storage::RESOURCE_UNKNOWN,
-        $requiredPermission = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ,
-        $rawData = null
-    ) {
-        // http://github.com/sriramk/winazurestorage/blob/214010a2f8931bac9c96dfeb337d56fe084ca63b/winazurestorage.py
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_SharedKey
+php php php php extendsphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Signphp requestphp URLphp withphp credentials
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$requestUrlphp Requestphp URL
+php php php php php php*php php@paramphp stringphp php$resourceTypephp Resourcephp type
+php php php php php php*php php@paramphp stringphp php$requiredPermissionphp Requiredphp permission
+php php php php php php*php php@returnphp stringphp Signedphp requestphp URL
+php php php php php php*php/
+php php php php publicphp functionphp signRequestUrlphp(
+php php php php php php php php php$requestUrlphp php=php php'php'php,
+php php php php php php php php php$resourceTypephp php=php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_UNKNOWNphp,
+php php php php php php php php php$requiredPermissionphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READ
+php php php php php)php php{
+php php php php php php php php returnphp php$requestUrlphp;
+php php php php php}
+php php php php 
+php php php php php/php*php*
+php php php php php php*php Signphp requestphp headersphp withphp credentials
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$httpVerbphp HTTPphp verbphp thephp requestphp willphp use
+php php php php php php*php php@paramphp stringphp php$pathphp Pathphp forphp thephp request
+php php php php php php*php php@paramphp stringphp php$queryStringphp Queryphp stringphp forphp thephp request
+php php php php php php*php php@paramphp arrayphp php$headersphp xphp-msphp headersphp tophp add
+php php php php php php*php php@paramphp booleanphp php$forTableStoragephp Isphp thephp requestphp forphp tablephp storagephp?
+php php php php php php*php php@paramphp stringphp php$resourceTypephp Resourcephp type
+php php php php php php*php php@paramphp stringphp php$requiredPermissionphp Requiredphp permission
+php php php php php php*php php@paramphp mixedphp php php$rawDataphp Rawphp postphp data
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp headers
+php php php php php php*php/
+php php php php publicphp functionphp signRequestHeadersphp(
+php php php php php php php php php$httpVerbphp php=php Zendphp_Httpphp_Clientphp:php:GETphp,
+php php php php php php php php php$pathphp php=php php'php/php'php,
+php php php php php php php php php$queryStringphp php=php php'php'php,
+php php php php php php php php php$headersphp php=php nullphp,
+php php php php php php php php php$forTableStoragephp php=php falsephp,
+php php php php php php php php php$resourceTypephp php=php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_UNKNOWNphp,
+php php php php php php php php php$requiredPermissionphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READphp,
+php php php php php php php php php$rawDataphp php=php null
+php php php php php)php php{
+php php php php php php php php php/php/php httpphp:php/php/githubphp.comphp/sriramkphp/winazurestoragephp/blobphp/php2php1php4php0php1php0aphp2fphp8php9php3php1bacphp9cphp9php6dfebphp3php3php7dphp5php6fephp0php8php4caphp6php3bphp/winazurestoragephp.py
 
-        // Table storage?
-        if ($forTableStorage) {
-            throw new Zend_Service_WindowsAzure_Credentials_Exception('The Windows Azure SDK for PHP does not support SharedKey authentication on table storage. Use SharedKeyLite authentication instead.');
-        }
-        
-        // Determine path
-        if ($this->_usePathStyleUri) {
-            $path = substr($path, strpos($path, '/'));
-        }
+php php php php php php php php php/php/php Tablephp storagephp?
+php php php php php php php php ifphp php(php$forTableStoragephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_Exceptionphp(php'Thephp Windowsphp Azurephp SDKphp forphp PHPphp doesphp notphp supportphp SharedKeyphp authenticationphp onphp tablephp storagephp.php Usephp SharedKeyLitephp authenticationphp insteadphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php 
+php php php php php php php php php/php/php Determinephp path
+php php php php php php php php ifphp php(php$thisphp-php>php_usePathStyleUriphp)php php{
+php php php php php php php php php php php php php$pathphp php=php substrphp(php$pathphp,php strposphp(php$pathphp,php php'php/php'php)php)php;
+php php php php php php php php php}
 
-        // Determine query
-        $queryString = $this->_prepareQueryStringForSigning($queryString);
-    
-        // Canonicalized headers
-        $canonicalizedHeaders = array();
-        
-        // Request date
-        $requestDate = '';
-        if (isset($headers[Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PREFIX_STORAGE_HEADER . 'date'])) {
-            $requestDate = $headers[Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PREFIX_STORAGE_HEADER . 'date'];
-        } else {
-            $requestDate = gmdate('D, d M Y H:i:s', time()) . ' GMT'; // RFC 1123
-            $canonicalizedHeaders[] = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PREFIX_STORAGE_HEADER . 'date:' . $requestDate;
-        }
-        
-        // Build canonicalized headers
-        if ($headers !== null) {
-            foreach ($headers as $header => $value) {
-                if (is_bool($value)) {
-                    $value = $value === true ? 'True' : 'False';
-                }
+php php php php php php php php php/php/php Determinephp query
+php php php php php php php php php$queryStringphp php=php php$thisphp-php>php_prepareQueryStringForSigningphp(php$queryStringphp)php;
+php php php php 
+php php php php php php php php php/php/php Canonicalizedphp headers
+php php php php php php php php php$canonicalizedHeadersphp php=php arrayphp(php)php;
+php php php php php php php php 
+php php php php php php php php php/php/php Requestphp date
+php php php php php php php php php$requestDatephp php=php php'php'php;
+php php php php php php php php ifphp php(issetphp(php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'datephp'php]php)php)php php{
+php php php php php php php php php php php php php$requestDatephp php=php php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'datephp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$requestDatephp php=php gmdatephp(php'Dphp,php dphp Mphp Yphp Hphp:iphp:sphp'php,php timephp(php)php)php php.php php'php GMTphp'php;php php/php/php RFCphp php1php1php2php3
+php php php php php php php php php php php php php$canonicalizedHeadersphp[php]php php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'datephp:php'php php.php php$requestDatephp;
+php php php php php php php php php}
+php php php php php php php php 
+php php php php php php php php php/php/php Buildphp canonicalizedphp headers
+php php php php php php php php ifphp php(php$headersphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php foreachphp php(php$headersphp asphp php$headerphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_boolphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$valuephp php=php=php=php truephp php?php php'Truephp'php php:php php'Falsephp'php;
+php php php php php php php php php php php php php php php php php}
 
-                $headers[$header] = $value;
-                if (substr($header, 0, strlen(Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PREFIX_STORAGE_HEADER)) == Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PREFIX_STORAGE_HEADER) {
-                    $canonicalizedHeaders[] = strtolower($header) . ':' . $value;
-                }
-            }
-        }
-        sort($canonicalizedHeaders);
+php php php php php php php php php php php php php php php php php$headersphp[php$headerphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php ifphp php(substrphp(php$headerphp,php php0php,php strlenphp(Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PREFIXphp_STORAGEphp_HEADERphp)php)php php=php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PREFIXphp_STORAGEphp_HEADERphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$canonicalizedHeadersphp[php]php php=php strtolowerphp(php$headerphp)php php.php php'php:php'php php.php php$valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php sortphp(php$canonicalizedHeadersphp)php;
 
-        // Build canonicalized resource string
-        $canonicalizedResource  = '/' . $this->_accountName;
-        if ($this->_usePathStyleUri) {
-            $canonicalizedResource .= '/' . $this->_accountName;
-        }
-        $canonicalizedResource .= $path;
-        if ($queryString !== '') {
-            $queryStringItems = $this->_makeArrayOfQueryString($queryString);
-            foreach ($queryStringItems as $key => $value) {
-                $canonicalizedResource .= "\n" . strtolower($key) . ':' . $value;
-            }
-        }
-        
-        // Content-Length header
-        $contentLength = '';
-        if (strtoupper($httpVerb) != Zend_Http_Client::GET
-             && strtoupper($httpVerb) != Zend_Http_Client::DELETE
-             && strtoupper($httpVerb) != Zend_Http_Client::HEAD) {
-            $contentLength = 0;
-            
-            if ($rawData !== null) {
-                $contentLength = strlen($rawData);
-            }
-        }
+php php php php php php php php php/php/php Buildphp canonicalizedphp resourcephp string
+php php php php php php php php php$canonicalizedResourcephp php php=php php'php/php'php php.php php$thisphp-php>php_accountNamephp;
+php php php php php php php php ifphp php(php$thisphp-php>php_usePathStyleUriphp)php php{
+php php php php php php php php php php php php php$canonicalizedResourcephp php.php=php php'php/php'php php.php php$thisphp-php>php_accountNamephp;
+php php php php php php php php php}
+php php php php php php php php php$canonicalizedResourcephp php.php=php php$pathphp;
+php php php php php php php php ifphp php(php$queryStringphp php!php=php=php php'php'php)php php{
+php php php php php php php php php php php php php$queryStringItemsphp php=php php$thisphp-php>php_makeArrayOfQueryStringphp(php$queryStringphp)php;
+php php php php php php php php php php php php foreachphp php(php$queryStringItemsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php$canonicalizedResourcephp php.php=php php"php\nphp"php php.php strtolowerphp(php$keyphp)php php.php php'php:php'php php.php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php 
+php php php php php php php php php/php/php Contentphp-Lengthphp header
+php php php php php php php php php$contentLengthphp php=php php'php'php;
+php php php php php php php php ifphp php(strtoupperphp(php$httpVerbphp)php php!php=php Zendphp_Httpphp_Clientphp:php:GET
+php php php php php php php php php php php php php php&php&php strtoupperphp(php$httpVerbphp)php php!php=php Zendphp_Httpphp_Clientphp:php:DELETE
+php php php php php php php php php php php php php php&php&php strtoupperphp(php$httpVerbphp)php php!php=php Zendphp_Httpphp_Clientphp:php:HEADphp)php php{
+php php php php php php php php php php php php php$contentLengthphp php=php php0php;
+php php php php php php php php php php php php 
+php php php php php php php php php php php php ifphp php(php$rawDataphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$contentLengthphp php=php strlenphp(php$rawDataphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-		// Create string to sign
-		$stringToSign   = array();
-		$stringToSign[] = strtoupper($httpVerb); 									// VERB
-    	$stringToSign[] = $this->_issetOr($headers, 'Content-Encoding', '');		// Content-Encoding
-    	$stringToSign[] = $this->_issetOr($headers, 'Content-Language', '');		// Content-Language
-    	$stringToSign[] = $contentLength; 											// Content-Length
-    	$stringToSign[] = $this->_issetOr($headers, 'Content-MD5', '');				// Content-MD5
-    	$stringToSign[] = $this->_issetOr($headers, 'Content-Type', '');			// Content-Type
-    	$stringToSign[] = "";														// Date
-    	$stringToSign[] = $this->_issetOr($headers, 'If-Modified-Since', '');		// If-Modified-Since
-    	$stringToSign[] = $this->_issetOr($headers, 'If-Match', '');				// If-Match
-    	$stringToSign[] = $this->_issetOr($headers, 'If-None-Match', '');			// If-None-Match
-    	$stringToSign[] = $this->_issetOr($headers, 'If-Unmodified-Since', '');		// If-Unmodified-Since
-    	$stringToSign[] = $this->_issetOr($headers, 'Range', '');					// Range
-    	
-    	if (!$forTableStorage && count($canonicalizedHeaders) > 0) {
-    		$stringToSign[] = implode("\n", $canonicalizedHeaders); // Canonicalized headers
-    	}
-    		
-    	$stringToSign[] = $canonicalizedResource;		 			// Canonicalized resource
-    	$stringToSign   = implode("\n", $stringToSign);
-    	$signString     = base64_encode(hash_hmac('sha256', $stringToSign, $this->_accountKey, true));
+php	php	php/php/php Createphp stringphp tophp sign
+php	php	php$stringToSignphp php php php=php arrayphp(php)php;
+php	php	php$stringToSignphp[php]php php=php strtoupperphp(php$httpVerbphp)php;php php	php	php	php	php	php	php	php	php	php/php/php VERB
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Contentphp-Encodingphp'php,php php'php'php)php;php	php	php/php/php Contentphp-Encoding
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Contentphp-Languagephp'php,php php'php'php)php;php	php	php/php/php Contentphp-Language
+php php php php php	php$stringToSignphp[php]php php=php php$contentLengthphp;php php	php	php	php	php	php	php	php	php	php	php	php/php/php Contentphp-Length
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Contentphp-MDphp5php'php,php php'php'php)php;php	php	php	php	php/php/php Contentphp-MDphp5
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Contentphp-Typephp'php,php php'php'php)php;php	php	php	php/php/php Contentphp-Type
+php php php php php	php$stringToSignphp[php]php php=php php"php"php;php	php	php	php	php	php	php	php	php	php	php	php	php	php	php/php/php Date
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Ifphp-Modifiedphp-Sincephp'php,php php'php'php)php;php	php	php/php/php Ifphp-Modifiedphp-Since
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Ifphp-Matchphp'php,php php'php'php)php;php	php	php	php	php/php/php Ifphp-Match
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Ifphp-Nonephp-Matchphp'php,php php'php'php)php;php	php	php	php/php/php Ifphp-Nonephp-Match
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Ifphp-Unmodifiedphp-Sincephp'php,php php'php'php)php;php	php	php/php/php Ifphp-Unmodifiedphp-Since
+php php php php php	php$stringToSignphp[php]php php=php php$thisphp-php>php_issetOrphp(php$headersphp,php php'Rangephp'php,php php'php'php)php;php	php	php	php	php	php/php/php Range
+php php php php php	
+php php php php php	ifphp php(php!php$forTableStoragephp php&php&php countphp(php$canonicalizedHeadersphp)php php>php php0php)php php{
+php php php php php	php	php$stringToSignphp[php]php php=php implodephp(php"php\nphp"php,php php$canonicalizedHeadersphp)php;php php/php/php Canonicalizedphp headers
+php php php php php	php}
+php php php php php	php	
+php php php php php	php$stringToSignphp[php]php php=php php$canonicalizedResourcephp;php	php	php php	php	php	php/php/php Canonicalizedphp resource
+php php php php php	php$stringToSignphp php php php=php implodephp(php"php\nphp"php,php php$stringToSignphp)php;
+php php php php php	php$signStringphp php php php php php=php basephp6php4php_encodephp(hashphp_hmacphp(php'shaphp2php5php6php'php,php php$stringToSignphp,php php$thisphp-php>php_accountKeyphp,php truephp)php)php;
 
-        // Sign request
-        $headers[Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PREFIX_STORAGE_HEADER . 'date'] = $requestDate;
-        $headers['Authorization'] = 'SharedKey ' . $this->_accountName . ':' . $signString;
-        
-        // Return headers
-        return $headers;
-    }
-}
+php php php php php php php php php/php/php Signphp request
+php php php php php php php php php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'datephp'php]php php=php php$requestDatephp;
+php php php php php php php php php$headersphp[php'Authorizationphp'php]php php=php php'SharedKeyphp php'php php.php php$thisphp-php>php_accountNamephp php.php php'php:php'php php.php php$signStringphp;
+php php php php php php php php 
+php php php php php php php php php/php/php Returnphp headers
+php php php php php php php php returnphp php$headersphp;
+php php php php php}
+php}

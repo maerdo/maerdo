@@ -1,1089 +1,1089 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Date
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: DateObject.php 22712 2010-07-29 08:24:28Z thomas $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/**
- * @category   Zend
- * @package    Zend_Date
- * @subpackage Zend_Date_DateObject
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Date_DateObject {
-
-    /**
-     * UNIX Timestamp
-     */
-    private   $_unixTimestamp;
-    protected static $_cache         = null;
-    protected static $_cacheTags     = false;
-    protected static $_defaultOffset = 0;
-
-    /**
-     * active timezone
-     */
-    private   $_timezone    = 'UTC';
-    private   $_offset      = 0;
-    private   $_syncronised = 0;
-
-    // turn off DST correction if UTC or GMT
-    protected $_dst         = true;
-
-    /**
-     * Table of Monthdays
-     */
-    private static $_monthTable = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-
-    /**
-     * Table of Years
-     */
-    private static $_yearTable = array(
-        1970 => 0,            1960 => -315619200,   1950 => -631152000,
-        1940 => -946771200,   1930 => -1262304000,  1920 => -1577923200,
-        1910 => -1893456000,  1900 => -2208988800,  1890 => -2524521600,
-        1880 => -2840140800,  1870 => -3155673600,  1860 => -3471292800,
-        1850 => -3786825600,  1840 => -4102444800,  1830 => -4417977600,
-        1820 => -4733596800,  1810 => -5049129600,  1800 => -5364662400,
-        1790 => -5680195200,  1780 => -5995814400,  1770 => -6311347200,
-        1760 => -6626966400,  1750 => -6942499200,  1740 => -7258118400,
-        1730 => -7573651200,  1720 => -7889270400,  1710 => -8204803200,
-        1700 => -8520336000,  1690 => -8835868800,  1680 => -9151488000,
-        1670 => -9467020800,  1660 => -9782640000,  1650 => -10098172800,
-        1640 => -10413792000, 1630 => -10729324800, 1620 => -11044944000,
-        1610 => -11360476800, 1600 => -11676096000);
-
-    /**
-     * Set this object to have a new UNIX timestamp.
-     *
-     * @param  string|integer  $timestamp  OPTIONAL timestamp; defaults to local time using time()
-     * @return string|integer  old timestamp
-     * @throws Zend_Date_Exception
-     */
-    protected function setUnixTimestamp($timestamp = null)
-    {
-        $old = $this->_unixTimestamp;
-
-        if (is_numeric($timestamp)) {
-            $this->_unixTimestamp = $timestamp;
-        } else if ($timestamp === null) {
-            $this->_unixTimestamp = time();
-        } else {
-            require_once 'Zend/Date/Exception.php';
-            throw new Zend_Date_Exception('\'' . $timestamp . '\' is not a valid UNIX timestamp', 0, null, $timestamp);
-        }
-
-        return $old;
-    }
-
-    /**
-     * Returns this object's UNIX timestamp
-     * A timestamp greater then the integer range will be returned as string
-     * This function does not return the timestamp as object. Use copy() instead.
-     *
-     * @return  integer|string  timestamp
-     */
-    protected function getUnixTimestamp()
-    {
-        if ($this->_unixTimestamp === intval($this->_unixTimestamp)) {
-            return (int) $this->_unixTimestamp;
-        } else {
-            return (string) $this->_unixTimestamp;
-        }
-    }
-
-    /**
-     * Internal function.
-     * Returns time().  This method exists to allow unit tests to work-around methods that might otherwise
-     * be hard-coded to use time().  For example, this makes it possible to test isYesterday() in Date.php.
-     *
-     * @param   integer  $sync      OPTIONAL time syncronisation value
-     * @return  integer  timestamp
-     */
-    protected function _getTime($sync = null)
-    {
-        if ($sync !== null) {
-            $this->_syncronised = round($sync);
-        }
-        return (time() + $this->_syncronised);
-    }
-
-    /**
-     * Internal mktime function used by Zend_Date.
-     * The timestamp returned by mktime() can exceed the precision of traditional UNIX timestamps,
-     * by allowing PHP to auto-convert to using a float value.
-     *
-     * Returns a timestamp relative to 1970/01/01 00:00:00 GMT/UTC.
-     * DST (Summer/Winter) is depriciated since php 5.1.0.
-     * Year has to be 4 digits otherwise it would be recognised as
-     * year 70 AD instead of 1970 AD as expected !!
-     *
-     * @param  integer  $hour
-     * @param  integer  $minute
-     * @param  integer  $second
-     * @param  integer  $month
-     * @param  integer  $day
-     * @param  integer  $year
-     * @param  boolean  $gmt     OPTIONAL true = other arguments are for UTC time, false = arguments are for local time/date
-     * @return  integer|float  timestamp (number of seconds elapsed relative to 1970/01/01 00:00:00 GMT/UTC)
-     */
-    protected function mktime($hour, $minute, $second, $month, $day, $year, $gmt = false)
-    {
-        // complete date but in 32bit timestamp - use PHP internal
-        if ((1901 < $year) and ($year < 2038)) {
-
-            $oldzone = @date_default_timezone_get();
-            // Timezone also includes DST settings, therefor substracting the GMT offset is not enough
-            // We have to set the correct timezone to get the right value
-            if (($this->_timezone != $oldzone) and ($gmt === false)) {
-                date_default_timezone_set($this->_timezone);
-            }
-            $result = ($gmt) ? @gmmktime($hour, $minute, $second, $month, $day, $year)
-                             :   @mktime($hour, $minute, $second, $month, $day, $year);
-            date_default_timezone_set($oldzone);
-
-            return $result;
-        }
-
-        if ($gmt !== true) {
-            $second += $this->_offset;
-        }
-
-        if (isset(self::$_cache)) {
-            $id = strtr('Zend_DateObject_mkTime_' . $this->_offset . '_' . $year.$month.$day.'_'.$hour.$minute.$second . '_'.(int)$gmt, '-','_');
-            if ($result = self::$_cache->load($id)) {
-                return unserialize($result);
-            }
-        }
-
-        // date to integer
-        $day   = intval($day);
-        $month = intval($month);
-        $year  = intval($year);
-
-        // correct months > 12 and months < 1
-        if ($month > 12) {
-            $overlap = floor($month / 12);
-            $year   += $overlap;
-            $month  -= $overlap * 12;
-        } else {
-            $overlap = ceil((1 - $month) / 12);
-            $year   -= $overlap;
-            $month  += $overlap * 12;
-        }
-
-        $date = 0;
-        if ($year >= 1970) {
-
-            // Date is after UNIX epoch
-            // go through leapyears
-            // add months from latest given year
-            for ($count = 1970; $count <= $year; $count++) {
-
-                $leapyear = self::isYearLeapYear($count);
-                if ($count < $year) {
-
-                    $date += 365;
-                    if ($leapyear === true) {
-                        $date++;
-                    }
-
-                } else {
-
-                    for ($mcount = 0; $mcount < ($month - 1); $mcount++) {
-                        $date += self::$_monthTable[$mcount];
-                        if (($leapyear === true) and ($mcount == 1)) {
-                            $date++;
-                        }
-
-                    }
-                }
-            }
-
-            $date += $day - 1;
-            $date = (($date * 86400) + ($hour * 3600) + ($minute * 60) + $second);
-        } else {
-
-            // Date is before UNIX epoch
-            // go through leapyears
-            // add months from latest given year
-            for ($count = 1969; $count >= $year; $count--) {
-
-                $leapyear = self::isYearLeapYear($count);
-                if ($count > $year)
-                {
-                    $date += 365;
-                    if ($leapyear === true)
-                        $date++;
-                } else {
-
-                    for ($mcount = 11; $mcount > ($month - 1); $mcount--) {
-                        $date += self::$_monthTable[$mcount];
-                        if (($leapyear === true) and ($mcount == 2)) {
-                            $date++;
-                        }
-
-                    }
-                }
-            }
-
-            $date += (self::$_monthTable[$month - 1] - $day);
-            $date = -(($date * 86400) + (86400 - (($hour * 3600) + ($minute * 60) + $second)));
-
-            // gregorian correction for 5.Oct.1582
-            if ($date < -12220185600) {
-                $date += 864000;
-            } else if ($date < -12219321600) {
-                $date  = -12219321600;
-            }
-        }
-
-        if (isset(self::$_cache)) {
-            if (self::$_cacheTags) {
-                self::$_cache->save( serialize($date), $id, array('Zend_Date'));
-            } else {
-                self::$_cache->save( serialize($date), $id);
-            }
-        }
-
-        return $date;
-    }
-
-    /**
-     * Returns true, if given $year is a leap year.
-     *
-     * @param  integer  $year
-     * @return boolean  true, if year is leap year
-     */
-    protected static function isYearLeapYear($year)
-    {
-        // all leapyears can be divided through 4
-        if (($year % 4) != 0) {
-            return false;
-        }
-
-        // all leapyears can be divided through 400
-        if ($year % 400 == 0) {
-            return true;
-        } else if (($year > 1582) and ($year % 100 == 0)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Internal mktime function used by Zend_Date for handling 64bit timestamps.
-     *
-     * Returns a formatted date for a given timestamp.
-     *
-     * @param  string   $format     format for output
-     * @param  mixed    $timestamp
-     * @param  boolean  $gmt        OPTIONAL true = other arguments are for UTC time, false = arguments are for local time/date
-     * @return string
-     */
-    protected function date($format, $timestamp = null, $gmt = false)
-    {
-        $oldzone = @date_default_timezone_get();
-        if ($this->_timezone != $oldzone) {
-            date_default_timezone_set($this->_timezone);
-        }
-
-        if ($timestamp === null) {
-            $result = ($gmt) ? @gmdate($format) : @date($format);
-            date_default_timezone_set($oldzone);
-            return $result;
-        }
-
-        if (abs($timestamp) <= 0x7FFFFFFF) {
-            $result = ($gmt) ? @gmdate($format, $timestamp) : @date($format, $timestamp);
-            date_default_timezone_set($oldzone);
-            return $result;
-        }
-
-        $jump      = false;
-        $origstamp = $timestamp;
-        if (isset(self::$_cache)) {
-            $idstamp = strtr('Zend_DateObject_date_' . $this->_offset . '_'. $timestamp . '_'.(int)$gmt, '-','_');
-            if ($result2 = self::$_cache->load($idstamp)) {
-                $timestamp = unserialize($result2);
-                $jump = true;
-            }
-        }
-
-        // check on false or null alone fails
-        if (empty($gmt) and empty($jump)) {
-            $tempstamp = $timestamp;
-            if ($tempstamp > 0) {
-                while (abs($tempstamp) > 0x7FFFFFFF) {
-                    $tempstamp -= (86400 * 23376);
-                }
-
-                $dst = date("I", $tempstamp);
-                if ($dst === 1) {
-                    $timestamp += 3600;
-                }
-
-                $temp       = date('Z', $tempstamp);
-                $timestamp += $temp;
-            }
-
-            if (isset(self::$_cache)) {
-                if (self::$_cacheTags) {
-                    self::$_cache->save( serialize($timestamp), $idstamp, array('Zend_Date'));
-                } else {
-                    self::$_cache->save( serialize($timestamp), $idstamp);
-                }
-            }
-        }
-
-        if (($timestamp < 0) and ($gmt !== true)) {
-            $timestamp -= $this->_offset;
-        }
-
-        date_default_timezone_set($oldzone);
-        $date   = $this->getDateParts($timestamp, true);
-        $length = strlen($format);
-        $output = '';
-
-        for ($i = 0; $i < $length; $i++) {
-            switch($format[$i]) {
-                // day formats
-                case 'd':  // day of month, 2 digits, with leading zero, 01 - 31
-                    $output .= (($date['mday'] < 10) ? '0' . $date['mday'] : $date['mday']);
-                    break;
-
-                case 'D':  // day of week, 3 letters, Mon - Sun
-                    $output .= date('D', 86400 * (3 + self::dayOfWeek($date['year'], $date['mon'], $date['mday'])));
-                    break;
-
-                case 'j':  // day of month, without leading zero, 1 - 31
-                    $output .= $date['mday'];
-                    break;
-
-                case 'l':  // day of week, full string name, Sunday - Saturday
-                    $output .= date('l', 86400 * (3 + self::dayOfWeek($date['year'], $date['mon'], $date['mday'])));
-                    break;
-
-                case 'N':  // ISO 8601 numeric day of week, 1 - 7
-                    $day = self::dayOfWeek($date['year'], $date['mon'], $date['mday']);
-                    if ($day == 0) {
-                        $day = 7;
-                    }
-                    $output .= $day;
-                    break;
-
-                case 'S':  // english suffix for day of month, st nd rd th
-                    if (($date['mday'] % 10) == 1) {
-                        $output .= 'st';
-                    } else if ((($date['mday'] % 10) == 2) and ($date['mday'] != 12)) {
-                        $output .= 'nd';
-                    } else if (($date['mday'] % 10) == 3) {
-                        $output .= 'rd';
-                    } else {
-                        $output .= 'th';
-                    }
-                    break;
-
-                case 'w':  // numeric day of week, 0 - 6
-                    $output .= self::dayOfWeek($date['year'], $date['mon'], $date['mday']);
-                    break;
-
-                case 'z':  // day of year, 0 - 365
-                    $output .= $date['yday'];
-                    break;
-
-
-                // week formats
-                case 'W':  // ISO 8601, week number of year
-                    $output .= $this->weekNumber($date['year'], $date['mon'], $date['mday']);
-                    break;
-
-
-                // month formats
-                case 'F':  // string month name, january - december
-                    $output .= date('F', mktime(0, 0, 0, $date['mon'], 2, 1971));
-                    break;
-
-                case 'm':  // number of month, with leading zeros, 01 - 12
-                    $output .= (($date['mon'] < 10) ? '0' . $date['mon'] : $date['mon']);
-                    break;
-
-                case 'M':  // 3 letter month name, Jan - Dec
-                    $output .= date('M',mktime(0, 0, 0, $date['mon'], 2, 1971));
-                    break;
-
-                case 'n':  // number of month, without leading zeros, 1 - 12
-                    $output .= $date['mon'];
-                    break;
-
-                case 't':  // number of day in month
-                    $output .= self::$_monthTable[$date['mon'] - 1];
-                    break;
-
-
-                // year formats
-                case 'L':  // is leap year ?
-                    $output .= (self::isYearLeapYear($date['year'])) ? '1' : '0';
-                    break;
-
-                case 'o':  // ISO 8601 year number
-                    $week = $this->weekNumber($date['year'], $date['mon'], $date['mday']);
-                    if (($week > 50) and ($date['mon'] == 1)) {
-                        $output .= ($date['year'] - 1);
-                    } else {
-                        $output .= $date['year'];
-                    }
-                    break;
-
-                case 'Y':  // year number, 4 digits
-                    $output .= $date['year'];
-                    break;
-
-                case 'y':  // year number, 2 digits
-                    $output .= substr($date['year'], strlen($date['year']) - 2, 2);
-                    break;
-
-
-                // time formats
-                case 'a':  // lower case am/pm
-                    $output .= (($date['hours'] >= 12) ? 'pm' : 'am');
-                    break;
-
-                case 'A':  // upper case am/pm
-                    $output .= (($date['hours'] >= 12) ? 'PM' : 'AM');
-                    break;
-
-                case 'B':  // swatch internet time
-                    $dayseconds = ($date['hours'] * 3600) + ($date['minutes'] * 60) + $date['seconds'];
-                    if ($gmt === true) {
-                        $dayseconds += 3600;
-                    }
-                    $output .= (int) (($dayseconds % 86400) / 86.4);
-                    break;
-
-                case 'g':  // hours without leading zeros, 12h format
-                    if ($date['hours'] > 12) {
-                        $hour = $date['hours'] - 12;
-                    } else {
-                        if ($date['hours'] == 0) {
-                            $hour = '12';
-                        } else {
-                            $hour = $date['hours'];
-                        }
-                    }
-                    $output .= $hour;
-                    break;
-
-                case 'G':  // hours without leading zeros, 24h format
-                    $output .= $date['hours'];
-                    break;
-
-                case 'h':  // hours with leading zeros, 12h format
-                    if ($date['hours'] > 12) {
-                        $hour = $date['hours'] - 12;
-                    } else {
-                        if ($date['hours'] == 0) {
-                            $hour = '12';
-                        } else {
-                            $hour = $date['hours'];
-                        }
-                    }
-                    $output .= (($hour < 10) ? '0'.$hour : $hour);
-                    break;
-
-                case 'H':  // hours with leading zeros, 24h format
-                    $output .= (($date['hours'] < 10) ? '0' . $date['hours'] : $date['hours']);
-                    break;
-
-                case 'i':  // minutes with leading zeros
-                    $output .= (($date['minutes'] < 10) ? '0' . $date['minutes'] : $date['minutes']);
-                    break;
-
-                case 's':  // seconds with leading zeros
-                    $output .= (($date['seconds'] < 10) ? '0' . $date['seconds'] : $date['seconds']);
-                    break;
-
-
-                // timezone formats
-                case 'e':  // timezone identifier
-                    if ($gmt === true) {
-                        $output .= gmdate('e', mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                                      $date['mon'], $date['mday'], 2000));
-                    } else {
-                        $output .=   date('e', mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                                      $date['mon'], $date['mday'], 2000));
-                    }
-                    break;
-
-                case 'I':  // daylight saving time or not
-                    if ($gmt === true) {
-                        $output .= gmdate('I', mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                                      $date['mon'], $date['mday'], 2000));
-                    } else {
-                        $output .=   date('I', mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                                      $date['mon'], $date['mday'], 2000));
-                    }
-                    break;
-
-                case 'O':  // difference to GMT in hours
-                    $gmtstr = ($gmt === true) ? 0 : $this->getGmtOffset();
-                    $output .= sprintf('%s%04d', ($gmtstr <= 0) ? '+' : '-', abs($gmtstr) / 36);
-                    break;
-
-                case 'P':  // difference to GMT with colon
-                    $gmtstr = ($gmt === true) ? 0 : $this->getGmtOffset();
-                    $gmtstr = sprintf('%s%04d', ($gmtstr <= 0) ? '+' : '-', abs($gmtstr) / 36);
-                    $output = $output . substr($gmtstr, 0, 3) . ':' . substr($gmtstr, 3);
-                    break;
-
-                case 'T':  // timezone settings
-                    if ($gmt === true) {
-                        $output .= gmdate('T', mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                                      $date['mon'], $date['mday'], 2000));
-                    } else {
-                        $output .=   date('T', mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                                      $date['mon'], $date['mday'], 2000));
-                    }
-                    break;
-
-                case 'Z':  // timezone offset in seconds
-                    $output .= ($gmt === true) ? 0 : -$this->getGmtOffset();
-                    break;
-
-
-                // complete time formats
-                case 'c':  // ISO 8601 date format
-                    $difference = $this->getGmtOffset();
-                    $difference = sprintf('%s%04d', ($difference <= 0) ? '+' : '-', abs($difference) / 36);
-                    $difference = substr($difference, 0, 3) . ':' . substr($difference, 3);
-                    $output .= $date['year'] . '-'
-                             . (($date['mon']     < 10) ? '0' . $date['mon']     : $date['mon'])     . '-'
-                             . (($date['mday']    < 10) ? '0' . $date['mday']    : $date['mday'])    . 'T'
-                             . (($date['hours']   < 10) ? '0' . $date['hours']   : $date['hours'])   . ':'
-                             . (($date['minutes'] < 10) ? '0' . $date['minutes'] : $date['minutes']) . ':'
-                             . (($date['seconds'] < 10) ? '0' . $date['seconds'] : $date['seconds'])
-                             . $difference;
-                    break;
-
-                case 'r':  // RFC 2822 date format
-                    $difference = $this->getGmtOffset();
-                    $difference = sprintf('%s%04d', ($difference <= 0) ? '+' : '-', abs($difference) / 36);
-                    $output .= gmdate('D', 86400 * (3 + self::dayOfWeek($date['year'], $date['mon'], $date['mday']))) . ', '
-                             . (($date['mday']    < 10) ? '0' . $date['mday']    : $date['mday'])    . ' '
-                             . date('M', mktime(0, 0, 0, $date['mon'], 2, 1971)) . ' '
-                             . $date['year'] . ' '
-                             . (($date['hours']   < 10) ? '0' . $date['hours']   : $date['hours'])   . ':'
-                             . (($date['minutes'] < 10) ? '0' . $date['minutes'] : $date['minutes']) . ':'
-                             . (($date['seconds'] < 10) ? '0' . $date['seconds'] : $date['seconds']) . ' '
-                             . $difference;
-                    break;
-
-                case 'U':  // Unix timestamp
-                    $output .= $origstamp;
-                    break;
-
-
-                // special formats
-                case "\\":  // next letter to print with no format
-                    $i++;
-                    if ($i < $length) {
-                        $output .= $format[$i];
-                    }
-                    break;
-
-                default:  // letter is no format so add it direct
-                    $output .= $format[$i];
-                    break;
-            }
-        }
-
-        return (string) $output;
-    }
-
-    /**
-     * Returns the day of week for a Gregorian calendar date.
-     * 0 = sunday, 6 = saturday
-     *
-     * @param  integer  $year
-     * @param  integer  $month
-     * @param  integer  $day
-     * @return integer  dayOfWeek
-     */
-    protected static function dayOfWeek($year, $month, $day)
-    {
-        if ((1901 < $year) and ($year < 2038)) {
-            return (int) date('w', mktime(0, 0, 0, $month, $day, $year));
-        }
-
-        // gregorian correction
-        $correction = 0;
-        if (($year < 1582) or (($year == 1582) and (($month < 10) or (($month == 10) && ($day < 15))))) {
-            $correction = 3;
-        }
-
-        if ($month > 2) {
-            $month -= 2;
-        } else {
-            $month += 10;
-            $year--;
-        }
-
-        $day  = floor((13 * $month - 1) / 5) + $day + ($year % 100) + floor(($year % 100) / 4);
-        $day += floor(($year / 100) / 4) - 2 * floor($year / 100) + 77 + $correction;
-
-        return (int) ($day - 7 * floor($day / 7));
-    }
-
-    /**
-     * Internal getDateParts function for handling 64bit timestamps, similar to:
-     * http://www.php.net/getdate
-     *
-     * Returns an array of date parts for $timestamp, relative to 1970/01/01 00:00:00 GMT/UTC.
-     *
-     * $fast specifies ALL date parts should be returned (slower)
-     * Default is false, and excludes $dayofweek, weekday, month and timestamp from parts returned.
-     *
-     * @param   mixed    $timestamp
-     * @param   boolean  $fast   OPTIONAL defaults to fast (false), resulting in fewer date parts
-     * @return  array
-     */
-    protected function getDateParts($timestamp = null, $fast = null)
-    {
-
-        // actual timestamp
-        if (!is_numeric($timestamp)) {
-            return getdate();
-        }
-
-        // 32bit timestamp
-        if (abs($timestamp) <= 0x7FFFFFFF) {
-            return @getdate((int) $timestamp);
-        }
-
-        if (isset(self::$_cache)) {
-            $id = strtr('Zend_DateObject_getDateParts_' . $timestamp.'_'.(int)$fast, '-','_');
-            if ($result = self::$_cache->load($id)) {
-                return unserialize($result);
-            }
-        }
-
-        $otimestamp = $timestamp;
-        $numday = 0;
-        $month = 0;
-        // gregorian correction
-        if ($timestamp < -12219321600) {
-            $timestamp -= 864000;
-        }
-
-        // timestamp lower 0
-        if ($timestamp < 0) {
-            $sec = 0;
-            $act = 1970;
-
-            // iterate through 10 years table, increasing speed
-            foreach(self::$_yearTable as $year => $seconds) {
-                if ($timestamp >= $seconds) {
-                    $i = $act;
-                    break;
-                }
-                $sec = $seconds;
-                $act = $year;
-            }
-
-            $timestamp -= $sec;
-            if (!isset($i)) {
-                $i = $act;
-            }
-
-            // iterate the max last 10 years
-            do {
-                --$i;
-                $day = $timestamp;
-
-                $timestamp += 31536000;
-                $leapyear = self::isYearLeapYear($i);
-                if ($leapyear === true) {
-                    $timestamp += 86400;
-                }
-
-                if ($timestamp >= 0) {
-                    $year = $i;
-                    break;
-                }
-            } while ($timestamp < 0);
-
-            $secondsPerYear = 86400 * ($leapyear ? 366 : 365) + $day;
-
-            $timestamp = $day;
-            // iterate through months
-            for ($i = 12; --$i >= 0;) {
-                $day = $timestamp;
-
-                $timestamp += self::$_monthTable[$i] * 86400;
-                if (($leapyear === true) and ($i == 1)) {
-                    $timestamp += 86400;
-                }
-
-                if ($timestamp >= 0) {
-                    $month  = $i;
-                    $numday = self::$_monthTable[$i];
-                    if (($leapyear === true) and ($i == 1)) {
-                        ++$numday;
-                    }
-                    break;
-                }
-            }
-
-            $timestamp  = $day;
-            $numberdays = $numday + ceil(($timestamp + 1) / 86400);
-
-            $timestamp += ($numday - $numberdays + 1) * 86400;
-            $hours      = floor($timestamp / 3600);
-        } else {
-
-            // iterate through years
-            for ($i = 1970;;$i++) {
-                $day = $timestamp;
-
-                $timestamp -= 31536000;
-                $leapyear = self::isYearLeapYear($i);
-                if ($leapyear === true) {
-                    $timestamp -= 86400;
-                }
-
-                if ($timestamp < 0) {
-                    $year = $i;
-                    break;
-                }
-            }
-
-            $secondsPerYear = $day;
-
-            $timestamp = $day;
-            // iterate through months
-            for ($i = 0; $i <= 11; $i++) {
-                $day = $timestamp;
-                $timestamp -= self::$_monthTable[$i] * 86400;
-
-                if (($leapyear === true) and ($i == 1)) {
-                    $timestamp -= 86400;
-                }
-
-                if ($timestamp < 0) {
-                    $month  = $i;
-                    $numday = self::$_monthTable[$i];
-                    if (($leapyear === true) and ($i == 1)) {
-                        ++$numday;
-                    }
-                    break;
-                }
-            }
-
-            $timestamp  = $day;
-            $numberdays = ceil(($timestamp + 1) / 86400);
-            $timestamp  = $timestamp - ($numberdays - 1) * 86400;
-            $hours = floor($timestamp / 3600);
-        }
-
-        $timestamp -= $hours * 3600;
-
-        $month  += 1;
-        $minutes = floor($timestamp / 60);
-        $seconds = $timestamp - $minutes * 60;
-
-        if ($fast === true) {
-            $array = array(
-                'seconds' => $seconds,
-                'minutes' => $minutes,
-                'hours'   => $hours,
-                'mday'    => $numberdays,
-                'mon'     => $month,
-                'year'    => $year,
-                'yday'    => floor($secondsPerYear / 86400),
-            );
-        } else {
-
-            $dayofweek = self::dayOfWeek($year, $month, $numberdays);
-            $array = array(
-                    'seconds' => $seconds,
-                    'minutes' => $minutes,
-                    'hours'   => $hours,
-                    'mday'    => $numberdays,
-                    'wday'    => $dayofweek,
-                    'mon'     => $month,
-                    'year'    => $year,
-                    'yday'    => floor($secondsPerYear / 86400),
-                    'weekday' => gmdate('l', 86400 * (3 + $dayofweek)),
-                    'month'   => gmdate('F', mktime(0, 0, 0, $month, 1, 1971)),
-                    0         => $otimestamp
-            );
-        }
-
-        if (isset(self::$_cache)) {
-            if (self::$_cacheTags) {
-                self::$_cache->save( serialize($array), $id, array('Zend_Date'));
-            } else {
-                self::$_cache->save( serialize($array), $id);
-            }
-        }
-
-        return $array;
-    }
-
-    /**
-     * Internal getWeekNumber function for handling 64bit timestamps
-     *
-     * Returns the ISO 8601 week number of a given date
-     *
-     * @param  integer  $year
-     * @param  integer  $month
-     * @param  integer  $day
-     * @return integer
-     */
-    protected function weekNumber($year, $month, $day)
-    {
-        if ((1901 < $year) and ($year < 2038)) {
-            return (int) date('W', mktime(0, 0, 0, $month, $day, $year));
-        }
-
-        $dayofweek = self::dayOfWeek($year, $month, $day);
-        $firstday  = self::dayOfWeek($year, 1, 1);
-        if (($month == 1) and (($firstday < 1) or ($firstday > 4)) and ($day < 4)) {
-            $firstday  = self::dayOfWeek($year - 1, 1, 1);
-            $month     = 12;
-            $day       = 31;
-
-        } else if (($month == 12) and ((self::dayOfWeek($year + 1, 1, 1) < 5) and
-                   (self::dayOfWeek($year + 1, 1, 1) > 0))) {
-            return 1;
-        }
-
-        return intval (((self::dayOfWeek($year, 1, 1) < 5) and (self::dayOfWeek($year, 1, 1) > 0)) +
-               4 * ($month - 1) + (2 * ($month - 1) + ($day - 1) + $firstday - $dayofweek + 6) * 36 / 256);
-    }
-
-    /**
-     * Internal _range function
-     * Sets the value $a to be in the range of [0, $b]
-     *
-     * @param float $a - value to correct
-     * @param float $b - maximum range to set
-     */
-    private function _range($a, $b) {
-        while ($a < 0) {
-            $a += $b;
-        }
-        while ($a >= $b) {
-            $a -= $b;
-        }
-        return $a;
-    }
-
-    /**
-     * Calculates the sunrise or sunset based on a location
-     *
-     * @param  array  $location  Location for calculation MUST include 'latitude', 'longitude', 'horizon'
-     * @param  bool   $horizon   true: sunrise; false: sunset
-     * @return mixed  - false: midnight sun, integer:
-     */
-    protected function calcSun($location, $horizon, $rise = false)
-    {
-        // timestamp within 32bit
-        if (abs($this->_unixTimestamp) <= 0x7FFFFFFF) {
-            if ($rise === false) {
-                return date_sunset($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
-                                   $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
-            }
-            return date_sunrise($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
-                                $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
-        }
-
-        // self calculation - timestamp bigger than 32bit
-        // fix circle values
-        $quarterCircle      = 0.5 * M_PI;
-        $halfCircle         =       M_PI;
-        $threeQuarterCircle = 1.5 * M_PI;
-        $fullCircle         = 2   * M_PI;
-
-        // radiant conversion for coordinates
-        $radLatitude  = $location['latitude']   * $halfCircle / 180;
-        $radLongitude = $location['longitude']  * $halfCircle / 180;
-
-        // get solar coordinates
-        $tmpRise       = $rise ? $quarterCircle : $threeQuarterCircle;
-        $radDay        = $this->date('z',$this->_unixTimestamp) + ($tmpRise - $radLongitude) / $fullCircle;
-
-        // solar anomoly and longitude
-        $solAnomoly    = $radDay * 0.017202 - 0.0574039;
-        $solLongitude  = $solAnomoly + 0.0334405 * sin($solAnomoly);
-        $solLongitude += 4.93289 + 3.49066E-4 * sin(2 * $solAnomoly);
-
-        // get quadrant
-        $solLongitude = $this->_range($solLongitude, $fullCircle);
-
-        if (($solLongitude / $quarterCircle) - intval($solLongitude / $quarterCircle) == 0) {
-            $solLongitude += 4.84814E-6;
-        }
-
-        // solar ascension
-        $solAscension = sin($solLongitude) / cos($solLongitude);
-        $solAscension = atan2(0.91746 * $solAscension, 1);
-
-        // adjust quadrant
-        if ($solLongitude > $threeQuarterCircle) {
-            $solAscension += $fullCircle;
-        } else if ($solLongitude > $quarterCircle) {
-            $solAscension += $halfCircle;
-        }
-
-        // solar declination
-        $solDeclination  = 0.39782 * sin($solLongitude);
-        $solDeclination /=  sqrt(-$solDeclination * $solDeclination + 1);
-        $solDeclination  = atan2($solDeclination, 1);
-
-        $solHorizon = $horizon - sin($solDeclination) * sin($radLatitude);
-        $solHorizon /= cos($solDeclination) * cos($radLatitude);
-
-        // midnight sun, always night
-        if (abs($solHorizon) > 1) {
-            return false;
-        }
-
-        $solHorizon /= sqrt(-$solHorizon * $solHorizon + 1);
-        $solHorizon  = $quarterCircle - atan2($solHorizon, 1);
-
-        if ($rise) {
-            $solHorizon = $fullCircle - $solHorizon;
-        }
-
-        // time calculation
-        $localTime     = $solHorizon + $solAscension - 0.0172028 * $radDay - 1.73364;
-        $universalTime = $localTime - $radLongitude;
-
-        // determinate quadrant
-        $universalTime = $this->_range($universalTime, $fullCircle);
-
-        // radiant to hours
-        $universalTime *= 24 / $fullCircle;
-
-        // convert to time
-        $hour = intval($universalTime);
-        $universalTime    = ($universalTime - $hour) * 60;
-        $min  = intval($universalTime);
-        $universalTime    = ($universalTime - $min) * 60;
-        $sec  = intval($universalTime);
-
-        return $this->mktime($hour, $min, $sec, $this->date('m', $this->_unixTimestamp),
-                             $this->date('j', $this->_unixTimestamp), $this->date('Y', $this->_unixTimestamp),
-                             -1, true);
-    }
-
-    /**
-     * Sets a new timezone for calculation of $this object's gmt offset.
-     * For a list of supported timezones look here: http://php.net/timezones
-     * If no timezone can be detected or the given timezone is wrong UTC will be set.
-     *
-     * @param  string  $zone      OPTIONAL timezone for date calculation; defaults to date_default_timezone_get()
-     * @return Zend_Date_DateObject Provides fluent interface
-     * @throws Zend_Date_Exception
-     */
-    public function setTimezone($zone = null)
-    {
-        $oldzone = @date_default_timezone_get();
-        if ($zone === null) {
-            $zone = $oldzone;
-        }
-
-        // throw an error on false input, but only if the new date extension is available
-        if (function_exists('timezone_open')) {
-            if (!@timezone_open($zone)) {
-                require_once 'Zend/Date/Exception.php';
-                throw new Zend_Date_Exception("timezone ($zone) is not a known timezone", 0, null, $zone);
-            }
-        }
-        // this can generate an error if the date extension is not available and a false timezone is given
-        $result = @date_default_timezone_set($zone);
-        if ($result === true) {
-            $this->_offset   = mktime(0, 0, 0, 1, 2, 1970) - gmmktime(0, 0, 0, 1, 2, 1970);
-            $this->_timezone = $zone;
-        }
-        date_default_timezone_set($oldzone);
-
-        if (($zone == 'UTC') or ($zone == 'GMT')) {
-            $this->_dst = false;
-        } else {
-            $this->_dst = true;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Return the timezone of $this object.
-     * The timezone is initially set when the object is instantiated.
-     *
-     * @return  string  actual set timezone string
-     */
-    public function getTimezone()
-    {
-        return $this->_timezone;
-    }
-
-    /**
-     * Return the offset to GMT of $this object's timezone.
-     * The offset to GMT is initially set when the object is instantiated using the currently,
-     * in effect, default timezone for PHP functions.
-     *
-     * @return  integer  seconds difference between GMT timezone and timezone when object was instantiated
-     */
-    public function getGmtOffset()
-    {
-        $date   = $this->getDateParts($this->getUnixTimestamp(), true);
-        $zone   = @date_default_timezone_get();
-        $result = @date_default_timezone_set($this->_timezone);
-        if ($result === true) {
-            $offset = $this->mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                    $date['mon'], $date['mday'], $date['year'], false)
-                    - $this->mktime($date['hours'], $date['minutes'], $date['seconds'],
-                                    $date['mon'], $date['mday'], $date['year'], true);
-        }
-        date_default_timezone_set($zone);
-
-        return $offset;
-    }
-
-    /**
-     * Internal method to check if the given cache supports tags
-     *
-     * @param Zend_Cache $cache
-     */
-    protected static function _getTagSupportForCache()
-    {
-        $backend = self::$_cache->getBackend();
-        if ($backend instanceof Zend_Cache_Backend_ExtendedInterface) {
-            $cacheOptions = $backend->getCapabilities();
-            self::$_cacheTags = $cacheOptions['tags'];
-        } else {
-            self::$_cacheTags = false;
-        }
-
-        return self::$_cacheTags;
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Date
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php DateObjectphp.phpphp php2php2php7php1php2php php2php0php1php0php-php0php7php-php2php9php php0php8php:php2php4php:php2php8Zphp thomasphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Date
+php php*php php@subpackagephp Zendphp_Datephp_DateObject
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Datephp_DateObjectphp php{
+
+php php php php php/php*php*
+php php php php php php*php UNIXphp Timestamp
+php php php php php php*php/
+php php php php privatephp php php php$php_unixTimestampphp;
+php php php php protectedphp staticphp php$php_cachephp php php php php php php php php php=php nullphp;
+php php php php protectedphp staticphp php$php_cacheTagsphp php php php php php=php falsephp;
+php php php php protectedphp staticphp php$php_defaultOffsetphp php=php php0php;
+
+php php php php php/php*php*
+php php php php php php*php activephp timezone
+php php php php php php*php/
+php php php php privatephp php php php$php_timezonephp php php php php=php php'UTCphp'php;
+php php php php privatephp php php php$php_offsetphp php php php php php php=php php0php;
+php php php php privatephp php php php$php_syncronisedphp php=php php0php;
+
+php php php php php/php/php turnphp offphp DSTphp correctionphp ifphp UTCphp orphp GMT
+php php php php protectedphp php$php_dstphp php php php php php php php php php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Tablephp ofphp Monthdays
+php php php php php php*php/
+php php php php privatephp staticphp php$php_monthTablephp php=php arrayphp(php3php1php,php php2php8php,php php3php1php,php php3php0php,php php3php1php,php php3php0php,php php3php1php,php php3php1php,php php3php0php,php php3php1php,php php3php0php,php php3php1php)php;
+
+php php php php php/php*php*
+php php php php php php*php Tablephp ofphp Years
+php php php php php php*php/
+php php php php privatephp staticphp php$php_yearTablephp php=php arrayphp(
+php php php php php php php php php1php9php7php0php php=php>php php0php,php php php php php php php php php php php php php1php9php6php0php php=php>php php-php3php1php5php6php1php9php2php0php0php,php php php php1php9php5php0php php=php>php php-php6php3php1php1php5php2php0php0php0php,
+php php php php php php php php php1php9php4php0php php=php>php php-php9php4php6php7php7php1php2php0php0php,php php php php1php9php3php0php php=php>php php-php1php2php6php2php3php0php4php0php0php0php,php php php1php9php2php0php php=php>php php-php1php5php7php7php9php2php3php2php0php0php,
+php php php php php php php php php1php9php1php0php php=php>php php-php1php8php9php3php4php5php6php0php0php0php,php php php1php9php0php0php php=php>php php-php2php2php0php8php9php8php8php8php0php0php,php php php1php8php9php0php php=php>php php-php2php5php2php4php5php2php1php6php0php0php,
+php php php php php php php php php1php8php8php0php php=php>php php-php2php8php4php0php1php4php0php8php0php0php,php php php1php8php7php0php php=php>php php-php3php1php5php5php6php7php3php6php0php0php,php php php1php8php6php0php php=php>php php-php3php4php7php1php2php9php2php8php0php0php,
+php php php php php php php php php1php8php5php0php php=php>php php-php3php7php8php6php8php2php5php6php0php0php,php php php1php8php4php0php php=php>php php-php4php1php0php2php4php4php4php8php0php0php,php php php1php8php3php0php php=php>php php-php4php4php1php7php9php7php7php6php0php0php,
+php php php php php php php php php1php8php2php0php php=php>php php-php4php7php3php3php5php9php6php8php0php0php,php php php1php8php1php0php php=php>php php-php5php0php4php9php1php2php9php6php0php0php,php php php1php8php0php0php php=php>php php-php5php3php6php4php6php6php2php4php0php0php,
+php php php php php php php php php1php7php9php0php php=php>php php-php5php6php8php0php1php9php5php2php0php0php,php php php1php7php8php0php php=php>php php-php5php9php9php5php8php1php4php4php0php0php,php php php1php7php7php0php php=php>php php-php6php3php1php1php3php4php7php2php0php0php,
+php php php php php php php php php1php7php6php0php php=php>php php-php6php6php2php6php9php6php6php4php0php0php,php php php1php7php5php0php php=php>php php-php6php9php4php2php4php9php9php2php0php0php,php php php1php7php4php0php php=php>php php-php7php2php5php8php1php1php8php4php0php0php,
+php php php php php php php php php1php7php3php0php php=php>php php-php7php5php7php3php6php5php1php2php0php0php,php php php1php7php2php0php php=php>php php-php7php8php8php9php2php7php0php4php0php0php,php php php1php7php1php0php php=php>php php-php8php2php0php4php8php0php3php2php0php0php,
+php php php php php php php php php1php7php0php0php php=php>php php-php8php5php2php0php3php3php6php0php0php0php,php php php1php6php9php0php php=php>php php-php8php8php3php5php8php6php8php8php0php0php,php php php1php6php8php0php php=php>php php-php9php1php5php1php4php8php8php0php0php0php,
+php php php php php php php php php1php6php7php0php php=php>php php-php9php4php6php7php0php2php0php8php0php0php,php php php1php6php6php0php php=php>php php-php9php7php8php2php6php4php0php0php0php0php,php php php1php6php5php0php php=php>php php-php1php0php0php9php8php1php7php2php8php0php0php,
+php php php php php php php php php1php6php4php0php php=php>php php-php1php0php4php1php3php7php9php2php0php0php0php,php php1php6php3php0php php=php>php php-php1php0php7php2php9php3php2php4php8php0php0php,php php1php6php2php0php php=php>php php-php1php1php0php4php4php9php4php4php0php0php0php,
+php php php php php php php php php1php6php1php0php php=php>php php-php1php1php3php6php0php4php7php6php8php0php0php,php php1php6php0php0php php=php>php php-php1php1php6php7php6php0php9php6php0php0php0php)php;
+
+php php php php php/php*php*
+php php php php php php*php Setphp thisphp objectphp tophp havephp aphp newphp UNIXphp timestampphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|integerphp php php$timestampphp php OPTIONALphp timestampphp;php defaultsphp tophp localphp timephp usingphp timephp(php)
+php php php php php php*php php@returnphp stringphp|integerphp php oldphp timestamp
+php php php php php php*php php@throwsphp Zendphp_Datephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp setUnixTimestampphp(php$timestampphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$oldphp php=php php$thisphp-php>php_unixTimestampphp;
+
+php php php php php php php php ifphp php(isphp_numericphp(php$timestampphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_unixTimestampphp php=php php$timestampphp;
+php php php php php php php php php}php elsephp ifphp php(php$timestampphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_unixTimestampphp php=php timephp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Datephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Datephp_Exceptionphp(php'php\php'php'php php.php php$timestampphp php.php php'php\php'php isphp notphp aphp validphp UNIXphp timestampphp'php,php php0php,php nullphp,php php$timestampphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$oldphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thisphp objectphp'sphp UNIXphp timestamp
+php php php php php php*php Aphp timestampphp greaterphp thenphp thephp integerphp rangephp willphp bephp returnedphp asphp string
+php php php php php php*php Thisphp functionphp doesphp notphp returnphp thephp timestampphp asphp objectphp.php Usephp copyphp(php)php insteadphp.
+php php php php php php*
+php php php php php php*php php@returnphp php integerphp|stringphp php timestamp
+php php php php php php*php/
+php php php php protectedphp functionphp getUnixTimestampphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_unixTimestampphp php=php=php=php intvalphp(php$thisphp-php>php_unixTimestampphp)php)php php{
+php php php php php php php php php php php php returnphp php(intphp)php php$thisphp-php>php_unixTimestampphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php(stringphp)php php$thisphp-php>php_unixTimestampphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp functionphp.
+php php php php php php*php Returnsphp timephp(php)php.php php Thisphp methodphp existsphp tophp allowphp unitphp testsphp tophp workphp-aroundphp methodsphp thatphp mightphp otherwise
+php php php php php php*php bephp hardphp-codedphp tophp usephp timephp(php)php.php php Forphp examplephp,php thisphp makesphp itphp possiblephp tophp testphp isYesterdayphp(php)php inphp Datephp.phpphp.
+php php php php php php*
+php php php php php php*php php@paramphp php php integerphp php php$syncphp php php php php php OPTIONALphp timephp syncronisationphp value
+php php php php php php*php php@returnphp php integerphp php timestamp
+php php php php php php*php/
+php php php php protectedphp functionphp php_getTimephp(php$syncphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$syncphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_syncronisedphp php=php roundphp(php$syncphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php(timephp(php)php php+php php$thisphp-php>php_syncronisedphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp mktimephp functionphp usedphp byphp Zendphp_Datephp.
+php php php php php php*php Thephp timestampphp returnedphp byphp mktimephp(php)php canphp exceedphp thephp precisionphp ofphp traditionalphp UNIXphp timestampsphp,
+php php php php php php*php byphp allowingphp PHPphp tophp autophp-convertphp tophp usingphp aphp floatphp valuephp.
+php php php php php php*
+php php php php php php*php Returnsphp aphp timestampphp relativephp tophp php1php9php7php0php/php0php1php/php0php1php php0php0php:php0php0php:php0php0php GMTphp/UTCphp.
+php php php php php php*php DSTphp php(Summerphp/Winterphp)php isphp depriciatedphp sincephp phpphp php5php.php1php.php0php.
+php php php php php php*php Yearphp hasphp tophp bephp php4php digitsphp otherwisephp itphp wouldphp bephp recognisedphp as
+php php php php php php*php yearphp php7php0php ADphp insteadphp ofphp php1php9php7php0php ADphp asphp expectedphp php!php!
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php$hour
+php php php php php php*php php@paramphp php integerphp php php$minute
+php php php php php php*php php@paramphp php integerphp php php$second
+php php php php php php*php php@paramphp php integerphp php php$month
+php php php php php php*php php@paramphp php integerphp php php$day
+php php php php php php*php php@paramphp php integerphp php php$year
+php php php php php php*php php@paramphp php booleanphp php php$gmtphp php php php php OPTIONALphp truephp php=php otherphp argumentsphp arephp forphp UTCphp timephp,php falsephp php=php argumentsphp arephp forphp localphp timephp/date
+php php php php php php*php php@returnphp php integerphp|floatphp php timestampphp php(numberphp ofphp secondsphp elapsedphp relativephp tophp php1php9php7php0php/php0php1php/php0php1php php0php0php:php0php0php:php0php0php GMTphp/UTCphp)
+php php php php php php*php/
+php php php php protectedphp functionphp mktimephp(php$hourphp,php php$minutephp,php php$secondphp,php php$monthphp,php php$dayphp,php php$yearphp,php php$gmtphp php=php falsephp)
+php php php php php{
+php php php php php php php php php/php/php completephp datephp butphp inphp php3php2bitphp timestampphp php-php usephp PHPphp internal
+php php php php php php php php ifphp php(php(php1php9php0php1php <php php$yearphp)php andphp php(php$yearphp <php php2php0php3php8php)php)php php{
+
+php php php php php php php php php php php php php$oldzonephp php=php php@datephp_defaultphp_timezonephp_getphp(php)php;
+php php php php php php php php php php php php php/php/php Timezonephp alsophp includesphp DSTphp settingsphp,php thereforphp substractingphp thephp GMTphp offsetphp isphp notphp enough
+php php php php php php php php php php php php php/php/php Wephp havephp tophp setphp thephp correctphp timezonephp tophp getphp thephp rightphp value
+php php php php php php php php php php php php ifphp php(php(php$thisphp-php>php_timezonephp php!php=php php$oldzonephp)php andphp php(php$gmtphp php=php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$thisphp-php>php_timezonephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$resultphp php=php php(php$gmtphp)php php?php php@gmmktimephp(php$hourphp,php php$minutephp,php php$secondphp,php php$monthphp,php php$dayphp,php php$yearphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php:php php php php@mktimephp(php$hourphp,php php$minutephp,php php$secondphp,php php$monthphp,php php$dayphp,php php$yearphp)php;
+php php php php php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$oldzonephp)php;
+
+php php php php php php php php php php php php returnphp php$resultphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$gmtphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php php$secondphp php+php=php php$thisphp-php>php_offsetphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php php$idphp php=php strtrphp(php'Zendphp_DateObjectphp_mkTimephp_php'php php.php php$thisphp-php>php_offsetphp php.php php'php_php'php php.php php$yearphp.php$monthphp.php$dayphp.php'php_php'php.php$hourphp.php$minutephp.php$secondphp php.php php'php_php'php.php(intphp)php$gmtphp,php php'php-php'php,php'php_php'php)php;
+php php php php php php php php php php php php ifphp php(php$resultphp php=php selfphp:php:php$php_cachephp-php>loadphp(php$idphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp unserializephp(php$resultphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php datephp tophp integer
+php php php php php php php php php$dayphp php php php=php intvalphp(php$dayphp)php;
+php php php php php php php php php$monthphp php=php intvalphp(php$monthphp)php;
+php php php php php php php php php$yearphp php php=php intvalphp(php$yearphp)php;
+
+php php php php php php php php php/php/php correctphp monthsphp php>php php1php2php andphp monthsphp <php php1
+php php php php php php php php ifphp php(php$monthphp php>php php1php2php)php php{
+php php php php php php php php php php php php php$overlapphp php=php floorphp(php$monthphp php/php php1php2php)php;
+php php php php php php php php php php php php php$yearphp php php php+php=php php$overlapphp;
+php php php php php php php php php php php php php$monthphp php php-php=php php$overlapphp php*php php1php2php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$overlapphp php=php ceilphp(php(php1php php-php php$monthphp)php php/php php1php2php)php;
+php php php php php php php php php php php php php$yearphp php php php-php=php php$overlapphp;
+php php php php php php php php php php php php php$monthphp php php+php=php php$overlapphp php*php php1php2php;
+php php php php php php php php php}
+
+php php php php php php php php php$datephp php=php php0php;
+php php php php php php php php ifphp php(php$yearphp php>php=php php1php9php7php0php)php php{
+
+php php php php php php php php php php php php php/php/php Datephp isphp afterphp UNIXphp epoch
+php php php php php php php php php php php php php/php/php gophp throughphp leapyears
+php php php php php php php php php php php php php/php/php addphp monthsphp fromphp latestphp givenphp year
+php php php php php php php php php php php php forphp php(php$countphp php=php php1php9php7php0php;php php$countphp <php=php php$yearphp;php php$countphp+php+php)php php{
+
+php php php php php php php php php php php php php php php php php$leapyearphp php=php selfphp:php:isYearLeapYearphp(php$countphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$countphp <php php$yearphp)php php{
+
+php php php php php php php php php php php php php php php php php php php php php$datephp php+php=php php3php6php5php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$leapyearphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$datephp+php+php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php php php php php php php php php forphp php(php$mcountphp php=php php0php;php php$mcountphp <php php(php$monthphp php-php php1php)php;php php$mcountphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$datephp php+php=php selfphp:php:php$php_monthTablephp[php$mcountphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$leapyearphp php=php=php=php truephp)php andphp php(php$mcountphp php=php=php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp+php+php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$datephp php+php=php php$dayphp php-php php1php;
+php php php php php php php php php php php php php$datephp php=php php(php(php$datephp php*php php8php6php4php0php0php)php php+php php(php$hourphp php*php php3php6php0php0php)php php+php php(php$minutephp php*php php6php0php)php php+php php$secondphp)php;
+php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php php/php/php Datephp isphp beforephp UNIXphp epoch
+php php php php php php php php php php php php php/php/php gophp throughphp leapyears
+php php php php php php php php php php php php php/php/php addphp monthsphp fromphp latestphp givenphp year
+php php php php php php php php php php php php forphp php(php$countphp php=php php1php9php6php9php;php php$countphp php>php=php php$yearphp;php php$countphp-php-php)php php{
+
+php php php php php php php php php php php php php php php php php$leapyearphp php=php selfphp:php:isYearLeapYearphp(php$countphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$countphp php>php php$yearphp)
+php php php php php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php php php php php$datephp php+php=php php3php6php5php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$leapyearphp php=php=php=php truephp)
+php php php php php php php php php php php php php php php php php php php php php php php php php$datephp+php+php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php php php php php php php php php forphp php(php$mcountphp php=php php1php1php;php php$mcountphp php>php php(php$monthphp php-php php1php)php;php php$mcountphp-php-php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$datephp php+php=php selfphp:php:php$php_monthTablephp[php$mcountphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$leapyearphp php=php=php=php truephp)php andphp php(php$mcountphp php=php=php php2php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp+php+php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$datephp php+php=php php(selfphp:php:php$php_monthTablephp[php$monthphp php-php php1php]php php-php php$dayphp)php;
+php php php php php php php php php php php php php$datephp php=php php-php(php(php$datephp php*php php8php6php4php0php0php)php php+php php(php8php6php4php0php0php php-php php(php(php$hourphp php*php php3php6php0php0php)php php+php php(php$minutephp php*php php6php0php)php php+php php$secondphp)php)php)php;
+
+php php php php php php php php php php php php php/php/php gregorianphp correctionphp forphp php5php.Octphp.php1php5php8php2
+php php php php php php php php php php php php ifphp php(php$datephp <php php-php1php2php2php2php0php1php8php5php6php0php0php)php php{
+php php php php php php php php php php php php php php php php php$datephp php+php=php php8php6php4php0php0php0php;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$datephp <php php-php1php2php2php1php9php3php2php1php6php0php0php)php php{
+php php php php php php php php php php php php php php php php php$datephp php php=php php-php1php2php2php1php9php3php2php1php6php0php0php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$datephp)php,php php$idphp,php arrayphp(php'Zendphp_Datephp'php)php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$datephp)php,php php$idphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$datephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp,php ifphp givenphp php$yearphp isphp aphp leapphp yearphp.
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php$year
+php php php php php php*php php@returnphp booleanphp php truephp,php ifphp yearphp isphp leapphp year
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp isYearLeapYearphp(php$yearphp)
+php php php php php{
+php php php php php php php php php/php/php allphp leapyearsphp canphp bephp dividedphp throughphp php4
+php php php php php php php php ifphp php(php(php$yearphp php%php php4php)php php!php=php php0php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php allphp leapyearsphp canphp bephp dividedphp throughphp php4php0php0
+php php php php php php php php ifphp php(php$yearphp php%php php4php0php0php php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp ifphp php(php(php$yearphp php>php php1php5php8php2php)php andphp php(php$yearphp php%php php1php0php0php php=php=php php0php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp mktimephp functionphp usedphp byphp Zendphp_Datephp forphp handlingphp php6php4bitphp timestampsphp.
+php php php php php php*
+php php php php php php*php Returnsphp aphp formattedphp datephp forphp aphp givenphp timestampphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php$formatphp php php php php formatphp forphp output
+php php php php php php*php php@paramphp php mixedphp php php php php$timestamp
+php php php php php php*php php@paramphp php booleanphp php php$gmtphp php php php php php php php OPTIONALphp truephp php=php otherphp argumentsphp arephp forphp UTCphp timephp,php falsephp php=php argumentsphp arephp forphp localphp timephp/date
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp datephp(php$formatphp,php php$timestampphp php=php nullphp,php php$gmtphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$oldzonephp php=php php@datephp_defaultphp_timezonephp_getphp(php)php;
+php php php php php php php php ifphp php(php$thisphp-php>php_timezonephp php!php=php php$oldzonephp)php php{
+php php php php php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$thisphp-php>php_timezonephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$timestampphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$resultphp php=php php(php$gmtphp)php php?php php@gmdatephp(php$formatphp)php php:php php@datephp(php$formatphp)php;
+php php php php php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$oldzonephp)php;
+php php php php php php php php php php php php returnphp php$resultphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(absphp(php$timestampphp)php <php=php php0xphp7FFFFFFFphp)php php{
+php php php php php php php php php php php php php$resultphp php=php php(php$gmtphp)php php?php php@gmdatephp(php$formatphp,php php$timestampphp)php php:php php@datephp(php$formatphp,php php$timestampphp)php;
+php php php php php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$oldzonephp)php;
+php php php php php php php php php php php php returnphp php$resultphp;
+php php php php php php php php php}
+
+php php php php php php php php php$jumpphp php php php php php php=php falsephp;
+php php php php php php php php php$origstampphp php=php php$timestampphp;
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php php$idstampphp php=php strtrphp(php'Zendphp_DateObjectphp_datephp_php'php php.php php$thisphp-php>php_offsetphp php.php php'php_php'php.php php$timestampphp php.php php'php_php'php.php(intphp)php$gmtphp,php php'php-php'php,php'php_php'php)php;
+php php php php php php php php php php php php ifphp php(php$resultphp2php php=php selfphp:php:php$php_cachephp-php>loadphp(php$idstampphp)php)php php{
+php php php php php php php php php php php php php php php php php$timestampphp php=php unserializephp(php$resultphp2php)php;
+php php php php php php php php php php php php php php php php php$jumpphp php=php truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php checkphp onphp falsephp orphp nullphp alonephp fails
+php php php php php php php php ifphp php(emptyphp(php$gmtphp)php andphp emptyphp(php$jumpphp)php)php php{
+php php php php php php php php php php php php php$tempstampphp php=php php$timestampphp;
+php php php php php php php php php php php php ifphp php(php$tempstampphp php>php php0php)php php{
+php php php php php php php php php php php php php php php php whilephp php(absphp(php$tempstampphp)php php>php php0xphp7FFFFFFFphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$tempstampphp php-php=php php(php8php6php4php0php0php php*php php2php3php3php7php6php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$dstphp php=php datephp(php"Iphp"php,php php$tempstampphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$dstphp php=php=php=php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php$timestampphp php+php=php php3php6php0php0php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$tempphp php php php php php php php=php datephp(php'Zphp'php,php php$tempstampphp)php;
+php php php php php php php php php php php php php php php php php$timestampphp php+php=php php$tempphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
+php php php php php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$timestampphp)php,php php$idstampphp,php arrayphp(php'Zendphp_Datephp'php)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$timestampphp)php,php php$idstampphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(php$timestampphp <php php0php)php andphp php(php$gmtphp php!php=php=php truephp)php)php php{
+php php php php php php php php php php php php php$timestampphp php-php=php php$thisphp-php>php_offsetphp;
+php php php php php php php php php}
+
+php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$oldzonephp)php;
+php php php php php php php php php$datephp php php php=php php$thisphp-php>getDatePartsphp(php$timestampphp,php truephp)php;
+php php php php php php php php php$lengthphp php=php strlenphp(php$formatphp)php;
+php php php php php php php php php$outputphp php=php php'php'php;
+
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$lengthphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php switchphp(php$formatphp[php$iphp]php)php php{
+php php php php php php php php php php php php php php php php php/php/php dayphp formats
+php php php php php php php php php php php php php php php php casephp php'dphp'php:php php php/php/php dayphp ofphp monthphp,php php2php digitsphp,php withphp leadingphp zerophp,php php0php1php php-php php3php1
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$datephp[php'mdayphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'mdayphp'php]php php:php php$datephp[php'mdayphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Dphp'php:php php php/php/php dayphp ofphp weekphp,php php3php lettersphp,php Monphp php-php Sun
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php datephp(php'Dphp'php,php php8php6php4php0php0php php*php php(php3php php+php selfphp:php:dayOfWeekphp(php$datephp[php'yearphp'php]php,php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php)php)php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'jphp'php:php php php/php/php dayphp ofphp monthphp,php withoutphp leadingphp zerophp,php php1php php-php php3php1
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$datephp[php'mdayphp'php]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'lphp'php:php php php/php/php dayphp ofphp weekphp,php fullphp stringphp namephp,php Sundayphp php-php Saturday
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php datephp(php'lphp'php,php php8php6php4php0php0php php*php php(php3php php+php selfphp:php:dayOfWeekphp(php$datephp[php'yearphp'php]php,php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php)php)php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Nphp'php:php php php/php/php ISOphp php8php6php0php1php numericphp dayphp ofphp weekphp,php php1php php-php php7
+php php php php php php php php php php php php php php php php php php php php php$dayphp php=php selfphp:php:dayOfWeekphp(php$datephp[php'yearphp'php]php,php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$dayphp php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$dayphp php=php php7php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$dayphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Sphp'php:php php php/php/php englishphp suffixphp forphp dayphp ofphp monthphp,php stphp ndphp rdphp th
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$datephp[php'mdayphp'php]php php%php php1php0php)php php=php=php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php'stphp'php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php(php(php$datephp[php'mdayphp'php]php php%php php1php0php)php php=php=php php2php)php andphp php(php$datephp[php'mdayphp'php]php php!php=php php1php2php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php'ndphp'php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php(php$datephp[php'mdayphp'php]php php%php php1php0php)php php=php=php php3php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php'rdphp'php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php'thphp'php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'wphp'php:php php php/php/php numericphp dayphp ofphp weekphp,php php0php php-php php6
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php selfphp:php:dayOfWeekphp(php$datephp[php'yearphp'php]php,php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'zphp'php:php php php/php/php dayphp ofphp yearphp,php php0php php-php php3php6php5
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$datephp[php'ydayphp'php]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+
+php php php php php php php php php php php php php php php php php/php/php weekphp formats
+php php php php php php php php php php php php php php php php casephp php'Wphp'php:php php php/php/php ISOphp php8php6php0php1php,php weekphp numberphp ofphp year
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$thisphp-php>weekNumberphp(php$datephp[php'yearphp'php]php,php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+
+php php php php php php php php php php php php php php php php php/php/php monthphp formats
+php php php php php php php php php php php php php php php php casephp php'Fphp'php:php php php/php/php stringphp monthphp namephp,php januaryphp php-php december
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php datephp(php'Fphp'php,php mktimephp(php0php,php php0php,php php0php,php php$datephp[php'monphp'php]php,php php2php,php php1php9php7php1php)php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'mphp'php:php php php/php/php numberphp ofphp monthphp,php withphp leadingphp zerosphp,php php0php1php php-php php1php2
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$datephp[php'monphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'monphp'php]php php:php php$datephp[php'monphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Mphp'php:php php php/php/php php3php letterphp monthphp namephp,php Janphp php-php Dec
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php datephp(php'Mphp'php,mktimephp(php0php,php php0php,php php0php,php php$datephp[php'monphp'php]php,php php2php,php php1php9php7php1php)php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'nphp'php:php php php/php/php numberphp ofphp monthphp,php withoutphp leadingphp zerosphp,php php1php php-php php1php2
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$datephp[php'monphp'php]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'tphp'php:php php php/php/php numberphp ofphp dayphp inphp month
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php selfphp:php:php$php_monthTablephp[php$datephp[php'monphp'php]php php-php php1php]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+
+php php php php php php php php php php php php php php php php php/php/php yearphp formats
+php php php php php php php php php php php php php php php php casephp php'Lphp'php:php php php/php/php isphp leapphp yearphp php?
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(selfphp:php:isYearLeapYearphp(php$datephp[php'yearphp'php]php)php)php php?php php'php1php'php php:php php'php0php'php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'ophp'php:php php php/php/php ISOphp php8php6php0php1php yearphp number
+php php php php php php php php php php php php php php php php php php php php php$weekphp php=php php$thisphp-php>weekNumberphp(php$datephp[php'yearphp'php]php,php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$weekphp php>php php5php0php)php andphp php(php$datephp[php'monphp'php]php php=php=php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php$datephp[php'yearphp'php]php php-php php1php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$datephp[php'yearphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Yphp'php:php php php/php/php yearphp numberphp,php php4php digits
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$datephp[php'yearphp'php]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'yphp'php:php php php/php/php yearphp numberphp,php php2php digits
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php substrphp(php$datephp[php'yearphp'php]php,php strlenphp(php$datephp[php'yearphp'php]php)php php-php php2php,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+
+php php php php php php php php php php php php php php php php php/php/php timephp formats
+php php php php php php php php php php php php php php php php casephp php'aphp'php:php php php/php/php lowerphp casephp amphp/pm
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$datephp[php'hoursphp'php]php php>php=php php1php2php)php php?php php'pmphp'php php:php php'amphp'php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Aphp'php:php php php/php/php upperphp casephp amphp/pm
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$datephp[php'hoursphp'php]php php>php=php php1php2php)php php?php php'PMphp'php php:php php'AMphp'php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Bphp'php:php php php/php/php swatchphp internetphp time
+php php php php php php php php php php php php php php php php php php php php php$daysecondsphp php=php php(php$datephp[php'hoursphp'php]php php*php php3php6php0php0php)php php+php php(php$datephp[php'minutesphp'php]php php*php php6php0php)php php+php php$datephp[php'secondsphp'php]php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$gmtphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$daysecondsphp php+php=php php3php6php0php0php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(intphp)php php(php(php$daysecondsphp php%php php8php6php4php0php0php)php php/php php8php6php.php4php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'gphp'php:php php php/php/php hoursphp withoutphp leadingphp zerosphp,php php1php2hphp format
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$datephp[php'hoursphp'php]php php>php php1php2php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$hourphp php=php php$datephp[php'hoursphp'php]php php-php php1php2php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$datephp[php'hoursphp'php]php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$hourphp php=php php'php1php2php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$hourphp php=php php$datephp[php'hoursphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$hourphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Gphp'php:php php php/php/php hoursphp withoutphp leadingphp zerosphp,php php2php4hphp format
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$datephp[php'hoursphp'php]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'hphp'php:php php php/php/php hoursphp withphp leadingphp zerosphp,php php1php2hphp format
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$datephp[php'hoursphp'php]php php>php php1php2php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$hourphp php=php php$datephp[php'hoursphp'php]php php-php php1php2php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$datephp[php'hoursphp'php]php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$hourphp php=php php'php1php2php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$hourphp php=php php$datephp[php'hoursphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$hourphp <php php1php0php)php php?php php'php0php'php.php$hourphp php:php php$hourphp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Hphp'php:php php php/php/php hoursphp withphp leadingphp zerosphp,php php2php4hphp format
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$datephp[php'hoursphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'hoursphp'php]php php:php php$datephp[php'hoursphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'iphp'php:php php php/php/php minutesphp withphp leadingphp zeros
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$datephp[php'minutesphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'minutesphp'php]php php:php php$datephp[php'minutesphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'sphp'php:php php php/php/php secondsphp withphp leadingphp zeros
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php(php$datephp[php'secondsphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'secondsphp'php]php php:php php$datephp[php'secondsphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+
+php php php php php php php php php php php php php php php php php/php/php timezonephp formats
+php php php php php php php php php php php php php php php php casephp php'ephp'php:php php php/php/php timezonephp identifier
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$gmtphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php gmdatephp(php'ephp'php,php mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php2php0php0php0php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php php datephp(php'ephp'php,php mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php2php0php0php0php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Iphp'php:php php php/php/php daylightphp savingphp timephp orphp not
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$gmtphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php gmdatephp(php'Iphp'php,php mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php2php0php0php0php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php php datephp(php'Iphp'php,php mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php2php0php0php0php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Ophp'php:php php php/php/php differencephp tophp GMTphp inphp hours
+php php php php php php php php php php php php php php php php php php php php php$gmtstrphp php=php php(php$gmtphp php=php=php=php truephp)php php?php php0php php:php php$thisphp-php>getGmtOffsetphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php sprintfphp(php'php%sphp%php0php4dphp'php,php php(php$gmtstrphp <php=php php0php)php php?php php'php+php'php php:php php'php-php'php,php absphp(php$gmtstrphp)php php/php php3php6php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Pphp'php:php php php/php/php differencephp tophp GMTphp withphp colon
+php php php php php php php php php php php php php php php php php php php php php$gmtstrphp php=php php(php$gmtphp php=php=php=php truephp)php php?php php0php php:php php$thisphp-php>getGmtOffsetphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$gmtstrphp php=php sprintfphp(php'php%sphp%php0php4dphp'php,php php(php$gmtstrphp <php=php php0php)php php?php php'php+php'php php:php php'php-php'php,php absphp(php$gmtstrphp)php php/php php3php6php)php;
+php php php php php php php php php php php php php php php php php php php php php$outputphp php=php php$outputphp php.php substrphp(php$gmtstrphp,php php0php,php php3php)php php.php php'php:php'php php.php substrphp(php$gmtstrphp,php php3php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Tphp'php:php php php/php/php timezonephp settings
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$gmtphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php gmdatephp(php'Tphp'php,php mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php2php0php0php0php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php php datephp(php'Tphp'php,php mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php2php0php0php0php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Zphp'php:php php php/php/php timezonephp offsetphp inphp seconds
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php(php$gmtphp php=php=php=php truephp)php php?php php0php php:php php-php$thisphp-php>getGmtOffsetphp(php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+
+php php php php php php php php php php php php php php php php php/php/php completephp timephp formats
+php php php php php php php php php php php php php php php php casephp php'cphp'php:php php php/php/php ISOphp php8php6php0php1php datephp format
+php php php php php php php php php php php php php php php php php php php php php$differencephp php=php php$thisphp-php>getGmtOffsetphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$differencephp php=php sprintfphp(php'php%sphp%php0php4dphp'php,php php(php$differencephp <php=php php0php)php php?php php'php+php'php php:php php'php-php'php,php absphp(php$differencephp)php php/php php3php6php)php;
+php php php php php php php php php php php php php php php php php php php php php$differencephp php=php substrphp(php$differencephp,php php0php,php php3php)php php.php php'php:php'php php.php substrphp(php$differencephp,php php3php)php;
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$datephp[php'yearphp'php]php php.php php'php-php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'monphp'php]php php php php php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'monphp'php]php php php php php php:php php$datephp[php'monphp'php]php)php php php php php php.php php'php-php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'mdayphp'php]php php php php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'mdayphp'php]php php php php php:php php$datephp[php'mdayphp'php]php)php php php php php.php php'Tphp'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'hoursphp'php]php php php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'hoursphp'php]php php php php:php php$datephp[php'hoursphp'php]php)php php php php.php php'php:php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'minutesphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'minutesphp'php]php php:php php$datephp[php'minutesphp'php]php)php php.php php'php:php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'secondsphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'secondsphp'php]php php:php php$datephp[php'secondsphp'php]php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$differencephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'rphp'php:php php php/php/php RFCphp php2php8php2php2php datephp format
+php php php php php php php php php php php php php php php php php php php php php$differencephp php=php php$thisphp-php>getGmtOffsetphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$differencephp php=php sprintfphp(php'php%sphp%php0php4dphp'php,php php(php$differencephp <php=php php0php)php php?php php'php+php'php php:php php'php-php'php,php absphp(php$differencephp)php php/php php3php6php)php;
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php gmdatephp(php'Dphp'php,php php8php6php4php0php0php php*php php(php3php php+php selfphp:php:dayOfWeekphp(php$datephp[php'yearphp'php]php,php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php)php)php)php php.php php'php,php php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'mdayphp'php]php php php php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'mdayphp'php]php php php php php:php php$datephp[php'mdayphp'php]php)php php php php php.php php'php php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php datephp(php'Mphp'php,php mktimephp(php0php,php php0php,php php0php,php php$datephp[php'monphp'php]php,php php2php,php php1php9php7php1php)php)php php.php php'php php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$datephp[php'yearphp'php]php php.php php'php php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'hoursphp'php]php php php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'hoursphp'php]php php php php:php php$datephp[php'hoursphp'php]php)php php php php.php php'php:php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'minutesphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'minutesphp'php]php php:php php$datephp[php'minutesphp'php]php)php php.php php'php:php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$datephp[php'secondsphp'php]php <php php1php0php)php php?php php'php0php'php php.php php$datephp[php'secondsphp'php]php php:php php$datephp[php'secondsphp'php]php)php php.php php'php php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$differencephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Uphp'php:php php php/php/php Unixphp timestamp
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$origstampphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+
+php php php php php php php php php php php php php php php php php/php/php specialphp formats
+php php php php php php php php php php php php php php php php casephp php"php\php\php"php:php php php/php/php nextphp letterphp tophp printphp withphp nophp format
+php php php php php php php php php php php php php php php php php php php php php$iphp+php+php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$iphp <php php$lengthphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$formatphp[php$iphp]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php defaultphp:php php php/php/php letterphp isphp nophp formatphp sophp addphp itphp direct
+php php php php php php php php php php php php php php php php php php php php php$outputphp php.php=php php$formatphp[php$iphp]php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php(stringphp)php php$outputphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp dayphp ofphp weekphp forphp aphp Gregorianphp calendarphp datephp.
+php php php php php php*php php0php php=php sundayphp,php php6php php=php saturday
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php$year
+php php php php php php*php php@paramphp php integerphp php php$month
+php php php php php php*php php@paramphp php integerphp php php$day
+php php php php php php*php php@returnphp integerphp php dayOfWeek
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp dayOfWeekphp(php$yearphp,php php$monthphp,php php$dayphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php1php9php0php1php <php php$yearphp)php andphp php(php$yearphp <php php2php0php3php8php)php)php php{
+php php php php php php php php php php php php returnphp php(intphp)php datephp(php'wphp'php,php mktimephp(php0php,php php0php,php php0php,php php$monthphp,php php$dayphp,php php$yearphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php gregorianphp correction
+php php php php php php php php php$correctionphp php=php php0php;
+php php php php php php php php ifphp php(php(php$yearphp <php php1php5php8php2php)php orphp php(php(php$yearphp php=php=php php1php5php8php2php)php andphp php(php(php$monthphp <php php1php0php)php orphp php(php(php$monthphp php=php=php php1php0php)php php&php&php php(php$dayphp <php php1php5php)php)php)php)php)php php{
+php php php php php php php php php php php php php$correctionphp php=php php3php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$monthphp php>php php2php)php php{
+php php php php php php php php php php php php php$monthphp php-php=php php2php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$monthphp php+php=php php1php0php;
+php php php php php php php php php php php php php$yearphp-php-php;
+php php php php php php php php php}
+
+php php php php php php php php php$dayphp php php=php floorphp(php(php1php3php php*php php$monthphp php-php php1php)php php/php php5php)php php+php php$dayphp php+php php(php$yearphp php%php php1php0php0php)php php+php floorphp(php(php$yearphp php%php php1php0php0php)php php/php php4php)php;
+php php php php php php php php php$dayphp php+php=php floorphp(php(php$yearphp php/php php1php0php0php)php php/php php4php)php php-php php2php php*php floorphp(php$yearphp php/php php1php0php0php)php php+php php7php7php php+php php$correctionphp;
+
+php php php php php php php php returnphp php(intphp)php php(php$dayphp php-php php7php php*php floorphp(php$dayphp php/php php7php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp getDatePartsphp functionphp forphp handlingphp php6php4bitphp timestampsphp,php similarphp tophp:
+php php php php php php*php httpphp:php/php/wwwphp.phpphp.netphp/getdate
+php php php php php php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp datephp partsphp forphp php$timestampphp,php relativephp tophp php1php9php7php0php/php0php1php/php0php1php php0php0php:php0php0php:php0php0php GMTphp/UTCphp.
+php php php php php php*
+php php php php php php*php php$fastphp specifiesphp ALLphp datephp partsphp shouldphp bephp returnedphp php(slowerphp)
+php php php php php php*php Defaultphp isphp falsephp,php andphp excludesphp php$dayofweekphp,php weekdayphp,php monthphp andphp timestampphp fromphp partsphp returnedphp.
+php php php php php php*
+php php php php php php*php php@paramphp php php mixedphp php php php php$timestamp
+php php php php php php*php php@paramphp php php booleanphp php php$fastphp php php OPTIONALphp defaultsphp tophp fastphp php(falsephp)php,php resultingphp inphp fewerphp datephp parts
+php php php php php php*php php@returnphp php array
+php php php php php php*php/
+php php php php protectedphp functionphp getDatePartsphp(php$timestampphp php=php nullphp,php php$fastphp php=php nullphp)
+php php php php php{
+
+php php php php php php php php php/php/php actualphp timestamp
+php php php php php php php php ifphp php(php!isphp_numericphp(php$timestampphp)php)php php{
+php php php php php php php php php php php php returnphp getdatephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php php3php2bitphp timestamp
+php php php php php php php php ifphp php(absphp(php$timestampphp)php <php=php php0xphp7FFFFFFFphp)php php{
+php php php php php php php php php php php php returnphp php@getdatephp(php(intphp)php php$timestampphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php php$idphp php=php strtrphp(php'Zendphp_DateObjectphp_getDatePartsphp_php'php php.php php$timestampphp.php'php_php'php.php(intphp)php$fastphp,php php'php-php'php,php'php_php'php)php;
+php php php php php php php php php php php php ifphp php(php$resultphp php=php selfphp:php:php$php_cachephp-php>loadphp(php$idphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp unserializephp(php$resultphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$otimestampphp php=php php$timestampphp;
+php php php php php php php php php$numdayphp php=php php0php;
+php php php php php php php php php$monthphp php=php php0php;
+php php php php php php php php php/php/php gregorianphp correction
+php php php php php php php php ifphp php(php$timestampphp <php php-php1php2php2php1php9php3php2php1php6php0php0php)php php{
+php php php php php php php php php php php php php$timestampphp php-php=php php8php6php4php0php0php0php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php timestampphp lowerphp php0
+php php php php php php php php ifphp php(php$timestampphp <php php0php)php php{
+php php php php php php php php php php php php php$secphp php=php php0php;
+php php php php php php php php php php php php php$actphp php=php php1php9php7php0php;
+
+php php php php php php php php php php php php php/php/php iteratephp throughphp php1php0php yearsphp tablephp,php increasingphp speed
+php php php php php php php php php php php php foreachphp(selfphp:php:php$php_yearTablephp asphp php$yearphp php=php>php php$secondsphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$timestampphp php>php=php php$secondsphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$iphp php=php php$actphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$secphp php=php php$secondsphp;
+php php php php php php php php php php php php php php php php php$actphp php=php php$yearphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$timestampphp php-php=php php$secphp;
+php php php php php php php php php php php php ifphp php(php!issetphp(php$iphp)php)php php{
+php php php php php php php php php php php php php php php php php$iphp php=php php$actphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php iteratephp thephp maxphp lastphp php1php0php years
+php php php php php php php php php php php php dophp php{
+php php php php php php php php php php php php php php php php php-php-php$iphp;
+php php php php php php php php php php php php php php php php php$dayphp php=php php$timestampphp;
+
+php php php php php php php php php php php php php php php php php$timestampphp php+php=php php3php1php5php3php6php0php0php0php;
+php php php php php php php php php php php php php php php php php$leapyearphp php=php selfphp:php:isYearLeapYearphp(php$iphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$leapyearphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$timestampphp php+php=php php8php6php4php0php0php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$timestampphp php>php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$yearphp php=php php$iphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php whilephp php(php$timestampphp <php php0php)php;
+
+php php php php php php php php php php php php php$secondsPerYearphp php=php php8php6php4php0php0php php*php php(php$leapyearphp php?php php3php6php6php php:php php3php6php5php)php php+php php$dayphp;
+
+php php php php php php php php php php php php php$timestampphp php=php php$dayphp;
+php php php php php php php php php php php php php/php/php iteratephp throughphp months
+php php php php php php php php php php php php forphp php(php$iphp php=php php1php2php;php php-php-php$iphp php>php=php php0php;php)php php{
+php php php php php php php php php php php php php php php php php$dayphp php=php php$timestampphp;
+
+php php php php php php php php php php php php php php php php php$timestampphp php+php=php selfphp:php:php$php_monthTablephp[php$iphp]php php*php php8php6php4php0php0php;
+php php php php php php php php php php php php php php php php ifphp php(php(php$leapyearphp php=php=php=php truephp)php andphp php(php$iphp php=php=php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$timestampphp php+php=php php8php6php4php0php0php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$timestampphp php>php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$monthphp php php=php php$iphp;
+php php php php php php php php php php php php php php php php php php php php php$numdayphp php=php selfphp:php:php$php_monthTablephp[php$iphp]php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$leapyearphp php=php=php=php truephp)php andphp php(php$iphp php=php=php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php+php+php$numdayphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$timestampphp php php=php php$dayphp;
+php php php php php php php php php php php php php$numberdaysphp php=php php$numdayphp php+php ceilphp(php(php$timestampphp php+php php1php)php php/php php8php6php4php0php0php)php;
+
+php php php php php php php php php php php php php$timestampphp php+php=php php(php$numdayphp php-php php$numberdaysphp php+php php1php)php php*php php8php6php4php0php0php;
+php php php php php php php php php php php php php$hoursphp php php php php php php=php floorphp(php$timestampphp php/php php3php6php0php0php)php;
+php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php php/php/php iteratephp throughphp years
+php php php php php php php php php php php php forphp php(php$iphp php=php php1php9php7php0php;php;php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$dayphp php=php php$timestampphp;
+
+php php php php php php php php php php php php php php php php php$timestampphp php-php=php php3php1php5php3php6php0php0php0php;
+php php php php php php php php php php php php php php php php php$leapyearphp php=php selfphp:php:isYearLeapYearphp(php$iphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$leapyearphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$timestampphp php-php=php php8php6php4php0php0php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$timestampphp <php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$yearphp php=php php$iphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$secondsPerYearphp php=php php$dayphp;
+
+php php php php php php php php php php php php php$timestampphp php=php php$dayphp;
+php php php php php php php php php php php php php/php/php iteratephp throughphp months
+php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php=php php1php1php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$dayphp php=php php$timestampphp;
+php php php php php php php php php php php php php php php php php$timestampphp php-php=php selfphp:php:php$php_monthTablephp[php$iphp]php php*php php8php6php4php0php0php;
+
+php php php php php php php php php php php php php php php php ifphp php(php(php$leapyearphp php=php=php=php truephp)php andphp php(php$iphp php=php=php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$timestampphp php-php=php php8php6php4php0php0php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$timestampphp <php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$monthphp php php=php php$iphp;
+php php php php php php php php php php php php php php php php php php php php php$numdayphp php=php selfphp:php:php$php_monthTablephp[php$iphp]php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$leapyearphp php=php=php=php truephp)php andphp php(php$iphp php=php=php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php+php+php$numdayphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$timestampphp php php=php php$dayphp;
+php php php php php php php php php php php php php$numberdaysphp php=php ceilphp(php(php$timestampphp php+php php1php)php php/php php8php6php4php0php0php)php;
+php php php php php php php php php php php php php$timestampphp php php=php php$timestampphp php-php php(php$numberdaysphp php-php php1php)php php*php php8php6php4php0php0php;
+php php php php php php php php php php php php php$hoursphp php=php floorphp(php$timestampphp php/php php3php6php0php0php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$timestampphp php-php=php php$hoursphp php*php php3php6php0php0php;
+
+php php php php php php php php php$monthphp php php+php=php php1php;
+php php php php php php php php php$minutesphp php=php floorphp(php$timestampphp php/php php6php0php)php;
+php php php php php php php php php$secondsphp php=php php$timestampphp php-php php$minutesphp php*php php6php0php;
+
+php php php php php php php php ifphp php(php$fastphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$arrayphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php'secondsphp'php php=php>php php$secondsphp,
+php php php php php php php php php php php php php php php php php'minutesphp'php php=php>php php$minutesphp,
+php php php php php php php php php php php php php php php php php'hoursphp'php php php php=php>php php$hoursphp,
+php php php php php php php php php php php php php php php php php'mdayphp'php php php php php=php>php php$numberdaysphp,
+php php php php php php php php php php php php php php php php php'monphp'php php php php php php=php>php php$monthphp,
+php php php php php php php php php php php php php php php php php'yearphp'php php php php php=php>php php$yearphp,
+php php php php php php php php php php php php php php php php php'ydayphp'php php php php php=php>php floorphp(php$secondsPerYearphp php/php php8php6php4php0php0php)php,
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php php$dayofweekphp php=php selfphp:php:dayOfWeekphp(php$yearphp,php php$monthphp,php php$numberdaysphp)php;
+php php php php php php php php php php php php php$arrayphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'secondsphp'php php=php>php php$secondsphp,
+php php php php php php php php php php php php php php php php php php php php php'minutesphp'php php=php>php php$minutesphp,
+php php php php php php php php php php php php php php php php php php php php php'hoursphp'php php php php=php>php php$hoursphp,
+php php php php php php php php php php php php php php php php php php php php php'mdayphp'php php php php php=php>php php$numberdaysphp,
+php php php php php php php php php php php php php php php php php php php php php'wdayphp'php php php php php=php>php php$dayofweekphp,
+php php php php php php php php php php php php php php php php php php php php php'monphp'php php php php php php=php>php php$monthphp,
+php php php php php php php php php php php php php php php php php php php php php'yearphp'php php php php php=php>php php$yearphp,
+php php php php php php php php php php php php php php php php php php php php php'ydayphp'php php php php php=php>php floorphp(php$secondsPerYearphp php/php php8php6php4php0php0php)php,
+php php php php php php php php php php php php php php php php php php php php php'weekdayphp'php php=php>php gmdatephp(php'lphp'php,php php8php6php4php0php0php php*php php(php3php php+php php$dayofweekphp)php)php,
+php php php php php php php php php php php php php php php php php php php php php'monthphp'php php php php=php>php gmdatephp(php'Fphp'php,php mktimephp(php0php,php php0php,php php0php,php php$monthphp,php php1php,php php1php9php7php1php)php)php,
+php php php php php php php php php php php php php php php php php php php php php0php php php php php php php php php php=php>php php$otimestamp
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$arrayphp)php,php php$idphp,php arrayphp(php'Zendphp_Datephp'php)php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$arrayphp)php,php php$idphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$arrayphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp getWeekNumberphp functionphp forphp handlingphp php6php4bitphp timestamps
+php php php php php php*
+php php php php php php*php Returnsphp thephp ISOphp php8php6php0php1php weekphp numberphp ofphp aphp givenphp date
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php$year
+php php php php php php*php php@paramphp php integerphp php php$month
+php php php php php php*php php@paramphp php integerphp php php$day
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php protectedphp functionphp weekNumberphp(php$yearphp,php php$monthphp,php php$dayphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php1php9php0php1php <php php$yearphp)php andphp php(php$yearphp <php php2php0php3php8php)php)php php{
+php php php php php php php php php php php php returnphp php(intphp)php datephp(php'Wphp'php,php mktimephp(php0php,php php0php,php php0php,php php$monthphp,php php$dayphp,php php$yearphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$dayofweekphp php=php selfphp:php:dayOfWeekphp(php$yearphp,php php$monthphp,php php$dayphp)php;
+php php php php php php php php php$firstdayphp php php=php selfphp:php:dayOfWeekphp(php$yearphp,php php1php,php php1php)php;
+php php php php php php php php ifphp php(php(php$monthphp php=php=php php1php)php andphp php(php(php$firstdayphp <php php1php)php orphp php(php$firstdayphp php>php php4php)php)php andphp php(php$dayphp <php php4php)php)php php{
+php php php php php php php php php php php php php$firstdayphp php php=php selfphp:php:dayOfWeekphp(php$yearphp php-php php1php,php php1php,php php1php)php;
+php php php php php php php php php php php php php$monthphp php php php php php=php php1php2php;
+php php php php php php php php php php php php php$dayphp php php php php php php php=php php3php1php;
+
+php php php php php php php php php}php elsephp ifphp php(php(php$monthphp php=php=php php1php2php)php andphp php(php(selfphp:php:dayOfWeekphp(php$yearphp php+php php1php,php php1php,php php1php)php <php php5php)php and
+php php php php php php php php php php php php php php php php php php php php(selfphp:php:dayOfWeekphp(php$yearphp php+php php1php,php php1php,php php1php)php php>php php0php)php)php)php php{
+php php php php php php php php php php php php returnphp php1php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp intvalphp php(php(php(selfphp:php:dayOfWeekphp(php$yearphp,php php1php,php php1php)php <php php5php)php andphp php(selfphp:php:dayOfWeekphp(php$yearphp,php php1php,php php1php)php php>php php0php)php)php php+
+php php php php php php php php php php php php php php php php4php php*php php(php$monthphp php-php php1php)php php+php php(php2php php*php php(php$monthphp php-php php1php)php php+php php(php$dayphp php-php php1php)php php+php php$firstdayphp php-php php$dayofweekphp php+php php6php)php php*php php3php6php php/php php2php5php6php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp php_rangephp function
+php php php php php php*php Setsphp thephp valuephp php$aphp tophp bephp inphp thephp rangephp ofphp php[php0php,php php$bphp]
+php php php php php php*
+php php php php php php*php php@paramphp floatphp php$aphp php-php valuephp tophp correct
+php php php php php php*php php@paramphp floatphp php$bphp php-php maximumphp rangephp tophp set
+php php php php php php*php/
+php php php php privatephp functionphp php_rangephp(php$aphp,php php$bphp)php php{
+php php php php php php php php whilephp php(php$aphp <php php0php)php php{
+php php php php php php php php php php php php php$aphp php+php=php php$bphp;
+php php php php php php php php php}
+php php php php php php php php whilephp php(php$aphp php>php=php php$bphp)php php{
+php php php php php php php php php php php php php$aphp php-php=php php$bphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$aphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Calculatesphp thephp sunrisephp orphp sunsetphp basedphp onphp aphp location
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$locationphp php Locationphp forphp calculationphp MUSTphp includephp php'latitudephp'php,php php'longitudephp'php,php php'horizonphp'
+php php php php php php*php php@paramphp php boolphp php php php$horizonphp php php truephp:php sunrisephp;php falsephp:php sunset
+php php php php php php*php php@returnphp mixedphp php php-php falsephp:php midnightphp sunphp,php integerphp:
+php php php php php php*php/
+php php php php protectedphp functionphp calcSunphp(php$locationphp,php php$horizonphp,php php$risephp php=php falsephp)
+php php php php php{
+php php php php php php php php php/php/php timestampphp withinphp php3php2bit
+php php php php php php php php ifphp php(absphp(php$thisphp-php>php_unixTimestampphp)php <php=php php0xphp7FFFFFFFphp)php php{
+php php php php php php php php php php php php ifphp php(php$risephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php returnphp datephp_sunsetphp(php$thisphp-php>php_unixTimestampphp,php SUNFUNCSphp_RETphp_TIMESTAMPphp,php php$locationphp[php'latitudephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$locationphp[php'longitudephp'php]php,php php9php0php php+php php$horizonphp,php php$thisphp-php>getGmtOffsetphp(php)php php/php php3php6php0php0php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp datephp_sunrisephp(php$thisphp-php>php_unixTimestampphp,php SUNFUNCSphp_RETphp_TIMESTAMPphp,php php$locationphp[php'latitudephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$locationphp[php'longitudephp'php]php,php php9php0php php+php php$horizonphp,php php$thisphp-php>getGmtOffsetphp(php)php php/php php3php6php0php0php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php selfphp calculationphp php-php timestampphp biggerphp thanphp php3php2bit
+php php php php php php php php php/php/php fixphp circlephp values
+php php php php php php php php php$quarterCirclephp php php php php php php=php php0php.php5php php*php Mphp_PIphp;
+php php php php php php php php php$halfCirclephp php php php php php php php php php=php php php php php php php Mphp_PIphp;
+php php php php php php php php php$threeQuarterCirclephp php=php php1php.php5php php*php Mphp_PIphp;
+php php php php php php php php php$fullCirclephp php php php php php php php php php=php php2php php php php*php Mphp_PIphp;
+
+php php php php php php php php php/php/php radiantphp conversionphp forphp coordinates
+php php php php php php php php php$radLatitudephp php php=php php$locationphp[php'latitudephp'php]php php php php*php php$halfCirclephp php/php php1php8php0php;
+php php php php php php php php php$radLongitudephp php=php php$locationphp[php'longitudephp'php]php php php*php php$halfCirclephp php/php php1php8php0php;
+
+php php php php php php php php php/php/php getphp solarphp coordinates
+php php php php php php php php php$tmpRisephp php php php php php php php=php php$risephp php?php php$quarterCirclephp php:php php$threeQuarterCirclephp;
+php php php php php php php php php$radDayphp php php php php php php php php=php php$thisphp-php>datephp(php'zphp'php,php$thisphp-php>php_unixTimestampphp)php php+php php(php$tmpRisephp php-php php$radLongitudephp)php php/php php$fullCirclephp;
+
+php php php php php php php php php/php/php solarphp anomolyphp andphp longitude
+php php php php php php php php php$solAnomolyphp php php php php=php php$radDayphp php*php php0php.php0php1php7php2php0php2php php-php php0php.php0php5php7php4php0php3php9php;
+php php php php php php php php php$solLongitudephp php php=php php$solAnomolyphp php+php php0php.php0php3php3php4php4php0php5php php*php sinphp(php$solAnomolyphp)php;
+php php php php php php php php php$solLongitudephp php+php=php php4php.php9php3php2php8php9php php+php php3php.php4php9php0php6php6Ephp-php4php php*php sinphp(php2php php*php php$solAnomolyphp)php;
+
+php php php php php php php php php/php/php getphp quadrant
+php php php php php php php php php$solLongitudephp php=php php$thisphp-php>php_rangephp(php$solLongitudephp,php php$fullCirclephp)php;
+
+php php php php php php php php ifphp php(php(php$solLongitudephp php/php php$quarterCirclephp)php php-php intvalphp(php$solLongitudephp php/php php$quarterCirclephp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php$solLongitudephp php+php=php php4php.php8php4php8php1php4Ephp-php6php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php solarphp ascension
+php php php php php php php php php$solAscensionphp php=php sinphp(php$solLongitudephp)php php/php cosphp(php$solLongitudephp)php;
+php php php php php php php php php$solAscensionphp php=php atanphp2php(php0php.php9php1php7php4php6php php*php php$solAscensionphp,php php1php)php;
+
+php php php php php php php php php/php/php adjustphp quadrant
+php php php php php php php php ifphp php(php$solLongitudephp php>php php$threeQuarterCirclephp)php php{
+php php php php php php php php php php php php php$solAscensionphp php+php=php php$fullCirclephp;
+php php php php php php php php php}php elsephp ifphp php(php$solLongitudephp php>php php$quarterCirclephp)php php{
+php php php php php php php php php php php php php$solAscensionphp php+php=php php$halfCirclephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php solarphp declination
+php php php php php php php php php$solDeclinationphp php php=php php0php.php3php9php7php8php2php php*php sinphp(php$solLongitudephp)php;
+php php php php php php php php php$solDeclinationphp php/php=php php sqrtphp(php-php$solDeclinationphp php*php php$solDeclinationphp php+php php1php)php;
+php php php php php php php php php$solDeclinationphp php php=php atanphp2php(php$solDeclinationphp,php php1php)php;
+
+php php php php php php php php php$solHorizonphp php=php php$horizonphp php-php sinphp(php$solDeclinationphp)php php*php sinphp(php$radLatitudephp)php;
+php php php php php php php php php$solHorizonphp php/php=php cosphp(php$solDeclinationphp)php php*php cosphp(php$radLatitudephp)php;
+
+php php php php php php php php php/php/php midnightphp sunphp,php alwaysphp night
+php php php php php php php php ifphp php(absphp(php$solHorizonphp)php php>php php1php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php$solHorizonphp php/php=php sqrtphp(php-php$solHorizonphp php*php php$solHorizonphp php+php php1php)php;
+php php php php php php php php php$solHorizonphp php php=php php$quarterCirclephp php-php atanphp2php(php$solHorizonphp,php php1php)php;
+
+php php php php php php php php ifphp php(php$risephp)php php{
+php php php php php php php php php php php php php$solHorizonphp php=php php$fullCirclephp php-php php$solHorizonphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php timephp calculation
+php php php php php php php php php$localTimephp php php php php php=php php$solHorizonphp php+php php$solAscensionphp php-php php0php.php0php1php7php2php0php2php8php php*php php$radDayphp php-php php1php.php7php3php3php6php4php;
+php php php php php php php php php$universalTimephp php=php php$localTimephp php-php php$radLongitudephp;
+
+php php php php php php php php php/php/php determinatephp quadrant
+php php php php php php php php php$universalTimephp php=php php$thisphp-php>php_rangephp(php$universalTimephp,php php$fullCirclephp)php;
+
+php php php php php php php php php/php/php radiantphp tophp hours
+php php php php php php php php php$universalTimephp php*php=php php2php4php php/php php$fullCirclephp;
+
+php php php php php php php php php/php/php convertphp tophp time
+php php php php php php php php php$hourphp php=php intvalphp(php$universalTimephp)php;
+php php php php php php php php php$universalTimephp php php php php=php php(php$universalTimephp php-php php$hourphp)php php*php php6php0php;
+php php php php php php php php php$minphp php php=php intvalphp(php$universalTimephp)php;
+php php php php php php php php php$universalTimephp php php php php=php php(php$universalTimephp php-php php$minphp)php php*php php6php0php;
+php php php php php php php php php$secphp php php=php intvalphp(php$universalTimephp)php;
+
+php php php php php php php php returnphp php$thisphp-php>mktimephp(php$hourphp,php php$minphp,php php$secphp,php php$thisphp-php>datephp(php'mphp'php,php php$thisphp-php>php_unixTimestampphp)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>datephp(php'jphp'php,php php$thisphp-php>php_unixTimestampphp)php,php php$thisphp-php>datephp(php'Yphp'php,php php$thisphp-php>php_unixTimestampphp)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php-php1php,php truephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp timezonephp forphp calculationphp ofphp php$thisphp objectphp'sphp gmtphp offsetphp.
+php php php php php php*php Forphp aphp listphp ofphp supportedphp timezonesphp lookphp herephp:php httpphp:php/php/phpphp.netphp/timezones
+php php php php php php*php Ifphp nophp timezonephp canphp bephp detectedphp orphp thephp givenphp timezonephp isphp wrongphp UTCphp willphp bephp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$zonephp php php php php php OPTIONALphp timezonephp forphp datephp calculationphp;php defaultsphp tophp datephp_defaultphp_timezonephp_getphp(php)
+php php php php php php*php php@returnphp Zendphp_Datephp_DateObjectphp Providesphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Datephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setTimezonephp(php$zonephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$oldzonephp php=php php@datephp_defaultphp_timezonephp_getphp(php)php;
+php php php php php php php php ifphp php(php$zonephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$zonephp php=php php$oldzonephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php throwphp anphp errorphp onphp falsephp inputphp,php butphp onlyphp ifphp thephp newphp datephp extensionphp isphp available
+php php php php php php php php ifphp php(functionphp_existsphp(php'timezonephp_openphp'php)php)php php{
+php php php php php php php php php php php php ifphp php(php!php@timezonephp_openphp(php$zonephp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Datephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Datephp_Exceptionphp(php"timezonephp php(php$zonephp)php isphp notphp aphp knownphp timezonephp"php,php php0php,php nullphp,php php$zonephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php/php/php thisphp canphp generatephp anphp errorphp ifphp thephp datephp extensionphp isphp notphp availablephp andphp aphp falsephp timezonephp isphp given
+php php php php php php php php php$resultphp php=php php@datephp_defaultphp_timezonephp_setphp(php$zonephp)php;
+php php php php php php php php ifphp php(php$resultphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_offsetphp php php php=php mktimephp(php0php,php php0php,php php0php,php php1php,php php2php,php php1php9php7php0php)php php-php gmmktimephp(php0php,php php0php,php php0php,php php1php,php php2php,php php1php9php7php0php)php;
+php php php php php php php php php php php php php$thisphp-php>php_timezonephp php=php php$zonephp;
+php php php php php php php php php}
+php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$oldzonephp)php;
+
+php php php php php php php php ifphp php(php(php$zonephp php=php=php php'UTCphp'php)php orphp php(php$zonephp php=php=php php'GMTphp'php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dstphp php=php falsephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_dstphp php=php truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp timezonephp ofphp php$thisphp objectphp.
+php php php php php php*php Thephp timezonephp isphp initiallyphp setphp whenphp thephp objectphp isphp instantiatedphp.
+php php php php php php*
+php php php php php php*php php@returnphp php stringphp php actualphp setphp timezonephp string
+php php php php php php*php/
+php php php php publicphp functionphp getTimezonephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_timezonephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp offsetphp tophp GMTphp ofphp php$thisphp objectphp'sphp timezonephp.
+php php php php php php*php Thephp offsetphp tophp GMTphp isphp initiallyphp setphp whenphp thephp objectphp isphp instantiatedphp usingphp thephp currentlyphp,
+php php php php php php*php inphp effectphp,php defaultphp timezonephp forphp PHPphp functionsphp.
+php php php php php php*
+php php php php php php*php php@returnphp php integerphp php secondsphp differencephp betweenphp GMTphp timezonephp andphp timezonephp whenphp objectphp wasphp instantiated
+php php php php php php*php/
+php php php php publicphp functionphp getGmtOffsetphp(php)
+php php php php php{
+php php php php php php php php php$datephp php php php=php php$thisphp-php>getDatePartsphp(php$thisphp-php>getUnixTimestampphp(php)php,php truephp)php;
+php php php php php php php php php$zonephp php php php=php php@datephp_defaultphp_timezonephp_getphp(php)php;
+php php php php php php php php php$resultphp php=php php@datephp_defaultphp_timezonephp_setphp(php$thisphp-php>php_timezonephp)php;
+php php php php php php php php ifphp php(php$resultphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$offsetphp php=php php$thisphp-php>mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php$datephp[php'yearphp'php]php,php falsephp)
+php php php php php php php php php php php php php php php php php php php php php-php php$thisphp-php>mktimephp(php$datephp[php'hoursphp'php]php,php php$datephp[php'minutesphp'php]php,php php$datephp[php'secondsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$datephp[php'monphp'php]php,php php$datephp[php'mdayphp'php]php,php php$datephp[php'yearphp'php]php,php truephp)php;
+php php php php php php php php php}
+php php php php php php php php datephp_defaultphp_timezonephp_setphp(php$zonephp)php;
+
+php php php php php php php php returnphp php$offsetphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp tophp checkphp ifphp thephp givenphp cachephp supportsphp tags
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Cachephp php$cache
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_getTagSupportForCachephp(php)
+php php php php php{
+php php php php php php php php php$backendphp php=php selfphp:php:php$php_cachephp-php>getBackendphp(php)php;
+php php php php php php php php ifphp php(php$backendphp instanceofphp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp)php php{
+php php php php php php php php php php php php php$cacheOptionsphp php=php php$backendphp-php>getCapabilitiesphp(php)php;
+php php php php php php php php php php php php selfphp:php:php$php_cacheTagsphp php=php php$cacheOptionsphp[php'tagsphp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php selfphp:php:php$php_cacheTagsphp php=php falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp selfphp:php:php$php_cacheTagsphp;
+php php php php php}
+php}

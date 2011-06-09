@@ -1,274 +1,274 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage StrikeIron
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Base.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp StrikeIron
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Basephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @see Zend_Service_StrikeIron_Decorator
- */
-require_once 'Zend/Service/StrikeIron/Decorator.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_StrikeIronphp_Decorator
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/StrikeIronphp/Decoratorphp.phpphp'php;
 
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage StrikeIron
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_StrikeIron_Base
-{
-    /**
-     * Configuration options
-     * @param array
-     */
-    protected $_options = array('username' => null,
-                                'password' => null,
-                                'client'   => null,
-                                'options'  => null,
-                                'headers'  => null,
-                                'wsdl'     => null);
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp StrikeIron
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_StrikeIronphp_Base
+php{
+php php php php php/php*php*
+php php php php php php*php Configurationphp options
+php php php php php php*php php@paramphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(php'usernamephp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'passwordphp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'clientphp'php php php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'optionsphp'php php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'headersphp'php php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'wsdlphp'php php php php php php=php>php nullphp)php;
 
-    /**
-     * Output headers returned by the last call to SOAPClient->__soapCall()
-     * @param array
-     */
-    protected $_outputHeaders = array();
+php php php php php/php*php*
+php php php php php php*php Outputphp headersphp returnedphp byphp thephp lastphp callphp tophp SOAPClientphp-php>php_php_soapCallphp(php)
+php php php php php php*php php@paramphp array
+php php php php php php*php/
+php php php php protectedphp php$php_outputHeadersphp php=php arrayphp(php)php;
 
-    /**
-     * Class constructor
-     *
-     * @param  array  $options  Key/value pair options
-     * @throws Zend_Service_StrikeIron_Exception
-     */
-    public function __construct($options = array())
-    {
-        if (!extension_loaded('soap')) {
-            /**
-             * @see Zend_Service_StrikeIron_Exception
-             */
-            require_once 'Zend/Service/StrikeIron/Exception.php';
-            throw new Zend_Service_StrikeIron_Exception('SOAP extension is not enabled');
-        }
+php php php php php/php*php*
+php php php php php php*php Classphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$optionsphp php Keyphp/valuephp pairphp options
+php php php php php php*php php@throwsphp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'soapphp'php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/StrikeIronphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_StrikeIronphp_Exceptionphp(php'SOAPphp extensionphp isphp notphp enabledphp'php)php;
+php php php php php php php php php}
 
-        $this->_options  = array_merge($this->_options, $options);
+php php php php php php php php php$thisphp-php>php_optionsphp php php=php arrayphp_mergephp(php$thisphp-php>php_optionsphp,php php$optionsphp)php;
 
-        $this->_initSoapHeaders();
-        $this->_initSoapClient();
-    }
+php php php php php php php php php$thisphp-php>php_initSoapHeadersphp(php)php;
+php php php php php php php php php$thisphp-php>php_initSoapClientphp(php)php;
+php php php php php}
 
-    /**
-     * Proxy method calls to the SOAPClient instance, transforming method
-     * calls and responses for convenience.
-     *
-     * @param  string  $method  Method name
-     * @param  array   $params  Parameters for method
-     * @return mixed            Result
-     * @throws Zend_Service_StrikeIron_Exception
-     */
-    public function __call($method, $params)
-    {
-        // prepare method name and parameters for soap call
-        list($method, $params) = $this->_transformCall($method, $params);
-        $params = isset($params[0]) ? array($params[0]) : array();
+php php php php php/php*php*
+php php php php php php*php Proxyphp methodphp callsphp tophp thephp SOAPClientphp instancephp,php transformingphp method
+php php php php php php*php callsphp andphp responsesphp forphp conveniencephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$methodphp php Methodphp name
+php php php php php php*php php@paramphp php arrayphp php php php$paramsphp php Parametersphp forphp method
+php php php php php php*php php@returnphp mixedphp php php php php php php php php php php php Result
+php php php php php php*php php@throwsphp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$paramsphp)
+php php php php php{
+php php php php php php php php php/php/php preparephp methodphp namephp andphp parametersphp forphp soapphp call
+php php php php php php php php listphp(php$methodphp,php php$paramsphp)php php=php php$thisphp-php>php_transformCallphp(php$methodphp,php php$paramsphp)php;
+php php php php php php php php php$paramsphp php=php issetphp(php$paramsphp[php0php]php)php php?php arrayphp(php$paramsphp[php0php]php)php php:php arrayphp(php)php;
 
-        // make soap call, capturing the result and output headers
-        try {
-            $result = $this->_options['client']->__soapCall($method,
-                                                            $params,
-                                                            $this->_options['options'],
-                                                            $this->_options['headers'],
-                                                            $this->_outputHeaders);
-        } catch (Exception $e) {
-            $message = get_class($e) . ': ' . $e->getMessage();
-            /**
-             * @see Zend_Service_StrikeIron_Exception
-             */
-            require_once 'Zend/Service/StrikeIron/Exception.php';
-            throw new Zend_Service_StrikeIron_Exception($message, $e->getCode(), $e);
-        }
+php php php php php php php php php/php/php makephp soapphp callphp,php capturingphp thephp resultphp andphp outputphp headers
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_optionsphp[php'clientphp'php]php-php>php_php_soapCallphp(php$methodphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$paramsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'optionsphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'headersphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_outputHeadersphp)php;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php$messagephp php=php getphp_classphp(php$ephp)php php.php php'php:php php'php php.php php$ephp-php>getMessagephp(php)php;
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/StrikeIronphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_StrikeIronphp_Exceptionphp(php$messagephp,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
 
-        // transform/decorate the result and return it
-        $result = $this->_transformResult($result, $method, $params);
-        return $result;
-    }
+php php php php php php php php php/php/php transformphp/decoratephp thephp resultphp andphp returnphp it
+php php php php php php php php php$resultphp php=php php$thisphp-php>php_transformResultphp(php$resultphp,php php$methodphp,php php$paramsphp)php;
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * Initialize the SOAPClient instance
-     *
-     * @return void
-     */
-    protected function _initSoapClient()
-    {
-        if (! isset($this->_options['options'])) {
-            $this->_options['options'] = array();
-        }
+php php php php php/php*php*
+php php php php php php*php Initializephp thephp SOAPClientphp instance
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_initSoapClientphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>php_optionsphp[php'optionsphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'optionsphp'php]php php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        if (! isset($this->_options['client'])) {
-            $this->_options['client'] = new SoapClient($this->_options['wsdl'],
-                                                       $this->_options['options']);
-        }
-    }
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>php_optionsphp[php'clientphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'clientphp'php]php php=php newphp SoapClientphp(php$thisphp-php>php_optionsphp[php'wsdlphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'optionsphp'php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Initialize the headers to pass to SOAPClient->__soapCall()
-     *
-     * @return void
-     * @throws Zend_Service_StrikeIron_Exception
-     */
-    protected function _initSoapHeaders()
-    {
-        // validate headers and check if LicenseInfo was given
-        $foundLicenseInfo = false;
-        if (isset($this->_options['headers'])) {
-            if (! is_array($this->_options['headers'])) {
-                $this->_options['headers'] = array($this->_options['headers']);
-            }
+php php php php php/php*php*
+php php php php php php*php Initializephp thephp headersphp tophp passphp tophp SOAPClientphp-php>php_php_soapCallphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_initSoapHeadersphp(php)
+php php php php php{
+php php php php php php php php php/php/php validatephp headersphp andphp checkphp ifphp LicenseInfophp wasphp given
+php php php php php php php php php$foundLicenseInfophp php=php falsephp;
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'headersphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php!php isphp_arrayphp(php$thisphp-php>php_optionsphp[php'headersphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'headersphp'php]php php=php arrayphp(php$thisphp-php>php_optionsphp[php'headersphp'php]php)php;
+php php php php php php php php php php php php php}
 
-            foreach ($this->_options['headers'] as $header) {
-                if (! $header instanceof SoapHeader) {
-                    /**
-                     * @see Zend_Service_StrikeIron_Exception
-                     */
-                    require_once 'Zend/Service/StrikeIron/Exception.php';
-                    throw new Zend_Service_StrikeIron_Exception('Header must be instance of SoapHeader');
-                } else if ($header->name == 'LicenseInfo') {
-                    $foundLicenseInfo = true;
-                    break;
-                }
-            }
-        } else {
-            $this->_options['headers'] = array();
-        }
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp[php'headersphp'php]php asphp php$headerphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!php php$headerphp instanceofphp SoapHeaderphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/StrikeIronphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_StrikeIronphp_Exceptionphp(php'Headerphp mustphp bephp instancephp ofphp SoapHeaderphp'php)php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$headerphp-php>namephp php=php=php php'LicenseInfophp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$foundLicenseInfophp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'headersphp'php]php php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        // add default LicenseInfo header if a custom one was not supplied
-        if (! $foundLicenseInfo) {
-            $this->_options['headers'][] = new SoapHeader('http://ws.strikeiron.com',
-                            'LicenseInfo',
-                            array('RegisteredUser' => array('UserID'   => $this->_options['username'],
-                                                            'Password' => $this->_options['password'])));
-        }
-    }
+php php php php php php php php php/php/php addphp defaultphp LicenseInfophp headerphp ifphp aphp customphp onephp wasphp notphp supplied
+php php php php php php php php ifphp php(php!php php$foundLicenseInfophp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'headersphp'php]php[php]php php=php newphp SoapHeaderphp(php'httpphp:php/php/wsphp.strikeironphp.comphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'LicenseInfophp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php'RegisteredUserphp'php php=php>php arrayphp(php'UserIDphp'php php php php=php>php php$thisphp-php>php_optionsphp[php'usernamephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Passwordphp'php php=php>php php$thisphp-php>php_optionsphp[php'passwordphp'php]php)php)php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Transform a method name or method parameters before sending them
-     * to the remote service.  This can be useful for inflection or other
-     * transforms to give the method call a more PHP-like interface.
-     *
-     * @see    __call()
-     * @param  string  $method  Method name called from PHP
-     * @param  mixed   $param   Parameters passed from PHP
-     * @return array            [$method, $params] for SOAPClient->__soapCall()
-     */
-    protected function _transformCall($method, $params)
-    {
-        return array(ucfirst($method), $params);
-    }
+php php php php php/php*php*
+php php php php php php*php Transformphp aphp methodphp namephp orphp methodphp parametersphp beforephp sendingphp them
+php php php php php php*php tophp thephp remotephp servicephp.php php Thisphp canphp bephp usefulphp forphp inflectionphp orphp other
+php php php php php php*php transformsphp tophp givephp thephp methodphp callphp aphp morephp PHPphp-likephp interfacephp.
+php php php php php php*
+php php php php php php*php php@seephp php php php php_php_callphp(php)
+php php php php php php*php php@paramphp php stringphp php php$methodphp php Methodphp namephp calledphp fromphp PHP
+php php php php php php*php php@paramphp php mixedphp php php php$paramphp php php Parametersphp passedphp fromphp PHP
+php php php php php php*php php@returnphp arrayphp php php php php php php php php php php php php[php$methodphp,php php$paramsphp]php forphp SOAPClientphp-php>php_php_soapCallphp(php)
+php php php php php php*php/
+php php php php protectedphp functionphp php_transformCallphp(php$methodphp,php php$paramsphp)
+php php php php php{
+php php php php php php php php returnphp arrayphp(ucfirstphp(php$methodphp)php,php php$paramsphp)php;
+php php php php php}
 
-    /**
-     * Transform the result returned from a method before returning
-     * it to the PHP caller.  This can be useful for transforming
-     * the SOAPClient returned result to be more PHP-like.
-     *
-     * The $method name and $params passed to the method are provided to
-     * allow decisions to be made about how to transform the result based
-     * on what was originally called.
-     *
-     * @see    __call()
-     * @param  $result  Raw result returned from SOAPClient_>__soapCall()
-     * @param  $method  Method name that was passed to SOAPClient->__soapCall()
-     * @param  $params  Method parameters that were passed to SOAPClient->__soapCall()
-     * @return mixed    Transformed result
-     */
-    protected function _transformResult($result, $method, $params)
-    {
-        $resultObjectName = "{$method}Result";
-        if (isset($result->$resultObjectName)) {
-            $result = $result->$resultObjectName;
-        }
-        if (is_object($result)) {
-            $result = new Zend_Service_StrikeIron_Decorator($result, $resultObjectName);
-        }
-        return $result;
-    }
+php php php php php/php*php*
+php php php php php php*php Transformphp thephp resultphp returnedphp fromphp aphp methodphp beforephp returning
+php php php php php php*php itphp tophp thephp PHPphp callerphp.php php Thisphp canphp bephp usefulphp forphp transforming
+php php php php php php*php thephp SOAPClientphp returnedphp resultphp tophp bephp morephp PHPphp-likephp.
+php php php php php php*
+php php php php php php*php Thephp php$methodphp namephp andphp php$paramsphp passedphp tophp thephp methodphp arephp providedphp to
+php php php php php php*php allowphp decisionsphp tophp bephp madephp aboutphp howphp tophp transformphp thephp resultphp based
+php php php php php php*php onphp whatphp wasphp originallyphp calledphp.
+php php php php php php*
+php php php php php php*php php@seephp php php php php_php_callphp(php)
+php php php php php php*php php@paramphp php php$resultphp php Rawphp resultphp returnedphp fromphp SOAPClientphp_php>php_php_soapCallphp(php)
+php php php php php php*php php@paramphp php php$methodphp php Methodphp namephp thatphp wasphp passedphp tophp SOAPClientphp-php>php_php_soapCallphp(php)
+php php php php php php*php php@paramphp php php$paramsphp php Methodphp parametersphp thatphp werephp passedphp tophp SOAPClientphp-php>php_php_soapCallphp(php)
+php php php php php php*php php@returnphp mixedphp php php php Transformedphp result
+php php php php php php*php/
+php php php php protectedphp functionphp php_transformResultphp(php$resultphp,php php$methodphp,php php$paramsphp)
+php php php php php{
+php php php php php php php php php$resultObjectNamephp php=php php"php{php$methodphp}Resultphp"php;
+php php php php php php php php ifphp php(issetphp(php$resultphp-php>php$resultObjectNamephp)php)php php{
+php php php php php php php php php php php php php$resultphp php=php php$resultphp-php>php$resultObjectNamephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(isphp_objectphp(php$resultphp)php)php php{
+php php php php php php php php php php php php php$resultphp php=php newphp Zendphp_Servicephp_StrikeIronphp_Decoratorphp(php$resultphp,php php$resultObjectNamephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * Get the WSDL URL for this service.
-     *
-     * @return string
-     */
-    public function getWsdl()
-    {
-        return $this->_options['wsdl'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp WSDLphp URLphp forphp thisphp servicephp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getWsdlphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'wsdlphp'php]php;
+php php php php php}
 
-    /**
-     * Get the SOAP Client instance for this service.
-     */
-    public function getSoapClient()
-    {
-        return $this->_options['client'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp SOAPphp Clientphp instancephp forphp thisphp servicephp.
+php php php php php php*php/
+php php php php publicphp functionphp getSoapClientphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'clientphp'php]php;
+php php php php php}
 
-    /**
-     * Get the StrikeIron output headers returned with the last method response.
-     *
-     * @return array
-     */
-    public function getLastOutputHeaders()
-    {
-        return $this->_outputHeaders;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp StrikeIronphp outputphp headersphp returnedphp withphp thephp lastphp methodphp responsephp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getLastOutputHeadersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_outputHeadersphp;
+php php php php php}
 
-    /**
-     * Get the StrikeIron subscription information for this service.
-     * If any service method was recently called, the subscription info
-     * should have been returned in the SOAP headers so it is cached
-     * and returned from the cache.  Otherwise, the getRemainingHits()
-     * method is called as a dummy to get the subscription info headers.
-     *
-     * @param  boolean  $now          Force a call to getRemainingHits instead of cache?
-     * @param  string   $queryMethod  Method that will cause SubscriptionInfo header to be sent
-     * @return Zend_Service_StrikeIron_Decorator  Decorated subscription info
-     * @throws Zend_Service_StrikeIron_Exception
-     */
-    public function getSubscriptionInfo($now = false, $queryMethod = 'GetRemainingHits')
-    {
-        if ($now || empty($this->_outputHeaders['SubscriptionInfo'])) {
-            $this->$queryMethod();
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp StrikeIronphp subscriptionphp informationphp forphp thisphp servicephp.
+php php php php php php*php Ifphp anyphp servicephp methodphp wasphp recentlyphp calledphp,php thephp subscriptionphp info
+php php php php php php*php shouldphp havephp beenphp returnedphp inphp thephp SOAPphp headersphp sophp itphp isphp cached
+php php php php php php*php andphp returnedphp fromphp thephp cachephp.php php Otherwisephp,php thephp getRemainingHitsphp(php)
+php php php php php php*php methodphp isphp calledphp asphp aphp dummyphp tophp getphp thephp subscriptionphp infophp headersphp.
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php php$nowphp php php php php php php php php php Forcephp aphp callphp tophp getRemainingHitsphp insteadphp ofphp cachephp?
+php php php php php php*php php@paramphp php stringphp php php php$queryMethodphp php Methodphp thatphp willphp causephp SubscriptionInfophp headerphp tophp bephp sent
+php php php php php php*php php@returnphp Zendphp_Servicephp_StrikeIronphp_Decoratorphp php Decoratedphp subscriptionphp info
+php php php php php php*php php@throwsphp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getSubscriptionInfophp(php$nowphp php=php falsephp,php php$queryMethodphp php=php php'GetRemainingHitsphp'php)
+php php php php php{
+php php php php php php php php ifphp php(php$nowphp php|php|php emptyphp(php$thisphp-php>php_outputHeadersphp[php'SubscriptionInfophp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php$queryMethodphp(php)php;
+php php php php php php php php php}
 
-        // capture subscription info if returned in output headers
-        if (isset($this->_outputHeaders['SubscriptionInfo'])) {
-            $info = (object)$this->_outputHeaders['SubscriptionInfo'];
-            $subscriptionInfo = new Zend_Service_StrikeIron_Decorator($info, 'SubscriptionInfo');
-        } else {
-            $msg = 'No SubscriptionInfo header found in last output headers';
-            /**
-             * @see Zend_Service_StrikeIron_Exception
-             */
-            require_once 'Zend/Service/StrikeIron/Exception.php';
-            throw new Zend_Service_StrikeIron_Exception($msg);
-        }
+php php php php php php php php php/php/php capturephp subscriptionphp infophp ifphp returnedphp inphp outputphp headers
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_outputHeadersphp[php'SubscriptionInfophp'php]php)php)php php{
+php php php php php php php php php php php php php$infophp php=php php(objectphp)php$thisphp-php>php_outputHeadersphp[php'SubscriptionInfophp'php]php;
+php php php php php php php php php php php php php$subscriptionInfophp php=php newphp Zendphp_Servicephp_StrikeIronphp_Decoratorphp(php$infophp,php php'SubscriptionInfophp'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$msgphp php=php php'Nophp SubscriptionInfophp headerphp foundphp inphp lastphp outputphp headersphp'php;
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_StrikeIronphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/StrikeIronphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_StrikeIronphp_Exceptionphp(php$msgphp)php;
+php php php php php php php php php}
 
-        return $subscriptionInfo;
-    }
-}
+php php php php php php php php returnphp php$subscriptionInfophp;
+php php php php php}
+php}

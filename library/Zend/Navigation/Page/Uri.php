@@ -1,100 +1,100 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Navigation
- * @subpackage Page
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Uri.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Navigation
+php php*php php@subpackagephp Page
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Uriphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Navigation_Page_Abstract
- */
-require_once 'Zend/Navigation/Page.php';
+php/php*php*
+php php*php php@seephp Zendphp_Navigationphp_Pagephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Navigationphp/Pagephp.phpphp'php;
 
-/**
- * Represents a page that is defined by specifying a URI
- *
- * @category   Zend
- * @package    Zend_Navigation
- * @subpackage Page
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
-{
-    /**
-     * Page URI
-     *
-     * @var string|null
-     */
-    protected $_uri = null;
+php/php*php*
+php php*php Representsphp aphp pagephp thatphp isphp definedphp byphp specifyingphp aphp URI
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Navigation
+php php*php php@subpackagephp Page
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Navigationphp_Pagephp_Uriphp extendsphp Zendphp_Navigationphp_Page
+php{
+php php php php php/php*php*
+php php php php php php*php Pagephp URI
+php php php php php php*
+php php php php php php*php php@varphp stringphp|null
+php php php php php php*php/
+php php php php protectedphp php$php_uriphp php=php nullphp;
 
-    /**
-     * Sets page URI
-     *
-     * @param  string $uri                page URI, must a string or null
-     * @return Zend_Navigation_Page_Uri   fluent interface, returns self
-     * @throws Zend_Navigation_Exception  if $uri is invalid
-     */
-    public function setUri($uri)
-    {
-        if (null !== $uri && !is_string($uri)) {
-            require_once 'Zend/Navigation/Exception.php';
-            throw new Zend_Navigation_Exception(
-                    'Invalid argument: $uri must be a string or null');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp pagephp URI
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$uriphp php php php php php php php php php php php php php php php pagephp URIphp,php mustphp aphp stringphp orphp null
+php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp_Uriphp php php fluentphp interfacephp,php returnsphp self
+php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp php$uriphp isphp invalid
+php php php php php php*php/
+php php php php publicphp functionphp setUriphp(php$uriphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$uriphp php&php&php php!isphp_stringphp(php$uriphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$uriphp mustphp bephp aphp stringphp orphp nullphp'php)php;
+php php php php php php php php php}
 
-        $this->_uri = $uri;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_uriphp php=php php$uriphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns URI
-     *
-     * @return string
-     */
-    public function getUri()
-    {
-        return $this->_uri;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp URI
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getUriphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_uriphp;
+php php php php php}
 
-    /**
-     * Returns href for this page
-     *
-     * @return string
-     */
-    public function getHref()
-    {
-        return $this->getUri();
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp hrefphp forphp thisphp page
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getHrefphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getUriphp(php)php;
+php php php php php}
 
-    // Public methods:
+php php php php php/php/php Publicphp methodsphp:
 
-    /**
-     * Returns an array representation of the page
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return array_merge(
-            parent::toArray(),
-            array(
-                'uri' => $this->getUri()
-            ));
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp representationphp ofphp thephp page
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp toArrayphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp_mergephp(
+php php php php php php php php php php php php parentphp:php:toArrayphp(php)php,
+php php php php php php php php php php php php arrayphp(
+php php php php php php php php php php php php php php php php php'uriphp'php php=php>php php$thisphp-php>getUriphp(php)
+php php php php php php php php php php php php php)php)php;
+php php php php php}
+php}

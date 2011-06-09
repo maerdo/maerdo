@@ -1,431 +1,431 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_TimeSync
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Ntp.php 21480 2010-03-13 22:09:26Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_TimeSync
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Ntpphp.phpphp php2php1php4php8php0php php2php0php1php0php-php0php3php-php1php3php php2php2php:php0php9php:php2php6Zphp thomasphp php$
+php php*php/
 
-/**
- * Zend_TimeSync_Protocol
- */
-require_once 'Zend/TimeSync/Protocol.php';
+php/php*php*
+php php*php Zendphp_TimeSyncphp_Protocol
+php php*php/
+requirephp_oncephp php'Zendphp/TimeSyncphp/Protocolphp.phpphp'php;
 
-/**
- * NTP Protocol handling class
- *
- * @category  Zend
- * @package   Zend_TimeSync
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
-{
-    /**
-     * NTP port number (123) assigned by the Internet Assigned Numbers Authority
-     *
-     * @var integer
-     */
-    protected $_port = 123;
+php/php*php*
+php php*php NTPphp Protocolphp handlingphp class
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_TimeSync
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_TimeSyncphp_Ntpphp extendsphp Zendphp_TimeSyncphp_Protocol
+php{
+php php php php php/php*php*
+php php php php php php*php NTPphp portphp numberphp php(php1php2php3php)php assignedphp byphp thephp Internetphp Assignedphp Numbersphp Authority
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_portphp php=php php1php2php3php;
 
-    /**
-     * NTP class constructor, sets the timeserver and port number
-     *
-     * @param string  $timeserver Adress of the timeserver to connect to
-     * @param integer $port       (Optional) Port for this timeserver
-     */
-    public function __construct($timeserver, $port = 123)
-    {
-        $this->_timeserver = 'udp://' . $timeserver;
-        if ($port !== null) {
-            $this->_port = $port;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php NTPphp classphp constructorphp,php setsphp thephp timeserverphp andphp portphp number
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php php$timeserverphp Adressphp ofphp thephp timeserverphp tophp connectphp to
+php php php php php php*php php@paramphp integerphp php$portphp php php php php php php php(Optionalphp)php Portphp forphp thisphp timeserver
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$timeserverphp,php php$portphp php=php php1php2php3php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_timeserverphp php=php php'udpphp:php/php/php'php php.php php$timeserverphp;
+php php php php php php php php ifphp php(php$portphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_portphp php=php php$portphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Prepare local timestamp for transmission in our request packet
-     *
-     * NTP timestamps are represented as a 64-bit fixed-point number, in
-     * seconds relative to 0000 UT on 1 January 1900.  The integer part is
-     * in the first 32 bits and the fraction part in the last 32 bits
-     *
-     * @return string
-     */
-    protected function _prepare()
-    {
-        $frac   = microtime();
-        $fracba = ($frac & 0xff000000) >> 24;
-        $fracbb = ($frac & 0x00ff0000) >> 16;
-        $fracbc = ($frac & 0x0000ff00) >> 8;
-        $fracbd = ($frac & 0x000000ff);
+php php php php php/php*php*
+php php php php php php*php Preparephp localphp timestampphp forphp transmissionphp inphp ourphp requestphp packet
+php php php php php php*
+php php php php php php*php NTPphp timestampsphp arephp representedphp asphp aphp php6php4php-bitphp fixedphp-pointphp numberphp,php in
+php php php php php php*php secondsphp relativephp tophp php0php0php0php0php UTphp onphp php1php Januaryphp php1php9php0php0php.php php Thephp integerphp partphp is
+php php php php php php*php inphp thephp firstphp php3php2php bitsphp andphp thephp fractionphp partphp inphp thephp lastphp php3php2php bits
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_preparephp(php)
+php php php php php{
+php php php php php php php php php$fracphp php php php=php microtimephp(php)php;
+php php php php php php php php php$fracbaphp php=php php(php$fracphp php&php php0xffphp0php0php0php0php0php0php)php php>php>php php2php4php;
+php php php php php php php php php$fracbbphp php=php php(php$fracphp php&php php0xphp0php0ffphp0php0php0php0php)php php>php>php php1php6php;
+php php php php php php php php php$fracbcphp php=php php(php$fracphp php&php php0xphp0php0php0php0ffphp0php0php)php php>php>php php8php;
+php php php php php php php php php$fracbdphp php=php php(php$fracphp php&php php0xphp0php0php0php0php0php0ffphp)php;
 
-        $sec   = (time() + 2208988800);
-        $secba = ($sec & 0xff000000) >> 24;
-        $secbb = ($sec & 0x00ff0000) >> 16;
-        $secbc = ($sec & 0x0000ff00) >> 8;
-        $secbd = ($sec & 0x000000ff);
+php php php php php php php php php$secphp php php php=php php(timephp(php)php php+php php2php2php0php8php9php8php8php8php0php0php)php;
+php php php php php php php php php$secbaphp php=php php(php$secphp php&php php0xffphp0php0php0php0php0php0php)php php>php>php php2php4php;
+php php php php php php php php php$secbbphp php=php php(php$secphp php&php php0xphp0php0ffphp0php0php0php0php)php php>php>php php1php6php;
+php php php php php php php php php$secbcphp php=php php(php$secphp php&php php0xphp0php0php0php0ffphp0php0php)php php>php>php php8php;
+php php php php php php php php php$secbdphp php=php php(php$secphp php&php php0xphp0php0php0php0php0php0ffphp)php;
 
-        // Flags
-        $nul       = chr(0x00);
-        $nulbyte   = $nul . $nul . $nul . $nul;
-        $ntppacket = chr(0xd9) . $nul . chr(0x0a) . chr(0xfa);
+php php php php php php php php php/php/php Flags
+php php php php php php php php php$nulphp php php php php php php php=php chrphp(php0xphp0php0php)php;
+php php php php php php php php php$nulbytephp php php php=php php$nulphp php.php php$nulphp php.php php$nulphp php.php php$nulphp;
+php php php php php php php php php$ntppacketphp php=php chrphp(php0xdphp9php)php php.php php$nulphp php.php chrphp(php0xphp0aphp)php php.php chrphp(php0xfaphp)php;
 
-        /*
-         * Root delay
-         *
-         * Indicates the total roundtrip delay to the primary reference
-         * source at the root of the synchronization subnet, in seconds
-         */
-        $ntppacket .= $nul . $nul . chr(0x1c) . chr(0x9b);
+php php php php php php php php php/php*
+php php php php php php php php php php*php Rootphp delay
+php php php php php php php php php php*
+php php php php php php php php php php*php Indicatesphp thephp totalphp roundtripphp delayphp tophp thephp primaryphp reference
+php php php php php php php php php php*php sourcephp atphp thephp rootphp ofphp thephp synchronizationphp subnetphp,php inphp seconds
+php php php php php php php php php php*php/
+php php php php php php php php php$ntppacketphp php.php=php php$nulphp php.php php$nulphp php.php chrphp(php0xphp1cphp)php php.php chrphp(php0xphp9bphp)php;
 
-        /*
-         * Clock Dispersion
-         *
-         * Indicates the maximum error relative to the primary reference source at the
-         * root of the synchronization subnet, in seconds
-         */
-        $ntppacket .= $nul . chr(0x08) . chr(0xd7) . chr(0xff);
+php php php php php php php php php/php*
+php php php php php php php php php php*php Clockphp Dispersion
+php php php php php php php php php php*
+php php php php php php php php php php*php Indicatesphp thephp maximumphp errorphp relativephp tophp thephp primaryphp referencephp sourcephp atphp the
+php php php php php php php php php php*php rootphp ofphp thephp synchronizationphp subnetphp,php inphp seconds
+php php php php php php php php php php*php/
+php php php php php php php php php$ntppacketphp php.php=php php$nulphp php.php chrphp(php0xphp0php8php)php php.php chrphp(php0xdphp7php)php php.php chrphp(php0xffphp)php;
 
-        /*
-         * ReferenceClockID
-         *
-         * Identifying the particular reference clock
-         */
-        $ntppacket .= $nulbyte;
+php php php php php php php php php/php*
+php php php php php php php php php php*php ReferenceClockID
+php php php php php php php php php php*
+php php php php php php php php php php*php Identifyingphp thephp particularphp referencephp clock
+php php php php php php php php php php*php/
+php php php php php php php php php$ntppacketphp php.php=php php$nulbytephp;
 
-        /*
-         * The local time, in timestamp format, at the peer when its latest NTP message
-         * was sent. Contanis an integer and a fractional part
-         */
-        $ntppacket .= chr($secba)  . chr($secbb)  . chr($secbc)  . chr($secbd);
-        $ntppacket .= chr($fracba) . chr($fracbb) . chr($fracbc) . chr($fracbd);
+php php php php php php php php php/php*
+php php php php php php php php php php*php Thephp localphp timephp,php inphp timestampphp formatphp,php atphp thephp peerphp whenphp itsphp latestphp NTPphp message
+php php php php php php php php php php*php wasphp sentphp.php Contanisphp anphp integerphp andphp aphp fractionalphp part
+php php php php php php php php php php*php/
+php php php php php php php php php$ntppacketphp php.php=php chrphp(php$secbaphp)php php php.php chrphp(php$secbbphp)php php php.php chrphp(php$secbcphp)php php php.php chrphp(php$secbdphp)php;
+php php php php php php php php php$ntppacketphp php.php=php chrphp(php$fracbaphp)php php.php chrphp(php$fracbbphp)php php.php chrphp(php$fracbcphp)php php.php chrphp(php$fracbdphp)php;
 
-        /*
-         * The local time, in timestamp format, at the peer. Contains an integer
-         * and a fractional part.
-         */
-        $ntppacket .= $nulbyte;
-        $ntppacket .= $nulbyte;
+php php php php php php php php php/php*
+php php php php php php php php php php*php Thephp localphp timephp,php inphp timestampphp formatphp,php atphp thephp peerphp.php Containsphp anphp integer
+php php php php php php php php php php*php andphp aphp fractionalphp partphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$ntppacketphp php.php=php php$nulbytephp;
+php php php php php php php php php$ntppacketphp php.php=php php$nulbytephp;
 
-        /*
-         * This is the local time, in timestamp format, when the latest NTP message from
-         * the peer arrived. Contanis an integer and a fractional part.
-         */
-        $ntppacket .= $nulbyte;
-        $ntppacket .= $nulbyte;
+php php php php php php php php php/php*
+php php php php php php php php php php*php Thisphp isphp thephp localphp timephp,php inphp timestampphp formatphp,php whenphp thephp latestphp NTPphp messagephp from
+php php php php php php php php php php*php thephp peerphp arrivedphp.php Contanisphp anphp integerphp andphp aphp fractionalphp partphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$ntppacketphp php.php=php php$nulbytephp;
+php php php php php php php php php$ntppacketphp php.php=php php$nulbytephp;
 
-        /*
-         * The local time, in timestamp format, at which the
-         * NTP message departed the sender. Contanis an integer
-         * and a fractional part.
-         */
-        $ntppacket .= chr($secba)  . chr($secbb)  . chr($secbc)  . chr($secbd);
-        $ntppacket .= chr($fracba) . chr($fracbb) . chr($fracbc) . chr($fracbd);
+php php php php php php php php php/php*
+php php php php php php php php php php*php Thephp localphp timephp,php inphp timestampphp formatphp,php atphp whichphp the
+php php php php php php php php php php*php NTPphp messagephp departedphp thephp senderphp.php Contanisphp anphp integer
+php php php php php php php php php php*php andphp aphp fractionalphp partphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$ntppacketphp php.php=php chrphp(php$secbaphp)php php php.php chrphp(php$secbbphp)php php php.php chrphp(php$secbcphp)php php php.php chrphp(php$secbdphp)php;
+php php php php php php php php php$ntppacketphp php.php=php chrphp(php$fracbaphp)php php.php chrphp(php$fracbbphp)php php.php chrphp(php$fracbcphp)php php.php chrphp(php$fracbdphp)php;
 
-        return $ntppacket;
-    }
+php php php php php php php php returnphp php$ntppacketphp;
+php php php php php}
 
-    /**
-     * Calculates a 32bit integer
-     *
-     * @param string $input
-     * @return integer
-     */
-    protected function _getInteger($input)
-    {
-        $f1  = str_pad(ord($input[0]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[1]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[2]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[3]), 2, '0', STR_PAD_LEFT);
-        return (int) $f1;
-    }
+php php php php php/php*php*
+php php php php php php*php Calculatesphp aphp php3php2bitphp integer
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$input
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php protectedphp functionphp php_getIntegerphp(php$inputphp)
+php php php php php{
+php php php php php php php php php$fphp1php php php=php strphp_padphp(ordphp(php$inputphp[php0php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php$fphp1php php.php=php strphp_padphp(ordphp(php$inputphp[php1php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php$fphp1php php.php=php strphp_padphp(ordphp(php$inputphp[php2php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php$fphp1php php.php=php strphp_padphp(ordphp(php$inputphp[php3php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php returnphp php(intphp)php php$fphp1php;
+php php php php php}
 
-    /**
-     * Calculates a 32bit signed fixed point number
-     *
-     * @param string $input
-     * @return float
-     */
-    protected function _getFloat($input)
-    {
-        $f1  = str_pad(ord($input[0]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[1]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[2]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[3]), 2, '0', STR_PAD_LEFT);
-        $f2  = $f1 >> 17;
-        $f3  = ($f1 & 0x0001FFFF);
-        $f1  = $f2 . '.' . $f3;
-        return (float) $f1;
-    }
+php php php php php/php*php*
+php php php php php php*php Calculatesphp aphp php3php2bitphp signedphp fixedphp pointphp number
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$input
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php protectedphp functionphp php_getFloatphp(php$inputphp)
+php php php php php{
+php php php php php php php php php$fphp1php php php=php strphp_padphp(ordphp(php$inputphp[php0php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php$fphp1php php.php=php strphp_padphp(ordphp(php$inputphp[php1php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php$fphp1php php.php=php strphp_padphp(ordphp(php$inputphp[php2php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php$fphp1php php.php=php strphp_padphp(ordphp(php$inputphp[php3php]php)php,php php2php,php php'php0php'php,php STRphp_PADphp_LEFTphp)php;
+php php php php php php php php php$fphp2php php php=php php$fphp1php php>php>php php1php7php;
+php php php php php php php php php$fphp3php php php=php php(php$fphp1php php&php php0xphp0php0php0php1FFFFphp)php;
+php php php php php php php php php$fphp1php php php=php php$fphp2php php.php php'php.php'php php.php php$fphp3php;
+php php php php php php php php returnphp php(floatphp)php php$fphp1php;
+php php php php php}
 
-    /**
-     * Calculates a 64bit timestamp
-     *
-     * @param string $input
-     * @return float
-     */
-    protected function _getTimestamp($input)
-    {
-        $f1  = (ord($input[0]) * pow(256, 3));
-        $f1 += (ord($input[1]) * pow(256, 2));
-        $f1 += (ord($input[2]) * pow(256, 1));
-        $f1 += (ord($input[3]));
-        $f1 -= 2208988800;
+php php php php php/php*php*
+php php php php php php*php Calculatesphp aphp php6php4bitphp timestamp
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$input
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php protectedphp functionphp php_getTimestampphp(php$inputphp)
+php php php php php{
+php php php php php php php php php$fphp1php php php=php php(ordphp(php$inputphp[php0php]php)php php*php powphp(php2php5php6php,php php3php)php)php;
+php php php php php php php php php$fphp1php php+php=php php(ordphp(php$inputphp[php1php]php)php php*php powphp(php2php5php6php,php php2php)php)php;
+php php php php php php php php php$fphp1php php+php=php php(ordphp(php$inputphp[php2php]php)php php*php powphp(php2php5php6php,php php1php)php)php;
+php php php php php php php php php$fphp1php php+php=php php(ordphp(php$inputphp[php3php]php)php)php;
+php php php php php php php php php$fphp1php php-php=php php2php2php0php8php9php8php8php8php0php0php;
 
-        $f2  = (ord($input[4]) * pow(256, 3));
-        $f2 += (ord($input[5]) * pow(256, 2));
-        $f2 += (ord($input[6]) * pow(256, 1));
-        $f2 += (ord($input[7]));
+php php php php php php php php php$fphp2php php php=php php(ordphp(php$inputphp[php4php]php)php php*php powphp(php2php5php6php,php php3php)php)php;
+php php php php php php php php php$fphp2php php+php=php php(ordphp(php$inputphp[php5php]php)php php*php powphp(php2php5php6php,php php2php)php)php;
+php php php php php php php php php$fphp2php php+php=php php(ordphp(php$inputphp[php6php]php)php php*php powphp(php2php5php6php,php php1php)php)php;
+php php php php php php php php php$fphp2php php+php=php php(ordphp(php$inputphp[php7php]php)php)php;
 
-        return (float) ($f1 . "." . $f2);
-    }
+php php php php php php php php returnphp php(floatphp)php php(php$fphp1php php.php php"php.php"php php.php php$fphp2php)php;
+php php php php php}
 
-    /**
-     * Reads the data returned from the timeserver
-     *
-     * This will return an array with binary data listing:
-     *
-     * @return array
-     * @throws Zend_TimeSync_Exception When timeserver can not be connected
-     */
-    protected function _read()
-    {
-        $flags = ord(fread($this->_socket, 1));
-        $info  = stream_get_meta_data($this->_socket);
+php php php php php/php*php*
+php php php php php php*php Readsphp thephp dataphp returnedphp fromphp thephp timeserver
+php php php php php php*
+php php php php php php*php Thisphp willphp returnphp anphp arrayphp withphp binaryphp dataphp listingphp:
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_TimeSyncphp_Exceptionphp Whenphp timeserverphp canphp notphp bephp connected
+php php php php php php*php/
+php php php php protectedphp functionphp php_readphp(php)
+php php php php php{
+php php php php php php php php php$flagsphp php=php ordphp(freadphp(php$thisphp-php>php_socketphp,php php1php)php)php;
+php php php php php php php php php$infophp php php=php streamphp_getphp_metaphp_dataphp(php$thisphp-php>php_socketphp)php;
 
-        if ($info['timed_out'] === true) {
-            fclose($this->_socket);
-            throw new Zend_TimeSync_Exception('could not connect to ' .
-                "'$this->_timeserver' on port '$this->_port', reason: 'server timed out'");
-        }
+php php php php php php php php ifphp php(php$infophp[php'timedphp_outphp'php]php php=php=php=php truephp)php php{
+php php php php php php php php php php php php fclosephp(php$thisphp-php>php_socketphp)php;
+php php php php php php php php php php php php throwphp newphp Zendphp_TimeSyncphp_Exceptionphp(php'couldphp notphp connectphp tophp php'php php.
+php php php php php php php php php php php php php php php php php"php'php$thisphp-php>php_timeserverphp'php onphp portphp php'php$thisphp-php>php_portphp'php,php reasonphp:php php'serverphp timedphp outphp'php"php)php;
+php php php php php php php php php}
 
-        $result = array(
-            'flags'          => $flags,
-            'stratum'        => ord(fread($this->_socket, 1)),
-            'poll'           => ord(fread($this->_socket, 1)),
-            'precision'      => ord(fread($this->_socket, 1)),
-            'rootdelay'      => $this->_getFloat(fread($this->_socket, 4)),
-            'rootdispersion' => $this->_getFloat(fread($this->_socket, 4)),
-            'referenceid'    => fread($this->_socket, 4),
-            'referencestamp' => $this->_getTimestamp(fread($this->_socket, 8)),
-            'originatestamp' => $this->_getTimestamp(fread($this->_socket, 8)),
-            'receivestamp'   => $this->_getTimestamp(fread($this->_socket, 8)),
-            'transmitstamp'  => $this->_getTimestamp(fread($this->_socket, 8)),
-            'clientreceived' => microtime(true)
-        );
+php php php php php php php php php$resultphp php=php arrayphp(
+php php php php php php php php php php php php php'flagsphp'php php php php php php php php php php php=php>php php$flagsphp,
+php php php php php php php php php php php php php'stratumphp'php php php php php php php php php=php>php ordphp(freadphp(php$thisphp-php>php_socketphp,php php1php)php)php,
+php php php php php php php php php php php php php'pollphp'php php php php php php php php php php php php=php>php ordphp(freadphp(php$thisphp-php>php_socketphp,php php1php)php)php,
+php php php php php php php php php php php php php'precisionphp'php php php php php php php=php>php ordphp(freadphp(php$thisphp-php>php_socketphp,php php1php)php)php,
+php php php php php php php php php php php php php'rootdelayphp'php php php php php php php=php>php php$thisphp-php>php_getFloatphp(freadphp(php$thisphp-php>php_socketphp,php php4php)php)php,
+php php php php php php php php php php php php php'rootdispersionphp'php php=php>php php$thisphp-php>php_getFloatphp(freadphp(php$thisphp-php>php_socketphp,php php4php)php)php,
+php php php php php php php php php php php php php'referenceidphp'php php php php php=php>php freadphp(php$thisphp-php>php_socketphp,php php4php)php,
+php php php php php php php php php php php php php'referencestampphp'php php=php>php php$thisphp-php>php_getTimestampphp(freadphp(php$thisphp-php>php_socketphp,php php8php)php)php,
+php php php php php php php php php php php php php'originatestampphp'php php=php>php php$thisphp-php>php_getTimestampphp(freadphp(php$thisphp-php>php_socketphp,php php8php)php)php,
+php php php php php php php php php php php php php'receivestampphp'php php php php=php>php php$thisphp-php>php_getTimestampphp(freadphp(php$thisphp-php>php_socketphp,php php8php)php)php,
+php php php php php php php php php php php php php'transmitstampphp'php php php=php>php php$thisphp-php>php_getTimestampphp(freadphp(php$thisphp-php>php_socketphp,php php8php)php)php,
+php php php php php php php php php php php php php'clientreceivedphp'php php=php>php microtimephp(truephp)
+php php php php php php php php php)php;
 
-        $this->_disconnect();
-        return $result;
-    }
+php php php php php php php php php$thisphp-php>php_disconnectphp(php)php;
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * Sends the NTP packet to the server
-     *
-     * @param  string $data Data to send to the timeserver
-     * @return void
-     */
-    protected function _write($data)
-    {
-        $this->_connect();
+php php php php php/php*php*
+php php php php php php*php Sendsphp thephp NTPphp packetphp tophp thephp server
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$dataphp Dataphp tophp sendphp tophp thephp timeserver
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_writephp(php$dataphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_connectphp(php)php;
 
-        fwrite($this->_socket, $data);
-        stream_set_timeout($this->_socket, Zend_TimeSync::$options['timeout']);
-    }
+php php php php php php php php fwritephp(php$thisphp-php>php_socketphp,php php$dataphp)php;
+php php php php php php php php streamphp_setphp_timeoutphp(php$thisphp-php>php_socketphp,php Zendphp_TimeSyncphp:php:php$optionsphp[php'timeoutphp'php]php)php;
+php php php php php}
 
-    /**
-     * Extracts the binary data returned from the timeserver
-     *
-     * @param  string|array $binary Data returned from the timeserver
-     * @return integer Difference in seconds
-     */
-    protected function _extract($binary)
-    {
-        /*
-         * Leap Indicator bit 1100 0000
-         *
-         * Code warning of impending leap-second to be inserted at the end of
-         * the last day of the current month.
-         */
-        $leap = ($binary['flags'] & 0xc0) >> 6;
-        switch($leap) {
-            case 0:
-                $this->_info['leap'] = '0 - no warning';
-                break;
+php php php php php/php*php*
+php php php php php php*php Extractsphp thephp binaryphp dataphp returnedphp fromphp thephp timeserver
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$binaryphp Dataphp returnedphp fromphp thephp timeserver
+php php php php php php*php php@returnphp integerphp Differencephp inphp seconds
+php php php php php php*php/
+php php php php protectedphp functionphp php_extractphp(php$binaryphp)
+php php php php php{
+php php php php php php php php php/php*
+php php php php php php php php php php*php Leapphp Indicatorphp bitphp php1php1php0php0php php0php0php0php0
+php php php php php php php php php php*
+php php php php php php php php php php*php Codephp warningphp ofphp impendingphp leapphp-secondphp tophp bephp insertedphp atphp thephp endphp of
+php php php php php php php php php php*php thephp lastphp dayphp ofphp thephp currentphp monthphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$leapphp php=php php(php$binaryphp[php'flagsphp'php]php php&php php0xcphp0php)php php>php>php php6php;
+php php php php php php php php switchphp(php$leapphp)php php{
+php php php php php php php php php php php php casephp php0php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'leapphp'php]php php=php php'php0php php-php nophp warningphp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 1:
-                $this->_info['leap'] = '1 - last minute has 61 seconds';
-                break;
+php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'leapphp'php]php php=php php'php1php php-php lastphp minutephp hasphp php6php1php secondsphp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 2:
-                $this->_info['leap'] = '2 - last minute has 59 seconds';
-                break;
+php php php php php php php php php php php php casephp php2php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'leapphp'php]php php=php php'php2php php-php lastphp minutephp hasphp php5php9php secondsphp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            default:
-                $this->_info['leap'] = '3 - not syncronised';
-                break;
-        }
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'leapphp'php]php php=php php'php3php php-php notphp syncronisedphp'php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-        /*
-         * Version Number bit 0011 1000
-         *
-         * This should be 3 (RFC 1305)
-         */
-        $this->_info['version'] = ($binary['flags'] & 0x38) >> 3;
+php php php php php php php php php/php*
+php php php php php php php php php php*php Versionphp Numberphp bitphp php0php0php1php1php php1php0php0php0
+php php php php php php php php php php*
+php php php php php php php php php php*php Thisphp shouldphp bephp php3php php(RFCphp php1php3php0php5php)
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>php_infophp[php'versionphp'php]php php=php php(php$binaryphp[php'flagsphp'php]php php&php php0xphp3php8php)php php>php>php php3php;
 
-        /*
-         * Mode bit 0000 0111
-         *
-         * Except in broadcast mode, an NTP association is formed when two peers
-         * exchange messages and one or both of them create and maintain an
-         * instantiation of the protocol machine, called an association.
-         */
-        $mode = ($binary['flags'] & 0x07);
-        switch($mode) {
-            case 1:
-                $this->_info['mode'] = 'symetric active';
-                break;
+php php php php php php php php php/php*
+php php php php php php php php php php*php Modephp bitphp php0php0php0php0php php0php1php1php1
+php php php php php php php php php php*
+php php php php php php php php php php*php Exceptphp inphp broadcastphp modephp,php anphp NTPphp associationphp isphp formedphp whenphp twophp peers
+php php php php php php php php php php*php exchangephp messagesphp andphp onephp orphp bothphp ofphp themphp createphp andphp maintainphp an
+php php php php php php php php php php*php instantiationphp ofphp thephp protocolphp machinephp,php calledphp anphp associationphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$modephp php=php php(php$binaryphp[php'flagsphp'php]php php&php php0xphp0php7php)php;
+php php php php php php php php switchphp(php$modephp)php php{
+php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'modephp'php]php php=php php'symetricphp activephp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 2:
-                $this->_info['mode'] = 'symetric passive';
-                break;
+php php php php php php php php php php php php casephp php2php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'modephp'php]php php=php php'symetricphp passivephp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 3:
-                $this->_info['mode'] = 'client';
-                break;
+php php php php php php php php php php php php casephp php3php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'modephp'php]php php=php php'clientphp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 4:
-                $this->_info['mode'] = 'server';
-                break;
+php php php php php php php php php php php php casephp php4php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'modephp'php]php php=php php'serverphp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 5:
-                $this->_info['mode'] = 'broadcast';
-                break;
+php php php php php php php php php php php php casephp php5php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'modephp'php]php php=php php'broadcastphp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            default:
-                $this->_info['mode'] = 'reserved';
-                break;
-        }
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'modephp'php]php php=php php'reservedphp'php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-        $ntpserviceid = 'Unknown Stratum ' . $binary['stratum'] . ' Service';
+php php php php php php php php php$ntpserviceidphp php=php php'Unknownphp Stratumphp php'php php.php php$binaryphp[php'stratumphp'php]php php.php php'php Servicephp'php;
 
-        /*
-         * Reference Clock Identifier
-         *
-         * Identifies the particular reference clock.
-         */
-        $refid = strtoupper($binary['referenceid']);
-        switch($binary['stratum']) {
-            case 0:
-                if (substr($refid, 0, 3) === 'DCN') {
-                    $ntpserviceid = 'DCN routing protocol';
-                } else if (substr($refid, 0, 4) === 'NIST') {
-                    $ntpserviceid = 'NIST public modem';
-                } else if (substr($refid, 0, 3) === 'TSP') {
-                    $ntpserviceid = 'TSP time protocol';
-                } else if (substr($refid, 0, 3) === 'DTS') {
-                    $ntpserviceid = 'Digital Time Service';
-                }
-                break;
+php php php php php php php php php/php*
+php php php php php php php php php php*php Referencephp Clockphp Identifier
+php php php php php php php php php php*
+php php php php php php php php php php*php Identifiesphp thephp particularphp referencephp clockphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$refidphp php=php strtoupperphp(php$binaryphp[php'referenceidphp'php]php)php;
+php php php php php php php php switchphp(php$binaryphp[php'stratumphp'php]php)php php{
+php php php php php php php php php php php php casephp php0php:
+php php php php php php php php php php php php php php php php ifphp php(substrphp(php$refidphp,php php0php,php php3php)php php=php=php=php php'DCNphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'DCNphp routingphp protocolphp'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$refidphp,php php0php,php php4php)php php=php=php=php php'NISTphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'NISTphp publicphp modemphp'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$refidphp,php php0php,php php3php)php php=php=php=php php'TSPphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'TSPphp timephp protocolphp'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$refidphp,php php0php,php php3php)php php=php=php=php php'DTSphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'Digitalphp Timephp Servicephp'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 1:
-                if (substr($refid, 0, 4) === 'ATOM') {
-                    $ntpserviceid = 'Atomic Clock (calibrated)';
-                } else if (substr($refid, 0, 3) === 'VLF') {
-                    $ntpserviceid = 'VLF radio';
-                } else if ($refid === 'CALLSIGN') {
-                    $ntpserviceid = 'Generic radio';
-                } else if (substr($refid, 0, 4) === 'LORC') {
-                    $ntpserviceid = 'LORAN-C radionavigation';
-                } else if (substr($refid, 0, 4) === 'GOES') {
-                    $ntpserviceid = 'GOES UHF environment satellite';
-                } else if (substr($refid, 0, 3) === 'GPS') {
-                    $ntpserviceid = 'GPS UHF satellite positioning';
-                }
-                break;
+php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php ifphp php(substrphp(php$refidphp,php php0php,php php4php)php php=php=php=php php'ATOMphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'Atomicphp Clockphp php(calibratedphp)php'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$refidphp,php php0php,php php3php)php php=php=php=php php'VLFphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'VLFphp radiophp'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$refidphp php=php=php=php php'CALLSIGNphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'Genericphp radiophp'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$refidphp,php php0php,php php4php)php php=php=php=php php'LORCphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'LORANphp-Cphp radionavigationphp'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$refidphp,php php0php,php php4php)php php=php=php=php php'GOESphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'GOESphp UHFphp environmentphp satellitephp'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$refidphp,php php0php,php php3php)php php=php=php=php php'GPSphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ntpserviceidphp php=php php'GPSphp UHFphp satellitephp positioningphp'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php breakphp;
 
-            default:
-                $ntpserviceid  = ord(substr($binary['referenceid'], 0, 1));
-                $ntpserviceid .= '.';
-                $ntpserviceid .= ord(substr($binary['referenceid'], 1, 1));
-                $ntpserviceid .= '.';
-                $ntpserviceid .= ord(substr($binary['referenceid'], 2, 1));
-                $ntpserviceid .= '.';
-                $ntpserviceid .= ord(substr($binary['referenceid'], 3, 1));
-                break;
-        }
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$ntpserviceidphp php php=php ordphp(substrphp(php$binaryphp[php'referenceidphp'php]php,php php0php,php php1php)php)php;
+php php php php php php php php php php php php php php php php php$ntpserviceidphp php.php=php php'php.php'php;
+php php php php php php php php php php php php php php php php php$ntpserviceidphp php.php=php ordphp(substrphp(php$binaryphp[php'referenceidphp'php]php,php php1php,php php1php)php)php;
+php php php php php php php php php php php php php php php php php$ntpserviceidphp php.php=php php'php.php'php;
+php php php php php php php php php php php php php php php php php$ntpserviceidphp php.php=php ordphp(substrphp(php$binaryphp[php'referenceidphp'php]php,php php2php,php php1php)php)php;
+php php php php php php php php php php php php php php php php php$ntpserviceidphp php.php=php php'php.php'php;
+php php php php php php php php php php php php php php php php php$ntpserviceidphp php.php=php ordphp(substrphp(php$binaryphp[php'referenceidphp'php]php,php php3php,php php1php)php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-        $this->_info['ntpid'] = $ntpserviceid;
+php php php php php php php php php$thisphp-php>php_infophp[php'ntpidphp'php]php php=php php$ntpserviceidphp;
 
-        /*
-         * Stratum
-         *
-         * Indicates the stratum level of the local clock
-         */
-        switch($binary['stratum']) {
-            case 0:
-                $this->_info['stratum'] = 'undefined';
-                break;
+php php php php php php php php php/php*
+php php php php php php php php php php*php Stratum
+php php php php php php php php php php*
+php php php php php php php php php php*php Indicatesphp thephp stratumphp levelphp ofphp thephp localphp clock
+php php php php php php php php php php*php/
+php php php php php php php php switchphp(php$binaryphp[php'stratumphp'php]php)php php{
+php php php php php php php php php php php php casephp php0php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'stratumphp'php]php php=php php'undefinedphp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            case 1:
-                $this->_info['stratum'] = 'primary reference';
-                break;
+php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'stratumphp'php]php php=php php'primaryphp referencephp'php;
+php php php php php php php php php php php php php php php php breakphp;
 
-            default:
-                $this->_info['stratum'] = 'secondary reference';
-                break;
-        }
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_infophp[php'stratumphp'php]php php=php php'secondaryphp referencephp'php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-        /*
-         * Indicates the total roundtrip delay to the primary reference source at the
-         * root of the synchronization subnet, in seconds.
-         *
-         * Both positive and negative values, depending on clock precision and skew, are
-         * possible.
-         */
-        $this->_info['rootdelay'] = $binary['rootdelay'];
+php php php php php php php php php/php*
+php php php php php php php php php php*php Indicatesphp thephp totalphp roundtripphp delayphp tophp thephp primaryphp referencephp sourcephp atphp the
+php php php php php php php php php php*php rootphp ofphp thephp synchronizationphp subnetphp,php inphp secondsphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Bothphp positivephp andphp negativephp valuesphp,php dependingphp onphp clockphp precisionphp andphp skewphp,php are
+php php php php php php php php php php*php possiblephp.
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>php_infophp[php'rootdelayphp'php]php php=php php$binaryphp[php'rootdelayphp'php]php;
 
-        /*
-         * Indicates the maximum error relative to the primary reference source at the
-         * root of the synchronization subnet, in seconds.
-         *
-         * Only positive values greater than zero are possible.
-         */
-        $this->_info['rootdispersion'] = $binary['rootdispersion'];
+php php php php php php php php php/php*
+php php php php php php php php php php*php Indicatesphp thephp maximumphp errorphp relativephp tophp thephp primaryphp referencephp sourcephp atphp the
+php php php php php php php php php php*php rootphp ofphp thephp synchronizationphp subnetphp,php inphp secondsphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Onlyphp positivephp valuesphp greaterphp thanphp zerophp arephp possiblephp.
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>php_infophp[php'rootdispersionphp'php]php php=php php$binaryphp[php'rootdispersionphp'php]php;
 
-        /*
-         * The roundtrip delay of the peer clock relative to the local clock
-         * over the network path between them, in seconds.
-         *
-         * Note that this variable can take on both positive and negative values,
-         * depending on clock precision and skew-error accumulation.
-         */
-        $this->_info['roundtrip']  = $binary['receivestamp'];
-        $this->_info['roundtrip'] -= $binary['originatestamp'];
-        $this->_info['roundtrip'] -= $binary['transmitstamp'];
-        $this->_info['roundtrip'] += $binary['clientreceived'];
-        $this->_info['roundtrip'] /= 2;
+php php php php php php php php php/php*
+php php php php php php php php php php*php Thephp roundtripphp delayphp ofphp thephp peerphp clockphp relativephp tophp thephp localphp clock
+php php php php php php php php php php*php overphp thephp networkphp pathphp betweenphp themphp,php inphp secondsphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Notephp thatphp thisphp variablephp canphp takephp onphp bothphp positivephp andphp negativephp valuesphp,
+php php php php php php php php php php*php dependingphp onphp clockphp precisionphp andphp skewphp-errorphp accumulationphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>php_infophp[php'roundtripphp'php]php php php=php php$binaryphp[php'receivestampphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'roundtripphp'php]php php-php=php php$binaryphp[php'originatestampphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'roundtripphp'php]php php-php=php php$binaryphp[php'transmitstampphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'roundtripphp'php]php php+php=php php$binaryphp[php'clientreceivedphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'roundtripphp'php]php php/php=php php2php;
 
-        // The offset of the peer clock relative to the local clock, in seconds.
-        $this->_info['offset']  = $binary['receivestamp'];
-        $this->_info['offset'] -= $binary['originatestamp'];
-        $this->_info['offset'] += $binary['transmitstamp'];
-        $this->_info['offset'] -= $binary['clientreceived'];
-        $this->_info['offset'] /= 2;
-        $time = (time() - $this->_info['offset']);
+php php php php php php php php php/php/php Thephp offsetphp ofphp thephp peerphp clockphp relativephp tophp thephp localphp clockphp,php inphp secondsphp.
+php php php php php php php php php$thisphp-php>php_infophp[php'offsetphp'php]php php php=php php$binaryphp[php'receivestampphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'offsetphp'php]php php-php=php php$binaryphp[php'originatestampphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'offsetphp'php]php php+php=php php$binaryphp[php'transmitstampphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'offsetphp'php]php php-php=php php$binaryphp[php'clientreceivedphp'php]php;
+php php php php php php php php php$thisphp-php>php_infophp[php'offsetphp'php]php php/php=php php2php;
+php php php php php php php php php$timephp php=php php(timephp(php)php php-php php$thisphp-php>php_infophp[php'offsetphp'php]php)php;
 
-        return $time;
-    }
-}
+php php php php php php php php returnphp php$timephp;
+php php php php php}
+php}

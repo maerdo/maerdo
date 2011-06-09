@@ -1,101 +1,101 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Log
- * @subpackage Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Priority.php 23576 2010-12-23 23:25:44Z ramon $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@subpackagephp Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Priorityphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
 
-/** Zend_Log_Filter_Abstract */
-require_once 'Zend/Log/Filter/Abstract.php';
+php/php*php*php Zendphp_Logphp_Filterphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Logphp/Filterphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Log
- * @subpackage Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Priority.php 23576 2010-12-23 23:25:44Z ramon $
- */
-class Zend_Log_Filter_Priority extends Zend_Log_Filter_Abstract
-{
-    /**
-     * @var integer
-     */
-    protected $_priority;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@subpackagephp Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Priorityphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
+classphp Zendphp_Logphp_Filterphp_Priorityphp extendsphp Zendphp_Logphp_Filterphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_priorityphp;
 
-    /**
-     * @var string
-     */
-    protected $_operator;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_operatorphp;
 
-    /**
-     * Filter logging by $priority.  By default, it will accept any log
-     * event whose priority value is less than or equal to $priority.
-     *
-     * @param  integer  $priority  Priority
-     * @param  string   $operator  Comparison operator
-     * @return void
-     * @throws Zend_Log_Exception
-     */
-    public function __construct($priority, $operator = null)
-    {
-        if (! is_int($priority)) {
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('Priority must be an integer');
-        }
+php php php php php/php*php*
+php php php php php php*php Filterphp loggingphp byphp php$priorityphp.php php Byphp defaultphp,php itphp willphp acceptphp anyphp log
+php php php php php php*php eventphp whosephp priorityphp valuephp isphp lessphp thanphp orphp equalphp tophp php$priorityphp.
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php php$priorityphp php Priority
+php php php php php php*php php@paramphp php stringphp php php php$operatorphp php Comparisonphp operator
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$priorityphp,php php$operatorphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php isphp_intphp(php$priorityphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Priorityphp mustphp bephp anphp integerphp'php)php;
+php php php php php php php php php}
 
-        $this->_priority = $priority;
-        $this->_operator = $operator === null ? '<=' : $operator;
-    }
+php php php php php php php php php$thisphp-php>php_priorityphp php=php php$priorityphp;
+php php php php php php php php php$thisphp-php>php_operatorphp php=php php$operatorphp php=php=php=php nullphp php?php php'<php=php'php php:php php$operatorphp;
+php php php php php}
 
-    /**
-     * Create a new instance of Zend_Log_Filter_Priority
-     *
-     * @param  array|Zend_Config $config
-     * @return Zend_Log_Filter_Priority
-     */
-    static public function factory($config)
-    {
-        $config = self::_parseConfig($config);
-        $config = array_merge(array(
-            'priority' => null,
-            'operator' => null,
-        ), $config);
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp instancephp ofphp Zendphp_Logphp_Filterphp_Priority
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Logphp_Filterphp_Priority
+php php php php php php*php/
+php php php php staticphp publicphp functionphp factoryphp(php$configphp)
+php php php php php{
+php php php php php php php php php$configphp php=php selfphp:php:php_parseConfigphp(php$configphp)php;
+php php php php php php php php php$configphp php=php arrayphp_mergephp(arrayphp(
+php php php php php php php php php php php php php'priorityphp'php php=php>php nullphp,
+php php php php php php php php php php php php php'operatorphp'php php=php>php nullphp,
+php php php php php php php php php)php,php php$configphp)php;
 
-        // Add support for constants
-        if (!is_numeric($config['priority']) && isset($config['priority']) && defined($config['priority'])) {
-            $config['priority'] = constant($config['priority']);
-        }
+php php php php php php php php php/php/php Addphp supportphp forphp constants
+php php php php php php php php ifphp php(php!isphp_numericphp(php$configphp[php'priorityphp'php]php)php php&php&php issetphp(php$configphp[php'priorityphp'php]php)php php&php&php definedphp(php$configphp[php'priorityphp'php]php)php)php php{
+php php php php php php php php php php php php php$configphp[php'priorityphp'php]php php=php constantphp(php$configphp[php'priorityphp'php]php)php;
+php php php php php php php php php}
 
-        return new self(
-            (int) $config['priority'],
-            $config['operator']
-        );
-    }
+php php php php php php php php returnphp newphp selfphp(
+php php php php php php php php php php php php php(intphp)php php$configphp[php'priorityphp'php]php,
+php php php php php php php php php php php php php$configphp[php'operatorphp'php]
+php php php php php php php php php)php;
+php php php php php}
 
-    /**
-     * Returns TRUE to accept the message, FALSE to block it.
-     *
-     * @param  array    $event    event data
-     * @return boolean            accepted?
-     */
-    public function accept($event)
-    {
-        return version_compare($event['priority'], $this->_priority, $this->_operator);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp TRUEphp tophp acceptphp thephp messagephp,php FALSEphp tophp blockphp itphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php php php$eventphp php php php eventphp data
+php php php php php php*php php@returnphp booleanphp php php php php php php php php php php php acceptedphp?
+php php php php php php*php/
+php php php php publicphp functionphp acceptphp(php$eventphp)
+php php php php php{
+php php php php php php php php returnphp versionphp_comparephp(php$eventphp[php'priorityphp'php]php,php php$thisphp-php>php_priorityphp,php php$thisphp-php>php_operatorphp)php;
+php php php php php}
+php}

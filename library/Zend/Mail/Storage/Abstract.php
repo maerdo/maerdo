@@ -1,366 +1,366 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, SeekableIterator
-{
-    /**
-     * class capabilities with default values
-     * @var array
-     */
-    protected $_has = array('uniqueid'  => true,
-                            'delete'    => false,
-                            'create'    => false,
-                            'top'       => false,
-                            'fetchPart' => true,
-                            'flags'     => false);
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Mailphp_Storagephp_Abstractphp implementsphp Countablephp,php ArrayAccessphp,php SeekableIterator
+php{
+php php php php php/php*php*
+php php php php php php*php classphp capabilitiesphp withphp defaultphp values
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_hasphp php=php arrayphp(php'uniqueidphp'php php php=php>php truephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'deletephp'php php php php php=php>php falsephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'createphp'php php php php php=php>php falsephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'topphp'php php php php php php php php=php>php falsephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'fetchPartphp'php php=php>php truephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'flagsphp'php php php php php php=php>php falsephp)php;
 
-    /**
-     * current iteration position
-     * @var int
-     */
-    protected $_iterationPos = 0;
+php php php php php/php*php*
+php php php php php php*php currentphp iterationphp position
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_iterationPosphp php=php php0php;
 
-    /**
-     * maximum iteration position (= message count)
-     * @var null|int
-     */
-    protected $_iterationMax = null;
+php php php php php/php*php*
+php php php php php php*php maximumphp iterationphp positionphp php(php=php messagephp countphp)
+php php php php php php*php php@varphp nullphp|int
+php php php php php php*php/
+php php php php protectedphp php$php_iterationMaxphp php=php nullphp;
 
-    /**
-     * used message class, change it in an extened class to extend the returned message class
-     * @var string
-     */
-    protected $_messageClass = 'Zend_Mail_Message';
+php php php php php/php*php*
+php php php php php php*php usedphp messagephp classphp,php changephp itphp inphp anphp extenedphp classphp tophp extendphp thephp returnedphp messagephp class
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_messageClassphp php=php php'Zendphp_Mailphp_Messagephp'php;
 
-    /**
-     * Getter for has-properties. The standard has properties
-     * are: hasFolder, hasUniqueid, hasDelete, hasCreate, hasTop
-     *
-     * The valid values for the has-properties are:
-     *   - true if a feature is supported
-     *   - false if a feature is not supported
-     *   - null is it's not yet known or it can't be know if a feature is supported
-     *
-     * @param  string $var  property name
-     * @return bool         supported or not
-     * @throws Zend_Mail_Storage_Exception
-     */
-    public function __get($var)
-    {
-        if (strpos($var, 'has') === 0) {
-            $var = strtolower(substr($var, 3));
-            return isset($this->_has[$var]) ? $this->_has[$var] : null;
-        }
+php php php php php/php*php*
+php php php php php php*php Getterphp forphp hasphp-propertiesphp.php Thephp standardphp hasphp properties
+php php php php php php*php arephp:php hasFolderphp,php hasUniqueidphp,php hasDeletephp,php hasCreatephp,php hasTop
+php php php php php php*
+php php php php php php*php Thephp validphp valuesphp forphp thephp hasphp-propertiesphp arephp:
+php php php php php php*php php php php-php truephp ifphp aphp featurephp isphp supported
+php php php php php php*php php php php-php falsephp ifphp aphp featurephp isphp notphp supported
+php php php php php php*php php php php-php nullphp isphp itphp'sphp notphp yetphp knownphp orphp itphp canphp'tphp bephp knowphp ifphp aphp featurephp isphp supported
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$varphp php propertyphp name
+php php php php php php*php php@returnphp boolphp php php php php php php php php supportedphp orphp not
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_getphp(php$varphp)
+php php php php php{
+php php php php php php php php ifphp php(strposphp(php$varphp,php php'hasphp'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php$varphp php=php strtolowerphp(substrphp(php$varphp,php php3php)php)php;
+php php php php php php php php php php php php returnphp issetphp(php$thisphp-php>php_hasphp[php$varphp]php)php php?php php$thisphp-php>php_hasphp[php$varphp]php php:php nullphp;
+php php php php php php php php php}
 
-        /**
-         * @see Zend_Mail_Storage_Exception
-         */
-        require_once 'Zend/Mail/Storage/Exception.php';
-        throw new Zend_Mail_Storage_Exception($var . ' not found');
-    }
-
-
-    /**
-     * Get a full list of features supported by the specific mail lib and the server
-     *
-     * @return array list of features as array(featurename => true|false[|null])
-     */
-    public function getCapabilities()
-    {
-        return $this->_has;
-    }
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php$varphp php.php php'php notphp foundphp'php)php;
+php php php php php}
 
 
-    /**
-     * Count messages messages in current box/folder
-     *
-     * @return int number of messages
-     * @throws Zend_Mail_Storage_Exception
-     */
-    abstract public function countMessages();
+php php php php php/php*php*
+php php php php php php*php Getphp aphp fullphp listphp ofphp featuresphp supportedphp byphp thephp specificphp mailphp libphp andphp thephp server
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp listphp ofphp featuresphp asphp arrayphp(featurenamephp php=php>php truephp|falsephp[php|nullphp]php)
+php php php php php php*php/
+php php php php publicphp functionphp getCapabilitiesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_hasphp;
+php php php php php}
 
 
-    /**
-     * Get a list of messages with number and size
-     *
-     * @param  int $id  number of message
-     * @return int|array size of given message of list with all messages as array(num => size)
-     */
-    abstract public function getSize($id = 0);
+php php php php php/php*php*
+php php php php php php*php Countphp messagesphp messagesphp inphp currentphp boxphp/folder
+php php php php php php*
+php php php php php php*php php@returnphp intphp numberphp ofphp messages
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp countMessagesphp(php)php;
 
 
-    /**
-     * Get a message with headers and body
-     *
-     * @param  $id int number of message
-     * @return Zend_Mail_Message
-     */
-    abstract public function getMessage($id);
+php php php php php/php*php*
+php php php php php php*php Getphp aphp listphp ofphp messagesphp withphp numberphp andphp size
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$idphp php numberphp ofphp message
+php php php php php php*php php@returnphp intphp|arrayphp sizephp ofphp givenphp messagephp ofphp listphp withphp allphp messagesphp asphp arrayphp(numphp php=php>php sizephp)
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getSizephp(php$idphp php=php php0php)php;
 
 
-    /**
-     * Get raw header of message or part
-     *
-     * @param  int               $id       number of message
-     * @param  null|array|string $part     path to part or null for messsage header
-     * @param  int               $topLines include this many lines with header (after an empty line)
-     * @return string raw header
-     */
-    abstract public function getRawHeader($id, $part = null, $topLines = 0);
-
-    /**
-     * Get raw content of message or part
-     *
-     * @param  int               $id   number of message
-     * @param  null|array|string $part path to part or null for messsage content
-     * @return string raw content
-     */
-    abstract public function getRawContent($id, $part = null);
-
-    /**
-     * Create instance with parameters
-     *
-     * @param  array $params mail reader specific parameters
-     * @throws Zend_Mail_Storage_Exception
-     */
-    abstract public function __construct($params);
+php php php php php/php*php*
+php php php php php php*php Getphp aphp messagephp withphp headersphp andphp body
+php php php php php php*
+php php php php php php*php php@paramphp php php$idphp intphp numberphp ofphp message
+php php php php php php*php php@returnphp Zendphp_Mailphp_Message
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getMessagephp(php$idphp)php;
 
 
-    /**
-     * Destructor calls close() and therefore closes the resource.
-     */
-    public function __destruct()
-    {
-        $this->close();
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp rawphp headerphp ofphp messagephp orphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php php php php php numberphp ofphp message
+php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp php php php php pathphp tophp partphp orphp nullphp forphp messsagephp header
+php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$topLinesphp includephp thisphp manyphp linesphp withphp headerphp php(afterphp anphp emptyphp linephp)
+php php php php php php*php php@returnphp stringphp rawphp header
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getRawHeaderphp(php$idphp,php php$partphp php=php nullphp,php php$topLinesphp php=php php0php)php;
+
+php php php php php/php*php*
+php php php php php php*php Getphp rawphp contentphp ofphp messagephp orphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php numberphp ofphp message
+php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp pathphp tophp partphp orphp nullphp forphp messsagephp content
+php php php php php php*php php@returnphp stringphp rawphp content
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getRawContentphp(php$idphp,php php$partphp php=php nullphp)php;
+
+php php php php php/php*php*
+php php php php php php*php Createphp instancephp withphp parameters
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$paramsphp mailphp readerphp specificphp parameters
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp php_php_constructphp(php$paramsphp)php;
 
 
-    /**
-     * Close resource for mail lib. If you need to control, when the resource
-     * is closed. Otherwise the destructor would call this.
-     *
-     * @return null
-     */
-    abstract public function close();
+php php php php php/php*php*
+php php php php php php*php Destructorphp callsphp closephp(php)php andphp thereforephp closesphp thephp resourcephp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_destructphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>closephp(php)php;
+php php php php php}
 
 
-    /**
-     * Keep the resource alive.
-     *
-     * @return null
-     */
-    abstract public function noop();
-
-    /**
-     * delete a message from current box/folder
-     *
-     * @return null
-     */
-    abstract public function removeMessage($id);
-
-    /**
-     * get unique id for one or all messages
-     *
-     * if storage does not support unique ids it's the same as the message number
-     *
-     * @param int|null $id message number
-     * @return array|string message number for given message or all messages as array
-     * @throws Zend_Mail_Storage_Exception
-     */
-    abstract public function getUniqueId($id = null);
-
-    /**
-     * get a message number from a unique id
-     *
-     * I.e. if you have a webmailer that supports deleting messages you should use unique ids
-     * as parameter and use this method to translate it to message number right before calling removeMessage()
-     *
-     * @param string $id unique id
-     * @return int message number
-     * @throws Zend_Mail_Storage_Exception
-     */
-    abstract public function getNumberByUniqueId($id);
-
-    // interface implementations follows
-
-    /**
-     * Countable::count()
-     *
-     * @return   int
-     */
-     public function count()
-     {
-        return $this->countMessages();
-     }
+php php php php php/php*php*
+php php php php php php*php Closephp resourcephp forphp mailphp libphp.php Ifphp youphp needphp tophp controlphp,php whenphp thephp resource
+php php php php php php*php isphp closedphp.php Otherwisephp thephp destructorphp wouldphp callphp thisphp.
+php php php php php php*
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp closephp(php)php;
 
 
-     /**
-      * ArrayAccess::offsetExists()
-      *
-      * @param    int     $id
-      * @return   boolean
-      */
-     public function offsetExists($id)
-     {
-        try {
-            if ($this->getMessage($id)) {
-                return true;
-            }
-        } catch(Zend_Mail_Storage_Exception $e) {}
+php php php php php/php*php*
+php php php php php php*php Keepphp thephp resourcephp alivephp.
+php php php php php php*
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp noopphp(php)php;
 
-        return false;
-     }
+php php php php php/php*php*
+php php php php php php*php deletephp aphp messagephp fromphp currentphp boxphp/folder
+php php php php php php*
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp removeMessagephp(php$idphp)php;
 
+php php php php php/php*php*
+php php php php php php*php getphp uniquephp idphp forphp onephp orphp allphp messages
+php php php php php php*
+php php php php php php*php ifphp storagephp doesphp notphp supportphp uniquephp idsphp itphp'sphp thephp samephp asphp thephp messagephp number
+php php php php php php*
+php php php php php php*php php@paramphp intphp|nullphp php$idphp messagephp number
+php php php php php php*php php@returnphp arrayphp|stringphp messagephp numberphp forphp givenphp messagephp orphp allphp messagesphp asphp array
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getUniqueIdphp(php$idphp php=php nullphp)php;
 
-     /**
-      * ArrayAccess::offsetGet()
-      *
-      * @param    int $id
-      * @return   Zend_Mail_Message message object
-      */
-     public function offsetGet($id)
-     {
-        return $this->getMessage($id);
-     }
+php php php php php/php*php*
+php php php php php php*php getphp aphp messagephp numberphp fromphp aphp uniquephp id
+php php php php php php*
+php php php php php php*php Iphp.ephp.php ifphp youphp havephp aphp webmailerphp thatphp supportsphp deletingphp messagesphp youphp shouldphp usephp uniquephp ids
+php php php php php php*php asphp parameterphp andphp usephp thisphp methodphp tophp translatephp itphp tophp messagephp numberphp rightphp beforephp callingphp removeMessagephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp uniquephp id
+php php php php php php*php php@returnphp intphp messagephp number
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getNumberByUniqueIdphp(php$idphp)php;
 
+php php php php php/php/php interfacephp implementationsphp follows
 
-     /**
-      * ArrayAccess::offsetSet()
-      *
-      * @param    id     $id
-      * @param    mixed  $value
-      * @throws   Zend_Mail_Storage_Exception
-      * @return   void
-      */
-     public function offsetSet($id, $value)
-     {
-        /**
-         * @see Zend_Mail_Storage_Exception
-         */
-        require_once 'Zend/Mail/Storage/Exception.php';
-        throw new Zend_Mail_Storage_Exception('cannot write mail messages via array access');
-     }
-
-
-     /**
-      * ArrayAccess::offsetUnset()
-      *
-      * @param    int   $id
-      * @return   boolean success
-      */
-     public function offsetUnset($id)
-     {
-        return $this->removeMessage($id);
-     }
+php php php php php/php*php*
+php php php php php php*php Countablephp:php:countphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp php php int
+php php php php php php*php/
+php php php php php publicphp functionphp countphp(php)
+php php php php php php{
+php php php php php php php php returnphp php$thisphp-php>countMessagesphp(php)php;
+php php php php php php}
 
 
-     /**
-      * Iterator::rewind()
-      *
-      * Rewind always gets the new count from the storage. Thus if you use
-      * the interfaces and your scripts take long you should use reset()
-      * from time to time.
-      *
-      * @return   void
-      */
-     public function rewind()
-     {
-        $this->_iterationMax = $this->countMessages();
-        $this->_iterationPos = 1;
-     }
+php php php php php php/php*php*
+php php php php php php php*php ArrayAccessphp:php:offsetExistsphp(php)
+php php php php php php php*
+php php php php php php php*php php@paramphp php php php intphp php php php php php$id
+php php php php php php php*php php@returnphp php php boolean
+php php php php php php php*php/
+php php php php php publicphp functionphp offsetExistsphp(php$idphp)
+php php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>getMessagephp(php$idphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp(Zendphp_Mailphp_Storagephp_Exceptionphp php$ephp)php php{php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php php}
 
 
-     /**
-      * Iterator::current()
-      *
-      * @return   Zend_Mail_Message current message
-      */
-     public function current()
-     {
-        return $this->getMessage($this->_iterationPos);
-     }
+php php php php php php/php*php*
+php php php php php php php*php ArrayAccessphp:php:offsetGetphp(php)
+php php php php php php php*
+php php php php php php php*php php@paramphp php php php intphp php$id
+php php php php php php php*php php@returnphp php php Zendphp_Mailphp_Messagephp messagephp object
+php php php php php php php*php/
+php php php php php publicphp functionphp offsetGetphp(php$idphp)
+php php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getMessagephp(php$idphp)php;
+php php php php php php}
 
 
-     /**
-      * Iterator::key()
-      *
-      * @return   int id of current position
-      */
-     public function key()
-     {
-        return $this->_iterationPos;
-     }
+php php php php php php/php*php*
+php php php php php php php*php ArrayAccessphp:php:offsetSetphp(php)
+php php php php php php php*
+php php php php php php php*php php@paramphp php php php idphp php php php php php$id
+php php php php php php php*php php@paramphp php php php mixedphp php php$value
+php php php php php php php*php php@throwsphp php php Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php*php php@returnphp php php void
+php php php php php php php*php/
+php php php php php publicphp functionphp offsetSetphp(php$idphp,php php$valuephp)
+php php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'cannotphp writephp mailphp messagesphp viaphp arrayphp accessphp'php)php;
+php php php php php php}
 
 
-     /**
-      * Iterator::next()
-      *
-      * @return   void
-      */
-     public function next()
-     {
-        ++$this->_iterationPos;
-     }
+php php php php php php/php*php*
+php php php php php php php*php ArrayAccessphp:php:offsetUnsetphp(php)
+php php php php php php php*
+php php php php php php php*php php@paramphp php php php intphp php php php$id
+php php php php php php php*php php@returnphp php php booleanphp success
+php php php php php php php*php/
+php php php php php publicphp functionphp offsetUnsetphp(php$idphp)
+php php php php php php{
+php php php php php php php php returnphp php$thisphp-php>removeMessagephp(php$idphp)php;
+php php php php php php}
 
 
-     /**
-      * Iterator::valid()
-      *
-      * @return   boolean
-      */
-     public function valid()
-     {
-        if ($this->_iterationMax === null) {
-          $this->_iterationMax = $this->countMessages();
-        }
-        return $this->_iterationPos && $this->_iterationPos <= $this->_iterationMax;
-     }
+php php php php php php/php*php*
+php php php php php php php*php Iteratorphp:php:rewindphp(php)
+php php php php php php php*
+php php php php php php php*php Rewindphp alwaysphp getsphp thephp newphp countphp fromphp thephp storagephp.php Thusphp ifphp youphp use
+php php php php php php php*php thephp interfacesphp andphp yourphp scriptsphp takephp longphp youphp shouldphp usephp resetphp(php)
+php php php php php php php*php fromphp timephp tophp timephp.
+php php php php php php php*
+php php php php php php php*php php@returnphp php php void
+php php php php php php php*php/
+php php php php php publicphp functionphp rewindphp(php)
+php php php php php php{
+php php php php php php php php php$thisphp-php>php_iterationMaxphp php=php php$thisphp-php>countMessagesphp(php)php;
+php php php php php php php php php$thisphp-php>php_iterationPosphp php=php php1php;
+php php php php php php}
 
 
-     /**
-      * SeekableIterator::seek()
-      *
-      * @param  int $pos
-      * @return void
-      * @throws OutOfBoundsException
-      */
-     public function seek($pos)
-     {
-        if ($this->_iterationMax === null) {
-          $this->_iterationMax = $this->countMessages();
-        }
+php php php php php php/php*php*
+php php php php php php php*php Iteratorphp:php:currentphp(php)
+php php php php php php php*
+php php php php php php php*php php@returnphp php php Zendphp_Mailphp_Messagephp currentphp message
+php php php php php php php*php/
+php php php php php publicphp functionphp currentphp(php)
+php php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getMessagephp(php$thisphp-php>php_iterationPosphp)php;
+php php php php php php}
 
-        if ($pos > $this->_iterationMax) {
-            throw new OutOfBoundsException('this position does not exist');
-        }
-        $this->_iterationPos = $pos;
-     }
 
-}
+php php php php php php/php*php*
+php php php php php php php*php Iteratorphp:php:keyphp(php)
+php php php php php php php*
+php php php php php php php*php php@returnphp php php intphp idphp ofphp currentphp position
+php php php php php php php*php/
+php php php php php publicphp functionphp keyphp(php)
+php php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_iterationPosphp;
+php php php php php php}
+
+
+php php php php php php/php*php*
+php php php php php php php*php Iteratorphp:php:nextphp(php)
+php php php php php php php*
+php php php php php php php*php php@returnphp php php void
+php php php php php php php*php/
+php php php php php publicphp functionphp nextphp(php)
+php php php php php php{
+php php php php php php php php php+php+php$thisphp-php>php_iterationPosphp;
+php php php php php php}
+
+
+php php php php php php/php*php*
+php php php php php php php*php Iteratorphp:php:validphp(php)
+php php php php php php php*
+php php php php php php php*php php@returnphp php php boolean
+php php php php php php php*php/
+php php php php php publicphp functionphp validphp(php)
+php php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_iterationMaxphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php$thisphp-php>php_iterationMaxphp php=php php$thisphp-php>countMessagesphp(php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_iterationPosphp php&php&php php$thisphp-php>php_iterationPosphp <php=php php$thisphp-php>php_iterationMaxphp;
+php php php php php php}
+
+
+php php php php php php/php*php*
+php php php php php php php*php SeekableIteratorphp:php:seekphp(php)
+php php php php php php php*
+php php php php php php php*php php@paramphp php intphp php$pos
+php php php php php php php*php php@returnphp void
+php php php php php php php*php php@throwsphp OutOfBoundsException
+php php php php php php php*php/
+php php php php php publicphp functionphp seekphp(php$posphp)
+php php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_iterationMaxphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php$thisphp-php>php_iterationMaxphp php=php php$thisphp-php>countMessagesphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$posphp php>php php$thisphp-php>php_iterationMaxphp)php php{
+php php php php php php php php php php php php throwphp newphp OutOfBoundsExceptionphp(php'thisphp positionphp doesphp notphp existphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_iterationPosphp php=php php$posphp;
+php php php php php php}
+
+php}

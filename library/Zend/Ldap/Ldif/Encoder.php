@@ -1,304 +1,304 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @subpackage Ldif
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Encoder.php 21005 2010-02-09 13:16:26Z sgehrig $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@subpackagephp Ldif
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Encoderphp.phpphp php2php1php0php0php5php php2php0php1php0php-php0php2php-php0php9php php1php3php:php1php6php:php2php6Zphp sgehrigphp php$
+php php*php/
 
-/**
- * Zend_Ldap_Ldif_Encoder provides methods to encode and decode LDAP data into/from LDIF.
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @subpackage Ldif
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Ldap_Ldif_Encoder
-{
-    /**
-     * Additional options used during encoding
-     *
-     * @var array
-     */
-    protected $_options = array(
-        'sort'    => true,
-        'version' => 1,
-        'wrap'    => 78
-    );
+php/php*php*
+php php*php Zendphp_Ldapphp_Ldifphp_Encoderphp providesphp methodsphp tophp encodephp andphp decodephp LDAPphp dataphp intophp/fromphp LDIFphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@subpackagephp Ldif
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Ldapphp_Ldifphp_Encoder
+php{
+php php php php php/php*php*
+php php php php php php*php Additionalphp optionsphp usedphp duringphp encoding
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'sortphp'php php php php php=php>php truephp,
+php php php php php php php php php'versionphp'php php=php>php php1php,
+php php php php php php php php php'wrapphp'php php php php php=php>php php7php8
+php php php php php)php;
 
-    /**
-     * @var boolean
-     */
-    protected $_versionWritten = false;
+php php php php php/php*php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_versionWrittenphp php=php falsephp;
 
-    /**
-     * Constructor.
-     *
-     * @param  array $options Additional options used during encoding
-     * @return void
-     */
-    protected function __construct(array $options = array())
-    {
-        $this->_options = array_merge($this->_options, $options);
-    }
+php php php php php/php*php*
+php php php php php php*php Constructorphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Additionalphp optionsphp usedphp duringphp encoding
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp php=php arrayphp_mergephp(php$thisphp-php>php_optionsphp,php php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Decodes the string $string into an array of LDIF items
-     *
-     * @param  string $string
-     * @return array
-     */
-    public static function decode($string)
-    {
-        $encoder = new self(array());
-        return $encoder->_decode($string);
-    }
+php php php php php/php*php*
+php php php php php php*php Decodesphp thephp stringphp php$stringphp intophp anphp arrayphp ofphp LDIFphp items
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$string
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp staticphp functionphp decodephp(php$stringphp)
+php php php php php{
+php php php php php php php php php$encoderphp php=php newphp selfphp(arrayphp(php)php)php;
+php php php php php php php php returnphp php$encoderphp-php>php_decodephp(php$stringphp)php;
+php php php php php}
 
-    /**
-     * Decodes the string $string into an array of LDIF items
-     *
-     * @param  string $string
-     * @return array
-     */
-    protected function _decode($string)
-    {
-        $items = array();
-        $item = array();
-        $last = null;
-        foreach (explode("\n", $string) as $line) {
-            $line = rtrim($line, "\x09\x0A\x0D\x00\x0B");
-            $matches = array();
-            if (substr($line, 0, 1) === ' ' && $last !== null) {
-                $last[2] .= substr($line, 1);
-            } else if (substr($line, 0, 1) === '#') {
-                continue;
-            } else if (preg_match('/^([a-z0-9;-]+)(:[:<]?\s*)([^:<]*)$/i', $line, $matches)) {
-                $name = strtolower($matches[1]);
-                $type = trim($matches[2]);
-                $value = $matches[3];
-                if ($last !== null) {
-                    $this->_pushAttribute($last, $item);
-                }
-                if ($name === 'version') {
-                    continue;
-                } else if (count($item) > 0 && $name === 'dn') {
-                    $items[] = $item;
-                    $item = array();
-                    $last = null;
-                }
-                $last = array($name, $type, $value);
-            } else if (trim($line) === '') {
-                continue;
-            }
-        }
-        if ($last !== null) {
-            $this->_pushAttribute($last, $item);
-        }
-        $items[] = $item;
-        return (count($items)>1) ? $items : $items[0];
-    }
+php php php php php/php*php*
+php php php php php php*php Decodesphp thephp stringphp php$stringphp intophp anphp arrayphp ofphp LDIFphp items
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$string
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_decodephp(php$stringphp)
+php php php php php{
+php php php php php php php php php$itemsphp php=php arrayphp(php)php;
+php php php php php php php php php$itemphp php=php arrayphp(php)php;
+php php php php php php php php php$lastphp php=php nullphp;
+php php php php php php php php foreachphp php(explodephp(php"php\nphp"php,php php$stringphp)php asphp php$linephp)php php{
+php php php php php php php php php php php php php$linephp php=php rtrimphp(php$linephp,php php"php\xphp0php9php\xphp0Aphp\xphp0Dphp\xphp0php0php\xphp0Bphp"php)php;
+php php php php php php php php php php php php php$matchesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php ifphp php(substrphp(php$linephp,php php0php,php php1php)php php=php=php=php php'php php'php php&php&php php$lastphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$lastphp[php2php]php php.php=php substrphp(php$linephp,php php1php)php;
+php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$linephp,php php0php,php php1php)php php=php=php=php php'php#php'php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(pregphp_matchphp(php'php/php^php(php[aphp-zphp0php-php9php;php-php]php+php)php(php:php[php:<php]php?php\sphp*php)php(php[php^php:<php]php*php)php$php/iphp'php,php php$linephp,php php$matchesphp)php)php php{
+php php php php php php php php php php php php php php php php php$namephp php=php strtolowerphp(php$matchesphp[php1php]php)php;
+php php php php php php php php php php php php php php php php php$typephp php=php trimphp(php$matchesphp[php2php]php)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$matchesphp[php3php]php;
+php php php php php php php php php php php php php php php php ifphp php(php$lastphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_pushAttributephp(php$lastphp,php php$itemphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php$namephp php=php=php=php php'versionphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(countphp(php$itemphp)php php>php php0php php&php&php php$namephp php=php=php=php php'dnphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$itemsphp[php]php php=php php$itemphp;
+php php php php php php php php php php php php php php php php php php php php php$itemphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$lastphp php=php nullphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$lastphp php=php arrayphp(php$namephp,php php$typephp,php php$valuephp)php;
+php php php php php php php php php php php php php}php elsephp ifphp php(trimphp(php$linephp)php php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$lastphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_pushAttributephp(php$lastphp,php php$itemphp)php;
+php php php php php php php php php}
+php php php php php php php php php$itemsphp[php]php php=php php$itemphp;
+php php php php php php php php returnphp php(countphp(php$itemsphp)php>php1php)php php?php php$itemsphp php:php php$itemsphp[php0php]php;
+php php php php php}
 
-    /**
-     * Pushes a decoded attribute to the stack
-     *
-     * @param array $attribute
-     * @param array $entry
-     */
-    protected function _pushAttribute(array $attribute, array &$entry)
-    {
-        $name = $attribute[0];
-        $type = $attribute[1];
-        $value = $attribute[2];
-        if ($type === '::') {
-            $value = base64_decode($value);
-        }
-        if ($name === 'dn') {
-            $entry[$name] = $value;
-        } else if (isset($entry[$name]) && $value !== '') {
-            $entry[$name][] = $value;
-        } else {
-            $entry[$name] = ($value !== '') ? array($value) : array();
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Pushesphp aphp decodedphp attributephp tophp thephp stack
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$attribute
+php php php php php php*php php@paramphp arrayphp php$entry
+php php php php php php*php/
+php php php php protectedphp functionphp php_pushAttributephp(arrayphp php$attributephp,php arrayphp php&php$entryphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$attributephp[php0php]php;
+php php php php php php php php php$typephp php=php php$attributephp[php1php]php;
+php php php php php php php php php$valuephp php=php php$attributephp[php2php]php;
+php php php php php php php php ifphp php(php$typephp php=php=php=php php'php:php:php'php)php php{
+php php php php php php php php php php php php php$valuephp php=php basephp6php4php_decodephp(php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$namephp php=php=php=php php'dnphp'php)php php{
+php php php php php php php php php php php php php$entryphp[php$namephp]php php=php php$valuephp;
+php php php php php php php php php}php elsephp ifphp php(issetphp(php$entryphp[php$namephp]php)php php&php&php php$valuephp php!php=php=php php'php'php)php php{
+php php php php php php php php php php php php php$entryphp[php$namephp]php[php]php php=php php$valuephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$entryphp[php$namephp]php php=php php(php$valuephp php!php=php=php php'php'php)php php?php arrayphp(php$valuephp)php php:php arrayphp(php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Encode $value into a LDIF representation
-     *
-     * @param  mixed $value   The value to be encoded
-     * @param  array $options Additional options used during encoding
-     * @return string The encoded value
-     */
-    public static function encode($value, array $options = array())
-    {
-        $encoder = new self($options);
-        return $encoder->_encode($value);
-    }
+php php php php php/php*php*
+php php php php php php*php Encodephp php$valuephp intophp aphp LDIFphp representation
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$valuephp php php Thephp valuephp tophp bephp encoded
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Additionalphp optionsphp usedphp duringphp encoding
+php php php php php php*php php@returnphp stringphp Thephp encodedphp value
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodephp(php$valuephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$encoderphp php=php newphp selfphp(php$optionsphp)php;
+php php php php php php php php returnphp php$encoderphp-php>php_encodephp(php$valuephp)php;
+php php php php php}
 
-    /**
-     * Recursive driver which determines the type of value to be encoded
-     * and then dispatches to the appropriate method.
-     *
-     * @param  mixed $value The value to be encoded
-     * @return string Encoded value
-     */
-    protected function _encode($value)
-    {
-        if (is_scalar($value)) {
-            return $this->_encodeString($value);
-        } else if (is_array($value)) {
-            return $this->_encodeAttributes($value);
-        } else if ($value instanceof Zend_Ldap_Node) {
-            return $value->toLdif($this->_options);
-        }
-        return null;
-    }
+php php php php php/php*php*
+php php php php php php*php Recursivephp driverphp whichphp determinesphp thephp typephp ofphp valuephp tophp bephp encoded
+php php php php php php*php andphp thenphp dispatchesphp tophp thephp appropriatephp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$valuephp Thephp valuephp tophp bephp encoded
+php php php php php php*php php@returnphp stringphp Encodedphp value
+php php php php php php*php/
+php php php php protectedphp functionphp php_encodephp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_scalarphp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_encodeStringphp(php$valuephp)php;
+php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_encodeAttributesphp(php$valuephp)php;
+php php php php php php php php php}php elsephp ifphp php(php$valuephp instanceofphp Zendphp_Ldapphp_Nodephp)php php{
+php php php php php php php php php php php php returnphp php$valuephp-php>toLdifphp(php$thisphp-php>php_optionsphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Encodes $string according to RFC2849
-     *
-     * @link http://www.faqs.org/rfcs/rfc2849.html
-     *
-     * @param  string $string
-     * @param  boolen $base64
-     * @return string
-     */
-    protected function _encodeString($string, &$base64 = null)
-    {
-        $string = (string)$string;
-        if (!is_numeric($string) && empty($string)) {
-            return '';
-        }
+php php php php php/php*php*
+php php php php php php*php Encodesphp php$stringphp accordingphp tophp RFCphp2php8php4php9
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php8php4php9php.html
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$string
+php php php php php php*php php@paramphp php boolenphp php$basephp6php4
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_encodeStringphp(php$stringphp,php php&php$basephp6php4php php=php nullphp)
+php php php php php{
+php php php php php php php php php$stringphp php=php php(stringphp)php$stringphp;
+php php php php php php php php ifphp php(php!isphp_numericphp(php$stringphp)php php&php&php emptyphp(php$stringphp)php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
 
-        /*
-         * SAFE-INIT-CHAR = %x01-09 / %x0B-0C / %x0E-1F /
-         *                  %x21-39 / %x3B / %x3D-7F
-         *                ; any value <= 127 except NUL, LF, CR,
-         *                ; SPACE, colon (":", ASCII 58 decimal)
-         *                ; and less-than ("<" , ASCII 60 decimal)
-         *
-         */
-        $unsafe_init_char = array(0, 10, 13, 32, 58, 60);
-        /*
-         * SAFE-CHAR      = %x01-09 / %x0B-0C / %x0E-7F
-         *                ; any value <= 127 decimal except NUL, LF,
-         *                ; and CR
-         */
-        $unsafe_char      = array(0, 10, 13);
+php php php php php php php php php/php*
+php php php php php php php php php php*php SAFEphp-INITphp-CHARphp php=php php%xphp0php1php-php0php9php php/php php%xphp0Bphp-php0Cphp php/php php%xphp0Ephp-php1Fphp php/
+php php php php php php php php php php*php php php php php php php php php php php php php php php php php php php%xphp2php1php-php3php9php php/php php%xphp3Bphp php/php php%xphp3Dphp-php7F
+php php php php php php php php php php*php php php php php php php php php php php php php php php php php;php anyphp valuephp <php=php php1php2php7php exceptphp NULphp,php LFphp,php CRphp,
+php php php php php php php php php php*php php php php php php php php php php php php php php php php php;php SPACEphp,php colonphp php(php"php:php"php,php ASCIIphp php5php8php decimalphp)
+php php php php php php php php php php*php php php php php php php php php php php php php php php php php;php andphp lessphp-thanphp php(php"<php"php php,php ASCIIphp php6php0php decimalphp)
+php php php php php php php php php php*
+php php php php php php php php php php*php/
+php php php php php php php php php$unsafephp_initphp_charphp php=php arrayphp(php0php,php php1php0php,php php1php3php,php php3php2php,php php5php8php,php php6php0php)php;
+php php php php php php php php php/php*
+php php php php php php php php php php*php SAFEphp-CHARphp php php php php php php=php php%xphp0php1php-php0php9php php/php php%xphp0Bphp-php0Cphp php/php php%xphp0Ephp-php7F
+php php php php php php php php php php*php php php php php php php php php php php php php php php php php;php anyphp valuephp <php=php php1php2php7php decimalphp exceptphp NULphp,php LFphp,
+php php php php php php php php php php*php php php php php php php php php php php php php php php php php;php andphp CR
+php php php php php php php php php php*php/
+php php php php php php php php php$unsafephp_charphp php php php php php php=php arrayphp(php0php,php php1php0php,php php1php3php)php;
 
-        $base64 = false;
-        for ($i = 0; $i < strlen($string); $i++) {
-            $char = ord(substr($string, $i, 1));
-            if ($char >= 127) {
-                $base64 = true;
-                break;
-            } else if ($i === 0 && in_array($char, $unsafe_init_char)) {
-                $base64 = true;
-                break;
-            } else if (in_array($char, $unsafe_char)) {
-                $base64 = true;
-                break;
-            }
-        }
-        // Test for ending space
-        if (substr($string, -1) == ' ') {
-            $base64 = true;
-        }
+php php php php php php php php php$basephp6php4php php=php falsephp;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php strlenphp(php$stringphp)php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php$charphp php=php ordphp(substrphp(php$stringphp,php php$iphp,php php1php)php)php;
+php php php php php php php php php php php php ifphp php(php$charphp php>php=php php1php2php7php)php php{
+php php php php php php php php php php php php php php php php php$basephp6php4php php=php truephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$iphp php=php=php=php php0php php&php&php inphp_arrayphp(php$charphp,php php$unsafephp_initphp_charphp)php)php php{
+php php php php php php php php php php php php php php php php php$basephp6php4php php=php truephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}php elsephp ifphp php(inphp_arrayphp(php$charphp,php php$unsafephp_charphp)php)php php{
+php php php php php php php php php php php php php php php php php$basephp6php4php php=php truephp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php/php/php Testphp forphp endingphp space
+php php php php php php php php ifphp php(substrphp(php$stringphp,php php-php1php)php php=php=php php'php php'php)php php{
+php php php php php php php php php php php php php$basephp6php4php php=php truephp;
+php php php php php php php php php}
 
-        if ($base64 === true) {
-            $string = base64_encode($string);
-        }
+php php php php php php php php ifphp php(php$basephp6php4php php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$stringphp php=php basephp6php4php_encodephp(php$stringphp)php;
+php php php php php php php php php}
 
-        return $string;
-    }
+php php php php php php php php returnphp php$stringphp;
+php php php php php}
 
-    /**
-     * Encodes an attribute with $name and $value according to RFC2849
-     *
-     * @link http://www.faqs.org/rfcs/rfc2849.html
-     *
-     * @param  string       $name
-     * @param  array|string $value
-     * @return string
-     */
-    protected function _encodeAttribute($name, $value)
-    {
-        if (!is_array($value)) {
-            $value = array($value);
-        }
+php php php php php/php*php*
+php php php php php php*php Encodesphp anphp attributephp withphp php$namephp andphp php$valuephp accordingphp tophp RFCphp2php8php4php9
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php8php4php9php.html
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php$name
+php php php php php php*php php@paramphp php arrayphp|stringphp php$value
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_encodeAttributephp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$valuephp php=php arrayphp(php$valuephp)php;
+php php php php php php php php php}
 
-        $output = '';
+php php php php php php php php php$outputphp php=php php'php'php;
 
-        if (count($value) < 1) {
-            return $name . ': ';
-        }
+php php php php php php php php ifphp php(countphp(php$valuephp)php <php php1php)php php{
+php php php php php php php php php php php php returnphp php$namephp php.php php'php:php php'php;
+php php php php php php php php php}
 
-        foreach ($value as $v) {
-            $base64 = null;
-            $v = $this->_encodeString($v, $base64);
-            $attribute = $name . ':';
-            if ($base64 === true) {
-                $attribute .= ': ' . $v;
-            } else {
-                $attribute .= ' ' . $v;
-            }
-            if (isset($this->_options['wrap']) && strlen($attribute) > $this->_options['wrap']) {
-                $attribute = trim(chunk_split($attribute, $this->_options['wrap'], PHP_EOL . ' '));
-            }
-            $output .= $attribute . PHP_EOL;
-        }
-        return trim($output, PHP_EOL);
-    }
+php php php php php php php php foreachphp php(php$valuephp asphp php$vphp)php php{
+php php php php php php php php php php php php php$basephp6php4php php=php nullphp;
+php php php php php php php php php php php php php$vphp php=php php$thisphp-php>php_encodeStringphp(php$vphp,php php$basephp6php4php)php;
+php php php php php php php php php php php php php$attributephp php=php php$namephp php.php php'php:php'php;
+php php php php php php php php php php php php ifphp php(php$basephp6php4php php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php$attributephp php.php=php php'php:php php'php php.php php$vphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$attributephp php.php=php php'php php'php php.php php$vphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'wrapphp'php]php)php php&php&php strlenphp(php$attributephp)php php>php php$thisphp-php>php_optionsphp[php'wrapphp'php]php)php php{
+php php php php php php php php php php php php php php php php php$attributephp php=php trimphp(chunkphp_splitphp(php$attributephp,php php$thisphp-php>php_optionsphp[php'wrapphp'php]php,php PHPphp_EOLphp php.php php'php php'php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$outputphp php.php=php php$attributephp php.php PHPphp_EOLphp;
+php php php php php php php php php}
+php php php php php php php php returnphp trimphp(php$outputphp,php PHPphp_EOLphp)php;
+php php php php php}
 
-    /**
-     * Encodes a collection of attributes according to RFC2849
-     *
-     * @link http://www.faqs.org/rfcs/rfc2849.html
-     *
-     * @param  array $attributes
-     * @return string
-     */
-    protected function _encodeAttributes(array $attributes)
-    {
-        $string = '';
-        $attributes = array_change_key_case($attributes, CASE_LOWER);
-        if (!$this->_versionWritten && array_key_exists('dn', $attributes) && isset($this->_options['version'])
-                && array_key_exists('objectclass', $attributes)) {
-            $string .= sprintf('version: %d', $this->_options['version']) . PHP_EOL;
-            $this->_versionWritten = true;
-        }
+php php php php php/php*php*
+php php php php php php*php Encodesphp aphp collectionphp ofphp attributesphp accordingphp tophp RFCphp2php8php4php9
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php8php4php9php.html
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$attributes
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_encodeAttributesphp(arrayphp php$attributesphp)
+php php php php php{
+php php php php php php php php php$stringphp php=php php'php'php;
+php php php php php php php php php$attributesphp php=php arrayphp_changephp_keyphp_casephp(php$attributesphp,php CASEphp_LOWERphp)php;
+php php php php php php php php ifphp php(php!php$thisphp-php>php_versionWrittenphp php&php&php arrayphp_keyphp_existsphp(php'dnphp'php,php php$attributesphp)php php&php&php issetphp(php$thisphp-php>php_optionsphp[php'versionphp'php]php)
+php php php php php php php php php php php php php php php php php&php&php arrayphp_keyphp_existsphp(php'objectclassphp'php,php php$attributesphp)php)php php{
+php php php php php php php php php php php php php$stringphp php.php=php sprintfphp(php'versionphp:php php%dphp'php,php php$thisphp-php>php_optionsphp[php'versionphp'php]php)php php.php PHPphp_EOLphp;
+php php php php php php php php php php php php php$thisphp-php>php_versionWrittenphp php=php truephp;
+php php php php php php php php php}
 
-        if (isset($this->_options['sort']) && $this->_options['sort'] === true) {
-            ksort($attributes, SORT_STRING);
-            if (array_key_exists('objectclass', $attributes)) {
-                $oc = $attributes['objectclass'];
-                unset($attributes['objectclass']);
-                $attributes = array_merge(array('objectclass' => $oc), $attributes);
-            }
-            if (array_key_exists('dn', $attributes)) {
-                $dn = $attributes['dn'];
-                unset($attributes['dn']);
-                $attributes = array_merge(array('dn' => $dn), $attributes);
-            }
-        }
-        foreach ($attributes as $key => $value) {
-            $string .= $this->_encodeAttribute($key, $value) . PHP_EOL;
-        }
-        return trim($string, PHP_EOL);
-    }
-}
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'sortphp'php]php)php php&php&php php$thisphp-php>php_optionsphp[php'sortphp'php]php php=php=php=php truephp)php php{
+php php php php php php php php php php php php ksortphp(php$attributesphp,php SORTphp_STRINGphp)php;
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'objectclassphp'php,php php$attributesphp)php)php php{
+php php php php php php php php php php php php php php php php php$ocphp php=php php$attributesphp[php'objectclassphp'php]php;
+php php php php php php php php php php php php php php php php unsetphp(php$attributesphp[php'objectclassphp'php]php)php;
+php php php php php php php php php php php php php php php php php$attributesphp php=php arrayphp_mergephp(arrayphp(php'objectclassphp'php php=php>php php$ocphp)php,php php$attributesphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'dnphp'php,php php$attributesphp)php)php php{
+php php php php php php php php php php php php php php php php php$dnphp php=php php$attributesphp[php'dnphp'php]php;
+php php php php php php php php php php php php php php php php unsetphp(php$attributesphp[php'dnphp'php]php)php;
+php php php php php php php php php php php php php php php php php$attributesphp php=php arrayphp_mergephp(arrayphp(php'dnphp'php php=php>php php$dnphp)php,php php$attributesphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$attributesphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$stringphp php.php=php php$thisphp-php>php_encodeAttributephp(php$keyphp,php php$valuephp)php php.php PHPphp_EOLphp;
+php php php php php php php php php}
+php php php php php php php php returnphp trimphp(php$stringphp,php PHPphp_EOLphp)php;
+php php php php php}
+php}

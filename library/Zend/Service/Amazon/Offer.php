@@ -1,111 +1,111 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Amazon
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Offer.php 21154 2010-02-23 17:10:34Z matthew $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Amazon
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Offerphp.phpphp php2php1php1php5php4php php2php0php1php0php-php0php2php-php2php3php php1php7php:php1php0php:php3php4Zphp matthewphp php$
+php php*php/
 
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Amazon
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Amazon_Offer
-{
-    /**
-     * @var string
-     */
-    public $MerchantId;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Amazon
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Amazonphp_Offer
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$MerchantIdphp;
 
-    /**
-     * @var string
-     */
-    public $MerchantName;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$MerchantNamephp;
 
-    /**
-     * @var string
-     */
-    public $GlancePage;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$GlancePagephp;
 
-    /**
-     * @var string
-     */
-    public $Condition;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$Conditionphp;
 
-    /**
-     * @var string
-     */
-    public $OfferListingId;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$OfferListingIdphp;
 
-    /**
-     * @var string
-     */
-    public $Price;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$Pricephp;
 
-    /**
-     * @var string
-     */
-    public $CurrencyCode;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$CurrencyCodephp;
 
-    /**
-     * @var string
-     */
-    public $Availability;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$Availabilityphp;
 
-    /**
-     * @var boolean
-     */
-    public $IsEligibleForSuperSaverShipping = false;
+php php php php php/php*php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php publicphp php$IsEligibleForSuperSaverShippingphp php=php falsephp;
 
-    /**
-     * Parse the given Offer element
-     *
-     * @param  DOMElement $dom
-     * @return void
-     */
-    public function __construct(DOMElement $dom)
-    {
-        $xpath = new DOMXPath($dom->ownerDocument);
-        $xpath->registerNamespace('az', 'http://webservices.amazon.com/AWSECommerceService/2005-10-05');
-        $this->MerchantId = (string) $xpath->query('./az:Merchant/az:MerchantId/text()', $dom)->item(0)->data;
-        $name = $xpath->query('./az:Merchant/az:Name/text()', $dom);
-        if ($name->length == 1) {
-          $this->MerchantName = (string) $name->item(0)->data;
-        }
-        $this->GlancePage = (string) $xpath->query('./az:Merchant/az:GlancePage/text()', $dom)->item(0)->data;
-        $this->Condition = (string) $xpath->query('./az:OfferAttributes/az:Condition/text()', $dom)->item(0)->data;
-        $this->OfferListingId = (string) $xpath->query('./az:OfferListing/az:OfferListingId/text()', $dom)->item(0)->data;
-        $Price = $xpath->query('./az:OfferListing/az:Price/az:Amount', $dom);
-        if ($Price->length == 1) {
-            $this->Price = (int) $xpath->query('./az:OfferListing/az:Price/az:Amount/text()', $dom)->item(0)->data;
-            $this->CurrencyCode = (string) $xpath->query('./az:OfferListing/az:Price/az:CurrencyCode/text()', $dom)->item(0)->data;
-        }
-        $availability = $xpath->query('./az:OfferListing/az:Availability/text()', $dom)->item(0);
-        if($availability instanceof DOMText) {
-            $this->Availability = (string) $availability->data;
-        }
-        $result = $xpath->query('./az:OfferListing/az:IsEligibleForSuperSaverShipping/text()', $dom);
-        if ($result->length >= 1) {
-            $this->IsEligibleForSuperSaverShipping = (bool) $result->item(0)->data;
-        }
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Parsephp thephp givenphp Offerphp element
+php php php php php php*
+php php php php php php*php php@paramphp php DOMElementphp php$dom
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$domphp)
+php php php php php{
+php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$domphp-php>ownerDocumentphp)php;
+php php php php php php php php php$xpathphp-php>registerNamespacephp(php'azphp'php,php php'httpphp:php/php/webservicesphp.amazonphp.comphp/AWSECommerceServicephp/php2php0php0php5php-php1php0php-php0php5php'php)php;
+php php php php php php php php php$thisphp-php>MerchantIdphp php=php php(stringphp)php php$xpathphp-php>queryphp(php'php.php/azphp:Merchantphp/azphp:MerchantIdphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php$namephp php=php php$xpathphp-php>queryphp(php'php.php/azphp:Merchantphp/azphp:Namephp/textphp(php)php'php,php php$domphp)php;
+php php php php php php php php ifphp php(php$namephp-php>lengthphp php=php=php php1php)php php{
+php php php php php php php php php php php$thisphp-php>MerchantNamephp php=php php(stringphp)php php$namephp-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>GlancePagephp php=php php(stringphp)php php$xpathphp-php>queryphp(php'php.php/azphp:Merchantphp/azphp:GlancePagephp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php$thisphp-php>Conditionphp php=php php(stringphp)php php$xpathphp-php>queryphp(php'php.php/azphp:OfferAttributesphp/azphp:Conditionphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php$thisphp-php>OfferListingIdphp php=php php(stringphp)php php$xpathphp-php>queryphp(php'php.php/azphp:OfferListingphp/azphp:OfferListingIdphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php$Pricephp php=php php$xpathphp-php>queryphp(php'php.php/azphp:OfferListingphp/azphp:Pricephp/azphp:Amountphp'php,php php$domphp)php;
+php php php php php php php php ifphp php(php$Pricephp-php>lengthphp php=php=php php1php)php php{
+php php php php php php php php php php php php php$thisphp-php>Pricephp php=php php(intphp)php php$xpathphp-php>queryphp(php'php.php/azphp:OfferListingphp/azphp:Pricephp/azphp:Amountphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php php php php php$thisphp-php>CurrencyCodephp php=php php(stringphp)php php$xpathphp-php>queryphp(php'php.php/azphp:OfferListingphp/azphp:Pricephp/azphp:CurrencyCodephp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php}
+php php php php php php php php php$availabilityphp php=php php$xpathphp-php>queryphp(php'php.php/azphp:OfferListingphp/azphp:Availabilityphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp(php$availabilityphp instanceofphp DOMTextphp)php php{
+php php php php php php php php php php php php php$thisphp-php>Availabilityphp php=php php(stringphp)php php$availabilityphp-php>dataphp;
+php php php php php php php php php}
+php php php php php php php php php$resultphp php=php php$xpathphp-php>queryphp(php'php.php/azphp:OfferListingphp/azphp:IsEligibleForSuperSaverShippingphp/textphp(php)php'php,php php$domphp)php;
+php php php php php php php php ifphp php(php$resultphp-php>lengthphp php>php=php php1php)php php{
+php php php php php php php php php php php php php$thisphp-php>IsEligibleForSuperSaverShippingphp php=php php(boolphp)php php$resultphp-php>itemphp(php0php)php-php>dataphp;
+php php php php php php php php php}
+php php php php php}
+php}

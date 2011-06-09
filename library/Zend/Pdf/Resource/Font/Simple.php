@@ -1,283 +1,283 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Simple.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Simplephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** Internally used classes */
-require_once 'Zend/Pdf/Element/Name.php';
+php/php*php*php Internallyphp usedphp classesphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
 
 
-/** Zend_Pdf_Resource_Font */
-require_once 'Zend/Pdf/Resource/Font.php';
+php/php*php*php Zendphp_Pdfphp_Resourcephp_Fontphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp.phpphp'php;
 
-/**
- * Adobe PDF Simple fonts implementation
- *
- * PDF simple fonts functionality is presented by Adobe Type 1
- * (including standard PDF Type1 built-in fonts) and TrueType fonts support.
- *
- * Both fonts have the following properties:
- * - Glyphs in the font are selected by single-byte character codes obtained from a
- *   string that is shown by the text-showing operators. Logically, these codes index
- *   into a table of 256 glyphs; the mapping from codes to glyphs is called the font’s
- *   encoding.
- *   PDF specification provides a possibility to specify any user defined encoding in addition
- *   to the standard built-in encodings: Standard-Encoding, MacRomanEncoding, WinAnsiEncoding,
- *   and PDFDocEncoding, but Zend_Pdf simple fonts implementation operates only with
- *   Windows ANSI encoding (except Symbol and ZapfDingbats built-in fonts).
- *
- * - Each glyph has a single set of metrics, including a horizontal displacement or
- *   width. That is, simple fonts support only horizontal writing mode.
- *
- *
- * The code in this class is common to both types. However, you will only deal
- * directly with subclasses.
- *
- * Font objects should be normally be obtained from the factory methods
- * {@link Zend_Pdf_Font::fontWithName} and {@link Zend_Pdf_Font::fontWithPath}.
- *
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Pdf_Resource_Font_Simple extends Zend_Pdf_Resource_Font
-{
-    /**
-     * Object representing the font's cmap (character to glyph map).
-     * @var Zend_Pdf_Cmap
-     */
-    protected $_cmap = null;
+php/php*php*
+php php*php Adobephp PDFphp Simplephp fontsphp implementation
+php php*
+php php*php PDFphp simplephp fontsphp functionalityphp isphp presentedphp byphp Adobephp Typephp php1
+php php*php php(includingphp standardphp PDFphp Typephp1php builtphp-inphp fontsphp)php andphp TrueTypephp fontsphp supportphp.
+php php*
+php php*php Bothphp fontsphp havephp thephp followingphp propertiesphp:
+php php*php php-php Glyphsphp inphp thephp fontphp arephp selectedphp byphp singlephp-bytephp characterphp codesphp obtainedphp fromphp a
+php php*php php php stringphp thatphp isphp shownphp byphp thephp textphp-showingphp operatorsphp.php Logicallyphp,php thesephp codesphp index
+php php*php php php intophp aphp tablephp ofphp php2php5php6php glyphsphp;php thephp mappingphp fromphp codesphp tophp glyphsphp isphp calledphp thephp fontphp’s
+php php*php php php encodingphp.
+php php*php php php PDFphp specificationphp providesphp aphp possibilityphp tophp specifyphp anyphp userphp definedphp encodingphp inphp addition
+php php*php php php tophp thephp standardphp builtphp-inphp encodingsphp:php Standardphp-Encodingphp,php MacRomanEncodingphp,php WinAnsiEncodingphp,
+php php*php php php andphp PDFDocEncodingphp,php butphp Zendphp_Pdfphp simplephp fontsphp implementationphp operatesphp onlyphp with
+php php*php php php Windowsphp ANSIphp encodingphp php(exceptphp Symbolphp andphp ZapfDingbatsphp builtphp-inphp fontsphp)php.
+php php*
+php php*php php-php Eachphp glyphphp hasphp aphp singlephp setphp ofphp metricsphp,php includingphp aphp horizontalphp displacementphp or
+php php*php php php widthphp.php Thatphp isphp,php simplephp fontsphp supportphp onlyphp horizontalphp writingphp modephp.
+php php*
+php php*
+php php*php Thephp codephp inphp thisphp classphp isphp commonphp tophp bothphp typesphp.php Howeverphp,php youphp willphp onlyphp deal
+php php*php directlyphp withphp subclassesphp.
+php php*
+php php*php Fontphp objectsphp shouldphp bephp normallyphp bephp obtainedphp fromphp thephp factoryphp methods
+php php*php php{php@linkphp Zendphp_Pdfphp_Fontphp:php:fontWithNamephp}php andphp php{php@linkphp Zendphp_Pdfphp_Fontphp:php:fontWithPathphp}php.
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp extendsphp Zendphp_Pdfphp_Resourcephp_Font
+php{
+php php php php php/php*php*
+php php php php php php*php Objectphp representingphp thephp fontphp'sphp cmapphp php(characterphp tophp glyphphp mapphp)php.
+php php php php php php*php php@varphp Zendphp_Pdfphp_Cmap
+php php php php php php*php/
+php php php php protectedphp php$php_cmapphp php=php nullphp;
 
-    /**
-     * Array containing the widths of each of the glyphs contained in the font.
-     *
-     * Keys are integers starting from 0, which coresponds to Zend_Pdf_Cmap::MISSING_CHARACTER_GLYPH.
-     *
-     * Font character map may contain gaps for actually used glyphs, nevertheless glyphWidths array
-     * contains widths for all glyphs even they are unused.
-     *
-     * @var array
-     */
-    protected $_glyphWidths = null;
+php php php php php/php*php*
+php php php php php php*php Arrayphp containingphp thephp widthsphp ofphp eachphp ofphp thephp glyphsphp containedphp inphp thephp fontphp.
+php php php php php php*
+php php php php php php*php Keysphp arephp integersphp startingphp fromphp php0php,php whichphp corespondsphp tophp Zendphp_Pdfphp_Cmapphp:php:MISSINGphp_CHARACTERphp_GLYPHphp.
+php php php php php php*
+php php php php php php*php Fontphp characterphp mapphp mayphp containphp gapsphp forphp actuallyphp usedphp glyphsphp,php neverthelessphp glyphWidthsphp array
+php php php php php php*php containsphp widthsphp forphp allphp glyphsphp evenphp theyphp arephp unusedphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_glyphWidthsphp php=php nullphp;
 
-    /**
-     * Width for glyphs missed in the font
-     *
-     * Note: Adobe PDF specfication (V1.4 - V1.6) doesn't define behavior for rendering
-     * characters missed in the standard PDF fonts (such us 0x7F (DEL) Windows ANSI code)
-     * Adobe Font Metrics files doesn't also define metrics for "missed glyph".
-     * We provide character width as "0" for this case, but actually it depends on PDF viewer
-     * implementation.
-     *
-     * @var integer
-     */
-    protected $_missingGlyphWidth = 0;
-
-
-    /**** Public Interface ****/
+php php php php php/php*php*
+php php php php php php*php Widthphp forphp glyphsphp missedphp inphp thephp font
+php php php php php php*
+php php php php php php*php Notephp:php Adobephp PDFphp specficationphp php(Vphp1php.php4php php-php Vphp1php.php6php)php doesnphp'tphp definephp behaviorphp forphp rendering
+php php php php php php*php charactersphp missedphp inphp thephp standardphp PDFphp fontsphp php(suchphp usphp php0xphp7Fphp php(DELphp)php Windowsphp ANSIphp codephp)
+php php php php php php*php Adobephp Fontphp Metricsphp filesphp doesnphp'tphp alsophp definephp metricsphp forphp php"missedphp glyphphp"php.
+php php php php php php*php Wephp providephp characterphp widthphp asphp php"php0php"php forphp thisphp casephp,php butphp actuallyphp itphp dependsphp onphp PDFphp viewer
+php php php php php php*php implementationphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_missingGlyphWidthphp php=php php0php;
 
 
-  /* Object Lifecycle */
+php php php php php/php*php*php*php*php Publicphp Interfacephp php*php*php*php*php/
 
-    /**
-     * Object constructor
-     *
-     */
-    public function __construct()
-    {
-        parent::__construct();
 
-        /**
-         * @todo
-         * It's easy to add other encodings support now (Standard-Encoding, MacRomanEncoding,
-         * PDFDocEncoding, MacExpertEncoding, Symbol, and ZapfDingbats).
-         * Steps for the implementation:
-         * - completely describe all PDF single byte encodings in the documentation
-         * - implement non-WinAnsi encodings processing into encodeString()/decodeString() methods
-         *
-         * These encodings will be automatically supported for standard builtin PDF fonts as well
-         * as for external fonts.
-         */
-        $this->_resource->Encoding = new Zend_Pdf_Element_Name('WinAnsiEncoding');
-    }
+php php php/php*php Objectphp Lifecyclephp php*php/
 
-    /**
-     * Returns an array of glyph numbers corresponding to the Unicode characters.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumberForCharacter()}.
-     *
-     * @param array $characterCodes Array of Unicode character codes (code points).
-     * @return array Array of glyph numbers.
-     */
-    public function glyphNumbersForCharacters($characterCodes)
-    {
-        return $this->_cmap->glyphNumbersForCharacters($characterCodes);
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php)php;
 
-    /**
-     * Returns the glyph number corresponding to the Unicode character.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumbersForCharacters()} which is optimized for bulk
-     * operations.
-     *
-     * @param integer $characterCode Unicode character code (code point).
-     * @return integer Glyph number.
-     */
-    public function glyphNumberForCharacter($characterCode)
-    {
-        return $this->_cmap->glyphNumberForCharacter($characterCode);
-    }
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@todo
+php php php php php php php php php php*php Itphp'sphp easyphp tophp addphp otherphp encodingsphp supportphp nowphp php(Standardphp-Encodingphp,php MacRomanEncodingphp,
+php php php php php php php php php php*php PDFDocEncodingphp,php MacExpertEncodingphp,php Symbolphp,php andphp ZapfDingbatsphp)php.
+php php php php php php php php php php*php Stepsphp forphp thephp implementationphp:
+php php php php php php php php php php*php php-php completelyphp describephp allphp PDFphp singlephp bytephp encodingsphp inphp thephp documentation
+php php php php php php php php php php*php php-php implementphp nonphp-WinAnsiphp encodingsphp processingphp intophp encodeStringphp(php)php/decodeStringphp(php)php methods
+php php php php php php php php php php*
+php php php php php php php php php php*php Thesephp encodingsphp willphp bephp automaticallyphp supportedphp forphp standardphp builtinphp PDFphp fontsphp asphp well
+php php php php php php php php php php*php asphp forphp externalphp fontsphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>php_resourcephp-php>Encodingphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'WinAnsiEncodingphp'php)php;
+php php php php php}
 
-    /**
-     * Returns a number between 0 and 1 inclusive that indicates the percentage
-     * of characters in the string which are covered by glyphs in this font.
-     *
-     * Since no one font will contain glyphs for the entire Unicode character
-     * range, this method can be used to help locate a suitable font when the
-     * actual contents of the string are not known.
-     *
-     * Note that some fonts lie about the characters they support. Additionally,
-     * fonts don't usually contain glyphs for control characters such as tabs
-     * and line breaks, so it is rare that you will get back a full 1.0 score.
-     * The resulting value should be considered informational only.
-     *
-     * @param string $string
-     * @param string $charEncoding (optional) Character encoding of source text.
-     *   If omitted, uses 'current locale'.
-     * @return float
-     */
-    public function getCoveredPercentage($string, $charEncoding = '')
-    {
-        /* Convert the string to UTF-16BE encoding so we can match the string's
-         * character codes to those found in the cmap.
-         */
-        if ($charEncoding != 'UTF-16BE') {
-            if (PHP_OS != 'AIX') { // AIX doesnt know what UTF-16BE is
-                $string = iconv($charEncoding, 'UTF-16BE', $string);
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp glyphphp numbersphp correspondingphp tophp thephp Unicodephp charactersphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumberForCharacterphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$characterCodesphp Arrayphp ofphp Unicodephp characterphp codesphp php(codephp pointsphp)php.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php/
+php php php php publicphp functionphp glyphNumbersForCharactersphp(php$characterCodesphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_cmapphp-php>glyphNumbersForCharactersphp(php$characterCodesphp)php;
+php php php php php}
 
-        $charCount = (PHP_OS != 'AIX') ? iconv_strlen($string, 'UTF-16BE') : strlen($string);
-        if ($charCount == 0) {
-            return 0;
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp glyphphp numberphp correspondingphp tophp thephp Unicodephp characterphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumbersForCharactersphp(php)php}php whichphp isphp optimizedphp forphp bulk
+php php php php php php*php operationsphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$characterCodephp Unicodephp characterphp codephp php(codephp pointphp)php.
+php php php php php php*php php@returnphp integerphp Glyphphp numberphp.
+php php php php php php*php/
+php php php php publicphp functionphp glyphNumberForCharacterphp(php$characterCodephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_cmapphp-php>glyphNumberForCharacterphp(php$characterCodephp)php;
+php php php php php}
 
-        /* Fetch the covered character code list from the font's cmap.
-         */
-        $coveredCharacters = $this->_cmap->getCoveredCharacters();
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp numberphp betweenphp php0php andphp php1php inclusivephp thatphp indicatesphp thephp percentage
+php php php php php php*php ofphp charactersphp inphp thephp stringphp whichphp arephp coveredphp byphp glyphsphp inphp thisphp fontphp.
+php php php php php php*
+php php php php php php*php Sincephp nophp onephp fontphp willphp containphp glyphsphp forphp thephp entirephp Unicodephp character
+php php php php php php*php rangephp,php thisphp methodphp canphp bephp usedphp tophp helpphp locatephp aphp suitablephp fontphp whenphp the
+php php php php php php*php actualphp contentsphp ofphp thephp stringphp arephp notphp knownphp.
+php php php php php php*
+php php php php php php*php Notephp thatphp somephp fontsphp liephp aboutphp thephp charactersphp theyphp supportphp.php Additionallyphp,
+php php php php php php*php fontsphp donphp'tphp usuallyphp containphp glyphsphp forphp controlphp charactersphp suchphp asphp tabs
+php php php php php php*php andphp linephp breaksphp,php sophp itphp isphp rarephp thatphp youphp willphp getphp backphp aphp fullphp php1php.php0php scorephp.
+php php php php php php*php Thephp resultingphp valuephp shouldphp bephp consideredphp informationalphp onlyphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp php(optionalphp)php Characterphp encodingphp ofphp sourcephp textphp.
+php php php php php php*php php php Ifphp omittedphp,php usesphp php'currentphp localephp'php.
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp getCoveredPercentagephp(php$stringphp,php php$charEncodingphp php=php php'php'php)
+php php php php php{
+php php php php php php php php php/php*php Convertphp thephp stringphp tophp UTFphp-php1php6BEphp encodingphp sophp wephp canphp matchphp thephp stringphp's
+php php php php php php php php php php*php characterphp codesphp tophp thosephp foundphp inphp thephp cmapphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$charEncodingphp php!php=php php'UTFphp-php1php6BEphp'php)php php{
+php php php php php php php php php php php php ifphp php(PHPphp_OSphp php!php=php php'AIXphp'php)php php{php php/php/php AIXphp doesntphp knowphp whatphp UTFphp-php1php6BEphp is
+php php php php php php php php php php php php php php php php php$stringphp php=php iconvphp(php$charEncodingphp,php php'UTFphp-php1php6BEphp'php,php php$stringphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        /* Calculate the score by doing a lookup for each character.
-         */
-        $score = 0;
-        $maxIndex = strlen($string);
-        for ($i = 0; $i < $maxIndex; $i++) {
-            /**
-             * @todo Properly handle characters encoded as surrogate pairs.
-             */
-            $charCode = (ord($string[$i]) << 8) | ord($string[++$i]);
-            /* This could probably be optimized a bit with a binary search...
-             */
-            if (in_array($charCode, $coveredCharacters)) {
-                $score++;
-            }
-        }
-        return $score / $charCount;
-    }
+php php php php php php php php php$charCountphp php=php php(PHPphp_OSphp php!php=php php'AIXphp'php)php php?php iconvphp_strlenphp(php$stringphp,php php'UTFphp-php1php6BEphp'php)php php:php strlenphp(php$stringphp)php;
+php php php php php php php php ifphp php(php$charCountphp php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php0php;
+php php php php php php php php php}
 
-    /**
-     * Returns the widths of the glyphs.
-     *
-     * The widths are expressed in the font's glyph space. You are responsible
-     * for converting to user space as necessary. See {@link unitsPerEm()}.
-     *
-     * See also {@link widthForGlyph()}.
-     *
-     * @param array &$glyphNumbers Array of glyph numbers.
-     * @return array Array of glyph widths (integers).
-     */
-    public function widthsForGlyphs($glyphNumbers)
-    {
-        $widths = array();
-        foreach ($glyphNumbers as $key => $glyphNumber) {
-            if (!isset($this->_glyphWidths[$glyphNumber])) {
-                $widths[$key] = $this->_missingGlyphWidth;
-            } else {
-                $widths[$key] = $this->_glyphWidths[$glyphNumber];
-            }
-        }
-        return $widths;
-    }
+php php php php php php php php php/php*php Fetchphp thephp coveredphp characterphp codephp listphp fromphp thephp fontphp'sphp cmapphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$coveredCharactersphp php=php php$thisphp-php>php_cmapphp-php>getCoveredCharactersphp(php)php;
 
-    /**
-     * Returns the width of the glyph.
-     *
-     * Like {@link widthsForGlyphs()} but used for one glyph at a time.
-     *
-     * @param integer $glyphNumber
-     * @return integer
-     */
-    public function widthForGlyph($glyphNumber)
-    {
-        if (!isset($this->_glyphWidths[$glyphNumber])) {
-            return $this->_missingGlyphWidth;
-        }
-        return $this->_glyphWidths[$glyphNumber];
-    }
+php php php php php php php php php/php*php Calculatephp thephp scorephp byphp doingphp aphp lookupphp forphp eachphp characterphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$scorephp php=php php0php;
+php php php php php php php php php$maxIndexphp php=php strlenphp(php$stringphp)php;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$maxIndexphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@todophp Properlyphp handlephp charactersphp encodedphp asphp surrogatephp pairsphp.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$charCodephp php=php php(ordphp(php$stringphp[php$iphp]php)php <php<php php8php)php php|php ordphp(php$stringphp[php+php+php$iphp]php)php;
+php php php php php php php php php php php php php/php*php Thisphp couldphp probablyphp bephp optimizedphp aphp bitphp withphp aphp binaryphp searchphp.php.php.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$charCodephp,php php$coveredCharactersphp)php)php php{
+php php php php php php php php php php php php php php php php php$scorephp+php+php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$scorephp php/php php$charCountphp;
+php php php php php}
 
-    /**
-     * Convert string to the font encoding.
-     *
-     * The method is used to prepare string for text drawing operators
-     *
-     * @param string $string
-     * @param string $charEncoding Character encoding of source text.
-     * @return string
-     */
-    public function encodeString($string, $charEncoding)
-    {
-        if (PHP_OS == 'AIX') {
-            return $string; // returning here b/c AIX doesnt know what CP1252 is
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthsphp ofphp thephp glyphsphp.
+php php php php php php*
+php php php php php php*php Thephp widthsphp arephp expressedphp inphp thephp fontphp'sphp glyphphp spacephp.php Youphp arephp responsible
+php php php php php php*php forphp convertingphp tophp userphp spacephp asphp necessaryphp.php Seephp php{php@linkphp unitsPerEmphp(php)php}php.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp widthForGlyphphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php&php$glyphNumbersphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp widthsphp php(integersphp)php.
+php php php php php php*php/
+php php php php publicphp functionphp widthsForGlyphsphp(php$glyphNumbersphp)
+php php php php php{
+php php php php php php php php php$widthsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$glyphNumbersphp asphp php$keyphp php=php>php php$glyphNumberphp)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_glyphWidthsphp[php$glyphNumberphp]php)php)php php{
+php php php php php php php php php php php php php php php php php$widthsphp[php$keyphp]php php=php php$thisphp-php>php_missingGlyphWidthphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$widthsphp[php$keyphp]php php=php php$thisphp-php>php_glyphWidthsphp[php$glyphNumberphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$widthsphp;
+php php php php php}
 
-        return iconv($charEncoding, 'CP1252//IGNORE', $string);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthphp ofphp thephp glyphphp.
+php php php php php php*
+php php php php php php*php Likephp php{php@linkphp widthsForGlyphsphp(php)php}php butphp usedphp forphp onephp glyphphp atphp aphp timephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$glyphNumber
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp widthForGlyphphp(php$glyphNumberphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_glyphWidthsphp[php$glyphNumberphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_missingGlyphWidthphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_glyphWidthsphp[php$glyphNumberphp]php;
+php php php php php}
 
-    /**
-     * Convert string from the font encoding.
-     *
-     * The method is used to convert strings retrieved from existing content streams
-     *
-     * @param string $string
-     * @param string $charEncoding Character encoding of resulting text.
-     * @return string
-     */
-    public function decodeString($string, $charEncoding)
-    {
-        return iconv('CP1252', $charEncoding, $string);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Convertphp stringphp tophp thephp fontphp encodingphp.
+php php php php php php*
+php php php php php php*php Thephp methodphp isphp usedphp tophp preparephp stringphp forphp textphp drawingphp operators
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp Characterphp encodingphp ofphp sourcephp textphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp encodeStringphp(php$stringphp,php php$charEncodingphp)
+php php php php php{
+php php php php php php php php ifphp php(PHPphp_OSphp php=php=php php'AIXphp'php)php php{
+php php php php php php php php php php php php returnphp php$stringphp;php php/php/php returningphp herephp bphp/cphp AIXphp doesntphp knowphp whatphp CPphp1php2php5php2php is
+php php php php php php php php php}
+
+php php php php php php php php returnphp iconvphp(php$charEncodingphp,php php'CPphp1php2php5php2php/php/IGNOREphp'php,php php$stringphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Convertphp stringphp fromphp thephp fontphp encodingphp.
+php php php php php php*
+php php php php php php*php Thephp methodphp isphp usedphp tophp convertphp stringsphp retrievedphp fromphp existingphp contentphp streams
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp Characterphp encodingphp ofphp resultingphp textphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp decodeStringphp(php$stringphp,php php$charEncodingphp)
+php php php php php{
+php php php php php php php php returnphp iconvphp(php'CPphp1php2php5php2php'php,php php$charEncodingphp,php php$stringphp)php;
+php php php php php}
+php}

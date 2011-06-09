@@ -1,220 +1,220 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.30 $"/>
-		<generation date="$Date: 2009/05/05 23:06:40 $"/>
-		<language type="tg"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="be">Белорусӣ</language>
-			<language type="bg">Булғорӣ</language>
-			<language type="bh">Биҳарӣ</language>
-			<language type="bn">Бенгалӣ</language>
-			<language type="br">Бретонӣ</language>
-			<language type="bs">Босниягӣ</language>
-			<language type="ca">Каталанӣ</language>
-			<language type="cs">Чехӣ</language>
-			<language type="da">Даниягӣ</language>
-			<language type="de">Немисӣ</language>
-			<language type="el">Юнонӣ</language>
-			<language type="en">Англисӣ</language>
-			<language type="eo">Эсперанто</language>
-			<language type="es">Испанӣ</language>
-			<language type="et">Эстонӣ</language>
-			<language type="eu">Баскӣ</language>
-			<language type="fa">Форсӣ</language>
-			<language type="fi">Финнӣ</language>
-			<language type="fil">Филиппинӣ</language>
-			<language type="fo">Фарозӣ</language>
-			<language type="fr">Фаронсавӣ</language>
-			<language type="fy">Фрисианӣ</language>
-			<language type="ga">Ирландӣ</language>
-			<language type="gd">Шотландӣ-Галикӣ</language>
-			<language type="gl">Галисианӣ</language>
-			<language type="gn">Горанӣ</language>
-			<language type="gu">Гуҷаратӣ</language>
-			<language type="he">Яҳудӣ</language>
-			<language type="hi">Ҳиндӣ</language>
-			<language type="hu">Маҷорӣ</language>
-			<language type="ia">Байни забонӣ</language>
-			<language type="id">Индонезӣ</language>
-			<language type="is">Исландӣ</language>
-			<language type="ja">Ҷопонӣ</language>
-			<language type="jv">Ҷаванизӣ</language>
-			<language type="ka">Гурҷӣ</language>
-			<language type="ky">Қирғизӣ</language>
-			<language type="la">Лотинӣ</language>
-			<language type="lo">Лаосӣ</language>
-			<language type="lt">Литвонӣ</language>
-			<language type="lv">Латвиягӣ</language>
-			<language type="nl">Ҳолландӣ</language>
-			<language type="no">Норвегӣ</language>
-			<language type="or">Урисоӣ</language>
-			<language type="pl">Лаҳистонӣ</language>
-			<language type="pt">Португалӣ</language>
-			<language type="pt_BR">Португалӣ (Бразилия)</language>
-			<language type="ro">Руминӣ</language>
-			<language type="ru">Русӣ</language>
-			<language type="sv">Шведӣ</language>
-			<language type="ug">Ӯйғурӣ</language>
-			<language type="uk">Украинӣ</language>
-			<language type="ur">Урду</language>
-			<language type="uz">Ӯзбекӣ</language>
-			<language type="yi">Яҳудии Аврупои шарқӣ</language>
-			<language type="zh">Чинӣ</language>
-			<language type="zu">Зулу</language>
-		</languages>
-		<scripts>
-			<script type="Arab">Арабӣ</script>
-		</scripts>
-		<territories>
-			<territory type="AF">Афғонистан</territory>
-			<territory type="TO">Тонга</territory>
-		</territories>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[а-г ғ д е ё ж-и ӣ й к қ л-у ӯ ф х ҳ ч ҷ ш ъ э-я]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[ц щ ы ь]</exemplarCharacters>
-	</characters>
-	<delimiters>
-		<quotationStart>«</quotationStart>
-		<quotationEnd>»</quotationEnd>
-		<alternateQuotationStart>«</alternateQuotationStart>
-		<alternateQuotationEnd>„</alternateQuotationEnd>
-	</delimiters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">Янв</month>
-							<month type="2">Фев</month>
-							<month type="3">Мар</month>
-							<month type="4">Апр</month>
-							<month type="5">Май</month>
-							<month type="6">Июн</month>
-							<month type="7">Июл</month>
-							<month type="8">Авг</month>
-							<month type="9">Сен</month>
-							<month type="10">Окт</month>
-							<month type="11">Ноя</month>
-							<month type="12">Дек</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Январ</month>
-							<month type="2">Феврал</month>
-							<month type="3">Март</month>
-							<month type="4">Апрел</month>
-							<month type="5">Май</month>
-							<month type="6">Июн</month>
-							<month type="7">Июл</month>
-							<month type="8">Август</month>
-							<month type="9">Сентябр</month>
-							<month type="10">Октябр</month>
-							<month type="11">Ноябр</month>
-							<month type="12">Декабр</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">Яшб</day>
-							<day type="mon">Дшб</day>
-							<day type="tue">Сшб</day>
-							<day type="wed">Чшб</day>
-							<day type="thu">Пшб</day>
-							<day type="fri">Ҷмъ</day>
-							<day type="sat">Шнб</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">Якшанбе</day>
-							<day type="mon">Душанбе</day>
-							<day type="tue">Сешанбе</day>
-							<day type="wed">Чоршанбе</day>
-							<day type="thu">Панҷшанбе</day>
-							<day type="fri">Ҷумъа</day>
-							<day type="sat">Шанбе</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<am>пе. чо.</am>
-				<pm>па. чо.</pm>
-				<eras>
-					<eraNames>
-						<era type="0">Пеш аз милод</era>
-						<era type="1">ПаМ</era>
-					</eraNames>
-					<eraAbbr>
-						<era type="0">ПеМ</era>
-						<era type="1">ПаМ</era>
-					</eraAbbr>
-				</eras>
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE, y MMMM dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>y MMMM d</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>y MMM d</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>yy/MM/dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="full">
-						<timeFormat>
-							<pattern>HH:mm:ss zzzz</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="long">
-						<timeFormat>
-							<pattern>HH:mm:ss z</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>HH:mm:ss</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="short">
-						<timeFormat>
-							<pattern>HH:mm</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;-HH:mm</hourFormat>
-			<gmtFormat>GMT{0}</gmtFormat>
-			<regionFormat>{0}</regionFormat>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<currencies>
-			<currency type="TJS">
-				<displayName>Сомонӣ</displayName>
-				<symbol>сом</symbol>
-			</currency>
-		</currencies>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php0php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php4php0php php$php"php/php>
+php	php	php<languagephp typephp=php"tgphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"bephp"php>phpБphpеphpлphpоphpрphpуphpсphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>phpБphpуphpлphpғphpоphpрphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>phpБphpиphpҳphpаphpрphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>phpБphpеphpнphpгphpаphpлphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>phpБphpрphpеphpтphpоphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>phpБphpоphpсphpнphpиphpяphpгphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>phpКphpаphpтphpаphpлphpаphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>phpЧphpеphpхphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>phpДphpаphpнphpиphpяphpгphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>phpНphpеphpмphpиphpсphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>phpЮphpнphpоphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>phpАphpнphpгphpлphpиphpсphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>phpЭphpсphpпphpеphpрphpаphpнphpтphpо<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>phpИphpсphpпphpаphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>phpЭphpсphpтphpоphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>phpБphpаphpсphpкphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>phpФphpоphpрphpсphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>phpФphpиphpнphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>phpФphpиphpлphpиphpпphpпphpиphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>phpФphpаphpрphpоphpзphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>phpФphpаphpрphpоphpнphpсphpаphpвphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>phpФphpрphpиphpсphpиphpаphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>phpИphpрphpлphpаphpнphpдphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>phpШphpоphpтphpлphpаphpнphpдphpӣphp-phpГphpаphpлphpиphpкphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>phpГphpаphpлphpиphpсphpиphpаphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>phpГphpоphpрphpаphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>phpГphpуphpҷphpаphpрphpаphpтphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>phpЯphpҳphpуphpдphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>phpҲphpиphpнphpдphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>phpМphpаphpҷphpоphpрphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>phpБphpаphpйphpнphpиphp phpзphpаphpбphpоphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>phpИphpнphpдphpоphpнphpеphpзphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>phpИphpсphpлphpаphpнphpдphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>phpҶphpоphpпphpоphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>phpҶphpаphpвphpаphpнphpиphpзphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>phpГphpуphpрphpҷphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>phpҚphpиphpрphpғphpиphpзphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>phpЛphpоphpтphpиphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"lophp"php>phpЛphpаphpоphpсphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>phpЛphpиphpтphpвphpоphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"lvphp"php>phpЛphpаphpтphpвphpиphpяphpгphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>phpҲphpоphpлphpлphpаphpнphpдphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>phpНphpоphpрphpвphpеphpгphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>phpУphpрphpиphpсphpоphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>phpЛphpаphpҳphpиphpсphpтphpоphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>phpПphpоphpрphpтphpуphpгphpаphpлphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>phpПphpоphpрphpтphpуphpгphpаphpлphpӣphp php(phpБphpрphpаphpзphpиphpлphpиphpяphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>phpРphpуphpмphpиphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>phpРphpуphpсphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>phpШphpвphpеphpдphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugphp"php>phpӮphpйphpғphpуphpрphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>phpУphpкphpрphpаphpиphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>phpУphpрphpдphpу<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>phpӮphpзphpбphpеphpкphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>phpЯphpҳphpуphpдphpиphpиphp phpАphpвphpрphpуphpпphpоphpиphp phpшphpаphpрphpқphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp"php>phpЧphpиphpнphpӣ<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>phpЗphpуphpлphpу<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Arabphp"php>phpАphpрphpаphpбphpӣ<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"AFphp"php>phpАphpфphpғphpоphpнphpиphpсphpтphpаphpн<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TOphp"php>phpТphpоphpнphpгphpа<php/territoryphp>
+php	php	<php/territoriesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[phpаphp-phpгphp phpғphp phpдphp phpеphp phpёphp phpжphp-phpиphp phpӣphp phpйphp phpкphp phpқphp phpлphp-phpуphp phpӯphp phpфphp phpхphp phpҳphp phpчphp phpҷphp phpшphp phpъphp phpэphp-phpяphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[phpцphp phpщphp phpыphp phpьphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<delimitersphp>
+php	php	php<quotationStartphp>php«<php/quotationStartphp>
+php	php	php<quotationEndphp>php»<php/quotationEndphp>
+php	php	php<alternateQuotationStartphp>php«<php/alternateQuotationStartphp>
+php	php	php<alternateQuotationEndphp>php„<php/alternateQuotationEndphp>
+php	<php/delimitersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpЯphpнphpв<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpФphpеphpв<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpМphpаphpр<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpАphpпphpр<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpМphpаphpй<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpИphpюphpн<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpИphpюphpл<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpАphpвphpг<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpСphpеphpн<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpОphpкphpт<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpНphpоphpя<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpДphpеphpк<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpЯphpнphpвphpаphpр<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpФphpеphpвphpрphpаphpл<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpМphpаphpрphpт<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpАphpпphpрphpеphpл<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpМphpаphpй<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpИphpюphpн<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpИphpюphpл<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpАphpвphpгphpуphpсphpт<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpСphpеphpнphpтphpяphpбphpр<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpОphpкphpтphpяphpбphpр<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpНphpоphpяphpбphpр<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpДphpеphpкphpаphpбphpр<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpЯphpшphpб<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpДphpшphpб<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpСphpшphpб<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpЧphpшphpб<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpПphpшphpб<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpҶphpмphpъ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpШphpнphpб<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpЯphpкphpшphpаphpнphpбphpе<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpДphpуphpшphpаphpнphpбphpе<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpСphpеphpшphpаphpнphpбphpе<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpЧphpоphpрphpшphpаphpнphpбphpе<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpПphpаphpнphpҷphpшphpаphpнphpбphpе<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpҶphpуphpмphpъphpа<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpШphpаphpнphpбphpе<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<amphp>phpпphpеphp.php phpчphpоphp.<php/amphp>
+php	php	php	php	php<pmphp>phpпphpаphp.php phpчphpоphp.<php/pmphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraNamesphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpПphpеphpшphp phpаphpзphp phpмphpиphpлphpоphpд<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpПphpаphpМ<php/eraphp>
+php	php	php	php	php	<php/eraNamesphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpПphpеphpМ<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpПphpаphpМ<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp,php yphp MMMMphp dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp MMMMphp d<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp MMMphp d<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yyphp/MMphp/dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
+php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
+php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"TJSphp"php>
+php	php	php	php	php<displayNamephp>phpСphpоphpмphpоphpнphpӣ<php/displayNamephp>
+php	php	php	php	php<symbolphp>phpсphpоphpм<php/symbolphp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+<php/ldmlphp>

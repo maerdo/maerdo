@@ -1,231 +1,231 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: TrimmedTable.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php TrimmedTablephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Pdf_Cmap */
-require_once 'Zend/Pdf/Cmap.php';
-
-
-/**
- * Implements the "trimmed table mapping" character map (type 6).
- *
- * This table type is preferred over the {@link Zend_Pdf_Cmap_SegmentToDelta}
- * table when the Unicode characters covered by the font fall into a single
- * contiguous range.
- *
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Pdf_Cmap_TrimmedTable extends Zend_Pdf_Cmap
-{
-  /**** Instance Variables ****/
+php/php*php*php Zendphp_Pdfphp_Cmapphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Cmapphp.phpphp'php;
 
 
-    /**
-     * The starting character code covered by this table.
-     * @var integer
-     */
-    protected $_startCode = 0;
-
-    /**
-     * The ending character code covered by this table.
-     * @var integer
-     */
-    protected $_endCode = 0;
-
-    /**
-     * Glyph index array. Stores the actual glyph numbers.
-     * @var array
-     */
-    protected $_glyphIndexArray = array();
+php/php*php*
+php php*php Implementsphp thephp php"trimmedphp tablephp mappingphp"php characterphp mapphp php(typephp php6php)php.
+php php*
+php php*php Thisphp tablephp typephp isphp preferredphp overphp thephp php{php@linkphp Zendphp_Pdfphp_Cmapphp_SegmentToDeltaphp}
+php php*php tablephp whenphp thephp Unicodephp charactersphp coveredphp byphp thephp fontphp fallphp intophp aphp single
+php php*php contiguousphp rangephp.
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Pdfphp_Cmapphp_TrimmedTablephp extendsphp Zendphp_Pdfphp_Cmap
+php{
+php php php/php*php*php*php*php Instancephp Variablesphp php*php*php*php*php/
 
 
+php php php php php/php*php*
+php php php php php php*php Thephp startingphp characterphp codephp coveredphp byphp thisphp tablephp.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_startCodephp php=php php0php;
 
-  /**** Public Interface ****/
+php php php php php/php*php*
+php php php php php php*php Thephp endingphp characterphp codephp coveredphp byphp thisphp tablephp.
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_endCodephp php=php php0php;
 
-
-  /* Concrete Class Implementation */
-
-    /**
-     * Returns an array of glyph numbers corresponding to the Unicode characters.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumberForCharacter()}.
-     *
-     * @param array $characterCodes Array of Unicode character codes (code points).
-     * @return array Array of glyph numbers.
-     */
-    public function glyphNumbersForCharacters($characterCodes)
-    {
-        $glyphNumbers = array();
-        foreach ($characterCodes as $key => $characterCode) {
-
-            if (($characterCode < $this->_startCode) || ($characterCode > $this->_endCode)) {
-                $glyphNumbers[$key] = Zend_Pdf_Cmap::MISSING_CHARACTER_GLYPH;
-                continue;
-            }
-
-            $glyphIndex = $characterCode - $this->_startCode;
-            $glyphNumbers[$key] = $this->_glyphIndexArray[$glyphIndex];
-
-        }
-        return $glyphNumbers;
-    }
-
-    /**
-     * Returns the glyph number corresponding to the Unicode character.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumbersForCharacters()} which is optimized for bulk
-     * operations.
-     *
-     * @param integer $characterCode Unicode character code (code point).
-     * @return integer Glyph number.
-     */
-    public function glyphNumberForCharacter($characterCode)
-    {
-        if (($characterCode < $this->_startCode) || ($characterCode > $this->_endCode)) {
-            return Zend_Pdf_Cmap::MISSING_CHARACTER_GLYPH;
-        }
-        $glyphIndex = $characterCode - $this->_startCode;
-        return $this->_glyphIndexArray[$glyphIndex];
-    }
-
-    /**
-     * Returns an array containing the Unicode characters that have entries in
-     * this character map.
-     *
-     * @return array Unicode character codes.
-     */
-    public function getCoveredCharacters()
-    {
-        $characterCodes = array();
-        for ($code = $this->_startCode; $code <= $this->_endCode; $code++) {
-            $characterCodes[] = $code;
-        }
-        return $characterCodes;
-    }
+php php php php php/php*php*
+php php php php php php*php Glyphphp indexphp arrayphp.php Storesphp thephp actualphp glyphphp numbersphp.
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_glyphIndexArrayphp php=php arrayphp(php)php;
 
 
-    /**
-     * Returns an array containing the glyphs numbers that have entries in this character map.
-     * Keys are Unicode character codes (integers)
-     *
-     * This functionality is partially covered by glyphNumbersForCharacters(getCoveredCharacters())
-     * call, but this method do it in more effective way (prepare complete list instead of searching
-     * glyph for each character code).
-     *
-     * @internal
-     * @return array Array representing <Unicode character code> => <glyph number> pairs.
-     */
-    public function getCoveredCharactersGlyphs()
-    {
-        $glyphNumbers = array();
-        for ($code = $this->_startCode; $code <= $this->_endCode; $code++) {
-            $glyphNumbers[$code] = $this->_glyphIndexArray[$code - $this->_startCode];
-        }
 
-        return $glyphNumbers;
-    }
+php php php/php*php*php*php*php Publicphp Interfacephp php*php*php*php*php/
 
 
-  /* Object Lifecycle */
+php php php/php*php Concretephp Classphp Implementationphp php*php/
 
-    /**
-     * Object constructor
-     *
-     * Parses the raw binary table data. Throws an exception if the table is
-     * malformed.
-     *
-     * @param string $cmapData Raw binary cmap table data.
-     * @throws Zend_Pdf_Exception
-     */
-    public function __construct($cmapData)
-    {
-        /* Sanity check: The table should be at least 9 bytes in size.
-         */
-        $actualLength = strlen($cmapData);
-        if ($actualLength < 9) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Insufficient table data',
-                                         Zend_Pdf_Exception::CMAP_TABLE_DATA_TOO_SMALL);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp glyphphp numbersphp correspondingphp tophp thephp Unicodephp charactersphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumberForCharacterphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$characterCodesphp Arrayphp ofphp Unicodephp characterphp codesphp php(codephp pointsphp)php.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php/
+php php php php publicphp functionphp glyphNumbersForCharactersphp(php$characterCodesphp)
+php php php php php{
+php php php php php php php php php$glyphNumbersphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$characterCodesphp asphp php$keyphp php=php>php php$characterCodephp)php php{
 
-        /* Sanity check: Make sure this is right data for this table type.
-         */
-        $type = $this->_extractUInt2($cmapData, 0);
-        if ($type != Zend_Pdf_Cmap::TYPE_TRIMMED_TABLE) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Wrong cmap table type',
-                                         Zend_Pdf_Exception::CMAP_WRONG_TABLE_TYPE);
-        }
+php php php php php php php php php php php php ifphp php(php(php$characterCodephp <php php$thisphp-php>php_startCodephp)php php|php|php php(php$characterCodephp php>php php$thisphp-php>php_endCodephp)php)php php{
+php php php php php php php php php php php php php php php php php$glyphNumbersphp[php$keyphp]php php=php Zendphp_Pdfphp_Cmapphp:php:MISSINGphp_CHARACTERphp_GLYPHphp;
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-        $length = $this->_extractUInt2($cmapData, 2);
-        if ($length != $actualLength) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Table length ($length) does not match actual length ($actualLength)",
-                                         Zend_Pdf_Exception::CMAP_WRONG_TABLE_LENGTH);
-        }
+php php php php php php php php php php php php php$glyphIndexphp php=php php$characterCodephp php-php php$thisphp-php>php_startCodephp;
+php php php php php php php php php php php php php$glyphNumbersphp[php$keyphp]php php=php php$thisphp-php>php_glyphIndexArrayphp[php$glyphIndexphp]php;
 
-        /* Mapping tables should be language-independent. The font may not work
-         * as expected if they are not. Unfortunately, many font files in the
-         * wild incorrectly record a language ID in this field, so we can't
-         * call this a failure.
-         */
-        $language = $this->_extractUInt2($cmapData, 4);
-        if ($language != 0) {
-            // Record a warning here somehow?
-        }
+php php php php php php php php php}
+php php php php php php php php returnphp php$glyphNumbersphp;
+php php php php php}
 
-        $this->_startCode = $this->_extractUInt2($cmapData, 6);
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp glyphphp numberphp correspondingphp tophp thephp Unicodephp characterphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumbersForCharactersphp(php)php}php whichphp isphp optimizedphp forphp bulk
+php php php php php php*php operationsphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$characterCodephp Unicodephp characterphp codephp php(codephp pointphp)php.
+php php php php php php*php php@returnphp integerphp Glyphphp numberphp.
+php php php php php php*php/
+php php php php publicphp functionphp glyphNumberForCharacterphp(php$characterCodephp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$characterCodephp <php php$thisphp-php>php_startCodephp)php php|php|php php(php$characterCodephp php>php php$thisphp-php>php_endCodephp)php)php php{
+php php php php php php php php php php php php returnphp Zendphp_Pdfphp_Cmapphp:php:MISSINGphp_CHARACTERphp_GLYPHphp;
+php php php php php php php php php}
+php php php php php php php php php$glyphIndexphp php=php php$characterCodephp php-php php$thisphp-php>php_startCodephp;
+php php php php php php php php returnphp php$thisphp-php>php_glyphIndexArrayphp[php$glyphIndexphp]php;
+php php php php php}
 
-        $entryCount = $this->_extractUInt2($cmapData, 8);
-        $expectedCount = ($length - 10) >> 1;
-        if ($entryCount != $expectedCount) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Entry count is wrong; expected: $expectedCount; actual: $entryCount",
-                                         Zend_Pdf_Exception::CMAP_WRONG_ENTRY_COUNT);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp containingphp thephp Unicodephp charactersphp thatphp havephp entriesphp in
+php php php php php php*php thisphp characterphp mapphp.
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Unicodephp characterphp codesphp.
+php php php php php php*php/
+php php php php publicphp functionphp getCoveredCharactersphp(php)
+php php php php php{
+php php php php php php php php php$characterCodesphp php=php arrayphp(php)php;
+php php php php php php php php forphp php(php$codephp php=php php$thisphp-php>php_startCodephp;php php$codephp <php=php php$thisphp-php>php_endCodephp;php php$codephp+php+php)php php{
+php php php php php php php php php php php php php$characterCodesphp[php]php php=php php$codephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$characterCodesphp;
+php php php php php}
 
-        $this->_endCode = $this->_startCode + $entryCount - 1;
 
-        $offset = 10;
-        for ($i = 0; $i < $entryCount; $i++, $offset += 2) {
-            $this->_glyphIndexArray[] = $this->_extractUInt2($cmapData, $offset);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp containingphp thephp glyphsphp numbersphp thatphp havephp entriesphp inphp thisphp characterphp mapphp.
+php php php php php php*php Keysphp arephp Unicodephp characterphp codesphp php(integersphp)
+php php php php php php*
+php php php php php php*php Thisphp functionalityphp isphp partiallyphp coveredphp byphp glyphNumbersForCharactersphp(getCoveredCharactersphp(php)php)
+php php php php php php*php callphp,php butphp thisphp methodphp dophp itphp inphp morephp effectivephp wayphp php(preparephp completephp listphp insteadphp ofphp searching
+php php php php php php*php glyphphp forphp eachphp characterphp codephp)php.
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php php@returnphp arrayphp Arrayphp representingphp php<Unicodephp characterphp codephp>php php=php>php php<glyphphp numberphp>php pairsphp.
+php php php php php php*php/
+php php php php publicphp functionphp getCoveredCharactersGlyphsphp(php)
+php php php php php{
+php php php php php php php php php$glyphNumbersphp php=php arrayphp(php)php;
+php php php php php php php php forphp php(php$codephp php=php php$thisphp-php>php_startCodephp;php php$codephp <php=php php$thisphp-php>php_endCodephp;php php$codephp+php+php)php php{
+php php php php php php php php php php php php php$glyphNumbersphp[php$codephp]php php=php php$thisphp-php>php_glyphIndexArrayphp[php$codephp php-php php$thisphp-php>php_startCodephp]php;
+php php php php php php php php php}
 
-        /* Sanity check: After reading all of the data, we should be at the end
-         * of the table.
-         */
-        if ($offset != $length) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Ending offset ($offset) does not match length ($length)",
-                                         Zend_Pdf_Exception::CMAP_FINAL_OFFSET_NOT_LENGTH);
-        }
-    }
+php php php php php php php php returnphp php$glyphNumbersphp;
+php php php php php}
 
-}
+
+php php php/php*php Objectphp Lifecyclephp php*php/
+
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php Parsesphp thephp rawphp binaryphp tablephp dataphp.php Throwsphp anphp exceptionphp ifphp thephp tablephp is
+php php php php php php*php malformedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$cmapDataphp Rawphp binaryphp cmapphp tablephp dataphp.
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$cmapDataphp)
+php php php php php{
+php php php php php php php php php/php*php Sanityphp checkphp:php Thephp tablephp shouldphp bephp atphp leastphp php9php bytesphp inphp sizephp.
+php php php php php php php php php php*php/
+php php php php php php php php php$actualLengthphp php=php strlenphp(php$cmapDataphp)php;
+php php php php php php php php ifphp php(php$actualLengthphp <php php9php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Insufficientphp tablephp dataphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_TABLEphp_DATAphp_TOOphp_SMALLphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php Sanityphp checkphp:php Makephp surephp thisphp isphp rightphp dataphp forphp thisphp tablephp typephp.
+php php php php php php php php php php*php/
+php php php php php php php php php$typephp php=php php$thisphp-php>php_extractUIntphp2php(php$cmapDataphp,php php0php)php;
+php php php php php php php php ifphp php(php$typephp php!php=php Zendphp_Pdfphp_Cmapphp:php:TYPEphp_TRIMMEDphp_TABLEphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp cmapphp tablephp typephp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_WRONGphp_TABLEphp_TYPEphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$lengthphp php=php php$thisphp-php>php_extractUIntphp2php(php$cmapDataphp,php php2php)php;
+php php php php php php php php ifphp php(php$lengthphp php!php=php php$actualLengthphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Tablephp lengthphp php(php$lengthphp)php doesphp notphp matchphp actualphp lengthphp php(php$actualLengthphp)php"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_WRONGphp_TABLEphp_LENGTHphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php Mappingphp tablesphp shouldphp bephp languagephp-independentphp.php Thephp fontphp mayphp notphp work
+php php php php php php php php php php*php asphp expectedphp ifphp theyphp arephp notphp.php Unfortunatelyphp,php manyphp fontphp filesphp inphp the
+php php php php php php php php php php*php wildphp incorrectlyphp recordphp aphp languagephp IDphp inphp thisphp fieldphp,php sophp wephp canphp't
+php php php php php php php php php php*php callphp thisphp aphp failurephp.
+php php php php php php php php php php*php/
+php php php php php php php php php$languagephp php=php php$thisphp-php>php_extractUIntphp2php(php$cmapDataphp,php php4php)php;
+php php php php php php php php ifphp php(php$languagephp php!php=php php0php)php php{
+php php php php php php php php php php php php php/php/php Recordphp aphp warningphp herephp somehowphp?
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_startCodephp php=php php$thisphp-php>php_extractUIntphp2php(php$cmapDataphp,php php6php)php;
+
+php php php php php php php php php$entryCountphp php=php php$thisphp-php>php_extractUIntphp2php(php$cmapDataphp,php php8php)php;
+php php php php php php php php php$expectedCountphp php=php php(php$lengthphp php-php php1php0php)php php>php>php php1php;
+php php php php php php php php ifphp php(php$entryCountphp php!php=php php$expectedCountphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Entryphp countphp isphp wrongphp;php expectedphp:php php$expectedCountphp;php actualphp:php php$entryCountphp"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_WRONGphp_ENTRYphp_COUNTphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_endCodephp php=php php$thisphp-php>php_startCodephp php+php php$entryCountphp php-php php1php;
+
+php php php php php php php php php$offsetphp php=php php1php0php;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$entryCountphp;php php$iphp+php+php,php php$offsetphp php+php=php php2php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_glyphIndexArrayphp[php]php php=php php$thisphp-php>php_extractUIntphp2php(php$cmapDataphp,php php$offsetphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php Sanityphp checkphp:php Afterphp readingphp allphp ofphp thephp dataphp,php wephp shouldphp bephp atphp thephp end
+php php php php php php php php php php*php ofphp thephp tablephp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$offsetphp php!php=php php$lengthphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Endingphp offsetphp php(php$offsetphp)php doesphp notphp matchphp lengthphp php(php$lengthphp)php"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_FINALphp_OFFSETphp_NOTphp_LENGTHphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php}

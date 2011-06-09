@@ -1,583 +1,583 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Log
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Log.php 23576 2010-12-23 23:25:44Z ramon $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Logphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Log
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Log.php 23576 2010-12-23 23:25:44Z ramon $
- */
-class Zend_Log
-{
-    const EMERG   = 0;  // Emergency: system is unusable
-    const ALERT   = 1;  // Alert: action must be taken immediately
-    const CRIT    = 2;  // Critical: critical conditions
-    const ERR     = 3;  // Error: error conditions
-    const WARN    = 4;  // Warning: warning conditions
-    const NOTICE  = 5;  // Notice: normal but significant condition
-    const INFO    = 6;  // Informational: informational messages
-    const DEBUG   = 7;  // Debug: debug messages
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Logphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
+classphp Zendphp_Log
+php{
+php php php php constphp EMERGphp php php php=php php0php;php php php/php/php Emergencyphp:php systemphp isphp unusable
+php php php php constphp ALERTphp php php php=php php1php;php php php/php/php Alertphp:php actionphp mustphp bephp takenphp immediately
+php php php php constphp CRITphp php php php php=php php2php;php php php/php/php Criticalphp:php criticalphp conditions
+php php php php constphp ERRphp php php php php php=php php3php;php php php/php/php Errorphp:php errorphp conditions
+php php php php constphp WARNphp php php php php=php php4php;php php php/php/php Warningphp:php warningphp conditions
+php php php php constphp NOTICEphp php php=php php5php;php php php/php/php Noticephp:php normalphp butphp significantphp condition
+php php php php constphp INFOphp php php php php=php php6php;php php php/php/php Informationalphp:php informationalphp messages
+php php php php constphp DEBUGphp php php php=php php7php;php php php/php/php Debugphp:php debugphp messages
 
-    /**
-     * @var array of priorities where the keys are the
-     * priority numbers and the values are the priority names
-     */
-    protected $_priorities = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp ofphp prioritiesphp wherephp thephp keysphp arephp the
+php php php php php php*php priorityphp numbersphp andphp thephp valuesphp arephp thephp priorityphp names
+php php php php php php*php/
+php php php php protectedphp php$php_prioritiesphp php=php arrayphp(php)php;
 
-    /**
-     * @var array of Zend_Log_Writer_Abstract
-     */
-    protected $_writers = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp ofphp Zendphp_Logphp_Writerphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_writersphp php=php arrayphp(php)php;
 
-    /**
-     * @var array of Zend_Log_Filter_Interface
-     */
-    protected $_filters = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp ofphp Zendphp_Logphp_Filterphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_filtersphp php=php arrayphp(php)php;
 
-    /**
-     * @var array of extra log event
-     */
-    protected $_extras = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp ofphp extraphp logphp event
+php php php php php php*php/
+php php php php protectedphp php$php_extrasphp php=php arrayphp(php)php;
 
-    /**
-     *
-     * @var string
-     */
-    protected $_defaultWriterNamespace = 'Zend_Log_Writer';
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_defaultWriterNamespacephp php=php php'Zendphp_Logphp_Writerphp'php;
 
-    /**
-     *
-     * @var string
-     */
-    protected $_defaultFilterNamespace = 'Zend_Log_Filter';
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_defaultFilterNamespacephp php=php php'Zendphp_Logphp_Filterphp'php;
 
-    /**
-     *
-     * @var callback
-     */
-    protected $_origErrorHandler       = null;
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@varphp callback
+php php php php php php*php/
+php php php php protectedphp php$php_origErrorHandlerphp php php php php php php php=php nullphp;
 
-    /**
-     *
-     * @var boolean
-     */
-    protected $_registeredErrorHandler = false;
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_registeredErrorHandlerphp php=php falsephp;
 
-    /**
-     *
-     * @var array|boolean
-     */
-    protected $_errorHandlerMap        = false;
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@varphp arrayphp|boolean
+php php php php php php*php/
+php php php php protectedphp php$php_errorHandlerMapphp php php php php php php php php=php falsephp;
 
-    /**
-     *
-     * @var string
-     */
-    protected $_timestampFormat        = 'c';
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_timestampFormatphp php php php php php php php php=php php'cphp'php;
 
-    /**
-     * Class constructor.  Create a new logger
-     *
-     * @param Zend_Log_Writer_Abstract|null  $writer  default writer
-     * @return void
-     */
-    public function __construct(Zend_Log_Writer_Abstract $writer = null)
-    {
-        $r = new ReflectionClass($this);
-        $this->_priorities = array_flip($r->getConstants());
+php php php php php/php*php*
+php php php php php php*php Classphp constructorphp.php php Createphp aphp newphp logger
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Logphp_Writerphp_Abstractphp|nullphp php php$writerphp php defaultphp writer
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(Zendphp_Logphp_Writerphp_Abstractphp php$writerphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$rphp php=php newphp ReflectionClassphp(php$thisphp)php;
+php php php php php php php php php$thisphp-php>php_prioritiesphp php=php arrayphp_flipphp(php$rphp-php>getConstantsphp(php)php)php;
 
-        if ($writer !== null) {
-            $this->addWriter($writer);
-        }
-    }
+php php php php php php php php ifphp php(php$writerphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>addWriterphp(php$writerphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Factory to construct the logger and one or more writers
-     * based on the configuration array
-     *
-     * @param  array|Zend_Config Array or instance of Zend_Config
-     * @return Zend_Log
-     * @throws Zend_Log_Exception
-     */
-    static public function factory($config = array())
-    {
-        if ($config instanceof Zend_Config) {
-            $config = $config->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Factoryphp tophp constructphp thephp loggerphp andphp onephp orphp morephp writers
+php php php php php php*php basedphp onphp thephp configurationphp array
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp Arrayphp orphp instancephp ofphp Zendphp_Config
+php php php php php php*php php@returnphp Zendphp_Log
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php staticphp publicphp functionphp factoryphp(php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($config) || empty($config)) {
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('Configuration must be an array or instance of Zend_Config');
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$configphp)php php|php|php emptyphp(php$configphp)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Configurationphp mustphp bephp anphp arrayphp orphp instancephp ofphp Zendphp_Configphp'php)php;
+php php php php php php php php php}
 
-        $log = new self;
+php php php php php php php php php$logphp php=php newphp selfphp;
 
-        if (!is_array(current($config))) {
-            $log->addWriter(current($config));
-        } else {
-            foreach($config as $writer) {
-                $log->addWriter($writer);
-            }
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(currentphp(php$configphp)php)php)php php{
+php php php php php php php php php php php php php$logphp-php>addWriterphp(currentphp(php$configphp)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php foreachphp(php$configphp asphp php$writerphp)php php{
+php php php php php php php php php php php php php php php php php$logphp-php>addWriterphp(php$writerphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $log;
-    }
+php php php php php php php php returnphp php$logphp;
+php php php php php}
 
 
-    /**
-     * Construct a writer object based on a configuration array
-     *
-     * @param  array $spec config array with writer spec
-     * @return Zend_Log_Writer_Abstract
-     * @throws Zend_Log_Exception
-     */
-    protected function _constructWriterFromConfig($config)
-    {
-        $writer = $this->_constructFromConfig('writer', $config, $this->_defaultWriterNamespace);
+php php php php php/php*php*
+php php php php php php*php Constructphp aphp writerphp objectphp basedphp onphp aphp configurationphp array
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$specphp configphp arrayphp withphp writerphp spec
+php php php php php php*php php@returnphp Zendphp_Logphp_Writerphp_Abstract
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_constructWriterFromConfigphp(php$configphp)
+php php php php php{
+php php php php php php php php php$writerphp php=php php$thisphp-php>php_constructFromConfigphp(php'writerphp'php,php php$configphp,php php$thisphp-php>php_defaultWriterNamespacephp)php;
 
-        if (!$writer instanceof Zend_Log_Writer_Abstract) {
-            $writerName = is_object($writer)
-                        ? get_class($writer)
-                        : 'The specified writer';
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception("{$writerName} does not extend Zend_Log_Writer_Abstract!");
-        }
+php php php php php php php php ifphp php(php!php$writerphp instanceofphp Zendphp_Logphp_Writerphp_Abstractphp)php php{
+php php php php php php php php php php php php php$writerNamephp php=php isphp_objectphp(php$writerphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php?php getphp_classphp(php$writerphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php:php php'Thephp specifiedphp writerphp'php;
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php"php{php$writerNamephp}php doesphp notphp extendphp Zendphp_Logphp_Writerphp_Abstractphp!php"php)php;
+php php php php php php php php php}
 
-        if (isset($config['filterName'])) {
-            $filter = $this->_constructFilterFromConfig($config);
-            $writer->addFilter($filter);
-        }
+php php php php php php php php ifphp php(issetphp(php$configphp[php'filterNamephp'php]php)php)php php{
+php php php php php php php php php php php php php$filterphp php=php php$thisphp-php>php_constructFilterFromConfigphp(php$configphp)php;
+php php php php php php php php php php php php php$writerphp-php>addFilterphp(php$filterphp)php;
+php php php php php php php php php}
 
-        return $writer;
-    }
+php php php php php php php php returnphp php$writerphp;
+php php php php php}
 
-    /**
-     * Construct filter object from configuration array or Zend_Config object
-     *
-     * @param  array|Zend_Config $config Zend_Config or Array
-     * @return Zend_Log_Filter_Interface
-     * @throws Zend_Log_Exception
-     */
-    protected function _constructFilterFromConfig($config)
-    {
-        $filter = $this->_constructFromConfig('filter', $config, $this->_defaultFilterNamespace);
+php php php php php/php*php*
+php php php php php php*php Constructphp filterphp objectphp fromphp configurationphp arrayphp orphp Zendphp_Configphp object
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$configphp Zendphp_Configphp orphp Array
+php php php php php php*php php@returnphp Zendphp_Logphp_Filterphp_Interface
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_constructFilterFromConfigphp(php$configphp)
+php php php php php{
+php php php php php php php php php$filterphp php=php php$thisphp-php>php_constructFromConfigphp(php'filterphp'php,php php$configphp,php php$thisphp-php>php_defaultFilterNamespacephp)php;
 
-        if (!$filter instanceof Zend_Log_Filter_Interface) {
-             $filterName = is_object($filter)
-                         ? get_class($filter)
-                         : 'The specified filter';
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception("{$filterName} does not implement Zend_Log_Filter_Interface");
-        }
+php php php php php php php php ifphp php(php!php$filterphp instanceofphp Zendphp_Logphp_Filterphp_Interfacephp)php php{
+php php php php php php php php php php php php php php$filterNamephp php=php isphp_objectphp(php$filterphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php php?php getphp_classphp(php$filterphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php php:php php'Thephp specifiedphp filterphp'php;
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php"php{php$filterNamephp}php doesphp notphp implementphp Zendphp_Logphp_Filterphp_Interfacephp"php)php;
+php php php php php php php php php}
 
-        return $filter;
-    }
+php php php php php php php php returnphp php$filterphp;
+php php php php php}
 
-    /**
-     * Construct a filter or writer from config
-     *
-     * @param string $type 'writer' of 'filter'
-     * @param mixed $config Zend_Config or Array
-     * @param string $namespace
-     * @return object
-     * @throws Zend_Log_Exception
-     */
-    protected function _constructFromConfig($type, $config, $namespace)
-    {
-        if ($config instanceof Zend_Config) {
-            $config = $config->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Constructphp aphp filterphp orphp writerphp fromphp config
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$typephp php'writerphp'php ofphp php'filterphp'
+php php php php php php*php php@paramphp mixedphp php$configphp Zendphp_Configphp orphp Array
+php php php php php php*php php@paramphp stringphp php$namespace
+php php php php php php*php php@returnphp object
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_constructFromConfigphp(php$typephp,php php$configphp,php php$namespacephp)
+php php php php php{
+php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($config) || empty($config)) {
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception(
-                'Configuration must be an array or instance of Zend_Config'
-            );
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$configphp)php php|php|php emptyphp(php$configphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Configurationphp mustphp bephp anphp arrayphp orphp instancephp ofphp Zendphp_Configphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        $params    = isset($config[ $type .'Params' ]) ? $config[ $type .'Params' ] : array();
-        $className = $this->getClassName($config, $type, $namespace);
-        if (!class_exists($className)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($className);
-        }
+php php php php php php php php php$paramsphp php php php php=php issetphp(php$configphp[php php$typephp php.php'Paramsphp'php php]php)php php?php php$configphp[php php$typephp php.php'Paramsphp'php php]php php:php arrayphp(php)php;
+php php php php php php php php php$classNamephp php=php php$thisphp-php>getClassNamephp(php$configphp,php php$typephp,php php$namespacephp)php;
+php php php php php php php php ifphp php(php!classphp_existsphp(php$classNamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classNamephp)php;
+php php php php php php php php php}
 
-        $reflection = new ReflectionClass($className);
-        if (!$reflection->implementsInterface('Zend_Log_FactoryInterface')) {
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception(
-                'Driver does not implement Zend_Log_FactoryInterface and can not be constructed from config.'
-            );
-        }
+php php php php php php php php php$reflectionphp php=php newphp ReflectionClassphp(php$classNamephp)php;
+php php php php php php php php ifphp php(php!php$reflectionphp-php>implementsInterfacephp(php'Zendphp_Logphp_FactoryInterfacephp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Driverphp doesphp notphp implementphp Zendphp_Logphp_FactoryInterfacephp andphp canphp notphp bephp constructedphp fromphp configphp.php'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        return call_user_func(array($className, 'factory'), $params);
-    }
+php php php php php php php php returnphp callphp_userphp_funcphp(arrayphp(php$classNamephp,php php'factoryphp'php)php,php php$paramsphp)php;
+php php php php php}
 
-    /**
-     * Get the writer or filter full classname
-     *
-     * @param array $config
-     * @param string $type filter|writer
-     * @param string $defaultNamespace
-     * @return string full classname
-     * @throws Zend_Log_Exception
-     */
-    protected function getClassName($config, $type, $defaultNamespace)
-    {
-        if (!isset($config[ $type . 'Name' ])) {
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception("Specify {$type}Name in the configuration array");
-        }
-        $className = $config[ $type . 'Name' ];
+php php php php php/php*php*
+php php php php php php*php Getphp thephp writerphp orphp filterphp fullphp classname
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$config
+php php php php php php*php php@paramphp stringphp php$typephp filterphp|writer
+php php php php php php*php php@paramphp stringphp php$defaultNamespace
+php php php php php php*php php@returnphp stringphp fullphp classname
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp getClassNamephp(php$configphp,php php$typephp,php php$defaultNamespacephp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$configphp[php php$typephp php.php php'Namephp'php php]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php"Specifyphp php{php$typephp}Namephp inphp thephp configurationphp arrayphp"php)php;
+php php php php php php php php php}
+php php php php php php php php php$classNamephp php=php php$configphp[php php$typephp php.php php'Namephp'php php]php;
 
-        $namespace = $defaultNamespace;
-        if (isset($config[ $type . 'Namespace' ])) {
-            $namespace = $config[ $type . 'Namespace' ];
-        }
+php php php php php php php php php$namespacephp php=php php$defaultNamespacephp;
+php php php php php php php php ifphp php(issetphp(php$configphp[php php$typephp php.php php'Namespacephp'php php]php)php)php php{
+php php php php php php php php php php php php php$namespacephp php=php php$configphp[php php$typephp php.php php'Namespacephp'php php]php;
+php php php php php php php php php}
 
-        $fullClassName = $namespace . '_' . $className;
-        return $fullClassName;
-    }
+php php php php php php php php php$fullClassNamephp php=php php$namespacephp php.php php'php_php'php php.php php$classNamephp;
+php php php php php php php php returnphp php$fullClassNamephp;
+php php php php php}
 
-    /**
-     * Packs message and priority into Event array
-     *
-     * @param  string   $message   Message to log
-     * @param  integer  $priority  Priority of message
-     * @return array Event array
-     */
-    protected function _packEvent($message, $priority)
-    {
-        return array_merge(array(
-            'timestamp'    => date($this->_timestampFormat),
-            'message'      => $message,
-            'priority'     => $priority,
-            'priorityName' => $this->_priorities[$priority]
-            ),
-            $this->_extras
-        );
-    }
+php php php php php/php*php*
+php php php php php php*php Packsphp messagephp andphp priorityphp intophp Eventphp array
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php$messagephp php php Messagephp tophp log
+php php php php php php*php php@paramphp php integerphp php php$priorityphp php Priorityphp ofphp message
+php php php php php php*php php@returnphp arrayphp Eventphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_packEventphp(php$messagephp,php php$priorityphp)
+php php php php php{
+php php php php php php php php returnphp arrayphp_mergephp(arrayphp(
+php php php php php php php php php php php php php'timestampphp'php php php php php=php>php datephp(php$thisphp-php>php_timestampFormatphp)php,
+php php php php php php php php php php php php php'messagephp'php php php php php php php=php>php php$messagephp,
+php php php php php php php php php php php php php'priorityphp'php php php php php php=php>php php$priorityphp,
+php php php php php php php php php php php php php'priorityNamephp'php php=php>php php$thisphp-php>php_prioritiesphp[php$priorityphp]
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php$thisphp-php>php_extras
+php php php php php php php php php)php;
+php php php php php}
 
-    /**
-     * Class destructor.  Shutdown log writers
-     *
-     * @return void
-     */
-    public function __destruct()
-    {
-        foreach($this->_writers as $writer) {
-            $writer->shutdown();
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Classphp destructorphp.php php Shutdownphp logphp writers
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_destructphp(php)
+php php php php php{
+php php php php php php php php foreachphp(php$thisphp-php>php_writersphp asphp php$writerphp)php php{
+php php php php php php php php php php php php php$writerphp-php>shutdownphp(php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Undefined method handler allows a shortcut:
-     *   $log->priorityName('message')
-     *     instead of
-     *   $log->log('message', Zend_Log::PRIORITY_NAME)
-     *
-     * @param  string  $method  priority name
-     * @param  string  $params  message to log
-     * @return void
-     * @throws Zend_Log_Exception
-     */
-    public function __call($method, $params)
-    {
-        $priority = strtoupper($method);
-        if (($priority = array_search($priority, $this->_priorities)) !== false) {
-            switch (count($params)) {
-                case 0:
-                    /** @see Zend_Log_Exception */
-                    require_once 'Zend/Log/Exception.php';
-                    throw new Zend_Log_Exception('Missing log message');
-                case 1:
-                    $message = array_shift($params);
-                    $extras = null;
-                    break;
-                default:
-                    $message = array_shift($params);
-                    $extras  = array_shift($params);
-                    break;
-            }
-            $this->log($message, $priority, $extras);
-        } else {
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('Bad log priority');
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Undefinedphp methodphp handlerphp allowsphp aphp shortcutphp:
+php php php php php php*php php php php$logphp-php>priorityNamephp(php'messagephp'php)
+php php php php php php*php php php php php insteadphp of
+php php php php php php*php php php php$logphp-php>logphp(php'messagephp'php,php Zendphp_Logphp:php:PRIORITYphp_NAMEphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$methodphp php priorityphp name
+php php php php php php*php php@paramphp php stringphp php php$paramsphp php messagephp tophp log
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$paramsphp)
+php php php php php{
+php php php php php php php php php$priorityphp php=php strtoupperphp(php$methodphp)php;
+php php php php php php php php ifphp php(php(php$priorityphp php=php arrayphp_searchphp(php$priorityphp,php php$thisphp-php>php_prioritiesphp)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php switchphp php(countphp(php$paramsphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php0php:
+php php php php php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Missingphp logphp messagephp'php)php;
+php php php php php php php php php php php php php php php php casephp php1php:
+php php php php php php php php php php php php php php php php php php php php php$messagephp php=php arrayphp_shiftphp(php$paramsphp)php;
+php php php php php php php php php php php php php php php php php php php php php$extrasphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php$messagephp php=php arrayphp_shiftphp(php$paramsphp)php;
+php php php php php php php php php php php php php php php php php php php php php$extrasphp php php=php arrayphp_shiftphp(php$paramsphp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>logphp(php$messagephp,php php$priorityphp,php php$extrasphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Badphp logphp priorityphp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Log a message at a priority
-     *
-     * @param  string   $message   Message to log
-     * @param  integer  $priority  Priority of message
-     * @param  mixed    $extras    Extra information to log in event
-     * @return void
-     * @throws Zend_Log_Exception
-     */
-    public function log($message, $priority, $extras = null)
-    {
-        // sanity checks
-        if (empty($this->_writers)) {
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('No writers were added');
-        }
+php php php php php/php*php*
+php php php php php php*php Logphp aphp messagephp atphp aphp priority
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php$messagephp php php Messagephp tophp log
+php php php php php php*php php@paramphp php integerphp php php$priorityphp php Priorityphp ofphp message
+php php php php php php*php php@paramphp php mixedphp php php php php$extrasphp php php php Extraphp informationphp tophp logphp inphp event
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp logphp(php$messagephp,php php$priorityphp,php php$extrasphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php sanityphp checks
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_writersphp)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Nophp writersphp werephp addedphp'php)php;
+php php php php php php php php php}
 
-        if (! isset($this->_priorities[$priority])) {
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('Bad log priority');
-        }
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>php_prioritiesphp[php$priorityphp]php)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Badphp logphp priorityphp'php)php;
+php php php php php php php php php}
 
-        // pack into event required by filters and writers
-        $event = $this->_packEvent($message, $priority);
+php php php php php php php php php/php/php packphp intophp eventphp requiredphp byphp filtersphp andphp writers
+php php php php php php php php php$eventphp php=php php$thisphp-php>php_packEventphp(php$messagephp,php php$priorityphp)php;
 
-        // Check to see if any extra information was passed
-        if (!empty($extras)) {
-            $info = array();
-            if (is_array($extras)) {
-                foreach ($extras as $key => $value) {
-                    if (is_string($key)) {
-                        $event[$key] = $value;
-                    } else {
-                        $info[] = $value;
-                    }
-                }
-            } else {
-                $info = $extras;
-            }
-            if (!empty($info)) {
-                $event['info'] = $info;
-            }
-        }
+php php php php php php php php php/php/php Checkphp tophp seephp ifphp anyphp extraphp informationphp wasphp passed
+php php php php php php php php ifphp php(php!emptyphp(php$extrasphp)php)php php{
+php php php php php php php php php php php php php$infophp php=php arrayphp(php)php;
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$extrasphp)php)php php{
+php php php php php php php php php php php php php php php php foreachphp php(php$extrasphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$eventphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$infophp[php]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$infophp php=php php$extrasphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$infophp)php)php php{
+php php php php php php php php php php php php php php php php php$eventphp[php'infophp'php]php php=php php$infophp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // abort if rejected by the global filters
-        foreach ($this->_filters as $filter) {
-            if (! $filter->accept($event)) {
-                return;
-            }
-        }
+php php php php php php php php php/php/php abortphp ifphp rejectedphp byphp thephp globalphp filters
+php php php php php php php php foreachphp php(php$thisphp-php>php_filtersphp asphp php$filterphp)php php{
+php php php php php php php php php php php php ifphp php(php!php php$filterphp-php>acceptphp(php$eventphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // send to each writer
-        foreach ($this->_writers as $writer) {
-            $writer->write($event);
-        }
-    }
+php php php php php php php php php/php/php sendphp tophp eachphp writer
+php php php php php php php php foreachphp php(php$thisphp-php>php_writersphp asphp php$writerphp)php php{
+php php php php php php php php php php php php php$writerphp-php>writephp(php$eventphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Add a custom priority
-     *
-     * @param  string   $name      Name of priority
-     * @param  integer  $priority  Numeric priority
-     * @throws Zend_Log_Exception
-     */
-    public function addPriority($name, $priority)
-    {
-        // Priority names must be uppercase for predictability.
-        $name = strtoupper($name);
+php php php php php/php*php*
+php php php php php php*php Addphp aphp customphp priority
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php$namephp php php php php php Namephp ofphp priority
+php php php php php php*php php@paramphp php integerphp php php$priorityphp php Numericphp priority
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp addPriorityphp(php$namephp,php php$priorityphp)
+php php php php php{
+php php php php php php php php php/php/php Priorityphp namesphp mustphp bephp uppercasephp forphp predictabilityphp.
+php php php php php php php php php$namephp php=php strtoupperphp(php$namephp)php;
 
-        if (isset($this->_priorities[$priority])
-            || false !== array_search($name, $this->_priorities)) {
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('Existing priorities cannot be overwritten');
-        }
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_prioritiesphp[php$priorityphp]php)
+php php php php php php php php php php php php php|php|php falsephp php!php=php=php arrayphp_searchphp(php$namephp,php php$thisphp-php>php_prioritiesphp)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Existingphp prioritiesphp cannotphp bephp overwrittenphp'php)php;
+php php php php php php php php php}
 
-        $this->_priorities[$priority] = $name;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_prioritiesphp[php$priorityphp]php php=php php$namephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add a filter that will be applied before all log writers.
-     * Before a message will be received by any of the writers, it
-     * must be accepted by all filters added with this method.
-     *
-     * @param  int|Zend_Config|array|Zend_Log_Filter_Interface $filter
-     * @return Zend_Log
-     * @throws Zend_Log_Exception
-     */
-    public function addFilter($filter)
-    {
-        if (is_int($filter)) {
-            /** @see Zend_Log_Filter_Priority */
-            require_once 'Zend/Log/Filter/Priority.php';
-            $filter = new Zend_Log_Filter_Priority($filter);
+php php php php php/php*php*
+php php php php php php*php Addphp aphp filterphp thatphp willphp bephp appliedphp beforephp allphp logphp writersphp.
+php php php php php php*php Beforephp aphp messagephp willphp bephp receivedphp byphp anyphp ofphp thephp writersphp,php it
+php php php php php php*php mustphp bephp acceptedphp byphp allphp filtersphp addedphp withphp thisphp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|Zendphp_Configphp|arrayphp|Zendphp_Logphp_Filterphp_Interfacephp php$filter
+php php php php php php*php php@returnphp Zendphp_Log
+php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp addFilterphp(php$filterphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_intphp(php$filterphp)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Filterphp_Priorityphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Filterphp/Priorityphp.phpphp'php;
+php php php php php php php php php php php php php$filterphp php=php newphp Zendphp_Logphp_Filterphp_Priorityphp(php$filterphp)php;
 
-        } elseif ($filter instanceof Zend_Config || is_array($filter)) {
-            $filter = $this->_constructFilterFromConfig($filter);
+php php php php php php php php php}php elseifphp php(php$filterphp instanceofphp Zendphp_Configphp php|php|php isphp_arrayphp(php$filterphp)php)php php{
+php php php php php php php php php php php php php$filterphp php=php php$thisphp-php>php_constructFilterFromConfigphp(php$filterphp)php;
 
-        } elseif(! $filter instanceof Zend_Log_Filter_Interface) {
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('Invalid filter provided');
-        }
+php php php php php php php php php}php elseifphp(php!php php$filterphp instanceofphp Zendphp_Logphp_Filterphp_Interfacephp)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Invalidphp filterphp providedphp'php)php;
+php php php php php php php php php}
 
-        $this->_filters[] = $filter;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_filtersphp[php]php php=php php$filterphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add a writer.  A writer is responsible for taking a log
-     * message and writing it out to storage.
-     *
-     * @param  mixed $writer Zend_Log_Writer_Abstract or Config array
-     * @return Zend_Log
-     */
-    public function addWriter($writer)
-    {
-        if (is_array($writer) || $writer instanceof  Zend_Config) {
-            $writer = $this->_constructWriterFromConfig($writer);
-        }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp writerphp.php php Aphp writerphp isphp responsiblephp forphp takingphp aphp log
+php php php php php php*php messagephp andphp writingphp itphp outphp tophp storagephp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$writerphp Zendphp_Logphp_Writerphp_Abstractphp orphp Configphp array
+php php php php php php*php php@returnphp Zendphp_Log
+php php php php php php*php/
+php php php php publicphp functionphp addWriterphp(php$writerphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$writerphp)php php|php|php php$writerphp instanceofphp php Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$writerphp php=php php$thisphp-php>php_constructWriterFromConfigphp(php$writerphp)php;
+php php php php php php php php php}
 
-        if (!$writer instanceof Zend_Log_Writer_Abstract) {
-            /** @see Zend_Log_Exception */
-            require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception(
-                'Writer must be an instance of Zend_Log_Writer_Abstract'
-                . ' or you should pass a configuration array'
-            );
-        }
+php php php php php php php php ifphp php(php!php$writerphp instanceofphp Zendphp_Logphp_Writerphp_Abstractphp)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Logphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Writerphp mustphp bephp anphp instancephp ofphp Zendphp_Logphp_Writerphp_Abstractphp'
+php php php php php php php php php php php php php php php php php.php php'php orphp youphp shouldphp passphp aphp configurationphp arrayphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        $this->_writers[] = $writer;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_writersphp[php]php php=php php$writerphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set an extra item to pass to the log writers.
-     *
-     * @param  $name    Name of the field
-     * @param  $value   Value of the field
-     * @return Zend_Log
-     */
-    public function setEventItem($name, $value)
-    {
-        $this->_extras = array_merge($this->_extras, array($name => $value));
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp anphp extraphp itemphp tophp passphp tophp thephp logphp writersphp.
+php php php php php php*
+php php php php php php*php php@paramphp php php$namephp php php php Namephp ofphp thephp field
+php php php php php php*php php@paramphp php php$valuephp php php Valuephp ofphp thephp field
+php php php php php php*php php@returnphp Zendphp_Log
+php php php php php php*php/
+php php php php publicphp functionphp setEventItemphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_extrasphp php=php arrayphp_mergephp(php$thisphp-php>php_extrasphp,php arrayphp(php$namephp php=php>php php$valuephp)php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Register Logging system as an error handler to log php errors
-     * Note: it still calls the original error handler if set_error_handler is able to return it.
-     *
-     * Errors will be mapped as:
-     *   E_NOTICE, E_USER_NOTICE => NOTICE
-     *   E_WARNING, E_CORE_WARNING, E_USER_WARNING => WARN
-     *   E_ERROR, E_USER_ERROR, E_CORE_ERROR, E_RECOVERABLE_ERROR => ERR
-     *   E_DEPRECATED, E_STRICT, E_USER_DEPRECATED => DEBUG
-     *   (unknown/other) => INFO
-     *
-     * @link http://www.php.net/manual/en/function.set-error-handler.php Custom error handler
-     *
-     * @return Zend_Log
-     */
-    public function registerErrorHandler()
-    {
-        // Only register once.  Avoids loop issues if it gets registered twice.
-        if ($this->_registeredErrorHandler) {
-            return $this;
-        }
+php php php php php/php*php*
+php php php php php php*php Registerphp Loggingphp systemphp asphp anphp errorphp handlerphp tophp logphp phpphp errors
+php php php php php php*php Notephp:php itphp stillphp callsphp thephp originalphp errorphp handlerphp ifphp setphp_errorphp_handlerphp isphp ablephp tophp returnphp itphp.
+php php php php php php*
+php php php php php php*php Errorsphp willphp bephp mappedphp asphp:
+php php php php php php*php php php Ephp_NOTICEphp,php Ephp_USERphp_NOTICEphp php=php>php NOTICE
+php php php php php php*php php php Ephp_WARNINGphp,php Ephp_COREphp_WARNINGphp,php Ephp_USERphp_WARNINGphp php=php>php WARN
+php php php php php php*php php php Ephp_ERRORphp,php Ephp_USERphp_ERRORphp,php Ephp_COREphp_ERRORphp,php Ephp_RECOVERABLEphp_ERRORphp php=php>php ERR
+php php php php php php*php php php Ephp_DEPRECATEDphp,php Ephp_STRICTphp,php Ephp_USERphp_DEPRECATEDphp php=php>php DEBUG
+php php php php php php*php php php php(unknownphp/otherphp)php php=php>php INFO
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/wwwphp.phpphp.netphp/manualphp/enphp/functionphp.setphp-errorphp-handlerphp.phpphp Customphp errorphp handler
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Log
+php php php php php php*php/
+php php php php publicphp functionphp registerErrorHandlerphp(php)
+php php php php php{
+php php php php php php php php php/php/php Onlyphp registerphp oncephp.php php Avoidsphp loopphp issuesphp ifphp itphp getsphp registeredphp twicephp.
+php php php php php php php php ifphp php(php$thisphp-php>php_registeredErrorHandlerphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
 
-        $this->_origErrorHandler = set_error_handler(array($this, 'errorHandler'));
+php php php php php php php php php$thisphp-php>php_origErrorHandlerphp php=php setphp_errorphp_handlerphp(arrayphp(php$thisphp,php php'errorHandlerphp'php)php)php;
 
-        // Contruct a default map of phpErrors to Zend_Log priorities.
-        // Some of the errors are uncatchable, but are included for completeness
-        $this->_errorHandlerMap = array(
-            E_NOTICE            => Zend_Log::NOTICE,
-            E_USER_NOTICE       => Zend_Log::NOTICE,
-            E_WARNING           => Zend_Log::WARN,
-            E_CORE_WARNING      => Zend_Log::WARN,
-            E_USER_WARNING      => Zend_Log::WARN,
-            E_ERROR             => Zend_Log::ERR,
-            E_USER_ERROR        => Zend_Log::ERR,
-            E_CORE_ERROR        => Zend_Log::ERR,
-            E_RECOVERABLE_ERROR => Zend_Log::ERR,
-            E_STRICT            => Zend_Log::DEBUG,
-        );
-        // PHP 5.3.0+
-        if (defined('E_DEPRECATED')) {
-            $this->_errorHandlerMap['E_DEPRECATED'] = Zend_Log::DEBUG;
-        }
-        if (defined('E_USER_DEPRECATED')) {
-            $this->_errorHandlerMap['E_USER_DEPRECATED'] = Zend_Log::DEBUG;
-        }
+php php php php php php php php php/php/php Contructphp aphp defaultphp mapphp ofphp phpErrorsphp tophp Zendphp_Logphp prioritiesphp.
+php php php php php php php php php/php/php Somephp ofphp thephp errorsphp arephp uncatchablephp,php butphp arephp includedphp forphp completeness
+php php php php php php php php php$thisphp-php>php_errorHandlerMapphp php=php arrayphp(
+php php php php php php php php php php php php Ephp_NOTICEphp php php php php php php php php php php php php=php>php Zendphp_Logphp:php:NOTICEphp,
+php php php php php php php php php php php php Ephp_USERphp_NOTICEphp php php php php php php php=php>php Zendphp_Logphp:php:NOTICEphp,
+php php php php php php php php php php php php Ephp_WARNINGphp php php php php php php php php php php php=php>php Zendphp_Logphp:php:WARNphp,
+php php php php php php php php php php php php Ephp_COREphp_WARNINGphp php php php php php php=php>php Zendphp_Logphp:php:WARNphp,
+php php php php php php php php php php php php Ephp_USERphp_WARNINGphp php php php php php php=php>php Zendphp_Logphp:php:WARNphp,
+php php php php php php php php php php php php Ephp_ERRORphp php php php php php php php php php php php php php=php>php Zendphp_Logphp:php:ERRphp,
+php php php php php php php php php php php php Ephp_USERphp_ERRORphp php php php php php php php php=php>php Zendphp_Logphp:php:ERRphp,
+php php php php php php php php php php php php Ephp_COREphp_ERRORphp php php php php php php php php=php>php Zendphp_Logphp:php:ERRphp,
+php php php php php php php php php php php php Ephp_RECOVERABLEphp_ERRORphp php=php>php Zendphp_Logphp:php:ERRphp,
+php php php php php php php php php php php php Ephp_STRICTphp php php php php php php php php php php php php=php>php Zendphp_Logphp:php:DEBUGphp,
+php php php php php php php php php)php;
+php php php php php php php php php/php/php PHPphp php5php.php3php.php0php+
+php php php php php php php php ifphp php(definedphp(php'Ephp_DEPRECATEDphp'php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorHandlerMapphp[php'Ephp_DEPRECATEDphp'php]php php=php Zendphp_Logphp:php:DEBUGphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(definedphp(php'Ephp_USERphp_DEPRECATEDphp'php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorHandlerMapphp[php'Ephp_USERphp_DEPRECATEDphp'php]php php=php Zendphp_Logphp:php:DEBUGphp;
+php php php php php php php php php}
 
-        $this->_registeredErrorHandler = true;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_registeredErrorHandlerphp php=php truephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Error Handler will convert error into log message, and then call the original error handler
-     *
-     * @link http://www.php.net/manual/en/function.set-error-handler.php Custom error handler
-     * @param int $errno
-     * @param string $errstr
-     * @param string $errfile
-     * @param int $errline
-     * @param array $errcontext
-     * @return boolean
-     */
-    public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext)
-    {
-        $errorLevel = error_reporting();
+php php php php php/php*php*
+php php php php php php*php Errorphp Handlerphp willphp convertphp errorphp intophp logphp messagephp,php andphp thenphp callphp thephp originalphp errorphp handler
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/wwwphp.phpphp.netphp/manualphp/enphp/functionphp.setphp-errorphp-handlerphp.phpphp Customphp errorphp handler
+php php php php php php*php php@paramphp intphp php$errno
+php php php php php php*php php@paramphp stringphp php$errstr
+php php php php php php*php php@paramphp stringphp php$errfile
+php php php php php php*php php@paramphp intphp php$errline
+php php php php php php*php php@paramphp arrayphp php$errcontext
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp errorHandlerphp(php$errnophp,php php$errstrphp,php php$errfilephp,php php$errlinephp,php php$errcontextphp)
+php php php php php{
+php php php php php php php php php$errorLevelphp php=php errorphp_reportingphp(php)php;
 
-        if ($errorLevel && $errno) {
-            if (isset($this->_errorHandlerMap[$errno])) {
-                $priority = $this->_errorHandlerMap[$errno];
-            } else {
-                $priority = Zend_Log::INFO;
-            }
-            $this->log($errstr, $priority, array('errno'=>$errno, 'file'=>$errfile, 'line'=>$errline, 'context'=>$errcontext));
-        }
+php php php php php php php php ifphp php(php$errorLevelphp php&php&php php$errnophp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_errorHandlerMapphp[php$errnophp]php)php)php php{
+php php php php php php php php php php php php php php php php php$priorityphp php=php php$thisphp-php>php_errorHandlerMapphp[php$errnophp]php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$priorityphp php=php Zendphp_Logphp:php:INFOphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>logphp(php$errstrphp,php php$priorityphp,php arrayphp(php'errnophp'php=php>php$errnophp,php php'filephp'php=php>php$errfilephp,php php'linephp'php=php>php$errlinephp,php php'contextphp'php=php>php$errcontextphp)php)php;
+php php php php php php php php php}
 
-        if ($this->_origErrorHandler !== null) {
-            return call_user_func($this->_origErrorHandler, $errno, $errstr, $errfile, $errline, $errcontext);
-        }
-        return false;
-    }
+php php php php php php php php ifphp php(php$thisphp-php>php_origErrorHandlerphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp callphp_userphp_funcphp(php$thisphp-php>php_origErrorHandlerphp,php php$errnophp,php php$errstrphp,php php$errfilephp,php php$errlinephp,php php$errcontextphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Set timestamp format for log entries.
-     *
-     * @param string $format
-     * @return Zend_Log
-     */
-    public function setTimestampFormat($format)
-    {
-        $this->_timestampFormat = $format;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp timestampphp formatphp forphp logphp entriesphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$format
+php php php php php php*php php@returnphp Zendphp_Log
+php php php php php php*php/
+php php php php publicphp functionphp setTimestampFormatphp(php$formatphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_timestampFormatphp php=php php$formatphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get timestamp format used for log entries.
-     *
-     * @return string
-     */
-    public function getTimestampFormat()
-    {
-        return $this->_timestampFormat;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp timestampphp formatphp usedphp forphp logphp entriesphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTimestampFormatphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_timestampFormatphp;
+php php php php php}
+php}

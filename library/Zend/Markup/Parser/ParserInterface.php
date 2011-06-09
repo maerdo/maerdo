@@ -1,67 +1,67 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Markup
- * @subpackage Parser
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ParserInterface.php 20277 2010-01-14 14:17:12Z kokx $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@subpackagephp Parser
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ParserInterfacephp.phpphp php2php0php2php7php7php php2php0php1php0php-php0php1php-php1php4php php1php4php:php1php7php:php1php2Zphp kokxphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Markup
- * @subpackage Parser
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Markup_Parser_ParserInterface
-{
-    /**
-     * Parse a string
-     *
-     * This should output something like this:
-     *
-     * <code>
-     * array(
-     *     array(
-     *         'tag'        => '[tag="a" attr=val]',
-     *         'type'       => Zend_Markup::TYPE_TAG,
-     *         'name'       => 'tag',
-     *         'stoppers'   => array('[/]', '[/tag]'),
-     *         'attributes' => array(
-     *             'tag'  => 'a',
-     *             'attr' => 'val'
-     *         )
-     *     ),
-     *     array(
-     *         'tag'   => 'value',
-     *         'type'  => Zend_Markup::TYPE_NONE
-     *     ),
-     *     array(
-     *         'tag'        => '[/tag]',
-     *         'type'       => Zend_Markup::TYPE_STOPPER,
-     *         'name'       => 'tag',
-     *         'stoppers'   => array(),
-     *         'attributes' => array()
-     *     )
-     * )
-     * </code>
-     *
-     * @param  string $value
-     * @return array
-     */
-    public function parse($value);
-}
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@subpackagephp Parser
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Markupphp_Parserphp_ParserInterface
+php{
+php php php php php/php*php*
+php php php php php php*php Parsephp aphp string
+php php php php php php*
+php php php php php php*php Thisphp shouldphp outputphp somethingphp likephp thisphp:
+php php php php php php*
+php php php php php php*php php<codephp>
+php php php php php php*php arrayphp(
+php php php php php php*php php php php php arrayphp(
+php php php php php php*php php php php php php php php php php'tagphp'php php php php php php php php php=php>php php'php[tagphp=php"aphp"php attrphp=valphp]php'php,
+php php php php php php*php php php php php php php php php php'typephp'php php php php php php php php=php>php Zendphp_Markupphp:php:TYPEphp_TAGphp,
+php php php php php php*php php php php php php php php php php'namephp'php php php php php php php php=php>php php'tagphp'php,
+php php php php php php*php php php php php php php php php php'stoppersphp'php php php php=php>php arrayphp(php'php[php/php]php'php,php php'php[php/tagphp]php'php)php,
+php php php php php php*php php php php php php php php php php'attributesphp'php php=php>php arrayphp(
+php php php php php php*php php php php php php php php php php php php php php'tagphp'php php php=php>php php'aphp'php,
+php php php php php php*php php php php php php php php php php php php php php'attrphp'php php=php>php php'valphp'
+php php php php php php*php php php php php php php php php php)
+php php php php php php*php php php php php php)php,
+php php php php php php*php php php php php arrayphp(
+php php php php php php*php php php php php php php php php php'tagphp'php php php php=php>php php'valuephp'php,
+php php php php php php*php php php php php php php php php php'typephp'php php php=php>php Zendphp_Markupphp:php:TYPEphp_NONE
+php php php php php php*php php php php php php)php,
+php php php php php php*php php php php php arrayphp(
+php php php php php php*php php php php php php php php php php'tagphp'php php php php php php php php php=php>php php'php[php/tagphp]php'php,
+php php php php php php*php php php php php php php php php php'typephp'php php php php php php php php=php>php Zendphp_Markupphp:php:TYPEphp_STOPPERphp,
+php php php php php php*php php php php php php php php php php'namephp'php php php php php php php php=php>php php'tagphp'php,
+php php php php php php*php php php php php php php php php php'stoppersphp'php php php php=php>php arrayphp(php)php,
+php php php php php php*php php php php php php php php php php'attributesphp'php php=php>php arrayphp(php)
+php php php php php php*php php php php php php)
+php php php php php php*php php)
+php php php php php php*php <php/codephp>
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp parsephp(php$valuephp)php;
+php}

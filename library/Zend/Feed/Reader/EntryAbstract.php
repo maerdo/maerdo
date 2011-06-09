@@ -1,238 +1,238 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: EntryAbstract.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php EntryAbstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Feed_Reader_EntryAbstract
-{
-    /**
-     * Feed entry data
-     *
-     * @var array
-     */
-    protected $_data = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Feedphp_Readerphp_EntryAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Feedphp entryphp data
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_dataphp php=php arrayphp(php)php;
 
-    /**
-     * DOM document object
-     *
-     * @var DOMDocument
-     */
-    protected $_domDocument = null;
+php php php php php/php*php*
+php php php php php php*php DOMphp documentphp object
+php php php php php php*
+php php php php php php*php php@varphp DOMDocument
+php php php php php php*php/
+php php php php protectedphp php$php_domDocumentphp php=php nullphp;
 
-    /**
-     * Entry instance
-     *
-     * @var Zend_Feed_Entry_Interface
-     */
-    protected $_entry = null;
+php php php php php/php*php*
+php php php php php php*php Entryphp instance
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Feedphp_Entryphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_entryphp php=php nullphp;
 
-    /**
-     * Pointer to the current entry
-     *
-     * @var int
-     */
-    protected $_entryKey = 0;
+php php php php php/php*php*
+php php php php php php*php Pointerphp tophp thephp currentphp entry
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_entryKeyphp php=php php0php;
 
-    /**
-     * XPath object
-     *
-     * @var DOMXPath
-     */
-    protected $_xpath = null;
+php php php php php/php*php*
+php php php php php php*php XPathphp object
+php php php php php php*
+php php php php php php*php php@varphp DOMXPath
+php php php php php php*php/
+php php php php protectedphp php$php_xpathphp php=php nullphp;
 
-    /**
-     * Registered extensions
-     *
-     * @var array
-     */
-    protected $_extensions = array();
+php php php php php/php*php*
+php php php php php php*php Registeredphp extensions
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_extensionsphp php=php arrayphp(php)php;
 
-    /**
-     * Constructor
-     *
-     * @param  DOMElement $entry
-     * @param  int $entryKey
-     * @param  string $type
-     * @return void
-     */
-    public function __construct(DOMElement $entry, $entryKey, $type = null)
-    {
-        $this->_entry       = $entry;
-        $this->_entryKey    = $entryKey;
-        $this->_domDocument = $entry->ownerDocument;
-        if ($type !== null) {
-            $this->_data['type'] = $type;
-        } else {
-            $this->_data['type'] = Zend_Feed_Reader::detectType($feed);
-        }
-        $this->_loadExtensions();
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php DOMElementphp php$entry
+php php php php php php*php php@paramphp php intphp php$entryKey
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$entryphp,php php$entryKeyphp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_entryphp php php php php php php php=php php$entryphp;
+php php php php php php php php php$thisphp-php>php_entryKeyphp php php php php=php php$entryKeyphp;
+php php php php php php php php php$thisphp-php>php_domDocumentphp php=php php$entryphp-php>ownerDocumentphp;
+php php php php php php php php ifphp php(php$typephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dataphp[php'typephp'php]php php=php php$typephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_dataphp[php'typephp'php]php php=php Zendphp_Feedphp_Readerphp:php:detectTypephp(php$feedphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_loadExtensionsphp(php)php;
+php php php php php}
 
-    /**
-     * Get the DOM
-     *
-     * @return DOMDocument
-     */
-    public function getDomDocument()
-    {
-        return $this->_domDocument;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp DOM
+php php php php php php*
+php php php php php php*php php@returnphp DOMDocument
+php php php php php php*php/
+php php php php publicphp functionphp getDomDocumentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_domDocumentphp;
+php php php php php}
 
-    /**
-     * Get the entry element
-     *
-     * @return DOMElement
-     */
-    public function getElement()
-    {
-        return $this->_entry;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp entryphp element
+php php php php php php*
+php php php php php php*php php@returnphp DOMElement
+php php php php php php*php/
+php php php php publicphp functionphp getElementphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_entryphp;
+php php php php php}
 
-    /**
-     * Get the Entry's encoding
-     *
-     * @return string
-     */
-    public function getEncoding()
-    {
-        $assumed = $this->getDomDocument()->encoding;
-        if (empty($assumed)) {
-            $assumed = 'UTF-8';
-        }
-        return $assumed;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Entryphp'sphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingphp(php)
+php php php php php{
+php php php php php php php php php$assumedphp php=php php$thisphp-php>getDomDocumentphp(php)php-php>encodingphp;
+php php php php php php php php ifphp php(emptyphp(php$assumedphp)php)php php{
+php php php php php php php php php php php php php$assumedphp php=php php'UTFphp-php8php'php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$assumedphp;
+php php php php php}
 
-    /**
-     * Get entry as xml
-     *
-     * @return string
-     */
-    public function saveXml()
-    {
-        $dom = new DOMDocument('1.0', $this->getEncoding());
-        $entry = $dom->importNode($this->getElement(), true);
-        $dom->appendChild($entry);
-        return $dom->saveXml();
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp entryphp asphp xml
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp saveXmlphp(php)
+php php php php php{
+php php php php php php php php php$domphp php=php newphp DOMDocumentphp(php'php1php.php0php'php,php php$thisphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php$entryphp php=php php$domphp-php>importNodephp(php$thisphp-php>getElementphp(php)php,php truephp)php;
+php php php php php php php php php$domphp-php>appendChildphp(php$entryphp)php;
+php php php php php php php php returnphp php$domphp-php>saveXmlphp(php)php;
+php php php php php}
 
-    /**
-     * Get the entry type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->_data['type'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp entryphp type
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'typephp'php]php;
+php php php php php}
 
-    /**
-     * Get the XPath query object
-     *
-     * @return DOMXPath
-     */
-    public function getXpath()
-    {
-        if (!$this->_xpath) {
-            $this->setXpath(new DOMXPath($this->getDomDocument()));
-        }
-        return $this->_xpath;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp XPathphp queryphp object
+php php php php php php*
+php php php php php php*php php@returnphp DOMXPath
+php php php php php php*php/
+php php php php publicphp functionphp getXpathphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_xpathphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setXpathphp(newphp DOMXPathphp(php$thisphp-php>getDomDocumentphp(php)php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_xpathphp;
+php php php php php}
 
-    /**
-     * Set the XPath query
-     *
-     * @param  DOMXPath $xpath
-     * @return Zend_Feed_Reader_Entry_EntryAbstract
-     */
-    public function setXpath(DOMXPath $xpath)
-    {
-        $this->_xpath = $xpath;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp XPathphp query
+php php php php php php*
+php php php php php php*php php@paramphp php DOMXPathphp php$xpath
+php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Entryphp_EntryAbstract
+php php php php php php*php/
+php php php php publicphp functionphp setXpathphp(DOMXPathphp php$xpathphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_xpathphp php=php php$xpathphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get registered extensions
-     *
-     * @return array
-     */
-    public function getExtensions()
-    {
-        return $this->_extensions;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp registeredphp extensions
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getExtensionsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_extensionsphp;
+php php php php php}
 
-    /**
-     * Return an Extension object with the matching name (postfixed with _Entry)
-     *
-     * @param string $name
-     * @return Zend_Feed_Reader_Extension_EntryAbstract
-     */
-    public function getExtension($name)
-    {
-        if (array_key_exists($name . '_Entry', $this->_extensions)) {
-            return $this->_extensions[$name . '_Entry'];
-        }
-        return null;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp Extensionphp objectphp withphp thephp matchingphp namephp php(postfixedphp withphp php_Entryphp)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Extensionphp_EntryAbstract
+php php php php php php*php/
+php php php php publicphp functionphp getExtensionphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp php.php php'php_Entryphp'php,php php$thisphp-php>php_extensionsphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_extensionsphp[php$namephp php.php php'php_Entryphp'php]php;
+php php php php php php php php php}
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Method overloading: call given method on first extension implementing it
-     *
-     * @param  string $method
-     * @param  array $args
-     * @return mixed
-     * @throws Zend_Feed_Exception if no extensions implements the method
-     */
-    public function __call($method, $args)
-    {
-        foreach ($this->_extensions as $extension) {
-            if (method_exists($extension, $method)) {
-                return call_user_func_array(array($extension, $method), $args);
-            }
-        }
-        require_once 'Zend/Feed/Exception.php';
-        throw new Zend_Feed_Exception('Method: ' . $method
-            . 'does not exist and could not be located on a registered Extension');
-    }
+php php php php php/php*php*
+php php php php php php*php Methodphp overloadingphp:php callphp givenphp methodphp onphp firstphp extensionphp implementingphp it
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$method
+php php php php php php*php php@paramphp php arrayphp php$args
+php php php php php php*php php@returnphp mixed
+php php php php php php*php php@throwsphp Zendphp_Feedphp_Exceptionphp ifphp nophp extensionsphp implementsphp thephp method
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$thisphp-php>php_extensionsphp asphp php$extensionphp)php php{
+php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$extensionphp,php php$methodphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$extensionphp,php php$methodphp)php,php php$argsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Methodphp:php php'php php.php php$method
+php php php php php php php php php php php php php.php php'doesphp notphp existphp andphp couldphp notphp bephp locatedphp onphp aphp registeredphp Extensionphp'php)php;
+php php php php php}
 
-    /**
-     * Load extensions from Zend_Feed_Reader
-     *
-     * @return void
-     */
-    protected function _loadExtensions()
-    {
-        $all = Zend_Feed_Reader::getExtensions();
-        $feed = $all['entry'];
-        foreach ($feed as $extension) {
-            if (in_array($extension, $all['core'])) {
-                continue;
-            }
-            $className = Zend_Feed_Reader::getPluginLoader()->getClassName($extension);
-            $this->_extensions[$extension] = new $className(
-                $this->getElement(), $this->_entryKey, $this->_data['type']
-            );
-        }
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Loadphp extensionsphp fromphp Zendphp_Feedphp_Reader
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadExtensionsphp(php)
+php php php php php{
+php php php php php php php php php$allphp php=php Zendphp_Feedphp_Readerphp:php:getExtensionsphp(php)php;
+php php php php php php php php php$feedphp php=php php$allphp[php'entryphp'php]php;
+php php php php php php php php foreachphp php(php$feedphp asphp php$extensionphp)php php{
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$extensionphp,php php$allphp[php'corephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$classNamephp php=php Zendphp_Feedphp_Readerphp:php:getPluginLoaderphp(php)php-php>getClassNamephp(php$extensionphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_extensionsphp[php$extensionphp]php php=php newphp php$classNamephp(
+php php php php php php php php php php php php php php php php php$thisphp-php>getElementphp(php)php,php php$thisphp-php>php_entryKeyphp,php php$thisphp-php>php_dataphp[php'typephp'php]
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php}
+php}

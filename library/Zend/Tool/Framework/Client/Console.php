@@ -1,307 +1,307 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Console.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Consolephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Framework_Client_Abstract
- */
-require_once 'Zend/Tool/Framework/Client/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Clientphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Abstractphp.phpphp'php;
 
-/**
- * @see Zend_Tool_Framework_Client_Interactive_InputInterface
- */
-require_once 'Zend/Tool/Framework/Client/Interactive/InputInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Interactivephp/InputInterfacephp.phpphp'php;
 
-/**
- * @see Zend_Tool_Framework_Client_Interactive_OutputInterface
- */
-require_once 'Zend/Tool/Framework/Client/Interactive/OutputInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_OutputInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Interactivephp/OutputInterfacephp.phpphp'php;
 
-/**
- * Zend_Tool_Framework_Client_Console - the CLI Client implementation for Zend_Tool_Framework
- *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Framework_Client_Console
-    extends Zend_Tool_Framework_Client_Abstract
-    implements Zend_Tool_Framework_Client_Interactive_InputInterface,
-               Zend_Tool_Framework_Client_Interactive_OutputInterface
-{
+php/php*php*
+php php*php Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp php-php thephp CLIphp Clientphp implementationphp forphp Zendphp_Toolphp_Framework
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Console
+php php php php extendsphp Zendphp_Toolphp_Frameworkphp_Clientphp_Abstract
+php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputInterfacephp,
+php php php php php php php php php php php php php php php Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_OutputInterface
+php{
 
-    /**
-     * @var array
-     */
-    protected $_configOptions = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_configOptionsphp php=php nullphp;
 
-    /**
-     * @var array
-     */
-    protected $_storageOptions = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_storageOptionsphp php=php nullphp;
 
-    /**
-     * @var Zend_Filter_Word_CamelCaseToDash
-     */
-    protected $_filterToClientNaming = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Filterphp_Wordphp_CamelCaseToDash
+php php php php php php*php/
+php php php php protectedphp php$php_filterToClientNamingphp php=php nullphp;
 
-    /**
-     * @var Zend_Filter_Word_DashToCamelCase
-     */
-    protected $_filterFromClientNaming = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Filterphp_Wordphp_DashToCamelCase
+php php php php php php*php/
+php php php php protectedphp php$php_filterFromClientNamingphp php=php nullphp;
 
-    /**
-     * @var array
-     */
-    protected $_classesToLoad = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_classesToLoadphp php=php arrayphp(php)php;
 
-    /**
-     * main() - This is typically called from zf.php. This method is a
-     * self contained main() function.
-     *
-     */
-    public static function main($options = array())
-    {
-        $cliClient = new self($options);
-        $cliClient->dispatch();
-    }
+php php php php php/php*php*
+php php php php php php*php mainphp(php)php php-php Thisphp isphp typicallyphp calledphp fromphp zfphp.phpphp.php Thisphp methodphp isphp a
+php php php php php php*php selfphp containedphp mainphp(php)php functionphp.
+php php php php php php*
+php php php php php php*php/
+php php php php publicphp staticphp functionphp mainphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$cliClientphp php=php newphp selfphp(php$optionsphp)php;
+php php php php php php php php php$cliClientphp-php>dispatchphp(php)php;
+php php php php php}
 
-    /**
-     * getName() - return the name of the client, in this case 'console'
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'console';
-    }
+php php php php php/php*php*
+php php php php php php*php getNamephp(php)php php-php returnphp thephp namephp ofphp thephp clientphp,php inphp thisphp casephp php'consolephp'
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php'consolephp'php;
+php php php php php}
 
-    /**
-     * setConfigOptions()
-     *
-     * @param $configOptions
-     */
-    public function setConfigOptions($configOptions)
-    {
-        $this->_configOptions = $configOptions;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setConfigOptionsphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php$configOptions
+php php php php php php*php/
+php php php php publicphp functionphp setConfigOptionsphp(php$configOptionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_configOptionsphp php=php php$configOptionsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * setStorageOptions()
-     *
-     * @param $storageOptions
-     */
-    public function setStorageOptions($storageOptions)
-    {
-        $this->_storageOptions = $storageOptions;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setStorageOptionsphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php$storageOptions
+php php php php php php*php/
+php php php php publicphp functionphp setStorageOptionsphp(php$storageOptionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_storageOptionsphp php=php php$storageOptionsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    public function setClassesToLoad($classesToLoad)
-    {
-        $this->_classesToLoad = $classesToLoad;
-        return $this;
-    }
+php php php php publicphp functionphp setClassesToLoadphp(php$classesToLoadphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_classesToLoadphp php=php php$classesToLoadphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * _init() - Tasks processed before the constructor, generally setting up objects to use
-     *
-     */
-    protected function _preInit()
-    {
-        $config = $this->_registry->getConfig();
+php php php php php/php*php*
+php php php php php php*php php_initphp(php)php php-php Tasksphp processedphp beforephp thephp constructorphp,php generallyphp settingphp upphp objectsphp tophp use
+php php php php php php*
+php php php php php php*php/
+php php php php protectedphp functionphp php_preInitphp(php)
+php php php php php{
+php php php php php php php php php$configphp php=php php$thisphp-php>php_registryphp-php>getConfigphp(php)php;
 
-        if ($this->_configOptions != null) {
-            $config->setOptions($this->_configOptions);
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_configOptionsphp php!php=php nullphp)php php{
+php php php php php php php php php php php php php$configphp-php>setOptionsphp(php$thisphp-php>php_configOptionsphp)php;
+php php php php php php php php php}
 
-        $storage = $this->_registry->getStorage();
+php php php php php php php php php$storagephp php=php php$thisphp-php>php_registryphp-php>getStoragephp(php)php;
 
-        if ($this->_storageOptions != null && isset($this->_storageOptions['directory'])) {
-            $storage->setAdapter(
-                new Zend_Tool_Framework_Client_Storage_Directory($this->_storageOptions['directory'])
-                );
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_storageOptionsphp php!php=php nullphp php&php&php issetphp(php$thisphp-php>php_storageOptionsphp[php'directoryphp'php]php)php)php php{
+php php php php php php php php php php php php php$storagephp-php>setAdapterphp(
+php php php php php php php php php php php php php php php php newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Storagephp_Directoryphp(php$thisphp-php>php_storageOptionsphp[php'directoryphp'php]php)
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        // which classes are essential to initializing Zend_Tool_Framework_Client_Console
-        $classesToLoad = array(
-            'Zend_Tool_Framework_Client_Console_Manifest',
-            'Zend_Tool_Framework_System_Manifest'
-            );
+php php php php php php php php php/php/php whichphp classesphp arephp essentialphp tophp initializingphp Zendphp_Toolphp_Frameworkphp_Clientphp_Console
+php php php php php php php php php$classesToLoadphp php=php arrayphp(
+php php php php php php php php php php php php php'Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_Manifestphp'php,
+php php php php php php php php php php php php php'Zendphp_Toolphp_Frameworkphp_Systemphp_Manifestphp'
+php php php php php php php php php php php php php)php;
 
-        if ($this->_classesToLoad) {
-            if (is_string($this->_classesToLoad)) {
-                $classesToLoad[] = $this->_classesToLoad;
-            } elseif (is_array($this->_classesToLoad)) {
-                $classesToLoad = array_merge($classesToLoad, $this->_classesToLoad);
-            }
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_classesToLoadphp)php php{
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$thisphp-php>php_classesToLoadphp)php)php php{
+php php php php php php php php php php php php php php php php php$classesToLoadphp[php]php php=php php$thisphp-php>php_classesToLoadphp;
+php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$thisphp-php>php_classesToLoadphp)php)php php{
+php php php php php php php php php php php php php php php php php$classesToLoadphp php=php arrayphp_mergephp(php$classesToLoadphp,php php$thisphp-php>php_classesToLoadphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // add classes to the basic loader from the config file basicloader.classes.1 ..
-        if (isset($config->basicloader) && isset($config->basicloader->classes)) {
-            foreach ($config->basicloader->classes as $classKey => $className) {
-                array_push($classesToLoad, $className);
-            }
-        }
+php php php php php php php php php/php/php addphp classesphp tophp thephp basicphp loaderphp fromphp thephp configphp filephp basicloaderphp.classesphp.php1php php.php.
+php php php php php php php php ifphp php(issetphp(php$configphp-php>basicloaderphp)php php&php&php issetphp(php$configphp-php>basicloaderphp-php>classesphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$configphp-php>basicloaderphp-php>classesphp asphp php$classKeyphp php=php>php php$classNamephp)php php{
+php php php php php php php php php php php php php php php php arrayphp_pushphp(php$classesToLoadphp,php php$classNamephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $this->_registry->setLoader(
-            new Zend_Tool_Framework_Loader_BasicLoader(array('classesToLoad' => $classesToLoad))
-            );
+php php php php php php php php php$thisphp-php>php_registryphp-php>setLoaderphp(
+php php php php php php php php php php php php newphp Zendphp_Toolphp_Frameworkphp_Loaderphp_BasicLoaderphp(arrayphp(php'classesToLoadphp'php php=php>php php$classesToLoadphp)php)
+php php php php php php php php php php php php php)php;
 
-        return;
-    }
+php php php php php php php php returnphp;
+php php php php php}
 
-    /**
-     * _preDispatch() - Tasks handed after initialization but before dispatching
-     *
-     */
-    protected function _preDispatch()
-    {
-        $response = $this->_registry->getResponse();
+php php php php php/php*php*
+php php php php php php*php php_preDispatchphp(php)php php-php Tasksphp handedphp afterphp initializationphp butphp beforephp dispatching
+php php php php php php*
+php php php php php php*php/
+php php php php protectedphp functionphp php_preDispatchphp(php)
+php php php php php{
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_registryphp-php>getResponsephp(php)php;
 
-        $response->addContentDecorator(new Zend_Tool_Framework_Client_Console_ResponseDecorator_AlignCenter());
-        $response->addContentDecorator(new Zend_Tool_Framework_Client_Console_ResponseDecorator_Indention());
-        $response->addContentDecorator(new Zend_Tool_Framework_Client_Console_ResponseDecorator_Blockize());
+php php php php php php php php php$responsephp-php>addContentDecoratorphp(newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_ResponseDecoratorphp_AlignCenterphp(php)php)php;
+php php php php php php php php php$responsephp-php>addContentDecoratorphp(newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_ResponseDecoratorphp_Indentionphp(php)php)php;
+php php php php php php php php php$responsephp-php>addContentDecoratorphp(newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_ResponseDecoratorphp_Blockizephp(php)php)php;
 
-        if (function_exists('posix_isatty')) {
-            $response->addContentDecorator(new Zend_Tool_Framework_Client_Console_ResponseDecorator_Colorizer());
-        }
+php php php php php php php php ifphp php(functionphp_existsphp(php'posixphp_isattyphp'php)php)php php{
+php php php php php php php php php php php php php$responsephp-php>addContentDecoratorphp(newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_ResponseDecoratorphp_Colorizerphp(php)php)php;
+php php php php php php php php php}
 
-        $response->addContentDecorator(new Zend_Tool_Framework_Client_Response_ContentDecorator_Separator())
-            ->setDefaultDecoratorOptions(array('separator' => true));
+php php php php php php php php php$responsephp-php>addContentDecoratorphp(newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Responsephp_ContentDecoratorphp_Separatorphp(php)php)
+php php php php php php php php php php php php php-php>setDefaultDecoratorOptionsphp(arrayphp(php'separatorphp'php php=php>php truephp)php)php;
 
-        $optParser = new Zend_Tool_Framework_Client_Console_ArgumentParser();
-        $optParser->setArguments($_SERVER['argv'])
-            ->setRegistry($this->_registry)
-            ->parse();
+php php php php php php php php php$optParserphp php=php newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_ArgumentParserphp(php)php;
+php php php php php php php php php$optParserphp-php>setArgumentsphp(php$php_SERVERphp[php'argvphp'php]php)
+php php php php php php php php php php php php php-php>setRegistryphp(php$thisphp-php>php_registryphp)
+php php php php php php php php php php php php php-php>parsephp(php)php;
 
-        return;
-    }
+php php php php php php php php returnphp;
+php php php php php}
 
-    /**
-     * _postDispatch() - Tasks handled after dispatching
-     *
-     */
-    protected function _postDispatch()
-    {
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
+php php php php php/php*php*
+php php php php php php*php php_postDispatchphp(php)php php-php Tasksphp handledphp afterphp dispatching
+php php php php php php*
+php php php php php php*php/
+php php php php protectedphp functionphp php_postDispatchphp(php)
+php php php php php{
+php php php php php php php php php$requestphp php=php php$thisphp-php>php_registryphp-php>getRequestphp(php)php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_registryphp-php>getResponsephp(php)php;
 
-        if ($response->isException()) {
-            $helpSystem = new Zend_Tool_Framework_Client_Console_HelpSystem();
-            $helpSystem->setRegistry($this->_registry)
-                ->respondWithErrorMessage($response->getException()->getMessage(), $response->getException())
-                ->respondWithSpecialtyAndParamHelp(
-                    $request->getProviderName(),
-                    $request->getActionName()
-                    );
-        }
+php php php php php php php php ifphp php(php$responsephp-php>isExceptionphp(php)php)php php{
+php php php php php php php php php php php php php$helpSystemphp php=php newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Consolephp_HelpSystemphp(php)php;
+php php php php php php php php php php php php php$helpSystemphp-php>setRegistryphp(php$thisphp-php>php_registryphp)
+php php php php php php php php php php php php php php php php php-php>respondWithErrorMessagephp(php$responsephp-php>getExceptionphp(php)php-php>getMessagephp(php)php,php php$responsephp-php>getExceptionphp(php)php)
+php php php php php php php php php php php php php php php php php-php>respondWithSpecialtyAndParamHelpphp(
+php php php php php php php php php php php php php php php php php php php php php$requestphp-php>getProviderNamephp(php)php,
+php php php php php php php php php php php php php php php php php php php php php$requestphp-php>getActionNamephp(php)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        echo PHP_EOL;
-        return;
-    }
+php php php php php php php php echophp PHPphp_EOLphp;
+php php php php php php php php returnphp;
+php php php php php}
 
-    /**
-     * handleInteractiveInputRequest() is required by the Interactive InputInterface
-     *
-     *
-     * @param Zend_Tool_Framework_Client_Interactive_InputRequest $inputRequest
-     * @return string
-     */
-    public function handleInteractiveInputRequest(Zend_Tool_Framework_Client_Interactive_InputRequest $inputRequest)
-    {
-        fwrite(STDOUT, $inputRequest->getContent() . PHP_EOL . 'zf> ');
-        $inputContent = fgets(STDIN);
-        return rtrim($inputContent); // remove the return from the end of the string
-    }
+php php php php php/php*php*
+php php php php php php*php handleInteractiveInputRequestphp(php)php isphp requiredphp byphp thephp Interactivephp InputInterface
+php php php php php php*
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputRequestphp php$inputRequest
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp handleInteractiveInputRequestphp(Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputRequestphp php$inputRequestphp)
+php php php php php{
+php php php php php php php php fwritephp(STDOUTphp,php php$inputRequestphp-php>getContentphp(php)php php.php PHPphp_EOLphp php.php php'zfphp>php php'php)php;
+php php php php php php php php php$inputContentphp php=php fgetsphp(STDINphp)php;
+php php php php php php php php returnphp rtrimphp(php$inputContentphp)php;php php/php/php removephp thephp returnphp fromphp thephp endphp ofphp thephp string
+php php php php php}
 
-    /**
-     * handleInteractiveOutput() is required by the Interactive OutputInterface
-     *
-     * This allows us to display output immediately from providers, rather
-     * than displaying it after the provider is done.
-     *
-     * @param string $output
-     */
-    public function handleInteractiveOutput($output)
-    {
-        echo $output;
-    }
+php php php php php/php*php*
+php php php php php php*php handleInteractiveOutputphp(php)php isphp requiredphp byphp thephp Interactivephp OutputInterface
+php php php php php php*
+php php php php php php*php Thisphp allowsphp usphp tophp displayphp outputphp immediatelyphp fromphp providersphp,php rather
+php php php php php php*php thanphp displayingphp itphp afterphp thephp providerphp isphp donephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$output
+php php php php php php*php/
+php php php php publicphp functionphp handleInteractiveOutputphp(php$outputphp)
+php php php php php{
+php php php php php php php php echophp php$outputphp;
+php php php php php}
 
-    /**
-     * getMissingParameterPromptString()
-     *
-     * @param Zend_Tool_Framework_Provider_Interface $provider
-     * @param Zend_Tool_Framework_Action_Interface $actionInterface
-     * @param string $missingParameterName
-     * @return string
-     */
-    public function getMissingParameterPromptString(Zend_Tool_Framework_Provider_Interface $provider, Zend_Tool_Framework_Action_Interface $actionInterface, $missingParameterName)
-    {
-        return 'Please provide a value for $' . $missingParameterName;
-    }
+php php php php php/php*php*
+php php php php php php*php getMissingParameterPromptStringphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp php$provider
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Actionphp_Interfacephp php$actionInterface
+php php php php php php*php php@paramphp stringphp php$missingParameterName
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getMissingParameterPromptStringphp(Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp php$providerphp,php Zendphp_Toolphp_Frameworkphp_Actionphp_Interfacephp php$actionInterfacephp,php php$missingParameterNamephp)
+php php php php php{
+php php php php php php php php returnphp php'Pleasephp providephp aphp valuephp forphp php$php'php php.php php$missingParameterNamephp;
+php php php php php}
 
 
-    /**
-     * convertToClientNaming()
-     *
-     * Convert words to client specific naming, in this case is lower, dash separated
-     *
-     * Filters are lazy-loaded.
-     *
-     * @param string $string
-     * @return string
-     */
-    public function convertToClientNaming($string)
-    {
-        if (!$this->_filterToClientNaming) {
-            $filter = new Zend_Filter();
-            $filter->addFilter(new Zend_Filter_Word_CamelCaseToDash());
-            $filter->addFilter(new Zend_Filter_StringToLower());
+php php php php php/php*php*
+php php php php php php*php convertToClientNamingphp(php)
+php php php php php php*
+php php php php php php*php Convertphp wordsphp tophp clientphp specificphp namingphp,php inphp thisphp casephp isphp lowerphp,php dashphp separated
+php php php php php php*
+php php php php php php*php Filtersphp arephp lazyphp-loadedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp convertToClientNamingphp(php$stringphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_filterToClientNamingphp)php php{
+php php php php php php php php php php php php php$filterphp php=php newphp Zendphp_Filterphp(php)php;
+php php php php php php php php php php php php php$filterphp-php>addFilterphp(newphp Zendphp_Filterphp_Wordphp_CamelCaseToDashphp(php)php)php;
+php php php php php php php php php php php php php$filterphp-php>addFilterphp(newphp Zendphp_Filterphp_StringToLowerphp(php)php)php;
 
-            $this->_filterToClientNaming = $filter;
-        }
+php php php php php php php php php php php php php$thisphp-php>php_filterToClientNamingphp php=php php$filterphp;
+php php php php php php php php php}
 
-        return $this->_filterToClientNaming->filter($string);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_filterToClientNamingphp-php>filterphp(php$stringphp)php;
+php php php php php}
 
-    /**
-     * convertFromClientNaming()
-     *
-     * Convert words from client specific naming to code naming - camelcased
-     *
-     * Filters are lazy-loaded.
-     *
-     * @param string $string
-     * @return string
-     */
-    public function convertFromClientNaming($string)
-    {
-        if (!$this->_filterFromClientNaming) {
-            $this->_filterFromClientNaming = new Zend_Filter_Word_DashToCamelCase();
-        }
+php php php php php/php*php*
+php php php php php php*php convertFromClientNamingphp(php)
+php php php php php php*
+php php php php php php*php Convertphp wordsphp fromphp clientphp specificphp namingphp tophp codephp namingphp php-php camelcased
+php php php php php php*
+php php php php php php*php Filtersphp arephp lazyphp-loadedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp convertFromClientNamingphp(php$stringphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_filterFromClientNamingphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_filterFromClientNamingphp php=php newphp Zendphp_Filterphp_Wordphp_DashToCamelCasephp(php)php;
+php php php php php php php php php}
 
-        return $this->_filterFromClientNaming->filter($string);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_filterFromClientNamingphp-php>filterphp(php$stringphp)php;
+php php php php php}
 
-}
+php}

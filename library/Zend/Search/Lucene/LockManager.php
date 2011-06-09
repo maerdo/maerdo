@@ -1,236 +1,236 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: LockManager.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php LockManagerphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Search_Lucene_Storage_Directory */
-require_once 'Zend/Search/Lucene/Storage/Directory.php';
+php/php*php*php Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Storagephp/Directoryphp.phpphp'php;
 
-/** Zend_Search_Lucene_Storage_File */
-require_once 'Zend/Search/Lucene/Storage/File.php';
+php/php*php*php Zendphp_Searchphp_Lucenephp_Storagephp_Filephp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Storagephp/Filephp.phpphp'php;
 
-/**
- * This is an utility class which provides index locks processing functionality
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_LockManager
-{
-    /**
-     * consts for name of file to show lock status
-     */
-    const WRITE_LOCK_FILE                = 'write.lock.file';
-    const READ_LOCK_FILE                 = 'read.lock.file';
-    const READ_LOCK_PROCESSING_LOCK_FILE = 'read-lock-processing.lock.file';
-    const OPTIMIZATION_LOCK_FILE         = 'optimization.lock.file';
+php/php*php*
+php php*php Thisphp isphp anphp utilityphp classphp whichphp providesphp indexphp locksphp processingphp functionality
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_LockManager
+php{
+php php php php php/php*php*
+php php php php php php*php constsphp forphp namephp ofphp filephp tophp showphp lockphp status
+php php php php php php*php/
+php php php php constphp WRITEphp_LOCKphp_FILEphp php php php php php php php php php php php php php php php php=php php'writephp.lockphp.filephp'php;
+php php php php constphp READphp_LOCKphp_FILEphp php php php php php php php php php php php php php php php php php=php php'readphp.lockphp.filephp'php;
+php php php php constphp READphp_LOCKphp_PROCESSINGphp_LOCKphp_FILEphp php=php php'readphp-lockphp-processingphp.lockphp.filephp'php;
+php php php php constphp OPTIMIZATIONphp_LOCKphp_FILEphp php php php php php php php php php=php php'optimizationphp.lockphp.filephp'php;
 
-    /**
-     * Obtain exclusive write lock on the index
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     * @return Zend_Search_Lucene_Storage_File
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public static function obtainWriteLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->createFile(self::WRITE_LOCK_FILE);
-        if (!$lock->lock(LOCK_EX)) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Can\'t obtain exclusive index lock');
-        }
-        return $lock;
-    }
+php php php php php/php*php*
+php php php php php php*php Obtainphp exclusivephp writephp lockphp onphp thephp index
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Storagephp_File
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp obtainWriteLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>createFilephp(selfphp:php:WRITEphp_LOCKphp_FILEphp)php;
+php php php php php php php php ifphp php(php!php$lockphp-php>lockphp(LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Canphp\php'tphp obtainphp exclusivephp indexphp lockphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$lockphp;
+php php php php php}
 
-    /**
-     * Release exclusive write lock
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     */
-    public static function releaseWriteLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->getFileObject(self::WRITE_LOCK_FILE);
-        $lock->unlock();
-    }
+php php php php php/php*php*
+php php php php php php*php Releasephp exclusivephp writephp lock
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php/
+php php php php publicphp staticphp functionphp releaseWriteLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>getFileObjectphp(selfphp:php:WRITEphp_LOCKphp_FILEphp)php;
+php php php php php php php php php$lockphp-php>unlockphp(php)php;
+php php php php php}
 
-    /**
-     * Obtain the exclusive "read escalation/de-escalation" lock
-     *
-     * Required to protect the escalate/de-escalate read lock process
-     * on GFS (and potentially other) mounted filesystems.
-     *
-     * Why we need this:
-     *  While GFS supports cluster-wide locking via flock(), it's
-     *  implementation isn't quite what it should be.  The locking
-     *  semantics that work consistently on a local filesystem tend to
-     *  fail on GFS mounted filesystems.  This appears to be a design defect
-     *  in the implementation of GFS.  How this manifests itself is that
-     *  conditional promotion of a shared lock to exclusive will always
-     *  fail, lock release requests are honored but not immediately
-     *  processed (causing erratic failures of subsequent conditional
-     *  requests) and the releasing of the exclusive lock before the
-     *  shared lock is set when a lock is demoted (which can open a window
-     *  of opportunity for another process to gain an exclusive lock when
-     *  it shoudln't be allowed to).
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     * @return Zend_Search_Lucene_Storage_File
-     * @throws Zend_Search_Lucene_Exception
-     */
-    private static function _startReadLockProcessing(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->createFile(self::READ_LOCK_PROCESSING_LOCK_FILE);
-        if (!$lock->lock(LOCK_EX)) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Can\'t obtain exclusive lock for the read lock processing file');
-        }
-        return $lock;
-    }
+php php php php php/php*php*
+php php php php php php*php Obtainphp thephp exclusivephp php"readphp escalationphp/dephp-escalationphp"php lock
+php php php php php php*
+php php php php php php*php Requiredphp tophp protectphp thephp escalatephp/dephp-escalatephp readphp lockphp process
+php php php php php php*php onphp GFSphp php(andphp potentiallyphp otherphp)php mountedphp filesystemsphp.
+php php php php php php*
+php php php php php php*php Whyphp wephp needphp thisphp:
+php php php php php php*php php Whilephp GFSphp supportsphp clusterphp-widephp lockingphp viaphp flockphp(php)php,php itphp's
+php php php php php php*php php implementationphp isnphp'tphp quitephp whatphp itphp shouldphp bephp.php php Thephp locking
+php php php php php php*php php semanticsphp thatphp workphp consistentlyphp onphp aphp localphp filesystemphp tendphp to
+php php php php php php*php php failphp onphp GFSphp mountedphp filesystemsphp.php php Thisphp appearsphp tophp bephp aphp designphp defect
+php php php php php php*php php inphp thephp implementationphp ofphp GFSphp.php php Howphp thisphp manifestsphp itselfphp isphp that
+php php php php php php*php php conditionalphp promotionphp ofphp aphp sharedphp lockphp tophp exclusivephp willphp always
+php php php php php php*php php failphp,php lockphp releasephp requestsphp arephp honoredphp butphp notphp immediately
+php php php php php php*php php processedphp php(causingphp erraticphp failuresphp ofphp subsequentphp conditional
+php php php php php php*php php requestsphp)php andphp thephp releasingphp ofphp thephp exclusivephp lockphp beforephp the
+php php php php php php*php php sharedphp lockphp isphp setphp whenphp aphp lockphp isphp demotedphp php(whichphp canphp openphp aphp window
+php php php php php php*php php ofphp opportunityphp forphp anotherphp processphp tophp gainphp anphp exclusivephp lockphp when
+php php php php php php*php php itphp shoudlnphp'tphp bephp allowedphp tophp)php.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Storagephp_File
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_startReadLockProcessingphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>createFilephp(selfphp:php:READphp_LOCKphp_PROCESSINGphp_LOCKphp_FILEphp)php;
+php php php php php php php php ifphp php(php!php$lockphp-php>lockphp(LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Canphp\php'tphp obtainphp exclusivephp lockphp forphp thephp readphp lockphp processingphp filephp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$lockphp;
+php php php php php}
 
-    /**
-     * Release the exclusive "read escalation/de-escalation" lock
-     *
-     * Required to protect the escalate/de-escalate read lock process
-     * on GFS (and potentially other) mounted filesystems.
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     */
-    private static function _stopReadLockProcessing(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->getFileObject(self::READ_LOCK_PROCESSING_LOCK_FILE);
-        $lock->unlock();
-    }
+php php php php php/php*php*
+php php php php php php*php Releasephp thephp exclusivephp php"readphp escalationphp/dephp-escalationphp"php lock
+php php php php php php*
+php php php php php php*php Requiredphp tophp protectphp thephp escalatephp/dephp-escalatephp readphp lockphp process
+php php php php php php*php onphp GFSphp php(andphp potentiallyphp otherphp)php mountedphp filesystemsphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_stopReadLockProcessingphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>getFileObjectphp(selfphp:php:READphp_LOCKphp_PROCESSINGphp_LOCKphp_FILEphp)php;
+php php php php php php php php php$lockphp-php>unlockphp(php)php;
+php php php php php}
 
 
-    /**
-     * Obtain shared read lock on the index
-     *
-     * It doesn't block other read or update processes, but prevent index from the premature cleaning-up
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $defaultLockDirectory
-     * @return Zend_Search_Lucene_Storage_File
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public static function obtainReadLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->createFile(self::READ_LOCK_FILE);
-        if (!$lock->lock(LOCK_SH)) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Can\'t obtain shared reading index lock');
-        }
-        return $lock;
-    }
+php php php php php/php*php*
+php php php php php php*php Obtainphp sharedphp readphp lockphp onphp thephp index
+php php php php php php*
+php php php php php php*php Itphp doesnphp'tphp blockphp otherphp readphp orphp updatephp processesphp,php butphp preventphp indexphp fromphp thephp prematurephp cleaningphp-up
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$defaultLockDirectory
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Storagephp_File
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp obtainReadLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>createFilephp(selfphp:php:READphp_LOCKphp_FILEphp)php;
+php php php php php php php php ifphp php(php!php$lockphp-php>lockphp(LOCKphp_SHphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Canphp\php'tphp obtainphp sharedphp readingphp indexphp lockphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$lockphp;
+php php php php php}
 
-    /**
-     * Release shared read lock
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     */
-    public static function releaseReadLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->getFileObject(self::READ_LOCK_FILE);
-        $lock->unlock();
-    }
+php php php php php/php*php*
+php php php php php php*php Releasephp sharedphp readphp lock
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php/
+php php php php publicphp staticphp functionphp releaseReadLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>getFileObjectphp(selfphp:php:READphp_LOCKphp_FILEphp)php;
+php php php php php php php php php$lockphp-php>unlockphp(php)php;
+php php php php php}
 
-    /**
-     * Escalate Read lock to exclusive level
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     * @return boolean
-     */
-    public static function escalateReadLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        self::_startReadLockProcessing($lockDirectory);
+php php php php php/php*php*
+php php php php php php*php Escalatephp Readphp lockphp tophp exclusivephp level
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp staticphp functionphp escalateReadLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php selfphp:php:php_startReadLockProcessingphp(php$lockDirectoryphp)php;
 
-        $lock = $lockDirectory->getFileObject(self::READ_LOCK_FILE);
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>getFileObjectphp(selfphp:php:READphp_LOCKphp_FILEphp)php;
 
-        // First, release the shared lock for the benefit of GFS since
-        // it will fail the conditional request to promote the lock to
-        // "exclusive" while the shared lock is held (even when we are
-        // the only holder).
-        $lock->unlock();
+php php php php php php php php php/php/php Firstphp,php releasephp thephp sharedphp lockphp forphp thephp benefitphp ofphp GFSphp since
+php php php php php php php php php/php/php itphp willphp failphp thephp conditionalphp requestphp tophp promotephp thephp lockphp to
+php php php php php php php php php/php/php php"exclusivephp"php whilephp thephp sharedphp lockphp isphp heldphp php(evenphp whenphp wephp are
+php php php php php php php php php/php/php thephp onlyphp holderphp)php.
+php php php php php php php php php$lockphp-php>unlockphp(php)php;
 
-        // GFS is really poor.  While the above "unlock" returns, GFS
-        // doesn't clean up it's tables right away (which will potentially
-        // cause the conditional locking for the "exclusive" lock to fail.
-        // We will retry the conditional lock request several times on a
-        // failure to get past this.  The performance hit is negligible
-        // in the grand scheme of things and only will occur with GFS
-        // filesystems or if another local process has the shared lock
-        // on local filesystems.
-        for ($retries = 0; $retries < 10; $retries++) {
-            if ($lock->lock(LOCK_EX, true)) {
-                // Exclusive lock is obtained!
-                self::_stopReadLockProcessing($lockDirectory);
-                return true;
-            }
+php php php php php php php php php/php/php GFSphp isphp reallyphp poorphp.php php Whilephp thephp abovephp php"unlockphp"php returnsphp,php GFS
+php php php php php php php php php/php/php doesnphp'tphp cleanphp upphp itphp'sphp tablesphp rightphp awayphp php(whichphp willphp potentially
+php php php php php php php php php/php/php causephp thephp conditionalphp lockingphp forphp thephp php"exclusivephp"php lockphp tophp failphp.
+php php php php php php php php php/php/php Wephp willphp retryphp thephp conditionalphp lockphp requestphp severalphp timesphp onphp a
+php php php php php php php php php/php/php failurephp tophp getphp pastphp thisphp.php php Thephp performancephp hitphp isphp negligible
+php php php php php php php php php/php/php inphp thephp grandphp schemephp ofphp thingsphp andphp onlyphp willphp occurphp withphp GFS
+php php php php php php php php php/php/php filesystemsphp orphp ifphp anotherphp localphp processphp hasphp thephp sharedphp lock
+php php php php php php php php php/php/php onphp localphp filesystemsphp.
+php php php php php php php php forphp php(php$retriesphp php=php php0php;php php$retriesphp <php php1php0php;php php$retriesphp+php+php)php php{
+php php php php php php php php php php php php ifphp php(php$lockphp-php>lockphp(LOCKphp_EXphp,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Exclusivephp lockphp isphp obtainedphp!
+php php php php php php php php php php php php php php php php selfphp:php:php_stopReadLockProcessingphp(php$lockDirectoryphp)php;
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
 
-            // wait 1 microsecond
-            usleep(1);
-        }
+php php php php php php php php php php php php php/php/php waitphp php1php microsecond
+php php php php php php php php php php php php usleepphp(php1php)php;
+php php php php php php php php php}
 
-        // Restore lock state
-        $lock->lock(LOCK_SH);
+php php php php php php php php php/php/php Restorephp lockphp state
+php php php php php php php php php$lockphp-php>lockphp(LOCKphp_SHphp)php;
 
-        self::_stopReadLockProcessing($lockDirectory);
-        return false;
-    }
+php php php php php php php php selfphp:php:php_stopReadLockProcessingphp(php$lockDirectoryphp)php;
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * De-escalate Read lock to shared level
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     */
-    public static function deEscalateReadLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->getFileObject(self::READ_LOCK_FILE);
-        $lock->lock(LOCK_SH);
-    }
+php php php php php/php*php*
+php php php php php php*php Dephp-escalatephp Readphp lockphp tophp sharedphp level
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php/
+php php php php publicphp staticphp functionphp deEscalateReadLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>getFileObjectphp(selfphp:php:READphp_LOCKphp_FILEphp)php;
+php php php php php php php php php$lockphp-php>lockphp(LOCKphp_SHphp)php;
+php php php php php}
 
-    /**
-     * Obtain exclusive optimization lock on the index
-     *
-     * Returns lock object on success and false otherwise (doesn't block execution)
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     * @return mixed
-     */
-    public static function obtainOptimizationLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->createFile(self::OPTIMIZATION_LOCK_FILE);
-        if (!$lock->lock(LOCK_EX, true)) {
-            return false;
-        }
-        return $lock;
-    }
+php php php php php/php*php*
+php php php php php php*php Obtainphp exclusivephp optimizationphp lockphp onphp thephp index
+php php php php php php*
+php php php php php php*php Returnsphp lockphp objectphp onphp successphp andphp falsephp otherwisephp php(doesnphp'tphp blockphp executionphp)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp staticphp functionphp obtainOptimizationLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>createFilephp(selfphp:php:OPTIMIZATIONphp_LOCKphp_FILEphp)php;
+php php php php php php php php ifphp php(php!php$lockphp-php>lockphp(LOCKphp_EXphp,php truephp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$lockphp;
+php php php php php}
 
-    /**
-     * Release exclusive optimization lock
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $lockDirectory
-     */
-    public static function releaseOptimizationLock(Zend_Search_Lucene_Storage_Directory $lockDirectory)
-    {
-        $lock = $lockDirectory->getFileObject(self::OPTIMIZATION_LOCK_FILE);
-        $lock->unlock();
-    }
+php php php php php/php*php*
+php php php php php php*php Releasephp exclusivephp optimizationphp lock
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectory
+php php php php php php*php/
+php php php php publicphp staticphp functionphp releaseOptimizationLockphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$lockDirectoryphp)
+php php php php php{
+php php php php php php php php php$lockphp php=php php$lockDirectoryphp-php>getFileObjectphp(selfphp:php:OPTIMIZATIONphp_LOCKphp_FILEphp)php;
+php php php php php php php php php$lockphp-php>unlockphp(php)php;
+php php php php php}
 
-}
+php}

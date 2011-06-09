@@ -1,217 +1,217 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Utility.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Oauth
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Utilityphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/** Zend_Oauth */
-require_once 'Zend/Oauth.php';
+php/php*php*php Zendphp_Oauthphp php*php/
+requirephp_oncephp php'Zendphp/Oauthphp.phpphp'php;
 
-/** Zend_Oauth_Http */
-require_once 'Zend/Oauth/Http.php';
+php/php*php*php Zendphp_Oauthphp_Httpphp php*php/
+requirephp_oncephp php'Zendphp/Oauthphp/Httpphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Oauth_Http_Utility
-{
-    /**
-     * Assemble all parameters for a generic OAuth request - i.e. no special
-     * params other than the defaults expected for any OAuth query.
-     *
-     * @param  string $url
-     * @param  Zend_Oauth_Config_ConfigInterface $config
-     * @param  null|array $serviceProviderParams
-     * @return array
-     */
-    public function assembleParams(
-        $url,
-        Zend_Oauth_Config_ConfigInterface $config,
-        array $serviceProviderParams = null
-    ) {
-        $params = array(
-            'oauth_consumer_key'     => $config->getConsumerKey(),
-            'oauth_nonce'            => $this->generateNonce(),
-            'oauth_signature_method' => $config->getSignatureMethod(),
-            'oauth_timestamp'        => $this->generateTimestamp(),
-            'oauth_version'          => $config->getVersion(),
-        );
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Oauth
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Oauthphp_Httpphp_Utility
+php{
+php php php php php/php*php*
+php php php php php php*php Assemblephp allphp parametersphp forphp aphp genericphp OAuthphp requestphp php-php iphp.ephp.php nophp special
+php php php php php php*php paramsphp otherphp thanphp thephp defaultsphp expectedphp forphp anyphp OAuthphp queryphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@paramphp php Zendphp_Oauthphp_Configphp_ConfigInterfacephp php$config
+php php php php php php*php php@paramphp php nullphp|arrayphp php$serviceProviderParams
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp assembleParamsphp(
+php php php php php php php php php$urlphp,
+php php php php php php php php Zendphp_Oauthphp_Configphp_ConfigInterfacephp php$configphp,
+php php php php php php php php arrayphp php$serviceProviderParamsphp php=php null
+php php php php php)php php{
+php php php php php php php php php$paramsphp php=php arrayphp(
+php php php php php php php php php php php php php'oauthphp_consumerphp_keyphp'php php php php php php=php>php php$configphp-php>getConsumerKeyphp(php)php,
+php php php php php php php php php php php php php'oauthphp_noncephp'php php php php php php php php php php php php php=php>php php$thisphp-php>generateNoncephp(php)php,
+php php php php php php php php php php php php php'oauthphp_signaturephp_methodphp'php php=php>php php$configphp-php>getSignatureMethodphp(php)php,
+php php php php php php php php php php php php php'oauthphp_timestampphp'php php php php php php php php php=php>php php$thisphp-php>generateTimestampphp(php)php,
+php php php php php php php php php php php php php'oauthphp_versionphp'php php php php php php php php php php php=php>php php$configphp-php>getVersionphp(php)php,
+php php php php php php php php php)php;
 
-        if ($config->getToken()->getToken() != null) {
-            $params['oauth_token'] = $config->getToken()->getToken();
-        }
+php php php php php php php php ifphp php(php$configphp-php>getTokenphp(php)php-php>getTokenphp(php)php php!php=php nullphp)php php{
+php php php php php php php php php php php php php$paramsphp[php'oauthphp_tokenphp'php]php php=php php$configphp-php>getTokenphp(php)php-php>getTokenphp(php)php;
+php php php php php php php php php}
 
 
-        if ($serviceProviderParams !== null) {
-            $params = array_merge($params, $serviceProviderParams);
-        }
+php php php php php php php php ifphp php(php$serviceProviderParamsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$paramsphp php=php arrayphp_mergephp(php$paramsphp,php php$serviceProviderParamsphp)php;
+php php php php php php php php php}
 
-        $params['oauth_signature'] = $this->sign(
-            $params,
-            $config->getSignatureMethod(),
-            $config->getConsumerSecret(),
-            $config->getToken()->getTokenSecret(),
-            $config->getRequestMethod(),
-            $url
-        );
+php php php php php php php php php$paramsphp[php'oauthphp_signaturephp'php]php php=php php$thisphp-php>signphp(
+php php php php php php php php php php php php php$paramsphp,
+php php php php php php php php php php php php php$configphp-php>getSignatureMethodphp(php)php,
+php php php php php php php php php php php php php$configphp-php>getConsumerSecretphp(php)php,
+php php php php php php php php php php php php php$configphp-php>getTokenphp(php)php-php>getTokenSecretphp(php)php,
+php php php php php php php php php php php php php$configphp-php>getRequestMethodphp(php)php,
+php php php php php php php php php php php php php$url
+php php php php php php php php php)php;
 
-        return $params;
-    }
+php php php php php php php php returnphp php$paramsphp;
+php php php php php}
 
-    /**
-     * Given both OAuth parameters and any custom parametere, generate an
-     * encoded query string. This method expects parameters to have been
-     * assembled and signed beforehand.
-     *
-     * @param array $params
-     * @param bool $customParamsOnly Ignores OAuth params e.g. for requests using OAuth Header
-     * @return string
-     */
-    public function toEncodedQueryString(array $params, $customParamsOnly = false)
-    {
-        if ($customParamsOnly) {
-            foreach ($params as $key=>$value) {
-                if (preg_match("/^oauth_/", $key)) {
-                    unset($params[$key]);
-                }
-            }
-        }
-        $encodedParams = array();
-        foreach ($params as $key => $value) {
-            $encodedParams[] = self::urlEncode($key)
-                             . '='
-                             . self::urlEncode($value);
-        }
-        return implode('&', $encodedParams);
-    }
+php php php php php/php*php*
+php php php php php php*php Givenphp bothphp OAuthphp parametersphp andphp anyphp customphp parameterephp,php generatephp an
+php php php php php php*php encodedphp queryphp stringphp.php Thisphp methodphp expectsphp parametersphp tophp havephp been
+php php php php php php*php assembledphp andphp signedphp beforehandphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$params
+php php php php php php*php php@paramphp boolphp php$customParamsOnlyphp Ignoresphp OAuthphp paramsphp ephp.gphp.php forphp requestsphp usingphp OAuthphp Header
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toEncodedQueryStringphp(arrayphp php$paramsphp,php php$customParamsOnlyphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$customParamsOnlyphp)php php{
+php php php php php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp=php>php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php"php/php^oauthphp_php/php"php,php php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$paramsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$encodedParamsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$encodedParamsphp[php]php php=php selfphp:php:urlEncodephp(php$keyphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php=php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php selfphp:php:urlEncodephp(php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp implodephp(php'php&php'php,php php$encodedParamsphp)php;
+php php php php php}
 
-    /**
-     * Cast to authorization header
-     *
-     * @param  array $params
-     * @param  null|string $realm
-     * @param  bool $excludeCustomParams
-     * @return void
-     */
-    public function toAuthorizationHeader(array $params, $realm = null, $excludeCustomParams = true)
-    {
-        $headerValue = array(
-            'OAuth realm="' . $realm . '"',
-        );
+php php php php php/php*php*
+php php php php php php*php Castphp tophp authorizationphp header
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@paramphp php nullphp|stringphp php$realm
+php php php php php php*php php@paramphp php boolphp php$excludeCustomParams
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp toAuthorizationHeaderphp(arrayphp php$paramsphp,php php$realmphp php=php nullphp,php php$excludeCustomParamsphp php=php truephp)
+php php php php php{
+php php php php php php php php php$headerValuephp php=php arrayphp(
+php php php php php php php php php php php php php'OAuthphp realmphp=php"php'php php.php php$realmphp php.php php'php"php'php,
+php php php php php php php php php)php;
 
-        foreach ($params as $key => $value) {
-            if ($excludeCustomParams) {
-                if (!preg_match("/^oauth_/", $key)) {
-                    continue;
-                }
-            }
-            $headerValue[] = self::urlEncode($key)
-                           . '="'
-                           . self::urlEncode($value) . '"';
-        }
-        return implode(",", $headerValue);
-    }
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php$excludeCustomParamsphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!pregphp_matchphp(php"php/php^oauthphp_php/php"php,php php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$headerValuephp[php]php php=php selfphp:php:urlEncodephp(php$keyphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php=php"php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php selfphp:php:urlEncodephp(php$valuephp)php php.php php'php"php'php;
+php php php php php php php php php}
+php php php php php php php php returnphp implodephp(php"php,php"php,php php$headerValuephp)php;
+php php php php php}
 
-    /**
-     * Sign request
-     *
-     * @param  array $params
-     * @param  string $signatureMethod
-     * @param  string $consumerSecret
-     * @param  null|string $tokenSecret
-     * @param  null|string $method
-     * @param  null|string $url
-     * @return string
-     */
-    public function sign(
-        array $params, $signatureMethod, $consumerSecret, $tokenSecret = null, $method = null, $url = null
-    ) {
-        $className = '';
-        $hashAlgo  = null;
-        $parts     = explode('-', $signatureMethod);
-        if (count($parts) > 1) {
-            $className = 'Zend_Oauth_Signature_' . ucfirst(strtolower($parts[0]));
-            $hashAlgo  = $parts[1];
-        } else {
-            $className = 'Zend_Oauth_Signature_' . ucfirst(strtolower($signatureMethod));
-        }
+php php php php php/php*php*
+php php php php php php*php Signphp request
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@paramphp php stringphp php$signatureMethod
+php php php php php php*php php@paramphp php stringphp php$consumerSecret
+php php php php php php*php php@paramphp php nullphp|stringphp php$tokenSecret
+php php php php php php*php php@paramphp php nullphp|stringphp php$method
+php php php php php php*php php@paramphp php nullphp|stringphp php$url
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp signphp(
+php php php php php php php php arrayphp php$paramsphp,php php$signatureMethodphp,php php$consumerSecretphp,php php$tokenSecretphp php=php nullphp,php php$methodphp php=php nullphp,php php$urlphp php=php null
+php php php php php)php php{
+php php php php php php php php php$classNamephp php=php php'php'php;
+php php php php php php php php php$hashAlgophp php php=php nullphp;
+php php php php php php php php php$partsphp php php php php php=php explodephp(php'php-php'php,php php$signatureMethodphp)php;
+php php php php php php php php ifphp php(countphp(php$partsphp)php php>php php1php)php php{
+php php php php php php php php php php php php php$classNamephp php=php php'Zendphp_Oauthphp_Signaturephp_php'php php.php ucfirstphp(strtolowerphp(php$partsphp[php0php]php)php)php;
+php php php php php php php php php php php php php$hashAlgophp php php=php php$partsphp[php1php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$classNamephp php=php php'Zendphp_Oauthphp_Signaturephp_php'php php.php ucfirstphp(strtolowerphp(php$signatureMethodphp)php)php;
+php php php php php php php php php}
 
-        require_once str_replace('_', '/', $className) . '.php';
-        $signatureObject = new $className($consumerSecret, $tokenSecret, $hashAlgo);
-        return $signatureObject->sign($params, $method, $url);
-    }
+php php php php php php php php requirephp_oncephp strphp_replacephp(php'php_php'php,php php'php/php'php,php php$classNamephp)php php.php php'php.phpphp'php;
+php php php php php php php php php$signatureObjectphp php=php newphp php$classNamephp(php$consumerSecretphp,php php$tokenSecretphp,php php$hashAlgophp)php;
+php php php php php php php php returnphp php$signatureObjectphp-php>signphp(php$paramsphp,php php$methodphp,php php$urlphp)php;
+php php php php php}
 
-    /**
-     * Parse query string
-     *
-     * @param  mixed $query
-     * @return array
-     */
-    public function parseQueryString($query)
-    {
-        $params = array();
-        if (empty($query)) {
-            return array();
-        }
+php php php php php/php*php*
+php php php php php php*php Parsephp queryphp string
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$query
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp parseQueryStringphp(php$queryphp)
+php php php php php{
+php php php php php php php php php$paramsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$queryphp)php)php php{
+php php php php php php php php php php php php returnphp arrayphp(php)php;
+php php php php php php php php php}
 
-        // Not remotely perfect but beats parse_str() which converts
-        // periods and uses urldecode, not rawurldecode.
-        $parts = explode('&', $query);
-        foreach ($parts as $pair) {
-            $kv = explode('=', $pair);
-            $params[rawurldecode($kv[0])] = rawurldecode($kv[1]);
-        }
-        return $params;
-    }
+php php php php php php php php php/php/php Notphp remotelyphp perfectphp butphp beatsphp parsephp_strphp(php)php whichphp converts
+php php php php php php php php php/php/php periodsphp andphp usesphp urldecodephp,php notphp rawurldecodephp.
+php php php php php php php php php$partsphp php=php explodephp(php'php&php'php,php php$queryphp)php;
+php php php php php php php php foreachphp php(php$partsphp asphp php$pairphp)php php{
+php php php php php php php php php php php php php$kvphp php=php explodephp(php'php=php'php,php php$pairphp)php;
+php php php php php php php php php php php php php$paramsphp[rawurldecodephp(php$kvphp[php0php]php)php]php php=php rawurldecodephp(php$kvphp[php1php]php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$paramsphp;
+php php php php php}
 
-    /**
-     * Generate nonce
-     *
-     * @return string
-     */
-    public function generateNonce()
-    {
-        return md5(uniqid(rand(), true));
-    }
+php php php php php/php*php*
+php php php php php php*php Generatephp nonce
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp generateNoncephp(php)
+php php php php php{
+php php php php php php php php returnphp mdphp5php(uniqidphp(randphp(php)php,php truephp)php)php;
+php php php php php}
 
-    /**
-     * Generate timestamp
-     *
-     * @return int
-     */
-    public function generateTimestamp()
-    {
-        return time();
-    }
+php php php php php/php*php*
+php php php php php php*php Generatephp timestamp
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp generateTimestampphp(php)
+php php php php php{
+php php php php php php php php returnphp timephp(php)php;
+php php php php php}
 
-    /**
-     * urlencode a value
-     *
-     * @param  string $value
-     * @return string
-     */
-    public static function urlEncode($value)
-    {
-        $encoded = rawurlencode($value);
-        $encoded = str_replace('%7E', '~', $encoded);
-        return $encoded;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php urlencodephp aphp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp urlEncodephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$encodedphp php=php rawurlencodephp(php$valuephp)php;
+php php php php php php php php php$encodedphp php=php strphp_replacephp(php'php%php7Ephp'php,php php'php~php'php,php php$encodedphp)php;
+php php php php php php php php returnphp php$encodedphp;
+php php php php php}
+php}

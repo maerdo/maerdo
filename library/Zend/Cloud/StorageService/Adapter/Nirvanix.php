@@ -1,399 +1,399 @@
-<?php
-/**
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage StorageService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp StorageService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-require_once 'Zend/Cloud/StorageService/Adapter.php';
-require_once 'Zend/Cloud/StorageService/Exception.php';
-require_once 'Zend/Service/Nirvanix.php';
+requirephp_oncephp php'Zendphp/Cloudphp/StorageServicephp/Adapterphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Cloudphp/StorageServicephp/Exceptionphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Servicephp/Nirvanixphp.phpphp'php;
 
-/**
- * Adapter for Nirvanix cloud storage
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage StorageService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cloud_StorageService_Adapter_Nirvanix
-    implements Zend_Cloud_StorageService_Adapter
-{
-    const USERNAME         = 'auth_username';
-    const PASSWORD         = 'auth_password';
-    const APP_KEY          = 'auth_accesskey';
-    const REMOTE_DIRECTORY = 'remote_directory';
+php/php*php*
+php php*php Adapterphp forphp Nirvanixphp cloudphp storage
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp StorageService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cloudphp_StorageServicephp_Adapterphp_Nirvanix
+php php php php implementsphp Zendphp_Cloudphp_StorageServicephp_Adapter
+php{
+php php php php constphp USERNAMEphp php php php php php php php php php=php php'authphp_usernamephp'php;
+php php php php constphp PASSWORDphp php php php php php php php php php=php php'authphp_passwordphp'php;
+php php php php constphp APPphp_KEYphp php php php php php php php php php php=php php'authphp_accesskeyphp'php;
+php php php php constphp REMOTEphp_DIRECTORYphp php=php php'remotephp_directoryphp'php;
 
-    /**
-     * The Nirvanix adapter
-     * @var Zend_Service_Nirvanix
-     */
-    protected $_nirvanix;
-    protected $_imfNs;
-    protected $_metadataNs;
-    protected $_remoteDirectory;
-    private $maxPageSize = 500;
+php php php php php/php*php*
+php php php php php php*php Thephp Nirvanixphp adapter
+php php php php php php*php php@varphp Zendphp_Servicephp_Nirvanix
+php php php php php php*php/
+php php php php protectedphp php$php_nirvanixphp;
+php php php php protectedphp php$php_imfNsphp;
+php php php php protectedphp php$php_metadataNsphp;
+php php php php protectedphp php$php_remoteDirectoryphp;
+php php php php privatephp php$maxPageSizephp php=php php5php0php0php;
 
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options
-     * @return void
-     */
-    function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($options)) {
-            throw new Zend_Cloud_StorageService_Exception('Invalid options provided');
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Invalidphp optionsphp providedphp'php)php;
+php php php php php php php php php}
 
-        $auth = array(
-            'username' => $options[self::USERNAME],
-            'password' => $options[self::PASSWORD],
-            'appKey'   => $options[self::APP_KEY],
-        );
-        $nirvanix_options = array();
-        if (isset($options[self::HTTP_ADAPTER])) {
-            $httpc = new Zend_Http_Client();
-            $httpc->setAdapter($options[self::HTTP_ADAPTER]);
-            $nirvanix_options['httpClient'] = $httpc;
-        }
-        try {
-            $this->_nirvanix = new Zend_Service_Nirvanix($auth, $nirvanix_options);
-            $this->_remoteDirectory = $options[self::REMOTE_DIRECTORY];
-            $this->_imfNs = $this->_nirvanix->getService('IMFS');
-            $this->_metadataNs = $this->_nirvanix->getService('Metadata');
-        } catch (Zend_Service_Nirvanix_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on create: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php php php php php$authphp php=php arrayphp(
+php php php php php php php php php php php php php'usernamephp'php php=php>php php$optionsphp[selfphp:php:USERNAMEphp]php,
+php php php php php php php php php php php php php'passwordphp'php php=php>php php$optionsphp[selfphp:php:PASSWORDphp]php,
+php php php php php php php php php php php php php'appKeyphp'php php php php=php>php php$optionsphp[selfphp:php:APPphp_KEYphp]php,
+php php php php php php php php php)php;
+php php php php php php php php php$nirvanixphp_optionsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:HTTPphp_ADAPTERphp]php)php)php php{
+php php php php php php php php php php php php php$httpcphp php=php newphp Zendphp_Httpphp_Clientphp(php)php;
+php php php php php php php php php php php php php$httpcphp-php>setAdapterphp(php$optionsphp[selfphp:php:HTTPphp_ADAPTERphp]php)php;
+php php php php php php php php php php php php php$nirvanixphp_optionsphp[php'httpClientphp'php]php php=php php$httpcphp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_nirvanixphp php=php newphp Zendphp_Servicephp_Nirvanixphp(php$authphp,php php$nirvanixphp_optionsphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_remoteDirectoryphp php=php php$optionsphp[selfphp:php:REMOTEphp_DIRECTORYphp]php;
+php php php php php php php php php php php php php$thisphp-php>php_imfNsphp php=php php$thisphp-php>php_nirvanixphp-php>getServicephp(php'IMFSphp'php)php;
+php php php php php php php php php php php php php$thisphp-php>php_metadataNsphp php=php php$thisphp-php>php_nirvanixphp-php>getServicephp(php'Metadataphp'php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp createphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-     /**
-     * Get an item from the storage service.
-     *
-     * @param  string $path
-     * @param  array $options
-     * @return mixed
-     */
-    public function fetchItem($path, $options = null)
-    {
-        $path = $this->_getFullPath($path);
-        try {
-            $item = $this->_imfNs->getContents($path);
-        } catch (Zend_Service_Nirvanix_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on fetch: '.$e->getMessage(), $e->getCode(), $e);
-        }
-        return $item;
-    }
+php php php php php php/php*php*
+php php php php php php*php Getphp anphp itemphp fromphp thephp storagephp servicephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp fetchItemphp(php$pathphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$pathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$itemphp php=php php$thisphp-php>php_imfNsphp-php>getContentsphp(php$pathphp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp fetchphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$itemphp;
+php php php php php}
 
-    /**
-     * Store an item in the storage service.
-     * WARNING: This operation overwrites any item that is located at
-     * $destinationPath.
-     * @param string $destinationPath
-     * @param mixed $data
-     * @param  array $options
-     * @return void
-     */
-    public function storeItem($destinationPath, $data, $options = null)
-    {
-        try {
-            $path = $this->_getFullPath($destinationPath);
-            $this->_imfNs->putContents($path, $data);
-        } catch (Zend_Service_Nirvanix_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on store: '.$e->getMessage(), $e->getCode(), $e);
-        }
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Storephp anphp itemphp inphp thephp storagephp servicephp.
+php php php php php php*php WARNINGphp:php Thisphp operationphp overwritesphp anyphp itemphp thatphp isphp locatedphp at
+php php php php php php*php php$destinationPathphp.
+php php php php php php*php php@paramphp stringphp php$destinationPath
+php php php php php php*php php@paramphp mixedphp php$data
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp storeItemphp(php$destinationPathphp,php php$dataphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$pathphp php=php php$thisphp-php>php_getFullPathphp(php$destinationPathphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_imfNsphp-php>putContentsphp(php$pathphp,php php$dataphp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp storephp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Delete an item in the storage service.
-     *
-     * @param  string $path
-     * @param  array $options
-     * @return void
-     */
-    public function deleteItem($path, $options = null)
-    {
-        try {
-            $path = $this->_getFullPath($path);
-            $this->_imfNs->unlink($path);
-        } catch(Zend_Service_Nirvanix_Exception $e) {
-//            if (trim(strtoupper($e->getMessage())) != 'INVALID PATH') {
-//                // TODO Differentiate among errors in the Nirvanix adapter
-            throw new Zend_Cloud_StorageService_Exception('Error on delete: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Deletephp anphp itemphp inphp thephp storagephp servicephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteItemphp(php$pathphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$pathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_imfNsphp-php>unlinkphp(php$pathphp)php;
+php php php php php php php php php}php catchphp(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php/php/php php php php php php php php php php php php ifphp php(trimphp(strtoupperphp(php$ephp-php>getMessagephp(php)php)php)php php!php=php php'INVALIDphp PATHphp'php)php php{
+php/php/php php php php php php php php php php php php php php php php php/php/php TODOphp Differentiatephp amongphp errorsphp inphp thephp Nirvanixphp adapter
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp deletephp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Copy an item in the storage service to a given path.
-     * WARNING: This operation is *very* expensive for services that do not
-     * support copying an item natively.
-     *
-     * @param  string $sourcePath
-     * @param  string $destination path
-     * @param  array $options
-     * @return void
-     */
-    public function copyItem($sourcePath, $destinationPath, $options = null)
-    {
-        try {
-            $sourcePath = $this->_getFullPath($sourcePath);
-            $destinationPath = $this->_getFullPath($destinationPath);
-            $this->_imfNs->CopyFiles(array('srcFilePath' => $sourcePath,
-                                            'destFolderPath' => $destinationPath));
-        } catch (Zend_Service_Nirvanix_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on copy: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Copyphp anphp itemphp inphp thephp storagephp servicephp tophp aphp givenphp pathphp.
+php php php php php php*php WARNINGphp:php Thisphp operationphp isphp php*veryphp*php expensivephp forphp servicesphp thatphp dophp not
+php php php php php php*php supportphp copyingphp anphp itemphp nativelyphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$sourcePath
+php php php php php php*php php@paramphp php stringphp php$destinationphp path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp copyItemphp(php$sourcePathphp,php php$destinationPathphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$sourcePathphp php=php php$thisphp-php>php_getFullPathphp(php$sourcePathphp)php;
+php php php php php php php php php php php php php$destinationPathphp php=php php$thisphp-php>php_getFullPathphp(php$destinationPathphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_imfNsphp-php>CopyFilesphp(arrayphp(php'srcFilePathphp'php php=php>php php$sourcePathphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'destFolderPathphp'php php=php>php php$destinationPathphp)php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp copyphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Move an item in the storage service to a given path.
-     * WARNING: This operation is *very* expensive for services that do not
-     * support moving an item natively.
-     *
-     * @param  string $sourcePath
-     * @param  string $destination path
-     * @param  array $options
-     * @return void
-     */
-    public function moveItem($sourcePath, $destinationPath, $options = null)
-    {
-        try {
-            $sourcePath = $this->_getFullPath($sourcePath);
-            $destinationPath = $this->_getFullPath($destinationPath);
-            $this->_imfNs->RenameFile(array('filePath' => $sourcePath,
-                                             'newFileName' => $destinationPath));
-    //        $this->_imfNs->MoveFiles(array('srcFilePath' => $sourcePath,
-    //                                         'destFolderPath' => $destinationPath));
-        } catch (Zend_Service_Nirvanix_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on move: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Movephp anphp itemphp inphp thephp storagephp servicephp tophp aphp givenphp pathphp.
+php php php php php php*php WARNINGphp:php Thisphp operationphp isphp php*veryphp*php expensivephp forphp servicesphp thatphp dophp not
+php php php php php php*php supportphp movingphp anphp itemphp nativelyphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$sourcePath
+php php php php php php*php php@paramphp php stringphp php$destinationphp path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp moveItemphp(php$sourcePathphp,php php$destinationPathphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$sourcePathphp php=php php$thisphp-php>php_getFullPathphp(php$sourcePathphp)php;
+php php php php php php php php php php php php php$destinationPathphp php=php php$thisphp-php>php_getFullPathphp(php$destinationPathphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_imfNsphp-php>RenameFilephp(arrayphp(php'filePathphp'php php=php>php php$sourcePathphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'newFileNamephp'php php=php>php php$destinationPathphp)php)php;
+php php php php php/php/php php php php php php php php php$thisphp-php>php_imfNsphp-php>MoveFilesphp(arrayphp(php'srcFilePathphp'php php=php>php php$sourcePathphp,
+php php php php php/php/php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'destFolderPathphp'php php=php>php php$destinationPathphp)php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp movephp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Rename an item in the storage service to a given name.
-     *
-     *
-     * @param  string $path
-     * @param  string $name
-     * @param  array $options
-     * @return void
-     */
-    public function renameItem($path, $name, $options = null)
-    {
-        require_once 'Zend/Cloud/OperationNotAvailableException.php';
-        throw new Zend_Cloud_OperationNotAvailableException('Renaming not implemented');
-    }
+php php php php php/php*php*
+php php php php php php*php Renamephp anphp itemphp inphp thephp storagephp servicephp tophp aphp givenphp namephp.
+php php php php php php*
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp renameItemphp(php$pathphp,php php$namephp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Cloudphp/OperationNotAvailableExceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Cloudphp_OperationNotAvailableExceptionphp(php'Renamingphp notphp implementedphp'php)php;
+php php php php php}
 
-    /**
-     * Get a key/value array of metadata for the given path.
-     *
-     * @param  string $path
-     * @param  array $options
-     * @return array An associative array of key/value pairs specifying the metadata for this object.
-     *                  If no metadata exists, an empty array is returned.
-     */
-    public function fetchMetadata($path, $options = null)
-    {
-        $path = $this->_getFullPath($path);
-        try {
-            $metadataNode = $this->_metadataNs->getMetadata(array('path' => $path));
-        } catch (Zend_Service_Nirvanix_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on fetching metadata: '.$e->getMessage(), $e->getCode(), $e);
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp aphp keyphp/valuephp arrayphp ofphp metadataphp forphp thephp givenphp pathphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp arrayphp Anphp associativephp arrayphp ofphp keyphp/valuephp pairsphp specifyingphp thephp metadataphp forphp thisphp objectphp.
+php php php php php php*php php php php php php php php php php php php php php php php php php Ifphp nophp metadataphp existsphp,php anphp emptyphp arrayphp isphp returnedphp.
+php php php php php php*php/
+php php php php publicphp functionphp fetchMetadataphp(php$pathphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$pathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$metadataNodephp php=php php$thisphp-php>php_metadataNsphp-php>getMetadataphp(arrayphp(php'pathphp'php php=php>php php$pathphp)php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp fetchingphp metadataphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
 
-        $metadata = array();
-        $length = count($metadataNode->Metadata);
+php php php php php php php php php$metadataphp php=php arrayphp(php)php;
+php php php php php php php php php$lengthphp php=php countphp(php$metadataNodephp-php>Metadataphp)php;
 
-        // Need to special case this as Nirvanix returns an array if there is
-        // more than one, but doesn't return an array if there is only one.
-        if ($length == 1)
-        {
-            $metadata[(string)$metadataNode->Metadata->Type->value] = (string)$metadataNode->Metadata->Value;
-        }
-        else if ($length > 1)
-        {
-            for ($i=0; $i<$length; $i++)
-            {
-                $metadata[(string)$metadataNode->Metadata[$i]->Type] = (string)$metadataNode->Metadata[$i]->Value;
-            }
-        }
-        return $metadata;
-    }
+php php php php php php php php php/php/php Needphp tophp specialphp casephp thisphp asphp Nirvanixphp returnsphp anphp arrayphp ifphp therephp is
+php php php php php php php php php/php/php morephp thanphp onephp,php butphp doesnphp'tphp returnphp anphp arrayphp ifphp therephp isphp onlyphp onephp.
+php php php php php php php php ifphp php(php$lengthphp php=php=php php1php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$metadataphp[php(stringphp)php$metadataNodephp-php>Metadataphp-php>Typephp-php>valuephp]php php=php php(stringphp)php$metadataNodephp-php>Metadataphp-php>Valuephp;
+php php php php php php php php php}
+php php php php php php php php elsephp ifphp php(php$lengthphp php>php php1php)
+php php php php php php php php php{
+php php php php php php php php php php php php forphp php(php$iphp=php0php;php php$i<php$lengthphp;php php$iphp+php+php)
+php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php$metadataphp[php(stringphp)php$metadataNodephp-php>Metadataphp[php$iphp]php-php>Typephp]php php=php php(stringphp)php$metadataNodephp-php>Metadataphp[php$iphp]php-php>Valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$metadataphp;
+php php php php php}
 
-    /**
-     * Store a key/value array of metadata at the given path.
-     * WARNING: This operation overwrites any metadata that is located at
-     * $destinationPath.
-     *
-     * @param array $metadata - An associative array specifying the key/value pairs for the metadata.
-     * @param $destinationPath
-     * @param  array $options
-     * @return void
-     */
-    public function storeMetadata($destinationPath, $metadata, $options = null)
-    {
-        $destinationPath = $this->_getFullPath($destinationPath);
-        if ($metadata != null) {
-            try {
-                foreach ($metadata AS $key=>$value) {
-                    $metadataString = $key . ":" . $value;
-                    $this->_metadataNs->SetMetadata(array(
-                        'path'     => $destinationPath,
-                        'metadata' => $metadataString,
-                    ));
-                }
-            } catch (Zend_Service_Nirvanix_Exception $e) {
-                throw new Zend_Cloud_StorageService_Exception('Error on storing metadata: '.$e->getMessage(), $e->getCode(), $e);
-            }
-        }
-     }
+php php php php php/php*php*
+php php php php php php*php Storephp aphp keyphp/valuephp arrayphp ofphp metadataphp atphp thephp givenphp pathphp.
+php php php php php php*php WARNINGphp:php Thisphp operationphp overwritesphp anyphp metadataphp thatphp isphp locatedphp at
+php php php php php php*php php$destinationPathphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$metadataphp php-php Anphp associativephp arrayphp specifyingphp thephp keyphp/valuephp pairsphp forphp thephp metadataphp.
+php php php php php php*php php@paramphp php$destinationPath
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp storeMetadataphp(php$destinationPathphp,php php$metadataphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$destinationPathphp php=php php$thisphp-php>php_getFullPathphp(php$destinationPathphp)php;
+php php php php php php php php ifphp php(php$metadataphp php!php=php nullphp)php php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php foreachphp php(php$metadataphp ASphp php$keyphp=php>php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$metadataStringphp php=php php$keyphp php.php php"php:php"php php.php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_metadataNsphp-php>SetMetadataphp(arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'pathphp'php php php php php php=php>php php$destinationPathphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php'metadataphp'php php=php>php php$metadataStringphp,
+php php php php php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp storingphp metadataphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php}
 
-    /**
-     * Delete a key/value array of metadata at the given path.
-     *
-     * @param string $path
-     * @param array $metadata - An associative array specifying the key/value pairs for the metadata
-     *                          to be deleted.  If null, all metadata associated with the object will
-     *                          be deleted.
-     * @param  array $options
-     * @return void
-     */
-    public function deleteMetadata($path, $metadata = null, $options = null)
-    {
-        $path = $this->_getFullPath($path);
-        try {
-            if ($metadata == null) {
-                $this->_metadataNs->DeleteAllMetadata(array('path' => $path));
-            } else {
-                foreach ($metadata AS $key=>$value) {
-                    $this->_metadataNs->DeleteMetadata(array(
-                        'path'     => $path,
-                        'metadata' => $key,
-                    ));
-                    }
-            }
-        } catch (Zend_Service_Nirvanix_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on deleting metadata: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp keyphp/valuephp arrayphp ofphp metadataphp atphp thephp givenphp pathphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$path
+php php php php php php*php php@paramphp arrayphp php$metadataphp php-php Anphp associativephp arrayphp specifyingphp thephp keyphp/valuephp pairsphp forphp thephp metadata
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php tophp bephp deletedphp.php php Ifphp nullphp,php allphp metadataphp associatedphp withphp thephp objectphp will
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php bephp deletedphp.
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteMetadataphp(php$pathphp,php php$metadataphp php=php nullphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$pathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$metadataphp php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_metadataNsphp-php>DeleteAllMetadataphp(arrayphp(php'pathphp'php php=php>php php$pathphp)php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php foreachphp php(php$metadataphp ASphp php$keyphp=php>php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_metadataNsphp-php>DeleteMetadataphp(arrayphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'pathphp'php php php php php php=php>php php$pathphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php'metadataphp'php php=php>php php$keyphp,
+php php php php php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp deletingphp metadataphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /*
-     * Recursively traverse all the folders and build an array that contains
-     * the path names for each folder.
-     *
-     * @param $path - The folder path to get the list of folders from.
-     * @param &$resultArray - reference to the array that contains the path names
-     *                           for each folder.
-     */
-    private function getAllFolders($path, &$resultArray)
-    {
-        $response = $this->_imfNs->ListFolder(array(
-            'folderPath' => $path,
-               'pageNumber' => 1,
-            'pageSize'   => $this->maxPageSize,
-        ));
-           $numFolders = $response->ListFolder->TotalFolderCount;
-           if ($numFolders == 0) {
-               return;
-           } else {
-               //Need to special case this as Nirvanix returns an array if there is
-               //more than one, but doesn't return an array if there is only one.
-            if ($numFolders == 1) {
-                $folderPath = $response->ListFolder->Folder->Path;
-                array_push($resultArray, $folderPath);
-                $this->getAllFolders('/' . $folderPath, $resultArray);
-            } else {
-                foreach ($response->ListFolder->Folder as $arrayElem) {
-                    $folderPath = $arrayElem->Path;
-                    array_push($resultArray, $folderPath);
-                    $this->getAllFolders('/' . $folderPath, $resultArray);
-                }
-            }
-           }
-    }
+php php php php php/php*
+php php php php php php*php Recursivelyphp traversephp allphp thephp foldersphp andphp buildphp anphp arrayphp thatphp contains
+php php php php php php*php thephp pathphp namesphp forphp eachphp folderphp.
+php php php php php php*
+php php php php php php*php php@paramphp php$pathphp php-php Thephp folderphp pathphp tophp getphp thephp listphp ofphp foldersphp fromphp.
+php php php php php php*php php@paramphp php&php$resultArrayphp php-php referencephp tophp thephp arrayphp thatphp containsphp thephp pathphp names
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php forphp eachphp folderphp.
+php php php php php php*php/
+php php php php privatephp functionphp getAllFoldersphp(php$pathphp,php php&php$resultArrayphp)
+php php php php php{
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_imfNsphp-php>ListFolderphp(arrayphp(
+php php php php php php php php php php php php php'folderPathphp'php php=php>php php$pathphp,
+php php php php php php php php php php php php php php php php'pageNumberphp'php php=php>php php1php,
+php php php php php php php php php php php php php'pageSizephp'php php php php=php>php php$thisphp-php>maxPageSizephp,
+php php php php php php php php php)php)php;
+php php php php php php php php php php php php$numFoldersphp php=php php$responsephp-php>ListFolderphp-php>TotalFolderCountphp;
+php php php php php php php php php php php ifphp php(php$numFoldersphp php=php=php php0php)php php{
+php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php/php/Needphp tophp specialphp casephp thisphp asphp Nirvanixphp returnsphp anphp arrayphp ifphp therephp is
+php php php php php php php php php php php php php php php php/php/morephp thanphp onephp,php butphp doesnphp'tphp returnphp anphp arrayphp ifphp therephp isphp onlyphp onephp.
+php php php php php php php php php php php php ifphp php(php$numFoldersphp php=php=php php1php)php php{
+php php php php php php php php php php php php php php php php php$folderPathphp php=php php$responsephp-php>ListFolderphp-php>Folderphp-php>Pathphp;
+php php php php php php php php php php php php php php php php arrayphp_pushphp(php$resultArrayphp,php php$folderPathphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>getAllFoldersphp(php'php/php'php php.php php$folderPathphp,php php$resultArrayphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php foreachphp php(php$responsephp-php>ListFolderphp-php>Folderphp asphp php$arrayElemphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$folderPathphp php=php php$arrayElemphp-php>Pathphp;
+php php php php php php php php php php php php php php php php php php php php arrayphp_pushphp(php$resultArrayphp,php php$folderPathphp)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getAllFoldersphp(php'php/php'php php.php php$folderPathphp,php php$resultArrayphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Return an array of the items contained in the given path.  The items
-     * returned are the files or objects that in the specified path.
-     *
-     * @param  string $path
-     * @param  array  $options
-     * @return array
-     */
-    public function listItems($path, $options = null)
-    {
-        $path = $this->_getFullPath($path);
-        $resultArray = array();
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp thephp itemsphp containedphp inphp thephp givenphp pathphp.php php Thephp items
+php php php php php php*php returnedphp arephp thephp filesphp orphp objectsphp thatphp inphp thephp specifiedphp pathphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp listItemsphp(php$pathphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$pathphp php=php php$thisphp-php>php_getFullPathphp(php$pathphp)php;
+php php php php php php php php php$resultArrayphp php=php arrayphp(php)php;
 
-        if (!isset($path)) {
-            return false;
-        } else {
-            try {
-                $response = $this->_imfNs->ListFolder(array(
-                    'folderPath' => $path,
-                    'pageNumber' => 1,
-                    'pageSize'   => $this->maxPageSize,
-                ));
-            } catch (Zend_Service_Nirvanix_Exception $e) {
-                throw new Zend_Cloud_StorageService_Exception('Error on list: '.$e->getMessage(), $e->getCode(), $e);
-            }
+php php php php php php php php ifphp php(php!issetphp(php$pathphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php$responsephp php=php php$thisphp-php>php_imfNsphp-php>ListFolderphp(arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'folderPathphp'php php=php>php php$pathphp,
+php php php php php php php php php php php php php php php php php php php php php'pageNumberphp'php php=php>php php1php,
+php php php php php php php php php php php php php php php php php php php php php'pageSizephp'php php php php=php>php php$thisphp-php>maxPageSizephp,
+php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php}php catchphp php(Zendphp_Servicephp_Nirvanixphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Errorphp onphp listphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php php php php php}
 
-            $numFiles = $response->ListFolder->TotalFileCount;
+php php php php php php php php php php php php php$numFilesphp php=php php$responsephp-php>ListFolderphp-php>TotalFileCountphp;
 
-            //Add the file names to the array
-            if ($numFiles != 0) {
-                //Need to special case this as Nirvanix returns an array if there is
-                //more than one, but doesn't return an array if there is only one.
-                if ($numFiles == 1) {
-                    $resultArray[] = (string)$response->ListFolder->File->Name;
-                }
-                else {
-                    foreach ($response->ListFolder->File as $arrayElem) {
-                        $resultArray[] = (string) $arrayElem->Name;
-                    }
-                }
-            }
-        }
+php php php php php php php php php php php php php/php/Addphp thephp filephp namesphp tophp thephp array
+php php php php php php php php php php php php ifphp php(php$numFilesphp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php/php/Needphp tophp specialphp casephp thisphp asphp Nirvanixphp returnsphp anphp arrayphp ifphp therephp is
+php php php php php php php php php php php php php php php php php/php/morephp thanphp onephp,php butphp doesnphp'tphp returnphp anphp arrayphp ifphp therephp isphp onlyphp onephp.
+php php php php php php php php php php php php php php php php ifphp php(php$numFilesphp php=php=php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php$resultArrayphp[php]php php=php php(stringphp)php$responsephp-php>ListFolderphp-php>Filephp-php>Namephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php elsephp php{
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$responsephp-php>ListFolderphp-php>Filephp asphp php$arrayElemphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultArrayphp[php]php php=php php(stringphp)php php$arrayElemphp-php>Namephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $resultArray;
-    }
+php php php php php php php php returnphp php$resultArrayphp;
+php php php php php}
 
-    /**
-     * Get full path to an object
-     *
-     * @param  string $path
-     * @return string
-     */
-    private function _getFullPath($path)
-    {
-        return $this->_remoteDirectory . $path;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp fullphp pathphp tophp anphp object
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php privatephp functionphp php_getFullPathphp(php$pathphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_remoteDirectoryphp php.php php$pathphp;
+php php php php php}
 
-    /**
-     * Get the concrete client.
-     * @return Zend_Service_Nirvanix
-     */
-    public function getClient()
-    {
-         return $this->_nirvanix;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp thephp concretephp clientphp.
+php php php php php php*php php@returnphp Zendphp_Servicephp_Nirvanix
+php php php php php php*php/
+php php php php publicphp functionphp getClientphp(php)
+php php php php php{
+php php php php php php php php php returnphp php$thisphp-php>php_nirvanixphp;
+php php php php php}
+php}

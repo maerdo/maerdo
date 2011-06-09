@@ -1,246 +1,246 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Wildfire
- * @subpackage Plugin
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Message.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Wildfire
+php php*php php@subpackagephp Plugin
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Messagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * A message envelope that can be passed to Zend_Wildfire_Plugin_FirePhp to be
- * logged to Firebug instead of a variable.
- *
- * @category   Zend
- * @package    Zend_Wildfire
- * @subpackage Plugin
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Wildfire_Plugin_FirePhp_Message
-{
-    /**
-     * The style of the message
-     * @var string
-     */
-    protected $_style = null;
+php/php*php*
+php php*php Aphp messagephp envelopephp thatphp canphp bephp passedphp tophp Zendphp_Wildfirephp_Pluginphp_FirePhpphp tophp be
+php php*php loggedphp tophp Firebugphp insteadphp ofphp aphp variablephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Wildfire
+php php*php php@subpackagephp Plugin
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Wildfirephp_Pluginphp_FirePhpphp_Message
+php{
+php php php php php/php*php*
+php php php php php php*php Thephp stylephp ofphp thephp message
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_stylephp php=php nullphp;
 
-    /**
-     * The label of the message
-     * @var string
-     */
-    protected $_label = null;
+php php php php php/php*php*
+php php php php php php*php Thephp labelphp ofphp thephp message
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_labelphp php=php nullphp;
 
-    /**
-     * The message value
-     * @var mixed
-     */
-    protected $_message = null;
+php php php php php/php*php*
+php php php php php php*php Thephp messagephp value
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php protectedphp php$php_messagephp php=php nullphp;
 
-    /**
-     * Flag indicating if message buffering is enabled
-     * @var boolean
-     */
-    protected $_buffered = false;
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp ifphp messagephp bufferingphp isphp enabled
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_bufferedphp php=php falsephp;
 
-    /**
-     * Flag indicating if message should be destroyed and not delivered
-     * @var boolean
-     */
-    protected $_destroy = false;
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp ifphp messagephp shouldphp bephp destroyedphp andphp notphp delivered
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_destroyphp php=php falsephp;
 
-    /**
-     * Random unique ID used to identify message in comparison operations
-     * @var string
-     */
-    protected $_ruid = false;
+php php php php php/php*php*
+php php php php php php*php Randomphp uniquephp IDphp usedphp tophp identifyphp messagephp inphp comparisonphp operations
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_ruidphp php=php falsephp;
 
-    /**
-     * Options for the object
-     * @var array
-     */
-    protected $_options = array(
-        'traceOffset' => null, /* The offset in the trace which identifies the source of the message */
-        'includeLineNumbers' => null /* Whether to include line and file info for this message */
-    );
+php php php php php/php*php*
+php php php php php php*php Optionsphp forphp thephp object
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'traceOffsetphp'php php=php>php nullphp,php php/php*php Thephp offsetphp inphp thephp tracephp whichphp identifiesphp thephp sourcephp ofphp thephp messagephp php*php/
+php php php php php php php php php'includeLineNumbersphp'php php=php>php nullphp php/php*php Whetherphp tophp includephp linephp andphp filephp infophp forphp thisphp messagephp php*php/
+php php php php php)php;
 
-    /**
-     * Creates a new message with the given style and message
-     *
-     * @param string $style Style of the message.
-     * @param mixed $message The message
-     * @return void
-     */
-    function __construct($style, $message)
-    {
-        $this->_style = $style;
-        $this->_message = $message;
-        $this->_ruid = md5(microtime().mt_rand());
-    }
+php php php php php/php*php*
+php php php php php php*php Createsphp aphp newphp messagephp withphp thephp givenphp stylephp andphp message
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$stylephp Stylephp ofphp thephp messagephp.
+php php php php php php*php php@paramphp mixedphp php$messagephp Thephp message
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php functionphp php_php_constructphp(php$stylephp,php php$messagephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_stylephp php=php php$stylephp;
+php php php php php php php php php$thisphp-php>php_messagephp php=php php$messagephp;
+php php php php php php php php php$thisphp-php>php_ruidphp php=php mdphp5php(microtimephp(php)php.mtphp_randphp(php)php)php;
+php php php php php}
 
-    /**
-     * Set the label of the message
-     *
-     * @param string $label The label to be set
-     * @return void
-     */
-    public function setLabel($label)
-    {
-        $this->_label = $label;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp labelphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$labelphp Thephp labelphp tophp bephp set
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setLabelphp(php$labelphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_labelphp php=php php$labelphp;
+php php php php php}
 
-    /**
-     * Get the label of the message
-     *
-     * @return string The label of the message
-     */
-    public function getLabel()
-    {
-        return $this->_label;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp labelphp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp labelphp ofphp thephp message
+php php php php php php*php/
+php php php php publicphp functionphp getLabelphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_labelphp;
+php php php php php}
 
-    /**
-     * Enable or disable message buffering
-     *
-     * If a message is buffered it can be updated for the duration of the
-     * request and is only flushed at the end of the request.
-     *
-     * @param boolean $buffered TRUE to enable buffering FALSE otherwise
-     * @return boolean Returns previous buffering value
-     */
-    public function setBuffered($buffered)
-    {
-        $previous = $this->_buffered;
-        $this->_buffered = $buffered;
-        return $previous;
-    }
+php php php php php/php*php*
+php php php php php php*php Enablephp orphp disablephp messagephp buffering
+php php php php php php*
+php php php php php php*php Ifphp aphp messagephp isphp bufferedphp itphp canphp bephp updatedphp forphp thephp durationphp ofphp the
+php php php php php php*php requestphp andphp isphp onlyphp flushedphp atphp thephp endphp ofphp thephp requestphp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$bufferedphp TRUEphp tophp enablephp bufferingphp FALSEphp otherwise
+php php php php php php*php php@returnphp booleanphp Returnsphp previousphp bufferingphp value
+php php php php php php*php/
+php php php php publicphp functionphp setBufferedphp(php$bufferedphp)
+php php php php php{
+php php php php php php php php php$previousphp php=php php$thisphp-php>php_bufferedphp;
+php php php php php php php php php$thisphp-php>php_bufferedphp php=php php$bufferedphp;
+php php php php php php php php returnphp php$previousphp;
+php php php php php}
 
-    /**
-     * Determine if buffering is enabled or disabled
-     *
-     * @return boolean Returns TRUE if buffering is enabled, FALSE otherwise.
-     */
-    public function getBuffered()
-    {
-        return $this->_buffered;
-    }
+php php php php php/php*php*
+php php php php php php*php Determinephp ifphp bufferingphp isphp enabledphp orphp disabled
+php php php php php php*
+php php php php php php*php php@returnphp booleanphp Returnsphp TRUEphp ifphp bufferingphp isphp enabledphp,php FALSEphp otherwisephp.
+php php php php php php*php/
+php php php php publicphp functionphp getBufferedphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_bufferedphp;
+php php php php php}
 
-    /**
-     * Destroy the message to prevent delivery
-     *
-     * @param boolean $destroy TRUE to destroy FALSE otherwise
-     * @return boolean Returns previous destroy value
-     */
-    public function setDestroy($destroy)
-    {
-        $previous = $this->_destroy;
-        $this->_destroy = $destroy;
-        return $previous;
-    }
+php php php php php/php*php*
+php php php php php php*php Destroyphp thephp messagephp tophp preventphp delivery
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$destroyphp TRUEphp tophp destroyphp FALSEphp otherwise
+php php php php php php*php php@returnphp booleanphp Returnsphp previousphp destroyphp value
+php php php php php php*php/
+php php php php publicphp functionphp setDestroyphp(php$destroyphp)
+php php php php php{
+php php php php php php php php php$previousphp php=php php$thisphp-php>php_destroyphp;
+php php php php php php php php php$thisphp-php>php_destroyphp php=php php$destroyphp;
+php php php php php php php php returnphp php$previousphp;
+php php php php php}
 
-    /**
-     * Determine if message should be destroyed
-     *
-     * @return boolean Returns TRUE if message should be destroyed, FALSE otherwise.
-     */
-    public function getDestroy()
-    {
-        return $this->_destroy;
-    }
+php php php php php/php*php*
+php php php php php php*php Determinephp ifphp messagephp shouldphp bephp destroyed
+php php php php php php*
+php php php php php php*php php@returnphp booleanphp Returnsphp TRUEphp ifphp messagephp shouldphp bephp destroyedphp,php FALSEphp otherwisephp.
+php php php php php php*php/
+php php php php publicphp functionphp getDestroyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_destroyphp;
+php php php php php}
 
-    /**
-     * Set the style of the message
-     *
-     * @return void
-     */
-    public function setStyle($style)
-    {
-        $this->_style = $style;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp stylephp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setStylephp(php$stylephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_stylephp php=php php$stylephp;
+php php php php php}
 
-    /**
-     * Get the style of the message
-     *
-     * @return string The style of the message
-     */
-    public function getStyle()
-    {
-        return $this->_style;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp stylephp ofphp thephp message
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp stylephp ofphp thephp message
+php php php php php php*php/
+php php php php publicphp functionphp getStylephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_stylephp;
+php php php php php}
 
-    /**
-     * Set the actual message to be sent in its final format.
-     *
-     * @return void
-     */
-    public function setMessage($message)
-    {
-        $this->_message = $message;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp actualphp messagephp tophp bephp sentphp inphp itsphp finalphp formatphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setMessagephp(php$messagephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_messagephp php=php php$messagephp;
+php php php php php}
 
-    /**
-     * Get the actual message to be sent in its final format.
-     *
-     * @return mixed Returns the message to be sent.
-     */
-    public function getMessage()
-    {
-        return $this->_message;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp actualphp messagephp tophp bephp sentphp inphp itsphp finalphp formatphp.
+php php php php php php*
+php php php php php php*php php@returnphp mixedphp Returnsphp thephp messagephp tophp bephp sentphp.
+php php php php php php*php/
+php php php php publicphp functionphp getMessagephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_messagephp;
+php php php php php}
 
-    /**
-     * Set a single option
-     *
-     * @param  string $key The name of the option
-     * @param  mixed $value The value of the option
-     * @return mixed The previous value of the option
-     */
-    public function setOption($key, $value)
-    {
-      if(!array_key_exists($key,$this->_options)) {
-        throw new Zend_Wildfire_Exception('Option with name "'.$key.'" does not exist!');
-      }
-      $previous = $this->_options[$key];
-      $this->_options[$key] = $value;
-      return $previous;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp singlephp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$keyphp Thephp namephp ofphp thephp option
+php php php php php php*php php@paramphp php mixedphp php$valuephp Thephp valuephp ofphp thephp option
+php php php php php php*php php@returnphp mixedphp Thephp previousphp valuephp ofphp thephp option
+php php php php php php*php/
+php php php php publicphp functionphp setOptionphp(php$keyphp,php php$valuephp)
+php php php php php{
+php php php php php php ifphp(php!arrayphp_keyphp_existsphp(php$keyphp,php$thisphp-php>php_optionsphp)php)php php{
+php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Optionphp withphp namephp php"php'php.php$keyphp.php'php"php doesphp notphp existphp!php'php)php;
+php php php php php php php}
+php php php php php php php$previousphp php=php php$thisphp-php>php_optionsphp[php$keyphp]php;
+php php php php php php php$thisphp-php>php_optionsphp[php$keyphp]php php=php php$valuephp;
+php php php php php php returnphp php$previousphp;
+php php php php php}
 
-    /**
-     * Retrieve a single option
-     *
-     * @param  string $key The name of the option
-     * @return mixed The value of the option
-     */
-    public function getOption($key)
-    {
-      if(!array_key_exists($key,$this->_options)) {
-        throw new Zend_Wildfire_Exception('Option with name "'.$key.'" does not exist!');
-      }
-      return $this->_options[$key];
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp singlephp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$keyphp Thephp namephp ofphp thephp option
+php php php php php php*php php@returnphp mixedphp Thephp valuephp ofphp thephp option
+php php php php php php*php/
+php php php php publicphp functionphp getOptionphp(php$keyphp)
+php php php php php{
+php php php php php php ifphp(php!arrayphp_keyphp_existsphp(php$keyphp,php$thisphp-php>php_optionsphp)php)php php{
+php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Optionphp withphp namephp php"php'php.php$keyphp.php'php"php doesphp notphp existphp!php'php)php;
+php php php php php php php}
+php php php php php php returnphp php$thisphp-php>php_optionsphp[php$keyphp]php;
+php php php php php}
 
-    /**
-     * Retrieve all options
-     *
-     * @return array All options
-     */
-    public function getOptions()
-    {
-      return $this->_options;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Retrievephp allphp options
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Allphp options
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php)
+php php php php php{
+php php php php php php returnphp php$thisphp-php>php_optionsphp;
+php php php php php}
+php}
 

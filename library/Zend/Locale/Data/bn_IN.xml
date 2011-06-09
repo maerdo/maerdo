@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.61 $"/>
-		<generation date="$Date: 2009/05/05 23:06:34 $"/>
-		<language type="bn"/>
-		<territory type="IN"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="ab">আবখাজিয়ান</language>
-			<language type="ace">অ্যাচাইনিজ</language>
-			<language type="ach">আকোলি</language>
-			<language type="afa">আফ্রো-এশিয়াটিক ভাষা</language>
-			<language type="alg">আলগোনকিউয়ান ভাষা</language>
-			<language type="anp">আঙ্গিকা</language>
-			<language type="ch">চামোরো</language>
-			<language type="chn">চিনুক জার্গন</language>
-			<language type="cho">চকটোও</language>
-			<language type="chp">চিপেওয়াইয়ান</language>
-			<language type="chy">চেয়েনি</language>
-			<language type="cu">চার্চ স্লাভিক</language>
-			<language type="de_AT">অস্ট্রিয়ান জারমান</language>
-			<language type="doi">ডোগরি</language>
-			<language type="en_AU">অস্ট্রেলিয়ান ইংরাজী</language>
-			<language type="en_CA">ক্যানাডিয়ান ইংরেজি</language>
-			<language type="en_GB">ব্রিটিশ ইংরেজী</language>
-			<language type="fr_CA">ক্যানাডিয়ান ফরাসী</language>
-			<language type="map">অস্ট্রোনেসিয়ান</language>
-			<language type="rup">আরমেনিয়ান</language>
-			<language type="tut">আলটাইক</language>
-			<language type="zbl">ব্লিসসিম্বলস</language>
-		</languages>
-	</localeDisplayNames>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php1php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php4php php$php"php/php>
+php	php	php<languagephp typephp=php"bnphp"php/php>
+php	php	php<territoryphp typephp=php"INphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"abphp"php>phpআphpবphpখphpাphpজphpিphpযphp়phpাphpন<php/languagephp>
+php	php	php	php<languagephp typephp=php"acephp"php>phpঅphp্phpযphpাphpচphpাphpইphpনphpিphpজ<php/languagephp>
+php	php	php	php<languagephp typephp=php"achphp"php>phpআphpকphpোphpলphpি<php/languagephp>
+php	php	php	php<languagephp typephp=php"afaphp"php>phpআphpফphp্phpরphpোphp-phpএphpশphpিphpযphp়phpাphpটphpিphpকphp phpভphpাphpষphpা<php/languagephp>
+php	php	php	php<languagephp typephp=php"algphp"php>phpআphpলphpগphpোphpনphpকphpিphpউphpযphp়phpাphpনphp phpভphpাphpষphpা<php/languagephp>
+php	php	php	php<languagephp typephp=php"anpphp"php>phpআphpঙphp্phpগphpিphpকphpা<php/languagephp>
+php	php	php	php<languagephp typephp=php"chphp"php>phpচphpাphpমphpোphpরphpো<php/languagephp>
+php	php	php	php<languagephp typephp=php"chnphp"php>phpচphpিphpনphpুphpকphp phpজphpাphpরphp্phpগphpন<php/languagephp>
+php	php	php	php<languagephp typephp=php"chophp"php>phpচphpকphpটphpোphpও<php/languagephp>
+php	php	php	php<languagephp typephp=php"chpphp"php>phpচphpিphpপphpেphpওphpযphp়phpাphpইphpযphp়phpাphpন<php/languagephp>
+php	php	php	php<languagephp typephp=php"chyphp"php>phpচphpেphpযphp়phpেphpনphpি<php/languagephp>
+php	php	php	php<languagephp typephp=php"cuphp"php>phpচphpাphpরphp্phpচphp phpসphp্phpলphpাphpভphpিphpক<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp_ATphp"php>phpঅphpসphp্phpটphp্phpরphpিphpযphp়phpাphpনphp phpজphpাphpরphpমphpাphpন<php/languagephp>
+php	php	php	php<languagephp typephp=php"doiphp"php>phpডphpোphpগphpরphpি<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_AUphp"php>phpঅphpসphp্phpটphp্phpরphpেphpলphpিphpযphp়phpাphpনphp phpইphpংphpরphpাphpজphpী<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_CAphp"php>phpকphp্phpযphpাphpনphpাphpডphpিphpযphp়phpাphpনphp phpইphpংphpরphpেphpজphpি<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_GBphp"php>phpবphp্phpরphpিphpটphpিphpশphp phpইphpংphpরphpেphpজphpী<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp_CAphp"php>phpকphp্phpযphpাphpনphpাphpডphpিphpযphp়phpাphpনphp phpফphpরphpাphpসphpী<php/languagephp>
+php	php	php	php<languagephp typephp=php"mapphp"php>phpঅphpসphp্phpটphp্phpরphpোphpনphpেphpসphpিphpযphp়phpাphpন<php/languagephp>
+php	php	php	php<languagephp typephp=php"rupphp"php>phpআphpরphpমphpেphpনphpিphpযphp়phpাphpন<php/languagephp>
+php	php	php	php<languagephp typephp=php"tutphp"php>phpআphpলphpটphpাphpইphpক<php/languagephp>
+php	php	php	php<languagephp typephp=php"zblphp"php>phpবphp্phpলphpিphpসphpসphpিphpমphp্phpবphpলphpস<php/languagephp>
+php	php	<php/languagesphp>
+php	<php/localeDisplayNamesphp>
+<php/ldmlphp>

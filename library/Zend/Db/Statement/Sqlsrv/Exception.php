@@ -1,61 +1,61 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Exception.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Exceptionphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Db_Statement_Exception
- */
-require_once 'Zend/Db/Statement/Exception.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Statementphp_Exception
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
 
-/**
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Db_Statement_Sqlsrv_Exception extends Zend_Db_Statement_Exception
-{
-    /**
-     * Constructor
-     *
-     * If $message is an array, the assumption is that the return value of
-     * sqlsrv_errors() was provided. If so, it then retrieves the most recent
-     * error from that stack, and sets the message and code based on it.
-     *
-     * @param null|array|string $message
-     * @param null|int $code
-     */
-    public function __construct($message = null, $code = 0)
-    {
-       if (is_array($message)) {
-            // Error should be array of errors
-            // We only need first one (?)
-            if (isset($message[0])) {
-                $message = $message[0];
-            }
+php/php*php*
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Dbphp_Statementphp_Sqlsrvphp_Exceptionphp extendsphp Zendphp_Dbphp_Statementphp_Exception
+php{
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php Ifphp php$messagephp isphp anphp arrayphp,php thephp assumptionphp isphp thatphp thephp returnphp valuephp of
+php php php php php php*php sqlsrvphp_errorsphp(php)php wasphp providedphp.php Ifphp sophp,php itphp thenphp retrievesphp thephp mostphp recent
+php php php php php php*php errorphp fromphp thatphp stackphp,php andphp setsphp thephp messagephp andphp codephp basedphp onphp itphp.
+php php php php php php*
+php php php php php php*php php@paramphp nullphp|arrayphp|stringphp php$message
+php php php php php php*php php@paramphp nullphp|intphp php$code
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$messagephp php=php nullphp,php php$codephp php=php php0php)
+php php php php php{
+php php php php php php php ifphp php(isphp_arrayphp(php$messagephp)php)php php{
+php php php php php php php php php php php php php/php/php Errorphp shouldphp bephp arrayphp ofphp errors
+php php php php php php php php php php php php php/php/php Wephp onlyphp needphp firstphp onephp php(php?php)
+php php php php php php php php php php php php ifphp php(issetphp(php$messagephp[php0php]php)php)php php{
+php php php php php php php php php php php php php php php php php$messagephp php=php php$messagephp[php0php]php;
+php php php php php php php php php php php php php}
 
-            $code    = (int)    $message['code'];
-            $message = (string) $message['message'];
-       }
-       parent::__construct($message, $code);
-   }
-}
+php php php php php php php php php php php php php$codephp php php php php=php php(intphp)php php php php php$messagephp[php'codephp'php]php;
+php php php php php php php php php php php php php$messagephp php=php php(stringphp)php php$messagephp[php'messagephp'php]php;
+php php php php php php php php}
+php php php php php php php parentphp:php:php_php_constructphp(php$messagephp,php php$codephp)php;
+php php php php}
+php}
 

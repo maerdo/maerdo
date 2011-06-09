@@ -1,152 +1,152 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: CosmosResult.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Technorati
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php CosmosResultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @see Zend_Service_Technorati_Result
- */
-require_once 'Zend/Service/Technorati/Result.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Technoratiphp_Result
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Technoratiphp/Resultphp.phpphp'php;
 
 
-/**
- * Represents a single Technorati Cosmos query result object.
- * It is never returned as a standalone object,
- * but it always belongs to a valid Zend_Service_Technorati_CosmosResultSet object.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Technorati_CosmosResult extends Zend_Service_Technorati_Result
-{
-    /**
-     * Technorati weblog object that links queried URL.
-     *
-     * @var     Zend_Service_Technorati_Weblog
-     * @access  protected
-     */
-    protected $_weblog;
+php/php*php*
+php php*php Representsphp aphp singlephp Technoratiphp Cosmosphp queryphp resultphp objectphp.
+php php*php Itphp isphp neverphp returnedphp asphp aphp standalonephp objectphp,
+php php*php butphp itphp alwaysphp belongsphp tophp aphp validphp Zendphp_Servicephp_Technoratiphp_CosmosResultSetphp objectphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Technorati
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Technoratiphp_CosmosResultphp extendsphp Zendphp_Servicephp_Technoratiphp_Result
+php{
+php php php php php/php*php*
+php php php php php php*php Technoratiphp weblogphp objectphp thatphp linksphp queriedphp URLphp.
+php php php php php php*
+php php php php php php*php php@varphp php php php php Zendphp_Servicephp_Technoratiphp_Weblog
+php php php php php php*php php@accessphp php protected
+php php php php php php*php/
+php php php php protectedphp php$php_weblogphp;
 
-    /**
-     * The nearest permalink tracked for queried URL.
-     *
-     * @var     Zend_Uri_Http
-     * @access  protected
-     */
-    protected $_nearestPermalink;
+php php php php php/php*php*
+php php php php php php*php Thephp nearestphp permalinkphp trackedphp forphp queriedphp URLphp.
+php php php php php php*
+php php php php php php*php php@varphp php php php php Zendphp_Uriphp_Http
+php php php php php php*php php@accessphp php protected
+php php php php php php*php/
+php php php php protectedphp php$php_nearestPermalinkphp;
 
-    /**
-     * The excerpt of the blog/page linking queried URL.
-     *
-     * @var     string
-     * @access  protected
-     */
-    protected $_excerpt;
+php php php php php/php*php*
+php php php php php php*php Thephp excerptphp ofphp thephp blogphp/pagephp linkingphp queriedphp URLphp.
+php php php php php php*
+php php php php php php*php php@varphp php php php php string
+php php php php php php*php php@accessphp php protected
+php php php php php php*php/
+php php php php protectedphp php$php_excerptphp;
 
-    /**
-     * The the datetime the link was created.
-     *
-     * @var     Zend_Date
-     * @access  protected
-     */
-    protected $_linkCreated;
+php php php php php/php*php*
+php php php php php php*php Thephp thephp datetimephp thephp linkphp wasphp createdphp.
+php php php php php php*
+php php php php php php*php php@varphp php php php php Zendphp_Date
+php php php php php php*php php@accessphp php protected
+php php php php php php*php/
+php php php php protectedphp php$php_linkCreatedphp;
 
-    /**
-     * The URL of the specific link target page
-     *
-     * @var     Zend_Uri_Http
-     * @access  protected
-     */
-    protected $_linkUrl;
+php php php php php/php*php*
+php php php php php php*php Thephp URLphp ofphp thephp specificphp linkphp targetphp page
+php php php php php php*
+php php php php php php*php php@varphp php php php php Zendphp_Uriphp_Http
+php php php php php php*php php@accessphp php protected
+php php php php php php*php/
+php php php php protectedphp php$php_linkUrlphp;
 
 
-    /**
-     * Constructs a new object object from DOM Element.
-     *
-     * @param   DomElement $dom the ReST fragment for this object
-     */
-    public function __construct(DomElement $dom)
-    {
-        $this->_fields = array( '_nearestPermalink' => 'nearestpermalink',
-                                '_excerpt'          => 'excerpt',
-                                '_linkCreated'      => 'linkcreated',
-                                '_linkUrl'          => 'linkurl');
-        parent::__construct($dom);
+php php php php php/php*php*
+php php php php php php*php Constructsphp aphp newphp objectphp objectphp fromphp DOMphp Elementphp.
+php php php php php php*
+php php php php php php*php php@paramphp php php DomElementphp php$domphp thephp ReSTphp fragmentphp forphp thisphp object
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(DomElementphp php$domphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fieldsphp php=php arrayphp(php php'php_nearestPermalinkphp'php php=php>php php'nearestpermalinkphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php_excerptphp'php php php php php php php php php php php=php>php php'excerptphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php_linkCreatedphp'php php php php php php php=php>php php'linkcreatedphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php_linkUrlphp'php php php php php php php php php php php=php>php php'linkurlphp'php)php;
+php php php php php php php php parentphp:php:php_php_constructphp(php$domphp)php;
 
-        // weblog object field
-        $this->_parseWeblog();
+php php php php php php php php php/php/php weblogphp objectphp field
+php php php php php php php php php$thisphp-php>php_parseWeblogphp(php)php;
 
-        // filter fields
-        $this->_nearestPermalink = Zend_Service_Technorati_Utils::normalizeUriHttp($this->_nearestPermalink);
-        $this->_linkUrl = Zend_Service_Technorati_Utils::normalizeUriHttp($this->_linkUrl);
-        $this->_linkCreated = Zend_Service_Technorati_Utils::normalizeDate($this->_linkCreated);
-    }
+php php php php php php php php php/php/php filterphp fields
+php php php php php php php php php$thisphp-php>php_nearestPermalinkphp php=php Zendphp_Servicephp_Technoratiphp_Utilsphp:php:normalizeUriHttpphp(php$thisphp-php>php_nearestPermalinkphp)php;
+php php php php php php php php php$thisphp-php>php_linkUrlphp php=php Zendphp_Servicephp_Technoratiphp_Utilsphp:php:normalizeUriHttpphp(php$thisphp-php>php_linkUrlphp)php;
+php php php php php php php php php$thisphp-php>php_linkCreatedphp php=php Zendphp_Servicephp_Technoratiphp_Utilsphp:php:normalizeDatephp(php$thisphp-php>php_linkCreatedphp)php;
+php php php php php}
 
-    /**
-     * Returns the weblog object that links queried URL.
-     *
-     * @return  Zend_Service_Technorati_Weblog
-     */
-    public function getWeblog() {
-        return $this->_weblog;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp weblogphp objectphp thatphp linksphp queriedphp URLphp.
+php php php php php php*
+php php php php php php*php php@returnphp php Zendphp_Servicephp_Technoratiphp_Weblog
+php php php php php php*php/
+php php php php publicphp functionphp getWeblogphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_weblogphp;
+php php php php php}
 
-    /**
-     * Returns the nearest permalink tracked for queried URL.
-     *
-     * @return  Zend_Uri_Http
-     */
-    public function getNearestPermalink() {
-        return $this->_nearestPermalink;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp nearestphp permalinkphp trackedphp forphp queriedphp URLphp.
+php php php php php php*
+php php php php php php*php php@returnphp php Zendphp_Uriphp_Http
+php php php php php php*php/
+php php php php publicphp functionphp getNearestPermalinkphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_nearestPermalinkphp;
+php php php php php}
 
-    /**
-     * Returns the excerpt of the blog/page linking queried URL.
-     *
-     * @return  string
-     */
-    public function getExcerpt() {
-        return $this->_excerpt;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp excerptphp ofphp thephp blogphp/pagephp linkingphp queriedphp URLphp.
+php php php php php php*
+php php php php php php*php php@returnphp php string
+php php php php php php*php/
+php php php php publicphp functionphp getExcerptphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_excerptphp;
+php php php php php}
 
-    /**
-     * Returns the datetime the link was created.
-     *
-     * @return  Zend_Date
-     */
-    public function getLinkCreated() {
-        return $this->_linkCreated;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp datetimephp thephp linkphp wasphp createdphp.
+php php php php php php*
+php php php php php php*php php@returnphp php Zendphp_Date
+php php php php php php*php/
+php php php php publicphp functionphp getLinkCreatedphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_linkCreatedphp;
+php php php php php}
 
-    /**
-     * If queried URL is a valid blog,
-     * returns the URL of the specific link target page.
-     *
-     * @return  Zend_Uri_Http
-     */
-    public function getLinkUrl() {
-        return $this->_linkUrl;
-    }
+php php php php php/php*php*
+php php php php php php*php Ifphp queriedphp URLphp isphp aphp validphp blogphp,
+php php php php php php*php returnsphp thephp URLphp ofphp thephp specificphp linkphp targetphp pagephp.
+php php php php php php*
+php php php php php php*php php@returnphp php Zendphp_Uriphp_Http
+php php php php php php*php/
+php php php php publicphp functionphp getLinkUrlphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_linkUrlphp;
+php php php php php}
 
-}
+php}

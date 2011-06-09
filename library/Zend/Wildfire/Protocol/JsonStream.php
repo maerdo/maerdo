@@ -1,235 +1,235 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Wildfire
- * @subpackage Protocol
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: JsonStream.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Wildfire
+php php*php php@subpackagephp Protocol
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php JsonStreamphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Wildfire_Plugin_Interface */
-require_once 'Zend/Wildfire/Plugin/Interface.php';
+php/php*php*php Zendphp_Wildfirephp_Pluginphp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Wildfirephp/Pluginphp/Interfacephp.phpphp'php;
 
-/** Zend_Wildfire_Channel_Interface */
-require_once 'Zend/Wildfire/Channel/Interface.php';
+php/php*php*php Zendphp_Wildfirephp_Channelphp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Wildfirephp/Channelphp/Interfacephp.phpphp'php;
 
-/** Zend_Json */
-require_once 'Zend/Json.php';
+php/php*php*php Zendphp_Jsonphp php*php/
+requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
 
-/**
- * Encodes messages into the Wildfire JSON Stream Communication Protocol.
- *
- * @category   Zend
- * @package    Zend_Wildfire
- * @subpackage Protocol
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Wildfire_Protocol_JsonStream
-{
-    /**
-     * The protocol URI for this protocol
-     */
-    const PROTOCOL_URI = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
+php/php*php*
+php php*php Encodesphp messagesphp intophp thephp Wildfirephp JSONphp Streamphp Communicationphp Protocolphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Wildfire
+php php*php php@subpackagephp Protocol
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Wildfirephp_Protocolphp_JsonStream
+php{
+php php php php php/php*php*
+php php php php php php*php Thephp protocolphp URIphp forphp thisphp protocol
+php php php php php php*php/
+php php php php constphp PROTOCOLphp_URIphp php=php php'httpphp:php/php/metaphp.wildfirehqphp.orgphp/Protocolphp/JsonStreamphp/php0php.php2php'php;
 
-    /**
-     * All messages to be sent.
-     * @var array
-     */
-    protected $_messages = array();
+php php php php php/php*php*
+php php php php php php*php Allphp messagesphp tophp bephp sentphp.
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messagesphp php=php arrayphp(php)php;
 
-    /**
-     * Plugins that are using this protocol
-     * @var array
-     */
-    protected $_plugins = array();
+php php php php php/php*php*
+php php php php php php*php Pluginsphp thatphp arephp usingphp thisphp protocol
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_pluginsphp php=php arrayphp(php)php;
 
-    /**
-     * Register a plugin that uses this protocol
-     *
-     * @param Zend_Wildfire_Plugin_Interface $plugin The plugin to be registered
-     * @return boolean Returns TRUE if plugin was registered, false if it was already registered
-     */
-    public function registerPlugin(Zend_Wildfire_Plugin_Interface $plugin)
-    {
-        if (in_array($plugin,$this->_plugins)) {
-            return false;
-        }
-        $this->_plugins[] = $plugin;
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Registerphp aphp pluginphp thatphp usesphp thisphp protocol
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Wildfirephp_Pluginphp_Interfacephp php$pluginphp Thephp pluginphp tophp bephp registered
+php php php php php php*php php@returnphp booleanphp Returnsphp TRUEphp ifphp pluginphp wasphp registeredphp,php falsephp ifphp itphp wasphp alreadyphp registered
+php php php php php php*php/
+php php php php publicphp functionphp registerPluginphp(Zendphp_Wildfirephp_Pluginphp_Interfacephp php$pluginphp)
+php php php php php{
+php php php php php php php php ifphp php(inphp_arrayphp(php$pluginphp,php$thisphp-php>php_pluginsphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_pluginsphp[php]php php=php php$pluginphp;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Record a message with the given data in the given structure
-     *
-     * @param Zend_Wildfire_Plugin_Interface $plugin The plugin recording the message
-     * @param string $structure The structure to be used for the data
-     * @param array $data The data to be recorded
-     * @return boolean Returns TRUE if message was recorded
-     */
-    public function recordMessage(Zend_Wildfire_Plugin_Interface $plugin, $structure, $data)
-    {
-        if(!isset($this->_messages[$structure])) {
-            $this->_messages[$structure] = array();
-        }
+php php php php php/php*php*
+php php php php php php*php Recordphp aphp messagephp withphp thephp givenphp dataphp inphp thephp givenphp structure
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Wildfirephp_Pluginphp_Interfacephp php$pluginphp Thephp pluginphp recordingphp thephp message
+php php php php php php*php php@paramphp stringphp php$structurephp Thephp structurephp tophp bephp usedphp forphp thephp data
+php php php php php php*php php@paramphp arrayphp php$dataphp Thephp dataphp tophp bephp recorded
+php php php php php php*php php@returnphp booleanphp Returnsphp TRUEphp ifphp messagephp wasphp recorded
+php php php php php php*php/
+php php php php publicphp functionphp recordMessagephp(Zendphp_Wildfirephp_Pluginphp_Interfacephp php$pluginphp,php php$structurephp,php php$dataphp)
+php php php php php{
+php php php php php php php php ifphp(php!issetphp(php$thisphp-php>php_messagesphp[php$structurephp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_messagesphp[php$structurephp]php php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        $uri = $plugin->getUri();
+php php php php php php php php php$uriphp php=php php$pluginphp-php>getUriphp(php)php;
 
-        if(!isset($this->_messages[$structure][$uri])) {
-            $this->_messages[$structure][$uri] = array();
-        }
+php php php php php php php php ifphp(php!issetphp(php$thisphp-php>php_messagesphp[php$structurephp]php[php$uriphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_messagesphp[php$structurephp]php[php$uriphp]php php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        $this->_messages[$structure][$uri][] = $this->_encode($data);
-        return true;
-    }
+php php php php php php php php php$thisphp-php>php_messagesphp[php$structurephp]php[php$uriphp]php[php]php php=php php$thisphp-php>php_encodephp(php$dataphp)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Remove all qued messages
-     *
-     * @param Zend_Wildfire_Plugin_Interface $plugin The plugin for which to clear messages
-     * @return boolean Returns TRUE if messages were present
-     */
-    public function clearMessages(Zend_Wildfire_Plugin_Interface $plugin)
-    {
-        $uri = $plugin->getUri();
+php php php php php/php*php*
+php php php php php php*php Removephp allphp quedphp messages
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Wildfirephp_Pluginphp_Interfacephp php$pluginphp Thephp pluginphp forphp whichphp tophp clearphp messages
+php php php php php php*php php@returnphp booleanphp Returnsphp TRUEphp ifphp messagesphp werephp present
+php php php php php php*php/
+php php php php publicphp functionphp clearMessagesphp(Zendphp_Wildfirephp_Pluginphp_Interfacephp php$pluginphp)
+php php php php php{
+php php php php php php php php php$uriphp php=php php$pluginphp-php>getUriphp(php)php;
 
-        $present = false;
-        foreach ($this->_messages as $structure => $messages) {
+php php php php php php php php php$presentphp php=php falsephp;
+php php php php php php php php foreachphp php(php$thisphp-php>php_messagesphp asphp php$structurephp php=php>php php$messagesphp)php php{
 
-            if(!isset($this->_messages[$structure][$uri])) {
-                continue;
-            }
+php php php php php php php php php php php php ifphp(php!issetphp(php$thisphp-php>php_messagesphp[php$structurephp]php[php$uriphp]php)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            $present = true;
+php php php php php php php php php php php php php$presentphp php=php truephp;
 
-            unset($this->_messages[$structure][$uri]);
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_messagesphp[php$structurephp]php[php$uriphp]php)php;
 
-            if (!$this->_messages[$structure]) {
-                unset($this->_messages[$structure]);
-            }
-        }
-        return $present;
-    }
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_messagesphp[php$structurephp]php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_messagesphp[php$structurephp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$presentphp;
+php php php php php}
 
-    /**
-     * Get all qued messages
-     *
-     * @return mixed Returns qued messages or FALSE if no messages are qued
-     */
-    public function getMessages()
-    {
-        if (!$this->_messages) {
-            return false;
-        }
-        return $this->_messages;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp allphp quedphp messages
+php php php php php php*
+php php php php php php*php php@returnphp mixedphp Returnsphp quedphp messagesphp orphp FALSEphp ifphp nophp messagesphp arephp qued
+php php php php php php*php/
+php php php php publicphp functionphp getMessagesphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_messagesphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_messagesphp;
+php php php php php}
 
-    /**
-     * Use the JSON encoding scheme for the value specified
-     *
-     * @param mixed $value The value to be encoded
-     * @return string  The encoded value
-     */
-    protected function _encode($value)
-    {
-        return Zend_Json::encode($value, true, array('silenceCyclicalExceptions'=>true));
-    }
+php php php php php/php*php*
+php php php php php php*php Usephp thephp JSONphp encodingphp schemephp forphp thephp valuephp specified
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$valuephp Thephp valuephp tophp bephp encoded
+php php php php php php*php php@returnphp stringphp php Thephp encodedphp value
+php php php php php php*php/
+php php php php protectedphp functionphp php_encodephp(php$valuephp)
+php php php php php{
+php php php php php php php php returnphp Zendphp_Jsonphp:php:encodephp(php$valuephp,php truephp,php arrayphp(php'silenceCyclicalExceptionsphp'php=php>truephp)php)php;
+php php php php php}
 
-    /**
-     * Retrieves all formatted data ready to be sent by the channel.
-     *
-     * @param Zend_Wildfire_Channel_Interface $channel The instance of the channel that will be transmitting the data
-     * @return mixed Returns the data to be sent by the channel.
-     * @throws Zend_Wildfire_Exception
-     */
-    public function getPayload(Zend_Wildfire_Channel_Interface $channel)
-    {
-        if (!$channel instanceof Zend_Wildfire_Channel_HttpHeaders) {
-            require_once 'Zend/Wildfire/Exception.php';
-            throw new Zend_Wildfire_Exception('The '.get_class($channel).' channel is not supported by the '.get_class($this).' protocol.');
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp allphp formattedphp dataphp readyphp tophp bephp sentphp byphp thephp channelphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Wildfirephp_Channelphp_Interfacephp php$channelphp Thephp instancephp ofphp thephp channelphp thatphp willphp bephp transmittingphp thephp data
+php php php php php php*php php@returnphp mixedphp Returnsphp thephp dataphp tophp bephp sentphp byphp thephp channelphp.
+php php php php php php*php php@throwsphp Zendphp_Wildfirephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getPayloadphp(Zendphp_Wildfirephp_Channelphp_Interfacephp php$channelphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$channelphp instanceofphp Zendphp_Wildfirephp_Channelphp_HttpHeadersphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Thephp php'php.getphp_classphp(php$channelphp)php.php'php channelphp isphp notphp supportedphp byphp thephp php'php.getphp_classphp(php$thisphp)php.php'php protocolphp.php'php)php;
+php php php php php php php php php}
 
-        if ($this->_plugins) {
-            foreach ($this->_plugins as $plugin) {
-                $plugin->flushMessages(self::PROTOCOL_URI);
-            }
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_pluginsphp)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_pluginsphp asphp php$pluginphp)php php{
+php php php php php php php php php php php php php php php php php$pluginphp-php>flushMessagesphp(selfphp:php:PROTOCOLphp_URIphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (!$this->_messages) {
-            return false;
-        }
+php php php php php php php php ifphp php(php!php$thisphp-php>php_messagesphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $protocol_index = 1;
-        $structure_index = 1;
-        $plugin_index = 1;
-        $message_index = 1;
+php php php php php php php php php$protocolphp_indexphp php=php php1php;
+php php php php php php php php php$structurephp_indexphp php=php php1php;
+php php php php php php php php php$pluginphp_indexphp php=php php1php;
+php php php php php php php php php$messagephp_indexphp php=php php1php;
 
-        $payload = array();
+php php php php php php php php php$payloadphp php=php arrayphp(php)php;
 
-        $payload[] = array('Protocol-'.$protocol_index, self::PROTOCOL_URI);
+php php php php php php php php php$payloadphp[php]php php=php arrayphp(php'Protocolphp-php'php.php$protocolphp_indexphp,php selfphp:php:PROTOCOLphp_URIphp)php;
 
-        foreach ($this->_messages as $structure_uri => $plugin_messages ) {
+php php php php php php php php foreachphp php(php$thisphp-php>php_messagesphp asphp php$structurephp_uriphp php=php>php php$pluginphp_messagesphp php)php php{
 
-            $payload[] = array($protocol_index.'-Structure-'.$structure_index, $structure_uri);
+php php php php php php php php php php php php php$payloadphp[php]php php=php arrayphp(php$protocolphp_indexphp.php'php-Structurephp-php'php.php$structurephp_indexphp,php php$structurephp_uriphp)php;
 
-            foreach ($plugin_messages as $plugin_uri => $messages ) {
+php php php php php php php php php php php php foreachphp php(php$pluginphp_messagesphp asphp php$pluginphp_uriphp php=php>php php$messagesphp php)php php{
 
-                $payload[] = array($protocol_index.'-Plugin-'.$plugin_index, $plugin_uri);
+php php php php php php php php php php php php php php php php php$payloadphp[php]php php=php arrayphp(php$protocolphp_indexphp.php'php-Pluginphp-php'php.php$pluginphp_indexphp,php php$pluginphp_uriphp)php;
 
-                foreach ($messages as $message) {
+php php php php php php php php php php php php php php php php foreachphp php(php$messagesphp asphp php$messagephp)php php{
 
-                    $parts = explode("\n",chunk_split($message, 5000, "\n"));
+php php php php php php php php php php php php php php php php php php php php php$partsphp php=php explodephp(php"php\nphp"php,chunkphp_splitphp(php$messagephp,php php5php0php0php0php,php php"php\nphp"php)php)php;
 
-                    for ($i=0 ; $i<count($parts) ; $i++) {
+php php php php php php php php php php php php php php php php php php php php forphp php(php$iphp=php0php php;php php$iphp<countphp(php$partsphp)php php;php php$iphp+php+php)php php{
 
-                        $part = $parts[$i];
-                        if ($part) {
+php php php php php php php php php php php php php php php php php php php php php php php php php$partphp php=php php$partsphp[php$iphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$partphp)php php{
 
-                            $msg = '';
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$msgphp php=php php'php'php;
 
-                            if (count($parts)>2) {
-                                $msg = (($i==0)?strlen($message):'')
-                                       . '|' . $part . '|'
-                                       . (($i<count($parts)-2)?'\\':'');
-                            } else {
-                                $msg = strlen($part) . '|' . $part . '|';
-                            }
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$partsphp)php>php2php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$msgphp php=php php(php(php$iphp=php=php0php)php?strlenphp(php$messagephp)php:php'php'php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php|php'php php.php php$partphp php.php php'php|php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$iphp<countphp(php$partsphp)php-php2php)php?php'php\php\php'php:php'php'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$msgphp php=php strlenphp(php$partphp)php php.php php'php|php'php php.php php$partphp php.php php'php|php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                            $payload[] = array($protocol_index . '-'
-                                               . $structure_index . '-'
-                                               . $plugin_index . '-'
-                                               . $message_index,
-                                               $msg);
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$payloadphp[php]php php=php arrayphp(php$protocolphp_indexphp php.php php'php-php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$structurephp_indexphp php.php php'php-php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$pluginphp_indexphp php.php php'php-php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$messagephp_indexphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$msgphp)php;
 
-                            $message_index++;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$messagephp_indexphp+php+php;
 
-                            if ($message_index > 99999) {
-                                require_once 'Zend/Wildfire/Exception.php';
-                                throw new Zend_Wildfire_Exception('Maximum number (99,999) of messages reached!');
-                            }
-                        }
-                    }
-                }
-                $plugin_index++;
-            }
-            $structure_index++;
-        }
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$messagephp_indexphp php>php php9php9php9php9php9php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Maximumphp numberphp php(php9php9php,php9php9php9php)php ofphp messagesphp reachedphp!php'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$pluginphp_indexphp+php+php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$structurephp_indexphp+php+php;
+php php php php php php php php php}
 
-        return $payload;
-    }
+php php php php php php php php returnphp php$payloadphp;
+php php php php php}
 
-}
+php}
 

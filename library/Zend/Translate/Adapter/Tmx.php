@@ -1,233 +1,233 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Tmx.php 21049 2010-02-13 22:52:52Z thomas $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Tmxphp.phpphp php2php1php0php4php9php php2php0php1php0php-php0php2php-php1php3php php2php2php:php5php2php:php5php2Zphp thomasphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
 
-/** Zend_Locale */
-require_once 'Zend/Locale.php';
+php/php*php*php Zendphp_Localephp php*php/
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
 
-/** Zend_Translate_Adapter */
-require_once 'Zend/Translate/Adapter.php';
-
-
-/**
- * @category   Zend
- * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
-    // Internal variables
-    private $_file    = false;
-    private $_useId   = true;
-    private $_srclang = null;
-    private $_tu      = null;
-    private $_tuv     = null;
-    private $_seg     = null;
-    private $_content = null;
-    private $_data    = array();
-
-    /**
-     * Load translation data (TMX file reader)
-     *
-     * @param  string  $filename  TMX file to add, full path must be given for access
-     * @param  string  $locale    Locale has no effect for TMX because TMX defines all languages within
-     *                            the source file
-     * @param  array   $option    OPTIONAL Options to use
-     * @throws Zend_Translation_Exception
-     * @return array
-     */
-    protected function _loadTranslationData($filename, $locale, array $options = array())
-    {
-        $this->_data = array();
-        if (!is_readable($filename)) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception('Translation file \'' . $filename . '\' is not readable.');
-        }
-
-        if (isset($options['useId'])) {
-            $this->_useId = (boolean) $options['useId'];
-        }
-
-        $encoding = $this->_findEncoding($filename);
-        $this->_file = xml_parser_create($encoding);
-        xml_set_object($this->_file, $this);
-        xml_parser_set_option($this->_file, XML_OPTION_CASE_FOLDING, 0);
-        xml_set_element_handler($this->_file, "_startElement", "_endElement");
-        xml_set_character_data_handler($this->_file, "_contentElement");
-
-        if (!xml_parse($this->_file, file_get_contents($filename))) {
-            $ex = sprintf('XML error: %s at line %d',
-                          xml_error_string(xml_get_error_code($this->_file)),
-                          xml_get_current_line_number($this->_file));
-            xml_parser_free($this->_file);
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception($ex);
-        }
-
-        return $this->_data;
-    }
-
-    /**
-     * Internal method, called by xml element handler at start
-     *
-     * @param resource $file   File handler
-     * @param string   $name   Elements name
-     * @param array    $attrib Attributes for this element
-     */
-    protected function _startElement($file, $name, $attrib)
-    {
-        if ($this->_seg !== null) {
-            $this->_content .= "<".$name;
-            foreach($attrib as $key => $value) {
-                $this->_content .= " $key=\"$value\"";
-            }
-            $this->_content .= ">";
-        } else {
-            switch(strtolower($name)) {
-                case 'header':
-                    if (empty($this->_useId) && isset($attrib['srclang'])) {
-                        if (Zend_Locale::isLocale($attrib['srclang'])) {
-                            $this->_srclang = Zend_Locale::findLocale($attrib['srclang']);
-                        } else {
-                            if (!$this->_options['disableNotices']) {
-                                if ($this->_options['log']) {
-                                    $this->_options['log']->notice("The language '{$attrib['srclang']}' can not be set because it does not exist.");
-                                } else {
-                                    trigger_error("The language '{$attrib['srclang']}' can not be set because it does not exist.", E_USER_NOTICE);
-                                }
-                            }
-
-                            $this->_srclang = $attrib['srclang'];
-                        }
-                    }
-                    break;
-                case 'tu':
-                    if (isset($attrib['tuid'])) {
-                        $this->_tu = $attrib['tuid'];
-                    }
-                    break;
-                case 'tuv':
-                    if (isset($attrib['xml:lang'])) {
-                        if (Zend_Locale::isLocale($attrib['xml:lang'])) {
-                            $this->_tuv = Zend_Locale::findLocale($attrib['xml:lang']);
-                        } else {
-                            if (!$this->_options['disableNotices']) {
-                                if ($this->_options['log']) {
-                                    $this->_options['log']->notice("The language '{$attrib['xml:lang']}' can not be set because it does not exist.");
-                                } else {
-                                    trigger_error("The language '{$attrib['xml:lang']}' can not be set because it does not exist.", E_USER_NOTICE);
-                                }
-                            }
-
-                            $this->_tuv = $attrib['xml:lang'];
-                        }
-
-                        if (!isset($this->_data[$this->_tuv])) {
-                            $this->_data[$this->_tuv] = array();
-                        }
-                    }
-                    break;
-                case 'seg':
-                    $this->_seg     = true;
-                    $this->_content = null;
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+php/php*php*php Zendphp_Translatephp_Adapterphp php*php/
+requirephp_oncephp php'Zendphp/Translatephp/Adapterphp.phpphp'php;
 
 
-    /**
-     * Internal method, called by xml element handler at end
-     *
-     * @param resource $file   File handler
-     * @param string   $name   Elements name
-     */
-    protected function _endElement($file, $name)
-    {
-        if (($this->_seg !== null) and ($name !== 'seg')) {
-            $this->_content .= "</".$name.">";
-        } else {
-            switch (strtolower($name)) {
-                case 'tu':
-                    $this->_tu = null;
-                    break;
-                case 'tuv':
-                    $this->_tuv = null;
-                    break;
-                case 'seg':
-                    $this->_seg = null;
-                    if (!empty($this->_srclang) && ($this->_srclang == $this->_tuv)) {
-                        $this->_tu = $this->_content;
-                    }
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Translatephp_Adapterphp_Tmxphp extendsphp Zendphp_Translatephp_Adapterphp php{
+php php php php php/php/php Internalphp variables
+php php php php privatephp php$php_filephp php php php php=php falsephp;
+php php php php privatephp php$php_useIdphp php php php=php truephp;
+php php php php privatephp php$php_srclangphp php=php nullphp;
+php php php php privatephp php$php_tuphp php php php php php php=php nullphp;
+php php php php privatephp php$php_tuvphp php php php php php=php nullphp;
+php php php php privatephp php$php_segphp php php php php php=php nullphp;
+php php php php privatephp php$php_contentphp php=php nullphp;
+php php php php privatephp php$php_dataphp php php php php=php arrayphp(php)php;
 
-                    if (!empty($this->_content) or (!isset($this->_data[$this->_tuv][$this->_tu]))) {
-                        $this->_data[$this->_tuv][$this->_tu] = $this->_content;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Loadphp translationphp dataphp php(TMXphp filephp readerphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$filenamephp php TMXphp filephp tophp addphp,php fullphp pathphp mustphp bephp givenphp forphp access
+php php php php php php*php php@paramphp php stringphp php php$localephp php php php Localephp hasphp nophp effectphp forphp TMXphp becausephp TMXphp definesphp allphp languagesphp within
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php thephp sourcephp file
+php php php php php php*php php@paramphp php arrayphp php php php$optionphp php php php OPTIONALphp Optionsphp tophp use
+php php php php php php*php php@throwsphp Zendphp_Translationphp_Exception
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadTranslationDataphp(php$filenamephp,php php$localephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php!isphp_readablephp(php$filenamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php'Translationphp filephp php\php'php'php php.php php$filenamephp php.php php'php\php'php isphp notphp readablephp.php'php)php;
+php php php php php php php php php}
 
-    /**
-     * Internal method, called by xml element handler for content
-     *
-     * @param resource $file File handler
-     * @param string   $data Elements content
-     */
-    protected function _contentElement($file, $data)
-    {
-        if (($this->_seg !== null) and ($this->_tu !== null) and ($this->_tuv !== null)) {
-            $this->_content .= $data;
-        }
-    }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'useIdphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_useIdphp php=php php(booleanphp)php php$optionsphp[php'useIdphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$encodingphp php=php php$thisphp-php>php_findEncodingphp(php$filenamephp)php;
+php php php php php php php php php$thisphp-php>php_filephp php=php xmlphp_parserphp_createphp(php$encodingphp)php;
+php php php php php php php php xmlphp_setphp_objectphp(php$thisphp-php>php_filephp,php php$thisphp)php;
+php php php php php php php php xmlphp_parserphp_setphp_optionphp(php$thisphp-php>php_filephp,php XMLphp_OPTIONphp_CASEphp_FOLDINGphp,php php0php)php;
+php php php php php php php php xmlphp_setphp_elementphp_handlerphp(php$thisphp-php>php_filephp,php php"php_startElementphp"php,php php"php_endElementphp"php)php;
+php php php php php php php php xmlphp_setphp_characterphp_dataphp_handlerphp(php$thisphp-php>php_filephp,php php"php_contentElementphp"php)php;
+
+php php php php php php php php ifphp php(php!xmlphp_parsephp(php$thisphp-php>php_filephp,php filephp_getphp_contentsphp(php$filenamephp)php)php)php php{
+php php php php php php php php php php php php php$exphp php=php sprintfphp(php'XMLphp errorphp:php php%sphp atphp linephp php%dphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php xmlphp_errorphp_stringphp(xmlphp_getphp_errorphp_codephp(php$thisphp-php>php_filephp)php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php xmlphp_getphp_currentphp_linephp_numberphp(php$thisphp-php>php_filephp)php)php;
+php php php php php php php php php php php php xmlphp_parserphp_freephp(php$thisphp-php>php_filephp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php$exphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp,php calledphp byphp xmlphp elementphp handlerphp atphp start
+php php php php php php*
+php php php php php php*php php@paramphp resourcephp php$filephp php php Filephp handler
+php php php php php php*php php@paramphp stringphp php php php$namephp php php Elementsphp name
+php php php php php php*php php@paramphp arrayphp php php php php$attribphp Attributesphp forphp thisphp element
+php php php php php php*php/
+php php php php protectedphp functionphp php_startElementphp(php$filephp,php php$namephp,php php$attribphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_segphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"<php"php.php$namephp;
+php php php php php php php php php php php php foreachphp(php$attribphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"php php$keyphp=php\php"php$valuephp\php"php"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"php>php"php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php switchphp(strtolowerphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'headerphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_useIdphp)php php&php&php issetphp(php$attribphp[php'srclangphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(Zendphp_Localephp:php:isLocalephp(php$attribphp[php'srclangphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_srclangphp php=php Zendphp_Localephp:php:findLocalephp(php$attribphp[php'srclangphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'disableNoticesphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'logphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'logphp'php]php-php>noticephp(php"Thephp languagephp php'php{php$attribphp[php'srclangphp'php]php}php'php canphp notphp bephp setphp becausephp itphp doesphp notphp existphp.php"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php triggerphp_errorphp(php"Thephp languagephp php'php{php$attribphp[php'srclangphp'php]php}php'php canphp notphp bephp setphp becausephp itphp doesphp notphp existphp.php"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_srclangphp php=php php$attribphp[php'srclangphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'tuphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$attribphp[php'tuidphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tuphp php=php php$attribphp[php'tuidphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'tuvphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$attribphp[php'xmlphp:langphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(Zendphp_Localephp:php:isLocalephp(php$attribphp[php'xmlphp:langphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tuvphp php=php Zendphp_Localephp:php:findLocalephp(php$attribphp[php'xmlphp:langphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'disableNoticesphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'logphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'logphp'php]php-php>noticephp(php"Thephp languagephp php'php{php$attribphp[php'xmlphp:langphp'php]php}php'php canphp notphp bephp setphp becausephp itphp doesphp notphp existphp.php"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php triggerphp_errorphp(php"Thephp languagephp php'php{php$attribphp[php'xmlphp:langphp'php]php}php'php canphp notphp bephp setphp becausephp itphp doesphp notphp existphp.php"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tuvphp php=php php$attribphp[php'xmlphp:langphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_dataphp[php$thisphp-php>php_tuvphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$thisphp-php>php_tuvphp]php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'segphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_segphp php php php php php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_contentphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Internal method, detects the encoding of the xml file
-     *
-     * @param string $name Filename
-     * @return string Encoding
-     */
-    protected function _findEncoding($filename)
-    {
-        $file = file_get_contents($filename, null, null, 0, 100);
-        if (strpos($file, "encoding") !== false) {
-            $encoding = substr($file, strpos($file, "encoding") + 9);
-            $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);
-            return $encoding;
-        }
-        return 'UTF-8';
-    }
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp,php calledphp byphp xmlphp elementphp handlerphp atphp end
+php php php php php php*
+php php php php php php*php php@paramphp resourcephp php$filephp php php Filephp handler
+php php php php php php*php php@paramphp stringphp php php php$namephp php php Elementsphp name
+php php php php php php*php/
+php php php php protectedphp functionphp php_endElementphp(php$filephp,php php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$thisphp-php>php_segphp php!php=php=php nullphp)php andphp php(php$namephp php!php=php=php php'segphp'php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"<php/php"php.php$namephp.php"php>php"php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'tuphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tuphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'tuvphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tuvphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'segphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_segphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_srclangphp)php php&php&php php(php$thisphp-php>php_srclangphp php=php=php php$thisphp-php>php_tuvphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tuphp php=php php$thisphp-php>php_contentphp;
+php php php php php php php php php php php php php php php php php php php php php}
 
-    /**
-     * Returns the adapter name
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return "Tmx";
-    }
-}
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_contentphp)php orphp php(php!issetphp(php$thisphp-php>php_dataphp[php$thisphp-php>php_tuvphp]php[php$thisphp-php>php_tuphp]php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$thisphp-php>php_tuvphp]php[php$thisphp-php>php_tuphp]php php=php php$thisphp-php>php_contentphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp,php calledphp byphp xmlphp elementphp handlerphp forphp content
+php php php php php php*
+php php php php php php*php php@paramphp resourcephp php$filephp Filephp handler
+php php php php php php*php php@paramphp stringphp php php php$dataphp Elementsphp content
+php php php php php php*php/
+php php php php protectedphp functionphp php_contentElementphp(php$filephp,php php$dataphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$thisphp-php>php_segphp php!php=php=php nullphp)php andphp php(php$thisphp-php>php_tuphp php!php=php=php nullphp)php andphp php(php$thisphp-php>php_tuvphp php!php=php=php nullphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php$dataphp;
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp,php detectsphp thephp encodingphp ofphp thephp xmlphp file
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namephp Filename
+php php php php php php*php php@returnphp stringphp Encoding
+php php php php php php*php/
+php php php php protectedphp functionphp php_findEncodingphp(php$filenamephp)
+php php php php php{
+php php php php php php php php php$filephp php=php filephp_getphp_contentsphp(php$filenamephp,php nullphp,php nullphp,php php0php,php php1php0php0php)php;
+php php php php php php php php ifphp php(strposphp(php$filephp,php php"encodingphp"php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$encodingphp php=php substrphp(php$filephp,php strposphp(php$filephp,php php"encodingphp"php)php php+php php9php)php;
+php php php php php php php php php php php php php$encodingphp php=php substrphp(php$encodingphp,php php1php,php strposphp(php$encodingphp,php php$encodingphp[php0php]php,php php1php)php php-php php1php)php;
+php php php php php php php php php php php php returnphp php$encodingphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php'UTFphp-php8php'php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php"Tmxphp"php;
+php php php php php}
+php}

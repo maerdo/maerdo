@@ -1,179 +1,179 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @subpackage Object
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Code25interleaved.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@subpackagephp Object
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Codephp2php5interleavedphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** @see Zend_Barcode_Object_Code25 */
-require_once 'Zend/Barcode/Object/Code25.php';
+php/php*php*php php@seephp Zendphp_Barcodephp_Objectphp_Codephp2php5php php*php/
+requirephp_oncephp php'Zendphp/Barcodephp/Objectphp/Codephp2php5php.phpphp'php;
 
-/** @see Zend_Validate_Barcode */
-require_once 'Zend/Validate/Barcode.php';
+php/php*php*php php@seephp Zendphp_Validatephp_Barcodephp php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Barcodephp.phpphp'php;
 
-/**
- * Class for generate Interleaved 2 of 5 barcode
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Barcode_Object_Code25interleaved extends Zend_Barcode_Object_Code25
-{
-    /**
-     * Drawing of bearer bars
-     * @var boolean
-     */
-    private $_withBearerBars = false;
+php/php*php*
+php php*php Classphp forphp generatephp Interleavedphp php2php ofphp php5php barcode
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Barcodephp_Objectphp_Codephp2php5interleavedphp extendsphp Zendphp_Barcodephp_Objectphp_Codephp2php5
+php{
+php php php php php/php*php*
+php php php php php php*php Drawingphp ofphp bearerphp bars
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php privatephp php$php_withBearerBarsphp php=php falsephp;
 
-    /**
-     * Default options for Code25interleaved barcode
-     * @return void
-     */
-    protected function _getDefaultOptions()
-    {
-        $this->_barcodeLength = 'even';
-    }
+php php php php php/php*php*
+php php php php php php*php Defaultphp optionsphp forphp Codephp2php5interleavedphp barcode
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_getDefaultOptionsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_barcodeLengthphp php=php php'evenphp'php;
+php php php php php}
 
-    /**
-     * Activate/deactivate drawing of bearer bars
-     * @param boolean $value
-     * @return Zend_Barcode_Object_Int25
-     */
-    public function setWithBearerBars($value)
-    {
-        $this->_withBearerBars = (bool) $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Activatephp/deactivatephp drawingphp ofphp bearerphp bars
+php php php php php php*php php@paramphp booleanphp php$value
+php php php php php php*php php@returnphp Zendphp_Barcodephp_Objectphp_Intphp2php5
+php php php php php php*php/
+php php php php publicphp functionphp setWithBearerBarsphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_withBearerBarsphp php=php php(boolphp)php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve if bearer bars are enabled
-     * @return boolean
-     */
-    public function getWithBearerBars()
-    {
-        return $this->_withBearerBars;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp ifphp bearerphp barsphp arephp enabled
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getWithBearerBarsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_withBearerBarsphp;
+php php php php php}
 
-    /**
-     * Width of the barcode (in pixels)
-     * @return integer
-     */
-    protected function _calculateBarcodeWidth()
-    {
-        $quietZone       = $this->getQuietZone();
-        $startCharacter  = (4 * $this->_barThinWidth) * $this->_factor;
-        $characterLength = (3 * $this->_barThinWidth + 2 * $this->_barThickWidth) * $this->_factor;
-        $encodedData     = strlen($this->getText()) * $characterLength;
-        $stopCharacter   = ($this->_barThickWidth + 2 * $this->_barThinWidth) * $this->_factor;
-        return $quietZone + $startCharacter + $encodedData + $stopCharacter + $quietZone;
-    }
+php php php php php/php*php*
+php php php php php php*php Widthphp ofphp thephp barcodephp php(inphp pixelsphp)
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php protectedphp functionphp php_calculateBarcodeWidthphp(php)
+php php php php php{
+php php php php php php php php php$quietZonephp php php php php php php php=php php$thisphp-php>getQuietZonephp(php)php;
+php php php php php php php php php$startCharacterphp php php=php php(php4php php*php php$thisphp-php>php_barThinWidthphp)php php*php php$thisphp-php>php_factorphp;
+php php php php php php php php php$characterLengthphp php=php php(php3php php*php php$thisphp-php>php_barThinWidthphp php+php php2php php*php php$thisphp-php>php_barThickWidthphp)php php*php php$thisphp-php>php_factorphp;
+php php php php php php php php php$encodedDataphp php php php php php=php strlenphp(php$thisphp-php>getTextphp(php)php)php php*php php$characterLengthphp;
+php php php php php php php php php$stopCharacterphp php php php=php php(php$thisphp-php>php_barThickWidthphp php+php php2php php*php php$thisphp-php>php_barThinWidthphp)php php*php php$thisphp-php>php_factorphp;
+php php php php php php php php returnphp php$quietZonephp php+php php$startCharacterphp php+php php$encodedDataphp php+php php$stopCharacterphp php+php php$quietZonephp;
+php php php php php}
 
-    /**
-     * Prepare array to draw barcode
-     * @return array
-     */
-    protected function _prepareBarcode()
-    {
-        if ($this->_withBearerBars) {
-            $this->_withBorder = false;
-        }
+php php php php php/php*php*
+php php php php php php*php Preparephp arrayphp tophp drawphp barcode
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_prepareBarcodephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_withBearerBarsphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_withBorderphp php=php falsephp;
+php php php php php php php php php}
 
-        // Start character (0000)
-        $barcodeTable[] = array(1, $this->_barThinWidth, 0, 1);
-        $barcodeTable[] = array(0, $this->_barThinWidth, 0, 1);
-        $barcodeTable[] = array(1, $this->_barThinWidth, 0, 1);
-        $barcodeTable[] = array(0, $this->_barThinWidth, 0, 1);
+php php php php php php php php php/php/php Startphp characterphp php(php0php0php0php0php)
+php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php1php,php php$thisphp-php>php_barThinWidthphp,php php0php,php php1php)php;
+php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php0php,php php$thisphp-php>php_barThinWidthphp,php php0php,php php1php)php;
+php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php1php,php php$thisphp-php>php_barThinWidthphp,php php0php,php php1php)php;
+php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php0php,php php$thisphp-php>php_barThinWidthphp,php php0php,php php1php)php;
 
-        // Encoded $text
-        $text = $this->getText();
-        for ($i = 0; $i < strlen($text); $i += 2) { // Draw 2 chars at a time
-            $char1 = substr($text, $i, 1);
-            $char2 = substr($text, $i + 1, 1);
+php php php php php php php php php/php/php Encodedphp php$text
+php php php php php php php php php$textphp php=php php$thisphp-php>getTextphp(php)php;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php strlenphp(php$textphp)php;php php$iphp php+php=php php2php)php php{php php/php/php Drawphp php2php charsphp atphp aphp time
+php php php php php php php php php php php php php$charphp1php php=php substrphp(php$textphp,php php$iphp,php php1php)php;
+php php php php php php php php php php php php php$charphp2php php=php substrphp(php$textphp,php php$iphp php+php php1php,php php1php)php;
 
-            // Interleave
-            for ($ibar = 0; $ibar < 5; $ibar ++) {
-                // Draws char1 bar (fore color)
-                $barWidth = (substr($this->_codingMap[$char1], $ibar, 1))
-                          ? $this->_barThickWidth
-                          : $this->_barThinWidth;
+php php php php php php php php php php php php php/php/php Interleave
+php php php php php php php php php php php php forphp php(php$ibarphp php=php php0php;php php$ibarphp <php php5php;php php$ibarphp php+php+php)php php{
+php php php php php php php php php php php php php php php php php/php/php Drawsphp charphp1php barphp php(forephp colorphp)
+php php php php php php php php php php php php php php php php php$barWidthphp php=php php(substrphp(php$thisphp-php>php_codingMapphp[php$charphp1php]php,php php$ibarphp,php php1php)php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php?php php$thisphp-php>php_barThickWidth
+php php php php php php php php php php php php php php php php php php php php php php php php php php php:php php$thisphp-php>php_barThinWidthphp;
 
-                $barcodeTable[] = array(1, $barWidth, 0, 1);
+php php php php php php php php php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php1php,php php$barWidthphp,php php0php,php php1php)php;
 
-                // Left space corresponding to char2 (background color)
-                $barWidth = (substr($this->_codingMap[$char2], $ibar, 1))
-                          ? $this->_barThickWidth
-                          : $this->_barThinWidth;
-                $barcodeTable[] = array(0, $barWidth, 0 , 1);
-            }
-        }
+php php php php php php php php php php php php php php php php php/php/php Leftphp spacephp correspondingphp tophp charphp2php php(backgroundphp colorphp)
+php php php php php php php php php php php php php php php php php$barWidthphp php=php php(substrphp(php$thisphp-php>php_codingMapphp[php$charphp2php]php,php php$ibarphp,php php1php)php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php?php php$thisphp-php>php_barThickWidth
+php php php php php php php php php php php php php php php php php php php php php php php php php php php:php php$thisphp-php>php_barThinWidthphp;
+php php php php php php php php php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php0php,php php$barWidthphp,php php0php php,php php1php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // Stop character (100)
-        $barcodeTable[] = array(1 , $this->_barThickWidth, 0, 1);
-        $barcodeTable[] = array(0 , $this->_barThinWidth,  0, 1);
-        $barcodeTable[] = array(1 , $this->_barThinWidth,  0, 1);
-        return $barcodeTable;
-    }
+php php php php php php php php php/php/php Stopphp characterphp php(php1php0php0php)
+php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php1php php,php php$thisphp-php>php_barThickWidthphp,php php0php,php php1php)php;
+php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php0php php,php php$thisphp-php>php_barThinWidthphp,php php php0php,php php1php)php;
+php php php php php php php php php$barcodeTablephp[php]php php=php arrayphp(php1php php,php php$thisphp-php>php_barThinWidthphp,php php php0php,php php1php)php;
+php php php php php php php php returnphp php$barcodeTablephp;
+php php php php php}
 
-    /**
-     * Drawing of bearer bars (if enabled)
-     *
-     * @return void
-     */
-    protected function _postDrawBarcode()
-    {
-        if (!$this->_withBearerBars) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Drawingphp ofphp bearerphp barsphp php(ifphp enabledphp)
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_postDrawBarcodephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_withBearerBarsphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        $width  = $this->_barThickWidth * $this->_factor;
-        $point1 = $this->_rotate(-1, -1);
-        $point2 = $this->_rotate($this->_calculateWidth() - 1, -1);
-        $point3 = $this->_rotate($this->_calculateWidth() - 1, $width - 1);
-        $point4 = $this->_rotate(-1, $width - 1);
-        $this->_addPolygon(array(
-            $point1,
-            $point2,
-            $point3,
-            $point4,
-        ));
-        $point1 = $this->_rotate(
-            0,
-            0 + $this->_barHeight * $this->_factor - 1
-        );
-        $point2 = $this->_rotate(
-            $this->_calculateWidth() - 1,
-            0 + $this->_barHeight * $this->_factor - 1
-        );
-        $point3 = $this->_rotate(
-            $this->_calculateWidth() - 1,
-            0 + $this->_barHeight * $this->_factor - $width
-        );
-        $point4 = $this->_rotate(
-            0,
-            0 + $this->_barHeight * $this->_factor - $width
-        );
-        $this->_addPolygon(array(
-            $point1,
-            $point2,
-            $point3,
-            $point4,
-        ));
-    }
-}
+php php php php php php php php php$widthphp php php=php php$thisphp-php>php_barThickWidthphp php*php php$thisphp-php>php_factorphp;
+php php php php php php php php php$pointphp1php php=php php$thisphp-php>php_rotatephp(php-php1php,php php-php1php)php;
+php php php php php php php php php$pointphp2php php=php php$thisphp-php>php_rotatephp(php$thisphp-php>php_calculateWidthphp(php)php php-php php1php,php php-php1php)php;
+php php php php php php php php php$pointphp3php php=php php$thisphp-php>php_rotatephp(php$thisphp-php>php_calculateWidthphp(php)php php-php php1php,php php$widthphp php-php php1php)php;
+php php php php php php php php php$pointphp4php php=php php$thisphp-php>php_rotatephp(php-php1php,php php$widthphp php-php php1php)php;
+php php php php php php php php php$thisphp-php>php_addPolygonphp(arrayphp(
+php php php php php php php php php php php php php$pointphp1php,
+php php php php php php php php php php php php php$pointphp2php,
+php php php php php php php php php php php php php$pointphp3php,
+php php php php php php php php php php php php php$pointphp4php,
+php php php php php php php php php)php)php;
+php php php php php php php php php$pointphp1php php=php php$thisphp-php>php_rotatephp(
+php php php php php php php php php php php php php0php,
+php php php php php php php php php php php php php0php php+php php$thisphp-php>php_barHeightphp php*php php$thisphp-php>php_factorphp php-php php1
+php php php php php php php php php)php;
+php php php php php php php php php$pointphp2php php=php php$thisphp-php>php_rotatephp(
+php php php php php php php php php php php php php$thisphp-php>php_calculateWidthphp(php)php php-php php1php,
+php php php php php php php php php php php php php0php php+php php$thisphp-php>php_barHeightphp php*php php$thisphp-php>php_factorphp php-php php1
+php php php php php php php php php)php;
+php php php php php php php php php$pointphp3php php=php php$thisphp-php>php_rotatephp(
+php php php php php php php php php php php php php$thisphp-php>php_calculateWidthphp(php)php php-php php1php,
+php php php php php php php php php php php php php0php php+php php$thisphp-php>php_barHeightphp php*php php$thisphp-php>php_factorphp php-php php$width
+php php php php php php php php php)php;
+php php php php php php php php php$pointphp4php php=php php$thisphp-php>php_rotatephp(
+php php php php php php php php php php php php php0php,
+php php php php php php php php php php php php php0php php+php php$thisphp-php>php_barHeightphp php*php php$thisphp-php>php_factorphp php-php php$width
+php php php php php php php php php)php;
+php php php php php php php php php$thisphp-php>php_addPolygonphp(arrayphp(
+php php php php php php php php php php php php php$pointphp1php,
+php php php php php php php php php php php php php$pointphp2php,
+php php php php php php php php php php php php php$pointphp3php,
+php php php php php php php php php php php php php$pointphp4php,
+php php php php php php php php php)php)php;
+php php php php php}
+php}

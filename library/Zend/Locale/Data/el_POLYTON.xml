@@ -1,541 +1,541 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.10 $"/>
-		<generation date="$Date: 2009/05/05 23:06:35 $"/>
-		<language type="el"/>
-		<variant type="POLYTON"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="ar">Ἀραβικά</language>
-			<language type="arc">Ἀραμαϊκά</language>
-			<language type="cy">Οὐαλικά</language>
-			<language type="egy">Αἰγυπτιακὰ (ἀρχαῖα)</language>
-			<language type="el">Ἑλληνικά</language>
-			<language type="en">Ἀγγλικά</language>
-			<language type="es">Ἱσπανικά</language>
-			<language type="et">Ἐσθονικά</language>
-			<language type="ga">Ἰρλανδικά</language>
-			<language type="gd">Σκωτικὰ κελτικά</language>
-			<language type="grc">Ἀρχαῖα Ἑλληνικά</language>
-			<language type="he">Ἑβραϊκά</language>
-			<language type="hu">Οὑγγρικά</language>
-			<language type="hy">Ἀρμενικά</language>
-			<language type="id">Ἰνδονησιακά</language>
-			<language type="ine">Ἰνδοευρωπαϊκὰ (ἄλλα)</language>
-			<language type="ira">Ἰρανικά</language>
-			<language type="is">Ἰσλανδικά</language>
-			<language type="it">Ἰταλικά</language>
-			<language type="ja">Ἰαπωνικά</language>
-			<language type="mul">Πολλαπλές γλῶσσες</language>
-			<language type="nai">Ἰνδιανικὰ βόρειας Ἀμερικῆς (ἄλλα)</language>
-			<language type="nl">Ὁλλανδικά</language>
-			<language type="ota">Τουρκικά, ὀθωμανικὰ (1500-1928)</language>
-			<language type="peo">Ἀρχαῖα περσικὰ (600-400 π.Χ.)</language>
-			<language type="phi">Φιλιππινέζικα (ἄλλα)</language>
-			<language type="sem">Σημιτικὰ (ἄλλα)</language>
-			<language type="sla">Σλαβικὰ (ἄλλα)</language>
-			<language type="sq">Ἀλβανικά</language>
-			<language type="uk">Οὐκρανικά</language>
-			<language type="yi">Ἰουδαϊκά</language>
-		</languages>
-		<scripts>
-			<script type="Arab">Ἀραβικό</script>
-			<script type="Armn">Ἀρμενικό</script>
-			<script type="Ethi">Αἰθιοπικό</script>
-			<script type="Grek">Ἑλληνικό</script>
-			<script type="Hebr">Ἑβραϊκό</script>
-		</scripts>
-		<territories>
-			<territory type="AD">Ἀνδόρα</territory>
-			<territory type="AE">Ἠνωμένα Ἀραβικὰ Ἐμιράτα</territory>
-			<territory type="AF">Ἀφγανιστάν</territory>
-			<territory type="AG">Ἀντίγκουα καὶ Μπαρμπούντα</territory>
-			<territory type="AI">Ἀνγκουίλα</territory>
-			<territory type="AL">Ἀλβανία</territory>
-			<territory type="AM">Ἀρμενία</territory>
-			<territory type="AN">Ὁλλανδικὲς Ἀντίλλες</territory>
-			<territory type="AO">Ἀνγκόλα</territory>
-			<territory type="AQ">Ἀνταρκτική</territory>
-			<territory type="AR">Ἀργεντινή</territory>
-			<territory type="AS">Ἀμερικανικὴ Σαμόα</territory>
-			<territory type="AT">Αὐστρία</territory>
-			<territory type="AU">Αὐστραλία</territory>
-			<territory type="AW">Ἀρούμπα</territory>
-			<territory type="AZ">Ἀζερμπαϊτζάν</territory>
-			<territory type="BA">Βοσνία - Ἐρζεγοβίνη</territory>
-			<territory type="BM">Βερμοῦδες</territory>
-			<territory type="BV">Νῆσος Μπουβέ</territory>
-			<territory type="CC">Νῆσοι Κόκος (Κήλινγκ)</territory>
-			<territory type="CD">Κονγκό, Λαϊκὴ Δημοκρατία τοῦ</territory>
-			<territory type="CF">Κεντροαφρικανικὴ Δημοκρατία</territory>
-			<territory type="CH">Ἑλβετία</territory>
-			<territory type="CI">Ἀκτὴ Ἐλεφαντοστού</territory>
-			<territory type="CK">Νῆσοι Κούκ</territory>
-			<territory type="CV">Πράσινο Ἀκρωτήριο</territory>
-			<territory type="CX">Νῆσος Χριστουγέννων</territory>
-			<territory type="DO">Δομινικανὴ Δημοκρατία</territory>
-			<territory type="DZ">Ἀλγερία</territory>
-			<territory type="EC">Ἰσημερινός</territory>
-			<territory type="EE">Ἐσθονία</territory>
-			<territory type="EG">Αἴγυπτος</territory>
-			<territory type="EH">Δυτικὴ Σαχάρα</territory>
-			<territory type="ER">Ἐρυθραία</territory>
-			<territory type="ES">Ἱσπανία</territory>
-			<territory type="ET">Αἰθιοπία</territory>
-			<territory type="FM">Μικρονησία, Ὁμόσπονδες Πολιτεῖες τῆς</territory>
-			<territory type="FO">Νῆσοι Φερόες</territory>
-			<territory type="GB">Ἡνωμένο Βασίλειο</territory>
-			<territory type="GF">Γαλλικὴ Γουιάνα</territory>
-			<territory type="GQ">Ἰσημερινὴ Γουινέα</territory>
-			<territory type="GR">Ἑλλάδα</territory>
-			<territory type="GS">Νότια Γεωργία καὶ Νότιες Νήσοι Σάντουιτς</territory>
-			<territory type="HK">Χὸνγκ Κόνγκ, Εἰδικὴ Διοικητικὴ Περιφέρεια τῆς Κίνας</territory>
-			<territory type="HM">Νῆσοι Χὲρντ καὶ Μακντόναλντ</territory>
-			<territory type="HN">Ὁνδούρα</territory>
-			<territory type="HT">Ἁϊτή</territory>
-			<territory type="HU">Οὑγγαρία</territory>
-			<territory type="ID">Ἰνδονησία</territory>
-			<territory type="IE">Ἰρλανδία</territory>
-			<territory type="IL">Ἰσραήλ</territory>
-			<territory type="IN">Ἰνδία</territory>
-			<territory type="IO">Βρετανικὰ Ἐδάφη Ἰνδικοῦ Ὠκεανοῦ</territory>
-			<territory type="IQ">Ἰράκ</territory>
-			<territory type="IR">Ἰράν, Ἰσλαμικὴ Δημοκρατία τοῦ</territory>
-			<territory type="IS">Ἰσλανδία</territory>
-			<territory type="IT">Ἰταλία</territory>
-			<territory type="JO">Ἰορδανία</territory>
-			<territory type="JP">Ἰαπωνία</territory>
-			<territory type="KN">Σαὶντ Κὶτς καὶ Νέβις</territory>
-			<territory type="KY">Νῆσοι Κέιμαν</territory>
-			<territory type="LA">Λατινικὴ Ἀμερική</territory>
-			<territory type="LC">Ἁγία Λουκία</territory>
-			<territory type="LK">Σρὶ Λάνκα</territory>
-			<territory type="LU">Λουξεμβοῦργο</territory>
-			<territory type="MD">Μολδαβία, Δημοκρατία τῆς</territory>
-			<territory type="MH">Νῆσοι Μάρσαλ</territory>
-			<territory type="ML">Μαλί</territory>
-			<territory type="MO">Μακάο, Εἰδικὴ Διοικητικὴ Περιφέρεια τῆς Κίνας</territory>
-			<territory type="MP">Νῆσοι Βόρειες Μαριάνες</territory>
-			<territory type="NF">Νῆσος Νόρφολκ</territory>
-			<territory type="NL">Ὁλλανδία</territory>
-			<territory type="OM">Ὀμάν</territory>
-			<territory type="PF">Γαλλικὴ Πολυνησία</territory>
-			<territory type="PM">Σαὶντ Πιὲρ καὶ Μικελόν</territory>
-			<territory type="PS">Παλαιστινιακὰ Ἐδάφη</territory>
-			<territory type="SA">Σαουδικὴ Ἀραβία</territory>
-			<territory type="SB">Νῆσοι Σολομῶντος</territory>
-			<territory type="SH">Ἁγία Ἑλένη</territory>
-			<territory type="SJ">Νῆσοι Σβάλμπαρ καὶ Γιὰν Μαγιέν</territory>
-			<territory type="SM">Ἅγιος Μαρίνος</territory>
-			<territory type="ST">Σάο Τομὲ καὶ Πρίνσιπε</territory>
-			<territory type="SV">Ἒλ Σαλβαδόρ</territory>
-			<territory type="SY">Συρία, Ἀραβικὴ Δημοκρατία τῆς</territory>
-			<territory type="TC">Νῆσοι Τὲρκς καὶ Κάικος</territory>
-			<territory type="TD">Τσάντ</territory>
-			<territory type="TF">Γαλλικὰ Νότια Ἐδάφη</territory>
-			<territory type="TL">Ἀνατολικὸ Τιμόρ</territory>
-			<territory type="TT">Τρινιδὰδ καὶ Τομπάγκο</territory>
-			<territory type="UA">Οὐκρανία</territory>
-			<territory type="UG">Οὐγκάντα</territory>
-			<territory type="UM">Ἀπομακρυσμένες Νησίδες τῶν Ἡνωμένων Πολιτειῶν</territory>
-			<territory type="US">Ἡνωμένες Πολιτεῖες</territory>
-			<territory type="UY">Οὐρουγουάη</territory>
-			<territory type="UZ">Οὐζμπεκιστάν</territory>
-			<territory type="VA">Ἁγία Ἕδρα (Βατικανό)</territory>
-			<territory type="VC">Ἅγιος Βικέντιος καὶ Γρεναδίνες</territory>
-			<territory type="VG">Βρετανικὲς Παρθένοι Νῆσοι</territory>
-			<territory type="VI">Ἀμερικανικὲς Παρθένοι Νῆσοι</territory>
-			<territory type="WF">Νῆσοι Οὐάλλις καὶ Φουτουνά</territory>
-			<territory type="YE">Ὑεμένη</territory>
-			<territory type="ZA">Νότια Ἀφρική</territory>
-		</territories>
-		<keys>
-			<key type="calendar">Ἡμερολόγιο</key>
-		</keys>
-		<types>
-			<type type="buddhist" key="calendar">Βουδιστικὸ ἡμερολόγιο</type>
-			<type type="chinese" key="calendar">Κινεζικὸ ἡμερολόγιο</type>
-			<type type="direct" key="collation">Σειρὰ Direct</type>
-			<type type="gregorian" key="calendar">Γρηγοριανὸ ἡμερολόγιο</type>
-			<type type="hebrew" key="calendar">Ἑβραϊκὸ ἡμερολόγιο</type>
-			<type type="islamic" key="calendar">Ἰσλαμικὸ ἡμερολόγιο</type>
-			<type type="islamic-civil" key="calendar">Ἰσλαμικὸ ἀστικὸ ἡμερολόγιο</type>
-			<type type="japanese" key="calendar">Ἰαπωνικὸ ἡμερολόγιο</type>
-			<type type="phonebook" key="collation">Σειρὰ τηλεφωνικοῦ καταλόγου</type>
-			<type type="pinyin" key="collation">Σειρὰ Πίνγιν</type>
-			<type type="stroke" key="collation">Σειρὰ Stroke</type>
-		</types>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[α ἀ ἄ ἂ ἆ ἁ ἅ ἃ ἇ ά ὰ ᾶ β-ε ἐ ἔ ἒ ἑ ἕ ἓ έ ὲ ζ η ἠ ἤ ἢ ἦ ἡ ἥ ἣ ἧ ή ὴ ῆ θ ι ἰ ἴ ἲ ἶ ἱ ἵ ἳ ἷ ί ὶ ῖ ϊ ΐ ῒ ῗ κ-ο ὄ ὂ ὃ ό ὸ π ρ σ ς τ υ ὐ ὔ ὒ ὖ ὑ ὕ ὓ ὗ ύ ὺ ῦ ϋ ΰ ῢ ῧ φ-ω ὤ ὢ ὦ ὥ ὣ ὧ ώ ὼ ῶ]</exemplarCharacters>
-	</characters>
-	<delimiters>
-		<alternateQuotationStart>‛</alternateQuotationStart>
-	</delimiters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">Ἰαν</month>
-							<month type="4">Ἀπρ</month>
-							<month type="6">Ἰουν</month>
-							<month type="7">Ἰουλ</month>
-							<month type="8">Αὐγ</month>
-							<month type="10">Ὀκτ</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Ἰανουαρίου</month>
-							<month type="4">Ἀπριλίου</month>
-							<month type="6">Ἰουνίου</month>
-							<month type="7">Ἰουλίου</month>
-							<month type="8">Αὐγούστου</month>
-							<month type="10">Ὀκτωβρίου</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="abbreviated">
-							<month type="1">Ἰαν</month>
-							<month type="4">Ἀπρ</month>
-							<month type="6">Ἰουν</month>
-							<month type="7">Ἰουλ</month>
-							<month type="8">Αὐγ</month>
-							<month type="10">Ὀκτ</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Ἰανουάριος</month>
-							<month type="4">Ἀπρίλιος</month>
-							<month type="6">Ἰούνιος</month>
-							<month type="7">Ἰούλιος</month>
-							<month type="8">Αὔγουστος</month>
-							<month type="10">Ὀκτώβριος</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-			</calendar>
-		</calendars>
-	</dates>
-	<numbers>
-		<currencies>
-			<currency type="ADP">
-				<displayName>Πεσέτα Ἀνδόρας</displayName>
-			</currency>
-			<currency type="AED">
-				<displayName>Ντιρὰμ Ἡνωμένων Ἀραβικῶν Ἐμιράτων</displayName>
-			</currency>
-			<currency type="ALL">
-				<displayName>Λὲκ Ἀλβανίας</displayName>
-			</currency>
-			<currency type="AMD">
-				<displayName>Dram Ἀρμενίας</displayName>
-			</currency>
-			<currency type="ANG">
-				<displayName>Γκίλντα Ὁλλανδικῶν Ἀντιλλῶν</displayName>
-			</currency>
-			<currency type="AOA">
-				<displayName>Kwanza Ἀνγκόλας</displayName>
-			</currency>
-			<currency type="AOK">
-				<displayName>Kwanza Ἀνγκόλας (1977-1990)</displayName>
-			</currency>
-			<currency type="AON">
-				<displayName>Νέα Kwanza Ἀνγκόλας (1990-2000)</displayName>
-			</currency>
-			<currency type="AOR">
-				<displayName>Kwanza Reajustado Ἀνγκόλας (1995-1999)</displayName>
-			</currency>
-			<currency type="ARA">
-				<displayName>Austral Ἀργεντινῆς</displayName>
-			</currency>
-			<currency type="ARP">
-				<displayName>Πέσο Ἀργεντινῆς (1983-1985)</displayName>
-			</currency>
-			<currency type="ARS">
-				<displayName>Πέσο Ἀργεντινῆς</displayName>
-			</currency>
-			<currency type="ATS">
-				<displayName>Σελίνι Αὐστρίας</displayName>
-			</currency>
-			<currency type="AUD">
-				<displayName>Δολάριο Αὐστραλίας</displayName>
-			</currency>
-			<currency type="AWG">
-				<displayName>Γκίλντα Ἀρούμπα</displayName>
-			</currency>
-			<currency type="AZM">
-				<displayName>Μανὰτ Ἀζερμπαϊτζάν</displayName>
-			</currency>
-			<currency type="BAD">
-				<displayName>Δηνάριο Βοσνίας-Ἑρζεγοβίνης</displayName>
-			</currency>
-			<currency type="BAM">
-				<displayName>Μάρκο Βοσνίας-Ἑρζεγοβίνης</displayName>
-			</currency>
-			<currency type="BEL">
-				<displayName>Φράγκο Βελγίου (οἰκονομικό)</displayName>
-			</currency>
-			<currency type="BGL">
-				<displayName>Μεταλλικὸ Λὲβ Βουλγαρίας</displayName>
-			</currency>
-			<currency type="BGN">
-				<displayName>Νέο Λὲβ Βουλγαρίας</displayName>
-			</currency>
-			<currency type="CAD">
-				<displayName>Δολάριο Καναδᾶ</displayName>
-			</currency>
-			<currency type="CHF">
-				<displayName>Φράγκο Ἑλβετίας</displayName>
-			</currency>
-			<currency type="CLF">
-				<displayName>Unidades de Fomento Χιλῆς</displayName>
-			</currency>
-			<currency type="CLP">
-				<displayName>Πέσο Χιλῆς</displayName>
-			</currency>
-			<currency type="CSK">
-				<displayName>Σκληρὴ Κορόνα Τσεχοσλοβακίας</displayName>
-			</currency>
-			<currency type="CVE">
-				<displayName>Ἐσκούδο Πράσινου Ἀκρωτηρίου</displayName>
-			</currency>
-			<currency type="DDM">
-				<displayName>Ostmark Ἀνατολικῆς Γερμανίας</displayName>
-			</currency>
-			<currency type="DZD">
-				<displayName>Δηνάριο Ἀλγερίας</displayName>
-			</currency>
-			<currency type="ECS">
-				<displayName>Sucre Ἰσημερινοῦ</displayName>
-			</currency>
-			<currency type="ECV">
-				<displayName>Unidad de Valor Constante (UVC) Ἰσημερινοῦ</displayName>
-			</currency>
-			<currency type="EEK">
-				<displayName>Κορόνα Ἐστονίας</displayName>
-			</currency>
-			<currency type="EGP">
-				<displayName>Λίρα Αἰγύπτου</displayName>
-			</currency>
-			<currency type="ERN">
-				<displayName>Nakfa Ἐρυθραίας</displayName>
-			</currency>
-			<currency type="ESP">
-				<displayName>Πεσέτα Ἱσπανίας</displayName>
-			</currency>
-			<currency type="ETB">
-				<displayName>Birr Αἰθιοπίας</displayName>
-			</currency>
-			<currency type="EUR">
-				<displayName>Εὐρώ</displayName>
-			</currency>
-			<currency type="FKP">
-				<displayName>Λίρα Νήσων Φώλκλαντ</displayName>
-			</currency>
-			<currency type="GMD">
-				<displayName>Dalasi Γκάμπιας</displayName>
-			</currency>
-			<currency type="GQE">
-				<displayName>Ekwele Guineana Ἰσημερινῆς Γουινέας</displayName>
-			</currency>
-			<currency type="GTQ">
-				<displayName>Quetzal Γουατεμάλας</displayName>
-			</currency>
-			<currency type="GWE">
-				<displayName>Γκινέα Ἐσκούδο Πορτογαλίας</displayName>
-			</currency>
-			<currency type="HKD">
-				<displayName>Δολάριο Χὸνγκ Κόνγκ</displayName>
-			</currency>
-			<currency type="HTG">
-				<displayName>Gourde Ἁϊτῆς</displayName>
-			</currency>
-			<currency type="HUF">
-				<displayName>Φιορίνι Οὑγγαρίας</displayName>
-			</currency>
-			<currency type="IDR">
-				<displayName>Ρούπια Ἰνδονησίας</displayName>
-			</currency>
-			<currency type="IEP">
-				<displayName>Λίρα Ἰρλανδίας</displayName>
-			</currency>
-			<currency type="ILP">
-				<displayName>Λίρα Ἰσραήλ</displayName>
-			</currency>
-			<currency type="ILS">
-				<displayName>Νέο Sheqel Ἰσραήλ</displayName>
-			</currency>
-			<currency type="INR">
-				<displayName>Ρούπια Ἰνδίας</displayName>
-			</currency>
-			<currency type="IQD">
-				<displayName>Δηνάριο Ἰράκ</displayName>
-			</currency>
-			<currency type="IRR">
-				<displayName>Rial Ἰράκ</displayName>
-			</currency>
-			<currency type="ISK">
-				<displayName>Κορόνα Ἰσλανδίας</displayName>
-			</currency>
-			<currency type="ITL">
-				<displayName>Λιρέτα Ἰταλίας</displayName>
-			</currency>
-			<currency type="JOD">
-				<displayName>Δηνάριο Ἰορδανίας</displayName>
-			</currency>
-			<currency type="JPY">
-				<displayName>Γιὲν Ἰαπωνίας</displayName>
-			</currency>
-			<currency type="LKR">
-				<displayName>Ρούπια Σρὶ Λάνκας</displayName>
-			</currency>
-			<currency type="MOP">
-				<displayName>Pataca Μακάου</displayName>
-			</currency>
-			<currency type="MXN">
-				<displayName>Πέσο Μεξικοῦ</displayName>
-			</currency>
-			<currency type="MXP">
-				<displayName>Ἀσημένιο Πέσο Μεξικοῦ (1861-1992)</displayName>
-			</currency>
-			<currency type="MXV">
-				<displayName>Unidad de Inversion (UDI) Μεξικοῦ</displayName>
-			</currency>
-			<currency type="MZE">
-				<displayName>Ἐσκούδο Μοζαμβίκης</displayName>
-			</currency>
-			<currency type="NAD">
-				<displayName>Δολάριο Ναμίμπιας</displayName>
-			</currency>
-			<currency type="NIO">
-				<displayName>Χρυσὴ Κόρδοβα Νικαράγουας</displayName>
-			</currency>
-			<currency type="NLG">
-				<displayName>Γκίλντα Ὁλλανδίας</displayName>
-			</currency>
-			<currency type="PAB">
-				<displayName>Μπαλμπόα Παναμᾶ</displayName>
-			</currency>
-			<currency type="PGK">
-				<displayName>Kina Παπούα Νέα Γουινέας</displayName>
-			</currency>
-			<currency type="PTE">
-				<displayName>Ἐσκούδο Πορτογαλίας</displayName>
-			</currency>
-			<currency type="PYG">
-				<displayName>Γκουαρανὶ Παραγουάης</displayName>
-			</currency>
-			<currency type="SBD">
-				<displayName>Δολάριο Νήσων Σολομῶντος</displayName>
-			</currency>
-			<currency type="SCR">
-				<displayName>Ρούπια Σεϋχελῶν</displayName>
-			</currency>
-			<currency type="SHP">
-				<displayName>Λίρα Ἀγίας Ἑλένης</displayName>
-			</currency>
-			<currency type="SUR">
-				<displayName>Σοβιετικὸ Ρούβλι</displayName>
-			</currency>
-			<currency type="SVC">
-				<displayName>Colon Ἒλ Σαλβαδόρ</displayName>
-			</currency>
-			<currency type="SZL">
-				<displayName>Lilangeni Ζουαζιλάνδης</displayName>
-			</currency>
-			<currency type="THB">
-				<displayName>Μπὰτ Ταϊλάνδης</displayName>
-			</currency>
-			<currency type="TMM">
-				<displayName>Μανὰτ Τουρκμενιστάν</displayName>
-			</currency>
-			<currency type="TPE">
-				<displayName>Ἐσκούδο Τιμόρ</displayName>
-			</currency>
-			<currency type="TTD">
-				<displayName>Δολάριο Τρινιδὰδ καὶ Τομπάγκο</displayName>
-			</currency>
-			<currency type="UAH">
-				<displayName>Hryvnia Οὐκρανίας</displayName>
-			</currency>
-			<currency type="UAK">
-				<displayName>Karbovanetz Οὐκρανίας</displayName>
-			</currency>
-			<currency type="UGS">
-				<displayName>Σελίνι Οὐγκάντας (1966-1987)</displayName>
-			</currency>
-			<currency type="UGX">
-				<displayName>Σελίνι Οὐγκάντας</displayName>
-			</currency>
-			<currency type="USN">
-				<displayName>Δολάριο ΗΠΑ (Ἑπόμενη ἡμέρα)</displayName>
-			</currency>
-			<currency type="USS">
-				<displayName>Δολάριο ΗΠΑ (Ἴδια ἡμέρα)</displayName>
-			</currency>
-			<currency type="UYP">
-				<displayName>Πέσο Οὐρουγουάης (1975-1993)</displayName>
-			</currency>
-			<currency type="UYU">
-				<displayName>Πέσο Uruguayo Οὐρουγουάης</displayName>
-			</currency>
-			<currency type="UZS">
-				<displayName>Sum Οὐζμπεκιστάν</displayName>
-			</currency>
-			<currency type="VEB">
-				<displayName>Μπολιβὰλ Βενεζουέλας</displayName>
-			</currency>
-			<currency type="WST">
-				<displayName>Tala Δυτικῆς Σαμόας</displayName>
-			</currency>
-			<currency type="XBA">
-				<displayName>Εὐρωπαϊκὴ Σύνθετη Μονάδα</displayName>
-			</currency>
-			<currency type="XBB">
-				<displayName>Εὐρωπαϊκὴ Νομισματικὴ Μονάδα</displayName>
-			</currency>
-			<currency type="XBC">
-				<displayName>Εὐρωπαϊκὴ Μονάδα Λογαριασμοῦ (XBC)</displayName>
-			</currency>
-			<currency type="XBD">
-				<displayName>Εὐρωπαϊκὴ Μονάδα Λογαριασμοῦ (XBD)</displayName>
-			</currency>
-			<currency type="XCD">
-				<displayName>Δολάριο Ἀνατολικῆς Καραϊβικῆς</displayName>
-			</currency>
-			<currency type="XDR">
-				<displayName>Εἰδικὰ Δικαιώματα Ἀνάληψης</displayName>
-			</currency>
-			<currency type="XEU">
-				<displayName>Εὐρωπαϊκὴ Συναλλαγματικὴ Μονάδα</displayName>
-			</currency>
-			<currency type="XFO">
-				<displayName>Χρυσὸ Φράγκο Γαλλίας</displayName>
-			</currency>
-			<currency type="YDD">
-				<displayName>Δηνάριο Ὑεμένης</displayName>
-			</currency>
-			<currency type="YER">
-				<displayName>Rial Ὑεμένης</displayName>
-			</currency>
-			<currency type="YUD">
-				<displayName>Μεταλλικὸ Δηνάριο Γιουγκοσλαβίας</displayName>
-			</currency>
-			<currency type="ZAL">
-				<displayName>Ραντ Νότιας Ἀφρικῆς (οἰκονομικό)</displayName>
-			</currency>
-			<currency type="ZAR">
-				<displayName>Ρὰντ Νότιας Ἀφρικῆς</displayName>
-			</currency>
-		</currencies>
-	</numbers>
-	<posix>
-		<messages>
-			<yesstr>Ναί</yesstr>
-			<nostr>Ὄχι</nostr>
-		</messages>
-	</posix>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php1php0php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php5php php$php"php/php>
+php	php	php<languagephp typephp=php"elphp"php/php>
+php	php	php<variantphp typephp=php"POLYTONphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"arphp"php>phpἈphpρphpαphpβphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"arcphp"php>phpἈphpρphpαphpμphpαphpϊphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>phpΟphpὐphpαphpλphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"egyphp"php>phpΑphpἰphpγphpυphpπphpτphpιphpαphpκphpὰphp php(phpἀphpρphpχphpαphpῖphpαphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>phpἙphpλphpλphpηphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>phpἈphpγphpγphpλphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>phpἹphpσphpπphpαphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>phpἘphpσphpθphpοphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>phpἸphpρphpλphpαphpνphpδphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>phpΣphpκphpωphpτphpιphpκphpὰphp phpκphpεphpλphpτphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"grcphp"php>phpἈphpρphpχphpαphpῖphpαphp phpἙphpλphpλphpηphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>phpἙphpβphpρphpαphpϊphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>phpΟphpὑphpγphpγphpρphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"hyphp"php>phpἈphpρphpμphpεphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>phpἸphpνphpδphpοphpνphpηphpσphpιphpαphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"inephp"php>phpἸphpνphpδphpοphpεphpυphpρphpωphpπphpαphpϊphpκphpὰphp php(phpἄphpλphpλphpαphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"iraphp"php>phpἸphpρphpαphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>phpἸphpσphpλphpαphpνphpδphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>phpἸphpτphpαphpλphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>phpἸphpαphpπphpωphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"mulphp"php>phpΠphpοphpλphpλphpαphpπphpλphpέphpςphp phpγphpλphpῶphpσphpσphpεphpς<php/languagephp>
+php	php	php	php<languagephp typephp=php"naiphp"php>phpἸphpνphpδphpιphpαphpνphpιphpκphpὰphp phpβphpόphpρphpεphpιphpαphpςphp phpἈphpμphpεphpρphpιphpκphpῆphpςphp php(phpἄphpλphpλphpαphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>phpὉphpλphpλphpαphpνphpδphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"otaphp"php>phpΤphpοphpυphpρphpκphpιphpκphpάphp,php phpὀphpθphpωphpμphpαphpνphpιphpκphpὰphp php(php1php5php0php0php-php1php9php2php8php)<php/languagephp>
+php	php	php	php<languagephp typephp=php"peophp"php>phpἈphpρphpχphpαphpῖphpαphp phpπphpεphpρphpσphpιphpκphpὰphp php(php6php0php0php-php4php0php0php phpπphp.phpΧphp.php)<php/languagephp>
+php	php	php	php<languagephp typephp=php"phiphp"php>phpΦphpιphpλphpιphpπphpπphpιphpνphpέphpζphpιphpκphpαphp php(phpἄphpλphpλphpαphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"semphp"php>phpΣphpηphpμphpιphpτphpιphpκphpὰphp php(phpἄphpλphpλphpαphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"slaphp"php>phpΣphpλphpαphpβphpιphpκphpὰphp php(phpἄphpλphpλphpαphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>phpἈphpλphpβphpαphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>phpΟphpὐphpκphpρphpαphpνphpιphpκphpά<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>phpἸphpοphpυphpδphpαphpϊphpκphpά<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Arabphp"php>phpἈphpρphpαphpβphpιphpκphpό<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Armnphp"php>phpἈphpρphpμphpεphpνphpιphpκphpό<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Ethiphp"php>phpΑphpἰphpθphpιphpοphpπphpιphpκphpό<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Grekphp"php>phpἙphpλphpλphpηphpνphpιphpκphpό<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hebrphp"php>phpἙphpβphpρphpαphpϊphpκphpό<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"ADphp"php>phpἈphpνphpδphpόphpρphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AEphp"php>phpἨphpνphpωphpμphpέphpνphpαphp phpἈphpρphpαphpβphpιphpκphpὰphp phpἘphpμphpιphpρphpάphpτphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AFphp"php>phpἈphpφphpγphpαphpνphpιphpσphpτphpάphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AGphp"php>phpἈphpνphpτphpίphpγphpκphpοphpυphpαphp phpκphpαphpὶphp phpΜphpπphpαphpρphpμphpπphpοphpύphpνphpτphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AIphp"php>phpἈphpνphpγphpκphpοphpυphpίphpλphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ALphp"php>phpἈphpλphpβphpαphpνphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AMphp"php>phpἈphpρphpμphpεphpνphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ANphp"php>phpὉphpλphpλphpαphpνphpδphpιphpκphpὲphpςphp phpἈphpνphpτphpίphpλphpλphpεphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AOphp"php>phpἈphpνphpγphpκphpόphpλphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AQphp"php>phpἈphpνphpτphpαphpρphpκphpτphpιphpκphpή<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ARphp"php>phpἈphpρphpγphpεphpνphpτphpιphpνphpή<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ASphp"php>phpἈphpμphpεphpρphpιphpκphpαphpνphpιphpκphpὴphp phpΣphpαphpμphpόphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ATphp"php>phpΑphpὐphpσphpτphpρphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AUphp"php>phpΑphpὐphpσphpτphpρphpαphpλphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AWphp"php>phpἈphpρphpοphpύphpμphpπphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AZphp"php>phpἈphpζphpεphpρphpμphpπphpαphpϊphpτphpζphpάphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BAphp"php>phpΒphpοphpσphpνphpίphpαphp php-php phpἘphpρphpζphpεphpγphpοphpβphpίphpνphpη<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BMphp"php>phpΒphpεphpρphpμphpοphpῦphpδphpεphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BVphp"php>phpΝphpῆphpσphpοphpςphp phpΜphpπphpοphpυphpβphpέ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CCphp"php>phpΝphpῆphpσphpοphpιphp phpΚphpόphpκphpοphpςphp php(phpΚphpήphpλphpιphpνphpγphpκphp)<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CDphp"php>phpΚphpοphpνphpγphpκphpόphp,php phpΛphpαphpϊphpκphpὴphp phpΔphpηphpμphpοphpκphpρphpαphpτphpίphpαphp phpτphpοphpῦ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CFphp"php>phpΚphpεphpνphpτphpρphpοphpαphpφphpρphpιphpκphpαphpνphpιphpκphpὴphp phpΔphpηphpμphpοphpκphpρphpαphpτphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CHphp"php>phpἙphpλphpβphpεphpτphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CIphp"php>phpἈphpκphpτphpὴphp phpἘphpλphpεphpφphpαphpνphpτphpοphpσphpτphpοphpύ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CKphp"php>phpΝphpῆphpσphpοphpιphp phpΚphpοphpύphpκ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CVphp"php>phpΠphpρphpάphpσphpιphpνphpοphp phpἈphpκphpρphpωphpτphpήphpρphpιphpο<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CXphp"php>phpΝphpῆphpσphpοphpςphp phpΧphpρphpιphpσphpτphpοphpυphpγphpέphpνphpνphpωphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DOphp"php>phpΔphpοphpμphpιphpνphpιphpκphpαphpνphpὴphp phpΔphpηphpμphpοphpκphpρphpαphpτphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DZphp"php>phpἈphpλphpγphpεphpρphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ECphp"php>phpἸphpσphpηphpμphpεphpρphpιphpνphpόphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EEphp"php>phpἘphpσphpθphpοphpνphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EGphp"php>phpΑphpἴphpγphpυphpπphpτphpοphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EHphp"php>phpΔphpυphpτphpιphpκphpὴphp phpΣphpαphpχphpάphpρphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ERphp"php>phpἘphpρphpυphpθphpρphpαphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ESphp"php>phpἹphpσphpπphpαphpνphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ETphp"php>phpΑphpἰphpθphpιphpοphpπphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FMphp"php>phpΜphpιphpκphpρphpοphpνphpηphpσphpίphpαphp,php phpὉphpμphpόphpσphpπphpοphpνphpδphpεphpςphp phpΠphpοphpλphpιphpτphpεphpῖphpεphpςphp phpτphpῆphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FOphp"php>phpΝphpῆphpσphpοphpιphp phpΦphpεphpρphpόphpεphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GBphp"php>phpἩphpνphpωphpμphpέphpνphpοphp phpΒphpαphpσphpίphpλphpεphpιphpο<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GFphp"php>phpΓphpαphpλphpλphpιphpκphpὴphp phpΓphpοphpυphpιphpάphpνphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GQphp"php>phpἸphpσphpηphpμphpεphpρphpιphpνphpὴphp phpΓphpοphpυphpιphpνphpέphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GRphp"php>phpἙphpλphpλphpάphpδphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GSphp"php>phpΝphpόphpτphpιphpαphp phpΓphpεphpωphpρphpγphpίphpαphp phpκphpαphpὶphp phpΝphpόphpτphpιphpεphpςphp phpΝphpήphpσphpοphpιphp phpΣphpάphpνphpτphpοphpυphpιphpτphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HKphp"php>phpΧphpὸphpνphpγphpκphp phpΚphpόphpνphpγphpκphp,php phpΕphpἰphpδphpιphpκphpὴphp phpΔphpιphpοphpιphpκphpηphpτphpιphpκphpὴphp phpΠphpεphpρphpιphpφphpέphpρphpεphpιphpαphp phpτphpῆphpςphp phpΚphpίphpνphpαphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HMphp"php>phpΝphpῆphpσphpοphpιphp phpΧphpὲphpρphpνphpτphp phpκphpαphpὶphp phpΜphpαphpκphpνphpτphpόphpνphpαphpλphpνphpτ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HNphp"php>phpὉphpνphpδphpοphpύphpρphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HTphp"php>phpἉphpϊphpτphpή<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HUphp"php>phpΟphpὑphpγphpγphpαphpρphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IDphp"php>phpἸphpνphpδphpοphpνphpηphpσphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IEphp"php>phpἸphpρphpλphpαphpνphpδphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ILphp"php>phpἸphpσphpρphpαphpήphpλ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"INphp"php>phpἸphpνphpδphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IOphp"php>phpΒphpρphpεphpτphpαphpνphpιphpκphpὰphp phpἘphpδphpάphpφphpηphp phpἸphpνphpδphpιphpκphpοphpῦphp phpὨphpκphpεphpαphpνphpοphpῦ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IQphp"php>phpἸphpρphpάphpκ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IRphp"php>phpἸphpρphpάphpνphp,php phpἸphpσphpλphpαphpμphpιphpκphpὴphp phpΔphpηphpμphpοphpκphpρphpαphpτphpίphpαphp phpτphpοphpῦ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ISphp"php>phpἸphpσphpλphpαphpνphpδphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ITphp"php>phpἸphpτphpαphpλphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JOphp"php>phpἸphpοphpρphpδphpαphpνphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JPphp"php>phpἸphpαphpπphpωphpνphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KNphp"php>phpΣphpαphpὶphpνphpτphp phpΚphpὶphpτphpςphp phpκphpαphpὶphp phpΝphpέphpβphpιphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KYphp"php>phpΝphpῆphpσphpοphpιphp phpΚphpέphpιphpμphpαphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LAphp"php>phpΛphpαphpτphpιphpνphpιphpκphpὴphp phpἈphpμphpεphpρphpιphpκphpή<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LCphp"php>phpἉphpγphpίphpαphp phpΛphpοphpυphpκphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LKphp"php>phpΣphpρphpὶphp phpΛphpάphpνphpκphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LUphp"php>phpΛphpοphpυphpξphpεphpμphpβphpοphpῦphpρphpγphpο<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MDphp"php>phpΜphpοphpλphpδphpαphpβphpίphpαphp,php phpΔphpηphpμphpοphpκphpρphpαphpτphpίphpαphp phpτphpῆphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MHphp"php>phpΝphpῆphpσphpοphpιphp phpΜphpάphpρphpσphpαphpλ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MLphp"php>phpΜphpαphpλphpί<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MOphp"php>phpΜphpαphpκphpάphpοphp,php phpΕphpἰphpδphpιphpκphpὴphp phpΔphpιphpοphpιphpκphpηphpτphpιphpκphpὴphp phpΠphpεphpρphpιphpφphpέphpρphpεphpιphpαphp phpτphpῆphpςphp phpΚphpίphpνphpαphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MPphp"php>phpΝphpῆphpσphpοphpιphp phpΒphpόphpρphpεphpιphpεphpςphp phpΜphpαphpρphpιphpάphpνphpεphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NFphp"php>phpΝphpῆphpσphpοphpςphp phpΝphpόphpρphpφphpοphpλphpκ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NLphp"php>phpὉphpλphpλphpαphpνphpδphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"OMphp"php>phpὈphpμphpάphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PFphp"php>phpΓphpαphpλphpλphpιphpκphpὴphp phpΠphpοphpλphpυphpνphpηphpσphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PMphp"php>phpΣphpαphpὶphpνphpτphp phpΠphpιphpὲphpρphp phpκphpαphpὶphp phpΜphpιphpκphpεphpλphpόphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PSphp"php>phpΠphpαphpλphpαphpιphpσphpτphpιphpνphpιphpαphpκphpὰphp phpἘphpδphpάphpφphpη<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SAphp"php>phpΣphpαphpοphpυphpδphpιphpκphpὴphp phpἈphpρphpαphpβphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SBphp"php>phpΝphpῆphpσphpοphpιphp phpΣphpοphpλphpοphpμphpῶphpνphpτphpοphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SHphp"php>phpἉphpγphpίphpαphp phpἙphpλphpέphpνphpη<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SJphp"php>phpΝphpῆphpσphpοphpιphp phpΣphpβphpάphpλphpμphpπphpαphpρphp phpκphpαphpὶphp phpΓphpιphpὰphpνphp phpΜphpαphpγphpιphpέphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SMphp"php>phpἍphpγphpιphpοphpςphp phpΜphpαphpρphpίphpνphpοphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"STphp"php>phpΣphpάphpοphp phpΤphpοphpμphpὲphp phpκphpαphpὶphp phpΠphpρphpίphpνphpσphpιphpπphpε<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SVphp"php>phpἚphpλphp phpΣphpαphpλphpβphpαphpδphpόphpρ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SYphp"php>phpΣphpυphpρphpίphpαphp,php phpἈphpρphpαphpβphpιphpκphpὴphp phpΔphpηphpμphpοphpκphpρphpαphpτphpίphpαphp phpτphpῆphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TCphp"php>phpΝphpῆphpσphpοphpιphp phpΤphpὲphpρphpκphpςphp phpκphpαphpὶphp phpΚphpάphpιphpκphpοphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TDphp"php>phpΤphpσphpάphpνphpτ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TFphp"php>phpΓphpαphpλphpλphpιphpκphpὰphp phpΝphpόphpτphpιphpαphp phpἘphpδphpάphpφphpη<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TLphp"php>phpἈphpνphpαphpτphpοphpλphpιphpκphpὸphp phpΤphpιphpμphpόphpρ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TTphp"php>phpΤphpρphpιphpνphpιphpδphpὰphpδphp phpκphpαphpὶphp phpΤphpοphpμphpπphpάphpγphpκphpο<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UAphp"php>phpΟphpὐphpκphpρphpαphpνphpίphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UGphp"php>phpΟphpὐphpγphpκphpάphpνphpτphpα<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UMphp"php>phpἈphpπphpοphpμphpαphpκphpρphpυphpσphpμphpέphpνphpεphpςphp phpΝphpηphpσphpίphpδphpεphpςphp phpτphpῶphpνphp phpἩphpνphpωphpμphpέphpνphpωphpνphp phpΠphpοphpλphpιphpτphpεphpιphpῶphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"USphp"php>phpἩphpνphpωphpμphpέphpνphpεphpςphp phpΠphpοphpλphpιphpτphpεphpῖphpεphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UYphp"php>phpΟphpὐphpρphpοphpυphpγphpοphpυphpάphpη<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UZphp"php>phpΟphpὐphpζphpμphpπphpεphpκphpιphpσphpτphpάphpν<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VAphp"php>phpἉphpγphpίphpαphp phpἝphpδphpρphpαphp php(phpΒphpαphpτphpιphpκphpαphpνphpόphp)<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VCphp"php>phpἍphpγphpιphpοphpςphp phpΒphpιphpκphpέphpνphpτphpιphpοphpςphp phpκphpαphpὶphp phpΓphpρphpεphpνphpαphpδphpίphpνphpεphpς<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VGphp"php>phpΒphpρphpεphpτphpαphpνphpιphpκphpὲphpςphp phpΠphpαphpρphpθphpέphpνphpοphpιphp phpΝphpῆphpσphpοphpι<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VIphp"php>phpἈphpμphpεphpρphpιphpκphpαphpνphpιphpκphpὲphpςphp phpΠphpαphpρphpθphpέphpνphpοphpιphp phpΝphpῆphpσphpοphpι<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"WFphp"php>phpΝphpῆphpσphpοphpιphp phpΟphpὐphpάphpλphpλphpιphpςphp phpκphpαphpὶphp phpΦphpοphpυphpτphpοphpυphpνphpά<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"YEphp"php>phpὙphpεphpμphpέphpνphpη<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZAphp"php>phpΝphpόphpτphpιphpαphp phpἈphpφphpρphpιphpκphpή<php/territoryphp>
+php	php	<php/territoriesphp>
+php	php	php<keysphp>
+php	php	php	php<keyphp typephp=php"calendarphp"php>phpἩphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/keyphp>
+php	php	<php/keysphp>
+php	php	php<typesphp>
+php	php	php	php<typephp typephp=php"buddhistphp"php keyphp=php"calendarphp"php>phpΒphpοphpυphpδphpιphpσphpτphpιphpκphpὸphp phpἡphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/typephp>
+php	php	php	php<typephp typephp=php"chinesephp"php keyphp=php"calendarphp"php>phpΚphpιphpνphpεphpζphpιphpκphpὸphp phpἡphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/typephp>
+php	php	php	php<typephp typephp=php"directphp"php keyphp=php"collationphp"php>phpΣphpεphpιphpρphpὰphp Direct<php/typephp>
+php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>phpΓphpρphpηphpγphpοphpρphpιphpαphpνphpὸphp phpἡphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/typephp>
+php	php	php	php<typephp typephp=php"hebrewphp"php keyphp=php"calendarphp"php>phpἙphpβphpρphpαphpϊphpκphpὸphp phpἡphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/typephp>
+php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>phpἸphpσphpλphpαphpμphpιphpκphpὸphp phpἡphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/typephp>
+php	php	php	php<typephp typephp=php"islamicphp-civilphp"php keyphp=php"calendarphp"php>phpἸphpσphpλphpαphpμphpιphpκphpὸphp phpἀphpσphpτphpιphpκphpὸphp phpἡphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/typephp>
+php	php	php	php<typephp typephp=php"japanesephp"php keyphp=php"calendarphp"php>phpἸphpαphpπphpωphpνphpιphpκphpὸphp phpἡphpμphpεphpρphpοphpλphpόphpγphpιphpο<php/typephp>
+php	php	php	php<typephp typephp=php"phonebookphp"php keyphp=php"collationphp"php>phpΣphpεphpιphpρphpὰphp phpτphpηphpλphpεphpφphpωphpνphpιphpκphpοphpῦphp phpκphpαphpτphpαphpλphpόphpγphpοphpυ<php/typephp>
+php	php	php	php<typephp typephp=php"pinyinphp"php keyphp=php"collationphp"php>phpΣphpεphpιphpρphpὰphp phpΠphpίphpνphpγphpιphpν<php/typephp>
+php	php	php	php<typephp typephp=php"strokephp"php keyphp=php"collationphp"php>phpΣphpεphpιphpρphpὰphp Stroke<php/typephp>
+php	php	<php/typesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[phpαphp phpἀphp phpἄphp phpἂphp phpἆphp phpἁphp phpἅphp phpἃphp phpἇphp phpάphp phpὰphp phpᾶphp phpβphp-phpεphp phpἐphp phpἔphp phpἒphp phpἑphp phpἕphp phpἓphp phpέphp phpὲphp phpζphp phpηphp phpἠphp phpἤphp phpἢphp phpἦphp phpἡphp phpἥphp phpἣphp phpἧphp phpήphp phpὴphp phpῆphp phpθphp phpιphp phpἰphp phpἴphp phpἲphp phpἶphp phpἱphp phpἵphp phpἳphp phpἷphp phpίphp phpὶphp phpῖphp phpϊphp phpΐphp phpῒphp phpῗphp phpκphp-phpοphp phpὄphp phpὂphp phpὃphp phpόphp phpὸphp phpπphp phpρphp phpσphp phpςphp phpτphp phpυphp phpὐphp phpὔphp phpὒphp phpὖphp phpὑphp phpὕphp phpὓphp phpὗphp phpύphp phpὺphp phpῦphp phpϋphp phpΰphp phpῢphp phpῧphp phpφphp-phpωphp phpὤphp phpὢphp phpὦphp phpὥphp phpὣphp phpὧphp phpώphp phpὼphp phpῶphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<delimitersphp>
+php	php	php<alternateQuotationStartphp>php‛<php/alternateQuotationStartphp>
+php	<php/delimitersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpἸphpαphpν<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpἈphpπphpρ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpἸphpοphpυphpν<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpἸphpοphpυphpλ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpΑphpὐphpγ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpὈphpκphpτ<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpἸphpαphpνphpοphpυphpαphpρphpίphpοphpυ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpἈphpπphpρphpιphpλphpίphpοphpυ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpἸphpοphpυphpνphpίphpοphpυ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpἸphpοphpυphpλphpίphpοphpυ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpΑphpὐphpγphpοphpύphpσphpτphpοphpυ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpὈphpκphpτphpωphpβphpρphpίphpοphpυ<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpἸphpαphpν<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpἈphpπphpρ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpἸphpοphpυphpν<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpἸphpοphpυphpλ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpΑphpὐphpγ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpὈphpκphpτ<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpἸphpαphpνphpοphpυphpάphpρphpιphpοphpς<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpἈphpπphpρphpίphpλphpιphpοphpς<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpἸphpοphpύphpνphpιphpοphpς<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpἸphpοphpύphpλphpιphpοphpς<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpΑphpὔphpγphpοphpυphpσphpτphpοphpς<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpὈphpκphpτphpώphpβphpρphpιphpοphpς<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"ADPphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpεphpσphpέphpτphpαphp phpἈphpνphpδphpόphpρphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AEDphp"php>
+php	php	php	php	php<displayNamephp>phpΝphpτphpιphpρphpὰphpμphp phpἩphpνphpωphpμphpέphpνphpωphpνphp phpἈphpρphpαphpβphpιphpκphpῶphpνphp phpἘphpμphpιphpρphpάphpτphpωphpν<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ALLphp"php>
+php	php	php	php	php<displayNamephp>phpΛphpὲphpκphp phpἈphpλphpβphpαphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AMDphp"php>
+php	php	php	php	php<displayNamephp>Dramphp phpἈphpρphpμphpεphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ANGphp"php>
+php	php	php	php	php<displayNamephp>phpΓphpκphpίphpλphpνphpτphpαphp phpὉphpλphpλphpαphpνphpδphpιphpκphpῶphpνphp phpἈphpνphpτphpιphpλphpλphpῶphpν<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AOAphp"php>
+php	php	php	php	php<displayNamephp>Kwanzaphp phpἈphpνphpγphpκphpόphpλphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AOKphp"php>
+php	php	php	php	php<displayNamephp>Kwanzaphp phpἈphpνphpγphpκphpόphpλphpαphpςphp php(php1php9php7php7php-php1php9php9php0php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AONphp"php>
+php	php	php	php	php<displayNamephp>phpΝphpέphpαphp Kwanzaphp phpἈphpνphpγphpκphpόphpλphpαphpςphp php(php1php9php9php0php-php2php0php0php0php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AORphp"php>
+php	php	php	php	php<displayNamephp>Kwanzaphp Reajustadophp phpἈphpνphpγphpκphpόphpλphpαphpςphp php(php1php9php9php5php-php1php9php9php9php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ARAphp"php>
+php	php	php	php	php<displayNamephp>Australphp phpἈphpρphpγphpεphpνphpτphpιphpνphpῆphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ARPphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpέphpσphpοphp phpἈphpρphpγphpεphpνphpτphpιphpνphpῆphpςphp php(php1php9php8php3php-php1php9php8php5php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ARSphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpέphpσphpοphp phpἈphpρphpγphpεphpνphpτphpιphpνphpῆphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ATSphp"php>
+php	php	php	php	php<displayNamephp>phpΣphpεphpλphpίphpνphpιphp phpΑphpὐphpσphpτphpρphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AUDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΑphpὐphpσphpτphpρphpαphpλphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AWGphp"php>
+php	php	php	php	php<displayNamephp>phpΓphpκphpίphpλphpνphpτphpαphp phpἈphpρphpοphpύphpμphpπphpα<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"AZMphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpαphpνphpὰphpτphp phpἈphpζphpεphpρphpμphpπphpαphpϊphpτphpζphpάphpν<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BADphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpηphpνphpάphpρphpιphpοphp phpΒphpοphpσphpνphpίphpαphpςphp-phpἙphpρphpζphpεphpγphpοphpβphpίphpνphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BAMphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpάphpρphpκphpοphp phpΒphpοphpσphpνphpίphpαphpςphp-phpἙphpρphpζphpεphpγphpοphpβphpίphpνphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BELphp"php>
+php	php	php	php	php<displayNamephp>phpΦphpρphpάphpγphpκphpοphp phpΒphpεphpλphpγphpίphpοphpυphp php(phpοphpἰphpκphpοphpνphpοphpμphpιphpκphpόphp)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BGLphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpεphpτphpαphpλphpλphpιphpκphpὸphp phpΛphpὲphpβphp phpΒphpοphpυphpλphpγphpαphpρphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BGNphp"php>
+php	php	php	php	php<displayNamephp>phpΝphpέphpοphp phpΛphpὲphpβphp phpΒphpοphpυphpλphpγphpαphpρphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CADphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΚphpαphpνphpαphpδphpᾶ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CHFphp"php>
+php	php	php	php	php<displayNamephp>phpΦphpρphpάphpγphpκphpοphp phpἙphpλphpβphpεphpτphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CLFphp"php>
+php	php	php	php	php<displayNamephp>Unidadesphp dephp Fomentophp phpΧphpιphpλphpῆphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CLPphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpέphpσphpοphp phpΧphpιphpλphpῆphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CSKphp"php>
+php	php	php	php	php<displayNamephp>phpΣphpκphpλphpηphpρphpὴphp phpΚphpοphpρphpόphpνphpαphp phpΤphpσphpεphpχphpοphpσphpλphpοphpβphpαphpκphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CVEphp"php>
+php	php	php	php	php<displayNamephp>phpἘphpσphpκphpοphpύphpδphpοphp phpΠphpρphpάphpσphpιphpνphpοphpυphp phpἈphpκphpρphpωphpτphpηphpρphpίphpοphpυ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"DDMphp"php>
+php	php	php	php	php<displayNamephp>Ostmarkphp phpἈphpνphpαphpτphpοphpλphpιphpκphpῆphpςphp phpΓphpεphpρphpμphpαphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"DZDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpηphpνphpάphpρphpιphpοphp phpἈphpλphpγphpεphpρphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ECSphp"php>
+php	php	php	php	php<displayNamephp>Sucrephp phpἸphpσphpηphpμphpεphpρphpιphpνphpοphpῦ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ECVphp"php>
+php	php	php	php	php<displayNamephp>Unidadphp dephp Valorphp Constantephp php(UVCphp)php phpἸphpσphpηphpμphpεphpρphpιphpνphpοphpῦ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"EEKphp"php>
+php	php	php	php	php<displayNamephp>phpΚphpοphpρphpόphpνphpαphp phpἘphpσphpτphpοphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"EGPphp"php>
+php	php	php	php	php<displayNamephp>phpΛphpίphpρphpαphp phpΑphpἰphpγphpύphpπphpτphpοphpυ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ERNphp"php>
+php	php	php	php	php<displayNamephp>Nakfaphp phpἘphpρphpυphpθphpρphpαphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ESPphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpεphpσphpέphpτphpαphp phpἹphpσphpπphpαphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ETBphp"php>
+php	php	php	php	php<displayNamephp>Birrphp phpΑphpἰphpθphpιphpοphpπphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"EURphp"php>
+php	php	php	php	php<displayNamephp>phpΕphpὐphpρphpώ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"FKPphp"php>
+php	php	php	php	php<displayNamephp>phpΛphpίphpρphpαphp phpΝphpήphpσphpωphpνphp phpΦphpώphpλphpκphpλphpαphpνphpτ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GMDphp"php>
+php	php	php	php	php<displayNamephp>Dalasiphp phpΓphpκphpάphpμphpπphpιphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GQEphp"php>
+php	php	php	php	php<displayNamephp>Ekwelephp Guineanaphp phpἸphpσphpηphpμphpεphpρphpιphpνphpῆphpςphp phpΓphpοphpυphpιphpνphpέphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GTQphp"php>
+php	php	php	php	php<displayNamephp>Quetzalphp phpΓphpοphpυphpαphpτphpεphpμphpάphpλphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GWEphp"php>
+php	php	php	php	php<displayNamephp>phpΓphpκphpιphpνphpέphpαphp phpἘphpσphpκphpοphpύphpδphpοphp phpΠphpοphpρphpτphpοphpγphpαphpλphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"HKDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΧphpὸphpνphpγphpκphp phpΚphpόphpνphpγphpκ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"HTGphp"php>
+php	php	php	php	php<displayNamephp>Gourdephp phpἉphpϊphpτphpῆphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"HUFphp"php>
+php	php	php	php	php<displayNamephp>phpΦphpιphpοphpρphpίphpνphpιphp phpΟphpὑphpγphpγphpαphpρphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"IDRphp"php>
+php	php	php	php	php<displayNamephp>phpΡphpοphpύphpπphpιphpαphp phpἸphpνphpδphpοphpνphpηphpσphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"IEPphp"php>
+php	php	php	php	php<displayNamephp>phpΛphpίphpρphpαphp phpἸphpρphpλphpαphpνphpδphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ILPphp"php>
+php	php	php	php	php<displayNamephp>phpΛphpίphpρphpαphp phpἸphpσphpρphpαphpήphpλ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ILSphp"php>
+php	php	php	php	php<displayNamephp>phpΝphpέphpοphp Sheqelphp phpἸphpσphpρphpαphpήphpλ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"INRphp"php>
+php	php	php	php	php<displayNamephp>phpΡphpοphpύphpπphpιphpαphp phpἸphpνphpδphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"IQDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpηphpνphpάphpρphpιphpοphp phpἸphpρphpάphpκ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"IRRphp"php>
+php	php	php	php	php<displayNamephp>Rialphp phpἸphpρphpάphpκ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ISKphp"php>
+php	php	php	php	php<displayNamephp>phpΚphpοphpρphpόphpνphpαphp phpἸphpσphpλphpαphpνphpδphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ITLphp"php>
+php	php	php	php	php<displayNamephp>phpΛphpιphpρphpέphpτphpαphp phpἸphpτphpαphpλphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"JODphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpηphpνphpάphpρphpιphpοphp phpἸphpοphpρphpδphpαphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"JPYphp"php>
+php	php	php	php	php<displayNamephp>phpΓphpιphpὲphpνphp phpἸphpαphpπphpωphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"LKRphp"php>
+php	php	php	php	php<displayNamephp>phpΡphpοphpύphpπphpιphpαphp phpΣphpρphpὶphp phpΛphpάphpνphpκphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MOPphp"php>
+php	php	php	php	php<displayNamephp>Patacaphp phpΜphpαphpκphpάphpοphpυ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MXNphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpέphpσphpοphp phpΜphpεphpξphpιphpκphpοphpῦ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MXPphp"php>
+php	php	php	php	php<displayNamephp>phpἈphpσphpηphpμphpέphpνphpιphpοphp phpΠphpέphpσphpοphp phpΜphpεphpξphpιphpκphpοphpῦphp php(php1php8php6php1php-php1php9php9php2php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MXVphp"php>
+php	php	php	php	php<displayNamephp>Unidadphp dephp Inversionphp php(UDIphp)php phpΜphpεphpξphpιphpκphpοphpῦ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"MZEphp"php>
+php	php	php	php	php<displayNamephp>phpἘphpσphpκphpοphpύphpδphpοphp phpΜphpοphpζphpαphpμphpβphpίphpκphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"NADphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΝphpαphpμphpίphpμphpπphpιphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"NIOphp"php>
+php	php	php	php	php<displayNamephp>phpΧphpρphpυphpσphpὴphp phpΚphpόphpρphpδphpοphpβphpαphp phpΝphpιphpκphpαphpρphpάphpγphpοphpυphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"NLGphp"php>
+php	php	php	php	php<displayNamephp>phpΓphpκphpίphpλphpνphpτphpαphp phpὉphpλphpλphpαphpνphpδphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"PABphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpπphpαphpλphpμphpπphpόphpαphp phpΠphpαphpνphpαphpμphpᾶ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"PGKphp"php>
+php	php	php	php	php<displayNamephp>Kinaphp phpΠphpαphpπphpοphpύphpαphp phpΝphpέphpαphp phpΓphpοphpυphpιphpνphpέphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"PTEphp"php>
+php	php	php	php	php<displayNamephp>phpἘphpσphpκphpοphpύphpδphpοphp phpΠphpοphpρphpτphpοphpγphpαphpλphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"PYGphp"php>
+php	php	php	php	php<displayNamephp>phpΓphpκphpοphpυphpαphpρphpαphpνphpὶphp phpΠphpαphpρphpαphpγphpοphpυphpάphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SBDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΝphpήphpσphpωphpνphp phpΣphpοphpλphpοphpμphpῶphpνphpτphpοphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SCRphp"php>
+php	php	php	php	php<displayNamephp>phpΡphpοphpύphpπphpιphpαphp phpΣphpεphpϋphpχphpεphpλphpῶphpν<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SHPphp"php>
+php	php	php	php	php<displayNamephp>phpΛphpίphpρphpαphp phpἈphpγphpίphpαphpςphp phpἙphpλphpέphpνphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SURphp"php>
+php	php	php	php	php<displayNamephp>phpΣphpοphpβphpιphpεphpτphpιphpκphpὸphp phpΡphpοphpύphpβphpλphpι<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SVCphp"php>
+php	php	php	php	php<displayNamephp>Colonphp phpἚphpλphp phpΣphpαphpλphpβphpαphpδphpόphpρ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SZLphp"php>
+php	php	php	php	php<displayNamephp>Lilangeniphp phpΖphpοphpυphpαphpζphpιphpλphpάphpνphpδphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"THBphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpπphpὰphpτphp phpΤphpαphpϊphpλphpάphpνphpδphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"TMMphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpαphpνphpὰphpτphp phpΤphpοphpυphpρphpκphpμphpεphpνphpιphpσphpτphpάphpν<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"TPEphp"php>
+php	php	php	php	php<displayNamephp>phpἘphpσphpκphpοphpύphpδphpοphp phpΤphpιphpμphpόphpρ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"TTDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΤphpρphpιphpνphpιphpδphpὰphpδphp phpκphpαphpὶphp phpΤphpοphpμphpπphpάphpγphpκphpο<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UAHphp"php>
+php	php	php	php	php<displayNamephp>Hryvniaphp phpΟphpὐphpκphpρphpαphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UAKphp"php>
+php	php	php	php	php<displayNamephp>Karbovanetzphp phpΟphpὐphpκphpρphpαphpνphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UGSphp"php>
+php	php	php	php	php<displayNamephp>phpΣphpεphpλphpίphpνphpιphp phpΟphpὐphpγphpκphpάphpνphpτphpαphpςphp php(php1php9php6php6php-php1php9php8php7php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UGXphp"php>
+php	php	php	php	php<displayNamephp>phpΣphpεphpλphpίphpνphpιphp phpΟphpὐphpγphpκphpάphpνphpτphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"USNphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΗphpΠphpΑphp php(phpἙphpπphpόphpμphpεphpνphpηphp phpἡphpμphpέphpρphpαphp)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"USSphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpΗphpΠphpΑphp php(phpἼphpδphpιphpαphp phpἡphpμphpέphpρphpαphp)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UYPphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpέphpσphpοphp phpΟphpὐphpρphpοphpυphpγphpοphpυphpάphpηphpςphp php(php1php9php7php5php-php1php9php9php3php)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UYUphp"php>
+php	php	php	php	php<displayNamephp>phpΠphpέphpσphpοphp Uruguayophp phpΟphpὐphpρphpοphpυphpγphpοphpυphpάphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UZSphp"php>
+php	php	php	php	php<displayNamephp>Sumphp phpΟphpὐphpζphpμphpπphpεphpκphpιphpσphpτphpάphpν<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"VEBphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpπphpοphpλphpιphpβphpὰphpλphp phpΒphpεphpνphpεphpζphpοphpυphpέphpλphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"WSTphp"php>
+php	php	php	php	php<displayNamephp>Talaphp phpΔphpυphpτphpιphpκphpῆphpςphp phpΣphpαphpμphpόphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XBAphp"php>
+php	php	php	php	php<displayNamephp>phpΕphpὐphpρphpωphpπphpαphpϊphpκphpὴphp phpΣphpύphpνphpθphpεphpτphpηphp phpΜphpοphpνphpάphpδphpα<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XBBphp"php>
+php	php	php	php	php<displayNamephp>phpΕphpὐphpρphpωphpπphpαphpϊphpκphpὴphp phpΝphpοphpμphpιphpσphpμphpαphpτphpιphpκphpὴphp phpΜphpοphpνphpάphpδphpα<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XBCphp"php>
+php	php	php	php	php<displayNamephp>phpΕphpὐphpρphpωphpπphpαphpϊphpκphpὴphp phpΜphpοphpνphpάphpδphpαphp phpΛphpοphpγphpαphpρphpιphpαphpσphpμphpοphpῦphp php(XBCphp)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XBDphp"php>
+php	php	php	php	php<displayNamephp>phpΕphpὐphpρphpωphpπphpαphpϊphpκphpὴphp phpΜphpοphpνphpάphpδphpαphp phpΛphpοphpγphpαphpρphpιphpαphpσphpμphpοphpῦphp php(XBDphp)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XCDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpοphpλphpάphpρphpιphpοphp phpἈphpνphpαphpτphpοphpλphpιphpκphpῆphpςphp phpΚphpαphpρphpαphpϊphpβphpιphpκphpῆphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XDRphp"php>
+php	php	php	php	php<displayNamephp>phpΕphpἰphpδphpιphpκphpὰphp phpΔphpιphpκphpαphpιphpώphpμphpαphpτphpαphp phpἈphpνphpάphpλphpηphpψphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XEUphp"php>
+php	php	php	php	php<displayNamephp>phpΕphpὐphpρphpωphpπphpαphpϊphpκphpὴphp phpΣphpυphpνphpαphpλphpλphpαphpγphpμphpαphpτphpιphpκphpὴphp phpΜphpοphpνphpάphpδphpα<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"XFOphp"php>
+php	php	php	php	php<displayNamephp>phpΧphpρphpυphpσphpὸphp phpΦphpρphpάphpγphpκphpοphp phpΓphpαphpλphpλphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"YDDphp"php>
+php	php	php	php	php<displayNamephp>phpΔphpηphpνphpάphpρphpιphpοphp phpὙphpεphpμphpέphpνphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"YERphp"php>
+php	php	php	php	php<displayNamephp>Rialphp phpὙphpεphpμphpέphpνphpηphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"YUDphp"php>
+php	php	php	php	php<displayNamephp>phpΜphpεphpτphpαphpλphpλphpιphpκphpὸphp phpΔphpηphpνphpάphpρphpιphpοphp phpΓphpιphpοphpυphpγphpκphpοphpσphpλphpαphpβphpίphpαphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ZALphp"php>
+php	php	php	php	php<displayNamephp>phpΡphpαphpνphpτphp phpΝphpόphpτphpιphpαphpςphp phpἈphpφphpρphpιphpκphpῆphpςphp php(phpοphpἰphpκphpοphpνphpοphpμphpιphpκphpόphp)<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ZARphp"php>
+php	php	php	php	php<displayNamephp>phpΡphpὰphpνphpτphp phpΝphpόphpτphpιphpαphpςphp phpἈphpφphpρphpιphpκphpῆphpς<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+php	php<posixphp>
+php	php	php<messagesphp>
+php	php	php	php<yesstrphp>phpΝphpαphpί<php/yesstrphp>
+php	php	php	php<nostrphp>phpὌphpχphpι<php/nostrphp>
+php	php	<php/messagesphp>
+php	<php/posixphp>
+<php/ldmlphp>
 

@@ -1,325 +1,325 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.70 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="ti"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="af">አፍሪቃንሰኛ</language>
-			<language type="am">አምሐረኛ</language>
-			<language type="ar">ዓረበኛ</language>
-			<language type="az">አዜርባይጃንኛ</language>
-			<language type="be">ቤላራሻኛ</language>
-			<language type="bg">ቡልጋሪኛ</language>
-			<language type="bh">ቢሃሪ</language>
-			<language type="bn">በንጋሊኛ</language>
-			<language type="br">ብሬቶን</language>
-			<language type="bs">ቦስኒያን</language>
-			<language type="ca">ካታላን</language>
-			<language type="cs">ቼክኛ</language>
-			<language type="cy">ወልሽ</language>
-			<language type="da">ዴኒሽ</language>
-			<language type="de">ጀርመን</language>
-			<language type="el">ግሪከኛ</language>
-			<language type="en">እንግሊዝኛ</language>
-			<language type="eo">ኤስፐራንቶ</language>
-			<language type="es">ስፓኒሽ</language>
-			<language type="et">ኤስቶኒአን</language>
-			<language type="eu">ባስክኛ</language>
-			<language type="fa">ፐርሲያኛ</language>
-			<language type="fi">ፊኒሽ</language>
-			<language type="fil">ታጋሎገኛ</language>
-			<language type="fo">ፋሮኛ</language>
-			<language type="fr">ፈረንሳይኛ</language>
-			<language type="fy">ፍሪሰኛ</language>
-			<language type="ga">አይሪሽ</language>
-			<language type="gd">እስኮትስ ጌልክኛ</language>
-			<language type="gl">ጋለቪኛ</language>
-			<language type="gn">ጓራኒ</language>
-			<language type="gu">ጉጃራቲኛ</language>
-			<language type="he">ዕብራስጥ</language>
-			<language type="hi">ሕንደኛ</language>
-			<language type="hr">ክሮሽያንኛ</language>
-			<language type="hu">ሀንጋሪኛ</language>
-			<language type="ia">ኢንቴር ቋንቋ</language>
-			<language type="id">እንዶኑሲኛ</language>
-			<language type="is">አይስላንደኛ</language>
-			<language type="it">ጣሊያንኛ</language>
-			<language type="ja">ጃፓንኛ</language>
-			<language type="jv">ጃቫንኛ</language>
-			<language type="ka">ጊዮርጊያኛ</language>
-			<language type="kn">ካማደኛ</language>
-			<language type="ko">ኮሪያኛ</language>
-			<language type="ku">ኩርድሽ</language>
-			<language type="ky">ኪሩጋዚ</language>
-			<language type="la">ላቲንኛ</language>
-			<language type="lt">ሊቱአኒየን</language>
-			<language type="lv">ላቲቪያን</language>
-			<language type="mk">ማክዶኒኛ</language>
-			<language type="ml">ማላያላምኛ</language>
-			<language type="mr">ማራቲኛ</language>
-			<language type="ms">ማላይኛ</language>
-			<language type="mt">ማልቲስኛ</language>
-			<language type="ne">ኔፖሊኛ</language>
-			<language type="nl">ደች</language>
-			<language type="nn">ኖርዌይኛ (ናይ ኝኖርስክ)</language>
-			<language type="no">ኖርዌጂያን</language>
-			<language type="oc">ኦኪታንኛ</language>
-			<language type="or">ኦሪያ</language>
-			<language type="pa">ፑንጃቢኛ</language>
-			<language type="pl">ፖሊሽ</language>
-			<language type="ps">ፓሽቶ</language>
-			<language type="pt">ፖርቱጋሊኛ</language>
-			<language type="pt_BR">ፖርቱጋልኛ (ናይ ብራዚል)</language>
-			<language type="pt_PT">ፖርቱጋልኛ (ናይ ፖርቱጋል)</language>
-			<language type="ro">ሮማኒያን</language>
-			<language type="ru">ራሽኛ</language>
-			<language type="sh">ሰርቦ- ክሮዊታን</language>
-			<language type="si">ስንሃልኛ</language>
-			<language type="sk">ስሎቨክኛ</language>
-			<language type="sl">ስቁቪኛ</language>
-			<language type="sq">አልቤኒኛ</language>
-			<language type="sr">ሰርቢኛ</language>
-			<language type="st">ሰሴቶ</language>
-			<language type="su">ሱዳንኛ</language>
-			<language type="sv">ስዊድንኛ</language>
-			<language type="sw">ሰዋሂሊኛ</language>
-			<language type="ta">ታሚልኛ</language>
-			<language type="te">ተሉጉኛ</language>
-			<language type="th">ታይኛ</language>
-			<language type="ti">ትግርኛ</language>
-			<language type="tk">ናይ ቱርኪ ሰብዓይ (ቱርካዊ)</language>
-			<language type="tlh">ክሊንግኦንኛ</language>
-			<language type="tr">ቱርከኛ</language>
-			<language type="tw">ትዊ</language>
-			<language type="uk">ዩክረኒኛ</language>
-			<language type="ur">ኡርዱኛ</language>
-			<language type="uz">ኡዝበክኛ</language>
-			<language type="vi">ቪትናምኛ</language>
-			<language type="xh">ዞሳኛ</language>
-			<language type="yi">ዪዲሽ</language>
-			<language type="zu">ዙሉኛ</language>
-		</languages>
-		<scripts>
-			<script type="Ethi">ፊደል</script>
-			<script type="Latn">ላቲን</script>
-		</scripts>
-		<territories>
-			<alias source="am"/>
-		</territories>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[\u135F ሀ-ሆ ለ-ቆ ቈ ቊ-ቍ ቐ-ቖ ቘ ቚ-ቝ በ-ኆ ኈ ኊ-ኍ ነ-ኮ ኰ ኲ-ኵ ኸ-ኾ ዀ ዂ-ዅ ወ-ዎ ዐ-ዖ ዘ-ዮ ደ-ዷ ጀ-ጎ ጐ ጒ-ጕ ጠ-ፗ]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[᎐-᎙ ሇ ⶀ ᎀ-ᎃ ⶁ-ⶄ ቇ ᎄ-ᎇ ⶅ-ⶇ ኇ ⶈ-ⶊ ኯ ዏ ⶋ ዯ ⶌ ዸ-ዿ ⶍ ⶎ ጏ ጘ-ጟ ⶓ-ⶖ ⶏ-ⶑ ፇ ᎈ-ᎏ ⶒ ፘ-ፚ ⶠ-ⶦ ⶨ-ⶮ ⶰ-ⶶ ⶸ-ⶾ ⷀ-ⷆ ⷈ-ⷎ ⷐ-ⷖ ⷘ-ⷞ]</exemplarCharacters>
-	</characters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">ጃንዩ</month>
-							<month type="2">ፌብሩ</month>
-							<month type="3">ማርች</month>
-							<month type="4">ኤፕረ</month>
-							<month type="5">ሜይ</month>
-							<month type="6">ጁን</month>
-							<month type="7">ጁላይ</month>
-							<month type="8">ኦገስ</month>
-							<month type="9">ሴፕቴ</month>
-							<month type="10">ኦክተ</month>
-							<month type="11">ኖቬም</month>
-							<month type="12">ዲሴም</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">ጃንዩወሪ</month>
-							<month type="2">ፌብሩወሪ</month>
-							<month type="3">ማርች</month>
-							<month type="4">ኤፕረል</month>
-							<month type="5">ሜይ</month>
-							<month type="6">ጁን</month>
-							<month type="7">ጁላይ</month>
-							<month type="8">ኦገስት</month>
-							<month type="9">ሴፕቴምበር</month>
-							<month type="10">ኦክተውበር</month>
-							<month type="11">ኖቬምበር</month>
-							<month type="12">ዲሴምበር</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="narrow">
-							<month type="1">ጃ</month>
-							<month type="2">ፌ</month>
-							<month type="3">ማ</month>
-							<month type="4">ኤ</month>
-							<month type="5">ሜ</month>
-							<month type="6">ጁ</month>
-							<month type="7">ጁ</month>
-							<month type="8">ኦ</month>
-							<month type="9">ሴ</month>
-							<month type="10">ኦ</month>
-							<month type="11">ኖ</month>
-							<month type="12">ዲ</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">ሰንበ</day>
-							<day type="mon">ሰኑይ</day>
-							<day type="tue">ሠሉስ</day>
-							<day type="wed">ረቡዕ</day>
-							<day type="thu">ኃሙስ</day>
-							<day type="fri">ዓርቢ</day>
-							<day type="sat">ቀዳም</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">ሰንበት</day>
-							<day type="mon">ሰኑይ</day>
-							<day type="tue">ሠሉስ</day>
-							<day type="wed">ረቡዕ</day>
-							<day type="thu">ኃሙስ</day>
-							<day type="fri">ዓርቢ</day>
-							<day type="sat">ቀዳም</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">ሰ</day>
-							<day type="mon">ሰ</day>
-							<day type="tue">ሠ</day>
-							<day type="wed">ረ</day>
-							<day type="thu">ኃ</day>
-							<day type="fri">ዓ</day>
-							<day type="sat">ቀ</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<quarters>
-					<quarterContext type="format">
-						<quarterWidth type="abbreviated">
-							<quarter type="1">Q1</quarter>
-							<quarter type="2">Q2</quarter>
-							<quarter type="3">Q3</quarter>
-							<quarter type="4">Q4</quarter>
-						</quarterWidth>
-						<quarterWidth type="wide">
-							<quarter type="1">Q1</quarter>
-							<quarter type="2">Q2</quarter>
-							<quarter type="3">Q3</quarter>
-							<quarter type="4">Q4</quarter>
-						</quarterWidth>
-					</quarterContext>
-				</quarters>
-				<am>ንጉሆ ሰዓተ</am>
-				<pm>ድሕር ሰዓት</pm>
-				<eras>
-					<eraAbbr>
-						<era type="0">ዓ/ዓ</era>
-						<era type="1">ዓ/ም</era>
-					</eraAbbr>
-				</eras>
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE፣ dd MMMM መዓልቲ y G</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>dd MMMM y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>dd-MMM-y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>dd/MM/yy</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="full">
-						<timeFormat>
-							<pattern>h:mm:ss a zzzz</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="long">
-						<timeFormat>
-							<pattern>h:mm:ss a z</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>h:mm:ss a</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="short">
-						<timeFormat>
-							<pattern>h:mm a</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="MMdd">dd/MM</dateFormatItem>
-						<dateFormatItem id="MMMMdd">dd MMMM</dateFormatItem>
-						<dateFormatItem id="yyMM">MM/yy</dateFormatItem>
-						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
-						<dateFormatItem id="yyyyMMMM">MMMM y</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;-HH:mm</hourFormat>
-			<gmtFormat>GMT{0}</gmtFormat>
-			<regionFormat>{0}</regionFormat>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>¤#,##0.00</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-		</currencyFormats>
-		<currencies>
-			<currency type="BRL">
-				<displayName>የብራዚል ሪል</displayName>
-			</currency>
-			<currency type="CNY">
-				<displayName>የቻይና ዩአን ረንሚንቢ</displayName>
-			</currency>
-			<currency type="ETB">
-				<displayName>የኢትዮጵያ ብር</displayName>
-			</currency>
-			<currency type="EUR">
-				<displayName>አውሮ</displayName>
-			</currency>
-			<currency type="GBP">
-				<displayName>የእንግሊዝ ፓውንድ ስተርሊንግ</displayName>
-			</currency>
-			<currency type="INR">
-				<displayName>የሕንድ ሩፒ</displayName>
-			</currency>
-			<currency type="JPY">
-				<displayName>የጃፓን የን</displayName>
-			</currency>
-			<currency type="RUB">
-				<displayName>የራሻ ሩብል</displayName>
-			</currency>
-			<currency type="USD">
-				<displayName>የአሜሪካን ዶላር</displayName>
-			</currency>
-		</currencies>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php7php0php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php3php php$php"php/php>
+php	php	php<languagephp typephp=php"tiphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"afphp"php>phpአphpፍphpሪphpቃphpንphpሰphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"amphp"php>phpአphpምphpሐphpረphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"arphp"php>phpዓphpረphpበphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"azphp"php>phpአphpዜphpርphpባphpይphpጃphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bephp"php>phpቤphpላphpራphpሻphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>phpቡphpልphpጋphpሪphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>phpቢphpሃphpሪ<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>phpበphpንphpጋphpሊphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>phpብphpሬphpቶphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>phpቦphpስphpኒphpያphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>phpካphpታphpላphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>phpቼphpክphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>phpወphpልphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>phpዴphpኒphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>phpጀphpርphpመphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>phpግphpሪphpከphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>phpእphpንphpግphpሊphpዝphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>phpኤphpስphpፐphpራphpንphpቶ<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>phpስphpፓphpኒphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>phpኤphpስphpቶphpኒphpአphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>phpባphpስphpክphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>phpፐphpርphpሲphpያphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>phpፊphpኒphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>phpታphpጋphpሎphpገphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>phpፋphpሮphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>phpፈphpረphpንphpሳphpይphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>phpፍphpሪphpሰphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>phpአphpይphpሪphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>phpእphpስphpኮphpትphpስphp phpጌphpልphpክphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>phpጋphpለphpቪphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>phpጓphpራphpኒ<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>phpጉphpጃphpራphpቲphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>phpዕphpብphpራphpስphpጥ<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>phpሕphpንphpደphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"hrphp"php>phpክphpሮphpሽphpያphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>phpሀphpንphpጋphpሪphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>phpኢphpንphpቴphpርphp phpቋphpንphpቋ<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>phpእphpንphpዶphpኑphpሲphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>phpአphpይphpስphpላphpንphpደphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>phpጣphpሊphpያphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>phpጃphpፓphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>phpጃphpቫphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>phpጊphpዮphpርphpጊphpያphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"knphp"php>phpካphpማphpደphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"kophp"php>phpኮphpሪphpያphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>phpኩphpርphpድphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>phpኪphpሩphpጋphpዚ<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>phpላphpቲphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>phpሊphpቱphpአphpኒphpየphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"lvphp"php>phpላphpቲphpቪphpያphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>phpማphpክphpዶphpኒphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"mlphp"php>phpማphpላphpያphpላphpምphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"mrphp"php>phpማphpራphpቲphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"msphp"php>phpማphpላphpይphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"mtphp"php>phpማphpልphpቲphpስphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"nephp"php>phpኔphpፖphpሊphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>phpደphpች<php/languagephp>
+php	php	php	php<languagephp typephp=php"nnphp"php>phpኖphpርphpዌphpይphpኛphp php(phpናphpይphp phpኝphpኖphpርphpስphpክphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>phpኖphpርphpዌphpጂphpያphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>phpኦphpኪphpታphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>phpኦphpሪphpያ<php/languagephp>
+php	php	php	php<languagephp typephp=php"paphp"php>phpፑphpንphpጃphpቢphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>phpፖphpሊphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"psphp"php>phpፓphpሽphpቶ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>phpፖphpርphpቱphpጋphpሊphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>phpፖphpርphpቱphpጋphpልphpኛphp php(phpናphpይphp phpብphpራphpዚphpልphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>phpፖphpርphpቱphpጋphpልphpኛphp php(phpናphpይphp phpፖphpርphpቱphpጋphpልphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>phpሮphpማphpኒphpያphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>phpራphpሽphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"shphp"php>phpሰphpርphpቦphp-php phpክphpሮphpዊphpታphpን<php/languagephp>
+php	php	php	php<languagephp typephp=php"siphp"php>phpስphpንphpሃphpልphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"skphp"php>phpስphpሎphpቨphpክphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"slphp"php>phpስphpቁphpቪphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>phpአphpልphpቤphpኒphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"srphp"php>phpሰphpርphpቢphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"stphp"php>phpሰphpሴphpቶ<php/languagephp>
+php	php	php	php<languagephp typephp=php"suphp"php>phpሱphpዳphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>phpስphpዊphpድphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"swphp"php>phpሰphpዋphpሂphpሊphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>phpታphpሚphpልphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"tephp"php>phpተphpሉphpጉphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"thphp"php>phpታphpይphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"tiphp"php>phpትphpግphpርphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"tkphp"php>phpናphpይphp phpቱphpርphpኪphp phpሰphpብphpዓphpይphp php(phpቱphpርphpካphpዊphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlhphp"php>phpክphpሊphpንphpግphpኦphpንphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"trphp"php>phpቱphpርphpከphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"twphp"php>phpትphpዊ<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>phpዩphpክphpረphpኒphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>phpኡphpርphpዱphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>phpኡphpዝphpበphpክphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"viphp"php>phpቪphpትphpናphpምphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"xhphp"php>phpዞphpሳphpኛ<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>phpዪphpዲphpሽ<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>phpዙphpሉphpኛ<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Ethiphp"php>phpፊphpደphpል<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latnphp"php>phpላphpቲphpን<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<aliasphp sourcephp=php"amphp"php/php>
+php	php	<php/territoriesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[php\uphp1php3php5Fphp phpሀphp-phpሆphp phpለphp-phpቆphp phpቈphp phpቊphp-phpቍphp phpቐphp-phpቖphp phpቘphp phpቚphp-phpቝphp phpበphp-phpኆphp phpኈphp phpኊphp-phpኍphp phpነphp-phpኮphp phpኰphp phpኲphp-phpኵphp phpኸphp-phpኾphp phpዀphp phpዂphp-phpዅphp phpወphp-phpዎphp phpዐphp-phpዖphp phpዘphp-phpዮphp phpደphp-phpዷphp phpጀphp-phpጎphp phpጐphp phpጒphp-phpጕphp phpጠphp-phpፗphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[php᎐php-php᎙php phpሇphp phpⶀphp phpᎀphp-phpᎃphp phpⶁphp-phpⶄphp phpቇphp phpᎄphp-phpᎇphp phpⶅphp-phpⶇphp phpኇphp phpⶈphp-phpⶊphp phpኯphp phpዏphp phpⶋphp phpዯphp phpⶌphp phpዸphp-phpዿphp phpⶍphp phpⶎphp phpጏphp phpጘphp-phpጟphp phpⶓphp-phpⶖphp phpⶏphp-phpⶑphp phpፇphp phpᎈphp-phpᎏphp phpⶒphp phpፘphp-phpፚphp phpⶠphp-phpⶦphp phpⶨphp-phpⶮphp phpⶰphp-phpⶶphp phpⶸphp-phpⶾphp phpⷀphp-phpⷆphp phpⷈphp-phpⷎphp phpⷐphp-phpⷖphp phpⷘphp-phpⷞphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpጃphpንphpዩ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpፌphpብphpሩ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpማphpርphpች<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpኤphpፕphpረ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpሜphpይ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpጁphpን<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpጁphpላphpይ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpኦphpገphpስ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpሴphpፕphpቴ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpኦphpክphpተ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpኖphpቬphpም<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpዲphpሴphpም<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpጃphpንphpዩphpወphpሪ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpፌphpብphpሩphpወphpሪ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpማphpርphpች<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpኤphpፕphpረphpል<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpሜphpይ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpጁphpን<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpጁphpላphpይ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpኦphpገphpስphpት<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpሴphpፕphpቴphpምphpበphpር<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpኦphpክphpተphpውphpበphpር<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpኖphpቬphpምphpበphpር<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpዲphpሴphpምphpበphpር<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpጃ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpፌ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpማ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpኤ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpሜ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpጁ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpጁ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpኦ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpሴ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpኦ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpኖ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpዲ<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpሰphpንphpበ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpሰphpኑphpይ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpሠphpሉphpስ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpረphpቡphpዕ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpኃphpሙphpስ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpዓphpርphpቢ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpቀphpዳphpም<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpሰphpንphpበphpት<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpሰphpኑphpይ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpሠphpሉphpስ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpረphpቡphpዕ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpኃphpሙphpስ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpዓphpርphpቢ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpቀphpዳphpም<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpሰ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpሰ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpሠ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpረ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpኃ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpዓ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpቀ<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<quartersphp>
+php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	<php/quarterContextphp>
+php	php	php	php	<php/quartersphp>
+php	php	php	php	php<amphp>phpንphpጉphpሆphp phpሰphpዓphpተ<php/amphp>
+php	php	php	php	php<pmphp>phpድphpሕphpርphp phpሰphpዓphpት<php/pmphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpዓphp/phpዓ<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpዓphp/phpም<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp፣php ddphp MMMMphp phpመphpዓphpልphpቲphp yphp G<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>ddphp MMMMphp y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>ddphp-MMMphp-y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>ddphp/MMphp/yy<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp zzzz<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp z<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp a<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp:mmphp a<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMddphp"php>ddphp/MM<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMddphp"php>ddphp MMMM<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyMMphp"php>MMphp/yy<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
+php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
+php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	<php/currencyFormatsphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"BRLphp"php>
+php	php	php	php	php<displayNamephp>phpየphpብphpራphpዚphpልphp phpሪphpል<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CNYphp"php>
+php	php	php	php	php<displayNamephp>phpየphpቻphpይphpናphp phpዩphpአphpንphp phpረphpንphpሚphpንphpቢ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ETBphp"php>
+php	php	php	php	php<displayNamephp>phpየphpኢphpትphpዮphpጵphpያphp phpብphpር<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"EURphp"php>
+php	php	php	php	php<displayNamephp>phpአphpውphpሮ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GBPphp"php>
+php	php	php	php	php<displayNamephp>phpየphpእphpንphpግphpሊphpዝphp phpፓphpውphpንphpድphp phpስphpተphpርphpሊphpንphpግ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"INRphp"php>
+php	php	php	php	php<displayNamephp>phpየphpሕphpንphpድphp phpሩphpፒ<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"JPYphp"php>
+php	php	php	php	php<displayNamephp>phpየphpጃphpፓphpንphp phpየphpን<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"RUBphp"php>
+php	php	php	php	php<displayNamephp>phpየphpራphpሻphp phpሩphpብphpል<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"USDphp"php>
+php	php	php	php	php<displayNamephp>phpየphpአphpሜphpሪphpካphpንphp phpዶphpላphpር<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+<php/ldmlphp>
 
