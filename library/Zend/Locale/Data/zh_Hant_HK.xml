@@ -1,190 +1,190 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.78 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="zh"/>
-		<script type="Hant"/>
-		<territory type="HK"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="it">意大利文</language>
-			<language type="lol">蒙古語</language>
-		</languages>
-		<scripts>
-			<script type="Hang">韓文字母</script>
-		</scripts>
-		<variants>
-			<variant type="1901">傳統德國拼字法</variant>
-			<variant type="1996">1996 德國拼字法</variant>
-			<variant type="BISKE">San Giorgio/Bila 方言</variant>
-			<variant type="NJIVA">Gniva/Njiva 方言</variant>
-			<variant type="OSOJS">Oseacco/Osojane 方言</variant>
-			<variant type="REVISED">已修訂拼字法</variant>
-			<variant type="SCOTLAND">蘇格蘭標準英語</variant>
-			<variant type="SOLBA">Stolvizza/Solbica 方言</variant>
-		</variants>
-		<types>
-			<type type="big5han" key="collation">繁體中文順序 - Big5</type>
-			<type type="gb2312han" key="collation">簡體中文順序 - GB2312</type>
-		</types>
-		<measurementSystemNames>
-			<measurementSystemName type="metric">十進制</measurementSystemName>
-		</measurementSystemNames>
-	</localeDisplayNames>
-	<dates>
-		<calendars>
-			<calendar type="chinese">
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="MMMMEd">M月d日E</dateFormatItem>
-						<dateFormatItem id="yMEd">y年M月d日，E</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-			<calendar type="gregorian">
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>y年M月d日EEEE</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>y年M月d日</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>y年M月d日</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>yy年M月d日</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>ahh:mm:ss</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<dateTimeFormatLength type="medium">
-						<dateTimeFormat>
-							<pattern>{1}{0}</pattern>
-						</dateTimeFormat>
-					</dateTimeFormatLength>
-					<dateTimeFormatLength type="short">
-						<dateTimeFormat>
-							<pattern>{1}{0}</pattern>
-						</dateTimeFormat>
-					</dateTimeFormatLength>
-					<availableFormats>
-						<dateFormatItem id="yyyyM">yyyy/M</dateFormatItem>
-					</availableFormats>
-					<intervalFormats>
-						<intervalFormatItem id="h">
-							<greatestDifference id="h">ah至h時</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="hmv">
-							<greatestDifference id="a">ah:mm至ah:mmv</greatestDifference>
-							<greatestDifference id="h">ah:mm至h:mmv</greatestDifference>
-							<greatestDifference id="m">ah:mm至h:mmv</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="hv">
-							<greatestDifference id="a">ah時至ah時v</greatestDifference>
-							<greatestDifference id="h">ah至h時v</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="Md">
-							<greatestDifference id="d">M月d日至d日</greatestDifference>
-							<greatestDifference id="M">M月d日至M月d日</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MEd">
-							<greatestDifference id="d">M月d日E至d日E</greatestDifference>
-							<greatestDifference id="M">M月d日E至M月d日E</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yM">
-							<greatestDifference id="M">yy年M月至M月</greatestDifference>
-							<greatestDifference id="y">yy年M月至yy年M月</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMd">
-							<greatestDifference id="d">yy年M月d日至d日</greatestDifference>
-							<greatestDifference id="M">yy年M月d日至M月d日</greatestDifference>
-							<greatestDifference id="y">yy年M月d日至yy年M月d日</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">yy年M月d日E至d日E</greatestDifference>
-							<greatestDifference id="M">yy年M月d日E至M月d日E</greatestDifference>
-							<greatestDifference id="y">yy年M月d日E至yy年M月d日E</greatestDifference>
-						</intervalFormatItem>
-					</intervalFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-	</dates>
-	<numbers>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>¤#,##0.00;(¤#,##0.00)</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-		</currencyFormats>
-		<currencies>
-			<currency type="AUD">
-				<displayName>澳元</displayName>
-			</currency>
-			<currency type="BAD">
-				<displayName>波斯尼亞-黑塞哥維那第納爾</displayName>
-			</currency>
-			<currency type="BAM">
-				<displayName>波斯尼亞-黑塞哥維那可轉換馬克</displayName>
-			</currency>
-			<currency type="CAD">
-				<displayName>加元</displayName>
-			</currency>
-			<currency type="HKD">
-				<displayName>港元</displayName>
-				<symbol>$</symbol>
-			</currency>
-			<currency type="ITL">
-				<displayName>意大利里拉</displayName>
-			</currency>
-			<currency type="NZD">
-				<displayName>紐西蘭元</displayName>
-			</currency>
-			<currency type="RSD">
-				<displayName>塞爾維亞第納爾</displayName>
-			</currency>
-			<currency type="SGD">
-				<displayName>新加坡元</displayName>
-			</currency>
-			<currency type="TWD">
-				<displayName>新台幣</displayName>
-			</currency>
-			<currency type="USD">
-				<symbol>US$</symbol>
-			</currency>
-		</currencies>
-	</numbers>
-	<units>
-		<unit type="hour">
-			<unitPattern count="other">{0}時</unitPattern>
-		</unit>
-		<unit type="week">
-			<unitPattern count="other">{0}星期</unitPattern>
-		</unit>
-	</units>
-	<posix>
-		<messages>
-			<yesstr>是</yesstr>
-			<nostr>否</nostr>
-		</messages>
-	</posix>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php7php8php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php3php php$php"php/php>
+php	php	php<languagephp typephp=php"zhphp"php/php>
+php	php	php<scriptphp typephp=php"Hantphp"php/php>
+php	php	php<territoryphp typephp=php"HKphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"itphp"php>php意php大php利php文<php/languagephp>
+php	php	php	php<languagephp typephp=php"lolphp"php>php蒙php古php語<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Hangphp"php>php韓php文php字php母<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<variantsphp>
+php	php	php	php<variantphp typephp=php"php1php9php0php1php"php>php傳php統php德php國php拼php字php法<php/variantphp>
+php	php	php	php<variantphp typephp=php"php1php9php9php6php"php>php1php9php9php6php php德php國php拼php字php法<php/variantphp>
+php	php	php	php<variantphp typephp=php"BISKEphp"php>Sanphp Giorgiophp/Bilaphp php方php言<php/variantphp>
+php	php	php	php<variantphp typephp=php"NJIVAphp"php>Gnivaphp/Njivaphp php方php言<php/variantphp>
+php	php	php	php<variantphp typephp=php"OSOJSphp"php>Oseaccophp/Osojanephp php方php言<php/variantphp>
+php	php	php	php<variantphp typephp=php"REVISEDphp"php>php已php修php訂php拼php字php法<php/variantphp>
+php	php	php	php<variantphp typephp=php"SCOTLANDphp"php>php蘇php格php蘭php標php準php英php語<php/variantphp>
+php	php	php	php<variantphp typephp=php"SOLBAphp"php>Stolvizzaphp/Solbicaphp php方php言<php/variantphp>
+php	php	<php/variantsphp>
+php	php	php<typesphp>
+php	php	php	php<typephp typephp=php"bigphp5hanphp"php keyphp=php"collationphp"php>php繁php體php中php文php順php序php php-php Bigphp5<php/typephp>
+php	php	php	php<typephp typephp=php"gbphp2php3php1php2hanphp"php keyphp=php"collationphp"php>php簡php體php中php文php順php序php php-php GBphp2php3php1php2<php/typephp>
+php	php	<php/typesphp>
+php	php	php<measurementSystemNamesphp>
+php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>php十php進php制<php/measurementSystemNamephp>
+php	php	<php/measurementSystemNamesphp>
+php	<php/localeDisplayNamesphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"chinesephp"php>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMEdphp"php>Mphp月dphp日E<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMEdphp"php>yphp年Mphp月dphp日php，E<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp年Mphp月dphp日EEEE<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp年Mphp月dphp日<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp年Mphp月dphp日<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yyphp年Mphp月dphp日<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>ahhphp:mmphp:ss<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateTimeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>php{php1php}php{php0php}<php/patternphp>
+php	php	php	php	php	php	<php/dateTimeFormatphp>
+php	php	php	php	php	<php/dateTimeFormatLengthphp>
+php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateTimeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>php{php1php}php{php0php}<php/patternphp>
+php	php	php	php	php	php	<php/dateTimeFormatphp>
+php	php	php	php	php	<php/dateTimeFormatLengthphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMphp"php>yyyyphp/M<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	php	php<intervalFormatsphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahphp至hphp時<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmvphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahphp:mmphp至ahphp:mmv<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahphp:mmphp至hphp:mmv<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>ahphp:mmphp至hphp:mmv<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hvphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahphp時php至ahphp時v<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahphp至hphp時v<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Mphp月dphp日php至dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp月dphp日php至Mphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Mphp月dphp日Ephp至dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp月dphp日Ephp至Mphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyphp年Mphp月php至Mphp月<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyphp年Mphp月php至yyphp年Mphp月<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>yyphp年Mphp月dphp日php至dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyphp年Mphp月dphp日php至Mphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyphp年Mphp月dphp日php至yyphp年Mphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>yyphp年Mphp月dphp日Ephp至dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyphp年Mphp月dphp日Ephp至Mphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyphp年Mphp月dphp日Ephp至yyphp年Mphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	<php/intervalFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0php;php(php¤php#php,php#php#php0php.php0php0php)<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	<php/currencyFormatsphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"AUDphp"php>
+php	php	php	php	php<displayNamephp>php澳php元<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BADphp"php>
+php	php	php	php	php<displayNamephp>php波php斯php尼php亞php-php黑php塞php哥php維php那php第php納php爾<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"BAMphp"php>
+php	php	php	php	php<displayNamephp>php波php斯php尼php亞php-php黑php塞php哥php維php那php可php轉php換php馬php克<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CADphp"php>
+php	php	php	php	php<displayNamephp>php加php元<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"HKDphp"php>
+php	php	php	php	php<displayNamephp>php港php元<php/displayNamephp>
+php	php	php	php	php<symbolphp>php$<php/symbolphp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"ITLphp"php>
+php	php	php	php	php<displayNamephp>php意php大php利php里php拉<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"NZDphp"php>
+php	php	php	php	php<displayNamephp>php紐php西php蘭php元<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"RSDphp"php>
+php	php	php	php	php<displayNamephp>php塞php爾php維php亞php第php納php爾<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"SGDphp"php>
+php	php	php	php	php<displayNamephp>php新php加php坡php元<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"TWDphp"php>
+php	php	php	php	php<displayNamephp>php新php台php幣<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"USDphp"php>
+php	php	php	php	php<symbolphp>USphp$<php/symbolphp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+php	php<unitsphp>
+php	php	php<unitphp typephp=php"hourphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php時<php/unitPatternphp>
+php	php	<php/unitphp>
+php	php	php<unitphp typephp=php"weekphp"php>
+php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php星php期<php/unitPatternphp>
+php	php	<php/unitphp>
+php	<php/unitsphp>
+php	php<posixphp>
+php	php	php<messagesphp>
+php	php	php	php<yesstrphp>php是<php/yesstrphp>
+php	php	php	php<nostrphp>php否<php/nostrphp>
+php	php	<php/messagesphp>
+php	<php/posixphp>
+<php/ldmlphp>
 

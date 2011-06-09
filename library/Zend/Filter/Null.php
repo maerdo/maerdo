@@ -1,183 +1,183 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Null.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Nullphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Filter_Interface
- */
-require_once 'Zend/Filter/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Filter_Null implements Zend_Filter_Interface
-{
-    const BOOLEAN      = 1;
-    const INTEGER      = 2;
-    const EMPTY_ARRAY  = 4;
-    const STRING       = 8;
-    const ZERO         = 16;
-    const ALL          = 31;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Filterphp_Nullphp implementsphp Zendphp_Filterphp_Interface
+php{
+php php php php constphp BOOLEANphp php php php php php php=php php1php;
+php php php php constphp INTEGERphp php php php php php php=php php2php;
+php php php php constphp EMPTYphp_ARRAYphp php php=php php4php;
+php php php php constphp STRINGphp php php php php php php php=php php8php;
+php php php php constphp ZEROphp php php php php php php php php php=php php1php6php;
+php php php php constphp ALLphp php php php php php php php php php php=php php3php1php;
 
-    protected $_constants = array(
-        self::BOOLEAN     => 'boolean',
-        self::INTEGER     => 'integer',
-        self::EMPTY_ARRAY => 'array',
-        self::STRING      => 'string',
-        self::ZERO        => 'zero',
-        self::ALL         => 'all'
-    );
+php php php php protectedphp php$php_constantsphp php=php arrayphp(
+php php php php php php php php selfphp:php:BOOLEANphp php php php php php=php>php php'booleanphp'php,
+php php php php php php php php selfphp:php:INTEGERphp php php php php php=php>php php'integerphp'php,
+php php php php php php php php selfphp:php:EMPTYphp_ARRAYphp php=php>php php'arrayphp'php,
+php php php php php php php php selfphp:php:STRINGphp php php php php php php=php>php php'stringphp'php,
+php php php php php php php php selfphp:php:ZEROphp php php php php php php php php=php>php php'zerophp'php,
+php php php php php php php php selfphp:php:ALLphp php php php php php php php php php=php>php php'allphp'
+php php php php php)php;
 
-    /**
-     * Internal type to detect
-     *
-     * @var integer
-     */
-    protected $_type = self::ALL;
+php php php php php/php*php*
+php php php php php php*php Internalphp typephp tophp detect
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_typephp php=php selfphp:php:ALLphp;
 
-    /**
-     * Constructor
-     *
-     * @param string|array|Zend_Config $options OPTIONAL
-     */
-    public function __construct($options = null)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } else if (!is_array($options)) {
-            $options = func_get_args();
-            $temp    = array();
-            if (!empty($options)) {
-                $temp = array_shift($options);
-            }
-            $options = $temp;
-        } else if (is_array($options) && array_key_exists('type', $options)) {
-            $options = $options['type'];
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp|Zendphp_Configphp php$optionsphp OPTIONAL
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php php$tempphp php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$optionsphp php=php php$tempphp;
+php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$optionsphp)php php&php&php arrayphp_keyphp_existsphp(php'typephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp[php'typephp'php]php;
+php php php php php php php php php}
 
-        if (!empty($options)) {
-            $this->setType($options);
-        }
-    }
+php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setTypephp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the set null types
-     *
-     * @return array
-     */
-    public function getType()
-    {
-        return $this->_type;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp nullphp types
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_typephp;
+php php php php php}
 
-    /**
-     * Set the null types
-     *
-     * @param  integer|array $type
-     * @throws Zend_Filter_Exception
-     * @return Zend_Filter_Null
-     */
-    public function setType($type = null)
-    {
-        if (is_array($type)) {
-            $detected = 0;
-            foreach($type as $value) {
-                if (is_int($value)) {
-                    $detected += $value;
-                } else if (in_array($value, $this->_constants)) {
-                    $detected += array_search($value, $this->_constants);
-                }
-            }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp nullphp types
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp|arrayphp php$type
+php php php php php php*php php@throwsphp Zendphp_Filterphp_Exception
+php php php php php php*php php@returnphp Zendphp_Filterphp_Null
+php php php php php php*php/
+php php php php publicphp functionphp setTypephp(php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$typephp)php)php php{
+php php php php php php php php php php php php php$detectedphp php=php php0php;
+php php php php php php php php php php php php foreachphp(php$typephp asphp php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_intphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$detectedphp php+php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(inphp_arrayphp(php$valuephp,php php$thisphp-php>php_constantsphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$detectedphp php+php=php arrayphp_searchphp(php$valuephp,php php$thisphp-php>php_constantsphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            $type = $detected;
-        } else if (is_string($type)) {
-            if (in_array($type, $this->_constants)) {
-                $type = array_search($type, $this->_constants);
-            }
-        }
+php php php php php php php php php php php php php$typephp php=php php$detectedphp;
+php php php php php php php php php}php elsephp ifphp php(isphp_stringphp(php$typephp)php)php php{
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$typephp,php php$thisphp-php>php_constantsphp)php)php php{
+php php php php php php php php php php php php php php php php php$typephp php=php arrayphp_searchphp(php$typephp,php php$thisphp-php>php_constantsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (!is_int($type) || ($type < 0) || ($type > self::ALL)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Unknown type');
-        }
+php php php php php php php php ifphp php(php!isphp_intphp(php$typephp)php php|php|php php(php$typephp <php php0php)php php|php|php php(php$typephp php>php selfphp:php:ALLphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Unknownphp typephp'php)php;
+php php php php php php php php php}
 
-        $this->_type = $type;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_typephp php=php php$typephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Filter_Interface
-     *
-     * Returns null representation of $value, if value is empty and matches
-     * types that should be considered null.
-     *
-     * @param  string $value
-     * @return string
-     */
-    public function filter($value)
-    {
-        $type = $this->getType();
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp nullphp representationphp ofphp php$valuephp,php ifphp valuephp isphp emptyphp andphp matches
+php php php php php php*php typesphp thatphp shouldphp bephp consideredphp nullphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp filterphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$typephp php=php php$thisphp-php>getTypephp(php)php;
 
-        // STRING ZERO ('0')
-        if ($type >= self::ZERO) {
-            $type -= self::ZERO;
-            if (is_string($value) && ($value == '0')) {
-                return null;
-            }
-        }
+php php php php php php php php php/php/php STRINGphp ZEROphp php(php'php0php'php)
+php php php php php php php php ifphp php(php$typephp php>php=php selfphp:php:ZEROphp)php php{
+php php php php php php php php php php php php php$typephp php-php=php selfphp:php:ZEROphp;
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php php&php&php php(php$valuephp php=php=php php'php0php'php)php)php php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // STRING ('')
-        if ($type >= self::STRING) {
-            $type -= self::STRING;
-            if (is_string($value) && ($value == '')) {
-                return null;
-            }
-        }
+php php php php php php php php php/php/php STRINGphp php(php'php'php)
+php php php php php php php php ifphp php(php$typephp php>php=php selfphp:php:STRINGphp)php php{
+php php php php php php php php php php php php php$typephp php-php=php selfphp:php:STRINGphp;
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php php&php&php php(php$valuephp php=php=php php'php'php)php)php php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // EMPTY_ARRAY (array())
-        if ($type >= self::EMPTY_ARRAY) {
-            $type -= self::EMPTY_ARRAY;
-            if (is_array($value) && ($value == array())) {
-                return null;
-            }
-        }
+php php php php php php php php php/php/php EMPTYphp_ARRAYphp php(arrayphp(php)php)
+php php php php php php php php ifphp php(php$typephp php>php=php selfphp:php:EMPTYphp_ARRAYphp)php php{
+php php php php php php php php php php php php php$typephp php-php=php selfphp:php:EMPTYphp_ARRAYphp;
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php php&php&php php(php$valuephp php=php=php arrayphp(php)php)php)php php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // INTEGER (0)
-        if ($type >= self::INTEGER) {
-            $type -= self::INTEGER;
-            if (is_int($value) && ($value == 0)) {
-                return null;
-            }
-        }
+php php php php php php php php php/php/php INTEGERphp php(php0php)
+php php php php php php php php ifphp php(php$typephp php>php=php selfphp:php:INTEGERphp)php php{
+php php php php php php php php php php php php php$typephp php-php=php selfphp:php:INTEGERphp;
+php php php php php php php php php php php php ifphp php(isphp_intphp(php$valuephp)php php&php&php php(php$valuephp php=php=php php0php)php)php php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // BOOLEAN (false)
-        if ($type >= self::BOOLEAN) {
-            $type -= self::BOOLEAN;
-            if (is_bool($value) && ($value == false)) {
-                return null;
-            }
-        }
+php php php php php php php php php/php/php BOOLEANphp php(falsephp)
+php php php php php php php php ifphp php(php$typephp php>php=php selfphp:php:BOOLEANphp)php php{
+php php php php php php php php php php php php php$typephp php-php=php selfphp:php:BOOLEANphp;
+php php php php php php php php php php php php ifphp php(isphp_boolphp(php$valuephp)php php&php&php php(php$valuephp php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $value;
-    }
-}
+php php php php php php php php returnphp php$valuephp;
+php php php php php}
+php}

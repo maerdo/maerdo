@@ -1,315 +1,315 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: AdapterAbstract.php 20785 2010-01-31 09:43:03Z mikaelkael $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php AdapterAbstractphp.phpphp php2php0php7php8php5php php2php0php1php0php-php0php1php-php3php1php php0php9php:php4php3php:php0php3Zphp mikaelkaelphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Barcode_AdapterInterface
- */
-require_once 'Zend/Validate/Barcode/AdapterInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Barcodephp_AdapterInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Barcodephp/AdapterInterfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Validate_Barcode_AdapterAbstract
-    implements Zend_Validate_Barcode_AdapterInterface
-{
-    /**
-     * Allowed barcode lengths
-     * @var integer|array|string
-     */
-    protected $_length;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Validatephp_Barcodephp_AdapterAbstract
+php php php php implementsphp Zendphp_Validatephp_Barcodephp_AdapterInterface
+php{
+php php php php php/php*php*
+php php php php php php*php Allowedphp barcodephp lengths
+php php php php php php*php php@varphp integerphp|arrayphp|string
+php php php php php php*php/
+php php php php protectedphp php$php_lengthphp;
 
-    /**
-     * Allowed barcode characters
-     * @var string
-     */
-    protected $_characters;
+php php php php php/php*php*
+php php php php php php*php Allowedphp barcodephp characters
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_charactersphp;
 
-    /**
-     * Callback to checksum function
-     * @var string|array
-     */
-    protected $_checksum;
+php php php php php/php*php*
+php php php php php php*php Callbackphp tophp checksumphp function
+php php php php php php*php php@varphp stringphp|array
+php php php php php php*php/
+php php php php protectedphp php$php_checksumphp;
 
-    /**
-     * Is a checksum value included?
-     * @var boolean
-     */
-    protected $_hasChecksum = true;
+php php php php php/php*php*
+php php php php php php*php Isphp aphp checksumphp valuephp includedphp?
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_hasChecksumphp php=php truephp;
 
-    /**
-     * Checks the length of a barcode
-     *
-     * @param  string $value The barcode to check for proper length
-     * @return boolean
-     */
-    public function checkLength($value)
-    {
-        if (!is_string($value)) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Checksphp thephp lengthphp ofphp aphp barcode
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp checkphp forphp properphp length
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp checkLengthphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $fixum  = strlen($value);
-        $found  = false;
-        $length = $this->getLength();
-        if (is_array($length)) {
-            foreach ($length as $value) {
-                if ($fixum == $value) {
-                    $found = true;
-                }
+php php php php php php php php php$fixumphp php php=php strlenphp(php$valuephp)php;
+php php php php php php php php php$foundphp php php=php falsephp;
+php php php php php php php php php$lengthphp php=php php$thisphp-php>getLengthphp(php)php;
+php php php php php php php php ifphp php(isphp_arrayphp(php$lengthphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$lengthphp asphp php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$fixumphp php=php=php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$foundphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
 
-                if ($value == -1) {
-                    $found = true;
-                }
-            }
-        } elseif ($fixum == $length) {
-            $found = true;
-        } elseif ($length == -1) {
-            $found = true;
-        } elseif ($length == 'even') {
-            $count = $fixum % 2;
-            $found = ($count == 0) ? true : false;
-        } elseif ($length == 'odd') {
-            $count = $fixum % 2;
-            $found = ($count == 1) ? true : false;
-        }
+php php php php php php php php php php php php php php php php ifphp php(php$valuephp php=php=php php-php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php$foundphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(php$fixumphp php=php=php php$lengthphp)php php{
+php php php php php php php php php php php php php$foundphp php=php truephp;
+php php php php php php php php php}php elseifphp php(php$lengthphp php=php=php php-php1php)php php{
+php php php php php php php php php php php php php$foundphp php=php truephp;
+php php php php php php php php php}php elseifphp php(php$lengthphp php=php=php php'evenphp'php)php php{
+php php php php php php php php php php php php php$countphp php=php php$fixumphp php%php php2php;
+php php php php php php php php php php php php php$foundphp php=php php(php$countphp php=php=php php0php)php php?php truephp php:php falsephp;
+php php php php php php php php php}php elseifphp php(php$lengthphp php=php=php php'oddphp'php)php php{
+php php php php php php php php php php php php php$countphp php=php php$fixumphp php%php php2php;
+php php php php php php php php php php php php php$foundphp php=php php(php$countphp php=php=php php1php)php php?php truephp php:php falsephp;
+php php php php php php php php php}
 
-        return $found;
-    }
+php php php php php php php php returnphp php$foundphp;
+php php php php php}
 
-    /**
-     * Checks for allowed characters within the barcode
-     *
-     * @param  string $value The barcode to check for allowed characters
-     * @return boolean
-     */
-    public function checkChars($value)
-    {
-        if (!is_string($value)) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Checksphp forphp allowedphp charactersphp withinphp thephp barcode
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp checkphp forphp allowedphp characters
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp checkCharsphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $characters = $this->getCharacters();
-        if ($characters == 128) {
-            for ($x = 0; $x < 128; ++$x) {
-                $value = str_replace(chr($x), '', $value);
-            }
-        } else {
-            $chars = str_split($characters);
-            foreach ($chars as $char) {
-                $value = str_replace($char, '', $value);
-            }
-        }
+php php php php php php php php php$charactersphp php=php php$thisphp-php>getCharactersphp(php)php;
+php php php php php php php php ifphp php(php$charactersphp php=php=php php1php2php8php)php php{
+php php php php php php php php php php php php forphp php(php$xphp php=php php0php;php php$xphp <php php1php2php8php;php php+php+php$xphp)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php strphp_replacephp(chrphp(php$xphp)php,php php'php'php,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$charsphp php=php strphp_splitphp(php$charactersphp)php;
+php php php php php php php php php php php php foreachphp php(php$charsphp asphp php$charphp)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php strphp_replacephp(php$charphp,php php'php'php,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (strlen($value) > 0) {
-            return false;
-        }
+php php php php php php php php ifphp php(strlenphp(php$valuephp)php php>php php0php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Validates the checksum
-     *
-     * @param  string $value The barcode to check the checksum for
-     * @return boolean
-     */
-    public function checksum($value)
-    {
-        $checksum = $this->getChecksum();
-        if (!empty($checksum)) {
-            if (method_exists($this, $checksum)) {
-                return call_user_func(array($this, $checksum), $value);
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Validatesphp thephp checksum
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp checkphp thephp checksumphp for
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp checksumphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$checksumphp php=php php$thisphp-php>getChecksumphp(php)php;
+php php php php php php php php ifphp php(php!emptyphp(php$checksumphp)php)php php{
+php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$checksumphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp callphp_userphp_funcphp(arrayphp(php$thisphp,php php$checksumphp)php,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Returns the allowed barcode length
-     *
-     * @return string
-     */
-    public function getLength()
-    {
-        return $this->_length;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp allowedphp barcodephp length
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getLengthphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_lengthphp;
+php php php php php}
 
-    /**
-     * Returns the allowed characters
-     *
-     * @return integer|string
-     */
-    public function getCharacters()
-    {
-        return $this->_characters;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp allowedphp characters
+php php php php php php*
+php php php php php php*php php@returnphp integerphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getCharactersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_charactersphp;
+php php php php php}
 
-    /**
-     * Returns the checksum function name
-     *
-     */
-    public function getChecksum()
-    {
-        return $this->_checksum;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp checksumphp functionphp name
+php php php php php php*
+php php php php php php*php/
+php php php php publicphp functionphp getChecksumphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_checksumphp;
+php php php php php}
 
-    /**
-     * Returns if barcode uses checksum
-     *
-     * @return boolean
-     */
-    public function getCheck()
-    {
-        return $this->_hasChecksum;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp barcodephp usesphp checksum
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getCheckphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_hasChecksumphp;
+php php php php php}
 
-    /**
-     * Sets the checksum validation
-     *
-     * @param  boolean $check
-     * @return Zend_Validate_Barcode_AdapterAbstract
-     */
-    public function setCheck($check)
-    {
-        $this->_hasChecksum = (boolean) $check;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp checksumphp validation
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$check
+php php php php php php*php php@returnphp Zendphp_Validatephp_Barcodephp_AdapterAbstract
+php php php php php php*php/
+php php php php publicphp functionphp setCheckphp(php$checkphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_hasChecksumphp php=php php(booleanphp)php php$checkphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Validates the checksum (Modulo 10)
-     * GTIN implementation factor 3
-     *
-     * @param  string $value The barcode to validate
-     * @return boolean
-     */
-    protected function _gtin($value)
-    {
-        $barcode = substr($value, 0, -1);
-        $sum     = 0;
-        $length  = strlen($barcode) - 1;
+php php php php php/php*php*
+php php php php php php*php Validatesphp thephp checksumphp php(Modulophp php1php0php)
+php php php php php php*php GTINphp implementationphp factorphp php3
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp validate
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_gtinphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$barcodephp php=php substrphp(php$valuephp,php php0php,php php-php1php)php;
+php php php php php php php php php$sumphp php php php php php=php php0php;
+php php php php php php php php php$lengthphp php php=php strlenphp(php$barcodephp)php php-php php1php;
 
-        for ($i = 0; $i <= $length; $i++) {
-            if (($i % 2) === 0) {
-                $sum += $barcode[$length - $i] * 3;
-            } else {
-                $sum += $barcode[$length - $i];
-            }
-        }
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php=php php$lengthphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php ifphp php(php(php$iphp php%php php2php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$sumphp php+php=php php$barcodephp[php$lengthphp php-php php$iphp]php php*php php3php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$sumphp php+php=php php$barcodephp[php$lengthphp php-php php$iphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $calc     = $sum % 10;
-        $checksum = ($calc === 0) ? 0 : (10 - $calc);
-        if ($value[$length + 1] != $checksum) {
-            return false;
-        }
+php php php php php php php php php$calcphp php php php php php=php php$sumphp php%php php1php0php;
+php php php php php php php php php$checksumphp php=php php(php$calcphp php=php=php=php php0php)php php?php php0php php:php php(php1php0php php-php php$calcphp)php;
+php php php php php php php php ifphp php(php$valuephp[php$lengthphp php+php php1php]php php!php=php php$checksumphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Validates the checksum (Modulo 10)
-     * IDENTCODE implementation factors 9 and 4
-     *
-     * @param  string $value The barcode to validate
-     * @return boolean
-     */
-    protected function _identcode($value)
-    {
-        $barcode = substr($value, 0, -1);
-        $sum     = 0;
-        $length  = strlen($value) - 2;
+php php php php php/php*php*
+php php php php php php*php Validatesphp thephp checksumphp php(Modulophp php1php0php)
+php php php php php php*php IDENTCODEphp implementationphp factorsphp php9php andphp php4
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp validate
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_identcodephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$barcodephp php=php substrphp(php$valuephp,php php0php,php php-php1php)php;
+php php php php php php php php php$sumphp php php php php php=php php0php;
+php php php php php php php php php$lengthphp php php=php strlenphp(php$valuephp)php php-php php2php;
 
-        for ($i = 0; $i <= $length; $i++) {
-            if (($i % 2) === 0) {
-                $sum += $barcode[$length - $i] * 4;
-            } else {
-                $sum += $barcode[$length - $i] * 9;
-            }
-        }
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php=php php$lengthphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php ifphp php(php(php$iphp php%php php2php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$sumphp php+php=php php$barcodephp[php$lengthphp php-php php$iphp]php php*php php4php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$sumphp php+php=php php$barcodephp[php$lengthphp php-php php$iphp]php php*php php9php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $calc     = $sum % 10;
-        $checksum = ($calc === 0) ? 0 : (10 - $calc);
-        if ($value[$length + 1] != $checksum) {
-            return false;
-        }
+php php php php php php php php php$calcphp php php php php php=php php$sumphp php%php php1php0php;
+php php php php php php php php php$checksumphp php=php php(php$calcphp php=php=php=php php0php)php php?php php0php php:php php(php1php0php php-php php$calcphp)php;
+php php php php php php php php ifphp php(php$valuephp[php$lengthphp php+php php1php]php php!php=php php$checksumphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Validates the checksum (Modulo 10)
-     * CODE25 implementation factor 3
-     *
-     * @param  string $value The barcode to validate
-     * @return boolean
-     */
-    protected function _code25($value)
-    {
-        $barcode = substr($value, 0, -1);
-        $sum     = 0;
-        $length  = strlen($barcode) - 1;
+php php php php php/php*php*
+php php php php php php*php Validatesphp thephp checksumphp php(Modulophp php1php0php)
+php php php php php php*php CODEphp2php5php implementationphp factorphp php3
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp validate
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_codephp2php5php(php$valuephp)
+php php php php php{
+php php php php php php php php php$barcodephp php=php substrphp(php$valuephp,php php0php,php php-php1php)php;
+php php php php php php php php php$sumphp php php php php php=php php0php;
+php php php php php php php php php$lengthphp php php=php strlenphp(php$barcodephp)php php-php php1php;
 
-        for ($i = 0; $i <= $length; $i++) {
-            if (($i % 2) === 0) {
-                $sum += $barcode[$i] * 3;
-            } else {
-                $sum += $barcode[$i];
-            }
-        }
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php=php php$lengthphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php ifphp php(php(php$iphp php%php php2php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$sumphp php+php=php php$barcodephp[php$iphp]php php*php php3php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$sumphp php+php=php php$barcodephp[php$iphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $calc     = $sum % 10;
-        $checksum = ($calc === 0) ? 0 : (10 - $calc);
-        if ($value[$length + 1] != $checksum) {
-            return false;
-        }
+php php php php php php php php php$calcphp php php php php php=php php$sumphp php%php php1php0php;
+php php php php php php php php php$checksumphp php=php php(php$calcphp php=php=php=php php0php)php php?php php0php php:php php(php1php0php php-php php$calcphp)php;
+php php php php php php php php ifphp php(php$valuephp[php$lengthphp php+php php1php]php php!php=php php$checksumphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        return true;
-    }
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Validates the checksum ()
-     * POSTNET implementation
-     *
-     * @param  string $value The barcode to validate
-     * @return boolean
-     */
-    protected function _postnet($value)
-    {
-        $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
+php php php php php/php*php*
+php php php php php php*php Validatesphp thephp checksumphp php(php)
+php php php php php php*php POSTNETphp implementation
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp validate
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_postnetphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$checksumphp php=php substrphp(php$valuephp,php php-php1php,php php1php)php;
+php php php php php php php php php$valuesphp php php php=php strphp_splitphp(substrphp(php$valuephp,php php0php,php php-php1php)php)php;
 
-        $check = 0;
-        foreach($values as $row) {
-            $check += $row;
-        }
+php php php php php php php php php$checkphp php=php php0php;
+php php php php php php php php foreachphp(php$valuesphp asphp php$rowphp)php php{
+php php php php php php php php php php php php php$checkphp php+php=php php$rowphp;
+php php php php php php php php php}
 
-        $check %= 10;
-        $check = 10 - $check;
-        if ($check == $checksum) {
-            return true;
-        }
+php php php php php php php php php$checkphp php%php=php php1php0php;
+php php php php php php php php php$checkphp php=php php1php0php php-php php$checkphp;
+php php php php php php php php ifphp php(php$checkphp php=php=php php$checksumphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
-}
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

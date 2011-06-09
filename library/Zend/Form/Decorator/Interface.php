@@ -1,123 +1,123 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Zend_Form_Decorator_Interface
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Interface.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-interface Zend_Form_Decorator_Interface
-{
-    /**
-     * Constructor
-     *
-     * Accept options during initialization.
-     *
-     * @param  array|Zend_Config $options
-     * @return void
-     */
-    public function __construct($options = null);
+php/php*php*
+php php*php Zendphp_Formphp_Decoratorphp_Interface
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Interfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+interfacephp Zendphp_Formphp_Decoratorphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php Acceptphp optionsphp duringphp initializationphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)php;
 
-    /**
-     * Set an element to decorate
-     *
-     * While the name is "setElement", a form decorator could decorate either
-     * an element or a form object.
-     *
-     * @param  mixed $element
-     * @return Zend_Form_Decorator_Interface
-     */
-    public function setElement($element);
+php php php php php/php*php*
+php php php php php php*php Setphp anphp elementphp tophp decorate
+php php php php php php*
+php php php php php php*php Whilephp thephp namephp isphp php"setElementphp"php,php aphp formphp decoratorphp couldphp decoratephp either
+php php php php php php*php anphp elementphp orphp aphp formphp objectphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$element
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp setElementphp(php$elementphp)php;
 
-    /**
-     * Retrieve current element
-     *
-     * @return mixed
-     */
-    public function getElement();
+php php php php php/php*php*
+php php php php php php*php Retrievephp currentphp element
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getElementphp(php)php;
 
-    /**
-     * Set decorator options from an array
-     *
-     * @param  array $options
-     * @return Zend_Form_Decorator_Interface
-     */
-    public function setOptions(array $options);
+php php php php php/php*php*
+php php php php php php*php Setphp decoratorphp optionsphp fromphp anphp array
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)php;
 
-    /**
-     * Set decorator options from a config object
-     *
-     * @param  Zend_Config $config
-     * @return Zend_Form_Decorator_Interface
-     */
-    public function setConfig(Zend_Config $config);
+php php php php php/php*php*
+php php php php php php*php Setphp decoratorphp optionsphp fromphp aphp configphp object
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)php;
 
-    /**
-     * Set a single option
-     *
-     * @param  string $key
-     * @param  mixed $value
-     * @return Zend_Form_Decorator_Interface
-     */
-    public function setOption($key, $value);
+php php php php php/php*php*
+php php php php php php*php Setphp aphp singlephp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp setOptionphp(php$keyphp,php php$valuephp)php;
 
-    /**
-     * Retrieve a single option
-     *
-     * @param  string $key
-     * @return mixed
-     */
-    public function getOption($key);
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp singlephp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getOptionphp(php$keyphp)php;
 
-    /**
-     * Retrieve decorator options
-     *
-     * @return array
-     */
-    public function getOptions();
+php php php php php/php*php*
+php php php php php php*php Retrievephp decoratorphp options
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php)php;
 
-    /**
-     * Delete a single option
-     *
-     * @param  string $key
-     * @return bool
-     */
-    public function removeOption($key);
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp singlephp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp removeOptionphp(php$keyphp)php;
 
-    /**
-     * Clear all options
-     *
-     * @return Zend_Form_Decorator_Interface
-     */
-    public function clearOptions();
+php php php php php/php*php*
+php php php php php php*php Clearphp allphp options
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp clearOptionsphp(php)php;
 
-    /**
-     * Render the element
-     *
-     * @param  string $content Content to decorate
-     * @return string
-     */
-    public function render($content);
-}
+php php php php php/php*php*
+php php php php php php*php Renderphp thephp element
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$contentphp Contentphp tophp decorate
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php$contentphp)php;
+php}

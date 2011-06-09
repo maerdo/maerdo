@@ -1,128 +1,128 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Amf
- * @subpackage Parse
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: MysqliResult.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Parse
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php MysqliResultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * This class will convert mysql result resource to array suitable for passing
- * to the external entities.
- *
- * @package    Zend_Amf
- * @subpackage Parse
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Amf_Parse_Resource_MysqliResult
-{
+php/php*php*
+php php*php Thisphp classphp willphp convertphp mysqlphp resultphp resourcephp tophp arrayphp suitablephp forphp passing
+php php*php tophp thephp externalphp entitiesphp.
+php php*
+php php*php php@packagephp php php php Zendphp_Amf
+php php*php php@subpackagephp Parse
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Amfphp_Parsephp_Resourcephp_MysqliResult
+php{
 
-    /**
-     * mapping taken from http://forums.mysql.com/read.php?52,255868,255895#msg-255895
-     */
-    static public $mysqli_type = array(
-        0 => "MYSQLI_TYPE_DECIMAL",
-        1 => "MYSQLI_TYPE_TINYINT",
-        2 => "MYSQLI_TYPE_SMALLINT",
-        3 => "MYSQLI_TYPE_INTEGER",
-        4 => "MYSQLI_TYPE_FLOAT",
-        5 => "MYSQLI_TYPE_DOUBLE",
-        7 => "MYSQLI_TYPE_TIMESTAMP",
-        8 => "MYSQLI_TYPE_BIGINT",
-        9 => "MYSQLI_TYPE_MEDIUMINT",
-        10 => "MYSQLI_TYPE_DATE",
-        11 => "MYSQLI_TYPE_TIME",
-        12 => "MYSQLI_TYPE_DATETIME",
-        13 => "MYSQLI_TYPE_YEAR",
-        14 => "MYSQLI_TYPE_DATE",
-        16 => "MYSQLI_TYPE_BIT",
-        246 => "MYSQLI_TYPE_DECIMAL",
-        247 => "MYSQLI_TYPE_ENUM",
-        248 => "MYSQLI_TYPE_SET",
-        249 => "MYSQLI_TYPE_TINYBLOB",
-        250 => "MYSQLI_TYPE_MEDIUMBLOB",
-        251 => "MYSQLI_TYPE_LONGBLOB",
-        252 => "MYSQLI_TYPE_BLOB",
-        253 => "MYSQLI_TYPE_VARCHAR",
-        254 => "MYSQLI_TYPE_CHAR",
-        255 => "MYSQLI_TYPE_GEOMETRY",
-    );
+php php php php php/php*php*
+php php php php php php*php mappingphp takenphp fromphp httpphp:php/php/forumsphp.mysqlphp.comphp/readphp.phpphp?php5php2php,php2php5php5php8php6php8php,php2php5php5php8php9php5php#msgphp-php2php5php5php8php9php5
+php php php php php php*php/
+php php php php staticphp publicphp php$mysqliphp_typephp php=php arrayphp(
+php php php php php php php php php0php php=php>php php"MYSQLIphp_TYPEphp_DECIMALphp"php,
+php php php php php php php php php1php php=php>php php"MYSQLIphp_TYPEphp_TINYINTphp"php,
+php php php php php php php php php2php php=php>php php"MYSQLIphp_TYPEphp_SMALLINTphp"php,
+php php php php php php php php php3php php=php>php php"MYSQLIphp_TYPEphp_INTEGERphp"php,
+php php php php php php php php php4php php=php>php php"MYSQLIphp_TYPEphp_FLOATphp"php,
+php php php php php php php php php5php php=php>php php"MYSQLIphp_TYPEphp_DOUBLEphp"php,
+php php php php php php php php php7php php=php>php php"MYSQLIphp_TYPEphp_TIMESTAMPphp"php,
+php php php php php php php php php8php php=php>php php"MYSQLIphp_TYPEphp_BIGINTphp"php,
+php php php php php php php php php9php php=php>php php"MYSQLIphp_TYPEphp_MEDIUMINTphp"php,
+php php php php php php php php php1php0php php=php>php php"MYSQLIphp_TYPEphp_DATEphp"php,
+php php php php php php php php php1php1php php=php>php php"MYSQLIphp_TYPEphp_TIMEphp"php,
+php php php php php php php php php1php2php php=php>php php"MYSQLIphp_TYPEphp_DATETIMEphp"php,
+php php php php php php php php php1php3php php=php>php php"MYSQLIphp_TYPEphp_YEARphp"php,
+php php php php php php php php php1php4php php=php>php php"MYSQLIphp_TYPEphp_DATEphp"php,
+php php php php php php php php php1php6php php=php>php php"MYSQLIphp_TYPEphp_BITphp"php,
+php php php php php php php php php2php4php6php php=php>php php"MYSQLIphp_TYPEphp_DECIMALphp"php,
+php php php php php php php php php2php4php7php php=php>php php"MYSQLIphp_TYPEphp_ENUMphp"php,
+php php php php php php php php php2php4php8php php=php>php php"MYSQLIphp_TYPEphp_SETphp"php,
+php php php php php php php php php2php4php9php php=php>php php"MYSQLIphp_TYPEphp_TINYBLOBphp"php,
+php php php php php php php php php2php5php0php php=php>php php"MYSQLIphp_TYPEphp_MEDIUMBLOBphp"php,
+php php php php php php php php php2php5php1php php=php>php php"MYSQLIphp_TYPEphp_LONGBLOBphp"php,
+php php php php php php php php php2php5php2php php=php>php php"MYSQLIphp_TYPEphp_BLOBphp"php,
+php php php php php php php php php2php5php3php php=php>php php"MYSQLIphp_TYPEphp_VARCHARphp"php,
+php php php php php php php php php2php5php4php php=php>php php"MYSQLIphp_TYPEphp_CHARphp"php,
+php php php php php php php php php2php5php5php php=php>php php"MYSQLIphp_TYPEphp_GEOMETRYphp"php,
+php php php php php)php;
 
-    // Build an associative array for a type look up
-    static $mysqli_to_php = array(
-        "MYSQLI_TYPE_DECIMAL"     => 'float',
-        "MYSQLI_TYPE_NEWDECIMAL"  => 'float',
-        "MYSQLI_TYPE_BIT"         => 'integer',
-        "MYSQLI_TYPE_TINYINT"     => 'integer',
-        "MYSQLI_TYPE_SMALLINT"    => 'integer',
-        "MYSQLI_TYPE_MEDIUMINT"   => 'integer',
-        "MYSQLI_TYPE_BIGINT"      => 'integer',
-        "MYSQLI_TYPE_INTEGER"     => 'integer',
-        "MYSQLI_TYPE_FLOAT"       => 'float',
-        "MYSQLI_TYPE_DOUBLE"      => 'float',
-        "MYSQLI_TYPE_NULL"        => 'null',
-        "MYSQLI_TYPE_TIMESTAMP"   => 'string',
-        "MYSQLI_TYPE_INT24"       => 'integer',
-        "MYSQLI_TYPE_DATE"        => 'string',
-        "MYSQLI_TYPE_TIME"        => 'string',
-        "MYSQLI_TYPE_DATETIME"    => 'string',
-        "MYSQLI_TYPE_YEAR"        => 'string',
-        "MYSQLI_TYPE_NEWDATE"     => 'string',
-        "MYSQLI_TYPE_ENUM"        => 'string',
-        "MYSQLI_TYPE_SET"         => 'string',
-        "MYSQLI_TYPE_TINYBLOB"    => 'object',
-        "MYSQLI_TYPE_MEDIUMBLOB"  => 'object',
-        "MYSQLI_TYPE_LONGBLOB"    => 'object',
-        "MYSQLI_TYPE_BLOB"        => 'object',
-        "MYSQLI_TYPE_CHAR"        => 'string',
-        "MYSQLI_TYPE_VARCHAR"     => 'string',
-        "MYSQLI_TYPE_GEOMETRY"    => 'object',
-        "MYSQLI_TYPE_BIT"         => 'integer',
-    );
+php php php php php/php/php Buildphp anphp associativephp arrayphp forphp aphp typephp lookphp up
+php php php php staticphp php$mysqliphp_tophp_phpphp php=php arrayphp(
+php php php php php php php php php"MYSQLIphp_TYPEphp_DECIMALphp"php php php php php php=php>php php'floatphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_NEWDECIMALphp"php php php=php>php php'floatphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_BITphp"php php php php php php php php php php=php>php php'integerphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_TINYINTphp"php php php php php php=php>php php'integerphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_SMALLINTphp"php php php php php=php>php php'integerphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_MEDIUMINTphp"php php php php=php>php php'integerphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_BIGINTphp"php php php php php php php=php>php php'integerphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_INTEGERphp"php php php php php php=php>php php'integerphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_FLOATphp"php php php php php php php php=php>php php'floatphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_DOUBLEphp"php php php php php php php=php>php php'floatphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_NULLphp"php php php php php php php php php=php>php php'nullphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_TIMESTAMPphp"php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_INTphp2php4php"php php php php php php php php=php>php php'integerphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_DATEphp"php php php php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_TIMEphp"php php php php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_DATETIMEphp"php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_YEARphp"php php php php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_NEWDATEphp"php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_ENUMphp"php php php php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_SETphp"php php php php php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_TINYBLOBphp"php php php php php=php>php php'objectphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_MEDIUMBLOBphp"php php php=php>php php'objectphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_LONGBLOBphp"php php php php php=php>php php'objectphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_BLOBphp"php php php php php php php php php=php>php php'objectphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_CHARphp"php php php php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_VARCHARphp"php php php php php php=php>php php'stringphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_GEOMETRYphp"php php php php php=php>php php'objectphp'php,
+php php php php php php php php php"MYSQLIphp_TYPEphp_BITphp"php php php php php php php php php php=php>php php'integerphp'php,
+php php php php php)php;
 
-    /**
-     * Parse resource into array
-     *
-     * @param resource $resource
-     * @return array
-     */
-    public function parse($resource) {
+php php php php php/php*php*
+php php php php php php*php Parsephp resourcephp intophp array
+php php php php php php*
+php php php php php php*php php@paramphp resourcephp php$resource
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp parsephp(php$resourcephp)php php{
 
-        $result = array();
-        $fieldcnt = mysqli_num_fields($resource);
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php php$fieldcntphp php=php mysqliphp_numphp_fieldsphp(php$resourcephp)php;
 
 
-        $fields_transform = array();
+php php php php php php php php php$fieldsphp_transformphp php=php arrayphp(php)php;
 
-        for($i=0;$i<$fieldcnt;$i++) {
-            $finfo = mysqli_fetch_field_direct($resource, $i);
+php php php php php php php php forphp(php$iphp=php0php;php$i<php$fieldcntphp;php$iphp+php+php)php php{
+php php php php php php php php php php php php php$finfophp php=php mysqliphp_fetchphp_fieldphp_directphp(php$resourcephp,php php$iphp)php;
 
-            if(isset(self::$mysqli_type[$finfo->type])) {
-                $fields_transform[$finfo->name] = self::$mysqli_to_php[self::$mysqli_type[$finfo->type]];
-            }
-        }
+php php php php php php php php php php php php ifphp(issetphp(selfphp:php:php$mysqliphp_typephp[php$finfophp-php>typephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$fieldsphp_transformphp[php$finfophp-php>namephp]php php=php selfphp:php:php$mysqliphp_tophp_phpphp[selfphp:php:php$mysqliphp_typephp[php$finfophp-php>typephp]php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        while($row = mysqli_fetch_assoc($resource)) {
-            foreach($fields_transform as $fieldname => $fieldtype) {
-               settype($row[$fieldname], $fieldtype);
-            }
-            $result[] = $row;
-        }
-        return $result;
-    }
-}
+php php php php php php php php whilephp(php$rowphp php=php mysqliphp_fetchphp_assocphp(php$resourcephp)php)php php{
+php php php php php php php php php php php php foreachphp(php$fieldsphp_transformphp asphp php$fieldnamephp php=php>php php$fieldtypephp)php php{
+php php php php php php php php php php php php php php php settypephp(php$rowphp[php$fieldnamephp]php,php php$fieldtypephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$resultphp[php]php php=php php$rowphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+php}

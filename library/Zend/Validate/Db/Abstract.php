@@ -1,351 +1,351 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * Class for Database record validation
- *
- * @category   Zend
- * @package    Zend_Validate
- * @uses       Zend_Validate_Abstract
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Validate_Db_Abstract extends Zend_Validate_Abstract
-{
-    /**
-     * Error constants
-     */
-    const ERROR_NO_RECORD_FOUND = 'noRecordFound';
-    const ERROR_RECORD_FOUND    = 'recordFound';
+php/php*php*
+php php*php Classphp forphp Databasephp recordphp validation
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@usesphp php php php php php php Zendphp_Validatephp_Abstract
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Validatephp_Dbphp_Abstractphp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Errorphp constants
+php php php php php php*php/
+php php php php constphp ERRORphp_NOphp_RECORDphp_FOUNDphp php=php php'noRecordFoundphp'php;
+php php php php constphp ERRORphp_RECORDphp_FOUNDphp php php php php=php php'recordFoundphp'php;
 
-    /**
-     * @var array Message templates
-     */
-    protected $_messageTemplates = array(
-        self::ERROR_NO_RECORD_FOUND => "No record matching '%value%' was found",
-        self::ERROR_RECORD_FOUND    => "A record matching '%value%' was found",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Messagephp templates
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:ERRORphp_NOphp_RECORDphp_FOUNDphp php=php>php php"Nophp recordphp matchingphp php'php%valuephp%php'php wasphp foundphp"php,
+php php php php php php php php selfphp:php:ERRORphp_RECORDphp_FOUNDphp php php php php=php>php php"Aphp recordphp matchingphp php'php%valuephp%php'php wasphp foundphp"php,
+php php php php php)php;
 
-    /**
-     * @var string
-     */
-    protected $_schema = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_schemaphp php=php nullphp;
 
-    /**
-     * @var string
-     */
-    protected $_table = '';
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_tablephp php=php php'php'php;
 
-    /**
-     * @var string
-     */
-    protected $_field = '';
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_fieldphp php=php php'php'php;
 
-    /**
-     * @var mixed
-     */
-    protected $_exclude = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php protectedphp php$php_excludephp php=php nullphp;
 
-    /**
-     * Database adapter to use. If null isValid() will use Zend_Db::getInstance instead
-     *
-     * @var unknown_type
-     */
-    protected $_adapter = null;
+php php php php php/php*php*
+php php php php php php*php Databasephp adapterphp tophp usephp.php Ifphp nullphp isValidphp(php)php willphp usephp Zendphp_Dbphp:php:getInstancephp instead
+php php php php php php*
+php php php php php php*php php@varphp unknownphp_type
+php php php php php php*php/
+php php php php protectedphp php$php_adapterphp php=php nullphp;
 
-    /**
-     * Select object to use. can be set, or will be auto-generated
-     * @var Zend_Db_Select
-     */
-    protected $_select;
+php php php php php/php*php*
+php php php php php php*php Selectphp objectphp tophp usephp.php canphp bephp setphp,php orphp willphp bephp autophp-generated
+php php php php php php*php php@varphp Zendphp_Dbphp_Select
+php php php php php php*php/
+php php php php protectedphp php$php_selectphp;
 
-    /**
-     * Provides basic configuration for use with Zend_Validate_Db Validators
-     * Setting $exclude allows a single record to be excluded from matching.
-     * Exclude can either be a String containing a where clause, or an array with `field` and `value` keys
-     * to define the where clause added to the sql.
-     * A database adapter may optionally be supplied to avoid using the registered default adapter.
-     *
-     * The following option keys are supported:
-     * 'table'   => The database table to validate against
-     * 'schema'  => The schema keys
-     * 'field'   => The field to check for a match
-     * 'exclude' => An optional where clause or field/value pair to exclude from the query
-     * 'adapter' => An optional database adapter to use
-     *
-     * @param array|Zend_Config $options Options to use for this validator
-     */
-    public function __construct($options)
-    {
-        if ($options instanceof Zend_Db_Select) {
-            $this->setSelect($options);
-            return;
-        }
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } else if (func_num_args() > 1) {
-            $options       = func_get_args();
-            $temp['table'] = array_shift($options);
-            $temp['field'] = array_shift($options);
-            if (!empty($options)) {
-                $temp['exclude'] = array_shift($options);
-            }
+php php php php php/php*php*
+php php php php php php*php Providesphp basicphp configurationphp forphp usephp withphp Zendphp_Validatephp_Dbphp Validators
+php php php php php php*php Settingphp php$excludephp allowsphp aphp singlephp recordphp tophp bephp excludedphp fromphp matchingphp.
+php php php php php php*php Excludephp canphp eitherphp bephp aphp Stringphp containingphp aphp wherephp clausephp,php orphp anphp arrayphp withphp php`fieldphp`php andphp php`valuephp`php keys
+php php php php php php*php tophp definephp thephp wherephp clausephp addedphp tophp thephp sqlphp.
+php php php php php php*php Aphp databasephp adapterphp mayphp optionallyphp bephp suppliedphp tophp avoidphp usingphp thephp registeredphp defaultphp adapterphp.
+php php php php php php*
+php php php php php php*php Thephp followingphp optionphp keysphp arephp supportedphp:
+php php php php php php*php php'tablephp'php php php php=php>php Thephp databasephp tablephp tophp validatephp against
+php php php php php php*php php'schemaphp'php php php=php>php Thephp schemaphp keys
+php php php php php php*php php'fieldphp'php php php php=php>php Thephp fieldphp tophp checkphp forphp aphp match
+php php php php php php*php php'excludephp'php php=php>php Anphp optionalphp wherephp clausephp orphp fieldphp/valuephp pairphp tophp excludephp fromphp thephp query
+php php php php php php*php php'adapterphp'php php=php>php Anphp optionalphp databasephp adapterphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$optionsphp Optionsphp tophp usephp forphp thisphp validator
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Dbphp_Selectphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setSelectphp(php$optionsphp)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(funcphp_numphp_argsphp(php)php php>php php1php)php php{
+php php php php php php php php php php php php php$optionsphp php php php php php php php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php php$tempphp[php'tablephp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php$tempphp[php'fieldphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp[php'excludephp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php}
 
-            if (!empty($options)) {
-                $temp['adapter'] = array_shift($options);
-            }
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp[php'adapterphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php}
 
-            $options = $temp;
-        }
+php php php php php php php php php php php php php$optionsphp php=php php$tempphp;
+php php php php php php php php php}
 
-        if (!array_key_exists('table', $options) && !array_key_exists('schema', $options)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Table or Schema option missing!');
-        }
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'tablephp'php,php php$optionsphp)php php&php&php php!arrayphp_keyphp_existsphp(php'schemaphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Tablephp orphp Schemaphp optionphp missingphp!php'php)php;
+php php php php php php php php php}
 
-        if (!array_key_exists('field', $options)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Field option missing!');
-        }
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'fieldphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Fieldphp optionphp missingphp!php'php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('adapter', $options)) {
-            $this->setAdapter($options['adapter']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'adapterphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setAdapterphp(php$optionsphp[php'adapterphp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('exclude', $options)) {
-            $this->setExclude($options['exclude']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'excludephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setExcludephp(php$optionsphp[php'excludephp'php]php)php;
+php php php php php php php php php}
 
-        $this->setField($options['field']);
-        if (array_key_exists('table', $options)) {
-            $this->setTable($options['table']);
-        }
+php php php php php php php php php$thisphp-php>setFieldphp(php$optionsphp[php'fieldphp'php]php)php;
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'tablephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setTablephp(php$optionsphp[php'tablephp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('schema', $options)) {
-            $this->setSchema($options['schema']);
-        }
-    }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'schemaphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setSchemaphp(php$optionsphp[php'schemaphp'php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the set adapter
-     *
-     * @return Zend_Db_Adapter
-     */
-    public function getAdapter()
-    {
-        /**
-         * Check for an adapter being defined. if not, fetch the default adapter.
-         */
-        if ($this->_adapter === null) {
-            $this->_adapter = Zend_Db_Table_Abstract::getDefaultAdapter();
-            if (null === $this->_adapter) {
-                require_once 'Zend/Validate/Exception.php';
-                throw new Zend_Validate_Exception('No database adapter present');
-            }
-        }
-        return $this->_adapter;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapter
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterphp(php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Checkphp forphp anphp adapterphp beingphp definedphp.php ifphp notphp,php fetchphp thephp defaultphp adapterphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$thisphp-php>php_adapterphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_adapterphp php=php Zendphp_Dbphp_Tablephp_Abstractphp:php:getDefaultAdapterphp(php)php;
+php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_adapterphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Nophp databasephp adapterphp presentphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
+php php php php php}
 
-    /**
-     * Sets a new database adapter
-     *
-     * @param  Zend_Db_Adapter_Abstract $adapter
-     * @return Zend_Validate_Db_Abstract
-     */
-    public function setAdapter($adapter)
-    {
-        if (!($adapter instanceof Zend_Db_Adapter_Abstract)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Adapter option must be a database adapter!');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp databasephp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Dbphp_Adapterphp_Abstractphp php$adapter
+php php php php php php*php php@returnphp Zendphp_Validatephp_Dbphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setAdapterphp(php$adapterphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php(php$adapterphp instanceofphp Zendphp_Dbphp_Adapterphp_Abstractphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Adapterphp optionphp mustphp bephp aphp databasephp adapterphp!php'php)php;
+php php php php php php php php php}
 
-        $this->_adapter = $adapter;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set exclude clause
-     *
-     * @return string|array
-     */
-    public function getExclude()
-    {
-        return $this->_exclude;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp excludephp clause
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|array
+php php php php php php*php/
+php php php php publicphp functionphp getExcludephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_excludephp;
+php php php php php}
 
-    /**
-     * Sets a new exclude clause
-     *
-     * @param string|array $exclude
-     * @return Zend_Validate_Db_Abstract
-     */
-    public function setExclude($exclude)
-    {
-        $this->_exclude = $exclude;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp excludephp clause
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$exclude
+php php php php php php*php php@returnphp Zendphp_Validatephp_Dbphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setExcludephp(php$excludephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_excludephp php=php php$excludephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set field
-     *
-     * @return string|array
-     */
-    public function getField()
-    {
-        return $this->_field;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp field
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|array
+php php php php php php*php/
+php php php php publicphp functionphp getFieldphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_fieldphp;
+php php php php php}
 
-    /**
-     * Sets a new field
-     *
-     * @param string $field
-     * @return Zend_Validate_Db_Abstract
-     */
-    public function setField($field)
-    {
-        $this->_field = (string) $field;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp field
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$field
+php php php php php php*php php@returnphp Zendphp_Validatephp_Dbphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setFieldphp(php$fieldphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fieldphp php=php php(stringphp)php php$fieldphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set table
-     *
-     * @return string
-     */
-    public function getTable()
-    {
-        return $this->_table;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp table
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTablephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_tablephp;
+php php php php php}
 
-    /**
-     * Sets a new table
-     *
-     * @param string $table
-     * @return Zend_Validate_Db_Abstract
-     */
-    public function setTable($table)
-    {
-        $this->_table = (string) $table;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp table
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$table
+php php php php php php*php php@returnphp Zendphp_Validatephp_Dbphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setTablephp(php$tablephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_tablephp php=php php(stringphp)php php$tablephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set schema
-     *
-     * @return string
-     */
-    public function getSchema()
-    {
-        return $this->_schema;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp schema
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getSchemaphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_schemaphp;
+php php php php php}
 
-    /**
-     * Sets a new schema
-     *
-     * @param string $schema
-     * @return Zend_Validate_Db_Abstract
-     */
-    public function setSchema($schema)
-    {
-        $this->_schema = $schema;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp schema
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$schema
+php php php php php php*php php@returnphp Zendphp_Validatephp_Dbphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setSchemaphp(php$schemaphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_schemaphp php=php php$schemaphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets the select object to be used by the validator
-     *
-     * @param Zend_Db_Select $select
-     * @return Zend_Validate_Db_Abstract
-     */
-    public function setSelect($select)
-    {
-        if (!$select instanceof Zend_Db_Select) {
-            throw new Zend_Validate_Exception('Select option must be a valid ' .
-                                              'Zend_Db_Select object');
-        }
-        $this->_select = $select;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp selectphp objectphp tophp bephp usedphp byphp thephp validator
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Dbphp_Selectphp php$select
+php php php php php php*php php@returnphp Zendphp_Validatephp_Dbphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setSelectphp(php$selectphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$selectphp instanceofphp Zendphp_Dbphp_Selectphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Selectphp optionphp mustphp bephp aphp validphp php'php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Zendphp_Dbphp_Selectphp objectphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_selectphp php=php php$selectphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Gets the select object to be used by the validator.
-     * If no select object was supplied to the constructor,
-     * then it will auto-generate one from the given table,
-     * schema, field, and adapter options.
-     *
-     * @return Zend_Db_Select The Select object which will be used
-     */
-    public function getSelect()
-    {
-        if (null === $this->_select) {
-            $db = $this->getAdapter();
-            /**
-             * Build select object
-             */
-            $select = new Zend_Db_Select($db);
-            $select->from($this->_table, array($this->_field), $this->_schema);
-            if ($db->supportsParameters('named')) {
-                $select->where($db->quoteIdentifier($this->_field, true).' = :value'); // named
-            } else {
-                $select->where($db->quoteIdentifier($this->_field, true).' = ?'); // positional
-            }
-            if ($this->_exclude !== null) {
-                if (is_array($this->_exclude)) {
-                    $select->where(
-                          $db->quoteIdentifier($this->_exclude['field'], true) .
-                            ' != ?', $this->_exclude['value']
-                    );
-                } else {
-                    $select->where($this->_exclude);
-                }
-            }
-            $select->limit(1);
-            $this->_select = $select;
-        }
-        return $this->_select;
-    }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp selectphp objectphp tophp bephp usedphp byphp thephp validatorphp.
+php php php php php php*php Ifphp nophp selectphp objectphp wasphp suppliedphp tophp thephp constructorphp,
+php php php php php php*php thenphp itphp willphp autophp-generatephp onephp fromphp thephp givenphp tablephp,
+php php php php php php*php schemaphp,php fieldphp,php andphp adapterphp optionsphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thephp Selectphp objectphp whichphp willphp bephp used
+php php php php php php*php/
+php php php php publicphp functionphp getSelectphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_selectphp)php php{
+php php php php php php php php php php php php php$dbphp php=php php$thisphp-php>getAdapterphp(php)php;
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Buildphp selectphp object
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$selectphp php=php newphp Zendphp_Dbphp_Selectphp(php$dbphp)php;
+php php php php php php php php php php php php php$selectphp-php>fromphp(php$thisphp-php>php_tablephp,php arrayphp(php$thisphp-php>php_fieldphp)php,php php$thisphp-php>php_schemaphp)php;
+php php php php php php php php php php php php ifphp php(php$dbphp-php>supportsParametersphp(php'namedphp'php)php)php php{
+php php php php php php php php php php php php php php php php php$selectphp-php>wherephp(php$dbphp-php>quoteIdentifierphp(php$thisphp-php>php_fieldphp,php truephp)php.php'php php=php php:valuephp'php)php;php php/php/php named
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$selectphp-php>wherephp(php$dbphp-php>quoteIdentifierphp(php$thisphp-php>php_fieldphp,php truephp)php.php'php php=php php?php'php)php;php php/php/php positional
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_excludephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_excludephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$selectphp-php>wherephp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php$dbphp-php>quoteIdentifierphp(php$thisphp-php>php_excludephp[php'fieldphp'php]php,php truephp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php php!php=php php?php'php,php php$thisphp-php>php_excludephp[php'valuephp'php]
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$selectphp-php>wherephp(php$thisphp-php>php_excludephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$selectphp-php>limitphp(php1php)php;
+php php php php php php php php php php php php php$thisphp-php>php_selectphp php=php php$selectphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_selectphp;
+php php php php php}
 
-    /**
-     * Run query and returns matches, or null if no matches are found.
-     *
-     * @param  String $value
-     * @return Array when matches are found.
-     */
-    protected function _query($value)
-    {
-        $select = $this->getSelect();
-        /**
-         * Run query
-         */
-        $result = $select->getAdapter()->fetchRow(
-            $select,
-            array('value' => $value), // this should work whether db supports positional or named params
-            Zend_Db::FETCH_ASSOC
-            );
+php php php php php/php*php*
+php php php php php php*php Runphp queryphp andphp returnsphp matchesphp,php orphp nullphp ifphp nophp matchesphp arephp foundphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Stringphp php$value
+php php php php php php*php php@returnphp Arrayphp whenphp matchesphp arephp foundphp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_queryphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$selectphp php=php php$thisphp-php>getSelectphp(php)php;
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Runphp query
+php php php php php php php php php php*php/
+php php php php php php php php php$resultphp php=php php$selectphp-php>getAdapterphp(php)php-php>fetchRowphp(
+php php php php php php php php php php php php php$selectphp,
+php php php php php php php php php php php php arrayphp(php'valuephp'php php=php>php php$valuephp)php,php php/php/php thisphp shouldphp workphp whetherphp dbphp supportsphp positionalphp orphp namedphp params
+php php php php php php php php php php php php Zendphp_Dbphp:php:FETCHphp_ASSOC
+php php php php php php php php php php php php php)php;
 
-        return $result;
-    }
-}
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+php}

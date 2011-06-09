@@ -1,324 +1,324 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Crypt
- * @subpackage Rsa
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Rsa.php 23439 2010-11-23 21:10:14Z alexander $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Crypt
+php php*php php@subpackagephp Rsa
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Rsaphp.phpphp php2php3php4php3php9php php2php0php1php0php-php1php1php-php2php3php php2php1php:php1php0php:php1php4Zphp alexanderphp php$
+php php*php/
 
-/**
- * @see Zend_Crypt_Rsa_Key_Private
- */
-require_once 'Zend/Crypt/Rsa/Key/Private.php';
+php/php*php*
+php php*php php@seephp Zendphp_Cryptphp_Rsaphp_Keyphp_Private
+php php*php/
+requirephp_oncephp php'Zendphp/Cryptphp/Rsaphp/Keyphp/Privatephp.phpphp'php;
 
-/**
- * @see Zend_Crypt_Rsa_Key_Public
- */
-require_once 'Zend/Crypt/Rsa/Key/Public.php';
+php/php*php*
+php php*php php@seephp Zendphp_Cryptphp_Rsaphp_Keyphp_Public
+php php*php/
+requirephp_oncephp php'Zendphp/Cryptphp/Rsaphp/Keyphp/Publicphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Crypt
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Crypt_Rsa
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Crypt
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cryptphp_Rsa
+php{
 
-    const BINARY = 'binary';
-    const BASE64 = 'base64';
+php php php php constphp BINARYphp php=php php'binaryphp'php;
+php php php php constphp BASEphp6php4php php=php php'basephp6php4php'php;
 
-    protected $_privateKey;
+php php php php protectedphp php$php_privateKeyphp;
 
-    protected $_publicKey;
+php php php php protectedphp php$php_publicKeyphp;
 
-    /**
-     * @var string
-     */
-    protected $_pemString;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_pemStringphp;
 
-    protected $_pemPath;
+php php php php protectedphp php$php_pemPathphp;
 
-    protected $_certificateString;
+php php php php protectedphp php$php_certificateStringphp;
 
-    protected $_certificatePath;
+php php php php protectedphp php$php_certificatePathphp;
 
-    protected $_hashAlgorithm;
+php php php php protectedphp php$php_hashAlgorithmphp;
 
-    protected $_passPhrase;
+php php php php protectedphp php$php_passPhrasephp;
 
-    /**
-     * Class constructor
-     *
-     * @param array $options
-     * @throws Zend_Crypt_Rsa_Exception
-     */
-    public function __construct(array $options = null)
-    {
-        if (!extension_loaded('openssl')) {
-            require_once 'Zend/Crypt/Rsa/Exception.php';
-            throw new Zend_Crypt_Rsa_Exception('Zend_Crypt_Rsa requires openssl extention to be loaded.');
-        }
+php php php php php/php*php*
+php php php php php php*php Classphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@throwsphp Zendphp_Cryptphp_Rsaphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'opensslphp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Rsaphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Cryptphp_Rsaphp_Exceptionphp(php'Zendphp_Cryptphp_Rsaphp requiresphp opensslphp extentionphp tophp bephp loadedphp.php'php)php;
+php php php php php php php php php}
 
-        // Set _hashAlgorithm property when we are sure, that openssl extension is loaded
-        // and OPENSSL_ALGO_SHA1 constant is available
-        $this->_hashAlgorithm = OPENSSL_ALGO_SHA1;
+php php php php php php php php php/php/php Setphp php_hashAlgorithmphp propertyphp whenphp wephp arephp surephp,php thatphp opensslphp extensionphp isphp loaded
+php php php php php php php php php/php/php andphp OPENSSLphp_ALGOphp_SHAphp1php constantphp isphp available
+php php php php php php php php php$thisphp-php>php_hashAlgorithmphp php=php OPENSSLphp_ALGOphp_SHAphp1php;
 
-        if (isset($options)) {
-            $this->setOptions($options);
-        }
-    }
+php php php php php php php php ifphp php(issetphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    public function setOptions(array $options)
-    {
-        if (isset($options['passPhrase'])) {
-            $this->_passPhrase = $options['passPhrase'];
-        }
-        foreach ($options as $option=>$value) {
-            switch ($option) {
-                case 'pemString':
-                    $this->setPemString($value);
-                    break;
-                case 'pemPath':
-                    $this->setPemPath($value);
-                    break;
-                case 'certificateString':
-                    $this->setCertificateString($value);
-                    break;
-                case 'certificatePath':
-                    $this->setCertificatePath($value);
-                    break;
-                case 'hashAlgorithm':
-                    $this->setHashAlgorithm($value);
-                    break;
-            }
-        }
-    }
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'passPhrasephp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_passPhrasephp php=php php$optionsphp[php'passPhrasephp'php]php;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$optionsphp asphp php$optionphp=php>php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(php$optionphp)php php{
+php php php php php php php php php php php php php php php php casephp php'pemStringphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setPemStringphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pemPathphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setPemPathphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'certificateStringphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setCertificateStringphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'certificatePathphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setCertificatePathphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'hashAlgorithmphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setHashAlgorithmphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    public function getPrivateKey()
-    {
-        return $this->_privateKey;
-    }
+php php php php publicphp functionphp getPrivateKeyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_privateKeyphp;
+php php php php php}
 
-    public function getPublicKey()
-    {
-        return $this->_publicKey;
-    }
+php php php php publicphp functionphp getPublicKeyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_publicKeyphp;
+php php php php php}
 
-    /**
-     * @param string $data
-     * @param Zend_Crypt_Rsa_Key_Private $privateKey
-     * @param string $format
-     * @return string
-     */
-    public function sign($data, Zend_Crypt_Rsa_Key_Private $privateKey = null, $format = null)
-    {
-        $signature = '';
-        if (isset($privateKey)) {
-            $opensslKeyResource = $privateKey->getOpensslKeyResource();
-        } else {
-            $opensslKeyResource = $this->_privateKey->getOpensslKeyResource();
-        }
-        $result = openssl_sign(
-            $data, $signature,
-            $opensslKeyResource,
-            $this->getHashAlgorithm()
-        );
-        if ($format == self::BASE64) {
-            return base64_encode($signature);
-        }
-        return $signature;
-    }
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp Zendphp_Cryptphp_Rsaphp_Keyphp_Privatephp php$privateKey
+php php php php php php*php php@paramphp stringphp php$format
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp signphp(php$dataphp,php Zendphp_Cryptphp_Rsaphp_Keyphp_Privatephp php$privateKeyphp php=php nullphp,php php$formatphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$signaturephp php=php php'php'php;
+php php php php php php php php ifphp php(issetphp(php$privateKeyphp)php)php php{
+php php php php php php php php php php php php php$opensslKeyResourcephp php=php php$privateKeyphp-php>getOpensslKeyResourcephp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$opensslKeyResourcephp php=php php$thisphp-php>php_privateKeyphp-php>getOpensslKeyResourcephp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$resultphp php=php opensslphp_signphp(
+php php php php php php php php php php php php php$dataphp,php php$signaturephp,
+php php php php php php php php php php php php php$opensslKeyResourcephp,
+php php php php php php php php php php php php php$thisphp-php>getHashAlgorithmphp(php)
+php php php php php php php php php)php;
+php php php php php php php php ifphp php(php$formatphp php=php=php selfphp:php:BASEphp6php4php)php php{
+php php php php php php php php php php php php returnphp basephp6php4php_encodephp(php$signaturephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$signaturephp;
+php php php php php}
 
-    /**
-     * @param string $data
-     * @param string $signature
-     * @param string $format
-     * @return string
-     */
-    public function verifySignature($data, $signature, $format = null)
-    {
-        if ($format == self::BASE64) {
-            $signature = base64_decode($signature);
-        }
-        $result = openssl_verify($data, $signature,
-            $this->getPublicKey()->getOpensslKeyResource(),
-            $this->getHashAlgorithm());
-        return $result;
-    }
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp stringphp php$signature
+php php php php php php*php php@paramphp stringphp php$format
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp verifySignaturephp(php$dataphp,php php$signaturephp,php php$formatphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$formatphp php=php=php selfphp:php:BASEphp6php4php)php php{
+php php php php php php php php php php php php php$signaturephp php=php basephp6php4php_decodephp(php$signaturephp)php;
+php php php php php php php php php}
+php php php php php php php php php$resultphp php=php opensslphp_verifyphp(php$dataphp,php php$signaturephp,
+php php php php php php php php php php php php php$thisphp-php>getPublicKeyphp(php)php-php>getOpensslKeyResourcephp(php)php,
+php php php php php php php php php php php php php$thisphp-php>getHashAlgorithmphp(php)php)php;
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
 
-    /**
-     * @param string $data
-     * @param Zend_Crypt_Rsa_Key $key
-     * @param string $format
-     * @return string
-     */
-    public function encrypt($data, Zend_Crypt_Rsa_Key $key, $format = null)
-    {
-        $encrypted = '';
-        $function = 'openssl_public_encrypt';
-        if ($key instanceof Zend_Crypt_Rsa_Key_Private) {
-            $function = 'openssl_private_encrypt';
-        }
-        $function($data, $encrypted, $key->getOpensslKeyResource());
-        if ($format == self::BASE64) {
-            return base64_encode($encrypted);
-        }
-        return $encrypted;
-    }
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp Zendphp_Cryptphp_Rsaphp_Keyphp php$key
+php php php php php php*php php@paramphp stringphp php$format
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp encryptphp(php$dataphp,php Zendphp_Cryptphp_Rsaphp_Keyphp php$keyphp,php php$formatphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$encryptedphp php=php php'php'php;
+php php php php php php php php php$functionphp php=php php'opensslphp_publicphp_encryptphp'php;
+php php php php php php php php ifphp php(php$keyphp instanceofphp Zendphp_Cryptphp_Rsaphp_Keyphp_Privatephp)php php{
+php php php php php php php php php php php php php$functionphp php=php php'opensslphp_privatephp_encryptphp'php;
+php php php php php php php php php}
+php php php php php php php php php$functionphp(php$dataphp,php php$encryptedphp,php php$keyphp-php>getOpensslKeyResourcephp(php)php)php;
+php php php php php php php php ifphp php(php$formatphp php=php=php selfphp:php:BASEphp6php4php)php php{
+php php php php php php php php php php php php returnphp basephp6php4php_encodephp(php$encryptedphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$encryptedphp;
+php php php php php}
 
-    /**
-     * @param string $data
-     * @param Zend_Crypt_Rsa_Key $key
-     * @param string $format
-     * @return string
-     */
-    public function decrypt($data, Zend_Crypt_Rsa_Key $key, $format = null)
-    {
-        $decrypted = '';
-        if ($format == self::BASE64) {
-            $data = base64_decode($data);
-        }
-        $function = 'openssl_private_decrypt';
-        if ($key instanceof Zend_Crypt_Rsa_Key_Public) {
-            $function = 'openssl_public_decrypt';
-        }
-        $function($data, $decrypted, $key->getOpensslKeyResource());
-        return $decrypted;
-    }
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp Zendphp_Cryptphp_Rsaphp_Keyphp php$key
+php php php php php php*php php@paramphp stringphp php$format
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp decryptphp(php$dataphp,php Zendphp_Cryptphp_Rsaphp_Keyphp php$keyphp,php php$formatphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$decryptedphp php=php php'php'php;
+php php php php php php php php ifphp php(php$formatphp php=php=php selfphp:php:BASEphp6php4php)php php{
+php php php php php php php php php php php php php$dataphp php=php basephp6php4php_decodephp(php$dataphp)php;
+php php php php php php php php php}
+php php php php php php php php php$functionphp php=php php'opensslphp_privatephp_decryptphp'php;
+php php php php php php php php ifphp php(php$keyphp instanceofphp Zendphp_Cryptphp_Rsaphp_Keyphp_Publicphp)php php{
+php php php php php php php php php php php php php$functionphp php=php php'opensslphp_publicphp_decryptphp'php;
+php php php php php php php php php}
+php php php php php php php php php$functionphp(php$dataphp,php php$decryptedphp,php php$keyphp-php>getOpensslKeyResourcephp(php)php)php;
+php php php php php php php php returnphp php$decryptedphp;
+php php php php php}
 
-    public function generateKeys(array $configargs = null)
-    {
-        $config = null;
-        $passPhrase = null;
-        if ($configargs !== null) {
-            if (isset($configargs['passPhrase'])) {
-                $passPhrase = $configargs['passPhrase'];
-                unset($configargs['passPhrase']);
-            }
-            $config = $this->_parseConfigArgs($configargs);
-        }
-        $privateKey = null;
-        $publicKey = null;
-        $resource = openssl_pkey_new($config);
-        // above fails on PHP 5.3
-        openssl_pkey_export($resource, $private, $passPhrase);
-        $privateKey = new Zend_Crypt_Rsa_Key_Private($private, $passPhrase);
-        $details = openssl_pkey_get_details($resource);
-        $publicKey = new Zend_Crypt_Rsa_Key_Public($details['key']);
-        $return = new ArrayObject(array(
-           'privateKey'=>$privateKey,
-           'publicKey'=>$publicKey
-        ), ArrayObject::ARRAY_AS_PROPS);
-        return $return;
-    }
+php php php php publicphp functionphp generateKeysphp(arrayphp php$configargsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$configphp php=php nullphp;
+php php php php php php php php php$passPhrasephp php=php nullphp;
+php php php php php php php php ifphp php(php$configargsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$configargsphp[php'passPhrasephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$passPhrasephp php=php php$configargsphp[php'passPhrasephp'php]php;
+php php php php php php php php php php php php php php php php unsetphp(php$configargsphp[php'passPhrasephp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$configphp php=php php$thisphp-php>php_parseConfigArgsphp(php$configargsphp)php;
+php php php php php php php php php}
+php php php php php php php php php$privateKeyphp php=php nullphp;
+php php php php php php php php php$publicKeyphp php=php nullphp;
+php php php php php php php php php$resourcephp php=php opensslphp_pkeyphp_newphp(php$configphp)php;
+php php php php php php php php php/php/php abovephp failsphp onphp PHPphp php5php.php3
+php php php php php php php php opensslphp_pkeyphp_exportphp(php$resourcephp,php php$privatephp,php php$passPhrasephp)php;
+php php php php php php php php php$privateKeyphp php=php newphp Zendphp_Cryptphp_Rsaphp_Keyphp_Privatephp(php$privatephp,php php$passPhrasephp)php;
+php php php php php php php php php$detailsphp php=php opensslphp_pkeyphp_getphp_detailsphp(php$resourcephp)php;
+php php php php php php php php php$publicKeyphp php=php newphp Zendphp_Cryptphp_Rsaphp_Keyphp_Publicphp(php$detailsphp[php'keyphp'php]php)php;
+php php php php php php php php php$returnphp php=php newphp ArrayObjectphp(arrayphp(
+php php php php php php php php php php php php'privateKeyphp'php=php>php$privateKeyphp,
+php php php php php php php php php php php php'publicKeyphp'php=php>php$publicKey
+php php php php php php php php php)php,php ArrayObjectphp:php:ARRAYphp_ASphp_PROPSphp)php;
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * @param string $value
-     */
-    public function setPemString($value)
-    {
-        $this->_pemString = $value;
-        try {
-            $this->_privateKey = new Zend_Crypt_Rsa_Key_Private($this->_pemString, $this->_passPhrase);
-            $this->_publicKey = $this->_privateKey->getPublicKey();
-        } catch (Zend_Crypt_Exception $e) {
-            $this->_privateKey = null;
-            $this->_publicKey = new Zend_Crypt_Rsa_Key_Public($this->_pemString);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$value
+php php php php php php*php/
+php php php php publicphp functionphp setPemStringphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_pemStringphp php=php php$valuephp;
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_privateKeyphp php=php newphp Zendphp_Cryptphp_Rsaphp_Keyphp_Privatephp(php$thisphp-php>php_pemStringphp,php php$thisphp-php>php_passPhrasephp)php;
+php php php php php php php php php php php php php$thisphp-php>php_publicKeyphp php=php php$thisphp-php>php_privateKeyphp-php>getPublicKeyphp(php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Cryptphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_privateKeyphp php=php nullphp;
+php php php php php php php php php php php php php$thisphp-php>php_publicKeyphp php=php newphp Zendphp_Cryptphp_Rsaphp_Keyphp_Publicphp(php$thisphp-php>php_pemStringphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    public function setPemPath($value)
-    {
-        $this->_pemPath = $value;
-        $this->setPemString(file_get_contents($this->_pemPath));
-    }
+php php php php publicphp functionphp setPemPathphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_pemPathphp php=php php$valuephp;
+php php php php php php php php php$thisphp-php>setPemStringphp(filephp_getphp_contentsphp(php$thisphp-php>php_pemPathphp)php)php;
+php php php php php}
 
-    public function setCertificateString($value)
-    {
-        $this->_certificateString = $value;
-        $this->_publicKey = new Zend_Crypt_Rsa_Key_Public($this->_certificateString, $this->_passPhrase);
-    }
+php php php php publicphp functionphp setCertificateStringphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_certificateStringphp php=php php$valuephp;
+php php php php php php php php php$thisphp-php>php_publicKeyphp php=php newphp Zendphp_Cryptphp_Rsaphp_Keyphp_Publicphp(php$thisphp-php>php_certificateStringphp,php php$thisphp-php>php_passPhrasephp)php;
+php php php php php}
 
-    public function setCertificatePath($value)
-    {
-        $this->_certificatePath = $value;
-        $this->setCertificateString(file_get_contents($this->_certificatePath));
-    }
+php php php php publicphp functionphp setCertificatePathphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_certificatePathphp php=php php$valuephp;
+php php php php php php php php php$thisphp-php>setCertificateStringphp(filephp_getphp_contentsphp(php$thisphp-php>php_certificatePathphp)php)php;
+php php php php php}
 
-    public function setHashAlgorithm($name)
-    {
-        switch (strtolower($name)) {
-            case 'md2':
-                $this->_hashAlgorithm = OPENSSL_ALGO_MD2;
-                break;
-            case 'md4':
-                $this->_hashAlgorithm = OPENSSL_ALGO_MD4;
-                break;
-            case 'md5':
-                $this->_hashAlgorithm = OPENSSL_ALGO_MD5;
-                break;
-            case 'sha1':
-                $this->_hashAlgorithm = OPENSSL_ALGO_SHA1;
-                break;
-            case 'dss1':
-                $this->_hashAlgorithm = OPENSSL_ALGO_DSS1;
-                break;
-        }
-    }
+php php php php publicphp functionphp setHashAlgorithmphp(php$namephp)
+php php php php php{
+php php php php php php php php switchphp php(strtolowerphp(php$namephp)php)php php{
+php php php php php php php php php php php php casephp php'mdphp2php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_hashAlgorithmphp php=php OPENSSLphp_ALGOphp_MDphp2php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'mdphp4php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_hashAlgorithmphp php=php OPENSSLphp_ALGOphp_MDphp4php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'mdphp5php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_hashAlgorithmphp php=php OPENSSLphp_ALGOphp_MDphp5php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'shaphp1php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_hashAlgorithmphp php=php OPENSSLphp_ALGOphp_SHAphp1php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'dssphp1php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_hashAlgorithmphp php=php OPENSSLphp_ALGOphp_DSSphp1php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * @return string
-     */
-    public function getPemString()
-    {
-        return $this->_pemString;
-    }
+php php php php php/php*php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getPemStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_pemStringphp;
+php php php php php}
 
-    public function getPemPath()
-    {
-        return $this->_pemPath;
-    }
+php php php php publicphp functionphp getPemPathphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_pemPathphp;
+php php php php php}
 
-    public function getCertificateString()
-    {
-        return $this->_certificateString;
-    }
+php php php php publicphp functionphp getCertificateStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_certificateStringphp;
+php php php php php}
 
-    public function getCertificatePath()
-    {
-        return $this->_certificatePath;
-    }
+php php php php publicphp functionphp getCertificatePathphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_certificatePathphp;
+php php php php php}
 
-    public function getHashAlgorithm()
-    {
-        return $this->_hashAlgorithm;
-    }
+php php php php publicphp functionphp getHashAlgorithmphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_hashAlgorithmphp;
+php php php php php}
 
-    protected function _parseConfigArgs(array $config = null)
-    {
-        $configs = array();
-        if (isset($config['privateKeyBits'])) {
-            $configs['private_key_bits'] = $config['privateKeyBits'];
-        }
-        if (!empty($configs)) {
-            return $configs;
-        }
-        return null;
-    }
+php php php php protectedphp functionphp php_parseConfigArgsphp(arrayphp php$configphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$configsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(issetphp(php$configphp[php'privateKeyBitsphp'php]php)php)php php{
+php php php php php php php php php php php php php$configsphp[php'privatephp_keyphp_bitsphp'php]php php=php php$configphp[php'privateKeyBitsphp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!emptyphp(php$configsphp)php)php php{
+php php php php php php php php php php php php returnphp php$configsphp;
+php php php php php php php php php}
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-}
+php}

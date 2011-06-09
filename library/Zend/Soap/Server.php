@@ -1,961 +1,961 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Soap
- * @subpackage Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/**
- * @see Zend_Server_Interface
- */
-require_once 'Zend/Server/Interface.php';
-
-/**
- * Zend_Soap_Server
- *
- * @category   Zend
- * @package    Zend_Soap
- * @subpackage Server
- * @uses       Zend_Server_Interface
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Server.php 22223 2010-05-21 08:06:47Z jan $
- */
-class Zend_Soap_Server implements Zend_Server_Interface
-{
-    /**
-     * Actor URI
-     * @var string URI
-     */
-    protected $_actor;
-
-    /**
-     * Class registered with this server
-     * @var string
-     */
-    protected $_class;
-
-    /**
-     * Arguments to pass to {@link $_class} constructor
-     * @var array
-     */
-    protected $_classArgs = array();
-
-    /**
-     * Object registered with this server
-     */
-    protected $_object;
-
-    /**
-     * Array of SOAP type => PHP class pairings for handling return/incoming values
-     * @var array
-     */
-    protected $_classmap;
-
-    /**
-     * Encoding
-     * @var string
-     */
-    protected $_encoding;
-
-    /**
-     * SOAP Server Features
-     *
-     * @var int
-     */
-    protected $_features;
-
-    /**
-     * WSDL Caching Options of SOAP Server
-     *
-     * @var mixed
-     */
-    protected $_wsdlCache;
-
-
-    /**
-     * Registered fault exceptions
-     * @var array
-     */
-    protected $_faultExceptions = array();
-
-    /**
-     * Functions registered with this server; may be either an array or the SOAP_FUNCTIONS_ALL
-     * constant
-     * @var array|int
-     */
-    protected $_functions = array();
-
-    /**
-     * Persistence mode; should be one of the SOAP persistence constants
-     * @var int
-     */
-    protected $_persistence;
-
-    /**
-     * Request XML
-     * @var string
-     */
-    protected $_request;
-
-    /**
-     * Response XML
-     * @var string
-     */
-    protected $_response;
-
-    /**
-     * Flag: whether or not {@link handle()} should return a response instead
-     * of automatically emitting it.
-     * @var boolean
-     */
-    protected $_returnResponse = false;
-
-    /**
-     * SOAP version to use; SOAP_1_2 by default, to allow processing of headers
-     * @var int
-     */
-    protected $_soapVersion = SOAP_1_2;
-
-    /**
-     * URI or path to WSDL
-     * @var string
-     */
-    protected $_wsdl;
-
-    /**
-     * URI namespace for SOAP server
-     * @var string URI
-     */
-    protected $_uri;
-
-    /**
-     * Constructor
-     *
-     * Sets display_errors INI setting to off (prevent client errors due to bad
-     * XML in response). Registers {@link handlePhpErrors()} as error handler
-     * for E_USER_ERROR.
-     *
-     * If $wsdl is provided, it is passed on to {@link setWsdl()}; if any
-     * options are specified, they are passed on to {@link setOptions()}.
-     *
-     * @param string $wsdl
-     * @param array $options
-     * @return void
-     */
-    public function __construct($wsdl = null, array $options = null)
-    {
-        if (!extension_loaded('soap')) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('SOAP extension is not loaded.');
-        }
-
-        if (null !== $wsdl) {
-            $this->setWsdl($wsdl);
-        }
-
-        if (null !== $options) {
-            $this->setOptions($options);
-        }
-    }
-
-    /**
-     * Set Options
-     *
-     * Allows setting options as an associative array of option => value pairs.
-     *
-     * @param  array|Zend_Config $options
-     * @return Zend_Soap_Server
-     */
-    public function setOptions($options)
-    {
-        if($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
-
-        foreach ($options as $key => $value) {
-            switch ($key) {
-                case 'actor':
-                    $this->setActor($value);
-                    break;
-                case 'classmap':
-                case 'classMap':
-                    $this->setClassmap($value);
-                    break;
-                case 'encoding':
-                    $this->setEncoding($value);
-                    break;
-                case 'soapVersion':
-                case 'soap_version':
-                    $this->setSoapVersion($value);
-                    break;
-                case 'uri':
-                    $this->setUri($value);
-                    break;
-                case 'wsdl':
-                    $this->setWsdl($value);
-                    break;
-                case 'featues':
-                    trigger_error(__METHOD__ . ': the option "featues" is deprecated as of 1.10.x and will be removed with 2.0.0; use "features" instead', E_USER_NOTICE);
-                case 'features':
-                    $this->setSoapFeatures($value);
-                    break;
-                case 'cache_wsdl':
-                    $this->setWsdlCache($value);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Return array of options suitable for using with SoapServer constructor
-     *
-     * @return array
-     */
-    public function getOptions()
-    {
-        $options = array();
-        if (null !== $this->_actor) {
-            $options['actor'] = $this->_actor;
-        }
-
-        if (null !== $this->_classmap) {
-            $options['classmap'] = $this->_classmap;
-        }
-
-        if (null !== $this->_encoding) {
-            $options['encoding'] = $this->_encoding;
-        }
-
-        if (null !== $this->_soapVersion) {
-            $options['soap_version'] = $this->_soapVersion;
-        }
-
-        if (null !== $this->_uri) {
-            $options['uri'] = $this->_uri;
-        }
-
-        if(null !== $this->_features) {
-            $options['features'] = $this->_features;
-        }
-
-        if(null !== $this->_wsdlCache) {
-            $options['cache_wsdl'] = $this->_wsdlCache;
-        }
-
-        return $options;
-    }
-
-    /**
-     * Set encoding
-     *
-     * @param  string $encoding
-     * @return Zend_Soap_Server
-     * @throws Zend_Soap_Server_Exception with invalid encoding argument
-     */
-    public function setEncoding($encoding)
-    {
-        if (!is_string($encoding)) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Invalid encoding specified');
-        }
-
-        $this->_encoding = $encoding;
-        return $this;
-    }
-
-    /**
-     * Get encoding
-     *
-     * @return string
-     */
-    public function getEncoding()
-    {
-        return $this->_encoding;
-    }
-
-    /**
-     * Set SOAP version
-     *
-     * @param  int $version One of the SOAP_1_1 or SOAP_1_2 constants
-     * @return Zend_Soap_Server
-     * @throws Zend_Soap_Server_Exception with invalid soap version argument
-     */
-    public function setSoapVersion($version)
-    {
-        if (!in_array($version, array(SOAP_1_1, SOAP_1_2))) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Invalid soap version specified');
-        }
-
-        $this->_soapVersion = $version;
-        return $this;
-    }
-
-    /**
-     * Get SOAP version
-     *
-     * @return int
-     */
-    public function getSoapVersion()
-    {
-        return $this->_soapVersion;
-    }
-
-    /**
-     * Check for valid URN
-     *
-     * @param  string $urn
-     * @return true
-     * @throws Zend_Soap_Server_Exception on invalid URN
-     */
-    public function validateUrn($urn)
-    {
-        $scheme = parse_url($urn, PHP_URL_SCHEME);
-        if ($scheme === false || $scheme === null) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Invalid URN');
-        }
-
-        return true;
-    }
-
-    /**
-     * Set actor
-     *
-     * Actor is the actor URI for the server.
-     *
-     * @param  string $actor
-     * @return Zend_Soap_Server
-     */
-    public function setActor($actor)
-    {
-        $this->validateUrn($actor);
-        $this->_actor = $actor;
-        return $this;
-    }
-
-    /**
-     * Retrieve actor
-     *
-     * @return string
-     */
-    public function getActor()
-    {
-        return $this->_actor;
-    }
-
-    /**
-     * Set URI
-     *
-     * URI in SoapServer is actually the target namespace, not a URI; $uri must begin with 'urn:'.
-     *
-     * @param  string $uri
-     * @return Zend_Soap_Server
-     * @throws Zend_Soap_Server_Exception with invalid uri argument
-     */
-    public function setUri($uri)
-    {
-        $this->validateUrn($uri);
-        $this->_uri = $uri;
-        return $this;
-    }
-
-    /**
-     * Retrieve URI
-     *
-     * @return string
-     */
-    public function getUri()
-    {
-        return $this->_uri;
-    }
-
-    /**
-     * Set classmap
-     *
-     * @param  array $classmap
-     * @return Zend_Soap_Server
-     * @throws Zend_Soap_Server_Exception for any invalid class in the class map
-     */
-    public function setClassmap($classmap)
-    {
-        if (!is_array($classmap)) {
-            /**
-             * @see Zend_Soap_Server_Exception
-             */
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Classmap must be an array');
-        }
-        foreach ($classmap as $type => $class) {
-            if (!class_exists($class)) {
-                /**
-                 * @see Zend_Soap_Server_Exception
-                 */
-                require_once 'Zend/Soap/Server/Exception.php';
-                throw new Zend_Soap_Server_Exception('Invalid class in class map');
-            }
-        }
-
-        $this->_classmap = $classmap;
-        return $this;
-    }
-
-    /**
-     * Retrieve classmap
-     *
-     * @return mixed
-     */
-    public function getClassmap()
-    {
-        return $this->_classmap;
-    }
-
-    /**
-     * Set wsdl
-     *
-     * @param string $wsdl  URI or path to a WSDL
-     * @return Zend_Soap_Server
-     */
-    public function setWsdl($wsdl)
-    {
-        $this->_wsdl = $wsdl;
-        return $this;
-    }
-
-    /**
-     * Retrieve wsdl
-     *
-     * @return string
-     */
-    public function getWsdl()
-    {
-        return $this->_wsdl;
-    }
-
-    /**
-     * Set the SOAP Feature options.
-     *
-     * @param  string|int $feature
-     * @return Zend_Soap_Server
-     */
-    public function setSoapFeatures($feature)
-    {
-        $this->_features = $feature;
-        return $this;
-    }
-
-    /**
-     * Return current SOAP Features options
-     *
-     * @return int
-     */
-    public function getSoapFeatures()
-    {
-        return $this->_features;
-    }
-
-    /**
-     * Set the SOAP Wsdl Caching Options
-     *
-     * @param string|int|boolean $caching
-     * @return Zend_Soap_Server
-     */
-    public function setWsdlCache($options)
-    {
-        $this->_wsdlCache = $options;
-        return $this;
-    }
-
-    /**
-     * Get current SOAP Wsdl Caching option
-     */
-    public function getWsdlCache()
-    {
-        return $this->_wsdlCache;
-    }
-
-    /**
-     * Attach a function as a server method
-     *
-     * @param array|string $function Function name, array of function names to attach,
-     * or SOAP_FUNCTIONS_ALL to attach all functions
-     * @param  string $namespace Ignored
-     * @return Zend_Soap_Server
-     * @throws Zend_Soap_Server_Exception on invalid functions
-     */
-    public function addFunction($function, $namespace = '')
-    {
-        // Bail early if set to SOAP_FUNCTIONS_ALL
-        if ($this->_functions == SOAP_FUNCTIONS_ALL) {
-            return $this;
-        }
-
-        if (is_array($function)) {
-            foreach ($function as $func) {
-                if (is_string($func) && function_exists($func)) {
-                    $this->_functions[] = $func;
-                } else {
-                    require_once 'Zend/Soap/Server/Exception.php';
-                    throw new Zend_Soap_Server_Exception('One or more invalid functions specified in array');
-                }
-            }
-            $this->_functions = array_merge($this->_functions, $function);
-        } elseif (is_string($function) && function_exists($function)) {
-            $this->_functions[] = $function;
-        } elseif ($function == SOAP_FUNCTIONS_ALL) {
-            $this->_functions = SOAP_FUNCTIONS_ALL;
-        } else {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Invalid function specified');
-        }
-
-        if (is_array($this->_functions)) {
-            $this->_functions = array_unique($this->_functions);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Attach a class to a server
-     *
-     * Accepts a class name to use when handling requests. Any additional
-     * arguments will be passed to that class' constructor when instantiated.
-     *
-     * See {@link setObject()} to set preconfigured object instances as request handlers.
-     *
-     * @param string $class Class Name which executes SOAP Requests at endpoint.
-     * @return Zend_Soap_Server
-     * @throws Zend_Soap_Server_Exception if called more than once, or if class
-     * does not exist
-     */
-    public function setClass($class, $namespace = '', $argv = null)
-    {
-        if (isset($this->_class)) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('A class has already been registered with this soap server instance');
-        }
-
-        if (!is_string($class)) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Invalid class argument (' . gettype($class) . ')');
-        }
-
-        if (!class_exists($class)) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Class "' . $class . '" does not exist');
-        }
-
-        $this->_class = $class;
-        if (1 < func_num_args()) {
-            $argv = func_get_args();
-            array_shift($argv);
-            $this->_classArgs = $argv;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Attach an object to a server
-     *
-     * Accepts an instanciated object to use when handling requests.
-     *
-     * @param object $object
-     * @return Zend_Soap_Server
-     */
-    public function setObject($object)
-    {
-        if(!is_object($object)) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Invalid object argument ('.gettype($object).')');
-        }
-
-        if(isset($this->_object)) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('An object has already been registered with this soap server instance');
-        }
-
-        $this->_object = $object;
-
-        return $this;
-    }
-
-    /**
-     * Return a server definition array
-     *
-     * Returns a list of all functions registered with {@link addFunction()},
-     * merged with all public methods of the class set with {@link setClass()}
-     * (if any).
-     *
-     * @access public
-     * @return array
-     */
-    public function getFunctions()
-    {
-        $functions = array();
-        if (null !== $this->_class) {
-            $functions = get_class_methods($this->_class);
-        } elseif (null !== $this->_object) {
-            $functions = get_class_methods($this->_object);
-        }
-
-        return array_merge((array) $this->_functions, $functions);
-    }
-
-    /**
-     * Unimplemented: Load server definition
-     *
-     * @param array $array
-     * @return void
-     * @throws Zend_Soap_Server_Exception Unimplemented
-     */
-    public function loadFunctions($definition)
-    {
-        require_once 'Zend/Soap/Server/Exception.php';
-        throw new Zend_Soap_Server_Exception('Unimplemented');
-    }
-
-    /**
-     * Set server persistence
-     *
-     * @param int $mode
-     * @return Zend_Soap_Server
-     */
-    public function setPersistence($mode)
-    {
-        if (!in_array($mode, array(SOAP_PERSISTENCE_SESSION, SOAP_PERSISTENCE_REQUEST))) {
-            require_once 'Zend/Soap/Server/Exception.php';
-            throw new Zend_Soap_Server_Exception('Invalid persistence mode specified');
-        }
-
-        $this->_persistence = $mode;
-        return $this;
-    }
-
-    /**
-     * Get server persistence
-     *
-     * @return Zend_Soap_Server
-     */
-    public function getPersistence()
-    {
-        return $this->_persistence;
-    }
-
-    /**
-     * Set request
-     *
-     * $request may be any of:
-     * - DOMDocument; if so, then cast to XML
-     * - DOMNode; if so, then grab owner document and cast to XML
-     * - SimpleXMLElement; if so, then cast to XML
-     * - stdClass; if so, calls __toString() and verifies XML
-     * - string; if so, verifies XML
-     *
-     * @param DOMDocument|DOMNode|SimpleXMLElement|stdClass|string $request
-     * @return Zend_Soap_Server
-     */
-    protected function _setRequest($request)
-    {
-        if ($request instanceof DOMDocument) {
-            $xml = $request->saveXML();
-        } elseif ($request instanceof DOMNode) {
-            $xml = $request->ownerDocument->saveXML();
-        } elseif ($request instanceof SimpleXMLElement) {
-            $xml = $request->asXML();
-        } elseif (is_object($request) || is_string($request)) {
-            if (is_object($request)) {
-                $xml = $request->__toString();
-            } else {
-                $xml = $request;
-            }
-
-            $dom = new DOMDocument();
-            if(strlen($xml) == 0 || !$dom->loadXML($xml)) {
-                require_once 'Zend/Soap/Server/Exception.php';
-                throw new Zend_Soap_Server_Exception('Invalid XML');
-            }
-        }
-        $this->_request = $xml;
-        return $this;
-    }
-
-    /**
-     * Retrieve request XML
-     *
-     * @return string
-     */
-    public function getLastRequest()
-    {
-        return $this->_request;
-    }
-
-    /**
-     * Set return response flag
-     *
-     * If true, {@link handle()} will return the response instead of
-     * automatically sending it back to the requesting client.
-     *
-     * The response is always available via {@link getResponse()}.
-     *
-     * @param boolean $flag
-     * @return Zend_Soap_Server
-     */
-    public function setReturnResponse($flag)
-    {
-        $this->_returnResponse = ($flag) ? true : false;
-        return $this;
-    }
-
-    /**
-     * Retrieve return response flag
-     *
-     * @return boolean
-     */
-    public function getReturnResponse()
-    {
-        return $this->_returnResponse;
-    }
-
-    /**
-     * Get response XML
-     *
-     * @return string
-     */
-    public function getLastResponse()
-    {
-        return $this->_response;
-    }
-
-    /**
-     * Get SoapServer object
-     *
-     * Uses {@link $_wsdl} and return value of {@link getOptions()} to instantiate
-     * SoapServer object, and then registers any functions or class with it, as
-     * well as peristence.
-     *
-     * @return SoapServer
-     */
-    protected function _getSoap()
-    {
-        $options = $this->getOptions();
-        $server  = new SoapServer($this->_wsdl, $options);
-
-        if (!empty($this->_functions)) {
-            $server->addFunction($this->_functions);
-        }
-
-        if (!empty($this->_class)) {
-            $args = $this->_classArgs;
-            array_unshift($args, $this->_class);
-            call_user_func_array(array($server, 'setClass'), $args);
-        }
-
-        if (!empty($this->_object)) {
-            $server->setObject($this->_object);
-        }
-
-        if (null !== $this->_persistence) {
-            $server->setPersistence($this->_persistence);
-        }
-
-        return $server;
-    }
-
-    /**
-     * Handle a request
-     *
-     * Instantiates SoapServer object with options set in object, and
-     * dispatches its handle() method.
-     *
-     * $request may be any of:
-     * - DOMDocument; if so, then cast to XML
-     * - DOMNode; if so, then grab owner document and cast to XML
-     * - SimpleXMLElement; if so, then cast to XML
-     * - stdClass; if so, calls __toString() and verifies XML
-     * - string; if so, verifies XML
-     *
-     * If no request is passed, pulls request using php:://input (for
-     * cross-platform compatability purposes).
-     *
-     * @param DOMDocument|DOMNode|SimpleXMLElement|stdClass|string $request Optional request
-     * @return void|string
-     */
-    public function handle($request = null)
-    {
-        if (null === $request) {
-            $request = file_get_contents('php://input');
-        }
-
-        // Set Zend_Soap_Server error handler
-        $displayErrorsOriginalState = $this->_initializeSoapErrorContext();
-
-        $setRequestException = null;
-        /**
-         * @see Zend_Soap_Server_Exception
-         */
-        require_once 'Zend/Soap/Server/Exception.php';
-        try {
-            $this->_setRequest($request);
-        } catch (Zend_Soap_Server_Exception $e) {
-            $setRequestException = $e;
-        }
-
-        $soap = $this->_getSoap();
-
-        ob_start();
-        if($setRequestException instanceof Exception) {
-            // Send SOAP fault message if we've catched exception
-            $soap->fault("Sender", $setRequestException->getMessage());
-        } else {
-            try {
-                $soap->handle($request);
-            } catch (Exception $e) {
-                $fault = $this->fault($e);
-                $soap->fault($fault->faultcode, $fault->faultstring);
-            }
-        }
-        $this->_response = ob_get_clean();
-
-        // Restore original error handler
-        restore_error_handler();
-        ini_set('display_errors', $displayErrorsOriginalState);
-
-        if (!$this->_returnResponse) {
-            echo $this->_response;
-            return;
-        }
-
-        return $this->_response;
-    }
-
-    /**
-     * Method initalizes the error context that the SOAPServer enviroment will run in.
-     *
-     * @return boolean display_errors original value
-     */
-    protected function _initializeSoapErrorContext()
-    {
-        $displayErrorsOriginalState = ini_get('display_errors');
-        ini_set('display_errors', false);
-        set_error_handler(array($this, 'handlePhpErrors'), E_USER_ERROR);
-        return $displayErrorsOriginalState;
-    }
-
-    /**
-     * Register a valid fault exception
-     *
-     * @param  string|array $class Exception class or array of exception classes
-     * @return Zend_Soap_Server
-     */
-    public function registerFaultException($class)
-    {
-        $this->_faultExceptions = array_merge($this->_faultExceptions, (array) $class);
-        return $this;
-    }
-
-    /**
-     * Deregister a fault exception from the fault exception stack
-     *
-     * @param  string $class
-     * @return boolean
-     */
-    public function deregisterFaultException($class)
-    {
-        if (in_array($class, $this->_faultExceptions, true)) {
-            $index = array_search($class, $this->_faultExceptions);
-            unset($this->_faultExceptions[$index]);
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Return fault exceptions list
-     *
-     * @return array
-     */
-    public function getFaultExceptions()
-    {
-        return $this->_faultExceptions;
-    }
-
-    /**
-     * Generate a server fault
-     *
-     * Note that the arguments are reverse to those of SoapFault.
-     *
-     * If an exception is passed as the first argument, its message and code
-     * will be used to create the fault object if it has been registered via
-     * {@Link registerFaultException()}.
-     *
-     * @link   http://www.w3.org/TR/soap12-part1/#faultcodes
-     * @param  string|Exception $fault
-     * @param  string $code SOAP Fault Codes
-     * @return SoapFault
-     */
-    public function fault($fault = null, $code = "Receiver")
-    {
-        if ($fault instanceof Exception) {
-            $class = get_class($fault);
-            if (in_array($class, $this->_faultExceptions)) {
-                $message = $fault->getMessage();
-                $eCode   = $fault->getCode();
-                $code    = empty($eCode) ? $code : $eCode;
-            } else {
-                $message = 'Unknown error';
-            }
-        } elseif(is_string($fault)) {
-            $message = $fault;
-        } else {
-            $message = 'Unknown error';
-        }
-
-        $allowedFaultModes = array(
-            'VersionMismatch', 'MustUnderstand', 'DataEncodingUnknown',
-            'Sender', 'Receiver', 'Server'
-        );
-        if(!in_array($code, $allowedFaultModes)) {
-            $code = "Receiver";
-        }
-
-        return new SoapFault($code, $message);
-    }
-
-    /**
-     * Throw PHP errors as SoapFaults
-     *
-     * @param int $errno
-     * @param string $errstr
-     * @param string $errfile
-     * @param int $errline
-     * @param array $errcontext
-     * @return void
-     * @throws SoapFault
-     */
-    public function handlePhpErrors($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)
-    {
-        throw $this->fault($errstr, "Receiver");
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Soap
+php php*php php@subpackagephp Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Serverphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Serverphp/Interfacephp.phpphp'php;
+
+php/php*php*
+php php*php Zendphp_Soapphp_Server
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Soap
+php php*php php@subpackagephp Server
+php php*php php@usesphp php php php php php php Zendphp_Serverphp_Interface
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Serverphp.phpphp php2php2php2php2php3php php2php0php1php0php-php0php5php-php2php1php php0php8php:php0php6php:php4php7Zphp janphp php$
+php php*php/
+classphp Zendphp_Soapphp_Serverphp implementsphp Zendphp_Serverphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Actorphp URI
+php php php php php php*php php@varphp stringphp URI
+php php php php php php*php/
+php php php php protectedphp php$php_actorphp;
+
+php php php php php/php*php*
+php php php php php php*php Classphp registeredphp withphp thisphp server
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_classphp;
+
+php php php php php/php*php*
+php php php php php php*php Argumentsphp tophp passphp tophp php{php@linkphp php$php_classphp}php constructor
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_classArgsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Objectphp registeredphp withphp thisphp server
+php php php php php php*php/
+php php php php protectedphp php$php_objectphp;
+
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp SOAPphp typephp php=php>php PHPphp classphp pairingsphp forphp handlingphp returnphp/incomingphp values
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_classmapphp;
+
+php php php php php/php*php*
+php php php php php php*php Encoding
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_encodingphp;
+
+php php php php php/php*php*
+php php php php php php*php SOAPphp Serverphp Features
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_featuresphp;
+
+php php php php php/php*php*
+php php php php php php*php WSDLphp Cachingphp Optionsphp ofphp SOAPphp Server
+php php php php php php*
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php protectedphp php$php_wsdlCachephp;
+
+
+php php php php php/php*php*
+php php php php php php*php Registeredphp faultphp exceptions
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_faultExceptionsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Functionsphp registeredphp withphp thisphp serverphp;php mayphp bephp eitherphp anphp arrayphp orphp thephp SOAPphp_FUNCTIONSphp_ALL
+php php php php php php*php constant
+php php php php php php*php php@varphp arrayphp|int
+php php php php php php*php/
+php php php php protectedphp php$php_functionsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Persistencephp modephp;php shouldphp bephp onephp ofphp thephp SOAPphp persistencephp constants
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_persistencephp;
+
+php php php php php/php*php*
+php php php php php php*php Requestphp XML
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_requestphp;
+
+php php php php php/php*php*
+php php php php php php*php Responsephp XML
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_responsephp;
+
+php php php php php/php*php*
+php php php php php php*php Flagphp:php whetherphp orphp notphp php{php@linkphp handlephp(php)php}php shouldphp returnphp aphp responsephp instead
+php php php php php php*php ofphp automaticallyphp emittingphp itphp.
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_returnResponsephp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php SOAPphp versionphp tophp usephp;php SOAPphp_php1php_php2php byphp defaultphp,php tophp allowphp processingphp ofphp headers
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_soapVersionphp php=php SOAPphp_php1php_php2php;
+
+php php php php php/php*php*
+php php php php php php*php URIphp orphp pathphp tophp WSDL
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_wsdlphp;
+
+php php php php php/php*php*
+php php php php php php*php URIphp namespacephp forphp SOAPphp server
+php php php php php php*php php@varphp stringphp URI
+php php php php php php*php/
+php php php php protectedphp php$php_uriphp;
+
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php Setsphp displayphp_errorsphp INIphp settingphp tophp offphp php(preventphp clientphp errorsphp duephp tophp bad
+php php php php php php*php XMLphp inphp responsephp)php.php Registersphp php{php@linkphp handlePhpErrorsphp(php)php}php asphp errorphp handler
+php php php php php php*php forphp Ephp_USERphp_ERRORphp.
+php php php php php php*
+php php php php php php*php Ifphp php$wsdlphp isphp providedphp,php itphp isphp passedphp onphp tophp php{php@linkphp setWsdlphp(php)php}php;php ifphp any
+php php php php php php*php optionsphp arephp specifiedphp,php theyphp arephp passedphp onphp tophp php{php@linkphp setOptionsphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$wsdl
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$wsdlphp php=php nullphp,php arrayphp php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'soapphp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'SOAPphp extensionphp isphp notphp loadedphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$wsdlphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setWsdlphp(php$wsdlphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$optionsphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp Options
+php php php php php php*
+php php php php php php*php Allowsphp settingphp optionsphp asphp anphp associativephp arrayphp ofphp optionphp php=php>php valuephp pairsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php casephp php'actorphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setActorphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'classmapphp'php:
+php php php php php php php php php php php php php php php php casephp php'classMapphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setClassmapphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'encodingphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setEncodingphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'soapVersionphp'php:
+php php php php php php php php php php php php php php php php casephp php'soapphp_versionphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setSoapVersionphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'uriphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setUriphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'wsdlphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setWsdlphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'featuesphp'php:
+php php php php php php php php php php php php php php php php php php php php triggerphp_errorphp(php_php_METHODphp_php_php php.php php'php:php thephp optionphp php"featuesphp"php isphp deprecatedphp asphp ofphp php1php.php1php0php.xphp andphp willphp bephp removedphp withphp php2php.php0php.php0php;php usephp php"featuresphp"php insteadphp'php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php php php php casephp php'featuresphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setSoapFeaturesphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'cachephp_wsdlphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setWsdlCachephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp arrayphp ofphp optionsphp suitablephp forphp usingphp withphp SoapServerphp constructor
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_actorphp)php php{
+php php php php php php php php php php php php php$optionsphp[php'actorphp'php]php php=php php$thisphp-php>php_actorphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_classmapphp)php php{
+php php php php php php php php php php php php php$optionsphp[php'classmapphp'php]php php=php php$thisphp-php>php_classmapphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_encodingphp)php php{
+php php php php php php php php php php php php php$optionsphp[php'encodingphp'php]php php=php php$thisphp-php>php_encodingphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_soapVersionphp)php php{
+php php php php php php php php php php php php php$optionsphp[php'soapphp_versionphp'php]php php=php php$thisphp-php>php_soapVersionphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_uriphp)php php{
+php php php php php php php php php php php php php$optionsphp[php'uriphp'php]php php=php php$thisphp-php>php_uriphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp(nullphp php!php=php=php php$thisphp-php>php_featuresphp)php php{
+php php php php php php php php php php php php php$optionsphp[php'featuresphp'php]php php=php php$thisphp-php>php_featuresphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp(nullphp php!php=php=php php$thisphp-php>php_wsdlCachephp)php php{
+php php php php php php php php php php php php php$optionsphp[php'cachephp_wsdlphp'php]php php=php php$thisphp-php>php_wsdlCachephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$optionsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp encoding
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$encoding
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp withphp invalidphp encodingphp argument
+php php php php php php*php/
+php php php php publicphp functionphp setEncodingphp(php$encodingphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$encodingphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp encodingphp specifiedphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_encodingphp php=php php$encodingphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_encodingphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp SOAPphp version
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$versionphp Onephp ofphp thephp SOAPphp_php1php_php1php orphp SOAPphp_php1php_php2php constants
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp withphp invalidphp soapphp versionphp argument
+php php php php php php*php/
+php php php php publicphp functionphp setSoapVersionphp(php$versionphp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$versionphp,php arrayphp(SOAPphp_php1php_php1php,php SOAPphp_php1php_php2php)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp soapphp versionphp specifiedphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_soapVersionphp php=php php$versionphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp SOAPphp version
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp getSoapVersionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_soapVersionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp forphp validphp URN
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$urn
+php php php php php php*php php@returnphp true
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp onphp invalidphp URN
+php php php php php php*php/
+php php php php publicphp functionphp validateUrnphp(php$urnphp)
+php php php php php{
+php php php php php php php php php$schemephp php=php parsephp_urlphp(php$urnphp,php PHPphp_URLphp_SCHEMEphp)php;
+php php php php php php php php ifphp php(php$schemephp php=php=php=php falsephp php|php|php php$schemephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp URNphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp actor
+php php php php php php*
+php php php php php php*php Actorphp isphp thephp actorphp URIphp forphp thephp serverphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$actor
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setActorphp(php$actorphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>validateUrnphp(php$actorphp)php;
+php php php php php php php php php$thisphp-php>php_actorphp php=php php$actorphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp actor
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getActorphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_actorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp URI
+php php php php php php*
+php php php php php php*php URIphp inphp SoapServerphp isphp actuallyphp thephp targetphp namespacephp,php notphp aphp URIphp;php php$uriphp mustphp beginphp withphp php'urnphp:php'php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$uri
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp withphp invalidphp uriphp argument
+php php php php php php*php/
+php php php php publicphp functionphp setUriphp(php$uriphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>validateUrnphp(php$uriphp)php;
+php php php php php php php php php$thisphp-php>php_uriphp php=php php$uriphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp URI
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getUriphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_uriphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp classmap
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$classmap
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp forphp anyphp invalidphp classphp inphp thephp classphp map
+php php php php php php*php/
+php php php php publicphp functionphp setClassmapphp(php$classmapphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$classmapphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Soapphp_Serverphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Classmapphp mustphp bephp anphp arrayphp'php)php;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$classmapphp asphp php$typephp php=php>php php$classphp)php php{
+php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$classphp)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Soapphp_Serverphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp classphp inphp classphp mapphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_classmapphp php=php php$classmapphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp classmap
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getClassmapphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_classmapphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp wsdl
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$wsdlphp php URIphp orphp pathphp tophp aphp WSDL
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setWsdlphp(php$wsdlphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_wsdlphp php=php php$wsdlphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp wsdl
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getWsdlphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_wsdlphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp SOAPphp Featurephp optionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|intphp php$feature
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setSoapFeaturesphp(php$featurephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_featuresphp php=php php$featurephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp currentphp SOAPphp Featuresphp options
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp getSoapFeaturesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_featuresphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp SOAPphp Wsdlphp Cachingphp Options
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|intphp|booleanphp php$caching
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setWsdlCachephp(php$optionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_wsdlCachephp php=php php$optionsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp currentphp SOAPphp Wsdlphp Cachingphp option
+php php php php php php*php/
+php php php php publicphp functionphp getWsdlCachephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_wsdlCachephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Attachphp aphp functionphp asphp aphp serverphp method
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp|stringphp php$functionphp Functionphp namephp,php arrayphp ofphp functionphp namesphp tophp attachphp,
+php php php php php php*php orphp SOAPphp_FUNCTIONSphp_ALLphp tophp attachphp allphp functions
+php php php php php php*php php@paramphp php stringphp php$namespacephp Ignored
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp onphp invalidphp functions
+php php php php php php*php/
+php php php php publicphp functionphp addFunctionphp(php$functionphp,php php$namespacephp php=php php'php'php)
+php php php php php{
+php php php php php php php php php/php/php Bailphp earlyphp ifphp setphp tophp SOAPphp_FUNCTIONSphp_ALL
+php php php php php php php php ifphp php(php$thisphp-php>php_functionsphp php=php=php SOAPphp_FUNCTIONSphp_ALLphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$functionphp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$functionphp asphp php$funcphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$funcphp)php php&php&php functionphp_existsphp(php$funcphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_functionsphp[php]php php=php php$funcphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Onephp orphp morephp invalidphp functionsphp specifiedphp inphp arrayphp'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_functionsphp php=php arrayphp_mergephp(php$thisphp-php>php_functionsphp,php php$functionphp)php;
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$functionphp)php php&php&php functionphp_existsphp(php$functionphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_functionsphp[php]php php=php php$functionphp;
+php php php php php php php php php}php elseifphp php(php$functionphp php=php=php SOAPphp_FUNCTIONSphp_ALLphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_functionsphp php=php SOAPphp_FUNCTIONSphp_ALLphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp functionphp specifiedphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_functionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_functionsphp php=php arrayphp_uniquephp(php$thisphp-php>php_functionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Attachphp aphp classphp tophp aphp server
+php php php php php php*
+php php php php php php*php Acceptsphp aphp classphp namephp tophp usephp whenphp handlingphp requestsphp.php Anyphp additional
+php php php php php php*php argumentsphp willphp bephp passedphp tophp thatphp classphp'php constructorphp whenphp instantiatedphp.
+php php php php php php*
+php php php php php php*php Seephp php{php@linkphp setObjectphp(php)php}php tophp setphp preconfiguredphp objectphp instancesphp asphp requestphp handlersphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$classphp Classphp Namephp whichphp executesphp SOAPphp Requestsphp atphp endpointphp.
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp ifphp calledphp morephp thanphp oncephp,php orphp ifphp class
+php php php php php php*php doesphp notphp exist
+php php php php php php*php/
+php php php php publicphp functionphp setClassphp(php$classphp,php php$namespacephp php=php php'php'php,php php$argvphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_classphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Aphp classphp hasphp alreadyphp beenphp registeredphp withphp thisphp soapphp serverphp instancephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!isphp_stringphp(php$classphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp classphp argumentphp php(php'php php.php gettypephp(php$classphp)php php.php php'php)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!classphp_existsphp(php$classphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Classphp php"php'php php.php php$classphp php.php php'php"php doesphp notphp existphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_classphp php=php php$classphp;
+php php php php php php php php ifphp php(php1php <php funcphp_numphp_argsphp(php)php)php php{
+php php php php php php php php php php php php php$argvphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php arrayphp_shiftphp(php$argvphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_classArgsphp php=php php$argvphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Attachphp anphp objectphp tophp aphp server
+php php php php php php*
+php php php php php php*php Acceptsphp anphp instanciatedphp objectphp tophp usephp whenphp handlingphp requestsphp.
+php php php php php php*
+php php php php php php*php php@paramphp objectphp php$object
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setObjectphp(php$objectphp)
+php php php php php{
+php php php php php php php php ifphp(php!isphp_objectphp(php$objectphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp objectphp argumentphp php(php'php.gettypephp(php$objectphp)php.php'php)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp(issetphp(php$thisphp-php>php_objectphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Anphp objectphp hasphp alreadyphp beenphp registeredphp withphp thisphp soapphp serverphp instancephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_objectphp php=php php$objectphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp serverphp definitionphp array
+php php php php php php*
+php php php php php php*php Returnsphp aphp listphp ofphp allphp functionsphp registeredphp withphp php{php@linkphp addFunctionphp(php)php}php,
+php php php php php php*php mergedphp withphp allphp publicphp methodsphp ofphp thephp classphp setphp withphp php{php@linkphp setClassphp(php)php}
+php php php php php php*php php(ifphp anyphp)php.
+php php php php php php*
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getFunctionsphp(php)
+php php php php php{
+php php php php php php php php php$functionsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_classphp)php php{
+php php php php php php php php php php php php php$functionsphp php=php getphp_classphp_methodsphp(php$thisphp-php>php_classphp)php;
+php php php php php php php php php}php elseifphp php(nullphp php!php=php=php php$thisphp-php>php_objectphp)php php{
+php php php php php php php php php php php php php$functionsphp php=php getphp_classphp_methodsphp(php$thisphp-php>php_objectphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp arrayphp_mergephp(php(arrayphp)php php$thisphp-php>php_functionsphp,php php$functionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Unimplementedphp:php Loadphp serverphp definition
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$array
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Soapphp_Serverphp_Exceptionphp Unimplemented
+php php php php php php*php/
+php php php php publicphp functionphp loadFunctionsphp(php$definitionphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Unimplementedphp'php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp serverphp persistence
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$mode
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setPersistencephp(php$modephp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$modephp,php arrayphp(SOAPphp_PERSISTENCEphp_SESSIONphp,php SOAPphp_PERSISTENCEphp_REQUESTphp)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp persistencephp modephp specifiedphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_persistencephp php=php php$modephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp serverphp persistence
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp getPersistencephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_persistencephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp request
+php php php php php php*
+php php php php php php*php php$requestphp mayphp bephp anyphp ofphp:
+php php php php php php*php php-php DOMDocumentphp;php ifphp sophp,php thenphp castphp tophp XML
+php php php php php php*php php-php DOMNodephp;php ifphp sophp,php thenphp grabphp ownerphp documentphp andphp castphp tophp XML
+php php php php php php*php php-php SimpleXMLElementphp;php ifphp sophp,php thenphp castphp tophp XML
+php php php php php php*php php-php stdClassphp;php ifphp sophp,php callsphp php_php_toStringphp(php)php andphp verifiesphp XML
+php php php php php php*php php-php stringphp;php ifphp sophp,php verifiesphp XML
+php php php php php php*
+php php php php php php*php php@paramphp DOMDocumentphp|DOMNodephp|SimpleXMLElementphp|stdClassphp|stringphp php$request
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php protectedphp functionphp php_setRequestphp(php$requestphp)
+php php php php php{
+php php php php php php php php ifphp php(php$requestphp instanceofphp DOMDocumentphp)php php{
+php php php php php php php php php php php php php$xmlphp php=php php$requestphp-php>saveXMLphp(php)php;
+php php php php php php php php php}php elseifphp php(php$requestphp instanceofphp DOMNodephp)php php{
+php php php php php php php php php php php php php$xmlphp php=php php$requestphp-php>ownerDocumentphp-php>saveXMLphp(php)php;
+php php php php php php php php php}php elseifphp php(php$requestphp instanceofphp SimpleXMLElementphp)php php{
+php php php php php php php php php php php php php$xmlphp php=php php$requestphp-php>asXMLphp(php)php;
+php php php php php php php php php}php elseifphp php(isphp_objectphp(php$requestphp)php php|php|php isphp_stringphp(php$requestphp)php)php php{
+php php php php php php php php php php php php ifphp php(isphp_objectphp(php$requestphp)php)php php{
+php php php php php php php php php php php php php php php php php$xmlphp php=php php$requestphp-php>php_php_toStringphp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$xmlphp php=php php$requestphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$domphp php=php newphp DOMDocumentphp(php)php;
+php php php php php php php php php php php php ifphp(strlenphp(php$xmlphp)php php=php=php php0php php|php|php php!php$domphp-php>loadXMLphp(php$xmlphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Serverphp_Exceptionphp(php'Invalidphp XMLphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_requestphp php=php php$xmlphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp requestphp XML
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getLastRequestphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_requestphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp returnphp responsephp flag
+php php php php php php*
+php php php php php php*php Ifphp truephp,php php{php@linkphp handlephp(php)php}php willphp returnphp thephp responsephp insteadphp of
+php php php php php php*php automaticallyphp sendingphp itphp backphp tophp thephp requestingphp clientphp.
+php php php php php php*
+php php php php php php*php Thephp responsephp isphp alwaysphp availablephp viaphp php{php@linkphp getResponsephp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$flag
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp setReturnResponsephp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_returnResponsephp php=php php(php$flagphp)php php?php truephp php:php falsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp returnphp responsephp flag
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getReturnResponsephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_returnResponsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp responsephp XML
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getLastResponsephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_responsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp SoapServerphp object
+php php php php php php*
+php php php php php php*php Usesphp php{php@linkphp php$php_wsdlphp}php andphp returnphp valuephp ofphp php{php@linkphp getOptionsphp(php)php}php tophp instantiate
+php php php php php php*php SoapServerphp objectphp,php andphp thenphp registersphp anyphp functionsphp orphp classphp withphp itphp,php as
+php php php php php php*php wellphp asphp peristencephp.
+php php php php php php*
+php php php php php php*php php@returnphp SoapServer
+php php php php php php*php/
+php php php php protectedphp functionphp php_getSoapphp(php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php php$thisphp-php>getOptionsphp(php)php;
+php php php php php php php php php$serverphp php php=php newphp SoapServerphp(php$thisphp-php>php_wsdlphp,php php$optionsphp)php;
+
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_functionsphp)php)php php{
+php php php php php php php php php php php php php$serverphp-php>addFunctionphp(php$thisphp-php>php_functionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_classphp)php)php php{
+php php php php php php php php php php php php php$argsphp php=php php$thisphp-php>php_classArgsphp;
+php php php php php php php php php php php php arrayphp_unshiftphp(php$argsphp,php php$thisphp-php>php_classphp)php;
+php php php php php php php php php php php php callphp_userphp_funcphp_arrayphp(arrayphp(php$serverphp,php php'setClassphp'php)php,php php$argsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_objectphp)php)php php{
+php php php php php php php php php php php php php$serverphp-php>setObjectphp(php$thisphp-php>php_objectphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_persistencephp)php php{
+php php php php php php php php php php php php php$serverphp-php>setPersistencephp(php$thisphp-php>php_persistencephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$serverphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Handlephp aphp request
+php php php php php php*
+php php php php php php*php Instantiatesphp SoapServerphp objectphp withphp optionsphp setphp inphp objectphp,php and
+php php php php php php*php dispatchesphp itsphp handlephp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php$requestphp mayphp bephp anyphp ofphp:
+php php php php php php*php php-php DOMDocumentphp;php ifphp sophp,php thenphp castphp tophp XML
+php php php php php php*php php-php DOMNodephp;php ifphp sophp,php thenphp grabphp ownerphp documentphp andphp castphp tophp XML
+php php php php php php*php php-php SimpleXMLElementphp;php ifphp sophp,php thenphp castphp tophp XML
+php php php php php php*php php-php stdClassphp;php ifphp sophp,php callsphp php_php_toStringphp(php)php andphp verifiesphp XML
+php php php php php php*php php-php stringphp;php ifphp sophp,php verifiesphp XML
+php php php php php php*
+php php php php php php*php Ifphp nophp requestphp isphp passedphp,php pullsphp requestphp usingphp phpphp:php:php/php/inputphp php(for
+php php php php php php*php crossphp-platformphp compatabilityphp purposesphp)php.
+php php php php php php*
+php php php php php php*php php@paramphp DOMDocumentphp|DOMNodephp|SimpleXMLElementphp|stdClassphp|stringphp php$requestphp Optionalphp request
+php php php php php php*php php@returnphp voidphp|string
+php php php php php php*php/
+php php php php publicphp functionphp handlephp(php$requestphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$requestphp)php php{
+php php php php php php php php php php php php php$requestphp php=php filephp_getphp_contentsphp(php'phpphp:php/php/inputphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp Zendphp_Soapphp_Serverphp errorphp handler
+php php php php php php php php php$displayErrorsOriginalStatephp php=php php$thisphp-php>php_initializeSoapErrorContextphp(php)php;
+
+php php php php php php php php php$setRequestExceptionphp php=php nullphp;
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Soapphp_Serverphp_Exception
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Serverphp/Exceptionphp.phpphp'php;
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_setRequestphp(php$requestphp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Soapphp_Serverphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php$setRequestExceptionphp php=php php$ephp;
+php php php php php php php php php}
+
+php php php php php php php php php$soapphp php=php php$thisphp-php>php_getSoapphp(php)php;
+
+php php php php php php php php obphp_startphp(php)php;
+php php php php php php php php ifphp(php$setRequestExceptionphp instanceofphp Exceptionphp)php php{
+php php php php php php php php php php php php php/php/php Sendphp SOAPphp faultphp messagephp ifphp wephp'vephp catchedphp exception
+php php php php php php php php php php php php php$soapphp-php>faultphp(php"Senderphp"php,php php$setRequestExceptionphp-php>getMessagephp(php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php$soapphp-php>handlephp(php$requestphp)php;
+php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php$faultphp php=php php$thisphp-php>faultphp(php$ephp)php;
+php php php php php php php php php php php php php php php php php$soapphp-php>faultphp(php$faultphp-php>faultcodephp,php php$faultphp-php>faultstringphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_responsephp php=php obphp_getphp_cleanphp(php)php;
+
+php php php php php php php php php/php/php Restorephp originalphp errorphp handler
+php php php php php php php php restorephp_errorphp_handlerphp(php)php;
+php php php php php php php php iniphp_setphp(php'displayphp_errorsphp'php,php php$displayErrorsOriginalStatephp)php;
+
+php php php php php php php php ifphp php(php!php$thisphp-php>php_returnResponsephp)php php{
+php php php php php php php php php php php php echophp php$thisphp-php>php_responsephp;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_responsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Methodphp initalizesphp thephp errorphp contextphp thatphp thephp SOAPServerphp enviromentphp willphp runphp inphp.
+php php php php php php*
+php php php php php php*php php@returnphp booleanphp displayphp_errorsphp originalphp value
+php php php php php php*php/
+php php php php protectedphp functionphp php_initializeSoapErrorContextphp(php)
+php php php php php{
+php php php php php php php php php$displayErrorsOriginalStatephp php=php iniphp_getphp(php'displayphp_errorsphp'php)php;
+php php php php php php php php iniphp_setphp(php'displayphp_errorsphp'php,php falsephp)php;
+php php php php php php php php setphp_errorphp_handlerphp(arrayphp(php$thisphp,php php'handlePhpErrorsphp'php)php,php Ephp_USERphp_ERRORphp)php;
+php php php php php php php php returnphp php$displayErrorsOriginalStatephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Registerphp aphp validphp faultphp exception
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$classphp Exceptionphp classphp orphp arrayphp ofphp exceptionphp classes
+php php php php php php*php php@returnphp Zendphp_Soapphp_Server
+php php php php php php*php/
+php php php php publicphp functionphp registerFaultExceptionphp(php$classphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_faultExceptionsphp php=php arrayphp_mergephp(php$thisphp-php>php_faultExceptionsphp,php php(arrayphp)php php$classphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Deregisterphp aphp faultphp exceptionphp fromphp thephp faultphp exceptionphp stack
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$class
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp deregisterFaultExceptionphp(php$classphp)
+php php php php php{
+php php php php php php php php ifphp php(inphp_arrayphp(php$classphp,php php$thisphp-php>php_faultExceptionsphp,php truephp)php)php php{
+php php php php php php php php php php php php php$indexphp php=php arrayphp_searchphp(php$classphp,php php$thisphp-php>php_faultExceptionsphp)php;
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_faultExceptionsphp[php$indexphp]php)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp faultphp exceptionsphp list
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getFaultExceptionsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_faultExceptionsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Generatephp aphp serverphp fault
+php php php php php php*
+php php php php php php*php Notephp thatphp thephp argumentsphp arephp reversephp tophp thosephp ofphp SoapFaultphp.
+php php php php php php*
+php php php php php php*php Ifphp anphp exceptionphp isphp passedphp asphp thephp firstphp argumentphp,php itsphp messagephp andphp code
+php php php php php php*php willphp bephp usedphp tophp createphp thephp faultphp objectphp ifphp itphp hasphp beenphp registeredphp via
+php php php php php php*php php{php@Linkphp registerFaultExceptionphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/soapphp1php2php-partphp1php/php#faultcodes
+php php php php php php*php php@paramphp php stringphp|Exceptionphp php$fault
+php php php php php php*php php@paramphp php stringphp php$codephp SOAPphp Faultphp Codes
+php php php php php php*php php@returnphp SoapFault
+php php php php php php*php/
+php php php php publicphp functionphp faultphp(php$faultphp php=php nullphp,php php$codephp php=php php"Receiverphp"php)
+php php php php php{
+php php php php php php php php ifphp php(php$faultphp instanceofphp Exceptionphp)php php{
+php php php php php php php php php php php php php$classphp php=php getphp_classphp(php$faultphp)php;
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$classphp,php php$thisphp-php>php_faultExceptionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$messagephp php=php php$faultphp-php>getMessagephp(php)php;
+php php php php php php php php php php php php php php php php php$eCodephp php php php=php php$faultphp-php>getCodephp(php)php;
+php php php php php php php php php php php php php php php php php$codephp php php php php=php emptyphp(php$eCodephp)php php?php php$codephp php:php php$eCodephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$messagephp php=php php'Unknownphp errorphp'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp(isphp_stringphp(php$faultphp)php)php php{
+php php php php php php php php php php php php php$messagephp php=php php$faultphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$messagephp php=php php'Unknownphp errorphp'php;
+php php php php php php php php php}
+
+php php php php php php php php php$allowedFaultModesphp php=php arrayphp(
+php php php php php php php php php php php php php'VersionMismatchphp'php,php php'MustUnderstandphp'php,php php'DataEncodingUnknownphp'php,
+php php php php php php php php php php php php php'Senderphp'php,php php'Receiverphp'php,php php'Serverphp'
+php php php php php php php php php)php;
+php php php php php php php php ifphp(php!inphp_arrayphp(php$codephp,php php$allowedFaultModesphp)php)php php{
+php php php php php php php php php php php php php$codephp php=php php"Receiverphp"php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp newphp SoapFaultphp(php$codephp,php php$messagephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Throwphp PHPphp errorsphp asphp SoapFaults
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$errno
+php php php php php php*php php@paramphp stringphp php$errstr
+php php php php php php*php php@paramphp stringphp php$errfile
+php php php php php php*php php@paramphp intphp php$errline
+php php php php php php*php php@paramphp arrayphp php$errcontext
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp SoapFault
+php php php php php php*php/
+php php php php publicphp functionphp handlePhpErrorsphp(php$errnophp,php php$errstrphp,php php$errfilephp php=php nullphp,php php$errlinephp php=php nullphp,php arrayphp php$errcontextphp php=php nullphp)
+php php php php php{
+php php php php php php php php throwphp php$thisphp-php>faultphp(php$errstrphp,php php"Receiverphp"php)php;
+php php php php php}
+php}

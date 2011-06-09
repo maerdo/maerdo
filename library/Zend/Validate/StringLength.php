@@ -1,253 +1,253 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: StringLength.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php StringLengthphp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_StringLength extends Zend_Validate_Abstract
-{
-    const INVALID   = 'stringLengthInvalid';
-    const TOO_SHORT = 'stringLengthTooShort';
-    const TOO_LONG  = 'stringLengthTooLong';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_StringLengthphp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php constphp INVALIDphp php php php=php php'stringLengthInvalidphp'php;
+php php php php constphp TOOphp_SHORTphp php=php php'stringLengthTooShortphp'php;
+php php php php constphp TOOphp_LONGphp php php=php php'stringLengthTooLongphp'php;
 
-    /**
-     * @var array
-     */
-    protected $_messageTemplates = array(
-        self::INVALID   => "Invalid type given. String expected",
-        self::TOO_SHORT => "'%value%' is less than %min% characters long",
-        self::TOO_LONG  => "'%value%' is more than %max% characters long",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:INVALIDphp php php php=php>php php"Invalidphp typephp givenphp.php Stringphp expectedphp"php,
+php php php php php php php php selfphp:php:TOOphp_SHORTphp php=php>php php"php'php%valuephp%php'php isphp lessphp thanphp php%minphp%php charactersphp longphp"php,
+php php php php php php php php selfphp:php:TOOphp_LONGphp php php=php>php php"php'php%valuephp%php'php isphp morephp thanphp php%maxphp%php charactersphp longphp"php,
+php php php php php)php;
 
-    /**
-     * @var array
-     */
-    protected $_messageVariables = array(
-        'min' => '_min',
-        'max' => '_max'
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_messageVariablesphp php=php arrayphp(
+php php php php php php php php php'minphp'php php=php>php php'php_minphp'php,
+php php php php php php php php php'maxphp'php php=php>php php'php_maxphp'
+php php php php php)php;
 
-    /**
-     * Minimum length
-     *
-     * @var integer
-     */
-    protected $_min;
+php php php php php/php*php*
+php php php php php php*php Minimumphp length
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_minphp;
 
-    /**
-     * Maximum length
-     *
-     * If null, there is no maximum length
-     *
-     * @var integer|null
-     */
-    protected $_max;
+php php php php php/php*php*
+php php php php php php*php Maximumphp length
+php php php php php php*
+php php php php php php*php Ifphp nullphp,php therephp isphp nophp maximumphp length
+php php php php php php*
+php php php php php php*php php@varphp integerphp|null
+php php php php php php*php/
+php php php php protectedphp php$php_maxphp;
 
-    /**
-     * Encoding to use
-     *
-     * @var string|null
-     */
-    protected $_encoding;
+php php php php php/php*php*
+php php php php php php*php Encodingphp tophp use
+php php php php php php*
+php php php php php php*php php@varphp stringphp|null
+php php php php php php*php/
+php php php php protectedphp php$php_encodingphp;
 
-    /**
-     * Sets validator options
-     *
-     * @param  integer|array|Zend_Config $options
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } else if (!is_array($options)) {
-            $options     = func_get_args();
-            $temp['min'] = array_shift($options);
-            if (!empty($options)) {
-                $temp['max'] = array_shift($options);
-            }
+php php php php php/php*php*
+php php php php php php*php Setsphp validatorphp options
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp|arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php php php php php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php php$tempphp[php'minphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp[php'maxphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php}
 
-            if (!empty($options)) {
-                $temp['encoding'] = array_shift($options);
-            }
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp[php'encodingphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
+php php php php php php php php php php php php php}
 
-            $options = $temp;
-        }
+php php php php php php php php php php php php php$optionsphp php=php php$tempphp;
+php php php php php php php php php}
 
-        if (!array_key_exists('min', $options)) {
-            $options['min'] = 0;
-        }
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'minphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'minphp'php]php php=php php0php;
+php php php php php php php php php}
 
-        $this->setMin($options['min']);
-        if (array_key_exists('max', $options)) {
-            $this->setMax($options['max']);
-        }
+php php php php php php php php php$thisphp-php>setMinphp(php$optionsphp[php'minphp'php]php)php;
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'maxphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMaxphp(php$optionsphp[php'maxphp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('encoding', $options)) {
-            $this->setEncoding($options['encoding']);
-        }
-    }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'encodingphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setEncodingphp(php$optionsphp[php'encodingphp'php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the min option
-     *
-     * @return integer
-     */
-    public function getMin()
-    {
-        return $this->_min;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp minphp option
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMinphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_minphp;
+php php php php php}
 
-    /**
-     * Sets the min option
-     *
-     * @param  integer $min
-     * @throws Zend_Validate_Exception
-     * @return Zend_Validate_StringLength Provides a fluent interface
-     */
-    public function setMin($min)
-    {
-        if (null !== $this->_max && $min > $this->_max) {
-            /**
-             * @see Zend_Validate_Exception
-             */
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception("The minimum must be less than or equal to the maximum length, but $min >"
-                                            . " $this->_max");
-        }
-        $this->_min = max(0, (integer) $min);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp minphp option
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$min
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exception
+php php php php php php*php php@returnphp Zendphp_Validatephp_StringLengthphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setMinphp(php$minphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_maxphp php&php&php php$minphp php>php php$thisphp-php>php_maxphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Validatephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp minimumphp mustphp bephp lessphp thanphp orphp equalphp tophp thephp maximumphp lengthphp,php butphp php$minphp php>php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php php$thisphp-php>php_maxphp"php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_minphp php=php maxphp(php0php,php php(integerphp)php php$minphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the max option
-     *
-     * @return integer|null
-     */
-    public function getMax()
-    {
-        return $this->_max;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp maxphp option
+php php php php php php*
+php php php php php php*php php@returnphp integerphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getMaxphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_maxphp;
+php php php php php}
 
-    /**
-     * Sets the max option
-     *
-     * @param  integer|null $max
-     * @throws Zend_Validate_Exception
-     * @return Zend_Validate_StringLength Provides a fluent interface
-     */
-    public function setMax($max)
-    {
-        if (null === $max) {
-            $this->_max = null;
-        } else if ($max < $this->_min) {
-            /**
-             * @see Zend_Validate_Exception
-             */
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception("The maximum must be greater than or equal to the minimum length, but "
-                                            . "$max < $this->_min");
-        } else {
-            $this->_max = (integer) $max;
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp maxphp option
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp|nullphp php$max
+php php php php php php*php php@throwsphp Zendphp_Validatephp_Exception
+php php php php php php*php php@returnphp Zendphp_Validatephp_StringLengthphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setMaxphp(php$maxphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$maxphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_maxphp php=php nullphp;
+php php php php php php php php php}php elsephp ifphp php(php$maxphp <php php$thisphp-php>php_minphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Validatephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php"Thephp maximumphp mustphp bephp greaterphp thanphp orphp equalphp tophp thephp minimumphp lengthphp,php butphp php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php$maxphp <php php$thisphp-php>php_minphp"php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_maxphp php=php php(integerphp)php php$maxphp;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the actual encoding
-     *
-     * @return string
-     */
-    public function getEncoding()
-    {
-        return $this->_encoding;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp actualphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_encodingphp;
+php php php php php}
 
-    /**
-     * Sets a new encoding to use
-     *
-     * @param string $encoding
-     * @return Zend_Validate_StringLength
-     */
-    public function setEncoding($encoding = null)
-    {
-        if ($encoding !== null) {
-            $orig   = iconv_get_encoding('internal_encoding');
-            $result = iconv_set_encoding('internal_encoding', $encoding);
-            if (!$result) {
-                require_once 'Zend/Validate/Exception.php';
-                throw new Zend_Validate_Exception('Given encoding not supported on this OS!');
-            }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp encodingphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$encoding
+php php php php php php*php php@returnphp Zendphp_Validatephp_StringLength
+php php php php php php*php/
+php php php php publicphp functionphp setEncodingphp(php$encodingphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$encodingphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$origphp php php php=php iconvphp_getphp_encodingphp(php'internalphp_encodingphp'php)php;
+php php php php php php php php php php php php php$resultphp php=php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$encodingphp)php;
+php php php php php php php php php php php php ifphp php(php!php$resultphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Givenphp encodingphp notphp supportedphp onphp thisphp OSphp!php'php)php;
+php php php php php php php php php php php php php}
 
-            iconv_set_encoding('internal_encoding', $orig);
-        }
+php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$origphp)php;
+php php php php php php php php php}
 
-        $this->_encoding = $encoding;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_encodingphp php=php php$encodingphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if and only if the string length of $value is at least the min option and
-     * no greater than the max option (when the max option is not null).
-     *
-     * @param  string $value
-     * @return boolean
-     */
-    public function isValid($value)
-    {
-        if (!is_string($value)) {
-            $this->_error(self::INVALID);
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp stringphp lengthphp ofphp php$valuephp isphp atphp leastphp thephp minphp optionphp and
+php php php php php php*php nophp greaterphp thanphp thephp maxphp optionphp php(whenphp thephp maxphp optionphp isphp notphp nullphp)php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $this->_setValue($value);
-        if ($this->_encoding !== null) {
-            $length = iconv_strlen($value, $this->_encoding);
-        } else {
-            $length = iconv_strlen($value);
-        }
+php php php php php php php php php$thisphp-php>php_setValuephp(php$valuephp)php;
+php php php php php php php php ifphp php(php$thisphp-php>php_encodingphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$lengthphp php=php iconvphp_strlenphp(php$valuephp,php php$thisphp-php>php_encodingphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$lengthphp php=php iconvphp_strlenphp(php$valuephp)php;
+php php php php php php php php php}
 
-        if ($length < $this->_min) {
-            $this->_error(self::TOO_SHORT);
-        }
+php php php php php php php php ifphp php(php$lengthphp <php php$thisphp-php>php_minphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:TOOphp_SHORTphp)php;
+php php php php php php php php php}
 
-        if (null !== $this->_max && $this->_max < $length) {
-            $this->_error(self::TOO_LONG);
-        }
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_maxphp php&php&php php$thisphp-php>php_maxphp <php php$lengthphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:TOOphp_LONGphp)php;
+php php php php php php php php php}
 
-        if (count($this->_messages)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_messagesphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php}
+php}

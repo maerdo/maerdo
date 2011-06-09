@@ -1,1521 +1,1521 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Table
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 23578 2010-12-24 16:31:45Z ramon $
- */
-
-/**
- * @see Zend_Db_Adapter_Abstract
- */
-require_once 'Zend/Db/Adapter/Abstract.php';
-
-/**
- * @see Zend_Db_Adapter_Abstract
- */
-require_once 'Zend/Db/Select.php';
-
-/**
- * @see Zend_Db
- */
-require_once 'Zend/Db.php';
-
-/**
- * Class for SQL table interface.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Table
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Db_Table_Abstract
-{
-
-    const ADAPTER          = 'db';
-    const DEFINITION        = 'definition';
-    const DEFINITION_CONFIG_NAME = 'definitionConfigName';
-    const SCHEMA           = 'schema';
-    const NAME             = 'name';
-    const PRIMARY          = 'primary';
-    const COLS             = 'cols';
-    const METADATA         = 'metadata';
-    const METADATA_CACHE   = 'metadataCache';
-    const METADATA_CACHE_IN_CLASS = 'metadataCacheInClass';
-    const ROW_CLASS        = 'rowClass';
-    const ROWSET_CLASS     = 'rowsetClass';
-    const REFERENCE_MAP    = 'referenceMap';
-    const DEPENDENT_TABLES = 'dependentTables';
-    const SEQUENCE         = 'sequence';
-
-    const COLUMNS          = 'columns';
-    const REF_TABLE_CLASS  = 'refTableClass';
-    const REF_COLUMNS      = 'refColumns';
-    const ON_DELETE        = 'onDelete';
-    const ON_UPDATE        = 'onUpdate';
-
-    const CASCADE          = 'cascade';
-    const RESTRICT         = 'restrict';
-    const SET_NULL         = 'setNull';
-
-    const DEFAULT_NONE     = 'defaultNone';
-    const DEFAULT_CLASS    = 'defaultClass';
-    const DEFAULT_DB       = 'defaultDb';
-
-    const SELECT_WITH_FROM_PART    = true;
-    const SELECT_WITHOUT_FROM_PART = false;
-
-    /**
-     * Default Zend_Db_Adapter_Abstract object.
-     *
-     * @var Zend_Db_Adapter_Abstract
-     */
-    protected static $_defaultDb;
-
-    /**
-     * Optional Zend_Db_Table_Definition object
-     *
-     * @var unknown_type
-     */
-    protected $_definition = null;
-
-    /**
-     * Optional definition config name used in concrete implementation
-     *
-     * @var string
-     */
-    protected $_definitionConfigName = null;
-
-    /**
-     * Default cache for information provided by the adapter's describeTable() method.
-     *
-     * @var Zend_Cache_Core
-     */
-    protected static $_defaultMetadataCache = null;
-
-    /**
-     * Zend_Db_Adapter_Abstract object.
-     *
-     * @var Zend_Db_Adapter_Abstract
-     */
-    protected $_db;
-
-    /**
-     * The schema name (default null means current schema)
-     *
-     * @var array
-     */
-    protected $_schema = null;
-
-    /**
-     * The table name.
-     *
-     * @var string
-     */
-    protected $_name = null;
-
-    /**
-     * The table column names derived from Zend_Db_Adapter_Abstract::describeTable().
-     *
-     * @var array
-     */
-    protected $_cols;
-
-    /**
-     * The primary key column or columns.
-     * A compound key should be declared as an array.
-     * You may declare a single-column primary key
-     * as a string.
-     *
-     * @var mixed
-     */
-    protected $_primary = null;
-
-    /**
-     * If your primary key is a compound key, and one of the columns uses
-     * an auto-increment or sequence-generated value, set _identity
-     * to the ordinal index in the $_primary array for that column.
-     * Note this index is the position of the column in the primary key,
-     * not the position of the column in the table.  The primary key
-     * array is 1-based.
-     *
-     * @var integer
-     */
-    protected $_identity = 1;
-
-    /**
-     * Define the logic for new values in the primary key.
-     * May be a string, boolean true, or boolean false.
-     *
-     * @var mixed
-     */
-    protected $_sequence = true;
-
-    /**
-     * Information provided by the adapter's describeTable() method.
-     *
-     * @var array
-     */
-    protected $_metadata = array();
-
-    /**
-     * Cache for information provided by the adapter's describeTable() method.
-     *
-     * @var Zend_Cache_Core
-     */
-    protected $_metadataCache = null;
-
-    /**
-     * Flag: whether or not to cache metadata in the class
-     * @var bool
-     */
-    protected $_metadataCacheInClass = true;
-
-    /**
-     * Classname for row
-     *
-     * @var string
-     */
-    protected $_rowClass = 'Zend_Db_Table_Row';
-
-    /**
-     * Classname for rowset
-     *
-     * @var string
-     */
-    protected $_rowsetClass = 'Zend_Db_Table_Rowset';
-
-    /**
-     * Associative array map of declarative referential integrity rules.
-     * This array has one entry per foreign key in the current table.
-     * Each key is a mnemonic name for one reference rule.
-     *
-     * Each value is also an associative array, with the following keys:
-     * - columns       = array of names of column(s) in the child table.
-     * - refTableClass = class name of the parent table.
-     * - refColumns    = array of names of column(s) in the parent table,
-     *                   in the same order as those in the 'columns' entry.
-     * - onDelete      = "cascade" means that a delete in the parent table also
-     *                   causes a delete of referencing rows in the child table.
-     * - onUpdate      = "cascade" means that an update of primary key values in
-     *                   the parent table also causes an update of referencing
-     *                   rows in the child table.
-     *
-     * @var array
-     */
-    protected $_referenceMap = array();
-
-    /**
-     * Simple array of class names of tables that are "children" of the current
-     * table, in other words tables that contain a foreign key to this one.
-     * Array elements are not table names; they are class names of classes that
-     * extend Zend_Db_Table_Abstract.
-     *
-     * @var array
-     */
-    protected $_dependentTables = array();
-
-
-    protected $_defaultSource = self::DEFAULT_NONE;
-    protected $_defaultValues = array();
-
-    /**
-     * Constructor.
-     *
-     * Supported params for $config are:
-     * - db              = user-supplied instance of database connector,
-     *                     or key name of registry instance.
-     * - name            = table name.
-     * - primary         = string or array of primary key(s).
-     * - rowClass        = row class name.
-     * - rowsetClass     = rowset class name.
-     * - referenceMap    = array structure to declare relationship
-     *                     to parent tables.
-     * - dependentTables = array of child tables.
-     * - metadataCache   = cache for information from adapter describeTable().
-     *
-     * @param  mixed $config Array of user-specified config options, or just the Db Adapter.
-     * @return void
-     */
-    public function __construct($config = array())
-    {
-        /**
-         * Allow a scalar argument to be the Adapter object or Registry key.
-         */
-        if (!is_array($config)) {
-            $config = array(self::ADAPTER => $config);
-        }
-
-        if ($config) {
-            $this->setOptions($config);
-        }
-
-        $this->_setup();
-        $this->init();
-    }
-
-    /**
-     * setOptions()
-     *
-     * @param array $options
-     * @return Zend_Db_Table_Abstract
-     */
-    public function setOptions(Array $options)
-    {
-        foreach ($options as $key => $value) {
-            switch ($key) {
-                case self::ADAPTER:
-                    $this->_setAdapter($value);
-                    break;
-                case self::DEFINITION:
-                    $this->setDefinition($value);
-                    break;
-                case self::DEFINITION_CONFIG_NAME:
-                    $this->setDefinitionConfigName($value);
-                    break;
-                case self::SCHEMA:
-                    $this->_schema = (string) $value;
-                    break;
-                case self::NAME:
-                    $this->_name = (string) $value;
-                    break;
-                case self::PRIMARY:
-                    $this->_primary = (array) $value;
-                    break;
-                case self::ROW_CLASS:
-                    $this->setRowClass($value);
-                    break;
-                case self::ROWSET_CLASS:
-                    $this->setRowsetClass($value);
-                    break;
-                case self::REFERENCE_MAP:
-                    $this->setReferences($value);
-                    break;
-                case self::DEPENDENT_TABLES:
-                    $this->setDependentTables($value);
-                    break;
-                case self::METADATA_CACHE:
-                    $this->_setMetadataCache($value);
-                    break;
-                case self::METADATA_CACHE_IN_CLASS:
-                    $this->setMetadataCacheInClass($value);
-                    break;
-                case self::SEQUENCE:
-                    $this->_setSequence($value);
-                    break;
-                default:
-                    // ignore unrecognized configuration directive
-                    break;
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * setDefinition()
-     *
-     * @param Zend_Db_Table_Definition $definition
-     * @return Zend_Db_Table_Abstract
-     */
-    public function setDefinition(Zend_Db_Table_Definition $definition)
-    {
-        $this->_definition = $definition;
-        return $this;
-    }
-
-    /**
-     * getDefinition()
-     *
-     * @return Zend_Db_Table_Definition|null
-     */
-    public function getDefinition()
-    {
-        return $this->_definition;
-    }
-
-    /**
-     * setDefinitionConfigName()
-     *
-     * @param string $definition
-     * @return Zend_Db_Table_Abstract
-     */
-    public function setDefinitionConfigName($definitionConfigName)
-    {
-        $this->_definitionConfigName = $definitionConfigName;
-        return $this;
-    }
-
-    /**
-     * getDefinitionConfigName()
-     *
-     * @return string
-     */
-    public function getDefinitionConfigName()
-    {
-        return $this->_definitionConfigName;
-    }
-
-    /**
-     * @param  string $classname
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
-     */
-    public function setRowClass($classname)
-    {
-        $this->_rowClass = (string) $classname;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRowClass()
-    {
-        return $this->_rowClass;
-    }
-
-    /**
-     * @param  string $classname
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
-     */
-    public function setRowsetClass($classname)
-    {
-        $this->_rowsetClass = (string) $classname;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRowsetClass()
-    {
-        return $this->_rowsetClass;
-    }
-
-    /**
-     * Add a reference to the reference map
-     *
-     * @param string $ruleKey
-     * @param string|array $columns
-     * @param string $refTableClass
-     * @param string|array $refColumns
-     * @param string $onDelete
-     * @param string $onUpdate
-     * @return Zend_Db_Table_Abstract
-     */
-    public function addReference($ruleKey, $columns, $refTableClass, $refColumns,
-                                 $onDelete = null, $onUpdate = null)
-    {
-        $reference = array(self::COLUMNS         => (array) $columns,
-                           self::REF_TABLE_CLASS => $refTableClass,
-                           self::REF_COLUMNS     => (array) $refColumns);
-
-        if (!empty($onDelete)) {
-            $reference[self::ON_DELETE] = $onDelete;
-        }
-
-        if (!empty($onUpdate)) {
-            $reference[self::ON_UPDATE] = $onUpdate;
-        }
-
-        $this->_referenceMap[$ruleKey] = $reference;
-
-        return $this;
-    }
-
-    /**
-     * @param array $referenceMap
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
-     */
-    public function setReferences(array $referenceMap)
-    {
-        $this->_referenceMap = $referenceMap;
-
-        return $this;
-    }
-
-    /**
-     * @param string $tableClassname
-     * @param string $ruleKey OPTIONAL
-     * @return array
-     * @throws Zend_Db_Table_Exception
-     */
-    public function getReference($tableClassname, $ruleKey = null)
-    {
-        $thisClass = get_class($this);
-        if ($thisClass === 'Zend_Db_Table') {
-            $thisClass = $this->_definitionConfigName;
-        }
-        $refMap = $this->_getReferenceMapNormalized();
-        if ($ruleKey !== null) {
-            if (!isset($refMap[$ruleKey])) {
-                require_once "Zend/Db/Table/Exception.php";
-                throw new Zend_Db_Table_Exception("No reference rule \"$ruleKey\" from table $thisClass to table $tableClassname");
-            }
-            if ($refMap[$ruleKey][self::REF_TABLE_CLASS] != $tableClassname) {
-                require_once "Zend/Db/Table/Exception.php";
-                throw new Zend_Db_Table_Exception("Reference rule \"$ruleKey\" does not reference table $tableClassname");
-            }
-            return $refMap[$ruleKey];
-        }
-        foreach ($refMap as $reference) {
-            if ($reference[self::REF_TABLE_CLASS] == $tableClassname) {
-                return $reference;
-            }
-        }
-        require_once "Zend/Db/Table/Exception.php";
-        throw new Zend_Db_Table_Exception("No reference from table $thisClass to table $tableClassname");
-    }
-
-    /**
-     * @param  array $dependentTables
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
-     */
-    public function setDependentTables(array $dependentTables)
-    {
-        $this->_dependentTables = $dependentTables;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDependentTables()
-    {
-        return $this->_dependentTables;
-    }
-
-    /**
-     * set the defaultSource property - this tells the table class where to find default values
-     *
-     * @param string $defaultSource
-     * @return Zend_Db_Table_Abstract
-     */
-    public function setDefaultSource($defaultSource = self::DEFAULT_NONE)
-    {
-        if (!in_array($defaultSource, array(self::DEFAULT_CLASS, self::DEFAULT_DB, self::DEFAULT_NONE))) {
-            $defaultSource = self::DEFAULT_NONE;
-        }
-
-        $this->_defaultSource = $defaultSource;
-        return $this;
-    }
-
-    /**
-     * returns the default source flag that determines where defaultSources come from
-     *
-     * @return unknown
-     */
-    public function getDefaultSource()
-    {
-        return $this->_defaultSource;
-    }
-
-    /**
-     * set the default values for the table class
-     *
-     * @param array $defaultValues
-     * @return Zend_Db_Table_Abstract
-     */
-    public function setDefaultValues(Array $defaultValues)
-    {
-        foreach ($defaultValues as $defaultName => $defaultValue) {
-            if (array_key_exists($defaultName, $this->_metadata)) {
-                $this->_defaultValues[$defaultName] = $defaultValue;
-            }
-        }
-        return $this;
-    }
-
-    public function getDefaultValues()
-    {
-        return $this->_defaultValues;
-    }
-
-
-    /**
-     * Sets the default Zend_Db_Adapter_Abstract for all Zend_Db_Table objects.
-     *
-     * @param  mixed $db Either an Adapter object, or a string naming a Registry key
-     * @return void
-     */
-    public static function setDefaultAdapter($db = null)
-    {
-        self::$_defaultDb = self::_setupAdapter($db);
-    }
-
-    /**
-     * Gets the default Zend_Db_Adapter_Abstract for all Zend_Db_Table objects.
-     *
-     * @return Zend_Db_Adapter_Abstract or null
-     */
-    public static function getDefaultAdapter()
-    {
-        return self::$_defaultDb;
-    }
-
-    /**
-     * @param  mixed $db Either an Adapter object, or a string naming a Registry key
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
-     */
-    protected function _setAdapter($db)
-    {
-        $this->_db = self::_setupAdapter($db);
-        return $this;
-    }
-
-    /**
-     * Gets the Zend_Db_Adapter_Abstract for this particular Zend_Db_Table object.
-     *
-     * @return Zend_Db_Adapter_Abstract
-     */
-    public function getAdapter()
-    {
-        return $this->_db;
-    }
-
-    /**
-     * @param  mixed $db Either an Adapter object, or a string naming a Registry key
-     * @return Zend_Db_Adapter_Abstract
-     * @throws Zend_Db_Table_Exception
-     */
-    protected static function _setupAdapter($db)
-    {
-        if ($db === null) {
-            return null;
-        }
-        if (is_string($db)) {
-            require_once 'Zend/Registry.php';
-            $db = Zend_Registry::get($db);
-        }
-        if (!$db instanceof Zend_Db_Adapter_Abstract) {
-            require_once 'Zend/Db/Table/Exception.php';
-            throw new Zend_Db_Table_Exception('Argument must be of type Zend_Db_Adapter_Abstract, or a Registry key where a Zend_Db_Adapter_Abstract object is stored');
-        }
-        return $db;
-    }
-
-    /**
-     * Sets the default metadata cache for information returned by Zend_Db_Adapter_Abstract::describeTable().
-     *
-     * If $defaultMetadataCache is null, then no metadata cache is used by default.
-     *
-     * @param  mixed $metadataCache Either a Cache object, or a string naming a Registry key
-     * @return void
-     */
-    public static function setDefaultMetadataCache($metadataCache = null)
-    {
-        self::$_defaultMetadataCache = self::_setupMetadataCache($metadataCache);
-    }
-
-    /**
-     * Gets the default metadata cache for information returned by Zend_Db_Adapter_Abstract::describeTable().
-     *
-     * @return Zend_Cache_Core or null
-     */
-    public static function getDefaultMetadataCache()
-    {
-        return self::$_defaultMetadataCache;
-    }
-
-    /**
-     * Sets the metadata cache for information returned by Zend_Db_Adapter_Abstract::describeTable().
-     *
-     * If $metadataCache is null, then no metadata cache is used. Since there is no opportunity to reload metadata
-     * after instantiation, this method need not be public, particularly because that it would have no effect
-     * results in unnecessary API complexity. To configure the metadata cache, use the metadataCache configuration
-     * option for the class constructor upon instantiation.
-     *
-     * @param  mixed $metadataCache Either a Cache object, or a string naming a Registry key
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
-     */
-    protected function _setMetadataCache($metadataCache)
-    {
-        $this->_metadataCache = self::_setupMetadataCache($metadataCache);
-        return $this;
-    }
-
-    /**
-     * Gets the metadata cache for information returned by Zend_Db_Adapter_Abstract::describeTable().
-     *
-     * @return Zend_Cache_Core or null
-     */
-    public function getMetadataCache()
-    {
-        return $this->_metadataCache;
-    }
-
-    /**
-     * Indicate whether metadata should be cached in the class for the duration
-     * of the instance
-     *
-     * @param  bool $flag
-     * @return Zend_Db_Table_Abstract
-     */
-    public function setMetadataCacheInClass($flag)
-    {
-        $this->_metadataCacheInClass = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Retrieve flag indicating if metadata should be cached for duration of
-     * instance
-     *
-     * @return bool
-     */
-    public function metadataCacheInClass()
-    {
-        return $this->_metadataCacheInClass;
-    }
-
-    /**
-     * @param mixed $metadataCache Either a Cache object, or a string naming a Registry key
-     * @return Zend_Cache_Core
-     * @throws Zend_Db_Table_Exception
-     */
-    protected static function _setupMetadataCache($metadataCache)
-    {
-        if ($metadataCache === null) {
-            return null;
-        }
-        if (is_string($metadataCache)) {
-            require_once 'Zend/Registry.php';
-            $metadataCache = Zend_Registry::get($metadataCache);
-        }
-        if (!$metadataCache instanceof Zend_Cache_Core) {
-            require_once 'Zend/Db/Table/Exception.php';
-            throw new Zend_Db_Table_Exception('Argument must be of type Zend_Cache_Core, or a Registry key where a Zend_Cache_Core object is stored');
-        }
-        return $metadataCache;
-    }
-
-    /**
-     * Sets the sequence member, which defines the behavior for generating
-     * primary key values in new rows.
-     * - If this is a string, then the string names the sequence object.
-     * - If this is boolean true, then the key uses an auto-incrementing
-     *   or identity mechanism.
-     * - If this is boolean false, then the key is user-defined.
-     *   Use this for natural keys, for example.
-     *
-     * @param mixed $sequence
-     * @return Zend_Db_Table_Adapter_Abstract Provides a fluent interface
-     */
-    protected function _setSequence($sequence)
-    {
-        $this->_sequence = $sequence;
-
-        return $this;
-    }
-
-    /**
-     * Turnkey for initialization of a table object.
-     * Calls other protected methods for individual tasks, to make it easier
-     * for a subclass to override part of the setup logic.
-     *
-     * @return void
-     */
-    protected function _setup()
-    {
-        $this->_setupDatabaseAdapter();
-        $this->_setupTableName();
-    }
-
-    /**
-     * Initialize database adapter.
-     *
-     * @return void
-     */
-    protected function _setupDatabaseAdapter()
-    {
-        if (! $this->_db) {
-            $this->_db = self::getDefaultAdapter();
-            if (!$this->_db instanceof Zend_Db_Adapter_Abstract) {
-                require_once 'Zend/Db/Table/Exception.php';
-                throw new Zend_Db_Table_Exception('No adapter found for ' . get_class($this));
-            }
-        }
-    }
-
-    /**
-     * Initialize table and schema names.
-     *
-     * If the table name is not set in the class definition,
-     * use the class name itself as the table name.
-     *
-     * A schema name provided with the table name (e.g., "schema.table") overrides
-     * any existing value for $this->_schema.
-     *
-     * @return void
-     */
-    protected function _setupTableName()
-    {
-        if (! $this->_name) {
-            $this->_name = get_class($this);
-        } else if (strpos($this->_name, '.')) {
-            list($this->_schema, $this->_name) = explode('.', $this->_name);
-        }
-    }
-
-    /**
-     * Initializes metadata.
-     *
-     * If metadata cannot be loaded from cache, adapter's describeTable() method is called to discover metadata
-     * information. Returns true if and only if the metadata are loaded from cache.
-     *
-     * @return boolean
-     * @throws Zend_Db_Table_Exception
-     */
-    protected function _setupMetadata()
-    {
-        if ($this->metadataCacheInClass() && (count($this->_metadata) > 0)) {
-            return true;
-        }
-
-        // Assume that metadata will be loaded from cache
-        $isMetadataFromCache = true;
-
-        // If $this has no metadata cache but the class has a default metadata cache
-        if (null === $this->_metadataCache && null !== self::$_defaultMetadataCache) {
-            // Make $this use the default metadata cache of the class
-            $this->_setMetadataCache(self::$_defaultMetadataCache);
-        }
-
-        // If $this has a metadata cache
-        if (null !== $this->_metadataCache) {
-            // Define the cache identifier where the metadata are saved
-
-            //get db configuration
-            $dbConfig = $this->_db->getConfig();
-
-            $port = isset($dbConfig['options']['port'])
-                  ? ':'.$dbConfig['options']['port']
-                  : (isset($dbConfig['port'])
-                  ? ':'.$dbConfig['port']
-                  : null);
-
-            $host = isset($dbConfig['options']['host'])
-                  ? ':'.$dbConfig['options']['host']
-                  : (isset($dbConfig['host'])
-                  ? ':'.$dbConfig['host']
-                  : null);
-
-            // Define the cache identifier where the metadata are saved
-            $cacheId = md5( // port:host/dbname:schema.table (based on availabilty)
-                    $port . $host . '/'. $dbConfig['dbname'] . ':'
-                  . $this->_schema. '.' . $this->_name
-            );
-        }
-
-        // If $this has no metadata cache or metadata cache misses
-        if (null === $this->_metadataCache || !($metadata = $this->_metadataCache->load($cacheId))) {
-            // Metadata are not loaded from cache
-            $isMetadataFromCache = false;
-            // Fetch metadata from the adapter's describeTable() method
-            $metadata = $this->_db->describeTable($this->_name, $this->_schema);
-            // If $this has a metadata cache, then cache the metadata
-            if (null !== $this->_metadataCache && !$this->_metadataCache->save($metadata, $cacheId)) {
-                trigger_error('Failed saving metadata to metadataCache', E_USER_NOTICE);
-            }
-        }
-
-        // Assign the metadata to $this
-        $this->_metadata = $metadata;
-
-        // Return whether the metadata were loaded from cache
-        return $isMetadataFromCache;
-    }
-
-    /**
-     * Retrieve table columns
-     *
-     * @return array
-     */
-    protected function _getCols()
-    {
-        if (null === $this->_cols) {
-            $this->_setupMetadata();
-            $this->_cols = array_keys($this->_metadata);
-        }
-        return $this->_cols;
-    }
-
-    /**
-     * Initialize primary key from metadata.
-     * If $_primary is not defined, discover primary keys
-     * from the information returned by describeTable().
-     *
-     * @return void
-     * @throws Zend_Db_Table_Exception
-     */
-    protected function _setupPrimaryKey()
-    {
-        if (!$this->_primary) {
-            $this->_setupMetadata();
-            $this->_primary = array();
-            foreach ($this->_metadata as $col) {
-                if ($col['PRIMARY']) {
-                    $this->_primary[ $col['PRIMARY_POSITION'] ] = $col['COLUMN_NAME'];
-                    if ($col['IDENTITY']) {
-                        $this->_identity = $col['PRIMARY_POSITION'];
-                    }
-                }
-            }
-            // if no primary key was specified and none was found in the metadata
-            // then throw an exception.
-            if (empty($this->_primary)) {
-                require_once 'Zend/Db/Table/Exception.php';
-                throw new Zend_Db_Table_Exception('A table must have a primary key, but none was found');
-            }
-        } else if (!is_array($this->_primary)) {
-            $this->_primary = array(1 => $this->_primary);
-        } else if (isset($this->_primary[0])) {
-            array_unshift($this->_primary, null);
-            unset($this->_primary[0]);
-        }
-
-        $cols = $this->_getCols();
-        if (! array_intersect((array) $this->_primary, $cols) == (array) $this->_primary) {
-            require_once 'Zend/Db/Table/Exception.php';
-            throw new Zend_Db_Table_Exception("Primary key column(s) ("
-                . implode(',', (array) $this->_primary)
-                . ") are not columns in this table ("
-                . implode(',', $cols)
-                . ")");
-        }
-
-        $primary    = (array) $this->_primary;
-        $pkIdentity = $primary[(int) $this->_identity];
-
-        /**
-         * Special case for PostgreSQL: a SERIAL key implicitly uses a sequence
-         * object whose name is "<table>_<column>_seq".
-         */
-        if ($this->_sequence === true && $this->_db instanceof Zend_Db_Adapter_Pdo_Pgsql) {
-            $this->_sequence = $this->_db->quoteIdentifier("{$this->_name}_{$pkIdentity}_seq");
-            if ($this->_schema) {
-                $this->_sequence = $this->_db->quoteIdentifier($this->_schema) . '.' . $this->_sequence;
-            }
-        }
-    }
-
-    /**
-     * Returns a normalized version of the reference map
-     *
-     * @return array
-     */
-    protected function _getReferenceMapNormalized()
-    {
-        $referenceMapNormalized = array();
-
-        foreach ($this->_referenceMap as $rule => $map) {
-
-            $referenceMapNormalized[$rule] = array();
-
-            foreach ($map as $key => $value) {
-                switch ($key) {
-
-                    // normalize COLUMNS and REF_COLUMNS to arrays
-                    case self::COLUMNS:
-                    case self::REF_COLUMNS:
-                        if (!is_array($value)) {
-                            $referenceMapNormalized[$rule][$key] = array($value);
-                        } else {
-                            $referenceMapNormalized[$rule][$key] = $value;
-                        }
-                        break;
-
-                    // other values are copied as-is
-                    default:
-                        $referenceMapNormalized[$rule][$key] = $value;
-                        break;
-                }
-            }
-        }
-
-        return $referenceMapNormalized;
-    }
-
-    /**
-     * Initialize object
-     *
-     * Called from {@link __construct()} as final step of object instantiation.
-     *
-     * @return void
-     */
-    public function init()
-    {
-    }
-
-    /**
-     * Returns table information.
-     *
-     * You can elect to return only a part of this information by supplying its key name,
-     * otherwise all information is returned as an array.
-     *
-     * @param  string $key The specific info part to return OPTIONAL
-     * @return mixed
-     */
-    public function info($key = null)
-    {
-        $this->_setupPrimaryKey();
-
-        $info = array(
-            self::SCHEMA           => $this->_schema,
-            self::NAME             => $this->_name,
-            self::COLS             => $this->_getCols(),
-            self::PRIMARY          => (array) $this->_primary,
-            self::METADATA         => $this->_metadata,
-            self::ROW_CLASS        => $this->getRowClass(),
-            self::ROWSET_CLASS     => $this->getRowsetClass(),
-            self::REFERENCE_MAP    => $this->_referenceMap,
-            self::DEPENDENT_TABLES => $this->_dependentTables,
-            self::SEQUENCE         => $this->_sequence
-        );
-
-        if ($key === null) {
-            return $info;
-        }
-
-        if (!array_key_exists($key, $info)) {
-            require_once 'Zend/Db/Table/Exception.php';
-            throw new Zend_Db_Table_Exception('There is no table information for the key "' . $key . '"');
-        }
-
-        return $info[$key];
-    }
-
-    /**
-     * Returns an instance of a Zend_Db_Table_Select object.
-     *
-     * @param bool $withFromPart Whether or not to include the from part of the select based on the table
-     * @return Zend_Db_Table_Select
-     */
-    public function select($withFromPart = self::SELECT_WITHOUT_FROM_PART)
-    {
-        require_once 'Zend/Db/Table/Select.php';
-        $select = new Zend_Db_Table_Select($this);
-        if ($withFromPart == self::SELECT_WITH_FROM_PART) {
-            $select->from($this->info(self::NAME), Zend_Db_Table_Select::SQL_WILDCARD, $this->info(self::SCHEMA));
-        }
-        return $select;
-    }
-
-    /**
-     * Inserts a new row.
-     *
-     * @param  array  $data  Column-value pairs.
-     * @return mixed         The primary key of the row inserted.
-     */
-    public function insert(array $data)
-    {
-        $this->_setupPrimaryKey();
-
-        /**
-         * Zend_Db_Table assumes that if you have a compound primary key
-         * and one of the columns in the key uses a sequence,
-         * it's the _first_ column in the compound key.
-         */
-        $primary = (array) $this->_primary;
-        $pkIdentity = $primary[(int)$this->_identity];
-
-        /**
-         * If this table uses a database sequence object and the data does not
-         * specify a value, then get the next ID from the sequence and add it
-         * to the row.  We assume that only the first column in a compound
-         * primary key takes a value from a sequence.
-         */
-        if (is_string($this->_sequence) && !isset($data[$pkIdentity])) {
-            $data[$pkIdentity] = $this->_db->nextSequenceId($this->_sequence);
-        }
-
-        /**
-         * If the primary key can be generated automatically, and no value was
-         * specified in the user-supplied data, then omit it from the tuple.
-         */
-        if (array_key_exists($pkIdentity, $data) && $data[$pkIdentity] === null) {
-            unset($data[$pkIdentity]);
-        }
-
-        /**
-         * INSERT the new row.
-         */
-        $tableSpec = ($this->_schema ? $this->_schema . '.' : '') . $this->_name;
-        $this->_db->insert($tableSpec, $data);
-
-        /**
-         * Fetch the most recent ID generated by an auto-increment
-         * or IDENTITY column, unless the user has specified a value,
-         * overriding the auto-increment mechanism.
-         */
-        if ($this->_sequence === true && !isset($data[$pkIdentity])) {
-            $data[$pkIdentity] = $this->_db->lastInsertId();
-        }
-
-        /**
-         * Return the primary key value if the PK is a single column,
-         * else return an associative array of the PK column/value pairs.
-         */
-        $pkData = array_intersect_key($data, array_flip($primary));
-        if (count($primary) == 1) {
-            reset($pkData);
-            return current($pkData);
-        }
-
-        return $pkData;
-    }
-
-    /**
-     * Check if the provided column is an identity of the table
-     *
-     * @param  string $column
-     * @throws Zend_Db_Table_Exception
-     * @return boolean
-     */
-    public function isIdentity($column)
-    {
-        $this->_setupPrimaryKey();
-
-        if (!isset($this->_metadata[$column])) {
-            /**
-             * @see Zend_Db_Table_Exception
-             */
-            require_once 'Zend/Db/Table/Exception.php';
-
-            throw new Zend_Db_Table_Exception('Column "' . $column . '" not found in table.');
-        }
-
-        return (bool) $this->_metadata[$column]['IDENTITY'];
-    }
-
-    /**
-     * Updates existing rows.
-     *
-     * @param  array        $data  Column-value pairs.
-     * @param  array|string $where An SQL WHERE clause, or an array of SQL WHERE clauses.
-     * @return int          The number of rows updated.
-     */
-    public function update(array $data, $where)
-    {
-        $tableSpec = ($this->_schema ? $this->_schema . '.' : '') . $this->_name;
-        return $this->_db->update($tableSpec, $data, $where);
-    }
-
-    /**
-     * Called by a row object for the parent table's class during save() method.
-     *
-     * @param  string $parentTableClassname
-     * @param  array  $oldPrimaryKey
-     * @param  array  $newPrimaryKey
-     * @return int
-     */
-    public function _cascadeUpdate($parentTableClassname, array $oldPrimaryKey, array $newPrimaryKey)
-    {
-        $this->_setupMetadata();
-        $rowsAffected = 0;
-        foreach ($this->_getReferenceMapNormalized() as $map) {
-            if ($map[self::REF_TABLE_CLASS] == $parentTableClassname && isset($map[self::ON_UPDATE])) {
-                switch ($map[self::ON_UPDATE]) {
-                    case self::CASCADE:
-                        $newRefs = array();
-                        $where = array();
-                        for ($i = 0; $i < count($map[self::COLUMNS]); ++$i) {
-                            $col = $this->_db->foldCase($map[self::COLUMNS][$i]);
-                            $refCol = $this->_db->foldCase($map[self::REF_COLUMNS][$i]);
-                            if (array_key_exists($refCol, $newPrimaryKey)) {
-                                $newRefs[$col] = $newPrimaryKey[$refCol];
-                            }
-                            $type = $this->_metadata[$col]['DATA_TYPE'];
-                            $where[] = $this->_db->quoteInto(
-                                $this->_db->quoteIdentifier($col, true) . ' = ?',
-                                $oldPrimaryKey[$refCol], $type);
-                        }
-                        $rowsAffected += $this->update($newRefs, $where);
-                        break;
-                    default:
-                        // no action
-                        break;
-                }
-            }
-        }
-        return $rowsAffected;
-    }
-
-    /**
-     * Deletes existing rows.
-     *
-     * @param  array|string $where SQL WHERE clause(s).
-     * @return int          The number of rows deleted.
-     */
-    public function delete($where)
-    {
-        $tableSpec = ($this->_schema ? $this->_schema . '.' : '') . $this->_name;
-        return $this->_db->delete($tableSpec, $where);
-    }
-
-    /**
-     * Called by parent table's class during delete() method.
-     *
-     * @param  string $parentTableClassname
-     * @param  array  $primaryKey
-     * @return int    Number of affected rows
-     */
-    public function _cascadeDelete($parentTableClassname, array $primaryKey)
-    {
-        $this->_setupMetadata();
-        $rowsAffected = 0;
-        foreach ($this->_getReferenceMapNormalized() as $map) {
-            if ($map[self::REF_TABLE_CLASS] == $parentTableClassname && isset($map[self::ON_DELETE])) {
-                switch ($map[self::ON_DELETE]) {
-                    case self::CASCADE:
-                        $where = array();
-                        for ($i = 0; $i < count($map[self::COLUMNS]); ++$i) {
-                            $col = $this->_db->foldCase($map[self::COLUMNS][$i]);
-                            $refCol = $this->_db->foldCase($map[self::REF_COLUMNS][$i]);
-                            $type = $this->_metadata[$col]['DATA_TYPE'];
-                            $where[] = $this->_db->quoteInto(
-                                $this->_db->quoteIdentifier($col, true) . ' = ?',
-                                $primaryKey[$refCol], $type);
-                        }
-                        $rowsAffected += $this->delete($where);
-                        break;
-                    default:
-                        // no action
-                        break;
-                }
-            }
-        }
-        return $rowsAffected;
-    }
-
-    /**
-     * Fetches rows by primary key.  The argument specifies one or more primary
-     * key value(s).  To find multiple rows by primary key, the argument must
-     * be an array.
-     *
-     * This method accepts a variable number of arguments.  If the table has a
-     * multi-column primary key, the number of arguments must be the same as
-     * the number of columns in the primary key.  To find multiple rows in a
-     * table with a multi-column primary key, each argument must be an array
-     * with the same number of elements.
-     *
-     * The find() method always returns a Rowset object, even if only one row
-     * was found.
-     *
-     * @param  mixed $key The value(s) of the primary keys.
-     * @return Zend_Db_Table_Rowset_Abstract Row(s) matching the criteria.
-     * @throws Zend_Db_Table_Exception
-     */
-    public function find()
-    {
-        $this->_setupPrimaryKey();
-        $args = func_get_args();
-        $keyNames = array_values((array) $this->_primary);
-
-        if (count($args) < count($keyNames)) {
-            require_once 'Zend/Db/Table/Exception.php';
-            throw new Zend_Db_Table_Exception("Too few columns for the primary key");
-        }
-
-        if (count($args) > count($keyNames)) {
-            require_once 'Zend/Db/Table/Exception.php';
-            throw new Zend_Db_Table_Exception("Too many columns for the primary key");
-        }
-
-        $whereList = array();
-        $numberTerms = 0;
-        foreach ($args as $keyPosition => $keyValues) {
-            $keyValuesCount = count($keyValues);
-            // Coerce the values to an array.
-            // Don't simply typecast to array, because the values
-            // might be Zend_Db_Expr objects.
-            if (!is_array($keyValues)) {
-                $keyValues = array($keyValues);
-            }
-            if ($numberTerms == 0) {
-                $numberTerms = $keyValuesCount;
-            } else if ($keyValuesCount != $numberTerms) {
-                require_once 'Zend/Db/Table/Exception.php';
-                throw new Zend_Db_Table_Exception("Missing value(s) for the primary key");
-            }
-            $keyValues = array_values($keyValues);
-            for ($i = 0; $i < $keyValuesCount; ++$i) {
-                if (!isset($whereList[$i])) {
-                    $whereList[$i] = array();
-                }
-                $whereList[$i][$keyPosition] = $keyValues[$i];
-            }
-        }
-
-        $whereClause = null;
-        if (count($whereList)) {
-            $whereOrTerms = array();
-            $tableName = $this->_db->quoteTableAs($this->_name, null, true);
-            foreach ($whereList as $keyValueSets) {
-                $whereAndTerms = array();
-                foreach ($keyValueSets as $keyPosition => $keyValue) {
-                    $type = $this->_metadata[$keyNames[$keyPosition]]['DATA_TYPE'];
-                    $columnName = $this->_db->quoteIdentifier($keyNames[$keyPosition], true);
-                    $whereAndTerms[] = $this->_db->quoteInto(
-                        $tableName . '.' . $columnName . ' = ?',
-                        $keyValue, $type);
-                }
-                $whereOrTerms[] = '(' . implode(' AND ', $whereAndTerms) . ')';
-            }
-            $whereClause = '(' . implode(' OR ', $whereOrTerms) . ')';
-        }
-
-        // issue ZF-5775 (empty where clause should return empty rowset)
-        if ($whereClause == null) {
-            $rowsetClass = $this->getRowsetClass();
-            if (!class_exists($rowsetClass)) {
-                require_once 'Zend/Loader.php';
-                Zend_Loader::loadClass($rowsetClass);
-            }
-            return new $rowsetClass(array('table' => $this, 'rowClass' => $this->getRowClass(), 'stored' => true));
-        }
-
-        return $this->fetchAll($whereClause);
-    }
-
-    /**
-     * Fetches all rows.
-     *
-     * Honors the Zend_Db_Adapter fetch mode.
-     *
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @param int                               $count  OPTIONAL An SQL LIMIT count.
-     * @param int                               $offset OPTIONAL An SQL LIMIT offset.
-     * @return Zend_Db_Table_Rowset_Abstract The row results per the Zend_Db_Adapter fetch mode.
-     */
-    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
-    {
-        if (!($where instanceof Zend_Db_Table_Select)) {
-            $select = $this->select();
-
-            if ($where !== null) {
-                $this->_where($select, $where);
-            }
-
-            if ($order !== null) {
-                $this->_order($select, $order);
-            }
-
-            if ($count !== null || $offset !== null) {
-                $select->limit($count, $offset);
-            }
-
-        } else {
-            $select = $where;
-        }
-
-        $rows = $this->_fetch($select);
-
-        $data  = array(
-            'table'    => $this,
-            'data'     => $rows,
-            'readOnly' => $select->isReadOnly(),
-            'rowClass' => $this->getRowClass(),
-            'stored'   => true
-        );
-
-        $rowsetClass = $this->getRowsetClass();
-        if (!class_exists($rowsetClass)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($rowsetClass);
-        }
-        return new $rowsetClass($data);
-    }
-
-    /**
-     * Fetches one row in an object of type Zend_Db_Table_Row_Abstract,
-     * or returns null if no row matches the specified criteria.
-     *
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @return Zend_Db_Table_Row_Abstract|null The row results per the
-     *     Zend_Db_Adapter fetch mode, or null if no row found.
-     */
-    public function fetchRow($where = null, $order = null)
-    {
-        if (!($where instanceof Zend_Db_Table_Select)) {
-            $select = $this->select();
-
-            if ($where !== null) {
-                $this->_where($select, $where);
-            }
-
-            if ($order !== null) {
-                $this->_order($select, $order);
-            }
-
-            $select->limit(1);
-
-        } else {
-            $select = $where->limit(1);
-        }
-
-        $rows = $this->_fetch($select);
-
-        if (count($rows) == 0) {
-            return null;
-        }
-
-        $data = array(
-            'table'   => $this,
-            'data'     => $rows[0],
-            'readOnly' => $select->isReadOnly(),
-            'stored'  => true
-        );
-
-        $rowClass = $this->getRowClass();
-        if (!class_exists($rowClass)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($rowClass);
-        }
-        return new $rowClass($data);
-    }
-
-    /**
-     * Fetches a new blank row (not from the database).
-     *
-     * @return Zend_Db_Table_Row_Abstract
-     * @deprecated since 0.9.3 - use createRow() instead.
-     */
-    public function fetchNew()
-    {
-        return $this->createRow();
-    }
-
-    /**
-     * Fetches a new blank row (not from the database).
-     *
-     * @param  array $data OPTIONAL data to populate in the new row.
-     * @param  string $defaultSource OPTIONAL flag to force default values into new row
-     * @return Zend_Db_Table_Row_Abstract
-     */
-    public function createRow(array $data = array(), $defaultSource = null)
-    {
-        $cols     = $this->_getCols();
-        $defaults = array_combine($cols, array_fill(0, count($cols), null));
-
-        // nothing provided at call-time, take the class value
-        if ($defaultSource == null) {
-            $defaultSource = $this->_defaultSource;
-        }
-
-        if (!in_array($defaultSource, array(self::DEFAULT_CLASS, self::DEFAULT_DB, self::DEFAULT_NONE))) {
-            $defaultSource = self::DEFAULT_NONE;
-        }
-
-        if ($defaultSource == self::DEFAULT_DB) {
-            foreach ($this->_metadata as $metadataName => $metadata) {
-                if (($metadata['DEFAULT'] != null) &&
-                    ($metadata['NULLABLE'] !== true || ($metadata['NULLABLE'] === true && isset($this->_defaultValues[$metadataName]) && $this->_defaultValues[$metadataName] === true)) &&
-                    (!(isset($this->_defaultValues[$metadataName]) && $this->_defaultValues[$metadataName] === false))) {
-                    $defaults[$metadataName] = $metadata['DEFAULT'];
-                }
-            }
-        } elseif ($defaultSource == self::DEFAULT_CLASS && $this->_defaultValues) {
-            foreach ($this->_defaultValues as $defaultName => $defaultValue) {
-                if (array_key_exists($defaultName, $defaults)) {
-                    $defaults[$defaultName] = $defaultValue;
-                }
-            }
-        }
-
-        $config = array(
-            'table'    => $this,
-            'data'     => $defaults,
-            'readOnly' => false,
-            'stored'   => false
-        );
-
-        $rowClass = $this->getRowClass();
-        if (!class_exists($rowClass)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($rowClass);
-        }
-        $row = new $rowClass($config);
-        $row->setFromArray($data);
-        return $row;
-    }
-
-    /**
-     * Generate WHERE clause from user-supplied string or array
-     *
-     * @param  string|array $where  OPTIONAL An SQL WHERE clause.
-     * @return Zend_Db_Table_Select
-     */
-    protected function _where(Zend_Db_Table_Select $select, $where)
-    {
-        $where = (array) $where;
-
-        foreach ($where as $key => $val) {
-            // is $key an int?
-            if (is_int($key)) {
-                // $val is the full condition
-                $select->where($val);
-            } else {
-                // $key is the condition with placeholder,
-                // and $val is quoted into the condition
-                $select->where($key, $val);
-            }
-        }
-
-        return $select;
-    }
-
-    /**
-     * Generate ORDER clause from user-supplied string or array
-     *
-     * @param  string|array $order  OPTIONAL An SQL ORDER clause.
-     * @return Zend_Db_Table_Select
-     */
-    protected function _order(Zend_Db_Table_Select $select, $order)
-    {
-        if (!is_array($order)) {
-            $order = array($order);
-        }
-
-        foreach ($order as $val) {
-            $select->order($val);
-        }
-
-        return $select;
-    }
-
-    /**
-     * Support method for fetching rows.
-     *
-     * @param  Zend_Db_Table_Select $select  query options.
-     * @return array An array containing the row results in FETCH_ASSOC mode.
-     */
-    protected function _fetch(Zend_Db_Table_Select $select)
-    {
-        $stmt = $this->_db->query($select);
-        $data = $stmt->fetchAll(Zend_Db::FETCH_ASSOC);
-        return $data;
-    }
-
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Table
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php3php5php7php8php php2php0php1php0php-php1php2php-php2php4php php1php6php:php3php1php:php4php5Zphp ramonphp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Adapterphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Abstractphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Adapterphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Selectphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Db
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp.phpphp'php;
+
+php/php*php*
+php php*php Classphp forphp SQLphp tablephp interfacephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Table
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Dbphp_Tablephp_Abstract
+php{
+
+php php php php constphp ADAPTERphp php php php php php php php php php php=php php'dbphp'php;
+php php php php constphp DEFINITIONphp php php php php php php php php=php php'definitionphp'php;
+php php php php constphp DEFINITIONphp_CONFIGphp_NAMEphp php=php php'definitionConfigNamephp'php;
+php php php php constphp SCHEMAphp php php php php php php php php php php php=php php'schemaphp'php;
+php php php php constphp NAMEphp php php php php php php php php php php php php php=php php'namephp'php;
+php php php php constphp PRIMARYphp php php php php php php php php php php=php php'primaryphp'php;
+php php php php constphp COLSphp php php php php php php php php php php php php php=php php'colsphp'php;
+php php php php constphp METADATAphp php php php php php php php php php=php php'metadataphp'php;
+php php php php constphp METADATAphp_CACHEphp php php php=php php'metadataCachephp'php;
+php php php php constphp METADATAphp_CACHEphp_INphp_CLASSphp php=php php'metadataCacheInClassphp'php;
+php php php php constphp ROWphp_CLASSphp php php php php php php php php=php php'rowClassphp'php;
+php php php php constphp ROWSETphp_CLASSphp php php php php php=php php'rowsetClassphp'php;
+php php php php constphp REFERENCEphp_MAPphp php php php php=php php'referenceMapphp'php;
+php php php php constphp DEPENDENTphp_TABLESphp php=php php'dependentTablesphp'php;
+php php php php constphp SEQUENCEphp php php php php php php php php php=php php'sequencephp'php;
+
+php php php php constphp COLUMNSphp php php php php php php php php php php=php php'columnsphp'php;
+php php php php constphp REFphp_TABLEphp_CLASSphp php php=php php'refTableClassphp'php;
+php php php php constphp REFphp_COLUMNSphp php php php php php php=php php'refColumnsphp'php;
+php php php php constphp ONphp_DELETEphp php php php php php php php php=php php'onDeletephp'php;
+php php php php constphp ONphp_UPDATEphp php php php php php php php php=php php'onUpdatephp'php;
+
+php php php php constphp CASCADEphp php php php php php php php php php php=php php'cascadephp'php;
+php php php php constphp RESTRICTphp php php php php php php php php php=php php'restrictphp'php;
+php php php php constphp SETphp_NULLphp php php php php php php php php php=php php'setNullphp'php;
+
+php php php php constphp DEFAULTphp_NONEphp php php php php php=php php'defaultNonephp'php;
+php php php php constphp DEFAULTphp_CLASSphp php php php php=php php'defaultClassphp'php;
+php php php php constphp DEFAULTphp_DBphp php php php php php php php=php php'defaultDbphp'php;
+
+php php php php constphp SELECTphp_WITHphp_FROMphp_PARTphp php php php php=php truephp;
+php php php php constphp SELECTphp_WITHOUTphp_FROMphp_PARTphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Defaultphp Zendphp_Dbphp_Adapterphp_Abstractphp objectphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultDbphp;
+
+php php php php php/php*php*
+php php php php php php*php Optionalphp Zendphp_Dbphp_Tablephp_Definitionphp object
+php php php php php php*
+php php php php php php*php php@varphp unknownphp_type
+php php php php php php*php/
+php php php php protectedphp php$php_definitionphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Optionalphp definitionphp configphp namephp usedphp inphp concretephp implementation
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_definitionConfigNamephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Defaultphp cachephp forphp informationphp providedphp byphp thephp adapterphp'sphp describeTablephp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Cachephp_Core
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultMetadataCachephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Zendphp_Dbphp_Adapterphp_Abstractphp objectphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_dbphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp schemaphp namephp php(defaultphp nullphp meansphp currentphp schemaphp)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_schemaphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp tablephp namephp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp tablephp columnphp namesphp derivedphp fromphp Zendphp_Dbphp_Adapterphp_Abstractphp:php:describeTablephp(php)php.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_colsphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp primaryphp keyphp columnphp orphp columnsphp.
+php php php php php php*php Aphp compoundphp keyphp shouldphp bephp declaredphp asphp anphp arrayphp.
+php php php php php php*php Youphp mayphp declarephp aphp singlephp-columnphp primaryphp key
+php php php php php php*php asphp aphp stringphp.
+php php php php php php*
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php protectedphp php$php_primaryphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Ifphp yourphp primaryphp keyphp isphp aphp compoundphp keyphp,php andphp onephp ofphp thephp columnsphp uses
+php php php php php php*php anphp autophp-incrementphp orphp sequencephp-generatedphp valuephp,php setphp php_identity
+php php php php php php*php tophp thephp ordinalphp indexphp inphp thephp php$php_primaryphp arrayphp forphp thatphp columnphp.
+php php php php php php*php Notephp thisphp indexphp isphp thephp positionphp ofphp thephp columnphp inphp thephp primaryphp keyphp,
+php php php php php php*php notphp thephp positionphp ofphp thephp columnphp inphp thephp tablephp.php php Thephp primaryphp key
+php php php php php php*php arrayphp isphp php1php-basedphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_identityphp php=php php1php;
+
+php php php php php/php*php*
+php php php php php php*php Definephp thephp logicphp forphp newphp valuesphp inphp thephp primaryphp keyphp.
+php php php php php php*php Mayphp bephp aphp stringphp,php booleanphp truephp,php orphp booleanphp falsephp.
+php php php php php php*
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php protectedphp php$php_sequencephp php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Informationphp providedphp byphp thephp adapterphp'sphp describeTablephp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_metadataphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Cachephp forphp informationphp providedphp byphp thephp adapterphp'sphp describeTablephp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Cachephp_Core
+php php php php php php*php/
+php php php php protectedphp php$php_metadataCachephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Flagphp:php whetherphp orphp notphp tophp cachephp metadataphp inphp thephp class
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_metadataCacheInClassphp php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Classnamephp forphp row
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_rowClassphp php=php php'Zendphp_Dbphp_Tablephp_Rowphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Classnamephp forphp rowset
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_rowsetClassphp php=php php'Zendphp_Dbphp_Tablephp_Rowsetphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Associativephp arrayphp mapphp ofphp declarativephp referentialphp integrityphp rulesphp.
+php php php php php php*php Thisphp arrayphp hasphp onephp entryphp perphp foreignphp keyphp inphp thephp currentphp tablephp.
+php php php php php php*php Eachphp keyphp isphp aphp mnemonicphp namephp forphp onephp referencephp rulephp.
+php php php php php php*
+php php php php php php*php Eachphp valuephp isphp alsophp anphp associativephp arrayphp,php withphp thephp followingphp keysphp:
+php php php php php php*php php-php columnsphp php php php php php php php=php arrayphp ofphp namesphp ofphp columnphp(sphp)php inphp thephp childphp tablephp.
+php php php php php php*php php-php refTableClassphp php=php classphp namephp ofphp thephp parentphp tablephp.
+php php php php php php*php php-php refColumnsphp php php php php=php arrayphp ofphp namesphp ofphp columnphp(sphp)php inphp thephp parentphp tablephp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php inphp thephp samephp orderphp asphp thosephp inphp thephp php'columnsphp'php entryphp.
+php php php php php php*php php-php onDeletephp php php php php php php=php php"cascadephp"php meansphp thatphp aphp deletephp inphp thephp parentphp tablephp also
+php php php php php php*php php php php php php php php php php php php php php php php php php php causesphp aphp deletephp ofphp referencingphp rowsphp inphp thephp childphp tablephp.
+php php php php php php*php php-php onUpdatephp php php php php php php=php php"cascadephp"php meansphp thatphp anphp updatephp ofphp primaryphp keyphp valuesphp in
+php php php php php php*php php php php php php php php php php php php php php php php php php php thephp parentphp tablephp alsophp causesphp anphp updatephp ofphp referencing
+php php php php php php*php php php php php php php php php php php php php php php php php php php rowsphp inphp thephp childphp tablephp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_referenceMapphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Simplephp arrayphp ofphp classphp namesphp ofphp tablesphp thatphp arephp php"childrenphp"php ofphp thephp current
+php php php php php php*php tablephp,php inphp otherphp wordsphp tablesphp thatphp containphp aphp foreignphp keyphp tophp thisphp onephp.
+php php php php php php*php Arrayphp elementsphp arephp notphp tablephp namesphp;php theyphp arephp classphp namesphp ofphp classesphp that
+php php php php php php*php extendphp Zendphp_Dbphp_Tablephp_Abstractphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_dependentTablesphp php=php arrayphp(php)php;
+
+
+php php php php protectedphp php$php_defaultSourcephp php=php selfphp:php:DEFAULTphp_NONEphp;
+php php php php protectedphp php$php_defaultValuesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Constructorphp.
+php php php php php php*
+php php php php php php*php Supportedphp paramsphp forphp php$configphp arephp:
+php php php php php php*php php-php dbphp php php php php php php php php php php php php php php=php userphp-suppliedphp instancephp ofphp databasephp connectorphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php orphp keyphp namephp ofphp registryphp instancephp.
+php php php php php php*php php-php namephp php php php php php php php php php php php php=php tablephp namephp.
+php php php php php php*php php-php primaryphp php php php php php php php php php=php stringphp orphp arrayphp ofphp primaryphp keyphp(sphp)php.
+php php php php php php*php php-php rowClassphp php php php php php php php php=php rowphp classphp namephp.
+php php php php php php*php php-php rowsetClassphp php php php php php=php rowsetphp classphp namephp.
+php php php php php php*php php-php referenceMapphp php php php php=php arrayphp structurephp tophp declarephp relationship
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php tophp parentphp tablesphp.
+php php php php php php*php php-php dependentTablesphp php=php arrayphp ofphp childphp tablesphp.
+php php php php php php*php php-php metadataCachephp php php php=php cachephp forphp informationphp fromphp adapterphp describeTablephp(php)php.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$configphp Arrayphp ofphp userphp-specifiedphp configphp optionsphp,php orphp justphp thephp Dbphp Adapterphp.
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Allowphp aphp scalarphp argumentphp tophp bephp thephp Adapterphp objectphp orphp Registryphp keyphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$configphp)php)php php{
+php php php php php php php php php php php php php$configphp php=php arrayphp(selfphp:php:ADAPTERphp php=php>php php$configphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$configphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$configphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_setupphp(php)php;
+php php php php php php php php php$thisphp-php>initphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setOptionsphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(Arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php casephp selfphp:php:ADAPTERphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_setAdapterphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:DEFINITIONphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setDefinitionphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:DEFINITIONphp_CONFIGphp_NAMEphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setDefinitionConfigNamephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:SCHEMAphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_schemaphp php=php php(stringphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:NAMEphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_namephp php=php php(stringphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_primaryphp php=php php(arrayphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:ROWphp_CLASSphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setRowClassphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:ROWSETphp_CLASSphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setRowsetClassphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:REFERENCEphp_MAPphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setReferencesphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:DEPENDENTphp_TABLESphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setDependentTablesphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:METADATAphp_CACHEphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_setMetadataCachephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:METADATAphp_CACHEphp_INphp_CLASSphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setMetadataCacheInClassphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp selfphp:php:SEQUENCEphp:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_setSequencephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php/php/php ignorephp unrecognizedphp configurationphp directive
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setDefinitionphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Dbphp_Tablephp_Definitionphp php$definition
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setDefinitionphp(Zendphp_Dbphp_Tablephp_Definitionphp php$definitionphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_definitionphp php=php php$definitionphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getDefinitionphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Definitionphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getDefinitionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_definitionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setDefinitionConfigNamephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$definition
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setDefinitionConfigNamephp(php$definitionConfigNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_definitionConfigNamephp php=php php$definitionConfigNamephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php getDefinitionConfigNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDefinitionConfigNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_definitionConfigNamephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp php stringphp php$classname
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setRowClassphp(php$classnamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_rowClassphp php=php php(stringphp)php php$classnamephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getRowClassphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_rowClassphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp php stringphp php$classname
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setRowsetClassphp(php$classnamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_rowsetClassphp php=php php(stringphp)php php$classnamephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getRowsetClassphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_rowsetClassphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp aphp referencephp tophp thephp referencephp map
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$ruleKey
+php php php php php php*php php@paramphp stringphp|arrayphp php$columns
+php php php php php php*php php@paramphp stringphp php$refTableClass
+php php php php php php*php php@paramphp stringphp|arrayphp php$refColumns
+php php php php php php*php php@paramphp stringphp php$onDelete
+php php php php php php*php php@paramphp stringphp php$onUpdate
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp addReferencephp(php$ruleKeyphp,php php$columnsphp,php php$refTableClassphp,php php$refColumnsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$onDeletephp php=php nullphp,php php$onUpdatephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$referencephp php=php arrayphp(selfphp:php:COLUMNSphp php php php php php php php php php=php>php php(arrayphp)php php$columnsphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:REFphp_TABLEphp_CLASSphp php=php>php php$refTableClassphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:REFphp_COLUMNSphp php php php php php=php>php php(arrayphp)php php$refColumnsphp)php;
+
+php php php php php php php php ifphp php(php!emptyphp(php$onDeletephp)php)php php{
+php php php php php php php php php php php php php$referencephp[selfphp:php:ONphp_DELETEphp]php php=php php$onDeletephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!emptyphp(php$onUpdatephp)php)php php{
+php php php php php php php php php php php php php$referencephp[selfphp:php:ONphp_UPDATEphp]php php=php php$onUpdatephp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_referenceMapphp[php$ruleKeyphp]php php=php php$referencephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp arrayphp php$referenceMap
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setReferencesphp(arrayphp php$referenceMapphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_referenceMapphp php=php php$referenceMapphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$tableClassname
+php php php php php php*php php@paramphp stringphp php$ruleKeyphp OPTIONAL
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getReferencephp(php$tableClassnamephp,php php$ruleKeyphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisClassphp php=php getphp_classphp(php$thisphp)php;
+php php php php php php php php ifphp php(php$thisClassphp php=php=php=php php'Zendphp_Dbphp_Tablephp'php)php php{
+php php php php php php php php php php php php php$thisClassphp php=php php$thisphp-php>php_definitionConfigNamephp;
+php php php php php php php php php}
+php php php php php php php php php$refMapphp php=php php$thisphp-php>php_getReferenceMapNormalizedphp(php)php;
+php php php php php php php php ifphp php(php$ruleKeyphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$refMapphp[php$ruleKeyphp]php)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php"Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp"php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php"Nophp referencephp rulephp php\php"php$ruleKeyphp\php"php fromphp tablephp php$thisClassphp tophp tablephp php$tableClassnamephp"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$refMapphp[php$ruleKeyphp]php[selfphp:php:REFphp_TABLEphp_CLASSphp]php php!php=php php$tableClassnamephp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php"Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp"php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php"Referencephp rulephp php\php"php$ruleKeyphp\php"php doesphp notphp referencephp tablephp php$tableClassnamephp"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$refMapphp[php$ruleKeyphp]php;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$refMapphp asphp php$referencephp)php php{
+php php php php php php php php php php php php ifphp php(php$referencephp[selfphp:php:REFphp_TABLEphp_CLASSphp]php php=php=php php$tableClassnamephp)php php{
+php php php php php php php php php php php php php php php php returnphp php$referencephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php requirephp_oncephp php"Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp"php;
+php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php"Nophp referencephp fromphp tablephp php$thisClassphp tophp tablephp php$tableClassnamephp"php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp php arrayphp php$dependentTables
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setDependentTablesphp(arrayphp php$dependentTablesphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dependentTablesphp php=php php$dependentTablesphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getDependentTablesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dependentTablesphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setphp thephp defaultSourcephp propertyphp php-php thisphp tellsphp thephp tablephp classphp wherephp tophp findphp defaultphp values
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$defaultSource
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setDefaultSourcephp(php$defaultSourcephp php=php selfphp:php:DEFAULTphp_NONEphp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$defaultSourcephp,php arrayphp(selfphp:php:DEFAULTphp_CLASSphp,php selfphp:php:DEFAULTphp_DBphp,php selfphp:php:DEFAULTphp_NONEphp)php)php)php php{
+php php php php php php php php php php php php php$defaultSourcephp php=php selfphp:php:DEFAULTphp_NONEphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_defaultSourcephp php=php php$defaultSourcephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp defaultphp sourcephp flagphp thatphp determinesphp wherephp defaultSourcesphp comephp from
+php php php php php php*
+php php php php php php*php php@returnphp unknown
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultSourcephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_defaultSourcephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php setphp thephp defaultphp valuesphp forphp thephp tablephp class
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$defaultValues
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setDefaultValuesphp(Arrayphp php$defaultValuesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$defaultValuesphp asphp php$defaultNamephp php=php>php php$defaultValuephp)php php{
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$defaultNamephp,php php$thisphp-php>php_metadataphp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_defaultValuesphp[php$defaultNamephp]php php=php php$defaultValuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php publicphp functionphp getDefaultValuesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_defaultValuesphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp defaultphp Zendphp_Dbphp_Adapterphp_Abstractphp forphp allphp Zendphp_Dbphp_Tablephp objectsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$dbphp Eitherphp anphp Adapterphp objectphp,php orphp aphp stringphp namingphp aphp Registryphp key
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultAdapterphp(php$dbphp php=php nullphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultDbphp php=php selfphp:php:php_setupAdapterphp(php$dbphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp defaultphp Zendphp_Dbphp_Adapterphp_Abstractphp forphp allphp Zendphp_Dbphp_Tablephp objectsphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstractphp orphp null
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:php$php_defaultDbphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp php mixedphp php$dbphp Eitherphp anphp Adapterphp objectphp,php orphp aphp stringphp namingphp aphp Registryphp key
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_setAdapterphp(php$dbphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dbphp php=php selfphp:php:php_setupAdapterphp(php$dbphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp Zendphp_Dbphp_Adapterphp_Abstractphp forphp thisphp particularphp Zendphp_Dbphp_Tablephp objectphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dbphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp php mixedphp php$dbphp Eitherphp anphp Adapterphp objectphp,php orphp aphp stringphp namingphp aphp Registryphp key
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstract
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_setupAdapterphp(php$dbphp)
+php php php php php{
+php php php php php php php php ifphp php(php$dbphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(isphp_stringphp(php$dbphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
+php php php php php php php php php php php php php$dbphp php=php Zendphp_Registryphp:php:getphp(php$dbphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$dbphp instanceofphp Zendphp_Dbphp_Adapterphp_Abstractphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php'Argumentphp mustphp bephp ofphp typephp Zendphp_Dbphp_Adapterphp_Abstractphp,php orphp aphp Registryphp keyphp wherephp aphp Zendphp_Dbphp_Adapterphp_Abstractphp objectphp isphp storedphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$dbphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp defaultphp metadataphp cachephp forphp informationphp returnedphp byphp Zendphp_Dbphp_Adapterphp_Abstractphp:php:describeTablephp(php)php.
+php php php php php php*
+php php php php php php*php Ifphp php$defaultMetadataCachephp isphp nullphp,php thenphp nophp metadataphp cachephp isphp usedphp byphp defaultphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$metadataCachephp Eitherphp aphp Cachephp objectphp,php orphp aphp stringphp namingphp aphp Registryphp key
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultMetadataCachephp(php$metadataCachephp php=php nullphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultMetadataCachephp php=php selfphp:php:php_setupMetadataCachephp(php$metadataCachephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp defaultphp metadataphp cachephp forphp informationphp returnedphp byphp Zendphp_Dbphp_Adapterphp_Abstractphp:php:describeTablephp(php)php.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Cachephp_Corephp orphp null
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultMetadataCachephp(php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:php$php_defaultMetadataCachephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp metadataphp cachephp forphp informationphp returnedphp byphp Zendphp_Dbphp_Adapterphp_Abstractphp:php:describeTablephp(php)php.
+php php php php php php*
+php php php php php php*php Ifphp php$metadataCachephp isphp nullphp,php thenphp nophp metadataphp cachephp isphp usedphp.php Sincephp therephp isphp nophp opportunityphp tophp reloadphp metadata
+php php php php php php*php afterphp instantiationphp,php thisphp methodphp needphp notphp bephp publicphp,php particularlyphp becausephp thatphp itphp wouldphp havephp nophp effect
+php php php php php php*php resultsphp inphp unnecessaryphp APIphp complexityphp.php Tophp configurephp thephp metadataphp cachephp,php usephp thephp metadataCachephp configuration
+php php php php php php*php optionphp forphp thephp classphp constructorphp uponphp instantiationphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$metadataCachephp Eitherphp aphp Cachephp objectphp,php orphp aphp stringphp namingphp aphp Registryphp key
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_setMetadataCachephp(php$metadataCachephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_metadataCachephp php=php selfphp:php:php_setupMetadataCachephp(php$metadataCachephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp metadataphp cachephp forphp informationphp returnedphp byphp Zendphp_Dbphp_Adapterphp_Abstractphp:php:describeTablephp(php)php.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Cachephp_Corephp orphp null
+php php php php php php*php/
+php php php php publicphp functionphp getMetadataCachephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_metadataCachephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Indicatephp whetherphp metadataphp shouldphp bephp cachedphp inphp thephp classphp forphp thephp duration
+php php php php php php*php ofphp thephp instance
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp setMetadataCacheInClassphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_metadataCacheInClassphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp flagphp indicatingphp ifphp metadataphp shouldphp bephp cachedphp forphp durationphp of
+php php php php php php*php instance
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp metadataCacheInClassphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_metadataCacheInClassphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php@paramphp mixedphp php$metadataCachephp Eitherphp aphp Cachephp objectphp,php orphp aphp stringphp namingphp aphp Registryphp key
+php php php php php php*php php@returnphp Zendphp_Cachephp_Core
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_setupMetadataCachephp(php$metadataCachephp)
+php php php php php{
+php php php php php php php php ifphp php(php$metadataCachephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(isphp_stringphp(php$metadataCachephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
+php php php php php php php php php php php php php$metadataCachephp php=php Zendphp_Registryphp:php:getphp(php$metadataCachephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$metadataCachephp instanceofphp Zendphp_Cachephp_Corephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php'Argumentphp mustphp bephp ofphp typephp Zendphp_Cachephp_Corephp,php orphp aphp Registryphp keyphp wherephp aphp Zendphp_Cachephp_Corephp objectphp isphp storedphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$metadataCachephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp sequencephp memberphp,php whichphp definesphp thephp behaviorphp forphp generating
+php php php php php php*php primaryphp keyphp valuesphp inphp newphp rowsphp.
+php php php php php php*php php-php Ifphp thisphp isphp aphp stringphp,php thenphp thephp stringphp namesphp thephp sequencephp objectphp.
+php php php php php php*php php-php Ifphp thisphp isphp booleanphp truephp,php thenphp thephp keyphp usesphp anphp autophp-incrementing
+php php php php php php*php php php orphp identityphp mechanismphp.
+php php php php php php*php php-php Ifphp thisphp isphp booleanphp falsephp,php thenphp thephp keyphp isphp userphp-definedphp.
+php php php php php php*php php php Usephp thisphp forphp naturalphp keysphp,php forphp examplephp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$sequence
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Adapterphp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php protectedphp functionphp php_setSequencephp(php$sequencephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_sequencephp php=php php$sequencephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Turnkeyphp forphp initializationphp ofphp aphp tablephp objectphp.
+php php php php php php*php Callsphp otherphp protectedphp methodsphp forphp individualphp tasksphp,php tophp makephp itphp easier
+php php php php php php*php forphp aphp subclassphp tophp overridephp partphp ofphp thephp setupphp logicphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setupphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setupDatabaseAdapterphp(php)php;
+php php php php php php php php php$thisphp-php>php_setupTableNamephp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializephp databasephp adapterphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setupDatabaseAdapterphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php php$thisphp-php>php_dbphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dbphp php=php selfphp:php:getDefaultAdapterphp(php)php;
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_dbphp instanceofphp Zendphp_Dbphp_Adapterphp_Abstractphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php'Nophp adapterphp foundphp forphp php'php php.php getphp_classphp(php$thisphp)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializephp tablephp andphp schemaphp namesphp.
+php php php php php php*
+php php php php php php*php Ifphp thephp tablephp namephp isphp notphp setphp inphp thephp classphp definitionphp,
+php php php php php php*php usephp thephp classphp namephp itselfphp asphp thephp tablephp namephp.
+php php php php php php*
+php php php php php php*php Aphp schemaphp namephp providedphp withphp thephp tablephp namephp php(ephp.gphp.php,php php"schemaphp.tablephp"php)php overrides
+php php php php php php*php anyphp existingphp valuephp forphp php$thisphp-php>php_schemaphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setupTableNamephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php php$thisphp-php>php_namephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_namephp php=php getphp_classphp(php$thisphp)php;
+php php php php php php php php php}php elsephp ifphp php(strposphp(php$thisphp-php>php_namephp,php php'php.php'php)php)php php{
+php php php php php php php php php php php php listphp(php$thisphp-php>php_schemaphp,php php$thisphp-php>php_namephp)php php=php explodephp(php'php.php'php,php php$thisphp-php>php_namephp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializesphp metadataphp.
+php php php php php php*
+php php php php php php*php Ifphp metadataphp cannotphp bephp loadedphp fromphp cachephp,php adapterphp'sphp describeTablephp(php)php methodphp isphp calledphp tophp discoverphp metadata
+php php php php php php*php informationphp.php Returnsphp truephp ifphp andphp onlyphp ifphp thephp metadataphp arephp loadedphp fromphp cachephp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_setupMetadataphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>metadataCacheInClassphp(php)php php&php&php php(countphp(php$thisphp-php>php_metadataphp)php php>php php0php)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Assumephp thatphp metadataphp willphp bephp loadedphp fromphp cache
+php php php php php php php php php$isMetadataFromCachephp php=php truephp;
+
+php php php php php php php php php/php/php Ifphp php$thisphp hasphp nophp metadataphp cachephp butphp thephp classphp hasphp aphp defaultphp metadataphp cache
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_metadataCachephp php&php&php nullphp php!php=php=php selfphp:php:php$php_defaultMetadataCachephp)php php{
+php php php php php php php php php php php php php/php/php Makephp php$thisphp usephp thephp defaultphp metadataphp cachephp ofphp thephp class
+php php php php php php php php php php php php php$thisphp-php>php_setMetadataCachephp(selfphp:php:php$php_defaultMetadataCachephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Ifphp php$thisphp hasphp aphp metadataphp cache
+php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_metadataCachephp)php php{
+php php php php php php php php php php php php php/php/php Definephp thephp cachephp identifierphp wherephp thephp metadataphp arephp saved
+
+php php php php php php php php php php php php php/php/getphp dbphp configuration
+php php php php php php php php php php php php php$dbConfigphp php=php php$thisphp-php>php_dbphp-php>getConfigphp(php)php;
+
+php php php php php php php php php php php php php$portphp php=php issetphp(php$dbConfigphp[php'optionsphp'php]php[php'portphp'php]php)
+php php php php php php php php php php php php php php php php php php php?php php'php:php'php.php$dbConfigphp[php'optionsphp'php]php[php'portphp'php]
+php php php php php php php php php php php php php php php php php php php:php php(issetphp(php$dbConfigphp[php'portphp'php]php)
+php php php php php php php php php php php php php php php php php php php?php php'php:php'php.php$dbConfigphp[php'portphp'php]
+php php php php php php php php php php php php php php php php php php php:php nullphp)php;
+
+php php php php php php php php php php php php php$hostphp php=php issetphp(php$dbConfigphp[php'optionsphp'php]php[php'hostphp'php]php)
+php php php php php php php php php php php php php php php php php php php?php php'php:php'php.php$dbConfigphp[php'optionsphp'php]php[php'hostphp'php]
+php php php php php php php php php php php php php php php php php php php:php php(issetphp(php$dbConfigphp[php'hostphp'php]php)
+php php php php php php php php php php php php php php php php php php php?php php'php:php'php.php$dbConfigphp[php'hostphp'php]
+php php php php php php php php php php php php php php php php php php php:php nullphp)php;
+
+php php php php php php php php php php php php php/php/php Definephp thephp cachephp identifierphp wherephp thephp metadataphp arephp saved
+php php php php php php php php php php php php php$cacheIdphp php=php mdphp5php(php php/php/php portphp:hostphp/dbnamephp:schemaphp.tablephp php(basedphp onphp availabiltyphp)
+php php php php php php php php php php php php php php php php php php php php php$portphp php.php php$hostphp php.php php'php/php'php.php php$dbConfigphp[php'dbnamephp'php]php php.php php'php:php'
+php php php php php php php php php php php php php php php php php php php.php php$thisphp-php>php_schemaphp.php php'php.php'php php.php php$thisphp-php>php_name
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Ifphp php$thisphp hasphp nophp metadataphp cachephp orphp metadataphp cachephp misses
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_metadataCachephp php|php|php php!php(php$metadataphp php=php php$thisphp-php>php_metadataCachephp-php>loadphp(php$cacheIdphp)php)php)php php{
+php php php php php php php php php php php php php/php/php Metadataphp arephp notphp loadedphp fromphp cache
+php php php php php php php php php php php php php$isMetadataFromCachephp php=php falsephp;
+php php php php php php php php php php php php php/php/php Fetchphp metadataphp fromphp thephp adapterphp'sphp describeTablephp(php)php method
+php php php php php php php php php php php php php$metadataphp php=php php$thisphp-php>php_dbphp-php>describeTablephp(php$thisphp-php>php_namephp,php php$thisphp-php>php_schemaphp)php;
+php php php php php php php php php php php php php/php/php Ifphp php$thisphp hasphp aphp metadataphp cachephp,php thenphp cachephp thephp metadata
+php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_metadataCachephp php&php&php php!php$thisphp-php>php_metadataCachephp-php>savephp(php$metadataphp,php php$cacheIdphp)php)php php{
+php php php php php php php php php php php php php php php php triggerphp_errorphp(php'Failedphp savingphp metadataphp tophp metadataCachephp'php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Assignphp thephp metadataphp tophp php$this
+php php php php php php php php php$thisphp-php>php_metadataphp php=php php$metadataphp;
+
+php php php php php php php php php/php/php Returnphp whetherphp thephp metadataphp werephp loadedphp fromphp cache
+php php php php php php php php returnphp php$isMetadataFromCachephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp tablephp columns
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_getColsphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_colsphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_setupMetadataphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_colsphp php=php arrayphp_keysphp(php$thisphp-php>php_metadataphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_colsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializephp primaryphp keyphp fromphp metadataphp.
+php php php php php php*php Ifphp php$php_primaryphp isphp notphp definedphp,php discoverphp primaryphp keys
+php php php php php php*php fromphp thephp informationphp returnedphp byphp describeTablephp(php)php.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_setupPrimaryKeyphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_primaryphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_setupMetadataphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_primaryphp php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_metadataphp asphp php$colphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$colphp[php'PRIMARYphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_primaryphp[php php$colphp[php'PRIMARYphp_POSITIONphp'php]php php]php php=php php$colphp[php'COLUMNphp_NAMEphp'php]php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$colphp[php'IDENTITYphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_identityphp php=php php$colphp[php'PRIMARYphp_POSITIONphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php/php/php ifphp nophp primaryphp keyphp wasphp specifiedphp andphp nonephp wasphp foundphp inphp thephp metadata
+php php php php php php php php php php php php php/php/php thenphp throwphp anphp exceptionphp.
+php php php php php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_primaryphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php'Aphp tablephp mustphp havephp aphp primaryphp keyphp,php butphp nonephp wasphp foundphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$thisphp-php>php_primaryphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_primaryphp php=php arrayphp(php1php php=php>php php$thisphp-php>php_primaryphp)php;
+php php php php php php php php php}php elsephp ifphp php(issetphp(php$thisphp-php>php_primaryphp[php0php]php)php)php php{
+php php php php php php php php php php php php arrayphp_unshiftphp(php$thisphp-php>php_primaryphp,php nullphp)php;
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_primaryphp[php0php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$colsphp php=php php$thisphp-php>php_getColsphp(php)php;
+php php php php php php php php ifphp php(php!php arrayphp_intersectphp(php(arrayphp)php php$thisphp-php>php_primaryphp,php php$colsphp)php php=php=php php(arrayphp)php php$thisphp-php>php_primaryphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php"Primaryphp keyphp columnphp(sphp)php php(php"
+php php php php php php php php php php php php php php php php php.php implodephp(php'php,php'php,php php(arrayphp)php php$thisphp-php>php_primaryphp)
+php php php php php php php php php php php php php php php php php.php php"php)php arephp notphp columnsphp inphp thisphp tablephp php(php"
+php php php php php php php php php php php php php php php php php.php implodephp(php'php,php'php,php php$colsphp)
+php php php php php php php php php php php php php php php php php.php php"php)php"php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$primaryphp php php php php=php php(arrayphp)php php$thisphp-php>php_primaryphp;
+php php php php php php php php php$pkIdentityphp php=php php$primaryphp[php(intphp)php php$thisphp-php>php_identityphp]php;
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Specialphp casephp forphp PostgreSQLphp:php aphp SERIALphp keyphp implicitlyphp usesphp aphp sequence
+php php php php php php php php php php*php objectphp whosephp namephp isphp php"php<tablephp>php_php<columnphp>php_seqphp"php.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$thisphp-php>php_sequencephp php=php=php=php truephp php&php&php php$thisphp-php>php_dbphp instanceofphp Zendphp_Dbphp_Adapterphp_Pdophp_Pgsqlphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_sequencephp php=php php$thisphp-php>php_dbphp-php>quoteIdentifierphp(php"php{php$thisphp-php>php_namephp}php_php{php$pkIdentityphp}php_seqphp"php)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_schemaphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_sequencephp php=php php$thisphp-php>php_dbphp-php>quoteIdentifierphp(php$thisphp-php>php_schemaphp)php php.php php'php.php'php php.php php$thisphp-php>php_sequencephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp normalizedphp versionphp ofphp thephp referencephp map
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_getReferenceMapNormalizedphp(php)
+php php php php php{
+php php php php php php php php php$referenceMapNormalizedphp php=php arrayphp(php)php;
+
+php php php php php php php php foreachphp php(php$thisphp-php>php_referenceMapphp asphp php$rulephp php=php>php php$mapphp)php php{
+
+php php php php php php php php php php php php php$referenceMapNormalizedphp[php$rulephp]php php=php arrayphp(php)php;
+
+php php php php php php php php php php php php foreachphp php(php$mapphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+
+php php php php php php php php php php php php php php php php php php php php php/php/php normalizephp COLUMNSphp andphp REFphp_COLUMNSphp tophp arrays
+php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:COLUMNSphp:
+php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:REFphp_COLUMNSphp:
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$referenceMapNormalizedphp[php$rulephp]php[php$keyphp]php php=php arrayphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$referenceMapNormalizedphp[php$rulephp]php[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php php/php/php otherphp valuesphp arephp copiedphp asphp-is
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$referenceMapNormalizedphp[php$rulephp]php[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$referenceMapNormalizedphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializephp object
+php php php php php php*
+php php php php php php*php Calledphp fromphp php{php@linkphp php_php_constructphp(php)php}php asphp finalphp stepphp ofphp objectphp instantiationphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp tablephp informationphp.
+php php php php php php*
+php php php php php php*php Youphp canphp electphp tophp returnphp onlyphp aphp partphp ofphp thisphp informationphp byphp supplyingphp itsphp keyphp namephp,
+php php php php php php*php otherwisephp allphp informationphp isphp returnedphp asphp anphp arrayphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$keyphp Thephp specificphp infophp partphp tophp returnphp OPTIONAL
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp infophp(php$keyphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setupPrimaryKeyphp(php)php;
+
+php php php php php php php php php$infophp php=php arrayphp(
+php php php php php php php php php php php php selfphp:php:SCHEMAphp php php php php php php php php php php php=php>php php$thisphp-php>php_schemaphp,
+php php php php php php php php php php php php selfphp:php:NAMEphp php php php php php php php php php php php php php=php>php php$thisphp-php>php_namephp,
+php php php php php php php php php php php php selfphp:php:COLSphp php php php php php php php php php php php php php=php>php php$thisphp-php>php_getColsphp(php)php,
+php php php php php php php php php php php php selfphp:php:PRIMARYphp php php php php php php php php php php=php>php php(arrayphp)php php$thisphp-php>php_primaryphp,
+php php php php php php php php php php php php selfphp:php:METADATAphp php php php php php php php php php=php>php php$thisphp-php>php_metadataphp,
+php php php php php php php php php php php php selfphp:php:ROWphp_CLASSphp php php php php php php php php=php>php php$thisphp-php>getRowClassphp(php)php,
+php php php php php php php php php php php php selfphp:php:ROWSETphp_CLASSphp php php php php php=php>php php$thisphp-php>getRowsetClassphp(php)php,
+php php php php php php php php php php php php selfphp:php:REFERENCEphp_MAPphp php php php php=php>php php$thisphp-php>php_referenceMapphp,
+php php php php php php php php php php php php selfphp:php:DEPENDENTphp_TABLESphp php=php>php php$thisphp-php>php_dependentTablesphp,
+php php php php php php php php php php php php selfphp:php:SEQUENCEphp php php php php php php php php php=php>php php$thisphp-php>php_sequence
+php php php php php php php php php)php;
+
+php php php php php php php php ifphp php(php$keyphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$infophp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$keyphp,php php$infophp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php'Therephp isphp nophp tablephp informationphp forphp thephp keyphp php"php'php php.php php$keyphp php.php php'php"php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$infophp[php$keyphp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp instancephp ofphp aphp Zendphp_Dbphp_Tablephp_Selectphp objectphp.
+php php php php php php*
+php php php php php php*php php@paramphp boolphp php$withFromPartphp Whetherphp orphp notphp tophp includephp thephp fromphp partphp ofphp thephp selectphp basedphp onphp thephp table
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Select
+php php php php php php*php/
+php php php php publicphp functionphp selectphp(php$withFromPartphp php=php selfphp:php:SELECTphp_WITHOUTphp_FROMphp_PARTphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Selectphp.phpphp'php;
+php php php php php php php php php$selectphp php=php newphp Zendphp_Dbphp_Tablephp_Selectphp(php$thisphp)php;
+php php php php php php php php ifphp php(php$withFromPartphp php=php=php selfphp:php:SELECTphp_WITHphp_FROMphp_PARTphp)php php{
+php php php php php php php php php php php php php$selectphp-php>fromphp(php$thisphp-php>infophp(selfphp:php:NAMEphp)php,php Zendphp_Dbphp_Tablephp_Selectphp:php:SQLphp_WILDCARDphp,php php$thisphp-php>infophp(selfphp:php:SCHEMAphp)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$selectphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Insertsphp aphp newphp rowphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$dataphp php Columnphp-valuephp pairsphp.
+php php php php php php*php php@returnphp mixedphp php php php php php php php php Thephp primaryphp keyphp ofphp thephp rowphp insertedphp.
+php php php php php php*php/
+php php php php publicphp functionphp insertphp(arrayphp php$dataphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setupPrimaryKeyphp(php)php;
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Zendphp_Dbphp_Tablephp assumesphp thatphp ifphp youphp havephp aphp compoundphp primaryphp key
+php php php php php php php php php php*php andphp onephp ofphp thephp columnsphp inphp thephp keyphp usesphp aphp sequencephp,
+php php php php php php php php php php*php itphp'sphp thephp php_firstphp_php columnphp inphp thephp compoundphp keyphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$primaryphp php=php php(arrayphp)php php$thisphp-php>php_primaryphp;
+php php php php php php php php php$pkIdentityphp php=php php$primaryphp[php(intphp)php$thisphp-php>php_identityphp]php;
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Ifphp thisphp tablephp usesphp aphp databasephp sequencephp objectphp andphp thephp dataphp doesphp not
+php php php php php php php php php php*php specifyphp aphp valuephp,php thenphp getphp thephp nextphp IDphp fromphp thephp sequencephp andphp addphp it
+php php php php php php php php php php*php tophp thephp rowphp.php php Wephp assumephp thatphp onlyphp thephp firstphp columnphp inphp aphp compound
+php php php php php php php php php php*php primaryphp keyphp takesphp aphp valuephp fromphp aphp sequencephp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(isphp_stringphp(php$thisphp-php>php_sequencephp)php php&php&php php!issetphp(php$dataphp[php$pkIdentityphp]php)php)php php{
+php php php php php php php php php php php php php$dataphp[php$pkIdentityphp]php php=php php$thisphp-php>php_dbphp-php>nextSequenceIdphp(php$thisphp-php>php_sequencephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Ifphp thephp primaryphp keyphp canphp bephp generatedphp automaticallyphp,php andphp nophp valuephp was
+php php php php php php php php php php*php specifiedphp inphp thephp userphp-suppliedphp dataphp,php thenphp omitphp itphp fromphp thephp tuplephp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$pkIdentityphp,php php$dataphp)php php&php&php php$dataphp[php$pkIdentityphp]php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php unsetphp(php$dataphp[php$pkIdentityphp]php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php INSERTphp thephp newphp rowphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$tableSpecphp php=php php(php$thisphp-php>php_schemaphp php?php php$thisphp-php>php_schemaphp php.php php'php.php'php php:php php'php'php)php php.php php$thisphp-php>php_namephp;
+php php php php php php php php php$thisphp-php>php_dbphp-php>insertphp(php$tableSpecphp,php php$dataphp)php;
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Fetchphp thephp mostphp recentphp IDphp generatedphp byphp anphp autophp-increment
+php php php php php php php php php php*php orphp IDENTITYphp columnphp,php unlessphp thephp userphp hasphp specifiedphp aphp valuephp,
+php php php php php php php php php php*php overridingphp thephp autophp-incrementphp mechanismphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$thisphp-php>php_sequencephp php=php=php=php truephp php&php&php php!issetphp(php$dataphp[php$pkIdentityphp]php)php)php php{
+php php php php php php php php php php php php php$dataphp[php$pkIdentityphp]php php=php php$thisphp-php>php_dbphp-php>lastInsertIdphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Returnphp thephp primaryphp keyphp valuephp ifphp thephp PKphp isphp aphp singlephp columnphp,
+php php php php php php php php php php*php elsephp returnphp anphp associativephp arrayphp ofphp thephp PKphp columnphp/valuephp pairsphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$pkDataphp php=php arrayphp_intersectphp_keyphp(php$dataphp,php arrayphp_flipphp(php$primaryphp)php)php;
+php php php php php php php php ifphp php(countphp(php$primaryphp)php php=php=php php1php)php php{
+php php php php php php php php php php php php resetphp(php$pkDataphp)php;
+php php php php php php php php php php php php returnphp currentphp(php$pkDataphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$pkDataphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp thephp providedphp columnphp isphp anphp identityphp ofphp thephp table
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$column
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isIdentityphp(php$columnphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setupPrimaryKeyphp(php)php;
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_metadataphp[php$columnphp]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php'Columnphp php"php'php php.php php$columnphp php.php php'php"php notphp foundphp inphp tablephp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php(boolphp)php php$thisphp-php>php_metadataphp[php$columnphp]php[php'IDENTITYphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Updatesphp existingphp rowsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php$dataphp php Columnphp-valuephp pairsphp.
+php php php php php php*php php@paramphp php arrayphp|stringphp php$wherephp Anphp SQLphp WHEREphp clausephp,php orphp anphp arrayphp ofphp SQLphp WHEREphp clausesphp.
+php php php php php php*php php@returnphp intphp php php php php php php php php php Thephp numberphp ofphp rowsphp updatedphp.
+php php php php php php*php/
+php php php php publicphp functionphp updatephp(arrayphp php$dataphp,php php$wherephp)
+php php php php php{
+php php php php php php php php php$tableSpecphp php=php php(php$thisphp-php>php_schemaphp php?php php$thisphp-php>php_schemaphp php.php php'php.php'php php:php php'php'php)php php.php php$thisphp-php>php_namephp;
+php php php php php php php php returnphp php$thisphp-php>php_dbphp-php>updatephp(php$tableSpecphp,php php$dataphp,php php$wherephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Calledphp byphp aphp rowphp objectphp forphp thephp parentphp tablephp'sphp classphp duringphp savephp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$parentTableClassname
+php php php php php php*php php@paramphp php arrayphp php php$oldPrimaryKey
+php php php php php php*php php@paramphp php arrayphp php php$newPrimaryKey
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp php_cascadeUpdatephp(php$parentTableClassnamephp,php arrayphp php$oldPrimaryKeyphp,php arrayphp php$newPrimaryKeyphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setupMetadataphp(php)php;
+php php php php php php php php php$rowsAffectedphp php=php php0php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_getReferenceMapNormalizedphp(php)php asphp php$mapphp)php php{
+php php php php php php php php php php php php ifphp php(php$mapphp[selfphp:php:REFphp_TABLEphp_CLASSphp]php php=php=php php$parentTableClassnamephp php&php&php issetphp(php$mapphp[selfphp:php:ONphp_UPDATEphp]php)php)php php{
+php php php php php php php php php php php php php php php php switchphp php(php$mapphp[selfphp:php:ONphp_UPDATEphp]php)php php{
+php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:CASCADEphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$newRefsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$mapphp[selfphp:php:COLUMNSphp]php)php;php php+php+php$iphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$colphp php=php php$thisphp-php>php_dbphp-php>foldCasephp(php$mapphp[selfphp:php:COLUMNSphp]php[php$iphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$refColphp php=php php$thisphp-php>php_dbphp-php>foldCasephp(php$mapphp[selfphp:php:REFphp_COLUMNSphp]php[php$iphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$refColphp,php php$newPrimaryKeyphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$newRefsphp[php$colphp]php php=php php$newPrimaryKeyphp[php$refColphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$thisphp-php>php_metadataphp[php$colphp]php[php'DATAphp_TYPEphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp[php]php php=php php$thisphp-php>php_dbphp-php>quoteIntophp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dbphp-php>quoteIdentifierphp(php$colphp,php truephp)php php.php php'php php=php php?php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$oldPrimaryKeyphp[php$refColphp]php,php php$typephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$rowsAffectedphp php+php=php php$thisphp-php>updatephp(php$newRefsphp,php php$wherephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php nophp action
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$rowsAffectedphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Deletesphp existingphp rowsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|stringphp php$wherephp SQLphp WHEREphp clausephp(sphp)php.
+php php php php php php*php php@returnphp intphp php php php php php php php php php Thephp numberphp ofphp rowsphp deletedphp.
+php php php php php php*php/
+php php php php publicphp functionphp deletephp(php$wherephp)
+php php php php php{
+php php php php php php php php php$tableSpecphp php=php php(php$thisphp-php>php_schemaphp php?php php$thisphp-php>php_schemaphp php.php php'php.php'php php:php php'php'php)php php.php php$thisphp-php>php_namephp;
+php php php php php php php php returnphp php$thisphp-php>php_dbphp-php>deletephp(php$tableSpecphp,php php$wherephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Calledphp byphp parentphp tablephp'sphp classphp duringphp deletephp(php)php methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$parentTableClassname
+php php php php php php*php php@paramphp php arrayphp php php$primaryKey
+php php php php php php*php php@returnphp intphp php php php Numberphp ofphp affectedphp rows
+php php php php php php*php/
+php php php php publicphp functionphp php_cascadeDeletephp(php$parentTableClassnamephp,php arrayphp php$primaryKeyphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setupMetadataphp(php)php;
+php php php php php php php php php$rowsAffectedphp php=php php0php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_getReferenceMapNormalizedphp(php)php asphp php$mapphp)php php{
+php php php php php php php php php php php php ifphp php(php$mapphp[selfphp:php:REFphp_TABLEphp_CLASSphp]php php=php=php php$parentTableClassnamephp php&php&php issetphp(php$mapphp[selfphp:php:ONphp_DELETEphp]php)php)php php{
+php php php php php php php php php php php php php php php php switchphp php(php$mapphp[selfphp:php:ONphp_DELETEphp]php)php php{
+php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:CASCADEphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$mapphp[selfphp:php:COLUMNSphp]php)php;php php+php+php$iphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$colphp php=php php$thisphp-php>php_dbphp-php>foldCasephp(php$mapphp[selfphp:php:COLUMNSphp]php[php$iphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$refColphp php=php php$thisphp-php>php_dbphp-php>foldCasephp(php$mapphp[selfphp:php:REFphp_COLUMNSphp]php[php$iphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$thisphp-php>php_metadataphp[php$colphp]php[php'DATAphp_TYPEphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp[php]php php=php php$thisphp-php>php_dbphp-php>quoteIntophp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dbphp-php>quoteIdentifierphp(php$colphp,php truephp)php php.php php'php php=php php?php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$primaryKeyphp[php$refColphp]php,php php$typephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$rowsAffectedphp php+php=php php$thisphp-php>deletephp(php$wherephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php nophp action
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$rowsAffectedphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchesphp rowsphp byphp primaryphp keyphp.php php Thephp argumentphp specifiesphp onephp orphp morephp primary
+php php php php php php*php keyphp valuephp(sphp)php.php php Tophp findphp multiplephp rowsphp byphp primaryphp keyphp,php thephp argumentphp must
+php php php php php php*php bephp anphp arrayphp.
+php php php php php php*
+php php php php php php*php Thisphp methodphp acceptsphp aphp variablephp numberphp ofphp argumentsphp.php php Ifphp thephp tablephp hasphp a
+php php php php php php*php multiphp-columnphp primaryphp keyphp,php thephp numberphp ofphp argumentsphp mustphp bephp thephp samephp as
+php php php php php php*php thephp numberphp ofphp columnsphp inphp thephp primaryphp keyphp.php php Tophp findphp multiplephp rowsphp inphp a
+php php php php php php*php tablephp withphp aphp multiphp-columnphp primaryphp keyphp,php eachphp argumentphp mustphp bephp anphp array
+php php php php php php*php withphp thephp samephp numberphp ofphp elementsphp.
+php php php php php php*
+php php php php php php*php Thephp findphp(php)php methodphp alwaysphp returnsphp aphp Rowsetphp objectphp,php evenphp ifphp onlyphp onephp row
+php php php php php php*php wasphp foundphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$keyphp Thephp valuephp(sphp)php ofphp thephp primaryphp keysphp.
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowsetphp_Abstractphp Rowphp(sphp)php matchingphp thephp criteriaphp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp findphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_setupPrimaryKeyphp(php)php;
+php php php php php php php php php$argsphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php$keyNamesphp php=php arrayphp_valuesphp(php(arrayphp)php php$thisphp-php>php_primaryphp)php;
+
+php php php php php php php php ifphp php(countphp(php$argsphp)php <php countphp(php$keyNamesphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php"Toophp fewphp columnsphp forphp thephp primaryphp keyphp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(countphp(php$argsphp)php php>php countphp(php$keyNamesphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php"Toophp manyphp columnsphp forphp thephp primaryphp keyphp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$whereListphp php=php arrayphp(php)php;
+php php php php php php php php php$numberTermsphp php=php php0php;
+php php php php php php php php foreachphp php(php$argsphp asphp php$keyPositionphp php=php>php php$keyValuesphp)php php{
+php php php php php php php php php php php php php$keyValuesCountphp php=php countphp(php$keyValuesphp)php;
+php php php php php php php php php php php php php/php/php Coercephp thephp valuesphp tophp anphp arrayphp.
+php php php php php php php php php php php php php/php/php Donphp'tphp simplyphp typecastphp tophp arrayphp,php becausephp thephp values
+php php php php php php php php php php php php php/php/php mightphp bephp Zendphp_Dbphp_Exprphp objectsphp.
+php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$keyValuesphp)php)php php{
+php php php php php php php php php php php php php php php php php$keyValuesphp php=php arrayphp(php$keyValuesphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$numberTermsphp php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$numberTermsphp php=php php$keyValuesCountphp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$keyValuesCountphp php!php=php php$numberTermsphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Exceptionphp(php"Missingphp valuephp(sphp)php forphp thephp primaryphp keyphp"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$keyValuesphp php=php arrayphp_valuesphp(php$keyValuesphp)php;
+php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$keyValuesCountphp;php php+php+php$iphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$whereListphp[php$iphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$whereListphp[php$iphp]php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$whereListphp[php$iphp]php[php$keyPositionphp]php php=php php$keyValuesphp[php$iphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$whereClausephp php=php nullphp;
+php php php php php php php php ifphp php(countphp(php$whereListphp)php)php php{
+php php php php php php php php php php php php php$whereOrTermsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php$tableNamephp php=php php$thisphp-php>php_dbphp-php>quoteTableAsphp(php$thisphp-php>php_namephp,php nullphp,php truephp)php;
+php php php php php php php php php php php php foreachphp php(php$whereListphp asphp php$keyValueSetsphp)php php{
+php php php php php php php php php php php php php php php php php$whereAndTermsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$keyValueSetsphp asphp php$keyPositionphp php=php>php php$keyValuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$thisphp-php>php_metadataphp[php$keyNamesphp[php$keyPositionphp]php]php[php'DATAphp_TYPEphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$columnNamephp php=php php$thisphp-php>php_dbphp-php>quoteIdentifierphp(php$keyNamesphp[php$keyPositionphp]php,php truephp)php;
+php php php php php php php php php php php php php php php php php php php php php$whereAndTermsphp[php]php php=php php$thisphp-php>php_dbphp-php>quoteIntophp(
+php php php php php php php php php php php php php php php php php php php php php php php php php$tableNamephp php.php php'php.php'php php.php php$columnNamephp php.php php'php php=php php?php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php$keyValuephp,php php$typephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$whereOrTermsphp[php]php php=php php'php(php'php php.php implodephp(php'php ANDphp php'php,php php$whereAndTermsphp)php php.php php'php)php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$whereClausephp php=php php'php(php'php php.php implodephp(php'php ORphp php'php,php php$whereOrTermsphp)php php.php php'php)php'php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php issuephp ZFphp-php5php7php7php5php php(emptyphp wherephp clausephp shouldphp returnphp emptyphp rowsetphp)
+php php php php php php php php ifphp php(php$whereClausephp php=php=php nullphp)php php{
+php php php php php php php php php php php php php$rowsetClassphp php=php php$thisphp-php>getRowsetClassphp(php)php;
+php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$rowsetClassphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$rowsetClassphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp newphp php$rowsetClassphp(arrayphp(php'tablephp'php php=php>php php$thisphp,php php'rowClassphp'php php=php>php php$thisphp-php>getRowClassphp(php)php,php php'storedphp'php php=php>php truephp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>fetchAllphp(php$whereClausephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchesphp allphp rowsphp.
+php php php php php php*
+php php php php php php*php Honorsphp thephp Zendphp_Dbphp_Adapterphp fetchphp modephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp|Zendphp_Dbphp_Tablephp_Selectphp php$wherephp php OPTIONALphp Anphp SQLphp WHEREphp clausephp orphp Zendphp_Dbphp_Tablephp_Selectphp objectphp.
+php php php php php php*php php@paramphp stringphp|arrayphp php php php php php php php php php php php php php php php php php php php php php php$orderphp php OPTIONALphp Anphp SQLphp ORDERphp clausephp.
+php php php php php php*php php@paramphp intphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$countphp php OPTIONALphp Anphp SQLphp LIMITphp countphp.
+php php php php php php*php php@paramphp intphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$offsetphp OPTIONALphp Anphp SQLphp LIMITphp offsetphp.
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowsetphp_Abstractphp Thephp rowphp resultsphp perphp thephp Zendphp_Dbphp_Adapterphp fetchphp modephp.
+php php php php php php*php/
+php php php php publicphp functionphp fetchAllphp(php$wherephp php=php nullphp,php php$orderphp php=php nullphp,php php$countphp php=php nullphp,php php$offsetphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php(php$wherephp instanceofphp Zendphp_Dbphp_Tablephp_Selectphp)php)php php{
+php php php php php php php php php php php php php$selectphp php=php php$thisphp-php>selectphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$wherephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_wherephp(php$selectphp,php php$wherephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$orderphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_orderphp(php$selectphp,php php$orderphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$countphp php!php=php=php nullphp php|php|php php$offsetphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$selectphp-php>limitphp(php$countphp,php php$offsetphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$selectphp php=php php$wherephp;
+php php php php php php php php php}
+
+php php php php php php php php php$rowsphp php=php php$thisphp-php>php_fetchphp(php$selectphp)php;
+
+php php php php php php php php php$dataphp php php=php arrayphp(
+php php php php php php php php php php php php php'tablephp'php php php php php=php>php php$thisphp,
+php php php php php php php php php php php php php'dataphp'php php php php php php=php>php php$rowsphp,
+php php php php php php php php php php php php php'readOnlyphp'php php=php>php php$selectphp-php>isReadOnlyphp(php)php,
+php php php php php php php php php php php php php'rowClassphp'php php=php>php php$thisphp-php>getRowClassphp(php)php,
+php php php php php php php php php php php php php'storedphp'php php php php=php>php true
+php php php php php php php php php)php;
+
+php php php php php php php php php$rowsetClassphp php=php php$thisphp-php>getRowsetClassphp(php)php;
+php php php php php php php php ifphp php(php!classphp_existsphp(php$rowsetClassphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$rowsetClassphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp newphp php$rowsetClassphp(php$dataphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchesphp onephp rowphp inphp anphp objectphp ofphp typephp Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp,
+php php php php php php*php orphp returnsphp nullphp ifphp nophp rowphp matchesphp thephp specifiedphp criteriaphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp|Zendphp_Dbphp_Tablephp_Selectphp php$wherephp php OPTIONALphp Anphp SQLphp WHEREphp clausephp orphp Zendphp_Dbphp_Tablephp_Selectphp objectphp.
+php php php php php php*php php@paramphp stringphp|arrayphp php php php php php php php php php php php php php php php php php php php php php php$orderphp php OPTIONALphp Anphp SQLphp ORDERphp clausephp.
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp|nullphp Thephp rowphp resultsphp perphp the
+php php php php php php*php php php php php Zendphp_Dbphp_Adapterphp fetchphp modephp,php orphp nullphp ifphp nophp rowphp foundphp.
+php php php php php php*php/
+php php php php publicphp functionphp fetchRowphp(php$wherephp php=php nullphp,php php$orderphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php(php$wherephp instanceofphp Zendphp_Dbphp_Tablephp_Selectphp)php)php php{
+php php php php php php php php php php php php php$selectphp php=php php$thisphp-php>selectphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$wherephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_wherephp(php$selectphp,php php$wherephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$orderphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_orderphp(php$selectphp,php php$orderphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$selectphp-php>limitphp(php1php)php;
+
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$selectphp php=php php$wherephp-php>limitphp(php1php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$rowsphp php=php php$thisphp-php>php_fetchphp(php$selectphp)php;
+
+php php php php php php php php ifphp php(countphp(php$rowsphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$dataphp php=php arrayphp(
+php php php php php php php php php php php php php'tablephp'php php php php=php>php php$thisphp,
+php php php php php php php php php php php php php'dataphp'php php php php php php=php>php php$rowsphp[php0php]php,
+php php php php php php php php php php php php php'readOnlyphp'php php=php>php php$selectphp-php>isReadOnlyphp(php)php,
+php php php php php php php php php php php php php'storedphp'php php php=php>php true
+php php php php php php php php php)php;
+
+php php php php php php php php php$rowClassphp php=php php$thisphp-php>getRowClassphp(php)php;
+php php php php php php php php ifphp php(php!classphp_existsphp(php$rowClassphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$rowClassphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp newphp php$rowClassphp(php$dataphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchesphp aphp newphp blankphp rowphp php(notphp fromphp thephp databasephp)php.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowphp_Abstract
+php php php php php php*php php@deprecatedphp sincephp php0php.php9php.php3php php-php usephp createRowphp(php)php insteadphp.
+php php php php php php*php/
+php php php php publicphp functionphp fetchNewphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>createRowphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchesphp aphp newphp blankphp rowphp php(notphp fromphp thephp databasephp)php.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$dataphp OPTIONALphp dataphp tophp populatephp inphp thephp newphp rowphp.
+php php php php php php*php php@paramphp php stringphp php$defaultSourcephp OPTIONALphp flagphp tophp forcephp defaultphp valuesphp intophp newphp row
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp createRowphp(arrayphp php$dataphp php=php arrayphp(php)php,php php$defaultSourcephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$colsphp php php php php php=php php$thisphp-php>php_getColsphp(php)php;
+php php php php php php php php php$defaultsphp php=php arrayphp_combinephp(php$colsphp,php arrayphp_fillphp(php0php,php countphp(php$colsphp)php,php nullphp)php)php;
+
+php php php php php php php php php/php/php nothingphp providedphp atphp callphp-timephp,php takephp thephp classphp value
+php php php php php php php php ifphp php(php$defaultSourcephp php=php=php nullphp)php php{
+php php php php php php php php php php php php php$defaultSourcephp php=php php$thisphp-php>php_defaultSourcephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$defaultSourcephp,php arrayphp(selfphp:php:DEFAULTphp_CLASSphp,php selfphp:php:DEFAULTphp_DBphp,php selfphp:php:DEFAULTphp_NONEphp)php)php)php php{
+php php php php php php php php php php php php php$defaultSourcephp php=php selfphp:php:DEFAULTphp_NONEphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$defaultSourcephp php=php=php selfphp:php:DEFAULTphp_DBphp)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_metadataphp asphp php$metadataNamephp php=php>php php$metadataphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php$metadataphp[php'DEFAULTphp'php]php php!php=php nullphp)php php&php&
+php php php php php php php php php php php php php php php php php php php php php(php$metadataphp[php'NULLABLEphp'php]php php!php=php=php truephp php|php|php php(php$metadataphp[php'NULLABLEphp'php]php php=php=php=php truephp php&php&php issetphp(php$thisphp-php>php_defaultValuesphp[php$metadataNamephp]php)php php&php&php php$thisphp-php>php_defaultValuesphp[php$metadataNamephp]php php=php=php=php truephp)php)php php&php&
+php php php php php php php php php php php php php php php php php php php php php(php!php(issetphp(php$thisphp-php>php_defaultValuesphp[php$metadataNamephp]php)php php&php&php php$thisphp-php>php_defaultValuesphp[php$metadataNamephp]php php=php=php=php falsephp)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$defaultsphp[php$metadataNamephp]php php=php php$metadataphp[php'DEFAULTphp'php]php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elseifphp php(php$defaultSourcephp php=php=php selfphp:php:DEFAULTphp_CLASSphp php&php&php php$thisphp-php>php_defaultValuesphp)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_defaultValuesphp asphp php$defaultNamephp php=php>php php$defaultValuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$defaultNamephp,php php$defaultsphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$defaultsphp[php$defaultNamephp]php php=php php$defaultValuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$configphp php=php arrayphp(
+php php php php php php php php php php php php php'tablephp'php php php php php=php>php php$thisphp,
+php php php php php php php php php php php php php'dataphp'php php php php php php=php>php php$defaultsphp,
+php php php php php php php php php php php php php'readOnlyphp'php php=php>php falsephp,
+php php php php php php php php php php php php php'storedphp'php php php php=php>php false
+php php php php php php php php php)php;
+
+php php php php php php php php php$rowClassphp php=php php$thisphp-php>getRowClassphp(php)php;
+php php php php php php php php ifphp php(php!classphp_existsphp(php$rowClassphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$rowClassphp)php;
+php php php php php php php php php}
+php php php php php php php php php$rowphp php=php newphp php$rowClassphp(php$configphp)php;
+php php php php php php php php php$rowphp-php>setFromArrayphp(php$dataphp)php;
+php php php php php php php php returnphp php$rowphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Generatephp WHEREphp clausephp fromphp userphp-suppliedphp stringphp orphp array
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$wherephp php OPTIONALphp Anphp SQLphp WHEREphp clausephp.
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Select
+php php php php php php*php/
+php php php php protectedphp functionphp php_wherephp(Zendphp_Dbphp_Tablephp_Selectphp php$selectphp,php php$wherephp)
+php php php php php{
+php php php php php php php php php$wherephp php=php php(arrayphp)php php$wherephp;
+
+php php php php php php php php foreachphp php(php$wherephp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php/php/php isphp php$keyphp anphp intphp?
+php php php php php php php php php php php php ifphp php(isphp_intphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php php$valphp isphp thephp fullphp condition
+php php php php php php php php php php php php php php php php php$selectphp-php>wherephp(php$valphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php php$keyphp isphp thephp conditionphp withphp placeholderphp,
+php php php php php php php php php php php php php php php php php/php/php andphp php$valphp isphp quotedphp intophp thephp condition
+php php php php php php php php php php php php php php php php php$selectphp-php>wherephp(php$keyphp,php php$valphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$selectphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Generatephp ORDERphp clausephp fromphp userphp-suppliedphp stringphp orphp array
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$orderphp php OPTIONALphp Anphp SQLphp ORDERphp clausephp.
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Select
+php php php php php php*php/
+php php php php protectedphp functionphp php_orderphp(Zendphp_Dbphp_Tablephp_Selectphp php$selectphp,php php$orderphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$orderphp)php)php php{
+php php php php php php php php php php php php php$orderphp php=php arrayphp(php$orderphp)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$orderphp asphp php$valphp)php php{
+php php php php php php php php php php php php php$selectphp-php>orderphp(php$valphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$selectphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Supportphp methodphp forphp fetchingphp rowsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Dbphp_Tablephp_Selectphp php$selectphp php queryphp optionsphp.
+php php php php php php*php php@returnphp arrayphp Anphp arrayphp containingphp thephp rowphp resultsphp inphp FETCHphp_ASSOCphp modephp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_fetchphp(Zendphp_Dbphp_Tablephp_Selectphp php$selectphp)
+php php php php php{
+php php php php php php php php php$stmtphp php=php php$thisphp-php>php_dbphp-php>queryphp(php$selectphp)php;
+php php php php php php php php php$dataphp php=php php$stmtphp-php>fetchAllphp(Zendphp_Dbphp:php:FETCHphp_ASSOCphp)php;
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
+
+php}

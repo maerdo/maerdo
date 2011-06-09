@@ -1,528 +1,528 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Markup
- * @subpackage Renderer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Html.php 22286 2010-05-25 14:26:45Z matthew $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@subpackagephp Renderer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Htmlphp.phpphp php2php2php2php8php6php php2php0php1php0php-php0php5php-php2php5php php1php4php:php2php6php:php4php5Zphp matthewphp php$
+php php*php/
 
-/**
- * @see Zend_Filter_HtmlEntities
- */
-require_once 'Zend/Filter/HtmlEntities.php';
-/**
- * @see Zend_Filter_PregReplace
- */
-require_once 'Zend/Filter/PregReplace.php';
-/**
- * @see Zend_Filter_Callback
- */
-require_once 'Zend/Filter/Callback.php';
-/**
- * @see Zend_Markup_Renderer_RendererAbstract
- */
-require_once 'Zend/Markup/Renderer/RendererAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_HtmlEntities
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/HtmlEntitiesphp.phpphp'php;
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_PregReplace
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/PregReplacephp.phpphp'php;
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Callback
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Callbackphp.phpphp'php;
+php/php*php*
+php php*php php@seephp Zendphp_Markupphp_Rendererphp_RendererAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Markupphp/Rendererphp/RendererAbstractphp.phpphp'php;
 
-/**
- * HTML renderer
- *
- * @category   Zend
- * @package    Zend_Markup
- * @subpackage Renderer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Markup_Renderer_Html extends Zend_Markup_Renderer_RendererAbstract
-{
+php/php*php*
+php php*php HTMLphp renderer
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@subpackagephp Renderer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Markupphp_Rendererphp_Htmlphp extendsphp Zendphp_Markupphp_Rendererphp_RendererAbstract
+php{
 
-    /**
-     * Element groups
-     *
-     * @var array
-     */
-    protected $_groups = array(
-        'block'        => array('block', 'inline', 'block-empty', 'inline-empty', 'list'),
-        'inline'       => array('inline', 'inline-empty'),
-        'list'         => array('list-item'),
-        'list-item'    => array('inline', 'inline-empty', 'list'),
-        'block-empty'  => array(),
-        'inline-empty' => array(),
-    );
+php php php php php/php*php*
+php php php php php php*php Elementphp groups
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_groupsphp php=php arrayphp(
+php php php php php php php php php'blockphp'php php php php php php php php php=php>php arrayphp(php'blockphp'php,php php'inlinephp'php,php php'blockphp-emptyphp'php,php php'inlinephp-emptyphp'php,php php'listphp'php)php,
+php php php php php php php php php'inlinephp'php php php php php php php php=php>php arrayphp(php'inlinephp'php,php php'inlinephp-emptyphp'php)php,
+php php php php php php php php php'listphp'php php php php php php php php php php=php>php arrayphp(php'listphp-itemphp'php)php,
+php php php php php php php php php'listphp-itemphp'php php php php php=php>php arrayphp(php'inlinephp'php,php php'inlinephp-emptyphp'php,php php'listphp'php)php,
+php php php php php php php php php'blockphp-emptyphp'php php php=php>php arrayphp(php)php,
+php php php php php php php php php'inlinephp-emptyphp'php php=php>php arrayphp(php)php,
+php php php php php)php;
 
-    /**
-     * The current group
-     *
-     * @var string
-     */
-    protected $_group = 'block';
+php php php php php/php*php*
+php php php php php php*php Thephp currentphp group
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_groupphp php=php php'blockphp'php;
 
-    /**
-     * Default attributes
-     *
-     * @var array
-     */
-    protected static $_defaultAttributes = array(
-        'id'    => '',
-        'class' => '',
-        'style' => '',
-        'lang'  => '',
-        'title' => ''
-    );
+php php php php php/php*php*
+php php php php php php*php Defaultphp attributes
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultAttributesphp php=php arrayphp(
+php php php php php php php php php'idphp'php php php php php=php>php php'php'php,
+php php php php php php php php php'classphp'php php=php>php php'php'php,
+php php php php php php php php php'stylephp'php php=php>php php'php'php,
+php php php php php php php php php'langphp'php php php=php>php php'php'php,
+php php php php php php php php php'titlephp'php php=php>php php'php'
+php php php php php)php;
 
 
-    /**
-     * Constructor
-     *
-     * @param array|Zend_Config $options
-     *
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$options
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        $this->_pluginLoader = new Zend_Loader_PluginLoader(array(
-            'Zend_Markup_Renderer_Html' => 'Zend/Markup/Renderer/Html/'
-        ));
+php php php php php php php php php$thisphp-php>php_pluginLoaderphp php=php newphp Zendphp_Loaderphp_PluginLoaderphp(arrayphp(
+php php php php php php php php php php php php php'Zendphp_Markupphp_Rendererphp_Htmlphp'php php=php>php php'Zendphp/Markupphp/Rendererphp/Htmlphp/php'
+php php php php php php php php php)php)php;
 
-        if (!isset($options['useDefaultMarkups']) && isset($options['useDefaultTags'])) {
-            $options['useDefaultMarkups'] = $options['useDefaultTags'];
-        }
-        if (isset($options['useDefaultMarkups']) && ($options['useDefaultMarkups'] !== false)) {
-            $this->_defineDefaultMarkups();
-        } elseif (!isset($options['useDefaultMarkups'])) {
-            $this->_defineDefaultMarkups();
-        }
+php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php'useDefaultMarkupsphp'php]php)php php&php&php issetphp(php$optionsphp[php'useDefaultTagsphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'useDefaultMarkupsphp'php]php php=php php$optionsphp[php'useDefaultTagsphp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'useDefaultMarkupsphp'php]php)php php&php&php php(php$optionsphp[php'useDefaultMarkupsphp'php]php php!php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_defineDefaultMarkupsphp(php)php;
+php php php php php php php php php}php elseifphp php(php!issetphp(php$optionsphp[php'useDefaultMarkupsphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_defineDefaultMarkupsphp(php)php;
+php php php php php php php php php}
 
-        parent::__construct($options);
-    }
+php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Define the default markups
-     *
-     * @return void
-     */
-    protected function _defineDefaultMarkups()
-    {
-        $this->_markups = array(
-            'b' => array(
-                'type'   => 10, // self::TYPE_REPLACE | self::TAG_NORMAL
-                'tag'    => 'strong',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'u' => array(
-                'type'        => 10,
-                'tag'         => 'span',
-                'attributes'  => array(
-                    'style' => 'text-decoration: underline;',
-                ),
-                'group'       => 'inline',
-                'filter'      => true,
-            ),
-            'i' => array(
-                'type'   => 10,
-                'tag'    => 'em',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'cite' => array(
-                'type'   => 10,
-                'tag'    => 'cite',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'del' => array(
-                'type'   => 10,
-                'tag'    => 'del',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'ins' => array(
-                'type'   => 10,
-                'tag'    => 'ins',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'sub' => array(
-                'type'   => 10,
-                'tag'    => 'sub',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'sup' => array(
-                'type'   => 10,
-                'tag'    => 'sup',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'span' => array(
-                'type'   => 10,
-                'tag'    => 'span',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'acronym'  => array(
-                'type'   => 10,
-                'tag'    => 'acronym',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            // headings
-            'h1' => array(
-                'type'   => 10,
-                'tag'    => 'h1',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'h2' => array(
-                'type'   => 10,
-                'tag'    => 'h2',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'h3' => array(
-                'type'   => 10,
-                'tag'    => 'h3',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'h4' => array(
-                'type'   => 10,
-                'tag'    => 'h4',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'h5' => array(
-                'type'   => 10,
-                'tag'    => 'h5',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            'h6' => array(
-                'type'   => 10,
-                'tag'    => 'h6',
-                'group'  => 'inline',
-                'filter' => true,
-            ),
-            // callback tags
-            'url' => array(
-                'type'     => 6, // self::TYPE_CALLBACK | self::TAG_NORMAL
-                'callback' => null,
-                'group'    => 'inline',
-                'filter'   => true,
-            ),
-            'img' => array(
-                'type'     => 6,
-                'callback' => null,
-                'group'    => 'inline-empty',
-                'filter'   => true,
-            ),
-            'code' => array(
-                'type'     => 6,
-                'callback' => null,
-                'group'    => 'block-empty',
-                'filter'   => false,
-            ),
-            'p' => array(
-                'type'   => 10,
-                'tag'    => 'p',
-                'group'  => 'block',
-                'filter' => true,
-            ),
-            'ignore' => array(
-                'type'   => 10,
-                'start'  => '',
-                'end'    => '',
-                'group'  => 'block-empty',
-                'filter' => true,
-            ),
-            'quote' => array(
-                'type'   => 10,
-                'tag'    => 'blockquote',
-                'group'  => 'block',
-                'filter' => true,
-            ),
-            'list' => array(
-                'type'     => 6,
-                'callback' => null,
-                'group'    => 'list',
-                'filter'   => new Zend_Filter_PregReplace('/.*/is', ''),
-            ),
-            '*' => array(
-                'type'   => 10,
-                'tag'    => 'li',
-                'group'  => 'list-item',
-                'filter' => true,
-            ),
-            'hr' => array(
-                'type'    => 9, // self::TYPE_REPLACE | self::TAG_SINGLE
-                'tag'     => 'hr',
-                'group'   => 'block',
-                'empty'   => true,
-            ),
-            // aliases
-            'bold' => array(
-                'type' => 16,
-                'name' => 'b',
-            ),
-            'strong' => array(
-                'type' => 16,
-                'name' => 'b',
-            ),
-            'italic' => array(
-                'type' => 16,
-                'name' => 'i',
-            ),
-            'em' => array(
-                'type' => 16,
-                'name' => 'i',
-            ),
-            'emphasized' => array(
-                'type' => 16,
-                'name' => 'i',
-            ),
-            'underline' => array(
-                'type' => 16,
-                'name' => 'u',
-            ),
-            'citation' => array(
-                'type' => 16,
-                'name' => 'cite',
-            ),
-            'deleted' => array(
-                'type' => 16,
-                'name' => 'del',
-            ),
-            'insert' => array(
-                'type' => 16,
-                'name' => 'ins',
-            ),
-            'strike' => array(
-                'type' => 16,
-                'name' => 's',
-            ),
-            's' => array(
-                'type' => 16,
-                'name' => 'del',
-            ),
-            'subscript' => array(
-                'type' => 16,
-                'name' => 'sub',
-            ),
-            'superscript' => array(
-                'type' => 16,
-                'name' => 'sup',
-            ),
-            'a' => array(
-                'type' => 16,
-                'name' => 'url',
-            ),
-            'image' => array(
-                'type' => 16,
-                'name' => 'img',
-            ),
-            'li' => array(
-                'type' => 16,
-                'name' => '*',
-            ),
-            'color' => array(
-                'type' => 16,
-                'name' => 'span',
-            ),
-        );
-    }
+php php php php php/php*php*
+php php php php php php*php Definephp thephp defaultphp markups
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_defineDefaultMarkupsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_markupsphp php=php arrayphp(
+php php php php php php php php php php php php php'bphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,php php/php/php selfphp:php:TYPEphp_REPLACEphp php|php selfphp:php:TAGphp_NORMAL
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'strongphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'uphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php php php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php php php php php php=php>php php'spanphp'php,
+php php php php php php php php php php php php php php php php php'attributesphp'php php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'stylephp'php php=php>php php'textphp-decorationphp:php underlinephp;php'php,
+php php php php php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php php php php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php php php php php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'iphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'emphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'citephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'citephp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'delphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'delphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'insphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'insphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'subphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'subphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'supphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'supphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'spanphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'spanphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'acronymphp'php php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'acronymphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php/php/php headings
+php php php php php php php php php php php php php'hphp1php'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'hphp1php'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'hphp2php'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'hphp2php'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'hphp3php'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'hphp3php'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'hphp4php'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'hphp4php'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'hphp5php'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'hphp5php'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'hphp6php'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'hphp6php'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php/php/php callbackphp tags
+php php php php php php php php php php php php php'urlphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php php php=php>php php6php,php php/php/php selfphp:php:TYPEphp_CALLBACKphp php|php selfphp:php:TAGphp_NORMAL
+php php php php php php php php php php php php php php php php php'callbackphp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php'groupphp'php php php php php=php>php php'inlinephp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'imgphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php php php=php>php php6php,
+php php php php php php php php php php php php php php php php php'callbackphp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php'groupphp'php php php php php=php>php php'inlinephp-emptyphp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'codephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php php php=php>php php6php,
+php php php php php php php php php php php php php php php php php'callbackphp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php'groupphp'php php php php php=php>php php'blockphp-emptyphp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php php php=php>php falsephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'pphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'pphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'blockphp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'ignorephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'startphp'php php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php'endphp'php php php php php=php>php php'php'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'blockphp-emptyphp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'quotephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'blockquotephp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'blockphp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'listphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php php php=php>php php6php,
+php php php php php php php php php php php php php php php php php'callbackphp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php'groupphp'php php php php php=php>php php'listphp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php php php=php>php newphp Zendphp_Filterphp_PregReplacephp(php'php/php.php*php/isphp'php,php php'php'php)php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'php*php'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php=php>php php1php0php,
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php=php>php php'liphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php=php>php php'listphp-itemphp'php,
+php php php php php php php php php php php php php php php php php'filterphp'php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'hrphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php php php php=php>php php9php,php php/php/php selfphp:php:TYPEphp_REPLACEphp php|php selfphp:php:TAGphp_SINGLE
+php php php php php php php php php php php php php php php php php'tagphp'php php php php php php=php>php php'hrphp'php,
+php php php php php php php php php php php php php php php php php'groupphp'php php php php=php>php php'blockphp'php,
+php php php php php php php php php php php php php php php php php'emptyphp'php php php php=php>php truephp,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php/php/php aliases
+php php php php php php php php php php php php php'boldphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'bphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'strongphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'bphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'italicphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'iphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'emphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'iphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'emphasizedphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'iphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'underlinephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'uphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'citationphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'citephp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'deletedphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'delphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'insertphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'insphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'strikephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'sphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'sphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'delphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'subscriptphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'subphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'superscriptphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'supphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'aphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'urlphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'imagephp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'imgphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'liphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'php*php'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php php php php php'colorphp'php php=php>php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php1php6php,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php'spanphp'php,
+php php php php php php php php php php php php php)php,
+php php php php php php php php php)php;
+php php php php php}
 
-    /**
-     * Add the default filters
-     *
-     * @return void
-     */
-    public function addDefaultFilters()
-    {
-        $this->_defaultFilter = new Zend_Filter();
+php php php php php/php*php*
+php php php php php php*php Addphp thephp defaultphp filters
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp addDefaultFiltersphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_defaultFilterphp php=php newphp Zendphp_Filterphp(php)php;
 
-        $this->_defaultFilter->addFilter(new Zend_Filter_HtmlEntities(array('encoding' => self::getEncoding())));
-        $this->_defaultFilter->addFilter(new Zend_Filter_Callback('nl2br'));
-    }
+php php php php php php php php php$thisphp-php>php_defaultFilterphp-php>addFilterphp(newphp Zendphp_Filterphp_HtmlEntitiesphp(arrayphp(php'encodingphp'php php=php>php selfphp:php:getEncodingphp(php)php)php)php)php;
+php php php php php php php php php$thisphp-php>php_defaultFilterphp-php>addFilterphp(newphp Zendphp_Filterphp_Callbackphp(php'nlphp2brphp'php)php)php;
+php php php php php}
 
-    /**
-     * Execute a replace token
-     *
-     * @param  Zend_Markup_Token $token
-     * @param  array $markup
-     * @return string
-     */
-    protected function _executeReplace(Zend_Markup_Token $token, $markup)
-    {
-        if (isset($markup['tag'])) {
-            if (!isset($markup['attributes'])) {
-                $markup['attributes'] = array();
-            }
-            $attrs = self::renderAttributes($token, $markup['attributes']);
-            return "<{$markup['tag']}{$attrs}>{$this->_render($token)}</{$markup['tag']}>";
-        }
+php php php php php/php*php*
+php php php php php php*php Executephp aphp replacephp token
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
+php php php php php php*php php@paramphp php arrayphp php$markup
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_executeReplacephp(Zendphp_Markupphp_Tokenphp php$tokenphp,php php$markupphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$markupphp[php'tagphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$markupphp[php'attributesphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$markupphp[php'attributesphp'php]php php=php arrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$attrsphp php=php selfphp:php:renderAttributesphp(php$tokenphp,php php$markupphp[php'attributesphp'php]php)php;
+php php php php php php php php php php php php returnphp php"<php{php$markupphp[php'tagphp'php]php}php{php$attrsphp}php>php{php$thisphp-php>php_renderphp(php$tokenphp)php}<php/php{php$markupphp[php'tagphp'php]php}php>php"php;
+php php php php php php php php php}
 
-        return parent::_executeReplace($token, $markup);
-    }
+php php php php php php php php returnphp parentphp:php:php_executeReplacephp(php$tokenphp,php php$markupphp)php;
+php php php php php}
 
-    /**
-     * Execute a single replace token
-     *
-     * @param  Zend_Markup_Token $token
-     * @param  array $markup
-     * @return string
-     */
-    protected function _executeSingleReplace(Zend_Markup_Token $token, $markup)
-    {
-        if (isset($markup['tag'])) {
-            if (!isset($markup['attributes'])) {
-                $markup['attributes'] = array();
-            }
-            $attrs = self::renderAttributes($token, $markup['attributes']);
-            return "<{$markup['tag']}{$attrs} />";
-        }
-        return parent::_executeSingleReplace($token, $markup);
-    }
+php php php php php/php*php*
+php php php php php php*php Executephp aphp singlephp replacephp token
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
+php php php php php php*php php@paramphp php arrayphp php$markup
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_executeSingleReplacephp(Zendphp_Markupphp_Tokenphp php$tokenphp,php php$markupphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$markupphp[php'tagphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$markupphp[php'attributesphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$markupphp[php'attributesphp'php]php php=php arrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$attrsphp php=php selfphp:php:renderAttributesphp(php$tokenphp,php php$markupphp[php'attributesphp'php]php)php;
+php php php php php php php php php php php php returnphp php"<php{php$markupphp[php'tagphp'php]php}php{php$attrsphp}php php/php>php"php;
+php php php php php php php php php}
+php php php php php php php php returnphp parentphp:php:php_executeSingleReplacephp(php$tokenphp,php php$markupphp)php;
+php php php php php}
 
-    /**
-     * Render some attributes
-     *
-     * @param  Zend_Markup_Token $token
-     * @param  array $attributes
-     * @return string
-     */
-    public static function renderAttributes(Zend_Markup_Token $token, array $attributes = array())
-    {
-        $attributes = array_merge(self::$_defaultAttributes, $attributes);
+php php php php php/php*php*
+php php php php php php*php Renderphp somephp attributes
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
+php php php php php php*php php@paramphp php arrayphp php$attributes
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp renderAttributesphp(Zendphp_Markupphp_Tokenphp php$tokenphp,php arrayphp php$attributesphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$attributesphp php=php arrayphp_mergephp(selfphp:php:php$php_defaultAttributesphp,php php$attributesphp)php;
 
-        $return = '';
+php php php php php php php php php$returnphp php=php php'php'php;
 
-        $tokenAttributes = $token->getAttributes();
+php php php php php php php php php$tokenAttributesphp php=php php$tokenphp-php>getAttributesphp(php)php;
 
-        // correct style attribute
-        if (isset($tokenAttributes['style'])) {
-            $tokenAttributes['style'] = trim($tokenAttributes['style']);
+php php php php php php php php php/php/php correctphp stylephp attribute
+php php php php php php php php ifphp php(issetphp(php$tokenAttributesphp[php'stylephp'php]php)php)php php{
+php php php php php php php php php php php php php$tokenAttributesphp[php'stylephp'php]php php=php trimphp(php$tokenAttributesphp[php'stylephp'php]php)php;
 
-            if ($tokenAttributes['style'][strlen($tokenAttributes['style']) - 1] != ';') {
-                $tokenAttributes['style'] .= ';';
-            }
-        } else {
-            $tokenAttributes['style'] = '';
-        }
+php php php php php php php php php php php php ifphp php(php$tokenAttributesphp[php'stylephp'php]php[strlenphp(php$tokenAttributesphp[php'stylephp'php]php)php php-php php1php]php php!php=php php'php;php'php)php php{
+php php php php php php php php php php php php php php php php php$tokenAttributesphp[php'stylephp'php]php php.php=php php'php;php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$tokenAttributesphp[php'stylephp'php]php php=php php'php'php;
+php php php php php php php php php}
 
-        // special treathment for 'align' and 'color' attribute
-        if (isset($tokenAttributes['align'])) {
-            $tokenAttributes['style'] .= 'text-align: ' . $tokenAttributes['align'] . ';';
-            unset($tokenAttributes['align']);
-        }
-        if (isset($tokenAttributes['color']) && self::checkColor($tokenAttributes['color'])) {
-            $tokenAttributes['style'] .= 'color: ' . $tokenAttributes['color'] . ';';
-            unset($tokenAttributes['color']);
-        }
+php php php php php php php php php/php/php specialphp treathmentphp forphp php'alignphp'php andphp php'colorphp'php attribute
+php php php php php php php php ifphp php(issetphp(php$tokenAttributesphp[php'alignphp'php]php)php)php php{
+php php php php php php php php php php php php php$tokenAttributesphp[php'stylephp'php]php php.php=php php'textphp-alignphp:php php'php php.php php$tokenAttributesphp[php'alignphp'php]php php.php php'php;php'php;
+php php php php php php php php php php php php unsetphp(php$tokenAttributesphp[php'alignphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$tokenAttributesphp[php'colorphp'php]php)php php&php&php selfphp:php:checkColorphp(php$tokenAttributesphp[php'colorphp'php]php)php)php php{
+php php php php php php php php php php php php php$tokenAttributesphp[php'stylephp'php]php php.php=php php'colorphp:php php'php php.php php$tokenAttributesphp[php'colorphp'php]php php.php php'php;php'php;
+php php php php php php php php php php php php unsetphp(php$tokenAttributesphp[php'colorphp'php]php)php;
+php php php php php php php php php}
 
-        /*
-         * loop through all the available attributes, and check if there is
-         * a value defined by the token
-         * if there is no value defined by the token, use the default value or
-         * don't set the attribute
-         */
-        foreach ($attributes as $attribute => $value) {
-            if (isset($tokenAttributes[$attribute]) && !empty($tokenAttributes[$attribute])) {
-                $return .= ' ' . $attribute . '="' . htmlentities($tokenAttributes[$attribute],
-                                                                  ENT_QUOTES,
-                                                                  self::getEncoding()) . '"';
-            } elseif (!empty($value)) {
-                $return .= ' ' . $attribute . '="' . htmlentities($value, ENT_QUOTES, self::getEncoding()) . '"';
-            }
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php loopphp throughphp allphp thephp availablephp attributesphp,php andphp checkphp ifphp therephp is
+php php php php php php php php php php*php aphp valuephp definedphp byphp thephp token
+php php php php php php php php php php*php ifphp therephp isphp nophp valuephp definedphp byphp thephp tokenphp,php usephp thephp defaultphp valuephp or
+php php php php php php php php php php*php donphp'tphp setphp thephp attribute
+php php php php php php php php php php*php/
+php php php php php php php php foreachphp php(php$attributesphp asphp php$attributephp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$tokenAttributesphp[php$attributephp]php)php php&php&php php!emptyphp(php$tokenAttributesphp[php$attributephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$returnphp php.php=php php'php php'php php.php php$attributephp php.php php'php=php"php'php php.php htmlentitiesphp(php$tokenAttributesphp[php$attributephp]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ENTphp_QUOTESphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:getEncodingphp(php)php)php php.php php'php"php'php;
+php php php php php php php php php php php php php}php elseifphp php(php!emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$returnphp php.php=php php'php php'php php.php php$attributephp php.php php'php=php"php'php php.php htmlentitiesphp(php$valuephp,php ENTphp_QUOTESphp,php selfphp:php:getEncodingphp(php)php)php php.php php'php"php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $return;
-    }
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Check if a color is a valid HTML color
-     *
-     * @param string $color
-     *
-     * @return bool
-     */
-    public static function checkColor($color)
-    {
-        /*
-         * aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive,
-         * purple, red, silver, teal, white, and yellow.
-         */
-        $colors = array(
-            'aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime',
-            'maroon', 'navy', 'olive', 'purple', 'red', 'silver', 'teal',
-            'white', 'yellow'
-        );
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp aphp colorphp isphp aphp validphp HTMLphp color
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$color
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp staticphp functionphp checkColorphp(php$colorphp)
+php php php php php{
+php php php php php php php php php/php*
+php php php php php php php php php php*php aquaphp,php blackphp,php bluephp,php fuchsiaphp,php grayphp,php greenphp,php limephp,php maroonphp,php navyphp,php olivephp,
+php php php php php php php php php php*php purplephp,php redphp,php silverphp,php tealphp,php whitephp,php andphp yellowphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$colorsphp php=php arrayphp(
+php php php php php php php php php php php php php'aquaphp'php,php php'blackphp'php,php php'bluephp'php,php php'fuchsiaphp'php,php php'grayphp'php,php php'greenphp'php,php php'limephp'php,
+php php php php php php php php php php php php php'maroonphp'php,php php'navyphp'php,php php'olivephp'php,php php'purplephp'php,php php'redphp'php,php php'silverphp'php,php php'tealphp'php,
+php php php php php php php php php php php php php'whitephp'php,php php'yellowphp'
+php php php php php php php php php)php;
 
-        if (in_array($color, $colors)) {
-            return true;
-        }
+php php php php php php php php ifphp php(inphp_arrayphp(php$colorphp,php php$colorsphp)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        if (preg_match('/\#[0-9a-f]{6}/i', $color)) {
-            return true;
-        }
+php php php php php php php php ifphp php(pregphp_matchphp(php'php/php\php#php[php0php-php9aphp-fphp]php{php6php}php/iphp'php,php php$colorphp)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Check if the URI is valid
-     *
-     * @param string $uri
-     *
-     * @return bool
-     */
-    public static function isValidUri($uri)
-    {
-        if (!preg_match('/^([a-z][a-z+\-.]*):/i', $uri, $matches)) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp thephp URIphp isphp valid
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$uri
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp staticphp functionphp isValidUriphp(php$uriphp)
+php php php php php{
+php php php php php php php php ifphp php(php!pregphp_matchphp(php'php/php^php(php[aphp-zphp]php[aphp-zphp+php\php-php.php]php*php)php:php/iphp'php,php php$uriphp,php php$matchesphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $scheme = strtolower($matches[1]);
+php php php php php php php php php$schemephp php=php strtolowerphp(php$matchesphp[php1php]php)php;
 
-        switch ($scheme) {
-            case 'javascript':
-                // JavaScript scheme is not allowed for security reason
-                return false;
+php php php php php php php php switchphp php(php$schemephp)php php{
+php php php php php php php php php php php php casephp php'javascriptphp'php:
+php php php php php php php php php php php php php php php php php/php/php JavaScriptphp schemephp isphp notphp allowedphp forphp securityphp reason
+php php php php php php php php php php php php php php php php returnphp falsephp;
 
-            case 'http':
-            case 'https':
-            case 'ftp':
-                $components = @parse_url($uri);
+php php php php php php php php php php php php casephp php'httpphp'php:
+php php php php php php php php php php php php casephp php'httpsphp'php:
+php php php php php php php php php php php php casephp php'ftpphp'php:
+php php php php php php php php php php php php php php php php php$componentsphp php=php php@parsephp_urlphp(php$uriphp)php;
 
-                if ($components === false) {
-                    return false;
-                }
+php php php php php php php php php php php php php php php php ifphp php(php$componentsphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php}
 
-                if (!isset($components['host'])) {
-                    return false;
-                }
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$componentsphp[php'hostphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php}
 
-                return true;
+php php php php php php php php php php php php php php php php returnphp truephp;
 
-            default:
-                return true;
-        }
-    }
-}
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php}
+php}

@@ -1,360 +1,360 @@
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-CREATE TABLE IF NOT EXISTS `acl__resource` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `page_id` int(11) NOT NULL,
-  `acl__role_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `acl__role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent` varchar(50) NOT NULL,
-  `role` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `role` (`role`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-CREATE TABLE IF NOT EXISTS `action` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `controller_id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__auth` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `module_id` int(11) NOT NULL,
-  `table` varchar(30) NOT NULL,
-  `database_name` varchar(25) NOT NULL,
-  `username_field` varchar(50) NOT NULL,
-  `password_field` varchar(50) NOT NULL,
-  `role_field` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__auth__role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ca_id` int(11) NOT NULL,
-  `role` varchar(30) NOT NULL,
-  `url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__cache` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  `type` varchar(30) NOT NULL,
-  `backend_type` varchar(20) NOT NULL,
-  `default` enum('yes','no') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__cache__backend__file__option` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cc_id` int(11) NOT NULL,
-  `cache_dir` varchar(60) NOT NULL,
-  `file_locking` varchar(60) NOT NULL,
-  `read_control` varchar(5) NOT NULL,
-  `read_control_type` varchar(5) NOT NULL,
-  `hashed_directory_level` varchar(5) NOT NULL,
-  `hashed_directory_umask` varchar(5) NOT NULL,
-  `metatadatas_array_max_size` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__cache__backend__sqlite__option` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cc_id` int(11) NOT NULL,
-  `cache_dir` varchar(60) NOT NULL,
-  `automatic_vacuum_factor` varchar(60) NOT NULL,
-  `cache_db_complete_path` varchar(5) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__cache__frontendoption` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cc_id` int(11) NOT NULL,
-  `option` varchar(60) NOT NULL,
-  `value` varchar(60) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__database` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `adapter` varchar(15) NOT NULL,
-  `hostname` varchar(50) NOT NULL,
-  `database` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `component__databasemodule` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `module_id` int(11) NOT NULL,
-  `database_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-
-CREATE TABLE IF NOT EXISTS `component__translate` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `module_id` int(11) NOT NULL,
-  `identifiant` varchar(5) NOT NULL,
-  `locale` varchar(5) NOT NULL,
-  `language_name` varchar(30) NOT NULL,
-  `default` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `controller` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `module_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `module_id` (`module_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `template` varchar(100) NOT NULL,
-  `action` varchar(100) NOT NULL,
-  `method` enum('post','get') NOT NULL,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form_id` int(11) NOT NULL,
-  `type` varchar(30) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_attribs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `value` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_filters` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_id` int(11) NOT NULL,
-  `filter` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_filters_options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_filters_id` int(11) NOT NULL,
-  `option` varchar(30) NOT NULL,
-  `value` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_multioptions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `value` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `value` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
-
-
-INSERT INTO `form__field_type` (`id`, `type`) VALUES
-(1, 'Button'),
-(2, 'Captcha'),
-(3, 'Checkbox'),
-(4, 'Exception'),
-(5, 'File'),
-(6, 'Hash'),
-(7, 'Hidden'),
-(8, 'Image'),
-(9, 'Multi'),
-(10, 'MultiCheckbox'),
-(11, 'Multiselect'),
-(12, 'Password'),
-(13, 'Radio'),
-(14, 'Reset'),
-(15, 'Select'),
-(16, 'Submit'),
-(17, 'Text'),
-(18, 'Textarea'),
-(19, 'Xhtml');
-
-
-CREATE TABLE IF NOT EXISTS `form__field_validators` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_id` int(11) NOT NULL,
-  `validator` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_validators_message` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_validators_id` int(11) NOT NULL,
-  `key` varchar(30) NOT NULL,
-  `message` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `form__field_validators_options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form__field_validators_id` int(11) NOT NULL,
-  `option` varchar(30) NOT NULL,
-  `value` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `locale` (
-  `id` int(11) NOT NULL,
-  `locale` varchar(10) NOT NULL,
-  `language_name` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE IF NOT EXISTS `module` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `page` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `module_id` int(11) NOT NULL,
-  `controller_id` int(11) NOT NULL,
-  `action_id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `url` (`url`),
-  KEY `action_id` (`action_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `page__css` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `page_id` int(11) NOT NULL,
-  `identifiant` varchar(50) NOT NULL,
-  `file` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `page__javascript` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `page_id` int(11) NOT NULL,
-  `identifiant` varchar(50) NOT NULL,
-  `file` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `page__meta` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `page_id` int(11) NOT NULL,
-  `locale` varchar(10) NOT NULL,
-  `meta` varchar(20) NOT NULL,
-  `value` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `page__navigation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `page_id` int(11) NOT NULL,
-  `parent_id` int(11) NOT NULL,
-  `label` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `page__title` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `page_id` int(11) NOT NULL,
-  `locale` varchar(10) NOT NULL,
-  `value` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `page_id` (`page_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  `firstname` varchar(30) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `role` varchar(20) NOT NULL,
-  `status` enum('locked','active') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
-
-
-
-INSERT INTO `acl__role` (`id`, `parent`, `role`) VALUES
-(1, '', 'guest');
-
-INSERT INTO `action` (`id`, `controller_id`, `name`, `description`) VALUES
-(1, 1, 'permission', ''),
-(2, 1, 'login', ''),
-(3, 1, 'logout', ''),
-(4, 1, 'index','');
-
-INSERT INTO `controller` (`id`, `module_id`, `name`, `description`) VALUES
-(1, 1, 'index', 'Front - IndexController');
-
-
-INSERT INTO `module` (`id`, `name`, `description`) VALUES
-(1, 'front', 'Front');
+SETphp SQLphp_MODEphp=php"NOphp_AUTOphp_VALUEphp_ONphp_ZEROphp"php;
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`aclphp_php_resourcephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`pagephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`aclphp_php_rolephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`aclphp_php_rolephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`parentphp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`rolephp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)php,
+php php UNIQUEphp KEYphp php`rolephp`php php(php`rolephp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`actionphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`controllerphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php2php0php)php NOTphp NULLphp,
+php php php`descriptionphp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_authphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`modulephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`tablephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`databasephp_namephp`php varcharphp(php2php5php)php NOTphp NULLphp,
+php php php`usernamephp_fieldphp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`passwordphp_fieldphp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`rolephp_fieldphp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_authphp_php_rolephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`caphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`rolephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`urlphp`php varcharphp(php2php5php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_cachephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`typephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`backendphp_typephp`php varcharphp(php2php0php)php NOTphp NULLphp,
+php php php`defaultphp`php enumphp(php'yesphp'php,php'nophp'php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_cachephp_php_backendphp_php_filephp_php_optionphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`ccphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`cachephp_dirphp`php varcharphp(php6php0php)php NOTphp NULLphp,
+php php php`filephp_lockingphp`php varcharphp(php6php0php)php NOTphp NULLphp,
+php php php`readphp_controlphp`php varcharphp(php5php)php NOTphp NULLphp,
+php php php`readphp_controlphp_typephp`php varcharphp(php5php)php NOTphp NULLphp,
+php php php`hashedphp_directoryphp_levelphp`php varcharphp(php5php)php NOTphp NULLphp,
+php php php`hashedphp_directoryphp_umaskphp`php varcharphp(php5php)php NOTphp NULLphp,
+php php php`metatadatasphp_arrayphp_maxphp_sizephp`php varcharphp(php1php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_cachephp_php_backendphp_php_sqlitephp_php_optionphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`ccphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`cachephp_dirphp`php varcharphp(php6php0php)php NOTphp NULLphp,
+php php php`automaticphp_vacuumphp_factorphp`php varcharphp(php6php0php)php NOTphp NULLphp,
+php php php`cachephp_dbphp_completephp_pathphp`php varcharphp(php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_cachephp_php_frontendoptionphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`ccphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`optionphp`php varcharphp(php6php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php6php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_databasephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`adapterphp`php varcharphp(php1php5php)php NOTphp NULLphp,
+php php php`hostnamephp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`databasephp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`usernamephp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`passwordphp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_databasemodulephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`modulephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`databasephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`componentphp_php_translatephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`modulephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`identifiantphp`php varcharphp(php5php)php NOTphp NULLphp,
+php php php`localephp`php varcharphp(php5php)php NOTphp NULLphp,
+php php php`languagephp_namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`defaultphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`controllerphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`modulephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`descriptionphp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)php,
+php php KEYphp php`modulephp_idphp`php php(php`modulephp_idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`templatephp`php varcharphp(php1php0php0php)php NOTphp NULLphp,
+php php php`actionphp`php varcharphp(php1php0php0php)php NOTphp NULLphp,
+php php php`methodphp`php enumphp(php'postphp'php,php'getphp'php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`typephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_attribsphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_filtersphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`filterphp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_filtersphp_optionsphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_filtersphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`optionphp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_multioptionsphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_optionsphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_typephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`typephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp php DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php2php0php php;
+
+
+INSERTphp INTOphp php`formphp_php_fieldphp_typephp`php php(php`idphp`php,php php`typephp`php)php VALUES
+php(php1php,php php'Buttonphp'php)php,
+php(php2php,php php'Captchaphp'php)php,
+php(php3php,php php'Checkboxphp'php)php,
+php(php4php,php php'Exceptionphp'php)php,
+php(php5php,php php'Filephp'php)php,
+php(php6php,php php'Hashphp'php)php,
+php(php7php,php php'Hiddenphp'php)php,
+php(php8php,php php'Imagephp'php)php,
+php(php9php,php php'Multiphp'php)php,
+php(php1php0php,php php'MultiCheckboxphp'php)php,
+php(php1php1php,php php'Multiselectphp'php)php,
+php(php1php2php,php php'Passwordphp'php)php,
+php(php1php3php,php php'Radiophp'php)php,
+php(php1php4php,php php'Resetphp'php)php,
+php(php1php5php,php php'Selectphp'php)php,
+php(php1php6php,php php'Submitphp'php)php,
+php(php1php7php,php php'Textphp'php)php,
+php(php1php8php,php php'Textareaphp'php)php,
+php(php1php9php,php php'Xhtmlphp'php)php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_validatorsphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`validatorphp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_validatorsphp_messagephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_validatorsphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`keyphp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`messagephp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`formphp_php_fieldphp_validatorsphp_optionsphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`formphp_php_fieldphp_validatorsphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`optionphp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`localephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`localephp`php varcharphp(php1php0php)php NOTphp NULLphp,
+php php php`languagephp_namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`modulephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`descriptionphp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`pagephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`modulephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`controllerphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`actionphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`namephp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`urlphp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php php`descriptionphp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)php,
+php php UNIQUEphp KEYphp php`urlphp`php php(php`urlphp`php)php,
+php php KEYphp php`actionphp_idphp`php php(php`actionphp_idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`pagephp_php_cssphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`pagephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`identifiantphp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`filephp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`pagephp_php_javascriptphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`pagephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`identifiantphp`php varcharphp(php5php0php)php NOTphp NULLphp,
+php php php`filephp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`pagephp_php_metaphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`pagephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`localephp`php varcharphp(php1php0php)php NOTphp NULLphp,
+php php php`metaphp`php varcharphp(php2php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`pagephp_php_navigationphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`pagephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`parentphp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`labelphp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`pagephp_php_titlephp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`pagephp_idphp`php intphp(php1php1php)php NOTphp NULLphp,
+php php php`localephp`php varcharphp(php1php0php)php NOTphp NULLphp,
+php php php`valuephp`php varcharphp(php2php5php5php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)php,
+php php KEYphp php`pagephp_idphp`php php(php`pagephp_idphp`php)
+php)php ENGINEphp=MyISAMphp DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php1php php;
+
+
+CREATEphp TABLEphp IFphp NOTphp EXISTSphp php`usersphp`php php(
+php php php`idphp`php intphp(php1php1php)php NOTphp NULLphp AUTOphp_INCREMENTphp,
+php php php`namephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`firstnamephp`php varcharphp(php3php0php)php NOTphp NULLphp,
+php php php`emailphp`php varcharphp(php6php0php)php NOTphp NULLphp,
+php php php`usernamephp`php varcharphp(php2php0php)php NOTphp NULLphp,
+php php php`passwordphp`php varcharphp(php3php2php)php NOTphp NULLphp,
+php php php`rolephp`php varcharphp(php2php0php)php NOTphp NULLphp,
+php php php`statusphp`php enumphp(php'lockedphp'php,php'activephp'php)php NOTphp NULLphp,
+php php PRIMARYphp KEYphp php(php`idphp`php)
+php)php ENGINEphp=MyISAMphp php DEFAULTphp CHARSETphp=latinphp1php AUTOphp_INCREMENTphp=php4php php;
+
+
+
+
+INSERTphp INTOphp php`aclphp_php_rolephp`php php(php`idphp`php,php php`parentphp`php,php php`rolephp`php)php VALUES
+php(php1php,php php'php'php,php php'guestphp'php)php;
+
+INSERTphp INTOphp php`actionphp`php php(php`idphp`php,php php`controllerphp_idphp`php,php php`namephp`php,php php`descriptionphp`php)php VALUES
+php(php1php,php php1php,php php'permissionphp'php,php php'php'php)php,
+php(php2php,php php1php,php php'loginphp'php,php php'php'php)php,
+php(php3php,php php1php,php php'logoutphp'php,php php'php'php)php,
+php(php4php,php php1php,php php'indexphp'php,php'php'php)php;
+
+INSERTphp INTOphp php`controllerphp`php php(php`idphp`php,php php`modulephp_idphp`php,php php`namephp`php,php php`descriptionphp`php)php VALUES
+php(php1php,php php1php,php php'indexphp'php,php php'Frontphp php-php IndexControllerphp'php)php;
+
+
+INSERTphp INTOphp php`modulephp`php php(php`idphp`php,php php`namephp`php,php php`descriptionphp`php)php VALUES
+php(php1php,php php'frontphp'php,php php'Frontphp'php)php;
 
 

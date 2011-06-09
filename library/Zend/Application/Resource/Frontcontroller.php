@@ -1,163 +1,163 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Frontcontroller.php 23486 2010-12-10 04:05:30Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Frontcontrollerphp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Application_Resource_ResourceAbstract
- */
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Applicationphp/Resourcephp/ResourceAbstractphp.phpphp'php;
 
 
-/**
- * Front Controller resource
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Application_Resource_Frontcontroller extends Zend_Application_Resource_ResourceAbstract
-{
-    /**
-     * @var Zend_Controller_Front
-     */
-    protected $_front;
+php/php*php*
+php php*php Frontphp Controllerphp resource
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Applicationphp_Resourcephp_Frontcontrollerphp extendsphp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Controllerphp_Front
+php php php php php php*php/
+php php php php protectedphp php$php_frontphp;
 
-    /**
-     * Initialize Front Controller
-     *
-     * @return Zend_Controller_Front
-     */
-    public function init()
-    {
-        $front = $this->getFrontController();
+php php php php php/php*php*
+php php php php php php*php Initializephp Frontphp Controller
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php php php php php$frontphp php=php php$thisphp-php>getFrontControllerphp(php)php;
 
-        foreach ($this->getOptions() as $key => $value) {
-            switch (strtolower($key)) {
-                case 'controllerdirectory':
-                    if (is_string($value)) {
-                        $front->setControllerDirectory($value);
-                    } elseif (is_array($value)) {
-                        foreach ($value as $module => $directory) {
-                            $front->addControllerDirectory($directory, $module);
-                        }
-                    }
-                    break;
+php php php php php php php php foreachphp php(php$thisphp-php>getOptionsphp(php)php asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'controllerdirectoryphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setControllerDirectoryphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$modulephp php=php>php php$directoryphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$frontphp-php>addControllerDirectoryphp(php$directoryphp,php php$modulephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'modulecontrollerdirectoryname':
-                    $front->setModuleControllerDirectoryName($value);
-                    break;
+php php php php php php php php php php php php php php php php casephp php'modulecontrollerdirectorynamephp'php:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setModuleControllerDirectoryNamephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'moduledirectory':
-                    if (is_string($value)) {
-                        $front->addModuleDirectory($value);
-                    } elseif (is_array($value)) {
-                        foreach($value as $moduleDir) {
-                            $front->addModuleDirectory($moduleDir);
-                        }
-                    }
-                    break;
+php php php php php php php php php php php php php php php php casephp php'moduledirectoryphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$frontphp-php>addModuleDirectoryphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php foreachphp(php$valuephp asphp php$moduleDirphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$frontphp-php>addModuleDirectoryphp(php$moduleDirphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'defaultcontrollername':
-                    $front->setDefaultControllerName($value);
-                    break;
+php php php php php php php php php php php php php php php php casephp php'defaultcontrollernamephp'php:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setDefaultControllerNamephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'defaultaction':
-                    $front->setDefaultAction($value);
-                    break;
+php php php php php php php php php php php php php php php php casephp php'defaultactionphp'php:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setDefaultActionphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'defaultmodule':
-                    $front->setDefaultModule($value);
-                    break;
+php php php php php php php php php php php php php php php php casephp php'defaultmodulephp'php:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setDefaultModulephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'baseurl':
-                    if (!empty($value)) {
-                        $front->setBaseUrl($value);
-                    }
-                    break;
+php php php php php php php php php php php php php php php php casephp php'baseurlphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setBaseUrlphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'params':
-                    $front->setParams($value);
-                    break;
+php php php php php php php php php php php php php php php php casephp php'paramsphp'php:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setParamsphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'plugins':
-                    foreach ((array) $value as $pluginClass) {
-                        $stackIndex = null;
-                        if(is_array($pluginClass)) {
-                            $pluginClass = array_change_key_case($pluginClass, CASE_LOWER);
-                            if(isset($pluginClass['class']))
-                            {
-                                if(isset($pluginClass['stackindex'])) {
-                                    $stackIndex = $pluginClass['stackindex'];
-                                }
+php php php php php php php php php php php php php php php php casephp php'pluginsphp'php:
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php(arrayphp)php php$valuephp asphp php$pluginClassphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$stackIndexphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(isphp_arrayphp(php$pluginClassphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$pluginClassphp php=php arrayphp_changephp_keyphp_casephp(php$pluginClassphp,php CASEphp_LOWERphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(issetphp(php$pluginClassphp[php'classphp'php]php)php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(issetphp(php$pluginClassphp[php'stackindexphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$stackIndexphp php=php php$pluginClassphp[php'stackindexphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                                $pluginClass = $pluginClass['class'];
-                            }
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$pluginClassphp php=php php$pluginClassphp[php'classphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        $plugin = new $pluginClass();
-                        $front->registerPlugin($plugin, $stackIndex);
-                    }
-                    break;
+php php php php php php php php php php php php php php php php php php php php php php php php php$pluginphp php=php newphp php$pluginClassphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$frontphp-php>registerPluginphp(php$pluginphp,php php$stackIndexphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'returnresponse':
-                    $front->returnResponse((bool) $value);
-                    break;
+php php php php php php php php php php php php php php php php casephp php'returnresponsephp'php:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>returnResponsephp(php(boolphp)php php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'throwexceptions':
-                    $front->throwExceptions((bool) $value);
-                    break;
+php php php php php php php php php php php php php php php php casephp php'throwexceptionsphp'php:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>throwExceptionsphp(php(boolphp)php php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                case 'actionhelperpaths':
-                    if (is_array($value)) {
-                        foreach ($value as $helperPrefix => $helperPath) {
-                            Zend_Controller_Action_HelperBroker::addPath($helperPath, $helperPrefix);
-                        }
-                    }
-                    break;
+php php php php php php php php php php php php php php php php casephp php'actionhelperpathsphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$helperPrefixphp php=php>php php$helperPathphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:addPathphp(php$helperPathphp,php php$helperPrefixphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                default:
-                    $front->setParam($key, $value);
-                    break;
-            }
-        }
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php$frontphp-php>setParamphp(php$keyphp,php php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (null !== ($bootstrap = $this->getBootstrap())) {
-            $this->getBootstrap()->frontController = $front;
-        }
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$bootstrapphp php=php php$thisphp-php>getBootstrapphp(php)php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>getBootstrapphp(php)php-php>frontControllerphp php=php php$frontphp;
+php php php php php php php php php}
 
-        return $front;
-    }
+php php php php php php php php returnphp php$frontphp;
+php php php php php}
 
-    /**
-     * Retrieve front controller instance
-     *
-     * @return Zend_Controller_Front
-     */
-    public function getFrontController()
-    {
-        if (null === $this->_front) {
-            $this->_front = Zend_Controller_Front::getInstance();
-        }
-        return $this->_front;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Retrievephp frontphp controllerphp instance
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
+php php php php php php*php/
+php php php php publicphp functionphp getFrontControllerphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_frontphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_frontphp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_frontphp;
+php php php php php}
+php}

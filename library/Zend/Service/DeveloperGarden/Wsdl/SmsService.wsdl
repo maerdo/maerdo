@@ -1,122 +1,122 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.sms.odg.tonline.de" xmlns:intf="http://webservice.sms.odg.tonline.de" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webservice.sms.odg.tonline.de">
-	<wsdl:types>
-		<schema targetNamespace="http://webservice.sms.odg.tonline.de" xmlns="http://www.w3.org/2001/XMLSchema">
-			<complexType name="SmsRequest">
-				<sequence>
-					<element name="environment" type="xsd:int"/>
-				</sequence>
-			</complexType>
-			<complexType name="sendSMSRequestBase">
-				<complexContent>
-					<extension base="impl:SmsRequest">
-						<sequence>
-							<element name="number" type="xsd:string"/>
-							<element name="message" type="xsd:string"/>
-							<element name="originator" type="xsd:string"/>
-							<element maxOccurs="1" minOccurs="0" name="account" type="xsd:string"/>
-						</sequence>
-					</extension>
-				</complexContent>
-			</complexType>
-			<complexType name="sendSMSRequest">
-				<complexContent>
-					<extension base="impl:sendSMSRequestBase">
-						<sequence/>
-					</extension>
-				</complexContent>
-			</complexType>
-			<element name="sendSMS">
-				<complexType>
-					<sequence>
-						<element maxOccurs="1" minOccurs="0" name="request" type="impl:sendSMSRequest"/>
-					</sequence>
-				</complexType>
-			</element>
-			<complexType name="SmsResult">
-				<sequence>
-					<element maxOccurs="1" minOccurs="0" name="description" nillable="true" type="xsd:string"/>
-					<element name="status" type="xsd:string"/>
-				</sequence>
-			</complexType>
-			<element name="sendSMSResponse">
-				<complexType>
-					<sequence>
-						<element maxOccurs="1" minOccurs="0" name="return" nillable="true" type="impl:SmsResult"/>
-					</sequence>
-				</complexType>
-			</element>
-			<complexType name="sendFlashSMSRequest">
-				<complexContent>
-					<extension base="impl:sendSMSRequestBase">
-						<sequence/>
-					</extension>
-				</complexContent>
-			</complexType>
-			<element name="sendFlashSMS">
-				<complexType>
-					<sequence>
-						<element name="request" type="impl:sendFlashSMSRequest"/>
-					</sequence>
-				</complexType>
-			</element>
-			<element name="sendFlashSMSResponse">
-				<complexType>
-					<sequence>
-						<element name="return" nillable="true" type="impl:SmsResult"/>
-					</sequence>
-				</complexType>
-			</element>
-		</schema>
-	</wsdl:types>
-	<wsdl:message name="sendSMSRequest">
-		<wsdl:part name="sendSMS" element="impl:sendSMS"/>
-	</wsdl:message>
-	<wsdl:message name="sendFlashSMSRequest">
-		<wsdl:part name="sendFlashSMS" element="impl:sendFlashSMS"/>
-	</wsdl:message>
-	<wsdl:message name="sendFlashSMSResponse">
-		<wsdl:part name="sendFlashSMSResponse" element="impl:sendFlashSMSResponse"/>
-	</wsdl:message>
-	<wsdl:message name="sendSMSResponse">
-		<wsdl:part name="sendSMSResponse" element="impl:sendSMSResponse"/>
-	</wsdl:message>
-	<wsdl:portType name="SmsServicePortType">
-		<wsdl:operation name="sendSMS" parameterOrder="sendSMS">
-			<wsdl:input name="sendSMSRequest" message="impl:sendSMSRequest"/>
-			<wsdl:output name="sendSMSResponse" message="impl:sendSMSResponse"/>
-		</wsdl:operation>
-		<wsdl:operation name="sendFlashSMS" parameterOrder="sendFlashSMS">
-			<wsdl:input name="sendFlashSMSRequest" message="impl:sendFlashSMSRequest"/>
-			<wsdl:output name="sendFlashSMSResponse" message="impl:sendFlashSMSResponse"/>
-		</wsdl:operation>
-	</wsdl:portType>
-	<wsdl:binding name="SmsServiceSoapBinding" type="impl:SmsServicePortType">
-		<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-		<wsdl:operation name="sendSMS">
-			<wsdlsoap:operation soapAction="http://webservice.sms.odg.tonline.de/sendSMS"/>
-			<wsdl:input name="sendSMSRequest">
-				<wsdlsoap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output name="sendSMSResponse">
-				<wsdlsoap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="sendFlashSMS">
-			<wsdlsoap:operation soapAction="http://webservice.sms.odg.tonline.de/sendFlashSMS"/>
-			<wsdl:input name="sendFlashSMSRequest">
-				<wsdlsoap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output name="sendFlashSMSResponse">
-				<wsdlsoap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-	</wsdl:binding>
-	<wsdl:service name="SmsService">
-		<wsdl:port name="SmsService" binding="impl:SmsServiceSoapBinding">
-			<wsdlsoap:address location="https://gateway.developer.telekom.com/p3gw-mod-odg-sms/services/SmsService"/>
-		</wsdl:port>
-	</wsdl:service>
-	<!--WSDL created by Apache Axis version: 1.4
-Built on Apr 22, 2006 (06:55:48 PDT)-->
-</wsdl:definitions>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>
+php<wsdlphp:definitionsphp xmlnsphp:apachesoapphp=php"httpphp:php/php/xmlphp.apachephp.orgphp/xmlphp-soapphp"php xmlnsphp:implphp=php"httpphp:php/php/webservicephp.smsphp.odgphp.tonlinephp.dephp"php xmlnsphp:intfphp=php"httpphp:php/php/webservicephp.smsphp.odgphp.tonlinephp.dephp"php xmlnsphp:wsdlphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/php"php xmlnsphp:wsdlsoapphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/soapphp/php"php xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php targetNamespacephp=php"httpphp:php/php/webservicephp.smsphp.odgphp.tonlinephp.dephp"php>
+php	php<wsdlphp:typesphp>
+php	php	php<schemaphp targetNamespacephp=php"httpphp:php/php/webservicephp.smsphp.odgphp.tonlinephp.dephp"php xmlnsphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php>
+php	php	php	php<complexTypephp namephp=php"SmsRequestphp"php>
+php	php	php	php	php<sequencephp>
+php	php	php	php	php	php<elementphp namephp=php"environmentphp"php typephp=php"xsdphp:intphp"php/php>
+php	php	php	php	<php/sequencephp>
+php	php	php	<php/complexTypephp>
+php	php	php	php<complexTypephp namephp=php"sendSMSRequestBasephp"php>
+php	php	php	php	php<complexContentphp>
+php	php	php	php	php	php<extensionphp basephp=php"implphp:SmsRequestphp"php>
+php	php	php	php	php	php	php<sequencephp>
+php	php	php	php	php	php	php	php<elementphp namephp=php"numberphp"php typephp=php"xsdphp:stringphp"php/php>
+php	php	php	php	php	php	php	php<elementphp namephp=php"messagephp"php typephp=php"xsdphp:stringphp"php/php>
+php	php	php	php	php	php	php	php<elementphp namephp=php"originatorphp"php typephp=php"xsdphp:stringphp"php/php>
+php	php	php	php	php	php	php	php<elementphp maxOccursphp=php"php1php"php minOccursphp=php"php0php"php namephp=php"accountphp"php typephp=php"xsdphp:stringphp"php/php>
+php	php	php	php	php	php	<php/sequencephp>
+php	php	php	php	php	<php/extensionphp>
+php	php	php	php	<php/complexContentphp>
+php	php	php	<php/complexTypephp>
+php	php	php	php<complexTypephp namephp=php"sendSMSRequestphp"php>
+php	php	php	php	php<complexContentphp>
+php	php	php	php	php	php<extensionphp basephp=php"implphp:sendSMSRequestBasephp"php>
+php	php	php	php	php	php	php<sequencephp/php>
+php	php	php	php	php	<php/extensionphp>
+php	php	php	php	<php/complexContentphp>
+php	php	php	<php/complexTypephp>
+php	php	php	php<elementphp namephp=php"sendSMSphp"php>
+php	php	php	php	php<complexTypephp>
+php	php	php	php	php	php<sequencephp>
+php	php	php	php	php	php	php<elementphp maxOccursphp=php"php1php"php minOccursphp=php"php0php"php namephp=php"requestphp"php typephp=php"implphp:sendSMSRequestphp"php/php>
+php	php	php	php	php	<php/sequencephp>
+php	php	php	php	<php/complexTypephp>
+php	php	php	<php/elementphp>
+php	php	php	php<complexTypephp namephp=php"SmsResultphp"php>
+php	php	php	php	php<sequencephp>
+php	php	php	php	php	php<elementphp maxOccursphp=php"php1php"php minOccursphp=php"php0php"php namephp=php"descriptionphp"php nillablephp=php"truephp"php typephp=php"xsdphp:stringphp"php/php>
+php	php	php	php	php	php<elementphp namephp=php"statusphp"php typephp=php"xsdphp:stringphp"php/php>
+php	php	php	php	<php/sequencephp>
+php	php	php	<php/complexTypephp>
+php	php	php	php<elementphp namephp=php"sendSMSResponsephp"php>
+php	php	php	php	php<complexTypephp>
+php	php	php	php	php	php<sequencephp>
+php	php	php	php	php	php	php<elementphp maxOccursphp=php"php1php"php minOccursphp=php"php0php"php namephp=php"returnphp"php nillablephp=php"truephp"php typephp=php"implphp:SmsResultphp"php/php>
+php	php	php	php	php	<php/sequencephp>
+php	php	php	php	<php/complexTypephp>
+php	php	php	<php/elementphp>
+php	php	php	php<complexTypephp namephp=php"sendFlashSMSRequestphp"php>
+php	php	php	php	php<complexContentphp>
+php	php	php	php	php	php<extensionphp basephp=php"implphp:sendSMSRequestBasephp"php>
+php	php	php	php	php	php	php<sequencephp/php>
+php	php	php	php	php	<php/extensionphp>
+php	php	php	php	<php/complexContentphp>
+php	php	php	<php/complexTypephp>
+php	php	php	php<elementphp namephp=php"sendFlashSMSphp"php>
+php	php	php	php	php<complexTypephp>
+php	php	php	php	php	php<sequencephp>
+php	php	php	php	php	php	php<elementphp namephp=php"requestphp"php typephp=php"implphp:sendFlashSMSRequestphp"php/php>
+php	php	php	php	php	<php/sequencephp>
+php	php	php	php	<php/complexTypephp>
+php	php	php	<php/elementphp>
+php	php	php	php<elementphp namephp=php"sendFlashSMSResponsephp"php>
+php	php	php	php	php<complexTypephp>
+php	php	php	php	php	php<sequencephp>
+php	php	php	php	php	php	php<elementphp namephp=php"returnphp"php nillablephp=php"truephp"php typephp=php"implphp:SmsResultphp"php/php>
+php	php	php	php	php	<php/sequencephp>
+php	php	php	php	<php/complexTypephp>
+php	php	php	<php/elementphp>
+php	php	<php/schemaphp>
+php	<php/wsdlphp:typesphp>
+php	php<wsdlphp:messagephp namephp=php"sendSMSRequestphp"php>
+php	php	php<wsdlphp:partphp namephp=php"sendSMSphp"php elementphp=php"implphp:sendSMSphp"php/php>
+php	<php/wsdlphp:messagephp>
+php	php<wsdlphp:messagephp namephp=php"sendFlashSMSRequestphp"php>
+php	php	php<wsdlphp:partphp namephp=php"sendFlashSMSphp"php elementphp=php"implphp:sendFlashSMSphp"php/php>
+php	<php/wsdlphp:messagephp>
+php	php<wsdlphp:messagephp namephp=php"sendFlashSMSResponsephp"php>
+php	php	php<wsdlphp:partphp namephp=php"sendFlashSMSResponsephp"php elementphp=php"implphp:sendFlashSMSResponsephp"php/php>
+php	<php/wsdlphp:messagephp>
+php	php<wsdlphp:messagephp namephp=php"sendSMSResponsephp"php>
+php	php	php<wsdlphp:partphp namephp=php"sendSMSResponsephp"php elementphp=php"implphp:sendSMSResponsephp"php/php>
+php	<php/wsdlphp:messagephp>
+php	php<wsdlphp:portTypephp namephp=php"SmsServicePortTypephp"php>
+php	php	php<wsdlphp:operationphp namephp=php"sendSMSphp"php parameterOrderphp=php"sendSMSphp"php>
+php	php	php	php<wsdlphp:inputphp namephp=php"sendSMSRequestphp"php messagephp=php"implphp:sendSMSRequestphp"php/php>
+php	php	php	php<wsdlphp:outputphp namephp=php"sendSMSResponsephp"php messagephp=php"implphp:sendSMSResponsephp"php/php>
+php	php	<php/wsdlphp:operationphp>
+php	php	php<wsdlphp:operationphp namephp=php"sendFlashSMSphp"php parameterOrderphp=php"sendFlashSMSphp"php>
+php	php	php	php<wsdlphp:inputphp namephp=php"sendFlashSMSRequestphp"php messagephp=php"implphp:sendFlashSMSRequestphp"php/php>
+php	php	php	php<wsdlphp:outputphp namephp=php"sendFlashSMSResponsephp"php messagephp=php"implphp:sendFlashSMSResponsephp"php/php>
+php	php	<php/wsdlphp:operationphp>
+php	<php/wsdlphp:portTypephp>
+php	php<wsdlphp:bindingphp namephp=php"SmsServiceSoapBindingphp"php typephp=php"implphp:SmsServicePortTypephp"php>
+php	php	php<wsdlsoapphp:bindingphp stylephp=php"documentphp"php transportphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/soapphp/httpphp"php/php>
+php	php	php<wsdlphp:operationphp namephp=php"sendSMSphp"php>
+php	php	php	php<wsdlsoapphp:operationphp soapActionphp=php"httpphp:php/php/webservicephp.smsphp.odgphp.tonlinephp.dephp/sendSMSphp"php/php>
+php	php	php	php<wsdlphp:inputphp namephp=php"sendSMSRequestphp"php>
+php	php	php	php	php<wsdlsoapphp:bodyphp usephp=php"literalphp"php/php>
+php	php	php	<php/wsdlphp:inputphp>
+php	php	php	php<wsdlphp:outputphp namephp=php"sendSMSResponsephp"php>
+php	php	php	php	php<wsdlsoapphp:bodyphp usephp=php"literalphp"php/php>
+php	php	php	<php/wsdlphp:outputphp>
+php	php	<php/wsdlphp:operationphp>
+php	php	php<wsdlphp:operationphp namephp=php"sendFlashSMSphp"php>
+php	php	php	php<wsdlsoapphp:operationphp soapActionphp=php"httpphp:php/php/webservicephp.smsphp.odgphp.tonlinephp.dephp/sendFlashSMSphp"php/php>
+php	php	php	php<wsdlphp:inputphp namephp=php"sendFlashSMSRequestphp"php>
+php	php	php	php	php<wsdlsoapphp:bodyphp usephp=php"literalphp"php/php>
+php	php	php	<php/wsdlphp:inputphp>
+php	php	php	php<wsdlphp:outputphp namephp=php"sendFlashSMSResponsephp"php>
+php	php	php	php	php<wsdlsoapphp:bodyphp usephp=php"literalphp"php/php>
+php	php	php	<php/wsdlphp:outputphp>
+php	php	<php/wsdlphp:operationphp>
+php	<php/wsdlphp:bindingphp>
+php	php<wsdlphp:servicephp namephp=php"SmsServicephp"php>
+php	php	php<wsdlphp:portphp namephp=php"SmsServicephp"php bindingphp=php"implphp:SmsServiceSoapBindingphp"php>
+php	php	php	php<wsdlsoapphp:addressphp locationphp=php"httpsphp:php/php/gatewayphp.developerphp.telekomphp.comphp/pphp3gwphp-modphp-odgphp-smsphp/servicesphp/SmsServicephp"php/php>
+php	php	<php/wsdlphp:portphp>
+php	<php/wsdlphp:servicephp>
+php	<php!php-php-WSDLphp createdphp byphp Apachephp Axisphp versionphp:php php1php.php4
+Builtphp onphp Aprphp php2php2php,php php2php0php0php6php php(php0php6php:php5php5php:php4php8php PDTphp)php-php-php>
+<php/wsdlphp:definitionsphp>

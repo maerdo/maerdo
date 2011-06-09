@@ -1,146 +1,146 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Mail.php 23486 2010-12-10 04:05:30Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Mailphp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Application_Resource_ResourceAbstract
- */
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Applicationphp/Resourcephp/ResourceAbstractphp.phpphp'php;
 
-/**
- * Resource for setting up Mail Transport and default From & ReplyTo addresses
- *
- * @uses       Zend_Application_Resource_ResourceAbstract
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceAbstract
-{
+php/php*php*
+php php*php Resourcephp forphp settingphp upphp Mailphp Transportphp andphp defaultphp Fromphp php&php ReplyTophp addresses
+php php*
+php php*php php@usesphp php php php php php php Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Applicationphp_Resourcephp_Mailphp extendsphp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php{
 
-    /**
-     * @var Zend_Mail_Transport_Abstract
-     */
-    protected $_transport;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Mailphp_Transportphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_transportphp;
 
-    public function init() {
-        return $this->getMail();
-    }
+php php php php publicphp functionphp initphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>getMailphp(php)php;
+php php php php php}
 
-    /**
-     *
-     * @return Zend_Mail_Transport_Abstract|null
-     */
-    public function getMail()
-    {
-        if (null === $this->_transport) {
-            $options = $this->getOptions();
-            foreach($options as $key => $option) {
-                $options[strtolower($key)] = $option;
-            }
-            $this->setOptions($options);
+php php php php php/php*php*
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp_Transportphp_Abstractphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getMailphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_transportphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$thisphp-php>getOptionsphp(php)php;
+php php php php php php php php php php php php foreachphp(php$optionsphp asphp php$keyphp php=php>php php$optionphp)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[strtolowerphp(php$keyphp)php]php php=php php$optionphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
 
-            if(isset($options['transport']) &&
-               !is_numeric($options['transport']))
-            {
-                $this->_transport = $this->_setupTransport($options['transport']);
-                if(!isset($options['transport']['register']) ||
-                   $options['transport']['register'] == '1' ||
-                   (isset($options['transport']['register']) &&
-                        !is_numeric($options['transport']['register']) &&
-                        (bool) $options['transport']['register'] == true))
-                {
-                    Zend_Mail::setDefaultTransport($this->_transport);
-                }
-            }
+php php php php php php php php php php php php ifphp(issetphp(php$optionsphp[php'transportphp'php]php)php php&php&
+php php php php php php php php php php php php php php php php!isphp_numericphp(php$optionsphp[php'transportphp'php]php)php)
+php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_transportphp php=php php$thisphp-php>php_setupTransportphp(php$optionsphp[php'transportphp'php]php)php;
+php php php php php php php php php php php php php php php php ifphp(php!issetphp(php$optionsphp[php'transportphp'php]php[php'registerphp'php]php)php php|php|
+php php php php php php php php php php php php php php php php php php php php$optionsphp[php'transportphp'php]php[php'registerphp'php]php php=php=php php'php1php'php php|php|
+php php php php php php php php php php php php php php php php php php php php(issetphp(php$optionsphp[php'transportphp'php]php[php'registerphp'php]php)php php&php&
+php php php php php php php php php php php php php php php php php php php php php php php php php!isphp_numericphp(php$optionsphp[php'transportphp'php]php[php'registerphp'php]php)php php&php&
+php php php php php php php php php php php php php php php php php php php php php php php php php(boolphp)php php$optionsphp[php'transportphp'php]php[php'registerphp'php]php php=php=php truephp)php)
+php php php php php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php php php php Zendphp_Mailphp:php:setDefaultTransportphp(php$thisphp-php>php_transportphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            $this->_setDefaults('from');
-            $this->_setDefaults('replyTo');
-        }
+php php php php php php php php php php php php php$thisphp-php>php_setDefaultsphp(php'fromphp'php)php;
+php php php php php php php php php php php php php$thisphp-php>php_setDefaultsphp(php'replyTophp'php)php;
+php php php php php php php php php}
 
-        return $this->_transport;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_transportphp;
+php php php php php}
 
-    protected function _setDefaults($type) {
-        $key = strtolower('default' . $type);
-        $options = $this->getOptions();
+php php php php protectedphp functionphp php_setDefaultsphp(php$typephp)php php{
+php php php php php php php php php$keyphp php=php strtolowerphp(php'defaultphp'php php.php php$typephp)php;
+php php php php php php php php php$optionsphp php=php php$thisphp-php>getOptionsphp(php)php;
 
-        if(isset($options[$key]['email']) &&
-           !is_numeric($options[$key]['email']))
-        {
-            $method = array('Zend_Mail', 'setDefault' . ucfirst($type));
-            if(isset($options[$key]['name']) &&
-               !is_numeric($options[$key]['name']))
-            {
-                call_user_func($method, $options[$key]['email'],
-                                        $options[$key]['name']);
-            } else {
-                call_user_func($method, $options[$key]['email']);
-            }
-        }
-    }
+php php php php php php php php ifphp(issetphp(php$optionsphp[php$keyphp]php[php'emailphp'php]php)php php&php&
+php php php php php php php php php php php php!isphp_numericphp(php$optionsphp[php$keyphp]php[php'emailphp'php]php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$methodphp php=php arrayphp(php'Zendphp_Mailphp'php,php php'setDefaultphp'php php.php ucfirstphp(php$typephp)php)php;
+php php php php php php php php php php php php ifphp(issetphp(php$optionsphp[php$keyphp]php[php'namephp'php]php)php php&php&
+php php php php php php php php php php php php php php php php!isphp_numericphp(php$optionsphp[php$keyphp]php[php'namephp'php]php)php)
+php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php callphp_userphp_funcphp(php$methodphp,php php$optionsphp[php$keyphp]php[php'emailphp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php$keyphp]php[php'namephp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php callphp_userphp_funcphp(php$methodphp,php php$optionsphp[php$keyphp]php[php'emailphp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    protected function _setupTransport($options)
-    {
-        if(!isset($options['type'])) {
-            $options['type'] = 'sendmail';
-        }
-        
-        $transportName = $options['type'];
-        if(!Zend_Loader_Autoloader::autoload($transportName))
-        {
-            $transportName = ucfirst(strtolower($transportName));
+php php php php protectedphp functionphp php_setupTransportphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp(php!issetphp(php$optionsphp[php'typephp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'typephp'php]php php=php php'sendmailphp'php;
+php php php php php php php php php}
+php php php php php php php php 
+php php php php php php php php php$transportNamephp php=php php$optionsphp[php'typephp'php]php;
+php php php php php php php php ifphp(php!Zendphp_Loaderphp_Autoloaderphp:php:autoloadphp(php$transportNamephp)php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$transportNamephp php=php ucfirstphp(strtolowerphp(php$transportNamephp)php)php;
 
-            if(!Zend_Loader_Autoloader::autoload($transportName))
-            {
-                $transportName = 'Zend_Mail_Transport_' . $transportName;
-                if(!Zend_Loader_Autoloader::autoload($transportName)) {
-                    throw new Zend_Application_Resource_Exception(
-                        "Specified Mail Transport '{$transportName}'"
-                        . 'could not be found'
-                    );
-                }
-            }
-        }
+php php php php php php php php php php php php ifphp(php!Zendphp_Loaderphp_Autoloaderphp:php:autoloadphp(php$transportNamephp)php)
+php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php$transportNamephp php=php php'Zendphp_Mailphp_Transportphp_php'php php.php php$transportNamephp;
+php php php php php php php php php php php php php php php php ifphp(php!Zendphp_Loaderphp_Autoloaderphp:php:autoloadphp(php$transportNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Resourcephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php"Specifiedphp Mailphp Transportphp php'php{php$transportNamephp}php'php"
+php php php php php php php php php php php php php php php php php php php php php php php php php.php php'couldphp notphp bephp foundphp'
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        unset($options['type']);
+php php php php php php php php unsetphp(php$optionsphp[php'typephp'php]php)php;
 
-        switch($transportName) {
-            case 'Zend_Mail_Transport_Smtp':
-                if(!isset($options['host'])) {
-                    throw new Zend_Application_Resource_Exception(
-                        'A host is necessary for smtp transport,'
-                        .' but none was given');
-                }
+php php php php php php php php switchphp(php$transportNamephp)php php{
+php php php php php php php php php php php php casephp php'Zendphp_Mailphp_Transportphp_Smtpphp'php:
+php php php php php php php php php php php php php php php php ifphp(php!issetphp(php$optionsphp[php'hostphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Resourcephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'Aphp hostphp isphp necessaryphp forphp smtpphp transportphp,php'
+php php php php php php php php php php php php php php php php php php php php php php php php php.php'php butphp nonephp wasphp givenphp'php)php;
+php php php php php php php php php php php php php php php php php}
 
-                $transport = new $transportName($options['host'], $options);
-                break;
-            case 'Zend_Mail_Transport_Sendmail':
-            default:
-                $transport = new $transportName($options);
-                break;
-        }
+php php php php php php php php php php php php php php php php php$transportphp php=php newphp php$transportNamephp(php$optionsphp[php'hostphp'php]php,php php$optionsphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'Zendphp_Mailphp_Transportphp_Sendmailphp'php:
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$transportphp php=php newphp php$transportNamephp(php$optionsphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-        return $transport;
-    }
-}
+php php php php php php php php returnphp php$transportphp;
+php php php php php}
+php}

@@ -1,69 +1,69 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Session
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
- * @since      Preview Release 0.2
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Session
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php php@sincephp php php php php php Previewphp Releasephp php0php.php2
+php php*php/
 
-/**
- * @see Zend_Session_Validator_Interface
- */
-require_once 'Zend/Session/Validator/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Sessionphp_Validatorphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Sessionphp/Validatorphp/Interfacephp.phpphp'php;
 
-/**
- * Zend_Session_Validator_Abstract
- *
- * @category   Zend
- * @package    Zend_Session
- * @subpackage Validator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Session_Validator_Abstract implements Zend_Session_Validator_Interface
-{
+php/php*php*
+php php*php Zendphp_Sessionphp_Validatorphp_Abstract
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Session
+php php*php php@subpackagephp Validator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Sessionphp_Validatorphp_Abstractphp implementsphp Zendphp_Sessionphp_Validatorphp_Interface
+php{
 
-    /**
-     * SetValidData() - This method should be used to store the environment variables that
-     * will be needed in order to validate the session later in the validate() method.
-     * These values are stored in the session in the __ZF namespace, in an array named VALID
-     *
-     * @param  mixed $data
-     * @return void
-     */
-    protected function setValidData($data)
-    {
-        $validatorName = get_class($this);
+php php php php php/php*php*
+php php php php php php*php SetValidDataphp(php)php php-php Thisphp methodphp shouldphp bephp usedphp tophp storephp thephp environmentphp variablesphp that
+php php php php php php*php willphp bephp neededphp inphp orderphp tophp validatephp thephp sessionphp laterphp inphp thephp validatephp(php)php methodphp.
+php php php php php php*php Thesephp valuesphp arephp storedphp inphp thephp sessionphp inphp thephp php_php_ZFphp namespacephp,php inphp anphp arrayphp namedphp VALID
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$data
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp setValidDataphp(php$dataphp)
+php php php php php{
+php php php php php php php php php$validatorNamephp php=php getphp_classphp(php$thisphp)php;
 
-        $_SESSION['__ZF']['VALID'][$validatorName] = $data;
-    }
+php php php php php php php php php$php_SESSIONphp[php'php_php_ZFphp'php]php[php'VALIDphp'php]php[php$validatorNamephp]php php=php php$dataphp;
+php php php php php}
 
 
-    /**
-     * GetValidData() - This method should be used to retrieve the environment variables that
-     * will be needed to 'validate' a session.
-     *
-     * @return mixed
-     */
-    protected function getValidData()
-    {
-        $validatorName = get_class($this);
+php php php php php/php*php*
+php php php php php php*php GetValidDataphp(php)php php-php Thisphp methodphp shouldphp bephp usedphp tophp retrievephp thephp environmentphp variablesphp that
+php php php php php php*php willphp bephp neededphp tophp php'validatephp'php aphp sessionphp.
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php protectedphp functionphp getValidDataphp(php)
+php php php php php{
+php php php php php php php php php$validatorNamephp php=php getphp_classphp(php$thisphp)php;
 
-        return $_SESSION['__ZF']['VALID'][$validatorName];
-    }
+php php php php php php php php returnphp php$php_SESSIONphp[php'php_php_ZFphp'php]php[php'VALIDphp'php]php[php$validatorNamephp]php;
+php php php php php}
 
-}
+php}

@@ -1,306 +1,306 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Markup
- * @subpackage Parser
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Token.php 23486 2010-12-10 04:05:30Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@subpackagephp Parser
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Tokenphp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Markup_TokenList
- */
-require_once 'Zend/Markup/TokenList.php';
+php/php*php*
+php php*php php@seephp Zendphp_Markupphp_TokenList
+php php*php/
+requirephp_oncephp php'Zendphp/Markupphp/TokenListphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Markup
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Markup_Token
-{
-    const TYPE_NONE    = 'none';
-    const TYPE_TAG     = 'tag';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Markup
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Markupphp_Token
+php{
+php php php php constphp TYPEphp_NONEphp php php php php=php php'nonephp'php;
+php php php php constphp TYPEphp_TAGphp php php php php php=php php'tagphp'php;
 
-    /**
-     * Children of this token
-     *
-     * @var Zend_Markup_TokenList
-     */
-    protected $_children;
+php php php php php/php*php*
+php php php php php php*php Childrenphp ofphp thisphp token
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Markupphp_TokenList
+php php php php php php*php/
+php php php php protectedphp php$php_childrenphp;
 
-    /**
-     * The complete tag
-     *
-     * @var string
-     */
-    protected $_tag;
+php php php php php/php*php*
+php php php php php php*php Thephp completephp tag
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_tagphp;
 
-    /**
-     * The tag's type
-     *
-     * @var string
-     */
-    protected $_type;
+php php php php php/php*php*
+php php php php php php*php Thephp tagphp'sphp type
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_typephp;
 
-    /**
-     * Tag name
-     *
-     * @var string
-     */
-    protected $_name = '';
+php php php php php/php*php*
+php php php php php php*php Tagphp name
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namephp php=php php'php'php;
 
-    /**
-     * Tag attributes
-     *
-     * @var array
-     */
-    protected $_attributes = array();
+php php php php php/php*php*
+php php php php php php*php Tagphp attributes
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_attributesphp php=php arrayphp(php)php;
 
-    /**
-     * The used tag stopper (empty when none is found)
-     *
-     * @var string
-     */
-    protected $_stopper = '';
+php php php php php/php*php*
+php php php php php php*php Thephp usedphp tagphp stopperphp php(emptyphp whenphp nonephp isphp foundphp)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_stopperphp php=php php'php'php;
 
-    /**
-     * The parent token
-     *
-     * @var Zend_Markup_Token
-     */
-    protected $_parent;
+php php php php php/php*php*
+php php php php php php*php Thephp parentphp token
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Markupphp_Token
+php php php php php php*php/
+php php php php protectedphp php$php_parentphp;
 
 
-    /**
-     * Construct the token
-     *
-     * @param  string $tag
-     * @param  string $type
-     * @param  string $name
-     * @param  array $attributes
-     * @param  Zend_Markup_Token $parent
-     * @return void
-     */
-    public function __construct(
-        $tag,
-        $type,
-        $name = '',
-        array $attributes = array(),
-        Zend_Markup_Token $parent = null
-    ) {
-        $this->_tag        = $tag;
-        $this->_type       = $type;
-        $this->_name       = $name;
-        $this->_attributes = $attributes;
-        $this->_parent     = $parent;
-    }
+php php php php php/php*php*
+php php php php php php*php Constructphp thephp token
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$tag
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php$attributes
+php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$parent
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(
+php php php php php php php php php$tagphp,
+php php php php php php php php php$typephp,
+php php php php php php php php php$namephp php=php php'php'php,
+php php php php php php php php arrayphp php$attributesphp php=php arrayphp(php)php,
+php php php php php php php php Zendphp_Markupphp_Tokenphp php$parentphp php=php null
+php php php php php)php php{
+php php php php php php php php php$thisphp-php>php_tagphp php php php php php php php php=php php$tagphp;
+php php php php php php php php php$thisphp-php>php_typephp php php php php php php php=php php$typephp;
+php php php php php php php php php$thisphp-php>php_namephp php php php php php php php=php php$namephp;
+php php php php php php php php php$thisphp-php>php_attributesphp php=php php$attributesphp;
+php php php php php php php php php$thisphp-php>php_parentphp php php php php php=php php$parentphp;
+php php php php php}
 
-    // accessors
+php php php php php/php/php accessors
 
-    /**
-     * Set the stopper
-     *
-     * @param string $stopper
-     * @return Zend_Markup_Token
-     */
-    public function setStopper($stopper)
-    {
-        $this->_stopper = $stopper;
+php php php php php/php*php*
+php php php php php php*php Setphp thephp stopper
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$stopper
+php php php php php php*php php@returnphp Zendphp_Markupphp_Token
+php php php php php php*php/
+php php php php publicphp functionphp setStopperphp(php$stopperphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_stopperphp php=php php$stopperphp;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the stopper
-     *
-     * @return string
-     */
-    public function getStopper()
-    {
-        return $this->_stopper;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp stopper
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getStopperphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_stopperphp;
+php php php php php}
 
-    /**
-     * Get the token's name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->_name;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp tokenphp'sphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_namephp;
+php php php php php}
 
-    /**
-     * Get the token's type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->_type;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp tokenphp'sphp type
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_typephp;
+php php php php php}
 
-    /**
-     * Get the complete tag
-     *
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->_tag;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp completephp tag
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTagphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_tagphp;
+php php php php php}
 
-    /**
-     * Get an attribute
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    public function getAttribute($name)
-    {
-        return isset($this->_attributes[$name]) ? $this->_attributes[$name] : null;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp anphp attribute
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getAttributephp(php$namephp)
+php php php php php{
+php php php php php php php php returnphp issetphp(php$thisphp-php>php_attributesphp[php$namephp]php)php php?php php$thisphp-php>php_attributesphp[php$namephp]php php:php nullphp;
+php php php php php}
 
-    /**
-     * Check if the token has an attribute
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function hasAttribute($name)
-    {
-        return isset($this->_attributes[$name]);
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp thephp tokenphp hasphp anphp attribute
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasAttributephp(php$namephp)
+php php php php php{
+php php php php php php php php returnphp issetphp(php$thisphp-php>php_attributesphp[php$namephp]php)php;
+php php php php php}
 
-    /**
-     * Get all the attributes
-     *
-     * @return array
-     */
-    public function getAttributes()
-    {
-        return $this->_attributes;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp allphp thephp attributes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getAttributesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_attributesphp;
+php php php php php}
 
-    /**
-     * Add an attribute
-     *
-     * @return Zend_Markup_Token
-     */
-    public function addAttribute($name, $value)
-    {
-        $this->_attributes[$name] = $value;
+php php php php php/php*php*
+php php php php php php*php Addphp anphp attribute
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Markupphp_Token
+php php php php php php*php/
+php php php php publicphp functionphp addAttributephp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_attributesphp[php$namephp]php php=php php$valuephp;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Check if an attribute is empty
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function attributeIsEmpty($name)
-    {
-        return empty($this->_attributes[$name]);
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp anphp attributephp isphp empty
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp attributeIsEmptyphp(php$namephp)
+php php php php php{
+php php php php php php php php returnphp emptyphp(php$thisphp-php>php_attributesphp[php$namephp]php)php;
+php php php php php}
 
-    // functions for child/parent tokens
+php php php php php/php/php functionsphp forphp childphp/parentphp tokens
 
-    /**
-     * Add a child token
-     *
-     * @return void
-     */
-    public function addChild(Zend_Markup_Token $child)
-    {
-        $this->getChildren()->addChild($child);
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp childphp token
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp addChildphp(Zendphp_Markupphp_Tokenphp php$childphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>getChildrenphp(php)php-php>addChildphp(php$childphp)php;
+php php php php php}
 
-    /**
-     * Set the children token list
-     *
-     * @param  Zend_Markup_TokenList $children
-     * @return Zend_Markup_Token
-     */
-    public function setChildren(Zend_Markup_TokenList $children)
-    {
-        $this->_children = $children;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp childrenphp tokenphp list
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Markupphp_TokenListphp php$children
+php php php php php php*php php@returnphp Zendphp_Markupphp_Token
+php php php php php php*php/
+php php php php publicphp functionphp setChildrenphp(Zendphp_Markupphp_TokenListphp php$childrenphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_childrenphp php=php php$childrenphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the children for this token
-     *
-     * @return Zend_Markup_TokenList
-     */
-    public function getChildren()
-    {
-        if (null === $this->_children) {
-            $this->setChildren(new Zend_Markup_TokenList());
-        }
-        return $this->_children;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp childrenphp forphp thisphp token
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Markupphp_TokenList
+php php php php php php*php/
+php php php php publicphp functionphp getChildrenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_childrenphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setChildrenphp(newphp Zendphp_Markupphp_TokenListphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_childrenphp;
+php php php php php}
 
-    /**
-     * Does this token have any children
-     *
-     * @return bool
-     */
-    public function hasChildren()
-    {
-        return !empty($this->_children);
-    }
+php php php php php/php*php*
+php php php php php php*php Doesphp thisphp tokenphp havephp anyphp children
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasChildrenphp(php)
+php php php php php{
+php php php php php php php php returnphp php!emptyphp(php$thisphp-php>php_childrenphp)php;
+php php php php php}
 
-    /**
-     * Get the parent token (if any)
-     *
-     * @return Zend_Markup_Token
-     */
-    public function getParent()
-    {
-        return $this->_parent;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp parentphp tokenphp php(ifphp anyphp)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Markupphp_Token
+php php php php php php*php/
+php php php php publicphp functionphp getParentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_parentphp;
+php php php php php}
 
-    /**
-     * Set a parent token
-     *
-     * @param  Zend_Markup_Token $parent
-     * @return Zend_Markup_Token
-     */
-    public function setParent(Zend_Markup_Token $parent)
-    {
-        $this->_parent = $parent;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp parentphp token
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$parent
+php php php php php php*php php@returnphp Zendphp_Markupphp_Token
+php php php php php php*php/
+php php php php publicphp functionphp setParentphp(Zendphp_Markupphp_Tokenphp php$parentphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_parentphp php=php php$parentphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Magic clone function
-     *
-     * @return void
-     */
-    public function __clone()
-    {
-        $this->_parent   = null;
-        $this->_children = null;
-        $this->_tag      = '';
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Magicphp clonephp function
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_clonephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_parentphp php php php=php nullphp;
+php php php php php php php php php$thisphp-php>php_childrenphp php=php nullphp;
+php php php php php php php php php$thisphp-php>php_tagphp php php php php php php=php php'php'php;
+php php php php php}
+php}

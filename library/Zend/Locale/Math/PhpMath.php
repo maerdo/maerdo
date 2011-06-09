@@ -1,247 +1,247 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Locale
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: PhpMath.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Locale
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php PhpMathphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * Utility class for proxying math function to bcmath functions, if present,
- * otherwise to PHP builtin math operators, with limited detection of overflow conditions.
- * Sampling of PHP environments and platforms suggests that at least 80% to 90% support bcmath.
- * This file should only be loaded for the 10% to 20% lacking access to the bcmath extension.
- *
- * @category   Zend
- * @package    Zend_Locale
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Locale_Math_PhpMath extends Zend_Locale_Math
-{
-    public static function disable()
-    {
-        self::$_bcmathDisabled = true;
-        self::$add   = array('Zend_Locale_Math_PhpMath', 'Add');
-        self::$sub   = array('Zend_Locale_Math_PhpMath', 'Sub');
-        self::$pow   = array('Zend_Locale_Math_PhpMath', 'Pow');
-        self::$mul   = array('Zend_Locale_Math_PhpMath', 'Mul');
-        self::$div   = array('Zend_Locale_Math_PhpMath', 'Div');
-        self::$comp  = array('Zend_Locale_Math_PhpMath', 'Comp');
-        self::$sqrt  = array('Zend_Locale_Math_PhpMath', 'Sqrt');
-        self::$mod   = array('Zend_Locale_Math_PhpMath', 'Mod');
-        self::$scale = array('Zend_Locale_Math_PhpMath', 'Scale');
+php/php*php*
+php php*php Utilityphp classphp forphp proxyingphp mathphp functionphp tophp bcmathphp functionsphp,php ifphp presentphp,
+php php*php otherwisephp tophp PHPphp builtinphp mathphp operatorsphp,php withphp limitedphp detectionphp ofphp overflowphp conditionsphp.
+php php*php Samplingphp ofphp PHPphp environmentsphp andphp platformsphp suggestsphp thatphp atphp leastphp php8php0php%php tophp php9php0php%php supportphp bcmathphp.
+php php*php Thisphp filephp shouldphp onlyphp bephp loadedphp forphp thephp php1php0php%php tophp php2php0php%php lackingphp accessphp tophp thephp bcmathphp extensionphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Locale
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Localephp_Mathphp_PhpMathphp extendsphp Zendphp_Localephp_Math
+php{
+php php php php publicphp staticphp functionphp disablephp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_bcmathDisabledphp php=php truephp;
+php php php php php php php php selfphp:php:php$addphp php php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Addphp'php)php;
+php php php php php php php php selfphp:php:php$subphp php php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Subphp'php)php;
+php php php php php php php php selfphp:php:php$powphp php php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Powphp'php)php;
+php php php php php php php php selfphp:php:php$mulphp php php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Mulphp'php)php;
+php php php php php php php php selfphp:php:php$divphp php php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Divphp'php)php;
+php php php php php php php php selfphp:php:php$compphp php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Compphp'php)php;
+php php php php php php php php selfphp:php:php$sqrtphp php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Sqrtphp'php)php;
+php php php php php php php php selfphp:php:php$modphp php php php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Modphp'php)php;
+php php php php php php php php selfphp:php:php$scalephp php=php arrayphp(php'Zendphp_Localephp_Mathphp_PhpMathphp'php,php php'Scalephp'php)php;
 
-        self::$defaultScale     = 0;
-        self::$defaultPrecision = 1;
-    }
+php php php php php php php php selfphp:php:php$defaultScalephp php php php php php=php php0php;
+php php php php php php php php selfphp:php:php$defaultPrecisionphp php=php php1php;
+php php php php php}
 
-    public static $defaultScale;
-    public static $defaultPrecision;
+php php php php publicphp staticphp php$defaultScalephp;
+php php php php publicphp staticphp php$defaultPrecisionphp;
 
 
-    public static function Add($op1, $op2, $scale = null)
-    {
-        if ($scale === null) {
-            $scale     = Zend_Locale_Math_PhpMath::$defaultScale;
-            $precision = Zend_Locale_Math_PhpMath::$defaultPrecision;
-        } else {
-            $precision = pow(10, -$scale);
-        }
+php php php php publicphp staticphp functionphp Addphp(php$opphp1php,php php$opphp2php,php php$scalephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$scalephp php php php php php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultScalephp;
+php php php php php php php php php php php php php$precisionphp php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultPrecisionphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$precisionphp php=php powphp(php1php0php,php php-php$scalephp)php;
+php php php php php php php php php}
 
-        if (empty($op1)) {
-            $op1 = 0;
-        }
-        $op1 = self::normalize($op1);
-        $op2 = self::normalize($op2);
-        $result = $op1 + $op2;
-        if (is_infinite($result)  or  (abs($result - $op2 - $op1) > $precision)) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("addition overflow: $op1 + $op2 != $result", $op1, $op2, $result);
-        }
+php php php php php php php php ifphp php(emptyphp(php$opphp1php)php)php php{
+php php php php php php php php php php php php php$opphp1php php=php php0php;
+php php php php php php php php php}
+php php php php php php php php php$opphp1php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$opphp2php php=php selfphp:php:normalizephp(php$opphp2php)php;
+php php php php php php php php php$resultphp php=php php$opphp1php php+php php$opphp2php;
+php php php php php php php php ifphp php(isphp_infinitephp(php$resultphp)php php orphp php php(absphp(php$resultphp php-php php$opphp2php php-php php$opphp1php)php php>php php$precisionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"additionphp overflowphp:php php$opphp1php php+php php$opphp2php php!php=php php$resultphp"php,php php$opphp1php,php php$opphp2php,php php$resultphp)php;
+php php php php php php php php php}
 
-        return self::round(self::normalize($result), $scale);
-    }
+php php php php php php php php returnphp selfphp:php:roundphp(selfphp:php:normalizephp(php$resultphp)php,php php$scalephp)php;
+php php php php php}
 
-    public static function Sub($op1, $op2, $scale = null)
-    {
-        if ($scale === null) {
-            $scale     = Zend_Locale_Math_PhpMath::$defaultScale;
-            $precision = Zend_Locale_Math_PhpMath::$defaultPrecision;
-        } else {
-            $precision = pow(10, -$scale);
-        }
+php php php php publicphp staticphp functionphp Subphp(php$opphp1php,php php$opphp2php,php php$scalephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$scalephp php php php php php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultScalephp;
+php php php php php php php php php php php php php$precisionphp php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultPrecisionphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$precisionphp php=php powphp(php1php0php,php php-php$scalephp)php;
+php php php php php php php php php}
 
-        if (empty($op1)) {
-            $op1 = 0;
-        }
-        $op1  = self::normalize($op1);
-        $op2  = self::normalize($op2);
-        $result = $op1 - $op2;
-        if (is_infinite($result)  or  (abs($result + $op2 - $op1) > $precision)) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("subtraction overflow: $op1 - $op2 != $result", $op1, $op2, $result);
-        }
+php php php php php php php php ifphp php(emptyphp(php$opphp1php)php)php php{
+php php php php php php php php php php php php php$opphp1php php=php php0php;
+php php php php php php php php php}
+php php php php php php php php php$opphp1php php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$opphp2php php php=php selfphp:php:normalizephp(php$opphp2php)php;
+php php php php php php php php php$resultphp php=php php$opphp1php php-php php$opphp2php;
+php php php php php php php php ifphp php(isphp_infinitephp(php$resultphp)php php orphp php php(absphp(php$resultphp php+php php$opphp2php php-php php$opphp1php)php php>php php$precisionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"subtractionphp overflowphp:php php$opphp1php php-php php$opphp2php php!php=php php$resultphp"php,php php$opphp1php,php php$opphp2php,php php$resultphp)php;
+php php php php php php php php php}
 
-        return self::round(self::normalize($result), $scale);
-    }
+php php php php php php php php returnphp selfphp:php:roundphp(selfphp:php:normalizephp(php$resultphp)php,php php$scalephp)php;
+php php php php php}
 
-    public static function Pow($op1, $op2, $scale = null)
-    {
-        if ($scale === null) {
-            $scale = Zend_Locale_Math_PhpMath::$defaultScale;
-        }
+php php php php publicphp staticphp functionphp Powphp(php$opphp1php,php php$opphp2php,php php$scalephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$scalephp php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultScalephp;
+php php php php php php php php php}
 
-        $op1 = self::normalize($op1);
-        $op2 = self::normalize($op2);
+php php php php php php php php php$opphp1php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$opphp2php php=php selfphp:php:normalizephp(php$opphp2php)php;
 
-        // BCMath extension doesn't use decimal part of the power
-        // Provide the same behavior
-        $op2 = ($op2 > 0) ? floor($op2) : ceil($op2);
+php php php php php php php php php/php/php BCMathphp extensionphp doesnphp'tphp usephp decimalphp partphp ofphp thephp power
+php php php php php php php php php/php/php Providephp thephp samephp behavior
+php php php php php php php php php$opphp2php php=php php(php$opphp2php php>php php0php)php php?php floorphp(php$opphp2php)php php:php ceilphp(php$opphp2php)php;
 
-        $result = pow($op1, $op2);
-        if (is_infinite($result)  or  is_nan($result)) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("power overflow: $op1 ^ $op2", $op1, $op2, $result);
-        }
+php php php php php php php php php$resultphp php=php powphp(php$opphp1php,php php$opphp2php)php;
+php php php php php php php php ifphp php(isphp_infinitephp(php$resultphp)php php orphp php isphp_nanphp(php$resultphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"powerphp overflowphp:php php$opphp1php php^php php$opphp2php"php,php php$opphp1php,php php$opphp2php,php php$resultphp)php;
+php php php php php php php php php}
 
-        return self::round(self::normalize($result), $scale);
-    }
+php php php php php php php php returnphp selfphp:php:roundphp(selfphp:php:normalizephp(php$resultphp)php,php php$scalephp)php;
+php php php php php}
 
-    public static function Mul($op1, $op2, $scale = null)
-    {
-        if ($scale === null) {
-            $scale = Zend_Locale_Math_PhpMath::$defaultScale;
-        }
+php php php php publicphp staticphp functionphp Mulphp(php$opphp1php,php php$opphp2php,php php$scalephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$scalephp php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultScalephp;
+php php php php php php php php php}
 
-        if (empty($op1)) {
-            $op1 = 0;
-        }
-        $op1 = self::normalize($op1);
-        $op2 = self::normalize($op2);
-        $result = $op1 * $op2;
-        if (is_infinite($result)  or  is_nan($result)) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("multiplication overflow: $op1 * $op2 != $result", $op1, $op2, $result);
-        }
+php php php php php php php php ifphp php(emptyphp(php$opphp1php)php)php php{
+php php php php php php php php php php php php php$opphp1php php=php php0php;
+php php php php php php php php php}
+php php php php php php php php php$opphp1php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$opphp2php php=php selfphp:php:normalizephp(php$opphp2php)php;
+php php php php php php php php php$resultphp php=php php$opphp1php php*php php$opphp2php;
+php php php php php php php php ifphp php(isphp_infinitephp(php$resultphp)php php orphp php isphp_nanphp(php$resultphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"multiplicationphp overflowphp:php php$opphp1php php*php php$opphp2php php!php=php php$resultphp"php,php php$opphp1php,php php$opphp2php,php php$resultphp)php;
+php php php php php php php php php}
 
-        return self::round(self::normalize($result), $scale);
-    }
+php php php php php php php php returnphp selfphp:php:roundphp(selfphp:php:normalizephp(php$resultphp)php,php php$scalephp)php;
+php php php php php}
 
-    public static function Div($op1, $op2, $scale = null)
-    {
-        if ($scale === null) {
-            $scale = Zend_Locale_Math_PhpMath::$defaultScale;
-        }
+php php php php publicphp staticphp functionphp Divphp(php$opphp1php,php php$opphp2php,php php$scalephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$scalephp php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultScalephp;
+php php php php php php php php php}
 
-        if (empty($op2)) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("can not divide by zero", $op1, $op2, null);
-        }
-        if (empty($op1)) {
-            $op1 = 0;
-        }
-        $op1 = self::normalize($op1);
-        $op2 = self::normalize($op2);
-        $result = $op1 / $op2;
-        if (is_infinite($result)  or  is_nan($result)) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("division overflow: $op1 / $op2 != $result", $op1, $op2, $result);
-        }
+php php php php php php php php ifphp php(emptyphp(php$opphp2php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"canphp notphp dividephp byphp zerophp"php,php php$opphp1php,php php$opphp2php,php nullphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(emptyphp(php$opphp1php)php)php php{
+php php php php php php php php php php php php php$opphp1php php=php php0php;
+php php php php php php php php php}
+php php php php php php php php php$opphp1php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$opphp2php php=php selfphp:php:normalizephp(php$opphp2php)php;
+php php php php php php php php php$resultphp php=php php$opphp1php php/php php$opphp2php;
+php php php php php php php php ifphp php(isphp_infinitephp(php$resultphp)php php orphp php isphp_nanphp(php$resultphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"divisionphp overflowphp:php php$opphp1php php/php php$opphp2php php!php=php php$resultphp"php,php php$opphp1php,php php$opphp2php,php php$resultphp)php;
+php php php php php php php php php}
 
-        return self::round(self::normalize($result), $scale);
-    }
+php php php php php php php php returnphp selfphp:php:roundphp(selfphp:php:normalizephp(php$resultphp)php,php php$scalephp)php;
+php php php php php}
 
-    public static function Sqrt($op1, $scale = null)
-    {
-        if ($scale === null) {
-            $scale = Zend_Locale_Math_PhpMath::$defaultScale;
-        }
+php php php php publicphp staticphp functionphp Sqrtphp(php$opphp1php,php php$scalephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$scalephp php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultScalephp;
+php php php php php php php php php}
 
-        if (empty($op1)) {
-            $op1 = 0;
-        }
-        $op1 = self::normalize($op1);
-        $result = sqrt($op1);
-        if (is_nan($result)) {
-            return NULL;
-        }
+php php php php php php php php ifphp php(emptyphp(php$opphp1php)php)php php{
+php php php php php php php php php php php php php$opphp1php php=php php0php;
+php php php php php php php php php}
+php php php php php php php php php$opphp1php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$resultphp php=php sqrtphp(php$opphp1php)php;
+php php php php php php php php ifphp php(isphp_nanphp(php$resultphp)php)php php{
+php php php php php php php php php php php php returnphp NULLphp;
+php php php php php php php php php}
 
-        return self::round(self::normalize($result), $scale);
-    }
+php php php php php php php php returnphp selfphp:php:roundphp(selfphp:php:normalizephp(php$resultphp)php,php php$scalephp)php;
+php php php php php}
 
-    public static function Mod($op1, $op2)
-    {
-        if (empty($op1)) {
-            $op1 = 0;
-        }
-        if (empty($op2)) {
-            return NULL;
-        }
-        $op1 = self::normalize($op1);
-        $op2 = self::normalize($op2);
-        if ((int)$op2 == 0) {
-            return NULL;
-        }
-        $result = $op1 % $op2;
-        if (is_nan($result)  or  (($op1 - $result) % $op2 != 0)) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("modulus calculation error: $op1 % $op2 != $result", $op1, $op2, $result);
-        }
+php php php php publicphp staticphp functionphp Modphp(php$opphp1php,php php$opphp2php)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$opphp1php)php)php php{
+php php php php php php php php php php php php php$opphp1php php=php php0php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(emptyphp(php$opphp2php)php)php php{
+php php php php php php php php php php php php returnphp NULLphp;
+php php php php php php php php php}
+php php php php php php php php php$opphp1php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$opphp2php php=php selfphp:php:normalizephp(php$opphp2php)php;
+php php php php php php php php ifphp php(php(intphp)php$opphp2php php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp NULLphp;
+php php php php php php php php php}
+php php php php php php php php php$resultphp php=php php$opphp1php php%php php$opphp2php;
+php php php php php php php php ifphp php(isphp_nanphp(php$resultphp)php php orphp php php(php(php$opphp1php php-php php$resultphp)php php%php php$opphp2php php!php=php php0php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"modulusphp calculationphp errorphp:php php$opphp1php php%php php$opphp2php php!php=php php$resultphp"php,php php$opphp1php,php php$opphp2php,php php$resultphp)php;
+php php php php php php php php php}
 
-        return self::normalize($result);
-    }
+php php php php php php php php returnphp selfphp:php:normalizephp(php$resultphp)php;
+php php php php php}
 
-    public static function Comp($op1, $op2, $scale = null)
-    {
-        if ($scale === null) {
-            $scale     = Zend_Locale_Math_PhpMath::$defaultScale;
-        }
+php php php php publicphp staticphp functionphp Compphp(php$opphp1php,php php$opphp2php,php php$scalephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$scalephp php php php php php=php Zendphp_Localephp_Mathphp_PhpMathphp:php:php$defaultScalephp;
+php php php php php php php php php}
 
-        if (empty($op1)) {
-            $op1 = 0;
-        }
-        $op1 = self::normalize($op1);
-        $op2 = self::normalize($op2);
-        if ($scale <> 0) {
-            $op1 = self::round($op1, $scale);
-            $op2 = self::round($op2, $scale);
-        } else {
-            $op1 = ($op1 > 0) ? floor($op1) : ceil($op1);
-            $op2 = ($op2 > 0) ? floor($op2) : ceil($op2);
-        }
-        if ($op1 > $op2) {
-            return 1;
-        } else if ($op1 < $op2) {
-            return -1;
-        }
-        return 0;
-    }
+php php php php php php php php ifphp php(emptyphp(php$opphp1php)php)php php{
+php php php php php php php php php php php php php$opphp1php php=php php0php;
+php php php php php php php php php}
+php php php php php php php php php$opphp1php php=php selfphp:php:normalizephp(php$opphp1php)php;
+php php php php php php php php php$opphp2php php=php selfphp:php:normalizephp(php$opphp2php)php;
+php php php php php php php php ifphp php(php$scalephp <php>php php0php)php php{
+php php php php php php php php php php php php php$opphp1php php=php selfphp:php:roundphp(php$opphp1php,php php$scalephp)php;
+php php php php php php php php php php php php php$opphp2php php=php selfphp:php:roundphp(php$opphp2php,php php$scalephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$opphp1php php=php php(php$opphp1php php>php php0php)php php?php floorphp(php$opphp1php)php php:php ceilphp(php$opphp1php)php;
+php php php php php php php php php php php php php$opphp2php php=php php(php$opphp2php php>php php0php)php php?php floorphp(php$opphp2php)php php:php ceilphp(php$opphp2php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$opphp1php php>php php$opphp2php)php php{
+php php php php php php php php php php php php returnphp php1php;
+php php php php php php php php php}php elsephp ifphp php(php$opphp1php <php php$opphp2php)php php{
+php php php php php php php php php php php php returnphp php-php1php;
+php php php php php php php php php}
+php php php php php php php php returnphp php0php;
+php php php php php}
 
-    public static function Scale($scale)
-    {
-        if ($scale > 9) {
-            require_once 'Zend/Locale/Math/Exception.php';
-            throw new Zend_Locale_Math_Exception("can not scale to precision $scale", $scale, null, null);
-        }
-        self::$defaultScale     = $scale;
-        self::$defaultPrecision = pow(10, -$scale);
-        return true;
-    }
-}
+php php php php publicphp staticphp functionphp Scalephp(php$scalephp)
+php php php php php{
+php php php php php php php php ifphp php(php$scalephp php>php php9php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Mathphp_Exceptionphp(php"canphp notphp scalephp tophp precisionphp php$scalephp"php,php php$scalephp,php nullphp,php nullphp)php;
+php php php php php php php php php}
+php php php php php php php php selfphp:php:php$defaultScalephp php php php php php=php php$scalephp;
+php php php php php php php php selfphp:php:php$defaultPrecisionphp php=php powphp(php1php0php,php php-php$scalephp)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
+php}
 
-Zend_Locale_Math_PhpMath::disable(); // disable use of bcmath functions
+Zendphp_Localephp_Mathphp_PhpMathphp:php:disablephp(php)php;php php/php/php disablephp usephp ofphp bcmathphp functions

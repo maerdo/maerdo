@@ -1,130 +1,130 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Json.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Jsonphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Controller_Action_Helper_Abstract
- */
-require_once 'Zend/Controller/Action/Helper/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Helperphp/Abstractphp.phpphp'php;
 
-/**
- * Simplify AJAX context switching based on requested format
- *
- * @uses       Zend_Controller_Action_Helper_Abstract
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Controller_Action_Helper_Json extends Zend_Controller_Action_Helper_Abstract
-{
-    /**
-     * Suppress exit when sendJson() called
-     * @var boolean
-     */
-    public $suppressExit = false;
+php/php*php*
+php php*php Simplifyphp AJAXphp contextphp switchingphp basedphp onphp requestedphp format
+php php*
+php php*php php@usesphp php php php php php php Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Controllerphp_Actionphp_Helperphp_Jsonphp extendsphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Suppressphp exitphp whenphp sendJsonphp(php)php called
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php publicphp php$suppressExitphp php=php falsephp;
 
-    /**
-     * Create JSON response
-     *
-     * Encodes and returns data to JSON. Content-Type header set to
-     * 'application/json', and disables layouts and viewRenderer (if being
-     * used).
-     *
-     * @param  mixed   $data
-     * @param  boolean $keepLayouts
-     * @param  boolean|array $keepLayouts
-     * NOTE:   if boolean, establish $keepLayouts to true|false
-     *         if array, admit params for Zend_Json::encode as enableJsonExprFinder=>true|false
-     *         if $keepLayouts and parmas for Zend_Json::encode are required
-     *         then, the array can contains a 'keepLayout'=>true|false
-     *         that will not be passed to Zend_Json::encode method but will be passed
-     *         to Zend_View_Helper_Json
-     * @throws Zend_Controller_Action_Helper_Json
-     * @return string
-     */
-    public function encodeJson($data, $keepLayouts = false)
-    {
-        /**
-         * @see Zend_View_Helper_Json
-         */
-        require_once 'Zend/View/Helper/Json.php';
-        $jsonHelper = new Zend_View_Helper_Json();
-        $data = $jsonHelper->json($data, $keepLayouts);
+php php php php php/php*php*
+php php php php php php*php Createphp JSONphp response
+php php php php php php*
+php php php php php php*php Encodesphp andphp returnsphp dataphp tophp JSONphp.php Contentphp-Typephp headerphp setphp to
+php php php php php php*php php'applicationphp/jsonphp'php,php andphp disablesphp layoutsphp andphp viewRendererphp php(ifphp being
+php php php php php php*php usedphp)php.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php php php$data
+php php php php php php*php php@paramphp php booleanphp php$keepLayouts
+php php php php php php*php php@paramphp php booleanphp|arrayphp php$keepLayouts
+php php php php php php*php NOTEphp:php php php ifphp booleanphp,php establishphp php$keepLayoutsphp tophp truephp|false
+php php php php php php*php php php php php php php php php ifphp arrayphp,php admitphp paramsphp forphp Zendphp_Jsonphp:php:encodephp asphp enableJsonExprFinderphp=php>truephp|false
+php php php php php php*php php php php php php php php php ifphp php$keepLayoutsphp andphp parmasphp forphp Zendphp_Jsonphp:php:encodephp arephp required
+php php php php php php*php php php php php php php php php thenphp,php thephp arrayphp canphp containsphp aphp php'keepLayoutphp'php=php>truephp|false
+php php php php php php*php php php php php php php php php thatphp willphp notphp bephp passedphp tophp Zendphp_Jsonphp:php:encodephp methodphp butphp willphp bephp passed
+php php php php php php*php php php php php php php php php tophp Zendphp_Viewphp_Helperphp_Json
+php php php php php php*php php@throwsphp Zendphp_Controllerphp_Actionphp_Helperphp_Json
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp encodeJsonphp(php$dataphp,php php$keepLayoutsphp php=php falsephp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Viewphp_Helperphp_Json
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Jsonphp.phpphp'php;
+php php php php php php php php php$jsonHelperphp php=php newphp Zendphp_Viewphp_Helperphp_Jsonphp(php)php;
+php php php php php php php php php$dataphp php=php php$jsonHelperphp-php>jsonphp(php$dataphp,php php$keepLayoutsphp)php;
 
-        if (!$keepLayouts) {
-            /**
-             * @see Zend_Controller_Action_HelperBroker
-             */
-            require_once 'Zend/Controller/Action/HelperBroker.php';
-            Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->setNoRender(true);
-        }
+php php php php php php php php ifphp php(php!php$keepLayoutsphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Controllerphp_Actionphp_HelperBroker
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/HelperBrokerphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:getStaticHelperphp(php'viewRendererphp'php)php-php>setNoRenderphp(truephp)php;
+php php php php php php php php php}
 
-        return $data;
-    }
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
 
-    /**
-     * Encode JSON response and immediately send
-     *
-     * @param  mixed   $data
-     * @param  boolean|array $keepLayouts
-     * NOTE:   if boolean, establish $keepLayouts to true|false
-     *         if array, admit params for Zend_Json::encode as enableJsonExprFinder=>true|false
-     *         if $keepLayouts and parmas for Zend_Json::encode are required
-     *         then, the array can contains a 'keepLayout'=>true|false
-     *         that will not be passed to Zend_Json::encode method but will be passed
-     *         to Zend_View_Helper_Json
-     * @return string|void
-     */
-    public function sendJson($data, $keepLayouts = false)
-    {
-        $data = $this->encodeJson($data, $keepLayouts);
-        $response = $this->getResponse();
-        $response->setBody($data);
+php php php php php/php*php*
+php php php php php php*php Encodephp JSONphp responsephp andphp immediatelyphp send
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php php php$data
+php php php php php php*php php@paramphp php booleanphp|arrayphp php$keepLayouts
+php php php php php php*php NOTEphp:php php php ifphp booleanphp,php establishphp php$keepLayoutsphp tophp truephp|false
+php php php php php php*php php php php php php php php php ifphp arrayphp,php admitphp paramsphp forphp Zendphp_Jsonphp:php:encodephp asphp enableJsonExprFinderphp=php>truephp|false
+php php php php php php*php php php php php php php php php ifphp php$keepLayoutsphp andphp parmasphp forphp Zendphp_Jsonphp:php:encodephp arephp required
+php php php php php php*php php php php php php php php php thenphp,php thephp arrayphp canphp containsphp aphp php'keepLayoutphp'php=php>truephp|false
+php php php php php php*php php php php php php php php php thatphp willphp notphp bephp passedphp tophp Zendphp_Jsonphp:php:encodephp methodphp butphp willphp bephp passed
+php php php php php php*php php php php php php php php php tophp Zendphp_Viewphp_Helperphp_Json
+php php php php php php*php php@returnphp stringphp|void
+php php php php php php*php/
+php php php php publicphp functionphp sendJsonphp(php$dataphp,php php$keepLayoutsphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$dataphp php=php php$thisphp-php>encodeJsonphp(php$dataphp,php php$keepLayoutsphp)php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>getResponsephp(php)php;
+php php php php php php php php php$responsephp-php>setBodyphp(php$dataphp)php;
 
-        if (!$this->suppressExit) {
-            $response->sendResponse();
-            exit;
-        }
+php php php php php php php php ifphp php(php!php$thisphp-php>suppressExitphp)php php{
+php php php php php php php php php php php php php$responsephp-php>sendResponsephp(php)php;
+php php php php php php php php php php php php exitphp;
+php php php php php php php php php}
 
-        return $data;
-    }
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
 
-    /**
-     * Strategy pattern: call helper as helper broker method
-     *
-     * Allows encoding JSON. If $sendNow is true, immediately sends JSON
-     * response.
-     *
-     * @param  mixed   $data
-     * @param  boolean $sendNow
-     * @param  boolean $keepLayouts
-     * @return string|void
-     */
-    public function direct($data, $sendNow = true, $keepLayouts = false)
-    {
-        if ($sendNow) {
-            return $this->sendJson($data, $keepLayouts);
-        }
-        return $this->encodeJson($data, $keepLayouts);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Strategyphp patternphp:php callphp helperphp asphp helperphp brokerphp method
+php php php php php php*
+php php php php php php*php Allowsphp encodingphp JSONphp.php Ifphp php$sendNowphp isphp truephp,php immediatelyphp sendsphp JSON
+php php php php php php*php responsephp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php php php$data
+php php php php php php*php php@paramphp php booleanphp php$sendNow
+php php php php php php*php php@paramphp php booleanphp php$keepLayouts
+php php php php php php*php php@returnphp stringphp|void
+php php php php php php*php/
+php php php php publicphp functionphp directphp(php$dataphp,php php$sendNowphp php=php truephp,php php$keepLayoutsphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$sendNowphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>sendJsonphp(php$dataphp,php php$keepLayoutsphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>encodeJsonphp(php$dataphp,php php$keepLayoutsphp)php;
+php php php php php}
+php}

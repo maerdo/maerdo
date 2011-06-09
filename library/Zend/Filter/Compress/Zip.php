@@ -1,355 +1,355 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Zip.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Zipphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Filter_Compress_CompressAbstract
- */
-require_once 'Zend/Filter/Compress/CompressAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Compressphp_CompressAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Compressphp/CompressAbstractphp.phpphp'php;
 
-/**
- * Compression adapter for zip
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
-{
-    /**
-     * Compression Options
-     * array(
-     *     'archive'  => Archive to use
-     *     'password' => Password to use
-     *     'target'   => Target to write the files to
-     * )
-     *
-     * @var array
-     */
-    protected $_options = array(
-        'archive' => null,
-        'target'  => null,
-    );
+php/php*php*
+php php*php Compressionphp adapterphp forphp zip
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Filterphp_Compressphp_Zipphp extendsphp Zendphp_Filterphp_Compressphp_CompressAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Compressionphp Options
+php php php php php php*php arrayphp(
+php php php php php php*php php php php php php'archivephp'php php php=php>php Archivephp tophp use
+php php php php php php*php php php php php php'passwordphp'php php=php>php Passwordphp tophp use
+php php php php php php*php php php php php php'targetphp'php php php php=php>php Targetphp tophp writephp thephp filesphp to
+php php php php php php*php php)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'archivephp'php php=php>php nullphp,
+php php php php php php php php php'targetphp'php php php=php>php nullphp,
+php php php php php)php;
 
-    /**
-     * Class constructor
-     *
-     * @param string|array $options (Optional) Options to set
-     */
-    public function __construct($options = null)
-    {
-        if (!extension_loaded('zip')) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('This filter needs the zip extension');
-        }
-        parent::__construct($options);
-    }
+php php php php php/php*php*
+php php php php php php*php Classphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$optionsphp php(Optionalphp)php Optionsphp tophp set
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'zipphp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Thisphp filterphp needsphp thephp zipphp extensionphp'php)php;
+php php php php php php php php php}
+php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Returns the set archive
-     *
-     * @return string
-     */
-    public function getArchive()
-    {
-        return $this->_options['archive'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp archive
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getArchivephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'archivephp'php]php;
+php php php php php}
 
-    /**
-     * Sets the archive to use for de-/compression
-     *
-     * @param string $archive Archive to use
-     * @return Zend_Filter_Compress_Rar
-     */
-    public function setArchive($archive)
-    {
-        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $archive);
-        $this->_options['archive'] = (string) $archive;
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp archivephp tophp usephp forphp dephp-php/compression
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$archivephp Archivephp tophp use
+php php php php php php*php php@returnphp Zendphp_Filterphp_Compressphp_Rar
+php php php php php php*php/
+php php php php publicphp functionphp setArchivephp(php$archivephp)
+php php php php php{
+php php php php php php php php php$archivephp php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php DIRECTORYphp_SEPARATORphp,php php$archivephp)php;
+php php php php php php php php php$thisphp-php>php_optionsphp[php'archivephp'php]php php=php php(stringphp)php php$archivephp;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set targetpath
-     *
-     * @return string
-     */
-    public function getTarget()
-    {
-        return $this->_options['target'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp targetpath
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTargetphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'targetphp'php]php;
+php php php php php}
 
-    /**
-     * Sets the target to use
-     *
-     * @param string $target
-     * @return Zend_Filter_Compress_Rar
-     */
-    public function setTarget($target)
-    {
-        if (!file_exists(dirname($target))) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("The directory '$target' does not exist");
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp targetphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$target
+php php php php php php*php php@returnphp Zendphp_Filterphp_Compressphp_Rar
+php php php php php php*php/
+php php php php publicphp functionphp setTargetphp(php$targetphp)
+php php php php php{
+php php php php php php php php ifphp php(php!filephp_existsphp(dirnamephp(php$targetphp)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Thephp directoryphp php'php$targetphp'php doesphp notphp existphp"php)php;
+php php php php php php php php php}
 
-        $target = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $target);
-        $this->_options['target'] = (string) $target;
-        return $this;
-    }
+php php php php php php php php php$targetphp php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php DIRECTORYphp_SEPARATORphp,php php$targetphp)php;
+php php php php php php php php php$thisphp-php>php_optionsphp[php'targetphp'php]php php=php php(stringphp)php php$targetphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Compresses the given content
-     *
-     * @param  string $content
-     * @return string Compressed archive
-     */
-    public function compress($content)
-    {
-        $zip = new ZipArchive();
-        $res = $zip->open($this->getArchive(), ZipArchive::CREATE | ZipArchive::OVERWRITE);
+php php php php php/php*php*
+php php php php php php*php Compressesphp thephp givenphp content
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$content
+php php php php php php*php php@returnphp stringphp Compressedphp archive
+php php php php php php*php/
+php php php php publicphp functionphp compressphp(php$contentphp)
+php php php php php{
+php php php php php php php php php$zipphp php=php newphp ZipArchivephp(php)php;
+php php php php php php php php php$resphp php=php php$zipphp-php>openphp(php$thisphp-php>getArchivephp(php)php,php ZipArchivephp:php:CREATEphp php|php ZipArchivephp:php:OVERWRITEphp)php;
 
-        if ($res !== true) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception($this->_errorString($res));
-        }
+php php php php php php php php ifphp php(php$resphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php$thisphp-php>php_errorStringphp(php$resphp)php)php;
+php php php php php php php php php}
 
-        if (file_exists($content)) {
-            $content  = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
-            $basename = substr($content, strrpos($content, DIRECTORY_SEPARATOR) + 1);
-            if (is_dir($content)) {
-                $index    = strrpos($content, DIRECTORY_SEPARATOR) + 1;
-                $content .= DIRECTORY_SEPARATOR;
-                $stack    = array($content);
-                while (!empty($stack)) {
-                    $current = array_pop($stack);
-                    $files   = array();
+php php php php php php php php ifphp php(filephp_existsphp(php$contentphp)php)php php{
+php php php php php php php php php php php php php$contentphp php php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php DIRECTORYphp_SEPARATORphp,php realpathphp(php$contentphp)php)php;
+php php php php php php php php php php php php php$basenamephp php=php substrphp(php$contentphp,php strrposphp(php$contentphp,php DIRECTORYphp_SEPARATORphp)php php+php php1php)php;
+php php php php php php php php php php php php ifphp php(isphp_dirphp(php$contentphp)php)php php{
+php php php php php php php php php php php php php php php php php$indexphp php php php php=php strrposphp(php$contentphp,php DIRECTORYphp_SEPARATORphp)php php+php php1php;
+php php php php php php php php php php php php php php php php php$contentphp php.php=php DIRECTORYphp_SEPARATORphp;
+php php php php php php php php php php php php php php php php php$stackphp php php php php=php arrayphp(php$contentphp)php;
+php php php php php php php php php php php php php php php php whilephp php(php!emptyphp(php$stackphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$currentphp php=php arrayphp_popphp(php$stackphp)php;
+php php php php php php php php php php php php php php php php php php php php php$filesphp php php php=php arrayphp(php)php;
 
-                    $dir = dir($current);
-                    while (false !== ($node = $dir->read())) {
-                        if (($node == '.') || ($node == '..')) {
-                            continue;
-                        }
+php php php php php php php php php php php php php php php php php php php php php$dirphp php=php dirphp(php$currentphp)php;
+php php php php php php php php php php php php php php php php php php php php whilephp php(falsephp php!php=php=php php(php$nodephp php=php php$dirphp-php>readphp(php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$nodephp php=php=php php'php.php'php)php php|php|php php(php$nodephp php=php=php php'php.php.php'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        if (is_dir($current . $node)) {
-                            array_push($stack, $current . $node . DIRECTORY_SEPARATOR);
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_dirphp(php$currentphp php.php php$nodephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp_pushphp(php$stackphp,php php$currentphp php.php php$nodephp php.php DIRECTORYphp_SEPARATORphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        if (is_file($current . $node)) {
-                            $files[] = $node;
-                        }
-                    }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_filephp(php$currentphp php.php php$nodephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$filesphp[php]php php=php php$nodephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    $local = substr($current, $index);
-                    $zip->addEmptyDir(substr($local, 0, -1));
+php php php php php php php php php php php php php php php php php php php php php$localphp php=php substrphp(php$currentphp,php php$indexphp)php;
+php php php php php php php php php php php php php php php php php php php php php$zipphp-php>addEmptyDirphp(substrphp(php$localphp,php php0php,php php-php1php)php)php;
 
-                    foreach ($files as $file) {
-                        $zip->addFile($current . $file, $local . $file);
-                        if ($res !== true) {
-                            require_once 'Zend/Filter/Exception.php';
-                            throw new Zend_Filter_Exception($this->_errorString($res));
-                        }
-                    }
-                }
-            } else {
-                $res = $zip->addFile($content, $basename);
-                if ($res !== true) {
-                    require_once 'Zend/Filter/Exception.php';
-                    throw new Zend_Filter_Exception($this->_errorString($res));
-                }
-            }
-        } else {
-            $file = $this->getTarget();
-            if (!is_dir($file)) {
-                $file = basename($file);
-            } else {
-                $file = "zip.tmp";
-            }
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$filesphp asphp php$filephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$zipphp-php>addFilephp(php$currentphp php.php php$filephp,php php$localphp php.php php$filephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$resphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php$thisphp-php>php_errorStringphp(php$resphp)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$resphp php=php php$zipphp-php>addFilephp(php$contentphp,php php$basenamephp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$resphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php$thisphp-php>php_errorStringphp(php$resphp)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$filephp php=php php$thisphp-php>getTargetphp(php)php;
+php php php php php php php php php php php php ifphp php(php!isphp_dirphp(php$filephp)php)php php{
+php php php php php php php php php php php php php php php php php$filephp php=php basenamephp(php$filephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$filephp php=php php"zipphp.tmpphp"php;
+php php php php php php php php php php php php php}
 
-            $res = $zip->addFromString($file, $content);
-            if ($res !== true) {
-                require_once 'Zend/Filter/Exception.php';
-                throw new Zend_Filter_Exception($this->_errorString($res));
-            }
-        }
+php php php php php php php php php php php php php$resphp php=php php$zipphp-php>addFromStringphp(php$filephp,php php$contentphp)php;
+php php php php php php php php php php php php ifphp php(php$resphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php$thisphp-php>php_errorStringphp(php$resphp)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $zip->close();
-        return $this->_options['archive'];
-    }
+php php php php php php php php php$zipphp-php>closephp(php)php;
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'archivephp'php]php;
+php php php php php}
 
-    /**
-     * Decompresses the given content
-     *
-     * @param  string $content
-     * @return string
-     */
-    public function decompress($content)
-    {
-        $archive = $this->getArchive();
-        if (file_exists($content)) {
-            $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
-        } elseif (empty($archive) || !file_exists($archive)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('ZIP Archive not found');
-        }
+php php php php php/php*php*
+php php php php php php*php Decompressesphp thephp givenphp content
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$content
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp decompressphp(php$contentphp)
+php php php php php{
+php php php php php php php php php$archivephp php=php php$thisphp-php>getArchivephp(php)php;
+php php php php php php php php ifphp php(filephp_existsphp(php$contentphp)php)php php{
+php php php php php php php php php php php php php$archivephp php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php DIRECTORYphp_SEPARATORphp,php realpathphp(php$contentphp)php)php;
+php php php php php php php php php}php elseifphp php(emptyphp(php$archivephp)php php|php|php php!filephp_existsphp(php$archivephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'ZIPphp Archivephp notphp foundphp'php)php;
+php php php php php php php php php}
 
-        $zip = new ZipArchive();
-        $res = $zip->open($archive);
+php php php php php php php php php$zipphp php=php newphp ZipArchivephp(php)php;
+php php php php php php php php php$resphp php=php php$zipphp-php>openphp(php$archivephp)php;
 
-        $target = $this->getTarget();
+php php php php php php php php php$targetphp php=php php$thisphp-php>getTargetphp(php)php;
 
-        if (!empty($target) && !is_dir($target)) {
-            $target = dirname($target);
-        }
+php php php php php php php php ifphp php(php!emptyphp(php$targetphp)php php&php&php php!isphp_dirphp(php$targetphp)php)php php{
+php php php php php php php php php php php php php$targetphp php=php dirnamephp(php$targetphp)php;
+php php php php php php php php php}
 
-        if (!empty($target)) {
-            $target = rtrim($target, '/\\') . DIRECTORY_SEPARATOR;
-        }
+php php php php php php php php ifphp php(php!emptyphp(php$targetphp)php)php php{
+php php php php php php php php php php php php php$targetphp php=php rtrimphp(php$targetphp,php php'php/php\php\php'php)php php.php DIRECTORYphp_SEPARATORphp;
+php php php php php php php php php}
 
-        if (empty($target) || !is_dir($target)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('No target for ZIP decompression set');
-        }
+php php php php php php php php ifphp php(emptyphp(php$targetphp)php php|php|php php!isphp_dirphp(php$targetphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Nophp targetphp forphp ZIPphp decompressionphp setphp'php)php;
+php php php php php php php php php}
 
-        if ($res !== true) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception($this->_errorString($res));
-        }
+php php php php php php php php ifphp php(php$resphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php$thisphp-php>php_errorStringphp(php$resphp)php)php;
+php php php php php php php php php}
 
-        if (version_compare(PHP_VERSION, '5.2.8', '<')) {
-            for ($i = 0; $i < $zip->numFiles; $i++) {
-                $statIndex = $zip->statIndex($i);
-                $currName = $statIndex['name'];
-                if (($currName{0} == '/') ||
-                    (substr($currName, 0, 2) == '..') ||
-                    (substr($currName, 0, 4) == './..')
-                    )
-                {
-                    require_once 'Zend/Filter/Exception.php';
-                    throw new Zend_Filter_Exception('Upward directory traversal was detected inside ' . $archive
-                        . ' please use PHP 5.2.8 or greater to take advantage of path resolution features of '
-                        . 'the zip extension in this decompress() method.'
-                        );
-                }
-            }
-        }
+php php php php php php php php ifphp php(versionphp_comparephp(PHPphp_VERSIONphp,php php'php5php.php2php.php8php'php,php php'<php'php)php)php php{
+php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$zipphp-php>numFilesphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$statIndexphp php=php php$zipphp-php>statIndexphp(php$iphp)php;
+php php php php php php php php php php php php php php php php php$currNamephp php=php php$statIndexphp[php'namephp'php]php;
+php php php php php php php php php php php php php php php php ifphp php(php(php$currNamephp{php0php}php php=php=php php'php/php'php)php php|php|
+php php php php php php php php php php php php php php php php php php php php php(substrphp(php$currNamephp,php php0php,php php2php)php php=php=php php'php.php.php'php)php php|php|
+php php php php php php php php php php php php php php php php php php php php php(substrphp(php$currNamephp,php php0php,php php4php)php php=php=php php'php.php/php.php.php'php)
+php php php php php php php php php php php php php php php php php php php php php)
+php php php php php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Upwardphp directoryphp traversalphp wasphp detectedphp insidephp php'php php.php php$archive
+php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php pleasephp usephp PHPphp php5php.php2php.php8php orphp greaterphp tophp takephp advantagephp ofphp pathphp resolutionphp featuresphp ofphp php'
+php php php php php php php php php php php php php php php php php php php php php php php php php.php php'thephp zipphp extensionphp inphp thisphp decompressphp(php)php methodphp.php'
+php php php php php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $res = @$zip->extractTo($target);
-        if ($res !== true) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception($this->_errorString($res));
-        }
+php php php php php php php php php$resphp php=php php@php$zipphp-php>extractTophp(php$targetphp)php;
+php php php php php php php php ifphp php(php$resphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php$thisphp-php>php_errorStringphp(php$resphp)php)php;
+php php php php php php php php php}
 
-        $zip->close();
-        return $target;
-    }
+php php php php php php php php php$zipphp-php>closephp(php)php;
+php php php php php php php php returnphp php$targetphp;
+php php php php php}
 
-    /**
-     * Returns the proper string based on the given error constant
-     *
-     * @param string $error
-     */
-    protected function _errorString($error)
-    {
-        switch($error) {
-            case ZipArchive::ER_MULTIDISK :
-                return 'Multidisk ZIP Archives not supported';
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp properphp stringphp basedphp onphp thephp givenphp errorphp constant
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$error
+php php php php php php*php/
+php php php php protectedphp functionphp php_errorStringphp(php$errorphp)
+php php php php php{
+php php php php php php php php switchphp(php$errorphp)php php{
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_MULTIDISKphp php:
+php php php php php php php php php php php php php php php php returnphp php'Multidiskphp ZIPphp Archivesphp notphp supportedphp'php;
 
-            case ZipArchive::ER_RENAME :
-                return 'Failed to rename the temporary file for ZIP';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_RENAMEphp php:
+php php php php php php php php php php php php php php php php returnphp php'Failedphp tophp renamephp thephp temporaryphp filephp forphp ZIPphp'php;
 
-            case ZipArchive::ER_CLOSE :
-                return 'Failed to close the ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_CLOSEphp php:
+php php php php php php php php php php php php php php php php returnphp php'Failedphp tophp closephp thephp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_SEEK :
-                return 'Failure while seeking the ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_SEEKphp php:
+php php php php php php php php php php php php php php php php returnphp php'Failurephp whilephp seekingphp thephp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_READ :
-                return 'Failure while reading the ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_READphp php:
+php php php php php php php php php php php php php php php php returnphp php'Failurephp whilephp readingphp thephp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_WRITE :
-                return 'Failure while writing the ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_WRITEphp php:
+php php php php php php php php php php php php php php php php returnphp php'Failurephp whilephp writingphp thephp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_CRC :
-                return 'CRC failure within the ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_CRCphp php:
+php php php php php php php php php php php php php php php php returnphp php'CRCphp failurephp withinphp thephp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_ZIPCLOSED :
-                return 'ZIP Archive already closed';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_ZIPCLOSEDphp php:
+php php php php php php php php php php php php php php php php returnphp php'ZIPphp Archivephp alreadyphp closedphp'php;
 
-            case ZipArchive::ER_NOENT :
-                return 'No such file within the ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_NOENTphp php:
+php php php php php php php php php php php php php php php php returnphp php'Nophp suchphp filephp withinphp thephp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_EXISTS :
-                return 'ZIP Archive already exists';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_EXISTSphp php:
+php php php php php php php php php php php php php php php php returnphp php'ZIPphp Archivephp alreadyphp existsphp'php;
 
-            case ZipArchive::ER_OPEN :
-                return 'Can not open ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_OPENphp php:
+php php php php php php php php php php php php php php php php returnphp php'Canphp notphp openphp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_TMPOPEN :
-                return 'Failure creating temporary ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_TMPOPENphp php:
+php php php php php php php php php php php php php php php php returnphp php'Failurephp creatingphp temporaryphp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_ZLIB :
-                return 'ZLib Problem';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_ZLIBphp php:
+php php php php php php php php php php php php php php php php returnphp php'ZLibphp Problemphp'php;
 
-            case ZipArchive::ER_MEMORY :
-                return 'Memory allocation problem while working on a ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_MEMORYphp php:
+php php php php php php php php php php php php php php php php returnphp php'Memoryphp allocationphp problemphp whilephp workingphp onphp aphp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_CHANGED :
-                return 'ZIP Entry has been changed';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_CHANGEDphp php:
+php php php php php php php php php php php php php php php php returnphp php'ZIPphp Entryphp hasphp beenphp changedphp'php;
 
-            case ZipArchive::ER_COMPNOTSUPP :
-                return 'Compression method not supported within ZLib';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_COMPNOTSUPPphp php:
+php php php php php php php php php php php php php php php php returnphp php'Compressionphp methodphp notphp supportedphp withinphp ZLibphp'php;
 
-            case ZipArchive::ER_EOF :
-                return 'Premature EOF within ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_EOFphp php:
+php php php php php php php php php php php php php php php php returnphp php'Prematurephp EOFphp withinphp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_INVAL :
-                return 'Invalid argument for ZLIB';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_INVALphp php:
+php php php php php php php php php php php php php php php php returnphp php'Invalidphp argumentphp forphp ZLIBphp'php;
 
-            case ZipArchive::ER_NOZIP :
-                return 'Given file is no zip archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_NOZIPphp php:
+php php php php php php php php php php php php php php php php returnphp php'Givenphp filephp isphp nophp zipphp archivephp'php;
 
-            case ZipArchive::ER_INTERNAL :
-                return 'Internal error while working on a ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_INTERNALphp php:
+php php php php php php php php php php php php php php php php returnphp php'Internalphp errorphp whilephp workingphp onphp aphp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_INCONS :
-                return 'Inconsistent ZIP archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_INCONSphp php:
+php php php php php php php php php php php php php php php php returnphp php'Inconsistentphp ZIPphp archivephp'php;
 
-            case ZipArchive::ER_REMOVE :
-                return 'Can not remove ZIP Archive';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_REMOVEphp php:
+php php php php php php php php php php php php php php php php returnphp php'Canphp notphp removephp ZIPphp Archivephp'php;
 
-            case ZipArchive::ER_DELETED :
-                return 'ZIP Entry has been deleted';
+php php php php php php php php php php php php casephp ZipArchivephp:php:ERphp_DELETEDphp php:
+php php php php php php php php php php php php php php php php returnphp php'ZIPphp Entryphp hasphp beenphp deletedphp'php;
 
-            default :
-                return 'Unknown error within ZIP Archive';
-        }
-    }
+php php php php php php php php php php php php defaultphp php:
+php php php php php php php php php php php php php php php php returnphp php'Unknownphp errorphp withinphp ZIPphp Archivephp'php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the adapter name
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return 'Zip';
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php'Zipphp'php;
+php php php php php}
+php}

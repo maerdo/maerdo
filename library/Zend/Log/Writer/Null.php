@@ -1,56 +1,56 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Log
- * @subpackage Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Null.php 23576 2010-12-23 23:25:44Z ramon $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@subpackagephp Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Nullphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
 
-/** Zend_Log_Writer_Abstract */
-require_once 'Zend/Log/Writer/Abstract.php';
+php/php*php*php Zendphp_Logphp_Writerphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Logphp/Writerphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Log
- * @subpackage Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Null.php 23576 2010-12-23 23:25:44Z ramon $
- */
-class Zend_Log_Writer_Null extends Zend_Log_Writer_Abstract
-{
-    /**
-     * Write a message to the log.
-     *
-     * @param  array  $event  event data
-     * @return void
-     */
-    protected function _write($event)
-    {
-    }
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@subpackagephp Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Nullphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
+classphp Zendphp_Logphp_Writerphp_Nullphp extendsphp Zendphp_Logphp_Writerphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Writephp aphp messagephp tophp thephp logphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$eventphp php eventphp data
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_writephp(php$eventphp)
+php php php php php{
+php php php php php}
 
-    /**
-     * Create a new instance of Zend_Log_Writer_Null
-     *
-     * @param  array|Zend_Config $config
-     * @return Zend_Log_Writer_Null
-     */
-    static public function factory($config)
-    {
-        return new self();
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp instancephp ofphp Zendphp_Logphp_Writerphp_Null
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Logphp_Writerphp_Null
+php php php php php php*php/
+php php php php staticphp publicphp functionphp factoryphp(php$configphp)
+php php php php php{
+php php php php php php php php returnphp newphp selfphp(php)php;
+php php php php php}
+php}

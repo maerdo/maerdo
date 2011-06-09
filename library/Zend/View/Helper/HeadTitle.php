@@ -1,222 +1,222 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: HeadTitle.php 23388 2010-11-19 00:37:55Z ramon $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php HeadTitlephp.phpphp php2php3php3php8php8php php2php0php1php0php-php1php1php-php1php9php php0php0php:php3php7php:php5php5Zphp ramonphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_View_Helper_Placeholder_Container_Standalone */
-require_once 'Zend/View/Helper/Placeholder/Container/Standalone.php';
+php/php*php*php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Standalonephp php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Placeholderphp/Containerphp/Standalonephp.phpphp'php;
 
-/**
- * Helper for setting and retrieving title element for HTML head
- *
- * @uses       Zend_View_Helper_Placeholder_Container_Standalone
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_HeadTitle extends Zend_View_Helper_Placeholder_Container_Standalone
-{
-    /**
-     * Registry key for placeholder
-     * @var string
-     */
-    protected $_regKey = 'Zend_View_Helper_HeadTitle';
+php/php*php*
+php php*php Helperphp forphp settingphp andphp retrievingphp titlephp elementphp forphp HTMLphp head
+php php*
+php php*php php@usesphp php php php php php php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Standalone
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_HeadTitlephp extendsphp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Standalone
+php{
+php php php php php/php*php*
+php php php php php php*php Registryphp keyphp forphp placeholder
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_regKeyphp php=php php'Zendphp_Viewphp_Helperphp_HeadTitlephp'php;
 
-    /**
-     * Whether or not auto-translation is enabled
-     * @var boolean
-     */
-    protected $_translate = false;
+php php php php php/php*php*
+php php php php php php*php Whetherphp orphp notphp autophp-translationphp isphp enabled
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_translatephp php=php falsephp;
 
-    /**
-     * Translation object
-     *
-     * @var Zend_Translate_Adapter
-     */
-    protected $_translator;
+php php php php php/php*php*
+php php php php php php*php Translationphp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Translatephp_Adapter
+php php php php php php*php/
+php php php php protectedphp php$php_translatorphp;
 
-    /**
-     * Default title rendering order (i.e. order in which each title attached)
-     *
-     * @var string
-     */
-    protected $_defaultAttachOrder = null;
+php php php php php/php*php*
+php php php php php php*php Defaultphp titlephp renderingphp orderphp php(iphp.ephp.php orderphp inphp whichphp eachphp titlephp attachedphp)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_defaultAttachOrderphp php=php nullphp;
 
-    /**
-     * Retrieve placeholder for title element and optionally set state
-     *
-     * @param  string $title
-     * @param  string $setType
-     * @return Zend_View_Helper_HeadTitle
-     */
-    public function headTitle($title = null, $setType = null)
-    {
-        if ($setType === null && $this->getDefaultAttachOrder() === null) {
-            $setType = Zend_View_Helper_Placeholder_Container_Abstract::APPEND;
-        } elseif ($setType === null && $this->getDefaultAttachOrder() !== null) {
-            $setType = $this->getDefaultAttachOrder();
-        }
-        $title = (string) $title;
-        if ($title !== '') {
-            if ($setType == Zend_View_Helper_Placeholder_Container_Abstract::SET) {
-                $this->set($title);
-            } elseif ($setType == Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) {
-                $this->prepend($title);
-            } else {
-                $this->append($title);
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp placeholderphp forphp titlephp elementphp andphp optionallyphp setphp state
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$title
+php php php php php php*php php@paramphp php stringphp php$setType
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_HeadTitle
+php php php php php php*php/
+php php php php publicphp functionphp headTitlephp(php$titlephp php=php nullphp,php php$setTypephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$setTypephp php=php=php=php nullphp php&php&php php$thisphp-php>getDefaultAttachOrderphp(php)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$setTypephp php=php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:APPENDphp;
+php php php php php php php php php}php elseifphp php(php$setTypephp php=php=php=php nullphp php&php&php php$thisphp-php>getDefaultAttachOrderphp(php)php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$setTypephp php=php php$thisphp-php>getDefaultAttachOrderphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$titlephp php=php php(stringphp)php php$titlephp;
+php php php php php php php php ifphp php(php$titlephp php!php=php=php php'php'php)php php{
+php php php php php php php php php php php php ifphp php(php$setTypephp php=php=php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:SETphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setphp(php$titlephp)php;
+php php php php php php php php php php php php php}php elseifphp php(php$setTypephp php=php=php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:PREPENDphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>prependphp(php$titlephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>appendphp(php$titlephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set a default order to add titles
-     *
-     * @param string $setType
-     */
-    public function setDefaultAttachOrder($setType)
-    {
-        if (!in_array($setType, array(
-            Zend_View_Helper_Placeholder_Container_Abstract::APPEND,
-            Zend_View_Helper_Placeholder_Container_Abstract::SET,
-            Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
-        ))) {
-            require_once 'Zend/View/Exception.php';
-            throw new Zend_View_Exception("You must use a valid attach order: 'PREPEND', 'APPEND' or 'SET'");
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp defaultphp orderphp tophp addphp titles
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$setType
+php php php php php php*php/
+php php php php publicphp functionphp setDefaultAttachOrderphp(php$setTypephp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$setTypephp,php arrayphp(
+php php php php php php php php php php php php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:APPENDphp,
+php php php php php php php php php php php php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:SETphp,
+php php php php php php php php php php php php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:PREPEND
+php php php php php php php php php)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Viewphp_Exceptionphp(php"Youphp mustphp usephp aphp validphp attachphp orderphp:php php'PREPENDphp'php,php php'APPENDphp'php orphp php'SETphp'php"php)php;
+php php php php php php php php php}
 
-        $this->_defaultAttachOrder = $setType;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_defaultAttachOrderphp php=php php$setTypephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the default attach order, if any.
-     *
-     * @return mixed
-     */
-    public function getDefaultAttachOrder()
-    {
-        return $this->_defaultAttachOrder;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp defaultphp attachphp orderphp,php ifphp anyphp.
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultAttachOrderphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_defaultAttachOrderphp;
+php php php php php}
 
-    /**
-     * Sets a translation Adapter for translation
-     *
-     * @param  Zend_Translate|Zend_Translate_Adapter $translate
-     * @return Zend_View_Helper_HeadTitle
-     */
-    public function setTranslator($translate)
-    {
-        if ($translate instanceof Zend_Translate_Adapter) {
-            $this->_translator = $translate;
-        } elseif ($translate instanceof Zend_Translate) {
-            $this->_translator = $translate->getAdapter();
-        } else {
-            require_once 'Zend/View/Exception.php';
-            $e = new Zend_View_Exception("You must set an instance of Zend_Translate or Zend_Translate_Adapter");
-            $e->setView($this->view);
-            throw $e;
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp translationphp Adapterphp forphp translation
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Translatephp|Zendphp_Translatephp_Adapterphp php$translate
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_HeadTitle
+php php php php php php*php/
+php php php php publicphp functionphp setTranslatorphp(php$translatephp)
+php php php php php{
+php php php php php php php php ifphp php(php$translatephp instanceofphp Zendphp_Translatephp_Adapterphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php php$translatephp;
+php php php php php php php php php}php elseifphp php(php$translatephp instanceofphp Zendphp_Translatephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php php$translatephp-php>getAdapterphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php"Youphp mustphp setphp anphp instancephp ofphp Zendphp_Translatephp orphp Zendphp_Translatephp_Adapterphp"php)php;
+php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve translation object
-     *
-     * If none is currently registered, attempts to pull it from the registry
-     * using the key 'Zend_Translate'.
-     *
-     * @return Zend_Translate_Adapter|null
-     */
-    public function getTranslator()
-    {
-        if (null === $this->_translator) {
-            require_once 'Zend/Registry.php';
-            if (Zend_Registry::isRegistered('Zend_Translate')) {
-                $this->setTranslator(Zend_Registry::get('Zend_Translate'));
-            }
-        }
-        return $this->_translator;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp translationphp object
+php php php php php php*
+php php php php php php*php Ifphp nonephp isphp currentlyphp registeredphp,php attemptsphp tophp pullphp itphp fromphp thephp registry
+php php php php php php*php usingphp thephp keyphp php'Zendphp_Translatephp'php.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getTranslatorphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_translatorphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
+php php php php php php php php php php php php ifphp php(Zendphp_Registryphp:php:isRegisteredphp(php'Zendphp_Translatephp'php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setTranslatorphp(Zendphp_Registryphp:php:getphp(php'Zendphp_Translatephp'php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_translatorphp;
+php php php php php}
 
-    /**
-     * Enables translation
-     *
-     * @return Zend_View_Helper_HeadTitle
-     */
-    public function enableTranslation()
-    {
-        $this->_translate = true;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Enablesphp translation
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_HeadTitle
+php php php php php php*php/
+php php php php publicphp functionphp enableTranslationphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_translatephp php=php truephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Disables translation
-     *
-     * @return Zend_View_Helper_HeadTitle
-     */
-    public function disableTranslation()
-    {
-        $this->_translate = false;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Disablesphp translation
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_HeadTitle
+php php php php php php*php/
+php php php php publicphp functionphp disableTranslationphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_translatephp php=php falsephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Turn helper into string
-     *
-     * @param  string|null $indent
-     * @param  string|null $locale
-     * @return string
-     */
-    public function toString($indent = null, $locale = null)
-    {
-        $indent = (null !== $indent)
-                ? $this->getWhitespace($indent)
-                : $this->getIndent();
+php php php php php/php*php*
+php php php php php php*php Turnphp helperphp intophp string
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|nullphp php$indent
+php php php php php php*php php@paramphp php stringphp|nullphp php$locale
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php$indentphp php=php nullphp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$indentphp php=php php(nullphp php!php=php=php php$indentphp)
+php php php php php php php php php php php php php php php php php?php php$thisphp-php>getWhitespacephp(php$indentphp)
+php php php php php php php php php php php php php php php php php:php php$thisphp-php>getIndentphp(php)php;
 
-        $items = array();
+php php php php php php php php php$itemsphp php=php arrayphp(php)php;
 
-        if($this->_translate && $translator = $this->getTranslator()) {
-            foreach ($this as $item) {
-                $items[] = $translator->translate($item, $locale);
-            }
-        } else {
-            foreach ($this as $item) {
-                $items[] = $item;
-            }
-        }
+php php php php php php php php ifphp(php$thisphp-php>php_translatephp php&php&php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php)php php{
+php php php php php php php php php php php php foreachphp php(php$thisphp asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php php$itemsphp[php]php php=php php$translatorphp-php>translatephp(php$itemphp,php php$localephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php foreachphp php(php$thisphp asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php php$itemsphp[php]php php=php php$itemphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $separator = $this->getSeparator();
-        $output = '';
-        if(($prefix = $this->getPrefix())) {
-            $output  .= $prefix;
-        }
-        $output .= implode($separator, $items);
-        if(($postfix = $this->getPostfix())) {
-            $output .= $postfix;
-        }
+php php php php php php php php php$separatorphp php=php php$thisphp-php>getSeparatorphp(php)php;
+php php php php php php php php php$outputphp php=php php'php'php;
+php php php php php php php php ifphp(php(php$prefixphp php=php php$thisphp-php>getPrefixphp(php)php)php)php php{
+php php php php php php php php php php php php php$outputphp php php.php=php php$prefixphp;
+php php php php php php php php php}
+php php php php php php php php php$outputphp php.php=php implodephp(php$separatorphp,php php$itemsphp)php;
+php php php php php php php php ifphp(php(php$postfixphp php=php php$thisphp-php>getPostfixphp(php)php)php)php php{
+php php php php php php php php php php php php php$outputphp php.php=php php$postfixphp;
+php php php php php php php php php}
 
-        $output = ($this->_autoEscape) ? $this->_escape($output) : $output;
+php php php php php php php php php$outputphp php=php php(php$thisphp-php>php_autoEscapephp)php php?php php$thisphp-php>php_escapephp(php$outputphp)php php:php php$outputphp;
 
-        return $indent . '<title>' . $output . '</title>';
-    }
-}
+php php php php php php php php returnphp php$indentphp php.php php'php<titlephp>php'php php.php php$outputphp php.php php'<php/titlephp>php'php;
+php php php php php}
+php}

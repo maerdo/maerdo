@@ -1,341 +1,341 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Term.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Termphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** Zend_Search_Lucene_Search_Query_Processing */
-require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
+php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Processingphp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Preprocessingphp.phpphp'php;
 
 
-/**
- * It's an internal abstract class intended to finalize ase a query processing after query parsing.
- * This type of query is not actually involved into query execution.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @internal
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_Search_Query_Preprocessing_Term extends Zend_Search_Lucene_Search_Query_Preprocessing
-{
-    /**
-     * word (query parser lexeme) to find.
-     *
-     * @var string
-     */
-    private $_word;
+php/php*php*
+php php*php Itphp'sphp anphp internalphp abstractphp classphp intendedphp tophp finalizephp asephp aphp queryphp processingphp afterphp queryphp parsingphp.
+php php*php Thisphp typephp ofphp queryphp isphp notphp actuallyphp involvedphp intophp queryphp executionphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@internal
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Preprocessingphp_Termphp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Preprocessing
+php{
+php php php php php/php*php*
+php php php php php php*php wordphp php(queryphp parserphp lexemephp)php tophp findphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_wordphp;
 
-    /**
-     * Word encoding (field name is always provided using UTF-8 encoding since it may be retrieved from index).
-     *
-     * @var string
-     */
-    private $_encoding;
-
-
-    /**
-     * Field name.
-     *
-     * @var string
-     */
-    private $_field;
-
-    /**
-     * Class constructor.  Create a new preprocessing object for prase query.
-     *
-     * @param string $word       Non-tokenized word (query parser lexeme) to search.
-     * @param string $encoding   Word encoding.
-     * @param string $fieldName  Field name.
-     */
-    public function __construct($word, $encoding, $fieldName)
-    {
-        $this->_word     = $word;
-        $this->_encoding = $encoding;
-        $this->_field    = $fieldName;
-    }
-
-    /**
-     * Re-write query into primitive queries in the context of specified index
-     *
-     * @param Zend_Search_Lucene_Interface $index
-     * @return Zend_Search_Lucene_Search_Query
-     */
-    public function rewrite(Zend_Search_Lucene_Interface $index)
-    {
-        if ($this->_field === null) {
-            require_once 'Zend/Search/Lucene/Search/Query/MultiTerm.php';
-            $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
-            $query->setBoost($this->getBoost());
-
-            $hasInsignificantSubqueries = false;
-
-            require_once 'Zend/Search/Lucene.php';
-            if (Zend_Search_Lucene::getDefaultSearchField() === null) {
-                $searchFields = $index->getFieldNames(true);
-            } else {
-                $searchFields = array(Zend_Search_Lucene::getDefaultSearchField());
-            }
-
-            require_once 'Zend/Search/Lucene/Search/Query/Preprocessing/Term.php';
-            foreach ($searchFields as $fieldName) {
-                $subquery = new Zend_Search_Lucene_Search_Query_Preprocessing_Term($this->_word,
-                                                                                   $this->_encoding,
-                                                                                   $fieldName);
-                $rewrittenSubquery = $subquery->rewrite($index);
-                foreach ($rewrittenSubquery->getQueryTerms() as $term) {
-                    $query->addTerm($term);
-                }
-
-                if ($rewrittenSubquery instanceof Zend_Search_Lucene_Search_Query_Insignificant) {
-                    $hasInsignificantSubqueries = true;
-                }
-            }
-
-            if (count($query->getTerms()) == 0) {
-                $this->_matches = array();
-                if ($hasInsignificantSubqueries) {
-                    require_once 'Zend/Search/Lucene/Search/Query/Insignificant.php';
-                    return new Zend_Search_Lucene_Search_Query_Insignificant();
-                } else {
-                    require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
-                    return new Zend_Search_Lucene_Search_Query_Empty();
-                }
-            }
-
-            $this->_matches = $query->getQueryTerms();
-            return $query;
-        }
-
-        // -------------------------------------
-        // Recognize exact term matching (it corresponds to Keyword fields stored in the index)
-        // encoding is not used since we expect binary matching
-        require_once 'Zend/Search/Lucene/Index/Term.php';
-        $term = new Zend_Search_Lucene_Index_Term($this->_word, $this->_field);
-        if ($index->hasTerm($term)) {
-            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
-            $query = new Zend_Search_Lucene_Search_Query_Term($term);
-            $query->setBoost($this->getBoost());
-
-            $this->_matches = $query->getQueryTerms();
-            return $query;
-        }
+php php php php php/php*php*
+php php php php php php*php Wordphp encodingphp php(fieldphp namephp isphp alwaysphp providedphp usingphp UTFphp-php8php encodingphp sincephp itphp mayphp bephp retrievedphp fromphp indexphp)php.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_encodingphp;
 
 
-        // -------------------------------------
-        // Recognize wildcard queries
+php php php php php/php*php*
+php php php php php php*php Fieldphp namephp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_fieldphp;
 
-        /** @todo check for PCRE unicode support may be performed through Zend_Environment in some future */
-        if (@preg_match('/\pL/u', 'a') == 1) {
-            $word = iconv($this->_encoding, 'UTF-8', $this->_word);
-            $wildcardsPattern = '/[*?]/u';
-            $subPatternsEncoding = 'UTF-8';
-        } else {
-            $word = $this->_word;
-            $wildcardsPattern = '/[*?]/';
-            $subPatternsEncoding = $this->_encoding;
-        }
+php php php php php/php*php*
+php php php php php php*php Classphp constructorphp.php php Createphp aphp newphp preprocessingphp objectphp forphp prasephp queryphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$wordphp php php php php php php Nonphp-tokenizedphp wordphp php(queryphp parserphp lexemephp)php tophp searchphp.
+php php php php php php*php php@paramphp stringphp php$encodingphp php php Wordphp encodingphp.
+php php php php php php*php php@paramphp stringphp php$fieldNamephp php Fieldphp namephp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$wordphp,php php$encodingphp,php php$fieldNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_wordphp php php php php php=php php$wordphp;
+php php php php php php php php php$thisphp-php>php_encodingphp php=php php$encodingphp;
+php php php php php php php php php$thisphp-php>php_fieldphp php php php php=php php$fieldNamephp;
+php php php php php}
 
-        $subPatterns = preg_split($wildcardsPattern, $word, -1, PREG_SPLIT_OFFSET_CAPTURE);
+php php php php php/php*php*
+php php php php php php*php Rephp-writephp queryphp intophp primitivephp queriesphp inphp thephp contextphp ofphp specifiedphp index
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
+php php php php php php*php/
+php php php php publicphp functionphp rewritephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_fieldphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/MultiTermphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_MultiTermphp(php)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
 
-        if (count($subPatterns) > 1) {
-            // Wildcard query is recognized
+php php php php php php php php php php php php php$hasInsignificantSubqueriesphp php=php falsephp;
 
-            $pattern = '';
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp.phpphp'php;
+php php php php php php php php php php php php ifphp php(Zendphp_Searchphp_Lucenephp:php:getDefaultSearchFieldphp(php)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$searchFieldsphp php=php php$indexphp-php>getFieldNamesphp(truephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$searchFieldsphp php=php arrayphp(Zendphp_Searchphp_Lucenephp:php:getDefaultSearchFieldphp(php)php)php;
+php php php php php php php php php php php php php}
 
-            require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
-            foreach ($subPatterns as $id => $subPattern) {
-                // Append corresponding wildcard character to the pattern before each sub-pattern (except first)
-                if ($id != 0) {
-                    $pattern .= $word[ $subPattern[1] - 1 ];
-                }
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Preprocessingphp/Termphp.phpphp'php;
+php php php php php php php php php php php php foreachphp php(php$searchFieldsphp asphp php$fieldNamephp)php php{
+php php php php php php php php php php php php php php php php php$subqueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Preprocessingphp_Termphp(php$thisphp-php>php_wordphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_encodingphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldNamephp)php;
+php php php php php php php php php php php php php php php php php$rewrittenSubqueryphp php=php php$subqueryphp-php>rewritephp(php$indexphp)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$rewrittenSubqueryphp-php>getQueryTermsphp(php)php asphp php$termphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$queryphp-php>addTermphp(php$termphp)php;
+php php php php php php php php php php php php php php php php php}
 
-                // Check if each subputtern is a single word in terms of current analyzer
-                $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($subPattern[0], $subPatternsEncoding);
-                if (count($tokens) > 1) {
-                    require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
-                    throw new Zend_Search_Lucene_Search_QueryParserException('Wildcard search is supported only for non-multiple word terms');
-                }
-                foreach ($tokens as $token) {
-                    $pattern .= $token->getTermText();
-                }
-            }
+php php php php php php php php php php php php php php php php ifphp php(php$rewrittenSubqueryphp instanceofphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Insignificantphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$hasInsignificantSubqueriesphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            require_once 'Zend/Search/Lucene/Index/Term.php';
-            $term  = new Zend_Search_Lucene_Index_Term($pattern, $this->_field);
-            require_once 'Zend/Search/Lucene/Search/Query/Wildcard.php';
-            $query = new Zend_Search_Lucene_Search_Query_Wildcard($term);
-            $query->setBoost($this->getBoost());
+php php php php php php php php php php php php ifphp php(countphp(php$queryphp-php>getTermsphp(php)php)php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$hasInsignificantSubqueriesphp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Insignificantphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Insignificantphp(php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            // Get rewritten query. Important! It also fills terms matching container.
-            $rewrittenQuery = $query->rewrite($index);
-            $this->_matches = $query->getQueryTerms();
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php php php php php returnphp php$queryphp;
+php php php php php php php php php}
 
-            return $rewrittenQuery;
-        }
+php php php php php php php php php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php php php php/php/php Recognizephp exactphp termphp matchingphp php(itphp correspondsphp tophp Keywordphp fieldsphp storedphp inphp thephp indexphp)
+php php php php php php php php php/php/php encodingphp isphp notphp usedphp sincephp wephp expectphp binaryphp matching
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php$termphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$thisphp-php>php_wordphp,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php ifphp php(php$indexphp-php>hasTermphp(php$termphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(php$termphp)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
 
-
-        // -------------------------------------
-        // Recognize one-term multi-term and "insignificant" queries
-        require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
-        $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($this->_word, $this->_encoding);
-
-        if (count($tokens) == 0) {
-            $this->_matches = array();
-            require_once 'Zend/Search/Lucene/Search/Query/Insignificant.php';
-            return new Zend_Search_Lucene_Search_Query_Insignificant();
-        }
-
-        if (count($tokens) == 1) {
-            require_once 'Zend/Search/Lucene/Index/Term.php';
-            $term  = new Zend_Search_Lucene_Index_Term($tokens[0]->getTermText(), $this->_field);
-            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
-            $query = new Zend_Search_Lucene_Search_Query_Term($term);
-            $query->setBoost($this->getBoost());
-
-            $this->_matches = $query->getQueryTerms();
-            return $query;
-        }
-
-        //It's not insignificant or one term query
-        require_once 'Zend/Search/Lucene/Search/Query/MultiTerm.php';
-        $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
-
-        /**
-         * @todo Process $token->getPositionIncrement() to support stemming, synonyms and other
-         * analizer design features
-         */
-        require_once 'Zend/Search/Lucene/Index/Term.php';
-        foreach ($tokens as $token) {
-            $term = new Zend_Search_Lucene_Index_Term($token->getTermText(), $this->_field);
-            $query->addTerm($term, true); // all subterms are required
-        }
-
-        $query->setBoost($this->getBoost());
-
-        $this->_matches = $query->getQueryTerms();
-        return $query;
-    }
-
-    /**
-     * Query specific matches highlighting
-     *
-     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
-     */
-    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
-    {
-        /** Skip fields detection. We don't need it, since we expect all fields presented in the HTML body and don't differentiate them */
-
-        /** Skip exact term matching recognition, keyword fields highlighting is not supported */
-
-        // -------------------------------------
-        // Recognize wildcard queries
-        /** @todo check for PCRE unicode support may be performed through Zend_Environment in some future */
-        if (@preg_match('/\pL/u', 'a') == 1) {
-            $word = iconv($this->_encoding, 'UTF-8', $this->_word);
-            $wildcardsPattern = '/[*?]/u';
-            $subPatternsEncoding = 'UTF-8';
-        } else {
-            $word = $this->_word;
-            $wildcardsPattern = '/[*?]/';
-            $subPatternsEncoding = $this->_encoding;
-        }
-        $subPatterns = preg_split($wildcardsPattern, $word, -1, PREG_SPLIT_OFFSET_CAPTURE);
-        if (count($subPatterns) > 1) {
-            // Wildcard query is recognized
-
-            $pattern = '';
-
-            require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
-            foreach ($subPatterns as $id => $subPattern) {
-                // Append corresponding wildcard character to the pattern before each sub-pattern (except first)
-                if ($id != 0) {
-                    $pattern .= $word[ $subPattern[1] - 1 ];
-                }
-
-                // Check if each subputtern is a single word in terms of current analyzer
-                $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($subPattern[0], $subPatternsEncoding);
-                if (count($tokens) > 1) {
-                    // Do nothing (nothing is highlighted)
-                    return;
-                }
-                foreach ($tokens as $token) {
-                    $pattern .= $token->getTermText();
-                }
-            }
-
-            require_once 'Zend/Search/Lucene/Index/Term.php';
-            $term  = new Zend_Search_Lucene_Index_Term($pattern, $this->_field);
-            require_once 'Zend/Search/Lucene/Search/Query/Wildcard.php';
-            $query = new Zend_Search_Lucene_Search_Query_Wildcard($term);
-
-            $query->_highlightMatches($highlighter);
-            return;
-        }
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php php php php php returnphp php$queryphp;
+php php php php php php php php php}
 
 
-        // -------------------------------------
-        // Recognize one-term multi-term and "insignificant" queries
-        require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
-        $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($this->_word, $this->_encoding);
+php php php php php php php php php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php php php php/php/php Recognizephp wildcardphp queries
 
-        if (count($tokens) == 0) {
-            // Do nothing
-            return;
-        }
+php php php php php php php php php/php*php*php php@todophp checkphp forphp PCREphp unicodephp supportphp mayphp bephp performedphp throughphp Zendphp_Environmentphp inphp somephp futurephp php*php/
+php php php php php php php php ifphp php(php@pregphp_matchphp(php'php/php\pLphp/uphp'php,php php'aphp'php)php php=php=php php1php)php php{
+php php php php php php php php php php php php php$wordphp php=php iconvphp(php$thisphp-php>php_encodingphp,php php'UTFphp-php8php'php,php php$thisphp-php>php_wordphp)php;
+php php php php php php php php php php php php php$wildcardsPatternphp php=php php'php/php[php*php?php]php/uphp'php;
+php php php php php php php php php php php php php$subPatternsEncodingphp php=php php'UTFphp-php8php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$wordphp php=php php$thisphp-php>php_wordphp;
+php php php php php php php php php php php php php$wildcardsPatternphp php=php php'php/php[php*php?php]php/php'php;
+php php php php php php php php php php php php php$subPatternsEncodingphp php=php php$thisphp-php>php_encodingphp;
+php php php php php php php php php}
 
-        if (count($tokens) == 1) {
-            $highlighter->highlight($tokens[0]->getTermText());
-            return;
-        }
+php php php php php php php php php$subPatternsphp php=php pregphp_splitphp(php$wildcardsPatternphp,php php$wordphp,php php-php1php,php PREGphp_SPLITphp_OFFSETphp_CAPTUREphp)php;
 
-        //It's not insignificant or one term query
-        $words = array();
-        foreach ($tokens as $token) {
-            $words[] = $token->getTermText();
-        }
-        $highlighter->highlight($words);
-    }
+php php php php php php php php ifphp php(countphp(php$subPatternsphp)php php>php php1php)php php{
+php php php php php php php php php php php php php/php/php Wildcardphp queryphp isphp recognized
 
-    /**
-     * Print a query
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        // It's used only for query visualisation, so we don't care about characters escaping
-        if ($this->_field !== null) {
-            $query = $this->_field . ':';
-        } else {
-            $query = '';
-        }
+php php php php php php php php php php php php php$patternphp php=php php'php'php;
 
-        $query .= $this->_word;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
+php php php php php php php php php php php php foreachphp php(php$subPatternsphp asphp php$idphp php=php>php php$subPatternphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Appendphp correspondingphp wildcardphp characterphp tophp thephp patternphp beforephp eachphp subphp-patternphp php(exceptphp firstphp)
+php php php php php php php php php php php php php php php php ifphp php(php$idphp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$patternphp php.php=php php$wordphp[php php$subPatternphp[php1php]php php-php php1php php]php;
+php php php php php php php php php php php php php php php php php}
 
-        if ($this->getBoost() != 1) {
-            $query .= '^' . round($this->getBoost(), 4);
-        }
+php php php php php php php php php php php php php php php php php/php/php Checkphp ifphp eachphp subputternphp isphp aphp singlephp wordphp inphp termsphp ofphp currentphp analyzer
+php php php php php php php php php php php php php php php php php$tokensphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php-php>tokenizephp(php$subPatternphp[php0php]php,php php$subPatternsEncodingphp)php;
+php php php php php php php php php php php php php php php php ifphp php(countphp(php$tokensphp)php php>php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/QueryParserExceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_QueryParserExceptionphp(php'Wildcardphp searchphp isphp supportedphp onlyphp forphp nonphp-multiplephp wordphp termsphp'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php foreachphp php(php$tokensphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$patternphp php.php=php php$tokenphp-php>getTermTextphp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-        return $query;
-    }
-}
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$termphp php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$patternphp,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Wildcardphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Wildcardphp(php$termphp)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
+
+php php php php php php php php php php php php php/php/php Getphp rewrittenphp queryphp.php Importantphp!php Itphp alsophp fillsphp termsphp matchingphp containerphp.
+php php php php php php php php php php php php php$rewrittenQueryphp php=php php$queryphp-php>rewritephp(php$indexphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+
+php php php php php php php php php php php php returnphp php$rewrittenQueryphp;
+php php php php php php php php php}
+
+
+php php php php php php php php php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php php php php/php/php Recognizephp onephp-termphp multiphp-termphp andphp php"insignificantphp"php queries
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
+php php php php php php php php php$tokensphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php-php>tokenizephp(php$thisphp-php>php_wordphp,php php$thisphp-php>php_encodingphp)php;
+
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Insignificantphp.phpphp'php;
+php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Insignificantphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php1php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$termphp php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$tokensphp[php0php]php-php>getTermTextphp(php)php,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(php$termphp)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
+
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php php php php php returnphp php$queryphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/Itphp'sphp notphp insignificantphp orphp onephp termphp query
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/MultiTermphp.phpphp'php;
+php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_MultiTermphp(php)php;
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@todophp Processphp php$tokenphp-php>getPositionIncrementphp(php)php tophp supportphp stemmingphp,php synonymsphp andphp other
+php php php php php php php php php php*php analizerphp designphp features
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php foreachphp php(php$tokensphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php$termphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$tokenphp-php>getTermTextphp(php)php,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php php php php php php$queryphp-php>addTermphp(php$termphp,php truephp)php;php php/php/php allphp subtermsphp arephp required
+php php php php php php php php php}
+
+php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
+
+php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php returnphp php$queryphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Queryphp specificphp matchesphp highlighting
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp php Highlighterphp objectphp php(alsophp containsphp docphp forphp highlightingphp)
+php php php php php php*php/
+php php php php protectedphp functionphp php_highlightMatchesphp(Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp)
+php php php php php{
+php php php php php php php php php/php*php*php Skipphp fieldsphp detectionphp.php Wephp donphp'tphp needphp itphp,php sincephp wephp expectphp allphp fieldsphp presentedphp inphp thephp HTMLphp bodyphp andphp donphp'tphp differentiatephp themphp php*php/
+
+php php php php php php php php php/php*php*php Skipphp exactphp termphp matchingphp recognitionphp,php keywordphp fieldsphp highlightingphp isphp notphp supportedphp php*php/
+
+php php php php php php php php php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php php php php/php/php Recognizephp wildcardphp queries
+php php php php php php php php php/php*php*php php@todophp checkphp forphp PCREphp unicodephp supportphp mayphp bephp performedphp throughphp Zendphp_Environmentphp inphp somephp futurephp php*php/
+php php php php php php php php ifphp php(php@pregphp_matchphp(php'php/php\pLphp/uphp'php,php php'aphp'php)php php=php=php php1php)php php{
+php php php php php php php php php php php php php$wordphp php=php iconvphp(php$thisphp-php>php_encodingphp,php php'UTFphp-php8php'php,php php$thisphp-php>php_wordphp)php;
+php php php php php php php php php php php php php$wildcardsPatternphp php=php php'php/php[php*php?php]php/uphp'php;
+php php php php php php php php php php php php php$subPatternsEncodingphp php=php php'UTFphp-php8php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$wordphp php=php php$thisphp-php>php_wordphp;
+php php php php php php php php php php php php php$wildcardsPatternphp php=php php'php/php[php*php?php]php/php'php;
+php php php php php php php php php php php php php$subPatternsEncodingphp php=php php$thisphp-php>php_encodingphp;
+php php php php php php php php php}
+php php php php php php php php php$subPatternsphp php=php pregphp_splitphp(php$wildcardsPatternphp,php php$wordphp,php php-php1php,php PREGphp_SPLITphp_OFFSETphp_CAPTUREphp)php;
+php php php php php php php php ifphp php(countphp(php$subPatternsphp)php php>php php1php)php php{
+php php php php php php php php php php php php php/php/php Wildcardphp queryphp isphp recognized
+
+php php php php php php php php php php php php php$patternphp php=php php'php'php;
+
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
+php php php php php php php php php php php php foreachphp php(php$subPatternsphp asphp php$idphp php=php>php php$subPatternphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Appendphp correspondingphp wildcardphp characterphp tophp thephp patternphp beforephp eachphp subphp-patternphp php(exceptphp firstphp)
+php php php php php php php php php php php php php php php php ifphp php(php$idphp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$patternphp php.php=php php$wordphp[php php$subPatternphp[php1php]php php-php php1php php]php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php/php/php Checkphp ifphp eachphp subputternphp isphp aphp singlephp wordphp inphp termsphp ofphp currentphp analyzer
+php php php php php php php php php php php php php php php php php$tokensphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php-php>tokenizephp(php$subPatternphp[php0php]php,php php$subPatternsEncodingphp)php;
+php php php php php php php php php php php php php php php php ifphp php(countphp(php$tokensphp)php php>php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Dophp nothingphp php(nothingphp isphp highlightedphp)
+php php php php php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php foreachphp php(php$tokensphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$patternphp php.php=php php$tokenphp-php>getTermTextphp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$termphp php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$patternphp,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Wildcardphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Wildcardphp(php$termphp)php;
+
+php php php php php php php php php php php php php$queryphp-php>php_highlightMatchesphp(php$highlighterphp)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+
+php php php php php php php php php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php php php php/php/php Recognizephp onephp-termphp multiphp-termphp andphp php"insignificantphp"php queries
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
+php php php php php php php php php$tokensphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php-php>tokenizephp(php$thisphp-php>php_wordphp,php php$thisphp-php>php_encodingphp)php;
+
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php/php/php Dophp nothing
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php1php)php php{
+php php php php php php php php php php php php php$highlighterphp-php>highlightphp(php$tokensphp[php0php]php-php>getTermTextphp(php)php)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/Itphp'sphp notphp insignificantphp orphp onephp termphp query
+php php php php php php php php php$wordsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$tokensphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php$wordsphp[php]php php=php php$tokenphp-php>getTermTextphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$highlighterphp-php>highlightphp(php$wordsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Printphp aphp query
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php php/php/php Itphp'sphp usedphp onlyphp forphp queryphp visualisationphp,php sophp wephp donphp'tphp carephp aboutphp charactersphp escaping
+php php php php php php php php ifphp php(php$thisphp-php>php_fieldphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$queryphp php=php php$thisphp-php>php_fieldphp php.php php'php:php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$queryphp php=php php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php php$queryphp php.php=php php$thisphp-php>php_wordphp;
+
+php php php php php php php php ifphp php(php$thisphp-php>getBoostphp(php)php php!php=php php1php)php php{
+php php php php php php php php php php php php php$queryphp php.php=php php'php^php'php php.php roundphp(php$thisphp-php>getBoostphp(php)php,php php4php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$queryphp;
+php php php php php}
+php}

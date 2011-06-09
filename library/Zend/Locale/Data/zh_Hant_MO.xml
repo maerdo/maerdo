@@ -1,116 +1,116 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.64 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="zh"/>
-		<script type="Hant"/>
-		<territory type="MO"/>
-	</identity>
-	<dates>
-		<calendars>
-			<calendar type="chinese">
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yyyyM">yyyy/M</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-			<calendar type="gregorian">
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>y年MM月dd日EEEE</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>y年MM月dd日</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>y年M月d日</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>yy年M月d日</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>ahh:mm:ss</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yyyyM">yyyy/M</dateFormatItem>
-					</availableFormats>
-					<intervalFormats>
-						<intervalFormatItem id="h">
-							<greatestDifference id="h">ah至h時</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="hmv">
-							<greatestDifference id="a">ah:mm至ah:mmv</greatestDifference>
-							<greatestDifference id="h">ah:mm至h:mmv</greatestDifference>
-							<greatestDifference id="m">ah:mm至h:mmv</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="hv">
-							<greatestDifference id="a">ah時至ah時v</greatestDifference>
-							<greatestDifference id="h">ah至h時v</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="Md">
-							<greatestDifference id="d">M月d日至d日</greatestDifference>
-							<greatestDifference id="M">M月d日至M月d日</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MEd">
-							<greatestDifference id="d">M月d日E至d日E</greatestDifference>
-							<greatestDifference id="M">M月d日E至M月d日E</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MMMd">
-							<greatestDifference id="d">MM月d日至d日</greatestDifference>
-							<greatestDifference id="M">MM月d日至MM月d日</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MMMEd">
-							<greatestDifference id="d">MM月d日E至d日E</greatestDifference>
-							<greatestDifference id="M">MM月d日E至MM月d日E</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yM">
-							<greatestDifference id="M">yy年M月至M月</greatestDifference>
-							<greatestDifference id="y">yy年M月至yy年M月</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMd">
-							<greatestDifference id="d">yy年M月d日至d日</greatestDifference>
-							<greatestDifference id="M">yy年M月d日至M月d日</greatestDifference>
-							<greatestDifference id="y">yy年M月d日至yy年M月d日</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">yy年M月d日E至d日E</greatestDifference>
-							<greatestDifference id="M">yy年M月d日E至M月d日E</greatestDifference>
-							<greatestDifference id="y">yy年M月d日E至yy年M月d日E</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMM">
-							<greatestDifference id="M">y年MM月至MM月</greatestDifference>
-							<greatestDifference id="y">y年MM月至y年MM月</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMMd">
-							<greatestDifference id="d">y年MM月d日至d日</greatestDifference>
-							<greatestDifference id="M">y年MM月d日至MM月d日</greatestDifference>
-							<greatestDifference id="y">y年MM月d日至y年MM月d日</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">y年MM月d日E至d日E</greatestDifference>
-							<greatestDifference id="M">y年MM月d日E至MM月d日E</greatestDifference>
-							<greatestDifference id="y">y年MM月d日E至y年MM月d日E</greatestDifference>
-						</intervalFormatItem>
-					</intervalFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-	</dates>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php4php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
+php	php	php<languagephp typephp=php"zhphp"php/php>
+php	php	php<scriptphp typephp=php"Hantphp"php/php>
+php	php	php<territoryphp typephp=php"MOphp"php/php>
+php	<php/identityphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"chinesephp"php>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMphp"php>yyyyphp/M<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp年MMphp月ddphp日EEEE<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp年MMphp月ddphp日<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp年Mphp月dphp日<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yyphp年Mphp月dphp日<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>ahhphp:mmphp:ss<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMphp"php>yyyyphp/M<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	php	php<intervalFormatsphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahphp至hphp時<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmvphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahphp:mmphp至ahphp:mmv<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahphp:mmphp至hphp:mmv<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>ahphp:mmphp至hphp:mmv<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hvphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahphp時php至ahphp時v<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahphp至hphp時v<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Mphp月dphp日php至dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp月dphp日php至Mphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Mphp月dphp日Ephp至dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp月dphp日Ephp至Mphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>MMphp月dphp日php至dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp月dphp日php至MMphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>MMphp月dphp日Ephp至dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp月dphp日Ephp至MMphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyphp年Mphp月php至Mphp月<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyphp年Mphp月php至yyphp年Mphp月<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>yyphp年Mphp月dphp日php至dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyphp年Mphp月dphp日php至Mphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyphp年Mphp月dphp日php至yyphp年Mphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>yyphp年Mphp月dphp日Ephp至dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyphp年Mphp月dphp日Ephp至Mphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyphp年Mphp月dphp日Ephp至yyphp年Mphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yphp年MMphp月php至MMphp月<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp年MMphp月php至yphp年MMphp月<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>yphp年MMphp月dphp日php至dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yphp年MMphp月dphp日php至MMphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp年MMphp月dphp日php至yphp年MMphp月dphp日<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>yphp年MMphp月dphp日Ephp至dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yphp年MMphp月dphp日Ephp至MMphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp年MMphp月dphp日Ephp至yphp年MMphp月dphp日E<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	<php/intervalFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+<php/ldmlphp>
 

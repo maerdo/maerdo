@@ -1,286 +1,286 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Config
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Xml.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Config
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Xmlphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Config
- */
-require_once 'Zend/Config.php';
+php/php*php*
+php php*php php@seephp Zendphp_Config
+php php*php/
+requirephp_oncephp php'Zendphp/Configphp.phpphp'php;
 
-/**
- * XML Adapter for Zend_Config
- *
- * @category  Zend
- * @package   Zend_Config
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Config_Xml extends Zend_Config
-{
-    /**
-     * XML namespace for ZF-related tags and attributes
-     */
-    const XML_NAMESPACE = 'http://framework.zend.com/xml/zend-config-xml/1.0/';
+php/php*php*
+php php*php XMLphp Adapterphp forphp Zendphp_Config
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Config
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Configphp_Xmlphp extendsphp Zendphp_Config
+php{
+php php php php php/php*php*
+php php php php php php*php XMLphp namespacephp forphp ZFphp-relatedphp tagsphp andphp attributes
+php php php php php php*php/
+php php php php constphp XMLphp_NAMESPACEphp php=php php'httpphp:php/php/frameworkphp.zendphp.comphp/xmlphp/zendphp-configphp-xmlphp/php1php.php0php/php'php;
 
-    /**
-     * Whether to skip extends or not
-     *
-     * @var boolean
-     */
-    protected $_skipExtends = false;
+php php php php php/php*php*
+php php php php php php*php Whetherphp tophp skipphp extendsphp orphp not
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_skipExtendsphp php=php falsephp;
 
-    /**
-     * Loads the section $section from the config file (or string $xml for
-     * access facilitated by nested object properties.
-     *
-     * Sections are defined in the XML as children of the root element.
-     *
-     * In order to extend another section, a section defines the "extends"
-     * attribute having a value of the section name from which the extending
-     * section inherits values.
-     *
-     * Note that the keys in $section will override any keys of the same
-     * name in the sections that have been included via "extends".
-     *
-     * @param  string  $xml     XML file or string to process
-     * @param  mixed   $section Section to process
-     * @param  boolean $options Whether modifications are allowed at runtime
-     * @throws Zend_Config_Exception When xml is not set or cannot be loaded
-     * @throws Zend_Config_Exception When section $sectionName cannot be found in $xml
-     */
-    public function __construct($xml, $section = null, $options = false)
-    {
-        if (empty($xml)) {
-            require_once 'Zend/Config/Exception.php';
-            throw new Zend_Config_Exception('Filename is not set');
-        }
+php php php php php/php*php*
+php php php php php php*php Loadsphp thephp sectionphp php$sectionphp fromphp thephp configphp filephp php(orphp stringphp php$xmlphp for
+php php php php php php*php accessphp facilitatedphp byphp nestedphp objectphp propertiesphp.
+php php php php php php*
+php php php php php php*php Sectionsphp arephp definedphp inphp thephp XMLphp asphp childrenphp ofphp thephp rootphp elementphp.
+php php php php php php*
+php php php php php php*php Inphp orderphp tophp extendphp anotherphp sectionphp,php aphp sectionphp definesphp thephp php"extendsphp"
+php php php php php php*php attributephp havingphp aphp valuephp ofphp thephp sectionphp namephp fromphp whichphp thephp extending
+php php php php php php*php sectionphp inheritsphp valuesphp.
+php php php php php php*
+php php php php php php*php Notephp thatphp thephp keysphp inphp php$sectionphp willphp overridephp anyphp keysphp ofphp thephp same
+php php php php php php*php namephp inphp thephp sectionsphp thatphp havephp beenphp includedphp viaphp php"extendsphp"php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$xmlphp php php php php XMLphp filephp orphp stringphp tophp process
+php php php php php php*php php@paramphp php mixedphp php php php$sectionphp Sectionphp tophp process
+php php php php php php*php php@paramphp php booleanphp php$optionsphp Whetherphp modificationsphp arephp allowedphp atphp runtime
+php php php php php php*php php@throwsphp Zendphp_Configphp_Exceptionphp Whenphp xmlphp isphp notphp setphp orphp cannotphp bephp loaded
+php php php php php php*php php@throwsphp Zendphp_Configphp_Exceptionphp Whenphp sectionphp php$sectionNamephp cannotphp bephp foundphp inphp php$xml
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$xmlphp,php php$sectionphp php=php nullphp,php php$optionsphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$xmlphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php'Filenamephp isphp notphp setphp'php)php;
+php php php php php php php php php}
 
-        $allowModifications = false;
-        if (is_bool($options)) {
-            $allowModifications = $options;
-        } elseif (is_array($options)) {
-            if (isset($options['allowModifications'])) {
-                $allowModifications = (bool) $options['allowModifications'];
-            }
-            if (isset($options['skipExtends'])) {
-                $this->_skipExtends = (bool) $options['skipExtends'];
-            }
-        }
+php php php php php php php php php$allowModificationsphp php=php falsephp;
+php php php php php php php php ifphp php(isphp_boolphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$allowModificationsphp php=php php$optionsphp;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$optionsphp[php'allowModificationsphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$allowModificationsphp php=php php(boolphp)php php$optionsphp[php'allowModificationsphp'php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$optionsphp[php'skipExtendsphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_skipExtendsphp php=php php(boolphp)php php$optionsphp[php'skipExtendsphp'php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        set_error_handler(array($this, '_loadFileErrorHandler')); // Warnings and errors are suppressed
-        if (strstr($xml, '<?xml')) {
-            $config = simplexml_load_string($xml);
-        } else {
-            $config = simplexml_load_file($xml);
-        }
+php php php php php php php php setphp_errorphp_handlerphp(arrayphp(php$thisphp,php php'php_loadFileErrorHandlerphp'php)php)php;php php/php/php Warningsphp andphp errorsphp arephp suppressed
+php php php php php php php php ifphp php(strstrphp(php$xmlphp,php php'<php?xmlphp'php)php)php php{
+php php php php php php php php php php php php php$configphp php=php simplexmlphp_loadphp_stringphp(php$xmlphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$configphp php=php simplexmlphp_loadphp_filephp(php$xmlphp)php;
+php php php php php php php php php}
 
-        restore_error_handler();
-        // Check if there was a error while loading file
-        if ($this->_loadFileErrorStr !== null) {
-            require_once 'Zend/Config/Exception.php';
-            throw new Zend_Config_Exception($this->_loadFileErrorStr);
-        }
+php php php php php php php php restorephp_errorphp_handlerphp(php)php;
+php php php php php php php php php/php/php Checkphp ifphp therephp wasphp aphp errorphp whilephp loadingphp file
+php php php php php php php php ifphp php(php$thisphp-php>php_loadFileErrorStrphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php$thisphp-php>php_loadFileErrorStrphp)php;
+php php php php php php php php php}
 
-        if ($section === null) {
-            $dataArray = array();
-            foreach ($config as $sectionName => $sectionData) {
-                $dataArray[$sectionName] = $this->_processExtends($config, $sectionName);
-            }
+php php php php php php php php ifphp php(php$sectionphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$dataArrayphp php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$configphp asphp php$sectionNamephp php=php>php php$sectionDataphp)php php{
+php php php php php php php php php php php php php php php php php$dataArrayphp[php$sectionNamephp]php php=php php$thisphp-php>php_processExtendsphp(php$configphp,php php$sectionNamephp)php;
+php php php php php php php php php php php php php}
 
-            parent::__construct($dataArray, $allowModifications);
-        } else if (is_array($section)) {
-            $dataArray = array();
-            foreach ($section as $sectionName) {
-                if (!isset($config->$sectionName)) {
-                    require_once 'Zend/Config/Exception.php';
-                    throw new Zend_Config_Exception("Section '$sectionName' cannot be found in $xml");
-                }
+php php php php php php php php php php php php parentphp:php:php_php_constructphp(php$dataArrayphp,php php$allowModificationsphp)php;
+php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$sectionphp)php)php php{
+php php php php php php php php php php php php php$dataArrayphp php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$sectionphp asphp php$sectionNamephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$configphp-php>php$sectionNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php"Sectionphp php'php$sectionNamephp'php cannotphp bephp foundphp inphp php$xmlphp"php)php;
+php php php php php php php php php php php php php php php php php}
 
-                $dataArray = array_merge($this->_processExtends($config, $sectionName), $dataArray);
-            }
+php php php php php php php php php php php php php php php php php$dataArrayphp php=php arrayphp_mergephp(php$thisphp-php>php_processExtendsphp(php$configphp,php php$sectionNamephp)php,php php$dataArrayphp)php;
+php php php php php php php php php php php php php}
 
-            parent::__construct($dataArray, $allowModifications);
-        } else {
-            if (!isset($config->$section)) {
-                require_once 'Zend/Config/Exception.php';
-                throw new Zend_Config_Exception("Section '$section' cannot be found in $xml");
-            }
+php php php php php php php php php php php php parentphp:php:php_php_constructphp(php$dataArrayphp,php php$allowModificationsphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$configphp-php>php$sectionphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php"Sectionphp php'php$sectionphp'php cannotphp bephp foundphp inphp php$xmlphp"php)php;
+php php php php php php php php php php php php php}
 
-            $dataArray = $this->_processExtends($config, $section);
-            if (!is_array($dataArray)) {
-                // Section in the XML file contains just one top level string
-                $dataArray = array($section => $dataArray);
-            }
+php php php php php php php php php php php php php$dataArrayphp php=php php$thisphp-php>php_processExtendsphp(php$configphp,php php$sectionphp)php;
+php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$dataArrayphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Sectionphp inphp thephp XMLphp filephp containsphp justphp onephp topphp levelphp string
+php php php php php php php php php php php php php php php php php$dataArrayphp php=php arrayphp(php$sectionphp php=php>php php$dataArrayphp)php;
+php php php php php php php php php php php php php}
 
-            parent::__construct($dataArray, $allowModifications);
-        }
+php php php php php php php php php php php php parentphp:php:php_php_constructphp(php$dataArrayphp,php php$allowModificationsphp)php;
+php php php php php php php php php}
 
-        $this->_loadedSection = $section;
-    }
+php php php php php php php php php$thisphp-php>php_loadedSectionphp php=php php$sectionphp;
+php php php php php}
 
-    /**
-     * Helper function to process each element in the section and handle
-     * the "extends" inheritance attribute.
-     *
-     * @param  SimpleXMLElement $element XML Element to process
-     * @param  string           $section Section to process
-     * @param  array            $config  Configuration which was parsed yet
-     * @throws Zend_Config_Exception When $section cannot be found
-     * @return array
-     */
-    protected function _processExtends(SimpleXMLElement $element, $section, array $config = array())
-    {
-        if (!isset($element->$section)) {
-            require_once 'Zend/Config/Exception.php';
-            throw new Zend_Config_Exception("Section '$section' cannot be found");
-        }
+php php php php php/php*php*
+php php php php php php*php Helperphp functionphp tophp processphp eachphp elementphp inphp thephp sectionphp andphp handle
+php php php php php php*php thephp php"extendsphp"php inheritancephp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp php SimpleXMLElementphp php$elementphp XMLphp Elementphp tophp process
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php$sectionphp Sectionphp tophp process
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php php php php php$configphp php Configurationphp whichphp wasphp parsedphp yet
+php php php php php php*php php@throwsphp Zendphp_Configphp_Exceptionphp Whenphp php$sectionphp cannotphp bephp found
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_processExtendsphp(SimpleXMLElementphp php$elementphp,php php$sectionphp,php arrayphp php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$elementphp-php>php$sectionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php"Sectionphp php'php$sectionphp'php cannotphp bephp foundphp"php)php;
+php php php php php php php php php}
 
-        $thisSection  = $element->$section;
-        $nsAttributes = $thisSection->attributes(self::XML_NAMESPACE);
+php php php php php php php php php$thisSectionphp php php=php php$elementphp-php>php$sectionphp;
+php php php php php php php php php$nsAttributesphp php=php php$thisSectionphp-php>attributesphp(selfphp:php:XMLphp_NAMESPACEphp)php;
 
-        if (isset($thisSection['extends']) || isset($nsAttributes['extends'])) {
-            $extendedSection = (string) (isset($nsAttributes['extends']) ? $nsAttributes['extends'] : $thisSection['extends']);
-            $this->_assertValidExtend($section, $extendedSection);
+php php php php php php php php ifphp php(issetphp(php$thisSectionphp[php'extendsphp'php]php)php php|php|php issetphp(php$nsAttributesphp[php'extendsphp'php]php)php)php php{
+php php php php php php php php php php php php php$extendedSectionphp php=php php(stringphp)php php(issetphp(php$nsAttributesphp[php'extendsphp'php]php)php php?php php$nsAttributesphp[php'extendsphp'php]php php:php php$thisSectionphp[php'extendsphp'php]php)php;
+php php php php php php php php php php php php php$thisphp-php>php_assertValidExtendphp(php$sectionphp,php php$extendedSectionphp)php;
 
-            if (!$this->_skipExtends) {
-                $config = $this->_processExtends($element, $extendedSection, $config);
-            }
-        }
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_skipExtendsphp)php php{
+php php php php php php php php php php php php php php php php php$configphp php=php php$thisphp-php>php_processExtendsphp(php$elementphp,php php$extendedSectionphp,php php$configphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $config = $this->_arrayMergeRecursive($config, $this->_toArray($thisSection));
+php php php php php php php php php$configphp php=php php$thisphp-php>php_arrayMergeRecursivephp(php$configphp,php php$thisphp-php>php_toArrayphp(php$thisSectionphp)php)php;
 
-        return $config;
-    }
+php php php php php php php php returnphp php$configphp;
+php php php php php}
 
-    /**
-     * Returns a string or an associative and possibly multidimensional array from
-     * a SimpleXMLElement.
-     *
-     * @param  SimpleXMLElement $xmlObject Convert a SimpleXMLElement into an array
-     * @return array|string
-     */
-    protected function _toArray(SimpleXMLElement $xmlObject)
-    {
-        $config       = array();
-        $nsAttributes = $xmlObject->attributes(self::XML_NAMESPACE);
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp stringphp orphp anphp associativephp andphp possiblyphp multidimensionalphp arrayphp from
+php php php php php php*php aphp SimpleXMLElementphp.
+php php php php php php*
+php php php php php php*php php@paramphp php SimpleXMLElementphp php$xmlObjectphp Convertphp aphp SimpleXMLElementphp intophp anphp array
+php php php php php php*php php@returnphp arrayphp|string
+php php php php php php*php/
+php php php php protectedphp functionphp php_toArrayphp(SimpleXMLElementphp php$xmlObjectphp)
+php php php php php{
+php php php php php php php php php$configphp php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php$nsAttributesphp php=php php$xmlObjectphp-php>attributesphp(selfphp:php:XMLphp_NAMESPACEphp)php;
 
-        // Search for parent node values
-        if (count($xmlObject->attributes()) > 0) {
-            foreach ($xmlObject->attributes() as $key => $value) {
-                if ($key === 'extends') {
-                    continue;
-                }
+php php php php php php php php php/php/php Searchphp forphp parentphp nodephp values
+php php php php php php php php ifphp php(countphp(php$xmlObjectphp-php>attributesphp(php)php)php php>php php0php)php php{
+php php php php php php php php php php php php foreachphp php(php$xmlObjectphp-php>attributesphp(php)php asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$keyphp php=php=php=php php'extendsphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
 
-                $value = (string) $value;
+php php php php php php php php php php php php php php php php php$valuephp php=php php(stringphp)php php$valuephp;
 
-                if (array_key_exists($key, $config)) {
-                    if (!is_array($config[$key])) {
-                        $config[$key] = array($config[$key]);
-                    }
+php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$configphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$configphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$configphp[php$keyphp]php php=php arrayphp(php$configphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    $config[$key][] = $value;
-                } else {
-                    $config[$key] = $value;
-                }
-            }
-        }
+php php php php php php php php php php php php php php php php php php php php php$configphp[php$keyphp]php[php]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$configphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // Search for local 'const' nodes and replace them
-        if (count($xmlObject->children(self::XML_NAMESPACE)) > 0) {
-            if (count($xmlObject->children()) > 0) {
-                require_once 'Zend/Config/Exception.php';
-                throw new Zend_Config_Exception("A node with a 'const' childnode may not have any other children");
-            }
+php php php php php php php php php/php/php Searchphp forphp localphp php'constphp'php nodesphp andphp replacephp them
+php php php php php php php php ifphp php(countphp(php$xmlObjectphp-php>childrenphp(selfphp:php:XMLphp_NAMESPACEphp)php)php php>php php0php)php php{
+php php php php php php php php php php php php ifphp php(countphp(php$xmlObjectphp-php>childrenphp(php)php)php php>php php0php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php"Aphp nodephp withphp aphp php'constphp'php childnodephp mayphp notphp havephp anyphp otherphp childrenphp"php)php;
+php php php php php php php php php php php php php}
 
-            $dom                 = dom_import_simplexml($xmlObject);
-            $namespaceChildNodes = array();
+php php php php php php php php php php php php php$domphp php php php php php php php php php php php php php php php php php=php domphp_importphp_simplexmlphp(php$xmlObjectphp)php;
+php php php php php php php php php php php php php$namespaceChildNodesphp php=php arrayphp(php)php;
 
-            // We have to store them in an array, as replacing nodes will
-            // confuse the DOMNodeList later
-            foreach ($dom->childNodes as $node) {
-                if ($node instanceof DOMElement && $node->namespaceURI === self::XML_NAMESPACE) {
-                    $namespaceChildNodes[] = $node;
-                }
-            }
+php php php php php php php php php php php php php/php/php Wephp havephp tophp storephp themphp inphp anphp arrayphp,php asphp replacingphp nodesphp will
+php php php php php php php php php php php php php/php/php confusephp thephp DOMNodeListphp later
+php php php php php php php php php php php php foreachphp php(php$domphp-php>childNodesphp asphp php$nodephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$nodephp instanceofphp DOMElementphp php&php&php php$nodephp-php>namespaceURIphp php=php=php=php selfphp:php:XMLphp_NAMESPACEphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$namespaceChildNodesphp[php]php php=php php$nodephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            foreach ($namespaceChildNodes as $node) {
-                switch ($node->localName) {
-                    case 'const':
-                        if (!$node->hasAttributeNS(self::XML_NAMESPACE, 'name')) {
-                            require_once 'Zend/Config/Exception.php';
-                            throw new Zend_Config_Exception("Misssing 'name' attribute in 'const' node");
-                        }
+php php php php php php php php php php php php foreachphp php(php$namespaceChildNodesphp asphp php$nodephp)php php{
+php php php php php php php php php php php php php php php php switchphp php(php$nodephp-php>localNamephp)php php{
+php php php php php php php php php php php php php php php php php php php php casephp php'constphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$nodephp-php>hasAttributeNSphp(selfphp:php:XMLphp_NAMESPACEphp,php php'namephp'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php"Misssingphp php'namephp'php attributephp inphp php'constphp'php nodephp"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        $constantName = $node->getAttributeNS(self::XML_NAMESPACE, 'name');
+php php php php php php php php php php php php php php php php php php php php php php php php php$constantNamephp php=php php$nodephp-php>getAttributeNSphp(selfphp:php:XMLphp_NAMESPACEphp,php php'namephp'php)php;
 
-                        if (!defined($constantName)) {
-                            require_once 'Zend/Config/Exception.php';
-                            throw new Zend_Config_Exception("Constant with name '$constantName' was not defined");
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!definedphp(php$constantNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php"Constantphp withphp namephp php'php$constantNamephp'php wasphp notphp definedphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        $constantValue = constant($constantName);
+php php php php php php php php php php php php php php php php php php php php php php php php php$constantValuephp php=php constantphp(php$constantNamephp)php;
 
-                        $dom->replaceChild($dom->ownerDocument->createTextNode($constantValue), $node);
-                        break;
+php php php php php php php php php php php php php php php php php php php php php php php php php$domphp-php>replaceChildphp(php$domphp-php>ownerDocumentphp-php>createTextNodephp(php$constantValuephp)php,php php$nodephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
 
-                    default:
-                        require_once 'Zend/Config/Exception.php';
-                        throw new Zend_Config_Exception("Unknown node with name '$node->localName' found");
-                }
-            }
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php"Unknownphp nodephp withphp namephp php'php$nodephp-php>localNamephp'php foundphp"php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            return (string) simplexml_import_dom($dom);
-        }
+php php php php php php php php php php php php returnphp php(stringphp)php simplexmlphp_importphp_domphp(php$domphp)php;
+php php php php php php php php php}
 
-        // Search for children
-        if (count($xmlObject->children()) > 0) {
-            foreach ($xmlObject->children() as $key => $value) {
-                if (count($value->children()) > 0 || count($value->children(self::XML_NAMESPACE)) > 0) {
-                    $value = $this->_toArray($value);
-                } else if (count($value->attributes()) > 0) {
-                    $attributes = $value->attributes();
-                    if (isset($attributes['value'])) {
-                        $value = (string) $attributes['value'];
-                    } else {
-                        $value = $this->_toArray($value);
-                    }
-                } else {
-                    $value = (string) $value;
-                }
+php php php php php php php php php/php/php Searchphp forphp children
+php php php php php php php php ifphp php(countphp(php$xmlObjectphp-php>childrenphp(php)php)php php>php php0php)php php{
+php php php php php php php php php php php php foreachphp php(php$xmlObjectphp-php>childrenphp(php)php asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(countphp(php$valuephp-php>childrenphp(php)php)php php>php php0php php|php|php countphp(php$valuephp-php>childrenphp(selfphp:php:XMLphp_NAMESPACEphp)php)php php>php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>php_toArrayphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(countphp(php$valuephp-php>attributesphp(php)php)php php>php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$attributesphp php=php php$valuephp-php>attributesphp(php)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$attributesphp[php'valuephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php(stringphp)php php$attributesphp[php'valuephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>php_toArrayphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php(stringphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php}
 
-                if (array_key_exists($key, $config)) {
-                    if (!is_array($config[$key]) || !array_key_exists(0, $config[$key])) {
-                        $config[$key] = array($config[$key]);
-                    }
+php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$configphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$configphp[php$keyphp]php)php php|php|php php!arrayphp_keyphp_existsphp(php0php,php php$configphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$configphp[php$keyphp]php php=php arrayphp(php$configphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    $config[$key][] = $value;
-                } else {
-                    $config[$key] = $value;
-                }
-            }
-        } else if (!isset($xmlObject['extends']) && !isset($nsAttributes['extends']) && (count($config) === 0)) {
-            // Object has no children nor attributes and doesn't use the extends
-            // attribute: it's a string
-            $config = (string) $xmlObject;
-        }
+php php php php php php php php php php php php php php php php php php php php php$configphp[php$keyphp]php[php]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$configphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php!issetphp(php$xmlObjectphp[php'extendsphp'php]php)php php&php&php php!issetphp(php$nsAttributesphp[php'extendsphp'php]php)php php&php&php php(countphp(php$configphp)php php=php=php=php php0php)php)php php{
+php php php php php php php php php php php php php/php/php Objectphp hasphp nophp childrenphp norphp attributesphp andphp doesnphp'tphp usephp thephp extends
+php php php php php php php php php php php php php/php/php attributephp:php itphp'sphp aphp string
+php php php php php php php php php php php php php$configphp php=php php(stringphp)php php$xmlObjectphp;
+php php php php php php php php php}
 
-        return $config;
-    }
-}
+php php php php php php php php returnphp php$configphp;
+php php php php php}
+php}

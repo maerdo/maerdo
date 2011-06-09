@@ -1,313 +1,313 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Repository.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Repositoryphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Framework_Registry_EnabledInterface
- */
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Registryphp/EnabledInterfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Framework_Manifest_Repository
-    implements Zend_Tool_Framework_Registry_EnabledInterface, IteratorAggregate, Countable
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Repository
+php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterfacephp,php IteratorAggregatephp,php Countable
+php{
 
-    /**
-     * @var Zend_Tool_Framework_Provider_Registry_Interface
-     */
-    protected $_registry = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Providerphp_Registryphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_registryphp php=php nullphp;
 
-    /**
-     * @var array
-     */
-    protected $_manifests = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_manifestsphp php=php arrayphp(php)php;
 
-    /**
-     * @var array Array of Zend_Tool_Framework_Metadata_Interface
-     */
-    protected $_metadatas = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Arrayphp ofphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_metadatasphp php=php arrayphp(php)php;
 
-    /**
-     * setRegistry()
-     *
-     * @param Zend_Tool_Framework_Registry_Interface $registry
-     * @return unknown
-     */
-    public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
-    {
-        $this->_registry = $registry;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setRegistryphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registry
+php php php php php php*php php@returnphp unknown
+php php php php php php*php/
+php php php php publicphp functionphp setRegistryphp(Zendphp_Toolphp_Frameworkphp_Registryphp_Interfacephp php$registryphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_registryphp php=php php$registryphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * addManifest() - Add a manifest for later processing
-     *
-     * @param Zend_Tool_Framework_Manifest_Interface $manifest
-     * @return Zend_Tool_Framework_Manifest_Repository
-     */
-    public function addManifest(Zend_Tool_Framework_Manifest_Interface $manifest)
-    {
-        // we need to get an index number so that manifests with
-        // higher indexes have priority over others
-        $index = count($this->_manifests);
+php php php php php/php*php*
+php php php php php php*php addManifestphp(php)php php-php Addphp aphp manifestphp forphp laterphp processing
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Interfacephp php$manifest
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Repository
+php php php php php php*php/
+php php php php publicphp functionphp addManifestphp(Zendphp_Toolphp_Frameworkphp_Manifestphp_Interfacephp php$manifestphp)
+php php php php php{
+php php php php php php php php php/php/php wephp needphp tophp getphp anphp indexphp numberphp sophp thatphp manifestsphp with
+php php php php php php php php php/php/php higherphp indexesphp havephp priorityphp overphp others
+php php php php php php php php php$indexphp php=php countphp(php$thisphp-php>php_manifestsphp)php;
 
-        if ($manifest instanceof Zend_Tool_Framework_Registry_EnabledInterface) {
-            $manifest->setRegistry($this->_registry);
-        }
+php php php php php php php php ifphp php(php$manifestphp instanceofphp Zendphp_Toolphp_Frameworkphp_Registryphp_EnabledInterfacephp)php php{
+php php php php php php php php php php php php php$manifestphp-php>setRegistryphp(php$thisphp-php>php_registryphp)php;
+php php php php php php php php php}
 
-        // if the manifest supplies a getIndex() method, use it
-        if ($manifest instanceof Zend_Tool_Framework_Manifest_Indexable) {
-            $index = $manifest->getIndex();
-        }
+php php php php php php php php php/php/php ifphp thephp manifestphp suppliesphp aphp getIndexphp(php)php methodphp,php usephp it
+php php php php php php php php ifphp php(php$manifestphp instanceofphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Indexablephp)php php{
+php php php php php php php php php php php php php$indexphp php=php php$manifestphp-php>getIndexphp(php)php;
+php php php php php php php php php}
 
-        // get the required objects from the framework registry
-        $actionRepository   = $this->_registry->getActionRepository();
-        $providerRepository = $this->_registry->getProviderRepository();
+php php php php php php php php php/php/php getphp thephp requiredphp objectsphp fromphp thephp frameworkphp registry
+php php php php php php php php php$actionRepositoryphp php php php=php php$thisphp-php>php_registryphp-php>getActionRepositoryphp(php)php;
+php php php php php php php php php$providerRepositoryphp php=php php$thisphp-php>php_registryphp-php>getProviderRepositoryphp(php)php;
 
-        // load providers if interface supports that method
-        if ($manifest instanceof Zend_Tool_Framework_Manifest_ProviderManifestable) {
-            $providers = $manifest->getProviders();
-            if (!is_array($providers)) {
-                $providers = array($providers);
-            }
+php php php php php php php php php/php/php loadphp providersphp ifphp interfacephp supportsphp thatphp method
+php php php php php php php php ifphp php(php$manifestphp instanceofphp Zendphp_Toolphp_Frameworkphp_Manifestphp_ProviderManifestablephp)php php{
+php php php php php php php php php php php php php$providersphp php=php php$manifestphp-php>getProvidersphp(php)php;
+php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$providersphp)php)php php{
+php php php php php php php php php php php php php php php php php$providersphp php=php arrayphp(php$providersphp)php;
+php php php php php php php php php php php php php}
 
-            foreach ($providers as $provider) {
+php php php php php php php php php php php php foreachphp php(php$providersphp asphp php$providerphp)php php{
 
-                // if provider is a string, try and load it as an object
-                if (is_string($provider)) {
-                    $provider = new $provider();
-                }
+php php php php php php php php php php php php php php php php php/php/php ifphp providerphp isphp aphp stringphp,php tryphp andphp loadphp itphp asphp anphp object
+php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$providerphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$providerphp php=php newphp php$providerphp(php)php;
+php php php php php php php php php php php php php php php php php}
 
-                if (!$provider instanceof Zend_Tool_Framework_Provider_Interface) {
-                    require_once 'Zend/Tool/Framework/Manifest/Exception.php';
-                    throw new Zend_Tool_Framework_Manifest_Exception(
-                        'A provider provided by the ' . get_class($manifest)
-                        . ' does not implement Zend_Tool_Framework_Provider_Interface'
-                        );
-                }
-                if (!$providerRepository->hasProvider($provider, false)) {
-                    $providerRepository->addProvider($provider);
-                }
-            }
+php php php php php php php php php php php php php php php php ifphp php(php!php$providerphp instanceofphp Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Manifestphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'Aphp providerphp providedphp byphp thephp php'php php.php getphp_classphp(php$manifestphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php doesphp notphp implementphp Zendphp_Toolphp_Frameworkphp_Providerphp_Interfacephp'
+php php php php php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php ifphp php(php!php$providerRepositoryphp-php>hasProviderphp(php$providerphp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$providerRepositoryphp-php>addProviderphp(php$providerphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-        }
+php php php php php php php php php}
 
-        // load actions if interface supports that method
-        if ($manifest instanceof Zend_Tool_Framework_Manifest_ActionManifestable) {
-            $actions = $manifest->getActions();
-            if (!is_array($actions)) {
-                $actions = array($actions);
-            }
+php php php php php php php php php/php/php loadphp actionsphp ifphp interfacephp supportsphp thatphp method
+php php php php php php php php ifphp php(php$manifestphp instanceofphp Zendphp_Toolphp_Frameworkphp_Manifestphp_ActionManifestablephp)php php{
+php php php php php php php php php php php php php$actionsphp php=php php$manifestphp-php>getActionsphp(php)php;
+php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$actionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$actionsphp php=php arrayphp(php$actionsphp)php;
+php php php php php php php php php php php php php}
 
-            foreach ($actions as $action) {
-                if (is_string($action)) {
-                    $action = new Zend_Tool_Framework_Action_Base($action);
-                }
-                $actionRepository->addAction($action);
-            }
-        }
+php php php php php php php php php php php php foreachphp php(php$actionsphp asphp php$actionphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$actionphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$actionphp php=php newphp Zendphp_Toolphp_Frameworkphp_Actionphp_Basephp(php$actionphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$actionRepositoryphp-php>addActionphp(php$actionphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // should we detect collisions here? does it even matter?
-        $this->_manifests[$index] = $manifest;
-        ksort($this->_manifests);
+php php php php php php php php php/php/php shouldphp wephp detectphp collisionsphp herephp?php doesphp itphp evenphp matterphp?
+php php php php php php php php php$thisphp-php>php_manifestsphp[php$indexphp]php php=php php$manifestphp;
+php php php php php php php php ksortphp(php$thisphp-php>php_manifestsphp)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getManifests()
-     *
-     * @return Zend_Tool_Framework_Manifest_Interface[]
-     */
-    public function getManifests()
-    {
-        return $this->_manifests;
-    }
+php php php php php/php*php*
+php php php php php php*php getManifestsphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Interfacephp[php]
+php php php php php php*php/
+php php php php publicphp functionphp getManifestsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_manifestsphp;
+php php php php php}
 
-    /**
-     * addMetadata() - add a metadata peice by peice
-     *
-     * @param Zend_Tool_Framework_Manifest_Metadata $metadata
-     * @return Zend_Tool_Framework_Manifest_Repository
-     */
-    public function addMetadata(Zend_Tool_Framework_Metadata_Interface $metadata)
-    {
-        $this->_metadatas[] = $metadata;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php addMetadataphp(php)php php-php addphp aphp metadataphp peicephp byphp peice
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Metadataphp php$metadata
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Repository
+php php php php php php*php/
+php php php php publicphp functionphp addMetadataphp(Zendphp_Toolphp_Frameworkphp_Metadataphp_Interfacephp php$metadataphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_metadatasphp[php]php php=php php$metadataphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * process() - Process is expected to be called at the end of client construction time.
-     * By this time, the loader has run and loaded any found manifests into the repository
-     * for loading
-     *
-     * @return Zend_Tool_Framework_Manifest_Repository
-     */
-    public function process()
-    {
+php php php php php/php*php*
+php php php php php php*php processphp(php)php php-php Processphp isphp expectedphp tophp bephp calledphp atphp thephp endphp ofphp clientphp constructionphp timephp.
+php php php php php php*php Byphp thisphp timephp,php thephp loaderphp hasphp runphp andphp loadedphp anyphp foundphp manifestsphp intophp thephp repository
+php php php php php php*php forphp loading
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Repository
+php php php php php php*php/
+php php php php publicphp functionphp processphp(php)
+php php php php php{
 
-        foreach ($this->_manifests as $manifest) {
-            if ($manifest instanceof Zend_Tool_Framework_Manifest_MetadataManifestable) {
-                $metadatas = $manifest->getMetadata();
-                if (!is_array($metadatas)) {
-                    $metadatas = array($metadatas);
-                }
+php php php php php php php php foreachphp php(php$thisphp-php>php_manifestsphp asphp php$manifestphp)php php{
+php php php php php php php php php php php php ifphp php(php$manifestphp instanceofphp Zendphp_Toolphp_Frameworkphp_Manifestphp_MetadataManifestablephp)php php{
+php php php php php php php php php php php php php php php php php$metadatasphp php=php php$manifestphp-php>getMetadataphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$metadatasphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$metadatasphp php=php arrayphp(php$metadatasphp)php;
+php php php php php php php php php php php php php php php php php}
 
-                foreach ($metadatas as $metadata) {
-                    if (is_array($metadata)) {
-                        if (!class_exists('Zend_Tool_Framework_Metadata_Dynamic')) {
-                            require_once 'Zend/Tool/Framework/Metadata/Dynamic.php';
-                        }
-                        $metadata = new Zend_Tool_Framework_Metadata_Dynamic($metadata);
-                    }
+php php php php php php php php php php php php php php php php foreachphp php(php$metadatasphp asphp php$metadataphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$metadataphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php'Zendphp_Toolphp_Frameworkphp_Metadataphp_Dynamicphp'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Metadataphp/Dynamicphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$metadataphp php=php newphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Dynamicphp(php$metadataphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    if (!$metadata instanceof Zend_Tool_Framework_Metadata_Interface) {
-                        require_once 'Zend/Tool/Framework/Manifest/Exception.php';
-                        throw new Zend_Tool_Framework_Manifest_Exception(
-                            'A Zend_Tool_Framework_Metadata_Interface object was not found in manifest ' . get_class($manifest)
-                            );
-                    }
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$metadataphp instanceofphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Manifestphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Aphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Interfacephp objectphp wasphp notphp foundphp inphp manifestphp php'php php.php getphp_classphp(php$manifestphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    $this->addMetadata($metadata);
-                }
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addMetadataphp(php$metadataphp)php;
+php php php php php php php php php php php php php php php php php}
 
-            }
-        }
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getMetadatas() - This is the main search function for the repository.
-     *
-     * example: This will retrieve all metadata that matches the following criteria
-     *      $manifestRepo->getMetadatas(array(
-     *          'providerName' => 'Version',
-     *          'actionName' => 'show'
-     *          ));
-     *
-     * @param array $searchProperties
-     * @param bool $includeNonExistentProperties
-     * @return Zend_Tool_Framework_Manifest_Metadata[]
-     */
-    public function getMetadatas(Array $searchProperties = array(), $includeNonExistentProperties = true)
-    {
+php php php php php/php*php*
+php php php php php php*php getMetadatasphp(php)php php-php Thisphp isphp thephp mainphp searchphp functionphp forphp thephp repositoryphp.
+php php php php php php*
+php php php php php php*php examplephp:php Thisphp willphp retrievephp allphp metadataphp thatphp matchesphp thephp followingphp criteria
+php php php php php php*php php php php php php php$manifestRepophp-php>getMetadatasphp(arrayphp(
+php php php php php php*php php php php php php php php php php php'providerNamephp'php php=php>php php'Versionphp'php,
+php php php php php php*php php php php php php php php php php php'actionNamephp'php php=php>php php'showphp'
+php php php php php php*php php php php php php php php php php php)php)php;
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$searchProperties
+php php php php php php*php php@paramphp boolphp php$includeNonExistentProperties
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Metadataphp[php]
+php php php php php php*php/
+php php php php publicphp functionphp getMetadatasphp(Arrayphp php$searchPropertiesphp php=php arrayphp(php)php,php php$includeNonExistentPropertiesphp php=php truephp)
+php php php php php{
 
-        $returnMetadatas = array();
+php php php php php php php php php$returnMetadatasphp php=php arrayphp(php)php;
 
-        // loop through the metadatas so that we can search each individual one
-        foreach ($this->_metadatas as $metadata) {
+php php php php php php php php php/php/php loopphp throughphp thephp metadatasphp sophp thatphp wephp canphp searchphp eachphp individualphp one
+php php php php php php php php foreachphp php(php$thisphp-php>php_metadatasphp asphp php$metadataphp)php php{
 
-            // each value will be retrieved from the metadata, each metadata should
-            // implement a getter method to retrieve the value
-            foreach ($searchProperties as $searchPropertyName => $searchPropertyValue) {
-                if (method_exists($metadata, 'get' . $searchPropertyName)) {
-                    if ($metadata->{'get' . $searchPropertyName}() != $searchPropertyValue) {
-                        // if the metadata supports a specific property but the value does not
-                        // match, move on
-                        continue 2;
-                    }
-                } elseif (!$includeNonExistentProperties) {
-                    // if the option $includeNonExitentProperties is false, then move on as
-                    // we dont want to include this metadata if non existent
-                    // search properties are not inside the target (current) metadata
-                    continue 2;
-                }
-            }
+php php php php php php php php php php php php php/php/php eachphp valuephp willphp bephp retrievedphp fromphp thephp metadataphp,php eachphp metadataphp should
+php php php php php php php php php php php php php/php/php implementphp aphp getterphp methodphp tophp retrievephp thephp value
+php php php php php php php php php php php php foreachphp php(php$searchPropertiesphp asphp php$searchPropertyNamephp php=php>php php$searchPropertyValuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$metadataphp,php php'getphp'php php.php php$searchPropertyNamephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$metadataphp-php>php{php'getphp'php php.php php$searchPropertyNamephp}php(php)php php!php=php php$searchPropertyValuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php ifphp thephp metadataphp supportsphp aphp specificphp propertyphp butphp thephp valuephp doesphp not
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php matchphp,php movephp on
+php php php php php php php php php php php php php php php php php php php php php php php php continuephp php2php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elseifphp php(php!php$includeNonExistentPropertiesphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php ifphp thephp optionphp php$includeNonExitentPropertiesphp isphp falsephp,php thenphp movephp onphp as
+php php php php php php php php php php php php php php php php php php php php php/php/php wephp dontphp wantphp tophp includephp thisphp metadataphp ifphp nonphp existent
+php php php php php php php php php php php php php php php php php php php php php/php/php searchphp propertiesphp arephp notphp insidephp thephp targetphp php(currentphp)php metadata
+php php php php php php php php php php php php php php php php php php php php continuephp php2php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            // all searching has been accounted for, if we reach this point, then the metadata
-            // is good and we can return it
-            $returnMetadatas[] = $metadata;
+php php php php php php php php php php php php php/php/php allphp searchingphp hasphp beenphp accountedphp forphp,php ifphp wephp reachphp thisphp pointphp,php thenphp thephp metadata
+php php php php php php php php php php php php php/php/php isphp goodphp andphp wephp canphp returnphp it
+php php php php php php php php php php php php php$returnMetadatasphp[php]php php=php php$metadataphp;
 
-        }
+php php php php php php php php php}
 
-        return $returnMetadatas;
-    }
+php php php php php php php php returnphp php$returnMetadatasphp;
+php php php php php}
 
-    /**
-     * getMetadata() - This will proxy to getMetadatas(), but will only return a single metadata.  This method
-     * should be used in situations where the search criteria is known to only find a single metadata object
-     *
-     * @param array $searchProperties
-     * @param bool $includeNonExistentProperties
-     * @return Zend_Tool_Framework_Manifest_Metadata
-     */
-    public function getMetadata(Array $searchProperties = array(), $includeNonExistentProperties = true)
-    {
-        $metadatas = $this->getMetadatas($searchProperties, $includeNonExistentProperties);
-        return array_shift($metadatas);
-    }
+php php php php php/php*php*
+php php php php php php*php getMetadataphp(php)php php-php Thisphp willphp proxyphp tophp getMetadatasphp(php)php,php butphp willphp onlyphp returnphp aphp singlephp metadataphp.php php Thisphp method
+php php php php php php*php shouldphp bephp usedphp inphp situationsphp wherephp thephp searchphp criteriaphp isphp knownphp tophp onlyphp findphp aphp singlephp metadataphp object
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$searchProperties
+php php php php php php*php php@paramphp boolphp php$includeNonExistentProperties
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Manifestphp_Metadata
+php php php php php php*php/
+php php php php publicphp functionphp getMetadataphp(Arrayphp php$searchPropertiesphp php=php arrayphp(php)php,php php$includeNonExistentPropertiesphp php=php truephp)
+php php php php php{
+php php php php php php php php php$metadatasphp php=php php$thisphp-php>getMetadatasphp(php$searchPropertiesphp,php php$includeNonExistentPropertiesphp)php;
+php php php php php php php php returnphp arrayphp_shiftphp(php$metadatasphp)php;
+php php php php php}
 
-    /**
-     * __toString() - cast to string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        $metadatasByType = array();
+php php php php php/php*php*
+php php php php php php*php php_php_toStringphp(php)php php-php castphp tophp string
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php php$metadatasByTypephp php=php arrayphp(php)php;
 
-        foreach ($this->_metadatas as $metadata) {
-            if (!array_key_exists($metadata->getType(), $metadatasByType)) {
-                $metadatasByType[$metadata->getType()] = array();
-            }
-            $metadatasByType[$metadata->getType()][] = $metadata;
-        }
+php php php php php php php php foreachphp php(php$thisphp-php>php_metadatasphp asphp php$metadataphp)php php{
+php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$metadataphp-php>getTypephp(php)php,php php$metadatasByTypephp)php)php php{
+php php php php php php php php php php php php php php php php php$metadatasByTypephp[php$metadataphp-php>getTypephp(php)php]php php=php arrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$metadatasByTypephp[php$metadataphp-php>getTypephp(php)php]php[php]php php=php php$metadataphp;
+php php php php php php php php php}
 
-        $string = '';
-        foreach ($metadatasByType as $type => $metadatas) {
-            $string .= $type . PHP_EOL;
-            foreach ($metadatas as $metadata) {
-                $metadataString = '    ' . $metadata->__toString() . PHP_EOL;
-                //$metadataString = str_replace(PHP_EOL, PHP_EOL . '    ', $metadataString);
-                $string .= $metadataString;
-            }
-        }
+php php php php php php php php php$stringphp php=php php'php'php;
+php php php php php php php php foreachphp php(php$metadatasByTypephp asphp php$typephp php=php>php php$metadatasphp)php php{
+php php php php php php php php php php php php php$stringphp php.php=php php$typephp php.php PHPphp_EOLphp;
+php php php php php php php php php php php php foreachphp php(php$metadatasphp asphp php$metadataphp)php php{
+php php php php php php php php php php php php php php php php php$metadataStringphp php=php php'php php php php php'php php.php php$metadataphp-php>php_php_toStringphp(php)php php.php PHPphp_EOLphp;
+php php php php php php php php php php php php php php php php php/php/php$metadataStringphp php=php strphp_replacephp(PHPphp_EOLphp,php PHPphp_EOLphp php.php php'php php php php php'php,php php$metadataStringphp)php;
+php php php php php php php php php php php php php php php php php$stringphp php.php=php php$metadataStringphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $string;
-    }
+php php php php php php php php returnphp php$stringphp;
+php php php php php}
 
-    /**
-     * count() - required by the Countable Interface
-     *
-     * @return int
-     */
-    public function count()
-    {
-        return count($this->_metadatas);
-    }
+php php php php php/php*php*
+php php php php php php*php countphp(php)php php-php requiredphp byphp thephp Countablephp Interface
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp countphp(php)
+php php php php php{
+php php php php php php php php returnphp countphp(php$thisphp-php>php_metadatasphp)php;
+php php php php php}
 
-    /**
-     * getIterator() - required by the IteratorAggregate interface
-     *
-     * @return ArrayIterator
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->_metadatas);
-    }
+php php php php php/php*php*
+php php php php php php*php getIteratorphp(php)php php-php requiredphp byphp thephp IteratorAggregatephp interface
+php php php php php php*
+php php php php php php*php php@returnphp ArrayIterator
+php php php php php php*php/
+php php php php publicphp functionphp getIteratorphp(php)
+php php php php php{
+php php php php php php php php returnphp newphp ArrayIteratorphp(php$thisphp-php>php_metadatasphp)php;
+php php php php php}
 
-}
+php}

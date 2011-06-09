@@ -1,65 +1,65 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @subpackage Object
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Ean2.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@subpackagephp Object
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Eanphp2php.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Barcode_Object_Ean5
- */
-require_once 'Zend/Barcode/Object/Ean5.php';
+php/php*php*
+php php*php php@seephp Zendphp_Barcodephp_Objectphp_Eanphp5
+php php*php/
+requirephp_oncephp php'Zendphp/Barcodephp/Objectphp/Eanphp5php.phpphp'php;
 
-/**
- * @see Zend_Validate_Barcode
- */
-require_once 'Zend/Validate/Barcode.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Barcode
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Barcodephp.phpphp'php;
 
-/**
- * Class for generate Ean2 barcode
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Barcode_Object_Ean2 extends Zend_Barcode_Object_Ean5
-{
+php/php*php*
+php php*php Classphp forphp generatephp Eanphp2php barcode
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Barcodephp_Objectphp_Eanphp2php extendsphp Zendphp_Barcodephp_Objectphp_Eanphp5
+php{
 
-    protected $_parities = array(
-        0 => array('A','A'),
-        1 => array('A','B'),
-        2 => array('B','A'),
-        3 => array('B','B')
-    );
+php php php php protectedphp php$php_paritiesphp php=php arrayphp(
+php php php php php php php php php0php php=php>php arrayphp(php'Aphp'php,php'Aphp'php)php,
+php php php php php php php php php1php php=php>php arrayphp(php'Aphp'php,php'Bphp'php)php,
+php php php php php php php php php2php php=php>php arrayphp(php'Bphp'php,php'Aphp'php)php,
+php php php php php php php php php3php php=php>php arrayphp(php'Bphp'php,php'Bphp'php)
+php php php php php)php;
 
-    /**
-     * Default options for Ean2 barcode
-     * @return void
-     */
-    protected function _getDefaultOptions()
-    {
-        $this->_barcodeLength = 2;
-    }
+php php php php php/php*php*
+php php php php php php*php Defaultphp optionsphp forphp Eanphp2php barcode
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_getDefaultOptionsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_barcodeLengthphp php=php php2php;
+php php php php php}
 
-    protected function _getParity($i)
-    {
-        $modulo = $this->getText() % 4;
-        return $this->_parities[$modulo][$i];
-    }
-}
+php php php php protectedphp functionphp php_getParityphp(php$iphp)
+php php php php php{
+php php php php php php php php php$modulophp php=php php$thisphp-php>getTextphp(php)php php%php php4php;
+php php php php php php php php returnphp php$thisphp-php>php_paritiesphp[php$modulophp]php[php$iphp]php;
+php php php php php}
+php}

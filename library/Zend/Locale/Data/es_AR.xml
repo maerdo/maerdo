@@ -1,129 +1,129 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.63 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="es"/>
-		<territory type="AR"/>
-	</identity>
-	<localeDisplayNames>
-		<territories>
-			<territory type="HK">Hong Kong</territory>
-			<territory type="MO">Macao</territory>
-		</territories>
-		<variants>
-			<variant type="REVISED">Ortografía revisada</variant>
-		</variants>
-		<measurementSystemNames>
-			<measurementSystemName type="metric">métrico</measurementSystemName>
-			<measurementSystemName type="US">estadounidense</measurementSystemName>
-		</measurementSystemNames>
-	</localeDisplayNames>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<am>a.m.</am>
-				<pm>p.m.</pm>
-				<timeFormats>
-					<timeFormatLength type="full">
-						<timeFormat>
-							<pattern>HH'h'''mm:ss zzzz</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="long">
-						<timeFormat>
-							<pattern>H:mm:ss z</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="MEd">E d-M</dateFormatItem>
-						<dateFormatItem id="yM">M-yyyy</dateFormatItem>
-					</availableFormats>
-					<intervalFormats>
-						<intervalFormatFallback>{0} a el {1}</intervalFormatFallback>
-						<intervalFormatItem id="d">
-							<greatestDifference id="d">d-d</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="h">
-							<greatestDifference id="h">HH-HH</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="hm">
-							<greatestDifference id="h">HH:mm-HH:mm</greatestDifference>
-							<greatestDifference id="m">HH:mm-HH:mm</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="hmv">
-							<greatestDifference id="h">HH:mm-HH:mm v</greatestDifference>
-							<greatestDifference id="m">HH:mm-HH:mm v</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="hv">
-							<greatestDifference id="h">HH-HH v</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="M">
-							<greatestDifference id="M">M-M</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="Md">
-							<greatestDifference id="d">dd/MM - dd/MM</greatestDifference>
-							<greatestDifference id="M">dd/MM - dd/MM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MEd">
-							<greatestDifference id="d">E dd/MM - E dd/MM</greatestDifference>
-							<greatestDifference id="M">E dd/MM - E dd/MM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MMM">
-							<greatestDifference id="M">MMM-MMM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MMMd">
-							<greatestDifference id="d">d-d 'de' MMM</greatestDifference>
-							<greatestDifference id="M">d 'de' MMM 'al' d 'de' MMM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MMMEd">
-							<greatestDifference id="d">E d 'al' E d 'de' MMM</greatestDifference>
-							<greatestDifference id="M">E d 'de' MMM 'al' E d 'de' MMM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="y">
-							<greatestDifference id="y">y-y</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yM">
-							<greatestDifference id="M">MM/yy - MM/yy</greatestDifference>
-							<greatestDifference id="y">MM/yy - MM/yy</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMd">
-							<greatestDifference id="d">dd/MM/yy - dd/MM/yy</greatestDifference>
-							<greatestDifference id="M">dd/MM/yy - dd/MM/yy</greatestDifference>
-							<greatestDifference id="y">dd/MM/yy - dd/MM/yy</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E dd/MM/yy - E dd/MM/yy</greatestDifference>
-							<greatestDifference id="M">E dd/MM/yy - E dd/MM/yy</greatestDifference>
-							<greatestDifference id="y">E dd/MM/yy - E dd/MM/yy</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMM">
-							<greatestDifference id="M">MMM-MMM 'de' y</greatestDifference>
-							<greatestDifference id="y">MMM 'de' y 'a' MMM 'de' y</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMMd">
-							<greatestDifference id="d">d-d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="M">d 'de' MMM 'al' d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="y">d 'de' MMM 'de' y 'al' d 'de' MMM 'de' y</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E d 'al' E d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="M">E d 'de' MMM 'al' E d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="y">E d 'de' MMM 'de' y 'al' E d 'de' MMM 'de' y</greatestDifference>
-						</intervalFormatItem>
-					</intervalFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-	</dates>
-	<numbers>
-		<currencies>
-			<currency type="ARS">
-				<symbol>$</symbol>
-			</currency>
-		</currencies>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php3php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php4php php$php"php/php>
+php	php	php<languagephp typephp=php"esphp"php/php>
+php	php	php<territoryphp typephp=php"ARphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"HKphp"php>Hongphp Kong<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MOphp"php>Macao<php/territoryphp>
+php	php	<php/territoriesphp>
+php	php	php<variantsphp>
+php	php	php	php<variantphp typephp=php"REVISEDphp"php>Ortografíaphp revisada<php/variantphp>
+php	php	<php/variantsphp>
+php	php	php<measurementSystemNamesphp>
+php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>métrico<php/measurementSystemNamephp>
+php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>estadounidense<php/measurementSystemNamephp>
+php	php	<php/measurementSystemNamesphp>
+php	<php/localeDisplayNamesphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<amphp>aphp.mphp.<php/amphp>
+php	php	php	php	php<pmphp>pphp.mphp.<php/pmphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp'hphp'php'php'mmphp:ssphp zzzz<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ssphp z<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MEdphp"php>Ephp dphp-M<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMphp"php>Mphp-yyyy<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	php	php<intervalFormatsphp>
+php	php	php	php	php	php	php<intervalFormatFallbackphp>php{php0php}php aphp elphp php{php1php}<php/intervalFormatFallbackphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"dphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp-d<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>HHphp-HH<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>HHphp:mmphp-HHphp:mm<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>HHphp:mmphp-HHphp:mm<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmvphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>HHphp:mmphp-HHphp:mmphp v<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>HHphp:mmphp-HHphp:mmphp v<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hvphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>HHphp-HHphp v<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp-M<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMphp php-php ddphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMphp php-php ddphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp ddphp/MMphp php-php Ephp ddphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp ddphp/MMphp php-php Ephp ddphp/MM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp-MMM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp-dphp php'dephp'php MMM<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp php'dephp'php MMMphp php'alphp'php dphp php'dephp'php MMM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp dphp php'alphp'php Ephp dphp php'dephp'php MMM<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp dphp php'dephp'php MMMphp php'alphp'php Ephp dphp php'dephp'php MMM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp-y<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp/yyphp php-php MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMphp/yyphp php-php MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMphp/yyphp php-php ddphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMphp/yyphp php-php ddphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>ddphp/MMphp/yyphp php-php ddphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp ddphp/MMphp/yyphp php-php Ephp ddphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp ddphp/MMphp/yyphp php-php Ephp ddphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp ddphp/MMphp/yyphp php-php Ephp ddphp/MMphp/yy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp-MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMMphp php'dephp'php yphp php'aphp'php MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp-dphp php'dephp'php MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp php'dephp'php MMMphp php'alphp'php dphp php'dephp'php MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>dphp php'dephp'php MMMphp php'dephp'php yphp php'alphp'php dphp php'dephp'php MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMEdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp dphp php'alphp'php Ephp dphp php'dephp'php MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp dphp php'dephp'php MMMphp php'alphp'php Ephp dphp php'dephp'php MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp dphp php'dephp'php MMMphp php'dephp'php yphp php'alphp'php Ephp dphp php'dephp'php MMMphp php'dephp'php y<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	<php/intervalFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"ARSphp"php>
+php	php	php	php	php<symbolphp>php$<php/symbolphp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+<php/ldmlphp>
 

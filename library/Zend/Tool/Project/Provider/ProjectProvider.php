@@ -1,97 +1,97 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ProjectProvider.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ProjectProviderphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** @see Zend_Tool_Project_Provider_Abstract */
-require_once 'Zend/Tool/Project/Provider/Abstract.php';
+php/php*php*php php@seephp Zendphp_Toolphp_Projectphp_Providerphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Providerphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Project_Provider_ProjectProvider extends Zend_Tool_Project_Provider_Abstract
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Projectphp_Providerphp_ProjectProviderphp extendsphp Zendphp_Toolphp_Projectphp_Providerphp_Abstract
+php{
 
-    /**
-     * createResource()
-     *
-     * @param Zend_Tool_Project_Profile $profile
-     * @param string $projectProviderName
-     * @param string $actionNames
-     * @return Zend_Tool_Project_Profile_Resource
-     */
-    public static function createResource(Zend_Tool_Project_Profile $profile, $projectProviderName, $actionNames = null)
-    {
+php php php php php/php*php*
+php php php php php php*php createResourcephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Profilephp php$profile
+php php php php php php*php php@paramphp stringphp php$projectProviderName
+php php php php php php*php php@paramphp stringphp php$actionNames
+php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
+php php php php php php*php/
+php php php php publicphp staticphp functionphp createResourcephp(Zendphp_Toolphp_Projectphp_Profilephp php$profilephp,php php$projectProviderNamephp,php php$actionNamesphp php=php nullphp)
+php php php php php{
 
-        if (!is_string($projectProviderName)) {
-            /**
-             * @see Zend_Tool_Project_Provider_Exception
-             */
-            require_once 'Zend/Tool/Project/Provider/Exception.php';
-            throw new Zend_Tool_Project_Provider_Exception('Zend_Tool_Project_Provider_Controller::createResource() expects \"projectProviderName\" is the name of a project provider resource to create.');
-        }
+php php php php php php php php ifphp php(php!isphp_stringphp(php$projectProviderNamephp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Toolphp_Projectphp_Providerphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Providerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Zendphp_Toolphp_Projectphp_Providerphp_Controllerphp:php:createResourcephp(php)php expectsphp php\php"projectProviderNamephp\php"php isphp thephp namephp ofphp aphp projectphp providerphp resourcephp tophp createphp.php'php)php;
+php php php php php php php php php}
 
-        $profileSearchParams = array();
-        $profileSearchParams[] = 'projectProvidersDirectory';
+php php php php php php php php php$profileSearchParamsphp php=php arrayphp(php)php;
+php php php php php php php php php$profileSearchParamsphp[php]php php=php php'projectProvidersDirectoryphp'php;
 
-        $projectProvider = $profile->createResourceAt($profileSearchParams, 'projectProviderFile', array('projectProviderName' => $projectProviderName, 'actionNames' => $actionNames));
+php php php php php php php php php$projectProviderphp php=php php$profilephp-php>createResourceAtphp(php$profileSearchParamsphp,php php'projectProviderFilephp'php,php arrayphp(php'projectProviderNamephp'php php=php>php php$projectProviderNamephp,php php'actionNamesphp'php php=php>php php$actionNamesphp)php)php;
 
-        return $projectProvider;
-    }
+php php php php php php php php returnphp php$projectProviderphp;
+php php php php php}
 
-    /**
-     * getName()
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'ProjectProvider';
-    }
+php php php php php/php*php*
+php php php php php php*php getNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php'ProjectProviderphp'php;
+php php php php php}
 
-    /**
-     * Create stub for Zend_Tool Project Provider
-     *
-     * @var string       $name            class name for new Zend_Tool Project Provider
-     * @var array|string $actions         list of provider methods
-     * @throws Zend_Tool_Project_Provider_Exception
-     */
-    public function create($name, $actions = null)
-    {
-        $profile = $this->_loadProfileRequired();
+php php php php php/php*php*
+php php php php php php*php Createphp stubphp forphp Zendphp_Toolphp Projectphp Provider
+php php php php php php*
+php php php php php php*php php@varphp stringphp php php php php php php php$namephp php php php php php php php php php php php classphp namephp forphp newphp Zendphp_Toolphp Projectphp Provider
+php php php php php php*php php@varphp arrayphp|stringphp php$actionsphp php php php php php php php php listphp ofphp providerphp methods
+php php php php php php*php php@throwsphp Zendphp_Toolphp_Projectphp_Providerphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp createphp(php$namephp,php php$actionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$profilephp php=php php$thisphp-php>php_loadProfileRequiredphp(php)php;
 
-        $projectProvider = self::createResource($profile, $name, $actions);
+php php php php php php php php php$projectProviderphp php=php selfphp:php:createResourcephp(php$profilephp,php php$namephp,php php$actionsphp)php;
 
-        if ($this->_registry->getRequest()->isPretend()) {
-            $this->_registry->getResponse()->appendContent('Would create a project provider named ' . $name
-                . ' in location ' . $projectProvider->getPath()
-                );
-        } else {
-            $this->_registry->getResponse()->appendContent('Creating a project provider named ' . $name
-                . ' in location ' . $projectProvider->getPath()
-                );
-            $projectProvider->create();
-            $this->_storeProfile();
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>isPretendphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>appendContentphp(php'Wouldphp createphp aphp projectphp providerphp namedphp php'php php.php php$name
+php php php php php php php php php php php php php php php php php.php php'php inphp locationphp php'php php.php php$projectProviderphp-php>getPathphp(php)
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>appendContentphp(php'Creatingphp aphp projectphp providerphp namedphp php'php php.php php$name
+php php php php php php php php php php php php php php php php php.php php'php inphp locationphp php'php php.php php$projectProviderphp-php>getPathphp(php)
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php$projectProviderphp-php>createphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_storeProfilephp(php)php;
+php php php php php php php php php}
 
-    }
-}
+php php php php php}
+php}

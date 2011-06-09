@@ -1,220 +1,220 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tag
- * @subpackage Item
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Item.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tag
+php php*php php@subpackagephp Item
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Itemphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Tag_Taggable
- */
-require_once 'Zend/Tag/Taggable.php';
+php/php*php*
+php php*php php@seephp Zendphp_Tagphp_Taggable
+php php*php/
+requirephp_oncephp php'Zendphp/Tagphp/Taggablephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Tag
- * @uses       Zend_Tag_Taggable
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tag_Item implements Zend_Tag_Taggable
-{
-    /**
-     * Title of the tag
-     *
-     * @var string
-     */
-    protected $_title = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tag
+php php*php php@usesphp php php php php php php Zendphp_Tagphp_Taggable
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Tagphp_Itemphp implementsphp Zendphp_Tagphp_Taggable
+php{
+php php php php php/php*php*
+php php php php php php*php Titlephp ofphp thephp tag
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_titlephp php=php nullphp;
 
-    /**
-     * Weight of the tag
-     *
-     * @var float
-     */
-    protected $_weight = null;
+php php php php php/php*php*
+php php php php php php*php Weightphp ofphp thephp tag
+php php php php php php*
+php php php php php php*php php@varphp float
+php php php php php php*php/
+php php php php protectedphp php$php_weightphp php=php nullphp;
 
-    /**
-     * Custom parameters
-     *
-     * @var string
-     */
-    protected $_params = array();
+php php php php php/php*php*
+php php php php php php*php Customphp parameters
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_paramsphp php=php arrayphp(php)php;
 
-    /**
-     * Option keys to skip when calling setOptions()
-     *
-     * @var array
-     */
-    protected $_skipOptions = array(
-        'options',
-        'param'
-    );
+php php php php php/php*php*
+php php php php php php*php Optionphp keysphp tophp skipphp whenphp callingphp setOptionsphp(php)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_skipOptionsphp php=php arrayphp(
+php php php php php php php php php'optionsphp'php,
+php php php php php php php php php'paramphp'
+php php php php php)php;
 
-    /**
-     * Create a new tag according to the options
-     *
-     * @param  array|Zend_Config $options
-     * @throws Zend_Tag_Exception When invalid options are provided
-     * @throws Zend_Tag_Exception When title was not set
-     * @throws Zend_Tag_Exception When weight was not set
-     * @return void
-     */
-    public function __construct($options)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp tagphp accordingphp tophp thephp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@throwsphp Zendphp_Tagphp_Exceptionphp Whenphp invalidphp optionsphp arephp provided
+php php php php php php*php php@throwsphp Zendphp_Tagphp_Exceptionphp Whenphp titlephp wasphp notphp set
+php php php php php php*php php@throwsphp Zendphp_Tagphp_Exceptionphp Whenphp weightphp wasphp notphp set
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($options)) {
-            require_once 'Zend/Tag/Exception.php';
-            throw new Zend_Tag_Exception('Invalid options provided to constructor');
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Exceptionphp(php'Invalidphp optionsphp providedphp tophp constructorphp'php)php;
+php php php php php php php php php}
 
-        $this->setOptions($options);
+php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
 
-        if ($this->_title === null) {
-            require_once 'Zend/Tag/Exception.php';
-            throw new Zend_Tag_Exception('Title was not set');
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_titlephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Exceptionphp(php'Titlephp wasphp notphp setphp'php)php;
+php php php php php php php php php}
 
-        if ($this->_weight === null) {
-            require_once 'Zend/Tag/Exception.php';
-            throw new Zend_Tag_Exception('Weight was not set');
-        }
-    }
+php php php php php php php php ifphp php(php$thisphp-php>php_weightphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Exceptionphp(php'Weightphp wasphp notphp setphp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set options of the tag
-     *
-     * @param  array $options
-     * @return Zend_Tag_Item
-     */
-    public function setOptions(array $options)
-    {
-        foreach ($options as $key => $value) {
-            if (in_array(strtolower($key), $this->_skipOptions)) {
-                continue;
-            }
+php php php php php/php*php*
+php php php php php php*php Setphp optionsphp ofphp thephp tag
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Tagphp_Item
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(strtolowerphp(php$keyphp)php,php php$thisphp-php>php_skipOptionsphp)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            $method = 'set' . $key;
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
+php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php php$keyphp;
+php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Tag_Taggable
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->_title;
-    }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Tagphp_Taggable
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTitlephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_titlephp;
+php php php php php}
 
-    /**
-     * Set the title
-     *
-     * @param  string $title
-     * @throws Zend_Tag_Exception When title is no string
-     * @return Zend_Tag_Item
-     */
-    public function setTitle($title)
-    {
-        if (!is_string($title)) {
-            require_once 'Zend/Tag/Exception.php';
-            throw new Zend_Tag_Exception('Title must be a string');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp title
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$title
+php php php php php php*php php@throwsphp Zendphp_Tagphp_Exceptionphp Whenphp titlephp isphp nophp string
+php php php php php php*php php@returnphp Zendphp_Tagphp_Item
+php php php php php php*php/
+php php php php publicphp functionphp setTitlephp(php$titlephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$titlephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Exceptionphp(php'Titlephp mustphp bephp aphp stringphp'php)php;
+php php php php php php php php php}
 
-        $this->_title = (string) $title;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_titlephp php=php php(stringphp)php php$titlephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Tag_Taggable
-     *
-     * @return float
-     */
-    public function getWeight()
-    {
-        return $this->_weight;
-    }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Tagphp_Taggable
+php php php php php php*
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp getWeightphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_weightphp;
+php php php php php}
 
-    /**
-     * Set the weight
-     *
-     * @param  float $weight
-     * @throws Zend_Tag_Exception When weight is not numeric
-     * @return Zend_Tag_Item
-     */
-    public function setWeight($weight)
-    {
-        if (!is_numeric($weight)) {
-            require_once 'Zend/Tag/Exception.php';
-            throw new Zend_Tag_Exception('Weight must be numeric');
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp weight
+php php php php php php*
+php php php php php php*php php@paramphp php floatphp php$weight
+php php php php php php*php php@throwsphp Zendphp_Tagphp_Exceptionphp Whenphp weightphp isphp notphp numeric
+php php php php php php*php php@returnphp Zendphp_Tagphp_Item
+php php php php php php*php/
+php php php php publicphp functionphp setWeightphp(php$weightphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_numericphp(php$weightphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Exceptionphp(php'Weightphp mustphp bephp numericphp'php)php;
+php php php php php php php php php}
 
-        $this->_weight = (float) $weight;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_weightphp php=php php(floatphp)php php$weightphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set multiple params at once
-     *
-     * @param  array $params
-     * @return Zend_Tag_Item
-     */
-    public function setParams(array $params)
-    {
-        foreach ($params as $name => $value) {
-            $this->setParam($name, $value);
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp multiplephp paramsphp atphp once
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp Zendphp_Tagphp_Item
+php php php php php php*php/
+php php php php publicphp functionphp setParamsphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$paramsphp asphp php$namephp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$thisphp-php>setParamphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Tag_Taggable
-     *
-     * @param  string $name
-     * @param  mixed  $value
-     * @return Zend_Tag_Item
-     */
-    public function setParam($name, $value)
-    {
-        $this->_params[$name] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Tagphp_Taggable
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php php$value
+php php php php php php*php php@returnphp Zendphp_Tagphp_Item
+php php php php php php*php/
+php php php php publicphp functionphp setParamphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_paramsphp[php$namephp]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Tag_Taggable
-     *
-     * @param  string $name
-     * @return mixed
-     */
-    public function getParam($name)
-    {
-        if (isset($this->_params[$name])) {
-            return $this->_params[$name];
-        }
-        return null;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Tagphp_Taggable
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getParamphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_paramsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_paramsphp[php$namephp]php;
+php php php php php php php php php}
+php php php php php php php php returnphp nullphp;
+php php php php php}
+php}

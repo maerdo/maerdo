@@ -1,1265 +1,1265 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Locale
- * @subpackage Format
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Format.php 22808 2010-08-08 09:38:42Z thomas $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/**
- * include needed classes
- */
-require_once 'Zend/Locale/Data.php';
-
-/**
- * @category   Zend
- * @package    Zend_Locale
- * @subpackage Format
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Locale_Format
-{
-    const STANDARD   = 'auto';
-
-    private static $_options = array('date_format'   => null,
-                                     'number_format' => null,
-                                     'format_type'   => 'iso',
-                                     'fix_date'      => false,
-                                     'locale'        => null,
-                                     'cache'         => null,
-                                     'disableCache'  => false,
-                                     'precision'     => null);
-
-    /**
-     * Sets class wide options, if no option was given, the actual set options will be returned
-     * The 'precision' option of a value is used to truncate or stretch extra digits. -1 means not to touch the extra digits.
-     * The 'locale' option helps when parsing numbers and dates using separators and month names.
-     * The date format 'format_type' option selects between CLDR/ISO date format specifier tokens and PHP's date() tokens.
-     * The 'fix_date' option enables or disables heuristics that attempt to correct invalid dates.
-     * The 'number_format' option can be used to specify a default number format string
-     * The 'date_format' option can be used to specify a default date format string, but beware of using getDate(),
-     * checkDateFormat() and getTime() after using setOptions() with a 'format'.  To use these four methods
-     * with the default date format for a locale, use array('date_format' => null, 'locale' => $locale) for their options.
-     *
-     * @param  array  $options  Array of options, keyed by option name: format_type = 'iso' | 'php', fix_date = true | false,
-     *                          locale = Zend_Locale | locale string, precision = whole number between -1 and 30
-     * @throws Zend_Locale_Exception
-     * @return Options array if no option was given
-     */
-    public static function setOptions(array $options = array())
-    {
-        self::$_options = self::_checkOptions($options) + self::$_options;
-        return self::$_options;
-    }
-
-    /**
-     * Internal function for checking the options array of proper input values
-     * See {@link setOptions()} for details.
-     *
-     * @param  array  $options  Array of options, keyed by option name: format_type = 'iso' | 'php', fix_date = true | false,
-     *                          locale = Zend_Locale | locale string, precision = whole number between -1 and 30
-     * @throws Zend_Locale_Exception
-     * @return Options array if no option was given
-     */
-    private static function _checkOptions(array $options = array())
-    {
-        if (count($options) == 0) {
-            return self::$_options;
-        }
-        foreach ($options as $name => $value) {
-            $name  = strtolower($name);
-            if ($name !== 'locale') {
-                if (gettype($value) === 'string') {
-                    $value = strtolower($value);
-                }
-            }
-
-            switch($name) {
-                case 'number_format' :
-                    if ($value == Zend_Locale_Format::STANDARD) {
-                        $locale = self::$_options['locale'];
-                        if (isset($options['locale'])) {
-                            $locale = $options['locale'];
-                        }
-                        $options['number_format'] = Zend_Locale_Data::getContent($locale, 'decimalnumber');
-                    } else if ((gettype($value) !== 'string') and ($value !== NULL)) {
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Unknown number format type '" . gettype($value) . "'. "
-                            . "Format '$value' must be a valid number format string.");
-                    }
-                    break;
-
-                case 'date_format' :
-                    if ($value == Zend_Locale_Format::STANDARD) {
-                        $locale = self::$_options['locale'];
-                        if (isset($options['locale'])) {
-                            $locale = $options['locale'];
-                        }
-                        $options['date_format'] = Zend_Locale_Format::getDateFormat($locale);
-                    } else if ((gettype($value) !== 'string') and ($value !== NULL)) {
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Unknown dateformat type '" . gettype($value) . "'. "
-                            . "Format '$value' must be a valid ISO or PHP date format string.");
-                    } else {
-                        if (((isset($options['format_type']) === true) and ($options['format_type'] == 'php')) or
-                            ((isset($options['format_type']) === false) and (self::$_options['format_type'] == 'php'))) {
-                            $options['date_format'] = Zend_Locale_Format::convertPhpToIsoFormat($value);
-                        }
-                    }
-                    break;
-
-                case 'format_type' :
-                    if (($value != 'php') && ($value != 'iso')) {
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Unknown date format type '$value'. Only 'iso' and 'php'"
-                           . " are supported.");
-                    }
-                    break;
-
-                case 'fix_date' :
-                    if (($value !== true) && ($value !== false)) {
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Enabling correction of dates must be either true or false"
-                            . "(fix_date='$value').");
-                    }
-                    break;
-
-                case 'locale' :
-                    $options['locale'] = Zend_Locale::findLocale($value);
-                    break;
-
-                case 'cache' :
-                    if ($value instanceof Zend_Cache_Core) {
-                        Zend_Locale_Data::setCache($value);
-                    }
-                    break;
-
-                case 'disablecache' :
-                    Zend_Locale_Data::disableCache($value);
-                    break;
-
-                case 'precision' :
-                    if ($value === NULL) {
-                        $value = -1;
-                    }
-
-                    if (($value < -1) || ($value > 30)) {
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("'$value' precision is not a whole number less than 30.");
-                    }
-                    break;
-
-                default:
-                    require_once 'Zend/Locale/Exception.php';
-                    throw new Zend_Locale_Exception("Unknown option: '$name' = '$value'");
-                    break;
-
-            }
-        }
-
-        return $options;
-    }
-
-    /**
-     * Changes the numbers/digits within a given string from one script to another
-     * 'Decimal' representated the stardard numbers 0-9, if a script does not exist
-     * an exception will be thrown.
-     *
-     * Examples for conversion from Arabic to Latin numerals:
-     *   convertNumerals('١١٠ Tests', 'Arab'); -> returns '100 Tests'
-     * Example for conversion from Latin to Arabic numerals:
-     *   convertNumerals('100 Tests', 'Latn', 'Arab'); -> returns '١١٠ Tests'
-     *
-     * @param  string  $input  String to convert
-     * @param  string  $from   Script to parse, see {@link Zend_Locale::getScriptList()} for details.
-     * @param  string  $to     OPTIONAL Script to convert to
-     * @return string  Returns the converted input
-     * @throws Zend_Locale_Exception
-     */
-    public static function convertNumerals($input, $from, $to = null)
-    {
-        if (!self::_getUniCodeSupport()) {
-            trigger_error("Sorry, your PCRE extension does not support UTF8 which is needed for the I18N core", E_USER_NOTICE);
-        }
-
-        $from   = strtolower($from);
-        $source = Zend_Locale_Data::getContent('en', 'numberingsystem', $from);
-        if (empty($source)) {
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception("Unknown script '$from'. Use 'Latn' for digits 0,1,2,3,4,5,6,7,8,9.");
-        }
-
-        if ($to !== null) {
-            $to     = strtolower($to);
-            $target = Zend_Locale_Data::getContent('en', 'numberingsystem', $to);
-            if (empty($target)) {
-                require_once 'Zend/Locale/Exception.php';
-                throw new Zend_Locale_Exception("Unknown script '$to'. Use 'Latn' for digits 0,1,2,3,4,5,6,7,8,9.");
-            }
-        } else {
-            $target = '0123456789';
-        }
-
-        for ($x = 0; $x < 10; ++$x) {
-            $asource[$x] = "/" . iconv_substr($source, $x, 1, 'UTF-8') . "/u";
-            $atarget[$x] = iconv_substr($target, $x, 1, 'UTF-8');
-        }
-
-        return preg_replace($asource, $atarget, $input);
-    }
-
-    /**
-     * Returns the normalized number from a localized one
-     * Parsing depends on given locale (grouping and decimal)
-     *
-     * Examples for input:
-     * '2345.4356,1234' = 23455456.1234
-     * '+23,3452.123' = 233452.123
-     * '12343 ' = 12343
-     * '-9456' = -9456
-     * '0' = 0
-     *
-     * @param  string $input    Input string to parse for numbers
-     * @param  array  $options  Options: locale, precision. See {@link setOptions()} for details.
-     * @return string Returns the extracted number
-     * @throws Zend_Locale_Exception
-     */
-    public static function getNumber($input, array $options = array())
-    {
-        $options = self::_checkOptions($options) + self::$_options;
-        if (!is_string($input)) {
-            return $input;
-        }
-
-        if (!self::isNumber($input, $options)) {
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception('No localized value in ' . $input . ' found, or the given number does not match the localized format');
-        }
-
-        // Get correct signs for this locale
-        $symbols = Zend_Locale_Data::getList($options['locale'],'symbols');
-        // Change locale input to be default number
-        if ((strpos($input, $symbols['minus']) !== false) ||
-            (strpos($input, '-') !== false)) {
-            $input = strtr($input, array($symbols['minus'] => '', '-' => ''));
-            $input = '-' . $input;
-        }
-
-        $input = str_replace($symbols['group'],'', $input);
-        if (strpos($input, $symbols['decimal']) !== false) {
-            if ($symbols['decimal'] != '.') {
-                $input = str_replace($symbols['decimal'], ".", $input);
-            }
-
-            $pre = substr($input, strpos($input, '.') + 1);
-            if ($options['precision'] === null) {
-                $options['precision'] = strlen($pre);
-            }
-
-            if (strlen($pre) >= $options['precision']) {
-                $input = substr($input, 0, strlen($input) - strlen($pre) + $options['precision']);
-            }
-
-            if (($options['precision'] == 0) && ($input[strlen($input) - 1] == '.')) {
-                $input = substr($input, 0, -1);
-            }
-        }
-
-        return $input;
-    }
-
-    /**
-     * Returns a locale formatted number depending on the given options.
-     * The seperation and fraction sign is used from the set locale.
-     * ##0.#  -> 12345.12345 -> 12345.12345
-     * ##0.00 -> 12345.12345 -> 12345.12
-     * ##,##0.00 -> 12345.12345 -> 12,345.12
-     *
-     * @param   string  $input    Localized number string
-     * @param   array   $options  Options: number_format, locale, precision. See {@link setOptions()} for details.
-     * @return  string  locale formatted number
-     * @throws Zend_Locale_Exception
-     */
-    public static function toNumber($value, array $options = array())
-    {
-        // load class within method for speed
-        require_once 'Zend/Locale/Math.php';
-
-        $value             = Zend_Locale_Math::normalize($value);
-        $value             = Zend_Locale_Math::floatalize($value);
-        $options           = self::_checkOptions($options) + self::$_options;
-        $options['locale'] = (string) $options['locale'];
-
-        // Get correct signs for this locale
-        $symbols = Zend_Locale_Data::getList($options['locale'], 'symbols');
-        $oenc = iconv_get_encoding('internal_encoding');
-        iconv_set_encoding('internal_encoding', 'UTF-8');
-
-        // Get format
-        $format = $options['number_format'];
-        if ($format === null) {
-            $format  = Zend_Locale_Data::getContent($options['locale'], 'decimalnumber');
-            $format  = self::_seperateFormat($format, $value, $options['precision']);
-
-            if ($options['precision'] !== null) {
-                $value   = Zend_Locale_Math::normalize(Zend_Locale_Math::round($value, $options['precision']));
-            }
-        } else {
-            // seperate negative format pattern when available
-            $format  = self::_seperateFormat($format, $value, $options['precision']);
-            if (strpos($format, '.')) {
-                if (is_numeric($options['precision'])) {
-                    $value = Zend_Locale_Math::round($value, $options['precision']);
-                } else {
-                    if (substr($format, iconv_strpos($format, '.') + 1, 3) == '###') {
-                        $options['precision'] = null;
-                    } else {
-                        $options['precision'] = iconv_strlen(iconv_substr($format, iconv_strpos($format, '.') + 1,
-                                                             iconv_strrpos($format, '0') - iconv_strpos($format, '.')));
-                        $format = iconv_substr($format, 0, iconv_strpos($format, '.') + 1) . '###'
-                                . iconv_substr($format, iconv_strrpos($format, '0') + 1);
-                    }
-                }
-            } else {
-                $value = Zend_Locale_Math::round($value, 0);
-                $options['precision'] = 0;
-            }
-            $value = Zend_Locale_Math::normalize($value);
-        }
-
-        if (iconv_strpos($format, '0') === false) {
-            iconv_set_encoding('internal_encoding', $oenc);
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception('Wrong format... missing 0');
-        }
-
-        // get number parts
-        $pos = iconv_strpos($value, '.');
-        if ($pos !== false) {
-            if ($options['precision'] === null) {
-                $precstr = iconv_substr($value, $pos + 1);
-            } else {
-                $precstr = iconv_substr($value, $pos + 1, $options['precision']);
-                if (iconv_strlen($precstr) < $options['precision']) {
-                    $precstr = $precstr . str_pad("0", ($options['precision'] - iconv_strlen($precstr)), "0");
-                }
-            }
-        } else {
-            if ($options['precision'] > 0) {
-                $precstr = str_pad("0", ($options['precision']), "0");
-            }
-        }
-
-        if ($options['precision'] === null) {
-            if (isset($precstr)) {
-                $options['precision'] = iconv_strlen($precstr);
-            } else {
-                $options['precision'] = 0;
-            }
-        }
-
-        // get fraction and format lengths
-        if (strpos($value, '.') !== false) {
-            $number = substr((string) $value, 0, strpos($value, '.'));
-        } else {
-            $number = $value;
-        }
-
-        $prec = call_user_func(Zend_Locale_Math::$sub, $value, $number, $options['precision']);
-        $prec = Zend_Locale_Math::floatalize($prec);
-        $prec = Zend_Locale_Math::normalize($prec);
-        if (iconv_strpos($prec, '-') !== false) {
-            $prec = iconv_substr($prec, 1);
-        }
-
-        if (($prec == 0) and ($options['precision'] > 0)) {
-            $prec = "0.0";
-        }
-
-        if (($options['precision'] + 2) > iconv_strlen($prec)) {
-            $prec = str_pad((string) $prec, $options['precision'] + 2, "0", STR_PAD_RIGHT);
-        }
-
-        if (iconv_strpos($number, '-') !== false) {
-            $number = iconv_substr($number, 1);
-        }
-        $group  = iconv_strrpos($format, ',');
-        $group2 = iconv_strpos ($format, ',');
-        $point  = iconv_strpos ($format, '0');
-        // Add fraction
-        $rest = "";
-        if (iconv_strpos($format, '.')) {
-            $rest   = iconv_substr($format, iconv_strpos($format, '.') + 1);
-            $length = iconv_strlen($rest);
-            for($x = 0; $x < $length; ++$x) {
-                if (($rest[0] == '0') || ($rest[0] == '#')) {
-                    $rest = iconv_substr($rest, 1);
-                }
-            }
-            $format = iconv_substr($format, 0, iconv_strlen($format) - iconv_strlen($rest));
-        }
-
-        if ($options['precision'] == '0') {
-            if (iconv_strrpos($format, '-') != 0) {
-                $format = iconv_substr($format, 0, $point)
-                        . iconv_substr($format, iconv_strrpos($format, '#') + 2);
-            } else {
-                $format = iconv_substr($format, 0, $point);
-            }
-        } else {
-            $format = iconv_substr($format, 0, $point) . $symbols['decimal']
-                               . iconv_substr($prec, 2);
-        }
-
-        $format .= $rest;
-        // Add seperation
-        if ($group == 0) {
-            // no seperation
-            $format = $number . iconv_substr($format, $point);
-        } else if ($group == $group2) {
-            // only 1 seperation
-            $seperation = ($point - $group);
-            for ($x = iconv_strlen($number); $x > $seperation; $x -= $seperation) {
-                if (iconv_substr($number, 0, $x - $seperation) !== "") {
-                    $number = iconv_substr($number, 0, $x - $seperation) . $symbols['group']
-                            . iconv_substr($number, $x - $seperation);
-                }
-            }
-            $format = iconv_substr($format, 0, iconv_strpos($format, '#')) . $number . iconv_substr($format, $point);
-        } else {
-
-            // 2 seperations
-            if (iconv_strlen($number) > ($point - $group)) {
-                $seperation = ($point - $group);
-                $number = iconv_substr($number, 0, iconv_strlen($number) - $seperation) . $symbols['group']
-                        . iconv_substr($number, iconv_strlen($number) - $seperation);
-
-                if ((iconv_strlen($number) - 1) > ($point - $group + 1)) {
-                    $seperation2 = ($group - $group2 - 1);
-                    for ($x = iconv_strlen($number) - $seperation2 - 2; $x > $seperation2; $x -= $seperation2) {
-                        $number = iconv_substr($number, 0, $x - $seperation2) . $symbols['group']
-                                . iconv_substr($number, $x - $seperation2);
-                    }
-                }
-
-            }
-            $format = iconv_substr($format, 0, iconv_strpos($format, '#')) . $number . iconv_substr($format, $point);
-        }
-        // set negative sign
-        if (call_user_func(Zend_Locale_Math::$comp, $value, 0, $options['precision']) < 0) {
-            if (iconv_strpos($format, '-') === false) {
-                $format = $symbols['minus'] . $format;
-            } else {
-                $format = str_replace('-', $symbols['minus'], $format);
-            }
-        }
-
-        iconv_set_encoding('internal_encoding', $oenc);
-        return (string) $format;
-    }
-
-    private static function _seperateFormat($format, $value, $precision)
-    {
-        if (iconv_strpos($format, ';') !== false) {
-            if (call_user_func(Zend_Locale_Math::$comp, $value, 0, $precision) < 0) {
-                $tmpformat = iconv_substr($format, iconv_strpos($format, ';') + 1);
-                if ($tmpformat[0] == '(') {
-                    $format = iconv_substr($format, 0, iconv_strpos($format, ';'));
-                } else {
-                    $format = $tmpformat;
-                }
-            } else {
-                $format = iconv_substr($format, 0, iconv_strpos($format, ';'));
-            }
-        }
-
-        return $format;
-    }
-
-
-    /**
-     * Checks if the input contains a normalized or localized number
-     *
-     * @param   string  $input    Localized number string
-     * @param   array   $options  Options: locale. See {@link setOptions()} for details.
-     * @return  boolean           Returns true if a number was found
-     */
-    public static function isNumber($input, array $options = array())
-    {
-        if (!self::_getUniCodeSupport()) {
-            trigger_error("Sorry, your PCRE extension does not support UTF8 which is needed for the I18N core", E_USER_NOTICE);
-        }
-
-        $options = self::_checkOptions($options) + self::$_options;
-
-        // Get correct signs for this locale
-        $symbols = Zend_Locale_Data::getList($options['locale'],'symbols');
-
-        $regexs = Zend_Locale_Format::_getRegexForType('decimalnumber', $options);
-        $regexs = array_merge($regexs, Zend_Locale_Format::_getRegexForType('scientificnumber', $options));
-        if (!empty($input) && ($input[0] == $symbols['decimal'])) {
-            $input = 0 . $input;
-        }
-        foreach ($regexs as $regex) {
-            preg_match($regex, $input, $found);
-            if (isset($found[0])) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Internal method to convert cldr number syntax into regex
-     *
-     * @param  string $type
-     * @return string
-     */
-    private static function _getRegexForType($type, $options)
-    {
-        $decimal  = Zend_Locale_Data::getContent($options['locale'], $type);
-        $decimal  = preg_replace('/[^#0,;\.\-Ee]/u', '',$decimal);
-        $patterns = explode(';', $decimal);
-
-        if (count($patterns) == 1) {
-            $patterns[1] = '-' . $patterns[0];
-        }
-
-        $symbols = Zend_Locale_Data::getList($options['locale'],'symbols');
-
-        foreach($patterns as $pkey => $pattern) {
-            $regex[$pkey]  = '/^';
-            $rest   = 0;
-            $end    = null;
-            if (strpos($pattern, '.') !== false) {
-                $end     = substr($pattern, strpos($pattern, '.') + 1);
-                $pattern = substr($pattern, 0, -strlen($end) - 1);
-            }
-
-            if (strpos($pattern, ',') !== false) {
-                $parts = explode(',', $pattern);
-                $count = count($parts);
-                foreach($parts as $key => $part) {
-                    switch ($part) {
-                        case '#':
-                        case '-#':
-                            if ($part[0] == '-') {
-                                $regex[$pkey] .= '[' . $symbols['minus'] . '-]{0,1}';
-                            } else {
-                                $regex[$pkey] .= '[' . $symbols['plus'] . '+]{0,1}';
-                            }
-
-                            if (($parts[$key + 1]) == '##0')  {
-                                $regex[$pkey] .= '[0-9]{1,3}';
-                            } else if (($parts[$key + 1]) == '##') {
-                                $regex[$pkey] .= '[0-9]{1,2}';
-                            } else {
-                                throw new Zend_Locale_Exception('Unsupported token for numberformat (Pos 1):"' . $pattern . '"');
-                            }
-                            break;
-                        case '##':
-                            if ($parts[$key + 1] == '##0') {
-                                $regex[$pkey] .=  '(\\' . $symbols['group'] . '{0,1}[0-9]{2})*';
-                            } else {
-                                throw new Zend_Locale_Exception('Unsupported token for numberformat (Pos 2):"' . $pattern . '"');
-                            }
-                            break;
-                        case '##0':
-                            if ($parts[$key - 1] == '##') {
-                                $regex[$pkey] .= '[0-9]';
-                            } else if (($parts[$key - 1] == '#') || ($parts[$key - 1] == '-#')) {
-                                $regex[$pkey] .= '(\\' . $symbols['group'] . '{0,1}[0-9]{3})*';
-                            } else {
-                                throw new Zend_Locale_Exception('Unsupported token for numberformat (Pos 3):"' . $pattern . '"');
-                            }
-                            break;
-                        case '#0':
-                            if ($key == 0) {
-                                $regex[$pkey] .= '[0-9]*';
-                            } else {
-                                throw new Zend_Locale_Exception('Unsupported token for numberformat (Pos 4):"' . $pattern . '"');
-                            }
-                            break;
-                    }
-                }
-            }
-
-            if (strpos($pattern, 'E') !== false) {
-                if (($pattern == '#E0') || ($pattern == '#E00')) {
-                    $regex[$pkey] .= '[' . $symbols['plus']. '+]{0,1}[0-9]{1,}(\\' . $symbols['decimal'] . '[0-9]{1,})*[eE][' . $symbols['plus']. '+]{0,1}[0-9]{1,}';
-                } else if (($pattern == '-#E0') || ($pattern == '-#E00')) {
-                    $regex[$pkey] .= '[' . $symbols['minus']. '-]{0,1}[0-9]{1,}(\\' . $symbols['decimal'] . '[0-9]{1,})*[eE][' . $symbols['minus']. '-]{0,1}[0-9]{1,}';
-                } else {
-                    throw new Zend_Locale_Exception('Unsupported token for numberformat (Pos 5):"' . $pattern . '"');
-                }
-            }
-
-            if (!empty($end)) {
-                if ($end == '###') {
-                    $regex[$pkey] .= '(\\' . $symbols['decimal'] . '{1}[0-9]{1,}){0,1}';
-                } else if ($end == '###-') {
-                    $regex[$pkey] .= '(\\' . $symbols['decimal'] . '{1}[0-9]{1,}){0,1}[' . $symbols['minus']. '-]';
-                } else {
-                    throw new Zend_Locale_Exception('Unsupported token for numberformat (Pos 6):"' . $pattern . '"');
-                }
-            }
-
-            $regex[$pkey] .= '$/u';
-        }
-
-        return $regex;
-    }
-
-    /**
-     * Alias for getNumber
-     *
-     * @param   string  $value    Number to localize
-     * @param   array   $options  Options: locale, precision. See {@link setOptions()} for details.
-     * @return  float
-     */
-    public static function getFloat($input, array $options = array())
-    {
-        return floatval(self::getNumber($input, $options));
-    }
-
-    /**
-     * Returns a locale formatted integer number
-     * Alias for toNumber()
-     *
-     * @param   string  $value    Number to normalize
-     * @param   array   $options  Options: locale, precision. See {@link setOptions()} for details.
-     * @return  string  Locale formatted number
-     */
-    public static function toFloat($value, array $options = array())
-    {
-        $options['number_format'] = Zend_Locale_Format::STANDARD;
-        return self::toNumber($value, $options);
-    }
-
-    /**
-     * Returns if a float was found
-     * Alias for isNumber()
-     *
-     * @param   string  $input    Localized number string
-     * @param   array   $options  Options: locale. See {@link setOptions()} for details.
-     * @return  boolean           Returns true if a number was found
-     */
-    public static function isFloat($value, array $options = array())
-    {
-        return self::isNumber($value, $options);
-    }
-
-    /**
-     * Returns the first found integer from an string
-     * Parsing depends on given locale (grouping and decimal)
-     *
-     * Examples for input:
-     * '  2345.4356,1234' = 23455456
-     * '+23,3452.123' = 233452
-     * ' 12343 ' = 12343
-     * '-9456km' = -9456
-     * '0' = 0
-     * '(-){0,1}(\d+(\.){0,1})*(\,){0,1})\d+'
-     *
-     * @param   string   $input    Input string to parse for numbers
-     * @param   array    $options  Options: locale. See {@link setOptions()} for details.
-     * @return  integer            Returns the extracted number
-     */
-    public static function getInteger($input, array $options = array())
-    {
-        $options['precision'] = 0;
-        return intval(self::getFloat($input, $options));
-    }
-
-    /**
-     * Returns a localized number
-     *
-     * @param   string  $value    Number to normalize
-     * @param   array   $options  Options: locale. See {@link setOptions()} for details.
-     * @return  string            Locale formatted number
-     */
-    public static function toInteger($value, array $options = array())
-    {
-        $options['precision'] = 0;
-        $options['number_format'] = Zend_Locale_Format::STANDARD;
-        return self::toNumber($value, $options);
-    }
-
-    /**
-     * Returns if a integer was found
-     *
-     * @param   string  $input    Localized number string
-     * @param   array   $options  Options: locale. See {@link setOptions()} for details.
-     * @return  boolean           Returns true if a integer was found
-     */
-    public static function isInteger($value, array $options = array())
-    {
-        if (!self::isNumber($value, $options)) {
-            return false;
-        }
-
-        if (self::getInteger($value, $options) == self::getFloat($value, $options)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Converts a format string from PHP's date format to ISO format
-     * Remember that Zend Date always returns localized string, so a month name which returns the english
-     * month in php's date() will return the translated month name with this function... use 'en' as locale
-     * if you are in need of the original english names
-     *
-     * The conversion has the following restrictions:
-     * 'a', 'A' - Meridiem is not explicit upper/lowercase, you have to upper/lowercase the translated value yourself
-     *
-     * @param  string  $format  Format string in PHP's date format
-     * @return string           Format string in ISO format
-     */
-    public static function convertPhpToIsoFormat($format)
-    {
-        if ($format === null) {
-            return null;
-        }
-
-        $convert = array('d' => 'dd'  , 'D' => 'EE'  , 'j' => 'd'   , 'l' => 'EEEE', 'N' => 'eee' , 'S' => 'SS'  ,
-                         'w' => 'e'   , 'z' => 'D'   , 'W' => 'ww'  , 'F' => 'MMMM', 'm' => 'MM'  , 'M' => 'MMM' ,
-                         'n' => 'M'   , 't' => 'ddd' , 'L' => 'l'   , 'o' => 'YYYY', 'Y' => 'yyyy', 'y' => 'yy'  ,
-                         'a' => 'a'   , 'A' => 'a'   , 'B' => 'B'   , 'g' => 'h'   , 'G' => 'H'   , 'h' => 'hh'  ,
-                         'H' => 'HH'  , 'i' => 'mm'  , 's' => 'ss'  , 'e' => 'zzzz', 'I' => 'I'   , 'O' => 'Z'   ,
-                         'P' => 'ZZZZ', 'T' => 'z'   , 'Z' => 'X'   , 'c' => 'yyyy-MM-ddTHH:mm:ssZZZZ',
-                         'r' => 'r'   , 'U' => 'U');
-        $values = str_split($format);
-        foreach ($values as $key => $value) {
-            if (isset($convert[$value]) === true) {
-                $values[$key] = $convert[$value];
-            }
-        }
-
-        return join($values);
-    }
-
-    /**
-     * Parse date and split in named array fields
-     *
-     * @param   string  $date     Date string to parse
-     * @param   array   $options  Options: format_type, fix_date, locale, date_format. See {@link setOptions()} for details.
-     * @return  array             Possible array members: day, month, year, hour, minute, second, fixed, format
-     */
-    private static function _parseDate($date, $options)
-    {
-        if (!self::_getUniCodeSupport()) {
-            trigger_error("Sorry, your PCRE extension does not support UTF8 which is needed for the I18N core", E_USER_NOTICE);
-        }
-
-        $options = self::_checkOptions($options) + self::$_options;
-        $test = array('h', 'H', 'm', 's', 'y', 'Y', 'M', 'd', 'D', 'E', 'S', 'l', 'B', 'I',
-                       'X', 'r', 'U', 'G', 'w', 'e', 'a', 'A', 'Z', 'z', 'v');
-
-        $format = $options['date_format'];
-        $number = $date; // working copy
-        $result['date_format'] = $format; // save the format used to normalize $number (convenience)
-        $result['locale'] = $options['locale']; // save the locale used to normalize $number (convenience)
-
-        $oenc = iconv_get_encoding('internal_encoding');
-        iconv_set_encoding('internal_encoding', 'UTF-8');
-        $day   = iconv_strpos($format, 'd');
-        $month = iconv_strpos($format, 'M');
-        $year  = iconv_strpos($format, 'y');
-        $hour  = iconv_strpos($format, 'H');
-        $min   = iconv_strpos($format, 'm');
-        $sec   = iconv_strpos($format, 's');
-        $am    = null;
-        if ($hour === false) {
-            $hour = iconv_strpos($format, 'h');
-        }
-        if ($year === false) {
-            $year = iconv_strpos($format, 'Y');
-        }
-        if ($day === false) {
-            $day = iconv_strpos($format, 'E');
-            if ($day === false) {
-                $day = iconv_strpos($format, 'D');
-            }
-        }
-
-        if ($day !== false) {
-            $parse[$day]   = 'd';
-            if (!empty($options['locale']) && ($options['locale'] !== 'root') &&
-                (!is_object($options['locale']) || ((string) $options['locale'] !== 'root'))) {
-                // erase day string
-                    $daylist = Zend_Locale_Data::getList($options['locale'], 'day');
-                foreach($daylist as $key => $name) {
-                    if (iconv_strpos($number, $name) !== false) {
-                        $number = str_replace($name, "EEEE", $number);
-                        break;
-                    }
-                }
-            }
-        }
-        $position = false;
-
-        if ($month !== false) {
-            $parse[$month] = 'M';
-            if (!empty($options['locale']) && ($options['locale'] !== 'root') &&
-                (!is_object($options['locale']) || ((string) $options['locale'] !== 'root'))) {
-                    // prepare to convert month name to their numeric equivalents, if requested,
-                    // and we have a $options['locale']
-                    $position = self::_replaceMonth($number, Zend_Locale_Data::getList($options['locale'],
-                        'month'));
-                if ($position === false) {
-                    $position = self::_replaceMonth($number, Zend_Locale_Data::getList($options['locale'],
-                        'month', array('gregorian', 'format', 'abbreviated')));
-                }
-            }
-        }
-        if ($year !== false) {
-            $parse[$year]  = 'y';
-        }
-        if ($hour !== false) {
-            $parse[$hour] = 'H';
-        }
-        if ($min !== false) {
-            $parse[$min] = 'm';
-        }
-        if ($sec !== false) {
-            $parse[$sec] = 's';
-        }
-
-        if (empty($parse)) {
-            iconv_set_encoding('internal_encoding', $oenc);
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception("Unknown date format, neither date nor time in '" . $format . "' found");
-        }
-        ksort($parse);
-
-        // get daytime
-        if (iconv_strpos($format, 'a') !== false) {
-            if (iconv_strpos(strtoupper($number), strtoupper(Zend_Locale_Data::getContent($options['locale'], 'am'))) !== false) {
-                $am = true;
-            } else if (iconv_strpos(strtoupper($number), strtoupper(Zend_Locale_Data::getContent($options['locale'], 'pm'))) !== false) {
-                $am = false;
-            }
-        }
-
-        // split number parts
-        $split = false;
-        preg_match_all('/\d+/u', $number, $splitted);
-
-        if (count($splitted[0]) == 0) {
-            iconv_set_encoding('internal_encoding', $oenc);
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception("No date part in '$date' found.");
-        }
-        if (count($splitted[0]) == 1) {
-            $split = 0;
-        }
-        $cnt = 0;
-        foreach($parse as $key => $value) {
-
-            switch($value) {
-                case 'd':
-                    if ($split === false) {
-                        if (count($splitted[0]) > $cnt) {
-                            $result['day']    = $splitted[0][$cnt];
-                        }
-                    } else {
-                        $result['day'] = iconv_substr($splitted[0][0], $split, 2);
-                        $split += 2;
-                    }
-                    ++$cnt;
-                    break;
-                case 'M':
-                    if ($split === false) {
-                        if (count($splitted[0]) > $cnt) {
-                            $result['month']  = $splitted[0][$cnt];
-                        }
-                    } else {
-                        $result['month'] = iconv_substr($splitted[0][0], $split, 2);
-                        $split += 2;
-                    }
-                    ++$cnt;
-                    break;
-                case 'y':
-                    $length = 2;
-                    if ((iconv_substr($format, $year, 4) == 'yyyy')
-                     || (iconv_substr($format, $year, 4) == 'YYYY')) {
-                        $length = 4;
-                    }
-
-                    if ($split === false) {
-                        if (count($splitted[0]) > $cnt) {
-                            $result['year']   = $splitted[0][$cnt];
-                        }
-                    } else {
-                        $result['year']   = iconv_substr($splitted[0][0], $split, $length);
-                        $split += $length;
-                    }
-
-                    ++$cnt;
-                    break;
-                case 'H':
-                    if ($split === false) {
-                        if (count($splitted[0]) > $cnt) {
-                            $result['hour']   = $splitted[0][$cnt];
-                        }
-                    } else {
-                        $result['hour']   = iconv_substr($splitted[0][0], $split, 2);
-                        $split += 2;
-                    }
-                    ++$cnt;
-                    break;
-                case 'm':
-                    if ($split === false) {
-                        if (count($splitted[0]) > $cnt) {
-                            $result['minute'] = $splitted[0][$cnt];
-                        }
-                    } else {
-                        $result['minute'] = iconv_substr($splitted[0][0], $split, 2);
-                        $split += 2;
-                    }
-                    ++$cnt;
-                    break;
-                case 's':
-                    if ($split === false) {
-                        if (count($splitted[0]) > $cnt) {
-                            $result['second'] = $splitted[0][$cnt];
-                        }
-                    } else {
-                        $result['second'] = iconv_substr($splitted[0][0], $split, 2);
-                        $split += 2;
-                    }
-                    ++$cnt;
-                    break;
-            }
-        }
-
-        // AM/PM correction
-        if ($hour !== false) {
-            if (($am === true) and ($result['hour'] == 12)){
-                $result['hour'] = 0;
-            } else if (($am === false) and ($result['hour'] != 12)) {
-                $result['hour'] += 12;
-            }
-        }
-
-        if ($options['fix_date'] === true) {
-            $result['fixed'] = 0; // nothing has been "fixed" by swapping date parts around (yet)
-        }
-
-        if ($day !== false) {
-            // fix false month
-            if (isset($result['day']) and isset($result['month'])) {
-                if (($position !== false) and ((iconv_strpos($date, $result['day']) === false) or
-                                               (isset($result['year']) and (iconv_strpos($date, $result['year']) === false)))) {
-                    if ($options['fix_date'] !== true) {
-                        iconv_set_encoding('internal_encoding', $oenc);
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Unable to parse date '$date' using '" . $format
-                            . "' (false month, $position, $month)");
-                    }
-                    $temp = $result['day'];
-                    $result['day']   = $result['month'];
-                    $result['month'] = $temp;
-                    $result['fixed'] = 1;
-                }
-            }
-
-            // fix switched values d <> y
-            if (isset($result['day']) and isset($result['year'])) {
-                if ($result['day'] > 31) {
-                    if ($options['fix_date'] !== true) {
-                        iconv_set_encoding('internal_encoding', $oenc);
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Unable to parse date '$date' using '"
-                                                      . $format . "' (d <> y)");
-                    }
-                    $temp = $result['year'];
-                    $result['year'] = $result['day'];
-                    $result['day']  = $temp;
-                    $result['fixed'] = 2;
-                }
-            }
-
-            // fix switched values M <> y
-            if (isset($result['month']) and isset($result['year'])) {
-                if ($result['month'] > 31) {
-                    if ($options['fix_date'] !== true) {
-                        iconv_set_encoding('internal_encoding', $oenc);
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Unable to parse date '$date' using '"
-                                                      . $format . "' (M <> y)");
-                    }
-                    $temp = $result['year'];
-                    $result['year']  = $result['month'];
-                    $result['month'] = $temp;
-                    $result['fixed'] = 3;
-                }
-            }
-
-            // fix switched values M <> d
-            if (isset($result['month']) and isset($result['day'])) {
-                if ($result['month'] > 12) {
-                    if ($options['fix_date'] !== true || $result['month'] > 31) {
-                        iconv_set_encoding('internal_encoding', $oenc);
-                        require_once 'Zend/Locale/Exception.php';
-                        throw new Zend_Locale_Exception("Unable to parse date '$date' using '"
-                                                      . $format . "' (M <> d)");
-                    }
-                    $temp = $result['day'];
-                    $result['day']   = $result['month'];
-                    $result['month'] = $temp;
-                    $result['fixed'] = 4;
-                }
-            }
-        }
-
-        if (isset($result['year'])) {
-            if (((iconv_strlen($result['year']) == 2) && ($result['year'] < 10)) ||
-                (((iconv_strpos($format, 'yy') !== false) && (iconv_strpos($format, 'yyyy') === false)) ||
-                ((iconv_strpos($format, 'YY') !== false) && (iconv_strpos($format, 'YYYY') === false)))) {
-                if (($result['year'] >= 0) && ($result['year'] < 100)) {
-                    if ($result['year'] < 70) {
-                        $result['year'] = (int) $result['year'] + 100;
-                    }
-
-                    $result['year'] = (int) $result['year'] + 1900;
-                }
-            }
-        }
-
-        iconv_set_encoding('internal_encoding', $oenc);
-        return $result;
-    }
-
-    /**
-     * Search $number for a month name found in $monthlist, and replace if found.
-     *
-     * @param  string  $number     Date string (modified)
-     * @param  array   $monthlist  List of month names
-     *
-     * @return int|false           Position of replaced string (false if nothing replaced)
-     */
-    protected static function _replaceMonth(&$number, $monthlist)
-    {
-        // If $locale was invalid, $monthlist will default to a "root" identity
-        // mapping for each month number from 1 to 12.
-        // If no $locale was given, or $locale was invalid, do not use this identity mapping to normalize.
-        // Otherwise, translate locale aware month names in $number to their numeric equivalents.
-        $position = false;
-        if ($monthlist && $monthlist[1] != 1) {
-            foreach($monthlist as $key => $name) {
-                if (($position = iconv_strpos($number, $name, 0, 'UTF-8')) !== false) {
-                    $number   = str_ireplace($name, $key, $number);
-                    return $position;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Returns the default date format for $locale.
-     *
-     * @param  string|Zend_Locale  $locale  OPTIONAL Locale of $number, possibly in string form (e.g. 'de_AT')
-     * @return string  format
-     * @throws Zend_Locale_Exception  throws an exception when locale data is broken
-     */
-    public static function getDateFormat($locale = null)
-    {
-        $format = Zend_Locale_Data::getContent($locale, 'date');
-        if (empty($format)) {
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception("failed to receive data from locale $locale");
-        }
-
-        return $format;
-    }
-
-    /**
-     * Returns an array with the normalized date from an locale date
-     * a input of 10.01.2006 without a $locale would return:
-     * array ('day' => 10, 'month' => 1, 'year' => 2006)
-     * The 'locale' option is only used to convert human readable day
-     * and month names to their numeric equivalents.
-     * The 'format' option allows specification of self-defined date formats,
-     * when not using the default format for the 'locale'.
-     *
-     * @param   string  $date     Date string
-     * @param   array   $options  Options: format_type, fix_date, locale, date_format. See {@link setOptions()} for details.
-     * @return  array             Possible array members: day, month, year, hour, minute, second, fixed, format
-     */
-    public static function getDate($date, array $options = array())
-    {
-        $options = self::_checkOptions($options) + self::$_options;
-        if (empty($options['date_format'])) {
-            $options['format_type'] = 'iso';
-            $options['date_format'] = self::getDateFormat($options['locale']);
-        }
-
-        return self::_parseDate($date, $options);
-    }
-
-    /**
-     * Returns if the given datestring contains all date parts from the given format.
-     * If no format is given, the default date format from the locale is used
-     * If you want to check if the date is a proper date you should use Zend_Date::isDate()
-     *
-     * @param   string  $date     Date string
-     * @param   array   $options  Options: format_type, fix_date, locale, date_format. See {@link setOptions()} for details.
-     * @return  boolean
-     */
-    public static function checkDateFormat($date, array $options = array())
-    {
-        try {
-            $date = self::getDate($date, $options);
-        } catch (Exception $e) {
-            return false;
-        }
-
-        if (empty($options['date_format'])) {
-            $options['format_type'] = 'iso';
-            $options['date_format'] = self::getDateFormat($options['locale']);
-        }
-        $options = self::_checkOptions($options) + self::$_options;
-
-        // day expected but not parsed
-        if ((iconv_strpos($options['date_format'], 'd', 0, 'UTF-8') !== false) and (!isset($date['day']) or ($date['day'] === ""))) {
-            return false;
-        }
-
-        // month expected but not parsed
-        if ((iconv_strpos($options['date_format'], 'M', 0, 'UTF-8') !== false) and (!isset($date['month']) or ($date['month'] === ""))) {
-            return false;
-        }
-
-        // year expected but not parsed
-        if (((iconv_strpos($options['date_format'], 'Y', 0, 'UTF-8') !== false) or
-             (iconv_strpos($options['date_format'], 'y', 0, 'UTF-8') !== false)) and (!isset($date['year']) or ($date['year'] === ""))) {
-            return false;
-        }
-
-        // second expected but not parsed
-        if ((iconv_strpos($options['date_format'], 's', 0, 'UTF-8') !== false) and (!isset($date['second']) or ($date['second'] === ""))) {
-            return false;
-        }
-
-        // minute expected but not parsed
-        if ((iconv_strpos($options['date_format'], 'm', 0, 'UTF-8') !== false) and (!isset($date['minute']) or ($date['minute'] === ""))) {
-            return false;
-        }
-
-        // hour expected but not parsed
-        if (((iconv_strpos($options['date_format'], 'H', 0, 'UTF-8') !== false) or
-             (iconv_strpos($options['date_format'], 'h', 0, 'UTF-8') !== false)) and (!isset($date['hour']) or ($date['hour'] === ""))) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Returns the default time format for $locale.
-     *
-     * @param  string|Zend_Locale  $locale  OPTIONAL Locale of $number, possibly in string form (e.g. 'de_AT')
-     * @return string  format
-     */
-    public static function getTimeFormat($locale = null)
-    {
-        $format = Zend_Locale_Data::getContent($locale, 'time');
-        if (empty($format)) {
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception("failed to receive data from locale $locale");
-        }
-        return $format;
-    }
-
-    /**
-     * Returns an array with 'hour', 'minute', and 'second' elements extracted from $time
-     * according to the order described in $format.  For a format of 'H:m:s', and
-     * an input of 11:20:55, getTime() would return:
-     * array ('hour' => 11, 'minute' => 20, 'second' => 55)
-     * The optional $locale parameter may be used to help extract times from strings
-     * containing both a time and a day or month name.
-     *
-     * @param   string  $time     Time string
-     * @param   array   $options  Options: format_type, fix_date, locale, date_format. See {@link setOptions()} for details.
-     * @return  array             Possible array members: day, month, year, hour, minute, second, fixed, format
-     */
-    public static function getTime($time, array $options = array())
-    {
-        $options = self::_checkOptions($options) + self::$_options;
-        if (empty($options['date_format'])) {
-            $options['format_type'] = 'iso';
-            $options['date_format'] = self::getTimeFormat($options['locale']);
-        }
-        return self::_parseDate($time, $options);
-    }
-
-    /**
-     * Returns the default datetime format for $locale.
-     *
-     * @param  string|Zend_Locale  $locale  OPTIONAL Locale of $number, possibly in string form (e.g. 'de_AT')
-     * @return string  format
-     */
-    public static function getDateTimeFormat($locale = null)
-    {
-        $format = Zend_Locale_Data::getContent($locale, 'datetime');
-        if (empty($format)) {
-            require_once 'Zend/Locale/Exception.php';
-            throw new Zend_Locale_Exception("failed to receive data from locale $locale");
-        }
-        return $format;
-    }
-
-    /**
-     * Returns an array with 'year', 'month', 'day', 'hour', 'minute', and 'second' elements
-     * extracted from $datetime according to the order described in $format.  For a format of 'd.M.y H:m:s',
-     * and an input of 10.05.1985 11:20:55, getDateTime() would return:
-     * array ('year' => 1985, 'month' => 5, 'day' => 10, 'hour' => 11, 'minute' => 20, 'second' => 55)
-     * The optional $locale parameter may be used to help extract times from strings
-     * containing both a time and a day or month name.
-     *
-     * @param   string  $datetime DateTime string
-     * @param   array   $options  Options: format_type, fix_date, locale, date_format. See {@link setOptions()} for details.
-     * @return  array             Possible array members: day, month, year, hour, minute, second, fixed, format
-     */
-    public static function getDateTime($datetime, array $options = array())
-    {
-        $options = self::_checkOptions($options) + self::$_options;
-        if (empty($options['date_format'])) {
-            $options['format_type'] = 'iso';
-            $options['date_format'] = self::getDateTimeFormat($options['locale']);
-        }
-        return self::_parseDate($datetime, $options);
-    }
-
-    /**
-     * Internal method to detect of Unicode supports UTF8
-     * which should be enabled within vanilla php installations
-     *
-     * @return boolean
-     */
-    protected static function _getUniCodeSupport()
-    {
-        return (@preg_match('/\pL/u', 'a')) ? true : false;
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Locale
+php php*php php@subpackagephp Format
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Formatphp.phpphp php2php2php8php0php8php php2php0php1php0php-php0php8php-php0php8php php0php9php:php3php8php:php4php2Zphp thomasphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+
+php/php*php*
+php php*php includephp neededphp classes
+php php*php/
+requirephp_oncephp php'Zendphp/Localephp/Dataphp.phpphp'php;
+
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Locale
+php php*php php@subpackagephp Format
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Localephp_Format
+php{
+php php php php constphp STANDARDphp php php php=php php'autophp'php;
+
+php php php php privatephp staticphp php$php_optionsphp php=php arrayphp(php'datephp_formatphp'php php php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'numberphp_formatphp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'formatphp_typephp'php php php php=php>php php'isophp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'fixphp_datephp'php php php php php php php=php>php falsephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'localephp'php php php php php php php php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'cachephp'php php php php php php php php php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'disableCachephp'php php php=php>php falsephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'precisionphp'php php php php php php=php>php nullphp)php;
+
+php php php php php/php*php*
+php php php php php php*php Setsphp classphp widephp optionsphp,php ifphp nophp optionphp wasphp givenphp,php thephp actualphp setphp optionsphp willphp bephp returned
+php php php php php php*php Thephp php'precisionphp'php optionphp ofphp aphp valuephp isphp usedphp tophp truncatephp orphp stretchphp extraphp digitsphp.php php-php1php meansphp notphp tophp touchphp thephp extraphp digitsphp.
+php php php php php php*php Thephp php'localephp'php optionphp helpsphp whenphp parsingphp numbersphp andphp datesphp usingphp separatorsphp andphp monthphp namesphp.
+php php php php php php*php Thephp datephp formatphp php'formatphp_typephp'php optionphp selectsphp betweenphp CLDRphp/ISOphp datephp formatphp specifierphp tokensphp andphp PHPphp'sphp datephp(php)php tokensphp.
+php php php php php php*php Thephp php'fixphp_datephp'php optionphp enablesphp orphp disablesphp heuristicsphp thatphp attemptphp tophp correctphp invalidphp datesphp.
+php php php php php php*php Thephp php'numberphp_formatphp'php optionphp canphp bephp usedphp tophp specifyphp aphp defaultphp numberphp formatphp string
+php php php php php php*php Thephp php'datephp_formatphp'php optionphp canphp bephp usedphp tophp specifyphp aphp defaultphp datephp formatphp stringphp,php butphp bewarephp ofphp usingphp getDatephp(php)php,
+php php php php php php*php checkDateFormatphp(php)php andphp getTimephp(php)php afterphp usingphp setOptionsphp(php)php withphp aphp php'formatphp'php.php php Tophp usephp thesephp fourphp methods
+php php php php php php*php withphp thephp defaultphp datephp formatphp forphp aphp localephp,php usephp arrayphp(php'datephp_formatphp'php php=php>php nullphp,php php'localephp'php php=php>php php$localephp)php forphp theirphp optionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$optionsphp php Arrayphp ofphp optionsphp,php keyedphp byphp optionphp namephp:php formatphp_typephp php=php php'isophp'php php|php php'phpphp'php,php fixphp_datephp php=php truephp php|php falsephp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php localephp php=php Zendphp_Localephp php|php localephp stringphp,php precisionphp php=php wholephp numberphp betweenphp php-php1php andphp php3php0
+php php php php php php*php php@throwsphp Zendphp_Localephp_Exception
+php php php php php php*php php@returnphp Optionsphp arrayphp ifphp nophp optionphp wasphp given
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setOptionsphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+php php php php php php php php returnphp selfphp:php:php$php_optionsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp functionphp forphp checkingphp thephp optionsphp arrayphp ofphp properphp inputphp values
+php php php php php php*php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$optionsphp php Arrayphp ofphp optionsphp,php keyedphp byphp optionphp namephp:php formatphp_typephp php=php php'isophp'php php|php php'phpphp'php,php fixphp_datephp php=php truephp php|php falsephp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php localephp php=php Zendphp_Localephp php|php localephp stringphp,php precisionphp php=php wholephp numberphp betweenphp php-php1php andphp php3php0
+php php php php php php*php php@throwsphp Zendphp_Localephp_Exception
+php php php php php php*php php@returnphp Optionsphp arrayphp ifphp nophp optionphp wasphp given
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_checkOptionsphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$optionsphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp selfphp:php:php$php_optionsphp;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$optionsphp asphp php$namephp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$namephp php php=php strtolowerphp(php$namephp)php;
+php php php php php php php php php php php php ifphp php(php$namephp php!php=php=php php'localephp'php)php php{
+php php php php php php php php php php php php php php php php ifphp php(gettypephp(php$valuephp)php php=php=php=php php'stringphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php strtolowerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php switchphp(php$namephp)php php{
+php php php php php php php php php php php php php php php php casephp php'numberphp_formatphp'php php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$valuephp php=php=php Zendphp_Localephp_Formatphp:php:STANDARDphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$localephp php=php selfphp:php:php$php_optionsphp[php'localephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$optionsphp[php'localephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$localephp php=php php$optionsphp[php'localephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'numberphp_formatphp'php]php php=php Zendphp_Localephp_Dataphp:php:getContentphp(php$localephp,php php'decimalnumberphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php(gettypephp(php$valuephp)php php!php=php=php php'stringphp'php)php andphp php(php$valuephp php!php=php=php NULLphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp numberphp formatphp typephp php'php"php php.php gettypephp(php$valuephp)php php.php php"php'php.php php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"Formatphp php'php$valuephp'php mustphp bephp aphp validphp numberphp formatphp stringphp.php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'datephp_formatphp'php php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$valuephp php=php=php Zendphp_Localephp_Formatphp:php:STANDARDphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$localephp php=php selfphp:php:php$php_optionsphp[php'localephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$optionsphp[php'localephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$localephp php=php php$optionsphp[php'localephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'datephp_formatphp'php]php php=php Zendphp_Localephp_Formatphp:php:getDateFormatphp(php$localephp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php(gettypephp(php$valuephp)php php!php=php=php php'stringphp'php)php andphp php(php$valuephp php!php=php=php NULLphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp dateformatphp typephp php'php"php php.php gettypephp(php$valuephp)php php.php php"php'php.php php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"Formatphp php'php$valuephp'php mustphp bephp aphp validphp ISOphp orphp PHPphp datephp formatphp stringphp.php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php(php(issetphp(php$optionsphp[php'formatphp_typephp'php]php)php php=php=php=php truephp)php andphp php(php$optionsphp[php'formatphp_typephp'php]php php=php=php php'phpphp'php)php)php or
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php(issetphp(php$optionsphp[php'formatphp_typephp'php]php)php php=php=php=php falsephp)php andphp php(selfphp:php:php$php_optionsphp[php'formatphp_typephp'php]php php=php=php php'phpphp'php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'datephp_formatphp'php]php php=php Zendphp_Localephp_Formatphp:php:convertPhpToIsoFormatphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'formatphp_typephp'php php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$valuephp php!php=php php'phpphp'php)php php&php&php php(php$valuephp php!php=php php'isophp'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp datephp formatphp typephp php'php$valuephp'php.php Onlyphp php'isophp'php andphp php'phpphp'php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php arephp supportedphp.php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'fixphp_datephp'php php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$valuephp php!php=php=php truephp)php php&php&php php(php$valuephp php!php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Enablingphp correctionphp ofphp datesphp mustphp bephp eitherphp truephp orphp falsephp"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php(fixphp_datephp=php'php$valuephp'php)php.php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'localephp'php php:
+php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php Zendphp_Localephp:php:findLocalephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'cachephp'php php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Cachephp_Corephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Localephp_Dataphp:php:setCachephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'disablecachephp'php php:
+php php php php php php php php php php php php php php php php php php php php Zendphp_Localephp_Dataphp:php:disableCachephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'precisionphp'php php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$valuephp php=php=php=php NULLphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php-php1php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$valuephp <php php-php1php)php php|php|php php(php$valuephp php>php php3php0php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"php'php$valuephp'php precisionphp isphp notphp aphp wholephp numberphp lessphp thanphp php3php0php.php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp optionphp:php php'php$namephp'php php=php php'php$valuephp'php"php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$optionsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Changesphp thephp numbersphp/digitsphp withinphp aphp givenphp stringphp fromphp onephp scriptphp tophp another
+php php php php php php*php php'Decimalphp'php representatedphp thephp stardardphp numbersphp php0php-php9php,php ifphp aphp scriptphp doesphp notphp exist
+php php php php php php*php anphp exceptionphp willphp bephp thrownphp.
+php php php php php php*
+php php php php php php*php Examplesphp forphp conversionphp fromphp Arabicphp tophp Latinphp numeralsphp:
+php php php php php php*php php php convertNumeralsphp(php'php١php١php٠php Testsphp'php,php php'Arabphp'php)php;php php-php>php returnsphp php'php1php0php0php Testsphp'
+php php php php php php*php Examplephp forphp conversionphp fromphp Latinphp tophp Arabicphp numeralsphp:
+php php php php php php*php php php convertNumeralsphp(php'php1php0php0php Testsphp'php,php php'Latnphp'php,php php'Arabphp'php)php;php php-php>php returnsphp php'php١php١php٠php Testsphp'
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$inputphp php Stringphp tophp convert
+php php php php php php*php php@paramphp php stringphp php php$fromphp php php Scriptphp tophp parsephp,php seephp php{php@linkphp Zendphp_Localephp:php:getScriptListphp(php)php}php forphp detailsphp.
+php php php php php php*php php@paramphp php stringphp php php$tophp php php php php OPTIONALphp Scriptphp tophp convertphp to
+php php php php php php*php php@returnphp stringphp php Returnsphp thephp convertedphp input
+php php php php php php*php php@throwsphp Zendphp_Localephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp convertNumeralsphp(php$inputphp,php php$fromphp,php php$tophp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!selfphp:php:php_getUniCodeSupportphp(php)php)php php{
+php php php php php php php php php php php php triggerphp_errorphp(php"Sorryphp,php yourphp PCREphp extensionphp doesphp notphp supportphp UTFphp8php whichphp isphp neededphp forphp thephp Iphp1php8Nphp corephp"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$fromphp php php php=php strtolowerphp(php$fromphp)php;
+php php php php php php php php php$sourcephp php=php Zendphp_Localephp_Dataphp:php:getContentphp(php'enphp'php,php php'numberingsystemphp'php,php php$fromphp)php;
+php php php php php php php php ifphp php(emptyphp(php$sourcephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp scriptphp php'php$fromphp'php.php Usephp php'Latnphp'php forphp digitsphp php0php,php1php,php2php,php3php,php4php,php5php,php6php,php7php,php8php,php9php.php"php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$tophp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$tophp php php php php php=php strtolowerphp(php$tophp)php;
+php php php php php php php php php php php php php$targetphp php=php Zendphp_Localephp_Dataphp:php:getContentphp(php'enphp'php,php php'numberingsystemphp'php,php php$tophp)php;
+php php php php php php php php php php php php ifphp php(emptyphp(php$targetphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp scriptphp php'php$tophp'php.php Usephp php'Latnphp'php forphp digitsphp php0php,php1php,php2php,php3php,php4php,php5php,php6php,php7php,php8php,php9php.php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$targetphp php=php php'php0php1php2php3php4php5php6php7php8php9php'php;
+php php php php php php php php php}
+
+php php php php php php php php forphp php(php$xphp php=php php0php;php php$xphp <php php1php0php;php php+php+php$xphp)php php{
+php php php php php php php php php php php php php$asourcephp[php$xphp]php php=php php"php/php"php php.php iconvphp_substrphp(php$sourcephp,php php$xphp,php php1php,php php'UTFphp-php8php'php)php php.php php"php/uphp"php;
+php php php php php php php php php php php php php$atargetphp[php$xphp]php php=php iconvphp_substrphp(php$targetphp,php php$xphp,php php1php,php php'UTFphp-php8php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp pregphp_replacephp(php$asourcephp,php php$atargetphp,php php$inputphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp normalizedphp numberphp fromphp aphp localizedphp one
+php php php php php php*php Parsingphp dependsphp onphp givenphp localephp php(groupingphp andphp decimalphp)
+php php php php php php*
+php php php php php php*php Examplesphp forphp inputphp:
+php php php php php php*php php'php2php3php4php5php.php4php3php5php6php,php1php2php3php4php'php php=php php2php3php4php5php5php4php5php6php.php1php2php3php4
+php php php php php php*php php'php+php2php3php,php3php4php5php2php.php1php2php3php'php php=php php2php3php3php4php5php2php.php1php2php3
+php php php php php php*php php'php1php2php3php4php3php php'php php=php php1php2php3php4php3
+php php php php php php*php php'php-php9php4php5php6php'php php=php php-php9php4php5php6
+php php php php php php*php php'php0php'php php=php php0
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$inputphp php php php Inputphp stringphp tophp parsephp forphp numbers
+php php php php php php*php php@paramphp php arrayphp php php$optionsphp php Optionsphp:php localephp,php precisionphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp stringphp Returnsphp thephp extractedphp number
+php php php php php php*php php@throwsphp Zendphp_Localephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getNumberphp(php$inputphp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+php php php php php php php php ifphp php(php!isphp_stringphp(php$inputphp)php)php php{
+php php php php php php php php php php php php returnphp php$inputphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!selfphp:php:isNumberphp(php$inputphp,php php$optionsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Nophp localizedphp valuephp inphp php'php php.php php$inputphp php.php php'php foundphp,php orphp thephp givenphp numberphp doesphp notphp matchphp thephp localizedphp formatphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Getphp correctphp signsphp forphp thisphp locale
+php php php php php php php php php$symbolsphp php=php Zendphp_Localephp_Dataphp:php:getListphp(php$optionsphp[php'localephp'php]php,php'symbolsphp'php)php;
+php php php php php php php php php/php/php Changephp localephp inputphp tophp bephp defaultphp number
+php php php php php php php php ifphp php(php(strposphp(php$inputphp,php php$symbolsphp[php'minusphp'php]php)php php!php=php=php falsephp)php php|php|
+php php php php php php php php php php php php php(strposphp(php$inputphp,php php'php-php'php)php php!php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php$inputphp php=php strtrphp(php$inputphp,php arrayphp(php$symbolsphp[php'minusphp'php]php php=php>php php'php'php,php php'php-php'php php=php>php php'php'php)php)php;
+php php php php php php php php php php php php php$inputphp php=php php'php-php'php php.php php$inputphp;
+php php php php php php php php php}
+
+php php php php php php php php php$inputphp php=php strphp_replacephp(php$symbolsphp[php'groupphp'php]php,php'php'php,php php$inputphp)php;
+php php php php php php php php ifphp php(strposphp(php$inputphp,php php$symbolsphp[php'decimalphp'php]php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(php$symbolsphp[php'decimalphp'php]php php!php=php php'php.php'php)php php{
+php php php php php php php php php php php php php php php php php$inputphp php=php strphp_replacephp(php$symbolsphp[php'decimalphp'php]php,php php"php.php"php,php php$inputphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$prephp php=php substrphp(php$inputphp,php strposphp(php$inputphp,php php'php.php'php)php php+php php1php)php;
+php php php php php php php php php php php php ifphp php(php$optionsphp[php'precisionphp'php]php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php strlenphp(php$prephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(strlenphp(php$prephp)php php>php=php php$optionsphp[php'precisionphp'php]php)php php{
+php php php php php php php php php php php php php php php php php$inputphp php=php substrphp(php$inputphp,php php0php,php strlenphp(php$inputphp)php php-php strlenphp(php$prephp)php php+php php$optionsphp[php'precisionphp'php]php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php(php$optionsphp[php'precisionphp'php]php php=php=php php0php)php php&php&php php(php$inputphp[strlenphp(php$inputphp)php php-php php1php]php php=php=php php'php.php'php)php)php php{
+php php php php php php php php php php php php php php php php php$inputphp php=php substrphp(php$inputphp,php php0php,php php-php1php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$inputphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp localephp formattedphp numberphp dependingphp onphp thephp givenphp optionsphp.
+php php php php php php*php Thephp seperationphp andphp fractionphp signphp isphp usedphp fromphp thephp setphp localephp.
+php php php php php php*php php#php#php0php.php#php php php-php>php php1php2php3php4php5php.php1php2php3php4php5php php-php>php php1php2php3php4php5php.php1php2php3php4php5
+php php php php php php*php php#php#php0php.php0php0php php-php>php php1php2php3php4php5php.php1php2php3php4php5php php-php>php php1php2php3php4php5php.php1php2
+php php php php php php*php php#php#php,php#php#php0php.php0php0php php-php>php php1php2php3php4php5php.php1php2php3php4php5php php-php>php php1php2php,php3php4php5php.php1php2
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$inputphp php php php Localizedphp numberphp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php numberphp_formatphp,php localephp,php precisionphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php stringphp php localephp formattedphp number
+php php php php php php*php php@throwsphp Zendphp_Localephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp toNumberphp(php$valuephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php/php/php loadphp classphp withinphp methodphp forphp speed
+php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Mathphp.phpphp'php;
+
+php php php php php php php php php$valuephp php php php php php php php php php php php php php=php Zendphp_Localephp_Mathphp:php:normalizephp(php$valuephp)php;
+php php php php php php php php php$valuephp php php php php php php php php php php php php php=php Zendphp_Localephp_Mathphp:php:floatalizephp(php$valuephp)php;
+php php php php php php php php php$optionsphp php php php php php php php php php php php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+php php php php php php php php php$optionsphp[php'localephp'php]php php=php php(stringphp)php php$optionsphp[php'localephp'php]php;
+
+php php php php php php php php php/php/php Getphp correctphp signsphp forphp thisphp locale
+php php php php php php php php php$symbolsphp php=php Zendphp_Localephp_Dataphp:php:getListphp(php$optionsphp[php'localephp'php]php,php php'symbolsphp'php)php;
+php php php php php php php php php$oencphp php=php iconvphp_getphp_encodingphp(php'internalphp_encodingphp'php)php;
+php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php'UTFphp-php8php'php)php;
+
+php php php php php php php php php/php/php Getphp format
+php php php php php php php php php$formatphp php=php php$optionsphp[php'numberphp_formatphp'php]php;
+php php php php php php php php ifphp php(php$formatphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$formatphp php php=php Zendphp_Localephp_Dataphp:php:getContentphp(php$optionsphp[php'localephp'php]php,php php'decimalnumberphp'php)php;
+php php php php php php php php php php php php php$formatphp php php=php selfphp:php:php_seperateFormatphp(php$formatphp,php php$valuephp,php php$optionsphp[php'precisionphp'php]php)php;
+
+php php php php php php php php php php php php ifphp php(php$optionsphp[php'precisionphp'php]php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$valuephp php php php=php Zendphp_Localephp_Mathphp:php:normalizephp(Zendphp_Localephp_Mathphp:php:roundphp(php$valuephp,php php$optionsphp[php'precisionphp'php]php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php seperatephp negativephp formatphp patternphp whenphp available
+php php php php php php php php php php php php php$formatphp php php=php selfphp:php:php_seperateFormatphp(php$formatphp,php php$valuephp,php php$optionsphp[php'precisionphp'php]php)php;
+php php php php php php php php php php php php ifphp php(strposphp(php$formatphp,php php'php.php'php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_numericphp(php$optionsphp[php'precisionphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php Zendphp_Localephp_Mathphp:php:roundphp(php$valuephp,php php$optionsphp[php'precisionphp'php]php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(substrphp(php$formatphp,php iconvphp_strposphp(php$formatphp,php php'php.php'php)php php+php php1php,php php3php)php php=php=php php'php#php#php#php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php iconvphp_strlenphp(iconvphp_substrphp(php$formatphp,php iconvphp_strposphp(php$formatphp,php php'php.php'php)php php+php php1php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php iconvphp_strrposphp(php$formatphp,php php'php0php'php)php php-php iconvphp_strposphp(php$formatphp,php php'php.php'php)php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php iconvphp_strposphp(php$formatphp,php php'php.php'php)php php+php php1php)php php.php php'php#php#php#php'
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp_substrphp(php$formatphp,php iconvphp_strrposphp(php$formatphp,php php'php0php'php)php php+php php1php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$valuephp php=php Zendphp_Localephp_Mathphp:php:roundphp(php$valuephp,php php0php)php;
+php php php php php php php php php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php php0php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$valuephp php=php Zendphp_Localephp_Mathphp:php:normalizephp(php$valuephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(iconvphp_strposphp(php$formatphp,php php'php0php'php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Wrongphp formatphp.php.php.php missingphp php0php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php getphp numberphp parts
+php php php php php php php php php$posphp php=php iconvphp_strposphp(php$valuephp,php php'php.php'php)php;
+php php php php php php php php ifphp php(php$posphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(php$optionsphp[php'precisionphp'php]php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$precstrphp php=php iconvphp_substrphp(php$valuephp,php php$posphp php+php php1php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$precstrphp php=php iconvphp_substrphp(php$valuephp,php php$posphp php+php php1php,php php$optionsphp[php'precisionphp'php]php)php;
+php php php php php php php php php php php php php php php php ifphp php(iconvphp_strlenphp(php$precstrphp)php <php php$optionsphp[php'precisionphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php$precstrphp php=php php$precstrphp php.php strphp_padphp(php"php0php"php,php php(php$optionsphp[php'precisionphp'php]php php-php iconvphp_strlenphp(php$precstrphp)php)php,php php"php0php"php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php ifphp php(php$optionsphp[php'precisionphp'php]php php>php php0php)php php{
+php php php php php php php php php php php php php php php php php$precstrphp php=php strphp_padphp(php"php0php"php,php php(php$optionsphp[php'precisionphp'php]php)php,php php"php0php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$optionsphp[php'precisionphp'php]php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$precstrphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php iconvphp_strlenphp(php$precstrphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php php0php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php getphp fractionphp andphp formatphp lengths
+php php php php php php php php ifphp php(strposphp(php$valuephp,php php'php.php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$numberphp php=php substrphp(php(stringphp)php php$valuephp,php php0php,php strposphp(php$valuephp,php php'php.php'php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$numberphp php=php php$valuephp;
+php php php php php php php php php}
+
+php php php php php php php php php$precphp php=php callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$subphp,php php$valuephp,php php$numberphp,php php$optionsphp[php'precisionphp'php]php)php;
+php php php php php php php php php$precphp php=php Zendphp_Localephp_Mathphp:php:floatalizephp(php$precphp)php;
+php php php php php php php php php$precphp php=php Zendphp_Localephp_Mathphp:php:normalizephp(php$precphp)php;
+php php php php php php php php ifphp php(iconvphp_strposphp(php$precphp,php php'php-php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$precphp php=php iconvphp_substrphp(php$precphp,php php1php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(php$precphp php=php=php php0php)php andphp php(php$optionsphp[php'precisionphp'php]php php>php php0php)php)php php{
+php php php php php php php php php php php php php$precphp php=php php"php0php.php0php"php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(php$optionsphp[php'precisionphp'php]php php+php php2php)php php>php iconvphp_strlenphp(php$precphp)php)php php{
+php php php php php php php php php php php php php$precphp php=php strphp_padphp(php(stringphp)php php$precphp,php php$optionsphp[php'precisionphp'php]php php+php php2php,php php"php0php"php,php STRphp_PADphp_RIGHTphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(iconvphp_strposphp(php$numberphp,php php'php-php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$numberphp php=php iconvphp_substrphp(php$numberphp,php php1php)php;
+php php php php php php php php php}
+php php php php php php php php php$groupphp php php=php iconvphp_strrposphp(php$formatphp,php php'php,php'php)php;
+php php php php php php php php php$groupphp2php php=php iconvphp_strposphp php(php$formatphp,php php'php,php'php)php;
+php php php php php php php php php$pointphp php php=php iconvphp_strposphp php(php$formatphp,php php'php0php'php)php;
+php php php php php php php php php/php/php Addphp fraction
+php php php php php php php php php$restphp php=php php"php"php;
+php php php php php php php php ifphp php(iconvphp_strposphp(php$formatphp,php php'php.php'php)php)php php{
+php php php php php php php php php php php php php$restphp php php php=php iconvphp_substrphp(php$formatphp,php iconvphp_strposphp(php$formatphp,php php'php.php'php)php php+php php1php)php;
+php php php php php php php php php php php php php$lengthphp php=php iconvphp_strlenphp(php$restphp)php;
+php php php php php php php php php php php php forphp(php$xphp php=php php0php;php php$xphp <php php$lengthphp;php php+php+php$xphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php$restphp[php0php]php php=php=php php'php0php'php)php php|php|php php(php$restphp[php0php]php php=php=php php'php#php'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$restphp php=php iconvphp_substrphp(php$restphp,php php1php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php iconvphp_strlenphp(php$formatphp)php php-php iconvphp_strlenphp(php$restphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$optionsphp[php'precisionphp'php]php php=php=php php'php0php'php)php php{
+php php php php php php php php php php php php ifphp php(iconvphp_strrposphp(php$formatphp,php php'php-php'php)php php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php php$pointphp)
+php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp_substrphp(php$formatphp,php iconvphp_strrposphp(php$formatphp,php php'php#php'php)php php+php php2php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php php$pointphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php php$pointphp)php php.php php$symbolsphp[php'decimalphp'php]
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp_substrphp(php$precphp,php php2php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$formatphp php.php=php php$restphp;
+php php php php php php php php php/php/php Addphp seperation
+php php php php php php php php ifphp php(php$groupphp php=php=php php0php)php php{
+php php php php php php php php php php php php php/php/php nophp seperation
+php php php php php php php php php php php php php$formatphp php=php php$numberphp php.php iconvphp_substrphp(php$formatphp,php php$pointphp)php;
+php php php php php php php php php}php elsephp ifphp php(php$groupphp php=php=php php$groupphp2php)php php{
+php php php php php php php php php php php php php/php/php onlyphp php1php seperation
+php php php php php php php php php php php php php$seperationphp php=php php(php$pointphp php-php php$groupphp)php;
+php php php php php php php php php php php php forphp php(php$xphp php=php iconvphp_strlenphp(php$numberphp)php;php php$xphp php>php php$seperationphp;php php$xphp php-php=php php$seperationphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(iconvphp_substrphp(php$numberphp,php php0php,php php$xphp php-php php$seperationphp)php php!php=php=php php"php"php)php php{
+php php php php php php php php php php php php php php php php php php php php php$numberphp php=php iconvphp_substrphp(php$numberphp,php php0php,php php$xphp php-php php$seperationphp)php php.php php$symbolsphp[php'groupphp'php]
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp_substrphp(php$numberphp,php php$xphp php-php php$seperationphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php iconvphp_strposphp(php$formatphp,php php'php#php'php)php)php php.php php$numberphp php.php iconvphp_substrphp(php$formatphp,php php$pointphp)php;
+php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php php/php/php php2php seperations
+php php php php php php php php php php php php ifphp php(iconvphp_strlenphp(php$numberphp)php php>php php(php$pointphp php-php php$groupphp)php)php php{
+php php php php php php php php php php php php php php php php php$seperationphp php=php php(php$pointphp php-php php$groupphp)php;
+php php php php php php php php php php php php php php php php php$numberphp php=php iconvphp_substrphp(php$numberphp,php php0php,php iconvphp_strlenphp(php$numberphp)php php-php php$seperationphp)php php.php php$symbolsphp[php'groupphp'php]
+php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp_substrphp(php$numberphp,php iconvphp_strlenphp(php$numberphp)php php-php php$seperationphp)php;
+
+php php php php php php php php php php php php php php php php ifphp php(php(iconvphp_strlenphp(php$numberphp)php php-php php1php)php php>php php(php$pointphp php-php php$groupphp php+php php1php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$seperationphp2php php=php php(php$groupphp php-php php$groupphp2php php-php php1php)php;
+php php php php php php php php php php php php php php php php php php php php forphp php(php$xphp php=php iconvphp_strlenphp(php$numberphp)php php-php php$seperationphp2php php-php php2php;php php$xphp php>php php$seperationphp2php;php php$xphp php-php=php php$seperationphp2php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$numberphp php=php iconvphp_substrphp(php$numberphp,php php0php,php php$xphp php-php php$seperationphp2php)php php.php php$symbolsphp[php'groupphp'php]
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp_substrphp(php$numberphp,php php$xphp php-php php$seperationphp2php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php iconvphp_strposphp(php$formatphp,php php'php#php'php)php)php php.php php$numberphp php.php iconvphp_substrphp(php$formatphp,php php$pointphp)php;
+php php php php php php php php php}
+php php php php php php php php php/php/php setphp negativephp sign
+php php php php php php php php ifphp php(callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$compphp,php php$valuephp,php php0php,php php$optionsphp[php'precisionphp'php]php)php <php php0php)php php{
+php php php php php php php php php php php php ifphp php(iconvphp_strposphp(php$formatphp,php php'php-php'php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$formatphp php=php php$symbolsphp[php'minusphp'php]php php.php php$formatphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$formatphp php=php strphp_replacephp(php'php-php'php,php php$symbolsphp[php'minusphp'php]php,php php$formatphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php returnphp php(stringphp)php php$formatphp;
+php php php php php}
+
+php php php php privatephp staticphp functionphp php_seperateFormatphp(php$formatphp,php php$valuephp,php php$precisionphp)
+php php php php php{
+php php php php php php php php ifphp php(iconvphp_strposphp(php$formatphp,php php'php;php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(callphp_userphp_funcphp(Zendphp_Localephp_Mathphp:php:php$compphp,php php$valuephp,php php0php,php php$precisionphp)php <php php0php)php php{
+php php php php php php php php php php php php php php php php php$tmpformatphp php=php iconvphp_substrphp(php$formatphp,php iconvphp_strposphp(php$formatphp,php php'php;php'php)php php+php php1php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$tmpformatphp[php0php]php php=php=php php'php(php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php iconvphp_strposphp(php$formatphp,php php'php;php'php)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$formatphp php=php php$tmpformatphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$formatphp php=php iconvphp_substrphp(php$formatphp,php php0php,php iconvphp_strposphp(php$formatphp,php php'php;php'php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$formatphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp thephp inputphp containsphp aphp normalizedphp orphp localizedphp number
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$inputphp php php php Localizedphp numberphp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php localephp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php booleanphp php php php php php php php php php php Returnsphp truephp ifphp aphp numberphp wasphp found
+php php php php php php*php/
+php php php php publicphp staticphp functionphp isNumberphp(php$inputphp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!selfphp:php:php_getUniCodeSupportphp(php)php)php php{
+php php php php php php php php php php php php triggerphp_errorphp(php"Sorryphp,php yourphp PCREphp extensionphp doesphp notphp supportphp UTFphp8php whichphp isphp neededphp forphp thephp Iphp1php8Nphp corephp"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+
+php php php php php php php php php/php/php Getphp correctphp signsphp forphp thisphp locale
+php php php php php php php php php$symbolsphp php=php Zendphp_Localephp_Dataphp:php:getListphp(php$optionsphp[php'localephp'php]php,php'symbolsphp'php)php;
+
+php php php php php php php php php$regexsphp php=php Zendphp_Localephp_Formatphp:php:php_getRegexForTypephp(php'decimalnumberphp'php,php php$optionsphp)php;
+php php php php php php php php php$regexsphp php=php arrayphp_mergephp(php$regexsphp,php Zendphp_Localephp_Formatphp:php:php_getRegexForTypephp(php'scientificnumberphp'php,php php$optionsphp)php)php;
+php php php php php php php php ifphp php(php!emptyphp(php$inputphp)php php&php&php php(php$inputphp[php0php]php php=php=php php$symbolsphp[php'decimalphp'php]php)php)php php{
+php php php php php php php php php php php php php$inputphp php=php php0php php.php php$inputphp;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$regexsphp asphp php$regexphp)php php{
+php php php php php php php php php php php php pregphp_matchphp(php$regexphp,php php$inputphp,php php$foundphp)php;
+php php php php php php php php php php php php ifphp php(issetphp(php$foundphp[php0php]php)php)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp tophp convertphp cldrphp numberphp syntaxphp intophp regex
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_getRegexForTypephp(php$typephp,php php$optionsphp)
+php php php php php{
+php php php php php php php php php$decimalphp php php=php Zendphp_Localephp_Dataphp:php:getContentphp(php$optionsphp[php'localephp'php]php,php php$typephp)php;
+php php php php php php php php php$decimalphp php php=php pregphp_replacephp(php'php/php[php^php#php0php,php;php\php.php\php-Eephp]php/uphp'php,php php'php'php,php$decimalphp)php;
+php php php php php php php php php$patternsphp php=php explodephp(php'php;php'php,php php$decimalphp)php;
+
+php php php php php php php php ifphp php(countphp(php$patternsphp)php php=php=php php1php)php php{
+php php php php php php php php php php php php php$patternsphp[php1php]php php=php php'php-php'php php.php php$patternsphp[php0php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$symbolsphp php=php Zendphp_Localephp_Dataphp:php:getListphp(php$optionsphp[php'localephp'php]php,php'symbolsphp'php)php;
+
+php php php php php php php php foreachphp(php$patternsphp asphp php$pkeyphp php=php>php php$patternphp)php php{
+php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php php=php php'php/php^php'php;
+php php php php php php php php php php php php php$restphp php php php=php php0php;
+php php php php php php php php php php php php php$endphp php php php php=php nullphp;
+php php php php php php php php php php php php ifphp php(strposphp(php$patternphp,php php'php.php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$endphp php php php php php=php substrphp(php$patternphp,php strposphp(php$patternphp,php php'php.php'php)php php+php php1php)php;
+php php php php php php php php php php php php php php php php php$patternphp php=php substrphp(php$patternphp,php php0php,php php-strlenphp(php$endphp)php php-php php1php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(strposphp(php$patternphp,php php'php,php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$partsphp php=php explodephp(php'php,php'php,php php$patternphp)php;
+php php php php php php php php php php php php php php php php php$countphp php=php countphp(php$partsphp)php;
+php php php php php php php php php php php php php php php php foreachphp(php$partsphp asphp php$keyphp php=php>php php$partphp)php php{
+php php php php php php php php php php php php php php php php php php php php switchphp php(php$partphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php#php'php:
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php-php#php'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$partphp[php0php]php php=php=php php'php-php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php'php php.php php$symbolsphp[php'minusphp'php]php php.php php'php-php]php{php0php,php1php}php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php'php php.php php$symbolsphp[php'plusphp'php]php php.php php'php+php]php{php0php,php1php}php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$partsphp[php$keyphp php+php php1php]php)php php=php=php php'php#php#php0php'php)php php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php0php-php9php]php{php1php,php3php}php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php(php$partsphp[php$keyphp php+php php1php]php)php php=php=php php'php#php#php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php0php-php9php]php{php1php,php2php}php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Unsupportedphp tokenphp forphp numberformatphp php(Posphp php1php)php:php"php'php php.php php$patternphp php.php php'php"php'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php#php#php'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$partsphp[php$keyphp php+php php1php]php php=php=php php'php#php#php0php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php php'php(php\php\php'php php.php php$symbolsphp[php'groupphp'php]php php.php php'php{php0php,php1php}php[php0php-php9php]php{php2php}php)php*php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Unsupportedphp tokenphp forphp numberformatphp php(Posphp php2php)php:php"php'php php.php php$patternphp php.php php'php"php'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php#php#php0php'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$partsphp[php$keyphp php-php php1php]php php=php=php php'php#php#php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php0php-php9php]php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php(php$partsphp[php$keyphp php-php php1php]php php=php=php php'php#php'php)php php|php|php php(php$partsphp[php$keyphp php-php php1php]php php=php=php php'php-php#php'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php(php\php\php'php php.php php$symbolsphp[php'groupphp'php]php php.php php'php{php0php,php1php}php[php0php-php9php]php{php3php}php)php*php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Unsupportedphp tokenphp forphp numberformatphp php(Posphp php3php)php:php"php'php php.php php$patternphp php.php php'php"php'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php#php0php'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php0php-php9php]php*php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Unsupportedphp tokenphp forphp numberformatphp php(Posphp php4php)php:php"php'php php.php php$patternphp php.php php'php"php'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(strposphp(php$patternphp,php php'Ephp'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php$patternphp php=php=php php'php#Ephp0php'php)php php|php|php php(php$patternphp php=php=php php'php#Ephp0php0php'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php'php php.php php$symbolsphp[php'plusphp'php]php.php php'php+php]php{php0php,php1php}php[php0php-php9php]php{php1php,php}php(php\php\php'php php.php php$symbolsphp[php'decimalphp'php]php php.php php'php[php0php-php9php]php{php1php,php}php)php*php[eEphp]php[php'php php.php php$symbolsphp[php'plusphp'php]php.php php'php+php]php{php0php,php1php}php[php0php-php9php]php{php1php,php}php'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php(php$patternphp php=php=php php'php-php#Ephp0php'php)php php|php|php php(php$patternphp php=php=php php'php-php#Ephp0php0php'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php[php'php php.php php$symbolsphp[php'minusphp'php]php.php php'php-php]php{php0php,php1php}php[php0php-php9php]php{php1php,php}php(php\php\php'php php.php php$symbolsphp[php'decimalphp'php]php php.php php'php[php0php-php9php]php{php1php,php}php)php*php[eEphp]php[php'php php.php php$symbolsphp[php'minusphp'php]php.php php'php-php]php{php0php,php1php}php[php0php-php9php]php{php1php,php}php'php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Unsupportedphp tokenphp forphp numberformatphp php(Posphp php5php)php:php"php'php php.php php$patternphp php.php php'php"php'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$endphp)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$endphp php=php=php php'php#php#php#php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php(php\php\php'php php.php php$symbolsphp[php'decimalphp'php]php php.php php'php{php1php}php[php0php-php9php]php{php1php,php}php)php{php0php,php1php}php'php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$endphp php=php=php php'php#php#php#php-php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php(php\php\php'php php.php php$symbolsphp[php'decimalphp'php]php php.php php'php{php1php}php[php0php-php9php]php{php1php,php}php)php{php0php,php1php}php[php'php php.php php$symbolsphp[php'minusphp'php]php.php php'php-php]php'php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php'Unsupportedphp tokenphp forphp numberformatphp php(Posphp php6php)php:php"php'php php.php php$patternphp php.php php'php"php'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$regexphp[php$pkeyphp]php php.php=php php'php$php/uphp'php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$regexphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Aliasphp forphp getNumber
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$valuephp php php php Numberphp tophp localize
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php localephp,php precisionphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php float
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getFloatphp(php$inputphp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php returnphp floatvalphp(selfphp:php:getNumberphp(php$inputphp,php php$optionsphp)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp localephp formattedphp integerphp number
+php php php php php php*php Aliasphp forphp toNumberphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$valuephp php php php Numberphp tophp normalize
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php localephp,php precisionphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php stringphp php Localephp formattedphp number
+php php php php php php*php/
+php php php php publicphp staticphp functionphp toFloatphp(php$valuephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$optionsphp[php'numberphp_formatphp'php]php php=php Zendphp_Localephp_Formatphp:php:STANDARDphp;
+php php php php php php php php returnphp selfphp:php:toNumberphp(php$valuephp,php php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp aphp floatphp wasphp found
+php php php php php php*php Aliasphp forphp isNumberphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$inputphp php php php Localizedphp numberphp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php localephp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php booleanphp php php php php php php php php php php Returnsphp truephp ifphp aphp numberphp wasphp found
+php php php php php php*php/
+php php php php publicphp staticphp functionphp isFloatphp(php$valuephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:isNumberphp(php$valuephp,php php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp firstphp foundphp integerphp fromphp anphp string
+php php php php php php*php Parsingphp dependsphp onphp givenphp localephp php(groupingphp andphp decimalphp)
+php php php php php php*
+php php php php php php*php Examplesphp forphp inputphp:
+php php php php php php*php php'php php php2php3php4php5php.php4php3php5php6php,php1php2php3php4php'php php=php php2php3php4php5php5php4php5php6
+php php php php php php*php php'php+php2php3php,php3php4php5php2php.php1php2php3php'php php=php php2php3php3php4php5php2
+php php php php php php*php php'php php1php2php3php4php3php php'php php=php php1php2php3php4php3
+php php php php php php*php php'php-php9php4php5php6kmphp'php php=php php-php9php4php5php6
+php php php php php php*php php'php0php'php php=php php0
+php php php php php php*php php'php(php-php)php{php0php,php1php}php(php\dphp+php(php\php.php)php{php0php,php1php}php)php*php(php\php,php)php{php0php,php1php}php)php\dphp+php'
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php php$inputphp php php php Inputphp stringphp tophp parsephp forphp numbers
+php php php php php php*php php@paramphp php php arrayphp php php php php$optionsphp php Optionsphp:php localephp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php integerphp php php php php php php php php php php php Returnsphp thephp extractedphp number
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getIntegerphp(php$inputphp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php php0php;
+php php php php php php php php returnphp intvalphp(selfphp:php:getFloatphp(php$inputphp,php php$optionsphp)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp localizedphp number
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$valuephp php php php Numberphp tophp normalize
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php localephp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php stringphp php php php php php php php php php php php Localephp formattedphp number
+php php php php php php*php/
+php php php php publicphp staticphp functionphp toIntegerphp(php$valuephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$optionsphp[php'precisionphp'php]php php=php php0php;
+php php php php php php php php php$optionsphp[php'numberphp_formatphp'php]php php=php Zendphp_Localephp_Formatphp:php:STANDARDphp;
+php php php php php php php php returnphp selfphp:php:toNumberphp(php$valuephp,php php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp aphp integerphp wasphp found
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$inputphp php php php Localizedphp numberphp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php localephp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php booleanphp php php php php php php php php php php Returnsphp truephp ifphp aphp integerphp wasphp found
+php php php php php php*php/
+php php php php publicphp staticphp functionphp isIntegerphp(php$valuephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!selfphp:php:isNumberphp(php$valuephp,php php$optionsphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(selfphp:php:getIntegerphp(php$valuephp,php php$optionsphp)php php=php=php selfphp:php:getFloatphp(php$valuephp,php php$optionsphp)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Convertsphp aphp formatphp stringphp fromphp PHPphp'sphp datephp formatphp tophp ISOphp format
+php php php php php php*php Rememberphp thatphp Zendphp Datephp alwaysphp returnsphp localizedphp stringphp,php sophp aphp monthphp namephp whichphp returnsphp thephp english
+php php php php php php*php monthphp inphp phpphp'sphp datephp(php)php willphp returnphp thephp translatedphp monthphp namephp withphp thisphp functionphp.php.php.php usephp php'enphp'php asphp locale
+php php php php php php*php ifphp youphp arephp inphp needphp ofphp thephp originalphp englishphp names
+php php php php php php*
+php php php php php php*php Thephp conversionphp hasphp thephp followingphp restrictionsphp:
+php php php php php php*php php'aphp'php,php php'Aphp'php php-php Meridiemphp isphp notphp explicitphp upperphp/lowercasephp,php youphp havephp tophp upperphp/lowercasephp thephp translatedphp valuephp yourself
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$formatphp php Formatphp stringphp inphp PHPphp'sphp datephp format
+php php php php php php*php php@returnphp stringphp php php php php php php php php php php Formatphp stringphp inphp ISOphp format
+php php php php php php*php/
+php php php php publicphp staticphp functionphp convertPhpToIsoFormatphp(php$formatphp)
+php php php php php{
+php php php php php php php php ifphp php(php$formatphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$convertphp php=php arrayphp(php'dphp'php php=php>php php'ddphp'php php php,php php'Dphp'php php=php>php php'EEphp'php php php,php php'jphp'php php=php>php php'dphp'php php php php,php php'lphp'php php=php>php php'EEEEphp'php,php php'Nphp'php php=php>php php'eeephp'php php,php php'Sphp'php php=php>php php'SSphp'php php php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php'wphp'php php=php>php php'ephp'php php php php,php php'zphp'php php=php>php php'Dphp'php php php php,php php'Wphp'php php=php>php php'wwphp'php php php,php php'Fphp'php php=php>php php'MMMMphp'php,php php'mphp'php php=php>php php'MMphp'php php php,php php'Mphp'php php=php>php php'MMMphp'php php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php'nphp'php php=php>php php'Mphp'php php php php,php php'tphp'php php=php>php php'dddphp'php php,php php'Lphp'php php=php>php php'lphp'php php php php,php php'ophp'php php=php>php php'YYYYphp'php,php php'Yphp'php php=php>php php'yyyyphp'php,php php'yphp'php php=php>php php'yyphp'php php php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php'aphp'php php=php>php php'aphp'php php php php,php php'Aphp'php php=php>php php'aphp'php php php php,php php'Bphp'php php=php>php php'Bphp'php php php php,php php'gphp'php php=php>php php'hphp'php php php php,php php'Gphp'php php=php>php php'Hphp'php php php php,php php'hphp'php php=php>php php'hhphp'php php php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php'Hphp'php php=php>php php'HHphp'php php php,php php'iphp'php php=php>php php'mmphp'php php php,php php'sphp'php php=php>php php'ssphp'php php php,php php'ephp'php php=php>php php'zzzzphp'php,php php'Iphp'php php=php>php php'Iphp'php php php php,php php'Ophp'php php=php>php php'Zphp'php php php php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php'Pphp'php php=php>php php'ZZZZphp'php,php php'Tphp'php php=php>php php'zphp'php php php php,php php'Zphp'php php=php>php php'Xphp'php php php php,php php'cphp'php php=php>php php'yyyyphp-MMphp-ddTHHphp:mmphp:ssZZZZphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php'rphp'php php=php>php php'rphp'php php php php,php php'Uphp'php php=php>php php'Uphp'php)php;
+php php php php php php php php php$valuesphp php=php strphp_splitphp(php$formatphp)php;
+php php php php php php php php foreachphp php(php$valuesphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$convertphp[php$valuephp]php)php php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php$valuesphp[php$keyphp]php php=php php$convertphp[php$valuephp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp joinphp(php$valuesphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Parsephp datephp andphp splitphp inphp namedphp arrayphp fields
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$datephp php php php php Datephp stringphp tophp parse
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php formatphp_typephp,php fixphp_datephp,php localephp,php datephp_formatphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php arrayphp php php php php php php php php php php php php Possiblephp arrayphp membersphp:php dayphp,php monthphp,php yearphp,php hourphp,php minutephp,php secondphp,php fixedphp,php format
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_parseDatephp(php$datephp,php php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php!selfphp:php:php_getUniCodeSupportphp(php)php)php php{
+php php php php php php php php php php php php triggerphp_errorphp(php"Sorryphp,php yourphp PCREphp extensionphp doesphp notphp supportphp UTFphp8php whichphp isphp neededphp forphp thephp Iphp1php8Nphp corephp"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+php php php php php php php php php$testphp php=php arrayphp(php'hphp'php,php php'Hphp'php,php php'mphp'php,php php'sphp'php,php php'yphp'php,php php'Yphp'php,php php'Mphp'php,php php'dphp'php,php php'Dphp'php,php php'Ephp'php,php php'Sphp'php,php php'lphp'php,php php'Bphp'php,php php'Iphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php'Xphp'php,php php'rphp'php,php php'Uphp'php,php php'Gphp'php,php php'wphp'php,php php'ephp'php,php php'aphp'php,php php'Aphp'php,php php'Zphp'php,php php'zphp'php,php php'vphp'php)php;
+
+php php php php php php php php php$formatphp php=php php$optionsphp[php'datephp_formatphp'php]php;
+php php php php php php php php php$numberphp php=php php$datephp;php php/php/php workingphp copy
+php php php php php php php php php$resultphp[php'datephp_formatphp'php]php php=php php$formatphp;php php/php/php savephp thephp formatphp usedphp tophp normalizephp php$numberphp php(conveniencephp)
+php php php php php php php php php$resultphp[php'localephp'php]php php=php php$optionsphp[php'localephp'php]php;php php/php/php savephp thephp localephp usedphp tophp normalizephp php$numberphp php(conveniencephp)
+
+php php php php php php php php php$oencphp php=php iconvphp_getphp_encodingphp(php'internalphp_encodingphp'php)php;
+php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php'UTFphp-php8php'php)php;
+php php php php php php php php php$dayphp php php php=php iconvphp_strposphp(php$formatphp,php php'dphp'php)php;
+php php php php php php php php php$monthphp php=php iconvphp_strposphp(php$formatphp,php php'Mphp'php)php;
+php php php php php php php php php$yearphp php php=php iconvphp_strposphp(php$formatphp,php php'yphp'php)php;
+php php php php php php php php php$hourphp php php=php iconvphp_strposphp(php$formatphp,php php'Hphp'php)php;
+php php php php php php php php php$minphp php php php=php iconvphp_strposphp(php$formatphp,php php'mphp'php)php;
+php php php php php php php php php$secphp php php php=php iconvphp_strposphp(php$formatphp,php php'sphp'php)php;
+php php php php php php php php php$amphp php php php php=php nullphp;
+php php php php php php php php ifphp php(php$hourphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php$hourphp php=php iconvphp_strposphp(php$formatphp,php php'hphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$yearphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php$yearphp php=php iconvphp_strposphp(php$formatphp,php php'Yphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$dayphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php$dayphp php=php iconvphp_strposphp(php$formatphp,php php'Ephp'php)php;
+php php php php php php php php php php php php ifphp php(php$dayphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$dayphp php=php iconvphp_strposphp(php$formatphp,php php'Dphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$dayphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$parsephp[php$dayphp]php php php php=php php'dphp'php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'localephp'php]php)php php&php&php php(php$optionsphp[php'localephp'php]php php!php=php=php php'rootphp'php)php php&php&
+php php php php php php php php php php php php php php php php php(php!isphp_objectphp(php$optionsphp[php'localephp'php]php)php php|php|php php(php(stringphp)php php$optionsphp[php'localephp'php]php php!php=php=php php'rootphp'php)php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php erasephp dayphp string
+php php php php php php php php php php php php php php php php php php php php php$daylistphp php=php Zendphp_Localephp_Dataphp:php:getListphp(php$optionsphp[php'localephp'php]php,php php'dayphp'php)php;
+php php php php php php php php php php php php php php php php foreachphp(php$daylistphp asphp php$keyphp php=php>php php$namephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(iconvphp_strposphp(php$numberphp,php php$namephp)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$numberphp php=php strphp_replacephp(php$namephp,php php"EEEEphp"php,php php$numberphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$positionphp php=php falsephp;
+
+php php php php php php php php ifphp php(php$monthphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$parsephp[php$monthphp]php php=php php'Mphp'php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'localephp'php]php)php php&php&php php(php$optionsphp[php'localephp'php]php php!php=php=php php'rootphp'php)php php&php&
+php php php php php php php php php php php php php php php php php(php!isphp_objectphp(php$optionsphp[php'localephp'php]php)php php|php|php php(php(stringphp)php php$optionsphp[php'localephp'php]php php!php=php=php php'rootphp'php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php preparephp tophp convertphp monthphp namephp tophp theirphp numericphp equivalentsphp,php ifphp requestedphp,
+php php php php php php php php php php php php php php php php php php php php php/php/php andphp wephp havephp aphp php$optionsphp[php'localephp'php]
+php php php php php php php php php php php php php php php php php php php php php$positionphp php=php selfphp:php:php_replaceMonthphp(php$numberphp,php Zendphp_Localephp_Dataphp:php:getListphp(php$optionsphp[php'localephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php'monthphp'php)php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$positionphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$positionphp php=php selfphp:php:php_replaceMonthphp(php$numberphp,php Zendphp_Localephp_Dataphp:php:getListphp(php$optionsphp[php'localephp'php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php'monthphp'php,php arrayphp(php'gregorianphp'php,php php'formatphp'php,php php'abbreviatedphp'php)php)php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$yearphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$parsephp[php$yearphp]php php php=php php'yphp'php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$hourphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$parsephp[php$hourphp]php php=php php'Hphp'php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$minphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$parsephp[php$minphp]php php=php php'mphp'php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$secphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$parsephp[php$secphp]php php=php php'sphp'php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$parsephp)php)php php{
+php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp datephp formatphp,php neitherphp datephp norphp timephp inphp php'php"php php.php php$formatphp php.php php"php'php foundphp"php)php;
+php php php php php php php php php}
+php php php php php php php php ksortphp(php$parsephp)php;
+
+php php php php php php php php php/php/php getphp daytime
+php php php php php php php php ifphp php(iconvphp_strposphp(php$formatphp,php php'aphp'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(iconvphp_strposphp(strtoupperphp(php$numberphp)php,php strtoupperphp(Zendphp_Localephp_Dataphp:php:getContentphp(php$optionsphp[php'localephp'php]php,php php'amphp'php)php)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$amphp php=php truephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(iconvphp_strposphp(strtoupperphp(php$numberphp)php,php strtoupperphp(Zendphp_Localephp_Dataphp:php:getContentphp(php$optionsphp[php'localephp'php]php,php php'pmphp'php)php)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$amphp php=php falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php splitphp numberphp parts
+php php php php php php php php php$splitphp php=php falsephp;
+php php php php php php php php pregphp_matchphp_allphp(php'php/php\dphp+php/uphp'php,php php$numberphp,php php$splittedphp)php;
+
+php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php=php=php php0php)php php{
+php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Nophp datephp partphp inphp php'php$datephp'php foundphp.php"php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php=php=php php1php)php php{
+php php php php php php php php php php php php php$splitphp php=php php0php;
+php php php php php php php php php}
+php php php php php php php php php$cntphp php=php php0php;
+php php php php php php php php foreachphp(php$parsephp asphp php$keyphp php=php>php php$valuephp)php php{
+
+php php php php php php php php php php php php switchphp(php$valuephp)php php{
+php php php php php php php php php php php php php php php php casephp php'dphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$splitphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php>php php$cntphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'dayphp'php]php php php php php=php php$splittedphp[php0php]php[php$cntphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'dayphp'php]php php=php iconvphp_substrphp(php$splittedphp[php0php]php[php0php]php,php php$splitphp,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$splitphp php+php=php php2php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php+php+php$cntphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'Mphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$splitphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php>php php$cntphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'monthphp'php]php php php=php php$splittedphp[php0php]php[php$cntphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'monthphp'php]php php=php iconvphp_substrphp(php$splittedphp[php0php]php[php0php]php,php php$splitphp,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$splitphp php+php=php php2php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php+php+php$cntphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'yphp'php:
+php php php php php php php php php php php php php php php php php php php php php$lengthphp php=php php2php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(iconvphp_substrphp(php$formatphp,php php$yearphp,php php4php)php php=php=php php'yyyyphp'php)
+php php php php php php php php php php php php php php php php php php php php php php|php|php php(iconvphp_substrphp(php$formatphp,php php$yearphp,php php4php)php php=php=php php'YYYYphp'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$lengthphp php=php php4php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$splitphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php>php php$cntphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'yearphp'php]php php php php=php php$splittedphp[php0php]php[php$cntphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'yearphp'php]php php php php=php iconvphp_substrphp(php$splittedphp[php0php]php[php0php]php,php php$splitphp,php php$lengthphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$splitphp php+php=php php$lengthphp;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php+php+php$cntphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'Hphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$splitphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php>php php$cntphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'hourphp'php]php php php php=php php$splittedphp[php0php]php[php$cntphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'hourphp'php]php php php php=php iconvphp_substrphp(php$splittedphp[php0php]php[php0php]php,php php$splitphp,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$splitphp php+php=php php2php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php+php+php$cntphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'mphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$splitphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php>php php$cntphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'minutephp'php]php php=php php$splittedphp[php0php]php[php$cntphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'minutephp'php]php php=php iconvphp_substrphp(php$splittedphp[php0php]php[php0php]php,php php$splitphp,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$splitphp php+php=php php2php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php+php+php$cntphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'sphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$splitphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$splittedphp[php0php]php)php php>php php$cntphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'secondphp'php]php php=php php$splittedphp[php0php]php[php$cntphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'secondphp'php]php php=php iconvphp_substrphp(php$splittedphp[php0php]php[php0php]php,php php$splitphp,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$splitphp php+php=php php2php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php+php+php$cntphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php AMphp/PMphp correction
+php php php php php php php php ifphp php(php$hourphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php ifphp php(php(php$amphp php=php=php=php truephp)php andphp php(php$resultphp[php'hourphp'php]php php=php=php php1php2php)php)php{
+php php php php php php php php php php php php php php php php php$resultphp[php'hourphp'php]php php=php php0php;
+php php php php php php php php php php php php php}php elsephp ifphp php(php(php$amphp php=php=php=php falsephp)php andphp php(php$resultphp[php'hourphp'php]php php!php=php php1php2php)php)php php{
+php php php php php php php php php php php php php php php php php$resultphp[php'hourphp'php]php php+php=php php1php2php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$optionsphp[php'fixphp_datephp'php]php php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$resultphp[php'fixedphp'php]php php=php php0php;php php/php/php nothingphp hasphp beenphp php"fixedphp"php byphp swappingphp datephp partsphp aroundphp php(yetphp)
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$dayphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php/php/php fixphp falsephp month
+php php php php php php php php php php php php ifphp php(issetphp(php$resultphp[php'dayphp'php]php)php andphp issetphp(php$resultphp[php'monthphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php$positionphp php!php=php=php falsephp)php andphp php(php(iconvphp_strposphp(php$datephp,php php$resultphp[php'dayphp'php]php)php php=php=php=php falsephp)php or
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(issetphp(php$resultphp[php'yearphp'php]php)php andphp php(iconvphp_strposphp(php$datephp,php php$resultphp[php'yearphp'php]php)php php=php=php=php falsephp)php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$optionsphp[php'fixphp_datephp'php]php php!php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unablephp tophp parsephp datephp php'php$datephp'php usingphp php'php"php php.php php$format
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php'php php(falsephp monthphp,php php$positionphp,php php$monthphp)php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$resultphp[php'dayphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'dayphp'php]php php php php=php php$resultphp[php'monthphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'monthphp'php]php php=php php$tempphp;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'fixedphp'php]php php=php php1php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php fixphp switchedphp valuesphp dphp <php>php y
+php php php php php php php php php php php php ifphp php(issetphp(php$resultphp[php'dayphp'php]php)php andphp issetphp(php$resultphp[php'yearphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$resultphp[php'dayphp'php]php php>php php3php1php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$optionsphp[php'fixphp_datephp'php]php php!php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unablephp tophp parsephp datephp php'php$datephp'php usingphp php'php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$formatphp php.php php"php'php php(dphp <php>php yphp)php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$resultphp[php'yearphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'yearphp'php]php php=php php$resultphp[php'dayphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'dayphp'php]php php php=php php$tempphp;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'fixedphp'php]php php=php php2php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php fixphp switchedphp valuesphp Mphp <php>php y
+php php php php php php php php php php php php ifphp php(issetphp(php$resultphp[php'monthphp'php]php)php andphp issetphp(php$resultphp[php'yearphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$resultphp[php'monthphp'php]php php>php php3php1php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$optionsphp[php'fixphp_datephp'php]php php!php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unablephp tophp parsephp datephp php'php$datephp'php usingphp php'php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$formatphp php.php php"php'php php(Mphp <php>php yphp)php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$resultphp[php'yearphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'yearphp'php]php php php=php php$resultphp[php'monthphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'monthphp'php]php php=php php$tempphp;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'fixedphp'php]php php=php php3php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php fixphp switchedphp valuesphp Mphp <php>php d
+php php php php php php php php php php php php ifphp php(issetphp(php$resultphp[php'monthphp'php]php)php andphp issetphp(php$resultphp[php'dayphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$resultphp[php'monthphp'php]php php>php php1php2php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$optionsphp[php'fixphp_datephp'php]php php!php=php=php truephp php|php|php php$resultphp[php'monthphp'php]php php>php php3php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unablephp tophp parsephp datephp php'php$datephp'php usingphp php'php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$formatphp php.php php"php'php php(Mphp <php>php dphp)php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$resultphp[php'dayphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'dayphp'php]php php php php=php php$resultphp[php'monthphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'monthphp'php]php php=php php$tempphp;
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'fixedphp'php]php php=php php4php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$resultphp[php'yearphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php(php(iconvphp_strlenphp(php$resultphp[php'yearphp'php]php)php php=php=php php2php)php php&php&php php(php$resultphp[php'yearphp'php]php <php php1php0php)php)php php|php|
+php php php php php php php php php php php php php php php php php(php(php(iconvphp_strposphp(php$formatphp,php php'yyphp'php)php php!php=php=php falsephp)php php&php&php php(iconvphp_strposphp(php$formatphp,php php'yyyyphp'php)php php=php=php=php falsephp)php)php php|php|
+php php php php php php php php php php php php php php php php php(php(iconvphp_strposphp(php$formatphp,php php'YYphp'php)php php!php=php=php falsephp)php php&php&php php(iconvphp_strposphp(php$formatphp,php php'YYYYphp'php)php php=php=php=php falsephp)php)php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php$resultphp[php'yearphp'php]php php>php=php php0php)php php&php&php php(php$resultphp[php'yearphp'php]php <php php1php0php0php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$resultphp[php'yearphp'php]php <php php7php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php'yearphp'php]php php=php php(intphp)php php$resultphp[php'yearphp'php]php php+php php1php0php0php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php$resultphp[php'yearphp'php]php php=php php(intphp)php php$resultphp[php'yearphp'php]php php+php php1php9php0php0php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php$oencphp)php;
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Searchphp php$numberphp forphp aphp monthphp namephp foundphp inphp php$monthlistphp,php andphp replacephp ifphp foundphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$numberphp php php php php Datephp stringphp php(modifiedphp)
+php php php php php php*php php@paramphp php arrayphp php php php$monthlistphp php Listphp ofphp monthphp names
+php php php php php php*
+php php php php php php*php php@returnphp intphp|falsephp php php php php php php php php php php Positionphp ofphp replacedphp stringphp php(falsephp ifphp nothingphp replacedphp)
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_replaceMonthphp(php&php$numberphp,php php$monthlistphp)
+php php php php php{
+php php php php php php php php php/php/php Ifphp php$localephp wasphp invalidphp,php php$monthlistphp willphp defaultphp tophp aphp php"rootphp"php identity
+php php php php php php php php php/php/php mappingphp forphp eachphp monthphp numberphp fromphp php1php tophp php1php2php.
+php php php php php php php php php/php/php Ifphp nophp php$localephp wasphp givenphp,php orphp php$localephp wasphp invalidphp,php dophp notphp usephp thisphp identityphp mappingphp tophp normalizephp.
+php php php php php php php php php/php/php Otherwisephp,php translatephp localephp awarephp monthphp namesphp inphp php$numberphp tophp theirphp numericphp equivalentsphp.
+php php php php php php php php php$positionphp php=php falsephp;
+php php php php php php php php ifphp php(php$monthlistphp php&php&php php$monthlistphp[php1php]php php!php=php php1php)php php{
+php php php php php php php php php php php php foreachphp(php$monthlistphp asphp php$keyphp php=php>php php$namephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php$positionphp php=php iconvphp_strposphp(php$numberphp,php php$namephp,php php0php,php php'UTFphp-php8php'php)php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$numberphp php php php=php strphp_ireplacephp(php$namephp,php php$keyphp,php php$numberphp)php;
+php php php php php php php php php php php php php php php php php php php php returnphp php$positionphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp defaultphp datephp formatphp forphp php$localephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php php$localephp php OPTIONALphp Localephp ofphp php$numberphp,php possiblyphp inphp stringphp formphp php(ephp.gphp.php php'dephp_ATphp'php)
+php php php php php php*php php@returnphp stringphp php format
+php php php php php php*php php@throwsphp Zendphp_Localephp_Exceptionphp php throwsphp anphp exceptionphp whenphp localephp dataphp isphp broken
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDateFormatphp(php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$formatphp php=php Zendphp_Localephp_Dataphp:php:getContentphp(php$localephp,php php'datephp'php)php;
+php php php php php php php php ifphp php(emptyphp(php$formatphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"failedphp tophp receivephp dataphp fromphp localephp php$localephp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$formatphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp withphp thephp normalizedphp datephp fromphp anphp localephp date
+php php php php php php*php aphp inputphp ofphp php1php0php.php0php1php.php2php0php0php6php withoutphp aphp php$localephp wouldphp returnphp:
+php php php php php php*php arrayphp php(php'dayphp'php php=php>php php1php0php,php php'monthphp'php php=php>php php1php,php php'yearphp'php php=php>php php2php0php0php6php)
+php php php php php php*php Thephp php'localephp'php optionphp isphp onlyphp usedphp tophp convertphp humanphp readablephp day
+php php php php php php*php andphp monthphp namesphp tophp theirphp numericphp equivalentsphp.
+php php php php php php*php Thephp php'formatphp'php optionphp allowsphp specificationphp ofphp selfphp-definedphp datephp formatsphp,
+php php php php php php*php whenphp notphp usingphp thephp defaultphp formatphp forphp thephp php'localephp'php.
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$datephp php php php php Datephp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php formatphp_typephp,php fixphp_datephp,php localephp,php datephp_formatphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php arrayphp php php php php php php php php php php php php Possiblephp arrayphp membersphp:php dayphp,php monthphp,php yearphp,php hourphp,php minutephp,php secondphp,php fixedphp,php format
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDatephp(php$datephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+php php php php php php php php ifphp php(emptyphp(php$optionsphp[php'datephp_formatphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'formatphp_typephp'php]php php=php php'isophp'php;
+php php php php php php php php php php php php php$optionsphp[php'datephp_formatphp'php]php php=php selfphp:php:getDateFormatphp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp selfphp:php:php_parseDatephp(php$datephp,php php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp thephp givenphp datestringphp containsphp allphp datephp partsphp fromphp thephp givenphp formatphp.
+php php php php php php*php Ifphp nophp formatphp isphp givenphp,php thephp defaultphp datephp formatphp fromphp thephp localephp isphp used
+php php php php php php*php Ifphp youphp wantphp tophp checkphp ifphp thephp datephp isphp aphp properphp datephp youphp shouldphp usephp Zendphp_Datephp:php:isDatephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$datephp php php php php Datephp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php formatphp_typephp,php fixphp_datephp,php localephp,php datephp_formatphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php boolean
+php php php php php php*php/
+php php php php publicphp staticphp functionphp checkDateFormatphp(php$datephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$datephp php=php selfphp:php:getDatephp(php$datephp,php php$optionsphp)php;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$optionsphp[php'datephp_formatphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'formatphp_typephp'php]php php=php php'isophp'php;
+php php php php php php php php php php php php php$optionsphp[php'datephp_formatphp'php]php php=php selfphp:php:getDateFormatphp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php php$optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+
+php php php php php php php php php/php/php dayphp expectedphp butphp notphp parsed
+php php php php php php php php ifphp php(php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'dphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php andphp php(php!issetphp(php$datephp[php'dayphp'php]php)php orphp php(php$datephp[php'dayphp'php]php php=php=php=php php"php"php)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php monthphp expectedphp butphp notphp parsed
+php php php php php php php php ifphp php(php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'Mphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php andphp php(php!issetphp(php$datephp[php'monthphp'php]php)php orphp php(php$datephp[php'monthphp'php]php php=php=php=php php"php"php)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php yearphp expectedphp butphp notphp parsed
+php php php php php php php php ifphp php(php(php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'Yphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php or
+php php php php php php php php php php php php php php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'yphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php)php andphp php(php!issetphp(php$datephp[php'yearphp'php]php)php orphp php(php$datephp[php'yearphp'php]php php=php=php=php php"php"php)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php secondphp expectedphp butphp notphp parsed
+php php php php php php php php ifphp php(php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'sphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php andphp php(php!issetphp(php$datephp[php'secondphp'php]php)php orphp php(php$datephp[php'secondphp'php]php php=php=php=php php"php"php)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php minutephp expectedphp butphp notphp parsed
+php php php php php php php php ifphp php(php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'mphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php andphp php(php!issetphp(php$datephp[php'minutephp'php]php)php orphp php(php$datephp[php'minutephp'php]php php=php=php=php php"php"php)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php hourphp expectedphp butphp notphp parsed
+php php php php php php php php ifphp php(php(php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'Hphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php or
+php php php php php php php php php php php php php php(iconvphp_strposphp(php$optionsphp[php'datephp_formatphp'php]php,php php'hphp'php,php php0php,php php'UTFphp-php8php'php)php php!php=php=php falsephp)php)php andphp php(php!issetphp(php$datephp[php'hourphp'php]php)php orphp php(php$datephp[php'hourphp'php]php php=php=php=php php"php"php)php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp defaultphp timephp formatphp forphp php$localephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php php$localephp php OPTIONALphp Localephp ofphp php$numberphp,php possiblyphp inphp stringphp formphp php(ephp.gphp.php php'dephp_ATphp'php)
+php php php php php php*php php@returnphp stringphp php format
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getTimeFormatphp(php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$formatphp php=php Zendphp_Localephp_Dataphp:php:getContentphp(php$localephp,php php'timephp'php)php;
+php php php php php php php php ifphp php(emptyphp(php$formatphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"failedphp tophp receivephp dataphp fromphp localephp php$localephp"php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$formatphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp withphp php'hourphp'php,php php'minutephp'php,php andphp php'secondphp'php elementsphp extractedphp fromphp php$time
+php php php php php php*php accordingphp tophp thephp orderphp describedphp inphp php$formatphp.php php Forphp aphp formatphp ofphp php'Hphp:mphp:sphp'php,php and
+php php php php php php*php anphp inputphp ofphp php1php1php:php2php0php:php5php5php,php getTimephp(php)php wouldphp returnphp:
+php php php php php php*php arrayphp php(php'hourphp'php php=php>php php1php1php,php php'minutephp'php php=php>php php2php0php,php php'secondphp'php php=php>php php5php5php)
+php php php php php php*php Thephp optionalphp php$localephp parameterphp mayphp bephp usedphp tophp helpphp extractphp timesphp fromphp strings
+php php php php php php*php containingphp bothphp aphp timephp andphp aphp dayphp orphp monthphp namephp.
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$timephp php php php php Timephp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php formatphp_typephp,php fixphp_datephp,php localephp,php datephp_formatphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php arrayphp php php php php php php php php php php php php Possiblephp arrayphp membersphp:php dayphp,php monthphp,php yearphp,php hourphp,php minutephp,php secondphp,php fixedphp,php format
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getTimephp(php$timephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+php php php php php php php php ifphp php(emptyphp(php$optionsphp[php'datephp_formatphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'formatphp_typephp'php]php php=php php'isophp'php;
+php php php php php php php php php php php php php$optionsphp[php'datephp_formatphp'php]php php=php selfphp:php:getTimeFormatphp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp selfphp:php:php_parseDatephp(php$timephp,php php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp defaultphp datetimephp formatphp forphp php$localephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php php$localephp php OPTIONALphp Localephp ofphp php$numberphp,php possiblyphp inphp stringphp formphp php(ephp.gphp.php php'dephp_ATphp'php)
+php php php php php php*php php@returnphp stringphp php format
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDateTimeFormatphp(php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$formatphp php=php Zendphp_Localephp_Dataphp:php:getContentphp(php$localephp,php php'datetimephp'php)php;
+php php php php php php php php ifphp php(emptyphp(php$formatphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"failedphp tophp receivephp dataphp fromphp localephp php$localephp"php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$formatphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp withphp php'yearphp'php,php php'monthphp'php,php php'dayphp'php,php php'hourphp'php,php php'minutephp'php,php andphp php'secondphp'php elements
+php php php php php php*php extractedphp fromphp php$datetimephp accordingphp tophp thephp orderphp describedphp inphp php$formatphp.php php Forphp aphp formatphp ofphp php'dphp.Mphp.yphp Hphp:mphp:sphp'php,
+php php php php php php*php andphp anphp inputphp ofphp php1php0php.php0php5php.php1php9php8php5php php1php1php:php2php0php:php5php5php,php getDateTimephp(php)php wouldphp returnphp:
+php php php php php php*php arrayphp php(php'yearphp'php php=php>php php1php9php8php5php,php php'monthphp'php php=php>php php5php,php php'dayphp'php php=php>php php1php0php,php php'hourphp'php php=php>php php1php1php,php php'minutephp'php php=php>php php2php0php,php php'secondphp'php php=php>php php5php5php)
+php php php php php php*php Thephp optionalphp php$localephp parameterphp mayphp bephp usedphp tophp helpphp extractphp timesphp fromphp strings
+php php php php php php*php containingphp bothphp aphp timephp andphp aphp dayphp orphp monthphp namephp.
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php php$datetimephp DateTimephp string
+php php php php php php*php php@paramphp php php arrayphp php php php$optionsphp php Optionsphp:php formatphp_typephp,php fixphp_datephp,php localephp,php datephp_formatphp.php Seephp php{php@linkphp setOptionsphp(php)php}php forphp detailsphp.
+php php php php php php*php php@returnphp php arrayphp php php php php php php php php php php php php Possiblephp arrayphp membersphp:php dayphp,php monthphp,php yearphp,php hourphp,php minutephp,php secondphp,php fixedphp,php format
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDateTimephp(php$datetimephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php selfphp:php:php_checkOptionsphp(php$optionsphp)php php+php selfphp:php:php$php_optionsphp;
+php php php php php php php php ifphp php(emptyphp(php$optionsphp[php'datephp_formatphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'formatphp_typephp'php]php php=php php'isophp'php;
+php php php php php php php php php php php php php$optionsphp[php'datephp_formatphp'php]php php=php selfphp:php:getDateTimeFormatphp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp selfphp:php:php_parseDatephp(php$datetimephp,php php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp tophp detectphp ofphp Unicodephp supportsphp UTFphp8
+php php php php php php*php whichphp shouldphp bephp enabledphp withinphp vanillaphp phpphp installations
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_getUniCodeSupportphp(php)
+php php php php php{
+php php php php php php php php returnphp php(php@pregphp_matchphp(php'php/php\pLphp/uphp'php,php php'aphp'php)php)php php?php truephp php:php falsephp;
+php php php php php}
+php}

@@ -1,164 +1,164 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions
-	targetNamespace="http://webservice.voicebutler.odg.tonline.de"
-	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
-	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
-	xmlns:tns="http://webservice.voicebutler.odg.tonline.de"
-	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
-	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsd"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
-	<wsdl:documentation>VoiceButlerService</wsdl:documentation>
-	<wsdl:types> 
-		<xsd:schema 
-			targetNamespace="http://webservice.voicebutler.odg.tonline.de"
-			elementFormDefault="unqualified"
-			attributeFormDefault="unqualified">
-			<xsd:include schemaLocation="VoiceButlerService.xsd" />
-			
-		</xsd:schema>
-	</wsdl:types>
-
-	<wsdl:message name="callStatusRequest">
-		<wsdl:part name="parameters" element="tns:callStatus" />
-	</wsdl:message>
-	<wsdl:message name="callStatusResponse">
-		<wsdl:part name="parameters" element="tns:callStatusResponse" />
-	</wsdl:message>
-    <wsdl:message name="callStatus2Request">
-      <wsdl:part name="parameters" element="tns:callStatus2" />
-    </wsdl:message>
-    <wsdl:message name="callStatus2Response">
-      <wsdl:part name="parameters" element="tns:callStatus2Response" />
-    </wsdl:message>
-	<wsdl:message name="tearDownCallRequest">
-		<wsdl:part name="parameters" element="tns:tearDownCall" />
-	</wsdl:message>
-	<wsdl:message name="tearDownCallResponse">
-		<wsdl:part name="parameters" element="tns:tearDownCallResponse" />
-	</wsdl:message>
-	<wsdl:message name="newCallRequest">
-		<wsdl:part name="parameters" element="tns:newCall" />
-	</wsdl:message>
- 	<wsdl:message name="newCallResponse">
-		<wsdl:part name="parameters" element="tns:newCallResponse" />
-	</wsdl:message>
-
-	<wsdl:message name="newCallSequencedRequest">
-		<wsdl:part name="parameters" element="tns:newCallSequenced"/>
-	</wsdl:message>
-	<wsdl:message name="newCallSequencedResponse">
-		<wsdl:part name="parameters" element="tns:newCallSequencedResponse"/>
-	</wsdl:message>
-	<wsdl:portType name="VoiceButlerServicePortType">
-		<wsdl:operation name="callStatus">
-			<wsdl:input message="tns:callStatusRequest"
-				wsaw:Action="urn:callStatus" />
-			<wsdl:output message="tns:callStatusResponse"
-				wsaw:Action="urn:callStatusResponse" />
-		</wsdl:operation>
-        <wsdl:operation name="callStatus2">
-          <wsdl:input message="tns:callStatus2Request"
-            wsaw:Action="urn:callStatus2" />
-          <wsdl:output message="tns:callStatus2Response"
-            wsaw:Action="urn:callStatus2Response" />
-        </wsdl:operation>
-		<wsdl:operation name="tearDownCall">
-			<wsdl:input message="tns:tearDownCallRequest"
-				wsaw:Action="urn:tearDownCall" />
-			<wsdl:output message="tns:tearDownCallResponse"
-				wsaw:Action="urn:tearDownCallResponse" />
-		</wsdl:operation>
-		<wsdl:operation name="newCall">
-			<wsdl:input message="tns:newCallRequest"
-				wsaw:Action="urn:newCall" />
-			<wsdl:output message="tns:newCallResponse"
-				wsaw:Action="urn:newCallResponse" />
-		</wsdl:operation>
-		<wsdl:operation name="newCallSequenced">
-		<wsdl:input message="tns:newCallSequencedRequest"
-        wsaw:Action="urn:newCallSequence" />
-      <wsdl:output message="tns:newCallSequencedResponse"
-        wsaw:Action="urn:newCallSequenceResponse" />
-		</wsdl:operation>
-	</wsdl:portType>
- 
-	<wsdl:binding name="VoiceButlerServiceHttpBinding"
-		type="tns:VoiceButlerServicePortType">
-
-		<soap:binding style="document"
-			transport="http://schemas.xmlsoap.org/soap/http" />
-		<wsdl:operation name="callStatus">
-
-			<soap:operation
-				soapAction="http://webservice.voicebutler.odg.tonline.de/callStatus" />
-			<wsdl:input>
-
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-      <wsdl:operation name="callStatus2">
-  
-        <soap:operation
-          soapAction="http://webservice.voicebutler.odg.tonline.de/callStatus2" />
-        <wsdl:input>
-  
-          <soap:body use="literal" />
-        </wsdl:input>
-        <wsdl:output>
-  
-          <soap:body use="literal" />
-        </wsdl:output>
-      </wsdl:operation>
-		<wsdl:operation name="tearDownCall">
-
-			<soap:operation
-				soapAction="http://webservice.voicebutler.odg.tonline.de/tearDownCall" />
-			<wsdl:input>
-
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="newCall">
-
-			<soap:operation
-				soapAction="http://webservice.voicebutler.odg.tonline.de/newCall" />
-			<wsdl:input>
-
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="newCallSequenced">
-			<soap:operation
-				soapAction="http://webservice.voicebutler.odg.tonline.de/newCallSequence" />
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-	</wsdl:binding>
-
-	<wsdl:service name="VoiceButlerService">
-
-		<wsdl:port name="VoiceButlerService"
-			binding="tns:VoiceButlerServiceHttpBinding">
-
-			<soap:address
-				location="https://gateway.developer.telekom.com/p3gw-mod-odg-voicebutler/services/VoiceButlerService" />
-		</wsdl:port>
-	</wsdl:service>
-</wsdl:definitions>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>php<wsdlphp:definitionsphp
+php	targetNamespacephp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp"php
+php	xmlnsphp:wsdlphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/php"php
+php	xmlnsphp:mimephp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/mimephp/php"php
+php	xmlnsphp:httpphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/httpphp/php"php
+php	xmlnsphp:tnsphp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp"php
+php	xmlnsphp:soapphp1php2php=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/soapphp1php2php/php"php
+php	xmlnsphp:wsawphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php6php/php0php5php/addressingphp/wsdphp"php
+php	xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php
+php	xmlnsphp:soapphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/soapphp/php"php>php
+php	php<wsdlphp:documentationphp>VoiceButlerService<php/wsdlphp:documentationphp>php
+php	php<wsdlphp:typesphp>php php
+php	php	php<xsdphp:schemaphp php
+php	php	php	targetNamespacephp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp"php
+php	php	php	elementFormDefaultphp=php"unqualifiedphp"php
+php	php	php	attributeFormDefaultphp=php"unqualifiedphp"php>php
+php	php	php	php<xsdphp:includephp schemaLocationphp=php"VoiceButlerServicephp.xsdphp"php php/php>php
+php	php	php	php
+php	php	<php/xsdphp:schemaphp>php
+php	<php/wsdlphp:typesphp>php
+php
+php	php<wsdlphp:messagephp namephp=php"callStatusRequestphp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:callStatusphp"php php/php>php
+php	<php/wsdlphp:messagephp>php
+php	php<wsdlphp:messagephp namephp=php"callStatusResponsephp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:callStatusResponsephp"php php/php>php
+php	<php/wsdlphp:messagephp>php
+php php php php php<wsdlphp:messagephp namephp=php"callStatusphp2Requestphp"php>php
+php php php php php php php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:callStatusphp2php"php php/php>php
+php php php php <php/wsdlphp:messagephp>php
+php php php php php<wsdlphp:messagephp namephp=php"callStatusphp2Responsephp"php>php
+php php php php php php php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:callStatusphp2Responsephp"php php/php>php
+php php php php <php/wsdlphp:messagephp>php
+php	php<wsdlphp:messagephp namephp=php"tearDownCallRequestphp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:tearDownCallphp"php php/php>php
+php	<php/wsdlphp:messagephp>php
+php	php<wsdlphp:messagephp namephp=php"tearDownCallResponsephp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:tearDownCallResponsephp"php php/php>php
+php	<php/wsdlphp:messagephp>php
+php	php<wsdlphp:messagephp namephp=php"newCallRequestphp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:newCallphp"php php/php>php
+php	<php/wsdlphp:messagephp>php
+php php	php<wsdlphp:messagephp namephp=php"newCallResponsephp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:newCallResponsephp"php php/php>php
+php	<php/wsdlphp:messagephp>php
+php
+php	php<wsdlphp:messagephp namephp=php"newCallSequencedRequestphp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:newCallSequencedphp"php/php>php
+php	<php/wsdlphp:messagephp>php
+php	php<wsdlphp:messagephp namephp=php"newCallSequencedResponsephp"php>php
+php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"tnsphp:newCallSequencedResponsephp"php/php>php
+php	<php/wsdlphp:messagephp>php
+php	php<wsdlphp:portTypephp namephp=php"VoiceButlerServicePortTypephp"php>php
+php	php	php<wsdlphp:operationphp namephp=php"callStatusphp"php>php
+php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:callStatusRequestphp"php
+php	php	php	php	wsawphp:Actionphp=php"urnphp:callStatusphp"php php/php>php
+php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:callStatusResponsephp"php
+php	php	php	php	wsawphp:Actionphp=php"urnphp:callStatusResponsephp"php php/php>php
+php	php	<php/wsdlphp:operationphp>php
+php php php php php php php php php<wsdlphp:operationphp namephp=php"callStatusphp2php"php>php
+php php php php php php php php php php php<wsdlphp:inputphp messagephp=php"tnsphp:callStatusphp2Requestphp"php
+php php php php php php php php php php php php wsawphp:Actionphp=php"urnphp:callStatusphp2php"php php/php>php
+php php php php php php php php php php php<wsdlphp:outputphp messagephp=php"tnsphp:callStatusphp2Responsephp"php
+php php php php php php php php php php php php wsawphp:Actionphp=php"urnphp:callStatusphp2Responsephp"php php/php>php
+php php php php php php php php <php/wsdlphp:operationphp>php
+php	php	php<wsdlphp:operationphp namephp=php"tearDownCallphp"php>php
+php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:tearDownCallRequestphp"php
+php	php	php	php	wsawphp:Actionphp=php"urnphp:tearDownCallphp"php php/php>php
+php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:tearDownCallResponsephp"php
+php	php	php	php	wsawphp:Actionphp=php"urnphp:tearDownCallResponsephp"php php/php>php
+php	php	<php/wsdlphp:operationphp>php
+php	php	php<wsdlphp:operationphp namephp=php"newCallphp"php>php
+php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:newCallRequestphp"php
+php	php	php	php	wsawphp:Actionphp=php"urnphp:newCallphp"php php/php>php
+php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:newCallResponsephp"php
+php	php	php	php	wsawphp:Actionphp=php"urnphp:newCallResponsephp"php php/php>php
+php	php	<php/wsdlphp:operationphp>php
+php	php	php<wsdlphp:operationphp namephp=php"newCallSequencedphp"php>php
+php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:newCallSequencedRequestphp"php
+php php php php php php php php wsawphp:Actionphp=php"urnphp:newCallSequencephp"php php/php>php
+php php php php php php php<wsdlphp:outputphp messagephp=php"tnsphp:newCallSequencedResponsephp"php
+php php php php php php php php wsawphp:Actionphp=php"urnphp:newCallSequenceResponsephp"php php/php>php
+php	php	<php/wsdlphp:operationphp>php
+php	<php/wsdlphp:portTypephp>php
+php php
+php	php<wsdlphp:bindingphp namephp=php"VoiceButlerServiceHttpBindingphp"php
+php	php	typephp=php"tnsphp:VoiceButlerServicePortTypephp"php>php
+php
+php	php	php<soapphp:bindingphp stylephp=php"documentphp"php
+php	php	php	transportphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/soapphp/httpphp"php php/php>php
+php	php	php<wsdlphp:operationphp namephp=php"callStatusphp"php>php
+php
+php	php	php	php<soapphp:operationphp
+php	php	php	php	soapActionphp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp/callStatusphp"php php/php>php
+php	php	php	php<wsdlphp:inputphp>php
+php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:inputphp>php
+php	php	php	php<wsdlphp:outputphp>php
+php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:outputphp>php
+php	php	<php/wsdlphp:operationphp>php
+php php php php php php php<wsdlphp:operationphp namephp=php"callStatusphp2php"php>php
+php php php
+php php php php php php php php php<soapphp:operationphp
+php php php php php php php php php php soapActionphp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp/callStatusphp2php"php php/php>php
+php php php php php php php php php<wsdlphp:inputphp>php
+php php php
+php php php php php php php php php php php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php php php php php php php php <php/wsdlphp:inputphp>php
+php php php php php php php php php<wsdlphp:outputphp>php
+php php php
+php php php php php php php php php php php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php php php php php php php php <php/wsdlphp:outputphp>php
+php php php php php php <php/wsdlphp:operationphp>php
+php	php	php<wsdlphp:operationphp namephp=php"tearDownCallphp"php>php
+php
+php	php	php	php<soapphp:operationphp
+php	php	php	php	soapActionphp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp/tearDownCallphp"php php/php>php
+php	php	php	php<wsdlphp:inputphp>php
+php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:inputphp>php
+php	php	php	php<wsdlphp:outputphp>php
+php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:outputphp>php
+php	php	<php/wsdlphp:operationphp>php
+php	php	php<wsdlphp:operationphp namephp=php"newCallphp"php>php
+php
+php	php	php	php<soapphp:operationphp
+php	php	php	php	soapActionphp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp/newCallphp"php php/php>php
+php	php	php	php<wsdlphp:inputphp>php
+php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:inputphp>php
+php	php	php	php<wsdlphp:outputphp>php
+php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:outputphp>php
+php	php	<php/wsdlphp:operationphp>php
+php	php	php<wsdlphp:operationphp namephp=php"newCallSequencedphp"php>php
+php	php	php	php<soapphp:operationphp
+php	php	php	php	soapActionphp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp/newCallSequencephp"php php/php>php
+php	php	php	php<wsdlphp:inputphp>php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:inputphp>php
+php	php	php	php<wsdlphp:outputphp>php
+php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php php/php>php
+php	php	php	<php/wsdlphp:outputphp>php
+php	php	<php/wsdlphp:operationphp>php
+php	<php/wsdlphp:bindingphp>php
+php
+php	php<wsdlphp:servicephp namephp=php"VoiceButlerServicephp"php>php
+php
+php	php	php<wsdlphp:portphp namephp=php"VoiceButlerServicephp"php
+php	php	php	bindingphp=php"tnsphp:VoiceButlerServiceHttpBindingphp"php>php
+php
+php	php	php	php<soapphp:addressphp
+php	php	php	php	locationphp=php"httpsphp:php/php/gatewayphp.developerphp.telekomphp.comphp/pphp3gwphp-modphp-odgphp-voicebutlerphp/servicesphp/VoiceButlerServicephp"php php/php>php
+php	php	<php/wsdlphp:portphp>php
+php	<php/wsdlphp:servicephp>php
+<php/wsdlphp:definitionsphp>php

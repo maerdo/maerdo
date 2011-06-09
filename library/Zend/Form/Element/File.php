@@ -1,907 +1,907 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/** Zend_Form_Element_Xhtml */
-require_once 'Zend/Form/Element/Xhtml.php';
-
-/**
- * Zend_Form_Element
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Element
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: File.php 22371 2010-06-04 20:09:44Z thomas $
- */
-class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
-{
-    /**
-     * Plugin loader type
-     */
-    const TRANSFER_ADAPTER = 'TRANSFER_ADAPTER';
-
-    /**
-     * @var string Default view helper
-     */
-    public $helper = 'formFile';
-
-    /**
-     * @var Zend_File_Transfer_Adapter_Abstract
-     */
-    protected $_adapter;
-
-    /**
-     * @var boolean Already validated ?
-     */
-    protected $_validated = false;
-
-    /**
-     * @var boolean Disable value to be equal to file content
-     */
-    protected $_valueDisabled = false;
-
-    /**
-     * @var integer Internal multifile counter
-     */
-    protected $_counter = 1;
-
-    /**
-     * @var integer Maximum file size for MAX_FILE_SIZE attribut of form
-     */
-    protected static $_maxFileSize = -1;
-
-    /**
-     * Load default decorators
-     *
-     * @return void
-     */
-    public function loadDefaultDecorators()
-    {
-        if ($this->loadDefaultDecoratorsIsDisabled()) {
-            return $this;
-        }
-
-        $decorators = $this->getDecorators();
-        if (empty($decorators)) {
-            $this->addDecorator('File')
-                 ->addDecorator('Errors')
-                 ->addDecorator('Description', array('tag' => 'p', 'class' => 'description'))
-                 ->addDecorator('HtmlTag', array('tag' => 'dd'))
-                 ->addDecorator('Label', array('tag' => 'dt'));
-        }
-        return $this;
-    }
-
-    /**
-     * Set plugin loader
-     *
-     * @param  Zend_Loader_PluginLoader_Interface $loader
-     * @param  string $type
-     * @return Zend_Form_Element_File
-     */
-    public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)
-    {
-        $type = strtoupper($type);
-
-        if ($type != self::TRANSFER_ADAPTER) {
-            return parent::setPluginLoader($loader, $type);
-        }
-
-        $this->_loaders[$type] = $loader;
-        return $this;
-    }
-
-    /**
-     * Get Plugin Loader
-     *
-     * @param  string $type
-     * @return Zend_Loader_PluginLoader_Interface
-     */
-    public function getPluginLoader($type)
-    {
-        $type = strtoupper($type);
-
-        if ($type != self::TRANSFER_ADAPTER) {
-            return parent::getPluginLoader($type);
-        }
-
-        if (!array_key_exists($type, $this->_loaders)) {
-            require_once 'Zend/Loader/PluginLoader.php';
-            $loader = new Zend_Loader_PluginLoader(array(
-                'Zend_File_Transfer_Adapter' => 'Zend/File/Transfer/Adapter/',
-            ));
-            $this->setPluginLoader($loader, self::TRANSFER_ADAPTER);
-        }
-
-        return $this->_loaders[$type];
-    }
-
-    /**
-     * Add prefix path for plugin loader
-     *
-     * @param  string $prefix
-     * @param  string $path
-     * @param  string $type
-     * @return Zend_Form_Element_File
-     */
-    public function addPrefixPath($prefix, $path, $type = null)
-    {
-        $type = strtoupper($type);
-        if (!empty($type) && ($type != self::TRANSFER_ADAPTER)) {
-            return parent::addPrefixPath($prefix, $path, $type);
-        }
-
-        if (empty($type)) {
-            $pluginPrefix = rtrim($prefix, '_') . '_Transfer_Adapter';
-            $pluginPath   = rtrim($path, DIRECTORY_SEPARATOR) . '/Transfer/Adapter/';
-            $loader       = $this->getPluginLoader(self::TRANSFER_ADAPTER);
-            $loader->addPrefixPath($pluginPrefix, $pluginPath);
-            return parent::addPrefixPath($prefix, $path, null);
-        }
-
-        $loader = $this->getPluginLoader($type);
-        $loader->addPrefixPath($prefix, $path);
-        return $this;
-    }
-
-    /**
-     * Set transfer adapter
-     *
-     * @param  string|Zend_File_Transfer_Adapter_Abstract $adapter
-     * @return Zend_Form_Element_File
-     */
-    public function setTransferAdapter($adapter)
-    {
-        if ($adapter instanceof Zend_File_Transfer_Adapter_Abstract) {
-            $this->_adapter = $adapter;
-        } elseif (is_string($adapter)) {
-            $loader = $this->getPluginLoader(self::TRANSFER_ADAPTER);
-            $class  = $loader->load($adapter);
-            $this->_adapter = new $class;
-        } else {
-            require_once 'Zend/Form/Element/Exception.php';
-            throw new Zend_Form_Element_Exception('Invalid adapter specified');
-        }
-
-        foreach (array('filter', 'validate') as $type) {
-            $loader = $this->getPluginLoader($type);
-            $this->_adapter->setPluginLoader($loader, $type);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get transfer adapter
-     *
-     * Lazy loads HTTP transfer adapter when no adapter registered.
-     *
-     * @return Zend_File_Transfer_Adapter_Abstract
-     */
-    public function getTransferAdapter()
-    {
-        if (null === $this->_adapter) {
-            $this->setTransferAdapter('Http');
-        }
-        return $this->_adapter;
-    }
-
-    /**
-     * Add Validator; proxy to adapter
-     *
-     * @param  string|Zend_Validate_Interface $validator
-     * @param  bool $breakChainOnFailure
-     * @param  mixed $options
-     * @return Zend_Form_Element_File
-     */
-    public function addValidator($validator, $breakChainOnFailure = false, $options = array())
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->addValidator($validator, $breakChainOnFailure, $options, $this->getName());
-        $this->_validated = false;
-
-        return $this;
-    }
-
-    /**
-     * Add multiple validators at once; proxy to adapter
-     *
-     * @param  array $validators
-     * @return Zend_Form_Element_File
-     */
-    public function addValidators(array $validators)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->addValidators($validators, $this->getName());
-        $this->_validated = false;
-
-        return $this;
-    }
-
-    /**
-     * Add multiple validators at once, overwriting; proxy to adapter
-     *
-     * @param  array $validators
-     * @return Zend_Form_Element_File
-     */
-    public function setValidators(array $validators)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->setValidators($validators, $this->getName());
-        $this->_validated = false;
-
-        return $this;
-    }
-
-    /**
-     * Retrieve validator by name; proxy to adapter
-     *
-     * @param  string $name
-     * @return Zend_Validate_Interface|null
-     */
-    public function getValidator($name)
-    {
-        $adapter    = $this->getTransferAdapter();
-        return $adapter->getValidator($name);
-    }
-
-    /**
-     * Retrieve all validators; proxy to adapter
-     *
-     * @return array
-     */
-    public function getValidators()
-    {
-        $adapter = $this->getTransferAdapter();
-        $validators = $adapter->getValidators($this->getName());
-        if ($validators === null) {
-            $validators = array();
-        }
-
-        return $validators;
-    }
-
-    /**
-     * Remove validator by name; proxy to adapter
-     *
-     * @param  string $name
-     * @return Zend_Form_Element_File
-     */
-    public function removeValidator($name)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->removeValidator($name);
-        $this->_validated = false;
-
-        return $this;
-    }
-
-    /**
-     * Remove all validators; proxy to adapter
-     *
-     * @return Zend_Form_Element_File
-     */
-    public function clearValidators()
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->clearValidators();
-        $this->_validated = false;
-
-        return $this;
-    }
-
-    /**
-     * Add Filter; proxy to adapter
-     *
-     * @param  string|array $filter  Type of filter to add
-     * @param  string|array $options Options to set for the filter
-     * @return Zend_Form_Element_File
-     */
-    public function addFilter($filter, $options = null)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->addFilter($filter, $options, $this->getName());
-
-        return $this;
-    }
-
-    /**
-     * Add Multiple filters at once; proxy to adapter
-     *
-     * @param  array $filters
-     * @return Zend_Form_Element_File
-     */
-    public function addFilters(array $filters)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->addFilters($filters, $this->getName());
-
-        return $this;
-    }
-
-    /**
-     * Sets a filter for the class, erasing all previous set; proxy to adapter
-     *
-     * @param  string|array $filter Filter to set
-     * @return Zend_Form_Element_File
-     */
-    public function setFilters(array $filters)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->setFilters($filters, $this->getName());
-
-        return $this;
-    }
-
-    /**
-     * Retrieve individual filter; proxy to adapter
-     *
-     * @param  string $name
-     * @return Zend_Filter_Interface|null
-     */
-    public function getFilter($name)
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->getFilter($name);
-    }
-
-    /**
-     * Returns all set filters; proxy to adapter
-     *
-     * @return array List of set filters
-     */
-    public function getFilters()
-    {
-        $adapter = $this->getTransferAdapter();
-        $filters = $adapter->getFilters($this->getName());
-
-        if ($filters === null) {
-            $filters = array();
-        }
-        return $filters;
-    }
-
-    /**
-     * Remove an individual filter; proxy to adapter
-     *
-     * @param  string $name
-     * @return Zend_Form_Element_File
-     */
-    public function removeFilter($name)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->removeFilter($name);
-
-        return $this;
-    }
-
-    /**
-     * Remove all filters; proxy to adapter
-     *
-     * @return Zend_Form_Element_File
-     */
-    public function clearFilters()
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->clearFilters();
-
-        return $this;
-    }
-
-    /**
-     * Validate upload
-     *
-     * @param  string $value   File, can be optional, give null to validate all files
-     * @param  mixed  $context
-     * @return bool
-     */
-    public function isValid($value, $context = null)
-    {
-        if ($this->_validated) {
-            return true;
-        }
-
-        $adapter    = $this->getTransferAdapter();
-        $translator = $this->getTranslator();
-        if ($translator !== null) {
-            $adapter->setTranslator($translator);
-        }
-
-        if (!$this->isRequired()) {
-            $adapter->setOptions(array('ignoreNoFile' => true), $this->getName());
-        } else {
-            $adapter->setOptions(array('ignoreNoFile' => false), $this->getName());
-            if ($this->autoInsertNotEmptyValidator() && !$this->getValidator('NotEmpty')) {
-                $this->addValidator = array('validator' => 'NotEmpty', 'breakChainOnFailure' => true);
-            }
-        }
-
-        if($adapter->isValid($this->getName())) {
-            $this->_validated = true;
-            return true;
-        }
-
-        $this->_validated = false;
-        return false;
-    }
-
-    /**
-     * Receive the uploaded file
-     *
-     * @return boolean
-     */
-    public function receive()
-    {
-        if (!$this->_validated) {
-            if (!$this->isValid($this->getName())) {
-                return false;
-            }
-        }
-
-        $adapter = $this->getTransferAdapter();
-        if ($adapter->receive($this->getName())) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Retrieve error codes; proxy to transfer adapter
-     *
-     * @return array
-     */
-    public function getErrors()
-    {
-        return parent::getErrors() + $this->getTransferAdapter()->getErrors();
-    }
-
-    /**
-     * Are there errors registered?
-     *
-     * @return bool
-     */
-    public function hasErrors()
-    {
-        return (parent::hasErrors() || $this->getTransferAdapter()->hasErrors());
-    }
-
-    /**
-     * Retrieve error messages; proxy to transfer adapter
-     *
-     * @return array
-     */
-    public function getMessages()
-    {
-        return parent::getMessages() + $this->getTransferAdapter()->getMessages();
-    }
-
-    /**
-     * Set the upload destination
-     *
-     * @param  string $path
-     * @return Zend_Form_Element_File
-     */
-    public function setDestination($path)
-    {
-        $this->getTransferAdapter()->setDestination($path, $this->getName());
-        return $this;
-    }
-
-    /**
-     * Get the upload destination
-     *
-     * @return string
-     */
-    public function getDestination()
-    {
-        return $this->getTransferAdapter()->getDestination($this->getName());
-    }
-
-    /**
-     * Get the final filename
-     *
-     * @param  string  $value (Optional) Element or file to return
-     * @param  boolean $path  (Optional) Return also the path, defaults to true
-     * @return string
-     */
-    public function getFileName($value = null, $path = true)
-    {
-        if (empty($value)) {
-            $value = $this->getName();
-        }
-
-        return $this->getTransferAdapter()->getFileName($value, $path);
-    }
-
-    /**
-     * Get internal file informations
-     *
-     * @param  string $value (Optional) Element or file to return
-     * @return array
-     */
-    public function getFileInfo($value = null)
-    {
-        if (empty($value)) {
-            $value = $this->getName();
-        }
-
-        return $this->getTransferAdapter()->getFileInfo($value);
-    }
-
-    /**
-     * Set a multifile element
-     *
-     * @param integer $count Number of file elements
-     * @return Zend_Form_Element_File Provides fluent interface
-     */
-    public function setMultiFile($count)
-    {
-        if ((integer) $count < 2) {
-            $this->setIsArray(false);
-            $this->_counter = 1;
-        } else {
-            $this->setIsArray(true);
-            $this->_counter = (integer) $count;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Returns the multifile element number
-     *
-     * @return integer
-     */
-    public function getMultiFile()
-    {
-        return $this->_counter;
-    }
-
-    /**
-     * Sets the maximum file size of the form
-     *
-     * @return integer
-     */
-    public function getMaxFileSize()
-    {
-        if (self::$_maxFileSize < 0) {
-            $ini = $this->_convertIniToInteger(trim(ini_get('post_max_size')));
-            $max = $this->_convertIniToInteger(trim(ini_get('upload_max_filesize')));
-            $min = max($ini, $max);
-            if ($ini > 0) {
-                $min = min($min, $ini);
-            }
-
-            if ($max > 0) {
-                $min = min($min, $max);
-            }
-
-            self::$_maxFileSize = $min;
-        }
-
-        return self::$_maxFileSize;
-    }
-
-    /**
-     * Sets the maximum file size of the form
-     *
-     * @param  integer $size
-     * @return integer
-     */
-    public function setMaxFileSize($size)
-    {
-        $ini = $this->_convertIniToInteger(trim(ini_get('post_max_size')));
-        $max = $this->_convertIniToInteger(trim(ini_get('upload_max_filesize')));
-
-        if (($max > -1) && ($size > $max)) {
-            trigger_error("Your 'upload_max_filesize' config setting limits the maximum filesize to '$max'. You tried to set '$size'.", E_USER_NOTICE);
-            $size = $max;
-        }
-
-        if (($ini > -1) && ($size > $ini)) {
-            trigger_error("Your 'post_max_size' config setting limits the maximum filesize to '$ini'. You tried to set '$size'.", E_USER_NOTICE);
-            $size = $ini;
-        }
-
-        self::$_maxFileSize = $size;
-        return $this;
-    }
-
-    /**
-     * Converts a ini setting to a integer value
-     *
-     * @param  string $setting
-     * @return integer
-     */
-    private function _convertIniToInteger($setting)
-    {
-        if (!is_numeric($setting)) {
-            $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
-
-            switch ($type) {
-                case 'K' :
-                    $setting *= 1024;
-                    break;
-
-                case 'M' :
-                    $setting *= 1024 * 1024;
-                    break;
-
-                case 'G' :
-                    $setting *= 1024 * 1024 * 1024;
-                    break;
-
-                default :
-                    break;
-            }
-        }
-
-        return (integer) $setting;
-    }
-
-    /**
-     * Set if the file will be uploaded when getting the value
-     * This defaults to false which will force receive() when calling getValues()
-     *
-     * @param boolean $flag Sets if the file is handled as the elements value
-     * @return Zend_Form_Element_File
-     */
-    public function setValueDisabled($flag)
-    {
-        $this->_valueDisabled = (bool) $flag;
-        return $this;
-    }
-
-    /**
-     * Returns if the file will be uploaded when calling getValues()
-     *
-     * @return boolean Receive the file on calling getValues()?
-     */
-    public function isValueDisabled()
-    {
-        return $this->_valueDisabled;
-    }
-
-    /**
-     * Processes the file, returns null or the filename only
-     * For the complete path, use getFileName
-     *
-     * @return null|string
-     */
-    public function getValue()
-    {
-        if ($this->_value !== null) {
-            return $this->_value;
-        }
-
-        $content = $this->getTransferAdapter()->getFileName($this->getName());
-        if (empty($content)) {
-            return null;
-        }
-
-        if (!$this->isValid(null)) {
-            return null;
-        }
-
-        if (!$this->_valueDisabled && !$this->receive()) {
-            return null;
-        }
-
-        return $this->getFileName(null, false);
-    }
-
-    /**
-     * Disallow setting the value
-     *
-     * @param  mixed $value
-     * @return Zend_Form_Element_File
-     */
-    public function setValue($value)
-    {
-        return $this;
-    }
-
-    /**
-     * Set translator object for localization
-     *
-     * @param  Zend_Translate|null $translator
-     * @return Zend_Form_Element_File
-     */
-    public function setTranslator($translator = null)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->setTranslator($translator);
-        parent::setTranslator($translator);
-
-        return $this;
-    }
-
-    /**
-     * Retrieve localization translator object
-     *
-     * @return Zend_Translate_Adapter|null
-     */
-    public function getTranslator()
-    {
-        if ($this->translatorIsDisabled()) {
-            return null;
-        }
-
-        $translator = $this->getTransferAdapter()->getTranslator();
-        if (null === $translator) {
-            require_once 'Zend/Form.php';
-            return Zend_Form::getDefaultTranslator();
-        }
-
-        return $translator;
-    }
-
-    /**
-     * Indicate whether or not translation should be disabled
-     *
-     * @param  bool $flag
-     * @return Zend_Form_Element_File
-     */
-    public function setDisableTranslator($flag)
-    {
-        $adapter = $this->getTransferAdapter();
-        $adapter->setDisableTranslator($flag);
-        $this->_translatorDisabled = (bool) $flag;
-
-        return $this;
-    }
-
-    /**
-     * Is translation disabled?
-     *
-     * @return bool
-     */
-    public function translatorIsDisabled()
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->translatorIsDisabled();
-    }
-
-    /**
-     * Was the file received?
-     *
-     * @return bool
-     */
-    public function isReceived()
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->isReceived($this->getName());
-    }
-
-    /**
-     * Was the file uploaded?
-     *
-     * @return bool
-     */
-    public function isUploaded()
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->isUploaded($this->getName());
-    }
-
-    /**
-     * Has the file been filtered?
-     *
-     * @return bool
-     */
-    public function isFiltered()
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->isFiltered($this->getName());
-    }
-
-    /**
-     * Returns the hash for this file element
-     *
-     * @param string $hash (Optional) Hash algorithm to use
-     * @return string|array Hashstring
-     */
-    public function getHash($hash = 'crc32')
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->getHash($hash, $this->getName());
-    }
-
-    /**
-     * Returns the filesize for this file element
-     *
-     * @return string|array Filesize
-     */
-    public function getFileSize()
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->getFileSize($this->getName());
-    }
-
-    /**
-     * Returns the mimetype for this file element
-     *
-     * @return string|array Mimetype
-     */
-    public function getMimeType()
-    {
-        $adapter = $this->getTransferAdapter();
-        return $adapter->getMimeType($this->getName());
-    }
-
-    /**
-     * Render form element
-     * Checks for decorator interface to prevent errors
-     *
-     * @param  Zend_View_Interface $view
-     * @return string
-     */
-    public function render(Zend_View_Interface $view = null)
-    {
-        $marker = false;
-        foreach ($this->getDecorators() as $decorator) {
-            if ($decorator instanceof Zend_Form_Decorator_Marker_File_Interface) {
-                $marker = true;
-            }
-        }
-
-        if (!$marker) {
-            require_once 'Zend/Form/Element/Exception.php';
-            throw new Zend_Form_Element_Exception('No file decorator found... unable to render file element');
-        }
-
-        return parent::render($view);
-    }
-
-    /**
-     * Retrieve error messages and perform translation and value substitution
-     *
-     * @return array
-     */
-    protected function _getErrorMessages()
-    {
-        $translator = $this->getTranslator();
-        $messages   = $this->getErrorMessages();
-        $value      = $this->getFileName();
-        foreach ($messages as $key => $message) {
-            if (null !== $translator) {
-                $message = $translator->translate($message);
-            }
-
-            if ($this->isArray() || is_array($value)) {
-                $aggregateMessages = array();
-                foreach ($value as $val) {
-                    $aggregateMessages[] = str_replace('%value%', $val, $message);
-                }
-
-                if (!empty($aggregateMessages)) {
-                    $messages[$key] = $aggregateMessages;
-                }
-            } else {
-                $messages[$key] = str_replace('%value%', $value, $message);
-            }
-        }
-
-        return $messages;
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+
+php/php*php*php Zendphp_Formphp_Elementphp_Xhtmlphp php*php/
+requirephp_oncephp php'Zendphp/Formphp/Elementphp/Xhtmlphp.phpphp'php;
+
+php/php*php*
+php php*php Zendphp_Formphp_Element
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Element
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Filephp.phpphp php2php2php3php7php1php php2php0php1php0php-php0php6php-php0php4php php2php0php:php0php9php:php4php4Zphp thomasphp php$
+php php*php/
+classphp Zendphp_Formphp_Elementphp_Filephp extendsphp Zendphp_Formphp_Elementphp_Xhtml
+php{
+php php php php php/php*php*
+php php php php php php*php Pluginphp loaderphp type
+php php php php php php*php/
+php php php php constphp TRANSFERphp_ADAPTERphp php=php php'TRANSFERphp_ADAPTERphp'php;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Defaultphp viewphp helper
+php php php php php php*php/
+php php php php publicphp php$helperphp php=php php'formFilephp'php;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Filephp_Transferphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_adapterphp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp booleanphp Alreadyphp validatedphp php?
+php php php php php php*php/
+php php php php protectedphp php$php_validatedphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp booleanphp Disablephp valuephp tophp bephp equalphp tophp filephp content
+php php php php php php*php/
+php php php php protectedphp php$php_valueDisabledphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp integerphp Internalphp multifilephp counter
+php php php php php php*php/
+php php php php protectedphp php$php_counterphp php=php php1php;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp integerphp Maximumphp filephp sizephp forphp MAXphp_FILEphp_SIZEphp attributphp ofphp form
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_maxFileSizephp php=php php-php1php;
+
+php php php php php/php*php*
+php php php php php php*php Loadphp defaultphp decorators
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp loadDefaultDecoratorsphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>loadDefaultDecoratorsIsDisabledphp(php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+
+php php php php php php php php php$decoratorsphp php=php php$thisphp-php>getDecoratorsphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$decoratorsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php'Filephp'php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Errorsphp'php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Descriptionphp'php,php arrayphp(php'tagphp'php php=php>php php'pphp'php,php php'classphp'php php=php>php php'descriptionphp'php)php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'HtmlTagphp'php,php arrayphp(php'tagphp'php php=php>php php'ddphp'php)php)
+php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Labelphp'php,php arrayphp(php'tagphp'php php=php>php php'dtphp'php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp pluginphp loader
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loader
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setPluginLoaderphp(Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loaderphp,php php$typephp)
+php php php php php{
+php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
+
+php php php php php php php php ifphp php(php$typephp php!php=php selfphp:php:TRANSFERphp_ADAPTERphp)php php{
+php php php php php php php php php php php php returnphp parentphp:php:setPluginLoaderphp(php$loaderphp,php php$typephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_loadersphp[php$typephp]php php=php php$loaderphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp Pluginphp Loader
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoaderphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getPluginLoaderphp(php$typephp)
+php php php php php{
+php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
+
+php php php php php php php php ifphp php(php$typephp php!php=php selfphp:php:TRANSFERphp_ADAPTERphp)php php{
+php php php php php php php php php php php php returnphp parentphp:php:getPluginLoaderphp(php$typephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$typephp,php php$thisphp-php>php_loadersphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
+php php php php php php php php php php php php php$loaderphp php=php newphp Zendphp_Loaderphp_PluginLoaderphp(arrayphp(
+php php php php php php php php php php php php php php php php php'Zendphp_Filephp_Transferphp_Adapterphp'php php=php>php php'Zendphp/Filephp/Transferphp/Adapterphp/php'php,
+php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php$thisphp-php>setPluginLoaderphp(php$loaderphp,php selfphp:php:TRANSFERphp_ADAPTERphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_loadersphp[php$typephp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp prefixphp pathphp forphp pluginphp loader
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$prefix
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
+php php php php php php php php ifphp php(php!emptyphp(php$typephp)php php&php&php php(php$typephp php!php=php selfphp:php:TRANSFERphp_ADAPTERphp)php)php php{
+php php php php php php php php php php php php returnphp parentphp:php:addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$typephp)php)php php{
+php php php php php php php php php php php php php$pluginPrefixphp php=php rtrimphp(php$prefixphp,php php'php_php'php)php php.php php'php_Transferphp_Adapterphp'php;
+php php php php php php php php php php php php php$pluginPathphp php php php=php rtrimphp(php$pathphp,php DIRECTORYphp_SEPARATORphp)php php.php php'php/Transferphp/Adapterphp/php'php;
+php php php php php php php php php php php php php$loaderphp php php php php php php php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:TRANSFERphp_ADAPTERphp)php;
+php php php php php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$pluginPrefixphp,php php$pluginPathphp)php;
+php php php php php php php php php php php php returnphp parentphp:php:addPrefixPathphp(php$prefixphp,php php$pathphp,php nullphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(php$typephp)php;
+php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp transferphp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Filephp_Transferphp_Adapterphp_Abstractphp php$adapter
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setTransferAdapterphp(php$adapterphp)
+php php php php php{
+php php php php php php php php ifphp php(php$adapterphp instanceofphp Zendphp_Filephp_Transferphp_Adapterphp_Abstractphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
+php php php php php php php php php}php elseifphp php(isphp_stringphp(php$adapterphp)php)php php{
+php php php php php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:TRANSFERphp_ADAPTERphp)php;
+php php php php php php php php php php php php php$classphp php php=php php$loaderphp-php>loadphp(php$adapterphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_adapterphp php=php newphp php$classphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Elementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Elementphp_Exceptionphp(php'Invalidphp adapterphp specifiedphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(arrayphp(php'filterphp'php,php php'validatephp'php)php asphp php$typephp)php php{
+php php php php php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(php$typephp)php;
+php php php php php php php php php php php php php$thisphp-php>php_adapterphp-php>setPluginLoaderphp(php$loaderphp,php php$typephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp transferphp adapter
+php php php php php php*
+php php php php php php*php Lazyphp loadsphp HTTPphp transferphp adapterphp whenphp nophp adapterphp registeredphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Filephp_Transferphp_Adapterphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp getTransferAdapterphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_adapterphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setTransferAdapterphp(php'Httpphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp Validatorphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Validatephp_Interfacephp php$validator
+php php php php php php*php php@paramphp php boolphp php$breakChainOnFailure
+php php php php php php*php php@paramphp php mixedphp php$options
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp addValidatorphp(php$validatorphp,php php$breakChainOnFailurephp php=php falsephp,php php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>addValidatorphp(php$validatorphp,php php$breakChainOnFailurephp,php php$optionsphp,php php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php php$thisphp-php>php_validatedphp php=php falsephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp multiplephp validatorsphp atphp oncephp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$validators
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp addValidatorsphp(arrayphp php$validatorsphp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>addValidatorsphp(php$validatorsphp,php php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php php$thisphp-php>php_validatedphp php=php falsephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp multiplephp validatorsphp atphp oncephp,php overwritingphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$validators
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setValidatorsphp(arrayphp php$validatorsphp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>setValidatorsphp(php$validatorsphp,php php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php php$thisphp-php>php_validatedphp php=php falsephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp validatorphp byphp namephp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Validatephp_Interfacephp|null
+php php php php php php*php/
+php php php php publicphp functionphp getValidatorphp(php$namephp)
+php php php php php{
+php php php php php php php php php$adapterphp php php php php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>getValidatorphp(php$namephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp allphp validatorsphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getValidatorsphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$validatorsphp php=php php$adapterphp-php>getValidatorsphp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php ifphp php(php$validatorsphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$validatorsphp php=php arrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$validatorsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp validatorphp byphp namephp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp removeValidatorphp(php$namephp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>removeValidatorphp(php$namephp)php;
+php php php php php php php php php$thisphp-php>php_validatedphp php=php falsephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp allphp validatorsphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp clearValidatorsphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>clearValidatorsphp(php)php;
+php php php php php php php php php$thisphp-php>php_validatedphp php=php falsephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp Filterphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$filterphp php Typephp ofphp filterphp tophp add
+php php php php php php*php php@paramphp php stringphp|arrayphp php$optionsphp Optionsphp tophp setphp forphp thephp filter
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp addFilterphp(php$filterphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>addFilterphp(php$filterphp,php php$optionsphp,php php$thisphp-php>getNamephp(php)php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp Multiplephp filtersphp atphp oncephp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$filters
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp addFiltersphp(arrayphp php$filtersphp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>addFiltersphp(php$filtersphp,php php$thisphp-php>getNamephp(php)php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp filterphp forphp thephp classphp,php erasingphp allphp previousphp setphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$filterphp Filterphp tophp set
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setFiltersphp(arrayphp php$filtersphp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>setFiltersphp(php$filtersphp,php php$thisphp-php>getNamephp(php)php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp individualphp filterphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Filterphp_Interfacephp|null
+php php php php php php*php/
+php php php php publicphp functionphp getFilterphp(php$namephp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>getFilterphp(php$namephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp setphp filtersphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Listphp ofphp setphp filters
+php php php php php php*php/
+php php php php publicphp functionphp getFiltersphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$filtersphp php=php php$adapterphp-php>getFiltersphp(php$thisphp-php>getNamephp(php)php)php;
+
+php php php php php php php php ifphp php(php$filtersphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$filtersphp php=php arrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$filtersphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp anphp individualphp filterphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp removeFilterphp(php$namephp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>removeFilterphp(php$namephp)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp allphp filtersphp;php proxyphp tophp adapter
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp clearFiltersphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>clearFiltersphp(php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Validatephp upload
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp php php Filephp,php canphp bephp optionalphp,php givephp nullphp tophp validatephp allphp files
+php php php php php php*php php@paramphp php mixedphp php php$context
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$contextphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_validatedphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php php$adapterphp php php php php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
+php php php php php php php php ifphp php(php$translatorphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$adapterphp-php>setTranslatorphp(php$translatorphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$thisphp-php>isRequiredphp(php)php)php php{
+php php php php php php php php php php php php php$adapterphp-php>setOptionsphp(arrayphp(php'ignoreNoFilephp'php php=php>php truephp)php,php php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$adapterphp-php>setOptionsphp(arrayphp(php'ignoreNoFilephp'php php=php>php falsephp)php,php php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>autoInsertNotEmptyValidatorphp(php)php php&php&php php!php$thisphp-php>getValidatorphp(php'NotEmptyphp'php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>addValidatorphp php=php arrayphp(php'validatorphp'php php=php>php php'NotEmptyphp'php,php php'breakChainOnFailurephp'php php=php>php truephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp(php$adapterphp-php>isValidphp(php$thisphp-php>getNamephp(php)php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_validatedphp php=php truephp;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_validatedphp php=php falsephp;
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Receivephp thephp uploadedphp file
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp receivephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_validatedphp)php php{
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>isValidphp(php$thisphp-php>getNamephp(php)php)php)php php{
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php ifphp php(php$adapterphp-php>receivephp(php$thisphp-php>getNamephp(php)php)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp errorphp codesphp;php proxyphp tophp transferphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getErrorsphp(php)
+php php php php php{
+php php php php php php php php returnphp parentphp:php:getErrorsphp(php)php php+php php$thisphp-php>getTransferAdapterphp(php)php-php>getErrorsphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Arephp therephp errorsphp registeredphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasErrorsphp(php)
+php php php php php{
+php php php php php php php php returnphp php(parentphp:php:hasErrorsphp(php)php php|php|php php$thisphp-php>getTransferAdapterphp(php)php-php>hasErrorsphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp errorphp messagesphp;php proxyphp tophp transferphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getMessagesphp(php)
+php php php php php{
+php php php php php php php php returnphp parentphp:php:getMessagesphp(php)php php+php php$thisphp-php>getTransferAdapterphp(php)php-php>getMessagesphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp uploadphp destination
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setDestinationphp(php$pathphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>getTransferAdapterphp(php)php-php>setDestinationphp(php$pathphp,php php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp uploadphp destination
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getDestinationphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getTransferAdapterphp(php)php-php>getDestinationphp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp finalphp filename
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$valuephp php(Optionalphp)php Elementphp orphp filephp tophp return
+php php php php php php*php php@paramphp php booleanphp php$pathphp php php(Optionalphp)php Returnphp alsophp thephp pathphp,php defaultsphp tophp true
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getFileNamephp(php$valuephp php=php nullphp,php php$pathphp php=php truephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>getNamephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>getTransferAdapterphp(php)php-php>getFileNamephp(php$valuephp,php php$pathphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp internalphp filephp informations
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp php(Optionalphp)php Elementphp orphp filephp tophp return
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getFileInfophp(php$valuephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>getNamephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>getTransferAdapterphp(php)php-php>getFileInfophp(php$valuephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp aphp multifilephp element
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$countphp Numberphp ofphp filephp elements
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Filephp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setMultiFilephp(php$countphp)
+php php php php php{
+php php php php php php php php ifphp php(php(integerphp)php php$countphp <php php2php)php php{
+php php php php php php php php php php php php php$thisphp-php>setIsArrayphp(falsephp)php;
+php php php php php php php php php php php php php$thisphp-php>php_counterphp php=php php1php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>setIsArrayphp(truephp)php;
+php php php php php php php php php php php php php$thisphp-php>php_counterphp php=php php(integerphp)php php$countphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp multifilephp elementphp number
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMultiFilephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_counterphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp maximumphp filephp sizephp ofphp thephp form
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMaxFileSizephp(php)
+php php php php php{
+php php php php php php php php ifphp php(selfphp:php:php$php_maxFileSizephp <php php0php)php php{
+php php php php php php php php php php php php php$iniphp php=php php$thisphp-php>php_convertIniToIntegerphp(trimphp(iniphp_getphp(php'postphp_maxphp_sizephp'php)php)php)php;
+php php php php php php php php php php php php php$maxphp php=php php$thisphp-php>php_convertIniToIntegerphp(trimphp(iniphp_getphp(php'uploadphp_maxphp_filesizephp'php)php)php)php;
+php php php php php php php php php php php php php$minphp php=php maxphp(php$iniphp,php php$maxphp)php;
+php php php php php php php php php php php php ifphp php(php$iniphp php>php php0php)php php{
+php php php php php php php php php php php php php php php php php$minphp php=php minphp(php$minphp,php php$iniphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$maxphp php>php php0php)php php{
+php php php php php php php php php php php php php php php php php$minphp php=php minphp(php$minphp,php php$maxphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php selfphp:php:php$php_maxFileSizephp php=php php$minphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp selfphp:php:php$php_maxFileSizephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp maximumphp filephp sizephp ofphp thephp form
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp php$size
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp setMaxFileSizephp(php$sizephp)
+php php php php php{
+php php php php php php php php php$iniphp php=php php$thisphp-php>php_convertIniToIntegerphp(trimphp(iniphp_getphp(php'postphp_maxphp_sizephp'php)php)php)php;
+php php php php php php php php php$maxphp php=php php$thisphp-php>php_convertIniToIntegerphp(trimphp(iniphp_getphp(php'uploadphp_maxphp_filesizephp'php)php)php)php;
+
+php php php php php php php php ifphp php(php(php$maxphp php>php php-php1php)php php&php&php php(php$sizephp php>php php$maxphp)php)php php{
+php php php php php php php php php php php php triggerphp_errorphp(php"Yourphp php'uploadphp_maxphp_filesizephp'php configphp settingphp limitsphp thephp maximumphp filesizephp tophp php'php$maxphp'php.php Youphp triedphp tophp setphp php'php$sizephp'php.php"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php$sizephp php=php php$maxphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(php$iniphp php>php php-php1php)php php&php&php php(php$sizephp php>php php$iniphp)php)php php{
+php php php php php php php php php php php php triggerphp_errorphp(php"Yourphp php'postphp_maxphp_sizephp'php configphp settingphp limitsphp thephp maximumphp filesizephp tophp php'php$iniphp'php.php Youphp triedphp tophp setphp php'php$sizephp'php.php"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php$sizephp php=php php$iniphp;
+php php php php php php php php php}
+
+php php php php php php php php selfphp:php:php$php_maxFileSizephp php=php php$sizephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Convertsphp aphp iniphp settingphp tophp aphp integerphp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$setting
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php privatephp functionphp php_convertIniToIntegerphp(php$settingphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_numericphp(php$settingphp)php)php php{
+php php php php php php php php php php php php php$typephp php=php strtoupperphp(substrphp(php$settingphp,php php-php1php)php)php;
+php php php php php php php php php php php php php$settingphp php=php php(integerphp)php substrphp(php$settingphp,php php0php,php php-php1php)php;
+
+php php php php php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php php php php php casephp php'Kphp'php php:
+php php php php php php php php php php php php php php php php php php php php php$settingphp php*php=php php1php0php2php4php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Mphp'php php:
+php php php php php php php php php php php php php php php php php php php php php$settingphp php*php=php php1php0php2php4php php*php php1php0php2php4php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp php'Gphp'php php:
+php php php php php php php php php php php php php php php php php php php php php$settingphp php*php=php php1php0php2php4php php*php php1php0php2php4php php*php php1php0php2php4php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php defaultphp php:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php(integerphp)php php$settingphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp ifphp thephp filephp willphp bephp uploadedphp whenphp gettingphp thephp value
+php php php php php php*php Thisphp defaultsphp tophp falsephp whichphp willphp forcephp receivephp(php)php whenphp callingphp getValuesphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$flagphp Setsphp ifphp thephp filephp isphp handledphp asphp thephp elementsphp value
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setValueDisabledphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_valueDisabledphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp thephp filephp willphp bephp uploadedphp whenphp callingphp getValuesphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp booleanphp Receivephp thephp filephp onphp callingphp getValuesphp(php)php?
+php php php php php php*php/
+php php php php publicphp functionphp isValueDisabledphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_valueDisabledphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Processesphp thephp filephp,php returnsphp nullphp orphp thephp filenamephp only
+php php php php php php*php Forphp thephp completephp pathphp,php usephp getFileName
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getValuephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_valuephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_valuephp;
+php php php php php php php php php}
+
+php php php php php php php php php$contentphp php=php php$thisphp-php>getTransferAdapterphp(php)php-php>getFileNamephp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php php php php ifphp php(emptyphp(php$contentphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$thisphp-php>isValidphp(nullphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$thisphp-php>php_valueDisabledphp php&php&php php!php$thisphp-php>receivephp(php)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>getFileNamephp(nullphp,php falsephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Disallowphp settingphp thephp value
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setValuephp(php$valuephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp translatorphp objectphp forphp localization
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Translatephp|nullphp php$translator
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setTranslatorphp(php$translatorphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>setTranslatorphp(php$translatorphp)php;
+php php php php php php php php parentphp:php:setTranslatorphp(php$translatorphp)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp localizationphp translatorphp object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getTranslatorphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>translatorIsDisabledphp(php)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$translatorphp php=php php$thisphp-php>getTransferAdapterphp(php)php-php>getTranslatorphp(php)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$translatorphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp.phpphp'php;
+php php php php php php php php php php php php returnphp Zendphp_Formphp:php:getDefaultTranslatorphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$translatorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Indicatephp whetherphp orphp notphp translationphp shouldphp bephp disabled
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_File
+php php php php php php*php/
+php php php php publicphp functionphp setDisableTranslatorphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php php$adapterphp-php>setDisableTranslatorphp(php$flagphp)php;
+php php php php php php php php php$thisphp-php>php_translatorDisabledphp php=php php(boolphp)php php$flagphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Isphp translationphp disabledphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp translatorIsDisabledphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>translatorIsDisabledphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Wasphp thephp filephp receivedphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isReceivedphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>isReceivedphp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Wasphp thephp filephp uploadedphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isUploadedphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>isUploadedphp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Hasphp thephp filephp beenphp filteredphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isFilteredphp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>isFilteredphp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp hashphp forphp thisphp filephp element
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$hashphp php(Optionalphp)php Hashphp algorithmphp tophp use
+php php php php php php*php php@returnphp stringphp|arrayphp Hashstring
+php php php php php php*php/
+php php php php publicphp functionphp getHashphp(php$hashphp php=php php'crcphp3php2php'php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>getHashphp(php$hashphp,php php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp filesizephp forphp thisphp filephp element
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|arrayphp Filesize
+php php php php php php*php/
+php php php php publicphp functionphp getFileSizephp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>getFileSizephp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp mimetypephp forphp thisphp filephp element
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|arrayphp Mimetype
+php php php php php php*php/
+php php php php publicphp functionphp getMimeTypephp(php)
+php php php php php{
+php php php php php php php php php$adapterphp php=php php$thisphp-php>getTransferAdapterphp(php)php;
+php php php php php php php php returnphp php$adapterphp-php>getMimeTypephp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Renderphp formphp element
+php php php php php php*php Checksphp forphp decoratorphp interfacephp tophp preventphp errors
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$markerphp php=php falsephp;
+php php php php php php php php foreachphp php(php$thisphp-php>getDecoratorsphp(php)php asphp php$decoratorphp)php php{
+php php php php php php php php php php php php ifphp php(php$decoratorphp instanceofphp Zendphp_Formphp_Decoratorphp_Markerphp_Filephp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php$markerphp php=php truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$markerphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Elementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Elementphp_Exceptionphp(php'Nophp filephp decoratorphp foundphp.php.php.php unablephp tophp renderphp filephp elementphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp parentphp:php:renderphp(php$viewphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp errorphp messagesphp andphp performphp translationphp andphp valuephp substitution
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_getErrorMessagesphp(php)
+php php php php php{
+php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
+php php php php php php php php php$messagesphp php php php=php php$thisphp-php>getErrorMessagesphp(php)php;
+php php php php php php php php php$valuephp php php php php php php=php php$thisphp-php>getFileNamephp(php)php;
+php php php php php php php php foreachphp php(php$messagesphp asphp php$keyphp php=php>php php$messagephp)php php{
+php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp)php php{
+php php php php php php php php php php php php php php php php php$messagephp php=php php$translatorphp-php>translatephp(php$messagephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php php|php|php isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$aggregateMessagesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$valphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$aggregateMessagesphp[php]php php=php strphp_replacephp(php'php%valuephp%php'php,php php$valphp,php php$messagephp)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$aggregateMessagesphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php$keyphp]php php=php php$aggregateMessagesphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$messagesphp[php$keyphp]php php=php strphp_replacephp(php'php%valuephp%php'php,php php$valuephp,php php$messagephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$messagesphp;
+php php php php php}
+php}

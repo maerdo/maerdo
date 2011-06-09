@@ -1,232 +1,232 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Extension.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Extensionphp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Abstract
- */
-require_once 'Zend/Validate/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
 
-/**
- * Validator for the file extension of a file
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_File_Extension extends Zend_Validate_Abstract
-{
-    /**
-     * @const string Error constants
-     */
-    const FALSE_EXTENSION = 'fileExtensionFalse';
-    const NOT_FOUND       = 'fileExtensionNotFound';
+php/php*php*
+php php*php Validatorphp forphp thephp filephp extensionphp ofphp aphp file
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Filephp_Extensionphp extendsphp Zendphp_Validatephp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@constphp stringphp Errorphp constants
+php php php php php php*php/
+php php php php constphp FALSEphp_EXTENSIONphp php=php php'fileExtensionFalsephp'php;
+php php php php constphp NOTphp_FOUNDphp php php php php php php php=php php'fileExtensionNotFoundphp'php;
 
-    /**
-     * @var array Error message templates
-     */
-    protected $_messageTemplates = array(
-        self::FALSE_EXTENSION => "File '%value%' has a false extension",
-        self::NOT_FOUND       => "File '%value%' is not readable or does not exist",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templates
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:FALSEphp_EXTENSIONphp php=php>php php"Filephp php'php%valuephp%php'php hasphp aphp falsephp extensionphp"php,
+php php php php php php php php selfphp:php:NOTphp_FOUNDphp php php php php php php php=php>php php"Filephp php'php%valuephp%php'php isphp notphp readablephp orphp doesphp notphp existphp"php,
+php php php php php)php;
 
-    /**
-     * Internal list of extensions
-     * @var string
-     */
-    protected $_extension = '';
+php php php php php/php*php*
+php php php php php php*php Internalphp listphp ofphp extensions
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_extensionphp php=php php'php'php;
 
-    /**
-     * Validate case sensitive
-     *
-     * @var boolean
-     */
-    protected $_case = false;
+php php php php php/php*php*
+php php php php php php*php Validatephp casephp sensitive
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_casephp php=php falsephp;
 
-    /**
-     * @var array Error message template variables
-     */
-    protected $_messageVariables = array(
-        'extension' => '_extension'
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templatephp variables
+php php php php php php*php/
+php php php php protectedphp php$php_messageVariablesphp php=php arrayphp(
+php php php php php php php php php'extensionphp'php php=php>php php'php_extensionphp'
+php php php php php)php;
 
-    /**
-     * Sets validator options
-     *
-     * @param  string|array|Zend_Config $options
-     * @return void
-     */
-    public function __construct($options)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp validatorphp options
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (1 < func_num_args()) {
-            $case = func_get_arg(1);
-            $this->setCase($case);
-        }
+php php php php php php php php ifphp php(php1php <php funcphp_numphp_argsphp(php)php)php php{
+php php php php php php php php php php php php php$casephp php=php funcphp_getphp_argphp(php1php)php;
+php php php php php php php php php php php php php$thisphp-php>setCasephp(php$casephp)php;
+php php php php php php php php php}
 
-        if (is_array($options) and isset($options['case'])) {
-            $this->setCase($options['case']);
-            unset($options['case']);
-        }
+php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php andphp issetphp(php$optionsphp[php'casephp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setCasephp(php$optionsphp[php'casephp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'casephp'php]php)php;
+php php php php php php php php php}
 
-        $this->setExtension($options);
-    }
+php php php php php php php php php$thisphp-php>setExtensionphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Returns the case option
-     *
-     * @return boolean
-     */
-    public function getCase()
-    {
-        return $this->_case;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp casephp option
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getCasephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_casephp;
+php php php php php}
 
-    /**
-     * Sets the case to use
-     *
-     * @param  boolean $case
-     * @return Zend_Validate_File_Extension Provides a fluent interface
-     */
-    public function setCase($case)
-    {
-        $this->_case = (boolean) $case;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp casephp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$case
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Extensionphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setCasephp(php$casephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_casephp php=php php(booleanphp)php php$casephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set file extension
-     *
-     * @return array
-     */
-    public function getExtension()
-    {
-        $extension = explode(',', $this->_extension);
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp filephp extension
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getExtensionphp(php)
+php php php php php{
+php php php php php php php php php$extensionphp php=php explodephp(php'php,php'php,php php$thisphp-php>php_extensionphp)php;
 
-        return $extension;
-    }
+php php php php php php php php returnphp php$extensionphp;
+php php php php php}
 
-    /**
-     * Sets the file extensions
-     *
-     * @param  string|array $extension The extensions to validate
-     * @return Zend_Validate_File_Extension Provides a fluent interface
-     */
-    public function setExtension($extension)
-    {
-        $this->_extension = null;
-        $this->addExtension($extension);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp filephp extensions
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$extensionphp Thephp extensionsphp tophp validate
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Extensionphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setExtensionphp(php$extensionphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_extensionphp php=php nullphp;
+php php php php php php php php php$thisphp-php>addExtensionphp(php$extensionphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Adds the file extensions
-     *
-     * @param  string|array $extension The extensions to add for validation
-     * @return Zend_Validate_File_Extension Provides a fluent interface
-     */
-    public function addExtension($extension)
-    {
-        $extensions = $this->getExtension();
-        if (is_string($extension)) {
-            $extension = explode(',', $extension);
-        }
+php php php php php/php*php*
+php php php php php php*php Addsphp thephp filephp extensions
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$extensionphp Thephp extensionsphp tophp addphp forphp validation
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Extensionphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addExtensionphp(php$extensionphp)
+php php php php php{
+php php php php php php php php php$extensionsphp php=php php$thisphp-php>getExtensionphp(php)php;
+php php php php php php php php ifphp php(isphp_stringphp(php$extensionphp)php)php php{
+php php php php php php php php php php php php php$extensionphp php=php explodephp(php'php,php'php,php php$extensionphp)php;
+php php php php php php php php php}
 
-        foreach ($extension as $content) {
-            if (empty($content) || !is_string($content)) {
-                continue;
-            }
+php php php php php php php php foreachphp php(php$extensionphp asphp php$contentphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$contentphp)php php|php|php php!isphp_stringphp(php$contentphp)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            $extensions[] = trim($content);
-        }
-        $extensions = array_unique($extensions);
+php php php php php php php php php php php php php$extensionsphp[php]php php=php trimphp(php$contentphp)php;
+php php php php php php php php php}
+php php php php php php php php php$extensionsphp php=php arrayphp_uniquephp(php$extensionsphp)php;
 
-        // Sanity check to ensure no empty values
-        foreach ($extensions as $key => $ext) {
-            if (empty($ext)) {
-                unset($extensions[$key]);
-            }
-        }
+php php php php php php php php php/php/php Sanityphp checkphp tophp ensurephp nophp emptyphp values
+php php php php php php php php foreachphp php(php$extensionsphp asphp php$keyphp php=php>php php$extphp)php php{
+php php php php php php php php php php php php ifphp php(emptyphp(php$extphp)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$extensionsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $this->_extension = implode(',', $extensions);
+php php php php php php php php php$thisphp-php>php_extensionphp php=php implodephp(php'php,php'php,php php$extensionsphp)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if and only if the fileextension of $value is included in the
-     * set extension list
-     *
-     * @param  string  $value Real file to check for extension
-     * @param  array   $file  File data from Zend_File_Transfer
-     * @return boolean
-     */
-    public function isValid($value, $file = null)
-    {
-        // Is file readable ?
-        require_once 'Zend/Loader.php';
-        if (!Zend_Loader::isReadable($value)) {
-            return $this->_throw($file, self::NOT_FOUND);
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp fileextensionphp ofphp php$valuephp isphp includedphp inphp the
+php php php php php php*php setphp extensionphp list
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$valuephp Realphp filephp tophp checkphp forphp extension
+php php php php php php*php php@paramphp php arrayphp php php php$filephp php Filephp dataphp fromphp Zendphp_Filephp_Transfer
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$filephp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Isphp filephp readablephp php?
+php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php ifphp php(php!Zendphp_Loaderphp:php:isReadablephp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_FOUNDphp)php;
+php php php php php php php php php}
 
-        if ($file !== null) {
-            $info['extension'] = substr($file['name'], strrpos($file['name'], '.') + 1);
-        } else {
-            $info = pathinfo($value);
-        }
+php php php php php php php php ifphp php(php$filephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$infophp[php'extensionphp'php]php php=php substrphp(php$filephp[php'namephp'php]php,php strrposphp(php$filephp[php'namephp'php]php,php php'php.php'php)php php+php php1php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$infophp php=php pathinfophp(php$valuephp)php;
+php php php php php php php php php}
 
-        $extensions = $this->getExtension();
+php php php php php php php php php$extensionsphp php=php php$thisphp-php>getExtensionphp(php)php;
 
-        if ($this->_case && (in_array($info['extension'], $extensions))) {
-            return true;
-        } else if (!$this->getCase()) {
-            foreach ($extensions as $extension) {
-                if (strtolower($extension) == strtolower($info['extension'])) {
-                    return true;
-                }
-            }
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_casephp php&php&php php(inphp_arrayphp(php$infophp[php'extensionphp'php]php,php php$extensionsphp)php)php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp ifphp php(php!php$thisphp-php>getCasephp(php)php)php php{
+php php php php php php php php php php php php foreachphp php(php$extensionsphp asphp php$extensionphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strtolowerphp(php$extensionphp)php php=php=php strtolowerphp(php$infophp[php'extensionphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_throw($file, self::FALSE_EXTENSION);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:FALSEphp_EXTENSIONphp)php;
+php php php php php}
 
-    /**
-     * Throws an error of the given type
-     *
-     * @param  string $file
-     * @param  string $errorType
-     * @return false
-     */
-    protected function _throw($file, $errorType)
-    {
-        if (null !== $file) {
-            $this->_value = $file['name'];
-        }
+php php php php php/php*php*
+php php php php php php*php Throwsphp anphp errorphp ofphp thephp givenphp type
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$file
+php php php php php php*php php@paramphp php stringphp php$errorType
+php php php php php php*php php@returnphp false
+php php php php php php*php/
+php php php php protectedphp functionphp php_throwphp(php$filephp,php php$errorTypephp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$filephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_valuephp php=php php$filephp[php'namephp'php]php;
+php php php php php php php php php}
 
-        $this->_error($errorType);
-        return false;
-    }
-}
+php php php php php php php php php$thisphp-php>php_errorphp(php$errorTypephp)php;
+php php php php php php php php returnphp falsephp;
+php php php php php}
+php}

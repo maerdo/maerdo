@@ -1,127 +1,127 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Router
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Static.php 23210 2010-10-21 16:10:55Z matthew $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Router
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Staticphp.phpphp php2php3php2php1php0php php2php0php1php0php-php1php0php-php2php1php php1php6php:php1php0php:php5php5Zphp matthewphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Controller_Router_Route_Abstract */
-require_once 'Zend/Controller/Router/Route/Abstract.php';
+php/php*php*php Zendphp_Controllerphp_Routerphp_Routephp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Routephp/Abstractphp.phpphp'php;
 
-/**
- * StaticRoute is used for managing static URIs.
- *
- * It's a lot faster compared to the standard Route implementation.
- *
- * @package    Zend_Controller
- * @subpackage Router
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Controller_Router_Route_Static extends Zend_Controller_Router_Route_Abstract
-{
+php/php*php*
+php php*php StaticRoutephp isphp usedphp forphp managingphp staticphp URIsphp.
+php php*
+php php*php Itphp'sphp aphp lotphp fasterphp comparedphp tophp thephp standardphp Routephp implementationphp.
+php php*
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Router
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Controllerphp_Routerphp_Routephp_Staticphp extendsphp Zendphp_Controllerphp_Routerphp_Routephp_Abstract
+php{
 
-    protected $_route = null;
-    protected $_defaults = array();
+php php php php protectedphp php$php_routephp php=php nullphp;
+php php php php protectedphp php$php_defaultsphp php=php arrayphp(php)php;
 
-    public function getVersion() {
-        return 1;
-    }
+php php php php publicphp functionphp getVersionphp(php)php php{
+php php php php php php php php returnphp php1php;
+php php php php php}
 
-    /**
-     * Instantiates route based on passed Zend_Config structure
-     *
-     * @param Zend_Config $config Configuration object
-     */
-    public static function getInstance(Zend_Config $config)
-    {
-        $defs = ($config->defaults instanceof Zend_Config) ? $config->defaults->toArray() : array();
-        return new self($config->route, $defs);
-    }
+php php php php php/php*php*
+php php php php php php*php Instantiatesphp routephp basedphp onphp passedphp Zendphp_Configphp structure
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Configphp php$configphp Configurationphp object
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getInstancephp(Zendphp_Configphp php$configphp)
+php php php php php{
+php php php php php php php php php$defsphp php=php php(php$configphp-php>defaultsphp instanceofphp Zendphp_Configphp)php php?php php$configphp-php>defaultsphp-php>toArrayphp(php)php php:php arrayphp(php)php;
+php php php php php php php php returnphp newphp selfphp(php$configphp-php>routephp,php php$defsphp)php;
+php php php php php}
 
-    /**
-     * Prepares the route for mapping.
-     *
-     * @param string $route Map used to match with later submitted URL path
-     * @param array $defaults Defaults for map variables with keys as variable names
-     */
-    public function __construct($route, $defaults = array())
-    {
-        $this->_route = trim($route, '/');
-        $this->_defaults = (array) $defaults;
-    }
+php php php php php/php*php*
+php php php php php php*php Preparesphp thephp routephp forphp mappingphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$routephp Mapphp usedphp tophp matchphp withphp laterphp submittedphp URLphp path
+php php php php php php*php php@paramphp arrayphp php$defaultsphp Defaultsphp forphp mapphp variablesphp withphp keysphp asphp variablephp names
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$routephp,php php$defaultsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_routephp php=php trimphp(php$routephp,php php'php/php'php)php;
+php php php php php php php php php$thisphp-php>php_defaultsphp php=php php(arrayphp)php php$defaultsphp;
+php php php php php}
 
-    /**
-     * Matches a user submitted path with a previously defined route.
-     * Assigns and returns an array of defaults on a successful match.
-     *
-     * @param string $path Path used to match against this routing map
-     * @return array|false An array of assigned values or a false on a mismatch
-     */
-    public function match($path, $partial = false)
-    {
-        if ($partial) {
-            if ((empty($path) && empty($this->_route))
-                || (substr($path, 0, strlen($this->_route)) === $this->_route)
-            ) {
-                $this->setMatchedPath($this->_route);
-                return $this->_defaults;
-            }
-        } else {
-            if (trim($path, '/') == $this->_route) {
-                return $this->_defaults;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Matchesphp aphp userphp submittedphp pathphp withphp aphp previouslyphp definedphp routephp.
+php php php php php php*php Assignsphp andphp returnsphp anphp arrayphp ofphp defaultsphp onphp aphp successfulphp matchphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$pathphp Pathphp usedphp tophp matchphp againstphp thisphp routingphp map
+php php php php php php*php php@returnphp arrayphp|falsephp Anphp arrayphp ofphp assignedphp valuesphp orphp aphp falsephp onphp aphp mismatch
+php php php php php php*php/
+php php php php publicphp functionphp matchphp(php$pathphp,php php$partialphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$partialphp)php php{
+php php php php php php php php php php php php ifphp php(php(emptyphp(php$pathphp)php php&php&php emptyphp(php$thisphp-php>php_routephp)php)
+php php php php php php php php php php php php php php php php php|php|php php(substrphp(php$pathphp,php php0php,php strlenphp(php$thisphp-php>php_routephp)php)php php=php=php=php php$thisphp-php>php_routephp)
+php php php php php php php php php php php php php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setMatchedPathphp(php$thisphp-php>php_routephp)php;
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_defaultsphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php ifphp php(trimphp(php$pathphp,php php'php/php'php)php php=php=php php$thisphp-php>php_routephp)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_defaultsphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Assembles a URL path defined by this route
-     *
-     * @param array $data An array of variable and value pairs used as parameters
-     * @return string Route path with user submitted parameters
-     */
-    public function assemble($data = array(), $reset = false, $encode = false, $partial = false)
-    {
-        return $this->_route;
-    }
+php php php php php/php*php*
+php php php php php php*php Assemblesphp aphp URLphp pathphp definedphp byphp thisphp route
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$dataphp Anphp arrayphp ofphp variablephp andphp valuephp pairsphp usedphp asphp parameters
+php php php php php php*php php@returnphp stringphp Routephp pathphp withphp userphp submittedphp parameters
+php php php php php php*php/
+php php php php publicphp functionphp assemblephp(php$dataphp php=php arrayphp(php)php,php php$resetphp php=php falsephp,php php$encodephp php=php falsephp,php php$partialphp php=php falsephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_routephp;
+php php php php php}
 
-    /**
-     * Return a single parameter of route's defaults
-     *
-     * @param string $name Array key of the parameter
-     * @return string Previously set default
-     */
-    public function getDefault($name) {
-        if (isset($this->_defaults[$name])) {
-            return $this->_defaults[$name];
-        }
-        return null;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp singlephp parameterphp ofphp routephp'sphp defaults
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namephp Arrayphp keyphp ofphp thephp parameter
+php php php php php php*php php@returnphp stringphp Previouslyphp setphp default
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultphp(php$namephp)php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_defaultsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_defaultsphp[php$namephp]php;
+php php php php php php php php php}
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Return an array of defaults
-     *
-     * @return array Route defaults
-     */
-    public function getDefaults() {
-        return $this->_defaults;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp defaults
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Routephp defaults
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultsphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_defaultsphp;
+php php php php php}
 
-}
+php}

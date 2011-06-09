@@ -1,315 +1,315 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @subpackage Actions
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Created.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Actions
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Createdphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** Internally used classes */
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
-require_once 'Zend/Pdf/Element/String.php';
+php/php*php*php Internallyphp usedphp classesphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Stringphp.phpphp'php;
 
 
-/** Zend_Pdf_Outline */
-require_once 'Zend/Pdf/Outline.php';
+php/php*php*php Zendphp_Pdfphp_Outlinephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Outlinephp.phpphp'php;
 
-/**
- * PDF outline representation class
- *
- * @todo Implement an ability to associate an outline item with a structure element (PDF 1.3 feature)
- *
- * @package    Zend_Pdf
- * @subpackage Outlines
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Pdf_Outline_Created extends Zend_Pdf_Outline
-{
-    /**
-     * Outline title.
-     *
-     * @var string
-     */
-    protected $_title;
+php/php*php*
+php php*php PDFphp outlinephp representationphp class
+php php*
+php php*php php@todophp Implementphp anphp abilityphp tophp associatephp anphp outlinephp itemphp withphp aphp structurephp elementphp php(PDFphp php1php.php3php featurephp)
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Outlines
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Pdfphp_Outlinephp_Createdphp extendsphp Zendphp_Pdfphp_Outline
+php{
+php php php php php/php*php*
+php php php php php php*php Outlinephp titlephp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_titlephp;
 
-    /**
-     * Color to be used for the outline entry’s text.
+php php php php php/php*php*
+php php php php php php*php Colorphp tophp bephp usedphp forphp thephp outlinephp entryphp’sphp textphp.
 
-     * It uses the DeviceRGB color space for color representation.
-     * Null means default value - black ([0.0 0.0 0.0] in RGB representation).
-     *
-     * @var Zend_Pdf_Color_Rgb
-     */
-    protected $_color = null;
+php php php php php php*php Itphp usesphp thephp DeviceRGBphp colorphp spacephp forphp colorphp representationphp.
+php php php php php php*php Nullphp meansphp defaultphp valuephp php-php blackphp php(php[php0php.php0php php0php.php0php php0php.php0php]php inphp RGBphp representationphp)php.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_Colorphp_Rgb
+php php php php php php*php/
+php php php php protectedphp php$php_colorphp php=php nullphp;
 
-    /**
-     * True if outline item is displayed in italic.
-     * Default value is false.
-     *
-     * @var boolean
-     */
-    protected $_italic = false;
+php php php php php/php*php*
+php php php php php php*php Truephp ifphp outlinephp itemphp isphp displayedphp inphp italicphp.
+php php php php php php*php Defaultphp valuephp isphp falsephp.
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_italicphp php=php falsephp;
 
-    /**
-     * True if outline item is displayed in bold.
-     * Default value is false.
-     *
-     * @var boolean
-     */
-    protected $_bold = false;
+php php php php php/php*php*
+php php php php php php*php Truephp ifphp outlinephp itemphp isphp displayedphp inphp boldphp.
+php php php php php php*php Defaultphp valuephp isphp falsephp.
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_boldphp php=php falsephp;
 
-    /**
-     * Target destination or action.
-     * String means named destination
-     *
-     * Null means no target.
-     *
-     * @var Zend_Pdf_Destination|Zend_Pdf_Action
-     */
-    protected $_target = null;
-
-
-    /**
-     * Get outline title.
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->_title;
-    }
-
-    /**
-     * Set outline title
-     *
-     * @param string $title
-     * @return Zend_Pdf_Outline
-     */
-    public function setTitle($title)
-    {
-        $this->_title = $title;
-        return $this;
-    }
-
-    /**
-     * Returns true if outline item is displayed in italic
-     *
-     * @return boolean
-     */
-    public function isItalic()
-    {
-        return $this->_italic;
-    }
-
-    /**
-     * Sets 'isItalic' outline flag
-     *
-     * @param boolean $isItalic
-     * @return Zend_Pdf_Outline
-     */
-    public function setIsItalic($isItalic)
-    {
-        $this->_italic = $isItalic;
-        return $this;
-    }
-
-    /**
-     * Returns true if outline item is displayed in bold
-     *
-     * @return boolean
-     */
-    public function isBold()
-    {
-        return $this->_bold;
-    }
-
-    /**
-     * Sets 'isBold' outline flag
-     *
-     * @param boolean $isBold
-     * @return Zend_Pdf_Outline
-     */
-    public function setIsBold($isBold)
-    {
-        $this->_bold = $isBold;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Targetphp destinationphp orphp actionphp.
+php php php php php php*php Stringphp meansphp namedphp destination
+php php php php php php*
+php php php php php php*php Nullphp meansphp nophp targetphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_Destinationphp|Zendphp_Pdfphp_Action
+php php php php php php*php/
+php php php php protectedphp php$php_targetphp php=php nullphp;
 
 
-    /**
-     * Get outline text color.
-     *
-     * @return Zend_Pdf_Color_Rgb
-     */
-    public function getColor()
-    {
-        return $this->_color;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp outlinephp titlephp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTitlephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_titlephp;
+php php php php php}
 
-    /**
-     * Set outline text color.
-     * (null means default color which is black)
-     *
-     * @param Zend_Pdf_Color_Rgb $color
-     * @return Zend_Pdf_Outline
-     */
-    public function setColor(Zend_Pdf_Color_Rgb $color)
-    {
-        $this->_color = $color;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp outlinephp title
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$title
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Outline
+php php php php php php*php/
+php php php php publicphp functionphp setTitlephp(php$titlephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_titlephp php=php php$titlephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get outline target.
-     *
-     * @return Zend_Pdf_Target
-     */
-    public function getTarget()
-    {
-        return $this->_target;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp outlinephp itemphp isphp displayedphp inphp italic
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isItalicphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_italicphp;
+php php php php php}
 
-    /**
-     * Set outline target.
-     * Null means no target
-     *
-     * @param Zend_Pdf_Target|string $target
-     * @return Zend_Pdf_Outline
-     * @throws Zend_Pdf_Exception
-     */
-    public function setTarget($target = null)
-    {
-        if (is_string($target)) {
-            require_once 'Zend/Pdf/Destination/Named.php';
-            $target = new Zend_Pdf_Destination_Named($target);
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp php'isItalicphp'php outlinephp flag
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$isItalic
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Outline
+php php php php php php*php/
+php php php php publicphp functionphp setIsItalicphp(php$isItalicphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_italicphp php=php php$isItalicphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-        if ($target === null  ||  $target instanceof Zend_Pdf_Target) {
-            $this->_target = $target;
-        } else {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Outline target has to be Zend_Pdf_Destination or Zend_Pdf_Action object or string');
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp outlinephp itemphp isphp displayedphp inphp bold
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isBoldphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_boldphp;
+php php php php php}
 
-        return $this;
-    }
-
-
-    /**
-     * Object constructor
-     *
-     * @param array $options
-     * @throws Zend_Pdf_Exception
-     */
-    public function __construct($options = array())
-    {
-        if (!isset($options['title'])) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Title parameter is required.');
-        }
-
-        $this->setOptions($options);
-    }
-
-    /**
-     * Dump Outline and its child outlines into PDF structures
-     *
-     * Returns dictionary indirect object or reference
-     *
-     * @internal
-     * @param Zend_Pdf_ElementFactory    $factory object factory for newly created indirect objects
-     * @param boolean $updateNavigation  Update navigation flag
-     * @param Zend_Pdf_Element $parent   Parent outline dictionary reference
-     * @param Zend_Pdf_Element $prev     Previous outline dictionary reference
-     * @param SplObjectStorage $processedOutlines  List of already processed outlines
-     * @return Zend_Pdf_Element
-     * @throws Zend_Pdf_Exception
-     */
-    public function dumpOutline(Zend_Pdf_ElementFactory_Interface $factory,
-                                                                  $updateNavigation,
-                                                 Zend_Pdf_Element $parent,
-                                                 Zend_Pdf_Element $prev = null,
-                                                 SplObjectStorage $processedOutlines = null)
-    {
-        if ($processedOutlines === null) {
-            $processedOutlines = new SplObjectStorage();
-        }
-        $processedOutlines->attach($this);
-
-        $outlineDictionary = $factory->newObject(new Zend_Pdf_Element_Dictionary());
-
-        $outlineDictionary->Title = new Zend_Pdf_Element_String($this->getTitle());
-
-        $target = $this->getTarget();
-        if ($target === null) {
-            // Do nothing
-        } else if ($target instanceof Zend_Pdf_Destination) {
-            $outlineDictionary->Dest = $target->getResource();
-        } else if ($target instanceof Zend_Pdf_Action) {
-            $outlineDictionary->A    = $target->getResource();
-        } else {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Outline target has to be Zend_Pdf_Destination, Zend_Pdf_Action object or null');
-        }
-
-        $color = $this->getColor();
-        if ($color !== null) {
-            $components = $color->getComponents();
-            $colorComponentElements = array(new Zend_Pdf_Element_Numeric($components[0]),
-                                            new Zend_Pdf_Element_Numeric($components[1]),
-                                            new Zend_Pdf_Element_Numeric($components[2]));
-            $outlineDictionary->C = new Zend_Pdf_Element_Array($colorComponentElements);
-        }
-
-        if ($this->isItalic()  ||  $this->isBold()) {
-            $outlineDictionary->F = new Zend_Pdf_Element_Numeric(($this->isItalic()? 1 : 0)  |   // Bit 1 - Italic
-                                                                 ($this->isBold()?   2 : 0));    // Bit 2 - Bold
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp php'isBoldphp'php outlinephp flag
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$isBold
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Outline
+php php php php php php*php/
+php php php php publicphp functionphp setIsBoldphp(php$isBoldphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_boldphp php=php php$isBoldphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
 
-        $outlineDictionary->Parent = $parent;
-        $outlineDictionary->Prev   = $prev;
+php php php php php/php*php*
+php php php php php php*php Getphp outlinephp textphp colorphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Colorphp_Rgb
+php php php php php php*php/
+php php php php publicphp functionphp getColorphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_colorphp;
+php php php php php}
 
-        $lastChild = null;
-        foreach ($this->childOutlines as $childOutline) {
-            if ($processedOutlines->contains($childOutline)) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Outlines cyclyc reference is detected.');
-            }
+php php php php php/php*php*
+php php php php php php*php Setphp outlinephp textphp colorphp.
+php php php php php php*php php(nullphp meansphp defaultphp colorphp whichphp isphp blackphp)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Colorphp_Rgbphp php$color
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Outline
+php php php php php php*php/
+php php php php publicphp functionphp setColorphp(Zendphp_Pdfphp_Colorphp_Rgbphp php$colorphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_colorphp php=php php$colorphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-            if ($lastChild === null) {
-                $lastChild = $childOutline->dumpOutline($factory, true, $outlineDictionary, null, $processedOutlines);
-                $outlineDictionary->First = $lastChild;
-            } else {
-                $childOutlineDictionary = $childOutline->dumpOutline($factory, true, $outlineDictionary, $lastChild, $processedOutlines);
-                $lastChild->Next = $childOutlineDictionary;
-                $lastChild       = $childOutlineDictionary;
-            }
-        }
-        $outlineDictionary->Last = $lastChild;
+php php php php php/php*php*
+php php php php php php*php Getphp outlinephp targetphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Target
+php php php php php php*php/
+php php php php publicphp functionphp getTargetphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_targetphp;
+php php php php php}
 
-        if (count($this->childOutlines) != 0) {
-            $outlineDictionary->Count = new Zend_Pdf_Element_Numeric(($this->isOpen()? 1 : -1)*count($this->childOutlines));
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp outlinephp targetphp.
+php php php php php php*php Nullphp meansphp nophp target
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Targetphp|stringphp php$target
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Outline
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setTargetphp(php$targetphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$targetphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Destinationphp/Namedphp.phpphp'php;
+php php php php php php php php php php php php php$targetphp php=php newphp Zendphp_Pdfphp_Destinationphp_Namedphp(php$targetphp)php;
+php php php php php php php php php}
 
-        return $outlineDictionary;
-    }
-}
+php php php php php php php php ifphp php(php$targetphp php=php=php=php nullphp php php|php|php php php$targetphp instanceofphp Zendphp_Pdfphp_Targetphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_targetphp php=php php$targetphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Outlinephp targetphp hasphp tophp bephp Zendphp_Pdfphp_Destinationphp orphp Zendphp_Pdfphp_Actionphp objectphp orphp stringphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php'titlephp'php]php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Titlephp parameterphp isphp requiredphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Dumpphp Outlinephp andphp itsphp childphp outlinesphp intophp PDFphp structures
+php php php php php php*
+php php php php php php*php Returnsphp dictionaryphp indirectphp objectphp orphp reference
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php php php php$factoryphp objectphp factoryphp forphp newlyphp createdphp indirectphp objects
+php php php php php php*php php@paramphp booleanphp php$updateNavigationphp php Updatephp navigationphp flag
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp php$parentphp php php Parentphp outlinephp dictionaryphp reference
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp php$prevphp php php php php Previousphp outlinephp dictionaryphp reference
+php php php php php php*php php@paramphp SplObjectStoragephp php$processedOutlinesphp php Listphp ofphp alreadyphp processedphp outlines
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Element
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp dumpOutlinephp(Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factoryphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updateNavigationphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Elementphp php$parentphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Elementphp php$prevphp php=php nullphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php SplObjectStoragephp php$processedOutlinesphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$processedOutlinesphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$processedOutlinesphp php=php newphp SplObjectStoragephp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$processedOutlinesphp-php>attachphp(php$thisphp)php;
+
+php php php php php php php php php$outlineDictionaryphp php=php php$factoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+
+php php php php php php php php php$outlineDictionaryphp-php>Titlephp php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php$thisphp-php>getTitlephp(php)php)php;
+
+php php php php php php php php php$targetphp php=php php$thisphp-php>getTargetphp(php)php;
+php php php php php php php php ifphp php(php$targetphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php Dophp nothing
+php php php php php php php php php}php elsephp ifphp php(php$targetphp instanceofphp Zendphp_Pdfphp_Destinationphp)php php{
+php php php php php php php php php php php php php$outlineDictionaryphp-php>Destphp php=php php$targetphp-php>getResourcephp(php)php;
+php php php php php php php php php}php elsephp ifphp php(php$targetphp instanceofphp Zendphp_Pdfphp_Actionphp)php php{
+php php php php php php php php php php php php php$outlineDictionaryphp-php>Aphp php php php php=php php$targetphp-php>getResourcephp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Outlinephp targetphp hasphp tophp bephp Zendphp_Pdfphp_Destinationphp,php Zendphp_Pdfphp_Actionphp objectphp orphp nullphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$colorphp php=php php$thisphp-php>getColorphp(php)php;
+php php php php php php php php ifphp php(php$colorphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$componentsphp php=php php$colorphp-php>getComponentsphp(php)php;
+php php php php php php php php php php php php php$colorComponentElementsphp php=php arrayphp(newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$componentsphp[php0php]php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$componentsphp[php1php]php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$componentsphp[php2php]php)php)php;
+php php php php php php php php php php php php php$outlineDictionaryphp-php>Cphp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php$colorComponentElementsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>isItalicphp(php)php php php|php|php php php$thisphp-php>isBoldphp(php)php)php php{
+php php php php php php php php php php php php php$outlineDictionaryphp-php>Fphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php(php$thisphp-php>isItalicphp(php)php?php php1php php:php php0php)php php php|php php php php/php/php Bitphp php1php php-php Italic
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$thisphp-php>isBoldphp(php)php?php php php php2php php:php php0php)php)php;php php php php php/php/php Bitphp php2php php-php Bold
+php php php php php php php php php}
+
+
+php php php php php php php php php$outlineDictionaryphp-php>Parentphp php=php php$parentphp;
+php php php php php php php php php$outlineDictionaryphp-php>Prevphp php php php=php php$prevphp;
+
+php php php php php php php php php$lastChildphp php=php nullphp;
+php php php php php php php php foreachphp php(php$thisphp-php>childOutlinesphp asphp php$childOutlinephp)php php{
+php php php php php php php php php php php php ifphp php(php$processedOutlinesphp-php>containsphp(php$childOutlinephp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Outlinesphp cyclycphp referencephp isphp detectedphp.php'php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$lastChildphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$lastChildphp php=php php$childOutlinephp-php>dumpOutlinephp(php$factoryphp,php truephp,php php$outlineDictionaryphp,php nullphp,php php$processedOutlinesphp)php;
+php php php php php php php php php php php php php php php php php$outlineDictionaryphp-php>Firstphp php=php php$lastChildphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$childOutlineDictionaryphp php=php php$childOutlinephp-php>dumpOutlinephp(php$factoryphp,php truephp,php php$outlineDictionaryphp,php php$lastChildphp,php php$processedOutlinesphp)php;
+php php php php php php php php php php php php php php php php php$lastChildphp-php>Nextphp php=php php$childOutlineDictionaryphp;
+php php php php php php php php php php php php php php php php php$lastChildphp php php php php php php php=php php$childOutlineDictionaryphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$outlineDictionaryphp-php>Lastphp php=php php$lastChildphp;
+
+php php php php php php php php ifphp php(countphp(php$thisphp-php>childOutlinesphp)php php!php=php php0php)php php{
+php php php php php php php php php php php php php$outlineDictionaryphp-php>Countphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php(php$thisphp-php>isOpenphp(php)php?php php1php php:php php-php1php)php*countphp(php$thisphp-php>childOutlinesphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$outlineDictionaryphp;
+php php php php php}
+php}

@@ -1,198 +1,198 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Zend_Server_Reflection_Method
- */
-require_once 'Zend/Server/Reflection/Method.php';
+php/php*php*
+php php*php Zendphp_Serverphp_Reflectionphp_Method
+php php*php/
+requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Methodphp.phpphp'php;
 
-/**
- * Class/Object reflection
- *
- * Proxies calls to a ReflectionClass object, and decorates getMethods() by
- * creating its own list of {@link Zend_Server_Reflection_Method}s.
- *
- * @category   Zend
- * @package    Zend_Server
- * @subpackage Reflection
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version $Id: Class.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Server_Reflection_Class
-{
-    /**
-     * Optional configuration parameters; accessible via {@link __get} and
-     * {@link __set()}
-     * @var array
-     */
-    protected $_config = array();
+php/php*php*
+php php*php Classphp/Objectphp reflection
+php php*
+php php*php Proxiesphp callsphp tophp aphp ReflectionClassphp objectphp,php andphp decoratesphp getMethodsphp(php)php by
+php php*php creatingphp itsphp ownphp listphp ofphp php{php@linkphp Zendphp_Serverphp_Reflectionphp_Methodphp}sphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Server
+php php*php php@subpackagephp Reflection
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php$Idphp:php Classphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Serverphp_Reflectionphp_Class
+php{
+php php php php php/php*php*
+php php php php php php*php Optionalphp configurationphp parametersphp;php accessiblephp viaphp php{php@linkphp php_php_getphp}php and
+php php php php php php*php php{php@linkphp php_php_setphp(php)php}
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_configphp php=php arrayphp(php)php;
 
-    /**
-     * Array of {@link Zend_Server_Reflection_Method}s
-     * @var array
-     */
-    protected $_methods = array();
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp php{php@linkphp Zendphp_Serverphp_Reflectionphp_Methodphp}s
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_methodsphp php=php arrayphp(php)php;
 
-    /**
-     * Namespace
-     * @var string
-     */
-    protected $_namespace = null;
+php php php php php/php*php*
+php php php php php php*php Namespace
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namespacephp php=php nullphp;
 
-    /**
-     * ReflectionClass object
-     * @var ReflectionClass
-     */
-    protected $_reflection;
+php php php php php/php*php*
+php php php php php php*php ReflectionClassphp object
+php php php php php php*php php@varphp ReflectionClass
+php php php php php php*php/
+php php php php protectedphp php$php_reflectionphp;
 
-    /**
-     * Constructor
-     *
-     * Create array of dispatchable methods, each a
-     * {@link Zend_Server_Reflection_Method}. Sets reflection object property.
-     *
-     * @param ReflectionClass $reflection
-     * @param string $namespace
-     * @param mixed $argv
-     * @return void
-     */
-    public function __construct(ReflectionClass $reflection, $namespace = null, $argv = false)
-    {
-        $this->_reflection = $reflection;
-        $this->setNamespace($namespace);
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php Createphp arrayphp ofphp dispatchablephp methodsphp,php eachphp a
+php php php php php php*php php{php@linkphp Zendphp_Serverphp_Reflectionphp_Methodphp}php.php Setsphp reflectionphp objectphp propertyphp.
+php php php php php php*
+php php php php php php*php php@paramphp ReflectionClassphp php$reflection
+php php php php php php*php php@paramphp stringphp php$namespace
+php php php php php php*php php@paramphp mixedphp php$argv
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(ReflectionClassphp php$reflectionphp,php php$namespacephp php=php nullphp,php php$argvphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_reflectionphp php=php php$reflectionphp;
+php php php php php php php php php$thisphp-php>setNamespacephp(php$namespacephp)php;
 
-        foreach ($reflection->getMethods() as $method) {
-            // Don't aggregate magic methods
-            if ('__' == substr($method->getName(), 0, 2)) {
-                continue;
-            }
+php php php php php php php php foreachphp php(php$reflectionphp-php>getMethodsphp(php)php asphp php$methodphp)php php{
+php php php php php php php php php php php php php/php/php Donphp'tphp aggregatephp magicphp methods
+php php php php php php php php php php php php ifphp php(php'php_php_php'php php=php=php substrphp(php$methodphp-php>getNamephp(php)php,php php0php,php php2php)php)php php{
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            if ($method->isPublic()) {
-                // Get signatures and description
-                $this->_methods[] = new Zend_Server_Reflection_Method($this, $method, $this->getNamespace(), $argv);
-            }
-        }
-    }
+php php php php php php php php php php php php ifphp php(php$methodphp-php>isPublicphp(php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Getphp signaturesphp andphp description
+php php php php php php php php php php php php php php php php php$thisphp-php>php_methodsphp[php]php php=php newphp Zendphp_Serverphp_Reflectionphp_Methodphp(php$thisphp,php php$methodphp,php php$thisphp-php>getNamespacephp(php)php,php php$argvphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Proxy reflection calls
-     *
-     * @param string $method
-     * @param array $args
-     * @return mixed
-     */
-    public function __call($method, $args)
-    {
-        if (method_exists($this->_reflection, $method)) {
-            return call_user_func_array(array($this->_reflection, $method), $args);
-        }
+php php php php php/php*php*
+php php php php php php*php Proxyphp reflectionphp calls
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$method
+php php php php php php*php php@paramphp arrayphp php$args
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
+php php php php php{
+php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp-php>php_reflectionphp,php php$methodphp)php)php php{
+php php php php php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_reflectionphp,php php$methodphp)php,php php$argsphp)php;
+php php php php php php php php php}
 
-        require_once 'Zend/Server/Reflection/Exception.php';
-        throw new Zend_Server_Reflection_Exception('Invalid reflection method');
-    }
+php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp methodphp'php)php;
+php php php php php}
 
-    /**
-     * Retrieve configuration parameters
-     *
-     * Values are retrieved by key from {@link $_config}. Returns null if no
-     * value found.
-     *
-     * @param string $key
-     * @return mixed
-     */
-    public function __get($key)
-    {
-        if (isset($this->_config[$key])) {
-            return $this->_config[$key];
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp configurationphp parameters
+php php php php php php*
+php php php php php php*php Valuesphp arephp retrievedphp byphp keyphp fromphp php{php@linkphp php$php_configphp}php.php Returnsphp nullphp ifphp no
+php php php php php php*php valuephp foundphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$key
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp php_php_getphp(php$keyphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_configphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_configphp[php$keyphp]php;
+php php php php php php php php php}
 
-        return null;
-    }
+php php php php php php php php returnphp nullphp;
+php php php php php}
 
-    /**
-     * Set configuration parameters
-     *
-     * Values are stored by $key in {@link $_config}.
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return void
-     */
-    public function __set($key, $value)
-    {
-        $this->_config[$key] = $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp configurationphp parameters
+php php php php php php*
+php php php php php php*php Valuesphp arephp storedphp byphp php$keyphp inphp php{php@linkphp php$php_configphp}php.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$key
+php php php php php php*php php@paramphp mixedphp php$value
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_setphp(php$keyphp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_configphp[php$keyphp]php php=php php$valuephp;
+php php php php php}
 
-    /**
-     * Return array of dispatchable {@link Zend_Server_Reflection_Method}s.
-     *
-     * @access public
-     * @return array
-     */
-    public function getMethods()
-    {
-        return $this->_methods;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp arrayphp ofphp dispatchablephp php{php@linkphp Zendphp_Serverphp_Reflectionphp_Methodphp}sphp.
+php php php php php php*
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getMethodsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_methodsphp;
+php php php php php}
 
-    /**
-     * Get namespace for this class
-     *
-     * @return string
-     */
-    public function getNamespace()
-    {
-        return $this->_namespace;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp namespacephp forphp thisphp class
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamespacephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_namespacephp;
+php php php php php}
 
-    /**
-     * Set namespace for this class
-     *
-     * @param string $namespace
-     * @return void
-     */
-    public function setNamespace($namespace)
-    {
-        if (empty($namespace)) {
-            $this->_namespace = '';
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp namespacephp forphp thisphp class
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$namespace
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setNamespacephp(php$namespacephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$namespacephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_namespacephp php=php php'php'php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        if (!is_string($namespace) || !preg_match('/[a-z0-9_\.]+/i', $namespace)) {
-            require_once 'Zend/Server/Reflection/Exception.php';
-            throw new Zend_Server_Reflection_Exception('Invalid namespace');
-        }
+php php php php php php php php ifphp php(php!isphp_stringphp(php$namespacephp)php php|php|php php!pregphp_matchphp(php'php/php[aphp-zphp0php-php9php_php\php.php]php+php/iphp'php,php php$namespacephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp namespacephp'php)php;
+php php php php php php php php php}
 
-        $this->_namespace = $namespace;
-    }
+php php php php php php php php php$thisphp-php>php_namespacephp php=php php$namespacephp;
+php php php php php}
 
-    /**
-     * Wakeup from serialization
-     *
-     * Reflection needs explicit instantiation to work correctly. Re-instantiate
-     * reflection object on wakeup.
-     *
-     * @return void
-     */
-    public function __wakeup()
-    {
-        $this->_reflection = new ReflectionClass($this->getName());
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Wakeupphp fromphp serialization
+php php php php php php*
+php php php php php php*php Reflectionphp needsphp explicitphp instantiationphp tophp workphp correctlyphp.php Rephp-instantiate
+php php php php php php*php reflectionphp objectphp onphp wakeupphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_wakeupphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_reflectionphp php=php newphp ReflectionClassphp(php$thisphp-php>getNamephp(php)php)php;
+php php php php php}
+php}

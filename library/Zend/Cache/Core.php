@@ -1,757 +1,757 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cache
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Core.php 22651 2010-07-21 04:19:44Z ramon $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Corephp.phpphp php2php2php6php5php1php php2php0php1php0php-php0php7php-php2php1php php0php4php:php1php9php:php4php4Zphp ramonphp php$
+php php*php/
 
 
-/**
- * @package    Zend_Cache
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cache_Core
-{
-    /**
-     * Messages
-     */
-    const BACKEND_NOT_SUPPORTS_TAG = 'tags are not supported by the current backend';
-    const BACKEND_NOT_IMPLEMENTS_EXTENDED_IF = 'Current backend doesn\'t implement the Zend_Cache_Backend_ExtendedInterface, so this method is not available';
+php/php*php*
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cachephp_Core
+php{
+php php php php php/php*php*
+php php php php php php*php Messages
+php php php php php php*php/
+php php php php constphp BACKENDphp_NOTphp_SUPPORTSphp_TAGphp php=php php'tagsphp arephp notphp supportedphp byphp thephp currentphp backendphp'php;
+php php php php constphp BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp php=php php'Currentphp backendphp doesnphp\php'tphp implementphp thephp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp,php sophp thisphp methodphp isphp notphp availablephp'php;
 
-    /**
-     * Backend Object
-     *
-     * @var Zend_Cache_Backend_Interface $_backend
-     */
-    protected $_backend = null;
+php php php php php/php*php*
+php php php php php php*php Backendphp Object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Cachephp_Backendphp_Interfacephp php$php_backend
+php php php php php php*php/
+php php php php protectedphp php$php_backendphp php=php nullphp;
 
-    /**
-     * Available options
-     *
-     * ====> (boolean) write_control :
-     * - Enable / disable write control (the cache is read just after writing to detect corrupt entries)
-     * - Enable write control will lightly slow the cache writing but not the cache reading
-     * Write control can detect some corrupt cache files but maybe it's not a perfect control
-     *
-     * ====> (boolean) caching :
-     * - Enable / disable caching
-     * (can be very useful for the debug of cached scripts)
-     *
-     * =====> (string) cache_id_prefix :
-     * - prefix for cache ids (namespace)
-     *
-     * ====> (boolean) automatic_serialization :
-     * - Enable / disable automatic serialization
-     * - It can be used to save directly datas which aren't strings (but it's slower)
-     *
-     * ====> (int) automatic_cleaning_factor :
-     * - Disable / Tune the automatic cleaning process
-     * - The automatic cleaning process destroy too old (for the given life time)
-     *   cache files when a new cache file is written :
-     *     0               => no automatic cache cleaning
-     *     1               => systematic cache cleaning
-     *     x (integer) > 1 => automatic cleaning randomly 1 times on x cache write
-     *
-     * ====> (int) lifetime :
-     * - Cache lifetime (in seconds)
-     * - If null, the cache is valid forever.
-     *
-     * ====> (boolean) logging :
-     * - If set to true, logging is activated (but the system is slower)
-     *
-     * ====> (boolean) ignore_user_abort
-     * - If set to true, the core will set the ignore_user_abort PHP flag inside the
-     *   save() method to avoid cache corruptions in some cases (default false)
-     *
-     * @var array $_options available options
-     */
-    protected $_options = array(
-        'write_control'             => true,
-        'caching'                   => true,
-        'cache_id_prefix'           => null,
-        'automatic_serialization'   => false,
-        'automatic_cleaning_factor' => 10,
-        'lifetime'                  => 3600,
-        'logging'                   => false,
-        'logger'                    => null,
-        'ignore_user_abort'         => false
-    );
+php php php php php/php*php*
+php php php php php php*php Availablephp options
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(booleanphp)php writephp_controlphp php:
+php php php php php php*php php-php Enablephp php/php disablephp writephp controlphp php(thephp cachephp isphp readphp justphp afterphp writingphp tophp detectphp corruptphp entriesphp)
+php php php php php php*php php-php Enablephp writephp controlphp willphp lightlyphp slowphp thephp cachephp writingphp butphp notphp thephp cachephp reading
+php php php php php php*php Writephp controlphp canphp detectphp somephp corruptphp cachephp filesphp butphp maybephp itphp'sphp notphp aphp perfectphp control
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(booleanphp)php cachingphp php:
+php php php php php php*php php-php Enablephp php/php disablephp caching
+php php php php php php*php php(canphp bephp veryphp usefulphp forphp thephp debugphp ofphp cachedphp scriptsphp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php=php>php php(stringphp)php cachephp_idphp_prefixphp php:
+php php php php php php*php php-php prefixphp forphp cachephp idsphp php(namespacephp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(booleanphp)php automaticphp_serializationphp php:
+php php php php php php*php php-php Enablephp php/php disablephp automaticphp serialization
+php php php php php php*php php-php Itphp canphp bephp usedphp tophp savephp directlyphp datasphp whichphp arenphp'tphp stringsphp php(butphp itphp'sphp slowerphp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(intphp)php automaticphp_cleaningphp_factorphp php:
+php php php php php php*php php-php Disablephp php/php Tunephp thephp automaticphp cleaningphp process
+php php php php php php*php php-php Thephp automaticphp cleaningphp processphp destroyphp toophp oldphp php(forphp thephp givenphp lifephp timephp)
+php php php php php php*php php php cachephp filesphp whenphp aphp newphp cachephp filephp isphp writtenphp php:
+php php php php php php*php php php php php php0php php php php php php php php php php php php php php php php=php>php nophp automaticphp cachephp cleaning
+php php php php php php*php php php php php php1php php php php php php php php php php php php php php php php=php>php systematicphp cachephp cleaning
+php php php php php php*php php php php php xphp php(integerphp)php php>php php1php php=php>php automaticphp cleaningphp randomlyphp php1php timesphp onphp xphp cachephp write
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(intphp)php lifetimephp php:
+php php php php php php*php php-php Cachephp lifetimephp php(inphp secondsphp)
+php php php php php php*php php-php Ifphp nullphp,php thephp cachephp isphp validphp foreverphp.
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(booleanphp)php loggingphp php:
+php php php php php php*php php-php Ifphp setphp tophp truephp,php loggingphp isphp activatedphp php(butphp thephp systemphp isphp slowerphp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(booleanphp)php ignorephp_userphp_abort
+php php php php php php*php php-php Ifphp setphp tophp truephp,php thephp corephp willphp setphp thephp ignorephp_userphp_abortphp PHPphp flagphp insidephp the
+php php php php php php*php php php savephp(php)php methodphp tophp avoidphp cachephp corruptionsphp inphp somephp casesphp php(defaultphp falsephp)
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php$php_optionsphp availablephp options
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'writephp_controlphp'php php php php php php php php php php php php php php=php>php truephp,
+php php php php php php php php php'cachingphp'php php php php php php php php php php php php php php php php php php php php=php>php truephp,
+php php php php php php php php php'cachephp_idphp_prefixphp'php php php php php php php php php php php php=php>php nullphp,
+php php php php php php php php php'automaticphp_serializationphp'php php php php=php>php falsephp,
+php php php php php php php php php'automaticphp_cleaningphp_factorphp'php php=php>php php1php0php,
+php php php php php php php php php'lifetimephp'php php php php php php php php php php php php php php php php php php php=php>php php3php6php0php0php,
+php php php php php php php php php'loggingphp'php php php php php php php php php php php php php php php php php php php php=php>php falsephp,
+php php php php php php php php php'loggerphp'php php php php php php php php php php php php php php php php php php php php php=php>php nullphp,
+php php php php php php php php php'ignorephp_userphp_abortphp'php php php php php php php php php php=php>php false
+php php php php php)php;
 
-    /**
-     * Array of options which have to be transfered to backend
-     *
-     * @var array $_directivesList
-     */
-    protected static $_directivesList = array('lifetime', 'logging', 'logger');
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp optionsphp whichphp havephp tophp bephp transferedphp tophp backend
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php$php_directivesList
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_directivesListphp php=php arrayphp(php'lifetimephp'php,php php'loggingphp'php,php php'loggerphp'php)php;
 
-    /**
-     * Not used for the core, just a sort a hint to get a common setOption() method (for the core and for frontends)
-     *
-     * @var array $_specificOptions
-     */
-    protected $_specificOptions = array();
+php php php php php/php*php*
+php php php php php php*php Notphp usedphp forphp thephp corephp,php justphp aphp sortphp aphp hintphp tophp getphp aphp commonphp setOptionphp(php)php methodphp php(forphp thephp corephp andphp forphp frontendsphp)
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php$php_specificOptions
+php php php php php php*php/
+php php php php protectedphp php$php_specificOptionsphp php=php arrayphp(php)php;
 
-    /**
-     * Last used cache id
-     *
-     * @var string $_lastId
-     */
-    private $_lastId = null;
+php php php php php/php*php*
+php php php php php php*php Lastphp usedphp cachephp id
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_lastId
+php php php php php php*php/
+php php php php privatephp php$php_lastIdphp php=php nullphp;
 
-    /**
-     * True if the backend implements Zend_Cache_Backend_ExtendedInterface
-     *
-     * @var boolean $_extendedBackend
-     */
-    protected $_extendedBackend = false;
+php php php php php/php*php*
+php php php php php php*php Truephp ifphp thephp backendphp implementsphp Zendphp_Cachephp_Backendphp_ExtendedInterface
+php php php php php php*
+php php php php php php*php php@varphp booleanphp php$php_extendedBackend
+php php php php php php*php/
+php php php php protectedphp php$php_extendedBackendphp php=php falsephp;
 
-    /**
-     * Array of capabilities of the backend (only if it implements Zend_Cache_Backend_ExtendedInterface)
-     *
-     * @var array
-     */
-    protected $_backendCapabilities = array();
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp capabilitiesphp ofphp thephp backendphp php(onlyphp ifphp itphp implementsphp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_backendCapabilitiesphp php=php arrayphp(php)php;
 
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options Associative array of options or Zend_Config instance
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
-        if (!is_array($options)) {
-            Zend_Cache::throwException("Options passed were not an array"
-            . " or Zend_Config instance.");
-        }
-        while (list($name, $value) = each($options)) {
-            $this->setOption($name, $value);
-        }
-        $this->_loggerSanity();
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Associativephp arrayphp ofphp optionsphp orphp Zendphp_Configphp instance
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Optionsphp passedphp werephp notphp anphp arrayphp"
+php php php php php php php php php php php php php.php php"php orphp Zendphp_Configphp instancephp.php"php)php;
+php php php php php php php php php}
+php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_loggerSanityphp(php)php;
+php php php php php}
 
-    /**
-     * Set options using an instance of type Zend_Config
-     *
-     * @param Zend_Config $config
-     * @return Zend_Cache_Core
-     */
-    public function setConfig(Zend_Config $config)
-    {
-        $options = $config->toArray();
-        while (list($name, $value) = each($options)) {
-            $this->setOption($name, $value);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp optionsphp usingphp anphp instancephp ofphp typephp Zendphp_Config
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Cachephp_Core
+php php php php php php*php/
+php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)
+php php php php php{
+php php php php php php php php php$optionsphp php=php php$configphp-php>toArrayphp(php)php;
+php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set the backend
-     *
-     * @param  Zend_Cache_Backend $backendObject
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function setBackend(Zend_Cache_Backend $backendObject)
-    {
-        $this->_backend= $backendObject;
-        // some options (listed in $_directivesList) have to be given
-        // to the backend too (even if they are not "backend specific")
-        $directives = array();
-        foreach (Zend_Cache_Core::$_directivesList as $directive) {
-            $directives[$directive] = $this->_options[$directive];
-        }
-        $this->_backend->setDirectives($directives);
-        if (in_array('Zend_Cache_Backend_ExtendedInterface', class_implements($this->_backend))) {
-            $this->_extendedBackend = true;
-            $this->_backendCapabilities = $this->_backend->getCapabilities();
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp backend
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Cachephp_Backendphp php$backendObject
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setBackendphp(Zendphp_Cachephp_Backendphp php$backendObjectphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_backendphp=php php$backendObjectphp;
+php php php php php php php php php/php/php somephp optionsphp php(listedphp inphp php$php_directivesListphp)php havephp tophp bephp given
+php php php php php php php php php/php/php tophp thephp backendphp toophp php(evenphp ifphp theyphp arephp notphp php"backendphp specificphp"php)
+php php php php php php php php php$directivesphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(Zendphp_Cachephp_Corephp:php:php$php_directivesListphp asphp php$directivephp)php php{
+php php php php php php php php php php php php php$directivesphp[php$directivephp]php php=php php$thisphp-php>php_optionsphp[php$directivephp]php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_backendphp-php>setDirectivesphp(php$directivesphp)php;
+php php php php php php php php ifphp php(inphp_arrayphp(php'Zendphp_Cachephp_Backendphp_ExtendedInterfacephp'php,php classphp_implementsphp(php$thisphp-php>php_backendphp)php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_extendedBackendphp php=php truephp;
+php php php php php php php php php php php php php$thisphp-php>php_backendCapabilitiesphp php=php php$thisphp-php>php_backendphp-php>getCapabilitiesphp(php)php;
+php php php php php php php php php}
 
-    }
+php php php php php}
 
-    /**
-     * Returns the backend
-     *
-     * @return Zend_Cache_Backend backend object
-     */
-    public function getBackend()
-    {
-        return $this->_backend;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp backend
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Cachephp_Backendphp backendphp object
+php php php php php php*php/
+php php php php publicphp functionphp getBackendphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_backendphp;
+php php php php php}
 
-    /**
-     * Public frontend to set an option
-     *
-     * There is an additional validation (relatively to the protected _setOption method)
-     *
-     * @param  string $name  Name of the option
-     * @param  mixed  $value Value of the option
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function setOption($name, $value)
-    {
-        if (!is_string($name)) {
-            Zend_Cache::throwException("Incorrect option name : $name");
-        }
-        $name = strtolower($name);
-        if (array_key_exists($name, $this->_options)) {
-            // This is a Core option
-            $this->_setOption($name, $value);
-            return;
-        }
-        if (array_key_exists($name, $this->_specificOptions)) {
-            // This a specic option of this frontend
-            $this->_specificOptions[$name] = $value;
-            return;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Publicphp frontendphp tophp setphp anphp option
+php php php php php php*
+php php php php php php*php Therephp isphp anphp additionalphp validationphp php(relativelyphp tophp thephp protectedphp php_setOptionphp methodphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$namephp php Namephp ofphp thephp option
+php php php php php php*php php@paramphp php mixedphp php php$valuephp Valuephp ofphp thephp option
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setOptionphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$namephp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Incorrectphp optionphp namephp php:php php$namephp"php)php;
+php php php php php php php php php}
+php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_optionsphp)php)php php{
+php php php php php php php php php php php php php/php/php Thisphp isphp aphp Corephp option
+php php php php php php php php php php php php php$thisphp-php>php_setOptionphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_specificOptionsphp)php)php php{
+php php php php php php php php php php php php php/php/php Thisphp aphp specicphp optionphp ofphp thisphp frontend
+php php php php php php php php php php php php php$thisphp-php>php_specificOptionsphp[php$namephp]php php=php php$valuephp;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Public frontend to get an option value
-     *
-     * @param  string $name  Name of the option
-     * @throws Zend_Cache_Exception
-     * @return mixed option value
-     */
-    public function getOption($name)
-    {
-        if (is_string($name)) {
-            $name = strtolower($name);
-            if (array_key_exists($name, $this->_options)) {
-                // This is a Core option
-                return $this->_options[$name];
-            }
-            if (array_key_exists($name, $this->_specificOptions)) {
-                // This a specic option of this frontend
-                return $this->_specificOptions[$name];
-            }
-        }
-        Zend_Cache::throwException("Incorrect option name : $name");
-    }
+php php php php php/php*php*
+php php php php php php*php Publicphp frontendphp tophp getphp anphp optionphp value
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$namephp php Namephp ofphp thephp option
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp mixedphp optionphp value
+php php php php php php*php/
+php php php php publicphp functionphp getOptionphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$namephp)php)php php{
+php php php php php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Thisphp isphp aphp Corephp option
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php$namephp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_specificOptionsphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Thisphp aphp specicphp optionphp ofphp thisphp frontend
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_specificOptionsphp[php$namephp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Incorrectphp optionphp namephp php:php php$namephp"php)php;
+php php php php php}
 
-    /**
-     * Set an option
-     *
-     * @param  string $name  Name of the option
-     * @param  mixed  $value Value of the option
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    private function _setOption($name, $value)
-    {
-        if (!is_string($name) || !array_key_exists($name, $this->_options)) {
-            Zend_Cache::throwException("Incorrect option name : $name");
-        }
-        if ($name == 'lifetime' && empty($value)) {
-            $value = null;
-        }
-        $this->_options[$name] = $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp anphp option
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$namephp php Namephp ofphp thephp option
+php php php php php php*php php@paramphp php mixedphp php php$valuephp Valuephp ofphp thephp option
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php privatephp functionphp php_setOptionphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$namephp)php php|php|php php!arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_optionsphp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Incorrectphp optionphp namephp php:php php$namephp"php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$namephp php=php=php php'lifetimephp'php php&php&php emptyphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$valuephp php=php nullphp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_optionsphp[php$namephp]php php=php php$valuephp;
+php php php php php}
 
-    /**
-     * Force a new lifetime
-     *
-     * The new value is set for the core/frontend but for the backend too (directive)
-     *
-     * @param  int $newLifetime New lifetime (in seconds)
-     * @return void
-     */
-    public function setLifetime($newLifetime)
-    {
-        $this->_options['lifetime'] = $newLifetime;
-        $this->_backend->setDirectives(array(
-            'lifetime' => $newLifetime
-        ));
-    }
+php php php php php/php*php*
+php php php php php php*php Forcephp aphp newphp lifetime
+php php php php php php*
+php php php php php php*php Thephp newphp valuephp isphp setphp forphp thephp corephp/frontendphp butphp forphp thephp backendphp toophp php(directivephp)
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$newLifetimephp Newphp lifetimephp php(inphp secondsphp)
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setLifetimephp(php$newLifetimephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp[php'lifetimephp'php]php php=php php$newLifetimephp;
+php php php php php php php php php$thisphp-php>php_backendphp-php>setDirectivesphp(arrayphp(
+php php php php php php php php php php php php php'lifetimephp'php php=php>php php$newLifetime
+php php php php php php php php php)php)php;
+php php php php php}
 
-    /**
-     * Test if a cache is available for the given id and (if yes) return it (false else)
-     *
-     * @param  string  $id                     Cache id
-     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
-     * @param  boolean $doNotUnserialize       Do not serialize (even if automatic_serialization is true) => for internal use
-     * @return mixed|false Cached datas
-     */
-    public function load($id, $doNotTestCacheValidity = false, $doNotUnserialize = false)
-    {
-        if (!$this->_options['caching']) {
-            return false;
-        }
-        $id = $this->_id($id); // cache id may need prefix
-        $this->_lastId = $id;
-        self::_validateIdOrTag($id);
-        $data = $this->_backend->load($id, $doNotTestCacheValidity);
-        if ($data===false) {
-            // no cache available
-            return false;
-        }
-        if ((!$doNotUnserialize) && $this->_options['automatic_serialization']) {
-            // we need to unserialize before sending the result
-            return unserialize($data);
-        }
-        return $data;
-    }
+php php php php php/php*php*
+php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp idphp andphp php(ifphp yesphp)php returnphp itphp php(falsephp elsephp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$idphp php php php php php php php php php php php php php php php php php php php php Cachephp id
+php php php php php php*php php@paramphp php booleanphp php$doNotTestCacheValidityphp Ifphp setphp tophp truephp,php thephp cachephp validityphp wonphp'tphp bephp tested
+php php php php php php*php php@paramphp php booleanphp php$doNotUnserializephp php php php php php php Dophp notphp serializephp php(evenphp ifphp automaticphp_serializationphp isphp truephp)php php=php>php forphp internalphp use
+php php php php php php*php php@returnphp mixedphp|falsephp Cachedphp datas
+php php php php php php*php/
+php php php php publicphp functionphp loadphp(php$idphp,php php$doNotTestCacheValidityphp php=php falsephp,php php$doNotUnserializephp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'cachingphp'php]php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php php$idphp php=php php$thisphp-php>php_idphp(php$idphp)php;php php/php/php cachephp idphp mayphp needphp prefix
+php php php php php php php php php$thisphp-php>php_lastIdphp php=php php$idphp;
+php php php php php php php php selfphp:php:php_validateIdOrTagphp(php$idphp)php;
+php php php php php php php php php$dataphp php=php php$thisphp-php>php_backendphp-php>loadphp(php$idphp,php php$doNotTestCacheValidityphp)php;
+php php php php php php php php ifphp php(php$dataphp=php=php=falsephp)php php{
+php php php php php php php php php php php php php/php/php nophp cachephp available
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php(php!php$doNotUnserializephp)php php&php&php php$thisphp-php>php_optionsphp[php'automaticphp_serializationphp'php]php)php php{
+php php php php php php php php php php php php php/php/php wephp needphp tophp unserializephp beforephp sendingphp thephp result
+php php php php php php php php php php php php returnphp unserializephp(php$dataphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
 
-    /**
-     * Test if a cache is available for the given id
-     *
-     * @param  string $id Cache id
-     * @return int|false Last modified time of cache entry if it is available, false otherwise
-     */
-    public function test($id)
-    {
-        if (!$this->_options['caching']) {
-            return false;
-        }
-        $id = $this->_id($id); // cache id may need prefix
-        self::_validateIdOrTag($id);
-        $this->_lastId = $id;
-        return $this->_backend->test($id);
-    }
+php php php php php/php*php*
+php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp id
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
+php php php php php php*php php@returnphp intphp|falsephp Lastphp modifiedphp timephp ofphp cachephp entryphp ifphp itphp isphp availablephp,php falsephp otherwise
+php php php php php php*php/
+php php php php publicphp functionphp testphp(php$idphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'cachingphp'php]php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php php$idphp php=php php$thisphp-php>php_idphp(php$idphp)php;php php/php/php cachephp idphp mayphp needphp prefix
+php php php php php php php php selfphp:php:php_validateIdOrTagphp(php$idphp)php;
+php php php php php php php php php$thisphp-php>php_lastIdphp php=php php$idphp;
+php php php php php php php php returnphp php$thisphp-php>php_backendphp-php>testphp(php$idphp)php;
+php php php php php}
 
-    /**
-     * Save some data in a cache
-     *
-     * @param  mixed $data           Data to put in cache (can be another type than string if automatic_serialization is on)
-     * @param  string $id             Cache id (if not set, the last cache id will be used)
-     * @param  array $tags           Cache tags
-     * @param  int $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
-     * @param  int   $priority         integer between 0 (very low priority) and 10 (maximum priority) used by some particular backends
-     * @throws Zend_Cache_Exception
-     * @return boolean True if no problem
-     */
-    public function save($data, $id = null, $tags = array(), $specificLifetime = false, $priority = 8)
-    {
-        if (!$this->_options['caching']) {
-            return true;
-        }
-        if ($id === null) {
-            $id = $this->_lastId;
-        } else {
-            $id = $this->_id($id);
-        }
-        self::_validateIdOrTag($id);
-        self::_validateTagsArray($tags);
-        if ($this->_options['automatic_serialization']) {
-            // we need to serialize datas before storing them
-            $data = serialize($data);
-        } else {
-            if (!is_string($data)) {
-                Zend_Cache::throwException("Datas must be string or set automatic_serialization = true");
-            }
-        }
-        // automatic cleaning
-        if ($this->_options['automatic_cleaning_factor'] > 0) {
-            $rand = rand(1, $this->_options['automatic_cleaning_factor']);
-            if ($rand==1) {
-                if ($this->_extendedBackend) {
-                    // New way
-                    if ($this->_backendCapabilities['automatic_cleaning']) {
-                        $this->clean(Zend_Cache::CLEANING_MODE_OLD);
-                    } else {
-                        $this->_log('Zend_Cache_Core::save() / automatic cleaning is not available/necessary with this backend');
-                    }
-                } else {
-                    // Deprecated way (will be removed in next major version)
-                    if (method_exists($this->_backend, 'isAutomaticCleaningAvailable') && ($this->_backend->isAutomaticCleaningAvailable())) {
-                        $this->clean(Zend_Cache::CLEANING_MODE_OLD);
-                    } else {
-                        $this->_log('Zend_Cache_Core::save() / automatic cleaning is not available/necessary with this backend');
-                    }
-                }
-            }
-        }
-        if ($this->_options['ignore_user_abort']) {
-            $abort = ignore_user_abort(true);
-        }
-        if (($this->_extendedBackend) && ($this->_backendCapabilities['priority'])) {
-            $result = $this->_backend->save($data, $id, $tags, $specificLifetime, $priority);
-        } else {
-            $result = $this->_backend->save($data, $id, $tags, $specificLifetime);
-        }
-        if ($this->_options['ignore_user_abort']) {
-            ignore_user_abort($abort);
-        }
-        if (!$result) {
-            // maybe the cache is corrupted, so we remove it !
-            if ($this->_options['logging']) {
-                $this->_log("Zend_Cache_Core::save() : impossible to save cache (id=$id)");
-            }
-            $this->remove($id);
-            return false;
-        }
-        if ($this->_options['write_control']) {
-            $data2 = $this->_backend->load($id, true);
-            if ($data!=$data2) {
-                $this->_log('Zend_Cache_Core::save() / write_control : written and read data do not match');
-                $this->_backend->remove($id);
-                return false;
-            }
-        }
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Savephp somephp dataphp inphp aphp cache
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$dataphp php php php php php php php php php php Dataphp tophp putphp inphp cachephp php(canphp bephp anotherphp typephp thanphp stringphp ifphp automaticphp_serializationphp isphp onphp)
+php php php php php php*php php@paramphp php stringphp php$idphp php php php php php php php php php php php php Cachephp idphp php(ifphp notphp setphp,php thephp lastphp cachephp idphp willphp bephp usedphp)
+php php php php php php*php php@paramphp php arrayphp php$tagsphp php php php php php php php php php php Cachephp tags
+php php php php php php*php php@paramphp php intphp php$specificLifetimephp Ifphp php!php=php falsephp,php setphp aphp specificphp lifetimephp forphp thisphp cachephp recordphp php(nullphp php=php>php infinitephp lifetimephp)
+php php php php php php*php php@paramphp php intphp php php php$priorityphp php php php php php php php php integerphp betweenphp php0php php(veryphp lowphp priorityphp)php andphp php1php0php php(maximumphp priorityphp)php usedphp byphp somephp particularphp backends
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
+php php php php php php*php/
+php php php php publicphp functionphp savephp(php$dataphp,php php$idphp php=php nullphp,php php$tagsphp php=php arrayphp(php)php,php php$specificLifetimephp php=php falsephp,php php$priorityphp php=php php8php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'cachingphp'php]php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$idphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_lastIdphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_idphp(php$idphp)php;
+php php php php php php php php php}
+php php php php php php php php selfphp:php:php_validateIdOrTagphp(php$idphp)php;
+php php php php php php php php selfphp:php:php_validateTagsArrayphp(php$tagsphp)php;
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'automaticphp_serializationphp'php]php)php php{
+php php php php php php php php php php php php php/php/php wephp needphp tophp serializephp datasphp beforephp storingphp them
+php php php php php php php php php php php php php$dataphp php=php serializephp(php$dataphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Datasphp mustphp bephp stringphp orphp setphp automaticphp_serializationphp php=php truephp"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php/php/php automaticphp cleaning
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'automaticphp_cleaningphp_factorphp'php]php php>php php0php)php php{
+php php php php php php php php php php php php php$randphp php=php randphp(php1php,php php$thisphp-php>php_optionsphp[php'automaticphp_cleaningphp_factorphp'php]php)php;
+php php php php php php php php php php php php ifphp php(php$randphp=php=php1php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Newphp way
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_backendCapabilitiesphp[php'automaticphp_cleaningphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php'Zendphp_Cachephp_Corephp:php:savephp(php)php php/php automaticphp cleaningphp isphp notphp availablephp/necessaryphp withphp thisphp backendphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Deprecatedphp wayphp php(willphp bephp removedphp inphp nextphp majorphp versionphp)
+php php php php php php php php php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp-php>php_backendphp,php php'isAutomaticCleaningAvailablephp'php)php php&php&php php(php$thisphp-php>php_backendphp-php>isAutomaticCleaningAvailablephp(php)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php'Zendphp_Cachephp_Corephp:php:savephp(php)php php/php automaticphp cleaningphp isphp notphp availablephp/necessaryphp withphp thisphp backendphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'ignorephp_userphp_abortphp'php]php)php php{
+php php php php php php php php php php php php php$abortphp php=php ignorephp_userphp_abortphp(truephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php(php$thisphp-php>php_extendedBackendphp)php php&php&php php(php$thisphp-php>php_backendCapabilitiesphp[php'priorityphp'php]php)php)php php{
+php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_backendphp-php>savephp(php$dataphp,php php$idphp,php php$tagsphp,php php$specificLifetimephp,php php$priorityphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_backendphp-php>savephp(php$dataphp,php php$idphp,php php$tagsphp,php php$specificLifetimephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'ignorephp_userphp_abortphp'php]php)php php{
+php php php php php php php php php php php php ignorephp_userphp_abortphp(php$abortphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$resultphp)php php{
+php php php php php php php php php php php php php/php/php maybephp thephp cachephp isphp corruptedphp,php sophp wephp removephp itphp php!
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'loggingphp'php]php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php"Zendphp_Cachephp_Corephp:php:savephp(php)php php:php impossiblephp tophp savephp cachephp php(idphp=php$idphp)php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>removephp(php$idphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'writephp_controlphp'php]php)php php{
+php php php php php php php php php php php php php$dataphp2php php=php php$thisphp-php>php_backendphp-php>loadphp(php$idphp,php truephp)php;
+php php php php php php php php php php php php ifphp php(php$dataphp!php=php$dataphp2php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php'Zendphp_Cachephp_Corephp:php:savephp(php)php php/php writephp_controlphp php:php writtenphp andphp readphp dataphp dophp notphp matchphp'php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_backendphp-php>removephp(php$idphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Remove a cache
-     *
-     * @param  string $id Cache id to remove
-     * @return boolean True if ok
-     */
-    public function remove($id)
-    {
-        if (!$this->_options['caching']) {
-            return true;
-        }
-        $id = $this->_id($id); // cache id may need prefix
-        self::_validateIdOrTag($id);
-        return $this->_backend->remove($id);
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp aphp cache
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$idphp Cachephp idphp tophp remove
+php php php php php php*php php@returnphp booleanphp Truephp ifphp ok
+php php php php php php*php/
+php php php php publicphp functionphp removephp(php$idphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'cachingphp'php]php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php php$idphp php=php php$thisphp-php>php_idphp(php$idphp)php;php php/php/php cachephp idphp mayphp needphp prefix
+php php php php php php php php selfphp:php:php_validateIdOrTagphp(php$idphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_backendphp-php>removephp(php$idphp)php;
+php php php php php}
 
-    /**
-     * Clean cache entries
-     *
-     * Available modes are :
-     * 'all' (default)  => remove all cache entries ($tags is not used)
-     * 'old'            => remove too old cache entries ($tags is not used)
-     * 'matchingTag'    => remove cache entries matching all given tags
-     *                     ($tags can be an array of strings or a single string)
-     * 'notMatchingTag' => remove cache entries not matching one of the given tags
-     *                     ($tags can be an array of strings or a single string)
-     * 'matchingAnyTag' => remove cache entries matching any given tags
-     *                     ($tags can be an array of strings or a single string)
-     *
-     * @param  string       $mode
-     * @param  array|string $tags
-     * @throws Zend_Cache_Exception
-     * @return boolean True if ok
-     */
-    public function clean($mode = 'all', $tags = array())
-    {
-        if (!$this->_options['caching']) {
-            return true;
-        }
-        if (!in_array($mode, array(Zend_Cache::CLEANING_MODE_ALL,
-                                   Zend_Cache::CLEANING_MODE_OLD,
-                                   Zend_Cache::CLEANING_MODE_MATCHING_TAG,
-                                   Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG,
-                                   Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG))) {
-            Zend_Cache::throwException('Invalid cleaning mode');
-        }
-        self::_validateTagsArray($tags);
-        return $this->_backend->clean($mode, $tags);
-    }
+php php php php php/php*php*
+php php php php php php*php Cleanphp cachephp entries
+php php php php php php*
+php php php php php php*php Availablephp modesphp arephp php:
+php php php php php php*php php'allphp'php php(defaultphp)php php php=php>php removephp allphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
+php php php php php php*php php'oldphp'php php php php php php php php php php php php php=php>php removephp toophp oldphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
+php php php php php php*php php'matchingTagphp'php php php php php=php>php removephp cachephp entriesphp matchingphp allphp givenphp tags
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
+php php php php php php*php php'notMatchingTagphp'php php=php>php removephp cachephp entriesphp notphp matchingphp onephp ofphp thephp givenphp tags
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
+php php php php php php*php php'matchingAnyTagphp'php php=php>php removephp cachephp entriesphp matchingphp anyphp givenphp tags
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php$mode
+php php php php php php*php php@paramphp php arrayphp|stringphp php$tags
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp booleanphp Truephp ifphp ok
+php php php php php php*php/
+php php php php publicphp functionphp cleanphp(php$modephp php=php php'allphp'php,php php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'cachingphp'php]php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$modephp,php arrayphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_ANYphp_TAGphp)php)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp cleaningphp modephp'php)php;
+php php php php php php php php php}
+php php php php php php php php selfphp:php:php_validateTagsArrayphp(php$tagsphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_backendphp-php>cleanphp(php$modephp,php php$tagsphp)php;
+php php php php php}
 
-    /**
-     * Return an array of stored cache ids which match given tags
-     *
-     * In case of multiple tags, a logical AND is made between tags
-     *
-     * @param array $tags array of tags
-     * @return array array of matching cache ids (string)
-     */
-    public function getIdsMatchingTags($tags = array())
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
-        if (!($this->_backendCapabilities['tags'])) {
-            Zend_Cache::throwException(self::BACKEND_NOT_SUPPORTS_TAG);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp givenphp tags
+php php php php php php*
+php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ANDphp isphp madephp betweenphp tags
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp matchingphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php(php$thisphp-php>php_backendCapabilitiesphp[php'tagsphp'php]php)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_SUPPORTSphp_TAGphp)php;
+php php php php php php php php php}
 
-        $ids = $this->_backend->getIdsMatchingTags($tags);
+php php php php php php php php php$idsphp php=php php$thisphp-php>php_backendphp-php>getIdsMatchingTagsphp(php$tagsphp)php;
 
-        // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
-        if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
-            $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
-            foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
-                }
-            }
-        }
+php php php php php php php php php/php/php wephp needphp tophp removephp cachephp_idphp_prefixphp fromphp idsphp php(seephp php#ZFphp-php6php1php7php8php,php php#ZFphp-php7php6php0php0php)
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php)php php&php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php php!php=php=php php'php'php)php php{
+php php php php php php php php php php php php php$prefixphp php php php php=php php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php;
+php php php php php php php php php php php php php$prefixLenphp php=php strlenphp(php$prefixphp)php;
+php php php php php php php php php php php php foreachphp php(php$idsphp asphp php&php$idphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$idphp,php php$prefixphp)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$idphp php=php substrphp(php$idphp,php php$prefixLenphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $ids;
-    }
+php php php php php php php php returnphp php$idsphp;
+php php php php php}
 
-    /**
-     * Return an array of stored cache ids which don't match given tags
-     *
-     * In case of multiple tags, a logical OR is made between tags
-     *
-     * @param array $tags array of tags
-     * @return array array of not matching cache ids (string)
-     */
-    public function getIdsNotMatchingTags($tags = array())
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
-        if (!($this->_backendCapabilities['tags'])) {
-            Zend_Cache::throwException(self::BACKEND_NOT_SUPPORTS_TAG);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp donphp'tphp matchphp givenphp tags
+php php php php php php*
+php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ORphp isphp madephp betweenphp tags
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp notphp matchingphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsNotMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php(php$thisphp-php>php_backendCapabilitiesphp[php'tagsphp'php]php)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_SUPPORTSphp_TAGphp)php;
+php php php php php php php php php}
 
-        $ids = $this->_backend->getIdsNotMatchingTags($tags);
+php php php php php php php php php$idsphp php=php php$thisphp-php>php_backendphp-php>getIdsNotMatchingTagsphp(php$tagsphp)php;
 
-        // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
-        if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
-            $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
-            foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
-                }
-            }
-        }
+php php php php php php php php php/php/php wephp needphp tophp removephp cachephp_idphp_prefixphp fromphp idsphp php(seephp php#ZFphp-php6php1php7php8php,php php#ZFphp-php7php6php0php0php)
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php)php php&php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php php!php=php=php php'php'php)php php{
+php php php php php php php php php php php php php$prefixphp php php php php=php php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php;
+php php php php php php php php php php php php php$prefixLenphp php=php strlenphp(php$prefixphp)php;
+php php php php php php php php php php php php foreachphp php(php$idsphp asphp php&php$idphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$idphp,php php$prefixphp)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$idphp php=php substrphp(php$idphp,php php$prefixLenphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $ids;
-    }
+php php php php php php php php returnphp php$idsphp;
+php php php php php}
 
-    /**
-     * Return an array of stored cache ids which match any given tags
-     *
-     * In case of multiple tags, a logical OR is made between tags
-     *
-     * @param array $tags array of tags
-     * @return array array of matching any cache ids (string)
-     */
-    public function getIdsMatchingAnyTags($tags = array())
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
-        if (!($this->_backendCapabilities['tags'])) {
-            Zend_Cache::throwException(self::BACKEND_NOT_SUPPORTS_TAG);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp anyphp givenphp tags
+php php php php php php*
+php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ORphp isphp madephp betweenphp tags
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp matchingphp anyphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsMatchingAnyTagsphp(php$tagsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php(php$thisphp-php>php_backendCapabilitiesphp[php'tagsphp'php]php)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_SUPPORTSphp_TAGphp)php;
+php php php php php php php php php}
 
-        $ids = $this->_backend->getIdsMatchingAnyTags($tags);
+php php php php php php php php php$idsphp php=php php$thisphp-php>php_backendphp-php>getIdsMatchingAnyTagsphp(php$tagsphp)php;
 
-        // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
-        if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
-            $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
-            foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
-                }
-            }
-        }
+php php php php php php php php php/php/php wephp needphp tophp removephp cachephp_idphp_prefixphp fromphp idsphp php(seephp php#ZFphp-php6php1php7php8php,php php#ZFphp-php7php6php0php0php)
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php)php php&php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php php!php=php=php php'php'php)php php{
+php php php php php php php php php php php php php$prefixphp php php php php=php php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php;
+php php php php php php php php php php php php php$prefixLenphp php=php strlenphp(php$prefixphp)php;
+php php php php php php php php php php php php foreachphp php(php$idsphp asphp php&php$idphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$idphp,php php$prefixphp)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$idphp php=php substrphp(php$idphp,php php$prefixLenphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $ids;
-    }
+php php php php php php php php returnphp php$idsphp;
+php php php php php}
 
-    /**
-     * Return an array of stored cache ids
-     *
-     * @return array array of stored cache ids (string)
-     */
-    public function getIds()
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp ids
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp cachephp idsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getIdsphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
 
-        $ids = $this->_backend->getIds();
+php php php php php php php php php$idsphp php=php php$thisphp-php>php_backendphp-php>getIdsphp(php)php;
 
-        // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
-        if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
-            $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
-            foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
-                }
-            }
-        }
+php php php php php php php php php/php/php wephp needphp tophp removephp cachephp_idphp_prefixphp fromphp idsphp php(seephp php#ZFphp-php6php1php7php8php,php php#ZFphp-php7php6php0php0php)
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php)php php&php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php php!php=php=php php'php'php)php php{
+php php php php php php php php php php php php php$prefixphp php php php php=php php&php php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php;
+php php php php php php php php php php php php php$prefixLenphp php=php strlenphp(php$prefixphp)php;
+php php php php php php php php php php php php foreachphp php(php$idsphp asphp php&php$idphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$idphp,php php$prefixphp)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$idphp php=php substrphp(php$idphp,php php$prefixLenphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $ids;
-    }
+php php php php php php php php returnphp php$idsphp;
+php php php php php}
 
-    /**
-     * Return an array of stored tags
-     *
-     * @return array array of stored tags (string)
-     */
-    public function getTags()
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
-        if (!($this->_backendCapabilities['tags'])) {
-            Zend_Cache::throwException(self::BACKEND_NOT_SUPPORTS_TAG);
-        }
-        return $this->_backend->getTags();
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp storedphp tags
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp tagsphp php(stringphp)
+php php php php php php*php/
+php php php php publicphp functionphp getTagsphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php(php$thisphp-php>php_backendCapabilitiesphp[php'tagsphp'php]php)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_SUPPORTSphp_TAGphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_backendphp-php>getTagsphp(php)php;
+php php php php php}
 
-    /**
-     * Return the filling percentage of the backend storage
-     *
-     * @return int integer between 0 and 100
-     */
-    public function getFillingPercentage()
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
-        return $this->_backend->getFillingPercentage();
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp fillingphp percentagephp ofphp thephp backendphp storage
+php php php php php php*
+php php php php php php*php php@returnphp intphp integerphp betweenphp php0php andphp php1php0php0
+php php php php php php*php/
+php php php php publicphp functionphp getFillingPercentagephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_backendphp-php>getFillingPercentagephp(php)php;
+php php php php php}
 
-    /**
-     * Return an array of metadatas for the given cache id
-     *
-     * The array will include these keys :
-     * - expire : the expire timestamp
-     * - tags : a string array of tags
-     * - mtime : timestamp of last modification time
-     *
-     * @param string $id cache id
-     * @return array array of metadatas (false if the cache id is not found)
-     */
-    public function getMetadatas($id)
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
-        $id = $this->_id($id); // cache id may need prefix
-        return $this->_backend->getMetadatas($id);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp metadatasphp forphp thephp givenphp cachephp id
+php php php php php php*
+php php php php php php*php Thephp arrayphp willphp includephp thesephp keysphp php:
+php php php php php php*php php-php expirephp php:php thephp expirephp timestamp
+php php php php php php*php php-php tagsphp php:php aphp stringphp arrayphp ofphp tags
+php php php php php php*php php-php mtimephp php:php timestampphp ofphp lastphp modificationphp time
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp cachephp id
+php php php php php php*php php@returnphp arrayphp arrayphp ofphp metadatasphp php(falsephp ifphp thephp cachephp idphp isphp notphp foundphp)
+php php php php php php*php/
+php php php php publicphp functionphp getMetadatasphp(php$idphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
+php php php php php php php php php$idphp php=php php$thisphp-php>php_idphp(php$idphp)php;php php/php/php cachephp idphp mayphp needphp prefix
+php php php php php php php php returnphp php$thisphp-php>php_backendphp-php>getMetadatasphp(php$idphp)php;
+php php php php php}
 
-    /**
-     * Give (if possible) an extra lifetime to the given cache id
-     *
-     * @param string $id cache id
-     * @param int $extraLifetime
-     * @return boolean true if ok
-     */
-    public function touch($id, $extraLifetime)
-    {
-        if (!$this->_extendedBackend) {
-            Zend_Cache::throwException(self::BACKEND_NOT_IMPLEMENTS_EXTENDED_IF);
-        }
-        $id = $this->_id($id); // cache id may need prefix
-        return $this->_backend->touch($id, $extraLifetime);
-    }
+php php php php php/php*php*
+php php php php php php*php Givephp php(ifphp possiblephp)php anphp extraphp lifetimephp tophp thephp givenphp cachephp id
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp cachephp id
+php php php php php php*php php@paramphp intphp php$extraLifetime
+php php php php php php*php php@returnphp booleanphp truephp ifphp ok
+php php php php php php*php/
+php php php php publicphp functionphp touchphp(php$idphp,php php$extraLifetimephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_extendedBackendphp)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(selfphp:php:BACKENDphp_NOTphp_IMPLEMENTSphp_EXTENDEDphp_IFphp)php;
+php php php php php php php php php}
+php php php php php php php php php$idphp php=php php$thisphp-php>php_idphp(php$idphp)php;php php/php/php cachephp idphp mayphp needphp prefix
+php php php php php php php php returnphp php$thisphp-php>php_backendphp-php>touchphp(php$idphp,php php$extraLifetimephp)php;
+php php php php php}
 
-    /**
-     * Validate a cache id or a tag (security, reliable filenames, reserved prefixes...)
-     *
-     * Throw an exception if a problem is found
-     *
-     * @param  string $string Cache id or tag
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    protected static function _validateIdOrTag($string)
-    {
-        if (!is_string($string)) {
-            Zend_Cache::throwException('Invalid id or tag : must be a string');
-        }
-        if (substr($string, 0, 9) == 'internal-') {
-            Zend_Cache::throwException('"internal-*" ids or tags are reserved');
-        }
-        if (!preg_match('~^[a-zA-Z0-9_]+$~D', $string)) {
-            Zend_Cache::throwException("Invalid id or tag '$string' : must use only [a-zA-Z0-9_]");
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Validatephp aphp cachephp idphp orphp aphp tagphp php(securityphp,php reliablephp filenamesphp,php reservedphp prefixesphp.php.php.php)
+php php php php php php*
+php php php php php php*php Throwphp anphp exceptionphp ifphp aphp problemphp isphp found
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$stringphp Cachephp idphp orphp tag
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_validateIdOrTagphp(php$stringphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_stringphp(php$stringphp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp idphp orphp tagphp php:php mustphp bephp aphp stringphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(substrphp(php$stringphp,php php0php,php php9php)php php=php=php php'internalphp-php'php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'php"internalphp-php*php"php idsphp orphp tagsphp arephp reservedphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!pregphp_matchphp(php'php~php^php[aphp-zAphp-Zphp0php-php9php_php]php+php$php~Dphp'php,php php$stringphp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Invalidphp idphp orphp tagphp php'php$stringphp'php php:php mustphp usephp onlyphp php[aphp-zAphp-Zphp0php-php9php_php]php"php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Validate a tags array (security, reliable filenames, reserved prefixes...)
-     *
-     * Throw an exception if a problem is found
-     *
-     * @param  array $tags Array of tags
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    protected static function _validateTagsArray($tags)
-    {
-        if (!is_array($tags)) {
-            Zend_Cache::throwException('Invalid tags array : must be an array');
-        }
-        foreach($tags as $tag) {
-            self::_validateIdOrTag($tag);
-        }
-        reset($tags);
-    }
+php php php php php/php*php*
+php php php php php php*php Validatephp aphp tagsphp arrayphp php(securityphp,php reliablephp filenamesphp,php reservedphp prefixesphp.php.php.php)
+php php php php php php*
+php php php php php php*php Throwphp anphp exceptionphp ifphp aphp problemphp isphp found
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$tagsphp Arrayphp ofphp tags
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_validateTagsArrayphp(php$tagsphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$tagsphp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp tagsphp arrayphp php:php mustphp bephp anphp arrayphp'php)php;
+php php php php php php php php php}
+php php php php php php php php foreachphp(php$tagsphp asphp php$tagphp)php php{
+php php php php php php php php php php php php selfphp:php:php_validateIdOrTagphp(php$tagphp)php;
+php php php php php php php php php}
+php php php php php php php php resetphp(php$tagsphp)php;
+php php php php php}
 
-    /**
-     * Make sure if we enable logging that the Zend_Log class
-     * is available.
-     * Create a default log object if none is set.
-     *
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    protected function _loggerSanity()
-    {
-        if (!isset($this->_options['logging']) || !$this->_options['logging']) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Makephp surephp ifphp wephp enablephp loggingphp thatphp thephp Zendphp_Logphp class
+php php php php php php*php isphp availablephp.
+php php php php php php*php Createphp aphp defaultphp logphp objectphp ifphp nonephp isphp setphp.
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_loggerSanityphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_optionsphp[php'loggingphp'php]php)php php|php|php php!php$thisphp-php>php_optionsphp[php'loggingphp'php]php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        if (isset($this->_options['logger']) && $this->_options['logger'] instanceof Zend_Log) {
-            return;
-        }
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'loggerphp'php]php)php php&php&php php$thisphp-php>php_optionsphp[php'loggerphp'php]php instanceofphp Zendphp_Logphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        // Create a default logger to the standard output stream
-        require_once 'Zend/Log/Writer/Stream.php';
-        require_once 'Zend/Log.php';
-        $logger = new Zend_Log(new Zend_Log_Writer_Stream('php://output'));
-        $this->_options['logger'] = $logger;
-    }
+php php php php php php php php php/php/php Createphp aphp defaultphp loggerphp tophp thephp standardphp outputphp stream
+php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Writerphp/Streamphp.phpphp'php;
+php php php php php php php php requirephp_oncephp php'Zendphp/Logphp.phpphp'php;
+php php php php php php php php php$loggerphp php=php newphp Zendphp_Logphp(newphp Zendphp_Logphp_Writerphp_Streamphp(php'phpphp:php/php/outputphp'php)php)php;
+php php php php php php php php php$thisphp-php>php_optionsphp[php'loggerphp'php]php php=php php$loggerphp;
+php php php php php}
 
-    /**
-     * Log a message at the WARN (4) priority.
-     *
-     * @param string $message
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    protected function _log($message, $priority = 4)
-    {
-        if (!$this->_options['logging']) {
-            return;
-        }
-        if (!(isset($this->_options['logger']) || $this->_options['logger'] instanceof Zend_Log)) {
-            Zend_Cache::throwException('Logging is enabled but logger is not set');
-        }
-        $logger = $this->_options['logger'];
-        $logger->log($message, $priority);
-    }
+php php php php php/php*php*
+php php php php php php*php Logphp aphp messagephp atphp thephp WARNphp php(php4php)php priorityphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$message
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_logphp(php$messagephp,php php$priorityphp php=php php4php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'loggingphp'php]php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php(issetphp(php$thisphp-php>php_optionsphp[php'loggerphp'php]php)php php|php|php php$thisphp-php>php_optionsphp[php'loggerphp'php]php instanceofphp Zendphp_Logphp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Loggingphp isphp enabledphp butphp loggerphp isphp notphp setphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$loggerphp php=php php$thisphp-php>php_optionsphp[php'loggerphp'php]php;
+php php php php php php php php php$loggerphp-php>logphp(php$messagephp,php php$priorityphp)php;
+php php php php php}
 
-    /**
-     * Make and return a cache id
-     *
-     * Checks 'cache_id_prefix' and returns new id with prefix or simply the id if null
-     *
-     * @param  string $id Cache id
-     * @return string Cache id (with or without prefix)
-     */
-    protected function _id($id)
-    {
-        if (($id !== null) && isset($this->_options['cache_id_prefix'])) {
-            return $this->_options['cache_id_prefix'] . $id; // return with prefix
-        }
-        return $id; // no prefix, just return the $id passed
-    }
+php php php php php/php*php*
+php php php php php php*php Makephp andphp returnphp aphp cachephp id
+php php php php php php*
+php php php php php php*php Checksphp php'cachephp_idphp_prefixphp'php andphp returnsphp newphp idphp withphp prefixphp orphp simplyphp thephp idphp ifphp null
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
+php php php php php php*php php@returnphp stringphp Cachephp idphp php(withphp orphp withoutphp prefixphp)
+php php php php php php*php/
+php php php php protectedphp functionphp php_idphp(php$idphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$idphp php!php=php=php nullphp)php php&php&php issetphp(php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'cachephp_idphp_prefixphp'php]php php.php php$idphp;php php/php/php returnphp withphp prefix
+php php php php php php php php php}
+php php php php php php php php returnphp php$idphp;php php/php/php nophp prefixphp,php justphp returnphp thephp php$idphp passed
+php php php php php}
 
-}
+php}

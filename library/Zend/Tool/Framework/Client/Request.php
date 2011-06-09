@@ -1,299 +1,299 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Request.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Requestphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Framework_Client_Request
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php{
 
-    /**
-     * @var string
-     */
-    protected $_providerName = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_providerNamephp php=php nullphp;
 
-    /**
-     * @var string
-     */
-    protected $_specialtyName = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_specialtyNamephp php=php nullphp;
 
-    /**
-     * @var string
-     */
-    protected $_actionName = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_actionNamephp php=php nullphp;
 
-    /**
-     * @var array
-     */
-    protected $_actionParameters = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_actionParametersphp php=php arrayphp(php)php;
 
-    /**
-     * @var array
-     */
-    protected $_providerParameters = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_providerParametersphp php=php arrayphp(php)php;
 
-    /**
-     * @var bool
-     */
-    protected $_isPretend = false;
+php php php php php/php*php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isPretendphp php=php falsephp;
 
-    /**
-     * @var bool
-     */
-    protected $_isDebug = false;
+php php php php php/php*php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isDebugphp php=php falsephp;
 
-    /**
-     * @var bool
-     */
-    protected $_isVerbose = false;
+php php php php php/php*php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isVerbosephp php=php falsephp;
 
-    /**
-     * @var bool
-     */
-    protected $_isDispatchable = true;
+php php php php php/php*php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_isDispatchablephp php=php truephp;
 
-    /**
-     * setProviderName()
-     *
-     * @param string $providerName
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setProviderName($providerName)
-    {
-        $this->_providerName = $providerName;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setProviderNamephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$providerName
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setProviderNamephp(php$providerNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_providerNamephp php=php php$providerNamephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getProviderName()
-     *
-     * @return string
-     */
-    public function getProviderName()
-    {
-        return $this->_providerName;
-    }
+php php php php php/php*php*
+php php php php php php*php getProviderNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getProviderNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_providerNamephp;
+php php php php php}
 
-    /**
-     * setSpecialtyName()
-     *
-     * @param string $specialtyName
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setSpecialtyName($specialtyName)
-    {
-        $this->_specialtyName = $specialtyName;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setSpecialtyNamephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$specialtyName
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setSpecialtyNamephp(php$specialtyNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_specialtyNamephp php=php php$specialtyNamephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getSpecialtyName()
-     *
-     * @return string
-     */
-    public function getSpecialtyName()
-    {
-        return $this->_specialtyName;
-    }
+php php php php php/php*php*
+php php php php php php*php getSpecialtyNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getSpecialtyNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_specialtyNamephp;
+php php php php php}
 
-    /**
-     * setActionName()
-     *
-     * @param string $actionName
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setActionName($actionName)
-    {
-        $this->_actionName = $actionName;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setActionNamephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$actionName
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setActionNamephp(php$actionNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_actionNamephp php=php php$actionNamephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getActionName()
-     *
-     * @return string
-     */
-    public function getActionName()
-    {
-        return $this->_actionName;
-    }
+php php php php php/php*php*
+php php php php php php*php getActionNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getActionNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_actionNamephp;
+php php php php php}
 
-    /**
-     * setActionParameter()
-     *
-     * @param string $parameterName
-     * @param string $parameterValue
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setActionParameter($parameterName, $parameterValue)
-    {
-        $this->_actionParameters[$parameterName] = $parameterValue;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setActionParameterphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$parameterName
+php php php php php php*php php@paramphp stringphp php$parameterValue
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setActionParameterphp(php$parameterNamephp,php php$parameterValuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_actionParametersphp[php$parameterNamephp]php php=php php$parameterValuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getActionParameters()
-     *
-     * @return array
-     */
-    public function getActionParameters()
-    {
-        return $this->_actionParameters;
-    }
+php php php php php/php*php*
+php php php php php php*php getActionParametersphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getActionParametersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_actionParametersphp;
+php php php php php}
 
-    /**
-     * getActionParameter()
-     *
-     * @param string $parameterName
-     * @return string
-     */
-    public function getActionParameter($parameterName)
-    {
-        return (isset($this->_actionParameters[$parameterName])) ? $this->_actionParameters[$parameterName] : null;
-    }
+php php php php php/php*php*
+php php php php php php*php getActionParameterphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$parameterName
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getActionParameterphp(php$parameterNamephp)
+php php php php php{
+php php php php php php php php returnphp php(issetphp(php$thisphp-php>php_actionParametersphp[php$parameterNamephp]php)php)php php?php php$thisphp-php>php_actionParametersphp[php$parameterNamephp]php php:php nullphp;
+php php php php php}
 
-    /**
-     * setProviderParameter()
-     *
-     * @param string $parameterName
-     * @param string $parameterValue
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setProviderParameter($parameterName, $parameterValue)
-    {
-        $this->_providerParameters[$parameterName] = $parameterValue;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setProviderParameterphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$parameterName
+php php php php php php*php php@paramphp stringphp php$parameterValue
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setProviderParameterphp(php$parameterNamephp,php php$parameterValuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_providerParametersphp[php$parameterNamephp]php php=php php$parameterValuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getProviderParameters()
-     *
-     * @return array
-     */
-    public function getProviderParameters()
-    {
-        return $this->_providerParameters;
-    }
+php php php php php/php*php*
+php php php php php php*php getProviderParametersphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getProviderParametersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_providerParametersphp;
+php php php php php}
 
-    /**
-     * getProviderParameter()
-     *
-     * @param string $parameterName
-     * @return string
-     */
-    public function getProviderParameter($parameterName)
-    {
-        return (isset($this->_providerParameters[$parameterName])) ? $this->_providerParameters[$parameterName] : null;
-    }
+php php php php php/php*php*
+php php php php php php*php getProviderParameterphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$parameterName
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getProviderParameterphp(php$parameterNamephp)
+php php php php php{
+php php php php php php php php returnphp php(issetphp(php$thisphp-php>php_providerParametersphp[php$parameterNamephp]php)php)php php?php php$thisphp-php>php_providerParametersphp[php$parameterNamephp]php php:php nullphp;
+php php php php php}
 
-    /**
-     * setPretend()
-     *
-     * @param bool $pretend
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setPretend($pretend)
-    {
-        $this->_isPretend = (bool) $pretend;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setPretendphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp boolphp php$pretend
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setPretendphp(php$pretendphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_isPretendphp php=php php(boolphp)php php$pretendphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * isPretend() - Whether or not this is a pretend request
-     *
-     * @return bool
-     */
-    public function isPretend()
-    {
-        return $this->_isPretend;
-    }
+php php php php php/php*php*
+php php php php php php*php isPretendphp(php)php php-php Whetherphp orphp notphp thisphp isphp aphp pretendphp request
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isPretendphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isPretendphp;
+php php php php php}
 
-    /**
-     * setDebug()
-     *
-     * @param bool $pretend
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setDebug($debug)
-    {
-        $this->_isDebug = (bool) $debug;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setDebugphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp boolphp php$pretend
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setDebugphp(php$debugphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_isDebugphp php=php php(boolphp)php php$debugphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * isDebug() - Whether or not this is a debug enabled request
-     *
-     * @return bool
-     */
-    public function isDebug()
-    {
-        return $this->_isDebug;
-    }
+php php php php php/php*php*
+php php php php php php*php isDebugphp(php)php php-php Whetherphp orphp notphp thisphp isphp aphp debugphp enabledphp request
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isDebugphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isDebugphp;
+php php php php php}
 
-    /**
-     * setVerbose()
-     *
-     * @param bool $verbose
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setVerbose($verbose)
-    {
-        $this->_isVerbose = (bool) $verbose;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setVerbosephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp boolphp php$verbose
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setVerbosephp(php$verbosephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_isVerbosephp php=php php(boolphp)php php$verbosephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * isVerbose() - Whether or not this is a verbose enabled request
-     *
-     * @return bool
-     */
-    public function isVerbose()
-    {
-        return $this->_isVerbose;
-    }
+php php php php php/php*php*
+php php php php php php*php isVerbosephp(php)php php-php Whetherphp orphp notphp thisphp isphp aphp verbosephp enabledphp request
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isVerbosephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isVerbosephp;
+php php php php php}
 
-    /**
-     * setDispatchable()
-     *
-     * @param bool $dispatchable
-     * @return Zend_Tool_Framework_Client_Request
-     */
-    public function setDispatchable($dispatchable)
-    {
-        $this->_isDispatchable = (bool) $dispatchable;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setDispatchablephp(php)
+php php php php php php*
+php php php php php php*php php@paramphp boolphp php$dispatchable
+php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Request
+php php php php php php*php/
+php php php php publicphp functionphp setDispatchablephp(php$dispatchablephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_isDispatchablephp php=php php(boolphp)php php$dispatchablephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * isDispatchable() Is this request Dispatchable?
-     *
-     * @return bool
-     */
-    public function isDispatchable()
-    {
-        return $this->_isDispatchable;
-    }
+php php php php php/php*php*
+php php php php php php*php isDispatchablephp(php)php Isphp thisphp requestphp Dispatchablephp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isDispatchablephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isDispatchablephp;
+php php php php php}
 
-}
+php}

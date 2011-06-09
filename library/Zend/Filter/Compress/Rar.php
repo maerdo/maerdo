@@ -1,252 +1,252 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Rar.php 22662 2010-07-24 17:37:36Z mabe $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Rarphp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
+php php*php/
 
-/**
- * @see Zend_Filter_Compress_CompressAbstract
- */
-require_once 'Zend/Filter/Compress/CompressAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Compressphp_CompressAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Compressphp/CompressAbstractphp.phpphp'php;
 
-/**
- * Compression adapter for Rar
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
-{
-    /**
-     * Compression Options
-     * array(
-     *     'callback' => Callback for compression
-     *     'archive'  => Archive to use
-     *     'password' => Password to use
-     *     'target'   => Target to write the files to
-     * )
-     *
-     * @var array
-     */
-    protected $_options = array(
-        'callback' => null,
-        'archive'  => null,
-        'password' => null,
-        'target'   => '.',
-    );
+php/php*php*
+php php*php Compressionphp adapterphp forphp Rar
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Filterphp_Compressphp_Rarphp extendsphp Zendphp_Filterphp_Compressphp_CompressAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Compressionphp Options
+php php php php php php*php arrayphp(
+php php php php php php*php php php php php php'callbackphp'php php=php>php Callbackphp forphp compression
+php php php php php php*php php php php php php'archivephp'php php php=php>php Archivephp tophp use
+php php php php php php*php php php php php php'passwordphp'php php=php>php Passwordphp tophp use
+php php php php php php*php php php php php php'targetphp'php php php php=php>php Targetphp tophp writephp thephp filesphp to
+php php php php php php*php php)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'callbackphp'php php=php>php nullphp,
+php php php php php php php php php'archivephp'php php php=php>php nullphp,
+php php php php php php php php php'passwordphp'php php=php>php nullphp,
+php php php php php php php php php'targetphp'php php php php=php>php php'php.php'php,
+php php php php php)php;
 
-    /**
-     * Class constructor
-     *
-     * @param array $options (Optional) Options to set
-     */
-    public function __construct($options = null)
-    {
-        if (!extension_loaded('rar')) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('This filter needs the rar extension');
-        }
-        parent::__construct($options);
-    }
+php php php php php/php*php*
+php php php php php php*php Classphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$optionsphp php(Optionalphp)php Optionsphp tophp set
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'rarphp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Thisphp filterphp needsphp thephp rarphp extensionphp'php)php;
+php php php php php php php php php}
+php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Returns the set callback for compression
-     *
-     * @return string
-     */
-    public function getCallback()
-    {
-        return $this->_options['callback'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp callbackphp forphp compression
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getCallbackphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'callbackphp'php]php;
+php php php php php}
 
-    /**
-     * Sets the callback to use
-     *
-     * @param string $callback
-     * @return Zend_Filter_Compress_Rar
-     */
-    public function setCallback($callback)
-    {
-        if (!is_callable($callback)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Callback can not be accessed');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp callbackphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$callback
+php php php php php php*php php@returnphp Zendphp_Filterphp_Compressphp_Rar
+php php php php php php*php/
+php php php php publicphp functionphp setCallbackphp(php$callbackphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_callablephp(php$callbackphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Callbackphp canphp notphp bephp accessedphp'php)php;
+php php php php php php php php php}
 
-        $this->_options['callback'] = $callback;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_optionsphp[php'callbackphp'php]php php=php php$callbackphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set archive
-     *
-     * @return string
-     */
-    public function getArchive()
-    {
-        return $this->_options['archive'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp archive
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getArchivephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'archivephp'php]php;
+php php php php php}
 
-    /**
-     * Sets the archive to use for de-/compression
-     *
-     * @param string $archive Archive to use
-     * @return Zend_Filter_Compress_Rar
-     */
-    public function setArchive($archive)
-    {
-        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $archive);
-        $this->_options['archive'] = (string) $archive;
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp archivephp tophp usephp forphp dephp-php/compression
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$archivephp Archivephp tophp use
+php php php php php php*php php@returnphp Zendphp_Filterphp_Compressphp_Rar
+php php php php php php*php/
+php php php php publicphp functionphp setArchivephp(php$archivephp)
+php php php php php{
+php php php php php php php php php$archivephp php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php DIRECTORYphp_SEPARATORphp,php php$archivephp)php;
+php php php php php php php php php$thisphp-php>php_optionsphp[php'archivephp'php]php php=php php(stringphp)php php$archivephp;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->_options['password'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp password
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getPasswordphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'passwordphp'php]php;
+php php php php php}
 
-    /**
-     * Sets the password to use
-     *
-     * @param string $password
-     * @return Zend_Filter_Compress_Rar
-     */
-    public function setPassword($password)
-    {
-        $this->_options['password'] = (string) $password;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp passwordphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$password
+php php php php php php*php php@returnphp Zendphp_Filterphp_Compressphp_Rar
+php php php php php php*php/
+php php php php publicphp functionphp setPasswordphp(php$passwordphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp[php'passwordphp'php]php php=php php(stringphp)php php$passwordphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the set targetpath
-     *
-     * @return string
-     */
-    public function getTarget()
-    {
-        return $this->_options['target'];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp targetpath
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTargetphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'targetphp'php]php;
+php php php php php}
 
-    /**
-     * Sets the targetpath to use
-     *
-     * @param string $target
-     * @return Zend_Filter_Compress_Rar
-     */
-    public function setTarget($target)
-    {
-        if (!file_exists(dirname($target))) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("The directory '$target' does not exist");
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp targetpathphp tophp use
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$target
+php php php php php php*php php@returnphp Zendphp_Filterphp_Compressphp_Rar
+php php php php php php*php/
+php php php php publicphp functionphp setTargetphp(php$targetphp)
+php php php php php{
+php php php php php php php php ifphp php(php!filephp_existsphp(dirnamephp(php$targetphp)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Thephp directoryphp php'php$targetphp'php doesphp notphp existphp"php)php;
+php php php php php php php php php}
 
-        $target = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $target);
-        $this->_options['target'] = (string) $target;
-        return $this;
-    }
+php php php php php php php php php$targetphp php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php DIRECTORYphp_SEPARATORphp,php php$targetphp)php;
+php php php php php php php php php$thisphp-php>php_optionsphp[php'targetphp'php]php php=php php(stringphp)php php$targetphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Compresses the given content
-     *
-     * @param  string|array $content
-     * @return string
-     */
-    public function compress($content)
-    {
-        $callback = $this->getCallback();
-        if ($callback === null) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('No compression callback available');
-        }
+php php php php php/php*php*
+php php php php php php*php Compressesphp thephp givenphp content
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$content
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp compressphp(php$contentphp)
+php php php php php{
+php php php php php php php php php$callbackphp php=php php$thisphp-php>getCallbackphp(php)php;
+php php php php php php php php ifphp php(php$callbackphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Nophp compressionphp callbackphp availablephp'php)php;
+php php php php php php php php php}
 
-        $options = $this->getOptions();
-        unset($options['callback']);
+php php php php php php php php php$optionsphp php=php php$thisphp-php>getOptionsphp(php)php;
+php php php php php php php php unsetphp(php$optionsphp[php'callbackphp'php]php)php;
 
-        $result = call_user_func($callback, $options, $content);
-        if ($result !== true) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Error compressing the RAR Archive');
-        }
+php php php php php php php php php$resultphp php=php callphp_userphp_funcphp(php$callbackphp,php php$optionsphp,php php$contentphp)php;
+php php php php php php php php ifphp php(php$resultphp php!php=php=php truephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Errorphp compressingphp thephp RARphp Archivephp'php)php;
+php php php php php php php php php}
 
-        return $this->getArchive();
-    }
+php php php php php php php php returnphp php$thisphp-php>getArchivephp(php)php;
+php php php php php}
 
-    /**
-     * Decompresses the given content
-     *
-     * @param  string $content
-     * @return boolean
-     */
-    public function decompress($content)
-    {
-        $archive = $this->getArchive();
-        if (file_exists($content)) {
-            $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
-        } elseif (empty($archive) || !file_exists($archive)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('RAR Archive not found');
-        }
+php php php php php/php*php*
+php php php php php php*php Decompressesphp thephp givenphp content
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$content
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp decompressphp(php$contentphp)
+php php php php php{
+php php php php php php php php php$archivephp php=php php$thisphp-php>getArchivephp(php)php;
+php php php php php php php php ifphp php(filephp_existsphp(php$contentphp)php)php php{
+php php php php php php php php php php php php php$archivephp php=php strphp_replacephp(arrayphp(php'php/php'php,php php'php\php\php'php)php,php DIRECTORYphp_SEPARATORphp,php realpathphp(php$contentphp)php)php;
+php php php php php php php php php}php elseifphp php(emptyphp(php$archivephp)php php|php|php php!filephp_existsphp(php$archivephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'RARphp Archivephp notphp foundphp'php)php;
+php php php php php php php php php}
 
-        $password = $this->getPassword();
-        if ($password !== null) {
-            $archive = rar_open($archive, $password);
-        } else {
-            $archive = rar_open($archive);
-        }
+php php php php php php php php php$passwordphp php=php php$thisphp-php>getPasswordphp(php)php;
+php php php php php php php php ifphp php(php$passwordphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$archivephp php=php rarphp_openphp(php$archivephp,php php$passwordphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$archivephp php=php rarphp_openphp(php$archivephp)php;
+php php php php php php php php php}
 
-        if (!$archive) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Error opening the RAR Archive");
-        }
+php php php php php php php php ifphp php(php!php$archivephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Errorphp openingphp thephp RARphp Archivephp"php)php;
+php php php php php php php php php}
 
-        $target = $this->getTarget();
-        if (!is_dir($target)) {
-            $target = dirname($target);
-        }
+php php php php php php php php php$targetphp php=php php$thisphp-php>getTargetphp(php)php;
+php php php php php php php php ifphp php(php!isphp_dirphp(php$targetphp)php)php php{
+php php php php php php php php php php php php php$targetphp php=php dirnamephp(php$targetphp)php;
+php php php php php php php php php}
 
-        $filelist = rar_list($archive);
-        if (!$filelist) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Error reading the RAR Archive");
-        }
+php php php php php php php php php$filelistphp php=php rarphp_listphp(php$archivephp)php;
+php php php php php php php php ifphp php(php!php$filelistphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Errorphp readingphp thephp RARphp Archivephp"php)php;
+php php php php php php php php php}
 
-        foreach($filelist as $file) {
-            $file->extract($target);
-        }
+php php php php php php php php foreachphp(php$filelistphp asphp php$filephp)php php{
+php php php php php php php php php php php php php$filephp-php>extractphp(php$targetphp)php;
+php php php php php php php php php}
 
-        rar_close($archive);
-        return true;
-    }
+php php php php php php php php rarphp_closephp(php$archivephp)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Returns the adapter name
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return 'Rar';
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php'Rarphp'php;
+php php php php php}
+php}

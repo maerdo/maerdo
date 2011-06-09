@@ -1,193 +1,193 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Db.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Dbphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Application_Resource_ResourceAbstract
- */
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Applicationphp/Resourcephp/ResourceAbstractphp.phpphp'php;
 
-/**
- * Resource for creating database adapter
- *
- * @uses       Zend_Application_Resource_ResourceAbstract
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Application_Resource_Db extends Zend_Application_Resource_ResourceAbstract
-{
-    /**
-     * Adapter to use
-     *
-     * @var string
-     */
-    protected $_adapter = null;
+php/php*php*
+php php*php Resourcephp forphp creatingphp databasephp adapter
+php php*
+php php*php php@usesphp php php php php php php Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Applicationphp_Resourcephp_Dbphp extendsphp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Adapterphp tophp use
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_adapterphp php=php nullphp;
 
-    /**
-     * @var Zend_Db_Adapter_Interface
-     */
-    protected $_db;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Dbphp_Adapterphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_dbphp;
 
-    /**
-     * Parameters to use
-     *
-     * @var array
-     */
-    protected $_params = array();
+php php php php php/php*php*
+php php php php php php*php Parametersphp tophp use
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_paramsphp php=php arrayphp(php)php;
 
-    /**
-     * Wether to register the created adapter as default table adapter
-     *
-     * @var boolean
-     */
-    protected $_isDefaultTableAdapter = true;
+php php php php php/php*php*
+php php php php php php*php Wetherphp tophp registerphp thephp createdphp adapterphp asphp defaultphp tablephp adapter
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isDefaultTableAdapterphp php=php truephp;
 
-    /**
-     * Set the adapter
-     *
-     * @param  $adapter string
-     * @return Zend_Application_Resource_Db
-     */
-    public function setAdapter($adapter)
-    {
-        $this->_adapter = $adapter;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php php$adapterphp string
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Resourcephp_Db
+php php php php php php*php/
+php php php php publicphp functionphp setAdapterphp(php$adapterphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Adapter type to use
-     *
-     * @return string
-     */
-    public function getAdapter()
-    {
-        return $this->_adapter;
-    }
+php php php php php/php*php*
+php php php php php php*php Adapterphp typephp tophp use
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
+php php php php php}
 
-    /**
-     * Set the adapter params
-     *
-     * @param  $adapter string
-     * @return Zend_Application_Resource_Db
-     */
-    public function setParams(array $params)
-    {
-        $this->_params = $params;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp adapterphp params
+php php php php php php*
+php php php php php php*php php@paramphp php php$adapterphp string
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Resourcephp_Db
+php php php php php php*php/
+php php php php publicphp functionphp setParamsphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_paramsphp php=php php$paramsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Adapter parameters
-     *
-     * @return array
-     */
-    public function getParams()
-    {
-        return $this->_params;
-    }
+php php php php php/php*php*
+php php php php php php*php Adapterphp parameters
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getParamsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_paramsphp;
+php php php php php}
 
-    /**
-     * Set whether to use this as default table adapter
-     *
-     * @param  boolean $defaultTableAdapter
-     * @return Zend_Application_Resource_Db
-     */
-    public function setIsDefaultTableAdapter($isDefaultTableAdapter)
-    {
-        $this->_isDefaultTableAdapter = $isDefaultTableAdapter;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp whetherphp tophp usephp thisphp asphp defaultphp tablephp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$defaultTableAdapter
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Resourcephp_Db
+php php php php php php*php/
+php php php php publicphp functionphp setIsDefaultTableAdapterphp(php$isDefaultTableAdapterphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_isDefaultTableAdapterphp php=php php$isDefaultTableAdapterphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Is this adapter the default table adapter?
-     *
-     * @return void
-     */
-    public function isDefaultTableAdapter()
-    {
-        return $this->_isDefaultTableAdapter;
-    }
+php php php php php/php*php*
+php php php php php php*php Isphp thisphp adapterphp thephp defaultphp tablephp adapterphp?
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp isDefaultTableAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isDefaultTableAdapterphp;
+php php php php php}
 
-    /**
-     * Retrieve initialized DB connection
-     *
-     * @return null|Zend_Db_Adapter_Interface
-     */
-    public function getDbAdapter()
-    {
-        if ((null === $this->_db)
-            && (null !== ($adapter = $this->getAdapter()))
-        ) {
-            $this->_db = Zend_Db::factory($adapter, $this->getParams());
-        }
-        return $this->_db;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp initializedphp DBphp connection
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|Zendphp_Dbphp_Adapterphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getDbAdapterphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php(nullphp php=php=php=php php$thisphp-php>php_dbphp)
+php php php php php php php php php php php php php&php&php php(nullphp php!php=php=php php(php$adapterphp php=php php$thisphp-php>getAdapterphp(php)php)php)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dbphp php=php Zendphp_Dbphp:php:factoryphp(php$adapterphp,php php$thisphp-php>getParamsphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_dbphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Application_Resource_Resource
-     *
-     * @return Zend_Db_Adapter_Abstract|null
-     */
-    public function init()
-    {
-        if (null !== ($db = $this->getDbAdapter())) {
-            if ($this->isDefaultTableAdapter()) {
-                Zend_Db_Table::setDefaultAdapter($db);
-            }
-            return $db;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Applicationphp_Resourcephp_Resource
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstractphp|null
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$dbphp php=php php$thisphp-php>getDbAdapterphp(php)php)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>isDefaultTableAdapterphp(php)php)php php{
+php php php php php php php php php php php php php php php php Zendphp_Dbphp_Tablephp:php:setDefaultAdapterphp(php$dbphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$dbphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set the default metadata cache
-     *
-     * @param string|Zend_Cache_Core $cache
-     * @return Zend_Application_Resource_Db
-     */
-    public function setDefaultMetadataCache($cache)
-    {
-        $metadataCache = null;
+php php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp metadataphp cache
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|Zendphp_Cachephp_Corephp php$cache
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Resourcephp_Db
+php php php php php php*php/
+php php php php publicphp functionphp setDefaultMetadataCachephp(php$cachephp)
+php php php php php{
+php php php php php php php php php$metadataCachephp php=php nullphp;
 
-        if (is_string($cache)) {
-            $bootstrap = $this->getBootstrap();
-            if ($bootstrap instanceof Zend_Application_Bootstrap_ResourceBootstrapper
-                && $bootstrap->hasPluginResource('CacheManager')
-            ) {
-                $cacheManager = $bootstrap->bootstrap('CacheManager')
-                    ->getResource('CacheManager');
-                if (null !== $cacheManager && $cacheManager->hasCache($cache)) {
-                    $metadataCache = $cacheManager->getCache($cache);
-                }
-            }
-        } else if ($cache instanceof Zend_Cache_Core) {
-            $metadataCache = $cache;
-        }
+php php php php php php php php ifphp php(isphp_stringphp(php$cachephp)php)php php{
+php php php php php php php php php php php php php$bootstrapphp php=php php$thisphp-php>getBootstrapphp(php)php;
+php php php php php php php php php php php php ifphp php(php$bootstrapphp instanceofphp Zendphp_Applicationphp_Bootstrapphp_ResourceBootstrapper
+php php php php php php php php php php php php php php php php php&php&php php$bootstrapphp-php>hasPluginResourcephp(php'CacheManagerphp'php)
+php php php php php php php php php php php php php)php php{
+php php php php php php php php php php php php php php php php php$cacheManagerphp php=php php$bootstrapphp-php>bootstrapphp(php'CacheManagerphp'php)
+php php php php php php php php php php php php php php php php php php php php php-php>getResourcephp(php'CacheManagerphp'php)php;
+php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$cacheManagerphp php&php&php php$cacheManagerphp-php>hasCachephp(php$cachephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$metadataCachephp php=php php$cacheManagerphp-php>getCachephp(php$cachephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php$cachephp instanceofphp Zendphp_Cachephp_Corephp)php php{
+php php php php php php php php php php php php php$metadataCachephp php=php php$cachephp;
+php php php php php php php php php}
 
-        if ($metadataCache instanceof Zend_Cache_Core) {
-            Zend_Db_Table::setDefaultMetadataCache($metadataCache);
-        }
+php php php php php php php php ifphp php(php$metadataCachephp instanceofphp Zendphp_Cachephp_Corephp)php php{
+php php php php php php php php php php php php Zendphp_Dbphp_Tablephp:php:setDefaultMetadataCachephp(php$metadataCachephp)php;
+php php php php php php php php php}
 
-        return $this;
-    }
-}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php}

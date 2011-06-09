@@ -1,117 +1,117 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Router
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Router
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * @see Zend_Controller_Router_Route_Interface
- */
-require_once 'Zend/Controller/Router/Route/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Controllerphp_Routerphp_Routephp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Routephp/Interfacephp.phpphp'php;
 
-/**
- * Abstract Route
- *
- * Implements interface and provides convenience methods
- *
- * @package    Zend_Controller
- * @subpackage Router
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Controller_Router_Route_Abstract implements Zend_Controller_Router_Route_Interface
-{
-    /**
-     * Wether this route is abstract or not
-     *
-     * @var boolean
-     */
-    protected $_isAbstract = false;
+php/php*php*
+php php*php Abstractphp Route
+php php*
+php php*php Implementsphp interfacephp andphp providesphp conveniencephp methods
+php php*
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Router
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Controllerphp_Routerphp_Routephp_Abstractphp implementsphp Zendphp_Controllerphp_Routerphp_Routephp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Wetherphp thisphp routephp isphp abstractphp orphp not
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isAbstractphp php=php falsephp;
 
-    /**
-     * Path matched by this route
-     *
-     * @var string
-     */
-    protected $_matchedPath = null;
+php php php php php/php*php*
+php php php php php php*php Pathphp matchedphp byphp thisphp route
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_matchedPathphp php=php nullphp;
 
-    /**
-     * Get the version of the route
-     *
-     * @return integer
-     */
-    public function getVersion()
-    {
-        return 2;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp versionphp ofphp thephp route
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getVersionphp(php)
+php php php php php{
+php php php php php php php php returnphp php2php;
+php php php php php}
 
-    /**
-     * Set partially matched path
-     *
-     * @param  string $path
-     * @return void
-     */
-    public function setMatchedPath($path)
-    {
-        $this->_matchedPath = $path;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp partiallyphp matchedphp path
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$path
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setMatchedPathphp(php$pathphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_matchedPathphp php=php php$pathphp;
+php php php php php}
 
-    /**
-     * Get partially matched path
-     *
-     * @return string
-     */
-    public function getMatchedPath()
-    {
-        return $this->_matchedPath;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp partiallyphp matchedphp path
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getMatchedPathphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_matchedPathphp;
+php php php php php}
 
-    /**
-     * Check or set wether this is an abstract route or not
-     *
-     * @param  boolean $flag
-     * @return boolean
-     */
-    public function isAbstract($flag = null)
-    {
-        if ($flag !== null) {
-            $this->_isAbstract = $flag;
-        }
+php php php php php/php*php*
+php php php php php php*php Checkphp orphp setphp wetherphp thisphp isphp anphp abstractphp routephp orphp not
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php$flag
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isAbstractphp(php$flagphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$flagphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_isAbstractphp php=php php$flagphp;
+php php php php php php php php php}
 
-        return $this->_isAbstract;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_isAbstractphp;
+php php php php php}
 
-    /**
-     * Create a new chain
-     *
-     * @param  Zend_Controller_Router_Route_Abstract $route
-     * @param  string                                $separator
-     * @return Zend_Controller_Router_Route_Chain
-     */
-    public function chain(Zend_Controller_Router_Route_Abstract $route, $separator = '/')
-    {
-        require_once 'Zend/Controller/Router/Route/Chain.php';
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp chain
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Controllerphp_Routerphp_Routephp_Abstractphp php$route
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$separator
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Routerphp_Routephp_Chain
+php php php php php php*php/
+php php php php publicphp functionphp chainphp(Zendphp_Controllerphp_Routerphp_Routephp_Abstractphp php$routephp,php php$separatorphp php=php php'php/php'php)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Routephp/Chainphp.phpphp'php;
 
-        $chain = new Zend_Controller_Router_Route_Chain();
-        $chain->chain($this)->chain($route, $separator);
+php php php php php php php php php$chainphp php=php newphp Zendphp_Controllerphp_Routerphp_Routephp_Chainphp(php)php;
+php php php php php php php php php$chainphp-php>chainphp(php$thisphp)php-php>chainphp(php$routephp,php php$separatorphp)php;
 
-        return $chain;
-    }
+php php php php php php php php returnphp php$chainphp;
+php php php php php}
 
-}
+php}

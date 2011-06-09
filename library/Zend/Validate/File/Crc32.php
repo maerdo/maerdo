@@ -1,179 +1,179 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Crc32.php 22668 2010-07-25 14:50:46Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Crcphp3php2php.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_File_Hash
- */
-require_once 'Zend/Validate/File/Hash.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Filephp_Hash
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Filephp/Hashphp.phpphp'php;
 
-/**
- * Validator for the crc32 hash of given files
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_File_Crc32 extends Zend_Validate_File_Hash
-{
-    /**
-     * @const string Error constants
-     */
-    const DOES_NOT_MATCH = 'fileCrc32DoesNotMatch';
-    const NOT_DETECTED   = 'fileCrc32NotDetected';
-    const NOT_FOUND      = 'fileCrc32NotFound';
+php/php*php*
+php php*php Validatorphp forphp thephp crcphp3php2php hashphp ofphp givenphp files
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Filephp_Crcphp3php2php extendsphp Zendphp_Validatephp_Filephp_Hash
+php{
+php php php php php/php*php*
+php php php php php php*php php@constphp stringphp Errorphp constants
+php php php php php php*php/
+php php php php constphp DOESphp_NOTphp_MATCHphp php=php php'fileCrcphp3php2DoesNotMatchphp'php;
+php php php php constphp NOTphp_DETECTEDphp php php php=php php'fileCrcphp3php2NotDetectedphp'php;
+php php php php constphp NOTphp_FOUNDphp php php php php php php=php php'fileCrcphp3php2NotFoundphp'php;
 
-    /**
-     * @var array Error message templates
-     */
-    protected $_messageTemplates = array(
-        self::DOES_NOT_MATCH => "File '%value%' does not match the given crc32 hashes",
-        self::NOT_DETECTED   => "A crc32 hash could not be evaluated for the given file",
-        self::NOT_FOUND      => "File '%value%' is not readable or does not exist",
-    );
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Errorphp messagephp templates
+php php php php php php*php/
+php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
+php php php php php php php php selfphp:php:DOESphp_NOTphp_MATCHphp php=php>php php"Filephp php'php%valuephp%php'php doesphp notphp matchphp thephp givenphp crcphp3php2php hashesphp"php,
+php php php php php php php php selfphp:php:NOTphp_DETECTEDphp php php php=php>php php"Aphp crcphp3php2php hashphp couldphp notphp bephp evaluatedphp forphp thephp givenphp filephp"php,
+php php php php php php php php selfphp:php:NOTphp_FOUNDphp php php php php php php=php>php php"Filephp php'php%valuephp%php'php isphp notphp readablephp orphp doesphp notphp existphp"php,
+php php php php php)php;
 
-    /**
-     * Hash of the file
-     *
-     * @var string
-     */
-    protected $_hash;
+php php php php php/php*php*
+php php php php php php*php Hashphp ofphp thephp file
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_hashphp;
 
-    /**
-     * Sets validator options
-     *
-     * @param  string|array|Zend_Config $options
-     * @return void
-     */
-    public function __construct($options)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } elseif (is_scalar($options)) {
-            $options = array('hash1' => $options);
-        } elseif (!is_array($options)) {
-            require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Invalid options to validator provided');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp validatorphp options
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elseifphp php(isphp_scalarphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'hashphp1php'php php=php>php php$optionsphp)php;
+php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
+php php php php php php php php php}
 
-        $this->setCrc32($options);
-    }
+php php php php php php php php php$thisphp-php>setCrcphp3php2php(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Returns all set crc32 hashes
-     *
-     * @return array
-     */
-    public function getCrc32()
-    {
-        return $this->getHash();
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp setphp crcphp3php2php hashes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getCrcphp3php2php(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getHashphp(php)php;
+php php php php php}
 
-    /**
-     * Sets the crc32 hash for one or multiple files
-     *
-     * @param  string|array $options
-     * @return Zend_Validate_File_Hash Provides a fluent interface
-     */
-    public function setHash($options)
-    {
-        if (!is_array($options)) {
-            $options = array($options);
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp crcphp3php2php hashphp forphp onephp orphp multiplephp files
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Hashphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setHashphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php$optionsphp)php;
+php php php php php php php php php}
 
-        $options['algorithm'] = 'crc32';
-        parent::setHash($options);
-        return $this;
-    }
+php php php php php php php php php$optionsphp[php'algorithmphp'php]php php=php php'crcphp3php2php'php;
+php php php php php php php php parentphp:php:setHashphp(php$optionsphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets the crc32 hash for one or multiple files
-     *
-     * @param  string|array $options
-     * @return Zend_Validate_File_Hash Provides a fluent interface
-     */
-    public function setCrc32($options)
-    {
-        $this->setHash($options);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp crcphp3php2php hashphp forphp onephp orphp multiplephp files
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Hashphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setCrcphp3php2php(php$optionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setHashphp(php$optionsphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Adds the crc32 hash for one or multiple files
-     *
-     * @param  string|array $options
-     * @return Zend_Validate_File_Hash Provides a fluent interface
-     */
-    public function addHash($options)
-    {
-        if (!is_array($options)) {
-            $options = array($options);
-        }
+php php php php php/php*php*
+php php php php php php*php Addsphp thephp crcphp3php2php hashphp forphp onephp orphp multiplephp files
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Hashphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addHashphp(php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php$optionsphp)php;
+php php php php php php php php php}
 
-        $options['algorithm'] = 'crc32';
-        parent::addHash($options);
-        return $this;
-    }
+php php php php php php php php php$optionsphp[php'algorithmphp'php]php php=php php'crcphp3php2php'php;
+php php php php php php php php parentphp:php:addHashphp(php$optionsphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Adds the crc32 hash for one or multiple files
-     *
-     * @param  string|array $options
-     * @return Zend_Validate_File_Hash Provides a fluent interface
-     */
-    public function addCrc32($options)
-    {
-        $this->addHash($options);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addsphp thephp crcphp3php2php hashphp forphp onephp orphp multiplephp files
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Validatephp_Filephp_Hashphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addCrcphp3php2php(php$optionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>addHashphp(php$optionsphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if and only if the given file confirms the set hash
-     *
-     * @param  string $value Filename to check for hash
-     * @param  array  $file  File data from Zend_File_Transfer
-     * @return boolean
-     */
-    public function isValid($value, $file = null)
-    {
-        // Is file readable ?
-        require_once 'Zend/Loader.php';
-        if (!Zend_Loader::isReadable($value)) {
-            return $this->_throw($file, self::NOT_FOUND);
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp givenphp filephp confirmsphp thephp setphp hash
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Filenamephp tophp checkphp forphp hash
+php php php php php php*php php@paramphp php arrayphp php php$filephp php Filephp dataphp fromphp Zendphp_Filephp_Transfer
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$filephp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Isphp filephp readablephp php?
+php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php ifphp php(php!Zendphp_Loaderphp:php:isReadablephp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_FOUNDphp)php;
+php php php php php php php php php}
 
-        $hashes = array_unique(array_keys($this->_hash));
-        $filehash = hash_file('crc32', $value);
-        if ($filehash === false) {
-            return $this->_throw($file, self::NOT_DETECTED);
-        }
+php php php php php php php php php$hashesphp php=php arrayphp_uniquephp(arrayphp_keysphp(php$thisphp-php>php_hashphp)php)php;
+php php php php php php php php php$filehashphp php=php hashphp_filephp(php'crcphp3php2php'php,php php$valuephp)php;
+php php php php php php php php ifphp php(php$filehashphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_DETECTEDphp)php;
+php php php php php php php php php}
 
-        foreach($hashes as $hash) {
-            if ($filehash === $hash) {
-                return true;
-            }
-        }
+php php php php php php php php foreachphp(php$hashesphp asphp php$hashphp)php php{
+php php php php php php php php php php php php ifphp php(php$filehashphp php=php=php=php php$hashphp)php php{
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_throw($file, self::DOES_NOT_MATCH);
-    }
-}
+php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:DOESphp_NOTphp_MATCHphp)php;
+php php php php php}
+php}

@@ -1,165 +1,165 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Tbx.php 20096 2010-01-06 02:05:09Z bkarwin $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Tbxphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
 
-/** Zend_Locale */
-require_once 'Zend/Locale.php';
+php/php*php*php Zendphp_Localephp php*php/
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
 
-/** Zend_Translate_Adapter */
-require_once 'Zend/Translate/Adapter.php';
+php/php*php*php Zendphp_Translatephp_Adapterphp php*php/
+requirephp_oncephp php'Zendphp/Translatephp/Adapterphp.phpphp'php;
 
 
-/**
- * @category   Zend
- * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Translate_Adapter_Tbx extends Zend_Translate_Adapter {
-    // Internal variables
-    private $_file        = false;
-    private $_cleared     = array();
-    private $_langset     = null;
-    private $_termentry   = null;
-    private $_content     = null;
-    private $_term        = null;
-    private $_data        = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Translatephp_Adapterphp_Tbxphp extendsphp Zendphp_Translatephp_Adapterphp php{
+php php php php php/php/php Internalphp variables
+php php php php privatephp php$php_filephp php php php php php php php php=php falsephp;
+php php php php privatephp php$php_clearedphp php php php php php=php arrayphp(php)php;
+php php php php privatephp php$php_langsetphp php php php php php=php nullphp;
+php php php php privatephp php$php_termentryphp php php php=php nullphp;
+php php php php privatephp php$php_contentphp php php php php php=php nullphp;
+php php php php privatephp php$php_termphp php php php php php php php php=php nullphp;
+php php php php privatephp php$php_dataphp php php php php php php php php=php arrayphp(php)php;
 
-    /**
-     * Load translation data (TBX file reader)
-     *
-     * @param  string  $filename  TBX file to add, full path must be given for access
-     * @param  string  $locale    Locale has no effect for TBX because TBX defines all languages within
-     *                            the source file
-     * @param  array   $option    OPTIONAL Options to use
-     * @throws Zend_Translation_Exception
-     * @return array
-     */
-    protected function _loadTranslationData($filename, $locale, array $options = array())
-    {
-        $this->_data = array();
-        if (!is_readable($filename)) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception('Translation file \'' . $filename . '\' is not readable.');
-        }
+php php php php php/php*php*
+php php php php php php*php Loadphp translationphp dataphp php(TBXphp filephp readerphp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$filenamephp php TBXphp filephp tophp addphp,php fullphp pathphp mustphp bephp givenphp forphp access
+php php php php php php*php php@paramphp php stringphp php php$localephp php php php Localephp hasphp nophp effectphp forphp TBXphp becausephp TBXphp definesphp allphp languagesphp within
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php thephp sourcephp file
+php php php php php php*php php@paramphp php arrayphp php php php$optionphp php php php OPTIONALphp Optionsphp tophp use
+php php php php php php*php php@throwsphp Zendphp_Translationphp_Exception
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadTranslationDataphp(php$filenamephp,php php$localephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php!isphp_readablephp(php$filenamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php'Translationphp filephp php\php'php'php php.php php$filenamephp php.php php'php\php'php isphp notphp readablephp.php'php)php;
+php php php php php php php php php}
 
-        $encoding = $this->_findEncoding($filename);
-        $this->_file = xml_parser_create($encoding);
-        xml_set_object($this->_file, $this);
-        xml_parser_set_option($this->_file, XML_OPTION_CASE_FOLDING, 0);
-        xml_set_element_handler($this->_file, "_startElement", "_endElement");
-        xml_set_character_data_handler($this->_file, "_contentElement");
+php php php php php php php php php$encodingphp php=php php$thisphp-php>php_findEncodingphp(php$filenamephp)php;
+php php php php php php php php php$thisphp-php>php_filephp php=php xmlphp_parserphp_createphp(php$encodingphp)php;
+php php php php php php php php xmlphp_setphp_objectphp(php$thisphp-php>php_filephp,php php$thisphp)php;
+php php php php php php php php xmlphp_parserphp_setphp_optionphp(php$thisphp-php>php_filephp,php XMLphp_OPTIONphp_CASEphp_FOLDINGphp,php php0php)php;
+php php php php php php php php xmlphp_setphp_elementphp_handlerphp(php$thisphp-php>php_filephp,php php"php_startElementphp"php,php php"php_endElementphp"php)php;
+php php php php php php php php xmlphp_setphp_characterphp_dataphp_handlerphp(php$thisphp-php>php_filephp,php php"php_contentElementphp"php)php;
 
-        if (!xml_parse($this->_file, file_get_contents($filename))) {
-            $ex = sprintf('XML error: %s at line %d',
-                          xml_error_string(xml_get_error_code($this->_file)),
-                          xml_get_current_line_number($this->_file));
-            xml_parser_free($this->_file);
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception($ex);
-        }
+php php php php php php php php ifphp php(php!xmlphp_parsephp(php$thisphp-php>php_filephp,php filephp_getphp_contentsphp(php$filenamephp)php)php)php php{
+php php php php php php php php php php php php php$exphp php=php sprintfphp(php'XMLphp errorphp:php php%sphp atphp linephp php%dphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php xmlphp_errorphp_stringphp(xmlphp_getphp_errorphp_codephp(php$thisphp-php>php_filephp)php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php xmlphp_getphp_currentphp_linephp_numberphp(php$thisphp-php>php_filephp)php)php;
+php php php php php php php php php php php php xmlphp_parserphp_freephp(php$thisphp-php>php_filephp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php$exphp)php;
+php php php php php php php php php}
 
-        return $this->_data;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_dataphp;
+php php php php php}
 
-    private function _startElement($file, $name, $attrib)
-    {
-        if ($this->_term !== null) {
-            $this->_content .= "<".$name;
-            foreach($attrib as $key => $value) {
-                $this->_content .= " $key=\"$value\"";
-            }
-            $this->_content .= ">";
-        } else {
-            switch(strtolower($name)) {
-                case 'termentry':
-                    $this->_termentry = null;
-                    break;
-                case 'langset':
-                    if (isset($attrib['xml:lang']) === true) {
-                        $this->_langset = $attrib['xml:lang'];
-                        if (isset($this->_data[$this->_langset]) === false) {
-                            $this->_data[$this->_langset] = array();
-                        }
-                    }
-                    break;
-                case 'term':
-                    $this->_term    = true;
-                    $this->_content = null;
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+php php php php privatephp functionphp php_startElementphp(php$filephp,php php$namephp,php php$attribphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_termphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"<php"php.php$namephp;
+php php php php php php php php php php php php foreachphp(php$attribphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"php php$keyphp=php\php"php$valuephp\php"php"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"php>php"php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php switchphp(strtolowerphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'termentryphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termentryphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'langsetphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$attribphp[php'xmlphp:langphp'php]php)php php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_langsetphp php=php php$attribphp[php'xmlphp:langphp'php]php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php$thisphp-php>php_langsetphp]php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$thisphp-php>php_langsetphp]php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'termphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termphp php php php php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_contentphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    private function _endElement($file, $name)
-    {
-        if (($this->_term !== null) and ($name != "term")) {
-            $this->_content .= "</".$name.">";
-        } else {
-            switch (strtolower($name)) {
-                case 'langset':
-                    $this->_langset = null;
-                    break;
-                case 'term':
-                    $this->_term = null;
-                    if (empty($this->_termentry)) {
-                        $this->_termentry = $this->_content;
-                    }
-                    if (!empty($this->_content) or (isset($this->_data[$this->_langset][$this->_termentry]) === false)) {
-                        $this->_data[$this->_langset][$this->_termentry] = $this->_content;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+php php php php privatephp functionphp php_endElementphp(php$filephp,php php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$thisphp-php>php_termphp php!php=php=php nullphp)php andphp php(php$namephp php!php=php php"termphp"php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php"<php/php"php.php$namephp.php"php>php"php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'langsetphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_langsetphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'termphp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_termentryphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termentryphp php=php php$thisphp-php>php_contentphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_contentphp)php orphp php(issetphp(php$thisphp-php>php_dataphp[php$thisphp-php>php_langsetphp]php[php$thisphp-php>php_termentryphp]php)php php=php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$thisphp-php>php_langsetphp]php[php$thisphp-php>php_termentryphp]php php=php php$thisphp-php>php_contentphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    private function _contentElement($file, $data)
-    {
-        if ($this->_term !== null) {
-            $this->_content .= $data;
-        }
-    }
+php php php php privatephp functionphp php_contentElementphp(php$filephp,php php$dataphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_termphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_contentphp php.php=php php$dataphp;
+php php php php php php php php php}
+php php php php php}
 
-    private function _findEncoding($filename)
-    {
-        $file = file_get_contents($filename, null, null, 0, 100);
-        if (strpos($file, "encoding") !== false) {
-            $encoding = substr($file, strpos($file, "encoding") + 9);
-            $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);
-            return $encoding;
-        }
-        return 'UTF-8';
-    }
+php php php php privatephp functionphp php_findEncodingphp(php$filenamephp)
+php php php php php{
+php php php php php php php php php$filephp php=php filephp_getphp_contentsphp(php$filenamephp,php nullphp,php nullphp,php php0php,php php1php0php0php)php;
+php php php php php php php php ifphp php(strposphp(php$filephp,php php"encodingphp"php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$encodingphp php=php substrphp(php$filephp,php strposphp(php$filephp,php php"encodingphp"php)php php+php php9php)php;
+php php php php php php php php php php php php php$encodingphp php=php substrphp(php$encodingphp,php php1php,php strposphp(php$encodingphp,php php$encodingphp[php0php]php,php php1php)php php-php php1php)php;
+php php php php php php php php php php php php returnphp php$encodingphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php'UTFphp-php8php'php;
+php php php php php}
 
-    /**
-     * Returns the adapter name
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return "Tbx";
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php"Tbxphp"php;
+php php php php php}
+php}

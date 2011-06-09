@@ -1,576 +1,576 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Phrase.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-
-
-/** Zend_Search_Lucene_Search_Query */
-require_once 'Zend/Search/Lucene/Search/Query.php';
-
-
-/**
- * A Query that matches documents containing a particular sequence of terms.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_Search_Query_Phrase extends Zend_Search_Lucene_Search_Query
-{
-    /**
-     * Terms to find.
-     * Array of Zend_Search_Lucene_Index_Term objects.
-     *
-     * @var array
-     */
-    private $_terms;
-
-    /**
-     * Term positions (relative positions of terms within the phrase).
-     * Array of integers
-     *
-     * @var array
-     */
-    private $_offsets;
-
-    /**
-     * Sets the number of other words permitted between words in query phrase.
-     * If zero, then this is an exact phrase search.  For larger values this works
-     * like a WITHIN or NEAR operator.
-     *
-     * The slop is in fact an edit-distance, where the units correspond to
-     * moves of terms in the query phrase out of position.  For example, to switch
-     * the order of two words requires two moves (the first move places the words
-     * atop one another), so to permit re-orderings of phrases, the slop must be
-     * at least two.
-     * More exact matches are scored higher than sloppier matches, thus search
-     * results are sorted by exactness.
-     *
-     * The slop is zero by default, requiring exact matches.
-     *
-     * @var integer
-     */
-    private $_slop;
-
-    /**
-     * Result vector.
-     *
-     * @var array
-     */
-    private $_resVector = null;
-
-    /**
-     * Terms positions vectors.
-     * Array of Arrays:
-     * term1Id => (docId => array( pos1, pos2, ... ), ...)
-     * term2Id => (docId => array( pos1, pos2, ... ), ...)
-     *
-     * @var array
-     */
-    private $_termsPositions = array();
-
-    /**
-     * Class constructor.  Create a new prase query.
-     *
-     * @param string $field    Field to search.
-     * @param array  $terms    Terms to search Array of strings.
-     * @param array  $offsets  Relative term positions. Array of integers.
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function __construct($terms = null, $offsets = null, $field = null)
-    {
-        $this->_slop = 0;
-
-        if (is_array($terms)) {
-            $this->_terms = array();
-            require_once 'Zend/Search/Lucene/Index/Term.php';
-            foreach ($terms as $termId => $termText) {
-                $this->_terms[$termId] = ($field !== null)? new Zend_Search_Lucene_Index_Term($termText, $field):
-                                                            new Zend_Search_Lucene_Index_Term($termText);
-            }
-        } else if ($terms === null) {
-            $this->_terms = array();
-        } else {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('terms argument must be array of strings or null');
-        }
-
-        if (is_array($offsets)) {
-            if (count($this->_terms) != count($offsets)) {
-                require_once 'Zend/Search/Lucene/Exception.php';
-                throw new Zend_Search_Lucene_Exception('terms and offsets arguments must have the same size.');
-            }
-            $this->_offsets = $offsets;
-        } else if ($offsets === null) {
-            $this->_offsets = array();
-            foreach ($this->_terms as $termId => $term) {
-                $position = count($this->_offsets);
-                $this->_offsets[$termId] = $position;
-            }
-        } else {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('offsets argument must be array of strings or null');
-        }
-    }
-
-    /**
-     * Set slop
-     *
-     * @param integer $slop
-     */
-    public function setSlop($slop)
-    {
-        $this->_slop = $slop;
-    }
-
-
-    /**
-     * Get slop
-     *
-     * @return integer
-     */
-    public function getSlop()
-    {
-        return $this->_slop;
-    }
-
-
-    /**
-     * Adds a term to the end of the query phrase.
-     * The relative position of the term is specified explicitly or the one immediately
-     * after the last term added.
-     *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param integer $position
-     */
-    public function addTerm(Zend_Search_Lucene_Index_Term $term, $position = null) {
-        if ((count($this->_terms) != 0)&&(end($this->_terms)->field != $term->field)) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('All phrase terms must be in the same field: ' .
-                                                   $term->field . ':' . $term->text);
-        }
-
-        $this->_terms[] = $term;
-        if ($position !== null) {
-            $this->_offsets[] = $position;
-        } else if (count($this->_offsets) != 0) {
-            $this->_offsets[] = end($this->_offsets) + 1;
-        } else {
-            $this->_offsets[] = 0;
-        }
-    }
-
-
-    /**
-     * Re-write query into primitive queries in the context of specified index
-     *
-     * @param Zend_Search_Lucene_Interface $index
-     * @return Zend_Search_Lucene_Search_Query
-     */
-    public function rewrite(Zend_Search_Lucene_Interface $index)
-    {
-        if (count($this->_terms) == 0) {
-            require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
-            return new Zend_Search_Lucene_Search_Query_Empty();
-        } else if ($this->_terms[0]->field !== null) {
-            return $this;
-        } else {
-            require_once 'Zend/Search/Lucene/Search/Query/Boolean.php';
-            $query = new Zend_Search_Lucene_Search_Query_Boolean();
-            $query->setBoost($this->getBoost());
-
-            foreach ($index->getFieldNames(true) as $fieldName) {
-                $subquery = new Zend_Search_Lucene_Search_Query_Phrase();
-                $subquery->setSlop($this->getSlop());
-
-                require_once 'Zend/Search/Lucene/Index/Term.php';
-                foreach ($this->_terms as $termId => $term) {
-                    $qualifiedTerm = new Zend_Search_Lucene_Index_Term($term->text, $fieldName);
-
-                    $subquery->addTerm($qualifiedTerm, $this->_offsets[$termId]);
-                }
-
-                $query->addSubquery($subquery);
-            }
-
-            return $query;
-        }
-    }
-
-    /**
-     * Optimize query in the context of specified index
-     *
-     * @param Zend_Search_Lucene_Interface $index
-     * @return Zend_Search_Lucene_Search_Query
-     */
-    public function optimize(Zend_Search_Lucene_Interface $index)
-    {
-        // Check, that index contains all phrase terms
-        foreach ($this->_terms as $term) {
-            if (!$index->hasTerm($term)) {
-                require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
-                return new Zend_Search_Lucene_Search_Query_Empty();
-            }
-        }
-
-        if (count($this->_terms) == 1) {
-            // It's one term query
-            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
-            $optimizedQuery = new Zend_Search_Lucene_Search_Query_Term(reset($this->_terms));
-            $optimizedQuery->setBoost($this->getBoost());
-
-            return $optimizedQuery;
-        }
-
-        if (count($this->_terms) == 0) {
-            require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
-            return new Zend_Search_Lucene_Search_Query_Empty();
-        }
-
-
-        return $this;
-    }
-
-    /**
-     * Returns query term
-     *
-     * @return array
-     */
-    public function getTerms()
-    {
-        return $this->_terms;
-    }
-
-
-    /**
-     * Set weight for specified term
-     *
-     * @param integer $num
-     * @param Zend_Search_Lucene_Search_Weight_Term $weight
-     */
-    public function setWeight($num, $weight)
-    {
-        $this->_weights[$num] = $weight;
-    }
-
-
-    /**
-     * Constructs an appropriate Weight implementation for this query.
-     *
-     * @param Zend_Search_Lucene_Interface $reader
-     * @return Zend_Search_Lucene_Search_Weight
-     */
-    public function createWeight(Zend_Search_Lucene_Interface $reader)
-    {
-        require_once 'Zend/Search/Lucene/Search/Weight/Phrase.php';
-        $this->_weight = new Zend_Search_Lucene_Search_Weight_Phrase($this, $reader);
-        return $this->_weight;
-    }
-
-
-    /**
-     * Score calculator for exact phrase queries (terms sequence is fixed)
-     *
-     * @param integer $docId
-     * @return float
-     */
-    public function _exactPhraseFreq($docId)
-    {
-        $freq = 0;
-
-        // Term Id with lowest cardinality
-        $lowCardTermId = null;
-
-        // Calculate $lowCardTermId
-        foreach ($this->_terms as $termId => $term) {
-            if ($lowCardTermId === null ||
-                count($this->_termsPositions[$termId][$docId]) <
-                count($this->_termsPositions[$lowCardTermId][$docId]) ) {
-                    $lowCardTermId = $termId;
-                }
-        }
-
-        // Walk through positions of the term with lowest cardinality
-        foreach ($this->_termsPositions[$lowCardTermId][$docId] as $lowCardPos) {
-            // We expect phrase to be found
-            $freq++;
-
-            // Walk through other terms
-            foreach ($this->_terms as $termId => $term) {
-                if ($termId != $lowCardTermId) {
-                    $expectedPosition = $lowCardPos +
-                                            ($this->_offsets[$termId] -
-                                             $this->_offsets[$lowCardTermId]);
-
-                    if (!in_array($expectedPosition, $this->_termsPositions[$termId][$docId])) {
-                        $freq--;  // Phrase wasn't found.
-                        break;
-                    }
-                }
-            }
-        }
-
-        return $freq;
-    }
-
-    /**
-     * Score calculator for sloppy phrase queries (terms sequence is fixed)
-     *
-     * @param integer $docId
-     * @param Zend_Search_Lucene_Interface $reader
-     * @return float
-     */
-    public function _sloppyPhraseFreq($docId, Zend_Search_Lucene_Interface $reader)
-    {
-        $freq = 0;
-
-        $phraseQueue = array();
-        $phraseQueue[0] = array(); // empty phrase
-        $lastTerm = null;
-
-        // Walk through the terms to create phrases.
-        foreach ($this->_terms as $termId => $term) {
-            $queueSize = count($phraseQueue);
-            $firstPass = true;
-
-            // Walk through the term positions.
-            // Each term position produces a set of phrases.
-            foreach ($this->_termsPositions[$termId][$docId] as $termPosition ) {
-                if ($firstPass) {
-                    for ($count = 0; $count < $queueSize; $count++) {
-                        $phraseQueue[$count][$termId] = $termPosition;
-                    }
-                } else {
-                    for ($count = 0; $count < $queueSize; $count++) {
-                        if ($lastTerm !== null &&
-                            abs( $termPosition - $phraseQueue[$count][$lastTerm] -
-                                 ($this->_offsets[$termId] - $this->_offsets[$lastTerm])) > $this->_slop) {
-                            continue;
-                        }
-
-                        $newPhraseId = count($phraseQueue);
-                        $phraseQueue[$newPhraseId]          = $phraseQueue[$count];
-                        $phraseQueue[$newPhraseId][$termId] = $termPosition;
-                    }
-
-                }
-
-                $firstPass = false;
-            }
-            $lastTerm = $termId;
-        }
-
-
-        foreach ($phraseQueue as $phrasePos) {
-            $minDistance = null;
-
-            for ($shift = -$this->_slop; $shift <= $this->_slop; $shift++) {
-                $distance = 0;
-                $start = reset($phrasePos) - reset($this->_offsets) + $shift;
-
-                foreach ($this->_terms as $termId => $term) {
-                    $distance += abs($phrasePos[$termId] - $this->_offsets[$termId] - $start);
-
-                    if($distance > $this->_slop) {
-                        break;
-                    }
-                }
-
-                if ($minDistance === null || $distance < $minDistance) {
-                    $minDistance = $distance;
-                }
-            }
-
-            if ($minDistance <= $this->_slop) {
-                $freq += $reader->getSimilarity()->sloppyFreq($minDistance);
-            }
-        }
-
-        return $freq;
-    }
-
-    /**
-     * Execute query in context of index reader
-     * It also initializes necessary internal structures
-     *
-     * @param Zend_Search_Lucene_Interface $reader
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
-     */
-    public function execute(Zend_Search_Lucene_Interface $reader, $docsFilter = null)
-    {
-        $this->_resVector = null;
-
-        if (count($this->_terms) == 0) {
-            $this->_resVector = array();
-        }
-
-        $resVectors      = array();
-        $resVectorsSizes = array();
-        $resVectorsIds   = array(); // is used to prevent arrays comparison
-        foreach ($this->_terms as $termId => $term) {
-            $resVectors[]      = array_flip($reader->termDocs($term));
-            $resVectorsSizes[] = count(end($resVectors));
-            $resVectorsIds[]   = $termId;
-
-            $this->_termsPositions[$termId] = $reader->termPositions($term);
-        }
-        // sort resvectors in order of subquery cardinality increasing
-        array_multisort($resVectorsSizes, SORT_ASC, SORT_NUMERIC,
-                        $resVectorsIds,   SORT_ASC, SORT_NUMERIC,
-                        $resVectors);
-
-        foreach ($resVectors as $nextResVector) {
-            if($this->_resVector === null) {
-                $this->_resVector = $nextResVector;
-            } else {
-                //$this->_resVector = array_intersect_key($this->_resVector, $nextResVector);
-
-                /**
-                 * This code is used as workaround for array_intersect_key() slowness problem.
-                 */
-                $updatedVector = array();
-                foreach ($this->_resVector as $id => $value) {
-                    if (isset($nextResVector[$id])) {
-                        $updatedVector[$id] = $value;
-                    }
-                }
-                $this->_resVector = $updatedVector;
-            }
-
-            if (count($this->_resVector) == 0) {
-                // Empty result set, we don't need to check other terms
-                break;
-            }
-        }
-
-        // ksort($this->_resVector, SORT_NUMERIC);
-        // Docs are returned ordered. Used algorithm doesn't change elements order.
-
-        // Initialize weight if it's not done yet
-        $this->_initWeight($reader);
-    }
-
-    /**
-     * Get document ids likely matching the query
-     *
-     * It's an array with document ids as keys (performance considerations)
-     *
-     * @return array
-     */
-    public function matchedDocs()
-    {
-        return $this->_resVector;
-    }
-
-    /**
-     * Score specified document
-     *
-     * @param integer $docId
-     * @param Zend_Search_Lucene_Interface $reader
-     * @return float
-     */
-    public function score($docId, Zend_Search_Lucene_Interface $reader)
-    {
-        if (isset($this->_resVector[$docId])) {
-            if ($this->_slop == 0) {
-                $freq = $this->_exactPhraseFreq($docId);
-            } else {
-                $freq = $this->_sloppyPhraseFreq($docId, $reader);
-            }
-
-            if ($freq != 0) {
-                $tf = $reader->getSimilarity()->tf($freq);
-                $weight = $this->_weight->getValue();
-                $norm = $reader->norm($docId, reset($this->_terms)->field);
-
-                return $tf * $weight * $norm * $this->getBoost();
-            }
-
-            // Included in result, but culculated freq is zero
-            return 0;
-        } else {
-            return 0;
-        }
-    }
-
-    /**
-     * Return query terms
-     *
-     * @return array
-     */
-    public function getQueryTerms()
-    {
-        return $this->_terms;
-    }
-
-    /**
-     * Query specific matches highlighting
-     *
-     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
-     */
-    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
-    {
-        $words = array();
-        foreach ($this->_terms as $term) {
-            $words[] = $term->text;
-        }
-
-        $highlighter->highlight($words);
-    }
-
-    /**
-     * Print a query
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        // It's used only for query visualisation, so we don't care about characters escaping
-        if (isset($this->_terms[0]) && $this->_terms[0]->field !== null) {
-            $query = $this->_terms[0]->field . ':';
-        } else {
-            $query = '';
-        }
-
-        $query .= '"';
-
-        foreach ($this->_terms as $id => $term) {
-            if ($id != 0) {
-                $query .= ' ';
-            }
-            $query .= $term->text;
-        }
-
-        $query .= '"';
-
-        if ($this->_slop != 0) {
-            $query .= '~' . $this->_slop;
-        }
-
-        if ($this->getBoost() != 1) {
-            $query .= '^' . round($this->getBoost(), 4);
-        }
-
-        return $query;
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Phrasephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+
+
+php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp.phpphp'php;
+
+
+php/php*php*
+php php*php Aphp Queryphp thatphp matchesphp documentsphp containingphp aphp particularphp sequencephp ofphp termsphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Phrasephp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
+php{
+php php php php php/php*php*
+php php php php php php*php Termsphp tophp findphp.
+php php php php php php*php Arrayphp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp objectsphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_termsphp;
+
+php php php php php/php*php*
+php php php php php php*php Termphp positionsphp php(relativephp positionsphp ofphp termsphp withinphp thephp phrasephp)php.
+php php php php php php*php Arrayphp ofphp integers
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_offsetsphp;
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp numberphp ofphp otherphp wordsphp permittedphp betweenphp wordsphp inphp queryphp phrasephp.
+php php php php php php*php Ifphp zerophp,php thenphp thisphp isphp anphp exactphp phrasephp searchphp.php php Forphp largerphp valuesphp thisphp works
+php php php php php php*php likephp aphp WITHINphp orphp NEARphp operatorphp.
+php php php php php php*
+php php php php php php*php Thephp slopphp isphp inphp factphp anphp editphp-distancephp,php wherephp thephp unitsphp correspondphp to
+php php php php php php*php movesphp ofphp termsphp inphp thephp queryphp phrasephp outphp ofphp positionphp.php php Forphp examplephp,php tophp switch
+php php php php php php*php thephp orderphp ofphp twophp wordsphp requiresphp twophp movesphp php(thephp firstphp movephp placesphp thephp words
+php php php php php php*php atopphp onephp anotherphp)php,php sophp tophp permitphp rephp-orderingsphp ofphp phrasesphp,php thephp slopphp mustphp be
+php php php php php php*php atphp leastphp twophp.
+php php php php php php*php Morephp exactphp matchesphp arephp scoredphp higherphp thanphp sloppierphp matchesphp,php thusphp search
+php php php php php php*php resultsphp arephp sortedphp byphp exactnessphp.
+php php php php php php*
+php php php php php php*php Thephp slopphp isphp zerophp byphp defaultphp,php requiringphp exactphp matchesphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_slopphp;
+
+php php php php php/php*php*
+php php php php php php*php Resultphp vectorphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_resVectorphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Termsphp positionsphp vectorsphp.
+php php php php php php*php Arrayphp ofphp Arraysphp:
+php php php php php php*php termphp1Idphp php=php>php php(docIdphp php=php>php arrayphp(php posphp1php,php posphp2php,php php.php.php.php php)php,php php.php.php.php)
+php php php php php php*php termphp2Idphp php=php>php php(docIdphp php=php>php arrayphp(php posphp1php,php posphp2php,php php.php.php.php php)php,php php.php.php.php)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_termsPositionsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Classphp constructorphp.php php Createphp aphp newphp prasephp queryphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$fieldphp php php php Fieldphp tophp searchphp.
+php php php php php php*php php@paramphp arrayphp php php$termsphp php php php Termsphp tophp searchphp Arrayphp ofphp stringsphp.
+php php php php php php*php php@paramphp arrayphp php php$offsetsphp php Relativephp termphp positionsphp.php Arrayphp ofphp integersphp.
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$termsphp php=php nullphp,php php$offsetsphp php=php nullphp,php php$fieldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_slopphp php=php php0php;
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$termsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_termsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php php php php foreachphp php(php$termsphp asphp php$termIdphp php=php>php php$termTextphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_termsphp[php$termIdphp]php php=php php(php$fieldphp php!php=php=php nullphp)php?php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$termTextphp,php php$fieldphp)php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$termTextphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php$termsphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_termsphp php=php arrayphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'termsphp argumentphp mustphp bephp arrayphp ofphp stringsphp orphp nullphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$offsetsphp)php)php php{
+php php php php php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termsphp)php php!php=php countphp(php$offsetsphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'termsphp andphp offsetsphp argumentsphp mustphp havephp thephp samephp sizephp.php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_offsetsphp php=php php$offsetsphp;
+php php php php php php php php php}php elsephp ifphp php(php$offsetsphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_offsetsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php php php php php php$positionphp php=php countphp(php$thisphp-php>php_offsetsphp)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_offsetsphp[php$termIdphp]php php=php php$positionphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'offsetsphp argumentphp mustphp bephp arrayphp ofphp stringsphp orphp nullphp'php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp slop
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$slop
+php php php php php php*php/
+php php php php publicphp functionphp setSlopphp(php$slopphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_slopphp php=php php$slopphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Getphp slop
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getSlopphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slopphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Addsphp aphp termphp tophp thephp endphp ofphp thephp queryphp phrasephp.
+php php php php php php*php Thephp relativephp positionphp ofphp thephp termphp isphp specifiedphp explicitlyphp orphp thephp onephp immediately
+php php php php php php*php afterphp thephp lastphp termphp addedphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
+php php php php php php*php php@paramphp integerphp php$position
+php php php php php php*php/
+php php php php publicphp functionphp addTermphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$positionphp php=php nullphp)php php{
+php php php php php php php php ifphp php(php(countphp(php$thisphp-php>php_termsphp)php php!php=php php0php)php&php&php(endphp(php$thisphp-php>php_termsphp)php-php>fieldphp php!php=php php$termphp-php>fieldphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Allphp phrasephp termsphp mustphp bephp inphp thephp samephp fieldphp:php php'php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$termphp-php>fieldphp php.php php'php:php'php php.php php$termphp-php>textphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_termsphp[php]php php=php php$termphp;
+php php php php php php php php ifphp php(php$positionphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_offsetsphp[php]php php=php php$positionphp;
+php php php php php php php php php}php elsephp ifphp php(countphp(php$thisphp-php>php_offsetsphp)php php!php=php php0php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_offsetsphp[php]php php=php endphp(php$thisphp-php>php_offsetsphp)php php+php php1php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_offsetsphp[php]php php=php php0php;
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Rephp-writephp queryphp intophp primitivephp queriesphp inphp thephp contextphp ofphp specifiedphp index
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
+php php php php php php*php/
+php php php php publicphp functionphp rewritephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termsphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
+php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_termsphp[php0php]php-php>fieldphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Booleanphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Booleanphp(php)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
+
+php php php php php php php php php php php php foreachphp php(php$indexphp-php>getFieldNamesphp(truephp)php asphp php$fieldNamephp)php php{
+php php php php php php php php php php php php php php php php php$subqueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Phrasephp(php)php;
+php php php php php php php php php php php php php php php php php$subqueryphp-php>setSlopphp(php$thisphp-php>getSlopphp(php)php)php;
+
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$qualifiedTermphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$termphp-php>textphp,php php$fieldNamephp)php;
+
+php php php php php php php php php php php php php php php php php php php php php$subqueryphp-php>addTermphp(php$qualifiedTermphp,php php$thisphp-php>php_offsetsphp[php$termIdphp]php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$queryphp-php>addSubqueryphp(php$subqueryphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php returnphp php$queryphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Optimizephp queryphp inphp thephp contextphp ofphp specifiedphp index
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
+php php php php php php*php/
+php php php php publicphp functionphp optimizephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
+php php php php php{
+php php php php php php php php php/php/php Checkphp,php thatphp indexphp containsphp allphp phrasephp terms
+php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termphp)php php{
+php php php php php php php php php php php php ifphp php(php!php$indexphp-php>hasTermphp(php$termphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
+php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termsphp)php php=php=php php1php)php php{
+php php php php php php php php php php php php php/php/php Itphp'sphp onephp termphp query
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$optimizedQueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(resetphp(php$thisphp-php>php_termsphp)php)php;
+php php php php php php php php php php php php php$optimizedQueryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
+
+php php php php php php php php php php php php returnphp php$optimizedQueryphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termsphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
+php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
+php php php php php php php php php}
+
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp queryphp term
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getTermsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_termsphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Setphp weightphp forphp specifiedphp term
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$num
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Weightphp_Termphp php$weight
+php php php php php php*php/
+php php php php publicphp functionphp setWeightphp(php$numphp,php php$weightphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_weightsphp[php$numphp]php php=php php$weightphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Constructsphp anphp appropriatephp Weightphp implementationphp forphp thisphp queryphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Weight
+php php php php php php*php/
+php php php php publicphp functionphp createWeightphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Weightphp/Phrasephp.phpphp'php;
+php php php php php php php php php$thisphp-php>php_weightphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Weightphp_Phrasephp(php$thisphp,php php$readerphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_weightphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Scorephp calculatorphp forphp exactphp phrasephp queriesphp php(termsphp sequencephp isphp fixedphp)
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$docId
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp php_exactPhraseFreqphp(php$docIdphp)
+php php php php php{
+php php php php php php php php php$freqphp php=php php0php;
+
+php php php php php php php php php/php/php Termphp Idphp withphp lowestphp cardinality
+php php php php php php php php php$lowCardTermIdphp php=php nullphp;
+
+php php php php php php php php php/php/php Calculatephp php$lowCardTermId
+php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php ifphp php(php$lowCardTermIdphp php=php=php=php nullphp php|php|
+php php php php php php php php php php php php php php php php countphp(php$thisphp-php>php_termsPositionsphp[php$termIdphp]php[php$docIdphp]php)php php<
+php php php php php php php php php php php php php php php php countphp(php$thisphp-php>php_termsPositionsphp[php$lowCardTermIdphp]php[php$docIdphp]php)php php)php php{
+php php php php php php php php php php php php php php php php php php php php php$lowCardTermIdphp php=php php$termIdphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Walkphp throughphp positionsphp ofphp thephp termphp withphp lowestphp cardinality
+php php php php php php php php foreachphp php(php$thisphp-php>php_termsPositionsphp[php$lowCardTermIdphp]php[php$docIdphp]php asphp php$lowCardPosphp)php php{
+php php php php php php php php php php php php php/php/php Wephp expectphp phrasephp tophp bephp found
+php php php php php php php php php php php php php$freqphp+php+php;
+
+php php php php php php php php php php php php php/php/php Walkphp throughphp otherphp terms
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$termIdphp php!php=php php$lowCardTermIdphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$expectedPositionphp php=php php$lowCardPosphp php+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$thisphp-php>php_offsetsphp[php$termIdphp]php php-
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_offsetsphp[php$lowCardTermIdphp]php)php;
+
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$expectedPositionphp,php php$thisphp-php>php_termsPositionsphp[php$termIdphp]php[php$docIdphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$freqphp-php-php;php php php/php/php Phrasephp wasnphp'tphp foundphp.
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$freqphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Scorephp calculatorphp forphp sloppyphp phrasephp queriesphp php(termsphp sequencephp isphp fixedphp)
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$docId
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp php_sloppyPhraseFreqphp(php$docIdphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
+php php php php php{
+php php php php php php php php php$freqphp php=php php0php;
+
+php php php php php php php php php$phraseQueuephp php=php arrayphp(php)php;
+php php php php php php php php php$phraseQueuephp[php0php]php php=php arrayphp(php)php;php php/php/php emptyphp phrase
+php php php php php php php php php$lastTermphp php=php nullphp;
+
+php php php php php php php php php/php/php Walkphp throughphp thephp termsphp tophp createphp phrasesphp.
+php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php php$queueSizephp php=php countphp(php$phraseQueuephp)php;
+php php php php php php php php php php php php php$firstPassphp php=php truephp;
+
+php php php php php php php php php php php php php/php/php Walkphp throughphp thephp termphp positionsphp.
+php php php php php php php php php php php php php/php/php Eachphp termphp positionphp producesphp aphp setphp ofphp phrasesphp.
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsPositionsphp[php$termIdphp]php[php$docIdphp]php asphp php$termPositionphp php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$firstPassphp)php php{
+php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$queueSizephp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$phraseQueuephp[php$countphp]php[php$termIdphp]php php=php php$termPositionphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$queueSizephp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$lastTermphp php!php=php=php nullphp php&php&
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php absphp(php php$termPositionphp php-php php$phraseQueuephp[php$countphp]php[php$lastTermphp]php php-
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$thisphp-php>php_offsetsphp[php$termIdphp]php php-php php$thisphp-php>php_offsetsphp[php$lastTermphp]php)php)php php>php php$thisphp-php>php_slopphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php php php php php$newPhraseIdphp php=php countphp(php$phraseQueuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$phraseQueuephp[php$newPhraseIdphp]php php php php php php php php php php php=php php$phraseQueuephp[php$countphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$phraseQueuephp[php$newPhraseIdphp]php[php$termIdphp]php php=php php$termPositionphp;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$firstPassphp php=php falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$lastTermphp php=php php$termIdphp;
+php php php php php php php php php}
+
+
+php php php php php php php php foreachphp php(php$phraseQueuephp asphp php$phrasePosphp)php php{
+php php php php php php php php php php php php php$minDistancephp php=php nullphp;
+
+php php php php php php php php php php php php forphp php(php$shiftphp php=php php-php$thisphp-php>php_slopphp;php php$shiftphp <php=php php$thisphp-php>php_slopphp;php php$shiftphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$distancephp php=php php0php;
+php php php php php php php php php php php php php php php php php$startphp php=php resetphp(php$phrasePosphp)php php-php resetphp(php$thisphp-php>php_offsetsphp)php php+php php$shiftphp;
+
+php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$distancephp php+php=php absphp(php$phrasePosphp[php$termIdphp]php php-php php$thisphp-php>php_offsetsphp[php$termIdphp]php php-php php$startphp)php;
+
+php php php php php php php php php php php php php php php php php php php php ifphp(php$distancephp php>php php$thisphp-php>php_slopphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$minDistancephp php=php=php=php nullphp php|php|php php$distancephp <php php$minDistancephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$minDistancephp php=php php$distancephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$minDistancephp <php=php php$thisphp-php>php_slopphp)php php{
+php php php php php php php php php php php php php php php php php$freqphp php+php=php php$readerphp-php>getSimilarityphp(php)php-php>sloppyFreqphp(php$minDistancephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$freqphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Executephp queryphp inphp contextphp ofphp indexphp reader
+php php php php php php*php Itphp alsophp initializesphp necessaryphp internalphp structures
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
+php php php php php php*php/
+php php php php publicphp functionphp executephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp,php php$docsFilterphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_resVectorphp php=php nullphp;
+
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termsphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php arrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$resVectorsphp php php php php php php=php arrayphp(php)php;
+php php php php php php php php php$resVectorsSizesphp php=php arrayphp(php)php;
+php php php php php php php php php$resVectorsIdsphp php php php=php arrayphp(php)php;php php/php/php isphp usedphp tophp preventphp arraysphp comparison
+php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php php$resVectorsphp[php]php php php php php php php=php arrayphp_flipphp(php$readerphp-php>termDocsphp(php$termphp)php)php;
+php php php php php php php php php php php php php$resVectorsSizesphp[php]php php=php countphp(endphp(php$resVectorsphp)php)php;
+php php php php php php php php php php php php php$resVectorsIdsphp[php]php php php php=php php$termIdphp;
+
+php php php php php php php php php php php php php$thisphp-php>php_termsPositionsphp[php$termIdphp]php php=php php$readerphp-php>termPositionsphp(php$termphp)php;
+php php php php php php php php php}
+php php php php php php php php php/php/php sortphp resvectorsphp inphp orderphp ofphp subqueryphp cardinalityphp increasing
+php php php php php php php php arrayphp_multisortphp(php$resVectorsSizesphp,php SORTphp_ASCphp,php SORTphp_NUMERICphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php$resVectorsIdsphp,php php php SORTphp_ASCphp,php SORTphp_NUMERICphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php$resVectorsphp)php;
+
+php php php php php php php php foreachphp php(php$resVectorsphp asphp php$nextResVectorphp)php php{
+php php php php php php php php php php php php ifphp(php$thisphp-php>php_resVectorphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php php$nextResVectorphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php$thisphp-php>php_resVectorphp php=php arrayphp_intersectphp_keyphp(php$thisphp-php>php_resVectorphp,php php$nextResVectorphp)php;
+
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php Thisphp codephp isphp usedphp asphp workaroundphp forphp arrayphp_intersectphp_keyphp(php)php slownessphp problemphp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php$updatedVectorphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_resVectorphp asphp php$idphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$nextResVectorphp[php$idphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$updatedVectorphp[php$idphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php php$updatedVectorphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(countphp(php$thisphp-php>php_resVectorphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php/php/php Emptyphp resultphp setphp,php wephp donphp'tphp needphp tophp checkphp otherphp terms
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php ksortphp(php$thisphp-php>php_resVectorphp,php SORTphp_NUMERICphp)php;
+php php php php php php php php php/php/php Docsphp arephp returnedphp orderedphp.php Usedphp algorithmphp doesnphp'tphp changephp elementsphp orderphp.
+
+php php php php php php php php php/php/php Initializephp weightphp ifphp itphp'sphp notphp donephp yet
+php php php php php php php php php$thisphp-php>php_initWeightphp(php$readerphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp documentphp idsphp likelyphp matchingphp thephp query
+php php php php php php*
+php php php php php php*php Itphp'sphp anphp arrayphp withphp documentphp idsphp asphp keysphp php(performancephp considerationsphp)
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp matchedDocsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_resVectorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Scorephp specifiedphp document
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$docId
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp scorephp(php$docIdphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_resVectorphp[php$docIdphp]php)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_slopphp php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$freqphp php=php php$thisphp-php>php_exactPhraseFreqphp(php$docIdphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$freqphp php=php php$thisphp-php>php_sloppyPhraseFreqphp(php$docIdphp,php php$readerphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$freqphp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$tfphp php=php php$readerphp-php>getSimilarityphp(php)php-php>tfphp(php$freqphp)php;
+php php php php php php php php php php php php php php php php php$weightphp php=php php$thisphp-php>php_weightphp-php>getValuephp(php)php;
+php php php php php php php php php php php php php php php php php$normphp php=php php$readerphp-php>normphp(php$docIdphp,php resetphp(php$thisphp-php>php_termsphp)php-php>fieldphp)php;
+
+php php php php php php php php php php php php php php php php returnphp php$tfphp php*php php$weightphp php*php php$normphp php*php php$thisphp-php>getBoostphp(php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php Includedphp inphp resultphp,php butphp culculatedphp freqphp isphp zero
+php php php php php php php php php php php php returnphp php0php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php0php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp queryphp terms
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getQueryTermsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_termsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Queryphp specificphp matchesphp highlighting
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp php Highlighterphp objectphp php(alsophp containsphp docphp forphp highlightingphp)
+php php php php php php*php/
+php php php php protectedphp functionphp php_highlightMatchesphp(Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp)
+php php php php php{
+php php php php php php php php php$wordsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termphp)php php{
+php php php php php php php php php php php php php$wordsphp[php]php php=php php$termphp-php>textphp;
+php php php php php php php php php}
+
+php php php php php php php php php$highlighterphp-php>highlightphp(php$wordsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Printphp aphp query
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php php/php/php Itphp'sphp usedphp onlyphp forphp queryphp visualisationphp,php sophp wephp donphp'tphp carephp aboutphp charactersphp escaping
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_termsphp[php0php]php)php php&php&php php$thisphp-php>php_termsphp[php0php]php-php>fieldphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$queryphp php=php php$thisphp-php>php_termsphp[php0php]php-php>fieldphp php.php php'php:php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$queryphp php=php php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php php$queryphp php.php=php php'php"php'php;
+
+php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$idphp php=php>php php$termphp)php php{
+php php php php php php php php php php php php ifphp php(php$idphp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$queryphp php.php=php php'php php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$queryphp php.php=php php$termphp-php>textphp;
+php php php php php php php php php}
+
+php php php php php php php php php$queryphp php.php=php php'php"php'php;
+
+php php php php php php php php ifphp php(php$thisphp-php>php_slopphp php!php=php php0php)php php{
+php php php php php php php php php php php php php$queryphp php.php=php php'php~php'php php.php php$thisphp-php>php_slopphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>getBoostphp(php)php php!php=php php1php)php php{
+php php php php php php php php php php php php php$queryphp php.php=php php'php^php'php php.php roundphp(php$thisphp-php>getBoostphp(php)php,php php4php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$queryphp;
+php php php php php}
+php}
 

@@ -1,112 +1,112 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Message.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Messagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * Zend_Mail_Part
- */
-require_once 'Zend/Mail/Part.php';
+php/php*php*
+php php*php Zendphp_Mailphp_Part
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Partphp.phpphp'php;
 
-/**
- * Zend_Mail_Message_Interface
- */
-require_once 'Zend/Mail/Message/Interface.php';
+php/php*php*
+php php*php Zendphp_Mailphp_Messagephp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Messagephp/Interfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Mail
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Interface
-{
-    /**
-     * flags for this message
-     * @var array
-     */
-    protected $_flags = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Mailphp_Messagephp extendsphp Zendphp_Mailphp_Partphp implementsphp Zendphp_Mailphp_Messagephp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php flagsphp forphp thisphp message
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_flagsphp php=php arrayphp(php)php;
 
-    /**
-     * Public constructor
-     *
-     * In addition to the parameters of Zend_Mail_Part::__construct() this constructor supports:
-     * - file  filename or file handle of a file with raw message content
-     * - flags array with flags for message, keys are ignored, use constants defined in Zend_Mail_Storage
-     *
-     * @param  string $rawMessage  full message with or without headers
-     * @throws Zend_Mail_Exception
-     */
-    public function __construct(array $params)
-    {
-        if (isset($params['file'])) {
-            if (!is_resource($params['file'])) {
-                $params['raw'] = @file_get_contents($params['file']);
-                if ($params['raw'] === false) {
-                    /**
-                     * @see Zend_Mail_Exception
-                     */
-                    require_once 'Zend/Mail/Exception.php';
-                    throw new Zend_Mail_Exception('could not open file');
-                }
-            } else {
-                $params['raw'] = stream_get_contents($params['file']);
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Publicphp constructor
+php php php php php php*
+php php php php php php*php Inphp additionphp tophp thephp parametersphp ofphp Zendphp_Mailphp_Partphp:php:php_php_constructphp(php)php thisphp constructorphp supportsphp:
+php php php php php php*php php-php filephp php filenamephp orphp filephp handlephp ofphp aphp filephp withphp rawphp messagephp content
+php php php php php php*php php-php flagsphp arrayphp withphp flagsphp forphp messagephp,php keysphp arephp ignoredphp,php usephp constantsphp definedphp inphp Zendphp_Mailphp_Storage
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$rawMessagephp php fullphp messagephp withphp orphp withoutphp headers
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'filephp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_resourcephp(php$paramsphp[php'filephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$paramsphp[php'rawphp'php]php php=php php@filephp_getphp_contentsphp(php$paramsphp[php'filephp'php]php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$paramsphp[php'rawphp'php]php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'couldphp notphp openphp filephp'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$paramsphp[php'rawphp'php]php php=php streamphp_getphp_contentsphp(php$paramsphp[php'filephp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (!empty($params['flags'])) {
-            // set key and value to the same value for easy lookup
-            $this->_flags = array_combine($params['flags'], $params['flags']);
-        }
+php php php php php php php php ifphp php(php!emptyphp(php$paramsphp[php'flagsphp'php]php)php)php php{
+php php php php php php php php php php php php php/php/php setphp keyphp andphp valuephp tophp thephp samephp valuephp forphp easyphp lookup
+php php php php php php php php php php php php php$thisphp-php>php_flagsphp php=php arrayphp_combinephp(php$paramsphp[php'flagsphp'php]php,php php$paramsphp[php'flagsphp'php]php)php;
+php php php php php php php php php}
 
-        parent::__construct($params);
-    }
+php php php php php php php php parentphp:php:php_php_constructphp(php$paramsphp)php;
+php php php php php}
 
-    /**
-     * return toplines as found after headers
-     *
-     * @return string toplines
-     */
-    public function getTopLines()
-    {
-        return $this->_topLines;
-    }
+php php php php php/php*php*
+php php php php php php*php returnphp toplinesphp asphp foundphp afterphp headers
+php php php php php php*
+php php php php php php*php php@returnphp stringphp toplines
+php php php php php php*php/
+php php php php publicphp functionphp getTopLinesphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_topLinesphp;
+php php php php php}
 
-    /**
-     * check if flag is set
-     *
-     * @param mixed $flag a flag name, use constants defined in Zend_Mail_Storage
-     * @return bool true if set, otherwise false
-     */
-    public function hasFlag($flag)
-    {
-        return isset($this->_flags[$flag]);
-    }
+php php php php php/php*php*
+php php php php php php*php checkphp ifphp flagphp isphp set
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$flagphp aphp flagphp namephp,php usephp constantsphp definedphp inphp Zendphp_Mailphp_Storage
+php php php php php php*php php@returnphp boolphp truephp ifphp setphp,php otherwisephp false
+php php php php php php*php/
+php php php php publicphp functionphp hasFlagphp(php$flagphp)
+php php php php php{
+php php php php php php php php returnphp issetphp(php$thisphp-php>php_flagsphp[php$flagphp]php)php;
+php php php php php}
 
-    /**
-     * get all set flags
-     *
-     * @return array array with flags, key and value are the same for easy lookup
-     */
-    public function getFlags()
-    {
-        return $this->_flags;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php getphp allphp setphp flags
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp arrayphp withphp flagsphp,php keyphp andphp valuephp arephp thephp samephp forphp easyphp lookup
+php php php php php php*php/
+php php php php publicphp functionphp getFlagsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_flagsphp;
+php php php php php}
+php}

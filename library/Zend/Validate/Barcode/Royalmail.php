@@ -1,121 +1,121 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Royalmail.php 20785 2010-01-31 09:43:03Z mikaelkael $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Royalmailphp.phpphp php2php0php7php8php5php php2php0php1php0php-php0php1php-php3php1php php0php9php:php4php3php:php0php3Zphp mikaelkaelphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_Barcode_AdapterAbstract
- */
-require_once 'Zend/Validate/Barcode/AdapterAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Barcodephp_AdapterAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Barcodephp/AdapterAbstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_Barcode_Royalmail extends Zend_Validate_Barcode_AdapterAbstract
-{
-    /**
-     * Allowed barcode lengths
-     * @var integer
-     */
-    protected $_length = -1;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Barcodephp_Royalmailphp extendsphp Zendphp_Validatephp_Barcodephp_AdapterAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Allowedphp barcodephp lengths
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_lengthphp php=php php-php1php;
 
-    /**
-     * Allowed barcode characters
-     * @var string
-     */
-    protected $_characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+php php php php php/php*php*
+php php php php php php*php Allowedphp barcodephp characters
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_charactersphp php=php php'php0php1php2php3php4php5php6php7php8php9ABCDEFGHIJKLMNOPQRSTUVWXYZphp'php;
 
-    protected $_rows = array(
-        '0' => 1, '1' => 1, '2' => 1, '3' => 1, '4' => 1, '5' => 1,
-        '6' => 2, '7' => 2, '8' => 2, '9' => 2, 'A' => 2, 'B' => 2,
-        'C' => 3, 'D' => 3, 'E' => 3, 'F' => 3, 'G' => 3, 'H' => 3,
-        'I' => 4, 'J' => 4, 'K' => 4, 'L' => 4, 'M' => 4, 'N' => 4,
-        'O' => 5, 'P' => 5, 'Q' => 5, 'R' => 5, 'S' => 5, 'T' => 5,
-        'U' => 0, 'V' => 0, 'W' => 0, 'X' => 0, 'Y' => 0, 'Z' => 0,
-     );
+php php php php protectedphp php$php_rowsphp php=php arrayphp(
+php php php php php php php php php'php0php'php php=php>php php1php,php php'php1php'php php=php>php php1php,php php'php2php'php php=php>php php1php,php php'php3php'php php=php>php php1php,php php'php4php'php php=php>php php1php,php php'php5php'php php=php>php php1php,
+php php php php php php php php php'php6php'php php=php>php php2php,php php'php7php'php php=php>php php2php,php php'php8php'php php=php>php php2php,php php'php9php'php php=php>php php2php,php php'Aphp'php php=php>php php2php,php php'Bphp'php php=php>php php2php,
+php php php php php php php php php'Cphp'php php=php>php php3php,php php'Dphp'php php=php>php php3php,php php'Ephp'php php=php>php php3php,php php'Fphp'php php=php>php php3php,php php'Gphp'php php=php>php php3php,php php'Hphp'php php=php>php php3php,
+php php php php php php php php php'Iphp'php php=php>php php4php,php php'Jphp'php php=php>php php4php,php php'Kphp'php php=php>php php4php,php php'Lphp'php php=php>php php4php,php php'Mphp'php php=php>php php4php,php php'Nphp'php php=php>php php4php,
+php php php php php php php php php'Ophp'php php=php>php php5php,php php'Pphp'php php=php>php php5php,php php'Qphp'php php=php>php php5php,php php'Rphp'php php=php>php php5php,php php'Sphp'php php=php>php php5php,php php'Tphp'php php=php>php php5php,
+php php php php php php php php php'Uphp'php php=php>php php0php,php php'Vphp'php php=php>php php0php,php php'Wphp'php php=php>php php0php,php php'Xphp'php php=php>php php0php,php php'Yphp'php php=php>php php0php,php php'Zphp'php php=php>php php0php,
+php php php php php php)php;
 
-    protected $_columns = array(
-        '0' => 1, '1' => 2, '2' => 3, '3' => 4, '4' => 5, '5' => 0,
-        '6' => 1, '7' => 2, '8' => 3, '9' => 4, 'A' => 5, 'B' => 0,
-        'C' => 1, 'D' => 2, 'E' => 3, 'F' => 4, 'G' => 5, 'H' => 0,
-        'I' => 1, 'J' => 2, 'K' => 3, 'L' => 4, 'M' => 5, 'N' => 0,
-        'O' => 1, 'P' => 2, 'Q' => 3, 'R' => 4, 'S' => 5, 'T' => 0,
-        'U' => 1, 'V' => 2, 'W' => 3, 'X' => 4, 'Y' => 5, 'Z' => 0,
-    );
+php php php php protectedphp php$php_columnsphp php=php arrayphp(
+php php php php php php php php php'php0php'php php=php>php php1php,php php'php1php'php php=php>php php2php,php php'php2php'php php=php>php php3php,php php'php3php'php php=php>php php4php,php php'php4php'php php=php>php php5php,php php'php5php'php php=php>php php0php,
+php php php php php php php php php'php6php'php php=php>php php1php,php php'php7php'php php=php>php php2php,php php'php8php'php php=php>php php3php,php php'php9php'php php=php>php php4php,php php'Aphp'php php=php>php php5php,php php'Bphp'php php=php>php php0php,
+php php php php php php php php php'Cphp'php php=php>php php1php,php php'Dphp'php php=php>php php2php,php php'Ephp'php php=php>php php3php,php php'Fphp'php php=php>php php4php,php php'Gphp'php php=php>php php5php,php php'Hphp'php php=php>php php0php,
+php php php php php php php php php'Iphp'php php=php>php php1php,php php'Jphp'php php=php>php php2php,php php'Kphp'php php=php>php php3php,php php'Lphp'php php=php>php php4php,php php'Mphp'php php=php>php php5php,php php'Nphp'php php=php>php php0php,
+php php php php php php php php php'Ophp'php php=php>php php1php,php php'Pphp'php php=php>php php2php,php php'Qphp'php php=php>php php3php,php php'Rphp'php php=php>php php4php,php php'Sphp'php php=php>php php5php,php php'Tphp'php php=php>php php0php,
+php php php php php php php php php'Uphp'php php=php>php php1php,php php'Vphp'php php=php>php php2php,php php'Wphp'php php=php>php php3php,php php'Xphp'php php=php>php php4php,php php'Yphp'php php=php>php php5php,php php'Zphp'php php=php>php php0php,
+php php php php php)php;
 
-    /**
-     * Checksum function
-     * @var string
-     */
-    protected $_checksum = '_royalmail';
+php php php php php/php*php*
+php php php php php php*php Checksumphp function
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_checksumphp php=php php'php_royalmailphp'php;
 
-    /**
-     * Validates the checksum ()
-     *
-     * @param  string $value The barcode to validate
-     * @return boolean
-     */
-    protected function _royalmail($value)
-    {
-        $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
-        $rowvalue = 0;
-        $colvalue = 0;
-        foreach($values as $row) {
-            $rowvalue += $this->_rows[$row];
-            $colvalue += $this->_columns[$row];
-        }
+php php php php php/php*php*
+php php php php php php*php Validatesphp thephp checksumphp php(php)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp validate
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php protectedphp functionphp php_royalmailphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$checksumphp php=php substrphp(php$valuephp,php php-php1php,php php1php)php;
+php php php php php php php php php$valuesphp php php php=php strphp_splitphp(substrphp(php$valuephp,php php0php,php php-php1php)php)php;
+php php php php php php php php php$rowvaluephp php=php php0php;
+php php php php php php php php php$colvaluephp php=php php0php;
+php php php php php php php php foreachphp(php$valuesphp asphp php$rowphp)php php{
+php php php php php php php php php php php php php$rowvaluephp php+php=php php$thisphp-php>php_rowsphp[php$rowphp]php;
+php php php php php php php php php php php php php$colvaluephp php+php=php php$thisphp-php>php_columnsphp[php$rowphp]php;
+php php php php php php php php php}
 
-        $rowvalue %= 6;
-        $colvalue %= 6;
+php php php php php php php php php$rowvaluephp php%php=php php6php;
+php php php php php php php php php$colvaluephp php%php=php php6php;
 
-        $rowchkvalue = array_keys($this->_rows, $rowvalue);
-        $colchkvalue = array_keys($this->_columns, $colvalue);
-        $chkvalue    = current(array_intersect($rowchkvalue, $colchkvalue));
-        if ($chkvalue == $checksum) {
-            return true;
-        }
+php php php php php php php php php$rowchkvaluephp php=php arrayphp_keysphp(php$thisphp-php>php_rowsphp,php php$rowvaluephp)php;
+php php php php php php php php php$colchkvaluephp php=php arrayphp_keysphp(php$thisphp-php>php_columnsphp,php php$colvaluephp)php;
+php php php php php php php php php$chkvaluephp php php php php=php currentphp(arrayphp_intersectphp(php$rowchkvaluephp,php php$colchkvaluephp)php)php;
+php php php php php php php php ifphp php(php$chkvaluephp php=php=php php$checksumphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        return false;
-    }
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-    /**
-     * Allows start and stop tag within checked chars
-     *
-     * @param  string $value The barcode to check for allowed characters
-     * @return boolean
-     */
-    public function checkChars($value)
-    {
-        if ($value[0] == '(') {
-            $value = substr($value, 1);
+php php php php php/php*php*
+php php php php php php*php Allowsphp startphp andphp stopphp tagphp withinphp checkedphp chars
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Thephp barcodephp tophp checkphp forphp allowedphp characters
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp checkCharsphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php$valuephp[php0php]php php=php=php php'php(php'php)php php{
+php php php php php php php php php php php php php$valuephp php=php substrphp(php$valuephp,php php1php)php;
 
-            if ($value[strlen($value) - 1] == ')') {
-                $value = substr($value, 0, -1);
-            } else {
-                return false;
-            }
-        }
+php php php php php php php php php php php php ifphp php(php$valuephp[strlenphp(php$valuephp)php php-php php1php]php php=php=php php'php)php'php)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php substrphp(php$valuephp,php php0php,php php-php1php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return parent::checkChars($value);
-    }
-}
+php php php php php php php php returnphp parentphp:php:checkCharsphp(php$valuephp)php;
+php php php php php}
+php}

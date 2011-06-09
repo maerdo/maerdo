@@ -1,242 +1,242 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Entry.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Entryphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Feed_Writer_Extension_ITunes_Entry
-{
-    /**
-     * Array of Feed data for rendering by Extension's renderers
-     *
-     * @var array
-     */
-    protected $_data = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php{
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp Feedphp dataphp forphp renderingphp byphp Extensionphp'sphp renderers
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_dataphp php=php arrayphp(php)php;
 
-    /**
-     * Encoding of all text values
-     *
-     * @var string
-     */
-    protected $_encoding = 'UTF-8';
+php php php php php/php*php*
+php php php php php php*php Encodingphp ofphp allphp textphp values
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_encodingphp php=php php'UTFphp-php8php'php;
 
-    /**
-     * Set feed encoding
-     *
-     * @param  string $enc
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function setEncoding($enc)
-    {
-        $this->_encoding = $enc;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp feedphp encoding
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$enc
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp setEncodingphp(php$encphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_encodingphp php=php php$encphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get feed encoding
-     *
-     * @return string
-     */
-    public function getEncoding()
-    {
-        return $this->_encoding;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp feedphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_encodingphp;
+php php php php php}
 
-    /**
-     * Set a block value of "yes" or "no". You may also set an empty string.
-     *
-     * @param  string
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function setItunesBlock($value)
-    {
-        if (!ctype_alpha($value) && strlen($value) > 0) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "block" may only'
-            . ' contain alphabetic characters');
-        }
-        if (iconv_strlen($value, $this->getEncoding()) > 255) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "block" may only'
-            . ' contain a maximum of 255 characters');
-        }
-        $this->_data['block'] = $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp blockphp valuephp ofphp php"yesphp"php orphp php"nophp"php.php Youphp mayphp alsophp setphp anphp emptyphp stringphp.
+php php php php php php*
+php php php php php php*php php@paramphp php string
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp setItunesBlockphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!ctypephp_alphaphp(php$valuephp)php php&php&php strlenphp(php$valuephp)php php>php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"blockphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php containphp alphabeticphp charactersphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(iconvphp_strlenphp(php$valuephp,php php$thisphp-php>getEncodingphp(php)php)php php>php php2php5php5php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"blockphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php containphp aphp maximumphp ofphp php2php5php5php charactersphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'blockphp'php]php php=php php$valuephp;
+php php php php php}
 
-    /**
-     * Add authors to itunes entry
-     *
-     * @param  array $values
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function addItunesAuthors(array $values)
-    {
-        foreach ($values as $value) {
-            $this->addItunesAuthor($value);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp authorsphp tophp itunesphp entry
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$values
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp addItunesAuthorsphp(arrayphp php$valuesphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$valuesphp asphp php$valuephp)php php{
+php php php php php php php php php php php php php$thisphp-php>addItunesAuthorphp(php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add author to itunes entry
-     *
-     * @param  string $value
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function addItunesAuthor($value)
-    {
-        if (iconv_strlen($value, $this->getEncoding()) > 255) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: any "author" may only'
-            . ' contain a maximum of 255 characters each');
-        }
-        if (!isset($this->_data['authors'])) {
-            $this->_data['authors'] = array();
-        }
-        $this->_data['authors'][] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp authorphp tophp itunesphp entry
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp addItunesAuthorphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(iconvphp_strlenphp(php$valuephp,php php$thisphp-php>getEncodingphp(php)php)php php>php php2php5php5php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php anyphp php"authorphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php containphp aphp maximumphp ofphp php2php5php5php charactersphp eachphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_dataphp[php'authorsphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dataphp[php'authorsphp'php]php php=php arrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'authorsphp'php]php[php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set duration
-     *
-     * @param  int $value
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function setItunesDuration($value)
-    {
-        $value = (string) $value;
-        if (!ctype_digit($value)
-            && !preg_match("/^\d+:[0-5]{1}[0-9]{1}$/", $value)
-            && !preg_match("/^\d+:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/", $value)
-        ) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "duration" may only'
-            . ' be of a specified [[HH:]MM:]SS format');
-        }
-        $this->_data['duration'] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp duration
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$value
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp setItunesDurationphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$valuephp php=php php(stringphp)php php$valuephp;
+php php php php php php php php ifphp php(php!ctypephp_digitphp(php$valuephp)
+php php php php php php php php php php php php php&php&php php!pregphp_matchphp(php"php/php^php\dphp+php:php[php0php-php5php]php{php1php}php[php0php-php9php]php{php1php}php$php/php"php,php php$valuephp)
+php php php php php php php php php php php php php&php&php php!pregphp_matchphp(php"php/php^php\dphp+php:php[php0php-php5php]php{php1php}php[php0php-php9php]php{php1php}php:php[php0php-php5php]php{php1php}php[php0php-php9php]php{php1php}php$php/php"php,php php$valuephp)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"durationphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php bephp ofphp aphp specifiedphp php[php[HHphp:php]MMphp:php]SSphp formatphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'durationphp'php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set "explicit" flag
-     *
-     * @param  bool $value
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function setItunesExplicit($value)
-    {
-        if (!in_array($value, array('yes','no','clean'))) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "explicit" may only'
-            . ' be one of "yes", "no" or "clean"');
-        }
-        $this->_data['explicit'] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp php"explicitphp"php flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$value
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp setItunesExplicitphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$valuephp,php arrayphp(php'yesphp'php,php'nophp'php,php'cleanphp'php)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"explicitphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php bephp onephp ofphp php"yesphp"php,php php"nophp"php orphp php"cleanphp"php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'explicitphp'php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set keywords
-     *
-     * @param  array $value
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function setItunesKeywords(array $value)
-    {
-        if (count($value) > 12) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "keywords" may only'
-            . ' contain a maximum of 12 terms');
-        }
-        $concat = implode(',', $value);
-        if (iconv_strlen($concat, $this->getEncoding()) > 255) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "keywords" may only'
-            . ' have a concatenated length of 255 chars where terms are delimited'
-            . ' by a comma');
-        }
-        $this->_data['keywords'] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp keywords
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$value
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp setItunesKeywordsphp(arrayphp php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$valuephp)php php>php php1php2php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"keywordsphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php containphp aphp maximumphp ofphp php1php2php termsphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$concatphp php=php implodephp(php'php,php'php,php php$valuephp)php;
+php php php php php php php php ifphp php(iconvphp_strlenphp(php$concatphp,php php$thisphp-php>getEncodingphp(php)php)php php>php php2php5php5php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"keywordsphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php havephp aphp concatenatedphp lengthphp ofphp php2php5php5php charsphp wherephp termsphp arephp delimitedphp'
+php php php php php php php php php php php php php.php php'php byphp aphp commaphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'keywordsphp'php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set subtitle
-     *
-     * @param  string $value
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function setItunesSubtitle($value)
-    {
-        if (iconv_strlen($value, $this->getEncoding()) > 255) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "subtitle" may only'
-            . ' contain a maximum of 255 characters');
-        }
-        $this->_data['subtitle'] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp subtitle
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp setItunesSubtitlephp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(iconvphp_strlenphp(php$valuephp,php php$thisphp-php>getEncodingphp(php)php)php php>php php2php5php5php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"subtitlephp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php containphp aphp maximumphp ofphp php2php5php5php charactersphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'subtitlephp'php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set summary
-     *
-     * @param  string $value
-     * @return Zend_Feed_Writer_Extension_ITunes_Entry
-     */
-    public function setItunesSummary($value)
-    {
-        if (iconv_strlen($value, $this->getEncoding()) > 4000) {
-            require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('invalid parameter: "summary" may only'
-            . ' contain a maximum of 4000 characters');
-        }
-        $this->_data['summary'] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp summary
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Entry
+php php php php php php*php/
+php php php php publicphp functionphp setItunesSummaryphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(iconvphp_strlenphp(php$valuephp,php php$thisphp-php>getEncodingphp(php)php)php php>php php4php0php0php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'invalidphp parameterphp:php php"summaryphp"php mayphp onlyphp'
+php php php php php php php php php php php php php.php php'php containphp aphp maximumphp ofphp php4php0php0php0php charactersphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'summaryphp'php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Overloading to itunes specific setters
-     *
-     * @param  string $method
-     * @param  array $params
-     * @return mixed
-     */
-    public function __call($method, array $params)
-    {
-        $point = Zend_Feed_Writer::lcfirst(substr($method, 9));
-        if (!method_exists($this, 'setItunes' . ucfirst($point))
-            && !method_exists($this, 'addItunes' . ucfirst($point))
-        ) {
-            require_once 'Zend/Feed/Writer/Exception/InvalidMethodException.php';
-            throw new Zend_Feed_Writer_Exception_InvalidMethodException(
-                'invalid method: ' . $method
-            );
-        }
-        if (!array_key_exists($point, $this->_data)
-            || empty($this->_data[$point])
-        ) {
-            return null;
-        }
-        return $this->_data[$point];
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Overloadingphp tophp itunesphp specificphp setters
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$method
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php php$pointphp php=php Zendphp_Feedphp_Writerphp:php:lcfirstphp(substrphp(php$methodphp,php php9php)php)php;
+php php php php php php php php ifphp php(php!methodphp_existsphp(php$thisphp,php php'setItunesphp'php php.php ucfirstphp(php$pointphp)php)
+php php php php php php php php php php php php php&php&php php!methodphp_existsphp(php$thisphp,php php'addItunesphp'php php.php ucfirstphp(php$pointphp)php)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Exceptionphp/InvalidMethodExceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Writerphp_Exceptionphp_InvalidMethodExceptionphp(
+php php php php php php php php php php php php php php php php php'invalidphp methodphp:php php'php php.php php$method
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$pointphp,php php$thisphp-php>php_dataphp)
+php php php php php php php php php php php php php|php|php emptyphp(php$thisphp-php>php_dataphp[php$pointphp]php)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php$pointphp]php;
+php php php php php}
+php}

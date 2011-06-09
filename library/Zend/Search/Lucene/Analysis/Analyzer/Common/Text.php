@@ -1,96 +1,96 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Analysis
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Text.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Analysis
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Textphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** Zend_Search_Lucene_Analysis_Analyzer_Common */
-require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common.php';
+php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp.phpphp'php;
 
 
-/**
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Analysis
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Analysis
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-class Zend_Search_Lucene_Analysis_Analyzer_Common_Text extends Zend_Search_Lucene_Analysis_Analyzer_Common
-{
-    /**
-     * Current position in a stream
-     *
-     * @var integer
-     */
-    private $_position;
+classphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Textphp extendsphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Common
+php{
+php php php php php/php*php*
+php php php php php php*php Currentphp positionphp inphp aphp stream
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_positionphp;
 
-    /**
-     * Reset token stream
-     */
-    public function reset()
-    {
-        $this->_position = 0;
+php php php php php/php*php*
+php php php php php php*php Resetphp tokenphp stream
+php php php php php php*php/
+php php php php publicphp functionphp resetphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_positionphp php=php php0php;
 
-        if ($this->_input === null) {
-            return;
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_inputphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        // convert input into ascii
-        if (PHP_OS != 'AIX') {
-            $this->_input = iconv($this->_encoding, 'ASCII//TRANSLIT', $this->_input);
-        }
-        $this->_encoding = 'ASCII';
-    }
+php php php php php php php php php/php/php convertphp inputphp intophp ascii
+php php php php php php php php ifphp php(PHPphp_OSphp php!php=php php'AIXphp'php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_inputphp php=php iconvphp(php$thisphp-php>php_encodingphp,php php'ASCIIphp/php/TRANSLITphp'php,php php$thisphp-php>php_inputphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_encodingphp php=php php'ASCIIphp'php;
+php php php php php}
 
-    /**
-     * Tokenization stream API
-     * Get next token
-     * Returns null at the end of stream
-     *
-     * @return Zend_Search_Lucene_Analysis_Token|null
-     */
-    public function nextToken()
-    {
-        if ($this->_input === null) {
-            return null;
-        }
+php php php php php/php*php*
+php php php php php php*php Tokenizationphp streamphp API
+php php php php php php*php Getphp nextphp token
+php php php php php php*php Returnsphp nullphp atphp thephp endphp ofphp stream
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Analysisphp_Tokenphp|null
+php php php php php php*php/
+php php php php publicphp functionphp nextTokenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_inputphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
 
 
-        do {
-            if (! preg_match('/[a-zA-Z]+/', $this->_input, $match, PREG_OFFSET_CAPTURE, $this->_position)) {
-                // It covers both cases a) there are no matches (preg_match(...) === 0)
-                // b) error occured (preg_match(...) === FALSE)
-                return null;
-            }
+php php php php php php php php dophp php{
+php php php php php php php php php php php php ifphp php(php!php pregphp_matchphp(php'php/php[aphp-zAphp-Zphp]php+php/php'php,php php$thisphp-php>php_inputphp,php php$matchphp,php PREGphp_OFFSETphp_CAPTUREphp,php php$thisphp-php>php_positionphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Itphp coversphp bothphp casesphp aphp)php therephp arephp nophp matchesphp php(pregphp_matchphp(php.php.php.php)php php=php=php=php php0php)
+php php php php php php php php php php php php php php php php php/php/php bphp)php errorphp occuredphp php(pregphp_matchphp(php.php.php.php)php php=php=php=php FALSEphp)
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
 
-            $str = $match[0][0];
-            $pos = $match[0][1];
-            $endpos = $pos + strlen($str);
+php php php php php php php php php php php php php$strphp php=php php$matchphp[php0php]php[php0php]php;
+php php php php php php php php php php php php php$posphp php=php php$matchphp[php0php]php[php1php]php;
+php php php php php php php php php php php php php$endposphp php=php php$posphp php+php strlenphp(php$strphp)php;
 
-            $this->_position = $endpos;
+php php php php php php php php php php php php php$thisphp-php>php_positionphp php=php php$endposphp;
 
-            $token = $this->normalize(new Zend_Search_Lucene_Analysis_Token($str, $pos, $endpos));
-        } while ($token === null); // try again if token is skipped
+php php php php php php php php php php php php php$tokenphp php=php php$thisphp-php>normalizephp(newphp Zendphp_Searchphp_Lucenephp_Analysisphp_Tokenphp(php$strphp,php php$posphp,php php$endposphp)php)php;
+php php php php php php php php php}php whilephp php(php$tokenphp php=php=php=php nullphp)php;php php/php/php tryphp againphp ifphp tokenphp isphp skipped
 
-        return $token;
-    }
-}
+php php php php php php php php returnphp php$tokenphp;
+php php php php php}
+php}
 

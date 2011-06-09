@@ -1,145 +1,145 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: PaginationControl.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php PaginationControlphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_View
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_PaginationControl
-{
-    /**
-     * View instance
-     *
-     * @var Zend_View_Instance
-     */
-    public $view = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_PaginationControl
+php{
+php php php php php/php*php*
+php php php php php php*php Viewphp instance
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Viewphp_Instance
+php php php php php php*php/
+php php php php publicphp php$viewphp php=php nullphp;
 
-    /**
-     * Default view partial
-     *
-     * @var string|array
-     */
-    protected static $_defaultViewPartial = null;
+php php php php php/php*php*
+php php php php php php*php Defaultphp viewphp partial
+php php php php php php*
+php php php php php php*php php@varphp stringphp|array
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultViewPartialphp php=php nullphp;
 
-    /**
-     * Sets the view instance.
-     *
-     * @param  Zend_View_Interface $view View instance
-     * @return Zend_View_Helper_PaginationControl
-     */
-    public function setView(Zend_View_Interface $view)
-    {
-        $this->view = $view;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp viewphp instancephp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$viewphp Viewphp instance
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_PaginationControl
+php php php php php php*php/
+php php php php publicphp functionphp setViewphp(Zendphp_Viewphp_Interfacephp php$viewphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>viewphp php=php php$viewphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Sets the default view partial.
-     *
-     * @param string|array $partial View partial
-     */
-    public static function setDefaultViewPartial($partial)
-    {
-        self::$_defaultViewPartial = $partial;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp defaultphp viewphp partialphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$partialphp Viewphp partial
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultViewPartialphp(php$partialphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultViewPartialphp php=php php$partialphp;
+php php php php php}
 
-    /**
-     * Gets the default view partial
-     *
-     * @return string|array
-     */
-    public static function getDefaultViewPartial()
-    {
-        return self::$_defaultViewPartial;
-    }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp defaultphp viewphp partial
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|array
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultViewPartialphp(php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:php$php_defaultViewPartialphp;
+php php php php php}
 
-    /**
-     * Render the provided pages.  This checks if $view->paginator is set and,
-     * if so, uses that.  Also, if no scrolling style or partial are specified,
-     * the defaults will be used (if set).
-     *
-     * @param  Zend_Paginator (Optional) $paginator
-     * @param  string $scrollingStyle (Optional) Scrolling style
-     * @param  string $partial (Optional) View partial
-     * @param  array|string $params (Optional) params to pass to the partial
-     * @return string
-     * @throws Zend_View_Exception
-     */
-    public function paginationControl(Zend_Paginator $paginator = null, $scrollingStyle = null, $partial = null, $params = null)
-    {
-        if ($paginator === null) {
-            if (isset($this->view->paginator) and $this->view->paginator !== null and $this->view->paginator instanceof Zend_Paginator) {
-                $paginator = $this->view->paginator;
-            } else {
-                /**
-                 * @see Zend_View_Exception
-                 */
-                require_once 'Zend/View/Exception.php';
+php php php php php/php*php*
+php php php php php php*php Renderphp thephp providedphp pagesphp.php php Thisphp checksphp ifphp php$viewphp-php>paginatorphp isphp setphp andphp,
+php php php php php php*php ifphp sophp,php usesphp thatphp.php php Alsophp,php ifphp nophp scrollingphp stylephp orphp partialphp arephp specifiedphp,
+php php php php php php*php thephp defaultsphp willphp bephp usedphp php(ifphp setphp)php.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Paginatorphp php(Optionalphp)php php$paginator
+php php php php php php*php php@paramphp php stringphp php$scrollingStylephp php(Optionalphp)php Scrollingphp style
+php php php php php php*php php@paramphp php stringphp php$partialphp php(Optionalphp)php Viewphp partial
+php php php php php php*php php@paramphp php arrayphp|stringphp php$paramsphp php(Optionalphp)php paramsphp tophp passphp tophp thephp partial
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Viewphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp paginationControlphp(Zendphp_Paginatorphp php$paginatorphp php=php nullphp,php php$scrollingStylephp php=php nullphp,php php$partialphp php=php nullphp,php php$paramsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$paginatorphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>viewphp-php>paginatorphp)php andphp php$thisphp-php>viewphp-php>paginatorphp php!php=php=php nullphp andphp php$thisphp-php>viewphp-php>paginatorphp instanceofphp Zendphp_Paginatorphp)php php{
+php php php php php php php php php php php php php php php php php$paginatorphp php=php php$thisphp-php>viewphp-php>paginatorphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Viewphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
 
-                $e = new Zend_View_Exception('No paginator instance provided or incorrect type');
-                $e->setView($this->view);
-                throw $e;
-            }
-        }
+php php php php php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Nophp paginatorphp instancephp providedphp orphp incorrectphp typephp'php)php;
+php php php php php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($partial === null) {
-            if (self::$_defaultViewPartial === null) {
-                /**
-                 * @see Zend_View_Exception
-                 */
-                require_once 'Zend/View/Exception.php';
-                $e = new Zend_View_Exception('No view partial provided and no default set');
-                $e->setView($this->view);
-                throw $e;
-            }
+php php php php php php php php ifphp php(php$partialphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(selfphp:php:php$php_defaultViewPartialphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Viewphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Nophp viewphp partialphp providedphp andphp nophp defaultphp setphp'php)php;
+php php php php php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php}
 
-            $partial = self::$_defaultViewPartial;
-        }
+php php php php php php php php php php php php php$partialphp php=php selfphp:php:php$php_defaultViewPartialphp;
+php php php php php php php php php}
 
-        $pages = get_object_vars($paginator->getPages($scrollingStyle));
+php php php php php php php php php$pagesphp php=php getphp_objectphp_varsphp(php$paginatorphp-php>getPagesphp(php$scrollingStylephp)php)php;
 
-        if ($params !== null) {
-            $pages = array_merge($pages, (array) $params);
-        }
+php php php php php php php php ifphp php(php$paramsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$pagesphp php=php arrayphp_mergephp(php$pagesphp,php php(arrayphp)php php$paramsphp)php;
+php php php php php php php php php}
 
-        if (is_array($partial)) {
-            if (count($partial) != 2) {
-                /**
-                 * @see Zend_View_Exception
-                 */
-                require_once 'Zend/View/Exception.php';
-                $e = new Zend_View_Exception('A view partial supplied as an array must contain two values: the filename and its module');
-                $e->setView($this->view);
-                throw $e;
-            }
+php php php php php php php php ifphp php(isphp_arrayphp(php$partialphp)php)php php{
+php php php php php php php php php php php php ifphp php(countphp(php$partialphp)php php!php=php php2php)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Viewphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Aphp viewphp partialphp suppliedphp asphp anphp arrayphp mustphp containphp twophp valuesphp:php thephp filenamephp andphp itsphp modulephp'php)php;
+php php php php php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php}
 
-            if ($partial[1] !== null) {
-                return $this->view->partial($partial[0], $partial[1], $pages);
-            }
+php php php php php php php php php php php php ifphp php(php$partialphp[php1php]php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>viewphp-php>partialphp(php$partialphp[php0php]php,php php$partialphp[php1php]php,php php$pagesphp)php;
+php php php php php php php php php php php php php}
 
-            $partial = $partial[0];
-        }
+php php php php php php php php php php php php php$partialphp php=php php$partialphp[php0php]php;
+php php php php php php php php php}
 
-        return $this->view->partial($partial, $pages);
-    }
-}
+php php php php php php php php returnphp php$thisphp-php>viewphp-php>partialphp(php$partialphp,php php$pagesphp)php;
+php php php php php}
+php}

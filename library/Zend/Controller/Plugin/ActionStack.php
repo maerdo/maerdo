@@ -1,280 +1,280 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Plugins
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Plugins
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Controller_Plugin_Abstract */
-require_once 'Zend/Controller/Plugin/Abstract.php';
+php/php*php*php Zendphp_Controllerphp_Pluginphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Pluginphp/Abstractphp.phpphp'php;
 
-/** Zend_Registry */
-require_once 'Zend/Registry.php';
+php/php*php*php Zendphp_Registryphp php*php/
+requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
 
-/**
- * Manage a stack of actions
- *
- * @uses       Zend_Controller_Plugin_Abstract
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Plugins
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ActionStack.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Controller_Plugin_ActionStack extends Zend_Controller_Plugin_Abstract
-{
-    /** @var Zend_Registry */
-    protected $_registry;
+php/php*php*
+php php*php Managephp aphp stackphp ofphp actions
+php php*
+php php*php php@usesphp php php php php php php Zendphp_Controllerphp_Pluginphp_Abstract
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Plugins
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ActionStackphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Controllerphp_Pluginphp_ActionStackphp extendsphp Zendphp_Controllerphp_Pluginphp_Abstract
+php{
+php php php php php/php*php*php php@varphp Zendphp_Registryphp php*php/
+php php php php protectedphp php$php_registryphp;
 
-    /**
-     * Registry key under which actions are stored
-     * @var string
-     */
-    protected $_registryKey = 'Zend_Controller_Plugin_ActionStack';
+php php php php php/php*php*
+php php php php php php*php Registryphp keyphp underphp whichphp actionsphp arephp stored
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_registryKeyphp php=php php'Zendphp_Controllerphp_Pluginphp_ActionStackphp'php;
 
-    /**
-     * Valid keys for stack items
-     * @var array
-     */
-    protected $_validKeys = array(
-        'module',
-        'controller',
-        'action',
-        'params'
-    );
+php php php php php/php*php*
+php php php php php php*php Validphp keysphp forphp stackphp items
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_validKeysphp php=php arrayphp(
+php php php php php php php php php'modulephp'php,
+php php php php php php php php php'controllerphp'php,
+php php php php php php php php php'actionphp'php,
+php php php php php php php php php'paramsphp'
+php php php php php)php;
 
-    /**
-     * Flag to determine whether request parameters are cleared between actions, or whether new parameters
-     * are added to existing request parameters.
-     *
-     * @var Bool
-     */
-    protected $_clearRequestParams = false;
+php php php php php/php*php*
+php php php php php php*php Flagphp tophp determinephp whetherphp requestphp parametersphp arephp clearedphp betweenphp actionsphp,php orphp whetherphp newphp parameters
+php php php php php php*php arephp addedphp tophp existingphp requestphp parametersphp.
+php php php php php php*
+php php php php php php*php php@varphp Bool
+php php php php php php*php/
+php php php php protectedphp php$php_clearRequestParamsphp php=php falsephp;
 
-    /**
-     * Constructor
-     *
-     * @param  Zend_Registry $registry
-     * @param  string $key
-     * @return void
-     */
-    public function __construct(Zend_Registry $registry = null, $key = null)
-    {
-        if (null === $registry) {
-            $registry = Zend_Registry::getInstance();
-        }
-        $this->setRegistry($registry);
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Registryphp php$registry
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(Zendphp_Registryphp php$registryphp php=php nullphp,php php$keyphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$registryphp)php php{
+php php php php php php php php php php php php php$registryphp php=php Zendphp_Registryphp:php:getInstancephp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>setRegistryphp(php$registryphp)php;
 
-        if (null !== $key) {
-            $this->setRegistryKey($key);
-        } else {
-            $key = $this->getRegistryKey();
-        }
+php php php php php php php php ifphp php(nullphp php!php=php=php php$keyphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setRegistryKeyphp(php$keyphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$keyphp php=php php$thisphp-php>getRegistryKeyphp(php)php;
+php php php php php php php php php}
 
-        $registry[$key] = array();
-    }
+php php php php php php php php php$registryphp[php$keyphp]php php=php arrayphp(php)php;
+php php php php php}
 
-    /**
-     * Set registry object
-     *
-     * @param  Zend_Registry $registry
-     * @return Zend_Controller_Plugin_ActionStack
-     */
-    public function setRegistry(Zend_Registry $registry)
-    {
-        $this->_registry = $registry;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp registryphp object
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Registryphp php$registry
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Pluginphp_ActionStack
+php php php php php php*php/
+php php php php publicphp functionphp setRegistryphp(Zendphp_Registryphp php$registryphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_registryphp php=php php$registryphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve registry object
-     *
-     * @return Zend_Registry
-     */
-    public function getRegistry()
-    {
-        return $this->_registry;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp registryphp object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Registry
+php php php php php php*php/
+php php php php publicphp functionphp getRegistryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_registryphp;
+php php php php php}
 
-    /**
-     * Retrieve registry key
-     *
-     * @return string
-     */
-    public function getRegistryKey()
-    {
-        return $this->_registryKey;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp registryphp key
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getRegistryKeyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_registryKeyphp;
+php php php php php}
 
-    /**
-     * Set registry key
-     *
-     * @param  string $key
-     * @return Zend_Controller_Plugin_ActionStack
-     */
-    public function setRegistryKey($key)
-    {
-        $this->_registryKey = (string) $key;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp registryphp key
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$key
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Pluginphp_ActionStack
+php php php php php php*php/
+php php php php publicphp functionphp setRegistryKeyphp(php$keyphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_registryKeyphp php=php php(stringphp)php php$keyphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     *  Set clearRequestParams flag
-     *
-     *  @param  bool $clearRequestParams
-     *  @return Zend_Controller_Plugin_ActionStack
-     */
-    public function setClearRequestParams($clearRequestParams)
-    {
-        $this->_clearRequestParams = (bool) $clearRequestParams;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php php Setphp clearRequestParamsphp flag
+php php php php php php*
+php php php php php php*php php php@paramphp php boolphp php$clearRequestParams
+php php php php php php*php php php@returnphp Zendphp_Controllerphp_Pluginphp_ActionStack
+php php php php php php*php/
+php php php php publicphp functionphp setClearRequestParamsphp(php$clearRequestParamsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_clearRequestParamsphp php=php php(boolphp)php php$clearRequestParamsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve clearRequestParams flag
-     *
-     * @return bool
-     */
-    public function getClearRequestParams()
-    {
-        return $this->_clearRequestParams;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp clearRequestParamsphp flag
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getClearRequestParamsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_clearRequestParamsphp;
+php php php php php}
 
-    /**
-     * Retrieve action stack
-     *
-     * @return array
-     */
-    public function getStack()
-    {
-        $registry = $this->getRegistry();
-        $stack    = $registry[$this->getRegistryKey()];
-        return $stack;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp actionphp stack
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getStackphp(php)
+php php php php php{
+php php php php php php php php php$registryphp php=php php$thisphp-php>getRegistryphp(php)php;
+php php php php php php php php php$stackphp php php php php=php php$registryphp[php$thisphp-php>getRegistryKeyphp(php)php]php;
+php php php php php php php php returnphp php$stackphp;
+php php php php php}
 
-    /**
-     * Save stack to registry
-     *
-     * @param  array $stack
-     * @return Zend_Controller_Plugin_ActionStack
-     */
-    protected function _saveStack(array $stack)
-    {
-        $registry = $this->getRegistry();
-        $registry[$this->getRegistryKey()] = $stack;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Savephp stackphp tophp registry
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$stack
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Pluginphp_ActionStack
+php php php php php php*php/
+php php php php protectedphp functionphp php_saveStackphp(arrayphp php$stackphp)
+php php php php php{
+php php php php php php php php php$registryphp php=php php$thisphp-php>getRegistryphp(php)php;
+php php php php php php php php php$registryphp[php$thisphp-php>getRegistryKeyphp(php)php]php php=php php$stackphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Push an item onto the stack
-     *
-     * @param  Zend_Controller_Request_Abstract $next
-     * @return Zend_Controller_Plugin_ActionStack
-     */
-    public function pushStack(Zend_Controller_Request_Abstract $next)
-    {
-        $stack = $this->getStack();
-        array_push($stack, $next);
-        return $this->_saveStack($stack);
-    }
+php php php php php/php*php*
+php php php php php php*php Pushphp anphp itemphp ontophp thephp stack
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Controllerphp_Requestphp_Abstractphp php$next
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Pluginphp_ActionStack
+php php php php php php*php/
+php php php php publicphp functionphp pushStackphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$nextphp)
+php php php php php{
+php php php php php php php php php$stackphp php=php php$thisphp-php>getStackphp(php)php;
+php php php php php php php php arrayphp_pushphp(php$stackphp,php php$nextphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_saveStackphp(php$stackphp)php;
+php php php php php}
 
-    /**
-     * Pop an item off the action stack
-     *
-     * @return false|Zend_Controller_Request_Abstract
-     */
-    public function popStack()
-    {
-        $stack = $this->getStack();
-        if (0 == count($stack)) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Popphp anphp itemphp offphp thephp actionphp stack
+php php php php php php*
+php php php php php php*php php@returnphp falsephp|Zendphp_Controllerphp_Requestphp_Abstract
+php php php php php php*php/
+php php php php publicphp functionphp popStackphp(php)
+php php php php php{
+php php php php php php php php php$stackphp php=php php$thisphp-php>getStackphp(php)php;
+php php php php php php php php ifphp php(php0php php=php=php countphp(php$stackphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $next = array_pop($stack);
-        $this->_saveStack($stack);
+php php php php php php php php php$nextphp php=php arrayphp_popphp(php$stackphp)php;
+php php php php php php php php php$thisphp-php>php_saveStackphp(php$stackphp)php;
 
-        if (!$next instanceof Zend_Controller_Request_Abstract) {
-            require_once 'Zend/Controller/Exception.php';
-            throw new Zend_Controller_Exception('ArrayStack should only contain request objects');
-        }
-        $action = $next->getActionName();
-        if (empty($action)) {
-            return $this->popStack($stack);
-        }
+php php php php php php php php ifphp php(php!php$nextphp instanceofphp Zendphp_Controllerphp_Requestphp_Abstractphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php'ArrayStackphp shouldphp onlyphp containphp requestphp objectsphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$actionphp php=php php$nextphp-php>getActionNamephp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$actionphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>popStackphp(php$stackphp)php;
+php php php php php php php php php}
 
-        $request    = $this->getRequest();
-        $controller = $next->getControllerName();
-        if (empty($controller)) {
-            $next->setControllerName($request->getControllerName());
-        }
+php php php php php php php php php$requestphp php php php php=php php$thisphp-php>getRequestphp(php)php;
+php php php php php php php php php$controllerphp php=php php$nextphp-php>getControllerNamephp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$controllerphp)php)php php{
+php php php php php php php php php php php php php$nextphp-php>setControllerNamephp(php$requestphp-php>getControllerNamephp(php)php)php;
+php php php php php php php php php}
 
-        $module = $next->getModuleName();
-        if (empty($module)) {
-            $next->setModuleName($request->getModuleName());
-        }
+php php php php php php php php php$modulephp php=php php$nextphp-php>getModuleNamephp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$modulephp)php)php php{
+php php php php php php php php php php php php php$nextphp-php>setModuleNamephp(php$requestphp-php>getModuleNamephp(php)php)php;
+php php php php php php php php php}
 
-        return $next;
-    }
+php php php php php php php php returnphp php$nextphp;
+php php php php php}
 
-    /**
-     * postDispatch() plugin hook -- check for actions in stack, and dispatch if any found
-     *
-     * @param  Zend_Controller_Request_Abstract $request
-     * @return void
-     */
-    public function postDispatch(Zend_Controller_Request_Abstract $request)
-    {
-        // Don't move on to next request if this is already an attempt to
-        // forward
-        if (!$request->isDispatched()) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php postDispatchphp(php)php pluginphp hookphp php-php-php checkphp forphp actionsphp inphp stackphp,php andphp dispatchphp ifphp anyphp found
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Controllerphp_Requestphp_Abstractphp php$request
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp postDispatchphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp)
+php php php php php{
+php php php php php php php php php/php/php Donphp'tphp movephp onphp tophp nextphp requestphp ifphp thisphp isphp alreadyphp anphp attemptphp to
+php php php php php php php php php/php/php forward
+php php php php php php php php ifphp php(php!php$requestphp-php>isDispatchedphp(php)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        $this->setRequest($request);
-        $stack = $this->getStack();
-        if (empty($stack)) {
-            return;
-        }
-        $next = $this->popStack();
-        if (!$next) {
-            return;
-        }
+php php php php php php php php php$thisphp-php>setRequestphp(php$requestphp)php;
+php php php php php php php php php$stackphp php=php php$thisphp-php>getStackphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$stackphp)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php php php php php$nextphp php=php php$thisphp-php>popStackphp(php)php;
+php php php php php php php php ifphp php(php!php$nextphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        $this->forward($next);
-    }
+php php php php php php php php php$thisphp-php>forwardphp(php$nextphp)php;
+php php php php php}
 
-    /**
-     * Forward request with next action
-     *
-     * @param  array $next
-     * @return void
-     */
-    public function forward(Zend_Controller_Request_Abstract $next)
-    {
-        $request = $this->getRequest();
-        if ($this->getClearRequestParams()) {
-            $request->clearParams();
-        }
+php php php php php/php*php*
+php php php php php php*php Forwardphp requestphp withphp nextphp action
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$next
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp forwardphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$nextphp)
+php php php php php{
+php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
+php php php php php php php php ifphp php(php$thisphp-php>getClearRequestParamsphp(php)php)php php{
+php php php php php php php php php php php php php$requestphp-php>clearParamsphp(php)php;
+php php php php php php php php php}
 
-        $request->setModuleName($next->getModuleName())
-                ->setControllerName($next->getControllerName())
-                ->setActionName($next->getActionName())
-                ->setParams($next->getParams())
-                ->setDispatched(false);
-    }
-}
+php php php php php php php php php$requestphp-php>setModuleNamephp(php$nextphp-php>getModuleNamephp(php)php)
+php php php php php php php php php php php php php php php php php-php>setControllerNamephp(php$nextphp-php>getControllerNamephp(php)php)
+php php php php php php php php php php php php php php php php php-php>setActionNamephp(php$nextphp-php>getActionNamephp(php)php)
+php php php php php php php php php php php php php php php php php-php>setParamsphp(php$nextphp-php>getParamsphp(php)php)
+php php php php php php php php php php php php php php php php php-php>setDispatchedphp(falsephp)php;
+php php php php php}
+php}

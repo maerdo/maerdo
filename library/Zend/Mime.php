@@ -1,365 +1,365 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mime
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Mime.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mime
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Mimephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * Support class for MultiPart Mime Messages
- *
- * @category   Zend
- * @package    Zend_Mime
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Mime
-{
-    const TYPE_OCTETSTREAM = 'application/octet-stream';
-    const TYPE_TEXT = 'text/plain';
-    const TYPE_HTML = 'text/html';
-    const ENCODING_7BIT = '7bit';
-    const ENCODING_8BIT = '8bit';
-    const ENCODING_QUOTEDPRINTABLE = 'quoted-printable';
-    const ENCODING_BASE64 = 'base64';
-    const DISPOSITION_ATTACHMENT = 'attachment';
-    const DISPOSITION_INLINE = 'inline';
-    const LINELENGTH = 72;
-    const LINEEND = "\n";
-    const MULTIPART_ALTERNATIVE = 'multipart/alternative';
-    const MULTIPART_MIXED = 'multipart/mixed';
-    const MULTIPART_RELATED = 'multipart/related';
+php/php*php*
+php php*php Supportphp classphp forphp MultiPartphp Mimephp Messages
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mime
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Mime
+php{
+php php php php constphp TYPEphp_OCTETSTREAMphp php=php php'applicationphp/octetphp-streamphp'php;
+php php php php constphp TYPEphp_TEXTphp php=php php'textphp/plainphp'php;
+php php php php constphp TYPEphp_HTMLphp php=php php'textphp/htmlphp'php;
+php php php php constphp ENCODINGphp_php7BITphp php=php php'php7bitphp'php;
+php php php php constphp ENCODINGphp_php8BITphp php=php php'php8bitphp'php;
+php php php php constphp ENCODINGphp_QUOTEDPRINTABLEphp php=php php'quotedphp-printablephp'php;
+php php php php constphp ENCODINGphp_BASEphp6php4php php=php php'basephp6php4php'php;
+php php php php constphp DISPOSITIONphp_ATTACHMENTphp php=php php'attachmentphp'php;
+php php php php constphp DISPOSITIONphp_INLINEphp php=php php'inlinephp'php;
+php php php php constphp LINELENGTHphp php=php php7php2php;
+php php php php constphp LINEENDphp php=php php"php\nphp"php;
+php php php php constphp MULTIPARTphp_ALTERNATIVEphp php=php php'multipartphp/alternativephp'php;
+php php php php constphp MULTIPARTphp_MIXEDphp php=php php'multipartphp/mixedphp'php;
+php php php php constphp MULTIPARTphp_RELATEDphp php=php php'multipartphp/relatedphp'php;
 
-    protected $_boundary;
-    protected static $makeUnique = 0;
+php php php php protectedphp php$php_boundaryphp;
+php php php php protectedphp staticphp php$makeUniquephp php=php php0php;
 
-    // lookup-Tables for QuotedPrintable
-    public static $qpKeys = array(
-        "\x00","\x01","\x02","\x03","\x04","\x05","\x06","\x07",
-        "\x08","\x09","\x0A","\x0B","\x0C","\x0D","\x0E","\x0F",
-        "\x10","\x11","\x12","\x13","\x14","\x15","\x16","\x17",
-        "\x18","\x19","\x1A","\x1B","\x1C","\x1D","\x1E","\x1F",
-        "\x7F","\x80","\x81","\x82","\x83","\x84","\x85","\x86",
-        "\x87","\x88","\x89","\x8A","\x8B","\x8C","\x8D","\x8E",
-        "\x8F","\x90","\x91","\x92","\x93","\x94","\x95","\x96",
-        "\x97","\x98","\x99","\x9A","\x9B","\x9C","\x9D","\x9E",
-        "\x9F","\xA0","\xA1","\xA2","\xA3","\xA4","\xA5","\xA6",
-        "\xA7","\xA8","\xA9","\xAA","\xAB","\xAC","\xAD","\xAE",
-        "\xAF","\xB0","\xB1","\xB2","\xB3","\xB4","\xB5","\xB6",
-        "\xB7","\xB8","\xB9","\xBA","\xBB","\xBC","\xBD","\xBE",
-        "\xBF","\xC0","\xC1","\xC2","\xC3","\xC4","\xC5","\xC6",
-        "\xC7","\xC8","\xC9","\xCA","\xCB","\xCC","\xCD","\xCE",
-        "\xCF","\xD0","\xD1","\xD2","\xD3","\xD4","\xD5","\xD6",
-        "\xD7","\xD8","\xD9","\xDA","\xDB","\xDC","\xDD","\xDE",
-        "\xDF","\xE0","\xE1","\xE2","\xE3","\xE4","\xE5","\xE6",
-        "\xE7","\xE8","\xE9","\xEA","\xEB","\xEC","\xED","\xEE",
-        "\xEF","\xF0","\xF1","\xF2","\xF3","\xF4","\xF5","\xF6",
-        "\xF7","\xF8","\xF9","\xFA","\xFB","\xFC","\xFD","\xFE",
-        "\xFF"
-        );
+php php php php php/php/php lookupphp-Tablesphp forphp QuotedPrintable
+php php php php publicphp staticphp php$qpKeysphp php=php arrayphp(
+php php php php php php php php php"php\xphp0php0php"php,php"php\xphp0php1php"php,php"php\xphp0php2php"php,php"php\xphp0php3php"php,php"php\xphp0php4php"php,php"php\xphp0php5php"php,php"php\xphp0php6php"php,php"php\xphp0php7php"php,
+php php php php php php php php php"php\xphp0php8php"php,php"php\xphp0php9php"php,php"php\xphp0Aphp"php,php"php\xphp0Bphp"php,php"php\xphp0Cphp"php,php"php\xphp0Dphp"php,php"php\xphp0Ephp"php,php"php\xphp0Fphp"php,
+php php php php php php php php php"php\xphp1php0php"php,php"php\xphp1php1php"php,php"php\xphp1php2php"php,php"php\xphp1php3php"php,php"php\xphp1php4php"php,php"php\xphp1php5php"php,php"php\xphp1php6php"php,php"php\xphp1php7php"php,
+php php php php php php php php php"php\xphp1php8php"php,php"php\xphp1php9php"php,php"php\xphp1Aphp"php,php"php\xphp1Bphp"php,php"php\xphp1Cphp"php,php"php\xphp1Dphp"php,php"php\xphp1Ephp"php,php"php\xphp1Fphp"php,
+php php php php php php php php php"php\xphp7Fphp"php,php"php\xphp8php0php"php,php"php\xphp8php1php"php,php"php\xphp8php2php"php,php"php\xphp8php3php"php,php"php\xphp8php4php"php,php"php\xphp8php5php"php,php"php\xphp8php6php"php,
+php php php php php php php php php"php\xphp8php7php"php,php"php\xphp8php8php"php,php"php\xphp8php9php"php,php"php\xphp8Aphp"php,php"php\xphp8Bphp"php,php"php\xphp8Cphp"php,php"php\xphp8Dphp"php,php"php\xphp8Ephp"php,
+php php php php php php php php php"php\xphp8Fphp"php,php"php\xphp9php0php"php,php"php\xphp9php1php"php,php"php\xphp9php2php"php,php"php\xphp9php3php"php,php"php\xphp9php4php"php,php"php\xphp9php5php"php,php"php\xphp9php6php"php,
+php php php php php php php php php"php\xphp9php7php"php,php"php\xphp9php8php"php,php"php\xphp9php9php"php,php"php\xphp9Aphp"php,php"php\xphp9Bphp"php,php"php\xphp9Cphp"php,php"php\xphp9Dphp"php,php"php\xphp9Ephp"php,
+php php php php php php php php php"php\xphp9Fphp"php,php"php\xAphp0php"php,php"php\xAphp1php"php,php"php\xAphp2php"php,php"php\xAphp3php"php,php"php\xAphp4php"php,php"php\xAphp5php"php,php"php\xAphp6php"php,
+php php php php php php php php php"php\xAphp7php"php,php"php\xAphp8php"php,php"php\xAphp9php"php,php"php\xAAphp"php,php"php\xABphp"php,php"php\xACphp"php,php"php\xADphp"php,php"php\xAEphp"php,
+php php php php php php php php php"php\xAFphp"php,php"php\xBphp0php"php,php"php\xBphp1php"php,php"php\xBphp2php"php,php"php\xBphp3php"php,php"php\xBphp4php"php,php"php\xBphp5php"php,php"php\xBphp6php"php,
+php php php php php php php php php"php\xBphp7php"php,php"php\xBphp8php"php,php"php\xBphp9php"php,php"php\xBAphp"php,php"php\xBBphp"php,php"php\xBCphp"php,php"php\xBDphp"php,php"php\xBEphp"php,
+php php php php php php php php php"php\xBFphp"php,php"php\xCphp0php"php,php"php\xCphp1php"php,php"php\xCphp2php"php,php"php\xCphp3php"php,php"php\xCphp4php"php,php"php\xCphp5php"php,php"php\xCphp6php"php,
+php php php php php php php php php"php\xCphp7php"php,php"php\xCphp8php"php,php"php\xCphp9php"php,php"php\xCAphp"php,php"php\xCBphp"php,php"php\xCCphp"php,php"php\xCDphp"php,php"php\xCEphp"php,
+php php php php php php php php php"php\xCFphp"php,php"php\xDphp0php"php,php"php\xDphp1php"php,php"php\xDphp2php"php,php"php\xDphp3php"php,php"php\xDphp4php"php,php"php\xDphp5php"php,php"php\xDphp6php"php,
+php php php php php php php php php"php\xDphp7php"php,php"php\xDphp8php"php,php"php\xDphp9php"php,php"php\xDAphp"php,php"php\xDBphp"php,php"php\xDCphp"php,php"php\xDDphp"php,php"php\xDEphp"php,
+php php php php php php php php php"php\xDFphp"php,php"php\xEphp0php"php,php"php\xEphp1php"php,php"php\xEphp2php"php,php"php\xEphp3php"php,php"php\xEphp4php"php,php"php\xEphp5php"php,php"php\xEphp6php"php,
+php php php php php php php php php"php\xEphp7php"php,php"php\xEphp8php"php,php"php\xEphp9php"php,php"php\xEAphp"php,php"php\xEBphp"php,php"php\xECphp"php,php"php\xEDphp"php,php"php\xEEphp"php,
+php php php php php php php php php"php\xEFphp"php,php"php\xFphp0php"php,php"php\xFphp1php"php,php"php\xFphp2php"php,php"php\xFphp3php"php,php"php\xFphp4php"php,php"php\xFphp5php"php,php"php\xFphp6php"php,
+php php php php php php php php php"php\xFphp7php"php,php"php\xFphp8php"php,php"php\xFphp9php"php,php"php\xFAphp"php,php"php\xFBphp"php,php"php\xFCphp"php,php"php\xFDphp"php,php"php\xFEphp"php,
+php php php php php php php php php"php\xFFphp"
+php php php php php php php php php)php;
 
-    public static $qpReplaceValues = array(
-        "=00","=01","=02","=03","=04","=05","=06","=07",
-        "=08","=09","=0A","=0B","=0C","=0D","=0E","=0F",
-        "=10","=11","=12","=13","=14","=15","=16","=17",
-        "=18","=19","=1A","=1B","=1C","=1D","=1E","=1F",
-        "=7F","=80","=81","=82","=83","=84","=85","=86",
-        "=87","=88","=89","=8A","=8B","=8C","=8D","=8E",
-        "=8F","=90","=91","=92","=93","=94","=95","=96",
-        "=97","=98","=99","=9A","=9B","=9C","=9D","=9E",
-        "=9F","=A0","=A1","=A2","=A3","=A4","=A5","=A6",
-        "=A7","=A8","=A9","=AA","=AB","=AC","=AD","=AE",
-        "=AF","=B0","=B1","=B2","=B3","=B4","=B5","=B6",
-        "=B7","=B8","=B9","=BA","=BB","=BC","=BD","=BE",
-        "=BF","=C0","=C1","=C2","=C3","=C4","=C5","=C6",
-        "=C7","=C8","=C9","=CA","=CB","=CC","=CD","=CE",
-        "=CF","=D0","=D1","=D2","=D3","=D4","=D5","=D6",
-        "=D7","=D8","=D9","=DA","=DB","=DC","=DD","=DE",
-        "=DF","=E0","=E1","=E2","=E3","=E4","=E5","=E6",
-        "=E7","=E8","=E9","=EA","=EB","=EC","=ED","=EE",
-        "=EF","=F0","=F1","=F2","=F3","=F4","=F5","=F6",
-        "=F7","=F8","=F9","=FA","=FB","=FC","=FD","=FE",
-        "=FF"
-        );
+php php php php publicphp staticphp php$qpReplaceValuesphp php=php arrayphp(
+php php php php php php php php php"php=php0php0php"php,php"php=php0php1php"php,php"php=php0php2php"php,php"php=php0php3php"php,php"php=php0php4php"php,php"php=php0php5php"php,php"php=php0php6php"php,php"php=php0php7php"php,
+php php php php php php php php php"php=php0php8php"php,php"php=php0php9php"php,php"php=php0Aphp"php,php"php=php0Bphp"php,php"php=php0Cphp"php,php"php=php0Dphp"php,php"php=php0Ephp"php,php"php=php0Fphp"php,
+php php php php php php php php php"php=php1php0php"php,php"php=php1php1php"php,php"php=php1php2php"php,php"php=php1php3php"php,php"php=php1php4php"php,php"php=php1php5php"php,php"php=php1php6php"php,php"php=php1php7php"php,
+php php php php php php php php php"php=php1php8php"php,php"php=php1php9php"php,php"php=php1Aphp"php,php"php=php1Bphp"php,php"php=php1Cphp"php,php"php=php1Dphp"php,php"php=php1Ephp"php,php"php=php1Fphp"php,
+php php php php php php php php php"php=php7Fphp"php,php"php=php8php0php"php,php"php=php8php1php"php,php"php=php8php2php"php,php"php=php8php3php"php,php"php=php8php4php"php,php"php=php8php5php"php,php"php=php8php6php"php,
+php php php php php php php php php"php=php8php7php"php,php"php=php8php8php"php,php"php=php8php9php"php,php"php=php8Aphp"php,php"php=php8Bphp"php,php"php=php8Cphp"php,php"php=php8Dphp"php,php"php=php8Ephp"php,
+php php php php php php php php php"php=php8Fphp"php,php"php=php9php0php"php,php"php=php9php1php"php,php"php=php9php2php"php,php"php=php9php3php"php,php"php=php9php4php"php,php"php=php9php5php"php,php"php=php9php6php"php,
+php php php php php php php php php"php=php9php7php"php,php"php=php9php8php"php,php"php=php9php9php"php,php"php=php9Aphp"php,php"php=php9Bphp"php,php"php=php9Cphp"php,php"php=php9Dphp"php,php"php=php9Ephp"php,
+php php php php php php php php php"php=php9Fphp"php,php"php=Aphp0php"php,php"php=Aphp1php"php,php"php=Aphp2php"php,php"php=Aphp3php"php,php"php=Aphp4php"php,php"php=Aphp5php"php,php"php=Aphp6php"php,
+php php php php php php php php php"php=Aphp7php"php,php"php=Aphp8php"php,php"php=Aphp9php"php,php"php=AAphp"php,php"php=ABphp"php,php"php=ACphp"php,php"php=ADphp"php,php"php=AEphp"php,
+php php php php php php php php php"php=AFphp"php,php"php=Bphp0php"php,php"php=Bphp1php"php,php"php=Bphp2php"php,php"php=Bphp3php"php,php"php=Bphp4php"php,php"php=Bphp5php"php,php"php=Bphp6php"php,
+php php php php php php php php php"php=Bphp7php"php,php"php=Bphp8php"php,php"php=Bphp9php"php,php"php=BAphp"php,php"php=BBphp"php,php"php=BCphp"php,php"php=BDphp"php,php"php=BEphp"php,
+php php php php php php php php php"php=BFphp"php,php"php=Cphp0php"php,php"php=Cphp1php"php,php"php=Cphp2php"php,php"php=Cphp3php"php,php"php=Cphp4php"php,php"php=Cphp5php"php,php"php=Cphp6php"php,
+php php php php php php php php php"php=Cphp7php"php,php"php=Cphp8php"php,php"php=Cphp9php"php,php"php=CAphp"php,php"php=CBphp"php,php"php=CCphp"php,php"php=CDphp"php,php"php=CEphp"php,
+php php php php php php php php php"php=CFphp"php,php"php=Dphp0php"php,php"php=Dphp1php"php,php"php=Dphp2php"php,php"php=Dphp3php"php,php"php=Dphp4php"php,php"php=Dphp5php"php,php"php=Dphp6php"php,
+php php php php php php php php php"php=Dphp7php"php,php"php=Dphp8php"php,php"php=Dphp9php"php,php"php=DAphp"php,php"php=DBphp"php,php"php=DCphp"php,php"php=DDphp"php,php"php=DEphp"php,
+php php php php php php php php php"php=DFphp"php,php"php=Ephp0php"php,php"php=Ephp1php"php,php"php=Ephp2php"php,php"php=Ephp3php"php,php"php=Ephp4php"php,php"php=Ephp5php"php,php"php=Ephp6php"php,
+php php php php php php php php php"php=Ephp7php"php,php"php=Ephp8php"php,php"php=Ephp9php"php,php"php=EAphp"php,php"php=EBphp"php,php"php=ECphp"php,php"php=EDphp"php,php"php=EEphp"php,
+php php php php php php php php php"php=EFphp"php,php"php=Fphp0php"php,php"php=Fphp1php"php,php"php=Fphp2php"php,php"php=Fphp3php"php,php"php=Fphp4php"php,php"php=Fphp5php"php,php"php=Fphp6php"php,
+php php php php php php php php php"php=Fphp7php"php,php"php=Fphp8php"php,php"php=Fphp9php"php,php"php=FAphp"php,php"php=FBphp"php,php"php=FCphp"php,php"php=FDphp"php,php"php=FEphp"php,
+php php php php php php php php php"php=FFphp"
+php php php php php php php php php)php;
 
-    public static $qpKeysString =
-         "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F\x7F\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8A\x8B\x8C\x8D\x8E\x8F\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9A\x9B\x9C\x9D\x9E\x9F\xA0\xA1\xA2\xA3\xA4\xA5\xA6\xA7\xA8\xA9\xAA\xAB\xAC\xAD\xAE\xAF\xB0\xB1\xB2\xB3\xB4\xB5\xB6\xB7\xB8\xB9\xBA\xBB\xBC\xBD\xBE\xBF\xC0\xC1\xC2\xC3\xC4\xC5\xC6\xC7\xC8\xC9\xCA\xCB\xCC\xCD\xCE\xCF\xD0\xD1\xD2\xD3\xD4\xD5\xD6\xD7\xD8\xD9\xDA\xDB\xDC\xDD\xDE\xDF\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF7\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
+php php php php publicphp staticphp php$qpKeysStringphp php=
+php php php php php php php php php php"php\xphp0php0php\xphp0php1php\xphp0php2php\xphp0php3php\xphp0php4php\xphp0php5php\xphp0php6php\xphp0php7php\xphp0php8php\xphp0php9php\xphp0Aphp\xphp0Bphp\xphp0Cphp\xphp0Dphp\xphp0Ephp\xphp0Fphp\xphp1php0php\xphp1php1php\xphp1php2php\xphp1php3php\xphp1php4php\xphp1php5php\xphp1php6php\xphp1php7php\xphp1php8php\xphp1php9php\xphp1Aphp\xphp1Bphp\xphp1Cphp\xphp1Dphp\xphp1Ephp\xphp1Fphp\xphp7Fphp\xphp8php0php\xphp8php1php\xphp8php2php\xphp8php3php\xphp8php4php\xphp8php5php\xphp8php6php\xphp8php7php\xphp8php8php\xphp8php9php\xphp8Aphp\xphp8Bphp\xphp8Cphp\xphp8Dphp\xphp8Ephp\xphp8Fphp\xphp9php0php\xphp9php1php\xphp9php2php\xphp9php3php\xphp9php4php\xphp9php5php\xphp9php6php\xphp9php7php\xphp9php8php\xphp9php9php\xphp9Aphp\xphp9Bphp\xphp9Cphp\xphp9Dphp\xphp9Ephp\xphp9Fphp\xAphp0php\xAphp1php\xAphp2php\xAphp3php\xAphp4php\xAphp5php\xAphp6php\xAphp7php\xAphp8php\xAphp9php\xAAphp\xABphp\xACphp\xADphp\xAEphp\xAFphp\xBphp0php\xBphp1php\xBphp2php\xBphp3php\xBphp4php\xBphp5php\xBphp6php\xBphp7php\xBphp8php\xBphp9php\xBAphp\xBBphp\xBCphp\xBDphp\xBEphp\xBFphp\xCphp0php\xCphp1php\xCphp2php\xCphp3php\xCphp4php\xCphp5php\xCphp6php\xCphp7php\xCphp8php\xCphp9php\xCAphp\xCBphp\xCCphp\xCDphp\xCEphp\xCFphp\xDphp0php\xDphp1php\xDphp2php\xDphp3php\xDphp4php\xDphp5php\xDphp6php\xDphp7php\xDphp8php\xDphp9php\xDAphp\xDBphp\xDCphp\xDDphp\xDEphp\xDFphp\xEphp0php\xEphp1php\xEphp2php\xEphp3php\xEphp4php\xEphp5php\xEphp6php\xEphp7php\xEphp8php\xEphp9php\xEAphp\xEBphp\xECphp\xEDphp\xEEphp\xEFphp\xFphp0php\xFphp1php\xFphp2php\xFphp3php\xFphp4php\xFphp5php\xFphp6php\xFphp7php\xFphp8php\xFphp9php\xFAphp\xFBphp\xFCphp\xFDphp\xFEphp\xFFphp"php;
 
-    /**
-     * Check if the given string is "printable"
-     *
-     * Checks that a string contains no unprintable characters. If this returns
-     * false, encode the string for secure delivery.
-     *
-     * @param string $str
-     * @return boolean
-     */
-    public static function isPrintable($str)
-    {
-        return (strcspn($str, self::$qpKeysString) == strlen($str));
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp thephp givenphp stringphp isphp php"printablephp"
+php php php php php php*
+php php php php php php*php Checksphp thatphp aphp stringphp containsphp nophp unprintablephp charactersphp.php Ifphp thisphp returns
+php php php php php php*php falsephp,php encodephp thephp stringphp forphp securephp deliveryphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$str
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp staticphp functionphp isPrintablephp(php$strphp)
+php php php php php{
+php php php php php php php php returnphp php(strcspnphp(php$strphp,php selfphp:php:php$qpKeysStringphp)php php=php=php strlenphp(php$strphp)php)php;
+php php php php php}
 
-    /**
-     * Encode a given string with the QUOTED_PRINTABLE mechanism and wrap the lines.
-     *
-     * @param string $str
-     * @param int $lineLength Defaults to {@link LINELENGTH}
-     * @param int $lineEnd Defaults to {@link LINEEND}
-     * @return string
-     */
-    public static function encodeQuotedPrintable($str,
-        $lineLength = self::LINELENGTH,
-        $lineEnd = self::LINEEND)
-    {
-        $out = '';
-        $str = self::_encodeQuotedPrintable($str);
+php php php php php/php*php*
+php php php php php php*php Encodephp aphp givenphp stringphp withphp thephp QUOTEDphp_PRINTABLEphp mechanismphp andphp wrapphp thephp linesphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$str
+php php php php php php*php php@paramphp intphp php$lineLengthphp Defaultsphp tophp php{php@linkphp LINELENGTHphp}
+php php php php php php*php php@paramphp intphp php$lineEndphp Defaultsphp tophp php{php@linkphp LINEENDphp}
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodeQuotedPrintablephp(php$strphp,
+php php php php php php php php php$lineLengthphp php=php selfphp:php:LINELENGTHphp,
+php php php php php php php php php$lineEndphp php=php selfphp:php:LINEENDphp)
+php php php php php{
+php php php php php php php php php$outphp php=php php'php'php;
+php php php php php php php php php$strphp php=php selfphp:php:php_encodeQuotedPrintablephp(php$strphp)php;
 
-        // Split encoded text into separate lines
-        while ($str) {
-            $ptr = strlen($str);
-            if ($ptr > $lineLength) {
-                $ptr = $lineLength;
-            }
+php php php php php php php php php/php/php Splitphp encodedphp textphp intophp separatephp lines
+php php php php php php php php whilephp php(php$strphp)php php{
+php php php php php php php php php php php php php$ptrphp php=php strlenphp(php$strphp)php;
+php php php php php php php php php php php php ifphp php(php$ptrphp php>php php$lineLengthphp)php php{
+php php php php php php php php php php php php php php php php php$ptrphp php=php php$lineLengthphp;
+php php php php php php php php php php php php php}
 
-            // Ensure we are not splitting across an encoded character
-            $pos = strrpos(substr($str, 0, $ptr), '=');
-            if ($pos !== false && $pos >= $ptr - 2) {
-                $ptr = $pos;
-            }
+php php php php php php php php php php php php php/php/php Ensurephp wephp arephp notphp splittingphp acrossphp anphp encodedphp character
+php php php php php php php php php php php php php$posphp php=php strrposphp(substrphp(php$strphp,php php0php,php php$ptrphp)php,php php'php=php'php)php;
+php php php php php php php php php php php php ifphp php(php$posphp php!php=php=php falsephp php&php&php php$posphp php>php=php php$ptrphp php-php php2php)php php{
+php php php php php php php php php php php php php php php php php$ptrphp php=php php$posphp;
+php php php php php php php php php php php php php}
 
-            // Check if there is a space at the end of the line and rewind
-            if ($ptr > 0 && $str[$ptr - 1] == ' ') {
-                --$ptr;
-            }
+php php php php php php php php php php php php php/php/php Checkphp ifphp therephp isphp aphp spacephp atphp thephp endphp ofphp thephp linephp andphp rewind
+php php php php php php php php php php php php ifphp php(php$ptrphp php>php php0php php&php&php php$strphp[php$ptrphp php-php php1php]php php=php=php php'php php'php)php php{
+php php php php php php php php php php php php php php php php php-php-php$ptrphp;
+php php php php php php php php php php php php php}
 
-            // Add string and continue
-            $out .= substr($str, 0, $ptr) . '=' . $lineEnd;
-            $str = substr($str, $ptr);
-        }
+php php php php php php php php php php php php php/php/php Addphp stringphp andphp continue
+php php php php php php php php php php php php php$outphp php.php=php substrphp(php$strphp,php php0php,php php$ptrphp)php php.php php'php=php'php php.php php$lineEndphp;
+php php php php php php php php php php php php php$strphp php=php substrphp(php$strphp,php php$ptrphp)php;
+php php php php php php php php php}
 
-        $out = rtrim($out, $lineEnd);
-        $out = rtrim($out, '=');
-        return $out;
-    }
+php php php php php php php php php$outphp php=php rtrimphp(php$outphp,php php$lineEndphp)php;
+php php php php php php php php php$outphp php=php rtrimphp(php$outphp,php php'php=php'php)php;
+php php php php php php php php returnphp php$outphp;
+php php php php php}
 
-    /**
-     * Converts a string into quoted printable format.
-     *
-     * @param  string $str
-     * @return string
-     */
-    private static function _encodeQuotedPrintable($str)
-    {
-        $str = str_replace('=', '=3D', $str);
-        $str = str_replace(self::$qpKeys, self::$qpReplaceValues, $str);
-        $str = rtrim($str);
-        return $str;
-    }
+php php php php php/php*php*
+php php php php php php*php Convertsphp aphp stringphp intophp quotedphp printablephp formatphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$str
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_encodeQuotedPrintablephp(php$strphp)
+php php php php php{
+php php php php php php php php php$strphp php=php strphp_replacephp(php'php=php'php,php php'php=php3Dphp'php,php php$strphp)php;
+php php php php php php php php php$strphp php=php strphp_replacephp(selfphp:php:php$qpKeysphp,php selfphp:php:php$qpReplaceValuesphp,php php$strphp)php;
+php php php php php php php php php$strphp php=php rtrimphp(php$strphp)php;
+php php php php php php php php returnphp php$strphp;
+php php php php php}
 
-    /**
-     * Encode a given string with the QUOTED_PRINTABLE mechanism for Mail Headers.
-     *
-     * Mail headers depend on an extended quoted printable algorithm otherwise
-     * a range of bugs can occur.
-     *
-     * @param string $str
-     * @param string $charset
-     * @param int $lineLength Defaults to {@link LINELENGTH}
-     * @param int $lineEnd Defaults to {@link LINEEND}
-     * @return string
-     */
-    public static function encodeQuotedPrintableHeader($str, $charset,
-        $lineLength = self::LINELENGTH,
-        $lineEnd = self::LINEEND)
-    {
-        // Reduce line-length by the length of the required delimiter, charsets and encoding
-        $prefix = sprintf('=?%s?Q?', $charset);
-        $lineLength = $lineLength-strlen($prefix)-3;
+php php php php php/php*php*
+php php php php php php*php Encodephp aphp givenphp stringphp withphp thephp QUOTEDphp_PRINTABLEphp mechanismphp forphp Mailphp Headersphp.
+php php php php php php*
+php php php php php php*php Mailphp headersphp dependphp onphp anphp extendedphp quotedphp printablephp algorithmphp otherwise
+php php php php php php*php aphp rangephp ofphp bugsphp canphp occurphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$str
+php php php php php php*php php@paramphp stringphp php$charset
+php php php php php php*php php@paramphp intphp php$lineLengthphp Defaultsphp tophp php{php@linkphp LINELENGTHphp}
+php php php php php php*php php@paramphp intphp php$lineEndphp Defaultsphp tophp php{php@linkphp LINEENDphp}
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodeQuotedPrintableHeaderphp(php$strphp,php php$charsetphp,
+php php php php php php php php php$lineLengthphp php=php selfphp:php:LINELENGTHphp,
+php php php php php php php php php$lineEndphp php=php selfphp:php:LINEENDphp)
+php php php php php{
+php php php php php php php php php/php/php Reducephp linephp-lengthphp byphp thephp lengthphp ofphp thephp requiredphp delimiterphp,php charsetsphp andphp encoding
+php php php php php php php php php$prefixphp php=php sprintfphp(php'php=php?php%sphp?Qphp?php'php,php php$charsetphp)php;
+php php php php php php php php php$lineLengthphp php=php php$lineLengthphp-strlenphp(php$prefixphp)php-php3php;
 
-        $str = self::_encodeQuotedPrintable($str);
+php php php php php php php php php$strphp php=php selfphp:php:php_encodeQuotedPrintablephp(php$strphp)php;
 
-        // Mail-Header required chars have to be encoded also:
-        $str = str_replace(array('?', ' ', '_'), array('=3F', '=20', '=5F'), $str);
+php php php php php php php php php/php/php Mailphp-Headerphp requiredphp charsphp havephp tophp bephp encodedphp alsophp:
+php php php php php php php php php$strphp php=php strphp_replacephp(arrayphp(php'php?php'php,php php'php php'php,php php'php_php'php)php,php arrayphp(php'php=php3Fphp'php,php php'php=php2php0php'php,php php'php=php5Fphp'php)php,php php$strphp)php;
 
-        // initialize first line, we need it anyways
-        $lines = array(0 => "");
+php php php php php php php php php/php/php initializephp firstphp linephp,php wephp needphp itphp anyways
+php php php php php php php php php$linesphp php=php arrayphp(php0php php=php>php php"php"php)php;
 
-        // Split encoded text into separate lines
-        $tmp = "";
-        while(strlen($str) > 0) {
-            $currentLine = max(count($lines)-1, 0);
-            $token       = self::getNextQuotedPrintableToken($str);
-            $str         = substr($str, strlen($token));
+php php php php php php php php php/php/php Splitphp encodedphp textphp intophp separatephp lines
+php php php php php php php php php$tmpphp php=php php"php"php;
+php php php php php php php php whilephp(strlenphp(php$strphp)php php>php php0php)php php{
+php php php php php php php php php php php php php$currentLinephp php=php maxphp(countphp(php$linesphp)php-php1php,php php0php)php;
+php php php php php php php php php php php php php$tokenphp php php php php php php php=php selfphp:php:getNextQuotedPrintableTokenphp(php$strphp)php;
+php php php php php php php php php php php php php$strphp php php php php php php php php php=php substrphp(php$strphp,php strlenphp(php$tokenphp)php)php;
 
-            $tmp .= $token;
-            if($token == '=20') {
-                // only if we have a single char token or space, we can append the
-                // tempstring it to the current line or start a new line if necessary.
-                if(strlen($lines[$currentLine].$tmp) > $lineLength) {
-                    $lines[$currentLine+1] = $tmp;
-                } else {
-                    $lines[$currentLine] .= $tmp;
-                }
-                $tmp = "";
-            }
-            // don't forget to append the rest to the last line
-            if(strlen($str) == 0) {
-                $lines[$currentLine] .= $tmp;
-            }
-        }
+php php php php php php php php php php php php php$tmpphp php.php=php php$tokenphp;
+php php php php php php php php php php php php ifphp(php$tokenphp php=php=php php'php=php2php0php'php)php php{
+php php php php php php php php php php php php php php php php php/php/php onlyphp ifphp wephp havephp aphp singlephp charphp tokenphp orphp spacephp,php wephp canphp appendphp the
+php php php php php php php php php php php php php php php php php/php/php tempstringphp itphp tophp thephp currentphp linephp orphp startphp aphp newphp linephp ifphp necessaryphp.
+php php php php php php php php php php php php php php php php ifphp(strlenphp(php$linesphp[php$currentLinephp]php.php$tmpphp)php php>php php$lineLengthphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$linesphp[php$currentLinephp+php1php]php php=php php$tmpphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$linesphp[php$currentLinephp]php php.php=php php$tmpphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$tmpphp php=php php"php"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php/php/php donphp'tphp forgetphp tophp appendphp thephp restphp tophp thephp lastphp line
+php php php php php php php php php php php php ifphp(strlenphp(php$strphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php$linesphp[php$currentLinephp]php php.php=php php$tmpphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // assemble the lines together by pre- and appending delimiters, charset, encoding.
-        for($i = 0; $i < count($lines); $i++) {
-            $lines[$i] = " ".$prefix.$lines[$i]."?=";
-        }
-        $str = trim(implode($lineEnd, $lines));
-        return $str;
-    }
+php php php php php php php php php/php/php assemblephp thephp linesphp togetherphp byphp prephp-php andphp appendingphp delimitersphp,php charsetphp,php encodingphp.
+php php php php php php php php forphp(php$iphp php=php php0php;php php$iphp <php countphp(php$linesphp)php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php$linesphp[php$iphp]php php=php php"php php"php.php$prefixphp.php$linesphp[php$iphp]php.php"php?php=php"php;
+php php php php php php php php php}
+php php php php php php php php php$strphp php=php trimphp(implodephp(php$lineEndphp,php php$linesphp)php)php;
+php php php php php php php php returnphp php$strphp;
+php php php php php}
 
-    /**
-     * Retrieves the first token from a quoted printable string.
-     *
-     * @param  string $str
-     * @return string
-     */
-    private static function getNextQuotedPrintableToken($str)
-    {
-        if(substr($str, 0, 1) == "=") {
-            $token = substr($str, 0, 3);
-        } else {
-            $token = substr($str, 0, 1);
-        }
-        return $token;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp firstphp tokenphp fromphp aphp quotedphp printablephp stringphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$str
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php privatephp staticphp functionphp getNextQuotedPrintableTokenphp(php$strphp)
+php php php php php{
+php php php php php php php php ifphp(substrphp(php$strphp,php php0php,php php1php)php php=php=php php"php=php"php)php php{
+php php php php php php php php php php php php php$tokenphp php=php substrphp(php$strphp,php php0php,php php3php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$tokenphp php=php substrphp(php$strphp,php php0php,php php1php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$tokenphp;
+php php php php php}
 
-    /**
-     * Encode a given string in mail header compatible base64 encoding.
-     *
-     * @param string $str
-     * @param string $charset
-     * @param int $lineLength Defaults to {@link LINELENGTH}
-     * @param int $lineEnd Defaults to {@link LINEEND}
-     * @return string
-     */
-    public static function encodeBase64Header($str,
-        $charset,
-        $lineLength = self::LINELENGTH,
-        $lineEnd = self::LINEEND)
-    {
-        $prefix = '=?' . $charset . '?B?';
-        $suffix = '?=';
-        $remainingLength = $lineLength - strlen($prefix) - strlen($suffix);
+php php php php php/php*php*
+php php php php php php*php Encodephp aphp givenphp stringphp inphp mailphp headerphp compatiblephp basephp6php4php encodingphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$str
+php php php php php php*php php@paramphp stringphp php$charset
+php php php php php php*php php@paramphp intphp php$lineLengthphp Defaultsphp tophp php{php@linkphp LINELENGTHphp}
+php php php php php php*php php@paramphp intphp php$lineEndphp Defaultsphp tophp php{php@linkphp LINEENDphp}
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodeBasephp6php4Headerphp(php$strphp,
+php php php php php php php php php$charsetphp,
+php php php php php php php php php$lineLengthphp php=php selfphp:php:LINELENGTHphp,
+php php php php php php php php php$lineEndphp php=php selfphp:php:LINEENDphp)
+php php php php php{
+php php php php php php php php php$prefixphp php=php php'php=php?php'php php.php php$charsetphp php.php php'php?Bphp?php'php;
+php php php php php php php php php$suffixphp php=php php'php?php=php'php;
+php php php php php php php php php$remainingLengthphp php=php php$lineLengthphp php-php strlenphp(php$prefixphp)php php-php strlenphp(php$suffixphp)php;
 
-        $encodedValue = self::encodeBase64($str, $remainingLength, $lineEnd);
-        $encodedValue = str_replace($lineEnd, $suffix . $lineEnd . ' ' . $prefix, $encodedValue);
-        $encodedValue = $prefix . $encodedValue . $suffix;
-        return $encodedValue;
-    }
+php php php php php php php php php$encodedValuephp php=php selfphp:php:encodeBasephp6php4php(php$strphp,php php$remainingLengthphp,php php$lineEndphp)php;
+php php php php php php php php php$encodedValuephp php=php strphp_replacephp(php$lineEndphp,php php$suffixphp php.php php$lineEndphp php.php php'php php'php php.php php$prefixphp,php php$encodedValuephp)php;
+php php php php php php php php php$encodedValuephp php=php php$prefixphp php.php php$encodedValuephp php.php php$suffixphp;
+php php php php php php php php returnphp php$encodedValuephp;
+php php php php php}
 
-    /**
-     * Encode a given string in base64 encoding and break lines
-     * according to the maximum linelength.
-     *
-     * @param string $str
-     * @param int $lineLength Defaults to {@link LINELENGTH}
-     * @param int $lineEnd Defaults to {@link LINEEND}
-     * @return string
-     */
-    public static function encodeBase64($str,
-        $lineLength = self::LINELENGTH,
-        $lineEnd = self::LINEEND)
-    {
-        return rtrim(chunk_split(base64_encode($str), $lineLength, $lineEnd));
-    }
+php php php php php/php*php*
+php php php php php php*php Encodephp aphp givenphp stringphp inphp basephp6php4php encodingphp andphp breakphp lines
+php php php php php php*php accordingphp tophp thephp maximumphp linelengthphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$str
+php php php php php php*php php@paramphp intphp php$lineLengthphp Defaultsphp tophp php{php@linkphp LINELENGTHphp}
+php php php php php php*php php@paramphp intphp php$lineEndphp Defaultsphp tophp php{php@linkphp LINEENDphp}
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodeBasephp6php4php(php$strphp,
+php php php php php php php php php$lineLengthphp php=php selfphp:php:LINELENGTHphp,
+php php php php php php php php php$lineEndphp php=php selfphp:php:LINEENDphp)
+php php php php php{
+php php php php php php php php returnphp rtrimphp(chunkphp_splitphp(basephp6php4php_encodephp(php$strphp)php,php php$lineLengthphp,php php$lineEndphp)php)php;
+php php php php php}
 
-    /**
-     * Constructor
-     *
-     * @param null|string $boundary
-     * @access public
-     * @return void
-     */
-    public function __construct($boundary = null)
-    {
-        // This string needs to be somewhat unique
-        if ($boundary === null) {
-            $this->_boundary = '=_' . md5(microtime(1) . self::$makeUnique++);
-        } else {
-            $this->_boundary = $boundary;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp nullphp|stringphp php$boundary
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$boundaryphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Thisphp stringphp needsphp tophp bephp somewhatphp unique
+php php php php php php php php ifphp php(php$boundaryphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_boundaryphp php=php php'php=php_php'php php.php mdphp5php(microtimephp(php1php)php php.php selfphp:php:php$makeUniquephp+php+php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_boundaryphp php=php php$boundaryphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Encode the given string with the given encoding.
-     *
-     * @param string $str
-     * @param string $encoding
-     * @param string $EOL EOL string; defaults to {@link Zend_Mime::LINEEND}
-     * @return string
-     */
-    public static function encode($str, $encoding, $EOL = self::LINEEND)
-    {
-        switch ($encoding) {
-            case self::ENCODING_BASE64:
-                return self::encodeBase64($str, self::LINELENGTH, $EOL);
+php php php php php/php*php*
+php php php php php php*php Encodephp thephp givenphp stringphp withphp thephp givenphp encodingphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$str
+php php php php php php*php php@paramphp stringphp php$encoding
+php php php php php php*php php@paramphp stringphp php$EOLphp EOLphp stringphp;php defaultsphp tophp php{php@linkphp Zendphp_Mimephp:php:LINEENDphp}
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodephp(php$strphp,php php$encodingphp,php php$EOLphp php=php selfphp:php:LINEENDphp)
+php php php php php{
+php php php php php php php php switchphp php(php$encodingphp)php php{
+php php php php php php php php php php php php casephp selfphp:php:ENCODINGphp_BASEphp6php4php:
+php php php php php php php php php php php php php php php php returnphp selfphp:php:encodeBasephp6php4php(php$strphp,php selfphp:php:LINELENGTHphp,php php$EOLphp)php;
 
-            case self::ENCODING_QUOTEDPRINTABLE:
-                return self::encodeQuotedPrintable($str, self::LINELENGTH, $EOL);
+php php php php php php php php php php php php casephp selfphp:php:ENCODINGphp_QUOTEDPRINTABLEphp:
+php php php php php php php php php php php php php php php php returnphp selfphp:php:encodeQuotedPrintablephp(php$strphp,php selfphp:php:LINELENGTHphp,php php$EOLphp)php;
 
-            default:
-                /**
-                 * @todo 7Bit and 8Bit is currently handled the same way.
-                 */
-                return $str;
-        }
-    }
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@todophp php7Bitphp andphp php8Bitphp isphp currentlyphp handledphp thephp samephp wayphp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php returnphp php$strphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Return a MIME boundary
-     *
-     * @access public
-     * @return string
-     */
-    public function boundary()
-    {
-        return $this->_boundary;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp MIMEphp boundary
+php php php php php php*
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp boundaryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_boundaryphp;
+php php php php php}
 
-    /**
-     * Return a MIME boundary line
-     *
-     * @param mixed $EOL Defaults to {@link LINEEND}
-     * @access public
-     * @return string
-     */
-    public function boundaryLine($EOL = self::LINEEND)
-    {
-        return $EOL . '--' . $this->_boundary . $EOL;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp MIMEphp boundaryphp line
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$EOLphp Defaultsphp tophp php{php@linkphp LINEENDphp}
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp boundaryLinephp(php$EOLphp php=php selfphp:php:LINEENDphp)
+php php php php php{
+php php php php php php php php returnphp php$EOLphp php.php php'php-php-php'php php.php php$thisphp-php>php_boundaryphp php.php php$EOLphp;
+php php php php php}
 
-    /**
-     * Return MIME ending
-     *
-     * @access public
-     * @return string
-     */
-    public function mimeEnd($EOL = self::LINEEND)
-    {
-        return $EOL . '--' . $this->_boundary . '--' . $EOL;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnphp MIMEphp ending
+php php php php php php*
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp mimeEndphp(php$EOLphp php=php selfphp:php:LINEENDphp)
+php php php php php{
+php php php php php php php php returnphp php$EOLphp php.php php'php-php-php'php php.php php$thisphp-php>php_boundaryphp php.php php'php-php-php'php php.php php$EOLphp;
+php php php php php}
+php}

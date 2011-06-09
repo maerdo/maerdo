@@ -1,301 +1,301 @@
-<?php
-/**
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage QueueService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp QueueService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-require_once 'Zend/Cloud/QueueService/Adapter/AbstractAdapter.php';
-require_once 'Zend/Cloud/QueueService/Exception.php';
-require_once 'Zend/Queue.php';
+requirephp_oncephp php'Zendphp/Cloudphp/QueueServicephp/Adapterphp/AbstractAdapterphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Cloudphp/QueueServicephp/Exceptionphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Queuephp.phpphp'php;
 
-/**
- * WindowsAzure adapter for simple queue service.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @subpackage QueueService
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cloud_QueueService_Adapter_ZendQueue
-    extends Zend_Cloud_QueueService_Adapter_AbstractAdapter
-{
-    /**
-     * Options array keys for the Zend_Queue adapter.
-     */
-    const ADAPTER = 'adapter';
+php/php*php*
+php php*php WindowsAzurephp adapterphp forphp simplephp queuephp servicephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@subpackagephp QueueService
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cloudphp_QueueServicephp_Adapterphp_ZendQueue
+php php php php extendsphp Zendphp_Cloudphp_QueueServicephp_Adapterphp_AbstractAdapter
+php{
+php php php php php/php*php*
+php php php php php php*php Optionsphp arrayphp keysphp forphp thephp Zendphp_Queuephp adapterphp.
+php php php php php php*php/
+php php php php constphp ADAPTERphp php=php php'adapterphp'php;
 
-    /**
-     * Storage client
-     *
-     * @var Zend_Queue
-     */
-    protected $_queue = null;
+php php php php php/php*php*
+php php php php php php*php Storagephp client
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Queue
+php php php php php php*php/
+php php php php protectedphp php$php_queuephp php=php nullphp;
 
-    /**
-     * @var array All queues
-     */
-    protected $_queues = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp arrayphp Allphp queues
+php php php php php php*php/
+php php php php protectedphp php$php_queuesphp php=php arrayphp(php)php;
 
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options
-     * @return void
-     */
-    public function __construct ($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp php(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($options)) {
-            throw new Zend_Cloud_QueueService_Exception('Invalid options provided');
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Invalidphp optionsphp providedphp'php)php;
+php php php php php php php php php}
 
-        if (isset($options[self::MESSAGE_CLASS])) {
-            $this->setMessageClass($options[self::MESSAGE_CLASS]);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:MESSAGEphp_CLASSphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMessageClassphp(php$optionsphp[selfphp:php:MESSAGEphp_CLASSphp]php)php;
+php php php php php php php php php}
 
-        if (isset($options[self::MESSAGESET_CLASS])) {
-            $this->setMessageSetClass($options[self::MESSAGESET_CLASS]);
-        }
+php php php php php php php php ifphp php(issetphp(php$optionsphp[selfphp:php:MESSAGESETphp_CLASSphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMessageSetClassphp(php$optionsphp[selfphp:php:MESSAGESETphp_CLASSphp]php)php;
+php php php php php php php php php}
 
-        // Build Zend_Service_WindowsAzure_Storage_Blob instance
-        if (!isset($options[self::ADAPTER])) {
-            throw new Zend_Cloud_QueueService_Exception('No Zend_Queue adapter provided');
-        } else {
-            $adapter = $options[self::ADAPTER];
-            unset($options[self::ADAPTER]);
-        }
-        try {
-            $this->_queue = new Zend_Queue($adapter, $options);
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on create: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php php php php php/php/php Buildphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp instance
+php php php php php php php php ifphp php(php!issetphp(php$optionsphp[selfphp:php:ADAPTERphp]php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Nophp Zendphp_Queuephp adapterphp providedphp'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$adapterphp php=php php$optionsphp[selfphp:php:ADAPTERphp]php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[selfphp:php:ADAPTERphp]php)php;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_queuephp php=php newphp Zendphp_Queuephp(php$adapterphp,php php$optionsphp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp createphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Create a queue. Returns the ID of the created queue (typically the URL).
-     * It may take some time to create the queue. Check your vendor's
-     * documentation for details.
-     *
-     * @param  string $name
-     * @param  array  $options
-     * @return string Queue ID (typically URL)
-     */
-    public function createQueue($name, $options = null)
-    {
-        try {
-            $this->_queues[$name] = $this->_queue->createQueue($name, isset($options[Zend_Queue::TIMEOUT])?$options[Zend_Queue::TIMEOUT]:null);
-            return $name;
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on queue creation: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Createphp aphp queuephp.php Returnsphp thephp IDphp ofphp thephp createdphp queuephp php(typicallyphp thephp URLphp)php.
+php php php php php php*php Itphp mayphp takephp somephp timephp tophp createphp thephp queuephp.php Checkphp yourphp vendorphp's
+php php php php php php*php documentationphp forphp detailsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp stringphp Queuephp IDphp php(typicallyphp URLphp)
+php php php php php php*php/
+php php php php publicphp functionphp createQueuephp(php$namephp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_queuesphp[php$namephp]php php=php php$thisphp-php>php_queuephp-php>createQueuephp(php$namephp,php issetphp(php$optionsphp[Zendphp_Queuephp:php:TIMEOUTphp]php)php?php$optionsphp[Zendphp_Queuephp:php:TIMEOUTphp]php:nullphp)php;
+php php php php php php php php php php php php returnphp php$namephp;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp queuephp creationphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Delete a queue. All messages in the queue will also be deleted.
-     *
-     * @param  string $queueId
-     * @param  array  $options
-     * @return boolean true if successful, false otherwise
-     */
-    public function deleteQueue($queueId, $options = null)
-    {
-        if (!isset($this->_queues[$queueId])) {
-            return false;
-        }
-        try {
-            if ($this->_queues[$queueId]->deleteQueue()) {
-                unset($this->_queues[$queueId]);
-                return true;
-            }
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on queue deletion: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp queuephp.php Allphp messagesphp inphp thephp queuephp willphp alsophp bephp deletedphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$queueId
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp booleanphp truephp ifphp successfulphp,php falsephp otherwise
+php php php php php php*php/
+php php php php publicphp functionphp deleteQueuephp(php$queueIdphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_queuesphp[php$queueIdphp]php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_queuesphp[php$queueIdphp]php-php>deleteQueuephp(php)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_queuesphp[php$queueIdphp]php)php;
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp queuephp deletionphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * List all queues.
-     *
-     * @param  array $options
-     * @return array Queue IDs
-     */
-    public function listQueues($options = null)
-    {
-        try {
-            return $this->_queue->getQueues();
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on listing queues: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Listphp allphp queuesphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp arrayphp Queuephp IDs
+php php php php php php*php/
+php php php php publicphp functionphp listQueuesphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_queuephp-php>getQueuesphp(php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp listingphp queuesphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Get a key/value array of metadata for the given queue.
-     *
-     * @param  string $queueId
-     * @param  array  $options
-     * @return array
-     */
-    public function fetchQueueMetadata($queueId, $options = null)
-    {
-        if (!isset($this->_queues[$queueId])) {
-            return false;
-        }
-        try {
-            return $this->_queues[$queueId]->getOptions();
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on fetching queue metadata: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp aphp keyphp/valuephp arrayphp ofphp metadataphp forphp thephp givenphp queuephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$queueId
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp fetchQueueMetadataphp(php$queueIdphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_queuesphp[php$queueIdphp]php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_queuesphp[php$queueIdphp]php-php>getOptionsphp(php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp fetchingphp queuephp metadataphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Store a key/value array of metadata for the specified queue.
-     * WARNING: This operation overwrites any metadata that is located at
-     * $destinationPath. Some adapters may not support this method.
-     *
-     * @param  string $queueId
-     * @param  array  $metadata
-     * @param  array  $options
-     * @return void
-     */
-    public function storeQueueMetadata($queueId, $metadata, $options = null)
-    {
-        if (!isset($this->_queues[$queueId])) {
-            throw new Zend_Cloud_QueueService_Exception("No such queue: $queueId");
-        }
-        try {
-            return $this->_queues[$queueId]->setOptions($metadata);
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on setting queue metadata: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Storephp aphp keyphp/valuephp arrayphp ofphp metadataphp forphp thephp specifiedphp queuephp.
+php php php php php php*php WARNINGphp:php Thisphp operationphp overwritesphp anyphp metadataphp thatphp isphp locatedphp at
+php php php php php php*php php$destinationPathphp.php Somephp adaptersphp mayphp notphp supportphp thisphp methodphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$queueId
+php php php php php php*php php@paramphp php arrayphp php php$metadata
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp storeQueueMetadataphp(php$queueIdphp,php php$metadataphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_queuesphp[php$queueIdphp]php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php"Nophp suchphp queuephp:php php$queueIdphp"php)php;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_queuesphp[php$queueIdphp]php-php>setOptionsphp(php$metadataphp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp settingphp queuephp metadataphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Send a message to the specified queue.
-     *
-     * @param  string $queueId
-     * @param  string $message
-     * @param  array  $options
-     * @return string Message ID
-     */
-    public function sendMessage($queueId, $message, $options = null)
-    {
-        if (!isset($this->_queues[$queueId])) {
-            throw new Zend_Cloud_QueueService_Exception("No such queue: $queueId");
-        }
-        try {
-            return $this->_queues[$queueId]->send($message);
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on sending message: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Sendphp aphp messagephp tophp thephp specifiedphp queuephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$queueId
+php php php php php php*php php@paramphp php stringphp php$message
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp stringphp Messagephp ID
+php php php php php php*php/
+php php php php publicphp functionphp sendMessagephp(php$queueIdphp,php php$messagephp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_queuesphp[php$queueIdphp]php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php"Nophp suchphp queuephp:php php$queueIdphp"php)php;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_queuesphp[php$queueIdphp]php-php>sendphp(php$messagephp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp sendingphp messagephp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Recieve at most $max messages from the specified queue and return the
-     * message IDs for messages recieved.
-     *
-     * @param  string $queueId
-     * @param  int    $max
-     * @param  array  $options
-     * @return array
-     */
-    public function receiveMessages($queueId, $max = 1, $options = null)
-    {
-        if (!isset($this->_queues[$queueId])) {
-            throw new Zend_Cloud_QueueService_Exception("No such queue: $queueId");
-        }
-        try {
-            $res = $this->_queues[$queueId]->receive($max, isset($options[Zend_Queue::TIMEOUT])?$options[Zend_Queue::TIMEOUT]:null);
-            if ($res instanceof Iterator) {
-                return $this->_makeMessages($res);
-            } else {
-                return $this->_makeMessages(array($res));
-            }
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on recieving messages: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Recievephp atphp mostphp php$maxphp messagesphp fromphp thephp specifiedphp queuephp andphp returnphp the
+php php php php php php*php messagephp IDsphp forphp messagesphp recievedphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$queueId
+php php php php php php*php php@paramphp php intphp php php php php$max
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp receiveMessagesphp(php$queueIdphp,php php$maxphp php=php php1php,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_queuesphp[php$queueIdphp]php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php"Nophp suchphp queuephp:php php$queueIdphp"php)php;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$resphp php=php php$thisphp-php>php_queuesphp[php$queueIdphp]php-php>receivephp(php$maxphp,php issetphp(php$optionsphp[Zendphp_Queuephp:php:TIMEOUTphp]php)php?php$optionsphp[Zendphp_Queuephp:php:TIMEOUTphp]php:nullphp)php;
+php php php php php php php php php php php php ifphp php(php$resphp instanceofphp Iteratorphp)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_makeMessagesphp(php$resphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_makeMessagesphp(arrayphp(php$resphp)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp recievingphp messagesphp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Create Zend_Cloud_QueueService_Message array for
-     * Azure messages.
-     *
-     * @param array $messages
-     * @return Zend_Cloud_QueueService_Message[]
-     */
-    protected function _makeMessages($messages)
-    {
-        $messageClass = $this->getMessageClass();
-        $setClass     = $this->getMessageSetClass();
-        $result = array();
-        foreach ($messages as $message) {
-            $result[] = new $messageClass($message->body, $message);
-        }
-        return new $setClass($result);
-    }
+php php php php php/php*php*
+php php php php php php*php Createphp Zendphp_Cloudphp_QueueServicephp_Messagephp arrayphp for
+php php php php php php*php Azurephp messagesphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$messages
+php php php php php php*php php@returnphp Zendphp_Cloudphp_QueueServicephp_Messagephp[php]
+php php php php php php*php/
+php php php php protectedphp functionphp php_makeMessagesphp(php$messagesphp)
+php php php php php{
+php php php php php php php php php$messageClassphp php=php php$thisphp-php>getMessageClassphp(php)php;
+php php php php php php php php php$setClassphp php php php php php=php php$thisphp-php>getMessageSetClassphp(php)php;
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$messagesphp asphp php$messagephp)php php{
+php php php php php php php php php php php php php$resultphp[php]php php=php newphp php$messageClassphp(php$messagephp-php>bodyphp,php php$messagephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp newphp php$setClassphp(php$resultphp)php;
+php php php php php}
 
-    /**
-     * Delete the specified message from the specified queue.
-     *
-     * @param  string $queueId
-     * @param  Zend_Cloud_QueueService_Message $message Message ID or message
-     * @param  array  $options
-     * @return void
-     */
-    public function deleteMessage($queueId, $message, $options = null)
-    {
-        if (!isset($this->_queues[$queueId])) {
-            throw new Zend_Cloud_QueueService_Exception("No such queue: $queueId");
-        }
-        try {
-            if ($message instanceof Zend_Cloud_QueueService_Message) {
-                $message = $message->getMessage();
-            }
-            if (!($message instanceof Zend_Queue_Message)) {
-                throw new Zend_Cloud_QueueService_Exception('Cannot delete the message: Zend_Queue_Message object required');
-            }
+php php php php php/php*php*
+php php php php php php*php Deletephp thephp specifiedphp messagephp fromphp thephp specifiedphp queuephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$queueId
+php php php php php php*php php@paramphp php Zendphp_Cloudphp_QueueServicephp_Messagephp php$messagephp Messagephp IDphp orphp message
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp deleteMessagephp(php$queueIdphp,php php$messagephp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_queuesphp[php$queueIdphp]php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php"Nophp suchphp queuephp:php php$queueIdphp"php)php;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$messagephp instanceofphp Zendphp_Cloudphp_QueueServicephp_Messagephp)php php{
+php php php php php php php php php php php php php php php php php$messagephp php=php php$messagephp-php>getMessagephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php!php(php$messagephp instanceofphp Zendphp_Queuephp_Messagephp)php)php php{
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Cannotphp deletephp thephp messagephp:php Zendphp_Queuephp_Messagephp objectphp requiredphp'php)php;
+php php php php php php php php php php php php php}
 
-            return $this->_queues[$queueId]->deleteMessage($message);
-        } catch (Zend_Queue_Exception $e) {
-            throw new Zend_Cloud_QueueService_Exception('Error on deleting a message: '.$e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php php php php php php php php returnphp php$thisphp-php>php_queuesphp[php$queueIdphp]php-php>deleteMessagephp(php$messagephp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Queuephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_QueueServicephp_Exceptionphp(php'Errorphp onphp deletingphp aphp messagephp:php php'php.php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Peek at the messages from the specified queue without removing them.
-     *
-     * @param  string $queueId
-     * @param  int $num How many messages
-     * @param  array  $options
-     * @return Zend_Cloud_QueueService_Message[]
-     */
-    public function peekMessages($queueId, $num = 1, $options = null)
-    {
-        require_once 'Zend/Cloud/OperationNotAvailableException.php';
-        throw new Zend_Cloud_OperationNotAvailableException('ZendQueue doesn\'t currently support message peeking');
-    }
+php php php php php/php*php*
+php php php php php php*php Peekphp atphp thephp messagesphp fromphp thephp specifiedphp queuephp withoutphp removingphp themphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$queueId
+php php php php php php*php php@paramphp php intphp php$numphp Howphp manyphp messages
+php php php php php php*php php@paramphp php arrayphp php php$options
+php php php php php php*php php@returnphp Zendphp_Cloudphp_QueueServicephp_Messagephp[php]
+php php php php php php*php/
+php php php php publicphp functionphp peekMessagesphp(php$queueIdphp,php php$numphp php=php php1php,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Cloudphp/OperationNotAvailableExceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Cloudphp_OperationNotAvailableExceptionphp(php'ZendQueuephp doesnphp\php'tphp currentlyphp supportphp messagephp peekingphp'php)php;
+php php php php php}
 
-    /**
-     * Get Azure implementation
-     * @return Zend_Queue
-     */
-    public function getClient()
-    {
-        return $this->_queue;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp Azurephp implementation
+php php php php php php*php php@returnphp Zendphp_Queue
+php php php php php php*php/
+php php php php publicphp functionphp getClientphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_queuephp;
+php php php php php}
+php}

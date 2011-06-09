@@ -1,198 +1,198 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: File.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Filephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @see Zend_Mime_Decode
- */
-require_once 'Zend/Mime/Decode.php';
+php/php*php*
+php php*php php@seephp Zendphp_Mimephp_Decode
+php php*php/
+requirephp_oncephp php'Zendphp/Mimephp/Decodephp.phpphp'php;
 
-/**
- * @see Zend_Mail_Part
- */
-require_once 'Zend/Mail/Part.php';
-
-
-/**
- * @category   Zend
- * @package    Zend_Mail
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Mail_Part_File extends Zend_Mail_Part
-{
-    protected $_contentPos = array();
-    protected $_partPos = array();
-    protected $_fh;
-
-    /**
-     * Public constructor
-     *
-     * This handler supports the following params:
-     * - file     filename or open file handler with message content (required)
-     * - startPos start position of message or part in file (default: current position)
-     * - endPos   end position of message or part in file (default: end of file)
-     *
-     * @param   array $params  full message with or without headers
-     * @throws  Zend_Mail_Exception
-     */
-    public function __construct(array $params)
-    {
-        if (empty($params['file'])) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('no file given in params');
-        }
-
-        if (!is_resource($params['file'])) {
-            $this->_fh = fopen($params['file'], 'r');
-        } else {
-            $this->_fh = $params['file'];
-        }
-        if (!$this->_fh) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('could not open file');
-        }
-        if (isset($params['startPos'])) {
-            fseek($this->_fh, $params['startPos']);
-        }
-        $header = '';
-        $endPos = isset($params['endPos']) ? $params['endPos'] : null;
-        while (($endPos === null || ftell($this->_fh) < $endPos) && trim($line = fgets($this->_fh))) {
-            $header .= $line;
-        }
-
-        Zend_Mime_Decode::splitMessage($header, $this->_headers, $null);
-
-        $this->_contentPos[0] = ftell($this->_fh);
-        if ($endPos !== null) {
-            $this->_contentPos[1] = $endPos;
-        } else {
-            fseek($this->_fh, 0, SEEK_END);
-            $this->_contentPos[1] = ftell($this->_fh);
-        }
-        if (!$this->isMultipart()) {
-            return;
-        }
-
-        $boundary = $this->getHeaderField('content-type', 'boundary');
-        if (!$boundary) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('no boundary found in content type to split message');
-        }
-
-        $part = array();
-        $pos = $this->_contentPos[0];
-        fseek($this->_fh, $pos);
-        while (!feof($this->_fh) && ($endPos === null || $pos < $endPos)) {
-            $line = fgets($this->_fh);
-            if ($line === false) {
-                if (feof($this->_fh)) {
-                    break;
-                }
-                /**
-                 * @see Zend_Mail_Exception
-                 */
-                require_once 'Zend/Mail/Exception.php';
-                throw new Zend_Mail_Exception('error reading file');
-            }
-
-            $lastPos = $pos;
-            $pos = ftell($this->_fh);
-            $line = trim($line);
-
-            if ($line == '--' . $boundary) {
-                if ($part) {
-                    // not first part
-                    $part[1] = $lastPos;
-                    $this->_partPos[] = $part;
-                }
-                $part = array($pos);
-            } else if ($line == '--' . $boundary . '--') {
-                $part[1] = $lastPos;
-                $this->_partPos[] = $part;
-                break;
-            }
-        }
-        $this->_countParts = count($this->_partPos);
-
-    }
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Part
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Partphp.phpphp'php;
 
 
-    /**
-     * Body of part
-     *
-     * If part is multipart the raw content of this part with all sub parts is returned
-     *
-     * @return string body
-     * @throws Zend_Mail_Exception
-     */
-    public function getContent($stream = null)
-    {
-        fseek($this->_fh, $this->_contentPos[0]);
-        if ($stream !== null) {
-            return stream_copy_to_stream($this->_fh, $stream, $this->_contentPos[1] - $this->_contentPos[0]);
-        }
-        $length = $this->_contentPos[1] - $this->_contentPos[0];
-        return $length < 1 ? '' : fread($this->_fh, $length);
-    }
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Mailphp_Partphp_Filephp extendsphp Zendphp_Mailphp_Part
+php{
+php php php php protectedphp php$php_contentPosphp php=php arrayphp(php)php;
+php php php php protectedphp php$php_partPosphp php=php arrayphp(php)php;
+php php php php protectedphp php$php_fhphp;
 
-    /**
-     * Return size of part
-     *
-     * Quite simple implemented currently (not decoding). Handle with care.
-     *
-     * @return int size
-     */
-    public function getSize() {
-        return $this->_contentPos[1] - $this->_contentPos[0];
-    }
+php php php php php/php*php*
+php php php php php php*php Publicphp constructor
+php php php php php php*
+php php php php php php*php Thisphp handlerphp supportsphp thephp followingphp paramsphp:
+php php php php php php*php php-php filephp php php php php filenamephp orphp openphp filephp handlerphp withphp messagephp contentphp php(requiredphp)
+php php php php php php*php php-php startPosphp startphp positionphp ofphp messagephp orphp partphp inphp filephp php(defaultphp:php currentphp positionphp)
+php php php php php php*php php-php endPosphp php php endphp positionphp ofphp messagephp orphp partphp inphp filephp php(defaultphp:php endphp ofphp filephp)
+php php php php php php*
+php php php php php php*php php@paramphp php php arrayphp php$paramsphp php fullphp messagephp withphp orphp withoutphp headers
+php php php php php php*php php@throwsphp php Zendphp_Mailphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$paramsphp[php'filephp'php]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'nophp filephp givenphp inphp paramsphp'php)php;
+php php php php php php php php php}
 
-    /**
-     * Get part of multipart message
-     *
-     * @param  int $num number of part starting with 1 for first part
-     * @return Zend_Mail_Part wanted part
-     * @throws Zend_Mail_Exception
-     */
-    public function getPart($num)
-    {
-        --$num;
-        if (!isset($this->_partPos[$num])) {
-            /**
-             * @see Zend_Mail_Exception
-             */
-            require_once 'Zend/Mail/Exception.php';
-            throw new Zend_Mail_Exception('part not found');
-        }
+php php php php php php php php ifphp php(php!isphp_resourcephp(php$paramsphp[php'filephp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_fhphp php=php fopenphp(php$paramsphp[php'filephp'php]php,php php'rphp'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_fhphp php=php php$paramsphp[php'filephp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$thisphp-php>php_fhphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'couldphp notphp openphp filephp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$paramsphp[php'startPosphp'php]php)php)php php{
+php php php php php php php php php php php php fseekphp(php$thisphp-php>php_fhphp,php php$paramsphp[php'startPosphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php php$headerphp php=php php'php'php;
+php php php php php php php php php$endPosphp php=php issetphp(php$paramsphp[php'endPosphp'php]php)php php?php php$paramsphp[php'endPosphp'php]php php:php nullphp;
+php php php php php php php php whilephp php(php(php$endPosphp php=php=php=php nullphp php|php|php ftellphp(php$thisphp-php>php_fhphp)php <php php$endPosphp)php php&php&php trimphp(php$linephp php=php fgetsphp(php$thisphp-php>php_fhphp)php)php)php php{
+php php php php php php php php php php php php php$headerphp php.php=php php$linephp;
+php php php php php php php php php}
 
-        return new self(array('file' => $this->_fh, 'startPos' => $this->_partPos[$num][0],
-                              'endPos' => $this->_partPos[$num][1]));
-    }
-}
+php php php php php php php php Zendphp_Mimephp_Decodephp:php:splitMessagephp(php$headerphp,php php$thisphp-php>php_headersphp,php php$nullphp)php;
+
+php php php php php php php php php$thisphp-php>php_contentPosphp[php0php]php php=php ftellphp(php$thisphp-php>php_fhphp)php;
+php php php php php php php php ifphp php(php$endPosphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_contentPosphp[php1php]php php=php php$endPosphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php fseekphp(php$thisphp-php>php_fhphp,php php0php,php SEEKphp_ENDphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_contentPosphp[php1php]php php=php ftellphp(php$thisphp-php>php_fhphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$thisphp-php>isMultipartphp(php)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php php$boundaryphp php=php php$thisphp-php>getHeaderFieldphp(php'contentphp-typephp'php,php php'boundaryphp'php)php;
+php php php php php php php php ifphp php(php!php$boundaryphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'nophp boundaryphp foundphp inphp contentphp typephp tophp splitphp messagephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$partphp php=php arrayphp(php)php;
+php php php php php php php php php$posphp php=php php$thisphp-php>php_contentPosphp[php0php]php;
+php php php php php php php php fseekphp(php$thisphp-php>php_fhphp,php php$posphp)php;
+php php php php php php php php whilephp php(php!feofphp(php$thisphp-php>php_fhphp)php php&php&php php(php$endPosphp php=php=php=php nullphp php|php|php php$posphp <php php$endPosphp)php)php php{
+php php php php php php php php php php php php php$linephp php=php fgetsphp(php$thisphp-php>php_fhphp)php;
+php php php php php php php php php php php php ifphp php(php$linephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(feofphp(php$thisphp-php>php_fhphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'errorphp readingphp filephp'php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$lastPosphp php=php php$posphp;
+php php php php php php php php php php php php php$posphp php=php ftellphp(php$thisphp-php>php_fhphp)php;
+php php php php php php php php php php php php php$linephp php=php trimphp(php$linephp)php;
+
+php php php php php php php php php php php php ifphp php(php$linephp php=php=php php'php-php-php'php php.php php$boundaryphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$partphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php notphp firstphp part
+php php php php php php php php php php php php php php php php php php php php php$partphp[php1php]php php=php php$lastPosphp;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_partPosphp[php]php php=php php$partphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$partphp php=php arrayphp(php$posphp)php;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$linephp php=php=php php'php-php-php'php php.php php$boundaryphp php.php php'php-php-php'php)php php{
+php php php php php php php php php php php php php php php php php$partphp[php1php]php php=php php$lastPosphp;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_partPosphp[php]php php=php php$partphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_countPartsphp php=php countphp(php$thisphp-php>php_partPosphp)php;
+
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Bodyphp ofphp part
+php php php php php php*
+php php php php php php*php Ifphp partphp isphp multipartphp thephp rawphp contentphp ofphp thisphp partphp withphp allphp subphp partsphp isphp returned
+php php php php php php*
+php php php php php php*php php@returnphp stringphp body
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getContentphp(php$streamphp php=php nullphp)
+php php php php php{
+php php php php php php php php fseekphp(php$thisphp-php>php_fhphp,php php$thisphp-php>php_contentPosphp[php0php]php)php;
+php php php php php php php php ifphp php(php$streamphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp streamphp_copyphp_tophp_streamphp(php$thisphp-php>php_fhphp,php php$streamphp,php php$thisphp-php>php_contentPosphp[php1php]php php-php php$thisphp-php>php_contentPosphp[php0php]php)php;
+php php php php php php php php php}
+php php php php php php php php php$lengthphp php=php php$thisphp-php>php_contentPosphp[php1php]php php-php php$thisphp-php>php_contentPosphp[php0php]php;
+php php php php php php php php returnphp php$lengthphp <php php1php php?php php'php'php php:php freadphp(php$thisphp-php>php_fhphp,php php$lengthphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp sizephp ofphp part
+php php php php php php*
+php php php php php php*php Quitephp simplephp implementedphp currentlyphp php(notphp decodingphp)php.php Handlephp withphp carephp.
+php php php php php php*
+php php php php php php*php php@returnphp intphp size
+php php php php php php*php/
+php php php php publicphp functionphp getSizephp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_contentPosphp[php1php]php php-php php$thisphp-php>php_contentPosphp[php0php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp partphp ofphp multipartphp message
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$numphp numberphp ofphp partphp startingphp withphp php1php forphp firstphp part
+php php php php php php*php php@returnphp Zendphp_Mailphp_Partphp wantedphp part
+php php php php php php*php php@throwsphp Zendphp_Mailphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getPartphp(php$numphp)
+php php php php php{
+php php php php php php php php php-php-php$numphp;
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_partPosphp[php$numphp]php)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Exceptionphp(php'partphp notphp foundphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp newphp selfphp(arrayphp(php'filephp'php php=php>php php$thisphp-php>php_fhphp,php php'startPosphp'php php=php>php php$thisphp-php>php_partPosphp[php$numphp]php[php0php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'endPosphp'php php=php>php php$thisphp-php>php_partPosphp[php$numphp]php[php1php]php)php)php;
+php php php php php}
+php}

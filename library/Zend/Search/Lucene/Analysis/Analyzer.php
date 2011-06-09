@@ -1,175 +1,175 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Analysis
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Analyzer.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Analysis
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Analyzerphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** User land classes and interfaces turned on by Zend/Search/Analyzer.php file inclusion. */
-/** @todo Section should be removed with ZF 2.0 release as obsolete                      */
-if (!defined('ZEND_SEARCH_LUCENE_COMMON_ANALYZER_PROCESSED')) {
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8 */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8.php';
+php/php*php*php Userphp landphp classesphp andphp interfacesphp turnedphp onphp byphp Zendphp/Searchphp/Analyzerphp.phpphp filephp inclusionphp.php php*php/
+php/php*php*php php@todophp Sectionphp shouldphp bephp removedphp withphp ZFphp php2php.php0php releasephp asphp obsoletephp php php php php php php php php php php php php php php php php php php php php php php*php/
+ifphp php(php!definedphp(php'ZENDphp_SEARCHphp_LUCENEphp_COMMONphp_ANALYZERphp_PROCESSEDphp'php)php)php php{
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Utfphp8php php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/Utfphp8php.phpphp'php;
 
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8/CaseInsensitive.php';
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Utfphp8php_CaseInsensitivephp php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/Utfphp8php/CaseInsensitivephp.phpphp'php;
 
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8Num.php';
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Utfphp8Numphp php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/Utfphp8Numphp.phpphp'php;
 
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num_CaseInsensitive */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8Num/CaseInsensitive.php';
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Utfphp8Numphp_CaseInsensitivephp php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/Utfphp8Numphp/CaseInsensitivephp.phpphp'php;
 
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_Text */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Text.php';
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Textphp php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/Textphp.phpphp'php;
 
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Text/CaseInsensitive.php';
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Textphp_CaseInsensitivephp php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/Textphp/CaseInsensitivephp.phpphp'php;
 
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/TextNum.php';
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_TextNumphp php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/TextNumphp.phpphp'php;
 
-    /** Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive */
-    require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/TextNum/CaseInsensitive.php';
-}
-
-
-/**
- * An Analyzer is used to analyze text.
- * It thus represents a policy for extracting index terms from text.
- *
- * Note:
- * Lucene Java implementation is oriented to streams. It provides effective work
- * with a huge documents (more then 20Mb).
- * But engine itself is not oriented such documents.
- * Thus Zend_Search_Lucene analysis API works with data strings and sets (arrays).
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Analysis
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-abstract class Zend_Search_Lucene_Analysis_Analyzer
-{
-    /**
-     * The Analyzer implementation used by default.
-     *
-     * @var Zend_Search_Lucene_Analysis_Analyzer
-     */
-    private static $_defaultImpl;
-
-    /**
-     * Input string
-     *
-     * @var string
-     */
-    protected $_input = null;
-
-    /**
-     * Input string encoding
-     *
-     * @var string
-     */
-    protected $_encoding = '';
-
-    /**
-     * Tokenize text to a terms
-     * Returns array of Zend_Search_Lucene_Analysis_Token objects
-     *
-     * Tokens are returned in UTF-8 (internal Zend_Search_Lucene encoding)
-     *
-     * @param string $data
-     * @return array
-     */
-    public function tokenize($data, $encoding = '')
-    {
-        $this->setInput($data, $encoding);
-
-        $tokenList = array();
-        while (($nextToken = $this->nextToken()) !== null) {
-            $tokenList[] = $nextToken;
-        }
-
-        return $tokenList;
-    }
+php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_TextNumphp_CaseInsensitivephp php*php/
+php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/TextNumphp/CaseInsensitivephp.phpphp'php;
+php}
 
 
-    /**
-     * Tokenization stream API
-     * Set input
-     *
-     * @param string $data
-     */
-    public function setInput($data, $encoding = '')
-    {
-        $this->_input    = $data;
-        $this->_encoding = $encoding;
-        $this->reset();
-    }
+php/php*php*
+php php*php Anphp Analyzerphp isphp usedphp tophp analyzephp textphp.
+php php*php Itphp thusphp representsphp aphp policyphp forphp extractingphp indexphp termsphp fromphp textphp.
+php php*
+php php*php Notephp:
+php php*php Lucenephp Javaphp implementationphp isphp orientedphp tophp streamsphp.php Itphp providesphp effectivephp work
+php php*php withphp aphp hugephp documentsphp php(morephp thenphp php2php0Mbphp)php.
+php php*php Butphp enginephp itselfphp isphp notphp orientedphp suchphp documentsphp.
+php php*php Thusphp Zendphp_Searchphp_Lucenephp analysisphp APIphp worksphp withphp dataphp stringsphp andphp setsphp php(arraysphp)php.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Analysis
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-    /**
-     * Reset token stream
-     */
-    abstract public function reset();
+abstractphp classphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzer
+php{
+php php php php php/php*php*
+php php php php php php*php Thephp Analyzerphp implementationphp usedphp byphp defaultphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzer
+php php php php php php*php/
+php php php php privatephp staticphp php$php_defaultImplphp;
 
-    /**
-     * Tokenization stream API
-     * Get next token
-     * Returns null at the end of stream
-     *
-     * Tokens are returned in UTF-8 (internal Zend_Search_Lucene encoding)
-     *
-     * @return Zend_Search_Lucene_Analysis_Token|null
-     */
-    abstract public function nextToken();
+php php php php php/php*php*
+php php php php php php*php Inputphp string
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_inputphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Inputphp stringphp encoding
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_encodingphp php=php php'php'php;
+
+php php php php php/php*php*
+php php php php php php*php Tokenizephp textphp tophp aphp terms
+php php php php php php*php Returnsphp arrayphp ofphp Zendphp_Searchphp_Lucenephp_Analysisphp_Tokenphp objects
+php php php php php php*
+php php php php php php*php Tokensphp arephp returnedphp inphp UTFphp-php8php php(internalphp Zendphp_Searchphp_Lucenephp encodingphp)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp tokenizephp(php$dataphp,php php$encodingphp php=php php'php'php)
+php php php php php{
+php php php php php php php php php$thisphp-php>setInputphp(php$dataphp,php php$encodingphp)php;
+
+php php php php php php php php php$tokenListphp php=php arrayphp(php)php;
+php php php php php php php php whilephp php(php(php$nextTokenphp php=php php$thisphp-php>nextTokenphp(php)php)php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$tokenListphp[php]php php=php php$nextTokenphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$tokenListphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Tokenizationphp streamphp API
+php php php php php php*php Setphp input
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php/
+php php php php publicphp functionphp setInputphp(php$dataphp,php php$encodingphp php=php php'php'php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_inputphp php php php php=php php$dataphp;
+php php php php php php php php php$thisphp-php>php_encodingphp php=php php$encodingphp;
+php php php php php php php php php$thisphp-php>resetphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Resetphp tokenphp stream
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp resetphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Tokenizationphp streamphp API
+php php php php php php*php Getphp nextphp token
+php php php php php php*php Returnsphp nullphp atphp thephp endphp ofphp stream
+php php php php php php*
+php php php php php php*php Tokensphp arephp returnedphp inphp UTFphp-php8php php(internalphp Zendphp_Searchphp_Lucenephp encodingphp)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Analysisphp_Tokenphp|null
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp nextTokenphp(php)php;
 
 
 
 
-    /**
-     * Set the default Analyzer implementation used by indexing code.
-     *
-     * @param Zend_Search_Lucene_Analysis_Analyzer $similarity
-     */
-    public static function setDefault(Zend_Search_Lucene_Analysis_Analyzer $analyzer)
-    {
-        self::$_defaultImpl = $analyzer;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp Analyzerphp implementationphp usedphp byphp indexingphp codephp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp php$similarity
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultphp(Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp php$analyzerphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultImplphp php=php php$analyzerphp;
+php php php php php}
 
 
-    /**
-     * Return the default Analyzer implementation used by indexing code.
-     *
-     * @return Zend_Search_Lucene_Analysis_Analyzer
-     */
-    public static function getDefault()
-    {
-        /** Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive */
-        require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Text/CaseInsensitive.php';
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp defaultphp Analyzerphp implementationphp usedphp byphp indexingphp codephp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzer
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultphp(php)
+php php php php php{
+php php php php php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Textphp_CaseInsensitivephp php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp/Commonphp/Textphp/CaseInsensitivephp.phpphp'php;
 
-        if (!self::$_defaultImpl instanceof Zend_Search_Lucene_Analysis_Analyzer) {
-            self::$_defaultImpl = new Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive();
-        }
+php php php php php php php php ifphp php(php!selfphp:php:php$php_defaultImplphp instanceofphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp)php php{
+php php php php php php php php php php php php selfphp:php:php$php_defaultImplphp php=php newphp Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp_Commonphp_Textphp_CaseInsensitivephp(php)php;
+php php php php php php php php php}
 
-        return self::$_defaultImpl;
-    }
-}
+php php php php php php php php returnphp selfphp:php:php$php_defaultImplphp;
+php php php php php}
+php}
 

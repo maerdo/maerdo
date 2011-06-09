@@ -1,1457 +1,1457 @@
-<?php
-
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Http
- * @subpackage Client
- * @version    $Id: Client.php 23484 2010-12-10 03:57:59Z mjh_ca $
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/**
- * @see Zend_Loader
- */
-require_once 'Zend/Loader.php';
-
-
-/**
- * @see Zend_Uri
- */
-require_once 'Zend/Uri.php';
-
-
-/**
- * @see Zend_Http_Client_Adapter_Interface
- */
-require_once 'Zend/Http/Client/Adapter/Interface.php';
-
-
-/**
- * @see Zend_Http_Response
- */
-require_once 'Zend/Http/Response.php';
-
-/**
- * @see Zend_Http_Response_Stream
- */
-require_once 'Zend/Http/Response/Stream.php';
-
-/**
- * Zend_Http_Client is an implementation of an HTTP client in PHP. The client
- * supports basic features like sending different HTTP requests and handling
- * redirections, as well as more advanced features like proxy settings, HTTP
- * authentication and cookie persistence (using a Zend_Http_CookieJar object)
- *
- * @todo Implement proxy settings
- * @category   Zend
- * @package    Zend_Http
- * @subpackage Client
- * @throws     Zend_Http_Client_Exception
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Http_Client
-{
-    /**
-     * HTTP request methods
-     */
-    const GET     = 'GET';
-    const POST    = 'POST';
-    const PUT     = 'PUT';
-    const HEAD    = 'HEAD';
-    const DELETE  = 'DELETE';
-    const TRACE   = 'TRACE';
-    const OPTIONS = 'OPTIONS';
-    const CONNECT = 'CONNECT';
-    const MERGE   = 'MERGE';
-
-    /**
-     * Supported HTTP Authentication methods
-     */
-    const AUTH_BASIC = 'basic';
-    //const AUTH_DIGEST = 'digest'; <-- not implemented yet
-
-    /**
-     * HTTP protocol versions
-     */
-    const HTTP_1 = '1.1';
-    const HTTP_0 = '1.0';
-
-    /**
-     * Content attributes
-     */
-    const CONTENT_TYPE   = 'Content-Type';
-    const CONTENT_LENGTH = 'Content-Length';
-
-    /**
-     * POST data encoding methods
-     */
-    const ENC_URLENCODED = 'application/x-www-form-urlencoded';
-    const ENC_FORMDATA   = 'multipart/form-data';
-
-    /**
-     * Configuration array, set using the constructor or using ::setConfig()
-     *
-     * @var array
-     */
-    protected $config = array(
-        'maxredirects'    => 5,
-        'strictredirects' => false,
-        'useragent'       => 'Zend_Http_Client',
-        'timeout'         => 10,
-        'adapter'         => 'Zend_Http_Client_Adapter_Socket',
-        'httpversion'     => self::HTTP_1,
-        'keepalive'       => false,
-        'storeresponse'   => true,
-        'strict'          => true,
-        'output_stream'   => false,
-        'encodecookies'   => true,
-        'rfc3986_strict'  => false
-    );
-
-    /**
-     * The adapter used to perform the actual connection to the server
-     *
-     * @var Zend_Http_Client_Adapter_Interface
-     */
-    protected $adapter = null;
-
-    /**
-     * Request URI
-     *
-     * @var Zend_Uri_Http
-     */
-    protected $uri = null;
-
-    /**
-     * Associative array of request headers
-     *
-     * @var array
-     */
-    protected $headers = array();
-
-    /**
-     * HTTP request method
-     *
-     * @var string
-     */
-    protected $method = self::GET;
-
-    /**
-     * Associative array of GET parameters
-     *
-     * @var array
-     */
-    protected $paramsGet = array();
-
-    /**
-     * Associative array of POST parameters
-     *
-     * @var array
-     */
-    protected $paramsPost = array();
-
-    /**
-     * Request body content type (for POST requests)
-     *
-     * @var string
-     */
-    protected $enctype = null;
-
-    /**
-     * The raw post data to send. Could be set by setRawData($data, $enctype).
-     *
-     * @var string
-     */
-    protected $raw_post_data = null;
-
-    /**
-     * HTTP Authentication settings
-     *
-     * Expected to be an associative array with this structure:
-     * $this->auth = array('user' => 'username', 'password' => 'password', 'type' => 'basic')
-     * Where 'type' should be one of the supported authentication types (see the AUTH_*
-     * constants), for example 'basic' or 'digest'.
-     *
-     * If null, no authentication will be used.
-     *
-     * @var array|null
-     */
-    protected $auth;
-
-    /**
-     * File upload arrays (used in POST requests)
-     *
-     * An associative array, where each element is of the format:
-     *   'name' => array('filename.txt', 'text/plain', 'This is the actual file contents')
-     *
-     * @var array
-     */
-    protected $files = array();
-
-    /**
-     * The client's cookie jar
-     *
-     * @var Zend_Http_CookieJar
-     */
-    protected $cookiejar = null;
-
-    /**
-     * The last HTTP request sent by the client, as string
-     *
-     * @var string
-     */
-    protected $last_request = null;
-
-    /**
-     * The last HTTP response received by the client
-     *
-     * @var Zend_Http_Response
-     */
-    protected $last_response = null;
-
-    /**
-     * Redirection counter
-     *
-     * @var int
-     */
-    protected $redirectCounter = 0;
-
-    /**
-     * Fileinfo magic database resource
-     *
-     * This variable is populated the first time _detectFileMimeType is called
-     * and is then reused on every call to this method
-     *
-     * @var resource
-     */
-    static protected $_fileInfoDb = null;
-
-    /**
-     * Constructor method. Will create a new HTTP client. Accepts the target
-     * URL and optionally configuration array.
-     *
-     * @param Zend_Uri_Http|string $uri
-     * @param array $config Configuration key-value pairs.
-     */
-    public function __construct($uri = null, $config = null)
-    {
-        if ($uri !== null) {
-            $this->setUri($uri);
-        }
-        if ($config !== null) {
-            $this->setConfig($config);
-        }
-    }
-
-    /**
-     * Set the URI for the next request
-     *
-     * @param  Zend_Uri_Http|string $uri
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setUri($uri)
-    {
-        if (is_string($uri)) {
-            $uri = Zend_Uri::factory($uri);
-        }
-
-        if (!$uri instanceof Zend_Uri_Http) {
-            /** @see Zend_Http_Client_Exception */
-            require_once 'Zend/Http/Client/Exception.php';
-            throw new Zend_Http_Client_Exception('Passed parameter is not a valid HTTP URI.');
-        }
-
-        // Set auth if username and password has been specified in the uri
-        if ($uri->getUsername() && $uri->getPassword()) {
-            $this->setAuth($uri->getUsername(), $uri->getPassword());
-        }
-
-        // We have no ports, set the defaults
-        if (! $uri->getPort()) {
-            $uri->setPort(($uri->getScheme() == 'https' ? 443 : 80));
-        }
-
-        $this->uri = $uri;
-
-        return $this;
-    }
-
-    /**
-     * Get the URI for the next request
-     *
-     * @param boolean $as_string If true, will return the URI as a string
-     * @return Zend_Uri_Http|string
-     */
-    public function getUri($as_string = false)
-    {
-        if ($as_string && $this->uri instanceof Zend_Uri_Http) {
-            return $this->uri->__toString();
-        } else {
-            return $this->uri;
-        }
-    }
-
-    /**
-     * Set configuration parameters for this HTTP client
-     *
-     * @param  Zend_Config | array $config
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setConfig($config = array())
-    {
-        if ($config instanceof Zend_Config) {
-            $config = $config->toArray();
-
-        } elseif (! is_array($config)) {
-            /** @see Zend_Http_Client_Exception */
-            require_once 'Zend/Http/Client/Exception.php';
-            throw new Zend_Http_Client_Exception('Array or Zend_Config object expected, got ' . gettype($config));
-        }
-
-        foreach ($config as $k => $v) {
-            $this->config[strtolower($k)] = $v;
-        }
-
-        // Pass configuration options to the adapter if it exists
-        if ($this->adapter instanceof Zend_Http_Client_Adapter_Interface) {
-            $this->adapter->setConfig($config);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set the next request's method
-     *
-     * Validated the passed method and sets it. If we have files set for
-     * POST requests, and the new method is not POST, the files are silently
-     * dropped.
-     *
-     * @param string $method
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setMethod($method = self::GET)
-    {
-        if (! preg_match('/^[^\x00-\x1f\x7f-\xff\(\)<>@,;:\\\\"\/\[\]\?={}\s]+$/', $method)) {
-            /** @see Zend_Http_Client_Exception */
-            require_once 'Zend/Http/Client/Exception.php';
-            throw new Zend_Http_Client_Exception("'{$method}' is not a valid HTTP request method.");
-        }
-
-        if ($method == self::POST && $this->enctype === null) {
-            $this->setEncType(self::ENC_URLENCODED);
-        }
-
-        $this->method = $method;
-
-        return $this;
-    }
-
-    /**
-     * Set one or more request headers
-     *
-     * This function can be used in several ways to set the client's request
-     * headers:
-     * 1. By providing two parameters: $name as the header to set (e.g. 'Host')
-     *    and $value as it's value (e.g. 'www.example.com').
-     * 2. By providing a single header string as the only parameter
-     *    e.g. 'Host: www.example.com'
-     * 3. By providing an array of headers as the first parameter
-     *    e.g. array('host' => 'www.example.com', 'x-foo: bar'). In This case
-     *    the function will call itself recursively for each array item.
-     *
-     * @param string|array $name Header name, full header string ('Header: value')
-     *     or an array of headers
-     * @param mixed $value Header value or null
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setHeaders($name, $value = null)
-    {
-        // If we got an array, go recursive!
-        if (is_array($name)) {
-            foreach ($name as $k => $v) {
-                if (is_string($k)) {
-                    $this->setHeaders($k, $v);
-                } else {
-                    $this->setHeaders($v, null);
-                }
-            }
-        } else {
-            // Check if $name needs to be split
-            if ($value === null && (strpos($name, ':') > 0)) {
-                list($name, $value) = explode(':', $name, 2);
-            }
-
-            // Make sure the name is valid if we are in strict mode
-            if ($this->config['strict'] && (! preg_match('/^[a-zA-Z0-9-]+$/', $name))) {
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception("{$name} is not a valid HTTP header name");
-            }
-
-            $normalized_name = strtolower($name);
-
-            // If $value is null or false, unset the header
-            if ($value === null || $value === false) {
-                unset($this->headers[$normalized_name]);
-
-            // Else, set the header
-            } else {
-                // Header names are stored lowercase internally.
-                if (is_string($value)) {
-                    $value = trim($value);
-                }
-                $this->headers[$normalized_name] = array($name, $value);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the value of a specific header
-     *
-     * Note that if the header has more than one value, an array
-     * will be returned.
-     *
-     * @param string $key
-     * @return string|array|null The header value or null if it is not set
-     */
-    public function getHeader($key)
-    {
-        $key = strtolower($key);
-        if (isset($this->headers[$key])) {
-            return $this->headers[$key][1];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Set a GET parameter for the request. Wrapper around _setParameter
-     *
-     * @param string|array $name
-     * @param string $value
-     * @return Zend_Http_Client
-     */
-    public function setParameterGet($name, $value = null)
-    {
-        if (is_array($name)) {
-            foreach ($name as $k => $v)
-                $this->_setParameter('GET', $k, $v);
-        } else {
-            $this->_setParameter('GET', $name, $value);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set a POST parameter for the request. Wrapper around _setParameter
-     *
-     * @param string|array $name
-     * @param string $value
-     * @return Zend_Http_Client
-     */
-    public function setParameterPost($name, $value = null)
-    {
-        if (is_array($name)) {
-            foreach ($name as $k => $v)
-                $this->_setParameter('POST', $k, $v);
-        } else {
-            $this->_setParameter('POST', $name, $value);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set a GET or POST parameter - used by SetParameterGet and SetParameterPost
-     *
-     * @param string $type GET or POST
-     * @param string $name
-     * @param string $value
-     * @return null
-     */
-    protected function _setParameter($type, $name, $value)
-    {
-        $parray = array();
-        $type = strtolower($type);
-        switch ($type) {
-            case 'get':
-                $parray = &$this->paramsGet;
-                break;
-            case 'post':
-                $parray = &$this->paramsPost;
-                break;
-        }
-
-        if ($value === null) {
-            if (isset($parray[$name])) unset($parray[$name]);
-        } else {
-            $parray[$name] = $value;
-        }
-    }
-
-    /**
-     * Get the number of redirections done on the last request
-     *
-     * @return int
-     */
-    public function getRedirectionsCount()
-    {
-        return $this->redirectCounter;
-    }
-
-    /**
-     * Set HTTP authentication parameters
-     *
-     * $type should be one of the supported types - see the self::AUTH_*
-     * constants.
-     *
-     * To enable authentication:
-     * <code>
-     * $this->setAuth('shahar', 'secret', Zend_Http_Client::AUTH_BASIC);
-     * </code>
-     *
-     * To disable authentication:
-     * <code>
-     * $this->setAuth(false);
-     * </code>
-     *
-     * @see http://www.faqs.org/rfcs/rfc2617.html
-     * @param string|false $user User name or false disable authentication
-     * @param string $password Password
-     * @param string $type Authentication type
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setAuth($user, $password = '', $type = self::AUTH_BASIC)
-    {
-        // If we got false or null, disable authentication
-        if ($user === false || $user === null) {
-            $this->auth = null;
-
-            // Clear the auth information in the uri instance as well
-            if ($this->uri instanceof Zend_Uri_Http) {
-                $this->getUri()->setUsername('');
-                $this->getUri()->setPassword('');
-            }
-        // Else, set up authentication
-        } else {
-            // Check we got a proper authentication type
-            if (! defined('self::AUTH_' . strtoupper($type))) {
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception("Invalid or not supported authentication type: '$type'");
-            }
-
-            $this->auth = array(
-                'user' => (string) $user,
-                'password' => (string) $password,
-                'type' => $type
-            );
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set the HTTP client's cookie jar.
-     *
-     * A cookie jar is an object that holds and maintains cookies across HTTP requests
-     * and responses.
-     *
-     * @param Zend_Http_CookieJar|boolean $cookiejar Existing cookiejar object, true to create a new one, false to disable
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setCookieJar($cookiejar = true)
-    {
-        Zend_Loader::loadClass('Zend_Http_CookieJar');
-
-        if ($cookiejar instanceof Zend_Http_CookieJar) {
-            $this->cookiejar = $cookiejar;
-        } elseif ($cookiejar === true) {
-            $this->cookiejar = new Zend_Http_CookieJar();
-        } elseif (! $cookiejar) {
-            $this->cookiejar = null;
-        } else {
-            /** @see Zend_Http_Client_Exception */
-            require_once 'Zend/Http/Client/Exception.php';
-            throw new Zend_Http_Client_Exception('Invalid parameter type passed as CookieJar');
-        }
-
-        return $this;
-    }
-
-    /**
-     * Return the current cookie jar or null if none.
-     *
-     * @return Zend_Http_CookieJar|null
-     */
-    public function getCookieJar()
-    {
-        return $this->cookiejar;
-    }
-
-    /**
-     * Add a cookie to the request. If the client has no Cookie Jar, the cookies
-     * will be added directly to the headers array as "Cookie" headers.
-     *
-     * @param Zend_Http_Cookie|string $cookie
-     * @param string|null $value If "cookie" is a string, this is the cookie value.
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setCookie($cookie, $value = null)
-    {
-        Zend_Loader::loadClass('Zend_Http_Cookie');
-
-        if (is_array($cookie)) {
-            foreach ($cookie as $c => $v) {
-                if (is_string($c)) {
-                    $this->setCookie($c, $v);
-                } else {
-                    $this->setCookie($v);
-                }
-            }
-
-            return $this;
-        }
-
-        if ($value !== null && $this->config['encodecookies']) {
-            $value = urlencode($value);
-        }
-
-        if (isset($this->cookiejar)) {
-            if ($cookie instanceof Zend_Http_Cookie) {
-                $this->cookiejar->addCookie($cookie);
-            } elseif (is_string($cookie) && $value !== null) {
-                $cookie = Zend_Http_Cookie::fromString("{$cookie}={$value}",
-                                                       $this->uri,
-                                                       $this->config['encodecookies']);
-                $this->cookiejar->addCookie($cookie);
-            }
-        } else {
-            if ($cookie instanceof Zend_Http_Cookie) {
-                $name = $cookie->getName();
-                $value = $cookie->getValue();
-                $cookie = $name;
-            }
-
-            if (preg_match("/[=,; \t\r\n\013\014]/", $cookie)) {
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception("Cookie name cannot contain these characters: =,; \t\r\n\013\014 ({$cookie})");
-            }
-
-            $value = addslashes($value);
-
-            if (! isset($this->headers['cookie'])) {
-                $this->headers['cookie'] = array('Cookie', '');
-            }
-            $this->headers['cookie'][1] .= $cookie . '=' . $value . '; ';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set a file to upload (using a POST request)
-     *
-     * Can be used in two ways:
-     *
-     * 1. $data is null (default): $filename is treated as the name if a local file which
-     *    will be read and sent. Will try to guess the content type using mime_content_type().
-     * 2. $data is set - $filename is sent as the file name, but $data is sent as the file
-     *    contents and no file is read from the file system. In this case, you need to
-     *    manually set the Content-Type ($ctype) or it will default to
-     *    application/octet-stream.
-     *
-     * @param string $filename Name of file to upload, or name to save as
-     * @param string $formname Name of form element to send as
-     * @param string $data Data to send (if null, $filename is read and sent)
-     * @param string $ctype Content type to use (if $data is set and $ctype is
-     *     null, will be application/octet-stream)
-     * @return Zend_Http_Client
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setFileUpload($filename, $formname, $data = null, $ctype = null)
-    {
-        if ($data === null) {
-            if (($data = @file_get_contents($filename)) === false) {
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception("Unable to read file '{$filename}' for upload");
-            }
-
-            if (! $ctype) {
-                $ctype = $this->_detectFileMimeType($filename);
-            }
-        }
-
-        // Force enctype to multipart/form-data
-        $this->setEncType(self::ENC_FORMDATA);
-
-        $this->files[] = array(
-            'formname' => $formname,
-            'filename' => basename($filename),
-            'ctype'    => $ctype,
-            'data'     => $data
-        );
-
-        return $this;
-    }
-
-    /**
-     * Set the encoding type for POST data
-     *
-     * @param string $enctype
-     * @return Zend_Http_Client
-     */
-    public function setEncType($enctype = self::ENC_URLENCODED)
-    {
-        $this->enctype = $enctype;
-
-        return $this;
-    }
-
-    /**
-     * Set the raw (already encoded) POST data.
-     *
-     * This function is here for two reasons:
-     * 1. For advanced user who would like to set their own data, already encoded
-     * 2. For backwards compatibilty: If someone uses the old post($data) method.
-     *    this method will be used to set the encoded data.
-     *
-     * $data can also be stream (such as file) from which the data will be read.
-     *
-     * @param string|resource $data
-     * @param string $enctype
-     * @return Zend_Http_Client
-     */
-    public function setRawData($data, $enctype = null)
-    {
-        $this->raw_post_data = $data;
-        $this->setEncType($enctype);
-        if (is_resource($data)) {
-            // We've got stream data
-            $stat = @fstat($data);
-            if($stat) {
-                $this->setHeaders(self::CONTENT_LENGTH, $stat['size']);
-            }
-        }
-        return $this;
-    }
-
-    /**
-     * Clear all GET and POST parameters
-     *
-     * Should be used to reset the request parameters if the client is
-     * used for several concurrent requests.
-     *
-     * clearAll parameter controls if we clean just parameters or also
-     * headers and last_*
-     *
-     * @param bool $clearAll Should all data be cleared?
-     * @return Zend_Http_Client
-     */
-    public function resetParameters($clearAll = false)
-    {
-        // Reset parameter data
-        $this->paramsGet     = array();
-        $this->paramsPost    = array();
-        $this->files         = array();
-        $this->raw_post_data = null;
-
-        if($clearAll) {
-            $this->headers = array();
-            $this->last_request = null;
-            $this->last_response = null;
-        } else {
-            // Clear outdated headers
-            if (isset($this->headers[strtolower(self::CONTENT_TYPE)])) {
-                unset($this->headers[strtolower(self::CONTENT_TYPE)]);
-            }
-            if (isset($this->headers[strtolower(self::CONTENT_LENGTH)])) {
-                unset($this->headers[strtolower(self::CONTENT_LENGTH)]);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the last HTTP request as string
-     *
-     * @return string
-     */
-    public function getLastRequest()
-    {
-        return $this->last_request;
-    }
-
-    /**
-     * Get the last HTTP response received by this client
-     *
-     * If $config['storeresponse'] is set to false, or no response was
-     * stored yet, will return null
-     *
-     * @return Zend_Http_Response or null if none
-     */
-    public function getLastResponse()
-    {
-        return $this->last_response;
-    }
-
-    /**
-     * Load the connection adapter
-     *
-     * While this method is not called more than one for a client, it is
-     * seperated from ->request() to preserve logic and readability
-     *
-     * @param Zend_Http_Client_Adapter_Interface|string $adapter
-     * @return null
-     * @throws Zend_Http_Client_Exception
-     */
-    public function setAdapter($adapter)
-    {
-        if (is_string($adapter)) {
-            try {
-                Zend_Loader::loadClass($adapter);
-            } catch (Zend_Exception $e) {
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception("Unable to load adapter '$adapter': {$e->getMessage()}", 0, $e);
-            }
-
-            $adapter = new $adapter;
-        }
-
-        if (! $adapter instanceof Zend_Http_Client_Adapter_Interface) {
-            /** @see Zend_Http_Client_Exception */
-            require_once 'Zend/Http/Client/Exception.php';
-            throw new Zend_Http_Client_Exception('Passed adapter is not a HTTP connection adapter');
-        }
-
-        $this->adapter = $adapter;
-        $config = $this->config;
-        unset($config['adapter']);
-        $this->adapter->setConfig($config);
-    }
-
-    /**
-     * Load the connection adapter
-     *
-     * @return Zend_Http_Client_Adapter_Interface $adapter
-     */
-    public function getAdapter()
-    {
-        return $this->adapter;
-    }
-
-    /**
-     * Set streaming for received data
-     *
-     * @param string|boolean $streamfile Stream file, true for temp file, false/null for no streaming
-     * @return Zend_Http_Client
-     */
-    public function setStream($streamfile = true)
-    {
-        $this->setConfig(array("output_stream" => $streamfile));
-        return $this;
-    }
-
-    /**
-     * Get status of streaming for received data
-     * @return boolean|string
-     */
-    public function getStream()
-    {
-        return $this->config["output_stream"];
-    }
-
-    /**
-     * Create temporary stream
-     *
-     * @return resource
-     */
-    protected function _openTempStream()
-    {
-        $this->_stream_name = $this->config['output_stream'];
-        if(!is_string($this->_stream_name)) {
-            // If name is not given, create temp name
-            $this->_stream_name = tempnam(isset($this->config['stream_tmp_dir'])?$this->config['stream_tmp_dir']:sys_get_temp_dir(),
-                 'Zend_Http_Client');
-        }
-
-        if (false === ($fp = @fopen($this->_stream_name, "w+b"))) {
-                if ($this->adapter instanceof Zend_Http_Client_Adapter_Interface) {
-                    $this->adapter->close();
-                }
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception("Could not open temp file {$this->_stream_name}");
-        }
-
-        return $fp;
-    }
-
-    /**
-     * Send the HTTP request and return an HTTP response object
-     *
-     * @param string $method
-     * @return Zend_Http_Response
-     * @throws Zend_Http_Client_Exception
-     */
-    public function request($method = null)
-    {
-        if (! $this->uri instanceof Zend_Uri_Http) {
-            /** @see Zend_Http_Client_Exception */
-            require_once 'Zend/Http/Client/Exception.php';
-            throw new Zend_Http_Client_Exception('No valid URI has been passed to the client');
-        }
-
-        if ($method) {
-            $this->setMethod($method);
-        }
-        $this->redirectCounter = 0;
-        $response = null;
-
-        // Make sure the adapter is loaded
-        if ($this->adapter == null) {
-            $this->setAdapter($this->config['adapter']);
-        }
-
-        // Send the first request. If redirected, continue.
-        do {
-            // Clone the URI and add the additional GET parameters to it
-            $uri = clone $this->uri;
-            if (! empty($this->paramsGet)) {
-                $query = $uri->getQuery();
-                   if (! empty($query)) {
-                       $query .= '&';
-                   }
-                $query .= http_build_query($this->paramsGet, null, '&');
-                if ($this->config['rfc3986_strict']) {
-                    $query = str_replace('+', '%20', $query);
-                }
-
-                $uri->setQuery($query);
-            }
-
-            $body = $this->_prepareBody();
-            $headers = $this->_prepareHeaders();
-
-            // check that adapter supports streaming before using it
-            if(is_resource($body) && !($this->adapter instanceof Zend_Http_Client_Adapter_Stream)) {
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception('Adapter does not support streaming');
-            }
-
-            // Open the connection, send the request and read the response
-            $this->adapter->connect($uri->getHost(), $uri->getPort(),
-                ($uri->getScheme() == 'https' ? true : false));
-
-            if($this->config['output_stream']) {
-                if($this->adapter instanceof Zend_Http_Client_Adapter_Stream) {
-                    $stream = $this->_openTempStream();
-                    $this->adapter->setOutputStream($stream);
-                } else {
-                    /** @see Zend_Http_Client_Exception */
-                    require_once 'Zend/Http/Client/Exception.php';
-                    throw new Zend_Http_Client_Exception('Adapter does not support streaming');
-                }
-            }
-
-            $this->last_request = $this->adapter->write($this->method,
-                $uri, $this->config['httpversion'], $headers, $body);
-
-            $response = $this->adapter->read();
-            if (! $response) {
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception('Unable to read response, or response is empty');
-            }
-
-            if($this->config['output_stream']) {
-                rewind($stream);
-                // cleanup the adapter
-                $this->adapter->setOutputStream(null);
-                $response = Zend_Http_Response_Stream::fromStream($response, $stream);
-                $response->setStreamName($this->_stream_name);
-                if(!is_string($this->config['output_stream'])) {
-                    // we used temp name, will need to clean up
-                    $response->setCleanup(true);
-                }
-            } else {
-                $response = Zend_Http_Response::fromString($response);
-            }
-
-            if ($this->config['storeresponse']) {
-                $this->last_response = $response;
-            }
-
-            // Load cookies into cookie jar
-            if (isset($this->cookiejar)) {
-                $this->cookiejar->addCookiesFromResponse($response, $uri, $this->config['encodecookies']);
-            }
-
-            // If we got redirected, look for the Location header
-            if ($response->isRedirect() && ($location = $response->getHeader('location'))) {
-
-                // Check whether we send the exact same request again, or drop the parameters
-                // and send a GET request
-                if ($response->getStatus() == 303 ||
-                   ((! $this->config['strictredirects']) && ($response->getStatus() == 302 ||
-                       $response->getStatus() == 301))) {
-
-                    $this->resetParameters();
-                    $this->setMethod(self::GET);
-                }
-
-                // If we got a well formed absolute URI
-                if (Zend_Uri_Http::check($location)) {
-                    $this->setHeaders('host', null);
-                    $this->setUri($location);
-
-                } else {
-
-                    // Split into path and query and set the query
-                    if (strpos($location, '?') !== false) {
-                        list($location, $query) = explode('?', $location, 2);
-                    } else {
-                        $query = '';
-                    }
-                    $this->uri->setQuery($query);
-
-                    // Else, if we got just an absolute path, set it
-                    if(strpos($location, '/') === 0) {
-                        $this->uri->setPath($location);
-
-                        // Else, assume we have a relative path
-                    } else {
-                        // Get the current path directory, removing any trailing slashes
-                        $path = $this->uri->getPath();
-                        $path = rtrim(substr($path, 0, strrpos($path, '/')), "/");
-                        $this->uri->setPath($path . '/' . $location);
-                    }
-                }
-                ++$this->redirectCounter;
-
-            } else {
-                // If we didn't get any location, stop redirecting
-                break;
-            }
-
-        } while ($this->redirectCounter < $this->config['maxredirects']);
-
-        return $response;
-    }
-
-    /**
-     * Prepare the request headers
-     *
-     * @return array
-     */
-    protected function _prepareHeaders()
-    {
-        $headers = array();
-
-        // Set the host header
-        if (! isset($this->headers['host'])) {
-            $host = $this->uri->getHost();
-
-            // If the port is not default, add it
-            if (! (($this->uri->getScheme() == 'http' && $this->uri->getPort() == 80) ||
-                  ($this->uri->getScheme() == 'https' && $this->uri->getPort() == 443))) {
-                $host .= ':' . $this->uri->getPort();
-            }
-
-            $headers[] = "Host: {$host}";
-        }
-
-        // Set the connection header
-        if (! isset($this->headers['connection'])) {
-            if (! $this->config['keepalive']) {
-                $headers[] = "Connection: close";
-            }
-        }
-
-        // Set the Accept-encoding header if not set - depending on whether
-        // zlib is available or not.
-        if (! isset($this->headers['accept-encoding'])) {
-            if (function_exists('gzinflate')) {
-                $headers[] = 'Accept-encoding: gzip, deflate';
-            } else {
-                $headers[] = 'Accept-encoding: identity';
-            }
-        }
-
-        // Set the Content-Type header
-        if (($this->method == self::POST || $this->method == self::PUT) &&
-           (! isset($this->headers[strtolower(self::CONTENT_TYPE)]) && isset($this->enctype))) {
-
-            $headers[] = self::CONTENT_TYPE . ': ' . $this->enctype;
-        }
-
-        // Set the user agent header
-        if (! isset($this->headers['user-agent']) && isset($this->config['useragent'])) {
-            $headers[] = "User-Agent: {$this->config['useragent']}";
-        }
-
-        // Set HTTP authentication if needed
-        if (is_array($this->auth)) {
-            $auth = self::encodeAuthHeader($this->auth['user'], $this->auth['password'], $this->auth['type']);
-            $headers[] = "Authorization: {$auth}";
-        }
-
-        // Load cookies from cookie jar
-        if (isset($this->cookiejar)) {
-            $cookstr = $this->cookiejar->getMatchingCookies($this->uri,
-                true, Zend_Http_CookieJar::COOKIE_STRING_CONCAT);
-
-            if ($cookstr) {
-                $headers[] = "Cookie: {$cookstr}";
-            }
-        }
-
-        // Add all other user defined headers
-        foreach ($this->headers as $header) {
-            list($name, $value) = $header;
-            if (is_array($value)) {
-                $value = implode(', ', $value);
-            }
-
-            $headers[] = "$name: $value";
-        }
-
-        return $headers;
-    }
-
-    /**
-     * Prepare the request body (for POST and PUT requests)
-     *
-     * @return string
-     * @throws Zend_Http_Client_Exception
-     */
-    protected function _prepareBody()
-    {
-        // According to RFC2616, a TRACE request should not have a body.
-        if ($this->method == self::TRACE) {
-            return '';
-        }
-
-        if (isset($this->raw_post_data) && is_resource($this->raw_post_data)) {
-            return $this->raw_post_data;
-        }
-        // If mbstring overloads substr and strlen functions, we have to
-        // override it's internal encoding
-        if (function_exists('mb_internal_encoding') &&
-           ((int) ini_get('mbstring.func_overload')) & 2) {
-
-            $mbIntEnc = mb_internal_encoding();
-            mb_internal_encoding('ASCII');
-        }
-
-        // If we have raw_post_data set, just use it as the body.
-        if (isset($this->raw_post_data)) {
-            $this->setHeaders(self::CONTENT_LENGTH, strlen($this->raw_post_data));
-            if (isset($mbIntEnc)) {
-                mb_internal_encoding($mbIntEnc);
-            }
-
-            return $this->raw_post_data;
-        }
-
-        $body = '';
-
-        // If we have files to upload, force enctype to multipart/form-data
-        if (count ($this->files) > 0) {
-            $this->setEncType(self::ENC_FORMDATA);
-        }
-
-        // If we have POST parameters or files, encode and add them to the body
-        if (count($this->paramsPost) > 0 || count($this->files) > 0) {
-            switch($this->enctype) {
-                case self::ENC_FORMDATA:
-                    // Encode body as multipart/form-data
-                    $boundary = '---ZENDHTTPCLIENT-' . md5(microtime());
-                    $this->setHeaders(self::CONTENT_TYPE, self::ENC_FORMDATA . "; boundary={$boundary}");
-
-                    // Get POST parameters and encode them
-                    $params = self::_flattenParametersArray($this->paramsPost);
-                    foreach ($params as $pp) {
-                        $body .= self::encodeFormData($boundary, $pp[0], $pp[1]);
-                    }
-
-                    // Encode files
-                    foreach ($this->files as $file) {
-                        $fhead = array(self::CONTENT_TYPE => $file['ctype']);
-                        $body .= self::encodeFormData($boundary, $file['formname'], $file['data'], $file['filename'], $fhead);
-                    }
-
-                    $body .= "--{$boundary}--\r\n";
-                    break;
-
-                case self::ENC_URLENCODED:
-                    // Encode body as application/x-www-form-urlencoded
-                    $this->setHeaders(self::CONTENT_TYPE, self::ENC_URLENCODED);
-                    $body = http_build_query($this->paramsPost, '', '&');
-                    break;
-
-                default:
-                    if (isset($mbIntEnc)) {
-                        mb_internal_encoding($mbIntEnc);
-                    }
-
-                    /** @see Zend_Http_Client_Exception */
-                    require_once 'Zend/Http/Client/Exception.php';
-                    throw new Zend_Http_Client_Exception("Cannot handle content type '{$this->enctype}' automatically." .
-                        " Please use Zend_Http_Client::setRawData to send this kind of content.");
-                    break;
-            }
-        }
-
-        // Set the Content-Length if we have a body or if request is POST/PUT
-        if ($body || $this->method == self::POST || $this->method == self::PUT) {
-            $this->setHeaders(self::CONTENT_LENGTH, strlen($body));
-        }
-
-        if (isset($mbIntEnc)) {
-            mb_internal_encoding($mbIntEnc);
-        }
-
-        return $body;
-    }
-
-    /**
-     * Helper method that gets a possibly multi-level parameters array (get or
-     * post) and flattens it.
-     *
-     * The method returns an array of (key, value) pairs (because keys are not
-     * necessarily unique. If one of the parameters in as array, it will also
-     * add a [] suffix to the key.
-     *
-     * This method is deprecated since Zend Framework 1.9 in favour of
-     * self::_flattenParametersArray() and will be dropped in 2.0
-     *
-     * @deprecated since 1.9
-     *
-     * @param  array $parray    The parameters array
-     * @param  bool  $urlencode Whether to urlencode the name and value
-     * @return array
-     */
-    protected function _getParametersRecursive($parray, $urlencode = false)
-    {
-        // Issue a deprecated notice
-        trigger_error("The " .  __METHOD__ . " method is deprecated and will be dropped in 2.0.",
-            E_USER_NOTICE);
-
-        if (! is_array($parray)) {
-            return $parray;
-        }
-        $parameters = array();
-
-        foreach ($parray as $name => $value) {
-            if ($urlencode) {
-                $name = urlencode($name);
-            }
-
-            // If $value is an array, iterate over it
-            if (is_array($value)) {
-                $name .= ($urlencode ? '%5B%5D' : '[]');
-                foreach ($value as $subval) {
-                    if ($urlencode) {
-                        $subval = urlencode($subval);
-                    }
-                    $parameters[] = array($name, $subval);
-                }
-            } else {
-                if ($urlencode) {
-                    $value = urlencode($value);
-                }
-                $parameters[] = array($name, $value);
-            }
-        }
-
-        return $parameters;
-    }
-
-    /**
-     * Attempt to detect the MIME type of a file using available extensions
-     *
-     * This method will try to detect the MIME type of a file. If the fileinfo
-     * extension is available, it will be used. If not, the mime_magic
-     * extension which is deprected but is still available in many PHP setups
-     * will be tried.
-     *
-     * If neither extension is available, the default application/octet-stream
-     * MIME type will be returned
-     *
-     * @param  string $file File path
-     * @return string       MIME type
-     */
-    protected function _detectFileMimeType($file)
-    {
-        $type = null;
-
-        // First try with fileinfo functions
-        if (function_exists('finfo_open')) {
-            if (self::$_fileInfoDb === null) {
-                self::$_fileInfoDb = @finfo_open(FILEINFO_MIME);
-            }
-
-            if (self::$_fileInfoDb) {
-                $type = finfo_file(self::$_fileInfoDb, $file);
-            }
-
-        } elseif (function_exists('mime_content_type')) {
-            $type = mime_content_type($file);
-        }
-
-        // Fallback to the default application/octet-stream
-        if (! $type) {
-            $type = 'application/octet-stream';
-        }
-
-        return $type;
-    }
-
-    /**
-     * Encode data to a multipart/form-data part suitable for a POST request.
-     *
-     * @param string $boundary
-     * @param string $name
-     * @param mixed $value
-     * @param string $filename
-     * @param array $headers Associative array of optional headers @example ("Content-Transfer-Encoding" => "binary")
-     * @return string
-     */
-    public static function encodeFormData($boundary, $name, $value, $filename = null, $headers = array()) {
-        $ret = "--{$boundary}\r\n" .
-            'Content-Disposition: form-data; name="' . $name .'"';
-
-        if ($filename) {
-            $ret .= '; filename="' . $filename . '"';
-        }
-        $ret .= "\r\n";
-
-        foreach ($headers as $hname => $hvalue) {
-            $ret .= "{$hname}: {$hvalue}\r\n";
-        }
-        $ret .= "\r\n";
-
-        $ret .= "{$value}\r\n";
-
-        return $ret;
-    }
-
-    /**
-     * Create a HTTP authentication "Authorization:" header according to the
-     * specified user, password and authentication method.
-     *
-     * @see http://www.faqs.org/rfcs/rfc2617.html
-     * @param string $user
-     * @param string $password
-     * @param string $type
-     * @return string
-     * @throws Zend_Http_Client_Exception
-     */
-    public static function encodeAuthHeader($user, $password, $type = self::AUTH_BASIC)
-    {
-        $authHeader = null;
-
-        switch ($type) {
-            case self::AUTH_BASIC:
-                // In basic authentication, the user name cannot contain ":"
-                if (strpos($user, ':') !== false) {
-                    /** @see Zend_Http_Client_Exception */
-                    require_once 'Zend/Http/Client/Exception.php';
-                    throw new Zend_Http_Client_Exception("The user name cannot contain ':' in 'Basic' HTTP authentication");
-                }
-
-                $authHeader = 'Basic ' . base64_encode($user . ':' . $password);
-                break;
-
-            //case self::AUTH_DIGEST:
-                /**
-                 * @todo Implement digest authentication
-                 */
-            //    break;
-
-            default:
-                /** @see Zend_Http_Client_Exception */
-                require_once 'Zend/Http/Client/Exception.php';
-                throw new Zend_Http_Client_Exception("Not a supported HTTP authentication type: '$type'");
-        }
-
-        return $authHeader;
-    }
-
-    /**
-     * Convert an array of parameters into a flat array of (key, value) pairs
-     *
-     * Will flatten a potentially multi-dimentional array of parameters (such
-     * as POST parameters) into a flat array of (key, value) paris. In case
-     * of multi-dimentional arrays, square brackets ([]) will be added to the
-     * key to indicate an array.
-     *
-     * @since  1.9
-     *
-     * @param  array  $parray
-     * @param  string $prefix
-     * @return array
-     */
-    static protected function _flattenParametersArray($parray, $prefix = null)
-    {
-        if (! is_array($parray)) {
-            return $parray;
-        }
-
-        $parameters = array();
-
-        foreach($parray as $name => $value) {
-
-            // Calculate array key
-            if ($prefix) {
-                if (is_int($name)) {
-                    $key = $prefix . '[]';
-                } else {
-                    $key = $prefix . "[$name]";
-                }
-            } else {
-                $key = $name;
-            }
-
-            if (is_array($value)) {
-                $parameters = array_merge($parameters, self::_flattenParametersArray($value, $key));
-
-            } else {
-                $parameters[] = array($key, $value);
-            }
-        }
-
-        return $parameters;
-    }
-
-}
+<php?php
+
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Http
+php php*php php@subpackagephp Client
+php php*php php@versionphp php php php php$Idphp:php Clientphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Loader
+php php*php/
+requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+
+
+php/php*php*
+php php*php php@seephp Zendphp_Uri
+php php*php/
+requirephp_oncephp php'Zendphp/Uriphp.phpphp'php;
+
+
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Clientphp_Adapterphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Interfacephp.phpphp'php;
+
+
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Response
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Responsephp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Httpphp_Responsephp_Stream
+php php*php/
+requirephp_oncephp php'Zendphp/Httpphp/Responsephp/Streamphp.phpphp'php;
+
+php/php*php*
+php php*php Zendphp_Httpphp_Clientphp isphp anphp implementationphp ofphp anphp HTTPphp clientphp inphp PHPphp.php Thephp client
+php php*php supportsphp basicphp featuresphp likephp sendingphp differentphp HTTPphp requestsphp andphp handling
+php php*php redirectionsphp,php asphp wellphp asphp morephp advancedphp featuresphp likephp proxyphp settingsphp,php HTTP
+php php*php authenticationphp andphp cookiephp persistencephp php(usingphp aphp Zendphp_Httpphp_CookieJarphp objectphp)
+php php*
+php php*php php@todophp Implementphp proxyphp settings
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Http
+php php*php php@subpackagephp Client
+php php*php php@throwsphp php php php php Zendphp_Httpphp_Clientphp_Exception
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Httpphp_Client
+php{
+php php php php php/php*php*
+php php php php php php*php HTTPphp requestphp methods
+php php php php php php*php/
+php php php php constphp GETphp php php php php php=php php'GETphp'php;
+php php php php constphp POSTphp php php php php=php php'POSTphp'php;
+php php php php constphp PUTphp php php php php php=php php'PUTphp'php;
+php php php php constphp HEADphp php php php php=php php'HEADphp'php;
+php php php php constphp DELETEphp php php=php php'DELETEphp'php;
+php php php php constphp TRACEphp php php php=php php'TRACEphp'php;
+php php php php constphp OPTIONSphp php=php php'OPTIONSphp'php;
+php php php php constphp CONNECTphp php=php php'CONNECTphp'php;
+php php php php constphp MERGEphp php php php=php php'MERGEphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Supportedphp HTTPphp Authenticationphp methods
+php php php php php php*php/
+php php php php constphp AUTHphp_BASICphp php=php php'basicphp'php;
+php php php php php/php/constphp AUTHphp_DIGESTphp php=php php'digestphp'php;php <php-php-php notphp implementedphp yet
+
+php php php php php/php*php*
+php php php php php php*php HTTPphp protocolphp versions
+php php php php php php*php/
+php php php php constphp HTTPphp_php1php php=php php'php1php.php1php'php;
+php php php php constphp HTTPphp_php0php php=php php'php1php.php0php'php;
+
+php php php php php/php*php*
+php php php php php php*php Contentphp attributes
+php php php php php php*php/
+php php php php constphp CONTENTphp_TYPEphp php php php=php php'Contentphp-Typephp'php;
+php php php php constphp CONTENTphp_LENGTHphp php=php php'Contentphp-Lengthphp'php;
+
+php php php php php/php*php*
+php php php php php php*php POSTphp dataphp encodingphp methods
+php php php php php php*php/
+php php php php constphp ENCphp_URLENCODEDphp php=php php'applicationphp/xphp-wwwphp-formphp-urlencodedphp'php;
+php php php php constphp ENCphp_FORMDATAphp php php php=php php'multipartphp/formphp-dataphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Configurationphp arrayphp,php setphp usingphp thephp constructorphp orphp usingphp php:php:setConfigphp(php)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$configphp php=php arrayphp(
+php php php php php php php php php'maxredirectsphp'php php php php php=php>php php5php,
+php php php php php php php php php'strictredirectsphp'php php=php>php falsephp,
+php php php php php php php php php'useragentphp'php php php php php php php php=php>php php'Zendphp_Httpphp_Clientphp'php,
+php php php php php php php php php'timeoutphp'php php php php php php php php php php=php>php php1php0php,
+php php php php php php php php php'adapterphp'php php php php php php php php php php=php>php php'Zendphp_Httpphp_Clientphp_Adapterphp_Socketphp'php,
+php php php php php php php php php'httpversionphp'php php php php php php=php>php selfphp:php:HTTPphp_php1php,
+php php php php php php php php php'keepalivephp'php php php php php php php php=php>php falsephp,
+php php php php php php php php php'storeresponsephp'php php php php=php>php truephp,
+php php php php php php php php php'strictphp'php php php php php php php php php php php=php>php truephp,
+php php php php php php php php php'outputphp_streamphp'php php php php=php>php falsephp,
+php php php php php php php php php'encodecookiesphp'php php php php=php>php truephp,
+php php php php php php php php php'rfcphp3php9php8php6php_strictphp'php php php=php>php false
+php php php php php)php;
+
+php php php php php/php*php*
+php php php php php php*php Thephp adapterphp usedphp tophp performphp thephp actualphp connectionphp tophp thephp server
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Httpphp_Clientphp_Adapterphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$adapterphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Requestphp URI
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Uriphp_Http
+php php php php php php*php/
+php php php php protectedphp php$uriphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Associativephp arrayphp ofphp requestphp headers
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$headersphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php HTTPphp requestphp method
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$methodphp php=php selfphp:php:GETphp;
+
+php php php php php/php*php*
+php php php php php php*php Associativephp arrayphp ofphp GETphp parameters
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$paramsGetphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Associativephp arrayphp ofphp POSTphp parameters
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$paramsPostphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Requestphp bodyphp contentphp typephp php(forphp POSTphp requestsphp)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$enctypephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp rawphp postphp dataphp tophp sendphp.php Couldphp bephp setphp byphp setRawDataphp(php$dataphp,php php$enctypephp)php.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$rawphp_postphp_dataphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php HTTPphp Authenticationphp settings
+php php php php php php*
+php php php php php php*php Expectedphp tophp bephp anphp associativephp arrayphp withphp thisphp structurephp:
+php php php php php php*php php$thisphp-php>authphp php=php arrayphp(php'userphp'php php=php>php php'usernamephp'php,php php'passwordphp'php php=php>php php'passwordphp'php,php php'typephp'php php=php>php php'basicphp'php)
+php php php php php php*php Wherephp php'typephp'php shouldphp bephp onephp ofphp thephp supportedphp authenticationphp typesphp php(seephp thephp AUTHphp_php*
+php php php php php php*php constantsphp)php,php forphp examplephp php'basicphp'php orphp php'digestphp'php.
+php php php php php php*
+php php php php php php*php Ifphp nullphp,php nophp authenticationphp willphp bephp usedphp.
+php php php php php php*
+php php php php php php*php php@varphp arrayphp|null
+php php php php php php*php/
+php php php php protectedphp php$authphp;
+
+php php php php php/php*php*
+php php php php php php*php Filephp uploadphp arraysphp php(usedphp inphp POSTphp requestsphp)
+php php php php php php*
+php php php php php php*php Anphp associativephp arrayphp,php wherephp eachphp elementphp isphp ofphp thephp formatphp:
+php php php php php php*php php php php'namephp'php php=php>php arrayphp(php'filenamephp.txtphp'php,php php'textphp/plainphp'php,php php'Thisphp isphp thephp actualphp filephp contentsphp'php)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$filesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Thephp clientphp'sphp cookiephp jar
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Httpphp_CookieJar
+php php php php php php*php/
+php php php php protectedphp php$cookiejarphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp lastphp HTTPphp requestphp sentphp byphp thephp clientphp,php asphp string
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$lastphp_requestphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp lastphp HTTPphp responsephp receivedphp byphp thephp client
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Httpphp_Response
+php php php php php php*php/
+php php php php protectedphp php$lastphp_responsephp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Redirectionphp counter
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$redirectCounterphp php=php php0php;
+
+php php php php php/php*php*
+php php php php php php*php Fileinfophp magicphp databasephp resource
+php php php php php php*
+php php php php php php*php Thisphp variablephp isphp populatedphp thephp firstphp timephp php_detectFileMimeTypephp isphp called
+php php php php php php*php andphp isphp thenphp reusedphp onphp everyphp callphp tophp thisphp method
+php php php php php php*
+php php php php php php*php php@varphp resource
+php php php php php php*php/
+php php php php staticphp protectedphp php$php_fileInfoDbphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Constructorphp methodphp.php Willphp createphp aphp newphp HTTPphp clientphp.php Acceptsphp thephp target
+php php php php php php*php URLphp andphp optionallyphp configurationphp arrayphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Uriphp_Httpphp|stringphp php$uri
+php php php php php php*php php@paramphp arrayphp php$configphp Configurationphp keyphp-valuephp pairsphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$uriphp php=php nullphp,php php$configphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$uriphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setUriphp(php$uriphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$configphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$configphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp URIphp forphp thephp nextphp request
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Uriphp_Httpphp|stringphp php$uri
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setUriphp(php$uriphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$uriphp)php)php php{
+php php php php php php php php php php php php php$uriphp php=php Zendphp_Uriphp:php:factoryphp(php$uriphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$uriphp instanceofphp Zendphp_Uriphp_Httpphp)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Passedphp parameterphp isphp notphp aphp validphp HTTPphp URIphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp authphp ifphp usernamephp andphp passwordphp hasphp beenphp specifiedphp inphp thephp uri
+php php php php php php php php ifphp php(php$uriphp-php>getUsernamephp(php)php php&php&php php$uriphp-php>getPasswordphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setAuthphp(php$uriphp-php>getUsernamephp(php)php,php php$uriphp-php>getPasswordphp(php)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Wephp havephp nophp portsphp,php setphp thephp defaults
+php php php php php php php php ifphp php(php!php php$uriphp-php>getPortphp(php)php)php php{
+php php php php php php php php php php php php php$uriphp-php>setPortphp(php(php$uriphp-php>getSchemephp(php)php php=php=php php'httpsphp'php php?php php4php4php3php php:php php8php0php)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>uriphp php=php php$uriphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp URIphp forphp thephp nextphp request
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$asphp_stringphp Ifphp truephp,php willphp returnphp thephp URIphp asphp aphp string
+php php php php php php*php php@returnphp Zendphp_Uriphp_Httpphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getUriphp(php$asphp_stringphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php$asphp_stringphp php&php&php php$thisphp-php>uriphp instanceofphp Zendphp_Uriphp_Httpphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>uriphp-php>php_php_toStringphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>uriphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp configurationphp parametersphp forphp thisphp HTTPphp client
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Configphp php|php arrayphp php$config
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setConfigphp(php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
+
+php php php php php php php php php}php elseifphp php(php!php isphp_arrayphp(php$configphp)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Arrayphp orphp Zendphp_Configphp objectphp expectedphp,php gotphp php'php php.php gettypephp(php$configphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$configphp asphp php$kphp php=php>php php$vphp)php php{
+php php php php php php php php php php php php php$thisphp-php>configphp[strtolowerphp(php$kphp)php]php php=php php$vphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Passphp configurationphp optionsphp tophp thephp adapterphp ifphp itphp exists
+php php php php php php php php ifphp php(php$thisphp-php>adapterphp instanceofphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp)php php{
+php php php php php php php php php php php php php$thisphp-php>adapterphp-php>setConfigphp(php$configphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp nextphp requestphp'sphp method
+php php php php php php*
+php php php php php php*php Validatedphp thephp passedphp methodphp andphp setsphp itphp.php Ifphp wephp havephp filesphp setphp for
+php php php php php php*php POSTphp requestsphp,php andphp thephp newphp methodphp isphp notphp POSTphp,php thephp filesphp arephp silently
+php php php php php php*php droppedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$method
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setMethodphp(php$methodphp php=php selfphp:php:GETphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php pregphp_matchphp(php'php/php^php[php^php\xphp0php0php-php\xphp1fphp\xphp7fphp-php\xffphp\php(php\php)<php>php@php,php;php:php\php\php\php\php"php\php/php\php[php\php]php\php?php=php{php}php\sphp]php+php$php/php'php,php php$methodphp)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"php'php{php$methodphp}php'php isphp notphp aphp validphp HTTPphp requestphp methodphp.php"php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$methodphp php=php=php selfphp:php:POSTphp php&php&php php$thisphp-php>enctypephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setEncTypephp(selfphp:php:ENCphp_URLENCODEDphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>methodphp php=php php$methodphp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp onephp orphp morephp requestphp headers
+php php php php php php*
+php php php php php php*php Thisphp functionphp canphp bephp usedphp inphp severalphp waysphp tophp setphp thephp clientphp'sphp request
+php php php php php php*php headersphp:
+php php php php php php*php php1php.php Byphp providingphp twophp parametersphp:php php$namephp asphp thephp headerphp tophp setphp php(ephp.gphp.php php'Hostphp'php)
+php php php php php php*php php php php andphp php$valuephp asphp itphp'sphp valuephp php(ephp.gphp.php php'wwwphp.examplephp.comphp'php)php.
+php php php php php php*php php2php.php Byphp providingphp aphp singlephp headerphp stringphp asphp thephp onlyphp parameter
+php php php php php php*php php php php ephp.gphp.php php'Hostphp:php wwwphp.examplephp.comphp'
+php php php php php php*php php3php.php Byphp providingphp anphp arrayphp ofphp headersphp asphp thephp firstphp parameter
+php php php php php php*php php php php ephp.gphp.php arrayphp(php'hostphp'php php=php>php php'wwwphp.examplephp.comphp'php,php php'xphp-foophp:php barphp'php)php.php Inphp Thisphp case
+php php php php php php*php php php php thephp functionphp willphp callphp itselfphp recursivelyphp forphp eachphp arrayphp itemphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$namephp Headerphp namephp,php fullphp headerphp stringphp php(php'Headerphp:php valuephp'php)
+php php php php php php*php php php php php orphp anphp arrayphp ofphp headers
+php php php php php php*php php@paramphp mixedphp php$valuephp Headerphp valuephp orphp null
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setHeadersphp(php$namephp,php php$valuephp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Ifphp wephp gotphp anphp arrayphp,php gophp recursivephp!
+php php php php php php php php ifphp php(isphp_arrayphp(php$namephp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$namephp asphp php$kphp php=php>php php$vphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$kphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setHeadersphp(php$kphp,php php$vphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setHeadersphp(php$vphp,php nullphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Checkphp ifphp php$namephp needsphp tophp bephp split
+php php php php php php php php php php php php ifphp php(php$valuephp php=php=php=php nullphp php&php&php php(strposphp(php$namephp,php php'php:php'php)php php>php php0php)php)php php{
+php php php php php php php php php php php php php php php php listphp(php$namephp,php php$valuephp)php php=php explodephp(php'php:php'php,php php$namephp,php php2php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php Makephp surephp thephp namephp isphp validphp ifphp wephp arephp inphp strictphp mode
+php php php php php php php php php php php php ifphp php(php$thisphp-php>configphp[php'strictphp'php]php php&php&php php(php!php pregphp_matchphp(php'php/php^php[aphp-zAphp-Zphp0php-php9php-php]php+php$php/php'php,php php$namephp)php)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"php{php$namephp}php isphp notphp aphp validphp HTTPphp headerphp namephp"php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$normalizedphp_namephp php=php strtolowerphp(php$namephp)php;
+
+php php php php php php php php php php php php php/php/php Ifphp php$valuephp isphp nullphp orphp falsephp,php unsetphp thephp header
+php php php php php php php php php php php php ifphp php(php$valuephp php=php=php=php nullphp php|php|php php$valuephp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>headersphp[php$normalizedphp_namephp]php)php;
+
+php php php php php php php php php php php php php/php/php Elsephp,php setphp thephp header
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php Headerphp namesphp arephp storedphp lowercasephp internallyphp.
+php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php trimphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$thisphp-php>headersphp[php$normalizedphp_namephp]php php=php arrayphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp valuephp ofphp aphp specificphp header
+php php php php php php*
+php php php php php php*php Notephp thatphp ifphp thephp headerphp hasphp morephp thanphp onephp valuephp,php anphp array
+php php php php php php*php willphp bephp returnedphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$key
+php php php php php php*php php@returnphp stringphp|arrayphp|nullphp Thephp headerphp valuephp orphp nullphp ifphp itphp isphp notphp set
+php php php php php php*php/
+php php php php publicphp functionphp getHeaderphp(php$keyphp)
+php php php php php{
+php php php php php php php php php$keyphp php=php strtolowerphp(php$keyphp)php;
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>headersphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>headersphp[php$keyphp]php[php1php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp aphp GETphp parameterphp forphp thephp requestphp.php Wrapperphp aroundphp php_setParameter
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$name
+php php php php php php*php php@paramphp stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp setParameterGetphp(php$namephp,php php$valuephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$namephp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$namephp asphp php$kphp php=php>php php$vphp)
+php php php php php php php php php php php php php php php php php$thisphp-php>php_setParameterphp(php'GETphp'php,php php$kphp,php php$vphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_setParameterphp(php'GETphp'php,php php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp aphp POSTphp parameterphp forphp thephp requestphp.php Wrapperphp aroundphp php_setParameter
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$name
+php php php php php php*php php@paramphp stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp setParameterPostphp(php$namephp,php php$valuephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$namephp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$namephp asphp php$kphp php=php>php php$vphp)
+php php php php php php php php php php php php php php php php php$thisphp-php>php_setParameterphp(php'POSTphp'php,php php$kphp,php php$vphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_setParameterphp(php'POSTphp'php,php php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp aphp GETphp orphp POSTphp parameterphp php-php usedphp byphp SetParameterGetphp andphp SetParameterPost
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$typephp GETphp orphp POST
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@paramphp stringphp php$value
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php protectedphp functionphp php_setParameterphp(php$typephp,php php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php php$parrayphp php=php arrayphp(php)php;
+php php php php php php php php php$typephp php=php strtolowerphp(php$typephp)php;
+php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php casephp php'getphp'php:
+php php php php php php php php php php php php php php php php php$parrayphp php=php php&php$thisphp-php>paramsGetphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'postphp'php:
+php php php php php php php php php php php php php php php php php$parrayphp php=php php&php$thisphp-php>paramsPostphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$valuephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$parrayphp[php$namephp]php)php)php unsetphp(php$parrayphp[php$namephp]php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$parrayphp[php$namephp]php php=php php$valuephp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp numberphp ofphp redirectionsphp donephp onphp thephp lastphp request
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp getRedirectionsCountphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>redirectCounterphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp HTTPphp authenticationphp parameters
+php php php php php php*
+php php php php php php*php php$typephp shouldphp bephp onephp ofphp thephp supportedphp typesphp php-php seephp thephp selfphp:php:AUTHphp_php*
+php php php php php php*php constantsphp.
+php php php php php php*
+php php php php php php*php Tophp enablephp authenticationphp:
+php php php php php php*php php<codephp>
+php php php php php php*php php$thisphp-php>setAuthphp(php'shaharphp'php,php php'secretphp'php,php Zendphp_Httpphp_Clientphp:php:AUTHphp_BASICphp)php;
+php php php php php php*php <php/codephp>
+php php php php php php*
+php php php php php php*php Tophp disablephp authenticationphp:
+php php php php php php*php php<codephp>
+php php php php php php*php php$thisphp-php>setAuthphp(falsephp)php;
+php php php php php php*php <php/codephp>
+php php php php php php*
+php php php php php php*php php@seephp httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php6php1php7php.html
+php php php php php php*php php@paramphp stringphp|falsephp php$userphp Userphp namephp orphp falsephp disablephp authentication
+php php php php php php*php php@paramphp stringphp php$passwordphp Password
+php php php php php php*php php@paramphp stringphp php$typephp Authenticationphp type
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setAuthphp(php$userphp,php php$passwordphp php=php php'php'php,php php$typephp php=php selfphp:php:AUTHphp_BASICphp)
+php php php php php{
+php php php php php php php php php/php/php Ifphp wephp gotphp falsephp orphp nullphp,php disablephp authentication
+php php php php php php php php ifphp php(php$userphp php=php=php=php falsephp php|php|php php$userphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>authphp php=php nullphp;
+
+php php php php php php php php php php php php php/php/php Clearphp thephp authphp informationphp inphp thephp uriphp instancephp asphp well
+php php php php php php php php php php php php ifphp php(php$thisphp-php>uriphp instanceofphp Zendphp_Uriphp_Httpphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>getUriphp(php)php-php>setUsernamephp(php'php'php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>getUriphp(php)php-php>setPasswordphp(php'php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php/php/php Elsephp,php setphp upphp authentication
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Checkphp wephp gotphp aphp properphp authenticationphp type
+php php php php php php php php php php php php ifphp php(php!php definedphp(php'selfphp:php:AUTHphp_php'php php.php strtoupperphp(php$typephp)php)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Invalidphp orphp notphp supportedphp authenticationphp typephp:php php'php$typephp'php"php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$thisphp-php>authphp php=php arrayphp(
+php php php php php php php php php php php php php php php php php'userphp'php php=php>php php(stringphp)php php$userphp,
+php php php php php php php php php php php php php php php php php'passwordphp'php php=php>php php(stringphp)php php$passwordphp,
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php php$type
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp HTTPphp clientphp'sphp cookiephp jarphp.
+php php php php php php*
+php php php php php php*php Aphp cookiephp jarphp isphp anphp objectphp thatphp holdsphp andphp maintainsphp cookiesphp acrossphp HTTPphp requests
+php php php php php php*php andphp responsesphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Httpphp_CookieJarphp|booleanphp php$cookiejarphp Existingphp cookiejarphp objectphp,php truephp tophp createphp aphp newphp onephp,php falsephp tophp disable
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setCookieJarphp(php$cookiejarphp php=php truephp)
+php php php php php{
+php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php'Zendphp_Httpphp_CookieJarphp'php)php;
+
+php php php php php php php php ifphp php(php$cookiejarphp instanceofphp Zendphp_Httpphp_CookieJarphp)php php{
+php php php php php php php php php php php php php$thisphp-php>cookiejarphp php=php php$cookiejarphp;
+php php php php php php php php php}php elseifphp php(php$cookiejarphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$thisphp-php>cookiejarphp php=php newphp Zendphp_Httpphp_CookieJarphp(php)php;
+php php php php php php php php php}php elseifphp php(php!php php$cookiejarphp)php php{
+php php php php php php php php php php php php php$thisphp-php>cookiejarphp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Invalidphp parameterphp typephp passedphp asphp CookieJarphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp currentphp cookiephp jarphp orphp nullphp ifphp nonephp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Httpphp_CookieJarphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getCookieJarphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>cookiejarphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp aphp cookiephp tophp thephp requestphp.php Ifphp thephp clientphp hasphp nophp Cookiephp Jarphp,php thephp cookies
+php php php php php php*php willphp bephp addedphp directlyphp tophp thephp headersphp arrayphp asphp php"Cookiephp"php headersphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Httpphp_Cookiephp|stringphp php$cookie
+php php php php php php*php php@paramphp stringphp|nullphp php$valuephp Ifphp php"cookiephp"php isphp aphp stringphp,php thisphp isphp thephp cookiephp valuephp.
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setCookiephp(php$cookiephp,php php$valuephp php=php nullphp)
+php php php php php{
+php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php'Zendphp_Httpphp_Cookiephp'php)php;
+
+php php php php php php php php ifphp php(isphp_arrayphp(php$cookiephp)php)php php{
+php php php php php php php php php php php php foreachphp php(php$cookiephp asphp php$cphp php=php>php php$vphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$cphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setCookiephp(php$cphp,php php$vphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setCookiephp(php$vphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$valuephp php!php=php=php nullphp php&php&php php$thisphp-php>configphp[php'encodecookiesphp'php]php)php php{
+php php php php php php php php php php php php php$valuephp php=php urlencodephp(php$valuephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>cookiejarphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$cookiephp instanceofphp Zendphp_Httpphp_Cookiephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>cookiejarphp-php>addCookiephp(php$cookiephp)php;
+php php php php php php php php php php php php php}php elseifphp php(isphp_stringphp(php$cookiephp)php php&php&php php$valuephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$cookiephp php=php Zendphp_Httpphp_Cookiephp:php:fromStringphp(php"php{php$cookiephp}php=php{php$valuephp}php"php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>uriphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>configphp[php'encodecookiesphp'php]php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>cookiejarphp-php>addCookiephp(php$cookiephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php ifphp php(php$cookiephp instanceofphp Zendphp_Httpphp_Cookiephp)php php{
+php php php php php php php php php php php php php php php php php$namephp php=php php$cookiephp-php>getNamephp(php)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php php$cookiephp-php>getValuephp(php)php;
+php php php php php php php php php php php php php php php php php$cookiephp php=php php$namephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(pregphp_matchphp(php"php/php[php=php,php;php php\tphp\rphp\nphp\php0php1php3php\php0php1php4php]php/php"php,php php$cookiephp)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Cookiephp namephp cannotphp containphp thesephp charactersphp:php php=php,php;php php\tphp\rphp\nphp\php0php1php3php\php0php1php4php php(php{php$cookiephp}php)php"php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$valuephp php=php addslashesphp(php$valuephp)php;
+
+php php php php php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>headersphp[php'cookiephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>headersphp[php'cookiephp'php]php php=php arrayphp(php'Cookiephp'php,php php'php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>headersphp[php'cookiephp'php]php[php1php]php php.php=php php$cookiephp php.php php'php=php'php php.php php$valuephp php.php php'php;php php'php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp aphp filephp tophp uploadphp php(usingphp aphp POSTphp requestphp)
+php php php php php php*
+php php php php php php*php Canphp bephp usedphp inphp twophp waysphp:
+php php php php php php*
+php php php php php php*php php1php.php php$dataphp isphp nullphp php(defaultphp)php:php php$filenamephp isphp treatedphp asphp thephp namephp ifphp aphp localphp filephp which
+php php php php php php*php php php php willphp bephp readphp andphp sentphp.php Willphp tryphp tophp guessphp thephp contentphp typephp usingphp mimephp_contentphp_typephp(php)php.
+php php php php php php*php php2php.php php$dataphp isphp setphp php-php php$filenamephp isphp sentphp asphp thephp filephp namephp,php butphp php$dataphp isphp sentphp asphp thephp file
+php php php php php php*php php php php contentsphp andphp nophp filephp isphp readphp fromphp thephp filephp systemphp.php Inphp thisphp casephp,php youphp needphp to
+php php php php php php*php php php php manuallyphp setphp thephp Contentphp-Typephp php(php$ctypephp)php orphp itphp willphp defaultphp to
+php php php php php php*php php php php applicationphp/octetphp-streamphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$filenamephp Namephp ofphp filephp tophp uploadphp,php orphp namephp tophp savephp as
+php php php php php php*php php@paramphp stringphp php$formnamephp Namephp ofphp formphp elementphp tophp sendphp as
+php php php php php php*php php@paramphp stringphp php$dataphp Dataphp tophp sendphp php(ifphp nullphp,php php$filenamephp isphp readphp andphp sentphp)
+php php php php php php*php php@paramphp stringphp php$ctypephp Contentphp typephp tophp usephp php(ifphp php$dataphp isphp setphp andphp php$ctypephp is
+php php php php php php*php php php php php nullphp,php willphp bephp applicationphp/octetphp-streamphp)
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setFileUploadphp(php$filenamephp,php php$formnamephp,php php$dataphp php=php nullphp,php php$ctypephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$dataphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php(php$dataphp php=php php@filephp_getphp_contentsphp(php$filenamephp)php)php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Unablephp tophp readphp filephp php'php{php$filenamephp}php'php forphp uploadphp"php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php!php php$ctypephp)php php{
+php php php php php php php php php php php php php php php php php$ctypephp php=php php$thisphp-php>php_detectFileMimeTypephp(php$filenamephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Forcephp enctypephp tophp multipartphp/formphp-data
+php php php php php php php php php$thisphp-php>setEncTypephp(selfphp:php:ENCphp_FORMDATAphp)php;
+
+php php php php php php php php php$thisphp-php>filesphp[php]php php=php arrayphp(
+php php php php php php php php php php php php php'formnamephp'php php=php>php php$formnamephp,
+php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
+php php php php php php php php php php php php php'ctypephp'php php php php php=php>php php$ctypephp,
+php php php php php php php php php php php php php'dataphp'php php php php php php=php>php php$data
+php php php php php php php php php)php;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp encodingphp typephp forphp POSTphp data
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$enctype
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp setEncTypephp(php$enctypephp php=php selfphp:php:ENCphp_URLENCODEDphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>enctypephp php=php php$enctypephp;
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp rawphp php(alreadyphp encodedphp)php POSTphp dataphp.
+php php php php php php*
+php php php php php php*php Thisphp functionphp isphp herephp forphp twophp reasonsphp:
+php php php php php php*php php1php.php Forphp advancedphp userphp whophp wouldphp likephp tophp setphp theirphp ownphp dataphp,php alreadyphp encoded
+php php php php php php*php php2php.php Forphp backwardsphp compatibiltyphp:php Ifphp someonephp usesphp thephp oldphp postphp(php$dataphp)php methodphp.
+php php php php php php*php php php php thisphp methodphp willphp bephp usedphp tophp setphp thephp encodedphp dataphp.
+php php php php php php*
+php php php php php php*php php$dataphp canphp alsophp bephp streamphp php(suchphp asphp filephp)php fromphp whichphp thephp dataphp willphp bephp readphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|resourcephp php$data
+php php php php php php*php php@paramphp stringphp php$enctype
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp setRawDataphp(php$dataphp,php php$enctypephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>rawphp_postphp_dataphp php=php php$dataphp;
+php php php php php php php php php$thisphp-php>setEncTypephp(php$enctypephp)php;
+php php php php php php php php ifphp php(isphp_resourcephp(php$dataphp)php)php php{
+php php php php php php php php php php php php php/php/php Wephp'vephp gotphp streamphp data
+php php php php php php php php php php php php php$statphp php=php php@fstatphp(php$dataphp)php;
+php php php php php php php php php php php php ifphp(php$statphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setHeadersphp(selfphp:php:CONTENTphp_LENGTHphp,php php$statphp[php'sizephp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearphp allphp GETphp andphp POSTphp parameters
+php php php php php php*
+php php php php php php*php Shouldphp bephp usedphp tophp resetphp thephp requestphp parametersphp ifphp thephp clientphp is
+php php php php php php*php usedphp forphp severalphp concurrentphp requestsphp.
+php php php php php php*
+php php php php php php*php clearAllphp parameterphp controlsphp ifphp wephp cleanphp justphp parametersphp orphp also
+php php php php php php*php headersphp andphp lastphp_php*
+php php php php php php*
+php php php php php php*php php@paramphp boolphp php$clearAllphp Shouldphp allphp dataphp bephp clearedphp?
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp resetParametersphp(php$clearAllphp php=php falsephp)
+php php php php php{
+php php php php php php php php php/php/php Resetphp parameterphp data
+php php php php php php php php php$thisphp-php>paramsGetphp php php php php php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>paramsPostphp php php php php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>filesphp php php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>rawphp_postphp_dataphp php=php nullphp;
+
+php php php php php php php php ifphp(php$clearAllphp)php php{
+php php php php php php php php php php php php php$thisphp-php>headersphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>lastphp_requestphp php=php nullphp;
+php php php php php php php php php php php php php$thisphp-php>lastphp_responsephp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Clearphp outdatedphp headers
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>headersphp[strtolowerphp(selfphp:php:CONTENTphp_TYPEphp)php]php)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>headersphp[strtolowerphp(selfphp:php:CONTENTphp_TYPEphp)php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>headersphp[strtolowerphp(selfphp:php:CONTENTphp_LENGTHphp)php]php)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>headersphp[strtolowerphp(selfphp:php:CONTENTphp_LENGTHphp)php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp lastphp HTTPphp requestphp asphp string
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getLastRequestphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>lastphp_requestphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp lastphp HTTPphp responsephp receivedphp byphp thisphp client
+php php php php php php*
+php php php php php php*php Ifphp php$configphp[php'storeresponsephp'php]php isphp setphp tophp falsephp,php orphp nophp responsephp was
+php php php php php php*php storedphp yetphp,php willphp returnphp null
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Httpphp_Responsephp orphp nullphp ifphp none
+php php php php php php*php/
+php php php php publicphp functionphp getLastResponsephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>lastphp_responsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp thephp connectionphp adapter
+php php php php php php*
+php php php php php php*php Whilephp thisphp methodphp isphp notphp calledphp morephp thanphp onephp forphp aphp clientphp,php itphp is
+php php php php php php*php seperatedphp fromphp php-php>requestphp(php)php tophp preservephp logicphp andphp readability
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp|stringphp php$adapter
+php php php php php php*php php@returnphp null
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setAdapterphp(php$adapterphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$adapterphp)php)php php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$adapterphp)php;
+php php php php php php php php php php php php php}php catchphp php(Zendphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Unablephp tophp loadphp adapterphp php'php$adapterphp'php:php php{php$ephp-php>getMessagephp(php)php}php"php,php php0php,php php$ephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$adapterphp php=php newphp php$adapterphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php php$adapterphp instanceofphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Passedphp adapterphp isphp notphp aphp HTTPphp connectionphp adapterphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>adapterphp php=php php$adapterphp;
+php php php php php php php php php$configphp php=php php$thisphp-php>configphp;
+php php php php php php php php unsetphp(php$configphp[php'adapterphp'php]php)php;
+php php php php php php php php php$thisphp-php>adapterphp-php>setConfigphp(php$configphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp thephp connectionphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp php$adapter
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>adapterphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp streamingphp forphp receivedphp data
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|booleanphp php$streamfilephp Streamphp filephp,php truephp forphp tempphp filephp,php falsephp/nullphp forphp nophp streaming
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp setStreamphp(php$streamfilephp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setConfigphp(arrayphp(php"outputphp_streamphp"php php=php>php php$streamfilephp)php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp statusphp ofphp streamingphp forphp receivedphp data
+php php php php php php*php php@returnphp booleanphp|string
+php php php php php php*php/
+php php php php publicphp functionphp getStreamphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>configphp[php"outputphp_streamphp"php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createphp temporaryphp stream
+php php php php php php*
+php php php php php php*php php@returnphp resource
+php php php php php php*php/
+php php php php protectedphp functionphp php_openTempStreamphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_streamphp_namephp php=php php$thisphp-php>configphp[php'outputphp_streamphp'php]php;
+php php php php php php php php ifphp(php!isphp_stringphp(php$thisphp-php>php_streamphp_namephp)php)php php{
+php php php php php php php php php php php php php/php/php Ifphp namephp isphp notphp givenphp,php createphp tempphp name
+php php php php php php php php php php php php php$thisphp-php>php_streamphp_namephp php=php tempnamphp(issetphp(php$thisphp-php>configphp[php'streamphp_tmpphp_dirphp'php]php)php?php$thisphp-php>configphp[php'streamphp_tmpphp_dirphp'php]php:sysphp_getphp_tempphp_dirphp(php)php,
+php php php php php php php php php php php php php php php php php php'Zendphp_Httpphp_Clientphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(falsephp php=php=php=php php(php$fpphp php=php php@fopenphp(php$thisphp-php>php_streamphp_namephp,php php"wphp+bphp"php)php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>adapterphp instanceofphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>adapterphp-php>closephp(php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Couldphp notphp openphp tempphp filephp php{php$thisphp-php>php_streamphp_namephp}php"php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$fpphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Sendphp thephp HTTPphp requestphp andphp returnphp anphp HTTPphp responsephp object
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$method
+php php php php php php*php php@returnphp Zendphp_Httpphp_Response
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp requestphp(php$methodphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php php$thisphp-php>uriphp instanceofphp Zendphp_Uriphp_Httpphp)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Nophp validphp URIphp hasphp beenphp passedphp tophp thephp clientphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$methodphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setMethodphp(php$methodphp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>redirectCounterphp php=php php0php;
+php php php php php php php php php$responsephp php=php nullphp;
+
+php php php php php php php php php/php/php Makephp surephp thephp adapterphp isphp loaded
+php php php php php php php php ifphp php(php$thisphp-php>adapterphp php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setAdapterphp(php$thisphp-php>configphp[php'adapterphp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Sendphp thephp firstphp requestphp.php Ifphp redirectedphp,php continuephp.
+php php php php php php php php dophp php{
+php php php php php php php php php php php php php/php/php Clonephp thephp URIphp andphp addphp thephp additionalphp GETphp parametersphp tophp it
+php php php php php php php php php php php php php$uriphp php=php clonephp php$thisphp-php>uriphp;
+php php php php php php php php php php php php ifphp php(php!php emptyphp(php$thisphp-php>paramsGetphp)php)php php{
+php php php php php php php php php php php php php php php php php$queryphp php=php php$uriphp-php>getQueryphp(php)php;
+php php php php php php php php php php php php php php php php php php php ifphp php(php!php emptyphp(php$queryphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php$queryphp php.php=php php'php&php'php;
+php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$queryphp php.php=php httpphp_buildphp_queryphp(php$thisphp-php>paramsGetphp,php nullphp,php php'php&php'php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>configphp[php'rfcphp3php9php8php6php_strictphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php$queryphp php=php strphp_replacephp(php'php+php'php,php php'php%php2php0php'php,php php$queryphp)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$uriphp-php>setQueryphp(php$queryphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$bodyphp php=php php$thisphp-php>php_prepareBodyphp(php)php;
+php php php php php php php php php php php php php$headersphp php=php php$thisphp-php>php_prepareHeadersphp(php)php;
+
+php php php php php php php php php php php php php/php/php checkphp thatphp adapterphp supportsphp streamingphp beforephp usingphp it
+php php php php php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php php&php&php php!php(php$thisphp-php>adapterphp instanceofphp Zendphp_Httpphp_Clientphp_Adapterphp_Streamphp)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Adapterphp doesphp notphp supportphp streamingphp'php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php Openphp thephp connectionphp,php sendphp thephp requestphp andphp readphp thephp response
+php php php php php php php php php php php php php$thisphp-php>adapterphp-php>connectphp(php$uriphp-php>getHostphp(php)php,php php$uriphp-php>getPortphp(php)php,
+php php php php php php php php php php php php php php php php php(php$uriphp-php>getSchemephp(php)php php=php=php php'httpsphp'php php?php truephp php:php falsephp)php)php;
+
+php php php php php php php php php php php php ifphp(php$thisphp-php>configphp[php'outputphp_streamphp'php]php)php php{
+php php php php php php php php php php php php php php php php ifphp(php$thisphp-php>adapterphp instanceofphp Zendphp_Httpphp_Clientphp_Adapterphp_Streamphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$streamphp php=php php$thisphp-php>php_openTempStreamphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>adapterphp-php>setOutputStreamphp(php$streamphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Adapterphp doesphp notphp supportphp streamingphp'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$thisphp-php>lastphp_requestphp php=php php$thisphp-php>adapterphp-php>writephp(php$thisphp-php>methodphp,
+php php php php php php php php php php php php php php php php php$uriphp,php php$thisphp-php>configphp[php'httpversionphp'php]php,php php$headersphp,php php$bodyphp)php;
+
+php php php php php php php php php php php php php$responsephp php=php php$thisphp-php>adapterphp-php>readphp(php)php;
+php php php php php php php php php php php php ifphp php(php!php php$responsephp)php php{
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php'Unablephp tophp readphp responsephp,php orphp responsephp isphp emptyphp'php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp(php$thisphp-php>configphp[php'outputphp_streamphp'php]php)php php{
+php php php php php php php php php php php php php php php php rewindphp(php$streamphp)php;
+php php php php php php php php php php php php php php php php php/php/php cleanupphp thephp adapter
+php php php php php php php php php php php php php php php php php$thisphp-php>adapterphp-php>setOutputStreamphp(nullphp)php;
+php php php php php php php php php php php php php php php php php$responsephp php=php Zendphp_Httpphp_Responsephp_Streamphp:php:fromStreamphp(php$responsephp,php php$streamphp)php;
+php php php php php php php php php php php php php php php php php$responsephp-php>setStreamNamephp(php$thisphp-php>php_streamphp_namephp)php;
+php php php php php php php php php php php php php php php php ifphp(php!isphp_stringphp(php$thisphp-php>configphp[php'outputphp_streamphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php wephp usedphp tempphp namephp,php willphp needphp tophp cleanphp up
+php php php php php php php php php php php php php php php php php php php php php$responsephp-php>setCleanupphp(truephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$responsephp php=php Zendphp_Httpphp_Responsephp:php:fromStringphp(php$responsephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$thisphp-php>configphp[php'storeresponsephp'php]php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>lastphp_responsephp php=php php$responsephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php Loadphp cookiesphp intophp cookiephp jar
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>cookiejarphp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>cookiejarphp-php>addCookiesFromResponsephp(php$responsephp,php php$uriphp,php php$thisphp-php>configphp[php'encodecookiesphp'php]php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php Ifphp wephp gotphp redirectedphp,php lookphp forphp thephp Locationphp header
+php php php php php php php php php php php php ifphp php(php$responsephp-php>isRedirectphp(php)php php&php&php php(php$locationphp php=php php$responsephp-php>getHeaderphp(php'locationphp'php)php)php)php php{
+
+php php php php php php php php php php php php php php php php php/php/php Checkphp whetherphp wephp sendphp thephp exactphp samephp requestphp againphp,php orphp dropphp thephp parameters
+php php php php php php php php php php php php php php php php php/php/php andphp sendphp aphp GETphp request
+php php php php php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php=php=php php3php0php3php php|php|
+php php php php php php php php php php php php php php php php php php php php(php(php!php php$thisphp-php>configphp[php'strictredirectsphp'php]php)php php&php&php php(php$responsephp-php>getStatusphp(php)php php=php=php php3php0php2php php|php|
+php php php php php php php php php php php php php php php php php php php php php php php php$responsephp-php>getStatusphp(php)php php=php=php php3php0php1php)php)php)php php{
+
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>resetParametersphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setMethodphp(selfphp:php:GETphp)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php/php/php Ifphp wephp gotphp aphp wellphp formedphp absolutephp URI
+php php php php php php php php php php php php php php php php ifphp php(Zendphp_Uriphp_Httpphp:php:checkphp(php$locationphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setHeadersphp(php'hostphp'php,php nullphp)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setUriphp(php$locationphp)php;
+
+php php php php php php php php php php php php php php php php php}php elsephp php{
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Splitphp intophp pathphp andphp queryphp andphp setphp thephp query
+php php php php php php php php php php php php php php php php php php php php ifphp php(strposphp(php$locationphp,php php'php?php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php listphp(php$locationphp,php php$queryphp)php php=php explodephp(php'php?php'php,php php$locationphp,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$queryphp php=php php'php'php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>uriphp-php>setQueryphp(php$queryphp)php;
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Elsephp,php ifphp wephp gotphp justphp anphp absolutephp pathphp,php setphp it
+php php php php php php php php php php php php php php php php php php php php ifphp(strposphp(php$locationphp,php php'php/php'php)php php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>uriphp-php>setPathphp(php$locationphp)php;
+
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Elsephp,php assumephp wephp havephp aphp relativephp path
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Getphp thephp currentphp pathphp directoryphp,php removingphp anyphp trailingphp slashes
+php php php php php php php php php php php php php php php php php php php php php php php php php$pathphp php=php php$thisphp-php>uriphp-php>getPathphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$pathphp php=php rtrimphp(substrphp(php$pathphp,php php0php,php strrposphp(php$pathphp,php php'php/php'php)php)php,php php"php/php"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>uriphp-php>setPathphp(php$pathphp php.php php'php/php'php php.php php$locationphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php+php+php$thisphp-php>redirectCounterphp;
+
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php Ifphp wephp didnphp'tphp getphp anyphp locationphp,php stopphp redirecting
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php}php whilephp php(php$thisphp-php>redirectCounterphp <php php$thisphp-php>configphp[php'maxredirectsphp'php]php)php;
+
+php php php php php php php php returnphp php$responsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Preparephp thephp requestphp headers
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_prepareHeadersphp(php)
+php php php php php{
+php php php php php php php php php$headersphp php=php arrayphp(php)php;
+
+php php php php php php php php php/php/php Setphp thephp hostphp header
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>headersphp[php'hostphp'php]php)php)php php{
+php php php php php php php php php php php php php$hostphp php=php php$thisphp-php>uriphp-php>getHostphp(php)php;
+
+php php php php php php php php php php php php php/php/php Ifphp thephp portphp isphp notphp defaultphp,php addphp it
+php php php php php php php php php php php php ifphp php(php!php php(php(php$thisphp-php>uriphp-php>getSchemephp(php)php php=php=php php'httpphp'php php&php&php php$thisphp-php>uriphp-php>getPortphp(php)php php=php=php php8php0php)php php|php|
+php php php php php php php php php php php php php php php php php php php(php$thisphp-php>uriphp-php>getSchemephp(php)php php=php=php php'httpsphp'php php&php&php php$thisphp-php>uriphp-php>getPortphp(php)php php=php=php php4php4php3php)php)php)php php{
+php php php php php php php php php php php php php php php php php$hostphp php.php=php php'php:php'php php.php php$thisphp-php>uriphp-php>getPortphp(php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$headersphp[php]php php=php php"Hostphp:php php{php$hostphp}php"php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp thephp connectionphp header
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>headersphp[php'connectionphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(php!php php$thisphp-php>configphp[php'keepalivephp'php]php)php php{
+php php php php php php php php php php php php php php php php php$headersphp[php]php php=php php"Connectionphp:php closephp"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp thephp Acceptphp-encodingphp headerphp ifphp notphp setphp php-php dependingphp onphp whether
+php php php php php php php php php/php/php zlibphp isphp availablephp orphp notphp.
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>headersphp[php'acceptphp-encodingphp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(functionphp_existsphp(php'gzinflatephp'php)php)php php{
+php php php php php php php php php php php php php php php php php$headersphp[php]php php=php php'Acceptphp-encodingphp:php gzipphp,php deflatephp'php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$headersphp[php]php php=php php'Acceptphp-encodingphp:php identityphp'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp thephp Contentphp-Typephp header
+php php php php php php php php ifphp php(php(php$thisphp-php>methodphp php=php=php selfphp:php:POSTphp php|php|php php$thisphp-php>methodphp php=php=php selfphp:php:PUTphp)php php&php&
+php php php php php php php php php php php php(php!php issetphp(php$thisphp-php>headersphp[strtolowerphp(selfphp:php:CONTENTphp_TYPEphp)php]php)php php&php&php issetphp(php$thisphp-php>enctypephp)php)php)php php{
+
+php php php php php php php php php php php php php$headersphp[php]php php=php selfphp:php:CONTENTphp_TYPEphp php.php php'php:php php'php php.php php$thisphp-php>enctypephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp thephp userphp agentphp header
+php php php php php php php php ifphp php(php!php issetphp(php$thisphp-php>headersphp[php'userphp-agentphp'php]php)php php&php&php issetphp(php$thisphp-php>configphp[php'useragentphp'php]php)php)php php{
+php php php php php php php php php php php php php$headersphp[php]php php=php php"Userphp-Agentphp:php php{php$thisphp-php>configphp[php'useragentphp'php]php}php"php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp HTTPphp authenticationphp ifphp needed
+php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>authphp)php)php php{
+php php php php php php php php php php php php php$authphp php=php selfphp:php:encodeAuthHeaderphp(php$thisphp-php>authphp[php'userphp'php]php,php php$thisphp-php>authphp[php'passwordphp'php]php,php php$thisphp-php>authphp[php'typephp'php]php)php;
+php php php php php php php php php php php php php$headersphp[php]php php=php php"Authorizationphp:php php{php$authphp}php"php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Loadphp cookiesphp fromphp cookiephp jar
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>cookiejarphp)php)php php{
+php php php php php php php php php php php php php$cookstrphp php=php php$thisphp-php>cookiejarphp-php>getMatchingCookiesphp(php$thisphp-php>uriphp,
+php php php php php php php php php php php php php php php php truephp,php Zendphp_Httpphp_CookieJarphp:php:COOKIEphp_STRINGphp_CONCATphp)php;
+
+php php php php php php php php php php php php ifphp php(php$cookstrphp)php php{
+php php php php php php php php php php php php php php php php php$headersphp[php]php php=php php"Cookiephp:php php{php$cookstrphp}php"php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Addphp allphp otherphp userphp definedphp headers
+php php php php php php php php foreachphp php(php$thisphp-php>headersphp asphp php$headerphp)php php{
+php php php php php php php php php php php php listphp(php$namephp,php php$valuephp)php php=php php$headerphp;
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php implodephp(php'php,php php'php,php php$valuephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$headersphp[php]php php=php php"php$namephp:php php$valuephp"php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$headersphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Preparephp thephp requestphp bodyphp php(forphp POSTphp andphp PUTphp requestsphp)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_prepareBodyphp(php)
+php php php php php{
+php php php php php php php php php/php/php Accordingphp tophp RFCphp2php6php1php6php,php aphp TRACEphp requestphp shouldphp notphp havephp aphp bodyphp.
+php php php php php php php php ifphp php(php$thisphp-php>methodphp php=php=php selfphp:php:TRACEphp)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>rawphp_postphp_dataphp)php php&php&php isphp_resourcephp(php$thisphp-php>rawphp_postphp_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>rawphp_postphp_dataphp;
+php php php php php php php php php}
+php php php php php php php php php/php/php Ifphp mbstringphp overloadsphp substrphp andphp strlenphp functionsphp,php wephp havephp to
+php php php php php php php php php/php/php overridephp itphp'sphp internalphp encoding
+php php php php php php php php ifphp php(functionphp_existsphp(php'mbphp_internalphp_encodingphp'php)php php&php&
+php php php php php php php php php php php php(php(intphp)php iniphp_getphp(php'mbstringphp.funcphp_overloadphp'php)php)php php&php php2php)php php{
+
+php php php php php php php php php php php php php$mbIntEncphp php=php mbphp_internalphp_encodingphp(php)php;
+php php php php php php php php php php php php mbphp_internalphp_encodingphp(php'ASCIIphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Ifphp wephp havephp rawphp_postphp_dataphp setphp,php justphp usephp itphp asphp thephp bodyphp.
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>rawphp_postphp_dataphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setHeadersphp(selfphp:php:CONTENTphp_LENGTHphp,php strlenphp(php$thisphp-php>rawphp_postphp_dataphp)php)php;
+php php php php php php php php php php php php ifphp php(issetphp(php$mbIntEncphp)php)php php{
+php php php php php php php php php php php php php php php php mbphp_internalphp_encodingphp(php$mbIntEncphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php returnphp php$thisphp-php>rawphp_postphp_dataphp;
+php php php php php php php php php}
+
+php php php php php php php php php$bodyphp php=php php'php'php;
+
+php php php php php php php php php/php/php Ifphp wephp havephp filesphp tophp uploadphp,php forcephp enctypephp tophp multipartphp/formphp-data
+php php php php php php php php ifphp php(countphp php(php$thisphp-php>filesphp)php php>php php0php)php php{
+php php php php php php php php php php php php php$thisphp-php>setEncTypephp(selfphp:php:ENCphp_FORMDATAphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Ifphp wephp havephp POSTphp parametersphp orphp filesphp,php encodephp andphp addphp themphp tophp thephp body
+php php php php php php php php ifphp php(countphp(php$thisphp-php>paramsPostphp)php php>php php0php php|php|php countphp(php$thisphp-php>filesphp)php php>php php0php)php php{
+php php php php php php php php php php php php switchphp(php$thisphp-php>enctypephp)php php{
+php php php php php php php php php php php php php php php php casephp selfphp:php:ENCphp_FORMDATAphp:
+php php php php php php php php php php php php php php php php php php php php php/php/php Encodephp bodyphp asphp multipartphp/formphp-data
+php php php php php php php php php php php php php php php php php php php php php$boundaryphp php=php php'php-php-php-ZENDHTTPCLIENTphp-php'php php.php mdphp5php(microtimephp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setHeadersphp(selfphp:php:CONTENTphp_TYPEphp,php selfphp:php:ENCphp_FORMDATAphp php.php php"php;php boundaryphp=php{php$boundaryphp}php"php)php;
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Getphp POSTphp parametersphp andphp encodephp them
+php php php php php php php php php php php php php php php php php php php php php$paramsphp php=php selfphp:php:php_flattenParametersArrayphp(php$thisphp-php>paramsPostphp)php;
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$paramsphp asphp php$ppphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$bodyphp php.php=php selfphp:php:encodeFormDataphp(php$boundaryphp,php php$ppphp[php0php]php,php php$ppphp[php1php]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Encodephp files
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>filesphp asphp php$filephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$fheadphp php=php arrayphp(selfphp:php:CONTENTphp_TYPEphp php=php>php php$filephp[php'ctypephp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$bodyphp php.php=php selfphp:php:encodeFormDataphp(php$boundaryphp,php php$filephp[php'formnamephp'php]php,php php$filephp[php'dataphp'php]php,php php$filephp[php'filenamephp'php]php,php php$fheadphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php$bodyphp php.php=php php"php-php-php{php$boundaryphp}php-php-php\rphp\nphp"php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php casephp selfphp:php:ENCphp_URLENCODEDphp:
+php php php php php php php php php php php php php php php php php php php php php/php/php Encodephp bodyphp asphp applicationphp/xphp-wwwphp-formphp-urlencoded
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setHeadersphp(selfphp:php:CONTENTphp_TYPEphp,php selfphp:php:ENCphp_URLENCODEDphp)php;
+php php php php php php php php php php php php php php php php php php php php php$bodyphp php=php httpphp_buildphp_queryphp(php$thisphp-php>paramsPostphp,php php'php'php,php php'php&php'php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$mbIntEncphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php mbphp_internalphp_encodingphp(php$mbIntEncphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Cannotphp handlephp contentphp typephp php'php{php$thisphp-php>enctypephp}php'php automaticallyphp.php"php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php"php Pleasephp usephp Zendphp_Httpphp_Clientphp:php:setRawDataphp tophp sendphp thisphp kindphp ofphp contentphp.php"php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp thephp Contentphp-Lengthphp ifphp wephp havephp aphp bodyphp orphp ifphp requestphp isphp POSTphp/PUT
+php php php php php php php php ifphp php(php$bodyphp php|php|php php$thisphp-php>methodphp php=php=php selfphp:php:POSTphp php|php|php php$thisphp-php>methodphp php=php=php selfphp:php:PUTphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setHeadersphp(selfphp:php:CONTENTphp_LENGTHphp,php strlenphp(php$bodyphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$mbIntEncphp)php)php php{
+php php php php php php php php php php php php mbphp_internalphp_encodingphp(php$mbIntEncphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$bodyphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Helperphp methodphp thatphp getsphp aphp possiblyphp multiphp-levelphp parametersphp arrayphp php(getphp or
+php php php php php php*php postphp)php andphp flattensphp itphp.
+php php php php php php*
+php php php php php php*php Thephp methodphp returnsphp anphp arrayphp ofphp php(keyphp,php valuephp)php pairsphp php(becausephp keysphp arephp not
+php php php php php php*php necessarilyphp uniquephp.php Ifphp onephp ofphp thephp parametersphp inphp asphp arrayphp,php itphp willphp also
+php php php php php php*php addphp aphp php[php]php suffixphp tophp thephp keyphp.
+php php php php php php*
+php php php php php php*php Thisphp methodphp isphp deprecatedphp sincephp Zendphp Frameworkphp php1php.php9php inphp favourphp of
+php php php php php php*php selfphp:php:php_flattenParametersArrayphp(php)php andphp willphp bephp droppedphp inphp php2php.php0
+php php php php php php*
+php php php php php php*php php@deprecatedphp sincephp php1php.php9
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$parrayphp php php php Thephp parametersphp array
+php php php php php php*php php@paramphp php boolphp php php$urlencodephp Whetherphp tophp urlencodephp thephp namephp andphp value
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_getParametersRecursivephp(php$parrayphp,php php$urlencodephp php=php falsephp)
+php php php php php{
+php php php php php php php php php/php/php Issuephp aphp deprecatedphp notice
+php php php php php php php php triggerphp_errorphp(php"Thephp php"php php.php php php_php_METHODphp_php_php php.php php"php methodphp isphp deprecatedphp andphp willphp bephp droppedphp inphp php2php.php0php.php"php,
+php php php php php php php php php php php php Ephp_USERphp_NOTICEphp)php;
+
+php php php php php php php php ifphp php(php!php isphp_arrayphp(php$parrayphp)php)php php{
+php php php php php php php php php php php php returnphp php$parrayphp;
+php php php php php php php php php}
+php php php php php php php php php$parametersphp php=php arrayphp(php)php;
+
+php php php php php php php php foreachphp php(php$parrayphp asphp php$namephp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php$urlencodephp)php php{
+php php php php php php php php php php php php php php php php php$namephp php=php urlencodephp(php$namephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php Ifphp php$valuephp isphp anphp arrayphp,php iteratephp overphp it
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$namephp php.php=php php(php$urlencodephp php?php php'php%php5Bphp%php5Dphp'php php:php php'php[php]php'php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$subvalphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$urlencodephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$subvalphp php=php urlencodephp(php$subvalphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$parametersphp[php]php php=php arrayphp(php$namephp,php php$subvalphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php ifphp php(php$urlencodephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$valuephp php=php urlencodephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$parametersphp[php]php php=php arrayphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$parametersphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Attemptphp tophp detectphp thephp MIMEphp typephp ofphp aphp filephp usingphp availablephp extensions
+php php php php php php*
+php php php php php php*php Thisphp methodphp willphp tryphp tophp detectphp thephp MIMEphp typephp ofphp aphp filephp.php Ifphp thephp fileinfo
+php php php php php php*php extensionphp isphp availablephp,php itphp willphp bephp usedphp.php Ifphp notphp,php thephp mimephp_magic
+php php php php php php*php extensionphp whichphp isphp deprectedphp butphp isphp stillphp availablephp inphp manyphp PHPphp setups
+php php php php php php*php willphp bephp triedphp.
+php php php php php php*
+php php php php php php*php Ifphp neitherphp extensionphp isphp availablephp,php thephp defaultphp applicationphp/octetphp-stream
+php php php php php php*php MIMEphp typephp willphp bephp returned
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$filephp Filephp path
+php php php php php php*php php@returnphp stringphp php php php php php php MIMEphp type
+php php php php php php*php/
+php php php php protectedphp functionphp php_detectFileMimeTypephp(php$filephp)
+php php php php php{
+php php php php php php php php php$typephp php=php nullphp;
+
+php php php php php php php php php/php/php Firstphp tryphp withphp fileinfophp functions
+php php php php php php php php ifphp php(functionphp_existsphp(php'finfophp_openphp'php)php)php php{
+php php php php php php php php php php php php ifphp php(selfphp:php:php$php_fileInfoDbphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_fileInfoDbphp php=php php@finfophp_openphp(FILEINFOphp_MIMEphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(selfphp:php:php$php_fileInfoDbphp)php php{
+php php php php php php php php php php php php php php php php php$typephp php=php finfophp_filephp(selfphp:php:php$php_fileInfoDbphp,php php$filephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php}php elseifphp php(functionphp_existsphp(php'mimephp_contentphp_typephp'php)php)php php{
+php php php php php php php php php php php php php$typephp php=php mimephp_contentphp_typephp(php$filephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Fallbackphp tophp thephp defaultphp applicationphp/octetphp-stream
+php php php php php php php php ifphp php(php!php php$typephp)php php{
+php php php php php php php php php php php php php$typephp php=php php'applicationphp/octetphp-streamphp'php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$typephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Encodephp dataphp tophp aphp multipartphp/formphp-dataphp partphp suitablephp forphp aphp POSTphp requestphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$boundary
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@paramphp mixedphp php$value
+php php php php php php*php php@paramphp stringphp php$filename
+php php php php php php*php php@paramphp arrayphp php$headersphp Associativephp arrayphp ofphp optionalphp headersphp php@examplephp php(php"Contentphp-Transferphp-Encodingphp"php php=php>php php"binaryphp"php)
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodeFormDataphp(php$boundaryphp,php php$namephp,php php$valuephp,php php$filenamephp php=php nullphp,php php$headersphp php=php arrayphp(php)php)php php{
+php php php php php php php php php$retphp php=php php"php-php-php{php$boundaryphp}php\rphp\nphp"php php.
+php php php php php php php php php php php php php'Contentphp-Dispositionphp:php formphp-dataphp;php namephp=php"php'php php.php php$namephp php.php'php"php'php;
+
+php php php php php php php php ifphp php(php$filenamephp)php php{
+php php php php php php php php php php php php php$retphp php.php=php php'php;php filenamephp=php"php'php php.php php$filenamephp php.php php'php"php'php;
+php php php php php php php php php}
+php php php php php php php php php$retphp php.php=php php"php\rphp\nphp"php;
+
+php php php php php php php php foreachphp php(php$headersphp asphp php$hnamephp php=php>php php$hvaluephp)php php{
+php php php php php php php php php php php php php$retphp php.php=php php"php{php$hnamephp}php:php php{php$hvaluephp}php\rphp\nphp"php;
+php php php php php php php php php}
+php php php php php php php php php$retphp php.php=php php"php\rphp\nphp"php;
+
+php php php php php php php php php$retphp php.php=php php"php{php$valuephp}php\rphp\nphp"php;
+
+php php php php php php php php returnphp php$retphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createphp aphp HTTPphp authenticationphp php"Authorizationphp:php"php headerphp accordingphp tophp the
+php php php php php php*php specifiedphp userphp,php passwordphp andphp authenticationphp methodphp.
+php php php php php php*
+php php php php php php*php php@seephp httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php6php1php7php.html
+php php php php php php*php php@paramphp stringphp php$user
+php php php php php php*php php@paramphp stringphp php$password
+php php php php php php*php php@paramphp stringphp php$type
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp encodeAuthHeaderphp(php$userphp,php php$passwordphp,php php$typephp php=php selfphp:php:AUTHphp_BASICphp)
+php php php php php{
+php php php php php php php php php$authHeaderphp php=php nullphp;
+
+php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php casephp selfphp:php:AUTHphp_BASICphp:
+php php php php php php php php php php php php php php php php php/php/php Inphp basicphp authenticationphp,php thephp userphp namephp cannotphp containphp php"php:php"
+php php php php php php php php php php php php php php php php ifphp php(strposphp(php$userphp,php php'php:php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Thephp userphp namephp cannotphp containphp php'php:php'php inphp php'Basicphp'php HTTPphp authenticationphp"php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$authHeaderphp php=php php'Basicphp php'php php.php basephp6php4php_encodephp(php$userphp php.php php'php:php'php php.php php$passwordphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php/php/casephp selfphp:php:AUTHphp_DIGESTphp:
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@todophp Implementphp digestphp authentication
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php/php/php php php php breakphp;
+
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Httpphp_Clientphp_Exceptionphp php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Notphp aphp supportedphp HTTPphp authenticationphp typephp:php php'php$typephp'php"php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$authHeaderphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Convertphp anphp arrayphp ofphp parametersphp intophp aphp flatphp arrayphp ofphp php(keyphp,php valuephp)php pairs
+php php php php php php*
+php php php php php php*php Willphp flattenphp aphp potentiallyphp multiphp-dimentionalphp arrayphp ofphp parametersphp php(such
+php php php php php php*php asphp POSTphp parametersphp)php intophp aphp flatphp arrayphp ofphp php(keyphp,php valuephp)php parisphp.php Inphp case
+php php php php php php*php ofphp multiphp-dimentionalphp arraysphp,php squarephp bracketsphp php(php[php]php)php willphp bephp addedphp tophp the
+php php php php php php*php keyphp tophp indicatephp anphp arrayphp.
+php php php php php php*
+php php php php php php*php php@sincephp php php1php.php9
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$parray
+php php php php php php*php php@paramphp php stringphp php$prefix
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php staticphp protectedphp functionphp php_flattenParametersArrayphp(php$parrayphp,php php$prefixphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php isphp_arrayphp(php$parrayphp)php)php php{
+php php php php php php php php php php php php returnphp php$parrayphp;
+php php php php php php php php php}
+
+php php php php php php php php php$parametersphp php=php arrayphp(php)php;
+
+php php php php php php php php foreachphp(php$parrayphp asphp php$namephp php=php>php php$valuephp)php php{
+
+php php php php php php php php php php php php php/php/php Calculatephp arrayphp key
+php php php php php php php php php php php php ifphp php(php$prefixphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_intphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php$prefixphp php.php php'php[php]php'php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php$prefixphp php.php php"php[php$namephp]php"php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$keyphp php=php php$namephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$parametersphp php=php arrayphp_mergephp(php$parametersphp,php selfphp:php:php_flattenParametersArrayphp(php$valuephp,php php$keyphp)php)php;
+
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$parametersphp[php]php php=php arrayphp(php$keyphp,php php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$parametersphp;
+php php php php php}
+
+php}

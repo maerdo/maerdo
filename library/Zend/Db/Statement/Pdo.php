@@ -1,439 +1,439 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Pdo.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Pdophp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Db_Statement
- */
-require_once 'Zend/Db/Statement.php';
+php/php*php*
+php php*php php@seephp Zendphp_Dbphp_Statement
+php php*php/
+requirephp_oncephp php'Zendphp/Dbphp/Statementphp.phpphp'php;
 
-/**
- * Proxy class to wrap a PDOStatement object.
- * Matches the interface of PDOStatement.  All methods simply proxy to the
- * matching method in PDOStatement.  PDOExceptions thrown by PDOStatement
- * are re-thrown as Zend_Db_Statement_Exception.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Statement
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggregate
-{
+php/php*php*
+php php*php Proxyphp classphp tophp wrapphp aphp PDOStatementphp objectphp.
+php php*php Matchesphp thephp interfacephp ofphp PDOStatementphp.php php Allphp methodsphp simplyphp proxyphp tophp the
+php php*php matchingphp methodphp inphp PDOStatementphp.php php PDOExceptionsphp thrownphp byphp PDOStatement
+php php*php arephp rephp-thrownphp asphp Zendphp_Dbphp_Statementphp_Exceptionphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Statement
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Dbphp_Statementphp_Pdophp extendsphp Zendphp_Dbphp_Statementphp implementsphp IteratorAggregate
+php{
 
-    /**
-     * @var int
-     */
-    protected $_fetchMode = PDO::FETCH_ASSOC;
+php php php php php/php*php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_fetchModephp php=php PDOphp:php:FETCHphp_ASSOCphp;
 
-    /**
-     * Prepare a string SQL statement and create a statement object.
-     *
-     * @param string $sql
-     * @return void
-     * @throws Zend_Db_Statement_Exception
-     */
-    protected function _prepare($sql)
-    {
-        try {
-            $this->_stmt = $this->_adapter->getConnection()->prepare($sql);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Preparephp aphp stringphp SQLphp statementphp andphp createphp aphp statementphp objectphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sql
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_preparephp(php$sqlphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$thisphp-php>php_stmtphp php=php php$thisphp-php>php_adapterphp-php>getConnectionphp(php)php-php>preparephp(php$sqlphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Bind a column of the statement result set to a PHP variable.
-     *
-     * @param string $column Name the column in the result set, either by
-     *                       position or by name.
-     * @param mixed  $param  Reference to the PHP variable containing the value.
-     * @param mixed  $type   OPTIONAL
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function bindColumn($column, &$param, $type = null)
-    {
-        try {
-            if ($type === null) {
-                return $this->_stmt->bindColumn($column, $param);
-            } else {
-                return $this->_stmt->bindColumn($column, $param, $type);
-            }
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Bindphp aphp columnphp ofphp thephp statementphp resultphp setphp tophp aphp PHPphp variablephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$columnphp Namephp thephp columnphp inphp thephp resultphp setphp,php eitherphp by
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php positionphp orphp byphp namephp.
+php php php php php php*php php@paramphp mixedphp php php$paramphp php Referencephp tophp thephp PHPphp variablephp containingphp thephp valuephp.
+php php php php php php*php php@paramphp mixedphp php php$typephp php php OPTIONAL
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp bindColumnphp(php$columnphp,php php&php$paramphp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$typephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>bindColumnphp(php$columnphp,php php$paramphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>bindColumnphp(php$columnphp,php php$paramphp,php php$typephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Binds a parameter to the specified variable name.
-     *
-     * @param mixed $parameter Name the parameter, either integer or string.
-     * @param mixed $variable  Reference to PHP variable containing the value.
-     * @param mixed $type      OPTIONAL Datatype of SQL parameter.
-     * @param mixed $length    OPTIONAL Length of SQL parameter.
-     * @param mixed $options   OPTIONAL Other options.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    protected function _bindParam($parameter, &$variable, $type = null, $length = null, $options = null)
-    {
-        try {
-            if ($type === null) {
-                if (is_bool($variable)) {
-                    $type = PDO::PARAM_BOOL;
-                } elseif ($variable === null) {
-                    $type = PDO::PARAM_NULL;
-                } elseif (is_integer($variable)) {
-                    $type = PDO::PARAM_INT;
-                } else {
-                    $type = PDO::PARAM_STR;
-                }
-            }
-            return $this->_stmt->bindParam($parameter, $variable, $type, $length, $options);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Bindsphp aphp parameterphp tophp thephp specifiedphp variablephp namephp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$parameterphp Namephp thephp parameterphp,php eitherphp integerphp orphp stringphp.
+php php php php php php*php php@paramphp mixedphp php$variablephp php Referencephp tophp PHPphp variablephp containingphp thephp valuephp.
+php php php php php php*php php@paramphp mixedphp php$typephp php php php php php OPTIONALphp Datatypephp ofphp SQLphp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$lengthphp php php php OPTIONALphp Lengthphp ofphp SQLphp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$optionsphp php php OPTIONALphp Otherphp optionsphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_bindParamphp(php$parameterphp,php php&php$variablephp,php php$typephp php=php nullphp,php php$lengthphp php=php nullphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$typephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_boolphp(php$variablephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$typephp php=php PDOphp:php:PARAMphp_BOOLphp;
+php php php php php php php php php php php php php php php php php}php elseifphp php(php$variablephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$typephp php=php PDOphp:php:PARAMphp_NULLphp;
+php php php php php php php php php php php php php php php php php}php elseifphp php(isphp_integerphp(php$variablephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$typephp php=php PDOphp:php:PARAMphp_INTphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$typephp php=php PDOphp:php:PARAMphp_STRphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>bindParamphp(php$parameterphp,php php$variablephp,php php$typephp,php php$lengthphp,php php$optionsphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Binds a value to a parameter.
-     *
-     * @param mixed $parameter Name the parameter, either integer or string.
-     * @param mixed $value     Scalar value to bind to the parameter.
-     * @param mixed $type      OPTIONAL Datatype of the parameter.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function bindValue($parameter, $value, $type = null)
-    {
-        if (is_string($parameter) && $parameter[0] != ':') {
-            $parameter = ":$parameter";
-        }
+php php php php php/php*php*
+php php php php php php*php Bindsphp aphp valuephp tophp aphp parameterphp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$parameterphp Namephp thephp parameterphp,php eitherphp integerphp orphp stringphp.
+php php php php php php*php php@paramphp mixedphp php$valuephp php php php php Scalarphp valuephp tophp bindphp tophp thephp parameterphp.
+php php php php php php*php php@paramphp mixedphp php$typephp php php php php php OPTIONALphp Datatypephp ofphp thephp parameterphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp bindValuephp(php$parameterphp,php php$valuephp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$parameterphp)php php&php&php php$parameterphp[php0php]php php!php=php php'php:php'php)php php{
+php php php php php php php php php php php php php$parameterphp php=php php"php:php$parameterphp"php;
+php php php php php php php php php}
 
-        $this->_bindParam[$parameter] = $value;
+php php php php php php php php php$thisphp-php>php_bindParamphp[php$parameterphp]php php=php php$valuephp;
 
-        try {
-            if ($type === null) {
-                return $this->_stmt->bindValue($parameter, $value);
-            } else {
-                return $this->_stmt->bindValue($parameter, $value, $type);
-            }
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$typephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>bindValuephp(php$parameterphp,php php$valuephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>bindValuephp(php$parameterphp,php php$valuephp,php php$typephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Closes the cursor, allowing the statement to be executed again.
-     *
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function closeCursor()
-    {
-        try {
-            return $this->_stmt->closeCursor();
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Closesphp thephp cursorphp,php allowingphp thephp statementphp tophp bephp executedphp againphp.
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp closeCursorphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>closeCursorphp(php)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the number of columns in the result set.
-     * Returns null if the statement has no result set metadata.
-     *
-     * @return int The number of columns.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function columnCount()
-    {
-        try {
-            return $this->_stmt->columnCount();
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp columnsphp inphp thephp resultphp setphp.
+php php php php php php*php Returnsphp nullphp ifphp thephp statementphp hasphp nophp resultphp setphp metadataphp.
+php php php php php php*
+php php php php php php*php php@returnphp intphp Thephp numberphp ofphp columnsphp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp columnCountphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>columnCountphp(php)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Retrieves the error code, if any, associated with the last operation on
-     * the statement handle.
-     *
-     * @return string error code.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function errorCode()
-    {
-        try {
-            return $this->_stmt->errorCode();
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp errorphp codephp,php ifphp anyphp,php associatedphp withphp thephp lastphp operationphp on
+php php php php php php*php thephp statementphp handlephp.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp errorphp codephp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp errorCodephp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>errorCodephp(php)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Retrieves an array of error information, if any, associated with the
-     * last operation on the statement handle.
-     *
-     * @return array
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function errorInfo()
-    {
-        try {
-            return $this->_stmt->errorInfo();
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp anphp arrayphp ofphp errorphp informationphp,php ifphp anyphp,php associatedphp withphp the
+php php php php php php*php lastphp operationphp onphp thephp statementphp handlephp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp errorInfophp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>errorInfophp(php)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Executes a prepared statement.
-     *
-     * @param array $params OPTIONAL Values to bind to parameter placeholders.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function _execute(array $params = null)
-    {
-        try {
-            if ($params !== null) {
-                return $this->_stmt->execute($params);
-            } else {
-                return $this->_stmt->execute();
-            }
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), (int) $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Executesphp aphp preparedphp statementphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$paramsphp OPTIONALphp Valuesphp tophp bindphp tophp parameterphp placeholdersphp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_executephp(arrayphp php$paramsphp php=php nullphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$paramsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>executephp(php$paramsphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>executephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php(intphp)php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Fetches a row from the result set.
-     *
-     * @param int $style  OPTIONAL Fetch mode for this fetch operation.
-     * @param int $cursor OPTIONAL Absolute, relative, or other.
-     * @param int $offset OPTIONAL Number for absolute or relative cursors.
-     * @return mixed Array, object, or scalar depending on fetch mode.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetch($style = null, $cursor = null, $offset = null)
-    {
-        if ($style === null) {
-            $style = $this->_fetchMode;
-        }
-        try {
-            return $this->_stmt->fetch($style, $cursor, $offset);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Fetchesphp aphp rowphp fromphp thephp resultphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$stylephp php OPTIONALphp Fetchphp modephp forphp thisphp fetchphp operationphp.
+php php php php php php*php php@paramphp intphp php$cursorphp OPTIONALphp Absolutephp,php relativephp,php orphp otherphp.
+php php php php php php*php php@paramphp intphp php$offsetphp OPTIONALphp Numberphp forphp absolutephp orphp relativephp cursorsphp.
+php php php php php php*php php@returnphp mixedphp Arrayphp,php objectphp,php orphp scalarphp dependingphp onphp fetchphp modephp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchphp(php$stylephp php=php nullphp,php php$cursorphp php=php nullphp,php php$offsetphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$stylephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$stylephp php=php php$thisphp-php>php_fetchModephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>fetchphp(php$stylephp,php php$cursorphp,php php$offsetphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Required by IteratorAggregate interface
-     *
-     * @return IteratorIterator
-     */
-    public function getIterator()
-    {
-        return new IteratorIterator($this->_stmt);
-    }
+php php php php php/php*php*
+php php php php php php*php Requiredphp byphp IteratorAggregatephp interface
+php php php php php php*
+php php php php php php*php php@returnphp IteratorIterator
+php php php php php php*php/
+php php php php publicphp functionphp getIteratorphp(php)
+php php php php php{
+php php php php php php php php returnphp newphp IteratorIteratorphp(php$thisphp-php>php_stmtphp)php;
+php php php php php}
 
-    /**
-     * Returns an array containing all of the result set rows.
-     *
-     * @param int $style OPTIONAL Fetch mode.
-     * @param int $col   OPTIONAL Column number, if fetch mode is by column.
-     * @return array Collection of rows, each in a format by the fetch mode.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetchAll($style = null, $col = null)
-    {
-        if ($style === null) {
-            $style = $this->_fetchMode;
-        }
-        try {
-            if ($style == PDO::FETCH_COLUMN) {
-                if ($col === null) {
-                    $col = 0;
-                }
-                return $this->_stmt->fetchAll($style, $col);
-            } else {
-                return $this->_stmt->fetchAll($style);
-            }
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp containingphp allphp ofphp thephp resultphp setphp rowsphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$stylephp OPTIONALphp Fetchphp modephp.
+php php php php php php*php php@paramphp intphp php$colphp php php OPTIONALphp Columnphp numberphp,php ifphp fetchphp modephp isphp byphp columnphp.
+php php php php php php*php php@returnphp arrayphp Collectionphp ofphp rowsphp,php eachphp inphp aphp formatphp byphp thephp fetchphp modephp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchAllphp(php$stylephp php=php nullphp,php php$colphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$stylephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$stylephp php=php php$thisphp-php>php_fetchModephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php$stylephp php=php=php PDOphp:php:FETCHphp_COLUMNphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$colphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$colphp php=php php0php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>fetchAllphp(php$stylephp,php php$colphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>fetchAllphp(php$stylephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns a single column from the next row of a result set.
-     *
-     * @param int $col OPTIONAL Position of the column to fetch.
-     * @return string
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetchColumn($col = 0)
-    {
-        try {
-            return $this->_stmt->fetchColumn($col);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp singlephp columnphp fromphp thephp nextphp rowphp ofphp aphp resultphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$colphp OPTIONALphp Positionphp ofphp thephp columnphp tophp fetchphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchColumnphp(php$colphp php=php php0php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>fetchColumnphp(php$colphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Fetches the next row and returns it as an object.
-     *
-     * @param string $class  OPTIONAL Name of the class to create.
-     * @param array  $config OPTIONAL Constructor arguments for the class.
-     * @return mixed One object instance of the specified class.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function fetchObject($class = 'stdClass', array $config = array())
-    {
-        try {
-            return $this->_stmt->fetchObject($class, $config);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Fetchesphp thephp nextphp rowphp andphp returnsphp itphp asphp anphp objectphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$classphp php OPTIONALphp Namephp ofphp thephp classphp tophp createphp.
+php php php php php php*php php@paramphp arrayphp php php$configphp OPTIONALphp Constructorphp argumentsphp forphp thephp classphp.
+php php php php php php*php php@returnphp mixedphp Onephp objectphp instancephp ofphp thephp specifiedphp classphp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp fetchObjectphp(php$classphp php=php php'stdClassphp'php,php arrayphp php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>fetchObjectphp(php$classphp,php php$configphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Retrieve a statement attribute.
-     *
-     * @param integer $key Attribute name.
-     * @return mixed      Attribute value.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function getAttribute($key)
-    {
-        try {
-            return $this->_stmt->getAttribute($key);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp aphp statementphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$keyphp Attributephp namephp.
+php php php php php php*php php@returnphp mixedphp php php php php php Attributephp valuephp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getAttributephp(php$keyphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>getAttributephp(php$keyphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns metadata for a column in a result set.
-     *
-     * @param int $column
-     * @return mixed
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function getColumnMeta($column)
-    {
-        try {
-            return $this->_stmt->getColumnMeta($column);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp metadataphp forphp aphp columnphp inphp aphp resultphp setphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$column
+php php php php php php*php php@returnphp mixed
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getColumnMetaphp(php$columnphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>getColumnMetaphp(php$columnphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Retrieves the next rowset (result set) for a SQL statement that has
-     * multiple result sets.  An example is a stored procedure that returns
-     * the results of multiple queries.
-     *
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function nextRowset()
-    {
-        try {
-            return $this->_stmt->nextRowset();
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp nextphp rowsetphp php(resultphp setphp)php forphp aphp SQLphp statementphp thatphp has
+php php php php php php*php multiplephp resultphp setsphp.php php Anphp examplephp isphp aphp storedphp procedurephp thatphp returns
+php php php php php php*php thephp resultsphp ofphp multiplephp queriesphp.
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp nextRowsetphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>nextRowsetphp(php)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the number of rows affected by the execution of the
-     * last INSERT, DELETE, or UPDATE statement executed by this
-     * statement object.
-     *
-     * @return int     The number of rows affected.
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function rowCount()
-    {
-        try {
-            return $this->_stmt->rowCount();
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp rowsphp affectedphp byphp thephp executionphp ofphp the
+php php php php php php*php lastphp INSERTphp,php DELETEphp,php orphp UPDATEphp statementphp executedphp byphp this
+php php php php php php*php statementphp objectphp.
+php php php php php php*
+php php php php php php*php php@returnphp intphp php php php php Thephp numberphp ofphp rowsphp affectedphp.
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp rowCountphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>rowCountphp(php)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set a statement attribute.
-     *
-     * @param string $key Attribute name.
-     * @param mixed  $val Attribute value.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function setAttribute($key, $val)
-    {
-        try {
-            return $this->_stmt->setAttribute($key, $val);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp statementphp attributephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$keyphp Attributephp namephp.
+php php php php php php*php php@paramphp mixedphp php php$valphp Attributephp valuephp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setAttributephp(php$keyphp,php php$valphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>setAttributephp(php$keyphp,php php$valphp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set the default fetch mode for this statement.
-     *
-     * @param int   $mode The fetch mode.
-     * @return bool
-     * @throws Zend_Db_Statement_Exception
-     */
-    public function setFetchMode($mode)
-    {
-        $this->_fetchMode = $mode;
-        try {
-            return $this->_stmt->setFetchMode($mode);
-        } catch (PDOException $e) {
-            require_once 'Zend/Db/Statement/Exception.php';
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp defaultphp fetchphp modephp forphp thisphp statementphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php php php$modephp Thephp fetchphp modephp.
+php php php php php php*php php@returnphp bool
+php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setFetchModephp(php$modephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fetchModephp php=php php$modephp;
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_stmtphp-php>setFetchModephp(php$modephp)php;
+php php php php php php php php php}php catchphp php(PDOExceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Statementphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Statementphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
+php php php php php php php php php}
+php php php php php}
 
-}
+php}

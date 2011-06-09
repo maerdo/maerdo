@@ -1,69 +1,69 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Interface.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Interfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * The Interface required by any InfoCard Assertion Object implemented within the component
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_InfoCard_Xml_Assertion_Interface
-{
-    /**
-     * Get the Assertion ID of the assertion
-     *
-     * @return string The Assertion ID
-     */
-    public function getAssertionID();
+php/php*php*
+php php*php Thephp Interfacephp requiredphp byphp anyphp InfoCardphp Assertionphp Objectphp implementedphp withinphp thephp component
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_InfoCardphp_Xmlphp_Assertionphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Assertionphp IDphp ofphp thephp assertion
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp Assertionphp ID
+php php php php php php*php/
+php php php php publicphp functionphp getAssertionIDphp(php)php;
 
-    /**
-     * Return an array of attributes (claims) contained within the assertion
-     *
-     * @return array An array of attributes / claims within the assertion
-     */
-    public function getAttributes();
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp attributesphp php(claimsphp)php containedphp withinphp thephp assertion
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp Anphp arrayphp ofphp attributesphp php/php claimsphp withinphp thephp assertion
+php php php php php php*php/
+php php php php publicphp functionphp getAttributesphp(php)php;
 
-    /**
-     * Get the Assertion URI for this type of Assertion
-     *
-     * @return string the Assertion URI
-     */
-    public function getAssertionURI();
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Assertionphp URIphp forphp thisphp typephp ofphp Assertion
+php php php php php php*
+php php php php php php*php php@returnphp stringphp thephp Assertionphp URI
+php php php php php php*php/
+php php php php publicphp functionphp getAssertionURIphp(php)php;
 
-    /**
-     * Return an array of conditions which the assertions are predicated on
-     *
-     * @return array an array of conditions
-     */
-    public function getConditions();
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp conditionsphp whichphp thephp assertionsphp arephp predicatedphp on
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp anphp arrayphp ofphp conditions
+php php php php php php*php/
+php php php php publicphp functionphp getConditionsphp(php)php;
 
-    /**
-     * Validate the conditions array returned from the getConditions() call
-     *
-     * @param array $conditions An array of condtions for the assertion taken from getConditions()
-     * @return mixed Boolean true on success, an array of condition, error message on failure
-     */
-    public function validateConditions(Array $conditions);
-}
+php php php php php/php*php*
+php php php php php php*php Validatephp thephp conditionsphp arrayphp returnedphp fromphp thephp getConditionsphp(php)php call
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$conditionsphp Anphp arrayphp ofphp condtionsphp forphp thephp assertionphp takenphp fromphp getConditionsphp(php)
+php php php php php php*php php@returnphp mixedphp Booleanphp truephp onphp successphp,php anphp arrayphp ofphp conditionphp,php errorphp messagephp onphp failure
+php php php php php php*php/
+php php php php publicphp functionphp validateConditionsphp(Arrayphp php$conditionsphp)php;
+php}

@@ -1,173 +1,173 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: SecurityTokenReference.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php SecurityTokenReferencephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Zend_InfoCard_Xml_Element
- */
-require_once 'Zend/InfoCard/Xml/Element.php';
+php/php*php*
+php php*php Zendphp_InfoCardphp_Xmlphp_Element
+php php*php/
+requirephp_oncephp php'Zendphp/InfoCardphp/Xmlphp/Elementphp.phpphp'php;
 
-/**
- * Represents a SecurityTokenReference XML block
- *
- * @category   Zend
- * @package    Zend_InfoCard
- * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_InfoCard_Xml_SecurityTokenReference extends Zend_InfoCard_Xml_Element
-{
-    /**
-     * Base64 Binary Encoding URI
-     */
-    const ENCODING_BASE64BIN = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary';
+php/php*php*
+php php*php Representsphp aphp SecurityTokenReferencephp XMLphp block
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_InfoCard
+php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_InfoCardphp_Xmlphp_SecurityTokenReferencephp extendsphp Zendphp_InfoCardphp_Xmlphp_Element
+php{
+php php php php php/php*php*
+php php php php php php*php Basephp6php4php Binaryphp Encodingphp URI
+php php php php php php*php/
+php php php php constphp ENCODINGphp_BASEphp6php4BINphp php=php php'httpphp:php/php/docsphp.oasisphp-openphp.orgphp/wssphp/php2php0php0php4php/php0php1php/oasisphp-php2php0php0php4php0php1php-wssphp-soapphp-messagephp-securityphp-php1php.php0php#Basephp6php4Binaryphp'php;
 
-    /**
-     * Return an instance of the object based on the input XML
-     *
-     * @param string $xmlData The SecurityTokenReference XML Block
-     * @return Zend_InfoCard_Xml_SecurityTokenReference
-     * @throws Zend_InfoCard_Xml_Exception
-     */
-    static public function getInstance($xmlData)
-    {
-        if($xmlData instanceof Zend_InfoCard_Xml_Element) {
-            $strXmlData = $xmlData->asXML();
-        } else if (is_string($xmlData)) {
-            $strXmlData = $xmlData;
-        } else {
-            throw new Zend_InfoCard_Xml_Exception("Invalid Data provided to create instance");
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp instancephp ofphp thephp objectphp basedphp onphp thephp inputphp XML
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$xmlDataphp Thephp SecurityTokenReferencephp XMLphp Block
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Xmlphp_SecurityTokenReference
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
+php php php php php php*php/
+php php php php staticphp publicphp functionphp getInstancephp(php$xmlDataphp)
+php php php php php{
+php php php php php php php php ifphp(php$xmlDataphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php php{
+php php php php php php php php php php php php php$strXmlDataphp php=php php$xmlDataphp-php>asXMLphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(isphp_stringphp(php$xmlDataphp)php)php php{
+php php php php php php php php php php php php php$strXmlDataphp php=php php$xmlDataphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Invalidphp Dataphp providedphp tophp createphp instancephp"php)php;
+php php php php php php php php php}
 
-        $sxe = simplexml_load_string($strXmlData);
+php php php php php php php php php$sxephp php=php simplexmlphp_loadphp_stringphp(php$strXmlDataphp)php;
 
-        if($sxe->getName() != "SecurityTokenReference") {
-            throw new Zend_InfoCard_Xml_Exception("Invalid XML Block provided for SecurityTokenReference");
-        }
+php php php php php php php php ifphp(php$sxephp-php>getNamephp(php)php php!php=php php"SecurityTokenReferencephp"php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Invalidphp XMLphp Blockphp providedphp forphp SecurityTokenReferencephp"php)php;
+php php php php php php php php php}
 
-        return simplexml_load_string($strXmlData, "Zend_InfoCard_Xml_SecurityTokenReference");
-    }
+php php php php php php php php returnphp simplexmlphp_loadphp_stringphp(php$strXmlDataphp,php php"Zendphp_InfoCardphp_Xmlphp_SecurityTokenReferencephp"php)php;
+php php php php php}
 
-    /**
-     * Return the Key Identifier XML Object
-     *
-     * @return Zend_InfoCard_Xml_Element
-     * @throws Zend_InfoCard_Xml_Exception
-     */
-    protected function _getKeyIdentifier()
-    {
-        $this->registerXPathNamespace('o', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd');
-        list($keyident) = $this->xpath('//o:KeyIdentifier');
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp Keyphp Identifierphp XMLphp Object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_InfoCardphp_Xmlphp_Element
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_getKeyIdentifierphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>registerXPathNamespacephp(php'ophp'php,php php'httpphp:php/php/docsphp.oasisphp-openphp.orgphp/wssphp/php2php0php0php4php/php0php1php/oasisphp-php2php0php0php4php0php1php-wssphp-wssecurityphp-secextphp-php1php.php0php.xsdphp'php)php;
+php php php php php php php php listphp(php$keyidentphp)php php=php php$thisphp-php>xpathphp(php'php/php/ophp:KeyIdentifierphp'php)php;
 
-        if(!($keyident instanceof Zend_InfoCard_Xml_Element)) {
-            throw new Zend_InfoCard_Xml_Exception("Failed to retrieve Key Identifier");
-        }
+php php php php php php php php ifphp(php!php(php$keyidentphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Failedphp tophp retrievephp Keyphp Identifierphp"php)php;
+php php php php php php php php php}
 
-        return $keyident;
-    }
+php php php php php php php php returnphp php$keyidentphp;
+php php php php php}
 
-    /**
-     * Return the Key URI identifying the thumbprint type used
-     *
-     * @return string The thumbprint type URI
-     * @throws  Zend_InfoCard_Xml_Exception
-     */
-    public function getKeyThumbprintType()
-    {
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp Keyphp URIphp identifyingphp thephp thumbprintphp typephp used
+php php php php php php*
+php php php php php php*php php@returnphp stringphp Thephp thumbprintphp typephp URI
+php php php php php php*php php@throwsphp php Zendphp_InfoCardphp_Xmlphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getKeyThumbprintTypephp(php)
+php php php php php{
 
-        $keyident = $this->_getKeyIdentifier();
+php php php php php php php php php$keyidentphp php=php php$thisphp-php>php_getKeyIdentifierphp(php)php;
 
-        $dom = self::convertToDOM($keyident);
+php php php php php php php php php$domphp php=php selfphp:php:convertToDOMphp(php$keyidentphp)php;
 
-        if(!$dom->hasAttribute('ValueType')) {
-            throw new Zend_InfoCard_Xml_Exception("Key Identifier did not provide a type for the value");
-        }
+php php php php php php php php ifphp(php!php$domphp-php>hasAttributephp(php'ValueTypephp'php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Keyphp Identifierphp didphp notphp providephp aphp typephp forphp thephp valuephp"php)php;
+php php php php php php php php php}
 
-        return $dom->getAttribute('ValueType');
-    }
+php php php php php php php php returnphp php$domphp-php>getAttributephp(php'ValueTypephp'php)php;
+php php php php php}
 
 
-    /**
-     * Return the thumbprint encoding type used as a URI
-     *
-     * @return string the URI of the thumbprint encoding used
-     * @throws Zend_InfoCard_Xml_Exception
-     */
-    public function getKeyThumbprintEncodingType()
-    {
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp thumbprintphp encodingphp typephp usedphp asphp aphp URI
+php php php php php php*
+php php php php php php*php php@returnphp stringphp thephp URIphp ofphp thephp thumbprintphp encodingphp used
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getKeyThumbprintEncodingTypephp(php)
+php php php php php{
 
-        $keyident = $this->_getKeyIdentifier();
+php php php php php php php php php$keyidentphp php=php php$thisphp-php>php_getKeyIdentifierphp(php)php;
 
-        $dom = self::convertToDOM($keyident);
+php php php php php php php php php$domphp php=php selfphp:php:convertToDOMphp(php$keyidentphp)php;
 
-        if(!$dom->hasAttribute('EncodingType')) {
-            throw new Zend_InfoCard_Xml_Exception("Unable to determine the encoding type for the key identifier");
-        }
+php php php php php php php php ifphp(php!php$domphp-php>hasAttributephp(php'EncodingTypephp'php)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp determinephp thephp encodingphp typephp forphp thephp keyphp identifierphp"php)php;
+php php php php php php php php php}
 
-        return $dom->getAttribute('EncodingType');
-    }
+php php php php php php php php returnphp php$domphp-php>getAttributephp(php'EncodingTypephp'php)php;
+php php php php php}
 
-    /**
-     * Get the key reference data used to identify the public key
-     *
-     * @param bool $decode if true, will return a decoded version of the key
-     * @return string the key reference thumbprint, either in binary or encoded form
-     * @throws Zend_InfoCard_Xml_Exception
-     */
-    public function getKeyReference($decode = true)
-    {
-        $keyIdentifier = $this->_getKeyIdentifier();
+php php php php php/php*php*
+php php php php php php*php Getphp thephp keyphp referencephp dataphp usedphp tophp identifyphp thephp publicphp key
+php php php php php php*
+php php php php php php*php php@paramphp boolphp php$decodephp ifphp truephp,php willphp returnphp aphp decodedphp versionphp ofphp thephp key
+php php php php php php*php php@returnphp stringphp thephp keyphp referencephp thumbprintphp,php eitherphp inphp binaryphp orphp encodedphp form
+php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getKeyReferencephp(php$decodephp php=php truephp)
+php php php php php{
+php php php php php php php php php$keyIdentifierphp php=php php$thisphp-php>php_getKeyIdentifierphp(php)php;
 
-        $dom = self::convertToDOM($keyIdentifier);
-        $encoded = $dom->nodeValue;
+php php php php php php php php php$domphp php=php selfphp:php:convertToDOMphp(php$keyIdentifierphp)php;
+php php php php php php php php php$encodedphp php=php php$domphp-php>nodeValuephp;
 
-        if(empty($encoded)) {
-            throw new Zend_InfoCard_Xml_Exception("Could not find the Key Reference Encoded Value");
-        }
+php php php php php php php php ifphp(emptyphp(php$encodedphp)php)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Couldphp notphp findphp thephp Keyphp Referencephp Encodedphp Valuephp"php)php;
+php php php php php php php php php}
 
-        if($decode) {
+php php php php php php php php ifphp(php$decodephp)php php{
 
-            $decoded = "";
-            switch($this->getKeyThumbprintEncodingType()) {
-                case self::ENCODING_BASE64BIN:
+php php php php php php php php php php php php php$decodedphp php=php php"php"php;
+php php php php php php php php php php php php switchphp(php$thisphp-php>getKeyThumbprintEncodingTypephp(php)php)php php{
+php php php php php php php php php php php php php php php php casephp selfphp:php:ENCODINGphp_BASEphp6php4BINphp:
 
-                    if(version_compare(PHP_VERSION, "5.2.0", ">=")) {
-                        $decoded = base64_decode($encoded, true);
-                    } else {
-                        $decoded = base64_decode($encoded);
-                    }
+php php php php php php php php php php php php php php php php php php php php ifphp(versionphp_comparephp(PHPphp_VERSIONphp,php php"php5php.php2php.php0php"php,php php"php>php=php"php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$decodedphp php=php basephp6php4php_decodephp(php$encodedphp,php truephp)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$decodedphp php=php basephp6php4php_decodephp(php$encodedphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    break;
-                default:
-                    throw new Zend_InfoCard_Xml_Exception("Unknown Key Reference Encoding Type: {$this->getKeyThumbprintEncodingType()}");
-            }
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unknownphp Keyphp Referencephp Encodingphp Typephp:php php{php$thisphp-php>getKeyThumbprintEncodingTypephp(php)php}php"php)php;
+php php php php php php php php php php php php php}
 
-            if(!$decoded || empty($decoded)) {
-                throw new Zend_InfoCard_Xml_Exception("Failed to decode key reference");
-            }
+php php php php php php php php php php php php ifphp(php!php$decodedphp php|php|php emptyphp(php$decodedphp)php)php php{
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Failedphp tophp decodephp keyphp referencephp"php)php;
+php php php php php php php php php php php php php}
 
-            return $decoded;
-        }
+php php php php php php php php php php php php returnphp php$decodedphp;
+php php php php php php php php php}
 
-        return $encoded;
-    }
-}
+php php php php php php php php returnphp php$encodedphp;
+php php php php php}
+php}

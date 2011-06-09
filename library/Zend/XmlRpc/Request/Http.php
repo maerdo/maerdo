@@ -1,124 +1,124 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Zend_XmlRpc_Request
- */
-require_once 'Zend/XmlRpc/Request.php';
+php/php*php*
+php php*php Zendphp_XmlRpcphp_Request
+php php*php/
+requirephp_oncephp php'Zendphp/XmlRpcphp/Requestphp.phpphp'php;
 
-/**
- * XmlRpc Request object -- Request via HTTP
- *
- * Extends {@link Zend_XmlRpc_Request} to accept a request via HTTP. Request is
- * built at construction time using a raw POST; if no data is available, the
- * request is declared a fault.
- *
- * @category Zend
- * @package  Zend_XmlRpc
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version $Id: Http.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_XmlRpc_Request_Http extends Zend_XmlRpc_Request
-{
-    /**
-     * Array of headers
-     * @var array
-     */
-    protected $_headers;
+php/php*php*
+php php*php XmlRpcphp Requestphp objectphp php-php-php Requestphp viaphp HTTP
+php php*
+php php*php Extendsphp php{php@linkphp Zendphp_XmlRpcphp_Requestphp}php tophp acceptphp aphp requestphp viaphp HTTPphp.php Requestphp is
+php php*php builtphp atphp constructionphp timephp usingphp aphp rawphp POSTphp;php ifphp nophp dataphp isphp availablephp,php the
+php php*php requestphp isphp declaredphp aphp faultphp.
+php php*
+php php*php php@categoryphp Zend
+php php*php php@packagephp php Zendphp_XmlRpc
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php$Idphp:php Httpphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_XmlRpcphp_Requestphp_Httpphp extendsphp Zendphp_XmlRpcphp_Request
+php{
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp headers
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_headersphp;
 
-    /**
-     * Raw XML as received via request
-     * @var string
-     */
-    protected $_xml;
+php php php php php/php*php*
+php php php php php php*php Rawphp XMLphp asphp receivedphp viaphp request
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_xmlphp;
 
-    /**
-     * Constructor
-     *
-     * Attempts to read from php://input to get raw POST request; if an error
-     * occurs in doing so, or if the XML is invalid, the request is declared a
-     * fault.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $xml = @file_get_contents('php://input');
-        if (!$xml) {
-            require_once 'Zend/XmlRpc/Fault.php';
-            $this->_fault = new Zend_XmlRpc_Fault(630);
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php Attemptsphp tophp readphp fromphp phpphp:php/php/inputphp tophp getphp rawphp POSTphp requestphp;php ifphp anphp error
+php php php php php php*php occursphp inphp doingphp sophp,php orphp ifphp thephp XMLphp isphp invalidphp,php thephp requestphp isphp declaredphp a
+php php php php php php*php faultphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php php$xmlphp php=php php@filephp_getphp_contentsphp(php'phpphp:php/php/inputphp'php)php;
+php php php php php php php php ifphp php(php!php$xmlphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/XmlRpcphp/Faultphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>php_faultphp php=php newphp Zendphp_XmlRpcphp_Faultphp(php6php3php0php)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        $this->_xml = $xml;
+php php php php php php php php php$thisphp-php>php_xmlphp php=php php$xmlphp;
 
-        $this->loadXml($xml);
-    }
+php php php php php php php php php$thisphp-php>loadXmlphp(php$xmlphp)php;
+php php php php php}
 
-    /**
-     * Retrieve the raw XML request
-     *
-     * @return string
-     */
-    public function getRawRequest()
-    {
-        return $this->_xml;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp rawphp XMLphp request
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getRawRequestphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_xmlphp;
+php php php php php}
 
-    /**
-     * Get headers
-     *
-     * Gets all headers as key => value pairs and returns them.
-     *
-     * @return array
-     */
-    public function getHeaders()
-    {
-        if (null === $this->_headers) {
-            $this->_headers = array();
-            foreach ($_SERVER as $key => $value) {
-                if ('HTTP_' == substr($key, 0, 5)) {
-                    $header = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($key, 5)))));
-                    $this->_headers[$header] = $value;
-                }
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp headers
+php php php php php php*
+php php php php php php*php Getsphp allphp headersphp asphp keyphp php=php>php valuephp pairsphp andphp returnsphp themphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getHeadersphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_headersphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_headersphp php=php arrayphp(php)php;
+php php php php php php php php php php php php foreachphp php(php$php_SERVERphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php'HTTPphp_php'php php=php=php substrphp(php$keyphp,php php0php,php php5php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$headerphp php=php strphp_replacephp(php'php php'php,php php'php-php'php,php ucwordsphp(strtolowerphp(strphp_replacephp(php'php_php'php,php php'php php'php,php substrphp(php$keyphp,php php5php)php)php)php)php)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_headersphp[php$headerphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this->_headers;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_headersphp;
+php php php php php}
 
-    /**
-     * Retrieve the full HTTP request, including headers and XML
-     *
-     * @return string
-     */
-    public function getFullRequest()
-    {
-        $request = '';
-        foreach ($this->getHeaders() as $key => $value) {
-            $request .= $key . ': ' . $value . "\n";
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp fullphp HTTPphp requestphp,php includingphp headersphp andphp XML
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getFullRequestphp(php)
+php php php php php{
+php php php php php php php php php$requestphp php=php php'php'php;
+php php php php php php php php foreachphp php(php$thisphp-php>getHeadersphp(php)php asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$requestphp php.php=php php$keyphp php.php php'php:php php'php php.php php$valuephp php.php php"php\nphp"php;
+php php php php php php php php php}
 
-        $request .= $this->_xml;
+php php php php php php php php php$requestphp php.php=php php$thisphp-php>php_xmlphp;
 
-        return $request;
-    }
-}
+php php php php php php php php returnphp php$requestphp;
+php php php php php}
+php}

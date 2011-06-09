@@ -1,218 +1,218 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Frontend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: File.php 23330 2010-11-14 20:08:09Z mabe $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Frontend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Filephp.phpphp php2php3php3php3php0php php2php0php1php0php-php1php1php-php1php4php php2php0php:php0php8php:php0php9Zphp mabephp php$
+php php*php/
 
 
-/**
- * @see Zend_Cache_Core
- */
-require_once 'Zend/Cache/Core.php';
+php/php*php*
+php php*php php@seephp Zendphp_Cachephp_Core
+php php*php/
+requirephp_oncephp php'Zendphp/Cachephp/Corephp.phpphp'php;
 
 
-/**
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Frontend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cache_Frontend_File extends Zend_Cache_Core
-{
+php/php*php*
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Frontend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cachephp_Frontendphp_Filephp extendsphp Zendphp_Cachephp_Core
+php{
 
-    /**
-     * Consts for master_files_mode
-     */
-    const MODE_AND = 'AND';
-    const MODE_OR  = 'OR';
+php php php php php/php*php*
+php php php php php php*php Constsphp forphp masterphp_filesphp_mode
+php php php php php php*php/
+php php php php constphp MODEphp_ANDphp php=php php'ANDphp'php;
+php php php php constphp MODEphp_ORphp php php=php php'ORphp'php;
 
-    /**
-     * Available options
-     *
-     * ====> (string) master_file :
-     * - a complete path of the master file
-     * - deprecated (see master_files)
-     *
-     * ====> (array) master_files :
-     * - an array of complete path of master files
-     * - this option has to be set !
-     *
-     * ====> (string) master_files_mode :
-     * - Zend_Cache_Frontend_File::MODE_AND or Zend_Cache_Frontend_File::MODE_OR
-     * - if MODE_AND, then all master files have to be touched to get a cache invalidation
-     * - if MODE_OR (default), then a single touched master file is enough to get a cache invalidation
-     *
-     * ====> (boolean) ignore_missing_master_files
-     * - if set to true, missing master files are ignored silently
-     * - if set to false (default), an exception is thrown if there is a missing master file
-     * @var array available options
-     */
-    protected $_specificOptions = array(
-        'master_file' => null,
-        'master_files' => null,
-        'master_files_mode' => 'OR',
-        'ignore_missing_master_files' => false
-    );
+php php php php php/php*php*
+php php php php php php*php Availablephp options
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(stringphp)php masterphp_filephp php:
+php php php php php php*php php-php aphp completephp pathphp ofphp thephp masterphp file
+php php php php php php*php php-php deprecatedphp php(seephp masterphp_filesphp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(arrayphp)php masterphp_filesphp php:
+php php php php php php*php php-php anphp arrayphp ofphp completephp pathphp ofphp masterphp files
+php php php php php php*php php-php thisphp optionphp hasphp tophp bephp setphp php!
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(stringphp)php masterphp_filesphp_modephp php:
+php php php php php php*php php-php Zendphp_Cachephp_Frontendphp_Filephp:php:MODEphp_ANDphp orphp Zendphp_Cachephp_Frontendphp_Filephp:php:MODEphp_OR
+php php php php php php*php php-php ifphp MODEphp_ANDphp,php thenphp allphp masterphp filesphp havephp tophp bephp touchedphp tophp getphp aphp cachephp invalidation
+php php php php php php*php php-php ifphp MODEphp_ORphp php(defaultphp)php,php thenphp aphp singlephp touchedphp masterphp filephp isphp enoughphp tophp getphp aphp cachephp invalidation
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(booleanphp)php ignorephp_missingphp_masterphp_files
+php php php php php php*php php-php ifphp setphp tophp truephp,php missingphp masterphp filesphp arephp ignoredphp silently
+php php php php php php*php php-php ifphp setphp tophp falsephp php(defaultphp)php,php anphp exceptionphp isphp thrownphp ifphp therephp isphp aphp missingphp masterphp file
+php php php php php php*php php@varphp arrayphp availablephp options
+php php php php php php*php/
+php php php php protectedphp php$php_specificOptionsphp php=php arrayphp(
+php php php php php php php php php'masterphp_filephp'php php=php>php nullphp,
+php php php php php php php php php'masterphp_filesphp'php php=php>php nullphp,
+php php php php php php php php php'masterphp_filesphp_modephp'php php=php>php php'ORphp'php,
+php php php php php php php php php'ignorephp_missingphp_masterphp_filesphp'php php=php>php false
+php php php php php)php;
 
-    /**
-     * Master file mtimes
-     *
-     * Array of int
-     *
-     * @var array
-     */
-    private $_masterFile_mtimes = null;
+php php php php php/php*php*
+php php php php php php*php Masterphp filephp mtimes
+php php php php php php*
+php php php php php php*php Arrayphp ofphp int
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_masterFilephp_mtimesphp php=php nullphp;
 
-    /**
-     * Constructor
-     *
-     * @param  array $options Associative array of options
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function __construct(array $options = array())
-    {
-        while (list($name, $value) = each($options)) {
-            $this->setOption($name, $value);
-        }
-        if (!isset($this->_specificOptions['master_files'])) {
-            Zend_Cache::throwException('master_files option must be set');
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Associativephp arrayphp ofphp options
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_specificOptionsphp[php'masterphp_filesphp'php]php)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'masterphp_filesphp optionphp mustphp bephp setphp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Change the master_files option
-     *
-     * @param array $masterFiles the complete paths and name of the master files
-     */
-    public function setMasterFiles(array $masterFiles)
-    {
-        $this->_specificOptions['master_file']  = null; // to keep a compatibility
-        $this->_specificOptions['master_files'] = null;
-        $this->_masterFile_mtimes = array();
+php php php php php/php*php*
+php php php php php php*php Changephp thephp masterphp_filesphp option
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$masterFilesphp thephp completephp pathsphp andphp namephp ofphp thephp masterphp files
+php php php php php php*php/
+php php php php publicphp functionphp setMasterFilesphp(arrayphp php$masterFilesphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_specificOptionsphp[php'masterphp_filephp'php]php php php=php nullphp;php php/php/php tophp keepphp aphp compatibility
+php php php php php php php php php$thisphp-php>php_specificOptionsphp[php'masterphp_filesphp'php]php php=php nullphp;
+php php php php php php php php php$thisphp-php>php_masterFilephp_mtimesphp php=php arrayphp(php)php;
 
-        clearstatcache();
-        $i = 0;
-        foreach ($masterFiles as $masterFile) {
-            $mtime = @filemtime($masterFile);
+php php php php php php php php clearstatcachephp(php)php;
+php php php php php php php php php$iphp php=php php0php;
+php php php php php php php php foreachphp php(php$masterFilesphp asphp php$masterFilephp)php php{
+php php php php php php php php php php php php php$mtimephp php=php php@filemtimephp(php$masterFilephp)php;
 
-            if (!$this->_specificOptions['ignore_missing_master_files'] && !$mtime) {
-                Zend_Cache::throwException('Unable to read master_file : ' . $masterFile);
-            }
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_specificOptionsphp[php'ignorephp_missingphp_masterphp_filesphp'php]php php&php&php php!php$mtimephp)php php{
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Unablephp tophp readphp masterphp_filephp php:php php'php php.php php$masterFilephp)php;
+php php php php php php php php php php php php php}
 
-            $this->_masterFile_mtimes[$i] = $mtime;
-            $this->_specificOptions['master_files'][$i] = $masterFile;
-            if ($i === 0) { // to keep a compatibility
-                $this->_specificOptions['master_files'] = $masterFile;
-            }
+php php php php php php php php php php php php php$thisphp-php>php_masterFilephp_mtimesphp[php$iphp]php php=php php$mtimephp;
+php php php php php php php php php php php php php$thisphp-php>php_specificOptionsphp[php'masterphp_filesphp'php]php[php$iphp]php php=php php$masterFilephp;
+php php php php php php php php php php php php ifphp php(php$iphp php=php=php=php php0php)php php{php php/php/php tophp keepphp aphp compatibility
+php php php php php php php php php php php php php php php php php$thisphp-php>php_specificOptionsphp[php'masterphp_filesphp'php]php php=php php$masterFilephp;
+php php php php php php php php php php php php php}
 
-            $i++;
-        }
-    }
+php php php php php php php php php php php php php$iphp+php+php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Change the master_file option
-     *
-     * To keep the compatibility
-     *
-     * @deprecated
-     * @param string $masterFile the complete path and name of the master file
-     */
-    public function setMasterFile($masterFile)
-    {
-          $this->setMasterFiles(array($masterFile));
-    }
+php php php php php/php*php*
+php php php php php php*php Changephp thephp masterphp_filephp option
+php php php php php php*
+php php php php php php*php Tophp keepphp thephp compatibility
+php php php php php php*
+php php php php php php*php php@deprecated
+php php php php php php*php php@paramphp stringphp php$masterFilephp thephp completephp pathphp andphp namephp ofphp thephp masterphp file
+php php php php php php*php/
+php php php php publicphp functionphp setMasterFilephp(php$masterFilephp)
+php php php php php{
+php php php php php php php php php php php$thisphp-php>setMasterFilesphp(arrayphp(php$masterFilephp)php)php;
+php php php php php}
 
-    /**
-     * Public frontend to set an option
-     *
-     * Just a wrapper to get a specific behaviour for master_file
-     *
-     * @param  string $name  Name of the option
-     * @param  mixed  $value Value of the option
-     * @throws Zend_Cache_Exception
-     * @return void
-     */
-    public function setOption($name, $value)
-    {
-        if ($name == 'master_file') {
-            $this->setMasterFile($value);
-        } else if ($name == 'master_files') {
-            $this->setMasterFiles($value);
-        } else {
-            parent::setOption($name, $value);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Publicphp frontendphp tophp setphp anphp option
+php php php php php php*
+php php php php php php*php Justphp aphp wrapperphp tophp getphp aphp specificphp behaviourphp forphp masterphp_file
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$namephp php Namephp ofphp thephp option
+php php php php php php*php php@paramphp php mixedphp php php$valuephp Valuephp ofphp thephp option
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setOptionphp(php$namephp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php$namephp php=php=php php'masterphp_filephp'php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMasterFilephp(php$valuephp)php;
+php php php php php php php php php}php elsephp ifphp php(php$namephp php=php=php php'masterphp_filesphp'php)php php{
+php php php php php php php php php php php php php$thisphp-php>setMasterFilesphp(php$valuephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php parentphp:php:setOptionphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Test if a cache is available for the given id and (if yes) return it (false else)
-     *
-     * @param  string  $id                     Cache id
-     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
-     * @param  boolean $doNotUnserialize       Do not serialize (even if automatic_serialization is true) => for internal use
-     * @return mixed|false Cached datas
-     */
-    public function load($id, $doNotTestCacheValidity = false, $doNotUnserialize = false)
-    {
-        if (!$doNotTestCacheValidity) {
-            if ($this->test($id)) {
-                return parent::load($id, true, $doNotUnserialize);
-            }
-            return false;
-        }
-        return parent::load($id, true, $doNotUnserialize);
-    }
+php php php php php/php*php*
+php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp idphp andphp php(ifphp yesphp)php returnphp itphp php(falsephp elsephp)
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$idphp php php php php php php php php php php php php php php php php php php php php Cachephp id
+php php php php php php*php php@paramphp php booleanphp php$doNotTestCacheValidityphp Ifphp setphp tophp truephp,php thephp cachephp validityphp wonphp'tphp bephp tested
+php php php php php php*php php@paramphp php booleanphp php$doNotUnserializephp php php php php php php Dophp notphp serializephp php(evenphp ifphp automaticphp_serializationphp isphp truephp)php php=php>php forphp internalphp use
+php php php php php php*php php@returnphp mixedphp|falsephp Cachedphp datas
+php php php php php php*php/
+php php php php publicphp functionphp loadphp(php$idphp,php php$doNotTestCacheValidityphp php=php falsephp,php php$doNotUnserializephp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$doNotTestCacheValidityphp)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>testphp(php$idphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp parentphp:php:loadphp(php$idphp,php truephp,php php$doNotUnserializephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp parentphp:php:loadphp(php$idphp,php truephp,php php$doNotUnserializephp)php;
+php php php php php}
 
-    /**
-     * Test if a cache is available for the given id
-     *
-     * @param  string $id Cache id
-     * @return int|false Last modified time of cache entry if it is available, false otherwise
-     */
-    public function test($id)
-    {
-        $lastModified = parent::test($id);
-        if ($lastModified) {
-            if ($this->_specificOptions['master_files_mode'] == self::MODE_AND) {
-                // MODE_AND
-                foreach($this->_masterFile_mtimes as $masterFileMTime) {
-                    if ($masterFileMTime) {
-                        if ($lastModified > $masterFileMTime) {
-                            return $lastModified;
-                        }
-                    }
-                }
-            } else {
-                // MODE_OR
-                $res = true;
-                foreach($this->_masterFile_mtimes as $masterFileMTime) {
-                    if ($masterFileMTime) {
-                        if ($lastModified <= $masterFileMTime) {
-                            return false;
-                        }
-                    }
-                }
-                return $lastModified;
-            }
-        }
-        return false;
-    }
+php php php php php/php*php*
+php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp id
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
+php php php php php php*php php@returnphp intphp|falsephp Lastphp modifiedphp timephp ofphp cachephp entryphp ifphp itphp isphp availablephp,php falsephp otherwise
+php php php php php php*php/
+php php php php publicphp functionphp testphp(php$idphp)
+php php php php php{
+php php php php php php php php php$lastModifiedphp php=php parentphp:php:testphp(php$idphp)php;
+php php php php php php php php ifphp php(php$lastModifiedphp)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_specificOptionsphp[php'masterphp_filesphp_modephp'php]php php=php=php selfphp:php:MODEphp_ANDphp)php php{
+php php php php php php php php php php php php php php php php php/php/php MODEphp_AND
+php php php php php php php php php php php php php php php php foreachphp(php$thisphp-php>php_masterFilephp_mtimesphp asphp php$masterFileMTimephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$masterFileMTimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$lastModifiedphp php>php php$masterFileMTimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$lastModifiedphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php MODEphp_OR
+php php php php php php php php php php php php php php php php php$resphp php=php truephp;
+php php php php php php php php php php php php php php php php foreachphp(php$thisphp-php>php_masterFilephp_mtimesphp asphp php$masterFileMTimephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$masterFileMTimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$lastModifiedphp <php=php php$masterFileMTimephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php returnphp php$lastModifiedphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
 
-}
+php}
 

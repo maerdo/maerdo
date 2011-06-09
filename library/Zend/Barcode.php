@@ -1,352 +1,352 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Barcode.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Barcodephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * Class for generate Barcode
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Barcode
-{
-    /**
-     * Factory for Zend_Barcode classes.
-     *
-     * First argument may be a string containing the base of the adapter class
-     * name, e.g. 'int25' corresponds to class Zend_Barcode_Object_Int25.  This
-     * is case-insensitive.
-     *
-     * First argument may alternatively be an object of type Zend_Config.
-     * The barcode class base name is read from the 'barcode' property.
-     * The barcode config parameters are read from the 'params' property.
-     *
-     * Second argument is optional and may be an associative array of key-value
-     * pairs.  This is used as the argument to the barcode constructor.
-     *
-     * If the first argument is of type Zend_Config, it is assumed to contain
-     * all parameters, and the second argument is ignored.
-     *
-     * @param  mixed $barcode         String name of barcode class, or Zend_Config object.
-     * @param  mixed $renderer        String name of renderer class
-     * @param  mixed $barcodeConfig   OPTIONAL; an array or Zend_Config object with barcode parameters.
-     * @param  mixed $rendererConfig  OPTIONAL; an array or Zend_Config object with renderer parameters.
-     * @param  boolean $automaticRenderError  OPTIONAL; set the automatic rendering of exception
-     * @return Zend_Barcode
-     * @throws Zend_Barcode_Exception
-     */
-    public static function factory(
-        $barcode,
-        $renderer = 'image',
-        $barcodeConfig = array(),
-        $rendererConfig = array(),
-        $automaticRenderError = true
-    ) {
-        /*
-         * Convert Zend_Config argument to plain string
-         * barcode name and separate config object.
-         */
-        if ($barcode instanceof Zend_Config) {
-            if (isset($barcode->rendererParams)) {
-                $rendererConfig = $barcode->rendererParams->toArray();
-            }
-            if (isset($barcode->renderer)) {
-                $renderer = (string) $barcode->renderer;
-            }
-            if (isset($barcode->barcodeParams)) {
-                $barcodeConfig = $barcode->barcodeParams->toArray();
-            }
-            if (isset($barcode->barcode)) {
-                $barcode = (string) $barcode->barcode;
-            } else {
-                $barcode = null;
-            }
-        }
+php/php*php*
+php php*php Classphp forphp generatephp Barcode
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Barcode
+php{
+php php php php php/php*php*
+php php php php php php*php Factoryphp forphp Zendphp_Barcodephp classesphp.
+php php php php php php*
+php php php php php php*php Firstphp argumentphp mayphp bephp aphp stringphp containingphp thephp basephp ofphp thephp adapterphp class
+php php php php php php*php namephp,php ephp.gphp.php php'intphp2php5php'php correspondsphp tophp classphp Zendphp_Barcodephp_Objectphp_Intphp2php5php.php php This
+php php php php php php*php isphp casephp-insensitivephp.
+php php php php php php*
+php php php php php php*php Firstphp argumentphp mayphp alternativelyphp bephp anphp objectphp ofphp typephp Zendphp_Configphp.
+php php php php php php*php Thephp barcodephp classphp basephp namephp isphp readphp fromphp thephp php'barcodephp'php propertyphp.
+php php php php php php*php Thephp barcodephp configphp parametersphp arephp readphp fromphp thephp php'paramsphp'php propertyphp.
+php php php php php php*
+php php php php php php*php Secondphp argumentphp isphp optionalphp andphp mayphp bephp anphp associativephp arrayphp ofphp keyphp-value
+php php php php php php*php pairsphp.php php Thisphp isphp usedphp asphp thephp argumentphp tophp thephp barcodephp constructorphp.
+php php php php php php*
+php php php php php php*php Ifphp thephp firstphp argumentphp isphp ofphp typephp Zendphp_Configphp,php itphp isphp assumedphp tophp contain
+php php php php php php*php allphp parametersphp,php andphp thephp secondphp argumentphp isphp ignoredphp.
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$barcodephp php php php php php php php php Stringphp namephp ofphp barcodephp classphp,php orphp Zendphp_Configphp objectphp.
+php php php php php php*php php@paramphp php mixedphp php$rendererphp php php php php php php php Stringphp namephp ofphp rendererphp class
+php php php php php php*php php@paramphp php mixedphp php$barcodeConfigphp php php OPTIONALphp;php anphp arrayphp orphp Zendphp_Configphp objectphp withphp barcodephp parametersphp.
+php php php php php php*php php@paramphp php mixedphp php$rendererConfigphp php OPTIONALphp;php anphp arrayphp orphp Zendphp_Configphp objectphp withphp rendererphp parametersphp.
+php php php php php php*php php@paramphp php booleanphp php$automaticRenderErrorphp php OPTIONALphp;php setphp thephp automaticphp renderingphp ofphp exception
+php php php php php php*php php@returnphp Zendphp_Barcode
+php php php php php php*php php@throwsphp Zendphp_Barcodephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp factoryphp(
+php php php php php php php php php$barcodephp,
+php php php php php php php php php$rendererphp php=php php'imagephp'php,
+php php php php php php php php php$barcodeConfigphp php=php arrayphp(php)php,
+php php php php php php php php php$rendererConfigphp php=php arrayphp(php)php,
+php php php php php php php php php$automaticRenderErrorphp php=php true
+php php php php php)php php{
+php php php php php php php php php/php*
+php php php php php php php php php php*php Convertphp Zendphp_Configphp argumentphp tophp plainphp string
+php php php php php php php php php php*php barcodephp namephp andphp separatephp configphp objectphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$barcodephp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$barcodephp-php>rendererParamsphp)php)php php{
+php php php php php php php php php php php php php php php php php$rendererConfigphp php=php php$barcodephp-php>rendererParamsphp-php>toArrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$barcodephp-php>rendererphp)php)php php{
+php php php php php php php php php php php php php php php php php$rendererphp php=php php(stringphp)php php$barcodephp-php>rendererphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$barcodephp-php>barcodeParamsphp)php)php php{
+php php php php php php php php php php php php php php php php php$barcodeConfigphp php=php php$barcodephp-php>barcodeParamsphp-php>toArrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$barcodephp-php>barcodephp)php)php php{
+php php php php php php php php php php php php php php php php php$barcodephp php=php php(stringphp)php php$barcodephp-php>barcodephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$barcodephp php=php nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        try {
-            $barcode  = self::makeBarcode($barcode, $barcodeConfig);
-            $renderer = self::makeRenderer($renderer, $rendererConfig);
-        } catch (Zend_Exception $e) {
-            $renderable = ($e instanceof Zend_Barcode_Exception) ? $e->isRenderable() : false;
-            if ($automaticRenderError && $renderable) {
-                $barcode = self::makeBarcode('error', array(
-                    'text' => $e->getMessage()
-                ));
-                $renderer = self::makeRenderer($renderer, array());
-            } else {
-                throw $e;
-            }
-        }
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$barcodephp php php=php selfphp:php:makeBarcodephp(php$barcodephp,php php$barcodeConfigphp)php;
+php php php php php php php php php php php php php$rendererphp php=php selfphp:php:makeRendererphp(php$rendererphp,php php$rendererConfigphp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php$renderablephp php=php php(php$ephp instanceofphp Zendphp_Barcodephp_Exceptionphp)php php?php php$ephp-php>isRenderablephp(php)php php:php falsephp;
+php php php php php php php php php php php php ifphp php(php$automaticRenderErrorphp php&php&php php$renderablephp)php php{
+php php php php php php php php php php php php php php php php php$barcodephp php=php selfphp:php:makeBarcodephp(php'errorphp'php,php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'textphp'php php=php>php php$ephp-php>getMessagephp(php)
+php php php php php php php php php php php php php php php php php)php)php;
+php php php php php php php php php php php php php php php php php$rendererphp php=php selfphp:php:makeRendererphp(php$rendererphp,php arrayphp(php)php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $renderer->setAutomaticRenderError($automaticRenderError);
-        return $renderer->setBarcode($barcode);
-    }
+php php php php php php php php php$rendererphp-php>setAutomaticRenderErrorphp(php$automaticRenderErrorphp)php;
+php php php php php php php php returnphp php$rendererphp-php>setBarcodephp(php$barcodephp)php;
+php php php php php}
 
-    /**
-     * Barcode Constructor
-     *
-     * @param mixed $barcode        String name of barcode class, or Zend_Config object.
-     * @param mixed $barcodeConfig  OPTIONAL; an array or Zend_Config object with barcode parameters.
-     * @return Zend_Barcode_Object
-     */
-    public static function makeBarcode($barcode, $barcodeConfig = array())
-    {
-        if ($barcode instanceof Zend_Barcode_Object_ObjectAbstract) {
-            return $barcode;
-        }
+php php php php php/php*php*
+php php php php php php*php Barcodephp Constructor
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$barcodephp php php php php php php php Stringphp namephp ofphp barcodephp classphp,php orphp Zendphp_Configphp objectphp.
+php php php php php php*php php@paramphp mixedphp php$barcodeConfigphp php OPTIONALphp;php anphp arrayphp orphp Zendphp_Configphp objectphp withphp barcodephp parametersphp.
+php php php php php php*php php@returnphp Zendphp_Barcodephp_Object
+php php php php php php*php/
+php php php php publicphp staticphp functionphp makeBarcodephp(php$barcodephp,php php$barcodeConfigphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$barcodephp instanceofphp Zendphp_Barcodephp_Objectphp_ObjectAbstractphp)php php{
+php php php php php php php php php php php php returnphp php$barcodephp;
+php php php php php php php php php}
 
-        /*
-         * Convert Zend_Config argument to plain string
-         * barcode name and separate config object.
-         */
-        if ($barcode instanceof Zend_Config) {
-            if (isset($barcode->barcodeParams) && $barcode->barcodeParams instanceof Zend_Config) {
-                $barcodeConfig = $barcode->barcodeParams->toArray();
-            }
-            if (isset($barcode->barcode)) {
-                $barcode = (string) $barcode->barcode;
-            } else {
-                $barcode = null;
-            }
-        }
-        if ($barcodeConfig instanceof Zend_Config) {
-            $barcodeConfig = $barcodeConfig->toArray();
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Convertphp Zendphp_Configphp argumentphp tophp plainphp string
+php php php php php php php php php php*php barcodephp namephp andphp separatephp configphp objectphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$barcodephp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$barcodephp-php>barcodeParamsphp)php php&php&php php$barcodephp-php>barcodeParamsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php php php php php$barcodeConfigphp php=php php$barcodephp-php>barcodeParamsphp-php>toArrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$barcodephp-php>barcodephp)php)php php{
+php php php php php php php php php php php php php php php php php$barcodephp php=php php(stringphp)php php$barcodephp-php>barcodephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$barcodephp php=php nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$barcodeConfigphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$barcodeConfigphp php=php php$barcodeConfigphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        /*
-         * Verify that barcode parameters are in an array.
-         */
-        if (!is_array($barcodeConfig)) {
-            /**
-             * @see Zend_Barcode_Exception
-             */
-            require_once 'Zend/Barcode/Exception.php';
-            throw new Zend_Barcode_Exception(
-                'Barcode parameters must be in an array or a Zend_Config object'
-            );
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Verifyphp thatphp barcodephp parametersphp arephp inphp anphp arrayphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$barcodeConfigphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Barcodephp parametersphp mustphp bephp inphp anphp arrayphp orphp aphp Zendphp_Configphp objectphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        /*
-         * Verify that an barcode name has been specified.
-         */
-        if (!is_string($barcode) || empty($barcode)) {
-            /**
-             * @see Zend_Barcode_Exception
-             */
-            require_once 'Zend/Barcode/Exception.php';
-            throw new Zend_Barcode_Exception(
-                'Barcode name must be specified in a string'
-            );
-        }
-        /*
-         * Form full barcode class name
-         */
-        $barcodeNamespace = 'Zend_Barcode_Object';
-        if (isset($barcodeConfig['barcodeNamespace'])) {
-            $barcodeNamespace = $barcodeConfig['barcodeNamespace'];
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Verifyphp thatphp anphp barcodephp namephp hasphp beenphp specifiedphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!isphp_stringphp(php$barcodephp)php php|php|php emptyphp(php$barcodephp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Barcodephp namephp mustphp bephp specifiedphp inphp aphp stringphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php php/php*
+php php php php php php php php php php*php Formphp fullphp barcodephp classphp name
+php php php php php php php php php php*php/
+php php php php php php php php php$barcodeNamespacephp php=php php'Zendphp_Barcodephp_Objectphp'php;
+php php php php php php php php ifphp php(issetphp(php$barcodeConfigphp[php'barcodeNamespacephp'php]php)php)php php{
+php php php php php php php php php php php php php$barcodeNamespacephp php=php php$barcodeConfigphp[php'barcodeNamespacephp'php]php;
+php php php php php php php php php}
 
-        $barcodeName = strtolower($barcodeNamespace . '_' . $barcode);
-        $barcodeName = str_replace(' ', '_', ucwords(
-            str_replace( '_', ' ', $barcodeName)
-        ));
+php php php php php php php php php$barcodeNamephp php=php strtolowerphp(php$barcodeNamespacephp php.php php'php_php'php php.php php$barcodephp)php;
+php php php php php php php php php$barcodeNamephp php=php strphp_replacephp(php'php php'php,php php'php_php'php,php ucwordsphp(
+php php php php php php php php php php php php strphp_replacephp(php php'php_php'php,php php'php php'php,php php$barcodeNamephp)
+php php php php php php php php php)php)php;
 
-        /*
-         * Load the barcode class.  This throws an exception
-         * if the specified class cannot be loaded.
-         */
-        if (!class_exists($barcodeName)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($barcodeName);
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Loadphp thephp barcodephp classphp.php php Thisphp throwsphp anphp exception
+php php php php php php php php php php*php ifphp thephp specifiedphp classphp cannotphp bephp loadedphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!classphp_existsphp(php$barcodeNamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$barcodeNamephp)php;
+php php php php php php php php php}
 
-        /*
-         * Create an instance of the barcode class.
-         * Pass the config to the barcode class constructor.
-         */
-        $bcAdapter = new $barcodeName($barcodeConfig);
+php php php php php php php php php/php*
+php php php php php php php php php php*php Createphp anphp instancephp ofphp thephp barcodephp classphp.
+php php php php php php php php php php*php Passphp thephp configphp tophp thephp barcodephp classphp constructorphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$bcAdapterphp php=php newphp php$barcodeNamephp(php$barcodeConfigphp)php;
 
-        /*
-         * Verify that the object created is a descendent of the abstract barcode type.
-         */
-        if (!$bcAdapter instanceof Zend_Barcode_Object_ObjectAbstract) {
-            /**
-             * @see Zend_Barcode_Exception
-             */
-            require_once 'Zend/Barcode/Exception.php';
-            throw new Zend_Barcode_Exception(
-                "Barcode class '$barcodeName' does not extend Zend_Barcode_Object_ObjectAbstract"
-            );
-        }
-        return $bcAdapter;
-    }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Verifyphp thatphp thephp objectphp createdphp isphp aphp descendentphp ofphp thephp abstractphp barcodephp typephp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!php$bcAdapterphp instanceofphp Zendphp_Barcodephp_Objectphp_ObjectAbstractphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php"Barcodephp classphp php'php$barcodeNamephp'php doesphp notphp extendphp Zendphp_Barcodephp_Objectphp_ObjectAbstractphp"
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$bcAdapterphp;
+php php php php php}
 
-    /**
-     * Renderer Constructor
-     *
-     * @param mixed $renderer           String name of renderer class, or Zend_Config object.
-     * @param mixed $rendererConfig     OPTIONAL; an array or Zend_Config object with renderer parameters.
-     * @return Zend_Barcode_Renderer
-     */
-    public static function makeRenderer($renderer = 'image', $rendererConfig = array())
-    {
-        if ($renderer instanceof Zend_Barcode_Renderer_RendererAbstract) {
-            return $renderer;
-        }
+php php php php php/php*php*
+php php php php php php*php Rendererphp Constructor
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$rendererphp php php php php php php php php php php Stringphp namephp ofphp rendererphp classphp,php orphp Zendphp_Configphp objectphp.
+php php php php php php*php php@paramphp mixedphp php$rendererConfigphp php php php php OPTIONALphp;php anphp arrayphp orphp Zendphp_Configphp objectphp withphp rendererphp parametersphp.
+php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
+php php php php php php*php/
+php php php php publicphp staticphp functionphp makeRendererphp(php$rendererphp php=php php'imagephp'php,php php$rendererConfigphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$rendererphp instanceofphp Zendphp_Barcodephp_Rendererphp_RendererAbstractphp)php php{
+php php php php php php php php php php php php returnphp php$rendererphp;
+php php php php php php php php php}
 
-        /*
-         * Convert Zend_Config argument to plain string
-         * barcode name and separate config object.
-         */
-        if ($renderer instanceof Zend_Config) {
-            if (isset($renderer->rendererParams)) {
-                $rendererConfig = $renderer->rendererParams->toArray();
-            }
-            if (isset($renderer->renderer)) {
-                $renderer = (string) $renderer->renderer;
-            }
-        }
-        if ($rendererConfig instanceof Zend_Config) {
-            $rendererConfig = $rendererConfig->toArray();
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Convertphp Zendphp_Configphp argumentphp tophp plainphp string
+php php php php php php php php php php*php barcodephp namephp andphp separatephp configphp objectphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$rendererphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php ifphp php(issetphp(php$rendererphp-php>rendererParamsphp)php)php php{
+php php php php php php php php php php php php php php php php php$rendererConfigphp php=php php$rendererphp-php>rendererParamsphp-php>toArrayphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(issetphp(php$rendererphp-php>rendererphp)php)php php{
+php php php php php php php php php php php php php php php php php$rendererphp php=php php(stringphp)php php$rendererphp-php>rendererphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$rendererConfigphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$rendererConfigphp php=php php$rendererConfigphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        /*
-         * Verify that barcode parameters are in an array.
-         */
-        if (!is_array($rendererConfig)) {
-            /**
-             * @see Zend_Barcode_Exception
-             */
-            require_once 'Zend/Barcode/Exception.php';
-            $e = new Zend_Barcode_Exception(
-                'Barcode parameters must be in an array or a Zend_Config object'
-            );
-            $e->setIsRenderable(false);
-            throw $e;
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Verifyphp thatphp barcodephp parametersphp arephp inphp anphp arrayphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$rendererConfigphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Barcodephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Barcodephp parametersphp mustphp bephp inphp anphp arrayphp orphp aphp Zendphp_Configphp objectphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php$ephp-php>setIsRenderablephp(falsephp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
 
-        /*
-         * Verify that an barcode name has been specified.
-         */
-        if (!is_string($renderer) || empty($renderer)) {
-            /**
-             * @see Zend_Barcode_Exception
-             */
-            require_once 'Zend/Barcode/Exception.php';
-            $e = new Zend_Barcode_Exception(
-                'Renderer name must be specified in a string'
-            );
-            $e->setIsRenderable(false);
-            throw $e;
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Verifyphp thatphp anphp barcodephp namephp hasphp beenphp specifiedphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!isphp_stringphp(php$rendererphp)php php|php|php emptyphp(php$rendererphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Barcodephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Rendererphp namephp mustphp bephp specifiedphp inphp aphp stringphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php$ephp-php>setIsRenderablephp(falsephp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
 
-        /*
-         * Form full barcode class name
-         */
-        $rendererNamespace = 'Zend_Barcode_Renderer';
-        if (isset($rendererConfig['rendererNamespace'])) {
-            $rendererNamespace = $rendererConfig['rendererNamespace'];
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Formphp fullphp barcodephp classphp name
+php php php php php php php php php php*php/
+php php php php php php php php php$rendererNamespacephp php=php php'Zendphp_Barcodephp_Rendererphp'php;
+php php php php php php php php ifphp php(issetphp(php$rendererConfigphp[php'rendererNamespacephp'php]php)php)php php{
+php php php php php php php php php php php php php$rendererNamespacephp php=php php$rendererConfigphp[php'rendererNamespacephp'php]php;
+php php php php php php php php php}
 
-        $rendererName = strtolower($rendererNamespace . '_' . $renderer);
-        $rendererName = str_replace(' ', '_', ucwords(
-            str_replace( '_', ' ', $rendererName)
-        ));
+php php php php php php php php php$rendererNamephp php=php strtolowerphp(php$rendererNamespacephp php.php php'php_php'php php.php php$rendererphp)php;
+php php php php php php php php php$rendererNamephp php=php strphp_replacephp(php'php php'php,php php'php_php'php,php ucwordsphp(
+php php php php php php php php php php php php strphp_replacephp(php php'php_php'php,php php'php php'php,php php$rendererNamephp)
+php php php php php php php php php)php)php;
 
-        /*
-         * Load the barcode class.  This throws an exception
-         * if the specified class cannot be loaded.
-         */
-        if (!class_exists($rendererName)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($rendererName);
-        }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Loadphp thephp barcodephp classphp.php php Thisphp throwsphp anphp exception
+php php php php php php php php php php*php ifphp thephp specifiedphp classphp cannotphp bephp loadedphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!classphp_existsphp(php$rendererNamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$rendererNamephp)php;
+php php php php php php php php php}
 
-        /*
-         * Create an instance of the barcode class.
-         * Pass the config to the barcode class constructor.
-         */
-        $rdrAdapter = new $rendererName($rendererConfig);
+php php php php php php php php php/php*
+php php php php php php php php php php*php Createphp anphp instancephp ofphp thephp barcodephp classphp.
+php php php php php php php php php php*php Passphp thephp configphp tophp thephp barcodephp classphp constructorphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$rdrAdapterphp php=php newphp php$rendererNamephp(php$rendererConfigphp)php;
 
-        /*
-         * Verify that the object created is a descendent of the abstract barcode type.
-         */
-        if (!$rdrAdapter instanceof Zend_Barcode_Renderer_RendererAbstract) {
-            /**
-             * @see Zend_Barcode_Exception
-             */
-            require_once 'Zend/Barcode/Exception.php';
-            $e = new Zend_Barcode_Exception(
-                "Renderer class '$rendererName' does not extend Zend_Barcode_Renderer_RendererAbstract"
-            );
-            $e->setIsRenderable(false);
-            throw $e;
-        }
-        return $rdrAdapter;
-    }
+php php php php php php php php php/php*
+php php php php php php php php php php*php Verifyphp thatphp thephp objectphp createdphp isphp aphp descendentphp ofphp thephp abstractphp barcodephp typephp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php!php$rdrAdapterphp instanceofphp Zendphp_Barcodephp_Rendererphp_RendererAbstractphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Barcodephp_Exceptionphp(
+php php php php php php php php php php php php php php php php php"Rendererphp classphp php'php$rendererNamephp'php doesphp notphp extendphp Zendphp_Barcodephp_Rendererphp_RendererAbstractphp"
+php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php$ephp-php>setIsRenderablephp(falsephp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$rdrAdapterphp;
+php php php php php}
 
-    /**
-     * Proxy to renderer render() method
-     *
-     * @param string | Zend_Barcode_Object | array | Zend_Config $barcode
-     * @param string | Zend_Barcode_Renderer $renderer
-     * @param array | Zend_Config $barcodeConfig
-     * @param array | Zend_Config $rendererConfig
-     */
-    public static function render(
-        $barcode,
-        $renderer,
-        $barcodeConfig = array(),
-        $rendererConfig = array()
-    ) {
-        self::factory($barcode, $renderer, $barcodeConfig, $rendererConfig)->render();
-    }
+php php php php php/php*php*
+php php php php php php*php Proxyphp tophp rendererphp renderphp(php)php method
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php|php Zendphp_Barcodephp_Objectphp php|php arrayphp php|php Zendphp_Configphp php$barcode
+php php php php php php*php php@paramphp stringphp php|php Zendphp_Barcodephp_Rendererphp php$renderer
+php php php php php php*php php@paramphp arrayphp php|php Zendphp_Configphp php$barcodeConfig
+php php php php php php*php php@paramphp arrayphp php|php Zendphp_Configphp php$rendererConfig
+php php php php php php*php/
+php php php php publicphp staticphp functionphp renderphp(
+php php php php php php php php php$barcodephp,
+php php php php php php php php php$rendererphp,
+php php php php php php php php php$barcodeConfigphp php=php arrayphp(php)php,
+php php php php php php php php php$rendererConfigphp php=php arrayphp(php)
+php php php php php)php php{
+php php php php php php php php selfphp:php:factoryphp(php$barcodephp,php php$rendererphp,php php$barcodeConfigphp,php php$rendererConfigphp)php-php>renderphp(php)php;
+php php php php php}
 
-    /**
-     * Proxy to renderer draw() method
-     *
-     * @param string | Zend_Barcode_Object | array | Zend_Config $barcode
-     * @param string | Zend_Barcode_Renderer $renderer
-     * @param array | Zend_Config $barcodeConfig
-     * @param array | Zend_Config $rendererConfig
-     * @return mixed
-     */
-    public static function draw(
-        $barcode,
-        $renderer,
-        $barcodeConfig = array(),
-        $rendererConfig = array()
-    ) {
-        return self::factory($barcode, $renderer, $barcodeConfig, $rendererConfig)->draw();
-    }
+php php php php php/php*php*
+php php php php php php*php Proxyphp tophp rendererphp drawphp(php)php method
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php|php Zendphp_Barcodephp_Objectphp php|php arrayphp php|php Zendphp_Configphp php$barcode
+php php php php php php*php php@paramphp stringphp php|php Zendphp_Barcodephp_Rendererphp php$renderer
+php php php php php php*php php@paramphp arrayphp php|php Zendphp_Configphp php$barcodeConfig
+php php php php php php*php php@paramphp arrayphp php|php Zendphp_Configphp php$rendererConfig
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp staticphp functionphp drawphp(
+php php php php php php php php php$barcodephp,
+php php php php php php php php php$rendererphp,
+php php php php php php php php php$barcodeConfigphp php=php arrayphp(php)php,
+php php php php php php php php php$rendererConfigphp php=php arrayphp(php)
+php php php php php)php php{
+php php php php php php php php returnphp selfphp:php:factoryphp(php$barcodephp,php php$rendererphp,php php$barcodeConfigphp,php php$rendererConfigphp)php-php>drawphp(php)php;
+php php php php php}
 
-    /**
-     * Proxy for setBarcodeFont of Zend_Barcode_Object
-     * @param string $font
-     * @eturn void
-     */
-    public static function setBarcodeFont($font)
-    {
-        require_once 'Zend/Barcode/Object/ObjectAbstract.php';
-        Zend_Barcode_Object_ObjectAbstract::setBarcodeFont($font);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Proxyphp forphp setBarcodeFontphp ofphp Zendphp_Barcodephp_Object
+php php php php php php*php php@paramphp stringphp php$font
+php php php php php php*php php@eturnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setBarcodeFontphp(php$fontphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Objectphp/ObjectAbstractphp.phpphp'php;
+php php php php php php php php Zendphp_Barcodephp_Objectphp_ObjectAbstractphp:php:setBarcodeFontphp(php$fontphp)php;
+php php php php php}
+php}

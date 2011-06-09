@@ -1,128 +1,128 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ProjectDirectory.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ProjectDirectoryphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Project_Context_Filesystem_Directory
- */
-require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_Directory
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Filesystemphp/Directoryphp.phpphp'php;
 
-/**
- * @see Zend_Tool_Project_Context_System_Interface
- */
-require_once 'Zend/Tool/Project/Context/System/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Systemphp/Interfacephp.phpphp'php;
 
-/**
- * @see Zend_Tool_Project_Context_System_TopLevelRestrictable
- */
-require_once 'Zend/Tool/Project/Context/System/TopLevelRestrictable.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_TopLevelRestrictable
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Systemphp/TopLevelRestrictablephp.phpphp'php;
 
-/**
- * @see Zend_Tool_Project_Context_System_NotOverwritable
- */
-require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_NotOverwritable
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Systemphp/NotOverwritablephp.phpphp'php;
 
-/**
- * This class is the front most class for utilizing Zend_Tool_Project
- *
- * A profile is a hierarchical set of resources that keep track of
- * items within a specific project.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Project_Context_System_ProjectDirectory
-    extends Zend_Tool_Project_Context_Filesystem_Directory
-    implements Zend_Tool_Project_Context_System_Interface,
-               Zend_Tool_Project_Context_System_NotOverwritable,
-               Zend_Tool_Project_Context_System_TopLevelRestrictable
-{
+php/php*php*
+php php*php Thisphp classphp isphp thephp frontphp mostphp classphp forphp utilizingphp Zendphp_Toolphp_Project
+php php*
+php php*php Aphp profilephp isphp aphp hierarchicalphp setphp ofphp resourcesphp thatphp keepphp trackphp of
+php php*php itemsphp withinphp aphp specificphp projectphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_ProjectDirectory
+php php php php extendsphp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_Directory
+php php php php implementsphp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_Interfacephp,
+php php php php php php php php php php php php php php php Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_NotOverwritablephp,
+php php php php php php php php php php php php php php php Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_TopLevelRestrictable
+php{
 
-    /**
-     * @var string
-     */
-    protected $_filesystemName = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_filesystemNamephp php=php nullphp;
 
-    /**
-     * getName()
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'ProjectDirectory';
-    }
+php php php php php/php*php*
+php php php php php php*php getNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php'ProjectDirectoryphp'php;
+php php php php php}
 
-    /**
-     * init()
-     *
-     * @return Zend_Tool_Project_Context_System_ProjectDirectory
-     */
-    public function init()
-    {
-        // get base path from attributes (would be in path attribute)
-        $projectDirectory = $this->_resource->getAttribute('path');
+php php php php php/php*php*
+php php php php php php*php initphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_ProjectDirectory
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php php php php php/php/php getphp basephp pathphp fromphp attributesphp php(wouldphp bephp inphp pathphp attributephp)
+php php php php php php php php php$projectDirectoryphp php=php php$thisphp-php>php_resourcephp-php>getAttributephp(php'pathphp'php)php;
 
-        // if not, get from profile
-        if ($projectDirectory == null) {
-            $projectDirectory = $this->_resource->getProfile()->getAttribute('projectDirectory');
-        }
+php php php php php php php php php/php/php ifphp notphp,php getphp fromphp profile
+php php php php php php php php ifphp php(php$projectDirectoryphp php=php=php nullphp)php php{
+php php php php php php php php php php php php php$projectDirectoryphp php=php php$thisphp-php>php_resourcephp-php>getProfilephp(php)php-php>getAttributephp(php'projectDirectoryphp'php)php;
+php php php php php php php php php}
 
-        // if not, exception.
-        if ($projectDirectory == null) {
-            require_once 'Zend/Tool/Project/Exception.php';
-            throw new Zend_Tool_Project_Exception('projectDirectory cannot find the directory for this project.');
-        }
+php php php php php php php php php/php/php ifphp notphp,php exceptionphp.
+php php php php php php php php ifphp php(php$projectDirectoryphp php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Exceptionphp(php'projectDirectoryphp cannotphp findphp thephp directoryphp forphp thisphp projectphp.php'php)php;
+php php php php php php php php php}
 
-        $this->_baseDirectory = rtrim($projectDirectory, '\\/');
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_baseDirectoryphp php=php rtrimphp(php$projectDirectoryphp,php php'php\php\php/php'php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * create()
-     *
-     * @return Zend_Tool_Project_Context_System_ProjectDirectory
-     */
-    public function create()
-    {
-        if (file_exists($this->getPath())) {
-            /*
-            foreach (new DirectoryIterator($this->getPath()) as $item) {
-                if (!$item->isDot()) {
-                    if ($registry->getClient()->isInteractive()) {
-                        // @todo prompt for override
-                    } else {
-                        require_once 'Zend/Tool/Project/Context/Exception.php';
-                        throw new Zend_Tool_Project_Context_Exception('This directory is not empty, project creation aborted.');
-                    }
-                    break;
-                }
-            }
-            */
-        }
+php php php php php/php*php*
+php php php php php php*php createphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Contextphp_Systemphp_ProjectDirectory
+php php php php php php*php/
+php php php php publicphp functionphp createphp(php)
+php php php php php{
+php php php php php php php php ifphp php(filephp_existsphp(php$thisphp-php>getPathphp(php)php)php)php php{
+php php php php php php php php php php php php php/php*
+php php php php php php php php php php php php foreachphp php(newphp DirectoryIteratorphp(php$thisphp-php>getPathphp(php)php)php asphp php$itemphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!php$itemphp-php>isDotphp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$registryphp-php>getClientphp(php)php-php>isInteractivephp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php php@todophp promptphp forphp override
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Contextphp_Exceptionphp(php'Thisphp directoryphp isphp notphp emptyphp,php projectphp creationphp abortedphp.php'php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php*php/
+php php php php php php php php php}
 
-        parent::create();
-        return $this;
-    }
+php php php php php php php php parentphp:php:createphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-}
+php}

@@ -1,303 +1,303 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Reference.php 22797 2010-08-06 15:02:12Z alexander $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Referencephp.phpphp php2php2php7php9php7php php2php0php1php0php-php0php8php-php0php6php php1php5php:php0php2php:php1php2Zphp alexanderphp php$
+php php*php/
 
 
-/** Internally used classes */
-require_once 'Zend/Pdf/Element/Null.php';
+php/php*php*php Internallyphp usedphp classesphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Nullphp.phpphp'php;
 
 
-/** Zend_Pdf_Element */
-require_once 'Zend/Pdf/Element.php';
+php/php*php*php Zendphp_Pdfphp_Elementphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
 
-/**
- * PDF file 'reference' element implementation
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Pdf_Element_Reference extends Zend_Pdf_Element
-{
-    /**
-     * Object value
-     * The reference to the object
-     *
-     * @var mixed
-     */
-    private $_ref;
+php/php*php*
+php php*php PDFphp filephp php'referencephp'php elementphp implementation
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Pdfphp_Elementphp_Referencephp extendsphp Zendphp_Pdfphp_Element
+php{
+php php php php php/php*php*
+php php php php php php*php Objectphp value
+php php php php php php*php Thephp referencephp tophp thephp object
+php php php php php php*
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php privatephp php$php_refphp;
 
-    /**
-     * Object number within PDF file
-     *
-     * @var integer
-     */
-    private $_objNum;
+php php php php php/php*php*
+php php php php php php*php Objectphp numberphp withinphp PDFphp file
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_objNumphp;
 
-    /**
-     * Generation number
-     *
-     * @var integer
-     */
-    private $_genNum;
+php php php php php/php*php*
+php php php php php php*php Generationphp number
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_genNumphp;
 
-    /**
-     * Reference context
-     *
-     * @var Zend_Pdf_Element_Reference_Context
-     */
-    private $_context;
-
-
-    /**
-     * Reference to the factory.
-     *
-     * It's the same as referenced object factory, but we save it here to avoid
-     * unnecessary dereferencing, whech can produce cascade dereferencing and parsing.
-     * The same for duplication of getFactory() function. It can be processed by __call()
-     * method, but we catch it here.
-     *
-     * @var Zend_Pdf_ElementFactory
-     */
-    private $_factory;
-
-    /**
-     * Object constructor:
-     *
-     * @param integer $objNum
-     * @param integer $genNum
-     * @param Zend_Pdf_Element_Reference_Context $context
-     * @param Zend_Pdf_ElementFactory $factory
-     * @throws Zend_Pdf_Exception
-     */
-    public function __construct($objNum, $genNum = 0, Zend_Pdf_Element_Reference_Context $context, Zend_Pdf_ElementFactory $factory)
-    {
-        if ( !(is_integer($objNum) && $objNum > 0) ) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Object number must be positive integer');
-        }
-        if ( !(is_integer($genNum) && $genNum >= 0) ) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Generation number must be non-negative integer');
-        }
-
-        $this->_objNum  = $objNum;
-        $this->_genNum  = $genNum;
-        $this->_ref     = null;
-        $this->_context = $context;
-        $this->_factory = $factory;
-    }
-
-    /**
-     * Check, that object is generated by specified factory
-     *
-     * @return Zend_Pdf_ElementFactory
-     */
-    public function getFactory()
-    {
-        return $this->_factory;
-    }
+php php php php php/php*php*
+php php php php php php*php Referencephp context
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_Elementphp_Referencephp_Context
+php php php php php php*php/
+php php php php privatephp php$php_contextphp;
 
 
-    /**
-     * Return type of the element.
-     *
-     * @return integer
-     */
-    public function getType()
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php/php*php*
+php php php php php php*php Referencephp tophp thephp factoryphp.
+php php php php php php*
+php php php php php php*php Itphp'sphp thephp samephp asphp referencedphp objectphp factoryphp,php butphp wephp savephp itphp herephp tophp avoid
+php php php php php php*php unnecessaryphp dereferencingphp,php whechphp canphp producephp cascadephp dereferencingphp andphp parsingphp.
+php php php php php php*php Thephp samephp forphp duplicationphp ofphp getFactoryphp(php)php functionphp.php Itphp canphp bephp processedphp byphp php_php_callphp(php)
+php php php php php php*php methodphp,php butphp wephp catchphp itphp herephp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_ElementFactory
+php php php php php php*php/
+php php php php privatephp php$php_factoryphp;
 
-        return $this->_ref->getType();
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructorphp:
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$objNum
+php php php php php php*php php@paramphp integerphp php$genNum
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Referencephp_Contextphp php$context
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php$factory
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$objNumphp,php php$genNumphp php=php php0php,php Zendphp_Pdfphp_Elementphp_Referencephp_Contextphp php$contextphp,php Zendphp_Pdfphp_ElementFactoryphp php$factoryphp)
+php php php php php{
+php php php php php php php php ifphp php(php php!php(isphp_integerphp(php$objNumphp)php php&php&php php$objNumphp php>php php0php)php php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Objectphp numberphp mustphp bephp positivephp integerphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php php!php(isphp_integerphp(php$genNumphp)php php&php&php php$genNumphp php>php=php php0php)php php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Generationphp numberphp mustphp bephp nonphp-negativephp integerphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_objNumphp php php=php php$objNumphp;
+php php php php php php php php php$thisphp-php>php_genNumphp php php=php php$genNumphp;
+php php php php php php php php php$thisphp-php>php_refphp php php php php php=php nullphp;
+php php php php php php php php php$thisphp-php>php_contextphp php=php php$contextphp;
+php php php php php php php php php$thisphp-php>php_factoryphp php=php php$factoryphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp,php thatphp objectphp isphp generatedphp byphp specifiedphp factory
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_ElementFactory
+php php php php php php*php/
+php php php php publicphp functionphp getFactoryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_factoryphp;
+php php php php php}
 
 
-    /**
-     * Return reference to the object
-     *
-     * @param Zend_Pdf_Factory $factory
-     * @return string
-     */
-    public function toString($factory = null)
-    {
-        if ($factory === null) {
-            $shift = 0;
-        } else {
-            $shift = $factory->getEnumerationShift($this->_factory);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp typephp ofphp thephp elementphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
 
-        return $this->_objNum + $shift . ' ' . $this->_genNum . ' R';
-    }
+php php php php php php php php returnphp php$thisphp-php>php_refphp-php>getTypephp(php)php;
+php php php php php}
 
 
-    /**
-     * Dereference.
-     * Take inderect object, take $value member of this object (must be Zend_Pdf_Element),
-     * take reference to the $value member of this object and assign it to
-     * $value member of current PDF Reference object
-     * $obj can be null
-     *
-     * @throws Zend_Pdf_Exception
-     */
-    private function _dereference()
-    {
-        if (($obj = $this->_factory->fetchObject($this->_objNum . ' ' . $this->_genNum)) === null) {
-            $obj = $this->_context->getParser()->getObject(
-                           $this->_context->getRefTable()->getOffset($this->_objNum . ' ' . $this->_genNum . ' R'),
-                           $this->_context
-                                                          );
-        }
+php php php php php/php*php*
+php php php php php php*php Returnphp referencephp tophp thephp object
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Factoryphp php$factory
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php$factoryphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$factoryphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$shiftphp php=php php0php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$shiftphp php=php php$factoryphp-php>getEnumerationShiftphp(php$thisphp-php>php_factoryphp)php;
+php php php php php php php php php}
 
-        if ($obj === null ) {
-            $this->_ref = new Zend_Pdf_Element_Null();
-            return;
-        }
+php php php php php php php php returnphp php$thisphp-php>php_objNumphp php+php php$shiftphp php.php php'php php'php php.php php$thisphp-php>php_genNumphp php.php php'php Rphp'php;
+php php php php php}
 
-        if ($obj->toString() != $this->_objNum . ' ' . $this->_genNum . ' R') {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Incorrect reference to the object');
-        }
 
-        $this->_ref = $obj;
-    }
+php php php php php/php*php*
+php php php php php php*php Dereferencephp.
+php php php php php php*php Takephp inderectphp objectphp,php takephp php$valuephp memberphp ofphp thisphp objectphp php(mustphp bephp Zendphp_Pdfphp_Elementphp)php,
+php php php php php php*php takephp referencephp tophp thephp php$valuephp memberphp ofphp thisphp objectphp andphp assignphp itphp to
+php php php php php php*php php$valuephp memberphp ofphp currentphp PDFphp Referencephp object
+php php php php php php*php php$objphp canphp bephp null
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php privatephp functionphp php_dereferencephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php(php$objphp php=php php$thisphp-php>php_factoryphp-php>fetchObjectphp(php$thisphp-php>php_objNumphp php.php php'php php'php php.php php$thisphp-php>php_genNumphp)php)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$objphp php=php php$thisphp-php>php_contextphp-php>getParserphp(php)php-php>getObjectphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_contextphp-php>getRefTablephp(php)php-php>getOffsetphp(php$thisphp-php>php_objNumphp php.php php'php php'php php.php php$thisphp-php>php_genNumphp php.php php'php Rphp'php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_context
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-    /**
-     * Detach PDF object from the factory (if applicable), clone it and attach to new factory.
-     *
-     * @param Zend_Pdf_ElementFactory $factory  The factory to attach
-     * @param array &$processed  List of already processed indirect objects, used to avoid objects duplication
-     * @param integer $mode  Cloning mode (defines filter for objects cloning)
-     * @returns Zend_Pdf_Element
-     */
-    public function makeClone(Zend_Pdf_ElementFactory $factory, array &$processed, $mode)
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php php php php ifphp php(php$objphp php=php=php=php nullphp php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_refphp php=php newphp Zendphp_Pdfphp_Elementphp_Nullphp(php)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        // This code duplicates code in Zend_Pdf_Element_Object class,
-        // but allows to avoid unnecessary method call in most cases
-        $id = spl_object_hash($this->_ref);
-        if (isset($processed[$id])) {
-            // Do nothing if object is already processed
-            // return it
-            return $processed[$id];
-        }
+php php php php php php php php ifphp php(php$objphp-php>toStringphp(php)php php!php=php php$thisphp-php>php_objNumphp php.php php'php php'php php.php php$thisphp-php>php_genNumphp php.php php'php Rphp'php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Incorrectphp referencephp tophp thephp objectphp'php)php;
+php php php php php php php php php}
 
-        return $this->_ref->makeClone($factory, $processed, $mode);
-    }
+php php php php php php php php php$thisphp-php>php_refphp php=php php$objphp;
+php php php php php}
 
-    /**
-     * Mark object as modified, to include it into new PDF file segment.
-     */
-    public function touch()
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php/php*php*
+php php php php php php*php Detachphp PDFphp objectphp fromphp thephp factoryphp php(ifphp applicablephp)php,php clonephp itphp andphp attachphp tophp newphp factoryphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php$factoryphp php Thephp factoryphp tophp attach
+php php php php php php*php php@paramphp arrayphp php&php$processedphp php Listphp ofphp alreadyphp processedphp indirectphp objectsphp,php usedphp tophp avoidphp objectsphp duplication
+php php php php php php*php php@paramphp integerphp php$modephp php Cloningphp modephp php(definesphp filterphp forphp objectsphp cloningphp)
+php php php php php php*php php@returnsphp Zendphp_Pdfphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp makeClonephp(Zendphp_Pdfphp_ElementFactoryphp php$factoryphp,php arrayphp php&php$processedphp,php php$modephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
 
-        $this->_ref->touch();
-    }
+php php php php php php php php php/php/php Thisphp codephp duplicatesphp codephp inphp Zendphp_Pdfphp_Elementphp_Objectphp classphp,
+php php php php php php php php php/php/php butphp allowsphp tophp avoidphp unnecessaryphp methodphp callphp inphp mostphp cases
+php php php php php php php php php$idphp php=php splphp_objectphp_hashphp(php$thisphp-php>php_refphp)php;
+php php php php php php php php ifphp php(issetphp(php$processedphp[php$idphp]php)php)php php{
+php php php php php php php php php php php php php/php/php Dophp nothingphp ifphp objectphp isphp alreadyphp processed
+php php php php php php php php php php php php php/php/php returnphp it
+php php php php php php php php php php php php returnphp php$processedphp[php$idphp]php;
+php php php php php php php php php}
 
-    /**
-     * Return object, which can be used to identify object and its references identity
-     *
-     * @return Zend_Pdf_Element_Object
-     */
-    public function getObject()
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php php php php returnphp php$thisphp-php>php_refphp-php>makeClonephp(php$factoryphp,php php$processedphp,php php$modephp)php;
+php php php php php}
 
-        return $this->_ref;
-    }
+php php php php php/php*php*
+php php php php php php*php Markphp objectphp asphp modifiedphp,php tophp includephp itphp intophp newphp PDFphp filephp segmentphp.
+php php php php php php*php/
+php php php php publicphp functionphp touchphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
 
-    /**
-     * Get handler
-     *
-     * @param string $property
-     * @return mixed
-     */
-    public function __get($property)
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php php php php php$thisphp-php>php_refphp-php>touchphp(php)php;
+php php php php php}
 
-        return $this->_ref->$property;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp objectphp,php whichphp canphp bephp usedphp tophp identifyphp objectphp andphp itsphp referencesphp identity
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Elementphp_Object
+php php php php php php*php/
+php php php php publicphp functionphp getObjectphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
 
-    /**
-     * Set handler
-     *
-     * @param string $property
-     * @param  mixed $value
-     */
-    public function __set($property, $value)
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php php php php returnphp php$thisphp-php>php_refphp;
+php php php php php}
 
-        $this->_ref->$property = $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp handler
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$property
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp php_php_getphp(php$propertyphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
 
-    /**
-     * Call handler
-     *
-     * @param string $method
-     * @param array  $args
-     * @return mixed
-     */
-    public function __call($method, $args)
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php php php php returnphp php$thisphp-php>php_refphp-php>php$propertyphp;
+php php php php php}
 
-        return call_user_func_array(array($this->_ref, $method), $args);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp handler
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$property
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php/
+php php php php publicphp functionphp php_php_setphp(php$propertyphp,php php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
 
-    /**
-     * Clean up resources
-     */
-    public function cleanUp()
-    {
-        $this->_ref = null;
-    }
+php php php php php php php php php$thisphp-php>php_refphp-php>php$propertyphp php=php php$valuephp;
+php php php php php}
 
-    /**
-     * Convert PDF element to PHP type.
-     *
-     * @return mixed
-     */
-    public function toPhp()
-    {
-        if ($this->_ref === null) {
-            $this->_dereference();
-        }
+php php php php php/php*php*
+php php php php php php*php Callphp handler
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$method
+php php php php php php*php php@paramphp arrayphp php php$args
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
 
-        return $this->_ref->toPhp();
-    }
-}
+php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_refphp,php php$methodphp)php,php php$argsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Cleanphp upphp resources
+php php php php php php*php/
+php php php php publicphp functionphp cleanUpphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_refphp php=php nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Convertphp PDFphp elementphp tophp PHPphp typephp.
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp toPhpphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_refphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dereferencephp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_refphp-php>toPhpphp(php)php;
+php php php php php}
+php}

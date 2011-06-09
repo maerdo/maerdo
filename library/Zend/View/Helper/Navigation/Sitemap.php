@@ -1,483 +1,483 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Sitemap.php 20104 2010-01-06 21:26:01Z matthew $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Sitemapphp.phpphp php2php0php1php0php4php php2php0php1php0php-php0php1php-php0php6php php2php1php:php2php6php:php0php1Zphp matthewphp php$
+php php*php/
 
-/**
- * @see Zend_View_Helper_Navigation_HelperAbstract
- */
-require_once 'Zend/View/Helper/Navigation/HelperAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Viewphp_Helperphp_Navigationphp_HelperAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Navigationphp/HelperAbstractphp.phpphp'php;
 
-/**
- * Helper for printing sitemaps
- *
- * @link http://www.sitemaps.org/protocol.php
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_Navigation_Sitemap
-    extends Zend_View_Helper_Navigation_HelperAbstract
-{
-    /**
-     * Namespace for the <urlset> tag
-     *
-     * @var string
-     */
-    const SITEMAP_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
+php/php*php*
+php php*php Helperphp forphp printingphp sitemaps
+php php*
+php php*php php@linkphp httpphp:php/php/wwwphp.sitemapsphp.orgphp/protocolphp.php
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_Navigationphp_Sitemap
+php php php php extendsphp Zendphp_Viewphp_Helperphp_Navigationphp_HelperAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Namespacephp forphp thephp php<urlsetphp>php tag
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php constphp SITEMAPphp_NSphp php=php php'httpphp:php/php/wwwphp.sitemapsphp.orgphp/schemasphp/sitemapphp/php0php.php9php'php;
 
-    /**
-     * Schema URL
-     *
-     * @var string
-     */
-    const SITEMAP_XSD = 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd';
+php php php php php/php*php*
+php php php php php php*php Schemaphp URL
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php constphp SITEMAPphp_XSDphp php=php php'httpphp:php/php/wwwphp.sitemapsphp.orgphp/schemasphp/sitemapphp/php0php.php9php/sitemapphp.xsdphp'php;
 
-    /**
-     * Whether XML output should be formatted
-     *
-     * @var bool
-     */
-    protected $_formatOutput = false;
+php php php php php/php*php*
+php php php php php php*php Whetherphp XMLphp outputphp shouldphp bephp formatted
+php php php php php php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_formatOutputphp php=php falsephp;
 
-    /**
-     * Whether the XML declaration should be included in XML output
-     *
-     * @var bool
-     */
-    protected $_useXmlDeclaration = true;
+php php php php php/php*php*
+php php php php php php*php Whetherphp thephp XMLphp declarationphp shouldphp bephp includedphp inphp XMLphp output
+php php php php php php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_useXmlDeclarationphp php=php truephp;
 
-    /**
-     * Whether sitemap should be validated using Zend_Validate_Sitemap_*
-     *
-     * @var bool
-     */
-    protected $_useSitemapValidators = true;
+php php php php php/php*php*
+php php php php php php*php Whetherphp sitemapphp shouldphp bephp validatedphp usingphp Zendphp_Validatephp_Sitemapphp_php*
+php php php php php php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_useSitemapValidatorsphp php=php truephp;
 
-    /**
-     * Whether sitemap should be schema validated when generated
-     *
-     * @var bool
-     */
-    protected $_useSchemaValidation = false;
+php php php php php/php*php*
+php php php php php php*php Whetherphp sitemapphp shouldphp bephp schemaphp validatedphp whenphp generated
+php php php php php php*
+php php php php php php*php php@varphp bool
+php php php php php php*php/
+php php php php protectedphp php$php_useSchemaValidationphp php=php falsephp;
 
-    /**
-     * Server url
-     *
-     * @var string
-     */
-    protected $_serverUrl;
+php php php php php/php*php*
+php php php php php php*php Serverphp url
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_serverUrlphp;
 
-    /**
-     * View helper entry point:
-     * Retrieves helper and optionally sets container to operate on
-     *
-     * @param  Zend_Navigation_Container $container  [optional] container to
-     *                                               operate on
-     * @return Zend_View_Helper_Navigation_Sitemap   fluent interface, returns
-     *                                               self
-     */
-    public function sitemap(Zend_Navigation_Container $container = null)
-    {
-        if (null !== $container) {
-            $this->setContainer($container);
-        }
+php php php php php/php*php*
+php php php php php php*php Viewphp helperphp entryphp pointphp:
+php php php php php php*php Retrievesphp helperphp andphp optionallyphp setsphp containerphp tophp operatephp on
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Containerphp php$containerphp php php[optionalphp]php containerphp to
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php operatephp on
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Sitemapphp php php fluentphp interfacephp,php returns
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
+php php php php php php*php/
+php php php php publicphp functionphp sitemapphp(Zendphp_Navigationphp_Containerphp php$containerphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php!php=php=php php$containerphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setContainerphp(php$containerphp)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    // Accessors:
+php php php php php/php/php Accessorsphp:
 
-    /**
-     * Sets whether XML output should be formatted
-     *
-     * @param  bool $formatOutput                   [optional] whether output
-     *                                              should be formatted. Default
-     *                                              is true.
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
-     *                                              self
-     */
-    public function setFormatOutput($formatOutput = true)
-    {
-        $this->_formatOutput = (bool) $formatOutput;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp whetherphp XMLphp outputphp shouldphp bephp formatted
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$formatOutputphp php php php php php php php php php php php php php php php php php php php[optionalphp]php whetherphp output
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php shouldphp bephp formattedphp.php Default
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php isphp truephp.
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Sitemapphp php fluentphp interfacephp,php returns
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
+php php php php php php*php/
+php php php php publicphp functionphp setFormatOutputphp(php$formatOutputphp php=php truephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_formatOutputphp php=php php(boolphp)php php$formatOutputphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns whether XML output should be formatted
-     *
-     * @return bool  whether XML output should be formatted
-     */
-    public function getFormatOutput()
-    {
-        return $this->_formatOutput;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp whetherphp XMLphp outputphp shouldphp bephp formatted
+php php php php php php*
+php php php php php php*php php@returnphp boolphp php whetherphp XMLphp outputphp shouldphp bephp formatted
+php php php php php php*php/
+php php php php publicphp functionphp getFormatOutputphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_formatOutputphp;
+php php php php php}
 
-    /**
-     * Sets whether the XML declaration should be used in output
-     *
-     * @param  bool $useXmlDecl                     whether XML delcaration
-     *                                              should be rendered
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
-     *                                              self
-     */
-    public function setUseXmlDeclaration($useXmlDecl)
-    {
-        $this->_useXmlDeclaration = (bool) $useXmlDecl;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp whetherphp thephp XMLphp declarationphp shouldphp bephp usedphp inphp output
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$useXmlDeclphp php php php php php php php php php php php php php php php php php php php php whetherphp XMLphp delcaration
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php shouldphp bephp rendered
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Sitemapphp php fluentphp interfacephp,php returns
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
+php php php php php php*php/
+php php php php publicphp functionphp setUseXmlDeclarationphp(php$useXmlDeclphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_useXmlDeclarationphp php=php php(boolphp)php php$useXmlDeclphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns whether the XML declaration should be used in output
-     *
-     * @return bool  whether the XML declaration should be used in output
-     */
-    public function getUseXmlDeclaration()
-    {
-        return $this->_useXmlDeclaration;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp whetherphp thephp XMLphp declarationphp shouldphp bephp usedphp inphp output
+php php php php php php*
+php php php php php php*php php@returnphp boolphp php whetherphp thephp XMLphp declarationphp shouldphp bephp usedphp inphp output
+php php php php php php*php/
+php php php php publicphp functionphp getUseXmlDeclarationphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_useXmlDeclarationphp;
+php php php php php}
 
-    /**
-     * Sets whether sitemap should be validated using Zend_Validate_Sitemap_*
-     *
-     * @param  bool $useSitemapValidators           whether sitemap validators
-     *                                              should be used
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
-     *                                              self
-     */
-    public function setUseSitemapValidators($useSitemapValidators)
-    {
-        $this->_useSitemapValidators = (bool) $useSitemapValidators;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp whetherphp sitemapphp shouldphp bephp validatedphp usingphp Zendphp_Validatephp_Sitemapphp_php*
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$useSitemapValidatorsphp php php php php php php php php php php whetherphp sitemapphp validators
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php shouldphp bephp used
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Sitemapphp php fluentphp interfacephp,php returns
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
+php php php php php php*php/
+php php php php publicphp functionphp setUseSitemapValidatorsphp(php$useSitemapValidatorsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_useSitemapValidatorsphp php=php php(boolphp)php php$useSitemapValidatorsphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns whether sitemap should be validated using Zend_Validate_Sitemap_*
-     *
-     * @return bool  whether sitemap should be validated using validators
-     */
-    public function getUseSitemapValidators()
-    {
-        return $this->_useSitemapValidators;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp whetherphp sitemapphp shouldphp bephp validatedphp usingphp Zendphp_Validatephp_Sitemapphp_php*
+php php php php php php*
+php php php php php php*php php@returnphp boolphp php whetherphp sitemapphp shouldphp bephp validatedphp usingphp validators
+php php php php php php*php/
+php php php php publicphp functionphp getUseSitemapValidatorsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_useSitemapValidatorsphp;
+php php php php php}
 
-    /**
-     * Sets whether sitemap should be schema validated when generated
-     *
-     * @param  bool $schemaValidation               whether sitemap should
-     *                                              validated using XSD Schema
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
-     *                                              self
-     */
-    public function setUseSchemaValidation($schemaValidation)
-    {
-        $this->_useSchemaValidation = (bool) $schemaValidation;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp whetherphp sitemapphp shouldphp bephp schemaphp validatedphp whenphp generated
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$schemaValidationphp php php php php php php php php php php php php php php whetherphp sitemapphp should
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php validatedphp usingphp XSDphp Schema
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Sitemapphp php fluentphp interfacephp,php returns
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
+php php php php php php*php/
+php php php php publicphp functionphp setUseSchemaValidationphp(php$schemaValidationphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_useSchemaValidationphp php=php php(boolphp)php php$schemaValidationphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns true if sitemap should be schema validated when generated
-     *
-     * @return bool
-     */
-    public function getUseSchemaValidation()
-    {
-        return $this->_useSchemaValidation;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp sitemapphp shouldphp bephp schemaphp validatedphp whenphp generated
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getUseSchemaValidationphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_useSchemaValidationphp;
+php php php php php}
 
-    /**
-     * Sets server url (scheme and host-related stuff without request URI)
-     *
-     * E.g. http://www.example.com
-     *
-     * @param  string $serverUrl                    server URL to set (only
-     *                                              scheme and host)
-     * @throws Zend_Uri_Exception                   if invalid server URL
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
-     *                                              self
-     */
-    public function setServerUrl($serverUrl)
-    {
-        require_once 'Zend/Uri.php';
-        $uri = Zend_Uri::factory($serverUrl);
-        $uri->setFragment('');
-        $uri->setPath('');
-        $uri->setQuery('');
+php php php php php/php*php*
+php php php php php php*php Setsphp serverphp urlphp php(schemephp andphp hostphp-relatedphp stuffphp withoutphp requestphp URIphp)
+php php php php php php*
+php php php php php php*php Ephp.gphp.php httpphp:php/php/wwwphp.examplephp.com
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$serverUrlphp php php php php php php php php php php php php php php php php php php php serverphp URLphp tophp setphp php(only
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php schemephp andphp hostphp)
+php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp php php php php php php php php php php php php php php php php php php ifphp invalidphp serverphp URL
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Sitemapphp php fluentphp interfacephp,php returns
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
+php php php php php php*php/
+php php php php publicphp functionphp setServerUrlphp(php$serverUrlphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp.phpphp'php;
+php php php php php php php php php$uriphp php=php Zendphp_Uriphp:php:factoryphp(php$serverUrlphp)php;
+php php php php php php php php php$uriphp-php>setFragmentphp(php'php'php)php;
+php php php php php php php php php$uriphp-php>setPathphp(php'php'php)php;
+php php php php php php php php php$uriphp-php>setQueryphp(php'php'php)php;
 
-        if ($uri->valid()) {
-            $this->_serverUrl = $uri->getUri();
-        } else {
-            require_once 'Zend/Uri/Exception.php';
-            $e = new Zend_Uri_Exception(sprintf(
-                    'Invalid server URL: "%s"',
-                    $serverUrl));
-            $e->setView($this->view);
-            throw $e;
-        }
+php php php php php php php php ifphp php(php$uriphp-php>validphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_serverUrlphp php=php php$uriphp-php>getUriphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Uriphp_Exceptionphp(sprintfphp(
+php php php php php php php php php php php php php php php php php php php php php'Invalidphp serverphp URLphp:php php"php%sphp"php'php,
+php php php php php php php php php php php php php php php php php php php php php$serverUrlphp)php)php;
+php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns server URL
-     *
-     * @return string  server URL
-     */
-    public function getServerUrl()
-    {
-        if (!isset($this->_serverUrl)) {
-            $this->_serverUrl = $this->view->serverUrl();
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp serverphp URL
+php php php php php php*
+php php php php php php*php php@returnphp stringphp php serverphp URL
+php php php php php php*php/
+php php php php publicphp functionphp getServerUrlphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_serverUrlphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_serverUrlphp php=php php$thisphp-php>viewphp-php>serverUrlphp(php)php;
+php php php php php php php php php}
 
-        return $this->_serverUrl;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_serverUrlphp;
+php php php php php}
 
-    // Helper methods:
+php php php php php/php/php Helperphp methodsphp:
 
-    /**
-     * Escapes string for XML usage
-     *
-     * @param  string $string  string to escape
-     * @return string          escaped string
-     */
-    protected function _xmlEscape($string)
-    {
-        $enc = 'UTF-8';
-        if ($this->view instanceof Zend_View_Interface
-            && method_exists($this->view, 'getEncoding')
-        ) {
-            $enc = $this->view->getEncoding();
-        }
+php php php php php/php*php*
+php php php php php php*php Escapesphp stringphp forphp XMLphp usage
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$stringphp php stringphp tophp escape
+php php php php php php*php php@returnphp stringphp php php php php php php php php php escapedphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_xmlEscapephp(php$stringphp)
+php php php php php{
+php php php php php php php php php$encphp php=php php'UTFphp-php8php'php;
+php php php php php php php php ifphp php(php$thisphp-php>viewphp instanceofphp Zendphp_Viewphp_Interface
+php php php php php php php php php php php php php&php&php methodphp_existsphp(php$thisphp-php>viewphp,php php'getEncodingphp'php)
+php php php php php php php php php)php php{
+php php php php php php php php php php php php php$encphp php=php php$thisphp-php>viewphp-php>getEncodingphp(php)php;
+php php php php php php php php php}
 
-        // TODO: remove check when minimum PHP version is >= 5.2.3
-        if (version_compare(PHP_VERSION, '5.2.3', '>=')) {
-            // do not encode existing HTML entities
-            return htmlspecialchars($string, ENT_QUOTES, $enc, false);
-        } else {
-            $string = preg_replace('/&(?!(?:#\d++|[a-z]++);)/ui', '&amp;', $string);
-            $string = str_replace(array('<', '>', '\'', '"'), array('&lt;', '&gt;', '&#39;', '&quot;'), $string);
-            return $string;
-        }
-    }
+php php php php php php php php php/php/php TODOphp:php removephp checkphp whenphp minimumphp PHPphp versionphp isphp php>php=php php5php.php2php.php3
+php php php php php php php php ifphp php(versionphp_comparephp(PHPphp_VERSIONphp,php php'php5php.php2php.php3php'php,php php'php>php=php'php)php)php php{
+php php php php php php php php php php php php php/php/php dophp notphp encodephp existingphp HTMLphp entities
+php php php php php php php php php php php php returnphp htmlspecialcharsphp(php$stringphp,php ENTphp_QUOTESphp,php php$encphp,php falsephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$stringphp php=php pregphp_replacephp(php'php/php&php(php?php!php(php?php:php#php\dphp+php+php|php[aphp-zphp]php+php+php)php;php)php/uiphp'php,php php'php&ampphp;php'php,php php$stringphp)php;
+php php php php php php php php php php php php php$stringphp php=php strphp_replacephp(arrayphp(php'<php'php,php php'php>php'php,php php'php\php'php'php,php php'php"php'php)php,php arrayphp(php'php&ltphp;php'php,php php'php&gtphp;php'php,php php'php&php#php3php9php;php'php,php php'php&quotphp;php'php)php,php php$stringphp)php;
+php php php php php php php php php php php php returnphp php$stringphp;
+php php php php php php php php php}
+php php php php php}
 
-    // Public methods:
+php php php php php/php/php Publicphp methodsphp:
 
-    /**
-     * Returns an escaped absolute URL for the given page
-     *
-     * @param  Zend_Navigation_Page $page  page to get URL from
-     * @return string
-     */
-    public function url(Zend_Navigation_Page $page)
-    {
-        $href = $page->getHref();
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp escapedphp absolutephp URLphp forphp thephp givenphp page
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php pagephp tophp getphp URLphp from
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp urlphp(Zendphp_Navigationphp_Pagephp php$pagephp)
+php php php php php{
+php php php php php php php php php$hrefphp php=php php$pagephp-php>getHrefphp(php)php;
 
-        if (!isset($href{0})) {
-            // no href
-            return '';
-        } elseif ($href{0} == '/') {
-            // href is relative to root; use serverUrl helper
-            $url = $this->getServerUrl() . $href;
-        } elseif (preg_match('/^[a-z]+:/im', (string) $href)) {
-            // scheme is given in href; assume absolute URL already
-            $url = (string) $href;
-        } else {
-            // href is relative to current document; use url helpers
-            $url = $this->getServerUrl()
-                 . rtrim($this->view->url(), '/') . '/'
-                 . $href;
-        }
+php php php php php php php php ifphp php(php!issetphp(php$hrefphp{php0php}php)php)php php{
+php php php php php php php php php php php php php/php/php nophp href
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}php elseifphp php(php$hrefphp{php0php}php php=php=php php'php/php'php)php php{
+php php php php php php php php php php php php php/php/php hrefphp isphp relativephp tophp rootphp;php usephp serverUrlphp helper
+php php php php php php php php php php php php php$urlphp php=php php$thisphp-php>getServerUrlphp(php)php php.php php$hrefphp;
+php php php php php php php php php}php elseifphp php(pregphp_matchphp(php'php/php^php[aphp-zphp]php+php:php/imphp'php,php php(stringphp)php php$hrefphp)php)php php{
+php php php php php php php php php php php php php/php/php schemephp isphp givenphp inphp hrefphp;php assumephp absolutephp URLphp already
+php php php php php php php php php php php php php$urlphp php=php php(stringphp)php php$hrefphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php hrefphp isphp relativephp tophp currentphp documentphp;php usephp urlphp helpers
+php php php php php php php php php php php php php$urlphp php=php php$thisphp-php>getServerUrlphp(php)
+php php php php php php php php php php php php php php php php php php.php rtrimphp(php$thisphp-php>viewphp-php>urlphp(php)php,php php'php/php'php)php php.php php'php/php'
+php php php php php php php php php php php php php php php php php php.php php$hrefphp;
+php php php php php php php php php}
 
-        return $this->_xmlEscape($url);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_xmlEscapephp(php$urlphp)php;
+php php php php php}
 
-    /**
-     * Returns a DOMDocument containing the Sitemap XML for the given container
-     *
-     * @param  Zend_Navigation_Container $container  [optional] container to get
-     *                                               breadcrumbs from, defaults
-     *                                               to what is registered in the
-     *                                               helper
-     * @return DOMDocument                           DOM representation of the
-     *                                               container
-     * @throws Zend_View_Exception                   if schema validation is on
-     *                                               and the sitemap is invalid
-     *                                               according to the sitemap
-     *                                               schema, or if sitemap
-     *                                               validators are used and the
-     *                                               loc element fails validation
-     */
-    public function getDomSitemap(Zend_Navigation_Container $container = null)
-    {
-        if (null === $container) {
-            $container = $this->getContainer();
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp DOMDocumentphp containingphp thephp Sitemapphp XMLphp forphp thephp givenphp container
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Containerphp php$containerphp php php[optionalphp]php containerphp tophp get
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breadcrumbsphp fromphp,php defaults
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php tophp whatphp isphp registeredphp inphp the
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php helper
+php php php php php php*php php@returnphp DOMDocumentphp php php php php php php php php php php php php php php php php php php php php php php php php php php DOMphp representationphp ofphp the
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php container
+php php php php php php*php php@throwsphp Zendphp_Viewphp_Exceptionphp php php php php php php php php php php php php php php php php php php ifphp schemaphp validationphp isphp on
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php andphp thephp sitemapphp isphp invalid
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php accordingphp tophp thephp sitemap
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php schemaphp,php orphp ifphp sitemap
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php validatorsphp arephp usedphp andphp the
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php locphp elementphp failsphp validation
+php php php php php php*php/
+php php php php publicphp functionphp getDomSitemapphp(Zendphp_Navigationphp_Containerphp php$containerphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$containerphp)php php{
+php php php php php php php php php php php php php$containerphp php=php php$thisphp-php>getContainerphp(php)php;
+php php php php php php php php php}
 
-        // check if we should validate using our own validators
-        if ($this->getUseSitemapValidators()) {
-            require_once 'Zend/Validate/Sitemap/Changefreq.php';
-            require_once 'Zend/Validate/Sitemap/Lastmod.php';
-            require_once 'Zend/Validate/Sitemap/Loc.php';
-            require_once 'Zend/Validate/Sitemap/Priority.php';
+php php php php php php php php php/php/php checkphp ifphp wephp shouldphp validatephp usingphp ourphp ownphp validators
+php php php php php php php php ifphp php(php$thisphp-php>getUseSitemapValidatorsphp(php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Sitemapphp/Changefreqphp.phpphp'php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Sitemapphp/Lastmodphp.phpphp'php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Sitemapphp/Locphp.phpphp'php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Sitemapphp/Priorityphp.phpphp'php;
 
-            // create validators
-            $locValidator        = new Zend_Validate_Sitemap_Loc();
-            $lastmodValidator    = new Zend_Validate_Sitemap_Lastmod();
-            $changefreqValidator = new Zend_Validate_Sitemap_Changefreq();
-            $priorityValidator   = new Zend_Validate_Sitemap_Priority();
-        }
+php php php php php php php php php php php php php/php/php createphp validators
+php php php php php php php php php php php php php$locValidatorphp php php php php php php php php=php newphp Zendphp_Validatephp_Sitemapphp_Locphp(php)php;
+php php php php php php php php php php php php php$lastmodValidatorphp php php php php=php newphp Zendphp_Validatephp_Sitemapphp_Lastmodphp(php)php;
+php php php php php php php php php php php php php$changefreqValidatorphp php=php newphp Zendphp_Validatephp_Sitemapphp_Changefreqphp(php)php;
+php php php php php php php php php php php php php$priorityValidatorphp php php php=php newphp Zendphp_Validatephp_Sitemapphp_Priorityphp(php)php;
+php php php php php php php php php}
 
-        // create document
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->formatOutput = $this->getFormatOutput();
+php php php php php php php php php/php/php createphp document
+php php php php php php php php php$domphp php=php newphp DOMDocumentphp(php'php1php.php0php'php,php php'UTFphp-php8php'php)php;
+php php php php php php php php php$domphp-php>formatOutputphp php=php php$thisphp-php>getFormatOutputphp(php)php;
 
-        // ...and urlset (root) element
-        $urlSet = $dom->createElementNS(self::SITEMAP_NS, 'urlset');
-        $dom->appendChild($urlSet);
+php php php php php php php php php/php/php php.php.php.andphp urlsetphp php(rootphp)php element
+php php php php php php php php php$urlSetphp php=php php$domphp-php>createElementNSphp(selfphp:php:SITEMAPphp_NSphp,php php'urlsetphp'php)php;
+php php php php php php php php php$domphp-php>appendChildphp(php$urlSetphp)php;
 
-        // create iterator
-        $iterator = new RecursiveIteratorIterator($container,
-            RecursiveIteratorIterator::SELF_FIRST);
+php php php php php php php php php/php/php createphp iterator
+php php php php php php php php php$iteratorphp php=php newphp RecursiveIteratorIteratorphp(php$containerphp,
+php php php php php php php php php php php php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
 
-        $maxDepth = $this->getMaxDepth();
-        if (is_int($maxDepth)) {
-            $iterator->setMaxDepth($maxDepth);
-        }
-        $minDepth = $this->getMinDepth();
-        if (!is_int($minDepth) || $minDepth < 0) {
-            $minDepth = 0;
-        }
+php php php php php php php php php$maxDepthphp php=php php$thisphp-php>getMaxDepthphp(php)php;
+php php php php php php php php ifphp php(isphp_intphp(php$maxDepthphp)php)php php{
+php php php php php php php php php php php php php$iteratorphp-php>setMaxDepthphp(php$maxDepthphp)php;
+php php php php php php php php php}
+php php php php php php php php php$minDepthphp php=php php$thisphp-php>getMinDepthphp(php)php;
+php php php php php php php php ifphp php(php!isphp_intphp(php$minDepthphp)php php|php|php php$minDepthphp <php php0php)php php{
+php php php php php php php php php php php php php$minDepthphp php=php php0php;
+php php php php php php php php php}
 
-        // iterate container
-        foreach ($iterator as $page) {
-            if ($iterator->getDepth() < $minDepth || !$this->accept($page)) {
-                // page should not be included
-                continue;
-            }
+php php php php php php php php php/php/php iteratephp container
+php php php php php php php php foreachphp php(php$iteratorphp asphp php$pagephp)php php{
+php php php php php php php php php php php php ifphp php(php$iteratorphp-php>getDepthphp(php)php <php php$minDepthphp php|php|php php!php$thisphp-php>acceptphp(php$pagephp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php pagephp shouldphp notphp bephp included
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            // get absolute url from page
-            if (!$url = $this->url($page)) {
-                // skip page if it has no url (rare case)
-                continue;
-            }
+php php php php php php php php php php php php php/php/php getphp absolutephp urlphp fromphp page
+php php php php php php php php php php php php ifphp php(php!php$urlphp php=php php$thisphp-php>urlphp(php$pagephp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php skipphp pagephp ifphp itphp hasphp nophp urlphp php(rarephp casephp)
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
 
-            // create url node for this page
-            $urlNode = $dom->createElementNS(self::SITEMAP_NS, 'url');
-            $urlSet->appendChild($urlNode);
+php php php php php php php php php php php php php/php/php createphp urlphp nodephp forphp thisphp page
+php php php php php php php php php php php php php$urlNodephp php=php php$domphp-php>createElementNSphp(selfphp:php:SITEMAPphp_NSphp,php php'urlphp'php)php;
+php php php php php php php php php php php php php$urlSetphp-php>appendChildphp(php$urlNodephp)php;
 
-            if ($this->getUseSitemapValidators() &&
-                !$locValidator->isValid($url)) {
-                require_once 'Zend/View/Exception.php';
-                $e = new Zend_View_Exception(sprintf(
-                        'Encountered an invalid URL for Sitemap XML: "%s"',
-                        $url));
-                $e->setView($this->view);
-                throw $e;
-            }
+php php php php php php php php php php php php ifphp php(php$thisphp-php>getUseSitemapValidatorsphp(php)php php&php&
+php php php php php php php php php php php php php php php php php!php$locValidatorphp-php>isValidphp(php$urlphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(sprintfphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'Encounteredphp anphp invalidphp URLphp forphp Sitemapphp XMLphp:php php"php%sphp"php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php$urlphp)php)php;
+php php php php php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php}
 
-            // put url in 'loc' element
-            $urlNode->appendChild($dom->createElementNS(self::SITEMAP_NS,
-                                                        'loc', $url));
+php php php php php php php php php php php php php/php/php putphp urlphp inphp php'locphp'php element
+php php php php php php php php php php php php php$urlNodephp-php>appendChildphp(php$domphp-php>createElementNSphp(selfphp:php:SITEMAPphp_NSphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'locphp'php,php php$urlphp)php)php;
 
-            // add 'lastmod' element if a valid lastmod is set in page
-            if (isset($page->lastmod)) {
-                $lastmod = strtotime((string) $page->lastmod);
+php php php php php php php php php php php php php/php/php addphp php'lastmodphp'php elementphp ifphp aphp validphp lastmodphp isphp setphp inphp page
+php php php php php php php php php php php php ifphp php(issetphp(php$pagephp-php>lastmodphp)php)php php{
+php php php php php php php php php php php php php php php php php$lastmodphp php=php strtotimephp(php(stringphp)php php$pagephp-php>lastmodphp)php;
 
-                // prevent 1970-01-01...
-                if ($lastmod !== false) {
-                    $lastmod = date('c', $lastmod);
-                }
+php php php php php php php php php php php php php php php php php/php/php preventphp php1php9php7php0php-php0php1php-php0php1php.php.php.
+php php php php php php php php php php php php php php php php ifphp php(php$lastmodphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$lastmodphp php=php datephp(php'cphp'php,php php$lastmodphp)php;
+php php php php php php php php php php php php php php php php php}
 
-                if (!$this->getUseSitemapValidators() ||
-                    $lastmodValidator->isValid($lastmod)) {
-                    $urlNode->appendChild(
-                        $dom->createElementNS(self::SITEMAP_NS, 'lastmod',
-                                              $lastmod)
-                    );
-                }
-            }
+php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>getUseSitemapValidatorsphp(php)php php|php|
+php php php php php php php php php php php php php php php php php php php php php$lastmodValidatorphp-php>isValidphp(php$lastmodphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$urlNodephp-php>appendChildphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php$domphp-php>createElementNSphp(selfphp:php:SITEMAPphp_NSphp,php php'lastmodphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastmodphp)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            // add 'changefreq' element if a valid changefreq is set in page
-            if (isset($page->changefreq)) {
-                $changefreq = $page->changefreq;
-                if (!$this->getUseSitemapValidators() ||
-                    $changefreqValidator->isValid($changefreq)) {
-                    $urlNode->appendChild(
-                        $dom->createElementNS(self::SITEMAP_NS, 'changefreq',
-                                              $changefreq)
-                    );
-                }
-            }
+php php php php php php php php php php php php php/php/php addphp php'changefreqphp'php elementphp ifphp aphp validphp changefreqphp isphp setphp inphp page
+php php php php php php php php php php php php ifphp php(issetphp(php$pagephp-php>changefreqphp)php)php php{
+php php php php php php php php php php php php php php php php php$changefreqphp php=php php$pagephp-php>changefreqphp;
+php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>getUseSitemapValidatorsphp(php)php php|php|
+php php php php php php php php php php php php php php php php php php php php php$changefreqValidatorphp-php>isValidphp(php$changefreqphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$urlNodephp-php>appendChildphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php$domphp-php>createElementNSphp(selfphp:php:SITEMAPphp_NSphp,php php'changefreqphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$changefreqphp)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            // add 'priority' element if a valid priority is set in page
-            if (isset($page->priority)) {
-                $priority = $page->priority;
-                if (!$this->getUseSitemapValidators() ||
-                    $priorityValidator->isValid($priority)) {
-                    $urlNode->appendChild(
-                        $dom->createElementNS(self::SITEMAP_NS, 'priority',
-                                              $priority)
-                    );
-                }
-            }
-        }
+php php php php php php php php php php php php php/php/php addphp php'priorityphp'php elementphp ifphp aphp validphp priorityphp isphp setphp inphp page
+php php php php php php php php php php php php ifphp php(issetphp(php$pagephp-php>priorityphp)php)php php{
+php php php php php php php php php php php php php php php php php$priorityphp php=php php$pagephp-php>priorityphp;
+php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>getUseSitemapValidatorsphp(php)php php|php|
+php php php php php php php php php php php php php php php php php php php php php$priorityValidatorphp-php>isValidphp(php$priorityphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$urlNodephp-php>appendChildphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php$domphp-php>createElementNSphp(selfphp:php:SITEMAPphp_NSphp,php php'priorityphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$priorityphp)
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // validate using schema if specified
-        if ($this->getUseSchemaValidation()) {
-            if (!@$dom->schemaValidate(self::SITEMAP_XSD)) {
-                require_once 'Zend/View/Exception.php';
-                $e = new Zend_View_Exception(sprintf(
-                        'Sitemap is invalid according to XML Schema at "%s"',
-                        self::SITEMAP_XSD));
-                $e->setView($this->view);
-                throw $e;
-            }
-        }
+php php php php php php php php php/php/php validatephp usingphp schemaphp ifphp specified
+php php php php php php php php ifphp php(php$thisphp-php>getUseSchemaValidationphp(php)php)php php{
+php php php php php php php php php php php php ifphp php(php!php@php$domphp-php>schemaValidatephp(selfphp:php:SITEMAPphp_XSDphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(sprintfphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'Sitemapphp isphp invalidphp accordingphp tophp XMLphp Schemaphp atphp php"php%sphp"php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:SITEMAPphp_XSDphp)php)php;
+php php php php php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
+php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $dom;
-    }
+php php php php php php php php returnphp php$domphp;
+php php php php php}
 
-    // Zend_View_Helper_Navigation_Helper:
+php php php php php/php/php Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp:
 
-    /**
-     * Renders helper
-     *
-     * Implements {@link Zend_View_Helper_Navigation_Helper::render()}.
-     *
-     * @param  Zend_Navigation_Container $container  [optional] container to
-     *                                               render. Default is to
-     *                                               render the container
-     *                                               registered in the helper.
-     * @return string                                helper output
-     */
-    public function render(Zend_Navigation_Container $container = null)
-    {
-        $dom = $this->getDomSitemap($container);
+php php php php php/php*php*
+php php php php php php*php Rendersphp helper
+php php php php php php*
+php php php php php php*php Implementsphp php{php@linkphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp:php:renderphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Navigationphp_Containerphp php$containerphp php php[optionalphp]php containerphp to
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php renderphp.php Defaultphp isphp to
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php renderphp thephp container
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php registeredphp inphp thephp helperphp.
+php php php php php php*php php@returnphp stringphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php helperphp output
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(Zendphp_Navigationphp_Containerphp php$containerphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$domphp php=php php$thisphp-php>getDomSitemapphp(php$containerphp)php;
 
-        $xml = $this->getUseXmlDeclaration() ?
-               $dom->saveXML() :
-               $dom->saveXML($dom->documentElement);
+php php php php php php php php php$xmlphp php=php php$thisphp-php>getUseXmlDeclarationphp(php)php php?
+php php php php php php php php php php php php php php php php$domphp-php>saveXMLphp(php)php php:
+php php php php php php php php php php php php php php php php$domphp-php>saveXMLphp(php$domphp-php>documentElementphp)php;
 
-        return rtrim($xml, PHP_EOL);
-    }
-}
+php php php php php php php php returnphp rtrimphp(php$xmlphp,php PHPphp_EOLphp)php;
+php php php php php}
+php}

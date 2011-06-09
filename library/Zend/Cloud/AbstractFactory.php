@@ -1,67 +1,67 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Abstract factory for Zend_Cloud resources
- *
- * @category   Zend
- * @package    Zend_Cloud
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cloud_AbstractFactory
-{
-    /**
-     * Constructor
-     *
-     * @return void
-     */
-    private function __construct()
-    {
-        // private ctor - should not be used
-    }
+php/php*php*
+php php*php Abstractphp factoryphp forphp Zendphp_Cloudphp resources
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cloud
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cloudphp_AbstractFactory
+php{
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php privatephp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php php/php/php privatephp ctorphp php-php shouldphp notphp bephp used
+php php php php php}
 
-    /**
-     * Get an individual adapter instance
-     *
-     * @param  string $adapterOption
-     * @param  array|Zend_Config $options
-     * @return null|Zend_Cloud_DocumentService_Adapter|Zend_Cloud_QueueService_Adapter|Zend_Cloud_StorageService_Adapter
-     */
-    protected static function _getAdapter($adapterOption, $options)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp anphp individualphp adapterphp instance
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$adapterOption
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@returnphp nullphp|Zendphp_Cloudphp_DocumentServicephp_Adapterphp|Zendphp_Cloudphp_QueueServicephp_Adapterphp|Zendphp_Cloudphp_StorageServicephp_Adapter
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_getAdapterphp(php$adapterOptionphp,php php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!isset($options[$adapterOption])) {
-            return null;
-        }
+php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php$adapterOptionphp]php)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
 
-        $classname = $options[$adapterOption];
-        unset($options[$adapterOption]);
-        if (!class_exists($classname)) {
-            require_once 'Zend/Loader.php';
-            Zend_Loader::loadClass($classname);
-        }
+php php php php php php php php php$classnamephp php=php php$optionsphp[php$adapterOptionphp]php;
+php php php php php php php php unsetphp(php$optionsphp[php$adapterOptionphp]php)php;
+php php php php php php php php ifphp php(php!classphp_existsphp(php$classnamephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classnamephp)php;
+php php php php php php php php php}
 
-        return new $classname($options);
-    }
-}
+php php php php php php php php returnphp newphp php$classnamephp(php$optionsphp)php;
+php php php php php}
+php}

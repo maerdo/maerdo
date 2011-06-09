@@ -1,131 +1,131 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Log
- * @subpackage Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ZendMonitor.php 23576 2010-12-23 23:25:44Z ramon $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@subpackagephp Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ZendMonitorphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
 
-/** Zend_Log_Writer_Abstract */
-require_once 'Zend/Log/Writer/Abstract.php';
+php/php*php*php Zendphp_Logphp_Writerphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Logphp/Writerphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Log
- * @subpackage Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ZendMonitor.php 23576 2010-12-23 23:25:44Z ramon $
- */
-class Zend_Log_Writer_ZendMonitor extends Zend_Log_Writer_Abstract
-{
-    /**
-     * Is Zend Monitor enabled?
-     *
-     * @var boolean
-     */
-    protected $_isEnabled = true;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Log
+php php*php php@subpackagephp Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ZendMonitorphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
+php php*php/
+classphp Zendphp_Logphp_Writerphp_ZendMonitorphp extendsphp Zendphp_Logphp_Writerphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Isphp Zendphp Monitorphp enabledphp?
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isEnabledphp php=php truephp;
 
-    /**
-     * Is this for a Zend Server intance?
-     *
-     * @var boolean
-     */
-    protected $_isZendServer = false;
+php php php php php/php*php*
+php php php php php php*php Isphp thisphp forphp aphp Zendphp Serverphp intancephp?
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_isZendServerphp php=php falsephp;
 
-    /**
-     * @return void
-     */
-    public function __construct()
-    {
-        if (!function_exists('monitor_custom_event')) {
-            $this->_isEnabled = false;
-        }
-        if (function_exists('zend_monitor_custom_event')) {
-            $this->_isZendServer = true;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!functionphp_existsphp(php'monitorphp_customphp_eventphp'php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_isEnabledphp php=php falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(functionphp_existsphp(php'zendphp_monitorphp_customphp_eventphp'php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_isZendServerphp php=php truephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Create a new instance of Zend_Log_Writer_ZendMonitor
-     *
-     * @param  array|Zend_Config $config
-     * @return Zend_Log_Writer_ZendMonitor
-     */
-    static public function factory($config)
-    {
-        return new self();
-    }
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp instancephp ofphp Zendphp_Logphp_Writerphp_ZendMonitor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Logphp_Writerphp_ZendMonitor
+php php php php php php*php/
+php php php php staticphp publicphp functionphp factoryphp(php$configphp)
+php php php php php{
+php php php php php php php php returnphp newphp selfphp(php)php;
+php php php php php}
 
-    /**
-     * Is logging to this writer enabled?
-     *
-     * If the Zend Monitor extension is not enabled, this log writer will
-     * fail silently. You can query this method to determine if the log
-     * writer is enabled.
-     *
-     * @return boolean
-     */
-    public function isEnabled()
-    {
-        return $this->_isEnabled;
-    }
+php php php php php/php*php*
+php php php php php php*php Isphp loggingphp tophp thisphp writerphp enabledphp?
+php php php php php php*
+php php php php php php*php Ifphp thephp Zendphp Monitorphp extensionphp isphp notphp enabledphp,php thisphp logphp writerphp will
+php php php php php php*php failphp silentlyphp.php Youphp canphp queryphp thisphp methodphp tophp determinephp ifphp thephp log
+php php php php php php*php writerphp isphp enabledphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isEnabledphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_isEnabledphp;
+php php php php php}
 
-    /**
-     * Log a message to this writer.
-     *
-     * @param  array $event log data event
-     * @return void
-     */
-    public function write($event)
-    {
-        if (!$this->isEnabled()) {
-            return;
-        }
+php php php php php/php*php*
+php php php php php php*php Logphp aphp messagephp tophp thisphp writerphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$eventphp logphp dataphp event
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp writephp(php$eventphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>isEnabledphp(php)php)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        parent::write($event);
-    }
+php php php php php php php php parentphp:php:writephp(php$eventphp)php;
+php php php php php}
 
-    /**
-     * Write a message to the log.
-     *
-     * @param  array  $event log data event
-     * @return void
-     */
-    protected function _write($event)
-    {
-        $priority = $event['priority'];
-        $message  = $event['message'];
-        unset($event['priority'], $event['message']);
+php php php php php/php*php*
+php php php php php php*php Writephp aphp messagephp tophp thephp logphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$eventphp logphp dataphp event
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_writephp(php$eventphp)
+php php php php php{
+php php php php php php php php php$priorityphp php=php php$eventphp[php'priorityphp'php]php;
+php php php php php php php php php$messagephp php php=php php$eventphp[php'messagephp'php]php;
+php php php php php php php php unsetphp(php$eventphp[php'priorityphp'php]php,php php$eventphp[php'messagephp'php]php)php;
 
-        if (!empty($event)) {
-            if ($this->_isZendServer) {
-                // On Zend Server; third argument should be the event
-                zend_monitor_custom_event($priority, $message, $event);
-            } else {
-                // On Zend Platform; third argument is severity -- either
-                // 0 or 1 -- and fourth is optional (event)
-                // Severity is either 0 (normal) or 1 (severe); classifying
-                // notice, info, and debug as "normal", and all others as
-                // "severe"
-                monitor_custom_event($priority, $message, ($priority > 4) ? 0 : 1, $event);
-            }
-        } else {
-            monitor_custom_event($priority, $message);
-        }
-    }
-}
+php php php php php php php php ifphp php(php!emptyphp(php$eventphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_isZendServerphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Onphp Zendphp Serverphp;php thirdphp argumentphp shouldphp bephp thephp event
+php php php php php php php php php php php php php php php php zendphp_monitorphp_customphp_eventphp(php$priorityphp,php php$messagephp,php php$eventphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php Onphp Zendphp Platformphp;php thirdphp argumentphp isphp severityphp php-php-php either
+php php php php php php php php php php php php php php php php php/php/php php0php orphp php1php php-php-php andphp fourthphp isphp optionalphp php(eventphp)
+php php php php php php php php php php php php php php php php php/php/php Severityphp isphp eitherphp php0php php(normalphp)php orphp php1php php(severephp)php;php classifying
+php php php php php php php php php php php php php php php php php/php/php noticephp,php infophp,php andphp debugphp asphp php"normalphp"php,php andphp allphp othersphp as
+php php php php php php php php php php php php php php php php php/php/php php"severephp"
+php php php php php php php php php php php php php php php php monitorphp_customphp_eventphp(php$priorityphp,php php$messagephp,php php(php$priorityphp php>php php4php)php php?php php0php php:php php1php,php php$eventphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php monitorphp_customphp_eventphp(php$priorityphp,php php$messagephp)php;
+php php php php php php php php php}
+php php php php php}
+php}

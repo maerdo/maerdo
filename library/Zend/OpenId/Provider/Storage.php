@@ -1,106 +1,106 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_OpenId
- * @subpackage Zend_OpenId_Provider
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Storage.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_OpenId
+php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Storagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Abstract class to implement external storage for OpenID consumer
- *
- * @category   Zend
- * @package    Zend_OpenId
- * @subpackage Zend_OpenId_Provider
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_OpenId_Provider_Storage
-{
+php/php*php*
+php php*php Abstractphp classphp tophp implementphp externalphp storagephp forphp OpenIDphp consumer
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_OpenId
+php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_OpenIdphp_Providerphp_Storage
+php{
 
-    /**
-     * Stores information about session identified by $handle
-     *
-     * @param string $handle assiciation handle
-     * @param string $macFunc HMAC function (sha1 or sha256)
-     * @param string $secret shared secret
-     * @param string $expires expiration UNIX time
-     * @return void
-     */
-    abstract public function addAssociation($handle, $macFunc, $secret, $expires);
+php php php php php/php*php*
+php php php php php php*php Storesphp informationphp aboutphp sessionphp identifiedphp byphp php$handle
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$handlephp assiciationphp handle
+php php php php php php*php php@paramphp stringphp php$macFuncphp HMACphp functionphp php(shaphp1php orphp shaphp2php5php6php)
+php php php php php php*php php@paramphp stringphp php$secretphp sharedphp secret
+php php php php php php*php php@paramphp stringphp php$expiresphp expirationphp UNIXphp time
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp addAssociationphp(php$handlephp,php php$macFuncphp,php php$secretphp,php php$expiresphp)php;
 
-    /**
-     * Gets information about association identified by $handle
-     * Returns true if given association found and not expired and false
-     * otherwise
-     *
-     * @param string $handle assiciation handle
-     * @param string &$macFunc HMAC function (sha1 or sha256)
-     * @param string &$secret shared secret
-     * @param string &$expires expiration UNIX time
-     * @return bool
-     */
-    abstract public function getAssociation($handle, &$macFunc, &$secret, &$expires);
+php php php php php/php*php*
+php php php php php php*php Getsphp informationphp aboutphp associationphp identifiedphp byphp php$handle
+php php php php php php*php Returnsphp truephp ifphp givenphp associationphp foundphp andphp notphp expiredphp andphp false
+php php php php php php*php otherwise
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$handlephp assiciationphp handle
+php php php php php php*php php@paramphp stringphp php&php$macFuncphp HMACphp functionphp php(shaphp1php orphp shaphp2php5php6php)
+php php php php php php*php php@paramphp stringphp php&php$secretphp sharedphp secret
+php php php php php php*php php@paramphp stringphp php&php$expiresphp expirationphp UNIXphp time
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getAssociationphp(php$handlephp,php php&php$macFuncphp,php php&php$secretphp,php php&php$expiresphp)php;
 
-    /**
-     * Register new user with given $id and $password
-     * Returns true in case of success and false if user with given $id already
-     * exists
-     *
-     * @param string $id user identity URL
-     * @param string $password encoded user password
-     * @return bool
-     */
-    abstract public function addUser($id, $password);
+php php php php php/php*php*
+php php php php php php*php Registerphp newphp userphp withphp givenphp php$idphp andphp php$password
+php php php php php php*php Returnsphp truephp inphp casephp ofphp successphp andphp falsephp ifphp userphp withphp givenphp php$idphp already
+php php php php php php*php exists
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$passwordphp encodedphp userphp password
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp addUserphp(php$idphp,php php$passwordphp)php;
 
-    /**
-     * Returns true if user with given $id exists and false otherwise
-     *
-     * @param string $id user identity URL
-     * @return bool
-     */
-    abstract public function hasUser($id);
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp userphp withphp givenphp php$idphp existsphp andphp falsephp otherwise
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp hasUserphp(php$idphp)php;
 
-    /**
-     * Verify if user with given $id exists and has specified $password
-     *
-     * @param string $id user identity URL
-     * @param string $password user password
-     * @return bool
-     */
-    abstract public function checkUser($id, $password);
+php php php php php/php*php*
+php php php php php php*php Verifyphp ifphp userphp withphp givenphp php$idphp existsphp andphp hasphp specifiedphp php$password
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$passwordphp userphp password
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp checkUserphp(php$idphp,php php$passwordphp)php;
 
-    /**
-     * Returns array of all trusted/untrusted sites for given user identified
-     * by $id
-     *
-     * @param string $id user identity URL
-     * @return array
-     */
-    abstract public function getTrustedSites($id);
+php php php php php/php*php*
+php php php php php php*php Returnsphp arrayphp ofphp allphp trustedphp/untrustedphp sitesphp forphp givenphp userphp identified
+php php php php php php*php byphp php$id
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp getTrustedSitesphp(php$idphp)php;
 
-    /**
-     * Stores information about trusted/untrusted site for given user
-     *
-     * @param string $id user identity URL
-     * @param string $site site URL
-     * @param mixed $trusted trust data from extensions or just a boolean value
-     * @return bool
-     */
-    abstract public function addSite($id, $site, $trusted);
-}
+php php php php php/php*php*
+php php php php php php*php Storesphp informationphp aboutphp trustedphp/untrustedphp sitephp forphp givenphp user
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$sitephp sitephp URL
+php php php php php php*php php@paramphp mixedphp php$trustedphp trustphp dataphp fromphp extensionsphp orphp justphp aphp booleanphp value
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp addSitephp(php$idphp,php php$sitephp,php php$trustedphp)php;
+php}

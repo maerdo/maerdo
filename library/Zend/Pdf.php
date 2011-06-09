@@ -1,1410 +1,1410 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Pdf.php 22908 2010-08-25 20:52:47Z alexander $
- */
-
-
-/** User land classes and interfaces turned on by Zend/Pdf.php file inclusion. */
-/** @todo Section should be removed with ZF 2.0 release as obsolete            */
-
-/** Zend_Pdf_Page */
-require_once 'Zend/Pdf/Page.php';
-
-/** Zend_Pdf_Style */
-require_once 'Zend/Pdf/Style.php';
-
-/** Zend_Pdf_Color_GrayScale */
-require_once 'Zend/Pdf/Color/GrayScale.php';
-
-/** Zend_Pdf_Color_Rgb */
-require_once 'Zend/Pdf/Color/Rgb.php';
-
-/** Zend_Pdf_Color_Cmyk */
-require_once 'Zend/Pdf/Color/Cmyk.php';
-
-/** Zend_Pdf_Color_Html */
-require_once 'Zend/Pdf/Color/Html.php';
-
-/** Zend_Pdf_Image */
-require_once 'Zend/Pdf/Image.php';
-
-/** Zend_Pdf_Font */
-require_once 'Zend/Pdf/Font.php';
-
-/** Zend_Pdf_Resource_Extractor */
-require_once 'Zend/Pdf/Resource/Extractor.php';
-
-/** Zend_Pdf_Canvas */
-require_once 'Zend/Pdf/Canvas.php';
-
-
-/** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/String/Binary.php';
-require_once 'Zend/Pdf/Element/Boolean.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Null.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
-require_once 'Zend/Pdf/Element/String.php';
-
-
-/**
- * General entity which describes PDF document.
- * It implements document abstraction with a document level operations.
- *
- * Class is used to create new PDF document or load existing document.
- * See details in a class constructor description
- *
- * Class agregates document level properties and entities (pages, bookmarks,
- * document level actions, attachments, form object, etc)
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Pdf
-{
-  /**** Class Constants ****/
-
-    /**
-     * Version number of generated PDF documents.
-     */
-    const PDF_VERSION = '1.4';
-
-    /**
-     * PDF file header.
-     */
-    const PDF_HEADER  = "%PDF-1.4\n%\xE2\xE3\xCF\xD3\n";
-
-
-
-    /**
-     * Pages collection
-     *
-     * @todo implement it as a class, which supports ArrayAccess and Iterator interfaces,
-     *       to provide incremental parsing and pages tree updating.
-     *       That will give good performance and memory (PDF size) benefits.
-     *
-     * @var array   - array of Zend_Pdf_Page object
-     */
-    public $pages = array();
-
-    /**
-     * Document properties
-     *
-     * It's an associative array with PDF meta information, values may
-     * be string, boolean or float.
-     * Returned array could be used directly to access, add, modify or remove
-     * document properties.
-     *
-     * Standard document properties: Title (must be set for PDF/X documents), Author,
-     * Subject, Keywords (comma separated list), Creator (the name of the application,
-     * that created document, if it was converted from other format), Trapped (must be
-     * true, false or null, can not be null for PDF/X documents)
-     *
-     * @var array
-     */
-    public $properties = array();
-
-    /**
-     * Original properties set.
-     *
-     * Used for tracking properties changes
-     *
-     * @var array
-     */
-    protected $_originalProperties = array();
-
-    /**
-     * Document level javascript
-     *
-     * @var string
-     */
-    protected $_javaScript = null;
-
-    /**
-     * Document named destinations or "GoTo..." actions, used to refer
-     * document parts from outside PDF
-     *
-     * @var array   - array of Zend_Pdf_Target objects
-     */
-    protected $_namedTargets = array();
-
-    /**
-     * Document outlines
-     *
-     * @var array - array of Zend_Pdf_Outline objects
-     */
-    public $outlines = array();
-
-    /**
-     * Original document outlines list
-     * Used to track outlines update
-     *
-     * @var array - array of Zend_Pdf_Outline objects
-     */
-    protected $_originalOutlines = array();
-
-    /**
-     * Original document outlines open elements count
-     * Used to track outlines update
-     *
-     * @var integer
-     */
-    protected $_originalOpenOutlinesCount = 0;
-
-    /**
-     * Pdf trailer (last or just created)
-     *
-     * @var Zend_Pdf_Trailer
-     */
-    protected $_trailer = null;
-
-    /**
-     * PDF objects factory.
-     *
-     * @var Zend_Pdf_ElementFactory_Interface
-     */
-    protected $_objFactory = null;
-
-    /**
-     * Memory manager for stream objects
-     *
-     * @var Zend_Memory_Manager|null
-     */
-    protected static $_memoryManager = null;
-
-    /**
-     * Pdf file parser.
-     * It's not used, but has to be destroyed only with Zend_Pdf object
-     *
-     * @var Zend_Pdf_Parser
-     */
-    protected $_parser;
-
-
-    /**
-     * List of inheritable attributesfor pages tree
-     *
-     * @var array
-     */
-    protected static $_inheritableAttributes = array('Resources', 'MediaBox', 'CropBox', 'Rotate');
-
-    /**
-     * Request used memory manager
-     *
-     * @return Zend_Memory_Manager
-     */
-    static public function getMemoryManager()
-    {
-        if (self::$_memoryManager === null) {
-            require_once 'Zend/Memory.php';
-            self::$_memoryManager = Zend_Memory::factory('none');
-        }
-
-        return self::$_memoryManager;
-    }
-
-    /**
-     * Set user defined memory manager
-     *
-     * @param Zend_Memory_Manager $memoryManager
-     */
-    static public function setMemoryManager(Zend_Memory_Manager $memoryManager)
-    {
-        self::$_memoryManager = $memoryManager;
-    }
-
-
-    /**
-     * Create new PDF document from a $source string
-     *
-     * @param string $source
-     * @param integer $revision
-     * @return Zend_Pdf
-     */
-    public static function parse(&$source = null, $revision = null)
-    {
-        return new Zend_Pdf($source, $revision);
-    }
-
-    /**
-     * Load PDF document from a file
-     *
-     * @param string $source
-     * @param integer $revision
-     * @return Zend_Pdf
-     */
-    public static function load($source = null, $revision = null)
-    {
-        return new Zend_Pdf($source, $revision, true);
-    }
-
-    /**
-     * Render PDF document and save it.
-     *
-     * If $updateOnly is true, then it only appends new section to the end of file.
-     *
-     * @param string $filename
-     * @param boolean $updateOnly
-     * @throws Zend_Pdf_Exception
-     */
-    public function save($filename, $updateOnly = false)
-    {
-        if (($file = @fopen($filename, $updateOnly ? 'ab':'wb')) === false ) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception( "Can not open '$filename' file for writing." );
-        }
-
-        $this->render($updateOnly, $file);
-
-        fclose($file);
-    }
-
-    /**
-     * Creates or loads PDF document.
-     *
-     * If $source is null, then it creates a new document.
-     *
-     * If $source is a string and $load is false, then it loads document
-     * from a binary string.
-     *
-     * If $source is a string and $load is true, then it loads document
-     * from a file.
-
-     * $revision used to roll back document to specified version
-     * (0 - current version, 1 - previous version, 2 - ...)
-     *
-     * @param string  $source - PDF file to load
-     * @param integer $revision
-     * @throws Zend_Pdf_Exception
-     * @return Zend_Pdf
-     */
-    public function __construct($source = null, $revision = null, $load = false)
-    {
-        require_once 'Zend/Pdf/ElementFactory.php';
-        $this->_objFactory = Zend_Pdf_ElementFactory::createFactory(1);
-
-        if ($source !== null) {
-            require_once 'Zend/Pdf/Parser.php';
-            $this->_parser           = new Zend_Pdf_Parser($source, $this->_objFactory, $load);
-            $this->_pdfHeaderVersion = $this->_parser->getPDFVersion();
-            $this->_trailer          = $this->_parser->getTrailer();
-            if ($this->_trailer->Encrypt !== null) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Encrypted document modification is not supported');
-            }
-            if ($revision !== null) {
-                $this->rollback($revision);
-            } else {
-                $this->_loadPages($this->_trailer->Root->Pages);
-            }
-
-            $this->_loadNamedDestinations($this->_trailer->Root, $this->_parser->getPDFVersion());
-            $this->_loadOutlines($this->_trailer->Root);
-
-            if ($this->_trailer->Info !== null) {
-                $this->properties = $this->_trailer->Info->toPhp();
-
-                if (isset($this->properties['Trapped'])) {
-                    switch ($this->properties['Trapped']) {
-                        case 'True':
-                            $this->properties['Trapped'] = true;
-                            break;
-
-                        case 'False':
-                            $this->properties['Trapped'] = false;
-                            break;
-
-                        case 'Unknown':
-                            $this->properties['Trapped'] = null;
-                            break;
-
-                        default:
-                            // Wrong property value
-                            // Do nothing
-                            break;
-                    }
-                }
-
-                $this->_originalProperties = $this->properties;
-            }
-        } else {
-            $this->_pdfHeaderVersion = Zend_Pdf::PDF_VERSION;
-
-            $trailerDictionary = new Zend_Pdf_Element_Dictionary();
-
-            /**
-             * Document id
-             */
-            $docId = md5(uniqid(rand(), true));   // 32 byte (128 bit) identifier
-            $docIdLow  = substr($docId,  0, 16);  // first 16 bytes
-            $docIdHigh = substr($docId, 16, 16);  // second 16 bytes
-
-            $trailerDictionary->ID = new Zend_Pdf_Element_Array();
-            $trailerDictionary->ID->items[] = new Zend_Pdf_Element_String_Binary($docIdLow);
-            $trailerDictionary->ID->items[] = new Zend_Pdf_Element_String_Binary($docIdHigh);
-
-            $trailerDictionary->Size = new Zend_Pdf_Element_Numeric(0);
-
-            require_once 'Zend/Pdf/Trailer/Generator.php';
-            $this->_trailer = new Zend_Pdf_Trailer_Generator($trailerDictionary);
-
-            /**
-             * Document catalog indirect object.
-             */
-            $docCatalog = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
-            $docCatalog->Type    = new Zend_Pdf_Element_Name('Catalog');
-            $docCatalog->Version = new Zend_Pdf_Element_Name(Zend_Pdf::PDF_VERSION);
-            $this->_trailer->Root = $docCatalog;
-
-            /**
-             * Pages container
-             */
-            $docPages = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
-            $docPages->Type  = new Zend_Pdf_Element_Name('Pages');
-            $docPages->Kids  = new Zend_Pdf_Element_Array();
-            $docPages->Count = new Zend_Pdf_Element_Numeric(0);
-            $docCatalog->Pages = $docPages;
-        }
-    }
-
-    /**
-     * Retrive number of revisions.
-     *
-     * @return integer
-     */
-    public function revisions()
-    {
-        $revisions = 1;
-        $currentTrailer = $this->_trailer;
-
-        while ($currentTrailer->getPrev() !== null && $currentTrailer->getPrev()->Root !== null ) {
-            $revisions++;
-            $currentTrailer = $currentTrailer->getPrev();
-        }
-
-        return $revisions++;
-    }
-
-    /**
-     * Rollback document $steps number of revisions.
-     * This method must be invoked before any changes, applied to the document.
-     * Otherwise behavior is undefined.
-     *
-     * @param integer $steps
-     */
-    public function rollback($steps)
-    {
-        for ($count = 0; $count < $steps; $count++) {
-            if ($this->_trailer->getPrev() !== null && $this->_trailer->getPrev()->Root !== null) {
-                $this->_trailer = $this->_trailer->getPrev();
-            } else {
-                break;
-            }
-        }
-        $this->_objFactory->setObjectCount($this->_trailer->Size->value);
-
-        // Mark content as modified to force new trailer generation at render time
-        $this->_trailer->Root->touch();
-
-        $this->pages = array();
-        $this->_loadPages($this->_trailer->Root->Pages);
-    }
-
-
-    /**
-     * Load pages recursively
-     *
-     * @param Zend_Pdf_Element_Reference $pages
-     * @param array|null $attributes
-     */
-    protected function _loadPages(Zend_Pdf_Element_Reference $pages, $attributes = array())
-    {
-        if ($pages->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Wrong argument');
-        }
-
-        foreach ($pages->getKeys() as $property) {
-            if (in_array($property, self::$_inheritableAttributes)) {
-                $attributes[$property] = $pages->$property;
-                $pages->$property = null;
-            }
-        }
-
-
-        foreach ($pages->Kids->items as $child) {
-            if ($child->Type->value == 'Pages') {
-                $this->_loadPages($child, $attributes);
-            } else if ($child->Type->value == 'Page') {
-                foreach (self::$_inheritableAttributes as $property) {
-                    if ($child->$property === null && array_key_exists($property, $attributes)) {
-                        /**
-                         * Important note.
-                         * If any attribute or dependant object is an indirect object, then it's still
-                         * shared between pages.
-                         */
-                        if ($attributes[$property] instanceof Zend_Pdf_Element_Object  ||
-                            $attributes[$property] instanceof Zend_Pdf_Element_Reference) {
-                            $child->$property = $attributes[$property];
-                        } else {
-                            $child->$property = $this->_objFactory->newObject($attributes[$property]);
-                        }
-                    }
-                }
-
-                require_once 'Zend/Pdf/Page.php';
-                $this->pages[] = new Zend_Pdf_Page($child, $this->_objFactory);
-            }
-        }
-    }
-
-    /**
-     * Load named destinations recursively
-     *
-     * @param Zend_Pdf_Element_Reference $root Document catalog entry
-     * @param string $pdfHeaderVersion
-     * @throws Zend_Pdf_Exception
-     */
-    protected function _loadNamedDestinations(Zend_Pdf_Element_Reference $root, $pdfHeaderVersion)
-    {
-        if ($root->Version !== null  &&  version_compare($root->Version->value, $pdfHeaderVersion, '>')) {
-            $versionIs_1_2_plus = version_compare($root->Version->value,    '1.1', '>');
-        } else {
-            $versionIs_1_2_plus = version_compare($pdfHeaderVersion, '1.1', '>');
-        }
-
-        if ($versionIs_1_2_plus) {
-            // PDF version is 1.2+
-            // Look for Destinations structure at Name dictionary
-            if ($root->Names !== null  &&  $root->Names->Dests !== null) {
-                require_once 'Zend/Pdf/NameTree.php';
-                require_once 'Zend/Pdf/Target.php';
-                foreach (new Zend_Pdf_NameTree($root->Names->Dests) as $name => $destination) {
-                    $this->_namedTargets[$name] = Zend_Pdf_Target::load($destination);
-                }
-            }
-        } else {
-            // PDF version is 1.1 (or earlier)
-            // Look for Destinations sructure at Dest entry of document catalog
-            if ($root->Dests !== null) {
-                if ($root->Dests->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
-                    require_once 'Zend/Pdf/Exception.php';
-                    throw new Zend_Pdf_Exception('Document catalog Dests entry must be a dictionary.');
-                }
-
-                require_once 'Zend/Pdf/Target.php';
-                foreach ($root->Dests->getKeys() as $destKey) {
-                    $this->_namedTargets[$destKey] = Zend_Pdf_Target::load($root->Dests->$destKey);
-                }
-            }
-        }
-    }
-
-    /**
-     * Load outlines recursively
-     *
-     * @param Zend_Pdf_Element_Reference $root Document catalog entry
-     */
-    protected function _loadOutlines(Zend_Pdf_Element_Reference $root)
-    {
-        if ($root->Outlines === null) {
-            return;
-        }
-
-        if ($root->Outlines->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Document catalog Outlines entry must be a dictionary.');
-        }
-
-        if ($root->Outlines->Type !== null  &&  $root->Outlines->Type->value != 'Outlines') {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Outlines Type entry must be an \'Outlines\' string.');
-        }
-
-        if ($root->Outlines->First === null) {
-            return;
-        }
-
-        $outlineDictionary = $root->Outlines->First;
-        $processedDictionaries = new SplObjectStorage();
-        while ($outlineDictionary !== null  &&  !$processedDictionaries->contains($outlineDictionary)) {
-            $processedDictionaries->attach($outlineDictionary);
-
-            require_once 'Zend/Pdf/Outline/Loaded.php';
-            $this->outlines[] = new Zend_Pdf_Outline_Loaded($outlineDictionary);
-
-            $outlineDictionary = $outlineDictionary->Next;
-        }
-
-        $this->_originalOutlines = $this->outlines;
-
-        if ($root->Outlines->Count !== null) {
-            $this->_originalOpenOutlinesCount = $root->Outlines->Count->value;
-        }
-    }
-
-    /**
-     * Orginize pages to tha pages tree structure.
-     *
-     * @todo atomatically attach page to the document, if it's not done yet.
-     * @todo check, that page is attached to the current document
-     *
-     * @todo Dump pages as a balanced tree instead of a plain set.
-     */
-    protected function _dumpPages()
-    {
-        $root = $this->_trailer->Root;
-        $pagesContainer = $root->Pages;
-
-        $pagesContainer->touch();
-        $pagesContainer->Kids->items = array();
-
-        foreach ($this->pages as $page ) {
-            $page->render($this->_objFactory);
-
-            $pageDictionary = $page->getPageDictionary();
-            $pageDictionary->touch();
-            $pageDictionary->Parent = $pagesContainer;
-
-            $pagesContainer->Kids->items[] = $pageDictionary;
-        }
-
-        $this->_refreshPagesHash();
-
-        $pagesContainer->Count->touch();
-        $pagesContainer->Count->value = count($this->pages);
-
-
-        // Refresh named destinations list
-        foreach ($this->_namedTargets as $name => $namedTarget) {
-            if ($namedTarget instanceof Zend_Pdf_Destination_Explicit) {
-                // Named target is an explicit destination
-                if ($this->resolveDestination($namedTarget, false) === null) {
-                    unset($this->_namedTargets[$name]);
-                }
-            } else if ($namedTarget instanceof Zend_Pdf_Action) {
-                // Named target is an action
-                if ($this->_cleanUpAction($namedTarget, false) === null) {
-                    // Action is a GoTo action with an unresolved destination
-                    unset($this->_namedTargets[$name]);
-                }
-            } else {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Wrong type of named targed (\'' . get_class($namedTarget) . '\').');
-            }
-        }
-
-        // Refresh outlines
-        require_once 'Zend/Pdf/RecursivelyIteratableObjectsContainer.php';
-        $iterator = new RecursiveIteratorIterator(new Zend_Pdf_RecursivelyIteratableObjectsContainer($this->outlines), RecursiveIteratorIterator::SELF_FIRST);
-        foreach ($iterator as $outline) {
-            $target = $outline->getTarget();
-
-            if ($target !== null) {
-                if ($target instanceof Zend_Pdf_Destination) {
-                    // Outline target is a destination
-                    if ($this->resolveDestination($target, false) === null) {
-                        $outline->setTarget(null);
-                    }
-                } else if ($target instanceof Zend_Pdf_Action) {
-                    // Outline target is an action
-                    if ($this->_cleanUpAction($target, false) === null) {
-                        // Action is a GoTo action with an unresolved destination
-                        $outline->setTarget(null);
-                    }
-                } else {
-                    require_once 'Zend/Pdf/Exception.php';
-                    throw new Zend_Pdf_Exception('Wrong outline target.');
-                }
-            }
-        }
-
-        $openAction = $this->getOpenAction();
-        if ($openAction !== null) {
-            if ($openAction instanceof Zend_Pdf_Action) {
-                // OpenAction is an action
-                if ($this->_cleanUpAction($openAction, false) === null) {
-                    // Action is a GoTo action with an unresolved destination
-                    $this->setOpenAction(null);
-                }
-            } else if ($openAction instanceof Zend_Pdf_Destination) {
-                // OpenAction target is a destination
-                if ($this->resolveDestination($openAction, false) === null) {
-                    $this->setOpenAction(null);
-                }
-            } else {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('OpenAction has to be either PDF Action or Destination.');
-            }
-        }
-    }
-
-    /**
-     * Dump named destinations
-     *
-     * @todo Create a balanced tree instead of plain structure.
-     */
-    protected function _dumpNamedDestinations()
-    {
-        ksort($this->_namedTargets, SORT_STRING);
-
-        $destArrayItems = array();
-        foreach ($this->_namedTargets as $name => $destination) {
-            $destArrayItems[] = new Zend_Pdf_Element_String($name);
-
-            if ($destination instanceof Zend_Pdf_Target) {
-                $destArrayItems[] = $destination->getResource();
-            } else {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('PDF named destinations must be a Zend_Pdf_Target object.');
-            }
-        }
-        $destArray = $this->_objFactory->newObject(new Zend_Pdf_Element_Array($destArrayItems));
-
-        $DestTree = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
-        $DestTree->Names = $destArray;
-
-        $root = $this->_trailer->Root;
-
-        if ($root->Names === null) {
-            $root->touch();
-            $root->Names = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
-        } else {
-            $root->Names->touch();
-        }
-        $root->Names->Dests = $DestTree;
-    }
-
-    /**
-     * Dump outlines recursively
-     */
-    protected function _dumpOutlines()
-    {
-        $root = $this->_trailer->Root;
-
-        if ($root->Outlines === null) {
-            if (count($this->outlines) == 0) {
-                return;
-            } else {
-                $root->Outlines = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
-                $root->Outlines->Type = new Zend_Pdf_Element_Name('Outlines');
-                $updateOutlinesNavigation = true;
-            }
-        } else {
-            $updateOutlinesNavigation = false;
-            if (count($this->_originalOutlines) != count($this->outlines)) {
-                // If original and current outlines arrays have different size then outlines list was updated
-                $updateOutlinesNavigation = true;
-            } else if ( !(array_keys($this->_originalOutlines) === array_keys($this->outlines)) ) {
-                // If original and current outlines arrays have different keys (with a glance to an order) then outlines list was updated
-                $updateOutlinesNavigation = true;
-            } else {
-                foreach ($this->outlines as $key => $outline) {
-                    if ($this->_originalOutlines[$key] !== $outline) {
-                        $updateOutlinesNavigation = true;
-                    }
-                }
-            }
-        }
-
-        $lastOutline = null;
-        $openOutlinesCount = 0;
-        if ($updateOutlinesNavigation) {
-            $root->Outlines->touch();
-            $root->Outlines->First = null;
-
-            foreach ($this->outlines as $outline) {
-                if ($lastOutline === null) {
-                    // First pass. Update Outlines dictionary First entry using corresponding value
-                    $lastOutline = $outline->dumpOutline($this->_objFactory, $updateOutlinesNavigation, $root->Outlines);
-                    $root->Outlines->First = $lastOutline;
-                } else {
-                    // Update previous outline dictionary Next entry (Prev is updated within dumpOutline() method)
-                    $currentOutlineDictionary = $outline->dumpOutline($this->_objFactory, $updateOutlinesNavigation, $root->Outlines, $lastOutline);
-                    $lastOutline->Next = $currentOutlineDictionary;
-                    $lastOutline       = $currentOutlineDictionary;
-                }
-                $openOutlinesCount += $outline->openOutlinesCount();
-            }
-
-            $root->Outlines->Last  = $lastOutline;
-        } else {
-            foreach ($this->outlines as $outline) {
-                $lastOutline = $outline->dumpOutline($this->_objFactory, $updateOutlinesNavigation, $root->Outlines, $lastOutline);
-                $openOutlinesCount += $outline->openOutlinesCount();
-            }
-        }
-
-        if ($openOutlinesCount != $this->_originalOpenOutlinesCount) {
-            $root->Outlines->touch;
-            $root->Outlines->Count = new Zend_Pdf_Element_Numeric($openOutlinesCount);
-        }
-    }
-
-    /**
-     * Create page object, attached to the PDF document.
-     * Method signatures:
-     *
-     * 1. Create new page with a specified pagesize.
-     *    If $factory is null then it will be created and page must be attached to the document to be
-     *    included into output.
-     * ---------------------------------------------------------
-     * new Zend_Pdf_Page(string $pagesize);
-     * ---------------------------------------------------------
-     *
-     * 2. Create new page with a specified pagesize (in default user space units).
-     *    If $factory is null then it will be created and page must be attached to the document to be
-     *    included into output.
-     * ---------------------------------------------------------
-     * new Zend_Pdf_Page(numeric $width, numeric $height);
-     * ---------------------------------------------------------
-     *
-     * @param mixed $param1
-     * @param mixed $param2
-     * @return Zend_Pdf_Page
-     */
-    public function newPage($param1, $param2 = null)
-    {
-        require_once 'Zend/Pdf/Page.php';
-        if ($param2 === null) {
-            return new Zend_Pdf_Page($param1, $this->_objFactory);
-        } else {
-            return new Zend_Pdf_Page($param1, $param2, $this->_objFactory);
-        }
-    }
-
-    /**
-     * Return the document-level Metadata
-     * or null Metadata stream is not presented
-     *
-     * @return string
-     */
-    public function getMetadata()
-    {
-        if ($this->_trailer->Root->Metadata !== null) {
-            return $this->_trailer->Root->Metadata->value;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Sets the document-level Metadata (mast be valid XMP document)
-     *
-     * @param string $metadata
-     */
-    public function setMetadata($metadata)
-    {
-        $metadataObject = $this->_objFactory->newStreamObject($metadata);
-        $metadataObject->dictionary->Type    = new Zend_Pdf_Element_Name('Metadata');
-        $metadataObject->dictionary->Subtype = new Zend_Pdf_Element_Name('XML');
-
-        $this->_trailer->Root->Metadata = $metadataObject;
-        $this->_trailer->Root->touch();
-    }
-
-    /**
-     * Return the document-level JavaScript
-     * or null if there is no JavaScript for this document
-     *
-     * @return string
-     */
-    public function getJavaScript()
-    {
-        return $this->_javaScript;
-    }
-
-    /**
-     * Get open Action
-     * Returns Zend_Pdf_Target (Zend_Pdf_Destination or Zend_Pdf_Action object)
-     *
-     * @return Zend_Pdf_Target
-     */
-    public function getOpenAction()
-    {
-        if ($this->_trailer->Root->OpenAction !== null) {
-            require_once 'Zend/Pdf/Target.php';
-            return Zend_Pdf_Target::load($this->_trailer->Root->OpenAction);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Set open Action which is actually Zend_Pdf_Destination or Zend_Pdf_Action object
-     *
-     * @param Zend_Pdf_Target $openAction
-     * @returns Zend_Pdf
-     */
-    public function setOpenAction(Zend_Pdf_Target $openAction = null)
-    {
-        $root = $this->_trailer->Root;
-        $root->touch();
-
-        if ($openAction === null) {
-            $root->OpenAction = null;
-        } else {
-            $root->OpenAction = $openAction->getResource();
-
-            if ($openAction instanceof Zend_Pdf_Action)  {
-                $openAction->dumpAction($this->_objFactory);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Return an associative array containing all the named destinations (or GoTo actions) in the PDF.
-     * Named targets can be used to reference from outside
-     * the PDF, ex: 'http://www.something.com/mydocument.pdf#MyAction'
-     *
-     * @return array
-     */
-    public function getNamedDestinations()
-    {
-        return $this->_namedTargets;
-    }
-
-    /**
-     * Return specified named destination
-     *
-     * @param string $name
-     * @return Zend_Pdf_Destination_Explicit|Zend_Pdf_Action_GoTo
-     */
-    public function getNamedDestination($name)
-    {
-        if (isset($this->_namedTargets[$name])) {
-            return $this->_namedTargets[$name];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Set specified named destination
-     *
-     * @param string $name
-     * @param Zend_Pdf_Destination_Explicit|Zend_Pdf_Action_GoTo $target
-     */
-    public function setNamedDestination($name, $destination = null)
-    {
-        if ($destination !== null  &&
-            !$destination instanceof Zend_Pdf_Action_GoTo  &&
-            !$destination instanceof Zend_Pdf_Destination_Explicit) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('PDF named destination must refer an explicit destination or a GoTo PDF action.');
-        }
-
-        if ($destination !== null) {
-           $this->_namedTargets[$name] = $destination;
-        } else {
-            unset($this->_namedTargets[$name]);
-        }
-    }
-
-    /**
-     * Pages collection hash:
-     * <page dictionary object hash id> => Zend_Pdf_Page
-     *
-     * @var SplObjectStorage
-     */
-    protected $_pageReferences = null;
-
-    /**
-     * Pages collection hash:
-     * <page number> => Zend_Pdf_Page
-     *
-     * @var array
-     */
-    protected $_pageNumbers = null;
-
-    /**
-     * Refresh page collection hashes
-     *
-     * @return Zend_Pdf
-     */
-    protected function _refreshPagesHash()
-    {
-        $this->_pageReferences = array();
-        $this->_pageNumbers    = array();
-        $count = 1;
-        foreach ($this->pages as $page) {
-            $pageDictionaryHashId = spl_object_hash($page->getPageDictionary()->getObject());
-            $this->_pageReferences[$pageDictionaryHashId] = $page;
-            $this->_pageNumbers[$count++]                 = $page;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Resolve destination.
-     *
-     * Returns Zend_Pdf_Page page object or null if destination is not found within PDF document.
-     *
-     * @param Zend_Pdf_Destination $destination  Destination to resolve
-     * @param boolean $refreshPagesHash  Refresh page collection hashes before processing
-     * @return Zend_Pdf_Page|null
-     * @throws Zend_Pdf_Exception
-     */
-    public function resolveDestination(Zend_Pdf_Destination $destination, $refreshPageCollectionHashes = true)
-    {
-        if ($this->_pageReferences === null  ||  $refreshPageCollectionHashes) {
-            $this->_refreshPagesHash();
-        }
-
-        if ($destination instanceof Zend_Pdf_Destination_Named) {
-            if (!isset($this->_namedTargets[$destination->getName()])) {
-                return null;
-            }
-            $destination = $this->getNamedDestination($destination->getName());
-
-            if ($destination instanceof Zend_Pdf_Action) {
-                if (!$destination instanceof Zend_Pdf_Action_GoTo) {
-                    return null;
-                }
-                $destination = $destination->getDestination();
-            }
-
-            if (!$destination instanceof Zend_Pdf_Destination_Explicit) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Named destination target has to be an explicit destination.');
-            }
-        }
-
-        // Named target is an explicit destination
-        $pageElement = $destination->getResource()->items[0];
-
-        if ($pageElement->getType() == Zend_Pdf_Element::TYPE_NUMERIC) {
-            // Page reference is a PDF number
-            if (!isset($this->_pageNumbers[$pageElement->value])) {
-                return null;
-            }
-
-            return $this->_pageNumbers[$pageElement->value];
-        }
-
-        // Page reference is a PDF page dictionary reference
-        $pageDictionaryHashId = spl_object_hash($pageElement->getObject());
-        if (!isset($this->_pageReferences[$pageDictionaryHashId])) {
-            return null;
-        }
-        return $this->_pageReferences[$pageDictionaryHashId];
-    }
-
-    /**
-     * Walk through action and its chained actions tree and remove nodes
-     * if they are GoTo actions with an unresolved target.
-     *
-     * Returns null if root node is deleted or updated action overwise.
-     *
-     * @todo Give appropriate name and make method public
-     *
-     * @param Zend_Pdf_Action $action
-     * @param boolean $refreshPagesHash  Refresh page collection hashes before processing
-     * @return Zend_Pdf_Action|null
-     */
-    protected function _cleanUpAction(Zend_Pdf_Action $action, $refreshPageCollectionHashes = true)
-    {
-        if ($this->_pageReferences === null  ||  $refreshPageCollectionHashes) {
-            $this->_refreshPagesHash();
-        }
-
-        // Named target is an action
-        if ($action instanceof Zend_Pdf_Action_GoTo  &&
-            $this->resolveDestination($action->getDestination(), false) === null) {
-            // Action itself is a GoTo action with an unresolved destination
-            return null;
-        }
-
-        // Walk through child actions
-        $iterator = new RecursiveIteratorIterator($action, RecursiveIteratorIterator::SELF_FIRST);
-
-        $actionsToClean        = array();
-        $deletionCandidateKeys = array();
-        foreach ($iterator as $chainedAction) {
-            if ($chainedAction instanceof Zend_Pdf_Action_GoTo  &&
-                $this->resolveDestination($chainedAction->getDestination(), false) === null) {
-                // Some child action is a GoTo action with an unresolved destination
-                // Mark it as a candidate for deletion
-                $actionsToClean[]        = $iterator->getSubIterator();
-                $deletionCandidateKeys[] = $iterator->getSubIterator()->key();
-            }
-        }
-        foreach ($actionsToClean as $id => $action) {
-            unset($action->next[$deletionCandidateKeys[$id]]);
-        }
-
-        return $action;
-    }
-
-    /**
-     * Extract fonts attached to the document
-     *
-     * returns array of Zend_Pdf_Resource_Font_Extracted objects
-     *
-     * @return array
-     * @throws Zend_Pdf_Exception
-     */
-    public function extractFonts()
-    {
-        $fontResourcesUnique = array();
-        foreach ($this->pages as $page) {
-            $pageResources = $page->extractResources();
-
-            if ($pageResources->Font === null) {
-                // Page doesn't contain have any font reference
-                continue;
-            }
-
-            $fontResources = $pageResources->Font;
-
-            foreach ($fontResources->getKeys() as $fontResourceName) {
-                $fontDictionary = $fontResources->$fontResourceName;
-
-                if (! ($fontDictionary instanceof Zend_Pdf_Element_Reference  ||
-                       $fontDictionary instanceof Zend_Pdf_Element_Object) ) {
-                    require_once 'Zend/Pdf/Exception.php';
-                    throw new Zend_Pdf_Exception('Font dictionary has to be an indirect object or object reference.');
-                }
-
-                $fontResourcesUnique[spl_object_hash($fontDictionary->getObject())] = $fontDictionary;
-            }
-        }
-
-        $fonts = array();
-        require_once 'Zend/Pdf/Exception.php';
-        foreach ($fontResourcesUnique as $resourceId => $fontDictionary) {
-            try {
-                // Try to extract font
-                require_once 'Zend/Pdf/Resource/Font/Extracted.php';
-                $extractedFont = new Zend_Pdf_Resource_Font_Extracted($fontDictionary);
-
-                $fonts[$resourceId] = $extractedFont;
-            } catch (Zend_Pdf_Exception $e) {
-                if ($e->getMessage() != 'Unsupported font type.') {
-                    throw $e;
-                }
-            }
-        }
-
-        return $fonts;
-    }
-
-    /**
-     * Extract font attached to the page by specific font name
-     *
-     * $fontName should be specified in UTF-8 encoding
-     *
-     * @return Zend_Pdf_Resource_Font_Extracted|null
-     * @throws Zend_Pdf_Exception
-     */
-    public function extractFont($fontName)
-    {
-        $fontResourcesUnique = array();
-        require_once 'Zend/Pdf/Exception.php';
-        foreach ($this->pages as $page) {
-            $pageResources = $page->extractResources();
-
-            if ($pageResources->Font === null) {
-                // Page doesn't contain have any font reference
-                continue;
-            }
-
-            $fontResources = $pageResources->Font;
-
-            foreach ($fontResources->getKeys() as $fontResourceName) {
-                $fontDictionary = $fontResources->$fontResourceName;
-
-                if (! ($fontDictionary instanceof Zend_Pdf_Element_Reference  ||
-                       $fontDictionary instanceof Zend_Pdf_Element_Object) ) {
-                    require_once 'Zend/Pdf/Exception.php';
-                    throw new Zend_Pdf_Exception('Font dictionary has to be an indirect object or object reference.');
-                }
-
-                $resourceId = spl_object_hash($fontDictionary->getObject());
-                if (isset($fontResourcesUnique[$resourceId])) {
-                    continue;
-                } else {
-                    // Mark resource as processed
-                    $fontResourcesUnique[$resourceId] = 1;
-                }
-
-                if ($fontDictionary->BaseFont->value != $fontName) {
-                    continue;
-                }
-
-                try {
-                    // Try to extract font
-                    require_once 'Zend/Pdf/Resource/Font/Extracted.php';
-                    return new Zend_Pdf_Resource_Font_Extracted($fontDictionary);
-                } catch (Zend_Pdf_Exception $e) {
-                    if ($e->getMessage() != 'Unsupported font type.') {
-                        throw $e;
-                    }
-                    // Continue searhing
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Render the completed PDF to a string.
-     * If $newSegmentOnly is true, then only appended part of PDF is returned.
-     *
-     * @param boolean $newSegmentOnly
-     * @param resource $outputStream
-     * @return string
-     * @throws Zend_Pdf_Exception
-     */
-    public function render($newSegmentOnly = false, $outputStream = null)
-    {
-        // Save document properties if necessary
-        if ($this->properties != $this->_originalProperties) {
-            $docInfo = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
-
-            foreach ($this->properties as $key => $value) {
-                switch ($key) {
-                    case 'Trapped':
-                        switch ($value) {
-                            case true:
-                                $docInfo->$key = new Zend_Pdf_Element_Name('True');
-                                break;
-
-                            case false:
-                                $docInfo->$key = new Zend_Pdf_Element_Name('False');
-                                break;
-
-                            case null:
-                                $docInfo->$key = new Zend_Pdf_Element_Name('Unknown');
-                                break;
-
-                            default:
-                                require_once 'Zend/Pdf/Exception.php';
-                                throw new Zend_Pdf_Exception('Wrong Trapped document property vale: \'' . $value . '\'. Only true, false and null values are allowed.');
-                                break;
-                        }
-
-                    case 'CreationDate':
-                        // break intentionally omitted
-                    case 'ModDate':
-                        $docInfo->$key = new Zend_Pdf_Element_String((string)$value);
-                        break;
-
-                    case 'Title':
-                        // break intentionally omitted
-                    case 'Author':
-                        // break intentionally omitted
-                    case 'Subject':
-                        // break intentionally omitted
-                    case 'Keywords':
-                        // break intentionally omitted
-                    case 'Creator':
-                        // break intentionally omitted
-                    case 'Producer':
-                        if (extension_loaded('mbstring') === true) {
-                            $detected = mb_detect_encoding($value);
-                            if ($detected !== 'ASCII') {
-                                $value = "\xfe\xff" . mb_convert_encoding($value, 'UTF-16', $detected);
-                            }
-                        }
-                        $docInfo->$key = new Zend_Pdf_Element_String((string)$value);
-                        break;
-
-                    default:
-                        // Set property using PDF type based on PHP type
-                        $docInfo->$key = Zend_Pdf_Element::phpToPdf($value);
-                        break;
-                }
-            }
-
-            $this->_trailer->Info = $docInfo;
-        }
-
-        $this->_dumpPages();
-        $this->_dumpNamedDestinations();
-        $this->_dumpOutlines();
-
-        // Check, that PDF file was modified
-        // File is always modified by _dumpPages() now, but future implementations may eliminate this.
-        if (!$this->_objFactory->isModified()) {
-            if ($newSegmentOnly) {
-                // Do nothing, return
-                return '';
-            }
-
-            if ($outputStream === null) {
-                return $this->_trailer->getPDFString();
-            } else {
-                $pdfData = $this->_trailer->getPDFString();
-                while ( strlen($pdfData) > 0 && ($byteCount = fwrite($outputStream, $pdfData)) != false ) {
-                    $pdfData = substr($pdfData, $byteCount);
-                }
-
-                return '';
-            }
-        }
-
-        // offset (from a start of PDF file) of new PDF file segment
-        $offset = $this->_trailer->getPDFLength();
-        // Last Object number in a list of free objects
-        $lastFreeObject = $this->_trailer->getLastFreeObject();
-
-        // Array of cross-reference table subsections
-        $xrefTable = array();
-        // Object numbers of first objects in each subsection
-        $xrefSectionStartNums = array();
-
-        // Last cross-reference table subsection
-        $xrefSection = array();
-        // Dummy initialization of the first element (specail case - header of linked list of free objects).
-        $xrefSection[] = 0;
-        $xrefSectionStartNums[] = 0;
-        // Object number of last processed PDF object.
-        // Used to manage cross-reference subsections.
-        // Initialized by zero (specail case - header of linked list of free objects).
-        $lastObjNum = 0;
-
-        if ($outputStream !== null) {
-            if (!$newSegmentOnly) {
-                $pdfData = $this->_trailer->getPDFString();
-                while ( strlen($pdfData) > 0 && ($byteCount = fwrite($outputStream, $pdfData)) != false ) {
-                    $pdfData = substr($pdfData, $byteCount);
-                }
-            }
-        } else {
-            $pdfSegmentBlocks = ($newSegmentOnly) ? array() : array($this->_trailer->getPDFString());
-        }
-
-        // Iterate objects to create new reference table
-        foreach ($this->_objFactory->listModifiedObjects() as $updateInfo) {
-            $objNum = $updateInfo->getObjNum();
-
-            if ($objNum - $lastObjNum != 1) {
-                // Save cross-reference table subsection and start new one
-                $xrefTable[] = $xrefSection;
-                $xrefSection = array();
-                $xrefSectionStartNums[] = $objNum;
-            }
-
-            if ($updateInfo->isFree()) {
-                // Free object cross-reference table entry
-                $xrefSection[]  = sprintf("%010d %05d f \n", $lastFreeObject, $updateInfo->getGenNum());
-                $lastFreeObject = $objNum;
-            } else {
-                // In-use object cross-reference table entry
-                $xrefSection[]  = sprintf("%010d %05d n \n", $offset, $updateInfo->getGenNum());
-
-                $pdfBlock = $updateInfo->getObjectDump();
-                $offset += strlen($pdfBlock);
-
-                if ($outputStream === null) {
-                    $pdfSegmentBlocks[] = $pdfBlock;
-                } else {
-                    while ( strlen($pdfBlock) > 0 && ($byteCount = fwrite($outputStream, $pdfBlock)) != false ) {
-                        $pdfBlock = substr($pdfBlock, $byteCount);
-                    }
-                }
-            }
-            $lastObjNum = $objNum;
-        }
-        // Save last cross-reference table subsection
-        $xrefTable[] = $xrefSection;
-
-        // Modify first entry (specail case - header of linked list of free objects).
-        $xrefTable[0][0] = sprintf("%010d 65535 f \n", $lastFreeObject);
-
-        $xrefTableStr = "xref\n";
-        foreach ($xrefTable as $sectId => $xrefSection) {
-            $xrefTableStr .= sprintf("%d %d \n", $xrefSectionStartNums[$sectId], count($xrefSection));
-            foreach ($xrefSection as $xrefTableEntry) {
-                $xrefTableStr .= $xrefTableEntry;
-            }
-        }
-
-        $this->_trailer->Size->value = $this->_objFactory->getObjectCount();
-
-        $pdfBlock = $xrefTableStr
-                 .  $this->_trailer->toString()
-                 . "startxref\n" . $offset . "\n"
-                 . "%%EOF\n";
-
-        $this->_objFactory->cleanEnumerationShiftCache();
-
-        if ($outputStream === null) {
-            $pdfSegmentBlocks[] = $pdfBlock;
-
-            return implode('', $pdfSegmentBlocks);
-        } else {
-            while ( strlen($pdfBlock) > 0 && ($byteCount = fwrite($outputStream, $pdfBlock)) != false ) {
-                $pdfBlock = substr($pdfBlock, $byteCount);
-            }
-
-            return '';
-        }
-    }
-
-
-    /**
-     * Set the document-level JavaScript
-     *
-     * @param string $javascript
-     */
-    public function setJavaScript($javascript)
-    {
-        $this->_javaScript = $javascript;
-    }
-
-
-    /**
-     * Convert date to PDF format (it's close to ASN.1 (Abstract Syntax Notation
-     * One) defined in ISO/IEC 8824).
-     *
-     * @todo This really isn't the best location for this method. It should
-     *   probably actually exist as Zend_Pdf_Element_Date or something like that.
-     *
-     * @todo Address the following E_STRICT issue:
-     *   PHP Strict Standards:  date(): It is not safe to rely on the system's
-     *   timezone settings. Please use the date.timezone setting, the TZ
-     *   environment variable or the date_default_timezone_set() function. In
-     *   case you used any of those methods and you are still getting this
-     *   warning, you most likely misspelled the timezone identifier.
-     *
-     * @param integer $timestamp (optional) If omitted, uses the current time.
-     * @return string
-     */
-    public static function pdfDate($timestamp = null)
-    {
-        if ($timestamp === null) {
-            $date = date('\D\:YmdHisO');
-        } else {
-            $date = date('\D\:YmdHisO', $timestamp);
-        }
-        return substr_replace($date, '\'', -2, 0) . '\'';
-    }
-
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Pdfphp.phpphp php2php2php9php0php8php php2php0php1php0php-php0php8php-php2php5php php2php0php:php5php2php:php4php7Zphp alexanderphp php$
+php php*php/
+
+
+php/php*php*php Userphp landphp classesphp andphp interfacesphp turnedphp onphp byphp Zendphp/Pdfphp.phpphp filephp inclusionphp.php php*php/
+php/php*php*php php@todophp Sectionphp shouldphp bephp removedphp withphp ZFphp php2php.php0php releasephp asphp obsoletephp php php php php php php php php php php php php*php/
+
+php/php*php*php Zendphp_Pdfphp_Pagephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Pagephp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Stylephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Stylephp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Colorphp_GrayScalephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Colorphp/GrayScalephp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Colorphp_Rgbphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Colorphp/Rgbphp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Colorphp_Cmykphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Colorphp/Cmykphp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Colorphp_Htmlphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Colorphp/Htmlphp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Imagephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Imagephp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Fontphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Fontphp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Resourcephp_Extractorphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Extractorphp.phpphp'php;
+
+php/php*php*php Zendphp_Pdfphp_Canvasphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Canvasphp.phpphp'php;
+
+
+php/php*php*php Internallyphp usedphp classesphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Stringphp/Binaryphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Booleanphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Nullphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Stringphp.phpphp'php;
+
+
+php/php*php*
+php php*php Generalphp entityphp whichphp describesphp PDFphp documentphp.
+php php*php Itphp implementsphp documentphp abstractionphp withphp aphp documentphp levelphp operationsphp.
+php php*
+php php*php Classphp isphp usedphp tophp createphp newphp PDFphp documentphp orphp loadphp existingphp documentphp.
+php php*php Seephp detailsphp inphp aphp classphp constructorphp description
+php php*
+php php*php Classphp agregatesphp documentphp levelphp propertiesphp andphp entitiesphp php(pagesphp,php bookmarksphp,
+php php*php documentphp levelphp actionsphp,php attachmentsphp,php formphp objectphp,php etcphp)
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Pdf
+php{
+php php php/php*php*php*php*php Classphp Constantsphp php*php*php*php*php/
+
+php php php php php/php*php*
+php php php php php php*php Versionphp numberphp ofphp generatedphp PDFphp documentsphp.
+php php php php php php*php/
+php php php php constphp PDFphp_VERSIONphp php=php php'php1php.php4php'php;
+
+php php php php php/php*php*
+php php php php php php*php PDFphp filephp headerphp.
+php php php php php php*php/
+php php php php constphp PDFphp_HEADERphp php php=php php"php%PDFphp-php1php.php4php\nphp%php\xEphp2php\xEphp3php\xCFphp\xDphp3php\nphp"php;
+
+
+
+php php php php php/php*php*
+php php php php php php*php Pagesphp collection
+php php php php php php*
+php php php php php php*php php@todophp implementphp itphp asphp aphp classphp,php whichphp supportsphp ArrayAccessphp andphp Iteratorphp interfacesphp,
+php php php php php php*php php php php php php php tophp providephp incrementalphp parsingphp andphp pagesphp treephp updatingphp.
+php php php php php php*php php php php php php php Thatphp willphp givephp goodphp performancephp andphp memoryphp php(PDFphp sizephp)php benefitsphp.
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php php php-php arrayphp ofphp Zendphp_Pdfphp_Pagephp object
+php php php php php php*php/
+php php php php publicphp php$pagesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Documentphp properties
+php php php php php php*
+php php php php php php*php Itphp'sphp anphp associativephp arrayphp withphp PDFphp metaphp informationphp,php valuesphp may
+php php php php php php*php bephp stringphp,php booleanphp orphp floatphp.
+php php php php php php*php Returnedphp arrayphp couldphp bephp usedphp directlyphp tophp accessphp,php addphp,php modifyphp orphp remove
+php php php php php php*php documentphp propertiesphp.
+php php php php php php*
+php php php php php php*php Standardphp documentphp propertiesphp:php Titlephp php(mustphp bephp setphp forphp PDFphp/Xphp documentsphp)php,php Authorphp,
+php php php php php php*php Subjectphp,php Keywordsphp php(commaphp separatedphp listphp)php,php Creatorphp php(thephp namephp ofphp thephp applicationphp,
+php php php php php php*php thatphp createdphp documentphp,php ifphp itphp wasphp convertedphp fromphp otherphp formatphp)php,php Trappedphp php(mustphp be
+php php php php php php*php truephp,php falsephp orphp nullphp,php canphp notphp bephp nullphp forphp PDFphp/Xphp documentsphp)
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php publicphp php$propertiesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Originalphp propertiesphp setphp.
+php php php php php php*
+php php php php php php*php Usedphp forphp trackingphp propertiesphp changes
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_originalPropertiesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Documentphp levelphp javascript
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_javaScriptphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Documentphp namedphp destinationsphp orphp php"GoTophp.php.php.php"php actionsphp,php usedphp tophp refer
+php php php php php php*php documentphp partsphp fromphp outsidephp PDF
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php php php-php arrayphp ofphp Zendphp_Pdfphp_Targetphp objects
+php php php php php php*php/
+php php php php protectedphp php$php_namedTargetsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Documentphp outlines
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php-php arrayphp ofphp Zendphp_Pdfphp_Outlinephp objects
+php php php php php php*php/
+php php php php publicphp php$outlinesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Originalphp documentphp outlinesphp list
+php php php php php php*php Usedphp tophp trackphp outlinesphp update
+php php php php php php*
+php php php php php php*php php@varphp arrayphp php-php arrayphp ofphp Zendphp_Pdfphp_Outlinephp objects
+php php php php php php*php/
+php php php php protectedphp php$php_originalOutlinesphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Originalphp documentphp outlinesphp openphp elementsphp count
+php php php php php php*php Usedphp tophp trackphp outlinesphp update
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_originalOpenOutlinesCountphp php=php php0php;
+
+php php php php php/php*php*
+php php php php php php*php Pdfphp trailerphp php(lastphp orphp justphp createdphp)
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_Trailer
+php php php php php php*php/
+php php php php protectedphp php$php_trailerphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php PDFphp objectsphp factoryphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_ElementFactoryphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_objFactoryphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Memoryphp managerphp forphp streamphp objects
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Memoryphp_Managerphp|null
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_memoryManagerphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Pdfphp filephp parserphp.
+php php php php php php*php Itphp'sphp notphp usedphp,php butphp hasphp tophp bephp destroyedphp onlyphp withphp Zendphp_Pdfphp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_Parser
+php php php php php php*php/
+php php php php protectedphp php$php_parserphp;
+
+
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp inheritablephp attributesforphp pagesphp tree
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_inheritableAttributesphp php=php arrayphp(php'Resourcesphp'php,php php'MediaBoxphp'php,php php'CropBoxphp'php,php php'Rotatephp'php)php;
+
+php php php php php/php*php*
+php php php php php php*php Requestphp usedphp memoryphp manager
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Memoryphp_Manager
+php php php php php php*php/
+php php php php staticphp publicphp functionphp getMemoryManagerphp(php)
+php php php php php{
+php php php php php php php php ifphp php(selfphp:php:php$php_memoryManagerphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Memoryphp.phpphp'php;
+php php php php php php php php php php php php selfphp:php:php$php_memoryManagerphp php=php Zendphp_Memoryphp:php:factoryphp(php'nonephp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp selfphp:php:php$php_memoryManagerphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp userphp definedphp memoryphp manager
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Memoryphp_Managerphp php$memoryManager
+php php php php php php*php/
+php php php php staticphp publicphp functionphp setMemoryManagerphp(Zendphp_Memoryphp_Managerphp php$memoryManagerphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_memoryManagerphp php=php php$memoryManagerphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Createphp newphp PDFphp documentphp fromphp aphp php$sourcephp string
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$source
+php php php php php php*php php@paramphp integerphp php$revision
+php php php php php php*php php@returnphp Zendphp_Pdf
+php php php php php php*php/
+php php php php publicphp staticphp functionphp parsephp(php&php$sourcephp php=php nullphp,php php$revisionphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp newphp Zendphp_Pdfphp(php$sourcephp,php php$revisionphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp PDFphp documentphp fromphp aphp file
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$source
+php php php php php php*php php@paramphp integerphp php$revision
+php php php php php php*php php@returnphp Zendphp_Pdf
+php php php php php php*php/
+php php php php publicphp staticphp functionphp loadphp(php$sourcephp php=php nullphp,php php$revisionphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp newphp Zendphp_Pdfphp(php$sourcephp,php php$revisionphp,php truephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Renderphp PDFphp documentphp andphp savephp itphp.
+php php php php php php*
+php php php php php php*php Ifphp php$updateOnlyphp isphp truephp,php thenphp itphp onlyphp appendsphp newphp sectionphp tophp thephp endphp ofphp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$filename
+php php php php php php*php php@paramphp booleanphp php$updateOnly
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp savephp(php$filenamephp,php php$updateOnlyphp php=php falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$filephp php=php php@fopenphp(php$filenamephp,php php$updateOnlyphp php?php php'abphp'php:php'wbphp'php)php)php php=php=php=php falsephp php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Canphp notphp openphp php'php$filenamephp'php filephp forphp writingphp.php"php php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>renderphp(php$updateOnlyphp,php php$filephp)php;
+
+php php php php php php php php fclosephp(php$filephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createsphp orphp loadsphp PDFphp documentphp.
+php php php php php php*
+php php php php php php*php Ifphp php$sourcephp isphp nullphp,php thenphp itphp createsphp aphp newphp documentphp.
+php php php php php php*
+php php php php php php*php Ifphp php$sourcephp isphp aphp stringphp andphp php$loadphp isphp falsephp,php thenphp itphp loadsphp document
+php php php php php php*php fromphp aphp binaryphp stringphp.
+php php php php php php*
+php php php php php php*php Ifphp php$sourcephp isphp aphp stringphp andphp php$loadphp isphp truephp,php thenphp itphp loadsphp document
+php php php php php php*php fromphp aphp filephp.
+
+php php php php php php*php php$revisionphp usedphp tophp rollphp backphp documentphp tophp specifiedphp version
+php php php php php php*php php(php0php php-php currentphp versionphp,php php1php php-php previousphp versionphp,php php2php php-php php.php.php.php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php php$sourcephp php-php PDFphp filephp tophp load
+php php php php php php*php php@paramphp integerphp php$revision
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php php@returnphp Zendphp_Pdf
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$sourcephp php=php nullphp,php php$revisionphp php=php nullphp,php php$loadphp php=php falsephp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/ElementFactoryphp.phpphp'php;
+php php php php php php php php php$thisphp-php>php_objFactoryphp php=php Zendphp_Pdfphp_ElementFactoryphp:php:createFactoryphp(php1php)php;
+
+php php php php php php php php ifphp php(php$sourcephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Parserphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>php_parserphp php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Parserphp(php$sourcephp,php php$thisphp-php>php_objFactoryphp,php php$loadphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_pdfHeaderVersionphp php=php php$thisphp-php>php_parserphp-php>getPDFVersionphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_trailerphp php php php php php php php php php php=php php$thisphp-php>php_parserphp-php>getTrailerphp(php)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_trailerphp-php>Encryptphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Encryptedphp documentphp modificationphp isphp notphp supportedphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$revisionphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>rollbackphp(php$revisionphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_loadPagesphp(php$thisphp-php>php_trailerphp-php>Rootphp-php>Pagesphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$thisphp-php>php_loadNamedDestinationsphp(php$thisphp-php>php_trailerphp-php>Rootphp,php php$thisphp-php>php_parserphp-php>getPDFVersionphp(php)php)php;
+php php php php php php php php php php php php php$thisphp-php>php_loadOutlinesphp(php$thisphp-php>php_trailerphp-php>Rootphp)php;
+
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_trailerphp-php>Infophp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>propertiesphp php=php php$thisphp-php>php_trailerphp-php>Infophp-php>toPhpphp(php)php;
+
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>propertiesphp[php'Trappedphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php switchphp php(php$thisphp-php>propertiesphp[php'Trappedphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'Truephp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>propertiesphp[php'Trappedphp'php]php php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'Falsephp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>propertiesphp[php'Trappedphp'php]php php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php php php php php casephp php'Unknownphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>propertiesphp[php'Trappedphp'php]php php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Wrongphp propertyphp value
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Dophp nothing
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$thisphp-php>php_originalPropertiesphp php=php php$thisphp-php>propertiesphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_pdfHeaderVersionphp php=php Zendphp_Pdfphp:php:PDFphp_VERSIONphp;
+
+php php php php php php php php php php php php php$trailerDictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
+
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Documentphp id
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$docIdphp php=php mdphp5php(uniqidphp(randphp(php)php,php truephp)php)php;php php php php/php/php php3php2php bytephp php(php1php2php8php bitphp)php identifier
+php php php php php php php php php php php php php$docIdLowphp php php=php substrphp(php$docIdphp,php php php0php,php php1php6php)php;php php php/php/php firstphp php1php6php bytes
+php php php php php php php php php php php php php$docIdHighphp php=php substrphp(php$docIdphp,php php1php6php,php php1php6php)php;php php php/php/php secondphp php1php6php bytes
+
+php php php php php php php php php php php php php$trailerDictionaryphp-php>IDphp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
+php php php php php php php php php php php php php$trailerDictionaryphp-php>IDphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp_Binaryphp(php$docIdLowphp)php;
+php php php php php php php php php php php php php$trailerDictionaryphp-php>IDphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp_Binaryphp(php$docIdHighphp)php;
+
+php php php php php php php php php php php php php$trailerDictionaryphp-php>Sizephp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php0php)php;
+
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Trailerphp/Generatorphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>php_trailerphp php=php newphp Zendphp_Pdfphp_Trailerphp_Generatorphp(php$trailerDictionaryphp)php;
+
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Documentphp catalogphp indirectphp objectphp.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$docCatalogphp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+php php php php php php php php php php php php php$docCatalogphp-php>Typephp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Catalogphp'php)php;
+php php php php php php php php php php php php php$docCatalogphp-php>Versionphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(Zendphp_Pdfphp:php:PDFphp_VERSIONphp)php;
+php php php php php php php php php php php php php$thisphp-php>php_trailerphp-php>Rootphp php=php php$docCatalogphp;
+
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Pagesphp container
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$docPagesphp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+php php php php php php php php php php php php php$docPagesphp-php>Typephp php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Pagesphp'php)php;
+php php php php php php php php php php php php php$docPagesphp-php>Kidsphp php php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
+php php php php php php php php php php php php php$docPagesphp-php>Countphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php0php)php;
+php php php php php php php php php php php php php$docCatalogphp-php>Pagesphp php=php php$docPagesphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrivephp numberphp ofphp revisionsphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp revisionsphp(php)
+php php php php php{
+php php php php php php php php php$revisionsphp php=php php1php;
+php php php php php php php php php$currentTrailerphp php=php php$thisphp-php>php_trailerphp;
+
+php php php php php php php php whilephp php(php$currentTrailerphp-php>getPrevphp(php)php php!php=php=php nullphp php&php&php php$currentTrailerphp-php>getPrevphp(php)php-php>Rootphp php!php=php=php nullphp php)php php{
+php php php php php php php php php php php php php$revisionsphp+php+php;
+php php php php php php php php php php php php php$currentTrailerphp php=php php$currentTrailerphp-php>getPrevphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$revisionsphp+php+php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Rollbackphp documentphp php$stepsphp numberphp ofphp revisionsphp.
+php php php php php php*php Thisphp methodphp mustphp bephp invokedphp beforephp anyphp changesphp,php appliedphp tophp thephp documentphp.
+php php php php php php*php Otherwisephp behaviorphp isphp undefinedphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$steps
+php php php php php php*php/
+php php php php publicphp functionphp rollbackphp(php$stepsphp)
+php php php php php{
+php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$stepsphp;php php$countphp+php+php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_trailerphp-php>getPrevphp(php)php php!php=php=php nullphp php&php&php php$thisphp-php>php_trailerphp-php>getPrevphp(php)php-php>Rootphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_trailerphp php=php php$thisphp-php>php_trailerphp-php>getPrevphp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_objFactoryphp-php>setObjectCountphp(php$thisphp-php>php_trailerphp-php>Sizephp-php>valuephp)php;
+
+php php php php php php php php php/php/php Markphp contentphp asphp modifiedphp tophp forcephp newphp trailerphp generationphp atphp renderphp time
+php php php php php php php php php$thisphp-php>php_trailerphp-php>Rootphp-php>touchphp(php)php;
+
+php php php php php php php php php$thisphp-php>pagesphp php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_loadPagesphp(php$thisphp-php>php_trailerphp-php>Rootphp-php>Pagesphp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Loadphp pagesphp recursively
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Referencephp php$pages
+php php php php php php*php php@paramphp arrayphp|nullphp php$attributes
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadPagesphp(Zendphp_Pdfphp_Elementphp_Referencephp php$pagesphp,php php$attributesphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$pagesphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp argumentphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php foreachphp php(php$pagesphp-php>getKeysphp(php)php asphp php$propertyphp)php php{
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$propertyphp,php selfphp:php:php$php_inheritableAttributesphp)php)php php{
+php php php php php php php php php php php php php php php php php$attributesphp[php$propertyphp]php php=php php$pagesphp-php>php$propertyphp;
+php php php php php php php php php php php php php php php php php$pagesphp-php>php$propertyphp php=php nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+
+php php php php php php php php foreachphp php(php$pagesphp-php>Kidsphp-php>itemsphp asphp php$childphp)php php{
+php php php php php php php php php php php php ifphp php(php$childphp-php>Typephp-php>valuephp php=php=php php'Pagesphp'php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_loadPagesphp(php$childphp,php php$attributesphp)php;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$childphp-php>Typephp-php>valuephp php=php=php php'Pagephp'php)php php{
+php php php php php php php php php php php php php php php php foreachphp php(selfphp:php:php$php_inheritableAttributesphp asphp php$propertyphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$childphp-php>php$propertyphp php=php=php=php nullphp php&php&php arrayphp_keyphp_existsphp(php$propertyphp,php php$attributesphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php php php php php php php php php*php Importantphp notephp.
+php php php php php php php php php php php php php php php php php php php php php php php php php php*php Ifphp anyphp attributephp orphp dependantphp objectphp isphp anphp indirectphp objectphp,php thenphp itphp'sphp still
+php php php php php php php php php php php php php php php php php php php php php php php php php php*php sharedphp betweenphp pagesphp.
+php php php php php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$attributesphp[php$propertyphp]php instanceofphp Zendphp_Pdfphp_Elementphp_Objectphp php php|php|
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$attributesphp[php$propertyphp]php instanceofphp Zendphp_Pdfphp_Elementphp_Referencephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$childphp-php>php$propertyphp php=php php$attributesphp[php$propertyphp]php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$childphp-php>php$propertyphp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(php$attributesphp[php$propertyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Pagephp.phpphp'php;
+php php php php php php php php php php php php php php php php php$thisphp-php>pagesphp[php]php php=php newphp Zendphp_Pdfphp_Pagephp(php$childphp,php php$thisphp-php>php_objFactoryphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp namedphp destinationsphp recursively
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Referencephp php$rootphp Documentphp catalogphp entry
+php php php php php php*php php@paramphp stringphp php$pdfHeaderVersion
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadNamedDestinationsphp(Zendphp_Pdfphp_Elementphp_Referencephp php$rootphp,php php$pdfHeaderVersionphp)
+php php php php php{
+php php php php php php php php ifphp php(php$rootphp-php>Versionphp php!php=php=php nullphp php php&php&php php versionphp_comparephp(php$rootphp-php>Versionphp-php>valuephp,php php$pdfHeaderVersionphp,php php'php>php'php)php)php php{
+php php php php php php php php php php php php php$versionIsphp_php1php_php2php_plusphp php=php versionphp_comparephp(php$rootphp-php>Versionphp-php>valuephp,php php php php php'php1php.php1php'php,php php'php>php'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$versionIsphp_php1php_php2php_plusphp php=php versionphp_comparephp(php$pdfHeaderVersionphp,php php'php1php.php1php'php,php php'php>php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$versionIsphp_php1php_php2php_plusphp)php php{
+php php php php php php php php php php php php php/php/php PDFphp versionphp isphp php1php.php2php+
+php php php php php php php php php php php php php/php/php Lookphp forphp Destinationsphp structurephp atphp Namephp dictionary
+php php php php php php php php php php php php ifphp php(php$rootphp-php>Namesphp php!php=php=php nullphp php php&php&php php php$rootphp-php>Namesphp-php>Destsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/NameTreephp.phpphp'php;
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Targetphp.phpphp'php;
+php php php php php php php php php php php php php php php php foreachphp php(newphp Zendphp_Pdfphp_NameTreephp(php$rootphp-php>Namesphp-php>Destsphp)php asphp php$namephp php=php>php php$destinationphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_namedTargetsphp[php$namephp]php php=php Zendphp_Pdfphp_Targetphp:php:loadphp(php$destinationphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php PDFphp versionphp isphp php1php.php1php php(orphp earlierphp)
+php php php php php php php php php php php php php/php/php Lookphp forphp Destinationsphp sructurephp atphp Destphp entryphp ofphp documentphp catalog
+php php php php php php php php php php php php ifphp php(php$rootphp-php>Destsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$rootphp-php>Destsphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Documentphp catalogphp Destsphp entryphp mustphp bephp aphp dictionaryphp.php'php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Targetphp.phpphp'php;
+php php php php php php php php php php php php php php php php foreachphp php(php$rootphp-php>Destsphp-php>getKeysphp(php)php asphp php$destKeyphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_namedTargetsphp[php$destKeyphp]php php=php Zendphp_Pdfphp_Targetphp:php:loadphp(php$rootphp-php>Destsphp-php>php$destKeyphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp outlinesphp recursively
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Referencephp php$rootphp Documentphp catalogphp entry
+php php php php php php*php/
+php php php php protectedphp functionphp php_loadOutlinesphp(Zendphp_Pdfphp_Elementphp_Referencephp php$rootphp)
+php php php php php{
+php php php php php php php php ifphp php(php$rootphp-php>Outlinesphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$rootphp-php>Outlinesphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Documentphp catalogphp Outlinesphp entryphp mustphp bephp aphp dictionaryphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$rootphp-php>Outlinesphp-php>Typephp php!php=php=php nullphp php php&php&php php php$rootphp-php>Outlinesphp-php>Typephp-php>valuephp php!php=php php'Outlinesphp'php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Outlinesphp Typephp entryphp mustphp bephp anphp php\php'Outlinesphp\php'php stringphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$rootphp-php>Outlinesphp-php>Firstphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php php$outlineDictionaryphp php=php php$rootphp-php>Outlinesphp-php>Firstphp;
+php php php php php php php php php$processedDictionariesphp php=php newphp SplObjectStoragephp(php)php;
+php php php php php php php php whilephp php(php$outlineDictionaryphp php!php=php=php nullphp php php&php&php php php!php$processedDictionariesphp-php>containsphp(php$outlineDictionaryphp)php)php php{
+php php php php php php php php php php php php php$processedDictionariesphp-php>attachphp(php$outlineDictionaryphp)php;
+
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Outlinephp/Loadedphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>outlinesphp[php]php php=php newphp Zendphp_Pdfphp_Outlinephp_Loadedphp(php$outlineDictionaryphp)php;
+
+php php php php php php php php php php php php php$outlineDictionaryphp php=php php$outlineDictionaryphp-php>Nextphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_originalOutlinesphp php=php php$thisphp-php>outlinesphp;
+
+php php php php php php php php ifphp php(php$rootphp-php>Outlinesphp-php>Countphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_originalOpenOutlinesCountphp php=php php$rootphp-php>Outlinesphp-php>Countphp-php>valuephp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Orginizephp pagesphp tophp thaphp pagesphp treephp structurephp.
+php php php php php php*
+php php php php php php*php php@todophp atomaticallyphp attachphp pagephp tophp thephp documentphp,php ifphp itphp'sphp notphp donephp yetphp.
+php php php php php php*php php@todophp checkphp,php thatphp pagephp isphp attachedphp tophp thephp currentphp document
+php php php php php php*
+php php php php php php*php php@todophp Dumpphp pagesphp asphp aphp balancedphp treephp insteadphp ofphp aphp plainphp setphp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_dumpPagesphp(php)
+php php php php php{
+php php php php php php php php php$rootphp php=php php$thisphp-php>php_trailerphp-php>Rootphp;
+php php php php php php php php php$pagesContainerphp php=php php$rootphp-php>Pagesphp;
+
+php php php php php php php php php$pagesContainerphp-php>touchphp(php)php;
+php php php php php php php php php$pagesContainerphp-php>Kidsphp-php>itemsphp php=php arrayphp(php)php;
+
+php php php php php php php php foreachphp php(php$thisphp-php>pagesphp asphp php$pagephp php)php php{
+php php php php php php php php php php php php php$pagephp-php>renderphp(php$thisphp-php>php_objFactoryphp)php;
+
+php php php php php php php php php php php php php$pageDictionaryphp php=php php$pagephp-php>getPageDictionaryphp(php)php;
+php php php php php php php php php php php php php$pageDictionaryphp-php>touchphp(php)php;
+php php php php php php php php php php php php php$pageDictionaryphp-php>Parentphp php=php php$pagesContainerphp;
+
+php php php php php php php php php php php php php$pagesContainerphp-php>Kidsphp-php>itemsphp[php]php php=php php$pageDictionaryphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_refreshPagesHashphp(php)php;
+
+php php php php php php php php php$pagesContainerphp-php>Countphp-php>touchphp(php)php;
+php php php php php php php php php$pagesContainerphp-php>Countphp-php>valuephp php=php countphp(php$thisphp-php>pagesphp)php;
+
+
+php php php php php php php php php/php/php Refreshphp namedphp destinationsphp list
+php php php php php php php php foreachphp php(php$thisphp-php>php_namedTargetsphp asphp php$namephp php=php>php php$namedTargetphp)php php{
+php php php php php php php php php php php php ifphp php(php$namedTargetphp instanceofphp Zendphp_Pdfphp_Destinationphp_Explicitphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Namedphp targetphp isphp anphp explicitphp destination
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>resolveDestinationphp(php$namedTargetphp,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_namedTargetsphp[php$namephp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp ifphp php(php$namedTargetphp instanceofphp Zendphp_Pdfphp_Actionphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Namedphp targetphp isphp anphp action
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_cleanUpActionphp(php$namedTargetphp,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Actionphp isphp aphp GoTophp actionphp withphp anphp unresolvedphp destination
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_namedTargetsphp[php$namephp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp typephp ofphp namedphp targedphp php(php\php'php'php php.php getphp_classphp(php$namedTargetphp)php php.php php'php\php'php)php.php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Refreshphp outlines
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/RecursivelyIteratableObjectsContainerphp.phpphp'php;
+php php php php php php php php php$iteratorphp php=php newphp RecursiveIteratorIteratorphp(newphp Zendphp_Pdfphp_RecursivelyIteratableObjectsContainerphp(php$thisphp-php>outlinesphp)php,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
+php php php php php php php php foreachphp php(php$iteratorphp asphp php$outlinephp)php php{
+php php php php php php php php php php php php php$targetphp php=php php$outlinephp-php>getTargetphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$targetphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$targetphp instanceofphp Zendphp_Pdfphp_Destinationphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Outlinephp targetphp isphp aphp destination
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>resolveDestinationphp(php$targetphp,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$outlinephp-php>setTargetphp(nullphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$targetphp instanceofphp Zendphp_Pdfphp_Actionphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Outlinephp targetphp isphp anphp action
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_cleanUpActionphp(php$targetphp,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Actionphp isphp aphp GoTophp actionphp withphp anphp unresolvedphp destination
+php php php php php php php php php php php php php php php php php php php php php php php php php$outlinephp-php>setTargetphp(nullphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp outlinephp targetphp.php'php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$openActionphp php=php php$thisphp-php>getOpenActionphp(php)php;
+php php php php php php php php ifphp php(php$openActionphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php$openActionphp instanceofphp Zendphp_Pdfphp_Actionphp)php php{
+php php php php php php php php php php php php php php php php php/php/php OpenActionphp isphp anphp action
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_cleanUpActionphp(php$openActionphp,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Actionphp isphp aphp GoTophp actionphp withphp anphp unresolvedphp destination
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setOpenActionphp(nullphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp ifphp php(php$openActionphp instanceofphp Zendphp_Pdfphp_Destinationphp)php php{
+php php php php php php php php php php php php php php php php php/php/php OpenActionphp targetphp isphp aphp destination
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>resolveDestinationphp(php$openActionphp,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setOpenActionphp(nullphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'OpenActionphp hasphp tophp bephp eitherphp PDFphp Actionphp orphp Destinationphp.php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Dumpphp namedphp destinations
+php php php php php php*
+php php php php php php*php php@todophp Createphp aphp balancedphp treephp insteadphp ofphp plainphp structurephp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_dumpNamedDestinationsphp(php)
+php php php php php{
+php php php php php php php php ksortphp(php$thisphp-php>php_namedTargetsphp,php SORTphp_STRINGphp)php;
+
+php php php php php php php php php$destArrayItemsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>php_namedTargetsphp asphp php$namephp php=php>php php$destinationphp)php php{
+php php php php php php php php php php php php php$destArrayItemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php$namephp)php;
+
+php php php php php php php php php php php php ifphp php(php$destinationphp instanceofphp Zendphp_Pdfphp_Targetphp)php php{
+php php php php php php php php php php php php php php php php php$destArrayItemsphp[php]php php=php php$destinationphp-php>getResourcephp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'PDFphp namedphp destinationsphp mustphp bephp aphp Zendphp_Pdfphp_Targetphp objectphp.php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$destArrayphp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php$destArrayItemsphp)php)php;
+
+php php php php php php php php php$DestTreephp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+php php php php php php php php php$DestTreephp-php>Namesphp php=php php$destArrayphp;
+
+php php php php php php php php php$rootphp php=php php$thisphp-php>php_trailerphp-php>Rootphp;
+
+php php php php php php php php ifphp php(php$rootphp-php>Namesphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$rootphp-php>touchphp(php)php;
+php php php php php php php php php php php php php$rootphp-php>Namesphp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$rootphp-php>Namesphp-php>touchphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$rootphp-php>Namesphp-php>Destsphp php=php php$DestTreephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Dumpphp outlinesphp recursively
+php php php php php php*php/
+php php php php protectedphp functionphp php_dumpOutlinesphp(php)
+php php php php php{
+php php php php php php php php php$rootphp php=php php$thisphp-php>php_trailerphp-php>Rootphp;
+
+php php php php php php php php ifphp php(php$rootphp-php>Outlinesphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(countphp(php$thisphp-php>outlinesphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php returnphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$rootphp-php>Outlinesphp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+php php php php php php php php php php php php php php php php php$rootphp-php>Outlinesphp-php>Typephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Outlinesphp'php)php;
+php php php php php php php php php php php php php php php php php$updateOutlinesNavigationphp php=php truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$updateOutlinesNavigationphp php=php falsephp;
+php php php php php php php php php php php php ifphp php(countphp(php$thisphp-php>php_originalOutlinesphp)php php!php=php countphp(php$thisphp-php>outlinesphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Ifphp originalphp andphp currentphp outlinesphp arraysphp havephp differentphp sizephp thenphp outlinesphp listphp wasphp updated
+php php php php php php php php php php php php php php php php php$updateOutlinesNavigationphp php=php truephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php php!php(arrayphp_keysphp(php$thisphp-php>php_originalOutlinesphp)php php=php=php=php arrayphp_keysphp(php$thisphp-php>outlinesphp)php)php php)php php{
+php php php php php php php php php php php php php php php php php/php/php Ifphp originalphp andphp currentphp outlinesphp arraysphp havephp differentphp keysphp php(withphp aphp glancephp tophp anphp orderphp)php thenphp outlinesphp listphp wasphp updated
+php php php php php php php php php php php php php php php php php$updateOutlinesNavigationphp php=php truephp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>outlinesphp asphp php$keyphp php=php>php php$outlinephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_originalOutlinesphp[php$keyphp]php php!php=php=php php$outlinephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$updateOutlinesNavigationphp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$lastOutlinephp php=php nullphp;
+php php php php php php php php php$openOutlinesCountphp php=php php0php;
+php php php php php php php php ifphp php(php$updateOutlinesNavigationphp)php php{
+php php php php php php php php php php php php php$rootphp-php>Outlinesphp-php>touchphp(php)php;
+php php php php php php php php php php php php php$rootphp-php>Outlinesphp-php>Firstphp php=php nullphp;
+
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>outlinesphp asphp php$outlinephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lastOutlinephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Firstphp passphp.php Updatephp Outlinesphp dictionaryphp Firstphp entryphp usingphp correspondingphp value
+php php php php php php php php php php php php php php php php php php php php php$lastOutlinephp php=php php$outlinephp-php>dumpOutlinephp(php$thisphp-php>php_objFactoryphp,php php$updateOutlinesNavigationphp,php php$rootphp-php>Outlinesphp)php;
+php php php php php php php php php php php php php php php php php php php php php$rootphp-php>Outlinesphp-php>Firstphp php=php php$lastOutlinephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Updatephp previousphp outlinephp dictionaryphp Nextphp entryphp php(Prevphp isphp updatedphp withinphp dumpOutlinephp(php)php methodphp)
+php php php php php php php php php php php php php php php php php php php php php$currentOutlineDictionaryphp php=php php$outlinephp-php>dumpOutlinephp(php$thisphp-php>php_objFactoryphp,php php$updateOutlinesNavigationphp,php php$rootphp-php>Outlinesphp,php php$lastOutlinephp)php;
+php php php php php php php php php php php php php php php php php php php php php$lastOutlinephp-php>Nextphp php=php php$currentOutlineDictionaryphp;
+php php php php php php php php php php php php php php php php php php php php php$lastOutlinephp php php php php php php php=php php$currentOutlineDictionaryphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$openOutlinesCountphp php+php=php php$outlinephp-php>openOutlinesCountphp(php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$rootphp-php>Outlinesphp-php>Lastphp php php=php php$lastOutlinephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>outlinesphp asphp php$outlinephp)php php{
+php php php php php php php php php php php php php php php php php$lastOutlinephp php=php php$outlinephp-php>dumpOutlinephp(php$thisphp-php>php_objFactoryphp,php php$updateOutlinesNavigationphp,php php$rootphp-php>Outlinesphp,php php$lastOutlinephp)php;
+php php php php php php php php php php php php php php php php php$openOutlinesCountphp php+php=php php$outlinephp-php>openOutlinesCountphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$openOutlinesCountphp php!php=php php$thisphp-php>php_originalOpenOutlinesCountphp)php php{
+php php php php php php php php php php php php php$rootphp-php>Outlinesphp-php>touchphp;
+php php php php php php php php php php php php php$rootphp-php>Outlinesphp-php>Countphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$openOutlinesCountphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createphp pagephp objectphp,php attachedphp tophp thephp PDFphp documentphp.
+php php php php php php*php Methodphp signaturesphp:
+php php php php php php*
+php php php php php php*php php1php.php Createphp newphp pagephp withphp aphp specifiedphp pagesizephp.
+php php php php php php*php php php php Ifphp php$factoryphp isphp nullphp thenphp itphp willphp bephp createdphp andphp pagephp mustphp bephp attachedphp tophp thephp documentphp tophp be
+php php php php php php*php php php php includedphp intophp outputphp.
+php php php php php php*php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php*php newphp Zendphp_Pdfphp_Pagephp(stringphp php$pagesizephp)php;
+php php php php php php*php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php*
+php php php php php php*php php2php.php Createphp newphp pagephp withphp aphp specifiedphp pagesizephp php(inphp defaultphp userphp spacephp unitsphp)php.
+php php php php php php*php php php php Ifphp php$factoryphp isphp nullphp thenphp itphp willphp bephp createdphp andphp pagephp mustphp bephp attachedphp tophp thephp documentphp tophp be
+php php php php php php*php php php php includedphp intophp outputphp.
+php php php php php php*php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php*php newphp Zendphp_Pdfphp_Pagephp(numericphp php$widthphp,php numericphp php$heightphp)php;
+php php php php php php*php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$paramphp1
+php php php php php php*php php@paramphp mixedphp php$paramphp2
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Page
+php php php php php php*php/
+php php php php publicphp functionphp newPagephp(php$paramphp1php,php php$paramphp2php php=php nullphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Pagephp.phpphp'php;
+php php php php php php php php ifphp php(php$paramphp2php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Pagephp(php$paramphp1php,php php$thisphp-php>php_objFactoryphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Pagephp(php$paramphp1php,php php$paramphp2php,php php$thisphp-php>php_objFactoryphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp documentphp-levelphp Metadata
+php php php php php php*php orphp nullphp Metadataphp streamphp isphp notphp presented
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getMetadataphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_trailerphp-php>Rootphp-php>Metadataphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_trailerphp-php>Rootphp-php>Metadataphp-php>valuephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp documentphp-levelphp Metadataphp php(mastphp bephp validphp XMPphp documentphp)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$metadata
+php php php php php php*php/
+php php php php publicphp functionphp setMetadataphp(php$metadataphp)
+php php php php php{
+php php php php php php php php php$metadataObjectphp php=php php$thisphp-php>php_objFactoryphp-php>newStreamObjectphp(php$metadataphp)php;
+php php php php php php php php php$metadataObjectphp-php>dictionaryphp-php>Typephp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Metadataphp'php)php;
+php php php php php php php php php$metadataObjectphp-php>dictionaryphp-php>Subtypephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'XMLphp'php)php;
+
+php php php php php php php php php$thisphp-php>php_trailerphp-php>Rootphp-php>Metadataphp php=php php$metadataObjectphp;
+php php php php php php php php php$thisphp-php>php_trailerphp-php>Rootphp-php>touchphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp documentphp-levelphp JavaScript
+php php php php php php*php orphp nullphp ifphp therephp isphp nophp JavaScriptphp forphp thisphp document
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getJavaScriptphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_javaScriptphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp openphp Action
+php php php php php php*php Returnsphp Zendphp_Pdfphp_Targetphp php(Zendphp_Pdfphp_Destinationphp orphp Zendphp_Pdfphp_Actionphp objectphp)
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Target
+php php php php php php*php/
+php php php php publicphp functionphp getOpenActionphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_trailerphp-php>Rootphp-php>OpenActionphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Targetphp.phpphp'php;
+php php php php php php php php php php php php returnphp Zendphp_Pdfphp_Targetphp:php:loadphp(php$thisphp-php>php_trailerphp-php>Rootphp-php>OpenActionphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp openphp Actionphp whichphp isphp actuallyphp Zendphp_Pdfphp_Destinationphp orphp Zendphp_Pdfphp_Actionphp object
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Targetphp php$openAction
+php php php php php php*php php@returnsphp Zendphp_Pdf
+php php php php php php*php/
+php php php php publicphp functionphp setOpenActionphp(Zendphp_Pdfphp_Targetphp php$openActionphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$rootphp php=php php$thisphp-php>php_trailerphp-php>Rootphp;
+php php php php php php php php php$rootphp-php>touchphp(php)php;
+
+php php php php php php php php ifphp php(php$openActionphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$rootphp-php>OpenActionphp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$rootphp-php>OpenActionphp php=php php$openActionphp-php>getResourcephp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$openActionphp instanceofphp Zendphp_Pdfphp_Actionphp)php php php{
+php php php php php php php php php php php php php php php php php$openActionphp-php>dumpActionphp(php$thisphp-php>php_objFactoryphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp associativephp arrayphp containingphp allphp thephp namedphp destinationsphp php(orphp GoTophp actionsphp)php inphp thephp PDFphp.
+php php php php php php*php Namedphp targetsphp canphp bephp usedphp tophp referencephp fromphp outside
+php php php php php php*php thephp PDFphp,php exphp:php php'httpphp:php/php/wwwphp.somethingphp.comphp/mydocumentphp.pdfphp#MyActionphp'
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getNamedDestinationsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_namedTargetsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp specifiedphp namedphp destination
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Destinationphp_Explicitphp|Zendphp_Pdfphp_Actionphp_GoTo
+php php php php php php*php/
+php php php php publicphp functionphp getNamedDestinationphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_namedTargetsphp[php$namephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_namedTargetsphp[php$namephp]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp specifiedphp namedphp destination
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Destinationphp_Explicitphp|Zendphp_Pdfphp_Actionphp_GoTophp php$target
+php php php php php php*php/
+php php php php publicphp functionphp setNamedDestinationphp(php$namephp,php php$destinationphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$destinationphp php!php=php=php nullphp php php&php&
+php php php php php php php php php php php php php!php$destinationphp instanceofphp Zendphp_Pdfphp_Actionphp_GoTophp php php&php&
+php php php php php php php php php php php php php!php$destinationphp instanceofphp Zendphp_Pdfphp_Destinationphp_Explicitphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'PDFphp namedphp destinationphp mustphp referphp anphp explicitphp destinationphp orphp aphp GoTophp PDFphp actionphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$destinationphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php$thisphp-php>php_namedTargetsphp[php$namephp]php php=php php$destinationphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_namedTargetsphp[php$namephp]php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Pagesphp collectionphp hashphp:
+php php php php php php*php php<pagephp dictionaryphp objectphp hashphp idphp>php php=php>php Zendphp_Pdfphp_Page
+php php php php php php*
+php php php php php php*php php@varphp SplObjectStorage
+php php php php php php*php/
+php php php php protectedphp php$php_pageReferencesphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Pagesphp collectionphp hashphp:
+php php php php php php*php php<pagephp numberphp>php php=php>php Zendphp_Pdfphp_Page
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_pageNumbersphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Refreshphp pagephp collectionphp hashes
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdf
+php php php php php php*php/
+php php php php protectedphp functionphp php_refreshPagesHashphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_pageReferencesphp php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_pageNumbersphp php php php php=php arrayphp(php)php;
+php php php php php php php php php$countphp php=php php1php;
+php php php php php php php php foreachphp php(php$thisphp-php>pagesphp asphp php$pagephp)php php{
+php php php php php php php php php php php php php$pageDictionaryHashIdphp php=php splphp_objectphp_hashphp(php$pagephp-php>getPageDictionaryphp(php)php-php>getObjectphp(php)php)php;
+php php php php php php php php php php php php php$thisphp-php>php_pageReferencesphp[php$pageDictionaryHashIdphp]php php=php php$pagephp;
+php php php php php php php php php php php php php$thisphp-php>php_pageNumbersphp[php$countphp+php+php]php php php php php php php php php php php php php php php php php php=php php$pagephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Resolvephp destinationphp.
+php php php php php php*
+php php php php php php*php Returnsphp Zendphp_Pdfphp_Pagephp pagephp objectphp orphp nullphp ifphp destinationphp isphp notphp foundphp withinphp PDFphp documentphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Destinationphp php$destinationphp php Destinationphp tophp resolve
+php php php php php php*php php@paramphp booleanphp php$refreshPagesHashphp php Refreshphp pagephp collectionphp hashesphp beforephp processing
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Pagephp|null
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp resolveDestinationphp(Zendphp_Pdfphp_Destinationphp php$destinationphp,php php$refreshPageCollectionHashesphp php=php truephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_pageReferencesphp php=php=php=php nullphp php php|php|php php php$refreshPageCollectionHashesphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_refreshPagesHashphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$destinationphp instanceofphp Zendphp_Pdfphp_Destinationphp_Namedphp)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_namedTargetsphp[php$destinationphp-php>getNamephp(php)php]php)php)php php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$destinationphp php=php php$thisphp-php>getNamedDestinationphp(php$destinationphp-php>getNamephp(php)php)php;
+
+php php php php php php php php php php php php ifphp php(php$destinationphp instanceofphp Zendphp_Pdfphp_Actionphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!php$destinationphp instanceofphp Zendphp_Pdfphp_Actionphp_GoTophp)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$destinationphp php=php php$destinationphp-php>getDestinationphp(php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php!php$destinationphp instanceofphp Zendphp_Pdfphp_Destinationphp_Explicitphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Namedphp destinationphp targetphp hasphp tophp bephp anphp explicitphp destinationphp.php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Namedphp targetphp isphp anphp explicitphp destination
+php php php php php php php php php$pageElementphp php=php php$destinationphp-php>getResourcephp(php)php-php>itemsphp[php0php]php;
+
+php php php php php php php php ifphp php(php$pageElementphp-php>getTypephp(php)php php=php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_NUMERICphp)php php{
+php php php php php php php php php php php php php/php/php Pagephp referencephp isphp aphp PDFphp number
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_pageNumbersphp[php$pageElementphp-php>valuephp]php)php)php php{
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php returnphp php$thisphp-php>php_pageNumbersphp[php$pageElementphp-php>valuephp]php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Pagephp referencephp isphp aphp PDFphp pagephp dictionaryphp reference
+php php php php php php php php php$pageDictionaryHashIdphp php=php splphp_objectphp_hashphp(php$pageElementphp-php>getObjectphp(php)php)php;
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_pageReferencesphp[php$pageDictionaryHashIdphp]php)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_pageReferencesphp[php$pageDictionaryHashIdphp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Walkphp throughphp actionphp andphp itsphp chainedphp actionsphp treephp andphp removephp nodes
+php php php php php php*php ifphp theyphp arephp GoTophp actionsphp withphp anphp unresolvedphp targetphp.
+php php php php php php*
+php php php php php php*php Returnsphp nullphp ifphp rootphp nodephp isphp deletedphp orphp updatedphp actionphp overwisephp.
+php php php php php php*
+php php php php php php*php php@todophp Givephp appropriatephp namephp andphp makephp methodphp public
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Actionphp php$action
+php php php php php php*php php@paramphp booleanphp php$refreshPagesHashphp php Refreshphp pagephp collectionphp hashesphp beforephp processing
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp|null
+php php php php php php*php/
+php php php php protectedphp functionphp php_cleanUpActionphp(Zendphp_Pdfphp_Actionphp php$actionphp,php php$refreshPageCollectionHashesphp php=php truephp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_pageReferencesphp php=php=php=php nullphp php php|php|php php php$refreshPageCollectionHashesphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_refreshPagesHashphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Namedphp targetphp isphp anphp action
+php php php php php php php php ifphp php(php$actionphp instanceofphp Zendphp_Pdfphp_Actionphp_GoTophp php php&php&
+php php php php php php php php php php php php php$thisphp-php>resolveDestinationphp(php$actionphp-php>getDestinationphp(php)php,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php Actionphp itselfphp isphp aphp GoTophp actionphp withphp anphp unresolvedphp destination
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Walkphp throughphp childphp actions
+php php php php php php php php php$iteratorphp php=php newphp RecursiveIteratorIteratorphp(php$actionphp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
+
+php php php php php php php php php$actionsToCleanphp php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php$deletionCandidateKeysphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$iteratorphp asphp php$chainedActionphp)php php{
+php php php php php php php php php php php php ifphp php(php$chainedActionphp instanceofphp Zendphp_Pdfphp_Actionphp_GoTophp php php&php&
+php php php php php php php php php php php php php php php php php$thisphp-php>resolveDestinationphp(php$chainedActionphp-php>getDestinationphp(php)php,php falsephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Somephp childphp actionphp isphp aphp GoTophp actionphp withphp anphp unresolvedphp destination
+php php php php php php php php php php php php php php php php php/php/php Markphp itphp asphp aphp candidatephp forphp deletion
+php php php php php php php php php php php php php php php php php$actionsToCleanphp[php]php php php php php php php php php=php php$iteratorphp-php>getSubIteratorphp(php)php;
+php php php php php php php php php php php php php php php php php$deletionCandidateKeysphp[php]php php=php php$iteratorphp-php>getSubIteratorphp(php)php-php>keyphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$actionsToCleanphp asphp php$idphp php=php>php php$actionphp)php php{
+php php php php php php php php php php php php unsetphp(php$actionphp-php>nextphp[php$deletionCandidateKeysphp[php$idphp]php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$actionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Extractphp fontsphp attachedphp tophp thephp document
+php php php php php php*
+php php php php php php*php returnsphp arrayphp ofphp Zendphp_Pdfphp_Resourcephp_Fontphp_Extractedphp objects
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp extractFontsphp(php)
+php php php php php{
+php php php php php php php php php$fontResourcesUniquephp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>pagesphp asphp php$pagephp)php php{
+php php php php php php php php php php php php php$pageResourcesphp php=php php$pagephp-php>extractResourcesphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$pageResourcesphp-php>Fontphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Pagephp doesnphp'tphp containphp havephp anyphp fontphp reference
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$fontResourcesphp php=php php$pageResourcesphp-php>Fontphp;
+
+php php php php php php php php php php php php foreachphp php(php$fontResourcesphp-php>getKeysphp(php)php asphp php$fontResourceNamephp)php php{
+php php php php php php php php php php php php php php php php php$fontDictionaryphp php=php php$fontResourcesphp-php>php$fontResourceNamephp;
+
+php php php php php php php php php php php php php php php php ifphp php(php!php php(php$fontDictionaryphp instanceofphp Zendphp_Pdfphp_Elementphp_Referencephp php php|php|
+php php php php php php php php php php php php php php php php php php php php php php php php$fontDictionaryphp instanceofphp Zendphp_Pdfphp_Elementphp_Objectphp)php php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Fontphp dictionaryphp hasphp tophp bephp anphp indirectphp objectphp orphp objectphp referencephp.php'php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$fontResourcesUniquephp[splphp_objectphp_hashphp(php$fontDictionaryphp-php>getObjectphp(php)php)php]php php=php php$fontDictionaryphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$fontsphp php=php arrayphp(php)php;
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php foreachphp php(php$fontResourcesUniquephp asphp php$resourceIdphp php=php>php php$fontDictionaryphp)php php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php/php/php Tryphp tophp extractphp font
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Extractedphp.phpphp'php;
+php php php php php php php php php php php php php php php php php$extractedFontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Extractedphp(php$fontDictionaryphp)php;
+
+php php php php php php php php php php php php php php php php php$fontsphp[php$resourceIdphp]php php=php php$extractedFontphp;
+php php php php php php php php php php php php php}php catchphp php(Zendphp_Pdfphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$ephp-php>getMessagephp(php)php php!php=php php'Unsupportedphp fontphp typephp.php'php)php php{
+php php php php php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$fontsphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Extractphp fontphp attachedphp tophp thephp pagephp byphp specificphp fontphp name
+php php php php php php*
+php php php php php php*php php$fontNamephp shouldphp bephp specifiedphp inphp UTFphp-php8php encoding
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Resourcephp_Fontphp_Extractedphp|null
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp extractFontphp(php$fontNamephp)
+php php php php php{
+php php php php php php php php php$fontResourcesUniquephp php=php arrayphp(php)php;
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php foreachphp php(php$thisphp-php>pagesphp asphp php$pagephp)php php{
+php php php php php php php php php php php php php$pageResourcesphp php=php php$pagephp-php>extractResourcesphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$pageResourcesphp-php>Fontphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Pagephp doesnphp'tphp containphp havephp anyphp fontphp reference
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$fontResourcesphp php=php php$pageResourcesphp-php>Fontphp;
+
+php php php php php php php php php php php php foreachphp php(php$fontResourcesphp-php>getKeysphp(php)php asphp php$fontResourceNamephp)php php{
+php php php php php php php php php php php php php php php php php$fontDictionaryphp php=php php$fontResourcesphp-php>php$fontResourceNamephp;
+
+php php php php php php php php php php php php php php php php ifphp php(php!php php(php$fontDictionaryphp instanceofphp Zendphp_Pdfphp_Elementphp_Referencephp php php|php|
+php php php php php php php php php php php php php php php php php php php php php php php php$fontDictionaryphp instanceofphp Zendphp_Pdfphp_Elementphp_Objectphp)php php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Fontphp dictionaryphp hasphp tophp bephp anphp indirectphp objectphp orphp objectphp referencephp.php'php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$resourceIdphp php=php splphp_objectphp_hashphp(php$fontDictionaryphp-php>getObjectphp(php)php)php;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$fontResourcesUniquephp[php$resourceIdphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Markphp resourcephp asphp processed
+php php php php php php php php php php php php php php php php php php php php php$fontResourcesUniquephp[php$resourceIdphp]php php=php php1php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$fontDictionaryphp-php>BaseFontphp-php>valuephp php!php=php php$fontNamephp)php php{
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Tryphp tophp extractphp font
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Extractedphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Extractedphp(php$fontDictionaryphp)php;
+php php php php php php php php php php php php php php php php php}php catchphp php(Zendphp_Pdfphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$ephp-php>getMessagephp(php)php php!php=php php'Unsupportedphp fontphp typephp.php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php/php/php Continuephp searhing
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Renderphp thephp completedphp PDFphp tophp aphp stringphp.
+php php php php php php*php Ifphp php$newSegmentOnlyphp isphp truephp,php thenphp onlyphp appendedphp partphp ofphp PDFphp isphp returnedphp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$newSegmentOnly
+php php php php php php*php php@paramphp resourcephp php$outputStream
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php$newSegmentOnlyphp php=php falsephp,php php$outputStreamphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Savephp documentphp propertiesphp ifphp necessary
+php php php php php php php php ifphp php(php$thisphp-php>propertiesphp php!php=php php$thisphp-php>php_originalPropertiesphp)php php{
+php php php php php php php php php php php php php$docInfophp php=php php$thisphp-php>php_objFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php)php;
+
+php php php php php php php php php php php php foreachphp php(php$thisphp-php>propertiesphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php php php php php casephp php'Trappedphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php switchphp php(php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp truephp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docInfophp-php>php$keyphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Truephp'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp falsephp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docInfophp-php>php$keyphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Falsephp'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp nullphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docInfophp-php>php$keyphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Unknownphp'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp Trappedphp documentphp propertyphp valephp:php php\php'php'php php.php php$valuephp php.php php'php\php'php.php Onlyphp truephp,php falsephp andphp nullphp valuesphp arephp allowedphp.php'php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php casephp php'CreationDatephp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php breakphp intentionallyphp omitted
+php php php php php php php php php php php php php php php php php php php php casephp php'ModDatephp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php$docInfophp-php>php$keyphp php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php(stringphp)php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php casephp php'Titlephp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php breakphp intentionallyphp omitted
+php php php php php php php php php php php php php php php php php php php php casephp php'Authorphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php breakphp intentionallyphp omitted
+php php php php php php php php php php php php php php php php php php php php casephp php'Subjectphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php breakphp intentionallyphp omitted
+php php php php php php php php php php php php php php php php php php php php casephp php'Keywordsphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php breakphp intentionallyphp omitted
+php php php php php php php php php php php php php php php php php php php php casephp php'Creatorphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php breakphp intentionallyphp omitted
+php php php php php php php php php php php php php php php php php php php php casephp php'Producerphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(extensionphp_loadedphp(php'mbstringphp'php)php php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$detectedphp php=php mbphp_detectphp_encodingphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$detectedphp php!php=php=php php'ASCIIphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"php\xfephp\xffphp"php php.php mbphp_convertphp_encodingphp(php$valuephp,php php'UTFphp-php1php6php'php,php php$detectedphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$docInfophp-php>php$keyphp php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php(stringphp)php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Setphp propertyphp usingphp PDFphp typephp basedphp onphp PHPphp type
+php php php php php php php php php php php php php php php php php php php php php php php php php$docInfophp-php>php$keyphp php=php Zendphp_Pdfphp_Elementphp:php:phpToPdfphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$thisphp-php>php_trailerphp-php>Infophp php=php php$docInfophp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dumpPagesphp(php)php;
+php php php php php php php php php$thisphp-php>php_dumpNamedDestinationsphp(php)php;
+php php php php php php php php php$thisphp-php>php_dumpOutlinesphp(php)php;
+
+php php php php php php php php php/php/php Checkphp,php thatphp PDFphp filephp wasphp modified
+php php php php php php php php php/php/php Filephp isphp alwaysphp modifiedphp byphp php_dumpPagesphp(php)php nowphp,php butphp futurephp implementationsphp mayphp eliminatephp thisphp.
+php php php php php php php php ifphp php(php!php$thisphp-php>php_objFactoryphp-php>isModifiedphp(php)php)php php{
+php php php php php php php php php php php php ifphp php(php$newSegmentOnlyphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Dophp nothingphp,php return
+php php php php php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$outputStreamphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_trailerphp-php>getPDFStringphp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$pdfDataphp php=php php$thisphp-php>php_trailerphp-php>getPDFStringphp(php)php;
+php php php php php php php php php php php php php php php php whilephp php(php strlenphp(php$pdfDataphp)php php>php php0php php&php&php php(php$byteCountphp php=php fwritephp(php$outputStreamphp,php php$pdfDataphp)php)php php!php=php falsephp php)php php{
+php php php php php php php php php php php php php php php php php php php php php$pdfDataphp php=php substrphp(php$pdfDataphp,php php$byteCountphp)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php offsetphp php(fromphp aphp startphp ofphp PDFphp filephp)php ofphp newphp PDFphp filephp segment
+php php php php php php php php php$offsetphp php=php php$thisphp-php>php_trailerphp-php>getPDFLengthphp(php)php;
+php php php php php php php php php/php/php Lastphp Objectphp numberphp inphp aphp listphp ofphp freephp objects
+php php php php php php php php php$lastFreeObjectphp php=php php$thisphp-php>php_trailerphp-php>getLastFreeObjectphp(php)php;
+
+php php php php php php php php php/php/php Arrayphp ofphp crossphp-referencephp tablephp subsections
+php php php php php php php php php$xrefTablephp php=php arrayphp(php)php;
+php php php php php php php php php/php/php Objectphp numbersphp ofphp firstphp objectsphp inphp eachphp subsection
+php php php php php php php php php$xrefSectionStartNumsphp php=php arrayphp(php)php;
+
+php php php php php php php php php/php/php Lastphp crossphp-referencephp tablephp subsection
+php php php php php php php php php$xrefSectionphp php=php arrayphp(php)php;
+php php php php php php php php php/php/php Dummyphp initializationphp ofphp thephp firstphp elementphp php(specailphp casephp php-php headerphp ofphp linkedphp listphp ofphp freephp objectsphp)php.
+php php php php php php php php php$xrefSectionphp[php]php php=php php0php;
+php php php php php php php php php$xrefSectionStartNumsphp[php]php php=php php0php;
+php php php php php php php php php/php/php Objectphp numberphp ofphp lastphp processedphp PDFphp objectphp.
+php php php php php php php php php/php/php Usedphp tophp managephp crossphp-referencephp subsectionsphp.
+php php php php php php php php php/php/php Initializedphp byphp zerophp php(specailphp casephp php-php headerphp ofphp linkedphp listphp ofphp freephp objectsphp)php.
+php php php php php php php php php$lastObjNumphp php=php php0php;
+
+php php php php php php php php ifphp php(php$outputStreamphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php!php$newSegmentOnlyphp)php php{
+php php php php php php php php php php php php php php php php php$pdfDataphp php=php php$thisphp-php>php_trailerphp-php>getPDFStringphp(php)php;
+php php php php php php php php php php php php php php php php whilephp php(php strlenphp(php$pdfDataphp)php php>php php0php php&php&php php(php$byteCountphp php=php fwritephp(php$outputStreamphp,php php$pdfDataphp)php)php php!php=php falsephp php)php php{
+php php php php php php php php php php php php php php php php php php php php php$pdfDataphp php=php substrphp(php$pdfDataphp,php php$byteCountphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$pdfSegmentBlocksphp php=php php(php$newSegmentOnlyphp)php php?php arrayphp(php)php php:php arrayphp(php$thisphp-php>php_trailerphp-php>getPDFStringphp(php)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Iteratephp objectsphp tophp createphp newphp referencephp table
+php php php php php php php php foreachphp php(php$thisphp-php>php_objFactoryphp-php>listModifiedObjectsphp(php)php asphp php$updateInfophp)php php{
+php php php php php php php php php php php php php$objNumphp php=php php$updateInfophp-php>getObjNumphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$objNumphp php-php php$lastObjNumphp php!php=php php1php)php php{
+php php php php php php php php php php php php php php php php php/php/php Savephp crossphp-referencephp tablephp subsectionphp andphp startphp newphp one
+php php php php php php php php php php php php php php php php php$xrefTablephp[php]php php=php php$xrefSectionphp;
+php php php php php php php php php php php php php php php php php$xrefSectionphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php$xrefSectionStartNumsphp[php]php php=php php$objNumphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$updateInfophp-php>isFreephp(php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php Freephp objectphp crossphp-referencephp tablephp entry
+php php php php php php php php php php php php php php php php php$xrefSectionphp[php]php php php=php sprintfphp(php"php%php0php1php0dphp php%php0php5dphp fphp php\nphp"php,php php$lastFreeObjectphp,php php$updateInfophp-php>getGenNumphp(php)php)php;
+php php php php php php php php php php php php php php php php php$lastFreeObjectphp php=php php$objNumphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php/php/php Inphp-usephp objectphp crossphp-referencephp tablephp entry
+php php php php php php php php php php php php php php php php php$xrefSectionphp[php]php php php=php sprintfphp(php"php%php0php1php0dphp php%php0php5dphp nphp php\nphp"php,php php$offsetphp,php php$updateInfophp-php>getGenNumphp(php)php)php;
+
+php php php php php php php php php php php php php php php php php$pdfBlockphp php=php php$updateInfophp-php>getObjectDumpphp(php)php;
+php php php php php php php php php php php php php php php php php$offsetphp php+php=php strlenphp(php$pdfBlockphp)php;
+
+php php php php php php php php php php php php php php php php ifphp php(php$outputStreamphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$pdfSegmentBlocksphp[php]php php=php php$pdfBlockphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php whilephp php(php strlenphp(php$pdfBlockphp)php php>php php0php php&php&php php(php$byteCountphp php=php fwritephp(php$outputStreamphp,php php$pdfBlockphp)php)php php!php=php falsephp php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$pdfBlockphp php=php substrphp(php$pdfBlockphp,php php$byteCountphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$lastObjNumphp php=php php$objNumphp;
+php php php php php php php php php}
+php php php php php php php php php/php/php Savephp lastphp crossphp-referencephp tablephp subsection
+php php php php php php php php php$xrefTablephp[php]php php=php php$xrefSectionphp;
+
+php php php php php php php php php/php/php Modifyphp firstphp entryphp php(specailphp casephp php-php headerphp ofphp linkedphp listphp ofphp freephp objectsphp)php.
+php php php php php php php php php$xrefTablephp[php0php]php[php0php]php php=php sprintfphp(php"php%php0php1php0dphp php6php5php5php3php5php fphp php\nphp"php,php php$lastFreeObjectphp)php;
+
+php php php php php php php php php$xrefTableStrphp php=php php"xrefphp\nphp"php;
+php php php php php php php php foreachphp php(php$xrefTablephp asphp php$sectIdphp php=php>php php$xrefSectionphp)php php{
+php php php php php php php php php php php php php$xrefTableStrphp php.php=php sprintfphp(php"php%dphp php%dphp php\nphp"php,php php$xrefSectionStartNumsphp[php$sectIdphp]php,php countphp(php$xrefSectionphp)php)php;
+php php php php php php php php php php php php foreachphp php(php$xrefSectionphp asphp php$xrefTableEntryphp)php php{
+php php php php php php php php php php php php php php php php php$xrefTableStrphp php.php=php php$xrefTableEntryphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_trailerphp-php>Sizephp-php>valuephp php=php php$thisphp-php>php_objFactoryphp-php>getObjectCountphp(php)php;
+
+php php php php php php php php php$pdfBlockphp php=php php$xrefTableStr
+php php php php php php php php php php php php php php php php php php.php php php$thisphp-php>php_trailerphp-php>toStringphp(php)
+php php php php php php php php php php php php php php php php php php.php php"startxrefphp\nphp"php php.php php$offsetphp php.php php"php\nphp"
+php php php php php php php php php php php php php php php php php php.php php"php%php%EOFphp\nphp"php;
+
+php php php php php php php php php$thisphp-php>php_objFactoryphp-php>cleanEnumerationShiftCachephp(php)php;
+
+php php php php php php php php ifphp php(php$outputStreamphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$pdfSegmentBlocksphp[php]php php=php php$pdfBlockphp;
+
+php php php php php php php php php php php php returnphp implodephp(php'php'php,php php$pdfSegmentBlocksphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php whilephp php(php strlenphp(php$pdfBlockphp)php php>php php0php php&php&php php(php$byteCountphp php=php fwritephp(php$outputStreamphp,php php$pdfBlockphp)php)php php!php=php falsephp php)php php{
+php php php php php php php php php php php php php php php php php$pdfBlockphp php=php substrphp(php$pdfBlockphp,php php$byteCountphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp documentphp-levelphp JavaScript
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$javascript
+php php php php php php*php/
+php php php php publicphp functionphp setJavaScriptphp(php$javascriptphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_javaScriptphp php=php php$javascriptphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Convertphp datephp tophp PDFphp formatphp php(itphp'sphp closephp tophp ASNphp.php1php php(Abstractphp Syntaxphp Notation
+php php php php php php*php Onephp)php definedphp inphp ISOphp/IECphp php8php8php2php4php)php.
+php php php php php php*
+php php php php php php*php php@todophp Thisphp reallyphp isnphp'tphp thephp bestphp locationphp forphp thisphp methodphp.php Itphp should
+php php php php php php*php php php probablyphp actuallyphp existphp asphp Zendphp_Pdfphp_Elementphp_Datephp orphp somethingphp likephp thatphp.
+php php php php php php*
+php php php php php php*php php@todophp Addressphp thephp followingphp Ephp_STRICTphp issuephp:
+php php php php php php*php php php PHPphp Strictphp Standardsphp:php php datephp(php)php:php Itphp isphp notphp safephp tophp relyphp onphp thephp systemphp's
+php php php php php php*php php php timezonephp settingsphp.php Pleasephp usephp thephp datephp.timezonephp settingphp,php thephp TZ
+php php php php php php*php php php environmentphp variablephp orphp thephp datephp_defaultphp_timezonephp_setphp(php)php functionphp.php In
+php php php php php php*php php php casephp youphp usedphp anyphp ofphp thosephp methodsphp andphp youphp arephp stillphp gettingphp this
+php php php php php php*php php php warningphp,php youphp mostphp likelyphp misspelledphp thephp timezonephp identifierphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$timestampphp php(optionalphp)php Ifphp omittedphp,php usesphp thephp currentphp timephp.
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp pdfDatephp(php$timestampphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$timestampphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$datephp php=php datephp(php'php\Dphp\php:YmdHisOphp'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$datephp php=php datephp(php'php\Dphp\php:YmdHisOphp'php,php php$timestampphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp substrphp_replacephp(php$datephp,php php'php\php'php'php,php php-php2php,php php0php)php php.php php'php\php'php'php;
+php php php php php}
+
+php}

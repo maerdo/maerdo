@@ -1,94 +1,94 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Bootstrap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Bootstrapper.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Bootstrap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Bootstrapperphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Interface for bootstrap classes
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Bootstrap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Application_Bootstrap_Bootstrapper
-{
-    /**
-     * Constructor
-     *
-     * @param  Zend_Application $application
-     * @return void
-     */
-    public function __construct($application);
+php/php*php*
+php php*php Interfacephp forphp bootstrapphp classes
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Bootstrap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Applicationphp_Bootstrapphp_Bootstrapper
+php{
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Applicationphp php$application
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$applicationphp)php;
 
-    /**
-     * Set bootstrap options
-     *
-     * @param  array $options
-     * @return Zend_Application_Bootstrap_Bootstrapper
-     */
-    public function setOptions(array $options);
+php php php php php/php*php*
+php php php php php php*php Setphp bootstrapphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Bootstrapphp_Bootstrapper
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)php;
 
-    /**
-     * Retrieve application object
-     *
-     * @return Zend_Application|Zend_Application_Bootstrap_Bootstrapper
-     */
-    public function getApplication();
+php php php php php/php*php*
+php php php php php php*php Retrievephp applicationphp object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Applicationphp|Zendphp_Applicationphp_Bootstrapphp_Bootstrapper
+php php php php php php*php/
+php php php php publicphp functionphp getApplicationphp(php)php;
 
-    /**
-     * Retrieve application environment
-     *
-     * @return string
-     */
-    public function getEnvironment();
+php php php php php/php*php*
+php php php php php php*php Retrievephp applicationphp environment
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEnvironmentphp(php)php;
 
-    /**
-     * Retrieve list of class resource initializers (_init* methods). Returns
-     * as resource/method pairs.
-     *
-     * @return array
-     */
-    public function getClassResources();
+php php php php php/php*php*
+php php php php php php*php Retrievephp listphp ofphp classphp resourcephp initializersphp php(php_initphp*php methodsphp)php.php Returns
+php php php php php php*php asphp resourcephp/methodphp pairsphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getClassResourcesphp(php)php;
 
-    /**
-     * Retrieve list of class resource initializer names (resource names only,
-     * no method names)
-     *
-     * @return array
-     */
-    public function getClassResourceNames();
+php php php php php/php*php*
+php php php php php php*php Retrievephp listphp ofphp classphp resourcephp initializerphp namesphp php(resourcephp namesphp onlyphp,
+php php php php php php*php nophp methodphp namesphp)
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getClassResourceNamesphp(php)php;
 
-    /**
-     * Bootstrap application or individual resource
-     *
-     * @param  null|string $resource
-     * @return mixed
-     */
-    public function bootstrap($resource = null);
+php php php php php/php*php*
+php php php php php php*php Bootstrapphp applicationphp orphp individualphp resource
+php php php php php php*
+php php php php php php*php php@paramphp php nullphp|stringphp php$resource
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp bootstrapphp(php$resourcephp php=php nullphp)php;
 
-    /**
-     * Run the application
-     *
-     * @return void
-     */
-    public function run();
-}
+php php php php php/php*php*
+php php php php php php*php Runphp thephp application
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp runphp(php)php;
+php}

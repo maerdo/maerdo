@@ -1,142 +1,142 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Form_Decorator_Abstract */
-require_once 'Zend/Form/Decorator/Abstract.php';
+php/php*php*php Zendphp_Formphp_Decoratorphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Abstractphp.phpphp'php;
 
-/** Zend_Form_Decorator_Marker_File_Interface */
-require_once 'Zend/Form/Decorator/Marker/File/Interface.php';
+php/php*php*php Zendphp_Formphp_Decoratorphp_Markerphp_Filephp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Markerphp/Filephp/Interfacephp.phpphp'php;
 
-/** Zend_File_Transfer_Adapter_Http */
-require_once 'Zend/File/Transfer/Adapter/Http.php';
+php/php*php*php Zendphp_Filephp_Transferphp_Adapterphp_Httpphp php*php/
+requirephp_oncephp php'Zendphp/Filephp/Transferphp/Adapterphp/Httpphp.phpphp'php;
 
-/**
- * Zend_Form_Decorator_File
- *
- * Fixes the rendering for all subform and multi file elements
- *
- * @category   Zend
- * @package    Zend_Form
- * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: File.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Form_Decorator_File
-    extends Zend_Form_Decorator_Abstract
-    implements Zend_Form_Decorator_Marker_File_Interface
-{
-    /**
-     * Attributes that should not be passed to helper
-     * @var array
-     */
-    protected $_attribBlacklist = array('helper', 'placement', 'separator', 'value');
+php/php*php*
+php php*php Zendphp_Formphp_Decoratorphp_File
+php php*
+php php*php Fixesphp thephp renderingphp forphp allphp subformphp andphp multiphp filephp elements
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Form
+php php*php php@subpackagephp Decorator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Filephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Formphp_Decoratorphp_File
+php php php php extendsphp Zendphp_Formphp_Decoratorphp_Abstract
+php php php php implementsphp Zendphp_Formphp_Decoratorphp_Markerphp_Filephp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Attributesphp thatphp shouldphp notphp bephp passedphp tophp helper
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_attribBlacklistphp php=php arrayphp(php'helperphp'php,php php'placementphp'php,php php'separatorphp'php,php php'valuephp'php)php;
 
-    /**
-     * Default placement: append
-     * @var string
-     */
-    protected $_placement = 'APPEND';
+php php php php php/php*php*
+php php php php php php*php Defaultphp placementphp:php append
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_placementphp php=php php'APPENDphp'php;
 
-    /**
-     * Get attributes to pass to file helper
-     *
-     * @return array
-     */
-    public function getAttribs()
-    {
-        $attribs   = $this->getOptions();
+php php php php php/php*php*
+php php php php php php*php Getphp attributesphp tophp passphp tophp filephp helper
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getAttribsphp(php)
+php php php php php{
+php php php php php php php php php$attribsphp php php php=php php$thisphp-php>getOptionsphp(php)php;
 
-        if (null !== ($element = $this->getElement())) {
-            $attribs = array_merge($attribs, $element->getAttribs());
-        }
+php php php php php php php php ifphp php(nullphp php!php=php=php php(php$elementphp php=php php$thisphp-php>getElementphp(php)php)php)php php{
+php php php php php php php php php php php php php$attribsphp php=php arrayphp_mergephp(php$attribsphp,php php$elementphp-php>getAttribsphp(php)php)php;
+php php php php php php php php php}
 
-        foreach ($this->_attribBlacklist as $key) {
-            if (array_key_exists($key, $attribs)) {
-                unset($attribs[$key]);
-            }
-        }
+php php php php php php php php foreachphp php(php$thisphp-php>php_attribBlacklistphp asphp php$keyphp)php php{
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$attribsphp)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$attribsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $attribs;
-    }
+php php php php php php php php returnphp php$attribsphp;
+php php php php php}
 
-    /**
-     * Render a form file
-     *
-     * @param  string $content
-     * @return string
-     */
-    public function render($content)
-    {
-        $element = $this->getElement();
-        if (!$element instanceof Zend_Form_Element) {
-            return $content;
-        }
+php php php php php/php*php*
+php php php php php php*php Renderphp aphp formphp file
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$content
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php$contentphp)
+php php php php php{
+php php php php php php php php php$elementphp php=php php$thisphp-php>getElementphp(php)php;
+php php php php php php php php ifphp php(php!php$elementphp instanceofphp Zendphp_Formphp_Elementphp)php php{
+php php php php php php php php php php php php returnphp php$contentphp;
+php php php php php php php php php}
 
-        $view = $element->getView();
-        if (!$view instanceof Zend_View_Interface) {
-            return $content;
-        }
+php php php php php php php php php$viewphp php=php php$elementphp-php>getViewphp(php)php;
+php php php php php php php php ifphp php(php!php$viewphp instanceofphp Zendphp_Viewphp_Interfacephp)php php{
+php php php php php php php php php php php php returnphp php$contentphp;
+php php php php php php php php php}
 
-        $name      = $element->getName();
-        $attribs   = $this->getAttribs();
-        if (!array_key_exists('id', $attribs)) {
-            $attribs['id'] = $name;
-        }
+php php php php php php php php php$namephp php php php php php php=php php$elementphp-php>getNamephp(php)php;
+php php php php php php php php php$attribsphp php php php=php php$thisphp-php>getAttribsphp(php)php;
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'idphp'php,php php$attribsphp)php)php php{
+php php php php php php php php php php php php php$attribsphp[php'idphp'php]php php=php php$namephp;
+php php php php php php php php php}
 
-        $separator = $this->getSeparator();
-        $placement = $this->getPlacement();
-        $markup    = array();
-        $size      = $element->getMaxFileSize();
-        if ($size > 0) {
-            $element->setMaxFileSize(0);
-            $markup[] = $view->formHidden('MAX_FILE_SIZE', $size);
-        }
+php php php php php php php php php$separatorphp php=php php$thisphp-php>getSeparatorphp(php)php;
+php php php php php php php php php$placementphp php=php php$thisphp-php>getPlacementphp(php)php;
+php php php php php php php php php$markupphp php php php php=php arrayphp(php)php;
+php php php php php php php php php$sizephp php php php php php php=php php$elementphp-php>getMaxFileSizephp(php)php;
+php php php php php php php php ifphp php(php$sizephp php>php php0php)php php{
+php php php php php php php php php php php php php$elementphp-php>setMaxFileSizephp(php0php)php;
+php php php php php php php php php php php php php$markupphp[php]php php=php php$viewphp-php>formHiddenphp(php'MAXphp_FILEphp_SIZEphp'php,php php$sizephp)php;
+php php php php php php php php php}
 
-        if (Zend_File_Transfer_Adapter_Http::isApcAvailable()) {
-            $markup[] = $view->formHidden(ini_get('apc.rfc1867_name'), uniqid(), array('id' => 'progress_key'));
-        } else if (Zend_File_Transfer_Adapter_Http::isUploadProgressAvailable()) {
-            $markup[] = $view->formHidden('UPLOAD_IDENTIFIER', uniqid(), array('id' => 'progress_key'));
-        }
+php php php php php php php php ifphp php(Zendphp_Filephp_Transferphp_Adapterphp_Httpphp:php:isApcAvailablephp(php)php)php php{
+php php php php php php php php php php php php php$markupphp[php]php php=php php$viewphp-php>formHiddenphp(iniphp_getphp(php'apcphp.rfcphp1php8php6php7php_namephp'php)php,php uniqidphp(php)php,php arrayphp(php'idphp'php php=php>php php'progressphp_keyphp'php)php)php;
+php php php php php php php php php}php elsephp ifphp php(Zendphp_Filephp_Transferphp_Adapterphp_Httpphp:php:isUploadProgressAvailablephp(php)php)php php{
+php php php php php php php php php php php php php$markupphp[php]php php=php php$viewphp-php>formHiddenphp(php'UPLOADphp_IDENTIFIERphp'php,php uniqidphp(php)php,php arrayphp(php'idphp'php php=php>php php'progressphp_keyphp'php)php)php;
+php php php php php php php php php}
 
-        if ($element->isArray()) {
-            $name .= "[]";
-            $count = $element->getMultiFile();
-            for ($i = 0; $i < $count; ++$i) {
-                $htmlAttribs        = $attribs;
-                $htmlAttribs['id'] .= '-' . $i;
-                $markup[] = $view->formFile($name, $htmlAttribs);
-            }
-        } else {
-            $markup[] = $view->formFile($name, $attribs);
-        }
+php php php php php php php php ifphp php(php$elementphp-php>isArrayphp(php)php)php php{
+php php php php php php php php php php php php php$namephp php.php=php php"php[php]php"php;
+php php php php php php php php php php php php php$countphp php=php php$elementphp-php>getMultiFilephp(php)php;
+php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$countphp;php php+php+php$iphp)php php{
+php php php php php php php php php php php php php php php php php$htmlAttribsphp php php php php php php php php=php php$attribsphp;
+php php php php php php php php php php php php php php php php php$htmlAttribsphp[php'idphp'php]php php.php=php php'php-php'php php.php php$iphp;
+php php php php php php php php php php php php php php php php php$markupphp[php]php php=php php$viewphp-php>formFilephp(php$namephp,php php$htmlAttribsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$markupphp[php]php php=php php$viewphp-php>formFilephp(php$namephp,php php$attribsphp)php;
+php php php php php php php php php}
 
-        $markup = implode($separator, $markup);
+php php php php php php php php php$markupphp php=php implodephp(php$separatorphp,php php$markupphp)php;
 
-        switch ($placement) {
-            case self::PREPEND:
-                return $markup . $separator . $content;
-            case self::APPEND:
-            default:
-                return $content . $separator . $markup;
-        }
-    }
-}
+php php php php php php php php switchphp php(php$placementphp)php php{
+php php php php php php php php php php php php casephp selfphp:php:PREPENDphp:
+php php php php php php php php php php php php php php php php returnphp php$markupphp php.php php$separatorphp php.php php$contentphp;
+php php php php php php php php php php php php casephp selfphp:php:APPENDphp:
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp php$contentphp php.php php$separatorphp php.php php$markupphp;
+php php php php php php php php php}
+php php php php php}
+php}

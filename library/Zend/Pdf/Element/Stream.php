@@ -1,130 +1,130 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Stream.php 22797 2010-08-06 15:02:12Z alexander $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Streamphp.phpphp php2php2php7php9php7php php2php0php1php0php-php0php8php-php0php6php php1php5php:php0php2php:php1php2Zphp alexanderphp php$
+php php*php/
 
 
-/** Internally used classes */
-require_once 'Zend/Pdf.php';
+php/php*php*php Internallyphp usedphp classesphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp.phpphp'php;
 
 
-/** Zend_Pdf_Element */
-require_once 'Zend/Pdf/Element.php';
+php/php*php*php Zendphp_Pdfphp_Elementphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
 
-/**
- * PDF file 'stream' element implementation
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Pdf_Element_Stream extends Zend_Pdf_Element
-{
-    /**
-     * Object value
-     *
-     * @var Zend_Memory_Container
-     */
-    public $value;
-
-
-    /**
-     * Object constructor
-     *
-     * @param string $val
-     */
-    public function __construct($val)
-    {
-        $this->value = Zend_Pdf::getMemoryManager()->create($val);
-    }
+php/php*php*
+php php*php PDFphp filephp php'streamphp'php elementphp implementation
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Pdfphp_Elementphp_Streamphp extendsphp Zendphp_Pdfphp_Element
+php{
+php php php php php/php*php*
+php php php php php php*php Objectphp value
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Memoryphp_Container
+php php php php php php*php/
+php php php php publicphp php$valuephp;
 
 
-    /**
-     * Return type of the element.
-     *
-     * @return integer
-     */
-    public function getType()
-    {
-        return Zend_Pdf_Element::TYPE_STREAM;
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$val
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$valphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>valuephp php=php Zendphp_Pdfphp:php:getMemoryManagerphp(php)php-php>createphp(php$valphp)php;
+php php php php php}
 
 
-    /**
-     * Stream length.
-     * (Method is used to avoid string copying, which may occurs in some cases)
-     *
-     * @return integer
-     */
-    public function length()
-    {
-        return strlen($this->value->getRef());
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp typephp ofphp thephp elementphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp Zendphp_Pdfphp_Elementphp:php:TYPEphp_STREAMphp;
+php php php php php}
 
 
-    /**
-     * Clear stream
-     *
-     */
-    public function clear()
-    {
-        $ref = &$this->value->getRef();
-        $ref = '';
-        $this->value->touch();
-    }
+php php php php php/php*php*
+php php php php php php*php Streamphp lengthphp.
+php php php php php php*php php(Methodphp isphp usedphp tophp avoidphp stringphp copyingphp,php whichphp mayphp occursphp inphp somephp casesphp)
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp lengthphp(php)
+php php php php php{
+php php php php php php php php returnphp strlenphp(php$thisphp-php>valuephp-php>getRefphp(php)php)php;
+php php php php php}
 
 
-    /**
-     * Append value to a stream
-     *
-     * @param mixed $val
-     */
-    public function append($val)
-    {
-        $ref = &$this->value->getRef();
-        $ref .= (string)$val;
-        $this->value->touch();
-    }
+php php php php php/php*php*
+php php php php php php*php Clearphp stream
+php php php php php php*
+php php php php php php*php/
+php php php php publicphp functionphp clearphp(php)
+php php php php php{
+php php php php php php php php php$refphp php=php php&php$thisphp-php>valuephp-php>getRefphp(php)php;
+php php php php php php php php php$refphp php=php php'php'php;
+php php php php php php php php php$thisphp-php>valuephp-php>touchphp(php)php;
+php php php php php}
 
 
-    /**
-     * Detach PDF object from the factory (if applicable), clone it and attach to new factory.
-     *
-     * @param Zend_Pdf_ElementFactory $factory  The factory to attach
-     * @param array &$processed  List of already processed indirect objects, used to avoid objects duplication
-     * @param integer $mode  Cloning mode (defines filter for objects cloning)
-     * @returns Zend_Pdf_Element
-     */
-    public function makeClone(Zend_Pdf_ElementFactory $factory, array &$processed, $mode)
-    {
-        return new self($this->value->getRef());
-    }
+php php php php php/php*php*
+php php php php php php*php Appendphp valuephp tophp aphp stream
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$val
+php php php php php php*php/
+php php php php publicphp functionphp appendphp(php$valphp)
+php php php php php{
+php php php php php php php php php$refphp php=php php&php$thisphp-php>valuephp-php>getRefphp(php)php;
+php php php php php php php php php$refphp php.php=php php(stringphp)php$valphp;
+php php php php php php php php php$thisphp-php>valuephp-php>touchphp(php)php;
+php php php php php}
 
-    /**
-     * Return object as string
-     *
-     * @param Zend_Pdf_Factory $factory
-     * @return string
-     */
-    public function toString($factory = null)
-    {
-        return "stream\n" . $this->value->getRef() . "\nendstream";
-    }
-}
+
+php php php php php/php*php*
+php php php php php php*php Detachphp PDFphp objectphp fromphp thephp factoryphp php(ifphp applicablephp)php,php clonephp itphp andphp attachphp tophp newphp factoryphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php$factoryphp php Thephp factoryphp tophp attach
+php php php php php php*php php@paramphp arrayphp php&php$processedphp php Listphp ofphp alreadyphp processedphp indirectphp objectsphp,php usedphp tophp avoidphp objectsphp duplication
+php php php php php php*php php@paramphp integerphp php$modephp php Cloningphp modephp php(definesphp filterphp forphp objectsphp cloningphp)
+php php php php php php*php php@returnsphp Zendphp_Pdfphp_Element
+php php php php php php*php/
+php php php php publicphp functionphp makeClonephp(Zendphp_Pdfphp_ElementFactoryphp php$factoryphp,php arrayphp php&php$processedphp,php php$modephp)
+php php php php php{
+php php php php php php php php returnphp newphp selfphp(php$thisphp-php>valuephp-php>getRefphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp objectphp asphp string
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Factoryphp php$factory
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php$factoryphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php"streamphp\nphp"php php.php php$thisphp-php>valuephp-php>getRefphp(php)php php.php php"php\nendstreamphp"php;
+php php php php php}
+php}

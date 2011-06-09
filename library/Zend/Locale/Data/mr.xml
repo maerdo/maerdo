@@ -1,1191 +1,1191 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.86 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="mr"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="aa">अफार</language>
-			<language type="ab">अबखेजियन</language>
-			<language type="ace">अचीनी</language>
-			<language type="ach">अकोली</language>
-			<language type="ada">अडांग्मे</language>
-			<language type="ady">अडिघे</language>
-			<language type="ae">अवेस्तन</language>
-			<language type="af">अफ्रिकान्स</language>
-			<language type="afa">अफ्रो-अशियाई भाषा</language>
-			<language type="afh">अफ्रिहिली</language>
-			<language type="ain">ऐनू</language>
-			<language type="ak">अकन</language>
-			<language type="akk">अक्कादिआन</language>
-			<language type="ale">अलेउत</language>
-			<language type="alg">अ‍ॅल्गोक्वियन भाषा</language>
-			<language type="alt">दक्षिणात्य अल्ताई</language>
-			<language type="am">अम्हारिक</language>
-			<language type="an">अर्गोनीज</language>
-			<language type="ang">पुरातन इंग्रजी</language>
-			<language type="anp">अंगिका</language>
-			<language type="apa">अपाचे भाषा</language>
-			<language type="ar">अरबी</language>
-			<language type="arc">अ‍ॅरेमाइक</language>
-			<language type="arn">अ‍ॅरॉकॅनियन</language>
-			<language type="arp">अराफाओ</language>
-			<language type="art">कृत्रिम भाषा</language>
-			<language type="arw">अरावक</language>
-			<language type="as">आसामी</language>
-			<language type="ast">अस्तुरियन</language>
-			<language type="ath">अ‍ॅथापास्कान भाषा</language>
-			<language type="aus">ऑस्ट्रेलियन भाषा</language>
-			<language type="av">अ‍ॅव्हेरिक</language>
-			<language type="awa">अवधी</language>
-			<language type="ay">ऐमरा</language>
-			<language type="az">अझरबैजानी</language>
-			<language type="ba">बष्किर</language>
-			<language type="bad">बांदा</language>
-			<language type="bai">बमिलेके भाषा</language>
-			<language type="bal">बलुची</language>
-			<language type="ban">बालिनीस</language>
-			<language type="bas">बसा</language>
-			<language type="bat">बाल्टिक भाषा</language>
-			<language type="be">बेलारुशियन</language>
-			<language type="bej">बेजा</language>
-			<language type="bem">बेम्बा</language>
-			<language type="ber">बर्बर</language>
-			<language type="bg">बल्गेरियन</language>
-			<language type="bh">बिहारी</language>
-			<language type="bho">भोजपुरी</language>
-			<language type="bi">बिस्लामा</language>
-			<language type="bik">बिकोल</language>
-			<language type="bin">बिनी</language>
-			<language type="bla">सिक्सिका</language>
-			<language type="bm">बाम्बारा</language>
-			<language type="bn">बंगाली</language>
-			<language type="bnt">बन्टु</language>
-			<language type="bo">तिबेटी</language>
-			<language type="br">ब्रेटन</language>
-			<language type="bra">ब्रज</language>
-			<language type="bs">बोस्नियन</language>
-			<language type="btk">बटाक</language>
-			<language type="bua">बुरियात</language>
-			<language type="bug">बगिनीस</language>
-			<language type="byn">ब्लिन</language>
-			<language type="ca">कॅटलान</language>
-			<language type="cad">कॅड्डो</language>
-			<language type="cai">मध्य अमेरिकी इंडियन भाषा</language>
-			<language type="car">कॅरिब</language>
-			<language type="cau">कॉकेशियन भाषा</language>
-			<language type="cch">अत्सम</language>
-			<language type="ce">चेचन</language>
-			<language type="ceb">सिबुआनो</language>
-			<language type="cel">केल्टिक भाषा</language>
-			<language type="ch">कॅमोरो</language>
-			<language type="chb">चिब्चा</language>
-			<language type="chg">छगाताई</language>
-			<language type="chk">चूकीसे</language>
-			<language type="chm">मारी</language>
-			<language type="chn">चिनूक जारगॉन</language>
-			<language type="cho">चोक्तौ</language>
-			<language type="chp">शिपेव्यान</language>
-			<language type="chr">चेरूकी</language>
-			<language type="chy">शेयेन्न</language>
-			<language type="cmc">चामिक भाषा</language>
-			<language type="co">कोर्सिकन</language>
-			<language type="cop">कॉप्टिक</language>
-			<language type="cpe">इंग्रजी-आधारित क्रेओल वा पिजिन</language>
-			<language type="cpf">फ्रेंच-आधारित क्रेओल वा पिजिन</language>
-			<language type="cpp">पोर्तुगीज-आधारित क्रेओल या पिजिन</language>
-			<language type="cr">क्री</language>
-			<language type="crh">क्राइमीन तुर्की</language>
-			<language type="crp">क्रेओल वा पिजिन</language>
-			<language type="cs">झेक</language>
-			<language type="csb">काशुबियन</language>
-			<language type="cu">चर्च स्लाव्हिक</language>
-			<language type="cus">कुशितिक भाषा</language>
-			<language type="cv">चूवाश</language>
-			<language type="cy">वेल्श</language>
-			<language type="da">डॅनिश</language>
-			<language type="dak">दाकोता</language>
-			<language type="dar">दार्गवा</language>
-			<language type="day">दायक</language>
-			<language type="de">जर्मन</language>
-			<language type="de_AT">ऑस्ट्रियन जर्मन</language>
-			<language type="de_CH">स्विस हाय जर्मन</language>
-			<language type="del">डेलॅवेयर</language>
-			<language type="den">स्लाव्ह</language>
-			<language type="dgr">डोग्रिब</language>
-			<language type="din">दिन्का</language>
-			<language type="doi">डोगरी</language>
-			<language type="dra">द्रविडी भाषा</language>
-			<language type="dsb">निम्न सोर्बियन</language>
-			<language type="dua">दुआला</language>
-			<language type="dum">मिडल डच</language>
-			<language type="dv">दिवेही</language>
-			<language type="dyu">ड्युला</language>
-			<language type="dz">झोंगखा</language>
-			<language type="ee">इवे</language>
-			<language type="efi">एफिक</language>
-			<language type="egy">प्राचीन इजिप्शियन</language>
-			<language type="eka">एकाजुक</language>
-			<language type="el">ग्रीक</language>
-			<language type="elx">एलामाइट</language>
-			<language type="en">इंग्रजी</language>
-			<language type="en_AU">ऑस्ट्रेलियन इंग्रजी</language>
-			<language type="en_CA">कॅनेडियन इंग्रजी</language>
-			<language type="en_GB">ब्रिटिश इंग्रजी</language>
-			<language type="en_US">यू. एस. इंग्रजी</language>
-			<language type="enm">मिडल इंग्रजी</language>
-			<language type="eo">एस्परान्टो</language>
-			<language type="es">स्पॅनिश</language>
-			<language type="es_419">लॅटिन अमेरिकन स्पॅनिश</language>
-			<language type="es_ES">इबेरियन स्पॅनिश</language>
-			<language type="et">इस्टोनियन</language>
-			<language type="eu">बास्क</language>
-			<language type="ewo">इवोन्डो</language>
-			<language type="fa">फारसी</language>
-			<language type="fan">फँग</language>
-			<language type="fat">फन्टी</language>
-			<language type="ff">फुलाह</language>
-			<language type="fi">फिन्निश</language>
-			<language type="fil">फिलिपिनो</language>
-			<language type="fiu">फिन्नो-उग्रीयन भाषा</language>
-			<language type="fj">फिजीयन</language>
-			<language type="fo">फरोइए</language>
-			<language type="fon">फॉन</language>
-			<language type="fr">फ्रेंच</language>
-			<language type="fr_CA">कॅनेडियन फ्रेंच</language>
-			<language type="fr_CH">स्विस फ्रेंच</language>
-			<language type="frm">मिडल फ्रेंच</language>
-			<language type="fro">पुरातन फ्रेंच</language>
-			<language type="frr">उत्तरी फ्रिशियन</language>
-			<language type="frs">पौर्वात्य फ्रिशियन</language>
-			<language type="fur">फ्रियुलियान</language>
-			<language type="fy">पाश्चात्य फ्रिशियन</language>
-			<language type="ga">आयरिश</language>
-			<language type="gaa">गा</language>
-			<language type="gay">गायो</language>
-			<language type="gba">बाया</language>
-			<language type="gd">स्कॉट्स गेलिक</language>
-			<language type="gem">जर्मनिक भाषा</language>
-			<language type="gez">गीझ</language>
-			<language type="gil">जिल्बरटीज</language>
-			<language type="gl">गॅलिशियन</language>
-			<language type="gmh">मिडल हाय जर्मन</language>
-			<language type="gn">गुआरनी</language>
-			<language type="goh">पुरातन हाइ जर्मन</language>
-			<language type="gon">गाँडी</language>
-			<language type="gor">गोरोन्तालो</language>
-			<language type="got">गॉथिक</language>
-			<language type="grb">ग्रेबो</language>
-			<language type="grc">प्राचीन ग्रीक</language>
-			<language type="gsw">स्विस जर्मन</language>
-			<language type="gu">गुजराती</language>
-			<language type="gv">मांक्स</language>
-			<language type="gwi">ग्विच'इन</language>
-			<language type="ha">हौसा</language>
-			<language type="hai">हैडा</language>
-			<language type="haw">हवाईयन</language>
-			<language type="he">हिब्रू</language>
-			<language type="hi">हिंदी</language>
-			<language type="hil">हिलीगेनॉन</language>
-			<language type="him">हिमाचली</language>
-			<language type="hit">हिट्टिते</language>
-			<language type="hmn">माँग</language>
-			<language type="ho">हिरी मॉटू</language>
-			<language type="hr">क्रोएशियन</language>
-			<language type="hsb">अप्पर सॉर्बियन</language>
-			<language type="ht">हैतीयन</language>
-			<language type="hu">हंगेरियन</language>
-			<language type="hup">हूपा</language>
-			<language type="hy">आर्मेनियन</language>
-			<language type="hz">हरेरो</language>
-			<language type="ia">इन्टरलिंग्वा</language>
-			<language type="iba">इबान</language>
-			<language type="id">इंडोनेशियन</language>
-			<language type="ie">इन्टरलिंग</language>
-			<language type="ig">ईग्बो</language>
-			<language type="ii">सिचुआन यी</language>
-			<language type="ijo">इजो</language>
-			<language type="ik">इनूपियाक</language>
-			<language type="ilo">इलोको</language>
-			<language type="inc">भारतीय भाषा</language>
-			<language type="ine">इंडो-युरोपीयन भाषा</language>
-			<language type="inh">इंगुश</language>
-			<language type="io">इडौ</language>
-			<language type="ira">ईराणी भाषा</language>
-			<language type="iro">इरोक्वोइयन भाषा</language>
-			<language type="is">आईसलँडिक</language>
-			<language type="it">इटालियन</language>
-			<language type="iu">इनुकिटुट्</language>
-			<language type="ja">जपानी</language>
-			<language type="jbo">लोज्बान</language>
-			<language type="jpr">जुदेओ-फारसी</language>
-			<language type="jrb">जुदेओ-अरबी</language>
-			<language type="jv">जावनीस्</language>
-			<language type="ka">जॉर्जियन</language>
-			<language type="kaa">कारा-कल्पक</language>
-			<language type="kab">कबाइल</language>
-			<language type="kac">काचिन</language>
-			<language type="kaj">ज्जु</language>
-			<language type="kam">कम्बा</language>
-			<language type="kar">कारेन</language>
-			<language type="kaw">कावी</language>
-			<language type="kbd">कबार्डियन</language>
-			<language type="kcg">त्याप</language>
-			<language type="kfo">कोरो</language>
-			<language type="kg">काँगो</language>
-			<language type="kha">खासी</language>
-			<language type="khi">खोसियन भाषा</language>
-			<language type="kho">खोतानीस</language>
-			<language type="ki">किकुयू</language>
-			<language type="kj">क्वान्यामा</language>
-			<language type="kk">कझाक</language>
-			<language type="kl">कलाल्लिसुत</language>
-			<language type="km">ख्मेर</language>
-			<language type="kmb">किम्बन्दु</language>
-			<language type="kn">कन्नड</language>
-			<language type="ko">कोरियन</language>
-			<language type="kok">कोंकणी</language>
-			<language type="kos">कोसरियन</language>
-			<language type="kpe">क्पेल्ले</language>
-			<language type="kr">कनुरी</language>
-			<language type="krc">कराचय-बाल्कर</language>
-			<language type="krl">करेलियन</language>
-			<language type="kro">क्रू</language>
-			<language type="kru">कुरूख</language>
-			<language type="ks">काश्मीरी</language>
-			<language type="ku">कुर्दिश</language>
-			<language type="kum">कुमीक</language>
-			<language type="kut">कुतेनाई</language>
-			<language type="kv">कोमी</language>
-			<language type="kw">कोर्निश</language>
-			<language type="ky">किरगीझ</language>
-			<language type="la">लॅटिन</language>
-			<language type="lad">लादीनो</language>
-			<language type="lah">लाह्न्डा</language>
-			<language type="lam">लाम्बा</language>
-			<language type="lb">लक्झेंबर्गिश</language>
-			<language type="lez">लेझ्घीयन</language>
-			<language type="lg">गांडा</language>
-			<language type="li">लिंबूर्गिश</language>
-			<language type="ln">लिंगाला</language>
-			<language type="lo">लाओ</language>
-			<language type="lol">मोंगो</language>
-			<language type="loz">लोझी</language>
-			<language type="lt">लिथुआनियन</language>
-			<language type="lu">ल्यूबा-कटांगा</language>
-			<language type="lua">लूबा-लुलुआ</language>
-			<language type="lui">लुइसेनो</language>
-			<language type="lun">लुन्डा</language>
-			<language type="luo">ल्युओ</language>
-			<language type="lus">लुशाई</language>
-			<language type="lv">लाट्‌वियन</language>
-			<language type="mad">मादुरीस</language>
-			<language type="mag">मगही</language>
-			<language type="mai">मैथिली</language>
-			<language type="mak">मकस्सर</language>
-			<language type="man">मन्डिन्गो</language>
-			<language type="map">ऑस्ट्रोनेशियन</language>
-			<language type="mas">मसाई</language>
-			<language type="mdf">मोक्ष</language>
-			<language type="mdr">मंडार</language>
-			<language type="men">मेन्डे</language>
-			<language type="mg">मलागसी</language>
-			<language type="mga">मिडल आयरिश</language>
-			<language type="mh">मार्शलीज</language>
-			<language type="mi">माओरी</language>
-			<language type="mic">मिकमॅक</language>
-			<language type="min">मिनांग्काबाउ</language>
-			<language type="mis">विविध भाषा</language>
-			<language type="mk">मॅसेडोनियन</language>
-			<language type="mkh">मॉन-ख्मेर भाषा</language>
-			<language type="ml">मल्याळम</language>
-			<language type="mn">मंगोलियन</language>
-			<language type="mnc">मान्चु</language>
-			<language type="mni">मणिपुरी</language>
-			<language type="mno">मनोबो भाषा</language>
-			<language type="mo">मोल्डाव्हियन</language>
-			<language type="moh">मोहॉक</language>
-			<language type="mos">मोस्सी</language>
-			<language type="mr">मराठी</language>
-			<language type="ms">मलय</language>
-			<language type="mt">माल्टिज्</language>
-			<language type="mul">एकविध भाषा</language>
-			<language type="mun">मुन्डा भाषा</language>
-			<language type="mus">क्रीक</language>
-			<language type="mwl">मिरांडिज्</language>
-			<language type="mwr">मारवाडी</language>
-			<language type="my">बर्मी</language>
-			<language type="myn">माया भाषा</language>
-			<language type="myv">एर्झ्या</language>
-			<language type="na">नउरू</language>
-			<language type="nah">नहुआत्ल</language>
-			<language type="nai">उत्तरी अमेरीकी इंडियन भाषा</language>
-			<language type="nap">नेपोलिटान</language>
-			<language type="nb">नॉर्वेजियन बोकमाल</language>
-			<language type="nd">उत्तरी देबेली</language>
-			<language type="nds">लो जर्मन</language>
-			<language type="ne">नेपाळी</language>
-			<language type="new">नेवारी</language>
-			<language type="ng">डोंगा</language>
-			<language type="nia">नियास</language>
-			<language type="nic">नाइजर-कॉर्डोफॅनियन भाषा</language>
-			<language type="niu">नियुआन</language>
-			<language type="nl">डच</language>
-			<language type="nl_BE">फ्लेमिश</language>
-			<language type="nn">नॉर्वेजियन न्योर्स्क</language>
-			<language type="no">नोर्वेजियन</language>
-			<language type="nog">नोगाई</language>
-			<language type="non">पुरातन नॉर्स</language>
-			<language type="nqo">एन्को</language>
-			<language type="nr">दक्षिणात्य देबेली</language>
-			<language type="nso">उत्तरी सोथो</language>
-			<language type="nub">न्युबियान भाषा</language>
-			<language type="nv">नावाजो</language>
-			<language type="nwc">अभिजात नेवारी</language>
-			<language type="ny">न्यान्जा</language>
-			<language type="nym">न्यामवेझी</language>
-			<language type="nyn">न्यानकोल</language>
-			<language type="nyo">न्योरो</language>
-			<language type="nzi">न्झिमा</language>
-			<language type="oc">ऑक्सिटान</language>
-			<language type="oj">ओजिब्वा</language>
-			<language type="om">ओरोमो</language>
-			<language type="or">उडिया</language>
-			<language type="os">ओस्सेटिक</language>
-			<language type="osa">ओसेज</language>
-			<language type="ota">ओटोमान तुर्किश</language>
-			<language type="oto">ओटोमियन भाषा</language>
-			<language type="pa">पंजाबी</language>
-			<language type="paa">पापुन भाषा</language>
-			<language type="pag">पंगासीनान</language>
-			<language type="pal">पहलवी</language>
-			<language type="pam">पाम्पान्गा</language>
-			<language type="pap">पापियामेन्टो</language>
-			<language type="pau">पालाउआन</language>
-			<language type="peo">पुरातन फारसी</language>
-			<language type="phi">फिलिपीनी भाषा</language>
-			<language type="phn">फोनिशियन</language>
-			<language type="pi">पाली</language>
-			<language type="pl">पोलिश</language>
-			<language type="pon">पोह्नपियन</language>
-			<language type="pra">प्राकृत भाषा</language>
-			<language type="pro">पुरातन प्रोव्हेन्सल</language>
-			<language type="ps">पश्तो</language>
-			<language type="pt">पोर्तुगीज</language>
-			<language type="pt_BR">ब्राझिलियन पोर्तुगीज</language>
-			<language type="pt_PT">इबेरियन पोर्तुगीज</language>
-			<language type="qu">क्वेचुआ</language>
-			<language type="raj">राजस्थानी</language>
-			<language type="rap">रापानुई</language>
-			<language type="rar">रारोटोंगन</language>
-			<language type="rm">र्‍हाएटो-रोमांस</language>
-			<language type="rn">रुन्दी</language>
-			<language type="ro">रोमानियन</language>
-			<language type="roa">रोमांस भाषा</language>
-			<language type="rom">रोमानी</language>
-			<language type="root">रूट</language>
-			<language type="ru">रशियन</language>
-			<language type="rup">अरोमानियन</language>
-			<language type="rw">किन्यार्वान्डा</language>
-			<language type="sa">संस्कृत</language>
-			<language type="sad">सँडवे</language>
-			<language type="sah">याकूत</language>
-			<language type="sai">दक्षिण अमेरीकी इंडियन भाषा</language>
-			<language type="sal">सलीशन भाषा</language>
-			<language type="sam">सामरिटान अरॅमिक</language>
-			<language type="sas">सासाक</language>
-			<language type="sat">संताली</language>
-			<language type="sc">सर्दिनियन</language>
-			<language type="scn">सिसिलियन</language>
-			<language type="sco">स्कॉट्स</language>
-			<language type="sd">सिंधी</language>
-			<language type="se">नॉर्दन सामी</language>
-			<language type="sel">सेल्कप</language>
-			<language type="sem">सेमिटिक भाषा</language>
-			<language type="sg">सांगो</language>
-			<language type="sga">पुरातन आयरिश</language>
-			<language type="sgn">सांकेतिक भाषा</language>
-			<language type="sh">सर्बो-क्रोएशियन</language>
-			<language type="shn">शॅन</language>
-			<language type="si">सिंहली</language>
-			<language type="sid">सिदामो</language>
-			<language type="sio">सिउआन भाषा</language>
-			<language type="sit">चीनी-तिबेटी भाषा</language>
-			<language type="sk">स्लोव्हाक</language>
-			<language type="sl">स्लोव्हेनियन</language>
-			<language type="sla">स्लाव्हिक भाषा</language>
-			<language type="sm">सामोअन</language>
-			<language type="sma">दक्षिणात्य सामी</language>
-			<language type="smi">सामी भाषा</language>
-			<language type="smj">ल्युल सामी</language>
-			<language type="smn">इनारी सामी</language>
-			<language type="sms">स्कोल्ट सामी</language>
-			<language type="sn">शोना</language>
-			<language type="snk">सोनिन्के</language>
-			<language type="so">सोमाली</language>
-			<language type="sog">सोग्डिएन</language>
-			<language type="son">सोन्घाई</language>
-			<language type="sq">अल्बानियन</language>
-			<language type="sr">सर्बियन</language>
-			<language type="srn">स्रानान टॉन्गो</language>
-			<language type="srr">सेरेर</language>
-			<language type="ss">स्वाती</language>
-			<language type="ssa">निलो-सहारन भाषा</language>
-			<language type="st">सेसोथो</language>
-			<language type="su">सुंदानीज</language>
-			<language type="suk">सुकुमा</language>
-			<language type="sus">सुसु</language>
-			<language type="sux">सुमेरियन</language>
-			<language type="sv">स्वीडिश</language>
-			<language type="sw">स्वाहिली</language>
-			<language type="syc">अभिजात सिरियाक</language>
-			<language type="syr">सिरियाक</language>
-			<language type="ta">तमिळ</language>
-			<language type="tai">ताई भाषा</language>
-			<language type="te">तेलगू</language>
-			<language type="tem">टिम्ने</language>
-			<language type="ter">तेरेनो</language>
-			<language type="tet">तेतुम</language>
-			<language type="tg">ताजिक</language>
-			<language type="th">थाई</language>
-			<language type="ti">टिग्रिन्या</language>
-			<language type="tig">टाइग्रे</language>
-			<language type="tiv">तिव</language>
-			<language type="tk">तुर्कमेन</language>
-			<language type="tkl">टोकेलाऊ</language>
-			<language type="tl">टागालोग</language>
-			<language type="tlh">क्लिंगॉन</language>
-			<language type="tli">लिंगित</language>
-			<language type="tmh">तामाशेक</language>
-			<language type="tn">त्स्वाना</language>
-			<language type="to">टोंगा</language>
-			<language type="tog">न्यासा टोन्गा</language>
-			<language type="tpi">टोक पिसिन</language>
-			<language type="tr">तुर्की</language>
-			<language type="ts">सोंगा</language>
-			<language type="tsi">सिम्शियन</language>
-			<language type="tt">ततार</language>
-			<language type="tum">तम्बूका</language>
-			<language type="tup">ट्यूपी भाषा</language>
-			<language type="tut">अल्टॅइक भाषा</language>
-			<language type="tvl">टुवालु</language>
-			<language type="tw">ट्वी</language>
-			<language type="ty">ताहितीयन</language>
-			<language type="tyv">टुवीनियन</language>
-			<language type="udm">उदमुर्त</language>
-			<language type="ug">उईघुर</language>
-			<language type="uga">युगॅरिटिक</language>
-			<language type="uk">युक्रेनियन</language>
-			<language type="umb">उम्बुन्डु</language>
-			<language type="und">अज्ञात वा अवैध भाषा</language>
-			<language type="ur">उर्दू</language>
-			<language type="uz">उझ्बेक</language>
-			<language type="vai">वाई</language>
-			<language type="ve">व्हेंदा</language>
-			<language type="vi">व्हिएतनामी</language>
-			<language type="vo">ओलापुक</language>
-			<language type="vot">वॉटिक</language>
-			<language type="wa">वालून</language>
-			<language type="wak">वाकाशन भाषा</language>
-			<language type="wal">वलामो</language>
-			<language type="war">वारे</language>
-			<language type="was">वाशो</language>
-			<language type="wen">सॉर्बियन भाषा</language>
-			<language type="wo">वोलोफ</language>
-			<language type="xal">काल्मिक</language>
-			<language type="xh">खोसा</language>
-			<language type="yao">याओ</language>
-			<language type="yap">यापीस</language>
-			<language type="yi">यिद्दिश</language>
-			<language type="yo">योरुबा</language>
-			<language type="ypk">यूपिक भाषा</language>
-			<language type="za">झुआंग</language>
-			<language type="zap">झेपोटेक</language>
-			<language type="zbl">ब्लिसिम्बॉल्स</language>
-			<language type="zen">झेनान्गा</language>
-			<language type="zh">चीनी</language>
-			<language type="zh_Hans">सरलीकृत चीनी</language>
-			<language type="zh_Hant">पारंपारिक चीनी</language>
-			<language type="znd">झन्डे</language>
-			<language type="zu">झुलू</language>
-			<language type="zun">झुनी</language>
-			<language type="zxx">भाषावैज्ञानिक सामग्री नाही</language>
-			<language type="zza">झाझा</language>
-		</languages>
-		<scripts>
-			<script type="Arab">अरबी</script>
-			<script type="Armi">इम्पिरियल आर्मेनिक</script>
-			<script type="Armn">अर्मेनियन</script>
-			<script type="Avst">अवेस्तान</script>
-			<script type="Bali">बाली</script>
-			<script type="Batk">बटाक</script>
-			<script type="Beng">बंगाली</script>
-			<script type="Blis">ब्लिसिम्बॉल्स</script>
-			<script type="Bopo">बोपोमोफो</script>
-			<script type="Brah">ब्रह्मी</script>
-			<script type="Brai">ब्रेल</script>
-			<script type="Bugi">बूगी</script>
-			<script type="Buhd">बुहिद</script>
-			<script type="Cakm">चकमा</script>
-			<script type="Cans">यूनिफाइड कॅनेडियन अ‍ॅबोरिदनल सिलॅबिक्स</script>
-			<script type="Cari">कॅरियन</script>
-			<script type="Cham">चाम</script>
-			<script type="Cher">चेरोकी</script>
-			<script type="Cirt">किर्थ</script>
-			<script type="Copt">कॉप्टिक</script>
-			<script type="Cprt">सायप्रिऑट</script>
-			<script type="Cyrl">सीरिलिक</script>
-			<script type="Cyrs">पुरातन चर्च स्लाव्होनिक सिरिलिक</script>
-			<script type="Deva">देवनागरी</script>
-			<script type="Dsrt">डेसर्ट</script>
-			<script type="Egyd">इजिप्शियन डेमोटिक</script>
-			<script type="Egyh">इजिप्शियन हायरेटिक</script>
-			<script type="Egyp">इजिप्शियन हायरोग्लिफ्स</script>
-			<script type="Ethi">ईथिओपिक</script>
-			<script type="Geok">जॉर्जियन खुत्सुरी</script>
-			<script type="Geor">जॉर्जियन</script>
-			<script type="Glag">ग्लॅगोलिटिक</script>
-			<script type="Goth">गोथिक</script>
-			<script type="Grek">ग्रीक</script>
-			<script type="Gujr">गुजराती</script>
-			<script type="Guru">गुरुमुखी</script>
-			<script type="Hang">हंगुल</script>
-			<script type="Hani">हान</script>
-			<script type="Hano">हनुनू</script>
-			<script type="Hans">सरलीकृत हन</script>
-			<script type="Hant">पारंपारिक हन</script>
-			<script type="Hebr">हिब्रू</script>
-			<script type="Hira">हिरागाना</script>
-			<script type="Hmng">पहाउ मंग</script>
-			<script type="Hrkt">कॅटाकना आणि हिरागाना</script>
-			<script type="Hung">पुरातन हंगेरियन</script>
-			<script type="Inds">सिन्धु</script>
-			<script type="Ital">जुनी इटालिक</script>
-			<script type="Java">जावानीस</script>
-			<script type="Jpan">जपानी</script>
-			<script type="Kali">कायाह ली</script>
-			<script type="Kana">कॅटाकाना</script>
-			<script type="Khar">खारोश्थी</script>
-			<script type="Khmr">ख्मेर</script>
-			<script type="Knda">कन्नड</script>
-			<script type="Kore">कोरियन</script>
-			<script type="Kthi">काइथी</script>
-			<script type="Lana">लाना</script>
-			<script type="Laoo">लाओ</script>
-			<script type="Latf">फ्रॅक्तुर लॅटिन</script>
-			<script type="Latg">गाएलिक लेटिन</script>
-			<script type="Latn">लॅटिन</script>
-			<script type="Lepc">लेपचा</script>
-			<script type="Limb">लिम्बू</script>
-			<script type="Lina">लीनियार अ</script>
-			<script type="Linb">लीनियर बी</script>
-			<script type="Lyci">लायशियान</script>
-			<script type="Lydi">लायडियान</script>
-			<script type="Mand">मान्डायीन</script>
-			<script type="Mani">मानीचायीन</script>
-			<script type="Maya">मायान हाइरोग्लिफ्स</script>
-			<script type="Mero">मेरोइटिक</script>
-			<script type="Mlym">मल्याळी</script>
-			<script type="Mong">मंगोलियन</script>
-			<script type="Moon">मून</script>
-			<script type="Mtei">मेइतेइ मायेक</script>
-			<script type="Mymr">म्यानमार</script>
-			<script type="Nkoo">एन्'को</script>
-			<script type="Ogam">ओघाम</script>
-			<script type="Olck">ओल चिकि</script>
-			<script type="Orkh">ओर्खोन</script>
-			<script type="Orya">उडिया</script>
-			<script type="Osma">उस्मानिया</script>
-			<script type="Perm">पुरातन पर्मिक</script>
-			<script type="Phag">फाग्स-पा</script>
-			<script type="Phli">इन्स्क्रिप्शनल पाहलवी</script>
-			<script type="Phlp">सॉल्टर पाहलवी</script>
-			<script type="Phlv">बुक पाहलवी</script>
-			<script type="Phnx">फोनिशियन</script>
-			<script type="Plrd">पोलार्ड फोनेटिक</script>
-			<script type="Prti">इन्स्क्रिप्शनल पर्थियन</script>
-			<script type="Qaai">वंशपरंपरागत</script>
-			<script type="Rjng">रीजांग</script>
-			<script type="Roro">रोन्गोरोन्गो</script>
-			<script type="Runr">रूनिक</script>
-			<script type="Samr">समरिटान</script>
-			<script type="Sara">सराती</script>
-			<script type="Saur">सौराष्ट्र</script>
-			<script type="Sgnw">संकेत लिपी</script>
-			<script type="Shaw">शॅव्हियन</script>
-			<script type="Sinh">सिंहली</script>
-			<script type="Sund">सूदानी</script>
-			<script type="Sylo">सिलोती नागरी</script>
-			<script type="Syrc">सिरीयाक</script>
-			<script type="Syre">एस्त्ट्रेन्जेलो सिरियाक</script>
-			<script type="Syrj">पश्चिमी सिरियाक</script>
-			<script type="Syrn">पूर्वी सिरियाक</script>
-			<script type="Tagb">तगोआन्वा</script>
-			<script type="Tale">ताई ली</script>
-			<script type="Talu">नवीन ताई लू</script>
-			<script type="Taml">तमिळ</script>
-			<script type="Tavt">ताई विएत</script>
-			<script type="Telu">तेलगु</script>
-			<script type="Teng">तेन्गवार</script>
-			<script type="Tfng">तिफिनाघ</script>
-			<script type="Tglg">टागालोग</script>
-			<script type="Thaa">थाना</script>
-			<script type="Thai">थाई</script>
-			<script type="Tibt">तिबेटी</script>
-			<script type="Ugar">युगारिटिक</script>
-			<script type="Vaii">वाई</script>
-			<script type="Visp">दृश्य संवाद</script>
-			<script type="Xpeo">पुरातन फारसी</script>
-			<script type="Xsux">दृश्यमान भाषा</script>
-			<script type="Yiii">यी</script>
-			<script type="Zmth">गणिती संकेतलिपी</script>
-			<script type="Zsym">प्रतीक लिपी</script>
-			<script type="Zxxx">अलिखित</script>
-			<script type="Zyyy">सामान्य</script>
-			<script type="Zzzz">अज्ञात वा अवैध लिपी</script>
-		</scripts>
-		<territories>
-			<territory type="001">विश्व</territory>
-			<territory type="002">अफ्रिका</territory>
-			<territory type="003">उत्तर अमेरिका</territory>
-			<territory type="005">दक्षिण अमेरिका</territory>
-			<territory type="009">ओशनिया</territory>
-			<territory type="011">पश्चिम अफ्रिका</territory>
-			<territory type="013">मध्य अमेरीका</territory>
-			<territory type="014">पूर्व अफ्रिका</territory>
-			<territory type="015">उत्तर अफ्रिका</territory>
-			<territory type="017">मध्य अफ्रिका</territory>
-			<territory type="018">दक्षिणी अफ्रिका</territory>
-			<territory type="019">अमेरिकास</territory>
-			<territory type="021">उत्तरी अमेरिका</territory>
-			<territory type="029">कॅरीबियन</territory>
-			<territory type="030">पूर्व अशिया</territory>
-			<territory type="034">दक्षिण अशिया</territory>
-			<territory type="035">दक्षिण पूर्व अशिया</territory>
-			<territory type="039">दक्षिण युरोप</territory>
-			<territory type="053">ऑस्ट्रेलिया आणि न्यूझीलंड</territory>
-			<territory type="054">मेलानेशिया</territory>
-			<territory type="057">मायक्रोनेशियन रीजन</territory>
-			<territory type="061">पॉलिनेशिया</territory>
-			<territory type="062">दक्षिण-मध्य अशिया</territory>
-			<territory type="142">अशिया</territory>
-			<territory type="143">मध्य अशिया</territory>
-			<territory type="145">पश्चिम अशिया</territory>
-			<territory type="150">युरोप</territory>
-			<territory type="151">पूर्व युरोप</territory>
-			<territory type="154">उत्तर युरोप</territory>
-			<territory type="155">पश्चिम युरोप</territory>
-			<territory type="172">स्वतंत्र राष्ट्रांचे कॉमनवेल्थ</territory>
-			<territory type="200">झेकोस्लवाकिया</territory>
-			<territory type="419">लॅटिन अमेरिका आणि कॅरीबियन</territory>
-			<territory type="830">चॅनल बेटे</territory>
-			<territory type="AD">अँडोरा</territory>
-			<territory type="AE">संयुक्त अरब अमीरात</territory>
-			<territory type="AF">अफगाणिस्तान</territory>
-			<territory type="AG">अँटिग्वा आणि बर्बुडा</territory>
-			<territory type="AI">अँग्विला</territory>
-			<territory type="AL">अल्बानिया</territory>
-			<territory type="AM">आर्मेनिया</territory>
-			<territory type="AN">नेदरलँड्स अँटिल्स</territory>
-			<territory type="AO">अंगोला</territory>
-			<territory type="AQ">अंटार्क्टिक</territory>
-			<territory type="AR">अर्जेंटिना</territory>
-			<territory type="AS">अमेरिकन सामोआ</territory>
-			<territory type="AT">ऑस्ट्रिया</territory>
-			<territory type="AU">ऑस्ट्रेलिया</territory>
-			<territory type="AW">अरुबा</territory>
-			<territory type="AX">अ‍ॅलँड बेटे</territory>
-			<territory type="AZ">अझरबैजान</territory>
-			<territory type="BA">बोस्निया अणि हर्जेगोविना</territory>
-			<territory type="BB">बार्बाडोस</territory>
-			<territory type="BD">बांग्लादेश</territory>
-			<territory type="BE">बेल्जियम</territory>
-			<territory type="BF">बुर्किना फासो</territory>
-			<territory type="BG">बल्गेरिया</territory>
-			<territory type="BH">बहारीन</territory>
-			<territory type="BI">बुरुंडी</territory>
-			<territory type="BJ">बेनिन</territory>
-			<territory type="BL">सेंट बार्थेलेमी</territory>
-			<territory type="BM">बर्मुडा</territory>
-			<territory type="BN">ब्रुनेई</territory>
-			<territory type="BO">बोलिव्हिया</territory>
-			<territory type="BR">ब्राझिल</territory>
-			<territory type="BS">बहामाज</territory>
-			<territory type="BT">भूतान</territory>
-			<territory type="BV">बोउवेट बेट</territory>
-			<territory type="BW">बोट्सवाना</territory>
-			<territory type="BY">बेलारूस</territory>
-			<territory type="BZ">बेलिझे</territory>
-			<territory type="CA">कॅनडा</territory>
-			<territory type="CC">कोकोस बेटे</territory>
-			<territory type="CD">काँगो - किंशासा</territory>
-			<territory type="CF">केंद्रीय अफ्रिकी प्रजासत्ताक</territory>
-			<territory type="CG">काँगो - ब्राजाविले</territory>
-			<territory type="CH">स्वित्झर्लंड</territory>
-			<territory type="CI">आयव्हरी कोस्ट</territory>
-			<territory type="CK">कुक बेटे</territory>
-			<territory type="CL">चिली</territory>
-			<territory type="CM">कॅमेरून</territory>
-			<territory type="CN">चीन</territory>
-			<territory type="CO">कोलम्बिया</territory>
-			<territory type="CR">कोस्टारिका</territory>
-			<territory type="CS">सर्बिया आणि माँटेनेग्रो</territory>
-			<territory type="CU">क्यूबा</territory>
-			<territory type="CV">केप व्हर्डे</territory>
-			<territory type="CX">ख्रिसमस बेट</territory>
-			<territory type="CY">सायप्रस</territory>
-			<territory type="CZ">झेक प्रजासत्ताक</territory>
-			<territory type="DE">जर्मनी</territory>
-			<territory type="DJ">जिबौटी</territory>
-			<territory type="DK">डेन्मार्क</territory>
-			<territory type="DM">डोमिनिका</territory>
-			<territory type="DO">डोमिनिकन प्रजासत्ताक</territory>
-			<territory type="DZ">अल्जीरिया</territory>
-			<territory type="EC">इक्वेडोर</territory>
-			<territory type="EE">एस्टोनिया</territory>
-			<territory type="EG">इजिप्त</territory>
-			<territory type="EH">पश्चिम सहारा</territory>
-			<territory type="ER">इरिट्रिया</territory>
-			<territory type="ES">स्पेन</territory>
-			<territory type="ET">इथिओपिया</territory>
-			<territory type="FI">फिनलंड</territory>
-			<territory type="FJ">फिजी</territory>
-			<territory type="FK">फॉकलंड बेटे</territory>
-			<territory type="FM">मायक्रोनेशिया</territory>
-			<territory type="FO">फरोए बेटे</territory>
-			<territory type="FR">फ्रान्स</territory>
-			<territory type="GA">गॅबॉन</territory>
-			<territory type="GB">ब्रिटन</territory>
-			<territory type="GD">ग्रेनेडा</territory>
-			<territory type="GE">जॉर्जिया</territory>
-			<territory type="GF">फ्रेंच गयाना</territory>
-			<territory type="GG">ग्वेर्नसे</territory>
-			<territory type="GH">घाना</territory>
-			<territory type="GI">जिब्राल्टर</territory>
-			<territory type="GL">ग्रीनलँड</territory>
-			<territory type="GM">गाम्बिया</territory>
-			<territory type="GN">गिनी</territory>
-			<territory type="GP">ग्वाडेलोउपे</territory>
-			<territory type="GQ">इक्वेटोरियल गिनी</territory>
-			<territory type="GR">ग्रीस</territory>
-			<territory type="GS">दक्षिण जॉर्जिया आणि दक्षिण सँडविच बेटे</territory>
-			<territory type="GT">ग्वाटेमाला</territory>
-			<territory type="GU">गुआम</territory>
-			<territory type="GW">गिनी-बिसाउ</territory>
-			<territory type="GY">गयाना</territory>
-			<territory type="HK">हाँगकाँग विशेष प्रशासनिक क्षेत्र चीन</territory>
-			<territory type="HM">हर्ड बेट आणि मैकडोनाल्ड बेट</territory>
-			<territory type="HN">होंडुराज्</territory>
-			<territory type="HR">क्रोएशिया</territory>
-			<territory type="HT">हैती</territory>
-			<territory type="HU">हंगेरी</territory>
-			<territory type="ID">इंडोनेशिया</territory>
-			<territory type="IE">आयर्लंड</territory>
-			<territory type="IL">इस्त्राइल</territory>
-			<territory type="IM">इस्ले ऑफ मॅन</territory>
-			<territory type="IN">भारत</territory>
-			<territory type="IO">ब्रिटिश हिंद महासागरीय क्षेत्र</territory>
-			<territory type="IQ">इराक</territory>
-			<territory type="IR">ईराण</territory>
-			<territory type="IS">आइसलँड</territory>
-			<territory type="IT">इटली</territory>
-			<territory type="JE">जर्सी</territory>
-			<territory type="JM">जमैका</territory>
-			<territory type="JO">जॉर्डन</territory>
-			<territory type="JP">जपान</territory>
-			<territory type="KE">केनिया</territory>
-			<territory type="KG">किरगीझस्तान</territory>
-			<territory type="KH">कंबोडिया</territory>
-			<territory type="KI">किरीबाटी</territory>
-			<territory type="KM">कोमोरोज</territory>
-			<territory type="KN">सेंट किट्स आणि नेव्हिस</territory>
-			<territory type="KP">उत्तर कोरिया</territory>
-			<territory type="KR">दक्षिण कोरिया</territory>
-			<territory type="KW">कुवेत</territory>
-			<territory type="KY">केमन बेटे</territory>
-			<territory type="KZ">कझाकस्तान</territory>
-			<territory type="LA">लाओस</territory>
-			<territory type="LB">लेबानन</territory>
-			<territory type="LC">सेंट ल्यूसिया</territory>
-			<territory type="LI">लिंचेनस्टाइन</territory>
-			<territory type="LK">श्रीलंका</territory>
-			<territory type="LR">लायबेरिया</territory>
-			<territory type="LS">लेसोथो</territory>
-			<territory type="LT">लिथुआनिया</territory>
-			<territory type="LU">लक्झेंबर्ग</territory>
-			<territory type="LV">लाट्‌विया</territory>
-			<territory type="LY">लिबिया</territory>
-			<territory type="MA">मोरोक्को</territory>
-			<territory type="MC">मोनॅको</territory>
-			<territory type="MD">मोल्डोव्हा</territory>
-			<territory type="ME">मोंटेनेग्रो</territory>
-			<territory type="MF">सेंट मार्टिन</territory>
-			<territory type="MG">मादागास्कर</territory>
-			<territory type="MH">मार्शल बेटे</territory>
-			<territory type="MK">मॅसेडोनिया</territory>
-			<territory type="ML">माली</territory>
-			<territory type="MM">म्यानमार</territory>
-			<territory type="MN">मंगोलिया</territory>
-			<territory type="MO">मकाऊ SAR चीन</territory>
-			<territory type="MP">उत्तरी मारियाना बेटे</territory>
-			<territory type="MQ">मार्टिनिक</territory>
-			<territory type="MR">मॉरिटानिया</territory>
-			<territory type="MS">मॉन्ट्सेराट</territory>
-			<territory type="MT">माल्टा</territory>
-			<territory type="MU">मॉरिशस</territory>
-			<territory type="MV">मालदीव्ज</territory>
-			<territory type="MW">मलावी</territory>
-			<territory type="MX">मेक्सिको</territory>
-			<territory type="MY">मलेशिया</territory>
-			<territory type="MZ">मोझाम्बिक</territory>
-			<territory type="NA">नमीबिया</territory>
-			<territory type="NC">न्यू कॅलेडोनिया</territory>
-			<territory type="NE">नाइजर</territory>
-			<territory type="NF">नॉरफॉक बेट</territory>
-			<territory type="NG">नायजेरिया</territory>
-			<territory type="NI">निकाराग्वे</territory>
-			<territory type="NL">नेदरलँड</territory>
-			<territory type="NO">नॉर्वे</territory>
-			<territory type="NP">नेपाळ</territory>
-			<territory type="NR">नऊरु</territory>
-			<territory type="NU">नीयू</territory>
-			<territory type="NZ">न्यूझीलंड</territory>
-			<territory type="OM">ओमान</territory>
-			<territory type="PA">पनामा</territory>
-			<territory type="PE">पेरू</territory>
-			<territory type="PF">फ्रेंच पॉलिनेशिया</territory>
-			<territory type="PG">पापुआ न्यू गिनी</territory>
-			<territory type="PH">फिलीपिन्स</territory>
-			<territory type="PK">पाकिस्तान</territory>
-			<territory type="PL">पोलंड</territory>
-			<territory type="PM">सेंट पियरे आणि मिक्वेलोन</territory>
-			<territory type="PN">पिटकॅर्न</territory>
-			<territory type="PR">पोर्टो रिको</territory>
-			<territory type="PS">पॅलेस्टिनी प्रदेश</territory>
-			<territory type="PT">पोर्तुगाल</territory>
-			<territory type="PW">पलाऊ</territory>
-			<territory type="PY">पराग्वे</territory>
-			<territory type="QA">कतार</territory>
-			<territory type="QO">आउटलायिंग ओशनिया</territory>
-			<territory type="QU">यूरोपीय संघ</territory>
-			<territory type="RE">रियूनियन</territory>
-			<territory type="RO">रोमानिया</territory>
-			<territory type="RS">सर्बिया</territory>
-			<territory type="RU">रशिया</territory>
-			<territory type="RW">रवांडा</territory>
-			<territory type="SA">सौदी अरब</territory>
-			<territory type="SB">सोलोमन बेटे</territory>
-			<territory type="SC">सेशेल्स</territory>
-			<territory type="SD">सूदान</territory>
-			<territory type="SE">स्वीडन</territory>
-			<territory type="SG">सिंगापूर</territory>
-			<territory type="SH">सेंट हेलेना</territory>
-			<territory type="SI">स्लोव्हेनिया</territory>
-			<territory type="SJ">स्वालबर्ड आणि जान मायेन</territory>
-			<territory type="SK">स्लोव्हाकिया</territory>
-			<territory type="SL">सिएरा लेओन</territory>
-			<territory type="SM">सॅन मरीनो</territory>
-			<territory type="SN">सेनेगल</territory>
-			<territory type="SO">सोमालिया</territory>
-			<territory type="SR">सुरिनाम</territory>
-			<territory type="ST">साओ टोम आणि प्रिंसिपे</territory>
-			<territory type="SV">अल साल्वाडोर</territory>
-			<territory type="SY">सीरिया</territory>
-			<territory type="SZ">स्वाझिलँड</territory>
-			<territory type="TC">टर्क्स आणि कैकोस बेटे</territory>
-			<territory type="TD">चाड</territory>
-			<territory type="TF">फ्रेंच दाक्षिणात्य प्रदेश</territory>
-			<territory type="TG">टोगो</territory>
-			<territory type="TH">थायलंड</territory>
-			<territory type="TJ">ताजिकिस्तान</territory>
-			<territory type="TK">तोकेलाउ</territory>
-			<territory type="TL">पूर्व तिमोर</territory>
-			<territory type="TM">तुर्कमेनिस्तान</territory>
-			<territory type="TN">ट्यूनिशिया</territory>
-			<territory type="TO">टोंगा</territory>
-			<territory type="TR">तुर्की</territory>
-			<territory type="TT">त्रिनिदाद आणि टोबॅगो</territory>
-			<territory type="TV">टुवालु</territory>
-			<territory type="TW">तैवान</territory>
-			<territory type="TZ">टांझानिया</territory>
-			<territory type="UA">यूक्रेन</territory>
-			<territory type="UG">युगांडा</territory>
-			<territory type="UM">युनाइटेड स्टेट्स माइनर आउटलाइंग बेटे</territory>
-			<territory type="US">संयुक्त राज्ये /अमेरिका</territory>
-			<territory type="UY">उरुग्वे</territory>
-			<territory type="UZ">उझबेकिस्तान</territory>
-			<territory type="VA">व्हॅटिकन</territory>
-			<territory type="VC">सेंट व्हिन्सेंट आणि ग्रेनडाइन्स</territory>
-			<territory type="VE">व्हेनेझुएला</territory>
-			<territory type="VG">ब्रिटिश व्हर्जिन बेटे</territory>
-			<territory type="VI">यू.एस. व्हर्जिन बेटे</territory>
-			<territory type="VN">व्हिएतनाम</territory>
-			<territory type="VU">वानौटु</territory>
-			<territory type="WF">वालिस आणि फ्यूचूना</territory>
-			<territory type="WS">सामोआ</territory>
-			<territory type="YE">येमेन</territory>
-			<territory type="YT">मायोट्टे</territory>
-			<territory type="ZA">दक्षिण अफ्रिका</territory>
-			<territory type="ZM">झाम्बिया</territory>
-			<territory type="ZW">झिम्बाब्वे</territory>
-			<territory type="ZZ">अज्ञात वा अवैध प्रदेश</territory>
-		</territories>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[़ ँ-ः ०-९ ॐ अ-ऍ ए-ऑ ओ-न प-र ल ळ व-ह ऽ-ॅ े-ॉ ो-्]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[\u200C \u200D]</exemplarCharacters>
-	</characters>
-	<delimiters>
-		<quotationStart>'</quotationStart>
-		<quotationEnd>'</quotationEnd>
-		<alternateQuotationStart>&quot;</alternateQuotationStart>
-		<alternateQuotationEnd>&quot;</alternateQuotationEnd>
-	</delimiters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="wide">
-							<month type="1">जानेवारी</month>
-							<month type="2">फेब्रुवारी</month>
-							<month type="3">मार्च</month>
-							<month type="4">एप्रिल</month>
-							<month type="5">मे</month>
-							<month type="6">जून</month>
-							<month type="7">जुलै</month>
-							<month type="8">ऑगस्ट</month>
-							<month type="9">सप्टेंबर</month>
-							<month type="10">ऑक्टोबर</month>
-							<month type="11">नोव्हेंबर</month>
-							<month type="12">डिसेंबर</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="narrow">
-							<month type="1">जा</month>
-							<month type="2">फे</month>
-							<month type="3">मा</month>
-							<month type="4">ए</month>
-							<month type="5">मे</month>
-							<month type="6">जू</month>
-							<month type="7">जु</month>
-							<month type="8">ऑ</month>
-							<month type="9">स</month>
-							<month type="10">ऑ</month>
-							<month type="11">नो</month>
-							<month type="12">डि</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">रवि</day>
-							<day type="mon">सोम</day>
-							<day type="tue">मंगळ</day>
-							<day type="wed">बुध</day>
-							<day type="thu">गुरु</day>
-							<day type="fri">शुक्र</day>
-							<day type="sat">शनि</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">रविवार</day>
-							<day type="mon">सोमवार</day>
-							<day type="tue">मंगळवार</day>
-							<day type="wed">बुधवार</day>
-							<day type="thu">गुरुवार</day>
-							<day type="fri">शुक्रवार</day>
-							<day type="sat">शनिवार</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">र</day>
-							<day type="mon">सो</day>
-							<day type="tue">मं</day>
-							<day type="wed">बु</day>
-							<day type="thu">गु</day>
-							<day type="fri">शु</day>
-							<day type="sat">श</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<quarters>
-					<quarterContext type="format">
-						<quarterWidth type="abbreviated">
-							<quarter type="1">Q1</quarter>
-							<quarter type="2">Q2</quarter>
-							<quarter type="3">Q3</quarter>
-							<quarter type="4">Q4</quarter>
-						</quarterWidth>
-						<quarterWidth type="wide">
-							<quarter type="1">प्रथम तिमाही</quarter>
-							<quarter type="2">द्वितीय तिमाही</quarter>
-							<quarter type="3">तृतीय तिमाही</quarter>
-							<quarter type="4">चतुर्थ तिमाही</quarter>
-						</quarterWidth>
-					</quarterContext>
-				</quarters>
-				<am>am</am>
-				<pm>pm</pm>
-				<eras>
-					<eraNames>
-						<era type="0">ईसवीसनपूर्व</era>
-						<era type="1">ईसवीसन</era>
-					</eraNames>
-					<eraAbbr>
-						<era type="0">ई.स.पू.</era>
-						<era type="1">ई.स.</era>
-					</eraAbbr>
-				</eras>
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE d MMMM y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>d MMMM y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>d MMM y</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>d-M-yy</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="full">
-						<timeFormat>
-							<pattern>h-mm-ss a zzzz</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="long">
-						<timeFormat>
-							<pattern>h-mm-ss a z</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>h-mm-ss a</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="short">
-						<timeFormat>
-							<pattern>h-mm a</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="Hm">H-mm</dateFormatItem>
-						<dateFormatItem id="Hms">H-mm-ss</dateFormatItem>
-						<dateFormatItem id="MMdd">dd-MM</dateFormatItem>
-						<dateFormatItem id="MMMMd">d MMMM</dateFormatItem>
-						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
-						<dateFormatItem id="yyyyMM">MM-yyyy</dateFormatItem>
-						<dateFormatItem id="yyyyMMMM">MMMM y</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-				<fields>
-					<field type="era">
-						<displayName>युग</displayName>
-					</field>
-					<field type="year">
-						<displayName>वर्ष</displayName>
-					</field>
-					<field type="month">
-						<displayName>महिना</displayName>
-					</field>
-					<field type="week">
-						<displayName>आठवडा</displayName>
-					</field>
-					<field type="day">
-						<displayName>दिवस</displayName>
-						<relative type="-3">तीन दिवसांपूर्वी</relative>
-						<relative type="-2">परवा</relative>
-						<relative type="-1">काल</relative>
-						<relative type="0">आज</relative>
-						<relative type="1">उद्या</relative>
-						<relative type="2">परवा</relative>
-						<relative type="3">आजपासून तीन दिवस</relative>
-					</field>
-					<field type="weekday">
-						<displayName>आठवड्याचा दिवस</displayName>
-					</field>
-					<field type="hour">
-						<displayName>तास</displayName>
-					</field>
-					<field type="minute">
-						<displayName>मिनिट</displayName>
-					</field>
-					<field type="second">
-						<displayName>सेकंद</displayName>
-					</field>
-					<field type="zone">
-						<displayName>झोन</displayName>
-					</field>
-				</fields>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;-HH:mm</hourFormat>
-			<gmtFormat>GMT{0}</gmtFormat>
-			<regionFormat>{0}</regionFormat>
-			<metazone type="India">
-				<long>
-					<standard>भारतीय समय</standard>
-				</long>
-				<commonlyUsed>true</commonlyUsed>
-			</metazone>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<defaultNumberingSystem>deva</defaultNumberingSystem>
-		<symbols>
-			<nativeZeroDigit>0</nativeZeroDigit>
-		</symbols>
-		<decimalFormats>
-			<decimalFormatLength>
-				<decimalFormat>
-					<pattern>#,##,##0.###</pattern>
-				</decimalFormat>
-			</decimalFormatLength>
-		</decimalFormats>
-		<percentFormats>
-			<percentFormatLength>
-				<percentFormat>
-					<pattern>#,##,##0%</pattern>
-				</percentFormat>
-			</percentFormatLength>
-		</percentFormats>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>¤ #,##,##0.00</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-		</currencyFormats>
-		<currencies>
-			<currency type="INR">
-				<symbol>रु</symbol>
-			</currency>
-		</currencies>
-	</numbers>
-	<posix>
-		<messages>
-			<yesstr>होयःहो</yesstr>
-			<nostr>नाहीःना</nostr>
-		</messages>
-	</posix>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php8php6php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php4php:php1php5php:php3php3php php$php"php/php>
+php	php	php<languagephp typephp=php"mrphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"aaphp"php>phpअphpफphpाphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"abphp"php>phpअphpबphpखphpेphpजphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"acephp"php>phpअphpचphpीphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"achphp"php>phpअphpकphpोphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"adaphp"php>phpअphpडphpाphpंphpगphp्phpमphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"adyphp"php>phpअphpडphpिphpघphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"aephp"php>phpअphpवphpेphpसphp्phpतphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"afphp"php>phpअphpफphp्phpरphpिphpकphpाphpनphp्phpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"afaphp"php>phpअphpफphp्phpरphpोphp-phpअphpशphpिphpयphpाphpईphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"afhphp"php>phpअphpफphp्phpरphpिphpहphpिphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ainphp"php>phpऐphpनphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"akphp"php>phpअphpकphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"akkphp"php>phpअphpकphp्phpकphpाphpदphpिphpआphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"alephp"php>phpअphpलphpेphpउphpत<php/languagephp>
+php	php	php	php<languagephp typephp=php"algphp"php>phpअphp‍phpॅphpलphp्phpगphpोphpकphp्phpवphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"altphp"php>phpदphpकphp्phpषphpिphpणphpाphpतphp्phpयphp phpअphpलphp्phpतphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"amphp"php>phpअphpमphp्phpहphpाphpरphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"anphp"php>phpअphpरphp्phpगphpोphpनphpीphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"angphp"php>phpपphpुphpरphpाphpतphpनphp phpइphpंphpगphp्phpरphpजphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"anpphp"php>phpअphpंphpगphpिphpकphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"apaphp"php>phpअphpपphpाphpचphpेphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"arphp"php>phpअphpरphpबphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"arcphp"php>phpअphp‍phpॅphpरphpेphpमphpाphpइphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"arnphp"php>phpअphp‍phpॅphpरphpॉphpकphpॅphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"arpphp"php>phpअphpरphpाphpफphpाphpओ<php/languagephp>
+php	php	php	php<languagephp typephp=php"artphp"php>phpकphpृphpतphp्phpरphpिphpमphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"arwphp"php>phpअphpरphpाphpवphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"asphp"php>phpआphpसphpाphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"astphp"php>phpअphpसphp्phpतphpुphpरphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"athphp"php>phpअphp‍phpॅphpथphpाphpपphpाphpसphp्phpकphpाphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"ausphp"php>phpऑphpसphp्phpटphp्phpरphpेphpलphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"avphp"php>phpअphp‍phpॅphpवphp्phpहphpेphpरphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"awaphp"php>phpअphpवphpधphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ayphp"php>phpऐphpमphpरphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"azphp"php>phpअphpझphpरphpबphpैphpजphpाphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"baphp"php>phpबphpषphp्phpकphpिphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"badphp"php>phpबphpाphpंphpदphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"baiphp"php>phpबphpमphpिphpलphpेphpकphpेphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"balphp"php>phpबphpलphpुphpचphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"banphp"php>phpबphpाphpलphpिphpनphpीphpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"basphp"php>phpबphpसphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"batphp"php>phpबphpाphpलphp्phpटphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"bephp"php>phpबphpेphpलphpाphpरphpुphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"bejphp"php>phpबphpेphpजphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"bemphp"php>phpबphpेphpमphp्phpबphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"berphp"php>phpबphpरphp्phpबphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>phpबphpलphp्phpगphpेphpरphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>phpबphpिphpहphpाphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhophp"php>phpभphpोphpजphpपphpुphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"biphp"php>phpबphpिphpसphp्phpलphpाphpमphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"bikphp"php>phpबphpिphpकphpोphpल<php/languagephp>
+php	php	php	php<languagephp typephp=php"binphp"php>phpबphpिphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"blaphp"php>phpसphpिphpकphp्phpसphpिphpकphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"bmphp"php>phpबphpाphpमphp्phpबphpाphpरphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>phpबphpंphpगphpाphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"bntphp"php>phpबphpनphp्phpटphpु<php/languagephp>
+php	php	php	php<languagephp typephp=php"bophp"php>phpतphpिphpबphpेphpटphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>phpबphp्phpरphpेphpटphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"braphp"php>phpबphp्phpरphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>phpबphpोphpसphp्phpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"btkphp"php>phpबphpटphpाphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"buaphp"php>phpबphpुphpरphpिphpयphpाphpत<php/languagephp>
+php	php	php	php<languagephp typephp=php"bugphp"php>phpबphpगphpिphpनphpीphpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"bynphp"php>phpबphp्phpलphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>phpकphpॅphpटphpलphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"cadphp"php>phpकphpॅphpडphp्phpडphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"caiphp"php>phpमphpधphp्phpयphp phpअphpमphpेphpरphpिphpकphpीphp phpइphpंphpडphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"carphp"php>phpकphpॅphpरphpिphpब<php/languagephp>
+php	php	php	php<languagephp typephp=php"cauphp"php>phpकphpॉphpकphpेphpशphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"cchphp"php>phpअphpतphp्phpसphpम<php/languagephp>
+php	php	php	php<languagephp typephp=php"cephp"php>phpचphpेphpचphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"cebphp"php>phpसphpिphpबphpुphpआphpनphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"celphp"php>phpकphpेphpलphp्phpटphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"chphp"php>phpकphpॅphpमphpोphpरphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"chbphp"php>phpचphpिphpबphp्phpचphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"chgphp"php>phpछphpगphpाphpतphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"chkphp"php>phpचphpूphpकphpीphpसphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"chmphp"php>phpमphpाphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"chnphp"php>phpचphpिphpनphpूphpकphp phpजphpाphpरphpगphpॉphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"chophp"php>phpचphpोphpकphp्phpतphpौ<php/languagephp>
+php	php	php	php<languagephp typephp=php"chpphp"php>phpशphpिphpपphpेphpवphp्phpयphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"chrphp"php>phpचphpेphpरphpूphpकphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"chyphp"php>phpशphpेphpयphpेphpनphp्phpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"cmcphp"php>phpचphpाphpमphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"cophp"php>phpकphpोphpरphp्phpसphpिphpकphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"copphp"php>phpकphpॉphpपphp्phpटphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"cpephp"php>phpइphpंphpगphp्phpरphpजphpीphp-phpआphpधphpाphpरphpिphpतphp phpकphp्phpरphpेphpओphpलphp phpवphpाphp phpपphpिphpजphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"cpfphp"php>phpफphp्phpरphpेphpंphpचphp-phpआphpधphpाphpरphpिphpतphp phpकphp्phpरphpेphpओphpलphp phpवphpाphp phpपphpिphpजphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"cppphp"php>phpपphpोphpरphp्phpतphpुphpगphpीphpजphp-phpआphpधphpाphpरphpिphpतphp phpकphp्phpरphpेphpओphpलphp phpयphpाphp phpपphpिphpजphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"crphp"php>phpकphp्phpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"crhphp"php>phpकphp्phpरphpाphpइphpमphpीphpनphp phpतphpुphpरphp्phpकphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"crpphp"php>phpकphp्phpरphpेphpओphpलphp phpवphpाphp phpपphpिphpजphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>phpझphpेphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"csbphp"php>phpकphpाphpशphpुphpबphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"cuphp"php>phpचphpरphp्phpचphp phpसphp्phpलphpाphpवphp्phpहphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"cusphp"php>phpकphpुphpशphpिphpतphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"cvphp"php>phpचphpूphpवphpाphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>phpवphpेphpलphp्phpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>phpडphpॅphpनphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"dakphp"php>phpदphpाphpकphpोphpतphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"darphp"php>phpदphpाphpरphp्phpगphpवphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"dayphp"php>phpदphpाphpयphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>phpजphpरphp्phpमphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp_ATphp"php>phpऑphpसphp्phpटphp्phpरphpिphpयphpनphp phpजphpरphp्phpमphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp_CHphp"php>phpसphp्phpवphpिphpसphp phpहphpाphpयphp phpजphpरphp्phpमphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"delphp"php>phpडphpेphpलphpॅphpवphpेphpयphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"denphp"php>phpसphp्phpलphpाphpवphp्phpह<php/languagephp>
+php	php	php	php<languagephp typephp=php"dgrphp"php>phpडphpोphpगphp्phpरphpिphpब<php/languagephp>
+php	php	php	php<languagephp typephp=php"dinphp"php>phpदphpिphpनphp्phpकphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"doiphp"php>phpडphpोphpगphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"draphp"php>phpदphp्phpरphpवphpिphpडphpीphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"dsbphp"php>phpनphpिphpमphp्phpनphp phpसphpोphpरphp्phpबphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"duaphp"php>phpदphpुphpआphpलphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"dumphp"php>phpमphpिphpडphpलphp phpडphpच<php/languagephp>
+php	php	php	php<languagephp typephp=php"dvphp"php>phpदphpिphpवphpेphpहphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"dyuphp"php>phpडphp्phpयphpुphpलphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"dzphp"php>phpझphpोphpंphpगphpखphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"eephp"php>phpइphpवphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"efiphp"php>phpएphpफphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"egyphp"php>phpपphp्phpरphpाphpचphpीphpनphp phpइphpजphpिphpपphp्phpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"ekaphp"php>phpएphpकphpाphpजphpुphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>phpगphp्phpरphpीphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"elxphp"php>phpएphpलphpाphpमphpाphpइphpट<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>phpइphpंphpगphp्phpरphpजphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_AUphp"php>phpऑphpसphp्phpटphp्phpरphpेphpलphpिphpयphpनphp phpइphpंphpगphp्phpरphpजphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_CAphp"php>phpकphpॅphpनphpेphpडphpिphpयphpनphp phpइphpंphpगphp्phpरphpजphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_GBphp"php>phpबphp्phpरphpिphpटphpिphpशphp phpइphpंphpगphp्phpरphpजphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp_USphp"php>phpयphpूphp.php phpएphpसphp.php phpइphpंphpगphp्phpरphpजphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"enmphp"php>phpमphpिphpडphpलphp phpइphpंphpगphp्phpरphpजphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>phpएphpसphp्phpपphpरphpाphpनphp्phpटphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>phpसphp्phpपphpॅphpनphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp_php4php1php9php"php>phpलphpॅphpटphpिphpनphp phpअphpमphpेphpरphpिphpकphpनphp phpसphp्phpपphpॅphpनphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp_ESphp"php>phpइphpबphpेphpरphpिphpयphpनphp phpसphp्phpपphpॅphpनphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>phpइphpसphp्phpटphpोphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>phpबphpाphpसphp्phpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"ewophp"php>phpइphpवphpोphpनphp्phpडphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>phpफphpाphpरphpसphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"fanphp"php>phpफphpँphpग<php/languagephp>
+php	php	php	php<languagephp typephp=php"fatphp"php>phpफphpनphp्phpटphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ffphp"php>phpफphpुphpलphpाphpह<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>phpफphpिphpनphp्phpनphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>phpफphpिphpलphpिphpपphpिphpनphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiuphp"php>phpफphpिphpनphp्phpनphpोphp-phpउphpगphp्phpरphpीphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"fjphp"php>phpफphpिphpजphpीphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>phpफphpरphpोphpइphpए<php/languagephp>
+php	php	php	php<languagephp typephp=php"fonphp"php>phpफphpॉphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>phpफphp्phpरphpेphpंphpच<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp_CAphp"php>phpकphpॅphpनphpेphpडphpिphpयphpनphp phpफphp्phpरphpेphpंphpच<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp_CHphp"php>phpसphp्phpवphpिphpसphp phpफphp्phpरphpेphpंphpच<php/languagephp>
+php	php	php	php<languagephp typephp=php"frmphp"php>phpमphpिphpडphpलphp phpफphp्phpरphpेphpंphpच<php/languagephp>
+php	php	php	php<languagephp typephp=php"frophp"php>phpपphpुphpरphpाphpतphpनphp phpफphp्phpरphpेphpंphpच<php/languagephp>
+php	php	php	php<languagephp typephp=php"frrphp"php>phpउphpतphp्phpतphpरphpीphp phpफphp्phpरphpिphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"frsphp"php>phpपphpौphpरphp्phpवphpाphpतphp्phpयphp phpफphp्phpरphpिphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"furphp"php>phpफphp्phpरphpिphpयphpुphpलphpिphpयphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>phpपphpाphpशphp्phpचphpाphpतphp्phpयphp phpफphp्phpरphpिphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>phpआphpयphpरphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaaphp"php>phpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"gayphp"php>phpगphpाphpयphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"gbaphp"php>phpबphpाphpयphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>phpसphp्phpकphpॉphpटphp्phpसphp phpगphpेphpलphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"gemphp"php>phpजphpरphp्phpमphpनphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"gezphp"php>phpगphpीphpझ<php/languagephp>
+php	php	php	php<languagephp typephp=php"gilphp"php>phpजphpिphpलphp्phpबphpरphpटphpीphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>phpगphpॅphpलphpिphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"gmhphp"php>phpमphpिphpडphpलphp phpहphpाphpयphp phpजphpरphp्phpमphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>phpगphpुphpआphpरphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"gohphp"php>phpपphpुphpरphpाphpतphpनphp phpहphpाphpइphp phpजphpरphp्phpमphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"gonphp"php>phpगphpाphpँphpडphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"gorphp"php>phpगphpोphpरphpोphpनphp्phpतphpाphpलphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"gotphp"php>phpगphpॉphpथphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"grbphp"php>phpगphp्phpरphpेphpबphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"grcphp"php>phpपphp्phpरphpाphpचphpीphpनphp phpगphp्phpरphpीphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"gswphp"php>phpसphp्phpवphpिphpसphp phpजphpरphp्phpमphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>phpगphpुphpजphpरphpाphpतphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"gvphp"php>phpमphpाphpंphpकphp्phpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"gwiphp"php>phpगphp्phpवphpिphpचphp'phpइphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"haphp"php>phpहphpौphpसphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"haiphp"php>phpहphpैphpडphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"hawphp"php>phpहphpवphpाphpईphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>phpहphpिphpबphp्phpरphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>phpहphpिphpंphpदphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"hilphp"php>phpहphpिphpलphpीphpगphpेphpनphpॉphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"himphp"php>phpहphpिphpमphpाphpचphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"hitphp"php>phpहphpिphpटphp्phpटphpिphpतphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"hmnphp"php>phpमphpाphpँphpग<php/languagephp>
+php	php	php	php<languagephp typephp=php"hophp"php>phpहphpिphpरphpीphp phpमphpॉphpटphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"hrphp"php>phpकphp्phpरphpोphpएphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"hsbphp"php>phpअphpपphp्phpपphpरphp phpसphpॉphpरphp्phpबphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"htphp"php>phpहphpैphpतphpीphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>phpहphpंphpगphpेphpरphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"hupphp"php>phpहphpूphpपphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"hyphp"php>phpआphpरphp्phpमphpेphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"hzphp"php>phpहphpरphpेphpरphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>phpइphpनphp्phpटphpरphpलphpिphpंphpगphp्phpवphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"ibaphp"php>phpइphpबphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>phpइphpंphpडphpोphpनphpेphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"iephp"php>phpइphpनphp्phpटphpरphpलphpिphpंphpग<php/languagephp>
+php	php	php	php<languagephp typephp=php"igphp"php>phpईphpगphp्phpबphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"iiphp"php>phpसphpिphpचphpुphpआphpनphp phpयphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ijophp"php>phpइphpजphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"ikphp"php>phpइphpनphpूphpपphpिphpयphpाphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"ilophp"php>phpइphpलphpोphpकphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"incphp"php>phpभphpाphpरphpतphpीphpयphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"inephp"php>phpइphpंphpडphpोphp-phpयphpुphpरphpोphpपphpीphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"inhphp"php>phpइphpंphpगphpुphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"iophp"php>phpइphpडphpौ<php/languagephp>
+php	php	php	php<languagephp typephp=php"iraphp"php>phpईphpरphpाphpणphpीphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"irophp"php>phpइphpरphpोphpकphp्phpवphpोphpइphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>phpआphpईphpसphpलphpँphpडphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>phpइphpटphpाphpलphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"iuphp"php>phpइphpनphpुphpकphpिphpटphpुphpटphp्<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>phpजphpपphpाphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"jbophp"php>phpलphpोphpजphp्phpबphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"jprphp"php>phpजphpुphpदphpेphpओphp-phpफphpाphpरphpसphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"jrbphp"php>phpजphpुphpदphpेphpओphp-phpअphpरphpबphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>phpजphpाphpवphpनphpीphpसphp्<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>phpजphpॉphpरphp्phpजphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaaphp"php>phpकphpाphpरphpाphp-phpकphpलphp्phpपphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"kabphp"php>phpकphpबphpाphpइphpल<php/languagephp>
+php	php	php	php<languagephp typephp=php"kacphp"php>phpकphpाphpचphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"kajphp"php>phpजphp्phpजphpु<php/languagephp>
+php	php	php	php<languagephp typephp=php"kamphp"php>phpकphpमphp्phpबphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"karphp"php>phpकphpाphpरphpेphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"kawphp"php>phpकphpाphpवphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"kbdphp"php>phpकphpबphpाphpरphp्phpडphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"kcgphp"php>phpतphp्phpयphpाphpप<php/languagephp>
+php	php	php	php<languagephp typephp=php"kfophp"php>phpकphpोphpरphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"kgphp"php>phpकphpाphpँphpगphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"khaphp"php>phpखphpाphpसphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"khiphp"php>phpखphpोphpसphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"khophp"php>phpखphpोphpतphpाphpनphpीphpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"kiphp"php>phpकphpिphpकphpुphpयphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"kjphp"php>phpकphp्phpवphpाphpनphp्phpयphpाphpमphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"kkphp"php>phpकphpझphpाphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"klphp"php>phpकphpलphpाphpलphp्phpलphpिphpसphpुphpत<php/languagephp>
+php	php	php	php<languagephp typephp=php"kmphp"php>phpखphp्phpमphpेphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"kmbphp"php>phpकphpिphpमphp्phpबphpनphp्phpदphpु<php/languagephp>
+php	php	php	php<languagephp typephp=php"knphp"php>phpकphpनphp्phpनphpड<php/languagephp>
+php	php	php	php<languagephp typephp=php"kophp"php>phpकphpोphpरphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"kokphp"php>phpकphpोphpंphpकphpणphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"kosphp"php>phpकphpोphpसphpरphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"kpephp"php>phpकphp्phpपphpेphpलphp्phpलphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"krphp"php>phpकphpनphpुphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"krcphp"php>phpकphpरphpाphpचphpयphp-phpबphpाphpलphp्phpकphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"krlphp"php>phpकphpरphpेphpलphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"krophp"php>phpकphp्phpरphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"kruphp"php>phpकphpुphpरphpूphpख<php/languagephp>
+php	php	php	php<languagephp typephp=php"ksphp"php>phpकphpाphpशphp्phpमphpीphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>phpकphpुphpरphp्phpदphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"kumphp"php>phpकphpुphpमphpीphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"kutphp"php>phpकphpुphpतphpेphpनphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"kvphp"php>phpकphpोphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"kwphp"php>phpकphpोphpरphp्phpनphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>phpकphpिphpरphpगphpीphpझ<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>phpलphpॅphpटphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"ladphp"php>phpलphpाphpदphpीphpनphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"lahphp"php>phpलphpाphpहphp्phpनphp्phpडphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"lamphp"php>phpलphpाphpमphp्phpबphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"lbphp"php>phpलphpकphp्phpझphpेphpंphpबphpरphp्phpगphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"lezphp"php>phpलphpेphpझphp्phpघphpीphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"lgphp"php>phpगphpाphpंphpडphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"liphp"php>phpलphpिphpंphpबphpूphpरphp्phpगphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"lnphp"php>phpलphpिphpंphpगphpाphpलphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"lophp"php>phpलphpाphpओ<php/languagephp>
+php	php	php	php<languagephp typephp=php"lolphp"php>phpमphpोphpंphpगphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"lozphp"php>phpलphpोphpझphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>phpलphpिphpथphpुphpआphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"luphp"php>phpलphp्phpयphpूphpबphpाphp-phpकphpटphpाphpंphpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"luaphp"php>phpलphpूphpबphpाphp-phpलphpुphpलphpुphpआ<php/languagephp>
+php	php	php	php<languagephp typephp=php"luiphp"php>phpलphpुphpइphpसphpेphpनphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"lunphp"php>phpलphpुphpनphp्phpडphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"luophp"php>phpलphp्phpयphpुphpओ<php/languagephp>
+php	php	php	php<languagephp typephp=php"lusphp"php>phpलphpुphpशphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"lvphp"php>phpलphpाphpटphp्php‌phpवphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"madphp"php>phpमphpाphpदphpुphpरphpीphpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"magphp"php>phpमphpगphpहphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"maiphp"php>phpमphpैphpथphpिphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"makphp"php>phpमphpकphpसphp्phpसphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"manphp"php>phpमphpनphp्phpडphpिphpनphp्phpगphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"mapphp"php>phpऑphpसphp्phpटphp्phpरphpोphpनphpेphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"masphp"php>phpमphpसphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"mdfphp"php>phpमphpोphpकphp्phpष<php/languagephp>
+php	php	php	php<languagephp typephp=php"mdrphp"php>phpमphpंphpडphpाphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"menphp"php>phpमphpेphpनphp्phpडphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"mgphp"php>phpमphpलphpाphpगphpसphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"mgaphp"php>phpमphpिphpडphpलphp phpआphpयphpरphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"mhphp"php>phpमphpाphpरphp्phpशphpलphpीphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"miphp"php>phpमphpाphpओphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"micphp"php>phpमphpिphpकphpमphpॅphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"minphp"php>phpमphpिphpनphpाphpंphpगphp्phpकphpाphpबphpाphpउ<php/languagephp>
+php	php	php	php<languagephp typephp=php"misphp"php>phpवphpिphpवphpिphpधphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>phpमphpॅphpसphpेphpडphpोphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkhphp"php>phpमphpॉphpनphp-phpखphp्phpमphpेphpरphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"mlphp"php>phpमphpलphp्phpयphpाphpळphpम<php/languagephp>
+php	php	php	php<languagephp typephp=php"mnphp"php>phpमphpंphpगphpोphpलphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"mncphp"php>phpमphpाphpनphp्phpचphpु<php/languagephp>
+php	php	php	php<languagephp typephp=php"mniphp"php>phpमphpणphpिphpपphpुphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"mnophp"php>phpमphpनphpोphpबphpोphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"mophp"php>phpमphpोphpलphp्phpडphpाphpवphp्phpहphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"mohphp"php>phpमphpोphpहphpॉphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"mosphp"php>phpमphpोphpसphp्phpसphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"mrphp"php>phpमphpरphpाphpठphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"msphp"php>phpमphpलphpय<php/languagephp>
+php	php	php	php<languagephp typephp=php"mtphp"php>phpमphpाphpलphp्phpटphpिphpजphp्<php/languagephp>
+php	php	php	php<languagephp typephp=php"mulphp"php>phpएphpकphpवphpिphpधphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"munphp"php>phpमphpुphpनphp्phpडphpाphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"musphp"php>phpकphp्phpरphpीphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"mwlphp"php>phpमphpिphpरphpाphpंphpडphpिphpजphp्<php/languagephp>
+php	php	php	php<languagephp typephp=php"mwrphp"php>phpमphpाphpरphpवphpाphpडphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"myphp"php>phpबphpरphp्phpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"mynphp"php>phpमphpाphpयphpाphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"myvphp"php>phpएphpरphp्phpझphp्phpयphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"naphp"php>phpनphpउphpरphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"nahphp"php>phpनphpहphpुphpआphpतphp्phpल<php/languagephp>
+php	php	php	php<languagephp typephp=php"naiphp"php>phpउphpतphp्phpतphpरphpीphp phpअphpमphpेphpरphpीphpकphpीphp phpइphpंphpडphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"napphp"php>phpनphpेphpपphpोphpलphpिphpटphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"nbphp"php>phpनphpॉphpरphp्phpवphpेphpजphpिphpयphpनphp phpबphpोphpकphpमphpाphpल<php/languagephp>
+php	php	php	php<languagephp typephp=php"ndphp"php>phpउphpतphp्phpतphpरphpीphp phpदphpेphpबphpेphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ndsphp"php>phpलphpोphp phpजphpरphp्phpमphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"nephp"php>phpनphpेphpपphpाphpळphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"newphp"php>phpनphpेphpवphpाphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ngphp"php>phpडphpोphpंphpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"niaphp"php>phpनphpिphpयphpाphpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"nicphp"php>phpनphpाphpइphpजphpरphp-phpकphpॉphpरphp्phpडphpोphpफphpॅphpनphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"niuphp"php>phpनphpिphpयphpुphpआphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>phpडphpच<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp_BEphp"php>phpफphp्phpलphpेphpमphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"nnphp"php>phpनphpॉphpरphp्phpवphpेphpजphpिphpयphpनphp phpनphp्phpयphpोphpरphp्phpसphp्phpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>phpनphpोphpरphp्phpवphpेphpजphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"nogphp"php>phpनphpोphpगphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"nonphp"php>phpपphpुphpरphpाphpतphpनphp phpनphpॉphpरphp्phpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"nqophp"php>phpएphpनphp्phpकphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"nrphp"php>phpदphpकphp्phpषphpिphpणphpाphpतphp्phpयphp phpदphpेphpबphpेphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"nsophp"php>phpउphpतphp्phpतphpरphpीphp phpसphpोphpथphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"nubphp"php>phpनphp्phpयphpुphpबphpिphpयphpाphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"nvphp"php>phpनphpाphpवphpाphpजphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"nwcphp"php>phpअphpभphpिphpजphpाphpतphp phpनphpेphpवphpाphpरphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"nyphp"php>phpनphp्phpयphpाphpनphp्phpजphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"nymphp"php>phpनphp्phpयphpाphpमphpवphpेphpझphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"nynphp"php>phpनphp्phpयphpाphpनphpकphpोphpल<php/languagephp>
+php	php	php	php<languagephp typephp=php"nyophp"php>phpनphp्phpयphpोphpरphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"nziphp"php>phpनphp्phpझphpिphpमphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>phpऑphpकphp्phpसphpिphpटphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"ojphp"php>phpओphpजphpिphpबphp्phpवphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"omphp"php>phpओphpरphpोphpमphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>phpउphpडphpिphpयphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"osphp"php>phpओphpसphp्phpसphpेphpटphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"osaphp"php>phpओphpसphpेphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"otaphp"php>phpओphpटphpोphpमphpाphpनphp phpतphpुphpरphp्phpकphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"otophp"php>phpओphpटphpोphpमphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"paphp"php>phpपphpंphpजphpाphpबphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"paaphp"php>phpपphpाphpपphpुphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"pagphp"php>phpपphpंphpगphpाphpसphpीphpनphpाphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"palphp"php>phpपphpहphpलphpवphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"pamphp"php>phpपphpाphpमphp्phpपphpाphpनphp्phpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"papphp"php>phpपphpाphpपphpिphpयphpाphpमphpेphpनphp्phpटphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"pauphp"php>phpपphpाphpलphpाphpउphpआphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"peophp"php>phpपphpुphpरphpाphpतphpनphp phpफphpाphpरphpसphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"phiphp"php>phpफphpिphpलphpिphpपphpीphpनphpीphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"phnphp"php>phpफphpोphpनphpिphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"piphp"php>phpपphpाphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>phpपphpोphpलphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"ponphp"php>phpपphpोphpहphp्phpनphpपphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"praphp"php>phpपphp्phpरphpाphpकphpृphpतphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"prophp"php>phpपphpुphpरphpाphpतphpनphp phpपphp्phpरphpोphpवphp्phpहphpेphpनphp्phpसphpल<php/languagephp>
+php	php	php	php<languagephp typephp=php"psphp"php>phpपphpशphp्phpतphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>phpपphpोphpरphp्phpतphpुphpगphpीphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>phpबphp्phpरphpाphpझphpिphpलphpिphpयphpनphp phpपphpोphpरphp्phpतphpुphpगphpीphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>phpइphpबphpेphpरphpिphpयphpनphp phpपphpोphpरphp्phpतphpुphpगphpीphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"quphp"php>phpकphp्phpवphpेphpचphpुphpआ<php/languagephp>
+php	php	php	php<languagephp typephp=php"rajphp"php>phpरphpाphpजphpसphp्phpथphpाphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"rapphp"php>phpरphpाphpपphpाphpनphpुphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"rarphp"php>phpरphpाphpरphpोphpटphpोphpंphpगphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"rmphp"php>phpरphp्php‍phpहphpाphpएphpटphpोphp-phpरphpोphpमphpाphpंphpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"rnphp"php>phpरphpुphpनphp्phpदphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>phpरphpोphpमphpाphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"roaphp"php>phpरphpोphpमphpाphpंphpसphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"romphp"php>phpरphpोphpमphpाphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"rootphp"php>phpरphpूphpट<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>phpरphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"rupphp"php>phpअphpरphpोphpमphpाphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"rwphp"php>phpकphpिphpनphp्phpयphpाphpरphp्phpवphpाphpनphp्phpडphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"saphp"php>phpसphpंphpसphp्phpकphpृphpत<php/languagephp>
+php	php	php	php<languagephp typephp=php"sadphp"php>phpसphpँphpडphpवphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"sahphp"php>phpयphpाphpकphpूphpत<php/languagephp>
+php	php	php	php<languagephp typephp=php"saiphp"php>phpदphpकphp्phpषphpिphpणphp phpअphpमphpेphpरphpीphpकphpीphp phpइphpंphpडphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"salphp"php>phpसphpलphpीphpशphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"samphp"php>phpसphpाphpमphpरphpिphpटphpाphpनphp phpअphpरphpॅphpमphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"sasphp"php>phpसphpाphpसphpाphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"satphp"php>phpसphpंphpतphpाphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"scphp"php>phpसphpरphp्phpदphpिphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"scnphp"php>phpसphpिphpसphpिphpलphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"scophp"php>phpसphp्phpकphpॉphpटphp्phpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"sdphp"php>phpसphpिphpंphpधphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"sephp"php>phpनphpॉphpरphp्phpदphpनphp phpसphpाphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"selphp"php>phpसphpेphpलphp्phpकphpप<php/languagephp>
+php	php	php	php<languagephp typephp=php"semphp"php>phpसphpेphpमphpिphpटphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"sgphp"php>phpसphpाphpंphpगphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"sgaphp"php>phpपphpुphpरphpाphpतphpनphp phpआphpयphpरphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"sgnphp"php>phpसphpाphpंphpकphpेphpतphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"shphp"php>phpसphpरphp्phpबphpोphp-phpकphp्phpरphpोphpएphpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"shnphp"php>phpशphpॅphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"siphp"php>phpसphpिphpंphpहphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"sidphp"php>phpसphpिphpदphpाphpमphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"siophp"php>phpसphpिphpउphpआphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"sitphp"php>phpचphpीphpनphpीphp-phpतphpिphpबphpेphpटphpीphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"skphp"php>phpसphp्phpलphpोphpवphp्phpहphpाphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"slphp"php>phpसphp्phpलphpोphpवphp्phpहphpेphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"slaphp"php>phpसphp्phpलphpाphpवphp्phpहphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"smphp"php>phpसphpाphpमphpोphpअphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"smaphp"php>phpदphpकphp्phpषphpिphpणphpाphpतphp्phpयphp phpसphpाphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"smiphp"php>phpसphpाphpमphpीphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"smjphp"php>phpलphp्phpयphpुphpलphp phpसphpाphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"smnphp"php>phpइphpनphpाphpरphpीphp phpसphpाphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"smsphp"php>phpसphp्phpकphpोphpलphp्phpटphp phpसphpाphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"snphp"php>phpशphpोphpनphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"snkphp"php>phpसphpोphpनphpिphpनphp्phpकphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"sophp"php>phpसphpोphpमphpाphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"sogphp"php>phpसphpोphpगphp्phpडphpिphpएphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"sonphp"php>phpसphpोphpनphp्phpघphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>phpअphpलphp्phpबphpाphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"srphp"php>phpसphpरphp्phpबphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"srnphp"php>phpसphp्phpरphpाphpनphpाphpनphp phpटphpॉphpनphp्phpगphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"srrphp"php>phpसphpेphpरphpेphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"ssphp"php>phpसphp्phpवphpाphpतphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"ssaphp"php>phpनphpिphpलphpोphp-phpसphpहphpाphpरphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"stphp"php>phpसphpेphpसphpोphpथphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"suphp"php>phpसphpुphpंphpदphpाphpनphpीphpज<php/languagephp>
+php	php	php	php<languagephp typephp=php"sukphp"php>phpसphpुphpकphpुphpमphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"susphp"php>phpसphpुphpसphpु<php/languagephp>
+php	php	php	php<languagephp typephp=php"suxphp"php>phpसphpुphpमphpेphpरphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>phpसphp्phpवphpीphpडphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"swphp"php>phpसphp्phpवphpाphpहphpिphpलphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"sycphp"php>phpअphpभphpिphpजphpाphpतphp phpसphpिphpरphpिphpयphpाphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"syrphp"php>phpसphpिphpरphpिphpयphpाphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>phpतphpमphpिphpळ<php/languagephp>
+php	php	php	php<languagephp typephp=php"taiphp"php>phpतphpाphpईphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tephp"php>phpतphpेphpलphpगphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"temphp"php>phpटphpिphpमphp्phpनphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"terphp"php>phpतphpेphpरphpेphpनphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"tetphp"php>phpतphpेphpतphpुphpम<php/languagephp>
+php	php	php	php<languagephp typephp=php"tgphp"php>phpतphpाphpजphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"thphp"php>phpथphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"tiphp"php>phpटphpिphpगphp्phpरphpिphpनphp्phpयphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tigphp"php>phpटphpाphpइphpगphp्phpरphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"tivphp"php>phpतphpिphpव<php/languagephp>
+php	php	php	php<languagephp typephp=php"tkphp"php>phpतphpुphpरphp्phpकphpमphpेphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"tklphp"php>phpटphpोphpकphpेphpलphpाphpऊ<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlphp"php>phpटphpाphpगphpाphpलphpोphpग<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlhphp"php>phpकphp्phpलphpिphpंphpगphpॉphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"tliphp"php>phpलphpिphpंphpगphpिphpत<php/languagephp>
+php	php	php	php<languagephp typephp=php"tmhphp"php>phpतphpाphpमphpाphpशphpेphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"tnphp"php>phpतphp्phpसphp्phpवphpाphpनphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tophp"php>phpटphpोphpंphpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"togphp"php>phpनphp्phpयphpाphpसphpाphp phpटphpोphpनphp्phpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tpiphp"php>phpटphpोphpकphp phpपphpिphpसphpिphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"trphp"php>phpतphpुphpरphp्phpकphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"tsphp"php>phpसphpोphpंphpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tsiphp"php>phpसphpिphpमphp्phpशphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"ttphp"php>phpतphpतphpाphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"tumphp"php>phpतphpमphp्phpबphpूphpकphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tupphp"php>phpटphp्phpयphpूphpपphpीphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tutphp"php>phpअphpलphp्phpटphpॅphpइphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"tvlphp"php>phpटphpुphpवphpाphpलphpु<php/languagephp>
+php	php	php	php<languagephp typephp=php"twphp"php>phpटphp्phpवphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"typhp"php>phpतphpाphpहphpिphpतphpीphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"tyvphp"php>phpटphpुphpवphpीphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"udmphp"php>phpउphpदphpमphpुphpरphp्phpत<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugphp"php>phpउphpईphpघphpुphpर<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugaphp"php>phpयphpुphpगphpॅphpरphpिphpटphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>phpयphpुphpकphp्phpरphpेphpनphpिphpयphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"umbphp"php>phpउphpमphp्phpबphpुphpनphp्phpडphpु<php/languagephp>
+php	php	php	php<languagephp typephp=php"undphp"php>phpअphpजphp्phpञphpाphpतphp phpवphpाphp phpअphpवphpैphpधphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>phpउphpरphp्phpदphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>phpउphpझphp्phpबphpेphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"vaiphp"php>phpवphpाphpई<php/languagephp>
+php	php	php	php<languagephp typephp=php"vephp"php>phpवphp्phpहphpेphpंphpदphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"viphp"php>phpवphp्phpहphpिphpएphpतphpनphpाphpमphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"vophp"php>phpओphpलphpाphpपphpुphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"votphp"php>phpवphpॉphpटphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"waphp"php>phpवphpाphpलphpूphpन<php/languagephp>
+php	php	php	php<languagephp typephp=php"wakphp"php>phpवphpाphpकphpाphpशphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"walphp"php>phpवphpलphpाphpमphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"warphp"php>phpवphpाphpरphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"wasphp"php>phpवphpाphpशphpो<php/languagephp>
+php	php	php	php<languagephp typephp=php"wenphp"php>phpसphpॉphpरphp्phpबphpिphpयphpनphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"wophp"php>phpवphpोphpलphpोphpफ<php/languagephp>
+php	php	php	php<languagephp typephp=php"xalphp"php>phpकphpाphpलphp्phpमphpिphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"xhphp"php>phpखphpोphpसphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"yaophp"php>phpयphpाphpओ<php/languagephp>
+php	php	php	php<languagephp typephp=php"yapphp"php>phpयphpाphpपphpीphpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>phpयphpिphpदphp्phpदphpिphpश<php/languagephp>
+php	php	php	php<languagephp typephp=php"yophp"php>phpयphpोphpरphpुphpबphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"ypkphp"php>phpयphpूphpपphpिphpकphp phpभphpाphpषphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"zaphp"php>phpझphpुphpआphpंphpग<php/languagephp>
+php	php	php	php<languagephp typephp=php"zapphp"php>phpझphpेphpपphpोphpटphpेphpक<php/languagephp>
+php	php	php	php<languagephp typephp=php"zblphp"php>phpबphp्phpलphpिphpसphpिphpमphp्phpबphpॉphpलphp्phpस<php/languagephp>
+php	php	php	php<languagephp typephp=php"zenphp"php>phpझphpेphpनphpाphpनphp्phpगphpा<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp"php>phpचphpीphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>phpसphpरphpलphpीphpकphpृphpतphp phpचphpीphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>phpपphpाphpरphpंphpपphpाphpरphpिphpकphp phpचphpीphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"zndphp"php>phpझphpनphp्phpडphpे<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>phpझphpुphpलphpू<php/languagephp>
+php	php	php	php<languagephp typephp=php"zunphp"php>phpझphpुphpनphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"zxxphp"php>phpभphpाphpषphpाphpवphpैphpजphp्phpञphpाphpनphpिphpकphp phpसphpाphpमphpगphp्phpरphpीphp phpनphpाphpहphpी<php/languagephp>
+php	php	php	php<languagephp typephp=php"zzaphp"php>phpझphpाphpझphpा<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Arabphp"php>phpअphpरphpबphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Armiphp"php>phpइphpमphp्phpपphpिphpरphpिphpयphpलphp phpआphpरphp्phpमphpेphpनphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Armnphp"php>phpअphpरphp्phpमphpेphpनphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Avstphp"php>phpअphpवphpेphpसphp्phpतphpाphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Baliphp"php>phpबphpाphpलphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Batkphp"php>phpबphpटphpाphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Bengphp"php>phpबphpंphpगphpाphpलphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Blisphp"php>phpबphp्phpलphpिphpसphpिphpमphp्phpबphpॉphpलphp्phpस<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Bopophp"php>phpबphpोphpपphpोphpमphpोphpफphpो<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Brahphp"php>phpबphp्phpरphpहphp्phpमphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Braiphp"php>phpबphp्phpरphpेphpल<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Bugiphp"php>phpबphpूphpगphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Buhdphp"php>phpबphpुphpहphpिphpद<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cakmphp"php>phpचphpकphpमphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cansphp"php>phpयphpूphpनphpिphpफphpाphpइphpडphp phpकphpॅphpनphpेphpडphpिphpयphpनphp phpअphp‍phpॅphpबphpोphpरphpिphpदphpनphpलphp phpसphpिphpलphpॅphpबphpिphpकphp्phpस<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cariphp"php>phpकphpॅphpरphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Champhp"php>phpचphpाphpम<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cherphp"php>phpचphpेphpरphpोphpकphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cirtphp"php>phpकphpिphpरphp्phpथ<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Coptphp"php>phpकphpॉphpपphp्phpटphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cprtphp"php>phpसphpाphpयphpपphp्phpरphpिphpऑphpट<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cyrlphp"php>phpसphpीphpरphpिphpलphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Cyrsphp"php>phpपphpुphpरphpाphpतphpनphp phpचphpरphp्phpचphp phpसphp्phpलphpाphpवphp्phpहphpोphpनphpिphpकphp phpसphpिphpरphpिphpलphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Devaphp"php>phpदphpेphpवphpनphpाphpगphpरphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Dsrtphp"php>phpडphpेphpसphpरphp्phpट<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egydphp"php>phpइphpजphpिphpपphp्phpशphpिphpयphpनphp phpडphpेphpमphpोphpटphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egyhphp"php>phpइphpजphpिphpपphp्phpशphpिphpयphpनphp phpहphpाphpयphpरphpेphpटphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Egypphp"php>phpइphpजphpिphpपphp्phpशphpिphpयphpनphp phpहphpाphpयphpरphpोphpगphp्phpलphpिphpफphp्phpस<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Ethiphp"php>phpईphpथphpिphpओphpपphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Geokphp"php>phpजphpॉphpरphp्phpजphpिphpयphpनphp phpखphpुphpतphp्phpसphpुphpरphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Georphp"php>phpजphpॉphpरphp्phpजphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Glagphp"php>phpगphp्phpलphpॅphpगphpोphpलphpिphpटphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Gothphp"php>phpगphpोphpथphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Grekphp"php>phpगphp्phpरphpीphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Gujrphp"php>phpगphpुphpजphpरphpाphpतphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Guruphp"php>phpगphpुphpरphpुphpमphpुphpखphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hangphp"php>phpहphpंphpगphpुphpल<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Haniphp"php>phpहphpाphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hanophp"php>phpहphpनphpुphpनphpू<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hansphp"php>phpसphpरphpलphpीphpकphpृphpतphp phpहphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hantphp"php>phpपphpाphpरphpंphpपphpाphpरphpिphpकphp phpहphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hebrphp"php>phpहphpिphpबphp्phpरphpू<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hiraphp"php>phpहphpिphpरphpाphpगphpाphpनphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hmngphp"php>phpपphpहphpाphpउphp phpमphpंphpग<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hrktphp"php>phpकphpॅphpटphpाphpकphpनphpाphp phpआphpणphpिphp phpहphpिphpरphpाphpगphpाphpनphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Hungphp"php>phpपphpुphpरphpाphpतphpनphp phpहphpंphpगphpेphpरphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Indsphp"php>phpसphpिphpनphp्phpधphpु<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Italphp"php>phpजphpुphpनphpीphp phpइphpटphpाphpलphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Javaphp"php>phpजphpाphpवphpाphpनphpीphpस<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Jpanphp"php>phpजphpपphpाphpनphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kaliphp"php>phpकphpाphpयphpाphpहphp phpलphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kanaphp"php>phpकphpॅphpटphpाphpकphpाphpनphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kharphp"php>phpखphpाphpरphpोphpशphp्phpथphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Khmrphp"php>phpखphp्phpमphpेphpर<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kndaphp"php>phpकphpनphp्phpनphpड<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Korephp"php>phpकphpोphpरphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Kthiphp"php>phpकphpाphpइphpथphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lanaphp"php>phpलphpाphpनphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Laoophp"php>phpलphpाphpओ<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latfphp"php>phpफphp्phpरphpॅphpकphp्phpतphpुphpरphp phpलphpॅphpटphpिphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latgphp"php>phpगphpाphpएphpलphpिphpकphp phpलphpेphpटphpिphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latnphp"php>phpलphpॅphpटphpिphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lepcphp"php>phpलphpेphpपphpचphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Limbphp"php>phpलphpिphpमphp्phpबphpू<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Linaphp"php>phpलphpीphpनphpिphpयphpाphpरphp phpअ<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Linbphp"php>phpलphpीphpनphpिphpयphpरphp phpबphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lyciphp"php>phpलphpाphpयphpशphpिphpयphpाphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Lydiphp"php>phpलphpाphpयphpडphpिphpयphpाphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mandphp"php>phpमphpाphpनphp्phpडphpाphpयphpीphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Maniphp"php>phpमphpाphpनphpीphpचphpाphpयphpीphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mayaphp"php>phpमphpाphpयphpाphpनphp phpहphpाphpइphpरphpोphpगphp्phpलphpिphpफphp्phpस<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Merophp"php>phpमphpेphpरphpोphpइphpटphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mlymphp"php>phpमphpलphp्phpयphpाphpळphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mongphp"php>phpमphpंphpगphpोphpलphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Moonphp"php>phpमphpूphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mteiphp"php>phpमphpेphpइphpतphpेphpइphp phpमphpाphpयphpेphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Mymrphp"php>phpमphp्phpयphpाphpनphpमphpाphpर<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Nkoophp"php>phpएphpनphp्php'phpकphpो<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Ogamphp"php>phpओphpघphpाphpम<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Olckphp"php>phpओphpलphp phpचphpिphpकphpि<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Orkhphp"php>phpओphpरphp्phpखphpोphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Oryaphp"php>phpउphpडphpिphpयphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Osmaphp"php>phpउphpसphp्phpमphpाphpनphpिphpयphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Permphp"php>phpपphpुphpरphpाphpतphpनphp phpपphpरphp्phpमphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phagphp"php>phpफphpाphpगphp्phpसphp-phpपphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phliphp"php>phpइphpनphp्phpसphp्phpकphp्phpरphpिphpपphp्phpशphpनphpलphp phpपphpाphpहphpलphpवphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phlpphp"php>phpसphpॉphpलphp्phpटphpरphp phpपphpाphpहphpलphpवphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phlvphp"php>phpबphpुphpकphp phpपphpाphpहphpलphpवphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Phnxphp"php>phpफphpोphpनphpिphpशphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Plrdphp"php>phpपphpोphpलphpाphpरphp्phpडphp phpफphpोphpनphpेphpटphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Prtiphp"php>phpइphpनphp्phpसphp्phpकphp्phpरphpिphpपphp्phpशphpनphpलphp phpपphpरphp्phpथphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Qaaiphp"php>phpवphpंphpशphpपphpरphpंphpपphpरphpाphpगphpत<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Rjngphp"php>phpरphpीphpजphpाphpंphpग<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Rorophp"php>phpरphpोphpनphp्phpगphpोphpरphpोphpनphp्phpगphpो<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Runrphp"php>phpरphpूphpनphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Samrphp"php>phpसphpमphpरphpिphpटphpाphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Saraphp"php>phpसphpरphpाphpतphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Saurphp"php>phpसphpौphpरphpाphpषphp्phpटphp्phpर<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sgnwphp"php>phpसphpंphpकphpेphpतphp phpलphpिphpपphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Shawphp"php>phpशphpॅphpवphp्phpहphpिphpयphpन<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sinhphp"php>phpसphpिphpंphpहphpलphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sundphp"php>phpसphpूphpदphpाphpनphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Sylophp"php>phpसphpिphpलphpोphpतphpीphp phpनphpाphpगphpरphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrcphp"php>phpसphpिphpरphpीphpयphpाphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrephp"php>phpएphpसphp्phpतphp्phpटphp्phpरphpेphpनphp्phpजphpेphpलphpोphp phpसphpिphpरphpिphpयphpाphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrjphp"php>phpपphpशphp्phpचphpिphpमphpीphp phpसphpिphpरphpिphpयphpाphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Syrnphp"php>phpपphpूphpरphp्phpवphpीphp phpसphpिphpरphpिphpयphpाphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tagbphp"php>phpतphpगphpोphpआphpनphp्phpवphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Talephp"php>phpतphpाphpईphp phpलphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Taluphp"php>phpनphpवphpीphpनphp phpतphpाphpईphp phpलphpू<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tamlphp"php>phpतphpमphpिphpळ<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tavtphp"php>phpतphpाphpईphp phpवphpिphpएphpत<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Teluphp"php>phpतphpेphpलphpगphpु<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tengphp"php>phpतphpेphpनphp्phpगphpवphpाphpर<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tfngphp"php>phpतphpिphpफphpिphpनphpाphpघ<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tglgphp"php>phpटphpाphpगphpाphpलphpोphpग<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Thaaphp"php>phpथphpाphpनphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Thaiphp"php>phpथphpाphpई<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Tibtphp"php>phpतphpिphpबphpेphpटphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Ugarphp"php>phpयphpुphpगphpाphpरphpिphpटphpिphpक<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Vaiiphp"php>phpवphpाphpई<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Vispphp"php>phpदphpृphpशphp्phpयphp phpसphpंphpवphpाphpद<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Xpeophp"php>phpपphpुphpरphpाphpतphpनphp phpफphpाphpरphpसphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Xsuxphp"php>phpदphpृphpशphp्phpयphpमphpाphpनphp phpभphpाphpषphpा<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Yiiiphp"php>phpयphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zmthphp"php>phpगphpणphpिphpतphpीphp phpसphpंphpकphpेphpतphpलphpिphpपphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zsymphp"php>phpपphp्phpरphpतphpीphpकphp phpलphpिphpपphpी<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zxxxphp"php>phpअphpलphpिphpखphpिphpत<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zyyyphp"php>phpसphpाphpमphpाphpनphp्phpय<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Zzzzphp"php>phpअphpजphp्phpञphpाphpतphp phpवphpाphp phpअphpवphpैphpधphp phpलphpिphpपphpी<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"php0php0php1php"php>phpवphpिphpशphp्phpव<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php2php"php>phpअphpफphp्phpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php3php"php>phpउphpतphp्phpतphpरphp phpअphpमphpेphpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php5php"php>phpदphpकphp्phpषphpिphpणphp phpअphpमphpेphpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php0php9php"php>phpओphpशphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php1php"php>phpपphpशphp्phpचphpिphpमphp phpअphpफphp्phpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php3php"php>phpमphpधphp्phpयphp phpअphpमphpेphpरphpीphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php4php"php>phpपphpूphpरphp्phpवphp phpअphpफphp्phpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php5php"php>phpउphpतphp्phpतphpरphp phpअphpफphp्phpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php7php"php>phpमphpधphp्phpयphp phpअphpफphp्phpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php8php"php>phpदphpकphp्phpषphpिphpणphpीphp phpअphpफphp्phpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php1php9php"php>phpअphpमphpेphpरphpिphpकphpाphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php2php1php"php>phpउphpतphp्phpतphpरphpीphp phpअphpमphpेphpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php2php9php"php>phpकphpॅphpरphpीphpबphpिphpयphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php0php"php>phpपphpूphpरphp्phpवphp phpअphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php4php"php>phpदphpकphp्phpषphpिphpणphp phpअphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php5php"php>phpदphpकphp्phpषphpिphpणphp phpपphpूphpरphp्phpवphp phpअphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php3php9php"php>phpदphpकphp्phpषphpिphpणphp phpयphpुphpरphpोphpप<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php5php3php"php>phpऑphpसphp्phpटphp्phpरphpेphpलphpिphpयphpाphp phpआphpणphpिphp phpनphp्phpयphpूphpझphpीphpलphpंphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php5php4php"php>phpमphpेphpलphpाphpनphpेphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php5php7php"php>phpमphpाphpयphpकphp्phpरphpोphpनphpेphpशphpिphpयphpनphp phpरphpीphpजphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php6php1php"php>phpपphpॉphpलphpिphpनphpेphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php0php6php2php"php>phpदphpकphp्phpषphpिphpणphp-phpमphpधphp्phpयphp phpअphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php4php2php"php>phpअphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php4php3php"php>phpमphpधphp्phpयphp phpअphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php4php5php"php>phpपphpशphp्phpचphpिphpमphp phpअphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php0php"php>phpयphpुphpरphpोphpप<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php1php"php>phpपphpूphpरphp्phpवphp phpयphpुphpरphpोphpप<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php4php"php>phpउphpतphp्phpतphpरphp phpयphpुphpरphpोphpप<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php5php5php"php>phpपphpशphp्phpचphpिphpमphp phpयphpुphpरphpोphpप<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php1php7php2php"php>phpसphp्phpवphpतphpंphpतphp्phpरphp phpरphpाphpषphp्phpटphp्phpरphpाphpंphpचphpेphp phpकphpॉphpमphpनphpवphpेphpलphp्phpथ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php2php0php0php"php>phpझphpेphpकphpोphpसphp्phpलphpवphpाphpकphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php4php1php9php"php>phpलphpॅphpटphpिphpनphp phpअphpमphpेphpरphpिphpकphpाphp phpआphpणphpिphp phpकphpॅphpरphpीphpबphpिphpयphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"php8php3php0php"php>phpचphpॅphpनphpलphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ADphp"php>phpअphpँphpडphpोphpरphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AEphp"php>phpसphpंphpयphpुphpकphp्phpतphp phpअphpरphpबphp phpअphpमphpीphpरphpाphpत<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AFphp"php>phpअphpफphpगphpाphpणphpिphpसphp्phpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AGphp"php>phpअphpँphpटphpिphpगphp्phpवphpाphp phpआphpणphpिphp phpबphpरphp्phpबphpुphpडphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AIphp"php>phpअphpँphpगphp्phpवphpिphpलphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ALphp"php>phpअphpलphp्phpबphpाphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AMphp"php>phpआphpरphp्phpमphpेphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ANphp"php>phpनphpेphpदphpरphpलphpँphpडphp्phpसphp phpअphpँphpटphpिphpलphp्phpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AOphp"php>phpअphpंphpगphpोphpलphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AQphp"php>phpअphpंphpटphpाphpरphp्phpकphp्phpटphpिphpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ARphp"php>phpअphpरphp्phpजphpेphpंphpटphpिphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ASphp"php>phpअphpमphpेphpरphpिphpकphpनphp phpसphpाphpमphpोphpआ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ATphp"php>phpऑphpसphp्phpटphp्phpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AUphp"php>phpऑphpसphp्phpटphp्phpरphpेphpलphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AWphp"php>phpअphpरphpुphpबphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AXphp"php>phpअphp‍phpॅphpलphpँphpडphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"AZphp"php>phpअphpझphpरphpबphpैphpजphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BAphp"php>phpबphpोphpसphp्phpनphpिphpयphpाphp phpअphpणphpिphp phpहphpरphp्phpजphpेphpगphpोphpवphpिphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BBphp"php>phpबphpाphpरphp्phpबphpाphpडphpोphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BDphp"php>phpबphpाphpंphpगphp्phpलphpाphpदphpेphpश<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BEphp"php>phpबphpेphpलphp्phpजphpिphpयphpम<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BFphp"php>phpबphpुphpरphp्phpकphpिphpनphpाphp phpफphpाphpसphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BGphp"php>phpबphpलphp्phpगphpेphpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BHphp"php>phpबphpहphpाphpरphpीphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BIphp"php>phpबphpुphpरphpुphpंphpडphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BJphp"php>phpबphpेphpनphpिphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BLphp"php>phpसphpेphpंphpटphp phpबphpाphpरphp्phpथphpेphpलphpेphpमphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BMphp"php>phpबphpरphp्phpमphpुphpडphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BNphp"php>phpबphp्phpरphpुphpनphpेphpई<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BOphp"php>phpबphpोphpलphpिphpवphp्phpहphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BRphp"php>phpबphp्phpरphpाphpझphpिphpल<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BSphp"php>phpबphpहphpाphpमphpाphpज<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BTphp"php>phpभphpूphpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BVphp"php>phpबphpोphpउphpवphpेphpटphp phpबphpेphpट<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BWphp"php>phpबphpोphpटphp्phpसphpवphpाphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BYphp"php>phpबphpेphpलphpाphpरphpूphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BZphp"php>phpबphpेphpलphpिphpझphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CAphp"php>phpकphpॅphpनphpडphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CCphp"php>phpकphpोphpकphpोphpसphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CDphp"php>phpकphpाphpँphpगphpोphp php-php phpकphpिphpंphpशphpाphpसphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CFphp"php>phpकphpेphpंphpदphp्phpरphpीphpयphp phpअphpफphp्phpरphpिphpकphpीphp phpपphp्phpरphpजphpाphpसphpतphp्phpतphpाphpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CGphp"php>phpकphpाphpँphpगphpोphp php-php phpबphp्phpरphpाphpजphpाphpवphpिphpलphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CHphp"php>phpसphp्phpवphpिphpतphp्phpझphpरphp्phpलphpंphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CIphp"php>phpआphpयphpवphp्phpहphpरphpीphp phpकphpोphpसphp्phpट<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CKphp"php>phpकphpुphpकphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CLphp"php>phpचphpिphpलphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CMphp"php>phpकphpॅphpमphpेphpरphpूphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CNphp"php>phpचphpीphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"COphp"php>phpकphpोphpलphpमphp्phpबphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CRphp"php>phpकphpोphpसphp्phpटphpाphpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CSphp"php>phpसphpरphp्phpबphpिphpयphpाphp phpआphpणphpिphp phpमphpाphpँphpटphpेphpनphpेphpगphp्phpरphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CUphp"php>phpकphp्phpयphpूphpबphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CVphp"php>phpकphpेphpपphp phpवphp्phpहphpरphp्phpडphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CXphp"php>phpखphp्phpरphpिphpसphpमphpसphp phpबphpेphpट<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CYphp"php>phpसphpाphpयphpपphp्phpरphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CZphp"php>phpझphpेphpकphp phpपphp्phpरphpजphpाphpसphpतphp्phpतphpाphpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DEphp"php>phpजphpरphp्phpमphpनphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DJphp"php>phpजphpिphpबphpौphpटphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DKphp"php>phpडphpेphpनphp्phpमphpाphpरphp्phpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DMphp"php>phpडphpोphpमphpिphpनphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DOphp"php>phpडphpोphpमphpिphpनphpिphpकphpनphp phpपphp्phpरphpजphpाphpसphpतphp्phpतphpाphpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DZphp"php>phpअphpलphp्phpजphpीphpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ECphp"php>phpइphpकphp्phpवphpेphpडphpोphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EEphp"php>phpएphpसphp्phpटphpोphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EGphp"php>phpइphpजphpिphpपphp्phpत<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"EHphp"php>phpपphpशphp्phpचphpिphpमphp phpसphpहphpाphpरphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ERphp"php>phpइphpरphpिphpटphp्phpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ESphp"php>phpसphp्phpपphpेphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ETphp"php>phpइphpथphpिphpओphpपphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FIphp"php>phpफphpिphpनphpलphpंphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FJphp"php>phpफphpिphpजphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FKphp"php>phpफphpॉphpकphpलphpंphpडphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FMphp"php>phpमphpाphpयphpकphp्phpरphpोphpनphpेphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FOphp"php>phpफphpरphpोphpएphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FRphp"php>phpफphp्phpरphpाphpनphp्phpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GAphp"php>phpगphpॅphpबphpॉphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GBphp"php>phpबphp्phpरphpिphpटphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GDphp"php>phpगphp्phpरphpेphpनphpेphpडphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GEphp"php>phpजphpॉphpरphp्phpजphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GFphp"php>phpफphp्phpरphpेphpंphpचphp phpगphpयphpाphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GGphp"php>phpगphp्phpवphpेphpरphp्phpनphpसphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GHphp"php>phpघphpाphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GIphp"php>phpजphpिphpबphp्phpरphpाphpलphp्phpटphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GLphp"php>phpगphp्phpरphpीphpनphpलphpँphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GMphp"php>phpगphpाphpमphp्phpबphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GNphp"php>phpगphpिphpनphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GPphp"php>phpगphp्phpवphpाphpडphpेphpलphpोphpउphpपphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GQphp"php>phpइphpकphp्phpवphpेphpटphpोphpरphpिphpयphpलphp phpगphpिphpनphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GRphp"php>phpगphp्phpरphpीphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GSphp"php>phpदphpकphp्phpषphpिphpणphp phpजphpॉphpरphp्phpजphpिphpयphpाphp phpआphpणphpिphp phpदphpकphp्phpषphpिphpणphp phpसphpँphpडphpवphpिphpचphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GTphp"php>phpगphp्phpवphpाphpटphpेphpमphpाphpलphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GUphp"php>phpगphpुphpआphpम<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GWphp"php>phpगphpिphpनphpीphp-phpबphpिphpसphpाphpउ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GYphp"php>phpगphpयphpाphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HKphp"php>phpहphpाphpँphpगphpकphpाphpँphpगphp phpवphpिphpशphpेphpषphp phpपphp्phpरphpशphpाphpसphpनphpिphpकphp phpकphp्phpषphpेphpतphp्phpरphp phpचphpीphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HMphp"php>phpहphpरphp्phpडphp phpबphpेphpटphp phpआphpणphpिphp phpमphpैphpकphpडphpोphpनphpाphpलphp्phpडphp phpबphpेphpट<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HNphp"php>phpहphpोphpंphpडphpुphpरphpाphpजphp्<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HRphp"php>phpकphp्phpरphpोphpएphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HTphp"php>phpहphpैphpतphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"HUphp"php>phpहphpंphpगphpेphpरphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IDphp"php>phpइphpंphpडphpोphpनphpेphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IEphp"php>phpआphpयphpरphp्phpलphpंphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ILphp"php>phpइphpसphp्phpतphp्phpरphpाphpइphpल<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IMphp"php>phpइphpसphp्phpलphpेphp phpऑphpफphp phpमphpॅphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"INphp"php>phpभphpाphpरphpत<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IOphp"php>phpबphp्phpरphpिphpटphpिphpशphp phpहphpिphpंphpदphp phpमphpहphpाphpसphpाphpगphpरphpीphpयphp phpकphp्phpषphpेphpतphp्phpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IQphp"php>phpइphpरphpाphpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"IRphp"php>phpईphpरphpाphpण<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ISphp"php>phpआphpइphpसphpलphpँphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ITphp"php>phpइphpटphpलphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JEphp"php>phpजphpरphp्phpसphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JMphp"php>phpजphpमphpैphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JOphp"php>phpजphpॉphpरphp्phpडphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JPphp"php>phpजphpपphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KEphp"php>phpकphpेphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KGphp"php>phpकphpिphpरphpगphpीphpझphpसphp्phpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KHphp"php>phpकphpंphpबphpोphpडphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KIphp"php>phpकphpिphpरphpीphpबphpाphpटphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KMphp"php>phpकphpोphpमphpोphpरphpोphpज<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KNphp"php>phpसphpेphpंphpटphp phpकphpिphpटphp्phpसphp phpआphpणphpिphp phpनphpेphpवphp्phpहphpिphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KPphp"php>phpउphpतphp्phpतphpरphp phpकphpोphpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KRphp"php>phpदphpकphp्phpषphpिphpणphp phpकphpोphpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KWphp"php>phpकphpुphpवphpेphpत<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KYphp"php>phpकphpेphpमphpनphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"KZphp"php>phpकphpझphpाphpकphpसphp्phpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LAphp"php>phpलphpाphpओphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LBphp"php>phpलphpेphpबphpाphpनphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LCphp"php>phpसphpेphpंphpटphp phpलphp्phpयphpूphpसphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LIphp"php>phpलphpिphpंphpचphpेphpनphpसphp्phpटphpाphpइphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LKphp"php>phpशphp्phpरphpीphpलphpंphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LRphp"php>phpलphpाphpयphpबphpेphpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LSphp"php>phpलphpेphpसphpोphpथphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LTphp"php>phpलphpिphpथphpुphpआphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LUphp"php>phpलphpकphp्phpझphpेphpंphpबphpरphp्phpग<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LVphp"php>phpलphpाphpटphp्php‌phpवphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"LYphp"php>phpलphpिphpबphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MAphp"php>phpमphpोphpरphpोphpकphp्phpकphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MCphp"php>phpमphpोphpनphpॅphpकphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MDphp"php>phpमphpोphpलphp्phpडphpोphpवphp्phpहphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MEphp"php>phpमphpोphpंphpटphpेphpनphpेphpगphp्phpरphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MFphp"php>phpसphpेphpंphpटphp phpमphpाphpरphp्phpटphpिphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MGphp"php>phpमphpाphpदphpाphpगphpाphpसphp्phpकphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MHphp"php>phpमphpाphpरphp्phpशphpलphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MKphp"php>phpमphpॅphpसphpेphpडphpोphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MLphp"php>phpमphpाphpलphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MMphp"php>phpमphp्phpयphpाphpनphpमphpाphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MNphp"php>phpमphpंphpगphpोphpलphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MOphp"php>phpमphpकphpाphpऊphp SARphp phpचphpीphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MPphp"php>phpउphpतphp्phpतphpरphpीphp phpमphpाphpरphpिphpयphpाphpनphpाphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MQphp"php>phpमphpाphpरphp्phpटphpिphpनphpिphpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MRphp"php>phpमphpॉphpरphpिphpटphpाphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MSphp"php>phpमphpॉphpनphp्phpटphp्phpसphpेphpरphpाphpट<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MTphp"php>phpमphpाphpलphp्phpटphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MUphp"php>phpमphpॉphpरphpिphpशphpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MVphp"php>phpमphpाphpलphpदphpीphpवphp्phpज<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MWphp"php>phpमphpलphpाphpवphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MXphp"php>phpमphpेphpकphp्phpसphpिphpकphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MYphp"php>phpमphpलphpेphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"MZphp"php>phpमphpोphpझphpाphpमphp्phpबphpिphpक<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NAphp"php>phpनphpमphpीphpबphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NCphp"php>phpनphp्phpयphpूphp phpकphpॅphpलphpेphpडphpोphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NEphp"php>phpनphpाphpइphpजphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NFphp"php>phpनphpॉphpरphpफphpॉphpकphp phpबphpेphpट<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NGphp"php>phpनphpाphpयphpजphpेphpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NIphp"php>phpनphpिphpकphpाphpरphpाphpगphp्phpवphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NLphp"php>phpनphpेphpदphpरphpलphpँphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NOphp"php>phpनphpॉphpरphp्phpवphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NPphp"php>phpनphpेphpपphpाphpळ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NRphp"php>phpनphpऊphpरphpु<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NUphp"php>phpनphpीphpयphpू<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"NZphp"php>phpनphp्phpयphpूphpझphpीphpलphpंphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"OMphp"php>phpओphpमphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PAphp"php>phpपphpनphpाphpमphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PEphp"php>phpपphpेphpरphpू<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PFphp"php>phpफphp्phpरphpेphpंphpचphp phpपphpॉphpलphpिphpनphpेphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PGphp"php>phpपphpाphpपphpुphpआphp phpनphp्phpयphpूphp phpगphpिphpनphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PHphp"php>phpफphpिphpलphpीphpपphpिphpनphp्phpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PKphp"php>phpपphpाphpकphpिphpसphp्phpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PLphp"php>phpपphpोphpलphpंphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PMphp"php>phpसphpेphpंphpटphp phpपphpिphpयphpरphpेphp phpआphpणphpिphp phpमphpिphpकphp्phpवphpेphpलphpोphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PNphp"php>phpपphpिphpटphpकphpॅphpरphp्phpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PRphp"php>phpपphpोphpरphp्phpटphpोphp phpरphpिphpकphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PSphp"php>phpपphpॅphpलphpेphpसphp्phpटphpिphpनphpीphp phpपphp्phpरphpदphpेphpश<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PTphp"php>phpपphpोphpरphp्phpतphpुphpगphpाphpल<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PWphp"php>phpपphpलphpाphpऊ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"PYphp"php>phpपphpरphpाphpगphp्phpवphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QAphp"php>phpकphpतphpाphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QOphp"php>phpआphpउphpटphpलphpाphpयphpिphpंphpगphp phpओphpशphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"QUphp"php>phpयphpूphpरphpोphpपphpीphpयphp phpसphpंphpघ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"REphp"php>phpरphpिphpयphpूphpनphpिphpयphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ROphp"php>phpरphpोphpमphpाphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"RSphp"php>phpसphpरphp्phpबphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"RUphp"php>phpरphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"RWphp"php>phpरphpवphpाphpंphpडphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SAphp"php>phpसphpौphpदphpीphp phpअphpरphpब<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SBphp"php>phpसphpोphpलphpोphpमphpनphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SCphp"php>phpसphpेphpशphpेphpलphp्phpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SDphp"php>phpसphpूphpदphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SEphp"php>phpसphp्phpवphpीphpडphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SGphp"php>phpसphpिphpंphpगphpाphpपphpूphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SHphp"php>phpसphpेphpंphpटphp phpहphpेphpलphpेphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SIphp"php>phpसphp्phpलphpोphpवphp्phpहphpेphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SJphp"php>phpसphp्phpवphpाphpलphpबphpरphp्phpडphp phpआphpणphpिphp phpजphpाphpनphp phpमphpाphpयphpेphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SKphp"php>phpसphp्phpलphpोphpवphp्phpहphpाphpकphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SLphp"php>phpसphpिphpएphpरphpाphp phpलphpेphpओphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SMphp"php>phpसphpॅphpनphp phpमphpरphpीphpनphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SNphp"php>phpसphpेphpनphpेphpगphpल<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SOphp"php>phpसphpोphpमphpाphpलphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SRphp"php>phpसphpुphpरphpिphpनphpाphpम<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"STphp"php>phpसphpाphpओphp phpटphpोphpमphp phpआphpणphpिphp phpपphp्phpरphpिphpंphpसphpिphpपphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SVphp"php>phpअphpलphp phpसphpाphpलphp्phpवphpाphpडphpोphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SYphp"php>phpसphpीphpरphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"SZphp"php>phpसphp्phpवphpाphpझphpिphpलphpँphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TCphp"php>phpटphpरphp्phpकphp्phpसphp phpआphpणphpिphp phpकphpैphpकphpोphpसphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TDphp"php>phpचphpाphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TFphp"php>phpफphp्phpरphpेphpंphpचphp phpदphpाphpकphp्phpषphpिphpणphpाphpतphp्phpयphp phpपphp्phpरphpदphpेphpश<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TGphp"php>phpटphpोphpगphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"THphp"php>phpथphpाphpयphpलphpंphpड<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TJphp"php>phpतphpाphpजphpिphpकphpिphpसphp्phpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TKphp"php>phpतphpोphpकphpेphpलphpाphpउ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TLphp"php>phpपphpूphpरphp्phpवphp phpतphpिphpमphpोphpर<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TMphp"php>phpतphpुphpरphp्phpकphpमphpेphpनphpिphpसphp्phpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TNphp"php>phpटphp्phpयphpूphpनphpिphpशphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TOphp"php>phpटphpोphpंphpगphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TRphp"php>phpतphpुphpरphp्phpकphpी<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TTphp"php>phpतphp्phpरphpिphpनphpिphpदphpाphpदphp phpआphpणphpिphp phpटphpोphpबphpॅphpगphpो<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TVphp"php>phpटphpुphpवphpाphpलphpु<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TWphp"php>phpतphpैphpवphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TZphp"php>phpटphpाphpंphpझphpाphpनphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UAphp"php>phpयphpूphpकphp्phpरphpेphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UGphp"php>phpयphpुphpगphpाphpंphpडphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UMphp"php>phpयphpुphpनphpाphpइphpटphpेphpडphp phpसphp्phpटphpेphpटphp्phpसphp phpमphpाphpइphpनphpरphp phpआphpउphpटphpलphpाphpइphpंphpगphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"USphp"php>phpसphpंphpयphpुphpकphp्phpतphp phpरphpाphpजphp्phpयphpेphp php/phpअphpमphpेphpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UYphp"php>phpउphpरphpुphpगphp्phpवphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UZphp"php>phpउphpझphpबphpेphpकphpिphpसphp्phpतphpाphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VAphp"php>phpवphp्phpहphpॅphpटphpिphpकphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VCphp"php>phpसphpेphpंphpटphp phpवphp्phpहphpिphpनphp्phpसphpेphpंphpटphp phpआphpणphpिphp phpगphp्phpरphpेphpनphpडphpाphpइphpनphp्phpस<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VEphp"php>phpवphp्phpहphpेphpनphpेphpझphpुphpएphpलphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VGphp"php>phpबphp्phpरphpिphpटphpिphpशphp phpवphp्phpहphpरphp्phpजphpिphpनphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VIphp"php>phpयphpूphp.phpएphpसphp.php phpवphp्phpहphpरphp्phpजphpिphpनphp phpबphpेphpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VNphp"php>phpवphp्phpहphpिphpएphpतphpनphpाphpम<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"VUphp"php>phpवphpाphpनphpौphpटphpु<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"WFphp"php>phpवphpाphpलphpिphpसphp phpआphpणphpिphp phpफphp्phpयphpूphpचphpूphpनphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"WSphp"php>phpसphpाphpमphpोphpआ<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"YEphp"php>phpयphpेphpमphpेphpन<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"YTphp"php>phpमphpाphpयphpोphpटphp्phpटphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZAphp"php>phpदphpकphp्phpषphpिphpणphp phpअphpफphp्phpरphpिphpकphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZMphp"php>phpझphpाphpमphp्phpबphpिphpयphpा<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZWphp"php>phpझphpिphpमphp्phpबphpाphpबphp्phpवphpे<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ZZphp"php>phpअphpजphp्phpञphpाphpतphp phpवphpाphp phpअphpवphpैphpधphp phpपphp्phpरphpदphpेphpश<php/territoryphp>
+php	php	<php/territoriesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[php़php phpँphp-phpःphp php०php-php९php phpॐphp phpअphp-phpऍphp phpएphp-phpऑphp phpओphp-phpनphp phpपphp-phpरphp phpलphp phpळphp phpवphp-phpहphp phpऽphp-phpॅphp phpेphp-phpॉphp phpोphp-php्php]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[php\uphp2php0php0Cphp php\uphp2php0php0Dphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<delimitersphp>
+php	php	php<quotationStartphp>php'<php/quotationStartphp>
+php	php	php<quotationEndphp>php'<php/quotationEndphp>
+php	php	php<alternateQuotationStartphp>php&quotphp;<php/alternateQuotationStartphp>
+php	php	php<alternateQuotationEndphp>php&quotphp;<php/alternateQuotationEndphp>
+php	<php/delimitersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpजphpाphpनphpेphpवphpाphpरphpी<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpफphpेphpबphp्phpरphpुphpवphpाphpरphpी<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpमphpाphpरphp्phpच<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpएphpपphp्phpरphpिphpल<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpमphpे<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpजphpूphpन<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpजphpुphpलphpै<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpऑphpगphpसphp्phpट<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpसphpपphp्phpटphpेphpंphpबphpर<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpऑphpकphp्phpटphpोphpबphpर<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpनphpोphpवphp्phpहphpेphpंphpबphpर<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpडphpिphpसphpेphpंphpबphpर<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpजphpा<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpफphpे<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpमphpा<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpए<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpमphpे<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpजphpू<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpजphpु<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpऑ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpस<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpऑ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpनphpो<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpडphpि<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpरphpवphpि<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpसphpोphpम<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpमphpंphpगphpळ<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpबphpुphpध<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpगphpुphpरphpु<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpशphpुphpकphp्phpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpशphpनphpि<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpरphpवphpिphpवphpाphpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpसphpोphpमphpवphpाphpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpमphpंphpगphpळphpवphpाphpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpबphpुphpधphpवphpाphpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpगphpुphpरphpुphpवphpाphpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpशphpुphpकphp्phpरphpवphpाphpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpशphpनphpिphpवphpाphpर<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpर<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpसphpो<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpमphpं<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpबphpु<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpगphpु<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpशphpु<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpश<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<quartersphp>
+php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>phpपphp्phpरphpथphpमphp phpतphpिphpमphpाphpहphpी<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>phpदphp्phpवphpिphpतphpीphpयphp phpतphpिphpमphpाphpहphpी<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>phpतphpृphpतphpीphpयphp phpतphpिphpमphpाphpहphpी<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>phpचphpतphpुphpरphp्phpथphp phpतphpिphpमphpाphpहphpी<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	<php/quarterContextphp>
+php	php	php	php	<php/quartersphp>
+php	php	php	php	php<amphp>am<php/amphp>
+php	php	php	php	php<pmphp>pm<php/pmphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraNamesphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpईphpसphpवphpीphpसphpनphpपphpूphpरphp्phpव<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpईphpसphpवphpीphpसphpन<php/eraphp>
+php	php	php	php	php	<php/eraNamesphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpईphp.phpसphp.phpपphpूphp.<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpईphp.phpसphp.<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp dphp MMMMphp y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp MMMMphp y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp MMMphp y<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>dphp-Mphp-yy<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp-mmphp-ssphp aphp zzzz<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp-mmphp-ssphp aphp z<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp-mmphp-ssphp a<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>hphp-mmphp a<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Hmphp"php>Hphp-mm<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Hmsphp"php>Hphp-mmphp-ss<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMddphp"php>ddphp-MM<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>dphp MMMM<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMphp"php>MMphp-yyyy<php/dateFormatItemphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	php	php<fieldsphp>
+php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpयphpुphpग<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpवphpरphp्phpष<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpमphpहphpिphpनphpा<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpआphpठphpवphpडphpा<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpदphpिphpवphpस<php/displayNamephp>
+php	php	php	php	php	php	php<relativephp typephp=php"php-php3php"php>phpतphpीphpनphp phpदphpिphpवphpसphpाphpंphpपphpूphpरphp्phpवphpी<php/relativephp>
+php	php	php	php	php	php	php<relativephp typephp=php"php-php2php"php>phpपphpरphpवphpा<php/relativephp>
+php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>phpकphpाphpल<php/relativephp>
+php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>phpआphpज<php/relativephp>
+php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>phpउphpदphp्phpयphpा<php/relativephp>
+php	php	php	php	php	php	php<relativephp typephp=php"php2php"php>phpपphpरphpवphpा<php/relativephp>
+php	php	php	php	php	php	php<relativephp typephp=php"php3php"php>phpआphpजphpपphpाphpसphpूphpनphp phpतphpीphpनphp phpदphpिphpवphpस<php/relativephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpआphpठphpवphpडphp्phpयphpाphpचphpाphp phpदphpिphpवphpस<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpतphpाphpस<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
+php	php	php	php	php	php	php<displayNamephp>phpमphpिphpनphpिphpट<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
+php	php	php	php	php	php	php<displayNamephp>phpसphpेphpकphpंphpद<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
+php	php	php	php	php	php	php<displayNamephp>phpझphpोphpन<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	<php/fieldsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
+php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
+php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
+php	php	php	php<metazonephp typephp=php"Indiaphp"php>
+php	php	php	php	php<longphp>
+php	php	php	php	php	php<standardphp>phpभphpाphpरphpतphpीphpयphp phpसphpमphpय<php/standardphp>
+php	php	php	php	<php/longphp>
+php	php	php	php	php<commonlyUsedphp>true<php/commonlyUsedphp>
+php	php	php	<php/metazonephp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<defaultNumberingSystemphp>deva<php/defaultNumberingSystemphp>
+php	php	php<symbolsphp>
+php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
+php	php	<php/symbolsphp>
+php	php	php<decimalFormatsphp>
+php	php	php	php<decimalFormatLengthphp>
+php	php	php	php	php<decimalFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php,php#php#php0php.php#php#php#<php/patternphp>
+php	php	php	php	<php/decimalFormatphp>
+php	php	php	<php/decimalFormatLengthphp>
+php	php	<php/decimalFormatsphp>
+php	php	php<percentFormatsphp>
+php	php	php	php<percentFormatLengthphp>
+php	php	php	php	php<percentFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php,php#php#php0php%<php/patternphp>
+php	php	php	php	<php/percentFormatphp>
+php	php	php	<php/percentFormatLengthphp>
+php	php	<php/percentFormatsphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php¤php php#php,php#php#php,php#php#php0php.php0php0<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	<php/currencyFormatsphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"INRphp"php>
+php	php	php	php	php<symbolphp>phpरphpु<php/symbolphp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+php	php<posixphp>
+php	php	php<messagesphp>
+php	php	php	php<yesstrphp>phpहphpोphpयphpःphpहphpो<php/yesstrphp>
+php	php	php	php<nostrphp>phpनphpाphpहphpीphpःphpनphpा<php/nostrphp>
+php	php	<php/messagesphp>
+php	<php/posixphp>
+<php/ldmlphp>
 

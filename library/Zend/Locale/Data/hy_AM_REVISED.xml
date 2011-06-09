@@ -1,39 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.48 $"/>
-		<generation date="$Date: 2009/05/05 23:06:37 $"/>
-		<language type="hy"/>
-		<territory type="AM"/>
-		<variant type="REVISED"/>
-	</identity>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">Հնվ</month>
-							<month type="2">Փտվ</month>
-							<month type="6">Հնս</month>
-							<month type="7">Հլս</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Հունվար</month>
-							<month type="2">Փետրվար</month>
-							<month type="6">Հունիս</month>
-							<month type="7">Հուլիս</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<pm>Կե․</pm>
-				<eras>
-					<eraAbbr>
-						<era type="0">Մ․Թ․Ա․</era>
-						<era type="1">Մ․Թ․</era>
-					</eraAbbr>
-				</eras>
-			</calendar>
-		</calendars>
-	</dates>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php4php8php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php7php php$php"php/php>
+php	php	php<languagephp typephp=php"hyphp"php/php>
+php	php	php<territoryphp typephp=php"AMphp"php/php>
+php	php	php<variantphp typephp=php"REVISEDphp"php/php>
+php	<php/identityphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpՀphpնphpվ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpՓphpտphpվ<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpՀphpնphpս<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpՀphpլphpս<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpՀphpոphpւphpնphpվphpաphpր<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpՓphpեphpտphpրphpվphpաphpր<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpՀphpոphpւphpնphpիphpս<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpՀphpոphpւphpլphpիphpս<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<pmphp>phpԿphpեphp․<php/pmphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpՄphp․phpԹphp․phpԱphp․<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpՄphp․phpԹphp․<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+<php/ldmlphp>

@@ -1,442 +1,442 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Tiff.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Tiffphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Internally used classes */
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
+php/php*php*php Internallyphp usedphp classesphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
 
 
-/** Zend_Pdf_Resource_Image */
-require_once 'Zend/Pdf/Resource/Image.php';
+php/php*php*php Zendphp_Pdfphp_Resourcephp_Imagephp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Imagephp.phpphp'php;
 
-/**
- * TIFF image
- *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Pdf_Resource_Image_Tiff extends Zend_Pdf_Resource_Image
-{
-    const TIFF_FIELD_TYPE_BYTE=1;
-    const TIFF_FIELD_TYPE_ASCII=2;
-    const TIFF_FIELD_TYPE_SHORT=3;
-    const TIFF_FIELD_TYPE_LONG=4;
-    const TIFF_FIELD_TYPE_RATIONAL=5;
+php/php*php*
+php php*php TIFFphp image
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp extendsphp Zendphp_Pdfphp_Resourcephp_Image
+php{
+php php php php constphp TIFFphp_FIELDphp_TYPEphp_BYTEphp=php1php;
+php php php php constphp TIFFphp_FIELDphp_TYPEphp_ASCIIphp=php2php;
+php php php php constphp TIFFphp_FIELDphp_TYPEphp_SHORTphp=php3php;
+php php php php constphp TIFFphp_FIELDphp_TYPEphp_LONGphp=php4php;
+php php php php constphp TIFFphp_FIELDphp_TYPEphp_RATIONALphp=php5php;
 
-    const TIFF_TAG_IMAGE_WIDTH=256;
-    const TIFF_TAG_IMAGE_LENGTH=257; //Height
-    const TIFF_TAG_BITS_PER_SAMPLE=258;
-    const TIFF_TAG_COMPRESSION=259;
-    const TIFF_TAG_PHOTOMETRIC_INTERPRETATION=262;
-    const TIFF_TAG_STRIP_OFFSETS=273;
-    const TIFF_TAG_SAMPLES_PER_PIXEL=277;
-    const TIFF_TAG_STRIP_BYTE_COUNTS=279;
+php php php php constphp TIFFphp_TAGphp_IMAGEphp_WIDTHphp=php2php5php6php;
+php php php php constphp TIFFphp_TAGphp_IMAGEphp_LENGTHphp=php2php5php7php;php php/php/Height
+php php php php constphp TIFFphp_TAGphp_BITSphp_PERphp_SAMPLEphp=php2php5php8php;
+php php php php constphp TIFFphp_TAGphp_COMPRESSIONphp=php2php5php9php;
+php php php php constphp TIFFphp_TAGphp_PHOTOMETRICphp_INTERPRETATIONphp=php2php6php2php;
+php php php php constphp TIFFphp_TAGphp_STRIPphp_OFFSETSphp=php2php7php3php;
+php php php php constphp TIFFphp_TAGphp_SAMPLESphp_PERphp_PIXELphp=php2php7php7php;
+php php php php constphp TIFFphp_TAGphp_STRIPphp_BYTEphp_COUNTSphp=php2php7php9php;
 
-    const TIFF_COMPRESSION_UNCOMPRESSED = 1;
-    const TIFF_COMPRESSION_CCITT1D = 2;
-    const TIFF_COMPRESSION_GROUP_3_FAX = 3;
-    const TIFF_COMPRESSION_GROUP_4_FAX  = 4;
-    const TIFF_COMPRESSION_LZW = 5;
-    const TIFF_COMPRESSION_JPEG = 6;
-    const TIFF_COMPRESSION_FLATE = 8;
-    const TIFF_COMPRESSION_FLATE_OBSOLETE_CODE = 32946;
-    const TIFF_COMPRESSION_PACKBITS = 32773;
+php php php php constphp TIFFphp_COMPRESSIONphp_UNCOMPRESSEDphp php=php php1php;
+php php php php constphp TIFFphp_COMPRESSIONphp_CCITTphp1Dphp php=php php2php;
+php php php php constphp TIFFphp_COMPRESSIONphp_GROUPphp_php3php_FAXphp php=php php3php;
+php php php php constphp TIFFphp_COMPRESSIONphp_GROUPphp_php4php_FAXphp php php=php php4php;
+php php php php constphp TIFFphp_COMPRESSIONphp_LZWphp php=php php5php;
+php php php php constphp TIFFphp_COMPRESSIONphp_JPEGphp php=php php6php;
+php php php php constphp TIFFphp_COMPRESSIONphp_FLATEphp php=php php8php;
+php php php php constphp TIFFphp_COMPRESSIONphp_FLATEphp_OBSOLETEphp_CODEphp php=php php3php2php9php4php6php;
+php php php php constphp TIFFphp_COMPRESSIONphp_PACKBITSphp php=php php3php2php7php7php3php;
 
-    const TIFF_PHOTOMETRIC_INTERPRETATION_WHITE_IS_ZERO=0;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_BLACK_IS_ZERO=1;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_RGB=2;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_RGB_INDEXED=3;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_CMYK=5;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_YCBCR=6;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_CIELAB=8;
+php php php php constphp TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_WHITEphp_ISphp_ZEROphp=php0php;
+php php php php constphp TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_BLACKphp_ISphp_ZEROphp=php1php;
+php php php php constphp TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_RGBphp=php2php;
+php php php php constphp TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_RGBphp_INDEXEDphp=php3php;
+php php php php constphp TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_CMYKphp=php5php;
+php php php php constphp TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_YCBCRphp=php6php;
+php php php php constphp TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_CIELABphp=php8php;
 
-    protected $_width;
-    protected $_height;
-    protected $_imageProperties;
-    protected $_endianType;
-    protected $_fileSize;
-    protected $_bitsPerSample;
-    protected $_compression;
-    protected $_filter;
-    protected $_colorCode;
-    protected $_whiteIsZero;
-    protected $_blackIsZero;
-    protected $_colorSpace;
-    protected $_imageDataOffset;
-    protected $_imageDataLength;
+php php php php protectedphp php$php_widthphp;
+php php php php protectedphp php$php_heightphp;
+php php php php protectedphp php$php_imagePropertiesphp;
+php php php php protectedphp php$php_endianTypephp;
+php php php php protectedphp php$php_fileSizephp;
+php php php php protectedphp php$php_bitsPerSamplephp;
+php php php php protectedphp php$php_compressionphp;
+php php php php protectedphp php$php_filterphp;
+php php php php protectedphp php$php_colorCodephp;
+php php php php protectedphp php$php_whiteIsZerophp;
+php php php php protectedphp php$php_blackIsZerophp;
+php php php php protectedphp php$php_colorSpacephp;
+php php php php protectedphp php$php_imageDataOffsetphp;
+php php php php protectedphp php$php_imageDataLengthphp;
 
-    const TIFF_ENDIAN_BIG=0;
-    const TIFF_ENDIAN_LITTLE=1;
+php php php php constphp TIFFphp_ENDIANphp_BIGphp=php0php;
+php php php php constphp TIFFphp_ENDIANphp_LITTLEphp=php1php;
 
-    const UNPACK_TYPE_BYTE=0;
-    const UNPACK_TYPE_SHORT=1;
-    const UNPACK_TYPE_LONG=2;
-    const UNPACK_TYPE_RATIONAL=3;
+php php php php constphp UNPACKphp_TYPEphp_BYTEphp=php0php;
+php php php php constphp UNPACKphp_TYPEphp_SHORTphp=php1php;
+php php php php constphp UNPACKphp_TYPEphp_LONGphp=php2php;
+php php php php constphp UNPACKphp_TYPEphp_RATIONALphp=php3php;
 
-    /**
-     * Byte unpacking function
-     *
-     * Makes it possible to unpack bytes in one statement for enhanced logic readability.
-     *
-     * @param int $type
-     * @param string $bytes
-     * @throws Zend_Pdf_Exception
-     */
-    protected function unpackBytes($type, $bytes) {
-        if(!isset($this->_endianType)) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("The unpackBytes function can only be used after the endianness of the file is known");
-        }
-        switch($type) {
-            case Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_BYTE:
-                $format = 'C';
-                $unpacked = unpack($format, $bytes);
-                return $unpacked[1];
-                break;
-            case Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_SHORT:
-                $format = ($this->_endianType == Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_LITTLE)?'v':'n';
-                $unpacked = unpack($format, $bytes);
-                return $unpacked[1];
-                break;
-            case Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_LONG:
-                $format = ($this->_endianType == Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_LITTLE)?'V':'N';
-                $unpacked = unpack($format, $bytes);
-                return $unpacked[1];
-                break;
-            case Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_RATIONAL:
-                $format = ($this->_endianType == Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_LITTLE)?'V2':'N2';
-                $unpacked = unpack($format, $bytes);
-                return ($unpacked[1]/$unpacked[2]);
-                break;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Bytephp unpackingphp function
+php php php php php php*
+php php php php php php*php Makesphp itphp possiblephp tophp unpackphp bytesphp inphp onephp statementphp forphp enhancedphp logicphp readabilityphp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$type
+php php php php php php*php php@paramphp stringphp php$bytes
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp unpackBytesphp(php$typephp,php php$bytesphp)php php{
+php php php php php php php php ifphp(php!issetphp(php$thisphp-php>php_endianTypephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Thephp unpackBytesphp functionphp canphp onlyphp bephp usedphp afterphp thephp endiannessphp ofphp thephp filephp isphp knownphp"php)php;
+php php php php php php php php php}
+php php php php php php php php switchphp(php$typephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_BYTEphp:
+php php php php php php php php php php php php php php php php php$formatphp php=php php'Cphp'php;
+php php php php php php php php php php php php php php php php php$unpackedphp php=php unpackphp(php$formatphp,php php$bytesphp)php;
+php php php php php php php php php php php php php php php php returnphp php$unpackedphp[php1php]php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_SHORTphp:
+php php php php php php php php php php php php php php php php php$formatphp php=php php(php$thisphp-php>php_endianTypephp php=php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_ENDIANphp_LITTLEphp)php?php'vphp'php:php'nphp'php;
+php php php php php php php php php php php php php php php php php$unpackedphp php=php unpackphp(php$formatphp,php php$bytesphp)php;
+php php php php php php php php php php php php php php php php returnphp php$unpackedphp[php1php]php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_LONGphp:
+php php php php php php php php php php php php php php php php php$formatphp php=php php(php$thisphp-php>php_endianTypephp php=php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_ENDIANphp_LITTLEphp)php?php'Vphp'php:php'Nphp'php;
+php php php php php php php php php php php php php php php php php$unpackedphp php=php unpackphp(php$formatphp,php php$bytesphp)php;
+php php php php php php php php php php php php php php php php returnphp php$unpackedphp[php1php]php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_RATIONALphp:
+php php php php php php php php php php php php php php php php php$formatphp php=php php(php$thisphp-php>php_endianTypephp php=php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_ENDIANphp_LITTLEphp)php?php'Vphp2php'php:php'Nphp2php'php;
+php php php php php php php php php php php php php php php php php$unpackedphp php=php unpackphp(php$formatphp,php php$bytesphp)php;
+php php php php php php php php php php php php php php php php returnphp php(php$unpackedphp[php1php]php/php$unpackedphp[php2php]php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Object constructor
-     *
-     * @param string $imageFileName
-     * @throws Zend_Pdf_Exception
-     */
-    public function __construct($imageFileName)
-    {
-        if (($imageFile = @fopen($imageFileName, 'rb')) === false ) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception( "Can not open '$imageFileName' file for reading." );
-        }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$imageFileName
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$imageFileNamephp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$imageFilephp php=php php@fopenphp(php$imageFileNamephp,php php'rbphp'php)php)php php=php=php=php falsephp php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Canphp notphp openphp php'php$imageFileNamephp'php filephp forphp readingphp.php"php php)php;
+php php php php php php php php php}
 
-        $byteOrderIndicator = fread($imageFile, 2);
-        if($byteOrderIndicator == 'II') {
-            $this->_endianType = Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_LITTLE;
-        } else if($byteOrderIndicator == 'MM') {
-            $this->_endianType = Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_BIG;
-        } else {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception( "Not a tiff file or Tiff corrupt. No byte order indication found" );
-        }
+php php php php php php php php php$byteOrderIndicatorphp php=php freadphp(php$imageFilephp,php php2php)php;
+php php php php php php php php ifphp(php$byteOrderIndicatorphp php=php=php php'IIphp'php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_endianTypephp php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_ENDIANphp_LITTLEphp;
+php php php php php php php php php}php elsephp ifphp(php$byteOrderIndicatorphp php=php=php php'MMphp'php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_endianTypephp php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_ENDIANphp_BIGphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Notphp aphp tiffphp filephp orphp Tiffphp corruptphp.php Nophp bytephp orderphp indicationphp foundphp"php php)php;
+php php php php php php php php php}
 
-        $version = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_SHORT, fread($imageFile, 2));
+php php php php php php php php php$versionphp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_SHORTphp,php freadphp(php$imageFilephp,php php2php)php)php;
 
-        if($version != 42) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception( "Not a tiff file or Tiff corrupt. Incorrect version number." );
-        }
-        $ifdOffset = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_LONG, fread($imageFile, 4));
+php php php php php php php php ifphp(php$versionphp php!php=php php4php2php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Notphp aphp tiffphp filephp orphp Tiffphp corruptphp.php Incorrectphp versionphp numberphp.php"php php)php;
+php php php php php php php php php}
+php php php php php php php php php$ifdOffsetphp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_LONGphp,php freadphp(php$imageFilephp,php php4php)php)php;
 
-        $fileStats = fstat($imageFile);
-        $this->_fileSize = $fileStats['size'];
+php php php php php php php php php$fileStatsphp php=php fstatphp(php$imageFilephp)php;
+php php php php php php php php php$thisphp-php>php_fileSizephp php=php php$fileStatsphp[php'sizephp'php]php;
 
-        /*
-         * Tiff files are stored as a series of Image File Directories (IFD) each direcctory
-         * has a specific number of entries each 12 bytes in length. At the end of the directories
-         * is four bytes pointing to the offset of the next IFD.
-         */
+php php php php php php php php php/php*
+php php php php php php php php php php*php Tiffphp filesphp arephp storedphp asphp aphp seriesphp ofphp Imagephp Filephp Directoriesphp php(IFDphp)php eachphp direcctory
+php php php php php php php php php php*php hasphp aphp specificphp numberphp ofphp entriesphp eachphp php1php2php bytesphp inphp lengthphp.php Atphp thephp endphp ofphp thephp directories
+php php php php php php php php php php*php isphp fourphp bytesphp pointingphp tophp thephp offsetphp ofphp thephp nextphp IFDphp.
+php php php php php php php php php php*php/
 
-        while($ifdOffset > 0) {
-            if(fseek($imageFile, $ifdOffset, SEEK_SET) == -1 || $ifdOffset+2 >= $this->_fileSize) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception("Could not seek to the image file directory as indexed by the file. Likely cause is TIFF corruption. Offset: ". $ifdOffset);
-            }
+php php php php php php php php whilephp(php$ifdOffsetphp php>php php0php)php php{
+php php php php php php php php php php php php ifphp(fseekphp(php$imageFilephp,php php$ifdOffsetphp,php SEEKphp_SETphp)php php=php=php php-php1php php|php|php php$ifdOffsetphp+php2php php>php=php php$thisphp-php>php_fileSizephp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Couldphp notphp seekphp tophp thephp imagephp filephp directoryphp asphp indexedphp byphp thephp filephp.php Likelyphp causephp isphp TIFFphp corruptionphp.php Offsetphp:php php"php.php php$ifdOffsetphp)php;
+php php php php php php php php php php php php php}
 
-            $numDirEntries = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_SHORT, fread($imageFile, 2));
+php php php php php php php php php php php php php$numDirEntriesphp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_SHORTphp,php freadphp(php$imageFilephp,php php2php)php)php;
 
-            /*
-             * Since we now know how many entries are in this (IFD) we can extract the data.
-             * The format of a TIFF directory entry is:
-             *
-             * 2 bytes (short) tag code; See TIFF_TAG constants at the top for supported values. (There are many more in the spec)
-             * 2 bytes (short) field type
-             * 4 bytes (long) number of values, or value count.
-             * 4 bytes (mixed) data if the data will fit into 4 bytes or an offset if the data is too large.
-             */
-            for($dirEntryIdx = 1; $dirEntryIdx <= $numDirEntries; $dirEntryIdx++) {
-                $tag         = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_SHORT, fread($imageFile, 2));
-                $fieldType   = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_SHORT, fread($imageFile, 2));
-                $valueCount  = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_LONG, fread($imageFile, 4));
+php php php php php php php php php php php php php/php*
+php php php php php php php php php php php php php php*php Sincephp wephp nowphp knowphp howphp manyphp entriesphp arephp inphp thisphp php(IFDphp)php wephp canphp extractphp thephp dataphp.
+php php php php php php php php php php php php php php*php Thephp formatphp ofphp aphp TIFFphp directoryphp entryphp isphp:
+php php php php php php php php php php php php php php*
+php php php php php php php php php php php php php php*php php2php bytesphp php(shortphp)php tagphp codephp;php Seephp TIFFphp_TAGphp constantsphp atphp thephp topphp forphp supportedphp valuesphp.php php(Therephp arephp manyphp morephp inphp thephp specphp)
+php php php php php php php php php php php php php php*php php2php bytesphp php(shortphp)php fieldphp type
+php php php php php php php php php php php php php php*php php4php bytesphp php(longphp)php numberphp ofphp valuesphp,php orphp valuephp countphp.
+php php php php php php php php php php php php php php*php php4php bytesphp php(mixedphp)php dataphp ifphp thephp dataphp willphp fitphp intophp php4php bytesphp orphp anphp offsetphp ifphp thephp dataphp isphp toophp largephp.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php forphp(php$dirEntryIdxphp php=php php1php;php php$dirEntryIdxphp <php=php php$numDirEntriesphp;php php$dirEntryIdxphp+php+php)php php{
+php php php php php php php php php php php php php php php php php$tagphp php php php php php php php php php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_SHORTphp,php freadphp(php$imageFilephp,php php2php)php)php;
+php php php php php php php php php php php php php php php php php$fieldTypephp php php php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_SHORTphp,php freadphp(php$imageFilephp,php php2php)php)php;
+php php php php php php php php php php php php php php php php php$valueCountphp php php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_LONGphp,php freadphp(php$imageFilephp,php php4php)php)php;
 
-                switch($fieldType) {
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_BYTE:
-                        $fieldLength = $valueCount;
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_ASCII:
-                        $fieldLength = $valueCount;
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_SHORT:
-                        $fieldLength = $valueCount * 2;
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_LONG:
-                        $fieldLength = $valueCount * 4;
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_RATIONAL:
-                        $fieldLength = $valueCount * 8;
-                        break;
-                    default:
-                        $fieldLength = $valueCount;
-                }
+php php php php php php php php php php php php php php php php switchphp(php$fieldTypephp)php php{
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_BYTEphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$fieldLengthphp php=php php$valueCountphp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_ASCIIphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$fieldLengthphp php=php php$valueCountphp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_SHORTphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$fieldLengthphp php=php php$valueCountphp php*php php2php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_LONGphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$fieldLengthphp php=php php$valueCountphp php*php php4php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_RATIONALphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$fieldLengthphp php=php php$valueCountphp php*php php8php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$fieldLengthphp php=php php$valueCountphp;
+php php php php php php php php php php php php php php php php php}
 
-                $offsetBytes = fread($imageFile, 4);
+php php php php php php php php php php php php php php php php php$offsetBytesphp php=php freadphp(php$imageFilephp,php php4php)php;
 
-                if($fieldLength <= 4) {
-                    switch($fieldType) {
-                        case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_BYTE:
-                            $value = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_BYTE, $offsetBytes);
-                            break;
-                        case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_ASCII:
-                            //Fall through to next case
-                        case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_LONG:
-                            $value = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_LONG, $offsetBytes);
-                            break;
-                        case Zend_Pdf_Resource_Image_Tiff::TIFF_FIELD_TYPE_SHORT:
-                            //Fall through to next case
-                        default:
-                            $value = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_SHORT, $offsetBytes);
-                    }
-                } else {
-                    $refOffset = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_LONG, $offsetBytes);
-                }
-                /*
-                 * Linear tag processing is probably not the best way to do this. I've processed the tags according to the
-                 * Tiff 6 specification and make some assumptions about when tags will be < 4 bytes and fit into $value and when
-                 * they will be > 4 bytes and require seek/extraction of the offset. Same goes for extracting arrays of data, like
-                 * the data offsets and length. This should be fixed in the future.
-                 */
-                switch($tag) {
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_TAG_IMAGE_WIDTH:
-                        $this->_width = $value;
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_TAG_IMAGE_LENGTH:
-                        $this->_height = $value;
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_TAG_BITS_PER_SAMPLE:
-                        if($valueCount>1) {
-                            $fp = ftell($imageFile);
-                            fseek($imageFile, $refOffset, SEEK_SET);
-                            $this->_bitsPerSample = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_SHORT, fread($imageFile, 2));
-                            fseek($imageFile, $fp, SEEK_SET);
-                        } else {
-                            $this->_bitsPerSample = $value;
-                        }
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_TAG_COMPRESSION:
-                        $this->_compression = $value;
-                        switch($value) {
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_UNCOMPRESSED:
-                                $this->_filter = 'None';
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_CCITT1D:
-                                //Fall through to next case
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_GROUP_3_FAX:
-                                //Fall through to next case
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_GROUP_4_FAX:
-                                $this->_filter = 'CCITTFaxDecode';
-                                require_once 'Zend/Pdf/Exception.php';
-                                throw new Zend_Pdf_Exception("CCITTFaxDecode Compression Mode Not Currently Supported");
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_LZW:
-                                $this->_filter = 'LZWDecode';
-                                require_once 'Zend/Pdf/Exception.php';
-                                throw new Zend_Pdf_Exception("LZWDecode Compression Mode Not Currently Supported");
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_JPEG:
-                                $this->_filter = 'DCTDecode'; //Should work, doesnt...
-                                require_once 'Zend/Pdf/Exception.php';
-                                throw new Zend_Pdf_Exception("JPEG Compression Mode Not Currently Supported");
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_FLATE:
-                                //fall through to next case
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_FLATE_OBSOLETE_CODE:
-                                $this->_filter = 'FlateDecode';
-                                require_once 'Zend/Pdf/Exception.php';
-                                throw new Zend_Pdf_Exception("ZIP/Flate Compression Mode Not Currently Supported");
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_COMPRESSION_PACKBITS:
-                                $this->_filter = 'RunLengthDecode';
-                                break;
-                        }
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_TAG_PHOTOMETRIC_INTERPRETATION:
-                        $this->_colorCode = $value;
-                        $this->_whiteIsZero = false;
-                        $this->_blackIsZero = false;
-                        switch($value) {
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_PHOTOMETRIC_INTERPRETATION_WHITE_IS_ZERO:
-                                $this->_whiteIsZero = true;
-                                $this->_colorSpace = 'DeviceGray';
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_PHOTOMETRIC_INTERPRETATION_BLACK_IS_ZERO:
-                                $this->_blackIsZero = true;
-                                $this->_colorSpace = 'DeviceGray';
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_PHOTOMETRIC_INTERPRETATION_YCBCR:
-                                //fall through to next case
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_PHOTOMETRIC_INTERPRETATION_RGB:
-                                $this->_colorSpace = 'DeviceRGB';
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_PHOTOMETRIC_INTERPRETATION_RGB_INDEXED:
-                                $this->_colorSpace = 'Indexed';
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_PHOTOMETRIC_INTERPRETATION_CMYK:
-                                $this->_colorSpace = 'DeviceCMYK';
-                                break;
-                            case Zend_Pdf_Resource_Image_Tiff::TIFF_PHOTOMETRIC_INTERPRETATION_CIELAB:
-                                $this->_colorSpace = 'Lab';
-                                break;
-                            default:
-                                require_once 'Zend/Pdf/Exception.php';
-                                throw new Zend_Pdf_Exception('TIFF: Unknown or Unsupported Color Type: '. $value);
-                        }
-                        break;
-                    case Zend_Pdf_Resource_Image_Tiff::TIFF_TAG_STRIP_OFFSETS:
-                        if($valueCount>1) {
-                            $format = ($this->_endianType == Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_LITTLE)?'V*':'N*';
-                            $fp = ftell($imageFile);
-                            fseek($imageFile, $refOffset, SEEK_SET);
-                            $stripOffsetsBytes = fread($imageFile, $fieldLength);
-                            $this->_imageDataOffset = unpack($format, $stripOffsetsBytes);
-                            fseek($imageFile, $fp, SEEK_SET);
-                        } else {
-                            $this->_imageDataOffset = $value;
-                        }
-                        break;
-                   case Zend_Pdf_Resource_Image_Tiff::TIFF_TAG_STRIP_BYTE_COUNTS:
-                        if($valueCount>1) {
-                            $format = ($this->_endianType == Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_LITTLE)?'V*':'N*';
-                            $fp = ftell($imageFile);
-                            fseek($imageFile, $refOffset, SEEK_SET);
-                            $stripByteCountsBytes = fread($imageFile, $fieldLength);
-                            $this->_imageDataLength = unpack($format, $stripByteCountsBytes);
-                            fseek($imageFile, $fp, SEEK_SET);
-                        } else {
-                            $this->_imageDataLength = $value;
-                        }
-                        break;
-                    default:
-                        //For debugging. It should be harmless to ignore unknown tags, though there is some good info in them.
-                        //echo "Unknown tag detected: ". $tag . " value: ". $value;
-                }
-            }
-            $ifdOffset = $this->unpackBytes(Zend_Pdf_Resource_Image_Tiff::UNPACK_TYPE_LONG, fread($imageFile, 4));
-        }
+php php php php php php php php php php php php php php php php ifphp(php$fieldLengthphp <php=php php4php)php php{
+php php php php php php php php php php php php php php php php php php php php switchphp(php$fieldTypephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_BYTEphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_BYTEphp,php php$offsetBytesphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_ASCIIphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/Fallphp throughphp tophp nextphp case
+php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_LONGphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_LONGphp,php php$offsetBytesphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_FIELDphp_TYPEphp_SHORTphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/Fallphp throughphp tophp nextphp case
+php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_SHORTphp,php php$offsetBytesphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$refOffsetphp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_LONGphp,php php$offsetBytesphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php/php*
+php php php php php php php php php php php php php php php php php php*php Linearphp tagphp processingphp isphp probablyphp notphp thephp bestphp wayphp tophp dophp thisphp.php Iphp'vephp processedphp thephp tagsphp accordingphp tophp the
+php php php php php php php php php php php php php php php php php php*php Tiffphp php6php specificationphp andphp makephp somephp assumptionsphp aboutphp whenphp tagsphp willphp bephp <php php4php bytesphp andphp fitphp intophp php$valuephp andphp when
+php php php php php php php php php php php php php php php php php php*php theyphp willphp bephp php>php php4php bytesphp andphp requirephp seekphp/extractionphp ofphp thephp offsetphp.php Samephp goesphp forphp extractingphp arraysphp ofphp dataphp,php like
+php php php php php php php php php php php php php php php php php php*php thephp dataphp offsetsphp andphp lengthphp.php Thisphp shouldphp bephp fixedphp inphp thephp futurephp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php switchphp(php$tagphp)php php{
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_TAGphp_IMAGEphp_WIDTHphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_widthphp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_TAGphp_IMAGEphp_LENGTHphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_heightphp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_TAGphp_BITSphp_PERphp_SAMPLEphp:
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$valueCountphp>php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fpphp php=php ftellphp(php$imageFilephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$refOffsetphp,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_bitsPerSamplephp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_SHORTphp,php freadphp(php$imageFilephp,php php2php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$fpphp,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_bitsPerSamplephp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_TAGphp_COMPRESSIONphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_compressionphp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php switchphp(php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_UNCOMPRESSEDphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_filterphp php=php php'Nonephp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_CCITTphp1Dphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/Fallphp throughphp tophp nextphp case
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_GROUPphp_php3php_FAXphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/Fallphp throughphp tophp nextphp case
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_GROUPphp_php4php_FAXphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_filterphp php=php php'CCITTFaxDecodephp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"CCITTFaxDecodephp Compressionphp Modephp Notphp Currentlyphp Supportedphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_LZWphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_filterphp php=php php'LZWDecodephp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"LZWDecodephp Compressionphp Modephp Notphp Currentlyphp Supportedphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_JPEGphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_filterphp php=php php'DCTDecodephp'php;php php/php/Shouldphp workphp,php doesntphp.php.php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"JPEGphp Compressionphp Modephp Notphp Currentlyphp Supportedphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_FLATEphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/fallphp throughphp tophp nextphp case
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_FLATEphp_OBSOLETEphp_CODEphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_filterphp php=php php'FlateDecodephp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"ZIPphp/Flatephp Compressionphp Modephp Notphp Currentlyphp Supportedphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_COMPRESSIONphp_PACKBITSphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_filterphp php=php php'RunLengthDecodephp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_TAGphp_PHOTOMETRICphp_INTERPRETATIONphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_colorCodephp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_whiteIsZerophp php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_blackIsZerophp php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php switchphp(php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_WHITEphp_ISphp_ZEROphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_whiteIsZerophp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_colorSpacephp php=php php'DeviceGrayphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_BLACKphp_ISphp_ZEROphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_blackIsZerophp php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_colorSpacephp php=php php'DeviceGrayphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_YCBCRphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/fallphp throughphp tophp nextphp case
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_RGBphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_colorSpacephp php=php php'DeviceRGBphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_RGBphp_INDEXEDphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_colorSpacephp php=php php'Indexedphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_CMYKphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_colorSpacephp php=php php'DeviceCMYKphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_PHOTOMETRICphp_INTERPRETATIONphp_CIELABphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_colorSpacephp php=php php'Labphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'TIFFphp:php Unknownphp orphp Unsupportedphp Colorphp Typephp:php php'php.php php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_TAGphp_STRIPphp_OFFSETSphp:
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$valueCountphp>php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$formatphp php=php php(php$thisphp-php>php_endianTypephp php=php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_ENDIANphp_LITTLEphp)php?php'Vphp*php'php:php'Nphp*php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fpphp php=php ftellphp(php$imageFilephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$refOffsetphp,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$stripOffsetsBytesphp php=php freadphp(php$imageFilephp,php php$fieldLengthphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_imageDataOffsetphp php=php unpackphp(php$formatphp,php php$stripOffsetsBytesphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$fpphp,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_imageDataOffsetphp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_TAGphp_STRIPphp_BYTEphp_COUNTSphp:
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$valueCountphp>php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$formatphp php=php php(php$thisphp-php>php_endianTypephp php=php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:TIFFphp_ENDIANphp_LITTLEphp)php?php'Vphp*php'php:php'Nphp*php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fpphp php=php ftellphp(php$imageFilephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$refOffsetphp,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$stripByteCountsBytesphp php=php freadphp(php$imageFilephp,php php$fieldLengthphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_imageDataLengthphp php=php unpackphp(php$formatphp,php php$stripByteCountsBytesphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$fpphp,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_imageDataLengthphp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/Forphp debuggingphp.php Itphp shouldphp bephp harmlessphp tophp ignorephp unknownphp tagsphp,php thoughphp therephp isphp somephp goodphp infophp inphp themphp.
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/echophp php"Unknownphp tagphp detectedphp:php php"php.php php$tagphp php.php php"php valuephp:php php"php.php php$valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$ifdOffsetphp php=php php$thisphp-php>unpackBytesphp(Zendphp_Pdfphp_Resourcephp_Imagephp_Tiffphp:php:UNPACKphp_TYPEphp_LONGphp,php freadphp(php$imageFilephp,php php4php)php)php;
+php php php php php php php php php}
 
-        if(!isset($this->_imageDataOffset) || !isset($this->_imageDataLength)) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("TIFF: The image processed did not contain image data as expected.");
-        }
+php php php php php php php php ifphp(php!issetphp(php$thisphp-php>php_imageDataOffsetphp)php php|php|php php!issetphp(php$thisphp-php>php_imageDataLengthphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"TIFFphp:php Thephp imagephp processedphp didphp notphp containphp imagephp dataphp asphp expectedphp.php"php)php;
+php php php php php php php php php}
 
-        $imageDataBytes = '';
-        if(is_array($this->_imageDataOffset)) {
-            if(!is_array($this->_imageDataLength)) {
-                require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception("TIFF: The image contained multiple data offsets but not multiple data lengths. Tiff may be corrupt.");
-            }
-            foreach($this->_imageDataOffset as $idx => $offset) {
-                fseek($imageFile, $this->_imageDataOffset[$idx], SEEK_SET);
-                $imageDataBytes .= fread($imageFile, $this->_imageDataLength[$idx]);
-            }
-        } else {
-            fseek($imageFile, $this->_imageDataOffset, SEEK_SET);
-            $imageDataBytes = fread($imageFile, $this->_imageDataLength);
-        }
-        if($imageDataBytes === '') {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("TIFF: No data. Image Corruption");
-        }
+php php php php php php php php php$imageDataBytesphp php=php php'php'php;
+php php php php php php php php ifphp(isphp_arrayphp(php$thisphp-php>php_imageDataOffsetphp)php)php php{
+php php php php php php php php php php php php ifphp(php!isphp_arrayphp(php$thisphp-php>php_imageDataLengthphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"TIFFphp:php Thephp imagephp containedphp multiplephp dataphp offsetsphp butphp notphp multiplephp dataphp lengthsphp.php Tiffphp mayphp bephp corruptphp.php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php foreachphp(php$thisphp-php>php_imageDataOffsetphp asphp php$idxphp php=php>php php$offsetphp)php php{
+php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$thisphp-php>php_imageDataOffsetphp[php$idxphp]php,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php php php php php$imageDataBytesphp php.php=php freadphp(php$imageFilephp,php php$thisphp-php>php_imageDataLengthphp[php$idxphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$thisphp-php>php_imageDataOffsetphp,php SEEKphp_SETphp)php;
+php php php php php php php php php php php php php$imageDataBytesphp php=php freadphp(php$imageFilephp,php php$thisphp-php>php_imageDataLengthphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp(php$imageDataBytesphp php=php=php=php php'php'php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"TIFFphp:php Nophp dataphp.php Imagephp Corruptionphp"php)php;
+php php php php php php php php php}
 
-        fclose($imageFile);
+php php php php php php php php fclosephp(php$imageFilephp)php;
 
-        parent::__construct();
+php php php php php php php php parentphp:php:php_php_constructphp(php)php;
 
-        $imageDictionary = $this->_resource->dictionary;
-        if(!isset($this->_width) || !isset($this->_width)) {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Problem reading tiff file. Tiff is probably corrupt.");
-        }
+php php php php php php php php php$imageDictionaryphp php=php php$thisphp-php>php_resourcephp-php>dictionaryphp;
+php php php php php php php php ifphp(php!issetphp(php$thisphp-php>php_widthphp)php php|php|php php!issetphp(php$thisphp-php>php_widthphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Problemphp readingphp tiffphp filephp.php Tiffphp isphp probablyphp corruptphp.php"php)php;
+php php php php php php php php php}
 
-        $this->_imageProperties = array();
-        $this->_imageProperties['bitDepth'] = $this->_bitsPerSample;
-        $this->_imageProperties['fileSize'] = $this->_fileSize;
-        $this->_imageProperties['TIFFendianType'] = $this->_endianType;
-        $this->_imageProperties['TIFFcompressionType'] = $this->_compression;
-        $this->_imageProperties['TIFFwhiteIsZero'] = $this->_whiteIsZero;
-        $this->_imageProperties['TIFFblackIsZero'] = $this->_blackIsZero;
-        $this->_imageProperties['TIFFcolorCode'] = $this->_colorCode;
-        $this->_imageProperties['TIFFimageDataOffset'] = $this->_imageDataOffset;
-        $this->_imageProperties['TIFFimageDataLength'] = $this->_imageDataLength;
-        $this->_imageProperties['PDFfilter'] = $this->_filter;
-        $this->_imageProperties['PDFcolorSpace'] = $this->_colorSpace;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp php=php arrayphp(php)php;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'bitDepthphp'php]php php=php php$thisphp-php>php_bitsPerSamplephp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'fileSizephp'php]php php=php php$thisphp-php>php_fileSizephp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'TIFFendianTypephp'php]php php=php php$thisphp-php>php_endianTypephp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'TIFFcompressionTypephp'php]php php=php php$thisphp-php>php_compressionphp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'TIFFwhiteIsZerophp'php]php php=php php$thisphp-php>php_whiteIsZerophp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'TIFFblackIsZerophp'php]php php=php php$thisphp-php>php_blackIsZerophp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'TIFFcolorCodephp'php]php php=php php$thisphp-php>php_colorCodephp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'TIFFimageDataOffsetphp'php]php php=php php$thisphp-php>php_imageDataOffsetphp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'TIFFimageDataLengthphp'php]php php=php php$thisphp-php>php_imageDataLengthphp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'PDFfilterphp'php]php php=php php$thisphp-php>php_filterphp;
+php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'PDFcolorSpacephp'php]php php=php php$thisphp-php>php_colorSpacephp;
 
-        $imageDictionary->Width            = new Zend_Pdf_Element_Numeric($this->_width);
-        if($this->_whiteIsZero === true) {
-            $imageDictionary->Decode       = new Zend_Pdf_Element_Array(array(new Zend_Pdf_Element_Numeric(1), new Zend_Pdf_Element_Numeric(0)));
-        }
-        $imageDictionary->Height           = new Zend_Pdf_Element_Numeric($this->_height);
-        $imageDictionary->ColorSpace       = new Zend_Pdf_Element_Name($this->_colorSpace);
-        $imageDictionary->BitsPerComponent = new Zend_Pdf_Element_Numeric($this->_bitsPerSample);
-        if(isset($this->_filter) && $this->_filter != 'None') {
-            $imageDictionary->Filter = new Zend_Pdf_Element_Name($this->_filter);
-        }
+php php php php php php php php php$imageDictionaryphp-php>Widthphp php php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$thisphp-php>php_widthphp)php;
+php php php php php php php php ifphp(php$thisphp-php>php_whiteIsZerophp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$imageDictionaryphp-php>Decodephp php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(arrayphp(newphp Zendphp_Pdfphp_Elementphp_Numericphp(php1php)php,php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php0php)php)php)php;
+php php php php php php php php php}
+php php php php php php php php php$imageDictionaryphp-php>Heightphp php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$thisphp-php>php_heightphp)php;
+php php php php php php php php php$imageDictionaryphp-php>ColorSpacephp php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php$thisphp-php>php_colorSpacephp)php;
+php php php php php php php php php$imageDictionaryphp-php>BitsPerComponentphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$thisphp-php>php_bitsPerSamplephp)php;
+php php php php php php php php ifphp(issetphp(php$thisphp-php>php_filterphp)php php&php&php php$thisphp-php>php_filterphp php!php=php php'Nonephp'php)php php{
+php php php php php php php php php php php php php$imageDictionaryphp-php>Filterphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php$thisphp-php>php_filterphp)php;
+php php php php php php php php php}
 
-        $this->_resource->value = $imageDataBytes;
-        $this->_resource->skipFilters();
-    }
-    /**
-     * Image width (defined in Zend_Pdf_Resource_Image_Interface)
-     */
-    public function getPixelWidth() {
-        return $this->_width;
-    }
+php php php php php php php php php$thisphp-php>php_resourcephp-php>valuephp php=php php$imageDataBytesphp;
+php php php php php php php php php$thisphp-php>php_resourcephp-php>skipFiltersphp(php)php;
+php php php php php}
+php php php php php/php*php*
+php php php php php php*php Imagephp widthphp php(definedphp inphp Zendphp_Pdfphp_Resourcephp_Imagephp_Interfacephp)
+php php php php php php*php/
+php php php php publicphp functionphp getPixelWidthphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_widthphp;
+php php php php php}
 
-    /**
-     * Image height (defined in Zend_Pdf_Resource_Image_Interface)
-     */
-    public function getPixelHeight() {
-        return $this->_height;
-    }
+php php php php php/php*php*
+php php php php php php*php Imagephp heightphp php(definedphp inphp Zendphp_Pdfphp_Resourcephp_Imagephp_Interfacephp)
+php php php php php php*php/
+php php php php publicphp functionphp getPixelHeightphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_heightphp;
+php php php php php}
 
-    /**
-     * Image properties (defined in Zend_Pdf_Resource_Image_Interface)
-     */
-    public function getProperties() {
-        return $this->_imageProperties;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Imagephp propertiesphp php(definedphp inphp Zendphp_Pdfphp_Resourcephp_Imagephp_Interfacephp)
+php php php php php php*php/
+php php php php publicphp functionphp getPropertiesphp(php)php php{
+php php php php php php php php returnphp php$thisphp-php>php_imagePropertiesphp;
+php php php php php}
+php}
 

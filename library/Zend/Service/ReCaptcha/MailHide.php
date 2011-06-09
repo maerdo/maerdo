@@ -1,351 +1,351 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage ReCaptcha
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp ReCaptcha
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** @see Zend_Service_ReCaptcha */
-require_once 'Zend/Service/ReCaptcha.php';
+php/php*php*php php@seephp Zendphp_Servicephp_ReCaptchaphp php*php/
+requirephp_oncephp php'Zendphp/Servicephp/ReCaptchaphp.phpphp'php;
 
-/**
- * Zend_Service_ReCaptcha_MailHide
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage ReCaptcha
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: MailHide.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
-class Zend_Service_ReCaptcha_MailHide extends Zend_Service_ReCaptcha
-{
-    /**#@+
-     * Encryption constants
-     */
-    const ENCRYPTION_MODE = MCRYPT_MODE_CBC;
-    const ENCRYPTION_CIPHER = MCRYPT_RIJNDAEL_128;
-    const ENCRYPTION_BLOCK_SIZE = 16;
-    const ENCRYPTION_IV = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
-    /**#@-*/
+php/php*php*
+php php*php Zendphp_Servicephp_ReCaptchaphp_MailHide
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp ReCaptcha
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php MailHidephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
+classphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp extendsphp Zendphp_Servicephp_ReCaptcha
+php{
+php php php php php/php*php*php#php@php+
+php php php php php php*php Encryptionphp constants
+php php php php php php*php/
+php php php php constphp ENCRYPTIONphp_MODEphp php=php MCRYPTphp_MODEphp_CBCphp;
+php php php php constphp ENCRYPTIONphp_CIPHERphp php=php MCRYPTphp_RIJNDAELphp_php1php2php8php;
+php php php php constphp ENCRYPTIONphp_BLOCKphp_SIZEphp php=php php1php6php;
+php php php php constphp ENCRYPTIONphp_IVphp php=php php"php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php\php0php"php;
+php php php php php/php*php*php#php@php-php*php/
 
-    /**
-     * Url to the mailhide server
-     *
-     * @var string
-     */
-    const MAILHIDE_SERVER = 'http://mailhide.recaptcha.net/d';
+php php php php php/php*php*
+php php php php php php*php Urlphp tophp thephp mailhidephp server
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php constphp MAILHIDEphp_SERVERphp php=php php'httpphp:php/php/mailhidephp.recaptchaphp.netphp/dphp'php;
 
-    /**
-     * The email address to protect
-     *
-     * @var string
-     */
-    protected $_email = null;
+php php php php php/php*php*
+php php php php php php*php Thephp emailphp addressphp tophp protect
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_emailphp php=php nullphp;
 
-    /**
-     * @var Zend_Validate_Interface
-     */
-    protected $_emailValidator;
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Validatephp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_emailValidatorphp;
 
-    /**
-     * Binary representation of the private key
-     *
-     * @var string
-     */
-    protected $_privateKeyPacked = null;
+php php php php php/php*php*
+php php php php php php*php Binaryphp representationphp ofphp thephp privatephp key
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_privateKeyPackedphp php=php nullphp;
 
-    /**
-     * The local part of the email
-     *
-     * @var string
-     */
-    protected $_emailLocalPart = null;
+php php php php php/php*php*
+php php php php php php*php Thephp localphp partphp ofphp thephp email
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_emailLocalPartphp php=php nullphp;
 
-    /**
-     * The domain part of the email
-     *
-     * @var string
-     */
-    protected $_emailDomainPart = null;
+php php php php php/php*php*
+php php php php php php*php Thephp domainphp partphp ofphp thephp email
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_emailDomainPartphp php=php nullphp;
 
-    /**
-     * Local constructor
-     *
-     * @param string $publicKey
-     * @param string $privateKey
-     * @param string $email
-     * @param array|Zend_Config $options
-     */
-    public function __construct($publicKey = null, $privateKey = null, $email = null, $options = null)
-    {
-        /* Require the mcrypt extension to be loaded */
-        $this->_requireMcrypt();
+php php php php php/php*php*
+php php php php php php*php Localphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$publicKey
+php php php php php php*php php@paramphp stringphp php$privateKey
+php php php php php php*php php@paramphp stringphp php$email
+php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$options
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$publicKeyphp php=php nullphp,php php$privateKeyphp php=php nullphp,php php$emailphp php=php nullphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php*php Requirephp thephp mcryptphp extensionphp tophp bephp loadedphp php*php/
+php php php php php php php php php$thisphp-php>php_requireMcryptphp(php)php;
 
-        /* If options is a Zend_Config object we want to convert it to an array so we can merge it with the default options */
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php php php php php/php*php Ifphp optionsphp isphp aphp Zendphp_Configphp objectphp wephp wantphp tophp convertphp itphp tophp anphp arrayphp sophp wephp canphp mergephp itphp withphp thephp defaultphp optionsphp php*php/
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        /* Merge if needed */
-        if (is_array($options)) {
-            $options = array_merge($this->getDefaultOptions(), $options);
-        } else {
-            $options = $this->getDefaultOptions();
-        }
+php php php php php php php php php/php*php Mergephp ifphp neededphp php*php/
+php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp_mergephp(php$thisphp-php>getDefaultOptionsphp(php)php,php php$optionsphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$optionsphp php=php php$thisphp-php>getDefaultOptionsphp(php)php;
+php php php php php php php php php}
 
-        parent::__construct($publicKey, $privateKey, null, $options);
+php php php php php php php php parentphp:php:php_php_constructphp(php$publicKeyphp,php php$privateKeyphp,php nullphp,php php$optionsphp)php;
 
-        if ($email !== null) {
-            $this->setEmail($email);
-        }
-    }
-
-
-    /**
-     * Get emailValidator
-     *
-     * @return Zend_Validate_Interface
-     */
-    public function getEmailValidator()
-    {
-        if (null === $this->_emailValidator) {
-            require_once 'Zend/Validate/EmailAddress.php';
-            $this->setEmailValidator(new Zend_Validate_EmailAddress());
-        }
-        return $this->_emailValidator;
-    }
-
-    /**
-     * Set email validator
-     *
-     * @param  Zend_Validate_Interface $validator
-     * @return Zend_Service_ReCaptcha_MailHide
-     */
-    public function setEmailValidator(Zend_Validate_Interface $validator)
-    {
-        $this->_emailValidator = $validator;
-        return $this;
-    }
+php php php php php php php php ifphp php(php$emailphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setEmailphp(php$emailphp)php;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * See if the mcrypt extension is available
-     *
-     * @throws Zend_Service_ReCaptcha_MailHide_Exception
-     */
-    protected function _requireMcrypt()
-    {
-        if (!extension_loaded('mcrypt')) {
-            /** @see Zend_Service_ReCaptcha_MailHide_Exception */
-            require_once 'Zend/Service/ReCaptcha/MailHide/Exception.php';
+php php php php php/php*php*
+php php php php php php*php Getphp emailValidator
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Validatephp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getEmailValidatorphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_emailValidatorphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/EmailAddressphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>setEmailValidatorphp(newphp Zendphp_Validatephp_EmailAddressphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_emailValidatorphp;
+php php php php php}
 
-            throw new Zend_Service_ReCaptcha_MailHide_Exception('Use of the Zend_Service_ReCaptcha_MailHide component requires the mcrypt extension to be enabled in PHP');
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp emailphp validator
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Validatephp_Interfacephp php$validator
+php php php php php php*php php@returnphp Zendphp_Servicephp_ReCaptchaphp_MailHide
+php php php php php php*php/
+php php php php publicphp functionphp setEmailValidatorphp(Zendphp_Validatephp_Interfacephp php$validatorphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_emailValidatorphp php=php php$validatorphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Serialize as string
-     *
-     * When the instance is used as a string it will display the email address. Since we can't
-     * throw exceptions within this method we will trigger a user warning instead.
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        try {
-            $return = $this->getHtml();
-        } catch (Exception $e) {
-            $return = '';
-            trigger_error($e->getMessage(), E_USER_WARNING);
-        }
 
-        return $return;
-    }
+php php php php php/php*php*
+php php php php php php*php Seephp ifphp thephp mcryptphp extensionphp isphp available
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_requireMcryptphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'mcryptphp'php)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/ReCaptchaphp/MailHidephp/Exceptionphp.phpphp'php;
 
-    /**
-     * Get the default set of parameters
-     *
-     * @return array
-     */
-    public function getDefaultOptions()
-    {
-        return array(
-            'encoding'       => 'UTF-8',
-            'linkTitle'      => 'Reveal this e-mail address',
-            'linkHiddenText' => '...',
-            'popupWidth'     => 500,
-            'popupHeight'    => 300,
-        );
-    }
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp(php'Usephp ofphp thephp Zendphp_Servicephp_ReCaptchaphp_MailHidephp componentphp requiresphp thephp mcryptphp extensionphp tophp bephp enabledphp inphp PHPphp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Override the setPrivateKey method
-     *
-     * Override the parent method to store a binary representation of the private key as well.
-     *
-     * @param string $privateKey
-     * @return Zend_Service_ReCaptcha_MailHide
-     */
-    public function setPrivateKey($privateKey)
-    {
-        parent::setPrivateKey($privateKey);
+php php php php php/php*php*
+php php php php php php*php Serializephp asphp string
+php php php php php php*
+php php php php php php*php Whenphp thephp instancephp isphp usedphp asphp aphp stringphp itphp willphp displayphp thephp emailphp addressphp.php Sincephp wephp canphp't
+php php php php php php*php throwphp exceptionsphp withinphp thisphp methodphp wephp willphp triggerphp aphp userphp warningphp insteadphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>getHtmlphp(php)php;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php$returnphp php=php php'php'php;
+php php php php php php php php php php php php triggerphp_errorphp(php$ephp-php>getMessagephp(php)php,php Ephp_USERphp_WARNINGphp)php;
+php php php php php php php php php}
 
-        /* Pack the private key into a binary string */
-        $this->_privateKeyPacked = pack('H*', $this->_privateKey);
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp defaultphp setphp ofphp parameters
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getDefaultOptionsphp(php)
+php php php php php{
+php php php php php php php php returnphp arrayphp(
+php php php php php php php php php php php php php'encodingphp'php php php php php php php php=php>php php'UTFphp-php8php'php,
+php php php php php php php php php php php php php'linkTitlephp'php php php php php php php=php>php php'Revealphp thisphp ephp-mailphp addressphp'php,
+php php php php php php php php php php php php php'linkHiddenTextphp'php php=php>php php'php.php.php.php'php,
+php php php php php php php php php php php php php'popupWidthphp'php php php php php php=php>php php5php0php0php,
+php php php php php php php php php php php php php'popupHeightphp'php php php php php=php>php php3php0php0php,
+php php php php php php php php php)php;
+php php php php php}
 
-    /**
-     * Set the email property
-     *
-     * This method will set the email property along with the local and domain parts
-     *
-     * @param string $email
-     * @return Zend_Service_ReCaptcha_MailHide
-     */
-    public function setEmail($email)
-    {
-        $this->_email = $email;
+php php php php php/php*php*
+php php php php php php*php Overridephp thephp setPrivateKeyphp method
+php php php php php php*
+php php php php php php*php Overridephp thephp parentphp methodphp tophp storephp aphp binaryphp representationphp ofphp thephp privatephp keyphp asphp wellphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$privateKey
+php php php php php php*php php@returnphp Zendphp_Servicephp_ReCaptchaphp_MailHide
+php php php php php php*php/
+php php php php publicphp functionphp setPrivateKeyphp(php$privateKeyphp)
+php php php php php{
+php php php php php php php php parentphp:php:setPrivateKeyphp(php$privateKeyphp)php;
 
-        $validator = $this->getEmailValidator();
-        if (!$validator->isValid($email)) {
-            require_once 'Zend/Service/ReCaptcha/MailHide/Exception.php';
-            throw new Zend_Service_ReCaptcha_MailHide_Exception('Invalid email address provided');
-        }
+php php php php php php php php php/php*php Packphp thephp privatephp keyphp intophp aphp binaryphp stringphp php*php/
+php php php php php php php php php$thisphp-php>php_privateKeyPackedphp php=php packphp(php'Hphp*php'php,php php$thisphp-php>php_privateKeyphp)php;
 
-        $emailParts = explode('@', $email, 2);
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-        /* Decide on how much of the local part we want to reveal */
-        if (strlen($emailParts[0]) <= 4) {
-            $emailParts[0] = substr($emailParts[0], 0, 1);
-        } else if (strlen($emailParts[0]) <= 6) {
-            $emailParts[0] = substr($emailParts[0], 0, 3);
-        } else {
-            $emailParts[0] = substr($emailParts[0], 0, 4);
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp emailphp property
+php php php php php php*
+php php php php php php*php Thisphp methodphp willphp setphp thephp emailphp propertyphp alongphp withphp thephp localphp andphp domainphp parts
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$email
+php php php php php php*php php@returnphp Zendphp_Servicephp_ReCaptchaphp_MailHide
+php php php php php php*php/
+php php php php publicphp functionphp setEmailphp(php$emailphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_emailphp php=php php$emailphp;
 
-        $this->_emailLocalPart = $emailParts[0];
-        $this->_emailDomainPart = $emailParts[1];
+php php php php php php php php php$validatorphp php=php php$thisphp-php>getEmailValidatorphp(php)php;
+php php php php php php php php ifphp php(php!php$validatorphp-php>isValidphp(php$emailphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/ReCaptchaphp/MailHidephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp(php'Invalidphp emailphp addressphp providedphp'php)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php php$emailPartsphp php=php explodephp(php'php@php'php,php php$emailphp,php php2php)php;
 
-    /**
-     * Get the email property
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->_email;
-    }
+php php php php php php php php php/php*php Decidephp onphp howphp muchphp ofphp thephp localphp partphp wephp wantphp tophp revealphp php*php/
+php php php php php php php php ifphp php(strlenphp(php$emailPartsphp[php0php]php)php <php=php php4php)php php{
+php php php php php php php php php php php php php$emailPartsphp[php0php]php php=php substrphp(php$emailPartsphp[php0php]php,php php0php,php php1php)php;
+php php php php php php php php php}php elsephp ifphp php(strlenphp(php$emailPartsphp[php0php]php)php <php=php php6php)php php{
+php php php php php php php php php php php php php$emailPartsphp[php0php]php php=php substrphp(php$emailPartsphp[php0php]php,php php0php,php php3php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$emailPartsphp[php0php]php php=php substrphp(php$emailPartsphp[php0php]php,php php0php,php php4php)php;
+php php php php php php php php php}
 
-    /**
-     * Get the local part of the email address
-     *
-     * @return string
-     */
-    public function getEmailLocalPart()
-    {
-        return $this->_emailLocalPart;
-    }
+php php php php php php php php php$thisphp-php>php_emailLocalPartphp php=php php$emailPartsphp[php0php]php;
+php php php php php php php php php$thisphp-php>php_emailDomainPartphp php=php php$emailPartsphp[php1php]php;
 
-    /**
-     * Get the domain part of the email address
-     *
-     * @return string
-     */
-    public function getEmailDomainPart()
-    {
-        return $this->_emailDomainPart;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the HTML code needed for the mail hide
-     *
-     * @param string $email
-     * @return string
-     * @throws Zend_Service_ReCaptcha_MailHide_Exception
-     */
-    public function getHtml($email = null)
-    {
-        if ($email !== null) {
-            $this->setEmail($email);
-        } elseif (null === ($email = $this->getEmail())) {
-            /** @see Zend_Service_ReCaptcha_MailHide_Exception */
-            require_once 'Zend/Service/ReCaptcha/MailHide/Exception.php';
-            throw new Zend_Service_ReCaptcha_MailHide_Exception('Missing email address');
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp emailphp property
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEmailphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_emailphp;
+php php php php php}
 
-        if ($this->_publicKey === null) {
-            /** @see Zend_Service_ReCaptcha_MailHide_Exception */
-            require_once 'Zend/Service/ReCaptcha/MailHide/Exception.php';
-            throw new Zend_Service_ReCaptcha_MailHide_Exception('Missing public key');
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp localphp partphp ofphp thephp emailphp address
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEmailLocalPartphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_emailLocalPartphp;
+php php php php php}
 
-        if ($this->_privateKey === null) {
-            /** @see Zend_Service_ReCaptcha_MailHide_Exception */
-            require_once 'Zend/Service/ReCaptcha/MailHide/Exception.php';
-            throw new Zend_Service_ReCaptcha_MailHide_Exception('Missing private key');
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp domainphp partphp ofphp thephp emailphp address
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEmailDomainPartphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_emailDomainPartphp;
+php php php php php}
 
-        /* Generate the url */
-        $url = $this->_getUrl();
+php php php php php/php*php*
+php php php php php php*php Getphp thephp HTMLphp codephp neededphp forphp thephp mailphp hide
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$email
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getHtmlphp(php$emailphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$emailphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setEmailphp(php$emailphp)php;
+php php php php php php php php php}php elseifphp php(nullphp php=php=php=php php(php$emailphp php=php php$thisphp-php>getEmailphp(php)php)php)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/ReCaptchaphp/MailHidephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp(php'Missingphp emailphp addressphp'php)php;
+php php php php php php php php php}
 
-        $enc = $this->getOption('encoding');
+php php php php php php php php ifphp php(php$thisphp-php>php_publicKeyphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/ReCaptchaphp/MailHidephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp(php'Missingphp publicphp keyphp'php)php;
+php php php php php php php php php}
 
-        /* Genrate the HTML used to represent the email address */
-        $html = htmlentities($this->getEmailLocalPart(), ENT_COMPAT, $enc)
-            . '<a href="'
-                . htmlentities($url, ENT_COMPAT, $enc)
-                . '" onclick="window.open(\''
-                    . htmlentities($url, ENT_COMPAT, $enc)
-                    . '\', \'\', \'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width='
-                    . $this->_options['popupWidth']
-                    . ',height='
-                    . $this->_options['popupHeight']
-                . '\'); return false;" title="'
-                . $this->_options['linkTitle']
-                . '">' . $this->_options['linkHiddenText'] . '</a>@'
-                . htmlentities($this->getEmailDomainPart(), ENT_COMPAT, $enc);
+php php php php php php php php ifphp php(php$thisphp-php>php_privateKeyphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/ReCaptchaphp/MailHidephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_ReCaptchaphp_MailHidephp_Exceptionphp(php'Missingphp privatephp keyphp'php)php;
+php php php php php php php php php}
 
-        return $html;
-    }
+php php php php php php php php php/php*php Generatephp thephp urlphp php*php/
+php php php php php php php php php$urlphp php=php php$thisphp-php>php_getUrlphp(php)php;
 
-    /**
-     * Get the url used on the "hidden" part of the email address
-     *
-     * @return string
-     */
-    protected function _getUrl()
-    {
-        /* Figure out how much we need to pad the email */
-        $numPad = self::ENCRYPTION_BLOCK_SIZE - (strlen($this->_email) % self::ENCRYPTION_BLOCK_SIZE);
+php php php php php php php php php$encphp php=php php$thisphp-php>getOptionphp(php'encodingphp'php)php;
 
-        /* Pad the email */
-        $emailPadded = str_pad($this->_email, strlen($this->_email) + $numPad, chr($numPad));
+php php php php php php php php php/php*php Genratephp thephp HTMLphp usedphp tophp representphp thephp emailphp addressphp php*php/
+php php php php php php php php php$htmlphp php=php htmlentitiesphp(php$thisphp-php>getEmailLocalPartphp(php)php,php ENTphp_COMPATphp,php php$encphp)
+php php php php php php php php php php php php php.php php'php<aphp hrefphp=php"php'
+php php php php php php php php php php php php php php php php php.php htmlentitiesphp(php$urlphp,php ENTphp_COMPATphp,php php$encphp)
+php php php php php php php php php php php php php php php php php.php php'php"php onclickphp=php"windowphp.openphp(php\php'php'
+php php php php php php php php php php php php php php php php php php php php php.php htmlentitiesphp(php$urlphp,php ENTphp_COMPATphp,php php$encphp)
+php php php php php php php php php php php php php php php php php php php php php.php php'php\php'php,php php\php'php\php'php,php php\php'toolbarphp=php0php,scrollbarsphp=php0php,locationphp=php0php,statusbarphp=php0php,menubarphp=php0php,resizablephp=php0php,widthphp=php'
+php php php php php php php php php php php php php php php php php php php php php.php php$thisphp-php>php_optionsphp[php'popupWidthphp'php]
+php php php php php php php php php php php php php php php php php php php php php.php php'php,heightphp=php'
+php php php php php php php php php php php php php php php php php php php php php.php php$thisphp-php>php_optionsphp[php'popupHeightphp'php]
+php php php php php php php php php php php php php php php php php.php php'php\php'php)php;php returnphp falsephp;php"php titlephp=php"php'
+php php php php php php php php php php php php php php php php php.php php$thisphp-php>php_optionsphp[php'linkTitlephp'php]
+php php php php php php php php php php php php php php php php php.php php'php"php>php'php php.php php$thisphp-php>php_optionsphp[php'linkHiddenTextphp'php]php php.php php'<php/aphp>php@php'
+php php php php php php php php php php php php php php php php php.php htmlentitiesphp(php$thisphp-php>getEmailDomainPartphp(php)php,php ENTphp_COMPATphp,php php$encphp)php;
 
-        /* Encrypt the email */
-        $emailEncrypted = mcrypt_encrypt(self::ENCRYPTION_CIPHER, $this->_privateKeyPacked, $emailPadded, self::ENCRYPTION_MODE, self::ENCRYPTION_IV);
+php php php php php php php php returnphp php$htmlphp;
+php php php php php}
 
-        /* Return the url */
-        return self::MAILHIDE_SERVER . '?k=' . $this->_publicKey . '&c=' . strtr(base64_encode($emailEncrypted), '+/', '-_');
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp thephp urlphp usedphp onphp thephp php"hiddenphp"php partphp ofphp thephp emailphp address
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getUrlphp(php)
+php php php php php{
+php php php php php php php php php/php*php Figurephp outphp howphp muchphp wephp needphp tophp padphp thephp emailphp php*php/
+php php php php php php php php php$numPadphp php=php selfphp:php:ENCRYPTIONphp_BLOCKphp_SIZEphp php-php php(strlenphp(php$thisphp-php>php_emailphp)php php%php selfphp:php:ENCRYPTIONphp_BLOCKphp_SIZEphp)php;
+
+php php php php php php php php php/php*php Padphp thephp emailphp php*php/
+php php php php php php php php php$emailPaddedphp php=php strphp_padphp(php$thisphp-php>php_emailphp,php strlenphp(php$thisphp-php>php_emailphp)php php+php php$numPadphp,php chrphp(php$numPadphp)php)php;
+
+php php php php php php php php php/php*php Encryptphp thephp emailphp php*php/
+php php php php php php php php php$emailEncryptedphp php=php mcryptphp_encryptphp(selfphp:php:ENCRYPTIONphp_CIPHERphp,php php$thisphp-php>php_privateKeyPackedphp,php php$emailPaddedphp,php selfphp:php:ENCRYPTIONphp_MODEphp,php selfphp:php:ENCRYPTIONphp_IVphp)php;
+
+php php php php php php php php php/php*php Returnphp thephp urlphp php*php/
+php php php php php php php php returnphp selfphp:php:MAILHIDEphp_SERVERphp php.php php'php?kphp=php'php php.php php$thisphp-php>php_publicKeyphp php.php php'php&cphp=php'php php.php strtrphp(basephp6php4php_encodephp(php$emailEncryptedphp)php,php php'php+php/php'php,php php'php-php_php'php)php;
+php php php php php}
+php}

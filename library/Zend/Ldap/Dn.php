@@ -1,794 +1,794 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Dn.php 22662 2010-07-24 17:37:36Z mabe $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Dnphp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
+php php*php/
 
-/**
- * Zend_Ldap_Dn provides an API for DN manipulation
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Ldap_Dn implements ArrayAccess
-{
-    const ATTR_CASEFOLD_NONE  = 'none';
-    const ATTR_CASEFOLD_UPPER = 'upper';
-    const ATTR_CASEFOLD_LOWER = 'lower';
+php/php*php*
+php php*php Zendphp_Ldapphp_Dnphp providesphp anphp APIphp forphp DNphp manipulation
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Ldapphp_Dnphp implementsphp ArrayAccess
+php{
+php php php php constphp ATTRphp_CASEFOLDphp_NONEphp php php=php php'nonephp'php;
+php php php php constphp ATTRphp_CASEFOLDphp_UPPERphp php=php php'upperphp'php;
+php php php php constphp ATTRphp_CASEFOLDphp_LOWERphp php=php php'lowerphp'php;
 
-    /**
-     * The default case fold to use
-     *
-     * @var string
-     */
-    protected static $_defaultCaseFold = self::ATTR_CASEFOLD_NONE;
+php php php php php/php*php*
+php php php php php php*php Thephp defaultphp casephp foldphp tophp use
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_defaultCaseFoldphp php=php selfphp:php:ATTRphp_CASEFOLDphp_NONEphp;
 
-    /**
-     * The case fold used for this instance
-     *
-     * @var string
-     */
-    protected $_caseFold;
+php php php php php/php*php*
+php php php php php php*php Thephp casephp foldphp usedphp forphp thisphp instance
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_caseFoldphp;
 
-    /**
-     * The DN data
-     *
-     * @var array
-     */
-    protected $_dn;
+php php php php php/php*php*
+php php php php php php*php Thephp DNphp data
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_dnphp;
 
-    /**
-     * Creates a DN from an array or a string
-     *
-     * @param  string|array $dn
-     * @param  string|null  $caseFold
-     * @return Zend_Ldap_Dn
-     * @throws Zend_Ldap_Exception
-     */
-    public static function factory($dn, $caseFold = null)
-    {
-        if (is_array($dn)) {
-            return self::fromArray($dn, $caseFold);
-        } else if (is_string($dn)) {
-            return self::fromString($dn, $caseFold);
-        } else {
-            /**
-             * Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'Invalid argument type for $dn');
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Createsphp aphp DNphp fromphp anphp arrayphp orphp aphp string
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$dn
+php php php php php php*php php@paramphp php stringphp|nullphp php php$caseFold
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dn
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp factoryphp(php$dnphp,php php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$dnphp)php)php php{
+php php php php php php php php php php php php returnphp selfphp:php:fromArrayphp(php$dnphp,php php$caseFoldphp)php;
+php php php php php php php php php}php elsephp ifphp php(isphp_stringphp(php$dnphp)php)php php{
+php php php php php php php php php php php php returnphp selfphp:php:fromStringphp(php$dnphp,php php$caseFoldphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Invalidphp argumentphp typephp forphp php$dnphp'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Creates a DN from a string
-     *
-     * @param  string      $dn
-     * @param  string|null $caseFold
-     * @return Zend_Ldap_Dn
-     * @throws Zend_Ldap_Exception
-     */
-    public static function fromString($dn, $caseFold = null)
-    {
-        $dn = trim($dn);
-        if (empty($dn)) {
-            $dnArray = array();
-        } else {
-            $dnArray = self::explodeDn((string)$dn);
-        }
-        return new self($dnArray, $caseFold);
-    }
+php php php php php/php*php*
+php php php php php php*php Createsphp aphp DNphp fromphp aphp string
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php$dn
+php php php php php php*php php@paramphp php stringphp|nullphp php$caseFold
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dn
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromStringphp(php$dnphp,php php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$dnphp php=php trimphp(php$dnphp)php;
+php php php php php php php php ifphp php(emptyphp(php$dnphp)php)php php{
+php php php php php php php php php php php php php$dnArrayphp php=php arrayphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$dnArrayphp php=php selfphp:php:explodeDnphp(php(stringphp)php$dnphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp newphp selfphp(php$dnArrayphp,php php$caseFoldphp)php;
+php php php php php}
 
-    /**
-     * Creates a DN from an array
-     *
-     * @param  array       $dn
-     * @param  string|null $caseFold
-     * @return Zend_Ldap_Dn
-     * @throws Zend_Ldap_Exception
-     */
-    public static function fromArray(array $dn, $caseFold = null)
-    {
-         return new self($dn, $caseFold);
-    }
+php php php php php/php*php*
+php php php php php php*php Createsphp aphp DNphp fromphp anphp array
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php php php php php php$dn
+php php php php php php*php php@paramphp php stringphp|nullphp php$caseFold
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dn
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromArrayphp(arrayphp php$dnphp,php php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php returnphp newphp selfphp(php$dnphp,php php$caseFoldphp)php;
+php php php php php}
 
-    /**
-     * Constructor
-     *
-     * @param array       $dn
-     * @param string|null $caseFold
-     */
-    protected function __construct(array $dn, $caseFold)
-    {
-        $this->_dn = $dn;
-        $this->setCaseFold($caseFold);
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php php php php php php php$dn
+php php php php php php*php php@paramphp stringphp|nullphp php$caseFold
+php php php php php php*php/
+php php php php protectedphp functionphp php_php_constructphp(arrayphp php$dnphp,php php$caseFoldphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dnphp php=php php$dnphp;
+php php php php php php php php php$thisphp-php>setCaseFoldphp(php$caseFoldphp)php;
+php php php php php}
 
-    /**
-     * Gets the RDN of the current DN
-     *
-     * @param  string $caseFold
-     * @return array
-     * @throws Zend_Ldap_Exception if DN has no RDN (empty array)
-     */
-    public function getRdn($caseFold = null)
-    {
-        $caseFold = self::_sanitizeCaseFold($caseFold, $this->_caseFold);
-        return self::_caseFoldRdn($this->get(0, 1, $caseFold), null);
-    }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp RDNphp ofphp thephp currentphp DN
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exceptionphp ifphp DNphp hasphp nophp RDNphp php(emptyphp arrayphp)
+php php php php php php*php/
+php php php php publicphp functionphp getRdnphp(php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$caseFoldphp php=php selfphp:php:php_sanitizeCaseFoldphp(php$caseFoldphp,php php$thisphp-php>php_caseFoldphp)php;
+php php php php php php php php returnphp selfphp:php:php_caseFoldRdnphp(php$thisphp-php>getphp(php0php,php php1php,php php$caseFoldphp)php,php nullphp)php;
+php php php php php}
 
-    /**
-     * Gets the RDN of the current DN as a string
-     *
-     * @param  string $caseFold
-     * @return string
-     * @throws Zend_Ldap_Exception if DN has no RDN (empty array)
-     */
-    public function getRdnString($caseFold = null)
-    {
-        $caseFold = self::_sanitizeCaseFold($caseFold, $this->_caseFold);
-        return self::implodeRdn($this->getRdn(), $caseFold);
-    }
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp RDNphp ofphp thephp currentphp DNphp asphp aphp string
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exceptionphp ifphp DNphp hasphp nophp RDNphp php(emptyphp arrayphp)
+php php php php php php*php/
+php php php php publicphp functionphp getRdnStringphp(php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$caseFoldphp php=php selfphp:php:php_sanitizeCaseFoldphp(php$caseFoldphp,php php$thisphp-php>php_caseFoldphp)php;
+php php php php php php php php returnphp selfphp:php:implodeRdnphp(php$thisphp-php>getRdnphp(php)php,php php$caseFoldphp)php;
+php php php php php}
 
-    /**
-     * Get the parent DN $levelUp levels up the tree
-     *
-     * @param  int $levelUp
-     * @return Zend_Ldap_Dn
-     */
-    public function getParentDn($levelUp = 1)
-    {
-        $levelUp = (int)$levelUp;
-        if ($levelUp < 1 || $levelUp >= count($this->_dn)) {
-            /**
-             * Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'Cannot retrieve parent DN with given $levelUp');
-        }
-        $newDn = array_slice($this->_dn, $levelUp);
-        return new self($newDn, $this->_caseFold);
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp parentphp DNphp php$levelUpphp levelsphp upphp thephp tree
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$levelUp
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dn
+php php php php php php*php/
+php php php php publicphp functionphp getParentDnphp(php$levelUpphp php=php php1php)
+php php php php php{
+php php php php php php php php php$levelUpphp php=php php(intphp)php$levelUpphp;
+php php php php php php php php ifphp php(php$levelUpphp <php php1php php|php|php php$levelUpphp php>php=php countphp(php$thisphp-php>php_dnphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Cannotphp retrievephp parentphp DNphp withphp givenphp php$levelUpphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$newDnphp php=php arrayphp_slicephp(php$thisphp-php>php_dnphp,php php$levelUpphp)php;
+php php php php php php php php returnphp newphp selfphp(php$newDnphp,php php$thisphp-php>php_caseFoldphp)php;
+php php php php php}
 
-    /**
-     * Get a DN part
-     *
-     * @param  int    $index
-     * @param  int    $length
-     * @param  string $caseFold
-     * @return array
-     * @throws Zend_Ldap_Exception if index is illegal
-     */
-    public function get($index, $length = 1, $caseFold = null)
-    {
-        $caseFold = self::_sanitizeCaseFold($caseFold, $this->_caseFold);
-        $this->_assertIndex($index);
-        $length = (int)$length;
-        if ($length <= 0) {
-            $length = 1;
-        }
-        if ($length === 1) {
-            return self::_caseFoldRdn($this->_dn[$index], $caseFold);
-        }
-        else {
-            return self::_caseFoldDn(array_slice($this->_dn, $index, $length, false), $caseFold);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp aphp DNphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php php$index
+php php php php php php*php php@paramphp php intphp php php php php$length
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exceptionphp ifphp indexphp isphp illegal
+php php php php php php*php/
+php php php php publicphp functionphp getphp(php$indexphp,php php$lengthphp php=php php1php,php php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$caseFoldphp php=php selfphp:php:php_sanitizeCaseFoldphp(php$caseFoldphp,php php$thisphp-php>php_caseFoldphp)php;
+php php php php php php php php php$thisphp-php>php_assertIndexphp(php$indexphp)php;
+php php php php php php php php php$lengthphp php=php php(intphp)php$lengthphp;
+php php php php php php php php ifphp php(php$lengthphp <php=php php0php)php php{
+php php php php php php php php php php php php php$lengthphp php=php php1php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$lengthphp php=php=php=php php1php)php php{
+php php php php php php php php php php php php returnphp selfphp:php:php_caseFoldRdnphp(php$thisphp-php>php_dnphp[php$indexphp]php,php php$caseFoldphp)php;
+php php php php php php php php php}
+php php php php php php php php elsephp php{
+php php php php php php php php php php php php returnphp selfphp:php:php_caseFoldDnphp(arrayphp_slicephp(php$thisphp-php>php_dnphp,php php$indexphp,php php$lengthphp,php falsephp)php,php php$caseFoldphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Set a DN part
-     *
-     * @param  int   $index
-     * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
-     * @throws Zend_Ldap_Exception if index is illegal
-     */
-    public function set($index, array $value)
-    {
-        $this->_assertIndex($index);
-        self::_assertRdn($value);
-        $this->_dn[$index] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp aphp DNphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php$index
+php php php php php php*php php@paramphp php arrayphp php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dnphp Providesphp aphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exceptionphp ifphp indexphp isphp illegal
+php php php php php php*php/
+php php php php publicphp functionphp setphp(php$indexphp,php arrayphp php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_assertIndexphp(php$indexphp)php;
+php php php php php php php php selfphp:php:php_assertRdnphp(php$valuephp)php;
+php php php php php php php php php$thisphp-php>php_dnphp[php$indexphp]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Remove a DN part
-     *
-     * @param  int $index
-     * @param  int $length
-     * @return Zend_Ldap_Dn Provides a fluent interface
-     * @throws Zend_Ldap_Exception if index is illegal
-     */
-    public function remove($index, $length = 1)
-    {
-        $this->_assertIndex($index);
-        $length = (int)$length;
-        if ($length <= 0) {
-            $length = 1;
-        }
-        array_splice($this->_dn, $index, $length, null);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp aphp DNphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$index
+php php php php php php*php php@paramphp php intphp php$length
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dnphp Providesphp aphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exceptionphp ifphp indexphp isphp illegal
+php php php php php php*php/
+php php php php publicphp functionphp removephp(php$indexphp,php php$lengthphp php=php php1php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_assertIndexphp(php$indexphp)php;
+php php php php php php php php php$lengthphp php=php php(intphp)php$lengthphp;
+php php php php php php php php ifphp php(php$lengthphp <php=php php0php)php php{
+php php php php php php php php php php php php php$lengthphp php=php php1php;
+php php php php php php php php php}
+php php php php php php php php arrayphp_splicephp(php$thisphp-php>php_dnphp,php php$indexphp,php php$lengthphp,php nullphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Append a DN part
-     *
-     * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
-     */
-    public function append(array $value)
-    {
-        self::_assertRdn($value);
-        $this->_dn[] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Appendphp aphp DNphp part
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dnphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp appendphp(arrayphp php$valuephp)
+php php php php php{
+php php php php php php php php selfphp:php:php_assertRdnphp(php$valuephp)php;
+php php php php php php php php php$thisphp-php>php_dnphp[php]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Prepend a DN part
-     *
-     * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
-     */
-    public function prepend(array $value)
-    {
-        self::_assertRdn($value);
-        array_unshift($this->_dn, $value);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Prependphp aphp DNphp part
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dnphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp prependphp(arrayphp php$valuephp)
+php php php php php{
+php php php php php php php php selfphp:php:php_assertRdnphp(php$valuephp)php;
+php php php php php php php php arrayphp_unshiftphp(php$thisphp-php>php_dnphp,php php$valuephp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Insert a DN part
-     *
-     * @param  int   $index
-     * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
-     * @throws Zend_Ldap_Exception if index is illegal
-     */
-    public function insert($index, array $value)
-    {
-        $this->_assertIndex($index);
-        self::_assertRdn($value);
-        $first = array_slice($this->_dn, 0, $index + 1);
-        $second = array_slice($this->_dn, $index + 1);
-        $this->_dn = array_merge($first, array($value), $second);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Insertphp aphp DNphp part
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php php php$index
+php php php php php php*php php@paramphp php arrayphp php$value
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Dnphp Providesphp aphp fluentphp interface
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exceptionphp ifphp indexphp isphp illegal
+php php php php php php*php/
+php php php php publicphp functionphp insertphp(php$indexphp,php arrayphp php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_assertIndexphp(php$indexphp)php;
+php php php php php php php php selfphp:php:php_assertRdnphp(php$valuephp)php;
+php php php php php php php php php$firstphp php=php arrayphp_slicephp(php$thisphp-php>php_dnphp,php php0php,php php$indexphp php+php php1php)php;
+php php php php php php php php php$secondphp php=php arrayphp_slicephp(php$thisphp-php>php_dnphp,php php$indexphp php+php php1php)php;
+php php php php php php php php php$thisphp-php>php_dnphp php=php arrayphp_mergephp(php$firstphp,php arrayphp(php$valuephp)php,php php$secondphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Assert index is correct and usable
-     *
-     * @param  mixed $index
-     * @return boolean
-     * @throws Zend_Ldap_Exception
-     */
-    protected function _assertIndex($index)
-    {
-        if (!is_int($index)) {
-            /**
-             * Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'Parameter $index must be an integer');
-        }
-        if ($index < 0 || $index >= count($this->_dn)) {
-            /**
-             * Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'Parameter $index out of bounds');
-        }
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Assertphp indexphp isphp correctphp andphp usable
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$index
+php php php php php php*php php@returnphp boolean
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_assertIndexphp(php$indexphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_intphp(php$indexphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Parameterphp php$indexphp mustphp bephp anphp integerphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$indexphp <php php0php php|php|php php$indexphp php>php=php countphp(php$thisphp-php>php_dnphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'Parameterphp php$indexphp outphp ofphp boundsphp'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Assert if value is in a correct RDN format
-     *
-     * @param  array $value
-     * @return boolean
-     * @throws Zend_Ldap_Exception
-     */
-    protected static function _assertRdn(array $value)
-    {
-        if (count($value)<1) {
-            /**
-             * Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'RDN Array is malformed: it must have at least one item');
-        }
+php php php php php/php*php*
+php php php php php php*php Assertphp ifphp valuephp isphp inphp aphp correctphp RDNphp format
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$value
+php php php php php php*php php@returnphp boolean
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_assertRdnphp(arrayphp php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$valuephp)<php1php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'RDNphp Arrayphp isphp malformedphp:php itphp mustphp havephp atphp leastphp onephp itemphp'php)php;
+php php php php php php php php php}
 
-        foreach (array_keys($value) as $key) {
-            if (!is_string($key)) {
-                /**
-                 * Zend_Ldap_Exception
-                 */
-                require_once 'Zend/Ldap/Exception.php';
-                throw new Zend_Ldap_Exception(null, 'RDN Array is malformed: it must use string keys');
-            }
-        }
-    }
+php php php php php php php php foreachphp php(arrayphp_keysphp(php$valuephp)php asphp php$keyphp)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'RDNphp Arrayphp isphp malformedphp:php itphp mustphp usephp stringphp keysphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Sets the case fold
-     *
-     * @param string|null $caseFold
-     */
-    public function setCaseFold($caseFold)
-    {
-        $this->_caseFold = self::_sanitizeCaseFold($caseFold, self::$_defaultCaseFold);
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp casephp fold
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|nullphp php$caseFold
+php php php php php php*php/
+php php php php publicphp functionphp setCaseFoldphp(php$caseFoldphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_caseFoldphp php=php selfphp:php:php_sanitizeCaseFoldphp(php$caseFoldphp,php selfphp:php:php$php_defaultCaseFoldphp)php;
+php php php php php}
 
-    /**
-     * Return DN as a string
-     *
-     * @param  string $caseFold
-     * @return string
-     * @throws Zend_Ldap_Exception
-     */
-    public function toString($caseFold = null)
-    {
-        $caseFold = self::_sanitizeCaseFold($caseFold, $this->_caseFold);
-        return self::implodeDn($this->_dn, $caseFold);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp DNphp asphp aphp string
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$caseFoldphp php=php selfphp:php:php_sanitizeCaseFoldphp(php$caseFoldphp,php php$thisphp-php>php_caseFoldphp)php;
+php php php php php php php php returnphp selfphp:php:implodeDnphp(php$thisphp-php>php_dnphp,php php$caseFoldphp)php;
+php php php php php}
 
-    /**
-     * Return DN as an array
-     *
-     * @param  string $caseFold
-     * @return array
-     */
-    public function toArray($caseFold = null)
-    {
-        $caseFold = self::_sanitizeCaseFold($caseFold, $this->_caseFold);
+php php php php php/php*php*
+php php php php php php*php Returnphp DNphp asphp anphp array
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp toArrayphp(php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$caseFoldphp php=php selfphp:php:php_sanitizeCaseFoldphp(php$caseFoldphp,php php$thisphp-php>php_caseFoldphp)php;
 
-        if ($caseFold === self::ATTR_CASEFOLD_NONE) {
-            return $this->_dn;
-        } else {
-            return self::_caseFoldDn($this->_dn, $caseFold);
-        }
-    }
+php php php php php php php php ifphp php(php$caseFoldphp php=php=php=php selfphp:php:ATTRphp_CASEFOLDphp_NONEphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dnphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp selfphp:php:php_caseFoldDnphp(php$thisphp-php>php_dnphp,php php$caseFoldphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Do a case folding on a RDN
-     *
-     * @param  array  $part
-     * @param  string $caseFold
-     * @return array
-     */
-    protected static function _caseFoldRdn(array $part, $caseFold)
-    {
-        switch ($caseFold) {
-            case self::ATTR_CASEFOLD_UPPER:
-                return array_change_key_case($part, CASE_UPPER);
-            case self::ATTR_CASEFOLD_LOWER:
-                return array_change_key_case($part, CASE_LOWER);
-            case self::ATTR_CASEFOLD_NONE:
-            default:
-                return $part;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Dophp aphp casephp foldingphp onphp aphp RDN
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$part
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_caseFoldRdnphp(arrayphp php$partphp,php php$caseFoldphp)
+php php php php php{
+php php php php php php php php switchphp php(php$caseFoldphp)php php{
+php php php php php php php php php php php php casephp selfphp:php:ATTRphp_CASEFOLDphp_UPPERphp:
+php php php php php php php php php php php php php php php php returnphp arrayphp_changephp_keyphp_casephp(php$partphp,php CASEphp_UPPERphp)php;
+php php php php php php php php php php php php casephp selfphp:php:ATTRphp_CASEFOLDphp_LOWERphp:
+php php php php php php php php php php php php php php php php returnphp arrayphp_changephp_keyphp_casephp(php$partphp,php CASEphp_LOWERphp)php;
+php php php php php php php php php php php php casephp selfphp:php:ATTRphp_CASEFOLDphp_NONEphp:
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp php$partphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Do a case folding on a DN ort part of it
-     *
-     * @param  array  $dn
-     * @param  string $caseFold
-     * @return array
-     */
-    protected static function _caseFoldDn(array $dn, $caseFold)
-    {
-        $return = array();
-        foreach ($dn as $part) {
-            $return[] = self::_caseFoldRdn($part, $caseFold);
-        }
-        return $return;
-    }
+php php php php php/php*php*
+php php php php php php*php Dophp aphp casephp foldingphp onphp aphp DNphp ortphp partphp ofphp it
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$dn
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_caseFoldDnphp(arrayphp php$dnphp,php php$caseFoldphp)
+php php php php php{
+php php php php php php php php php$returnphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$dnphp asphp php$partphp)php php{
+php php php php php php php php php php php php php$returnphp[php]php php=php selfphp:php:php_caseFoldRdnphp(php$partphp,php php$caseFoldphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Cast to string representation {@see toString()}
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->toString();
-    }
+php php php php php/php*php*
+php php php php php php*php Castphp tophp stringphp representationphp php{php@seephp toStringphp(php)php}
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>toStringphp(php)php;
+php php php php php}
 
-    /**
-     * Required by the ArrayAccess implementation
-     *
-     * @param  int $offset
-     * @return boolean
-     */
-    public function offsetExists($offset)
-    {
-        $offset = (int)$offset;
-        if ($offset < 0 || $offset >= count($this->_dn)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$offset
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp offsetExistsphp(php$offsetphp)
+php php php php php{
+php php php php php php php php php$offsetphp php=php php(intphp)php$offsetphp;
+php php php php php php php php ifphp php(php$offsetphp <php php0php php|php|php php$offsetphp php>php=php countphp(php$thisphp-php>php_dnphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Proxy to {@see get()}
-     * Required by the ArrayAccess implementation
-     *
-     * @param  int $offset
-     * @return array
-     */
-     public function offsetGet($offset)
-     {
-         return $this->get($offset, 1, null);
-     }
+php php php php php/php*php*
+php php php php php php*php Proxyphp tophp php{php@seephp getphp(php)php}
+php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$offset
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php php publicphp functionphp offsetGetphp(php$offsetphp)
+php php php php php php{
+php php php php php php php php php returnphp php$thisphp-php>getphp(php$offsetphp,php php1php,php nullphp)php;
+php php php php php php}
 
-     /**
-      * Proxy to {@see set()}
-      * Required by the ArrayAccess implementation
-      *
-      * @param int   $offset
-      * @param array $value
-      */
-     public function offsetSet($offset, $value)
-     {
-         $this->set($offset, $value);
-     }
+php php php php php php/php*php*
+php php php php php php php*php Proxyphp tophp php{php@seephp setphp(php)php}
+php php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
+php php php php php php php*
+php php php php php php php*php php@paramphp intphp php php php$offset
+php php php php php php php*php php@paramphp arrayphp php$value
+php php php php php php php*php/
+php php php php php publicphp functionphp offsetSetphp(php$offsetphp,php php$valuephp)
+php php php php php php{
+php php php php php php php php php php$thisphp-php>setphp(php$offsetphp,php php$valuephp)php;
+php php php php php php}
 
-     /**
-      * Proxy to {@see remove()}
-      * Required by the ArrayAccess implementation
-      *
-      * @param int $offset
-      */
-     public function offsetUnset($offset)
-     {
-         $this->remove($offset, 1);
-     }
+php php php php php php/php*php*
+php php php php php php php*php Proxyphp tophp php{php@seephp removephp(php)php}
+php php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
+php php php php php php php*
+php php php php php php php*php php@paramphp intphp php$offset
+php php php php php php php*php/
+php php php php php publicphp functionphp offsetUnsetphp(php$offsetphp)
+php php php php php php{
+php php php php php php php php php php$thisphp-php>removephp(php$offsetphp,php php1php)php;
+php php php php php php}
 
-    /**
-     * Sets the default case fold
-     *
-     * @param string $caseFold
-     */
-    public static function setDefaultCaseFold($caseFold)
-    {
-        self::$_defaultCaseFold = self::_sanitizeCaseFold($caseFold, self::ATTR_CASEFOLD_NONE);
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp defaultphp casephp fold
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$caseFold
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultCaseFoldphp(php$caseFoldphp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_defaultCaseFoldphp php=php selfphp:php:php_sanitizeCaseFoldphp(php$caseFoldphp,php selfphp:php:ATTRphp_CASEFOLDphp_NONEphp)php;
+php php php php php}
 
-    /**
-     * Sanitizes the case fold
-     *
-     * @param  string $caseFold
-     * @return string
-     */
-    protected static function _sanitizeCaseFold($caseFold, $default)
-    {
-        switch ($caseFold) {
-            case self::ATTR_CASEFOLD_NONE:
-            case self::ATTR_CASEFOLD_UPPER:
-            case self::ATTR_CASEFOLD_LOWER:
-                return $caseFold;
-                break;
-            default:
-                return $default;
-                break;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Sanitizesphp thephp casephp fold
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_sanitizeCaseFoldphp(php$caseFoldphp,php php$defaultphp)
+php php php php php{
+php php php php php php php php switchphp php(php$caseFoldphp)php php{
+php php php php php php php php php php php php casephp selfphp:php:ATTRphp_CASEFOLDphp_NONEphp:
+php php php php php php php php php php php php casephp selfphp:php:ATTRphp_CASEFOLDphp_UPPERphp:
+php php php php php php php php php php php php casephp selfphp:php:ATTRphp_CASEFOLDphp_LOWERphp:
+php php php php php php php php php php php php php php php php returnphp php$caseFoldphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp php$defaultphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Escapes a DN value according to RFC 2253
-     *
-     * Escapes the given VALUES according to RFC 2253 so that they can be safely used in LDAP DNs.
-     * The characters ",", "+", """, "\", "<", ">", ";", "#", " = " with a special meaning in RFC 2252
-     * are preceeded by ba backslash. Control characters with an ASCII code < 32 are represented as \hexpair.
-     * Finally all leading and trailing spaces are converted to sequences of \20.
-     * @see Net_LDAP2_Util::escape_dn_value() from Benedikt Hallinger <beni@php.net>
-     * @link http://pear.php.net/package/Net_LDAP2
-     * @author Benedikt Hallinger <beni@php.net>
-     *
-     * @param  string|array $values An array containing the DN values that should be escaped
-     * @return array The array $values, but escaped
-     */
-    public static function escapeValue($values = array())
-    {
-        /**
-         * @see Zend_Ldap_Converter
-         */
-        require_once 'Zend/Ldap/Converter.php';
+php php php php php/php*php*
+php php php php php php*php Escapesphp aphp DNphp valuephp accordingphp tophp RFCphp php2php2php5php3
+php php php php php php*
+php php php php php php*php Escapesphp thephp givenphp VALUESphp accordingphp tophp RFCphp php2php2php5php3php sophp thatphp theyphp canphp bephp safelyphp usedphp inphp LDAPphp DNsphp.
+php php php php php php*php Thephp charactersphp php"php,php"php,php php"php+php"php,php php"php"php"php,php php"php\php"php,php php"<php"php,php php"php>php"php,php php"php;php"php,php php"php#php"php,php php"php php=php php"php withphp aphp specialphp meaningphp inphp RFCphp php2php2php5php2
+php php php php php php*php arephp preceededphp byphp baphp backslashphp.php Controlphp charactersphp withphp anphp ASCIIphp codephp <php php3php2php arephp representedphp asphp php\hexpairphp.
+php php php php php php*php Finallyphp allphp leadingphp andphp trailingphp spacesphp arephp convertedphp tophp sequencesphp ofphp php\php2php0php.
+php php php php php php*php php@seephp Netphp_LDAPphp2php_Utilphp:php:escapephp_dnphp_valuephp(php)php fromphp Benediktphp Hallingerphp php<beniphp@phpphp.netphp>
+php php php php php php*php php@linkphp httpphp:php/php/pearphp.phpphp.netphp/packagephp/Netphp_LDAPphp2
+php php php php php php*php php@authorphp Benediktphp Hallingerphp php<beniphp@phpphp.netphp>
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$valuesphp Anphp arrayphp containingphp thephp DNphp valuesphp thatphp shouldphp bephp escaped
+php php php php php php*php php@returnphp arrayphp Thephp arrayphp php$valuesphp,php butphp escaped
+php php php php php php*php/
+php php php php publicphp staticphp functionphp escapeValuephp(php$valuesphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Converter
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Converterphp.phpphp'php;
 
-        if (!is_array($values)) $values = array($values);
-        foreach ($values as $key => $val) {
-            // Escaping of filter meta characters
-            $val = str_replace(array('\\', ',', '+', '"', '<', '>', ';', '#', '=', ),
-                array('\\\\', '\,', '\+', '\"', '\<', '\>', '\;', '\#', '\='), $val);
-            $val = Zend_Ldap_Converter::ascToHex32($val);
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuesphp)php)php php$valuesphp php=php arrayphp(php$valuesphp)php;
+php php php php php php php php foreachphp php(php$valuesphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php/php/php Escapingphp ofphp filterphp metaphp characters
+php php php php php php php php php php php php php$valphp php=php strphp_replacephp(arrayphp(php'php\php\php'php,php php'php,php'php,php php'php+php'php,php php'php"php'php,php php'<php'php,php php'php>php'php,php php'php;php'php,php php'php#php'php,php php'php=php'php,php php)php,
+php php php php php php php php php php php php php php php php arrayphp(php'php\php\php\php\php'php,php php'php\php,php'php,php php'php\php+php'php,php php'php\php"php'php,php php'php\<php'php,php php'php\php>php'php,php php'php\php;php'php,php php'php\php#php'php,php php'php\php=php'php)php,php php$valphp)php;
+php php php php php php php php php php php php php$valphp php=php Zendphp_Ldapphp_Converterphp:php:ascToHexphp3php2php(php$valphp)php;
 
-            // Convert all leading and trailing spaces to sequences of \20.
-            if (preg_match('/^(\s*)(.+?)(\s*)$/', $val, $matches)) {
-                $val = $matches[2];
-                for ($i = 0; $i<strlen($matches[1]); $i++) {
-                    $val = '\20' . $val;
-                }
-                for ($i = 0; $i<strlen($matches[3]); $i++) {
-                    $val = $val . '\20';
-                }
-            }
-            if (null === $val) $val = '\0';  // apply escaped "null" if string is empty
-            $values[$key] = $val;
-        }
-        return (count($values) == 1) ? $values[0] : $values;
-    }
+php php php php php php php php php php php php php/php/php Convertphp allphp leadingphp andphp trailingphp spacesphp tophp sequencesphp ofphp php\php2php0php.
+php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^php(php\sphp*php)php(php.php+php?php)php(php\sphp*php)php$php/php'php,php php$valphp,php php$matchesphp)php)php php{
+php php php php php php php php php php php php php php php php php$valphp php=php php$matchesphp[php2php]php;
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp<strlenphp(php$matchesphp[php1php]php)php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valphp php=php php'php\php2php0php'php php.php php$valphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp<strlenphp(php$matchesphp[php3php]php)php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$valphp php=php php$valphp php.php php'php\php2php0php'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$valphp)php php$valphp php=php php'php\php0php'php;php php php/php/php applyphp escapedphp php"nullphp"php ifphp stringphp isphp empty
+php php php php php php php php php php php php php$valuesphp[php$keyphp]php php=php php$valphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php(countphp(php$valuesphp)php php=php=php php1php)php php?php php$valuesphp[php0php]php php:php php$valuesphp;
+php php php php php}
 
-    /**
-     * Undoes the conversion done by {@link escapeValue()}.
-     *
-     * Any escape sequence starting with a baskslash - hexpair or special character -
-     * will be transformed back to the corresponding character.
-     * @see Net_LDAP2_Util::escape_dn_value() from Benedikt Hallinger <beni@php.net>
-     * @link http://pear.php.net/package/Net_LDAP2
-     * @author Benedikt Hallinger <beni@php.net>
-     *
-     * @param  string|array $values Array of DN Values
-     * @return array Same as $values, but unescaped
-     */
-    public static function unescapeValue($values = array())
-    {
-        /**
-         * @see Zend_Ldap_Converter
-         */
-        require_once 'Zend/Ldap/Converter.php';
+php php php php php/php*php*
+php php php php php php*php Undoesphp thephp conversionphp donephp byphp php{php@linkphp escapeValuephp(php)php}php.
+php php php php php php*
+php php php php php php*php Anyphp escapephp sequencephp startingphp withphp aphp baskslashphp php-php hexpairphp orphp specialphp characterphp php-
+php php php php php php*php willphp bephp transformedphp backphp tophp thephp correspondingphp characterphp.
+php php php php php php*php php@seephp Netphp_LDAPphp2php_Utilphp:php:escapephp_dnphp_valuephp(php)php fromphp Benediktphp Hallingerphp php<beniphp@phpphp.netphp>
+php php php php php php*php php@linkphp httpphp:php/php/pearphp.phpphp.netphp/packagephp/Netphp_LDAPphp2
+php php php php php php*php php@authorphp Benediktphp Hallingerphp php<beniphp@phpphp.netphp>
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$valuesphp Arrayphp ofphp DNphp Values
+php php php php php php*php php@returnphp arrayphp Samephp asphp php$valuesphp,php butphp unescaped
+php php php php php php*php/
+php php php php publicphp staticphp functionphp unescapeValuephp(php$valuesphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Converter
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Converterphp.phpphp'php;
 
-        if (!is_array($values)) $values = array($values);
-        foreach ($values as $key => $val) {
-            // strip slashes from special chars
-            $val = str_replace(array('\\\\', '\,', '\+', '\"', '\<', '\>', '\;', '\#', '\='),
-                array('\\', ',', '+', '"', '<', '>', ';', '#', '=', ), $val);
-            $values[$key] = Zend_Ldap_Converter::hex32ToAsc($val);
-        }
-        return (count($values) == 1) ? $values[0] : $values;
-    }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuesphp)php)php php$valuesphp php=php arrayphp(php$valuesphp)php;
+php php php php php php php php foreachphp php(php$valuesphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php php/php/php stripphp slashesphp fromphp specialphp chars
+php php php php php php php php php php php php php$valphp php=php strphp_replacephp(arrayphp(php'php\php\php\php\php'php,php php'php\php,php'php,php php'php\php+php'php,php php'php\php"php'php,php php'php\<php'php,php php'php\php>php'php,php php'php\php;php'php,php php'php\php#php'php,php php'php\php=php'php)php,
+php php php php php php php php php php php php php php php php arrayphp(php'php\php\php'php,php php'php,php'php,php php'php+php'php,php php'php"php'php,php php'<php'php,php php'php>php'php,php php'php;php'php,php php'php#php'php,php php'php=php'php,php php)php,php php$valphp)php;
+php php php php php php php php php php php php php$valuesphp[php$keyphp]php php=php Zendphp_Ldapphp_Converterphp:php:hexphp3php2ToAscphp(php$valphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php(countphp(php$valuesphp)php php=php=php php1php)php php?php php$valuesphp[php0php]php php:php php$valuesphp;
+php php php php php}
 
-    /**
-     * Creates an array containing all parts of the given DN.
-     *
-     * Array will be of type
-     * array(
-     *      array("cn" => "name1", "uid" => "user"),
-     *      array("cn" => "name2"),
-     *      array("dc" => "example"),
-     *      array("dc" => "org")
-     * )
-     * for a DN of cn=name1+uid=user,cn=name2,dc=example,dc=org.
-     *
-     * @param  string $dn
-     * @param  array  $keys     An optional array to receive DN keys (e.g. CN, OU, DC, ...)
-     * @param  array  $vals     An optional array to receive DN values
-     * @param  string $caseFold
-     * @return array
-     * @throws Zend_Ldap_Exception
-     */
-    public static function explodeDn($dn, array &$keys = null, array &$vals = null,
-        $caseFold = self::ATTR_CASEFOLD_NONE)
-    {
-        $k = array();
-        $v = array();
-        if (!self::checkDn($dn, $k, $v, $caseFold)) {
-            /**
-             * Zend_Ldap_Exception
-             */
-            require_once 'Zend/Ldap/Exception.php';
-            throw new Zend_Ldap_Exception(null, 'DN is malformed');
-        }
-        $ret = array();
-        for ($i = 0; $i < count($k); $i++) {
-            if (is_array($k[$i]) && is_array($v[$i]) && (count($k[$i]) === count($v[$i]))) {
-                $multi = array();
-                for ($j = 0; $j < count($k[$i]); $j++) {
-                    $key=$k[$i][$j];
-                    $val=$v[$i][$j];
-                    $multi[$key] = $val;
-                }
-                $ret[] = $multi;
-            } else if (is_string($k[$i]) && is_string($v[$i])) {
-                $ret[] = array($k[$i] => $v[$i]);
-            }
-        }
-        if ($keys !== null) $keys = $k;
-        if ($vals !== null) $vals = $v;
-        return $ret;
-    }
+php php php php php/php*php*
+php php php php php php*php Createsphp anphp arrayphp containingphp allphp partsphp ofphp thephp givenphp DNphp.
+php php php php php php*
+php php php php php php*php Arrayphp willphp bephp ofphp type
+php php php php php php*php arrayphp(
+php php php php php php*php php php php php php arrayphp(php"cnphp"php php=php>php php"namephp1php"php,php php"uidphp"php php=php>php php"userphp"php)php,
+php php php php php php*php php php php php php arrayphp(php"cnphp"php php=php>php php"namephp2php"php)php,
+php php php php php php*php php php php php php arrayphp(php"dcphp"php php=php>php php"examplephp"php)php,
+php php php php php php*php php php php php php arrayphp(php"dcphp"php php=php>php php"orgphp"php)
+php php php php php php*php php)
+php php php php php php*php forphp aphp DNphp ofphp cnphp=namephp1php+uidphp=userphp,cnphp=namephp2php,dcphp=examplephp,dcphp=orgphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$dn
+php php php php php php*php php@paramphp php arrayphp php php$keysphp php php php php Anphp optionalphp arrayphp tophp receivephp DNphp keysphp php(ephp.gphp.php CNphp,php OUphp,php DCphp,php php.php.php.php)
+php php php php php php*php php@paramphp php arrayphp php php$valsphp php php php php Anphp optionalphp arrayphp tophp receivephp DNphp values
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp array
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp explodeDnphp(php$dnphp,php arrayphp php&php$keysphp php=php nullphp,php arrayphp php&php$valsphp php=php nullphp,
+php php php php php php php php php$caseFoldphp php=php selfphp:php:ATTRphp_CASEFOLDphp_NONEphp)
+php php php php php{
+php php php php php php php php php$kphp php=php arrayphp(php)php;
+php php php php php php php php php$vphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php!selfphp:php:checkDnphp(php$dnphp,php php$kphp,php php$vphp,php php$caseFoldphp)php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Zendphp_Ldapphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(nullphp,php php'DNphp isphp malformedphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$retphp php=php arrayphp(php)php;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$kphp)php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$kphp[php$iphp]php)php php&php&php isphp_arrayphp(php$vphp[php$iphp]php)php php&php&php php(countphp(php$kphp[php$iphp]php)php php=php=php=php countphp(php$vphp[php$iphp]php)php)php)php php{
+php php php php php php php php php php php php php php php php php$multiphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php forphp php(php$jphp php=php php0php;php php$jphp <php countphp(php$kphp[php$iphp]php)php;php php$jphp+php+php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp=php$kphp[php$iphp]php[php$jphp]php;
+php php php php php php php php php php php php php php php php php php php php php$valphp=php$vphp[php$iphp]php[php$jphp]php;
+php php php php php php php php php php php php php php php php php php php php php$multiphp[php$keyphp]php php=php php$valphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$retphp[php]php php=php php$multiphp;
+php php php php php php php php php php php php php}php elsephp ifphp php(isphp_stringphp(php$kphp[php$iphp]php)php php&php&php isphp_stringphp(php$vphp[php$iphp]php)php)php php{
+php php php php php php php php php php php php php php php php php$retphp[php]php php=php arrayphp(php$kphp[php$iphp]php php=php>php php$vphp[php$iphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$keysphp php!php=php=php nullphp)php php$keysphp php=php php$kphp;
+php php php php php php php php ifphp php(php$valsphp php!php=php=php nullphp)php php$valsphp php=php php$vphp;
+php php php php php php php php returnphp php$retphp;
+php php php php php}
 
-    /**
-     * @param  string $dn       The DN to parse
-     * @param  array  $keys     An optional array to receive DN keys (e.g. CN, OU, DC, ...)
-     * @param  array  $vals     An optional array to receive DN values
-     * @param  string $caseFold
-     * @return boolean True if the DN was successfully parsed or false if the string is not a valid DN.
-     */
-    public static function checkDn($dn, array &$keys = null, array &$vals = null,
-        $caseFold = self::ATTR_CASEFOLD_NONE)
-    {
-        /* This is a classic state machine parser. Each iteration of the
-         * loop processes one character. State 1 collects the key. When equals ( = )
-         * is encountered the state changes to 2 where the value is collected
-         * until a comma (,) or semicolon (;) is encountered after which we switch back
-         * to state 1. If a backslash (\) is encountered, state 3 is used to collect the
-         * following character without engaging the logic of other states.
-         */
-        $key = null;
-        $value = null;
-        $slen = strlen($dn);
-        $state = 1;
-        $ko = $vo = 0;
-        $multi = false;
-        $ka = array();
-        $va = array();
-        for ($di = 0; $di <= $slen; $di++) {
-            $ch = ($di == $slen) ? 0 : $dn[$di];
-            switch ($state) {
-                case 1: // collect key
-                    if ($ch === '=') {
-                        $key = trim(substr($dn, $ko, $di - $ko));
-                        if ($caseFold == self::ATTR_CASEFOLD_LOWER) $key = strtolower($key);
-                        else if ($caseFold == self::ATTR_CASEFOLD_UPPER) $key = strtoupper($key);
-                        if (is_array($multi)) {
-                            $keyId = strtolower($key);
-                            if (in_array($keyId, $multi)) {
-                                return false;
-                            }
-                            $ka[count($ka)-1][] = $key;
-                            $multi[] = $keyId;
-                        } else {
-                            $ka[] = $key;
-                        }
-                        $state = 2;
-                        $vo = $di + 1;
-                    } else if ($ch === ',' || $ch === ';' || $ch === '+') {
-                        return false;
-                    }
-                    break;
-                case 2: // collect value
-                    if ($ch === '\\') {
-                        $state = 3;
-                    } else if ($ch === ',' || $ch === ';' || $ch === 0 || $ch === '+') {
-                        $value = self::unescapeValue(trim(substr($dn, $vo, $di - $vo)));
-                        if (is_array($multi)) {
-                            $va[count($va)-1][] = $value;
-                        } else {
-                            $va[] = $value;
-                        }
-                        $state = 1;
-                        $ko = $di + 1;
-                        if ($ch === '+' && $multi === false) {
-                            $lastKey = array_pop($ka);
-                            $lastVal = array_pop($va);
-                            $ka[] = array($lastKey);
-                            $va[] = array($lastVal);
-                            $multi = array(strtolower($lastKey));
-                        } else if ($ch === ','|| $ch === ';' || $ch === 0) {
-                            $multi = false;
-                        }
-                    } else if ($ch === '=') {
-                        return false;
-                    }
-                    break;
-                case 3: // escaped
-                    $state = 2;
-                    break;
-            }
-        }
+php php php php php/php*php*
+php php php php php php*php php@paramphp php stringphp php$dnphp php php php php php php Thephp DNphp tophp parse
+php php php php php php*php php@paramphp php arrayphp php php$keysphp php php php php Anphp optionalphp arrayphp tophp receivephp DNphp keysphp php(ephp.gphp.php CNphp,php OUphp,php DCphp,php php.php.php.php)
+php php php php php php*php php@paramphp php arrayphp php php$valsphp php php php php Anphp optionalphp arrayphp tophp receivephp DNphp values
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp booleanphp Truephp ifphp thephp DNphp wasphp successfullyphp parsedphp orphp falsephp ifphp thephp stringphp isphp notphp aphp validphp DNphp.
+php php php php php php*php/
+php php php php publicphp staticphp functionphp checkDnphp(php$dnphp,php arrayphp php&php$keysphp php=php nullphp,php arrayphp php&php$valsphp php=php nullphp,
+php php php php php php php php php$caseFoldphp php=php selfphp:php:ATTRphp_CASEFOLDphp_NONEphp)
+php php php php php{
+php php php php php php php php php/php*php Thisphp isphp aphp classicphp statephp machinephp parserphp.php Eachphp iterationphp ofphp the
+php php php php php php php php php php*php loopphp processesphp onephp characterphp.php Statephp php1php collectsphp thephp keyphp.php Whenphp equalsphp php(php php=php php)
+php php php php php php php php php php*php isphp encounteredphp thephp statephp changesphp tophp php2php wherephp thephp valuephp isphp collected
+php php php php php php php php php php*php untilphp aphp commaphp php(php,php)php orphp semicolonphp php(php;php)php isphp encounteredphp afterphp whichphp wephp switchphp back
+php php php php php php php php php php*php tophp statephp php1php.php Ifphp aphp backslashphp php(php\php)php isphp encounteredphp,php statephp php3php isphp usedphp tophp collectphp the
+php php php php php php php php php php*php followingphp characterphp withoutphp engagingphp thephp logicphp ofphp otherphp statesphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$keyphp php=php nullphp;
+php php php php php php php php php$valuephp php=php nullphp;
+php php php php php php php php php$slenphp php=php strlenphp(php$dnphp)php;
+php php php php php php php php php$statephp php=php php1php;
+php php php php php php php php php$kophp php=php php$vophp php=php php0php;
+php php php php php php php php php$multiphp php=php falsephp;
+php php php php php php php php php$kaphp php=php arrayphp(php)php;
+php php php php php php php php php$vaphp php=php arrayphp(php)php;
+php php php php php php php php forphp php(php$diphp php=php php0php;php php$diphp <php=php php$slenphp;php php$diphp+php+php)php php{
+php php php php php php php php php php php php php$chphp php=php php(php$diphp php=php=php php$slenphp)php php?php php0php php:php php$dnphp[php$diphp]php;
+php php php php php php php php php php php php switchphp php(php$statephp)php php{
+php php php php php php php php php php php php php php php php casephp php1php:php php/php/php collectphp key
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$chphp php=php=php=php php'php=php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$keyphp php=php trimphp(substrphp(php$dnphp,php php$kophp,php php$diphp php-php php$kophp)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$caseFoldphp php=php=php selfphp:php:ATTRphp_CASEFOLDphp_LOWERphp)php php$keyphp php=php strtolowerphp(php$keyphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php elsephp ifphp php(php$caseFoldphp php=php=php selfphp:php:ATTRphp_CASEFOLDphp_UPPERphp)php php$keyphp php=php strtoupperphp(php$keyphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$multiphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$keyIdphp php=php strtolowerphp(php$keyphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$keyIdphp,php php$multiphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$kaphp[countphp(php$kaphp)php-php1php]php[php]php php=php php$keyphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$multiphp[php]php php=php php$keyIdphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$kaphp[php]php php=php php$keyphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$statephp php=php php2php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$vophp php=php php$diphp php+php php1php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$chphp php=php=php=php php'php,php'php php|php|php php$chphp php=php=php=php php'php;php'php php|php|php php$chphp php=php=php=php php'php+php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php2php:php php/php/php collectphp value
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$chphp php=php=php=php php'php\php\php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$statephp php=php php3php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$chphp php=php=php=php php'php,php'php php|php|php php$chphp php=php=php=php php'php;php'php php|php|php php$chphp php=php=php=php php0php php|php|php php$chphp php=php=php=php php'php+php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php selfphp:php:unescapeValuephp(trimphp(substrphp(php$dnphp,php php$vophp,php php$diphp php-php php$vophp)php)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$multiphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$vaphp[countphp(php$vaphp)php-php1php]php[php]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$vaphp[php]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$statephp php=php php1php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$kophp php=php php$diphp php+php php1php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$chphp php=php=php=php php'php+php'php php&php&php php$multiphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastKeyphp php=php arrayphp_popphp(php$kaphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$lastValphp php=php arrayphp_popphp(php$vaphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$kaphp[php]php php=php arrayphp(php$lastKeyphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$vaphp[php]php php=php arrayphp(php$lastValphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$multiphp php=php arrayphp(strtolowerphp(php$lastKeyphp)php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$chphp php=php=php=php php'php,php'php|php|php php$chphp php=php=php=php php'php;php'php php|php|php php$chphp php=php=php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$multiphp php=php falsephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$chphp php=php=php=php php'php=php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php3php:php php/php/php escaped
+php php php php php php php php php php php php php php php php php php php php php$statephp php=php php2php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if ($keys !== null) {
-            $keys = $ka;
-        }
-        if ($vals !== null) {
-            $vals = $va;
-        }
+php php php php php php php php ifphp php(php$keysphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$keysphp php=php php$kaphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$valsphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$valsphp php=php php$vaphp;
+php php php php php php php php php}
 
-        return ($state === 1 && $ko > 0);
-    }
+php php php php php php php php returnphp php(php$statephp php=php=php=php php1php php&php&php php$kophp php>php php0php)php;
+php php php php php}
 
-    /**
-     * Returns a DN part in the form $attribute = $value
-     *
-     * This method supports the creation of multi-valued RDNs
-     * $part must contain an even number of elemets.
-     *
-     * @param  array  $attribute
-     * @param  string $caseFold
-     * @return string
-     * @throws Zend_Ldap_Exception
-     */
-    public static function implodeRdn(array $part, $caseFold = null)
-    {
-        self::_assertRdn($part);
-        $part = self::_caseFoldRdn($part, $caseFold);
-        $rdnParts = array();
-        foreach ($part as $key => $value) {
-            $value = self::escapeValue($value);
-            $keyId = strtolower($key);
-            $rdnParts[$keyId] =  implode('=', array($key, $value));
-        }
-        ksort($rdnParts, SORT_STRING);
-        return implode('+', $rdnParts);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp DNphp partphp inphp thephp formphp php$attributephp php=php php$value
+php php php php php php*
+php php php php php php*php Thisphp methodphp supportsphp thephp creationphp ofphp multiphp-valuedphp RDNs
+php php php php php php*php php$partphp mustphp containphp anphp evenphp numberphp ofphp elemetsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$attribute
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp implodeRdnphp(arrayphp php$partphp,php php$caseFoldphp php=php nullphp)
+php php php php php{
+php php php php php php php php selfphp:php:php_assertRdnphp(php$partphp)php;
+php php php php php php php php php$partphp php=php selfphp:php:php_caseFoldRdnphp(php$partphp,php php$caseFoldphp)php;
+php php php php php php php php php$rdnPartsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$partphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$valuephp php=php selfphp:php:escapeValuephp(php$valuephp)php;
+php php php php php php php php php php php php php$keyIdphp php=php strtolowerphp(php$keyphp)php;
+php php php php php php php php php php php php php$rdnPartsphp[php$keyIdphp]php php=php php implodephp(php'php=php'php,php arrayphp(php$keyphp,php php$valuephp)php)php;
+php php php php php php php php php}
+php php php php php php php php ksortphp(php$rdnPartsphp,php SORTphp_STRINGphp)php;
+php php php php php php php php returnphp implodephp(php'php+php'php,php php$rdnPartsphp)php;
+php php php php php}
 
-    /**
-     * Implodes an array in the form delivered by {@link explodeDn()}
-     * to a DN string.
-     *
-     * $dnArray must be of type
-     * array(
-     *      array("cn" => "name1", "uid" => "user"),
-     *      array("cn" => "name2"),
-     *      array("dc" => "example"),
-     *      array("dc" => "org")
-     * )
-     *
-     * @param  array  $dnArray
-     * @param  string $caseFold
-     * @param  string $separator
-     * @return string
-     * @throws Zend_Ldap_Exception
-     */
-    public static function implodeDn(array $dnArray, $caseFold = null, $separator = ',')
-    {
-        $parts = array();
-        foreach ($dnArray as $p) {
-            $parts[] = self::implodeRdn($p, $caseFold);
-        }
-        return implode($separator, $parts);
-    }
+php php php php php/php*php*
+php php php php php php*php Implodesphp anphp arrayphp inphp thephp formphp deliveredphp byphp php{php@linkphp explodeDnphp(php)php}
+php php php php php php*php tophp aphp DNphp stringphp.
+php php php php php php*
+php php php php php php*php php$dnArrayphp mustphp bephp ofphp type
+php php php php php php*php arrayphp(
+php php php php php php*php php php php php php arrayphp(php"cnphp"php php=php>php php"namephp1php"php,php php"uidphp"php php=php>php php"userphp"php)php,
+php php php php php php*php php php php php php arrayphp(php"cnphp"php php=php>php php"namephp2php"php)php,
+php php php php php php*php php php php php php arrayphp(php"dcphp"php php=php>php php"examplephp"php)php,
+php php php php php php*php php php php php php arrayphp(php"dcphp"php php=php>php php"orgphp"php)
+php php php php php php*php php)
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$dnArray
+php php php php php php*php php@paramphp php stringphp php$caseFold
+php php php php php php*php php@paramphp php stringphp php$separator
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp implodeDnphp(arrayphp php$dnArrayphp,php php$caseFoldphp php=php nullphp,php php$separatorphp php=php php'php,php'php)
+php php php php php{
+php php php php php php php php php$partsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$dnArrayphp asphp php$pphp)php php{
+php php php php php php php php php php php php php$partsphp[php]php php=php selfphp:php:implodeRdnphp(php$pphp,php php$caseFoldphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp implodephp(php$separatorphp,php php$partsphp)php;
+php php php php php}
 
-    /**
-     * Checks if given $childDn is beneath $parentDn subtree.
-     *
-     * @param  string|Zend_Ldap_Dn $childDn
-     * @param  string|Zend_Ldap_Dn $parentDn
-     * @return boolean
-     */
-    public static function isChildOf($childDn, $parentDn)
-    {
-        try {
-            $keys = array();
-            $vals = array();
-            if ($childDn instanceof Zend_Ldap_Dn) {
-                $cdn = $childDn->toArray(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
-            } else {
-                $cdn = self::explodeDn($childDn, $keys, $vals, Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
-            }
-            if ($parentDn instanceof Zend_Ldap_Dn) {
-                $pdn = $parentDn->toArray(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
-            } else {
-                $pdn = self::explodeDn($parentDn, $keys, $vals, Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
-            }
-        }
-        catch (Zend_Ldap_Exception $e) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp givenphp php$childDnphp isphp beneathphp php$parentDnphp subtreephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Ldapphp_Dnphp php$childDn
+php php php php php php*php php@paramphp php stringphp|Zendphp_Ldapphp_Dnphp php$parentDn
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp staticphp functionphp isChildOfphp(php$childDnphp,php php$parentDnphp)
+php php php php php{
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$keysphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php$valsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php ifphp php(php$childDnphp instanceofphp Zendphp_Ldapphp_Dnphp)php php{
+php php php php php php php php php php php php php php php php php$cdnphp php=php php$childDnphp-php>toArrayphp(Zendphp_Ldapphp_Dnphp:php:ATTRphp_CASEFOLDphp_LOWERphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$cdnphp php=php selfphp:php:explodeDnphp(php$childDnphp,php php$keysphp,php php$valsphp,php Zendphp_Ldapphp_Dnphp:php:ATTRphp_CASEFOLDphp_LOWERphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$parentDnphp instanceofphp Zendphp_Ldapphp_Dnphp)php php{
+php php php php php php php php php php php php php php php php php$pdnphp php=php php$parentDnphp-php>toArrayphp(Zendphp_Ldapphp_Dnphp:php:ATTRphp_CASEFOLDphp_LOWERphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$pdnphp php=php selfphp:php:explodeDnphp(php$parentDnphp,php php$keysphp,php php$valsphp,php Zendphp_Ldapphp_Dnphp:php:ATTRphp_CASEFOLDphp_LOWERphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php catchphp php(Zendphp_Ldapphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $startIndex = count($cdn)-count($pdn);
-        if ($startIndex<0) return false;
-        for ($i = 0; $i<count($pdn); $i++) {
-            if ($cdn[$i+$startIndex] != $pdn[$i]) return false;
-        }
-        return true;
-    }
-}
+php php php php php php php php php$startIndexphp php=php countphp(php$cdnphp)php-countphp(php$pdnphp)php;
+php php php php php php php php ifphp php(php$startIndex<php0php)php returnphp falsephp;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp<countphp(php$pdnphp)php;php php$iphp+php+php)php php{
+php php php php php php php php php php php php ifphp php(php$cdnphp[php$iphp+php$startIndexphp]php php!php=php php$pdnphp[php$iphp]php)php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
+php}

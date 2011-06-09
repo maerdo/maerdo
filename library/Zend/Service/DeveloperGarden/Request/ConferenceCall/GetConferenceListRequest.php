@@ -1,104 +1,104 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: GetConferenceListRequest.php 20166 2010-01-09 19:00:17Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp DeveloperGarden
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php GetConferenceListRequestphp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Service_DeveloperGarden_Request_RequestAbstract
- */
-require_once 'Zend/Service/DeveloperGarden/Request/RequestAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_RequestAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/RequestAbstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetConferenceListRequest
-    extends Zend_Service_DeveloperGarden_Request_RequestAbstract
-{
-    /**
-     * @var integer
-     */
-    public $what = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp DeveloperGarden
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@authorphp php php php php Marcophp Kaiser
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_GetConferenceListRequest
+php php php php extendsphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_RequestAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$whatphp php=php nullphp;
 
-    /**
-     * possible what values
-     *
-     * @var array
-     */
-    private $_whatValues = array(
-        0 => 'all conferences',
-        1 => 'just ad-hoc conferences',
-        2 => 'just planned conferences',
-        3 => 'just failed conferences',
-    );
+php php php php php/php*php*
+php php php php php php*php possiblephp whatphp values
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_whatValuesphp php=php arrayphp(
+php php php php php php php php php0php php=php>php php'allphp conferencesphp'php,
+php php php php php php php php php1php php=php>php php'justphp adphp-hocphp conferencesphp'php,
+php php php php php php php php php2php php=php>php php'justphp plannedphp conferencesphp'php,
+php php php php php php php php php3php php=php>php php'justphp failedphp conferencesphp'php,
+php php php php php)php;
 
-    /**
-     * unique owner id
-     *
-     * @var string
-     */
-    public $ownerId = null;
+php php php php php/php*php*
+php php php php php php*php uniquephp ownerphp id
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$ownerIdphp php=php nullphp;
 
-    /**
-     * constructor
-     *
-     * @param integer $environment
-     * @param integer $what
-     * @param string $ownerId
-     */
-    public function __construct($environment, $what = 0, $ownerId = null)
-    {
-        parent::__construct($environment);
-        $this->setWhat($what)
-             ->setOwnerId($ownerId);
-    }
+php php php php php/php*php*
+php php php php php php*php constructor
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$environment
+php php php php php php*php php@paramphp integerphp php$what
+php php php php php php*php php@paramphp stringphp php$ownerId
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$environmentphp,php php$whatphp php=php php0php,php php$ownerIdphp php=php nullphp)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php$environmentphp)php;
+php php php php php php php php php$thisphp-php>setWhatphp(php$whatphp)
+php php php php php php php php php php php php php php-php>setOwnerIdphp(php$ownerIdphp)php;
+php php php php php}
 
-    /**
-     * sets $what
-     *
-     * @param integer $what
-     * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_GetConferenceListRequest
-     */
-    public function setWhat($what)
-    {
-        if (!array_key_exists($what, $this->_whatValues)) {
-            require_once 'Zend/Service/DeveloperGarden/Request/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Request_Exception('What value not allowed.');
-        }
-        $this->what = $what;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setsphp php$what
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$what
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_GetConferenceListRequest
+php php php php php php*php/
+php php php php publicphp functionphp setWhatphp(php$whatphp)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$whatphp,php php$thisphp-php>php_whatValuesphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_Exceptionphp(php'Whatphp valuephp notphp allowedphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>whatphp php=php php$whatphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * sets $ownerId
-     *
-     * @param $ownerId
-     * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_GetConferenceListRequest
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-        return $this;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php setsphp php$ownerId
+php php php php php php*
+php php php php php php*php php@paramphp php$ownerId
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_GetConferenceListRequest
+php php php php php php*php/
+php php php php publicphp functionphp setOwnerIdphp(php$ownerIdphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>ownerIdphp php=php php$ownerIdphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php}

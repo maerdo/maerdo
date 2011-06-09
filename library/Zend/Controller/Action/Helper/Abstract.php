@@ -1,156 +1,156 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 23507 2010-12-15 17:36:15Z andries $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php3php5php0php7php php2php0php1php0php-php1php2php-php1php5php php1php7php:php3php6php:php1php5Zphp andriesphp php$
+php php*php/
 
-/**
- * @see Zend_Controller_Action
- */
-require_once 'Zend/Controller/Action.php';
+php/php*php*
+php php*php php@seephp Zendphp_Controllerphp_Action
+php php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Actionphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Controller
- * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Controller_Action_Helper_Abstract
-{
-    /**
-     * $_actionController
-     *
-     * @var Zend_Controller_Action $_actionController
-     */
-    protected $_actionController = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Controller
+php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php php$php_actionController
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Controllerphp_Actionphp php$php_actionController
+php php php php php php*php/
+php php php php protectedphp php$php_actionControllerphp php=php nullphp;
 
-    /**
-     * @var mixed $_frontController
-     */
-    protected $_frontController = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp mixedphp php$php_frontController
+php php php php php php*php/
+php php php php protectedphp php$php_frontControllerphp php=php nullphp;
 
-    /**
-     * setActionController()
-     *
-     * @param  Zend_Controller_Action $actionController
-     * @return Zend_Controller_ActionHelper_Abstract Provides a fluent interface
-     */
-    public function setActionController(Zend_Controller_Action $actionController = null)
-    {
-        $this->_actionController = $actionController;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setActionControllerphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Controllerphp_Actionphp php$actionController
+php php php php php php*php php@returnphp Zendphp_Controllerphp_ActionHelperphp_Abstractphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setActionControllerphp(Zendphp_Controllerphp_Actionphp php$actionControllerphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_actionControllerphp php=php php$actionControllerphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve current action controller
-     *
-     * @return Zend_Controller_Action
-     */
-    public function getActionController()
-    {
-        return $this->_actionController;
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp currentphp actionphp controller
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Action
+php php php php php php*php/
+php php php php publicphp functionphp getActionControllerphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_actionControllerphp;
+php php php php php}
 
-    /**
-     * Retrieve front controller instance
-     *
-     * @return Zend_Controller_Front
-     */
-    public function getFrontController()
-    {
-        return Zend_Controller_Front::getInstance();
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp frontphp controllerphp instance
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
+php php php php php php*php/
+php php php php publicphp functionphp getFrontControllerphp(php)
+php php php php php{
+php php php php php php php php returnphp Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php;
+php php php php php}
 
-    /**
-     * Hook into action controller initialization
-     *
-     * @return void
-     */
-    public function init()
-    {
-    }
+php php php php php/php*php*
+php php php php php php*php Hookphp intophp actionphp controllerphp initialization
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php}
 
-    /**
-     * Hook into action controller preDispatch() workflow
-     *
-     * @return void
-     */
-    public function preDispatch()
-    {
-    }
+php php php php php/php*php*
+php php php php php php*php Hookphp intophp actionphp controllerphp preDispatchphp(php)php workflow
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp preDispatchphp(php)
+php php php php php{
+php php php php php}
 
-    /**
-     * Hook into action controller postDispatch() workflow
-     *
-     * @return void
-     */
-    public function postDispatch()
-    {
-    }
+php php php php php/php*php*
+php php php php php php*php Hookphp intophp actionphp controllerphp postDispatchphp(php)php workflow
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp postDispatchphp(php)
+php php php php php{
+php php php php php}
 
-    /**
-     * getRequest() -
-     *
-     * @return Zend_Controller_Request_Abstract $request
-     */
-    public function getRequest()
-    {
-        $controller = $this->getActionController();
-        if (null === $controller) {
-            $controller = $this->getFrontController();
-        }
+php php php php php/php*php*
+php php php php php php*php getRequestphp(php)php php-
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Requestphp_Abstractphp php$request
+php php php php php php*php/
+php php php php publicphp functionphp getRequestphp(php)
+php php php php php{
+php php php php php php php php php$controllerphp php=php php$thisphp-php>getActionControllerphp(php)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$controllerphp)php php{
+php php php php php php php php php php php php php$controllerphp php=php php$thisphp-php>getFrontControllerphp(php)php;
+php php php php php php php php php}
 
-        return $controller->getRequest();
-    }
+php php php php php php php php returnphp php$controllerphp-php>getRequestphp(php)php;
+php php php php php}
 
-    /**
-     * getResponse() -
-     *
-     * @return Zend_Controller_Response_Abstract $response
-     */
-    public function getResponse()
-    {
-        $controller = $this->getActionController();
-        if (null === $controller) {
-            $controller = $this->getFrontController();
-        }
+php php php php php/php*php*
+php php php php php php*php getResponsephp(php)php php-
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Responsephp_Abstractphp php$response
+php php php php php php*php/
+php php php php publicphp functionphp getResponsephp(php)
+php php php php php{
+php php php php php php php php php$controllerphp php=php php$thisphp-php>getActionControllerphp(php)php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$controllerphp)php php{
+php php php php php php php php php php php php php$controllerphp php=php php$thisphp-php>getFrontControllerphp(php)php;
+php php php php php php php php php}
 
-        return $controller->getResponse();
-    }
+php php php php php php php php returnphp php$controllerphp-php>getResponsephp(php)php;
+php php php php php}
 
-    /**
-     * getName()
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        $fullClassName = get_class($this);
-        if (strpos($fullClassName, '_') !== false) {
-            $helperName = strrchr($fullClassName, '_');
-            return ltrim($helperName, '_');
-        } elseif (strpos($fullClassName, '\\') !== false) {
-            $helperName = strrchr($fullClassName, '\\');
-            return ltrim($helperName, '\\');
-        } else {
-            return $fullClassName;
-        }
-    }
-}
+php php php php php/php*php*
+php php php php php php*php getNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php php$fullClassNamephp php=php getphp_classphp(php$thisphp)php;
+php php php php php php php php ifphp php(strposphp(php$fullClassNamephp,php php'php_php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$helperNamephp php=php strrchrphp(php$fullClassNamephp,php php'php_php'php)php;
+php php php php php php php php php php php php returnphp ltrimphp(php$helperNamephp,php php'php_php'php)php;
+php php php php php php php php php}php elseifphp php(strposphp(php$fullClassNamephp,php php'php\php\php'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php$helperNamephp php=php strrchrphp(php$fullClassNamephp,php php'php\php\php'php)php;
+php php php php php php php php php php php php returnphp ltrimphp(php$helperNamephp,php php'php\php\php'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php$fullClassNamephp;
+php php php php php php php php php}
+php php php php php}
+php}

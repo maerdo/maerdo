@@ -1,189 +1,189 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.20 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="ku"/>
-		<script type="Latn"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="ar">erebî</language>
-			<language type="en">îngilîzî</language>
-			<language type="ja">japonî</language>
-			<language type="ku">kurdî</language>
-		</languages>
-		<scripts>
-			<script type="Arab">erebî</script>
-		</scripts>
-		<territories>
-			<territory type="001">Cîhan</territory>
-			<territory type="TR">Tirkiye</territory>
-		</territories>
-		<keys>
-			<key type="calendar">salname</key>
-			<key type="collation">rêzkirin</key>
-		</keys>
-		<types>
-			<type type="gregorian" key="calendar">mîladî</type>
-			<type type="islamic" key="calendar">hîcrî</type>
-		</types>
-	</localeDisplayNames>
-	<layout>
-		<orientation/>
-	</layout>
-	<characters>
-		<exemplarCharacters>[a-c ç d e ê f-i î j-s ş t u û v-z]</exemplarCharacters>
-	</characters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">çil</month>
-							<month type="2">sib</month>
-							<month type="3">adr</month>
-							<month type="4">nîs</month>
-							<month type="5">gul</month>
-							<month type="6">hez</month>
-							<month type="7">tîr</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">çile</month>
-							<month type="2">sibat</month>
-							<month type="3">adar</month>
-							<month type="4">nîsan</month>
-							<month type="5">gulan</month>
-							<month type="6">hezîran</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="narrow">
-							<month type="1">ç</month>
-							<month type="2">s</month>
-							<month type="3">a</month>
-							<month type="4">n</month>
-							<month type="5">g</month>
-							<month type="6">h</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">yş</day>
-							<day type="mon">dş</day>
-							<day type="tue">sş</day>
-							<day type="wed">çş</day>
-							<day type="thu">pş</day>
-							<day type="fri">în</day>
-							<day type="sat">ş</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">yekşem</day>
-							<day type="mon">duşem</day>
-							<day type="tue">şê</day>
-							<day type="wed">çarşem</day>
-							<day type="thu">pêncşem</day>
-							<day type="fri">în</day>
-							<day type="sat">şemî</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">y</day>
-							<day type="mon">d</day>
-							<day type="tue">s</day>
-							<day type="wed">ç</day>
-							<day type="thu">p</day>
-							<day type="fri">î</day>
-							<day type="sat">ş</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<quarters>
-					<quarterContext type="format">
-						<quarterWidth type="abbreviated">
-							<quarter type="1">Ç1</quarter>
-							<quarter type="2">Ç2</quarter>
-							<quarter type="3">Ç3</quarter>
-							<quarter type="4">Ç4</quarter>
-						</quarterWidth>
-						<quarterWidth type="wide">
-							<quarter type="1">Ç1</quarter>
-							<quarter type="2">Ç2</quarter>
-							<quarter type="3">Ç3</quarter>
-							<quarter type="4">Ç4</quarter>
-						</quarterWidth>
-					</quarterContext>
-				</quarters>
-				<am>BN</am>
-				<pm>PN</pm>
-				<eras>
-					<eraAbbr>
-						<era type="0">BZ</era>
-						<era type="1">PZ</era>
-					</eraAbbr>
-				</eras>
-				<dateFormats>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>yy/MM/dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<fields>
-					<field type="year">
-						<displayName>sal</displayName>
-					</field>
-					<field type="month">
-						<displayName>meh</displayName>
-					</field>
-					<field type="week">
-						<displayName>hefte</displayName>
-					</field>
-					<field type="day">
-						<displayName>roj</displayName>
-					</field>
-					<field type="hour">
-						<displayName>demjimêr</displayName>
-					</field>
-					<field type="minute">
-						<displayName>xulek</displayName>
-					</field>
-					<field type="second">
-						<displayName>çirke</displayName>
-					</field>
-				</fields>
-			</calendar>
-			<calendar type="islamic">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="wide">
-							<month type="1">muẖerem</month>
-							<month type="2">sefer</month>
-							<month type="3">rebîʿulewel</month>
-							<month type="4">rebîʿulaxer</month>
-							<month type="5">cemazîyelewel</month>
-							<month type="6">cemazîyelaxer</month>
-							<month type="7">receb</month>
-							<month type="8">şeʿban</month>
-							<month type="9">remezan</month>
-							<month type="10">şewal</month>
-							<month type="11">zîlqeʿde</month>
-							<month type="12">zîlẖece</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-			</calendar>
-		</calendars>
-	</dates>
-	<posix>
-		<messages>
-			<yesstr>erê:e</yesstr>
-			<nostr>na:n</nostr>
-		</messages>
-	</posix>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php2php0php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php4php php$php"php/php>
+php	php	php<languagephp typephp=php"kuphp"php/php>
+php	php	php<scriptphp typephp=php"Latnphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"arphp"php>erebî<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>îngilîzî<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>japonî<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>kurdî<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Arabphp"php>erebî<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"php0php0php1php"php>Cîhan<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"TRphp"php>Tirkiye<php/territoryphp>
+php	php	<php/territoriesphp>
+php	php	php<keysphp>
+php	php	php	php<keyphp typephp=php"calendarphp"php>salname<php/keyphp>
+php	php	php	php<keyphp typephp=php"collationphp"php>rêzkirin<php/keyphp>
+php	php	<php/keysphp>
+php	php	php<typesphp>
+php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>mîladî<php/typephp>
+php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>hîcrî<php/typephp>
+php	php	<php/typesphp>
+php	<php/localeDisplayNamesphp>
+php	php<layoutphp>
+php	php	php<orientationphp/php>
+php	<php/layoutphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[aphp-cphp çphp dphp ephp êphp fphp-iphp îphp jphp-sphp şphp tphp uphp ûphp vphp-zphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>çil<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>sib<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>adr<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>nîs<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>gul<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>hez<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>tîr<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>çile<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>sibat<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>adar<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>nîsan<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>gulan<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>hezîran<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>ç<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>s<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>a<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>n<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>g<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>h<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>yş<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>dş<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>sş<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>çş<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>pş<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>în<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>ş<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>yekşem<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>duşem<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>şê<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>çarşem<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>pêncşem<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>în<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>şemî<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>y<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>d<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>s<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>ç<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>p<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>î<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>ş<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<quartersphp>
+php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Çphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Çphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Çphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Çphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Çphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Çphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Çphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Çphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	<php/quarterContextphp>
+php	php	php	php	<php/quartersphp>
+php	php	php	php	php<amphp>BN<php/amphp>
+php	php	php	php	php<pmphp>PN<php/pmphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>BZ<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>PZ<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yyphp/MMphp/dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<fieldsphp>
+php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
+php	php	php	php	php	php	php<displayNamephp>sal<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
+php	php	php	php	php	php	php<displayNamephp>meh<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
+php	php	php	php	php	php	php<displayNamephp>hefte<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
+php	php	php	php	php	php	php<displayNamephp>roj<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
+php	php	php	php	php	php	php<displayNamephp>demjimêr<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
+php	php	php	php	php	php	php<displayNamephp>xulek<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
+php	php	php	php	php	php	php<displayNamephp>çirke<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	<php/fieldsphp>
+php	php	php	<php/calendarphp>
+php	php	php	php<calendarphp typephp=php"islamicphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>muẖerem<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>sefer<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>rebîphpʿulewel<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>rebîphpʿulaxer<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>cemazîyelewel<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>cemazîyelaxer<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>receb<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>şephpʿban<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>remezan<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>şewal<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>zîlqephpʿde<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>zîlẖece<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+php	php<posixphp>
+php	php	php<messagesphp>
+php	php	php	php<yesstrphp>erêphp:e<php/yesstrphp>
+php	php	php	php<nostrphp>naphp:n<php/nostrphp>
+php	php	<php/messagesphp>
+php	<php/posixphp>
+<php/ldmlphp>
 

@@ -1,75 +1,75 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: HtmlPage.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php HtmlPagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_View_Helper_HtmlObject
- */
-require_once 'Zend/View/Helper/HtmlObject.php';
+php/php*php*
+php php*php php@seephp Zendphp_Viewphp_Helperphp_HtmlObject
+php php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/HtmlObjectphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_HtmlPage extends Zend_View_Helper_HtmlObject
-{
-    /**
-     * Default file type for html
-     *
-     */
-    const TYPE = 'text/html';
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_HtmlPagephp extendsphp Zendphp_Viewphp_Helperphp_HtmlObject
+php{
+php php php php php/php*php*
+php php php php php php*php Defaultphp filephp typephp forphp html
+php php php php php php*
+php php php php php php*php/
+php php php php constphp TYPEphp php=php php'textphp/htmlphp'php;
 
-    /**
-     * Object classid
-     *
-     */
-    const ATTRIB_CLASSID  = 'clsid:25336920-03F9-11CF-8FD0-00AA00686F13';
+php php php php php/php*php*
+php php php php php php*php Objectphp classid
+php php php php php php*
+php php php php php php*php/
+php php php php constphp ATTRIBphp_CLASSIDphp php php=php php'clsidphp:php2php5php3php3php6php9php2php0php-php0php3Fphp9php-php1php1CFphp-php8FDphp0php-php0php0AAphp0php0php6php8php6Fphp1php3php'php;
 
-    /**
-     * Default attributes
-     *
-     * @var array
-     */
-    protected $_attribs = array('classid' => self::ATTRIB_CLASSID);
+php php php php php/php*php*
+php php php php php php*php Defaultphp attributes
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_attribsphp php=php arrayphp(php'classidphp'php php=php>php selfphp:php:ATTRIBphp_CLASSIDphp)php;
 
-    /**
-     * Output a html object tag
-     *
-     * @param string $data The html url
-     * @param array  $attribs Attribs for the object tag
-     * @param array  $params Params for in the object tag
-     * @param string $content Alternative content
-     * @return string
-     */
-    public function htmlPage($data, array $attribs = array(), array $params = array(), $content = null)
-    {
-        // Attrs
-        $attribs = array_merge($this->_attribs, $attribs);
+php php php php php/php*php*
+php php php php php php*php Outputphp aphp htmlphp objectphp tag
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$dataphp Thephp htmlphp url
+php php php php php php*php php@paramphp arrayphp php php$attribsphp Attribsphp forphp thephp objectphp tag
+php php php php php php*php php@paramphp arrayphp php php$paramsphp Paramsphp forphp inphp thephp objectphp tag
+php php php php php php*php php@paramphp stringphp php$contentphp Alternativephp content
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp htmlPagephp(php$dataphp,php arrayphp php$attribsphp php=php arrayphp(php)php,php arrayphp php$paramsphp php=php arrayphp(php)php,php php$contentphp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Attrs
+php php php php php php php php php$attribsphp php=php arrayphp_mergephp(php$thisphp-php>php_attribsphp,php php$attribsphp)php;
 
-        // Params
-        $params = array_merge(array('data' => $data), $params);
+php php php php php php php php php/php/php Params
+php php php php php php php php php$paramsphp php=php arrayphp_mergephp(arrayphp(php'dataphp'php php=php>php php$dataphp)php,php php$paramsphp)php;
 
-        return $this->htmlObject($data, self::TYPE, $attribs, $params, $content);
-    }
-}
+php php php php php php php php returnphp php$thisphp-php>htmlObjectphp(php$dataphp,php selfphp:php:TYPEphp,php php$attribsphp,php php$paramsphp,php php$contentphp)php;
+php php php php php}
+php}

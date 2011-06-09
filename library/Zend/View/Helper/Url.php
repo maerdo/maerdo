@@ -1,51 +1,51 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Url.php 20096 2010-01-06 02:05:09Z bkarwin $
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@versionphp php php php php$Idphp:php Urlphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_View_Helper_Abstract.php */
-require_once 'Zend/View/Helper/Abstract.php';
+php/php*php*php Zendphp_Viewphp_Helperphp_Abstractphp.phpphp php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Abstractphp.phpphp'php;
 
-/**
- * Helper for making easy links and getting urls that depend on the routes and router
- *
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_Url extends Zend_View_Helper_Abstract
-{
-    /**
-     * Generates an url given the name of a route.
-     *
-     * @access public
-     *
-     * @param  array $urlOptions Options passed to the assemble method of the Route object.
-     * @param  mixed $name The name of a Route to use. If null it will use the current Route
-     * @param  bool $reset Whether or not to reset the route defaults with those provided
-     * @return string Url for the link href attribute.
-     */
-    public function url(array $urlOptions = array(), $name = null, $reset = false, $encode = true)
-    {
-        $router = Zend_Controller_Front::getInstance()->getRouter();
-        return $router->assemble($urlOptions, $name, $reset, $encode);
-    }
-}
+php/php*php*
+php php*php Helperphp forphp makingphp easyphp linksphp andphp gettingphp urlsphp thatphp dependphp onphp thephp routesphp andphp router
+php php*
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_Urlphp extendsphp Zendphp_Viewphp_Helperphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Generatesphp anphp urlphp givenphp thephp namephp ofphp aphp routephp.
+php php php php php php*
+php php php php php php*php php@accessphp public
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$urlOptionsphp Optionsphp passedphp tophp thephp assemblephp methodphp ofphp thephp Routephp objectphp.
+php php php php php php*php php@paramphp php mixedphp php$namephp Thephp namephp ofphp aphp Routephp tophp usephp.php Ifphp nullphp itphp willphp usephp thephp currentphp Route
+php php php php php php*php php@paramphp php boolphp php$resetphp Whetherphp orphp notphp tophp resetphp thephp routephp defaultsphp withphp thosephp provided
+php php php php php php*php php@returnphp stringphp Urlphp forphp thephp linkphp hrefphp attributephp.
+php php php php php php*php/
+php php php php publicphp functionphp urlphp(arrayphp php$urlOptionsphp php=php arrayphp(php)php,php php$namephp php=php nullphp,php php$resetphp php=php falsephp,php php$encodephp php=php truephp)
+php php php php php{
+php php php php php php php php php$routerphp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php-php>getRouterphp(php)php;
+php php php php php php php php returnphp php$routerphp-php>assemblephp(php$urlOptionsphp,php php$namephp,php php$resetphp,php php$encodephp)php;
+php php php php php}
+php}

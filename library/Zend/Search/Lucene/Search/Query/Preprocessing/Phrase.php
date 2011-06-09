@@ -1,270 +1,270 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Phrase.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Phrasephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** Zend_Search_Lucene_Search_Query_Processing */
-require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
+php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Processingphp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Preprocessingphp.phpphp'php;
 
-/**
- * It's an internal abstract class intended to finalize ase a query processing after query parsing.
- * This type of query is not actually involved into query execution.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @internal
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase extends Zend_Search_Lucene_Search_Query_Preprocessing
-{
-    /**
-     * Phrase to find.
-     *
-     * @var string
-     */
-    private $_phrase;
+php/php*php*
+php php*php Itphp'sphp anphp internalphp abstractphp classphp intendedphp tophp finalizephp asephp aphp queryphp processingphp afterphp queryphp parsingphp.
+php php*php Thisphp typephp ofphp queryphp isphp notphp actuallyphp involvedphp intophp queryphp executionphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@internal
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Preprocessingphp_Phrasephp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Preprocessing
+php{
+php php php php php/php*php*
+php php php php php php*php Phrasephp tophp findphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_phrasephp;
 
-    /**
-     * Phrase encoding (field name is always provided using UTF-8 encoding since it may be retrieved from index).
-     *
-     * @var string
-     */
-    private $_phraseEncoding;
-
-
-    /**
-     * Field name.
-     *
-     * @var string
-     */
-    private $_field;
-
-    /**
-     * Sets the number of other words permitted between words in query phrase.
-     * If zero, then this is an exact phrase search.  For larger values this works
-     * like a WITHIN or NEAR operator.
-     *
-     * The slop is in fact an edit-distance, where the units correspond to
-     * moves of terms in the query phrase out of position.  For example, to switch
-     * the order of two words requires two moves (the first move places the words
-     * atop one another), so to permit re-orderings of phrases, the slop must be
-     * at least two.
-     * More exact matches are scored higher than sloppier matches, thus search
-     * results are sorted by exactness.
-     *
-     * The slop is zero by default, requiring exact matches.
-     *
-     * @var integer
-     */
-    private $_slop;
-
-    /**
-     * Class constructor.  Create a new preprocessing object for prase query.
-     *
-     * @param string $phrase          Phrase to search.
-     * @param string $phraseEncoding  Phrase encoding.
-     * @param string $fieldName       Field name.
-     */
-    public function __construct($phrase, $phraseEncoding, $fieldName)
-    {
-        $this->_phrase         = $phrase;
-        $this->_phraseEncoding = $phraseEncoding;
-        $this->_field          = $fieldName;
-    }
-
-    /**
-     * Set slop
-     *
-     * @param integer $slop
-     */
-    public function setSlop($slop)
-    {
-        $this->_slop = $slop;
-    }
+php php php php php/php*php*
+php php php php php php*php Phrasephp encodingphp php(fieldphp namephp isphp alwaysphp providedphp usingphp UTFphp-php8php encodingphp sincephp itphp mayphp bephp retrievedphp fromphp indexphp)php.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_phraseEncodingphp;
 
 
-    /**
-     * Get slop
-     *
-     * @return integer
-     */
-    public function getSlop()
-    {
-        return $this->_slop;
-    }
+php php php php php/php*php*
+php php php php php php*php Fieldphp namephp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_fieldphp;
 
-    /**
-     * Re-write query into primitive queries in the context of specified index
-     *
-     * @param Zend_Search_Lucene_Interface $index
-     * @return Zend_Search_Lucene_Search_Query
-     */
-    public function rewrite(Zend_Search_Lucene_Interface $index)
-    {
-// Allow to use wildcards within phrases
-// They are either removed by text analyzer or used as a part of keyword for keyword fields
-//
-//        if (strpos($this->_phrase, '?') !== false || strpos($this->_phrase, '*') !== false) {
-//            require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
-//            throw new Zend_Search_Lucene_Search_QueryParserException('Wildcards are only allowed in a single terms.');
-//        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp numberphp ofphp otherphp wordsphp permittedphp betweenphp wordsphp inphp queryphp phrasephp.
+php php php php php php*php Ifphp zerophp,php thenphp thisphp isphp anphp exactphp phrasephp searchphp.php php Forphp largerphp valuesphp thisphp works
+php php php php php php*php likephp aphp WITHINphp orphp NEARphp operatorphp.
+php php php php php php*
+php php php php php php*php Thephp slopphp isphp inphp factphp anphp editphp-distancephp,php wherephp thephp unitsphp correspondphp to
+php php php php php php*php movesphp ofphp termsphp inphp thephp queryphp phrasephp outphp ofphp positionphp.php php Forphp examplephp,php tophp switch
+php php php php php php*php thephp orderphp ofphp twophp wordsphp requiresphp twophp movesphp php(thephp firstphp movephp placesphp thephp words
+php php php php php php*php atopphp onephp anotherphp)php,php sophp tophp permitphp rephp-orderingsphp ofphp phrasesphp,php thephp slopphp mustphp be
+php php php php php php*php atphp leastphp twophp.
+php php php php php php*php Morephp exactphp matchesphp arephp scoredphp higherphp thanphp sloppierphp matchesphp,php thusphp search
+php php php php php php*php resultsphp arephp sortedphp byphp exactnessphp.
+php php php php php php*
+php php php php php php*php Thephp slopphp isphp zerophp byphp defaultphp,php requiringphp exactphp matchesphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_slopphp;
 
-        // Split query into subqueries if field name is not specified
-        if ($this->_field === null) {
-            require_once 'Zend/Search/Lucene/Search/Query/Boolean.php';
-            $query = new Zend_Search_Lucene_Search_Query_Boolean();
-            $query->setBoost($this->getBoost());
+php php php php php/php*php*
+php php php php php php*php Classphp constructorphp.php php Createphp aphp newphp preprocessingphp objectphp forphp prasephp queryphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$phrasephp php php php php php php php php php Phrasephp tophp searchphp.
+php php php php php php*php php@paramphp stringphp php$phraseEncodingphp php Phrasephp encodingphp.
+php php php php php php*php php@paramphp stringphp php$fieldNamephp php php php php php php Fieldphp namephp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$phrasephp,php php$phraseEncodingphp,php php$fieldNamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_phrasephp php php php php php php php php php=php php$phrasephp;
+php php php php php php php php php$thisphp-php>php_phraseEncodingphp php=php php$phraseEncodingphp;
+php php php php php php php php php$thisphp-php>php_fieldphp php php php php php php php php php php=php php$fieldNamephp;
+php php php php php}
 
-            require_once 'Zend/Search/Lucene.php';
-            if (Zend_Search_Lucene::getDefaultSearchField() === null) {
-                $searchFields = $index->getFieldNames(true);
-            } else {
-                $searchFields = array(Zend_Search_Lucene::getDefaultSearchField());
-            }
-
-            foreach ($searchFields as $fieldName) {
-                $subquery = new Zend_Search_Lucene_Search_Query_Preprocessing_Phrase($this->_phrase,
-                                                                                     $this->_phraseEncoding,
-                                                                                     $fieldName);
-                $subquery->setSlop($this->getSlop());
-
-                $query->addSubquery($subquery->rewrite($index));
-            }
-
-            $this->_matches = $query->getQueryTerms();
-            return $query;
-        }
-
-        // Recognize exact term matching (it corresponds to Keyword fields stored in the index)
-        // encoding is not used since we expect binary matching
-        require_once 'Zend/Search/Lucene/Index/Term.php';
-        $term = new Zend_Search_Lucene_Index_Term($this->_phrase, $this->_field);
-        if ($index->hasTerm($term)) {
-            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
-            $query = new Zend_Search_Lucene_Search_Query_Term($term);
-            $query->setBoost($this->getBoost());
-
-            $this->_matches = $query->getQueryTerms();
-            return $query;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp slop
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$slop
+php php php php php php*php/
+php php php php publicphp functionphp setSlopphp(php$slopphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_slopphp php=php php$slopphp;
+php php php php php}
 
 
-        // tokenize phrase using current analyzer and process it as a phrase query
-        require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
-        $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($this->_phrase, $this->_phraseEncoding);
+php php php php php/php*php*
+php php php php php php*php Getphp slop
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getSlopphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_slopphp;
+php php php php php}
 
-        if (count($tokens) == 0) {
-            $this->_matches = array();
-            require_once 'Zend/Search/Lucene/Search/Query/Insignificant.php';
-            return new Zend_Search_Lucene_Search_Query_Insignificant();
-        }
+php php php php php/php*php*
+php php php php php php*php Rephp-writephp queryphp intophp primitivephp queriesphp inphp thephp contextphp ofphp specifiedphp index
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
+php php php php php php*php/
+php php php php publicphp functionphp rewritephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
+php php php php php{
+php/php/php Allowphp tophp usephp wildcardsphp withinphp phrases
+php/php/php Theyphp arephp eitherphp removedphp byphp textphp analyzerphp orphp usedphp asphp aphp partphp ofphp keywordphp forphp keywordphp fields
+php/php/
+php/php/php php php php php php php php ifphp php(strposphp(php$thisphp-php>php_phrasephp,php php'php?php'php)php php!php=php=php falsephp php|php|php strposphp(php$thisphp-php>php_phrasephp,php php'php*php'php)php php!php=php=php falsephp)php php{
+php/php/php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/QueryParserExceptionphp.phpphp'php;
+php/php/php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_QueryParserExceptionphp(php'Wildcardsphp arephp onlyphp allowedphp inphp aphp singlephp termsphp.php'php)php;
+php/php/php php php php php php php php php}
 
-        if (count($tokens) == 1) {
-            require_once 'Zend/Search/Lucene/Index/Term.php';
-            $term  = new Zend_Search_Lucene_Index_Term($tokens[0]->getTermText(), $this->_field);
-            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
-            $query = new Zend_Search_Lucene_Search_Query_Term($term);
-            $query->setBoost($this->getBoost());
+php php php php php php php php php/php/php Splitphp queryphp intophp subqueriesphp ifphp fieldphp namephp isphp notphp specified
+php php php php php php php php ifphp php(php$thisphp-php>php_fieldphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Booleanphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Booleanphp(php)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
 
-            $this->_matches = $query->getQueryTerms();
-            return $query;
-        }
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp.phpphp'php;
+php php php php php php php php php php php php ifphp php(Zendphp_Searchphp_Lucenephp:php:getDefaultSearchFieldphp(php)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$searchFieldsphp php=php php$indexphp-php>getFieldNamesphp(truephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$searchFieldsphp php=php arrayphp(Zendphp_Searchphp_Lucenephp:php:getDefaultSearchFieldphp(php)php)php;
+php php php php php php php php php php php php php}
 
-        //It's non-trivial phrase query
-        $position = -1;
-        require_once 'Zend/Search/Lucene/Search/Query/Phrase.php';
-        $query = new Zend_Search_Lucene_Search_Query_Phrase();
-        require_once 'Zend/Search/Lucene/Index/Term.php';
-        foreach ($tokens as $token) {
-            $position += $token->getPositionIncrement();
-            $term = new Zend_Search_Lucene_Index_Term($token->getTermText(), $this->_field);
-            $query->addTerm($term, $position);
-            $query->setSlop($this->getSlop());
-        }
-        $this->_matches = $query->getQueryTerms();
-        return $query;
-    }
+php php php php php php php php php php php php foreachphp php(php$searchFieldsphp asphp php$fieldNamephp)php php{
+php php php php php php php php php php php php php php php php php$subqueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Preprocessingphp_Phrasephp(php$thisphp-php>php_phrasephp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_phraseEncodingphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldNamephp)php;
+php php php php php php php php php php php php php php php php php$subqueryphp-php>setSlopphp(php$thisphp-php>getSlopphp(php)php)php;
 
-    /**
-     * Query specific matches highlighting
-     *
-     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
-     */
-    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
-    {
-        /** Skip fields detection. We don't need it, since we expect all fields presented in the HTML body and don't differentiate them */
+php php php php php php php php php php php php php php php php php$queryphp-php>addSubqueryphp(php$subqueryphp-php>rewritephp(php$indexphp)php)php;
+php php php php php php php php php php php php php}
 
-        /** Skip exact term matching recognition, keyword fields highlighting is not supported */
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php php php php php returnphp php$queryphp;
+php php php php php php php php php}
 
-        /** Skip wildcard queries recognition. Supported wildcards are removed by text analyzer */
+php php php php php php php php php/php/php Recognizephp exactphp termphp matchingphp php(itphp correspondsphp tophp Keywordphp fieldsphp storedphp inphp thephp indexphp)
+php php php php php php php php php/php/php encodingphp isphp notphp usedphp sincephp wephp expectphp binaryphp matching
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php$termphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$thisphp-php>php_phrasephp,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php ifphp php(php$indexphp-php>hasTermphp(php$termphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(php$termphp)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
+
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php php php php php returnphp php$queryphp;
+php php php php php php php php php}
 
 
-        // tokenize phrase using current analyzer and process it as a phrase query
-        require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
-        $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($this->_phrase, $this->_phraseEncoding);
+php php php php php php php php php/php/php tokenizephp phrasephp usingphp currentphp analyzerphp andphp processphp itphp asphp aphp phrasephp query
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
+php php php php php php php php php$tokensphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php-php>tokenizephp(php$thisphp-php>php_phrasephp,php php$thisphp-php>php_phraseEncodingphp)php;
 
-        if (count($tokens) == 0) {
-            // Do nothing
-            return;
-        }
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php arrayphp(php)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Insignificantphp.phpphp'php;
+php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Insignificantphp(php)php;
+php php php php php php php php php}
 
-        if (count($tokens) == 1) {
-            $highlighter->highlight($tokens[0]->getTermText());
-            return;
-        }
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php1php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$termphp php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$tokensphp[php0php]php-php>getTermTextphp(php)php,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
+php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(php$termphp)php;
+php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
 
-        //It's non-trivial phrase query
-        $words = array();
-        foreach ($tokens as $token) {
-            $words[] = $token->getTermText();
-        }
-        $highlighter->highlight($words);
-    }
+php php php php php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php php php php php returnphp php$queryphp;
+php php php php php php php php php}
 
-    /**
-     * Print a query
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        // It's used only for query visualisation, so we don't care about characters escaping
-        if ($this->_field !== null) {
-            $query = $this->_field . ':';
-        } else {
-            $query = '';
-        }
+php php php php php php php php php/php/Itphp'sphp nonphp-trivialphp phrasephp query
+php php php php php php php php php$positionphp php=php php-php1php;
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Phrasephp.phpphp'php;
+php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Phrasephp(php)php;
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
+php php php php php php php php foreachphp php(php$tokensphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php$positionphp php+php=php php$tokenphp-php>getPositionIncrementphp(php)php;
+php php php php php php php php php php php php php$termphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$tokenphp-php>getTermTextphp(php)php,php php$thisphp-php>php_fieldphp)php;
+php php php php php php php php php php php php php$queryphp-php>addTermphp(php$termphp,php php$positionphp)php;
+php php php php php php php php php php php php php$queryphp-php>setSlopphp(php$thisphp-php>getSlopphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_matchesphp php=php php$queryphp-php>getQueryTermsphp(php)php;
+php php php php php php php php returnphp php$queryphp;
+php php php php php}
 
-        $query .= '"' . $this->_phrase . '"';
+php php php php php/php*php*
+php php php php php php*php Queryphp specificphp matchesphp highlighting
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp php Highlighterphp objectphp php(alsophp containsphp docphp forphp highlightingphp)
+php php php php php php*php/
+php php php php protectedphp functionphp php_highlightMatchesphp(Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp)
+php php php php php{
+php php php php php php php php php/php*php*php Skipphp fieldsphp detectionphp.php Wephp donphp'tphp needphp itphp,php sincephp wephp expectphp allphp fieldsphp presentedphp inphp thephp HTMLphp bodyphp andphp donphp'tphp differentiatephp themphp php*php/
 
-        if ($this->_slop != 0) {
-            $query .= '~' . $this->_slop;
-        }
+php php php php php php php php php/php*php*php Skipphp exactphp termphp matchingphp recognitionphp,php keywordphp fieldsphp highlightingphp isphp notphp supportedphp php*php/
 
-        if ($this->getBoost() != 1) {
-            $query .= '^' . round($this->getBoost(), 4);
-        }
+php php php php php php php php php/php*php*php Skipphp wildcardphp queriesphp recognitionphp.php Supportedphp wildcardsphp arephp removedphp byphp textphp analyzerphp php*php/
 
-        return $query;
-    }
-}
+
+php php php php php php php php php/php/php tokenizephp phrasephp usingphp currentphp analyzerphp andphp processphp itphp asphp aphp phrasephp query
+php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
+php php php php php php php php php$tokensphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php-php>tokenizephp(php$thisphp-php>php_phrasephp,php php$thisphp-php>php_phraseEncodingphp)php;
+
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php/php/php Dophp nothing
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(countphp(php$tokensphp)php php=php=php php1php)php php{
+php php php php php php php php php php php php php$highlighterphp-php>highlightphp(php$tokensphp[php0php]php-php>getTermTextphp(php)php)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/Itphp'sphp nonphp-trivialphp phrasephp query
+php php php php php php php php php$wordsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$tokensphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php$wordsphp[php]php php=php php$tokenphp-php>getTermTextphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$highlighterphp-php>highlightphp(php$wordsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Printphp aphp query
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php php/php/php Itphp'sphp usedphp onlyphp forphp queryphp visualisationphp,php sophp wephp donphp'tphp carephp aboutphp charactersphp escaping
+php php php php php php php php ifphp php(php$thisphp-php>php_fieldphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$queryphp php=php php$thisphp-php>php_fieldphp php.php php'php:php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$queryphp php=php php'php'php;
+php php php php php php php php php}
+
+php php php php php php php php php$queryphp php.php=php php'php"php'php php.php php$thisphp-php>php_phrasephp php.php php'php"php'php;
+
+php php php php php php php php ifphp php(php$thisphp-php>php_slopphp php!php=php php0php)php php{
+php php php php php php php php php php php php php$queryphp php.php=php php'php~php'php php.php php$thisphp-php>php_slopphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>getBoostphp(php)php php!php=php php1php)php php{
+php php php php php php php php php php php php php$queryphp php.php=php php'php^php'php php.php roundphp(php$thisphp-php>getBoostphp(php)php,php php4php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$queryphp;
+php php php php php}
+php}

@@ -1,41 +1,41 @@
-/*
- * @version    $Id: queue_sqlite.sql 20874 2010-02-03 13:14:59Z matthew $
-Sample grant for SQLite
+php/php*
+php php*php php@versionphp php php php php$Idphp:php queuephp_sqlitephp.sqlphp php2php0php8php7php4php php2php0php1php0php-php0php2php-php0php3php php1php3php:php1php4php:php5php9Zphp matthewphp php$
+Samplephp grantphp forphp SQLite
 
-CREATE ROLE queue LOGIN
-  PASSWORD '[CHANGE ME]'
-  NOSUPERUSER NOINHERIT NOCREATEDB NOCREATEROLE;
+CREATEphp ROLEphp queuephp LOGIN
+php php PASSWORDphp php'php[CHANGEphp MEphp]php'
+php php NOSUPERUSERphp NOINHERITphp NOCREATEDBphp NOCREATEROLEphp;
 
-*/
+php*php/
 
---
--- Table structure for table `queue`
---
+php-php-
+php-php-php Tablephp structurephp forphp tablephp php`queuephp`
+php-php-
 
-CREATE TABLE queue
-(
-  queue_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  queue_name VARCHAR(100) NOT NULL,
-  timeout INTEGER NOT NULL DEFAULT 30
-);
-
-
+CREATEphp TABLEphp queue
+php(
+php php queuephp_idphp INTEGERphp PRIMARYphp KEYphp AUTOINCREMENTphp,
+php php queuephp_namephp VARCHARphp(php1php0php0php)php NOTphp NULLphp,
+php php timeoutphp INTEGERphp NOTphp NULLphp DEFAULTphp php3php0
+php)php;
 
 
--- --------------------------------------------------------
---
--- Table structure for table `message`
---
 
-CREATE TABLE message
-(
-  message_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  queue_id INTEGER PRIMARY KEY,
-  handle CHAR(32),
-  body VARCHAR(8192) NOT NULL,
-  md5 CHAR(32) NOT NULL,
-  timeout REAL,
-  created INTEGER,
-  FOREIGN KEY (queue_id) REFERENCES queue(queue_id)
-);
+
+php-php-php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
+php-php-
+php-php-php Tablephp structurephp forphp tablephp php`messagephp`
+php-php-
+
+CREATEphp TABLEphp message
+php(
+php php messagephp_idphp INTEGERphp PRIMARYphp KEYphp AUTOINCREMENTphp,
+php php queuephp_idphp INTEGERphp PRIMARYphp KEYphp,
+php php handlephp CHARphp(php3php2php)php,
+php php bodyphp VARCHARphp(php8php1php9php2php)php NOTphp NULLphp,
+php php mdphp5php CHARphp(php3php2php)php NOTphp NULLphp,
+php php timeoutphp REALphp,
+php php createdphp INTEGERphp,
+php php FOREIGNphp KEYphp php(queuephp_idphp)php REFERENCESphp queuephp(queuephp_idphp)
+php)php;
 

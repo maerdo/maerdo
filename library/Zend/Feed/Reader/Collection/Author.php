@@ -1,51 +1,51 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Author.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Authorphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Feed_Reader_Collection_CollectionAbstract
- */
-require_once 'Zend/Feed/Reader/Collection/CollectionAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Feedphp_Readerphp_Collectionphp_CollectionAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Collectionphp/CollectionAbstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Feed_Reader_Collection_Author
-extends Zend_Feed_Reader_Collection_CollectionAbstract
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Feedphp_Readerphp_Collectionphp_Author
+extendsphp Zendphp_Feedphp_Readerphp_Collectionphp_CollectionAbstract
+php{
 
-    /**
-     * Return a simple array of the most relevant slice of
-     * the author values, i.e. all author names.
-     *
-     * @return array
-     */
-    public function getValues() {
-        $authors = array();
-        foreach ($this->getIterator() as $element) {
-            $authors[] = $element['name'];
-        }
-        return array_unique($authors);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp simplephp arrayphp ofphp thephp mostphp relevantphp slicephp of
+php php php php php php*php thephp authorphp valuesphp,php iphp.ephp.php allphp authorphp namesphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getValuesphp(php)php php{
+php php php php php php php php php$authorsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp-php>getIteratorphp(php)php asphp php$elementphp)php php{
+php php php php php php php php php php php php php$authorsphp[php]php php=php php$elementphp[php'namephp'php]php;
+php php php php php php php php php}
+php php php php php php php php returnphp arrayphp_uniquephp(php$authorsphp)php;
+php php php php php}
 
-}
+php}

@@ -1,46 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.52 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="ar"/>
-		<territory type="MA"/>
-	</identity>
-	<localeDisplayNames>
-		<scripts>
-			<script type="Ital">اللأيطالية القديمة</script>
-		</scripts>
-	</localeDisplayNames>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<dateTimeFormats>
-					<intervalFormats>
-						<intervalFormatItem id="d">
-							<greatestDifference id="d">d‏-d</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="MMMd">
-							<greatestDifference id="d">d‏-d MMM</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="y">
-							<greatestDifference id="y">y‏-y</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMMd">
-							<greatestDifference id="d">d‏–d MMM، y</greatestDifference>
-						</intervalFormatItem>
-						<intervalFormatItem id="yMMMM">
-							<greatestDifference id="M">MM ‏- MM ‏–yyyy</greatestDifference>
-						</intervalFormatItem>
-					</intervalFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-	</dates>
-	<numbers>
-		<defaultNumberingSystem>latn</defaultNumberingSystem>
-		<symbols>
-			<nativeZeroDigit>0</nativeZeroDigit>
-		</symbols>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php5php2php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php4php php$php"php/php>
+php	php	php<languagephp typephp=php"arphp"php/php>
+php	php	php<territoryphp typephp=php"MAphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Italphp"php>phpاphpلphpلphpأphpيphpطphpاphpلphpيphpةphp phpاphpلphpقphpدphpيphpمphpة<php/scriptphp>
+php	php	<php/scriptsphp>
+php	<php/localeDisplayNamesphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<intervalFormatsphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"dphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp‏php-d<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp‏php-dphp MMM<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp‏php-y<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMdphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp‏php–dphp MMMphp،php y<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMMphp"php>
+php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp php‏php-php MMphp php‏php–yyyy<php/greatestDifferencephp>
+php	php	php	php	php	php	<php/intervalFormatItemphp>
+php	php	php	php	php	<php/intervalFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<defaultNumberingSystemphp>latn<php/defaultNumberingSystemphp>
+php	php	php<symbolsphp>
+php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
+php	php	<php/symbolsphp>
+php	<php/numbersphp>
+<php/ldmlphp>
 

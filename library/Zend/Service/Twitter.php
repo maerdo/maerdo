@@ -1,1041 +1,1041 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Twitter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Twitter.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
-
-/**
- * @see Zend_Rest_Client
- */
-require_once 'Zend/Rest/Client.php';
-
-/**
- * @see Zend_Rest_Client_Result
- */
-require_once 'Zend/Rest/Client/Result.php';
-
-/**
- * @see Zend_Oauth_Consumer
- */
-require_once 'Zend/Oauth/Consumer.php';
-
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Twitter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_Twitter extends Zend_Rest_Client
-{
-
-    /**
-     * 246 is the current limit for a status message, 140 characters are displayed
-     * initially, with the remainder linked from the web UI or client. The limit is
-     * applied to a html encoded UTF-8 string (i.e. entities are counted in the limit
-     * which may appear unusual but is a security measure).
-     *
-     * This should be reviewed in the future...
-     */
-    const STATUS_MAX_CHARACTERS = 246;
-
-    /**
-     * OAuth Endpoint
-     */
-    const OAUTH_BASE_URI = 'http://twitter.com/oauth';
-
-    /**
-     * @var Zend_Http_CookieJar
-     */
-    protected $_cookieJar;
-
-    /**
-     * Date format for 'since' strings
-     *
-     * @var string
-     */
-    protected $_dateFormat = 'D, d M Y H:i:s T';
-
-    /**
-     * Username
-     *
-     * @var string
-     */
-    protected $_username;
-
-    /**
-     * Current method type (for method proxying)
-     *
-     * @var string
-     */
-    protected $_methodType;
-
-    /**
-     * Zend_Oauth Consumer
-     *
-     * @var Zend_Oauth_Consumer
-     */
-    protected $_oauthConsumer = null;
-
-    /**
-     * Types of API methods
-     *
-     * @var array
-     */
-    protected $_methodTypes = array(
-        'status',
-        'user',
-        'directMessage',
-        'friendship',
-        'account',
-        'favorite',
-        'block'
-    );
-
-    /**
-     * Options passed to constructor
-     *
-     * @var array
-     */
-    protected $_options = array();
-
-    /**
-     * Local HTTP Client cloned from statically set client
-     *
-     * @var Zend_Http_Client
-     */
-    protected $_localHttpClient = null;
-
-    /**
-     * Constructor
-     *
-     * @param  array $options Optional options array
-     * @return void
-     */
-    public function __construct($options = null, Zend_Oauth_Consumer $consumer = null)
-    {
-        $this->setUri('http://api.twitter.com');
-        if (!is_array($options)) $options = array();
-        $options['siteUrl'] = self::OAUTH_BASE_URI;
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
-        $this->_options = $options;
-        if (isset($options['username'])) {
-            $this->setUsername($options['username']);
-        }
-        if (isset($options['accessToken'])
-        && $options['accessToken'] instanceof Zend_Oauth_Token_Access) {
-            $this->setLocalHttpClient($options['accessToken']->getHttpClient($options));
-        } else {
-            $this->setLocalHttpClient(clone self::getHttpClient());
-            if ($consumer === null) {
-                $this->_oauthConsumer = new Zend_Oauth_Consumer($options);
-            } else {
-                $this->_oauthConsumer = $consumer;
-            }
-        }
-    }
-
-    /**
-     * Set local HTTP client as distinct from the static HTTP client
-     * as inherited from Zend_Rest_Client.
-     *
-     * @param Zend_Http_Client $client
-     * @return self
-     */
-    public function setLocalHttpClient(Zend_Http_Client $client)
-    {
-        $this->_localHttpClient = $client;
-        $this->_localHttpClient->setHeaders('Accept-Charset', 'ISO-8859-1,utf-8');
-        return $this;
-    }
-
-    /**
-     * Get the local HTTP client as distinct from the static HTTP client
-     * inherited from Zend_Rest_Client
-     *
-     * @return Zend_Http_Client
-     */
-    public function getLocalHttpClient()
-    {
-        return $this->_localHttpClient;
-    }
-
-    /**
-     * Checks for an authorised state
-     *
-     * @return bool
-     */
-    public function isAuthorised()
-    {
-        if ($this->getLocalHttpClient() instanceof Zend_Oauth_Client) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Retrieve username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->_username;
-    }
-
-    /**
-     * Set username
-     *
-     * @param  string $value
-     * @return Zend_Service_Twitter
-     */
-    public function setUsername($value)
-    {
-        $this->_username = $value;
-        return $this;
-    }
-
-    /**
-     * Proxy service methods
-     *
-     * @param  string $type
-     * @return Zend_Service_Twitter
-     * @throws Zend_Service_Twitter_Exception If method not in method types list
-     */
-    public function __get($type)
-    {
-        if (!in_array($type, $this->_methodTypes)) {
-            include_once 'Zend/Service/Twitter/Exception.php';
-            throw new Zend_Service_Twitter_Exception(
-                'Invalid method type "' . $type . '"'
-            );
-        }
-        $this->_methodType = $type;
-        return $this;
-    }
-
-    /**
-     * Method overloading
-     *
-     * @param  string $method
-     * @param  array $params
-     * @return mixed
-     * @throws Zend_Service_Twitter_Exception if unable to find method
-     */
-    public function __call($method, $params)
-    {
-        if (method_exists($this->_oauthConsumer, $method)) {
-            $return = call_user_func_array(array($this->_oauthConsumer, $method), $params);
-            if ($return instanceof Zend_Oauth_Token_Access) {
-                $this->setLocalHttpClient($return->getHttpClient($this->_options));
-            }
-            return $return;
-        }
-        if (empty($this->_methodType)) {
-            include_once 'Zend/Service/Twitter/Exception.php';
-            throw new Zend_Service_Twitter_Exception(
-                'Invalid method "' . $method . '"'
-            );
-        }
-        $test = $this->_methodType . ucfirst($method);
-        if (!method_exists($this, $test)) {
-            include_once 'Zend/Service/Twitter/Exception.php';
-            throw new Zend_Service_Twitter_Exception(
-                'Invalid method "' . $test . '"'
-            );
-        }
-
-        return call_user_func_array(array($this, $test), $params);
-    }
-
-    /**
-     * Initialize HTTP authentication
-     *
-     * @return void
-     */
-    protected function _init()
-    {
-        if (!$this->isAuthorised() && $this->getUsername() !== null) {
-            require_once 'Zend/Service/Twitter/Exception.php';
-            throw new Zend_Service_Twitter_Exception(
-                'Twitter session is unauthorised. You need to initialize '
-                . 'Zend_Service_Twitter with an OAuth Access Token or use '
-                . 'its OAuth functionality to obtain an Access Token before '
-                . 'attempting any API actions that require authorisation'
-            );
-        }
-        $client = $this->_localHttpClient;
-        $client->resetParameters();
-        if (null == $this->_cookieJar) {
-            $client->setCookieJar();
-            $this->_cookieJar = $client->getCookieJar();
-        } else {
-            $client->setCookieJar($this->_cookieJar);
-        }
-    }
-
-    /**
-     * Set date header
-     *
-     * @param  int|string $value
-     * @deprecated Not supported by Twitter since April 08, 2009
-     * @return void
-     */
-    protected function _setDate($value)
-    {
-        if (is_int($value)) {
-            $date = date($this->_dateFormat, $value);
-        } else {
-            $date = date($this->_dateFormat, strtotime($value));
-        }
-        $this->_localHttpClient->setHeaders('If-Modified-Since', $date);
-    }
-
-    /**
-     * Public Timeline status
-     *
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function statusPublicTimeline()
-    {
-        $this->_init();
-        $path = '/1/statuses/public_timeline.xml';
-        $response = $this->_get($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Friend Timeline Status
-     *
-     * $params may include one or more of the following keys
-     * - id: ID of a friend whose timeline you wish to receive
-     * - count: how many statuses to return
-     * - since_id: return results only after the specific tweet
-     * - page: return page X of results
-     *
-     * @param  array $params
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return void
-     */
-    public function statusFriendsTimeline(array $params = array())
-    {
-        $this->_init();
-        $path = '/1/statuses/friends_timeline';
-        $_params = array();
-        foreach ($params as $key => $value) {
-            switch (strtolower($key)) {
-                case 'count':
-                    $count = (int) $value;
-                    if (0 >= $count) {
-                        $count = 1;
-                    } elseif (200 < $count) {
-                        $count = 200;
-                    }
-                    $_params['count'] = (int) $count;
-                    break;
-                case 'since_id':
-                    $_params['since_id'] = $this->_validInteger($value);
-                    break;
-                case 'page':
-                    $_params['page'] = (int) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-        $path .= '.xml';
-        $response = $this->_get($path, $_params);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * User Timeline status
-     *
-     * $params may include one or more of the following keys
-     * - id: ID of a friend whose timeline you wish to receive
-     * - since_id: return results only after the tweet id specified
-     * - page: return page X of results
-     * - count: how many statuses to return
-     * - max_id: returns only statuses with an ID less than or equal to the specified ID
-     * - user_id: specifies the ID of the user for whom to return the user_timeline
-     * - screen_name: specfies the screen name of the user for whom to return the user_timeline
-     * - include_rts: whether or not to return retweets
-     * - trim_user: whether to return just the user ID or a full user object; omit to return full object
-     * - include_entities: whether or not to return entities nodes with tweet metadata
-     *
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function statusUserTimeline(array $params = array())
-    {
-        $this->_init();
-        $path = '/1/statuses/user_timeline';
-        $_params = array();
-        foreach ($params as $key => $value) {
-            switch (strtolower($key)) {
-                case 'id':
-                    $path .= '/' . $value;
-                    break;
-                case 'page':
-                    $_params['page'] = (int) $value;
-                    break;
-                case 'count':
-                    $count = (int) $value;
-                    if (0 >= $count) {
-                        $count = 1;
-                    } elseif (200 < $count) {
-                        $count = 200;
-                    }
-                    $_params['count'] = $count;
-                    break;
-                case 'user_id':
-                    $_params['user_id'] = $this->_validInteger($value);
-                    break;
-                case 'screen_name':
-                    $_params['screen_name'] = $this->_validateScreenName($value);
-                    break;
-                case 'since_id':
-                    $_params['since_id'] = $this->_validInteger($value);
-                    break;
-                case 'max_id':
-                    $_params['max_id'] = $this->_validInteger($value);
-                    break;
-                case 'include_rts':
-                case 'trim_user':
-                case 'include_entities':
-                    $_params[strtolower($key)] = $value ? '1' : '0';
-                    break;
-                default:
-                    break;
-            }
-        }
-        $path .= '.xml';
-        $response = $this->_get($path, $_params);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Show a single status
-     *
-     * @param  int $id Id of status to show
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function statusShow($id)
-    {
-        $this->_init();
-        $path = '/1/statuses/show/' . $this->_validInteger($id) . '.xml';
-        $response = $this->_get($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Update user's current status
-     *
-     * @param  string $status
-     * @param  int $in_reply_to_status_id
-     * @return Zend_Rest_Client_Result
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @throws Zend_Service_Twitter_Exception if message is too short or too long
-     */
-    public function statusUpdate($status, $inReplyToStatusId = null)
-    {
-        $this->_init();
-        $path = '/1/statuses/update.xml';
-        $len = iconv_strlen(htmlspecialchars($status, ENT_QUOTES, 'UTF-8'), 'UTF-8');
-        if ($len > self::STATUS_MAX_CHARACTERS) {
-            include_once 'Zend/Service/Twitter/Exception.php';
-            throw new Zend_Service_Twitter_Exception(
-                'Status must be no more than '
-                . self::STATUS_MAX_CHARACTERS
-                . ' characters in length'
-            );
-        } elseif (0 == $len) {
-            include_once 'Zend/Service/Twitter/Exception.php';
-            throw new Zend_Service_Twitter_Exception(
-                'Status must contain at least one character'
-            );
-        }
-        $data = array('status' => $status);
-        if (is_numeric($inReplyToStatusId) && !empty($inReplyToStatusId)) {
-            $data['in_reply_to_status_id'] = $inReplyToStatusId;
-        }
-        $response = $this->_post($path, $data);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Get status replies
-     *
-     * $params may include one or more of the following keys
-     * - since_id: return results only after the specified tweet id
-     * - page: return page X of results
-     *
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function statusReplies(array $params = array())
-    {
-        $this->_init();
-        $path = '/1/statuses/mentions.xml';
-        $_params = array();
-        foreach ($params as $key => $value) {
-            switch (strtolower($key)) {
-                case 'since_id':
-                    $_params['since_id'] = $this->_validInteger($value);
-                    break;
-                case 'page':
-                    $_params['page'] = (int) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-        $response = $this->_get($path, $_params);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Destroy a status message
-     *
-     * @param  int $id ID of status to destroy
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function statusDestroy($id)
-    {
-        $this->_init();
-        $path = '/1/statuses/destroy/' . $this->_validInteger($id) . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * User friends
-     *
-     * @param  int|string $id Id or username of user for whom to fetch friends
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function userFriends(array $params = array())
-    {
-        $this->_init();
-        $path = '/1/statuses/friends';
-        $_params = array();
-
-        foreach ($params as $key => $value) {
-            switch (strtolower($key)) {
-                case 'id':
-                    $path .= '/' . $value;
-                    break;
-                case 'page':
-                    $_params['page'] = (int) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-        $path .= '.xml';
-
-        $response = $this->_get($path, $_params);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * User Followers
-     *
-     * @param  bool $lite If true, prevents inline inclusion of current status for followers; defaults to false
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function userFollowers($lite = false)
-    {
-        $this->_init();
-        $path = '/1/statuses/followers.xml';
-        if ($lite) {
-            $this->lite = 'true';
-        }
-        $response = $this->_get($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Show extended information on a user
-     *
-     * @param  int|string $id User ID or name
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function userShow($id)
-    {
-        $this->_init();
-        $path = '/1/users/show.xml';
-        $response = $this->_get($path, array('id'=>$id));
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Retrieve direct messages for the current user
-     *
-     * $params may include one or more of the following keys
-     * - since_id: return statuses only greater than the one specified
-     * - page: return page X of results
-     *
-     * @param  array $params
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function directMessageMessages(array $params = array())
-    {
-        $this->_init();
-        $path = '/1/direct_messages.xml';
-        $_params = array();
-        foreach ($params as $key => $value) {
-            switch (strtolower($key)) {
-                case 'since_id':
-                    $_params['since_id'] = $this->_validInteger($value);
-                    break;
-                case 'page':
-                    $_params['page'] = (int) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-        $response = $this->_get($path, $_params);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Retrieve list of direct messages sent by current user
-     *
-     * $params may include one or more of the following keys
-     * - since_id: return statuses only greater than the one specified
-     * - page: return page X of results
-     *
-     * @param  array $params
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function directMessageSent(array $params = array())
-    {
-        $this->_init();
-        $path = '/1/direct_messages/sent.xml';
-        $_params = array();
-        foreach ($params as $key => $value) {
-            switch (strtolower($key)) {
-                case 'since_id':
-                    $_params['since_id'] = $this->_validInteger($value);
-                    break;
-                case 'page':
-                    $_params['page'] = (int) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-        $response = $this->_get($path, $_params);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Send a direct message to a user
-     *
-     * @param  int|string $user User to whom to send message
-     * @param  string $text Message to send to user
-     * @return Zend_Rest_Client_Result
-     * @throws Zend_Service_Twitter_Exception if message is too short or too long
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     */
-    public function directMessageNew($user, $text)
-    {
-        $this->_init();
-        $path = '/1/direct_messages/new.xml';
-        $len = iconv_strlen($text, 'UTF-8');
-        if (0 == $len) {
-            throw new Zend_Service_Twitter_Exception(
-                'Direct message must contain at least one character'
-            );
-        } elseif (140 < $len) {
-            throw new Zend_Service_Twitter_Exception(
-                'Direct message must contain no more than 140 characters'
-            );
-        }
-        $data = array('user' => $user, 'text' => $text);
-        $response = $this->_post($path, $data);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Destroy a direct message
-     *
-     * @param  int $id ID of message to destroy
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function directMessageDestroy($id)
-    {
-        $this->_init();
-        $path = '/1/direct_messages/destroy/' . $this->_validInteger($id) . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Create friendship
-     *
-     * @param  int|string $id User ID or name of new friend
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function friendshipCreate($id)
-    {
-        $this->_init();
-        $path = '/1/friendships/create/' . $id . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Destroy friendship
-     *
-     * @param  int|string $id User ID or name of friend to remove
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function friendshipDestroy($id)
-    {
-        $this->_init();
-        $path = '/1/friendships/destroy/' . $id . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Friendship exists
-     *
-     * @param int|string $id User ID or name of friend to see if they are your friend
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_result
-     */
-    public function friendshipExists($id)
-    {
-        $this->_init();
-        $path = '/1/friendships/exists.xml';
-        $data = array('user_a' => $this->getUsername(), 'user_b' => $id);
-        $response = $this->_get($path, $data);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Verify Account Credentials
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     *
-     * @return Zend_Rest_Client_Result
-     */
-    public function accountVerifyCredentials()
-    {
-        $this->_init();
-        $response = $this->_get('/1/account/verify_credentials.xml');
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * End current session
-     *
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return true
-     */
-    public function accountEndSession()
-    {
-        $this->_init();
-        $this->_get('/1/account/end_session');
-        return true;
-    }
-
-    /**
-     * Returns the number of api requests you have left per hour.
-     *
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function accountRateLimitStatus()
-    {
-        $this->_init();
-        $response = $this->_get('/1/account/rate_limit_status.xml');
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Fetch favorites
-     *
-     * $params may contain one or more of the following:
-     * - 'id': Id of a user for whom to fetch favorites
-     * - 'page': Retrieve a different page of resuls
-     *
-     * @param  array $params
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function favoriteFavorites(array $params = array())
-    {
-        $this->_init();
-        $path = '/1/favorites';
-        $_params = array();
-        foreach ($params as $key => $value) {
-            switch (strtolower($key)) {
-                case 'id':
-                    $path .= '/' . $this->_validInteger($value);
-                    break;
-                case 'page':
-                    $_params['page'] = (int) $value;
-                    break;
-                default:
-                    break;
-            }
-        }
-        $path .= '.xml';
-        $response = $this->_get($path, $_params);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Mark a status as a favorite
-     *
-     * @param  int $id Status ID you want to mark as a favorite
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function favoriteCreate($id)
-    {
-        $this->_init();
-        $path = '/1/favorites/create/' . $this->_validInteger($id) . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Remove a favorite
-     *
-     * @param  int $id Status ID you want to de-list as a favorite
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return Zend_Rest_Client_Result
-     */
-    public function favoriteDestroy($id)
-    {
-        $this->_init();
-        $path = '/1/favorites/destroy/' . $this->_validInteger($id) . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Blocks the user specified in the ID parameter as the authenticating user.
-     * Destroys a friendship to the blocked user if it exists.
-     *
-     * @param integer|string $id       The ID or screen name of a user to block.
-     * @return Zend_Rest_Client_Result
-     */
-    public function blockCreate($id)
-    {
-        $this->_init();
-        $path = '/1/blocks/create/' . $id . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Un-blocks the user specified in the ID parameter for the authenticating user
-     *
-     * @param integer|string $id       The ID or screen_name of the user to un-block.
-     * @return Zend_Rest_Client_Result
-     */
-    public function blockDestroy($id)
-    {
-        $this->_init();
-        $path = '/1/blocks/destroy/' . $id . '.xml';
-        $response = $this->_post($path);
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Returns if the authenticating user is blocking a target user.
-     *
-     * @param string|integer $id    The ID or screen_name of the potentially blocked user.
-     * @param boolean $returnResult Instead of returning a boolean return the rest response from twitter
-     * @return Boolean|Zend_Rest_Client_Result
-     */
-    public function blockExists($id, $returnResult = false)
-    {
-        $this->_init();
-        $path = '/1/blocks/exists/' . $id . '.xml';
-        $response = $this->_get($path);
-
-        $cr = new Zend_Rest_Client_Result($response->getBody());
-
-        if ($returnResult === true)
-            return $cr;
-
-        if (!empty($cr->request)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Returns an array of user objects that the authenticating user is blocking
-     *
-     * @param integer $page         Optional. Specifies the page number of the results beginning at 1. A single page contains 20 ids.
-     * @param boolean $returnUserIds  Optional. Returns only the userid's instead of the whole user object
-     * @return Zend_Rest_Client_Result
-     */
-    public function blockBlocking($page = 1, $returnUserIds = false)
-    {
-        $this->_init();
-        $path = '/1/blocks/blocking';
-        if ($returnUserIds === true) {
-            $path .= '/ids';
-        }
-        $path .= '.xml';
-        $response = $this->_get($path, array('page' => $page));
-        return new Zend_Rest_Client_Result($response->getBody());
-    }
-
-    /**
-     * Protected function to validate that the integer is valid or return a 0
-     * @param $int
-     * @throws Zend_Http_Client_Exception if HTTP request fails or times out
-     * @return integer
-     */
-    protected function _validInteger($int)
-    {
-        if (preg_match("/(\d+)/", $int)) {
-            return $int;
-        }
-        return 0;
-    }
-
-    /**
-     * Validate a screen name using Twitter rules
-     *
-     * @param string $name
-     * @throws Zend_Service_Twitter_Exception
-     * @return string
-     */
-    protected function _validateScreenName($name)
-    {
-        if (!preg_match('/^[a-zA-Z0-9_]{0,15}$/', $name)) {
-            require_once 'Zend/Service/Twitter/Exception.php';
-            throw new Zend_Service_Twitter_Exception(
-                'Screen name, "' . $name
-                . '" should only contain alphanumeric characters and'
-                . ' underscores, and not exceed 15 characters.');
-        }
-        return $name;
-    }
-
-    /**
-     * Call a remote REST web service URI and return the Zend_Http_Response object
-     *
-     * @param  string $path            The path to append to the URI
-     * @throws Zend_Rest_Client_Exception
-     * @return void
-     */
-    protected function _prepare($path)
-    {
-        // Get the URI object and configure it
-        if (!$this->_uri instanceof Zend_Uri_Http) {
-            require_once 'Zend/Rest/Client/Exception.php';
-            throw new Zend_Rest_Client_Exception(
-                'URI object must be set before performing call'
-            );
-        }
-
-        $uri = $this->_uri->getUri();
-
-        if ($path[0] != '/' && $uri[strlen($uri) - 1] != '/') {
-            $path = '/' . $path;
-        }
-
-        $this->_uri->setPath($path);
-
-        /**
-         * Get the HTTP client and configure it for the endpoint URI.
-         * Do this each time because the Zend_Http_Client instance is shared
-         * among all Zend_Service_Abstract subclasses.
-         */
-        $this->_localHttpClient->resetParameters()->setUri((string) $this->_uri);
-    }
-
-    /**
-     * Performs an HTTP GET request to the $path.
-     *
-     * @param string $path
-     * @param array  $query Array of GET parameters
-     * @throws Zend_Http_Client_Exception
-     * @return Zend_Http_Response
-     */
-    protected function _get($path, array $query = null)
-    {
-        $this->_prepare($path);
-        $this->_localHttpClient->setParameterGet($query);
-        return $this->_localHttpClient->request(Zend_Http_Client::GET);
-    }
-
-    /**
-     * Performs an HTTP POST request to $path.
-     *
-     * @param string $path
-     * @param mixed $data Raw data to send
-     * @throws Zend_Http_Client_Exception
-     * @return Zend_Http_Response
-     */
-    protected function _post($path, $data = null)
-    {
-        $this->_prepare($path);
-        return $this->_performPost(Zend_Http_Client::POST, $data);
-    }
-
-    /**
-     * Perform a POST or PUT
-     *
-     * Performs a POST or PUT request. Any data provided is set in the HTTP
-     * client. String data is pushed in as raw POST data; array or object data
-     * is pushed in as POST parameters.
-     *
-     * @param mixed $method
-     * @param mixed $data
-     * @return Zend_Http_Response
-     */
-    protected function _performPost($method, $data = null)
-    {
-        $client = $this->_localHttpClient;
-        if (is_string($data)) {
-            $client->setRawData($data);
-        } elseif (is_array($data) || is_object($data)) {
-            $client->setParameterPost((array) $data);
-        }
-        return $client->request($method);
-    }
-
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Twitter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Twitterphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Restphp_Client
+php php*php/
+requirephp_oncephp php'Zendphp/Restphp/Clientphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Restphp_Clientphp_Result
+php php*php/
+requirephp_oncephp php'Zendphp/Restphp/Clientphp/Resultphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Oauthphp_Consumer
+php php*php/
+requirephp_oncephp php'Zendphp/Oauthphp/Consumerphp.phpphp'php;
+
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Twitter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_Twitterphp extendsphp Zendphp_Restphp_Client
+php{
+
+php php php php php/php*php*
+php php php php php php*php php2php4php6php isphp thephp currentphp limitphp forphp aphp statusphp messagephp,php php1php4php0php charactersphp arephp displayed
+php php php php php php*php initiallyphp,php withphp thephp remainderphp linkedphp fromphp thephp webphp UIphp orphp clientphp.php Thephp limitphp is
+php php php php php php*php appliedphp tophp aphp htmlphp encodedphp UTFphp-php8php stringphp php(iphp.ephp.php entitiesphp arephp countedphp inphp thephp limit
+php php php php php php*php whichphp mayphp appearphp unusualphp butphp isphp aphp securityphp measurephp)php.
+php php php php php php*
+php php php php php php*php Thisphp shouldphp bephp reviewedphp inphp thephp futurephp.php.php.
+php php php php php php*php/
+php php php php constphp STATUSphp_MAXphp_CHARACTERSphp php=php php2php4php6php;
+
+php php php php php/php*php*
+php php php php php php*php OAuthphp Endpoint
+php php php php php php*php/
+php php php php constphp OAUTHphp_BASEphp_URIphp php=php php'httpphp:php/php/twitterphp.comphp/oauthphp'php;
+
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Httpphp_CookieJar
+php php php php php php*php/
+php php php php protectedphp php$php_cookieJarphp;
+
+php php php php php/php*php*
+php php php php php php*php Datephp formatphp forphp php'sincephp'php strings
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_dateFormatphp php=php php'Dphp,php dphp Mphp Yphp Hphp:iphp:sphp Tphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Username
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_usernamephp;
+
+php php php php php/php*php*
+php php php php php php*php Currentphp methodphp typephp php(forphp methodphp proxyingphp)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_methodTypephp;
+
+php php php php php/php*php*
+php php php php php php*php Zendphp_Oauthphp Consumer
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Oauthphp_Consumer
+php php php php php php*php/
+php php php php protectedphp php$php_oauthConsumerphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Typesphp ofphp APIphp methods
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_methodTypesphp php=php arrayphp(
+php php php php php php php php php'statusphp'php,
+php php php php php php php php php'userphp'php,
+php php php php php php php php php'directMessagephp'php,
+php php php php php php php php php'friendshipphp'php,
+php php php php php php php php php'accountphp'php,
+php php php php php php php php php'favoritephp'php,
+php php php php php php php php php'blockphp'
+php php php php php)php;
+
+php php php php php/php*php*
+php php php php php php*php Optionsphp passedphp tophp constructor
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Localphp HTTPphp Clientphp clonedphp fromphp staticallyphp setphp client
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php protectedphp php$php_localHttpClientphp php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Optionalphp optionsphp array
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp,php Zendphp_Oauthphp_Consumerphp php$consumerphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setUriphp(php'httpphp:php/php/apiphp.twitterphp.comphp'php)php;
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php$optionsphp php=php arrayphp(php)php;
+php php php php php php php php php$optionsphp[php'siteUrlphp'php]php php=php selfphp:php:OAUTHphp_BASEphp_URIphp;
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_optionsphp php=php php$optionsphp;
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'usernamephp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setUsernamephp(php$optionsphp[php'usernamephp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$optionsphp[php'accessTokenphp'php]php)
+php php php php php php php php php&php&php php$optionsphp[php'accessTokenphp'php]php instanceofphp Zendphp_Oauthphp_Tokenphp_Accessphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setLocalHttpClientphp(php$optionsphp[php'accessTokenphp'php]php-php>getHttpClientphp(php$optionsphp)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>setLocalHttpClientphp(clonephp selfphp:php:getHttpClientphp(php)php)php;
+php php php php php php php php php php php php ifphp php(php$consumerphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_oauthConsumerphp php=php newphp Zendphp_Oauthphp_Consumerphp(php$optionsphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_oauthConsumerphp php=php php$consumerphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp localphp HTTPphp clientphp asphp distinctphp fromphp thephp staticphp HTTPphp client
+php php php php php php*php asphp inheritedphp fromphp Zendphp_Restphp_Clientphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Httpphp_Clientphp php$client
+php php php php php php*php php@returnphp self
+php php php php php php*php/
+php php php php publicphp functionphp setLocalHttpClientphp(Zendphp_Httpphp_Clientphp php$clientphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_localHttpClientphp php=php php$clientphp;
+php php php php php php php php php$thisphp-php>php_localHttpClientphp-php>setHeadersphp(php'Acceptphp-Charsetphp'php,php php'ISOphp-php8php8php5php9php-php1php,utfphp-php8php'php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp localphp HTTPphp clientphp asphp distinctphp fromphp thephp staticphp HTTPphp client
+php php php php php php*php inheritedphp fromphp Zendphp_Restphp_Client
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp getLocalHttpClientphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_localHttpClientphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checksphp forphp anphp authorisedphp state
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isAuthorisedphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>getLocalHttpClientphp(php)php instanceofphp Zendphp_Oauthphp_Clientphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp username
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getUsernamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_usernamephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp username
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp Zendphp_Servicephp_Twitter
+php php php php php php*php/
+php php php php publicphp functionphp setUsernamephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_usernamephp php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Proxyphp servicephp methods
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp Zendphp_Servicephp_Twitter
+php php php php php php*php php@throwsphp Zendphp_Servicephp_Twitterphp_Exceptionphp Ifphp methodphp notphp inphp methodphp typesphp list
+php php php php php php*php/
+php php php php publicphp functionphp php_php_getphp(php$typephp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$typephp,php php$thisphp-php>php_methodTypesphp)php)php php{
+php php php php php php php php php php php php includephp_oncephp php'Zendphp/Servicephp/Twitterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Invalidphp methodphp typephp php"php'php php.php php$typephp php.php php'php"php'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_methodTypephp php=php php$typephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Methodphp overloading
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$method
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp mixed
+php php php php php php*php php@throwsphp Zendphp_Servicephp_Twitterphp_Exceptionphp ifphp unablephp tophp findphp method
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$paramsphp)
+php php php php php{
+php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp-php>php_oauthConsumerphp,php php$methodphp)php)php php{
+php php php php php php php php php php php php php$returnphp php=php callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_oauthConsumerphp,php php$methodphp)php,php php$paramsphp)php;
+php php php php php php php php php php php php ifphp php(php$returnphp instanceofphp Zendphp_Oauthphp_Tokenphp_Accessphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setLocalHttpClientphp(php$returnphp-php>getHttpClientphp(php$thisphp-php>php_optionsphp)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php returnphp php$returnphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_methodTypephp)php)php php{
+php php php php php php php php php php php php includephp_oncephp php'Zendphp/Servicephp/Twitterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Invalidphp methodphp php"php'php php.php php$methodphp php.php php'php"php'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php php$testphp php=php php$thisphp-php>php_methodTypephp php.php ucfirstphp(php$methodphp)php;
+php php php php php php php php ifphp php(php!methodphp_existsphp(php$thisphp,php php$testphp)php)php php{
+php php php php php php php php php php php php includephp_oncephp php'Zendphp/Servicephp/Twitterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Invalidphp methodphp php"php'php php.php php$testphp php.php php'php"php'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp,php php$testphp)php,php php$paramsphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Initializephp HTTPphp authentication
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_initphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>isAuthorisedphp(php)php php&php&php php$thisphp-php>getUsernamephp(php)php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Twitterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Twitterphp sessionphp isphp unauthorisedphp.php Youphp needphp tophp initializephp php'
+php php php php php php php php php php php php php php php php php.php php'Zendphp_Servicephp_Twitterphp withphp anphp OAuthphp Accessphp Tokenphp orphp usephp php'
+php php php php php php php php php php php php php php php php php.php php'itsphp OAuthphp functionalityphp tophp obtainphp anphp Accessphp Tokenphp beforephp php'
+php php php php php php php php php php php php php php php php php.php php'attemptingphp anyphp APIphp actionsphp thatphp requirephp authorisationphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php php$clientphp php=php php$thisphp-php>php_localHttpClientphp;
+php php php php php php php php php$clientphp-php>resetParametersphp(php)php;
+php php php php php php php php ifphp php(nullphp php=php=php php$thisphp-php>php_cookieJarphp)php php{
+php php php php php php php php php php php php php$clientphp-php>setCookieJarphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_cookieJarphp php=php php$clientphp-php>getCookieJarphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$clientphp-php>setCookieJarphp(php$thisphp-php>php_cookieJarphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp datephp header
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|stringphp php$value
+php php php php php php*php php@deprecatedphp Notphp supportedphp byphp Twitterphp sincephp Aprilphp php0php8php,php php2php0php0php9
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_setDatephp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_intphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php$datephp php=php datephp(php$thisphp-php>php_dateFormatphp,php php$valuephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$datephp php=php datephp(php$thisphp-php>php_dateFormatphp,php strtotimephp(php$valuephp)php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_localHttpClientphp-php>setHeadersphp(php'Ifphp-Modifiedphp-Sincephp'php,php php$datephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Publicphp Timelinephp status
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp statusPublicTimelinephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/publicphp_timelinephp.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Friendphp Timelinephp Status
+php php php php php php*
+php php php php php php*php php$paramsphp mayphp includephp onephp orphp morephp ofphp thephp followingphp keys
+php php php php php php*php php-php idphp:php IDphp ofphp aphp friendphp whosephp timelinephp youphp wishphp tophp receive
+php php php php php php*php php-php countphp:php howphp manyphp statusesphp tophp return
+php php php php php php*php php-php sincephp_idphp:php returnphp resultsphp onlyphp afterphp thephp specificphp tweet
+php php php php php php*php php-php pagephp:php returnphp pagephp Xphp ofphp results
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp statusFriendsTimelinephp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/friendsphp_timelinephp'php;
+php php php php php php php php php$php_paramsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'countphp'php:
+php php php php php php php php php php php php php php php php php php php php php$countphp php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php0php php>php=php php$countphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$countphp php=php php1php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(php2php0php0php <php php$countphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$countphp php=php php2php0php0php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'countphp'php]php php=php php(intphp)php php$countphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'sincephp_idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'sincephp_idphp'php]php php=php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pagephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'pagephp'php]php php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$pathphp php.php=php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$php_paramsphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Userphp Timelinephp status
+php php php php php php*
+php php php php php php*php php$paramsphp mayphp includephp onephp orphp morephp ofphp thephp followingphp keys
+php php php php php php*php php-php idphp:php IDphp ofphp aphp friendphp whosephp timelinephp youphp wishphp tophp receive
+php php php php php php*php php-php sincephp_idphp:php returnphp resultsphp onlyphp afterphp thephp tweetphp idphp specified
+php php php php php php*php php-php pagephp:php returnphp pagephp Xphp ofphp results
+php php php php php php*php php-php countphp:php howphp manyphp statusesphp tophp return
+php php php php php php*php php-php maxphp_idphp:php returnsphp onlyphp statusesphp withphp anphp IDphp lessphp thanphp orphp equalphp tophp thephp specifiedphp ID
+php php php php php php*php php-php userphp_idphp:php specifiesphp thephp IDphp ofphp thephp userphp forphp whomphp tophp returnphp thephp userphp_timeline
+php php php php php php*php php-php screenphp_namephp:php specfiesphp thephp screenphp namephp ofphp thephp userphp forphp whomphp tophp returnphp thephp userphp_timeline
+php php php php php php*php php-php includephp_rtsphp:php whetherphp orphp notphp tophp returnphp retweets
+php php php php php php*php php-php trimphp_userphp:php whetherphp tophp returnphp justphp thephp userphp IDphp orphp aphp fullphp userphp objectphp;php omitphp tophp returnphp fullphp object
+php php php php php php*php php-php includephp_entitiesphp:php whetherphp orphp notphp tophp returnphp entitiesphp nodesphp withphp tweetphp metadata
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp statusUserTimelinephp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/userphp_timelinephp'php;
+php php php php php php php php php$php_paramsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$pathphp php.php=php php'php/php'php php.php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pagephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'pagephp'php]php php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'countphp'php:
+php php php php php php php php php php php php php php php php php php php php php$countphp php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php0php php>php=php php$countphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$countphp php=php php1php;
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp php(php2php0php0php <php php$countphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$countphp php=php php2php0php0php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'countphp'php]php php=php php$countphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'userphp_idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'userphp_idphp'php]php php=php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'screenphp_namephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'screenphp_namephp'php]php php=php php$thisphp-php>php_validateScreenNamephp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'sincephp_idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'sincephp_idphp'php]php php=php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'maxphp_idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'maxphp_idphp'php]php php=php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'includephp_rtsphp'php:
+php php php php php php php php php php php php php php php php casephp php'trimphp_userphp'php:
+php php php php php php php php php php php php php php php php casephp php'includephp_entitiesphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[strtolowerphp(php$keyphp)php]php php=php php$valuephp php?php php'php1php'php php:php php'php0php'php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$pathphp php.php=php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$php_paramsphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Showphp aphp singlephp status
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$idphp Idphp ofphp statusphp tophp show
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp statusShowphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/showphp/php'php php.php php$thisphp-php>php_validIntegerphp(php$idphp)php php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Updatephp userphp'sphp currentphp status
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$status
+php php php php php php*php php@paramphp php intphp php$inphp_replyphp_tophp_statusphp_id
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@throwsphp Zendphp_Servicephp_Twitterphp_Exceptionphp ifphp messagephp isphp toophp shortphp orphp toophp long
+php php php php php php*php/
+php php php php publicphp functionphp statusUpdatephp(php$statusphp,php php$inReplyToStatusIdphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/updatephp.xmlphp'php;
+php php php php php php php php php$lenphp php=php iconvphp_strlenphp(htmlspecialcharsphp(php$statusphp,php ENTphp_QUOTESphp,php php'UTFphp-php8php'php)php,php php'UTFphp-php8php'php)php;
+php php php php php php php php ifphp php(php$lenphp php>php selfphp:php:STATUSphp_MAXphp_CHARACTERSphp)php php{
+php php php php php php php php php php php php includephp_oncephp php'Zendphp/Servicephp/Twitterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Statusphp mustphp bephp nophp morephp thanphp php'
+php php php php php php php php php php php php php php php php php.php selfphp:php:STATUSphp_MAXphp_CHARACTERS
+php php php php php php php php php php php php php php php php php.php php'php charactersphp inphp lengthphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php elseifphp php(php0php php=php=php php$lenphp)php php{
+php php php php php php php php php php php php includephp_oncephp php'Zendphp/Servicephp/Twitterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Statusphp mustphp containphp atphp leastphp onephp characterphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php php$dataphp php=php arrayphp(php'statusphp'php php=php>php php$statusphp)php;
+php php php php php php php php ifphp php(isphp_numericphp(php$inReplyToStatusIdphp)php php&php&php php!emptyphp(php$inReplyToStatusIdphp)php)php php{
+php php php php php php php php php php php php php$dataphp[php'inphp_replyphp_tophp_statusphp_idphp'php]php php=php php$inReplyToStatusIdphp;
+php php php php php php php php php}
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp,php php$dataphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp statusphp replies
+php php php php php php*
+php php php php php php*php php$paramsphp mayphp includephp onephp orphp morephp ofphp thephp followingphp keys
+php php php php php php*php php-php sincephp_idphp:php returnphp resultsphp onlyphp afterphp thephp specifiedphp tweetphp id
+php php php php php php*php php-php pagephp:php returnphp pagephp Xphp ofphp results
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp statusRepliesphp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/mentionsphp.xmlphp'php;
+php php php php php php php php php$php_paramsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'sincephp_idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'sincephp_idphp'php]php php=php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pagephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'pagephp'php]php php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$php_paramsphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Destroyphp aphp statusphp message
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$idphp IDphp ofphp statusphp tophp destroy
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp statusDestroyphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/destroyphp/php'php php.php php$thisphp-php>php_validIntegerphp(php$idphp)php php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Userphp friends
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|stringphp php$idphp Idphp orphp usernamephp ofphp userphp forphp whomphp tophp fetchphp friends
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp userFriendsphp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/friendsphp'php;
+php php php php php php php php php$php_paramsphp php=php arrayphp(php)php;
+
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$pathphp php.php=php php'php/php'php php.php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pagephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'pagephp'php]php php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$pathphp php.php=php php'php.xmlphp'php;
+
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$php_paramsphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Userphp Followers
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$litephp Ifphp truephp,php preventsphp inlinephp inclusionphp ofphp currentphp statusphp forphp followersphp;php defaultsphp tophp false
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp userFollowersphp(php$litephp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/statusesphp/followersphp.xmlphp'php;
+php php php php php php php php ifphp php(php$litephp)php php{
+php php php php php php php php php php php php php$thisphp-php>litephp php=php php'truephp'php;
+php php php php php php php php php}
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Showphp extendedphp informationphp onphp aphp user
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|stringphp php$idphp Userphp IDphp orphp name
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp userShowphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/usersphp/showphp.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php arrayphp(php'idphp'php=php>php$idphp)php)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp directphp messagesphp forphp thephp currentphp user
+php php php php php php*
+php php php php php php*php php$paramsphp mayphp includephp onephp orphp morephp ofphp thephp followingphp keys
+php php php php php php*php php-php sincephp_idphp:php returnphp statusesphp onlyphp greaterphp thanphp thephp onephp specified
+php php php php php php*php php-php pagephp:php returnphp pagephp Xphp ofphp results
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp directMessageMessagesphp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/directphp_messagesphp.xmlphp'php;
+php php php php php php php php php$php_paramsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'sincephp_idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'sincephp_idphp'php]php php=php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pagephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'pagephp'php]php php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$php_paramsphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrievephp listphp ofphp directphp messagesphp sentphp byphp currentphp user
+php php php php php php*
+php php php php php php*php php$paramsphp mayphp includephp onephp orphp morephp ofphp thephp followingphp keys
+php php php php php php*php php-php sincephp_idphp:php returnphp statusesphp onlyphp greaterphp thanphp thephp onephp specified
+php php php php php php*php php-php pagephp:php returnphp pagephp Xphp ofphp results
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp directMessageSentphp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/directphp_messagesphp/sentphp.xmlphp'php;
+php php php php php php php php php$php_paramsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'sincephp_idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'sincephp_idphp'php]php php=php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pagephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'pagephp'php]php php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$php_paramsphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Sendphp aphp directphp messagephp tophp aphp user
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|stringphp php$userphp Userphp tophp whomphp tophp sendphp message
+php php php php php php*php php@paramphp php stringphp php$textphp Messagephp tophp sendphp tophp user
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php php@throwsphp Zendphp_Servicephp_Twitterphp_Exceptionphp ifphp messagephp isphp toophp shortphp orphp toophp long
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php/
+php php php php publicphp functionphp directMessageNewphp(php$userphp,php php$textphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/directphp_messagesphp/newphp.xmlphp'php;
+php php php php php php php php php$lenphp php=php iconvphp_strlenphp(php$textphp,php php'UTFphp-php8php'php)php;
+php php php php php php php php ifphp php(php0php php=php=php php$lenphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Directphp messagephp mustphp containphp atphp leastphp onephp characterphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}php elseifphp php(php1php4php0php <php php$lenphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Directphp messagephp mustphp containphp nophp morephp thanphp php1php4php0php charactersphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php php$dataphp php=php arrayphp(php'userphp'php php=php>php php$userphp,php php'textphp'php php=php>php php$textphp)php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp,php php$dataphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Destroyphp aphp directphp message
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$idphp IDphp ofphp messagephp tophp destroy
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp directMessageDestroyphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/directphp_messagesphp/destroyphp/php'php php.php php$thisphp-php>php_validIntegerphp(php$idphp)php php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createphp friendship
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|stringphp php$idphp Userphp IDphp orphp namephp ofphp newphp friend
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp friendshipCreatephp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/friendshipsphp/createphp/php'php php.php php$idphp php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Destroyphp friendship
+php php php php php php*
+php php php php php php*php php@paramphp php intphp|stringphp php$idphp Userphp IDphp orphp namephp ofphp friendphp tophp remove
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp friendshipDestroyphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/friendshipsphp/destroyphp/php'php php.php php$idphp php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Friendshipphp exists
+php php php php php php*
+php php php php php php*php php@paramphp intphp|stringphp php$idphp Userphp IDphp orphp namephp ofphp friendphp tophp seephp ifphp theyphp arephp yourphp friend
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_result
+php php php php php php*php/
+php php php php publicphp functionphp friendshipExistsphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/friendshipsphp/existsphp.xmlphp'php;
+php php php php php php php php php$dataphp php=php arrayphp(php'userphp_aphp'php php=php>php php$thisphp-php>getUsernamephp(php)php,php php'userphp_bphp'php php=php>php php$idphp)php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$dataphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Verifyphp Accountphp Credentials
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp accountVerifyCredentialsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php'php/php1php/accountphp/verifyphp_credentialsphp.xmlphp'php)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Endphp currentphp session
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp true
+php php php php php php*php/
+php php php php publicphp functionphp accountEndSessionphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$thisphp-php>php_getphp(php'php/php1php/accountphp/endphp_sessionphp'php)php;
+php php php php php php php php returnphp truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp apiphp requestsphp youphp havephp leftphp perphp hourphp.
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp accountRateLimitStatusphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php'php/php1php/accountphp/ratephp_limitphp_statusphp.xmlphp'php)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Fetchphp favorites
+php php php php php php*
+php php php php php php*php php$paramsphp mayphp containphp onephp orphp morephp ofphp thephp followingphp:
+php php php php php php*php php-php php'idphp'php:php Idphp ofphp aphp userphp forphp whomphp tophp fetchphp favorites
+php php php php php php*php php-php php'pagephp'php:php Retrievephp aphp differentphp pagephp ofphp resuls
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp favoriteFavoritesphp(arrayphp php$paramsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/favoritesphp'php;
+php php php php php php php php php$php_paramsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php switchphp php(strtolowerphp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php casephp php'idphp'php:
+php php php php php php php php php php php php php php php php php php php php php$pathphp php.php=php php'php/php'php php.php php$thisphp-php>php_validIntegerphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'pagephp'php:
+php php php php php php php php php php php php php php php php php php php php php$php_paramsphp[php'pagephp'php]php php=php php(intphp)php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$pathphp php.php=php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php php$php_paramsphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Markphp aphp statusphp asphp aphp favorite
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$idphp Statusphp IDphp youphp wantphp tophp markphp asphp aphp favorite
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp favoriteCreatephp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/favoritesphp/createphp/php'php php.php php$thisphp-php>php_validIntegerphp(php$idphp)php php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp aphp favorite
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$idphp Statusphp IDphp youphp wantphp tophp dephp-listphp asphp aphp favorite
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp favoriteDestroyphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/favoritesphp/destroyphp/php'php php.php php$thisphp-php>php_validIntegerphp(php$idphp)php php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Blocksphp thephp userphp specifiedphp inphp thephp IDphp parameterphp asphp thephp authenticatingphp userphp.
+php php php php php php*php Destroysphp aphp friendshipphp tophp thephp blockedphp userphp ifphp itphp existsphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$idphp php php php php php php Thephp IDphp orphp screenphp namephp ofphp aphp userphp tophp blockphp.
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp blockCreatephp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/blocksphp/createphp/php'php php.php php$idphp php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Unphp-blocksphp thephp userphp specifiedphp inphp thephp IDphp parameterphp forphp thephp authenticatingphp user
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|stringphp php$idphp php php php php php php Thephp IDphp orphp screenphp_namephp ofphp thephp userphp tophp unphp-blockphp.
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp blockDestroyphp(php$idphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/blocksphp/destroyphp/php'php php.php php$idphp php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_postphp(php$pathphp)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp thephp authenticatingphp userphp isphp blockingphp aphp targetphp userphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|integerphp php$idphp php php php Thephp IDphp orphp screenphp_namephp ofphp thephp potentiallyphp blockedphp userphp.
+php php php php php php*php php@paramphp booleanphp php$returnResultphp Insteadphp ofphp returningphp aphp booleanphp returnphp thephp restphp responsephp fromphp twitter
+php php php php php php*php php@returnphp Booleanphp|Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp blockExistsphp(php$idphp,php php$returnResultphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/blocksphp/existsphp/php'php php.php php$idphp php.php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp)php;
+
+php php php php php php php php php$crphp php=php newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+
+php php php php php php php php ifphp php(php$returnResultphp php=php=php=php truephp)
+php php php php php php php php php php php php returnphp php$crphp;
+
+php php php php php php php php ifphp php(php!emptyphp(php$crphp-php>requestphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp userphp objectsphp thatphp thephp authenticatingphp userphp isphp blocking
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$pagephp php php php php php php php php Optionalphp.php Specifiesphp thephp pagephp numberphp ofphp thephp resultsphp beginningphp atphp php1php.php Aphp singlephp pagephp containsphp php2php0php idsphp.
+php php php php php php*php php@paramphp booleanphp php$returnUserIdsphp php Optionalphp.php Returnsphp onlyphp thephp useridphp'sphp insteadphp ofphp thephp wholephp userphp object
+php php php php php php*php php@returnphp Zendphp_Restphp_Clientphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp blockBlockingphp(php$pagephp php=php php1php,php php$returnUserIdsphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_initphp(php)php;
+php php php php php php php php php$pathphp php=php php'php/php1php/blocksphp/blockingphp'php;
+php php php php php php php php ifphp php(php$returnUserIdsphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$pathphp php.php=php php'php/idsphp'php;
+php php php php php php php php php}
+php php php php php php php php php$pathphp php.php=php php'php.xmlphp'php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>php_getphp(php$pathphp,php arrayphp(php'pagephp'php php=php>php php$pagephp)php)php;
+php php php php php php php php returnphp newphp Zendphp_Restphp_Clientphp_Resultphp(php$responsephp-php>getBodyphp(php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Protectedphp functionphp tophp validatephp thatphp thephp integerphp isphp validphp orphp returnphp aphp php0
+php php php php php php*php php@paramphp php$int
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exceptionphp ifphp HTTPphp requestphp failsphp orphp timesphp out
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php protectedphp functionphp php_validIntegerphp(php$intphp)
+php php php php php{
+php php php php php php php php ifphp php(pregphp_matchphp(php"php/php(php\dphp+php)php/php"php,php php$intphp)php)php php{
+php php php php php php php php php php php php returnphp php$intphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php0php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Validatephp aphp screenphp namephp usingphp Twitterphp rules
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$name
+php php php php php php*php php@throwsphp Zendphp_Servicephp_Twitterphp_Exception
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_validateScreenNamephp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(php!pregphp_matchphp(php'php/php^php[aphp-zAphp-Zphp0php-php9php_php]php{php0php,php1php5php}php$php/php'php,php php$namephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Twitterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Twitterphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Screenphp namephp,php php"php'php php.php php$name
+php php php php php php php php php php php php php php php php php.php php'php"php shouldphp onlyphp containphp alphanumericphp charactersphp andphp'
+php php php php php php php php php php php php php php php php php.php php'php underscoresphp,php andphp notphp exceedphp php1php5php charactersphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$namephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Callphp aphp remotephp RESTphp webphp servicephp URIphp andphp returnphp thephp Zendphp_Httpphp_Responsephp object
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$pathphp php php php php php php php php php php php Thephp pathphp tophp appendphp tophp thephp URI
+php php php php php php*php php@throwsphp Zendphp_Restphp_Clientphp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_preparephp(php$pathphp)
+php php php php php{
+php php php php php php php php php/php/php Getphp thephp URIphp objectphp andphp configurephp it
+php php php php php php php php ifphp php(php!php$thisphp-php>php_uriphp instanceofphp Zendphp_Uriphp_Httpphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Restphp/Clientphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Restphp_Clientphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'URIphp objectphp mustphp bephp setphp beforephp performingphp callphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$uriphp php=php php$thisphp-php>php_uriphp-php>getUriphp(php)php;
+
+php php php php php php php php ifphp php(php$pathphp[php0php]php php!php=php php'php/php'php php&php&php php$uriphp[strlenphp(php$uriphp)php php-php php1php]php php!php=php php'php/php'php)php php{
+php php php php php php php php php php php php php$pathphp php=php php'php/php'php php.php php$pathphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_uriphp-php>setPathphp(php$pathphp)php;
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Getphp thephp HTTPphp clientphp andphp configurephp itphp forphp thephp endpointphp URIphp.
+php php php php php php php php php php*php Dophp thisphp eachphp timephp becausephp thephp Zendphp_Httpphp_Clientphp instancephp isphp shared
+php php php php php php php php php php*php amongphp allphp Zendphp_Servicephp_Abstractphp subclassesphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$thisphp-php>php_localHttpClientphp-php>resetParametersphp(php)php-php>setUriphp(php(stringphp)php php$thisphp-php>php_uriphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Performsphp anphp HTTPphp GETphp requestphp tophp thephp php$pathphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$path
+php php php php php php*php php@paramphp arrayphp php php$queryphp Arrayphp ofphp GETphp parameters
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php php@returnphp Zendphp_Httpphp_Response
+php php php php php php*php/
+php php php php protectedphp functionphp php_getphp(php$pathphp,php arrayphp php$queryphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_preparephp(php$pathphp)php;
+php php php php php php php php php$thisphp-php>php_localHttpClientphp-php>setParameterGetphp(php$queryphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_localHttpClientphp-php>requestphp(Zendphp_Httpphp_Clientphp:php:GETphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Performsphp anphp HTTPphp POSTphp requestphp tophp php$pathphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$path
+php php php php php php*php php@paramphp mixedphp php$dataphp Rawphp dataphp tophp send
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Exception
+php php php php php php*php php@returnphp Zendphp_Httpphp_Response
+php php php php php php*php/
+php php php php protectedphp functionphp php_postphp(php$pathphp,php php$dataphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_preparephp(php$pathphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_performPostphp(Zendphp_Httpphp_Clientphp:php:POSTphp,php php$dataphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Performphp aphp POSTphp orphp PUT
+php php php php php php*
+php php php php php php*php Performsphp aphp POSTphp orphp PUTphp requestphp.php Anyphp dataphp providedphp isphp setphp inphp thephp HTTP
+php php php php php php*php clientphp.php Stringphp dataphp isphp pushedphp inphp asphp rawphp POSTphp dataphp;php arrayphp orphp objectphp data
+php php php php php php*php isphp pushedphp inphp asphp POSTphp parametersphp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$method
+php php php php php php*php php@paramphp mixedphp php$data
+php php php php php php*php php@returnphp Zendphp_Httpphp_Response
+php php php php php php*php/
+php php php php protectedphp functionphp php_performPostphp(php$methodphp,php php$dataphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$clientphp php=php php$thisphp-php>php_localHttpClientphp;
+php php php php php php php php ifphp php(isphp_stringphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php$clientphp-php>setRawDataphp(php$dataphp)php;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$dataphp)php php|php|php isphp_objectphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php$clientphp-php>setParameterPostphp(php(arrayphp)php php$dataphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$clientphp-php>requestphp(php$methodphp)php;
+php php php php php}
+
+php}

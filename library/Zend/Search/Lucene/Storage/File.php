@@ -1,473 +1,473 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: File.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Filephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Storage
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Search_Lucene_Storage_File
-{
-    /**
-     * Reads $length number of bytes at the current position in the
-     * file and advances the file pointer.
-     *
-     * @param integer $length
-     * @return string
-     */
-    abstract protected function _fread($length=1);
-
-
-    /**
-     * Sets the file position indicator and advances the file pointer.
-     * The new position, measured in bytes from the beginning of the file,
-     * is obtained by adding offset to the position specified by whence,
-     * whose values are defined as follows:
-     * SEEK_SET - Set position equal to offset bytes.
-     * SEEK_CUR - Set position to current location plus offset.
-     * SEEK_END - Set position to end-of-file plus offset. (To move to
-     * a position before the end-of-file, you need to pass a negative value
-     * in offset.)
-     * Upon success, returns 0; otherwise, returns -1
-     *
-     * @param integer $offset
-     * @param integer $whence
-     * @return integer
-     */
-    abstract public function seek($offset, $whence=SEEK_SET);
-
-    /**
-     * Get file position.
-     *
-     * @return integer
-     */
-    abstract public function tell();
-
-    /**
-     * Flush output.
-     *
-     * Returns true on success or false on failure.
-     *
-     * @return boolean
-     */
-    abstract public function flush();
-
-    /**
-     * Writes $length number of bytes (all, if $length===null) to the end
-     * of the file.
-     *
-     * @param string $data
-     * @param integer $length
-     */
-    abstract protected function _fwrite($data, $length=null);
-
-    /**
-     * Lock file
-     *
-     * Lock type may be a LOCK_SH (shared lock) or a LOCK_EX (exclusive lock)
-     *
-     * @param integer $lockType
-     * @return boolean
-     */
-    abstract public function lock($lockType, $nonBlockinLock = false);
-
-    /**
-     * Unlock file
-     */
-    abstract public function unlock();
-
-    /**
-     * Reads a byte from the current position in the file
-     * and advances the file pointer.
-     *
-     * @return integer
-     */
-    public function readByte()
-    {
-        return ord($this->_fread(1));
-    }
-
-    /**
-     * Writes a byte to the end of the file.
-     *
-     * @param integer $byte
-     */
-    public function writeByte($byte)
-    {
-        return $this->_fwrite(chr($byte), 1);
-    }
-
-    /**
-     * Read num bytes from the current position in the file
-     * and advances the file pointer.
-     *
-     * @param integer $num
-     * @return string
-     */
-    public function readBytes($num)
-    {
-        return $this->_fread($num);
-    }
-
-    /**
-     * Writes num bytes of data (all, if $num===null) to the end
-     * of the string.
-     *
-     * @param string $data
-     * @param integer $num
-     */
-    public function writeBytes($data, $num=null)
-    {
-        $this->_fwrite($data, $num);
-    }
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Storage
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Searchphp_Lucenephp_Storagephp_File
+php{
+php php php php php/php*php*
+php php php php php php*php Readsphp php$lengthphp numberphp ofphp bytesphp atphp thephp currentphp positionphp inphp the
+php php php php php php*php filephp andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$length
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php abstractphp protectedphp functionphp php_freadphp(php$lengthphp=php1php)php;
 
 
-    /**
-     * Reads an integer from the current position in the file
-     * and advances the file pointer.
-     *
-     * @return integer
-     */
-    public function readInt()
-    {
-        $str = $this->_fread(4);
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp filephp positionphp indicatorphp andphp advancesphp thephp filephp pointerphp.
+php php php php php php*php Thephp newphp positionphp,php measuredphp inphp bytesphp fromphp thephp beginningphp ofphp thephp filephp,
+php php php php php php*php isphp obtainedphp byphp addingphp offsetphp tophp thephp positionphp specifiedphp byphp whencephp,
+php php php php php php*php whosephp valuesphp arephp definedphp asphp followsphp:
+php php php php php php*php SEEKphp_SETphp php-php Setphp positionphp equalphp tophp offsetphp bytesphp.
+php php php php php php*php SEEKphp_CURphp php-php Setphp positionphp tophp currentphp locationphp plusphp offsetphp.
+php php php php php php*php SEEKphp_ENDphp php-php Setphp positionphp tophp endphp-ofphp-filephp plusphp offsetphp.php php(Tophp movephp to
+php php php php php php*php aphp positionphp beforephp thephp endphp-ofphp-filephp,php youphp needphp tophp passphp aphp negativephp value
+php php php php php php*php inphp offsetphp.php)
+php php php php php php*php Uponphp successphp,php returnsphp php0php;php otherwisephp,php returnsphp php-php1
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$offset
+php php php php php php*php php@paramphp integerphp php$whence
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp seekphp(php$offsetphp,php php$whencephp=SEEKphp_SETphp)php;
 
-        return  ord($str[0]) << 24 |
-                ord($str[1]) << 16 |
-                ord($str[2]) << 8  |
-                ord($str[3]);
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp filephp positionphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp tellphp(php)php;
 
+php php php php php/php*php*
+php php php php php php*php Flushphp outputphp.
+php php php php php php*
+php php php php php php*php Returnsphp truephp onphp successphp orphp falsephp onphp failurephp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp flushphp(php)php;
 
-    /**
-     * Writes an integer to the end of file.
-     *
-     * @param integer $value
-     */
-    public function writeInt($value)
-    {
-        settype($value, 'integer');
-        $this->_fwrite( chr($value>>24 & 0xFF) .
-                        chr($value>>16 & 0xFF) .
-                        chr($value>>8  & 0xFF) .
-                        chr($value     & 0xFF),   4  );
-    }
+php php php php php/php*php*
+php php php php php php*php Writesphp php$lengthphp numberphp ofphp bytesphp php(allphp,php ifphp php$lengthphp=php=php=nullphp)php tophp thephp end
+php php php php php php*php ofphp thephp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp integerphp php$length
+php php php php php php*php/
+php php php php abstractphp protectedphp functionphp php_fwritephp(php$dataphp,php php$lengthphp=nullphp)php;
 
+php php php php php/php*php*
+php php php php php php*php Lockphp file
+php php php php php php*
+php php php php php php*php Lockphp typephp mayphp bephp aphp LOCKphp_SHphp php(sharedphp lockphp)php orphp aphp LOCKphp_EXphp php(exclusivephp lockphp)
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$lockType
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp lockphp(php$lockTypephp,php php$nonBlockinLockphp php=php falsephp)php;
 
-    /**
-     * Returns a long integer from the current position in the file
-     * and advances the file pointer.
-     *
-     * @return integer|float
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function readLong()
-    {
-        /**
-         * Check, that we work in 64-bit mode.
-         * fseek() uses long for offset. Thus, largest index segment file size in 32bit mode is 2Gb
-         */
-        if (PHP_INT_SIZE > 4) {
-            $str = $this->_fread(8);
+php php php php php/php*php*
+php php php php php php*php Unlockphp file
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp unlockphp(php)php;
 
-            return  ord($str[0]) << 56  |
-                    ord($str[1]) << 48  |
-                    ord($str[2]) << 40  |
-                    ord($str[3]) << 32  |
-                    ord($str[4]) << 24  |
-                    ord($str[5]) << 16  |
-                    ord($str[6]) << 8   |
-                    ord($str[7]);
-        } else {
-            return $this->readLong32Bit();
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Readsphp aphp bytephp fromphp thephp currentphp positionphp inphp thephp file
+php php php php php php*php andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp readBytephp(php)
+php php php php php{
+php php php php php php php php returnphp ordphp(php$thisphp-php>php_freadphp(php1php)php)php;
+php php php php php}
 
-    /**
-     * Writes long integer to the end of file
-     *
-     * @param integer $value
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function writeLong($value)
-    {
-        /**
-         * Check, that we work in 64-bit mode.
-         * fseek() and ftell() use long for offset. Thus, largest index segment file size in 32bit mode is 2Gb
-         */
-        if (PHP_INT_SIZE > 4) {
-            settype($value, 'integer');
-            $this->_fwrite( chr($value>>56 & 0xFF) .
-                            chr($value>>48 & 0xFF) .
-                            chr($value>>40 & 0xFF) .
-                            chr($value>>32 & 0xFF) .
-                            chr($value>>24 & 0xFF) .
-                            chr($value>>16 & 0xFF) .
-                            chr($value>>8  & 0xFF) .
-                            chr($value     & 0xFF),   8  );
-        } else {
-            $this->writeLong32Bit($value);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Writesphp aphp bytephp tophp thephp endphp ofphp thephp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$byte
+php php php php php php*php/
+php php php php publicphp functionphp writeBytephp(php$bytephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_fwritephp(chrphp(php$bytephp)php,php php1php)php;
+php php php php php}
 
+php php php php php/php*php*
+php php php php php php*php Readphp numphp bytesphp fromphp thephp currentphp positionphp inphp thephp file
+php php php php php php*php andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$num
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp readBytesphp(php$numphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_freadphp(php$numphp)php;
+php php php php php}
 
-    /**
-     * Returns a long integer from the current position in the file,
-     * advances the file pointer and return it as float (for 32-bit platforms).
-     *
-     * @return integer|float
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function readLong32Bit()
-    {
-        $wordHigh = $this->readInt();
-        $wordLow  = $this->readInt();
-
-        if ($wordHigh & (int)0x80000000) {
-            // It's a negative value since the highest bit is set
-            if ($wordHigh == (int)0xFFFFFFFF  &&  ($wordLow & (int)0x80000000)) {
-                return $wordLow;
-            } else {
-                require_once 'Zend/Search/Lucene/Exception.php';
-                throw new Zend_Search_Lucene_Exception('Long integers lower than -2147483648 (0x80000000) are not supported on 32-bit platforms.');
-            }
-
-        }
-
-        if ($wordLow < 0) {
-            // Value is large than 0x7FFF FFFF. Represent low word as float.
-            $wordLow &= 0x7FFFFFFF;
-            $wordLow += (float)0x80000000;
-        }
-
-        if ($wordHigh == 0) {
-            // Return value as integer if possible
-            return $wordLow;
-        }
-
-        return $wordHigh*(float)0x100000000/* 0x00000001 00000000 */ + $wordLow;
-    }
+php php php php php/php*php*
+php php php php php php*php Writesphp numphp bytesphp ofphp dataphp php(allphp,php ifphp php$numphp=php=php=nullphp)php tophp thephp end
+php php php php php php*php ofphp thephp stringphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$data
+php php php php php php*php php@paramphp integerphp php$num
+php php php php php php*php/
+php php php php publicphp functionphp writeBytesphp(php$dataphp,php php$numphp=nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_fwritephp(php$dataphp,php php$numphp)php;
+php php php php php}
 
 
-    /**
-     * Writes long integer to the end of file (32-bit platforms implementation)
-     *
-     * @param integer|float $value
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function writeLong32Bit($value)
-    {
-        if ($value < (int)0x80000000) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Long integers lower than -2147483648 (0x80000000) are not supported on 32-bit platforms.');
-        }
+php php php php php/php*php*
+php php php php php php*php Readsphp anphp integerphp fromphp thephp currentphp positionphp inphp thephp file
+php php php php php php*php andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp readIntphp(php)
+php php php php php{
+php php php php php php php php php$strphp php=php php$thisphp-php>php_freadphp(php4php)php;
 
-        if ($value < 0) {
-            $wordHigh = (int)0xFFFFFFFF;
-            $wordLow  = (int)$value;
-        } else {
-            $wordHigh = (int)($value/(float)0x100000000/* 0x00000001 00000000 */);
-            $wordLow  = $value - $wordHigh*(float)0x100000000/* 0x00000001 00000000 */;
-
-            if ($wordLow > 0x7FFFFFFF) {
-                // Highest bit of low word is set. Translate it to the corresponding negative integer value
-                $wordLow -= 0x80000000;
-                $wordLow |= 0x80000000;
-            }
-        }
-
-        $this->writeInt($wordHigh);
-        $this->writeInt($wordLow);
-    }
+php php php php php php php php returnphp php ordphp(php$strphp[php0php]php)php <php<php php2php4php php|
+php php php php php php php php php php php php php php php php ordphp(php$strphp[php1php]php)php <php<php php1php6php php|
+php php php php php php php php php php php php php php php php ordphp(php$strphp[php2php]php)php <php<php php8php php php|
+php php php php php php php php php php php php php php php php ordphp(php$strphp[php3php]php)php;
+php php php php php}
 
 
-    /**
-     * Returns a variable-length integer from the current
-     * position in the file and advances the file pointer.
-     *
-     * @return integer
-     */
-    public function readVInt()
-    {
-        $nextByte = ord($this->_fread(1));
-        $val = $nextByte & 0x7F;
-
-        for ($shift=7; ($nextByte & 0x80) != 0; $shift += 7) {
-            $nextByte = ord($this->_fread(1));
-            $val |= ($nextByte & 0x7F) << $shift;
-        }
-        return $val;
-    }
-
-    /**
-     * Writes a variable-length integer to the end of file.
-     *
-     * @param integer $value
-     */
-    public function writeVInt($value)
-    {
-        settype($value, 'integer');
-        while ($value > 0x7F) {
-            $this->_fwrite(chr( ($value & 0x7F)|0x80 ));
-            $value >>= 7;
-        }
-        $this->_fwrite(chr($value));
-    }
+php php php php php/php*php*
+php php php php php php*php Writesphp anphp integerphp tophp thephp endphp ofphp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$value
+php php php php php php*php/
+php php php php publicphp functionphp writeIntphp(php$valuephp)
+php php php php php{
+php php php php php php php php settypephp(php$valuephp,php php'integerphp'php)php;
+php php php php php php php php php$thisphp-php>php_fwritephp(php chrphp(php$valuephp>php>php2php4php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php1php6php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php8php php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp php php php php php&php php0xFFphp)php,php php php php4php php php)php;
+php php php php php}
 
 
-    /**
-     * Reads a string from the current position in the file
-     * and advances the file pointer.
-     *
-     * @return string
-     */
-    public function readString()
-    {
-        $strlen = $this->readVInt();
-        if ($strlen == 0) {
-            return '';
-        } else {
-            /**
-             * This implementation supports only Basic Multilingual Plane
-             * (BMP) characters (from 0x0000 to 0xFFFF) and doesn't support
-             * "supplementary characters" (characters whose code points are
-             * greater than 0xFFFF)
-             * Java 2 represents these characters as a pair of char (16-bit)
-             * values, the first from the high-surrogates range (0xD800-0xDBFF),
-             * the second from the low-surrogates range (0xDC00-0xDFFF). Then
-             * they are encoded as usual UTF-8 characters in six bytes.
-             * Standard UTF-8 representation uses four bytes for supplementary
-             * characters.
-             */
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp longphp integerphp fromphp thephp currentphp positionphp inphp thephp file
+php php php php php php*php andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@returnphp integerphp|float
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readLongphp(php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Checkphp,php thatphp wephp workphp inphp php6php4php-bitphp modephp.
+php php php php php php php php php php*php fseekphp(php)php usesphp longphp forphp offsetphp.php Thusphp,php largestphp indexphp segmentphp filephp sizephp inphp php3php2bitphp modephp isphp php2Gb
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(PHPphp_INTphp_SIZEphp php>php php4php)php php{
+php php php php php php php php php php php php php$strphp php=php php$thisphp-php>php_freadphp(php8php)php;
 
-            $str_val = $this->_fread($strlen);
+php php php php php php php php php php php php returnphp php ordphp(php$strphp[php0php]php)php <php<php php5php6php php php|
+php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp[php1php]php)php <php<php php4php8php php php|
+php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp[php2php]php)php <php<php php4php0php php php|
+php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp[php3php]php)php <php<php php3php2php php php|
+php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp[php4php]php)php <php<php php2php4php php php|
+php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp[php5php]php)php <php<php php1php6php php php|
+php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp[php6php]php)php <php<php php8php php php php|
+php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp[php7php]php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php$thisphp-php>readLongphp3php2Bitphp(php)php;
+php php php php php php php php php}
+php php php php php}
 
-            for ($count = 0; $count < $strlen; $count++ ) {
-                if (( ord($str_val[$count]) & 0xC0 ) == 0xC0) {
-                    $addBytes = 1;
-                    if (ord($str_val[$count]) & 0x20 ) {
-                        $addBytes++;
-
-                        // Never used. Java2 doesn't encode strings in four bytes
-                        if (ord($str_val[$count]) & 0x10 ) {
-                            $addBytes++;
-                        }
-                    }
-                    $str_val .= $this->_fread($addBytes);
-                    $strlen += $addBytes;
-
-                    // Check for null character. Java2 encodes null character
-                    // in two bytes.
-                    if (ord($str_val[$count])   == 0xC0 &&
-                        ord($str_val[$count+1]) == 0x80   ) {
-                        $str_val[$count] = 0;
-                        $str_val = substr($str_val,0,$count+1)
-                                 . substr($str_val,$count+2);
-                    }
-                    $count += $addBytes;
-                }
-            }
-
-            return $str_val;
-        }
-    }
-
-    /**
-     * Writes a string to the end of file.
-     *
-     * @param string $str
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function writeString($str)
-    {
-        /**
-         * This implementation supports only Basic Multilingual Plane
-         * (BMP) characters (from 0x0000 to 0xFFFF) and doesn't support
-         * "supplementary characters" (characters whose code points are
-         * greater than 0xFFFF)
-         * Java 2 represents these characters as a pair of char (16-bit)
-         * values, the first from the high-surrogates range (0xD800-0xDBFF),
-         * the second from the low-surrogates range (0xDC00-0xDFFF). Then
-         * they are encoded as usual UTF-8 characters in six bytes.
-         * Standard UTF-8 representation uses four bytes for supplementary
-         * characters.
-         */
-
-        // convert input to a string before iterating string characters
-        settype($str, 'string');
-
-        $chars = $strlen = strlen($str);
-        $containNullChars = false;
-
-        for ($count = 0; $count < $strlen; $count++ ) {
-            /**
-             * String is already in Java 2 representation.
-             * We should only calculate actual string length and replace
-             * \x00 by \xC0\x80
-             */
-            if ((ord($str[$count]) & 0xC0) == 0xC0) {
-                $addBytes = 1;
-                if (ord($str[$count]) & 0x20 ) {
-                    $addBytes++;
-
-                    // Never used. Java2 doesn't encode strings in four bytes
-                    // and we dont't support non-BMP characters
-                    if (ord($str[$count]) & 0x10 ) {
-                        $addBytes++;
-                    }
-                }
-                $chars -= $addBytes;
-
-                if (ord($str[$count]) == 0 ) {
-                    $containNullChars = true;
-                }
-                $count += $addBytes;
-            }
-        }
-
-        if ($chars < 0) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Invalid UTF-8 string');
-        }
-
-        $this->writeVInt($chars);
-        if ($containNullChars) {
-            $this->_fwrite(str_replace($str, "\x00", "\xC0\x80"));
-        } else {
-            $this->_fwrite($str);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Writesphp longphp integerphp tophp thephp endphp ofphp file
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$value
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp writeLongphp(php$valuephp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Checkphp,php thatphp wephp workphp inphp php6php4php-bitphp modephp.
+php php php php php php php php php php*php fseekphp(php)php andphp ftellphp(php)php usephp longphp forphp offsetphp.php Thusphp,php largestphp indexphp segmentphp filephp sizephp inphp php3php2bitphp modephp isphp php2Gb
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(PHPphp_INTphp_SIZEphp php>php php4php)php php{
+php php php php php php php php php php php php settypephp(php$valuephp,php php'integerphp'php)php;
+php php php php php php php php php php php php php$thisphp-php>php_fwritephp(php chrphp(php$valuephp>php>php5php6php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php4php8php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php4php0php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php3php2php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php2php4php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php1php6php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp>php>php8php php php&php php0xFFphp)php php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php chrphp(php$valuephp php php php php php&php php0xFFphp)php,php php php php8php php php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>writeLongphp3php2Bitphp(php$valuephp)php;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Reads binary data from the current position in the file
-     * and advances the file pointer.
-     *
-     * @return string
-     */
-    public function readBinary()
-    {
-        return $this->_fread($this->readVInt());
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp longphp integerphp fromphp thephp currentphp positionphp inphp thephp filephp,
+php php php php php php*php advancesphp thephp filephp pointerphp andphp returnphp itphp asphp floatphp php(forphp php3php2php-bitphp platformsphp)php.
+php php php php php php*
+php php php php php php*php php@returnphp integerphp|float
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp readLongphp3php2Bitphp(php)
+php php php php php{
+php php php php php php php php php$wordHighphp php=php php$thisphp-php>readIntphp(php)php;
+php php php php php php php php php$wordLowphp php php=php php$thisphp-php>readIntphp(php)php;
+
+php php php php php php php php ifphp php(php$wordHighphp php&php php(intphp)php0xphp8php0php0php0php0php0php0php0php)php php{
+php php php php php php php php php php php php php/php/php Itphp'sphp aphp negativephp valuephp sincephp thephp highestphp bitphp isphp set
+php php php php php php php php php php php php ifphp php(php$wordHighphp php=php=php php(intphp)php0xFFFFFFFFphp php php&php&php php php(php$wordLowphp php&php php(intphp)php0xphp8php0php0php0php0php0php0php0php)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$wordLowphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Longphp integersphp lowerphp thanphp php-php2php1php4php7php4php8php3php6php4php8php php(php0xphp8php0php0php0php0php0php0php0php)php arephp notphp supportedphp onphp php3php2php-bitphp platformsphp.php'php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$wordLowphp <php php0php)php php{
+php php php php php php php php php php php php php/php/php Valuephp isphp largephp thanphp php0xphp7FFFphp FFFFphp.php Representphp lowphp wordphp asphp floatphp.
+php php php php php php php php php php php php php$wordLowphp php&php=php php0xphp7FFFFFFFphp;
+php php php php php php php php php php php php php$wordLowphp php+php=php php(floatphp)php0xphp8php0php0php0php0php0php0php0php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$wordHighphp php=php=php php0php)php php{
+php php php php php php php php php php php php php/php/php Returnphp valuephp asphp integerphp ifphp possible
+php php php php php php php php php php php php returnphp php$wordLowphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$wordHighphp*php(floatphp)php0xphp1php0php0php0php0php0php0php0php0php/php*php php0xphp0php0php0php0php0php0php0php1php php0php0php0php0php0php0php0php0php php*php/php php+php php$wordLowphp;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Writesphp longphp integerphp tophp thephp endphp ofphp filephp php(php3php2php-bitphp platformsphp implementationphp)
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|floatphp php$value
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp writeLongphp3php2Bitphp(php$valuephp)
+php php php php php{
+php php php php php php php php ifphp php(php$valuephp <php php(intphp)php0xphp8php0php0php0php0php0php0php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Longphp integersphp lowerphp thanphp php-php2php1php4php7php4php8php3php6php4php8php php(php0xphp8php0php0php0php0php0php0php0php)php arephp notphp supportedphp onphp php3php2php-bitphp platformsphp.php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$valuephp <php php0php)php php{
+php php php php php php php php php php php php php$wordHighphp php=php php(intphp)php0xFFFFFFFFphp;
+php php php php php php php php php php php php php$wordLowphp php php=php php(intphp)php$valuephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$wordHighphp php=php php(intphp)php(php$valuephp/php(floatphp)php0xphp1php0php0php0php0php0php0php0php0php/php*php php0xphp0php0php0php0php0php0php0php1php php0php0php0php0php0php0php0php0php php*php/php)php;
+php php php php php php php php php php php php php$wordLowphp php php=php php$valuephp php-php php$wordHighphp*php(floatphp)php0xphp1php0php0php0php0php0php0php0php0php/php*php php0xphp0php0php0php0php0php0php0php1php php0php0php0php0php0php0php0php0php php*php/php;
+
+php php php php php php php php php php php php ifphp php(php$wordLowphp php>php php0xphp7FFFFFFFphp)php php{
+php php php php php php php php php php php php php php php php php/php/php Highestphp bitphp ofphp lowphp wordphp isphp setphp.php Translatephp itphp tophp thephp correspondingphp negativephp integerphp value
+php php php php php php php php php php php php php php php php php$wordLowphp php-php=php php0xphp8php0php0php0php0php0php0php0php;
+php php php php php php php php php php php php php php php php php$wordLowphp php|php=php php0xphp8php0php0php0php0php0php0php0php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>writeIntphp(php$wordHighphp)php;
+php php php php php php php php php$thisphp-php>writeIntphp(php$wordLowphp)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp variablephp-lengthphp integerphp fromphp thephp current
+php php php php php php*php positionphp inphp thephp filephp andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp readVIntphp(php)
+php php php php php{
+php php php php php php php php php$nextBytephp php=php ordphp(php$thisphp-php>php_freadphp(php1php)php)php;
+php php php php php php php php php$valphp php=php php$nextBytephp php&php php0xphp7Fphp;
+
+php php php php php php php php forphp php(php$shiftphp=php7php;php php(php$nextBytephp php&php php0xphp8php0php)php php!php=php php0php;php php$shiftphp php+php=php php7php)php php{
+php php php php php php php php php php php php php$nextBytephp php=php ordphp(php$thisphp-php>php_freadphp(php1php)php)php;
+php php php php php php php php php php php php php$valphp php|php=php php(php$nextBytephp php&php php0xphp7Fphp)php <php<php php$shiftphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$valphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Writesphp aphp variablephp-lengthphp integerphp tophp thephp endphp ofphp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$value
+php php php php php php*php/
+php php php php publicphp functionphp writeVIntphp(php$valuephp)
+php php php php php{
+php php php php php php php php settypephp(php$valuephp,php php'integerphp'php)php;
+php php php php php php php php whilephp php(php$valuephp php>php php0xphp7Fphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_fwritephp(chrphp(php php(php$valuephp php&php php0xphp7Fphp)php|php0xphp8php0php php)php)php;
+php php php php php php php php php php php php php$valuephp php>php>php=php php7php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_fwritephp(chrphp(php$valuephp)php)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Readsphp aphp stringphp fromphp thephp currentphp positionphp inphp thephp file
+php php php php php php*php andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp readStringphp(php)
+php php php php php{
+php php php php php php php php php$strlenphp php=php php$thisphp-php>readVIntphp(php)php;
+php php php php php php php php ifphp php(php$strlenphp php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php'php'php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Thisphp implementationphp supportsphp onlyphp Basicphp Multilingualphp Plane
+php php php php php php php php php php php php php php*php php(BMPphp)php charactersphp php(fromphp php0xphp0php0php0php0php tophp php0xFFFFphp)php andphp doesnphp'tphp support
+php php php php php php php php php php php php php php*php php"supplementaryphp charactersphp"php php(charactersphp whosephp codephp pointsphp are
+php php php php php php php php php php php php php php*php greaterphp thanphp php0xFFFFphp)
+php php php php php php php php php php php php php php*php Javaphp php2php representsphp thesephp charactersphp asphp aphp pairphp ofphp charphp php(php1php6php-bitphp)
+php php php php php php php php php php php php php php*php valuesphp,php thephp firstphp fromphp thephp highphp-surrogatesphp rangephp php(php0xDphp8php0php0php-php0xDBFFphp)php,
+php php php php php php php php php php php php php php*php thephp secondphp fromphp thephp lowphp-surrogatesphp rangephp php(php0xDCphp0php0php-php0xDFFFphp)php.php Then
+php php php php php php php php php php php php php php*php theyphp arephp encodedphp asphp usualphp UTFphp-php8php charactersphp inphp sixphp bytesphp.
+php php php php php php php php php php php php php php*php Standardphp UTFphp-php8php representationphp usesphp fourphp bytesphp forphp supplementary
+php php php php php php php php php php php php php php*php charactersphp.
+php php php php php php php php php php php php php php*php/
+
+php php php php php php php php php php php php php$strphp_valphp php=php php$thisphp-php>php_freadphp(php$strlenphp)php;
+
+php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$strlenphp;php php$countphp+php+php php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php ordphp(php$strphp_valphp[php$countphp]php)php php&php php0xCphp0php php)php php=php=php php0xCphp0php)php php{
+php php php php php php php php php php php php php php php php php php php php php$addBytesphp php=php php1php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(ordphp(php$strphp_valphp[php$countphp]php)php php&php php0xphp2php0php php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$addBytesphp+php+php;
+
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Neverphp usedphp.php Javaphp2php doesnphp'tphp encodephp stringsphp inphp fourphp bytes
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(ordphp(php$strphp_valphp[php$countphp]php)php php&php php0xphp1php0php php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$addBytesphp+php+php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$strphp_valphp php.php=php php$thisphp-php>php_freadphp(php$addBytesphp)php;
+php php php php php php php php php php php php php php php php php php php php php$strlenphp php+php=php php$addBytesphp;
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Checkphp forphp nullphp characterphp.php Javaphp2php encodesphp nullphp character
+php php php php php php php php php php php php php php php php php php php php php/php/php inphp twophp bytesphp.
+php php php php php php php php php php php php php php php php php php php php ifphp php(ordphp(php$strphp_valphp[php$countphp]php)php php php php=php=php php0xCphp0php php&php&
+php php php php php php php php php php php php php php php php php php php php php php php php ordphp(php$strphp_valphp[php$countphp+php1php]php)php php=php=php php0xphp8php0php php php php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$strphp_valphp[php$countphp]php php=php php0php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$strphp_valphp php=php substrphp(php$strphp_valphp,php0php,php$countphp+php1php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php substrphp(php$strphp_valphp,php$countphp+php2php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php$countphp php+php=php php$addBytesphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php returnphp php$strphp_valphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Writesphp aphp stringphp tophp thephp endphp ofphp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$str
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp writeStringphp(php$strphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Thisphp implementationphp supportsphp onlyphp Basicphp Multilingualphp Plane
+php php php php php php php php php php*php php(BMPphp)php charactersphp php(fromphp php0xphp0php0php0php0php tophp php0xFFFFphp)php andphp doesnphp'tphp support
+php php php php php php php php php php*php php"supplementaryphp charactersphp"php php(charactersphp whosephp codephp pointsphp are
+php php php php php php php php php php*php greaterphp thanphp php0xFFFFphp)
+php php php php php php php php php php*php Javaphp php2php representsphp thesephp charactersphp asphp aphp pairphp ofphp charphp php(php1php6php-bitphp)
+php php php php php php php php php php*php valuesphp,php thephp firstphp fromphp thephp highphp-surrogatesphp rangephp php(php0xDphp8php0php0php-php0xDBFFphp)php,
+php php php php php php php php php php*php thephp secondphp fromphp thephp lowphp-surrogatesphp rangephp php(php0xDCphp0php0php-php0xDFFFphp)php.php Then
+php php php php php php php php php php*php theyphp arephp encodedphp asphp usualphp UTFphp-php8php charactersphp inphp sixphp bytesphp.
+php php php php php php php php php php*php Standardphp UTFphp-php8php representationphp usesphp fourphp bytesphp forphp supplementary
+php php php php php php php php php php*php charactersphp.
+php php php php php php php php php php*php/
+
+php php php php php php php php php/php/php convertphp inputphp tophp aphp stringphp beforephp iteratingphp stringphp characters
+php php php php php php php php settypephp(php$strphp,php php'stringphp'php)php;
+
+php php php php php php php php php$charsphp php=php php$strlenphp php=php strlenphp(php$strphp)php;
+php php php php php php php php php$containNullCharsphp php=php falsephp;
+
+php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$strlenphp;php php$countphp+php+php php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Stringphp isphp alreadyphp inphp Javaphp php2php representationphp.
+php php php php php php php php php php php php php php*php Wephp shouldphp onlyphp calculatephp actualphp stringphp lengthphp andphp replace
+php php php php php php php php php php php php php php*php php\xphp0php0php byphp php\xCphp0php\xphp8php0
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php ifphp php(php(ordphp(php$strphp[php$countphp]php)php php&php php0xCphp0php)php php=php=php php0xCphp0php)php php{
+php php php php php php php php php php php php php php php php php$addBytesphp php=php php1php;
+php php php php php php php php php php php php php php php php ifphp php(ordphp(php$strphp[php$countphp]php)php php&php php0xphp2php0php php)php php{
+php php php php php php php php php php php php php php php php php php php php php$addBytesphp+php+php;
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Neverphp usedphp.php Javaphp2php doesnphp'tphp encodephp stringsphp inphp fourphp bytes
+php php php php php php php php php php php php php php php php php php php php php/php/php andphp wephp dontphp'tphp supportphp nonphp-BMPphp characters
+php php php php php php php php php php php php php php php php php php php php ifphp php(ordphp(php$strphp[php$countphp]php)php php&php php0xphp1php0php php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$addBytesphp+php+php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$charsphp php-php=php php$addBytesphp;
+
+php php php php php php php php php php php php php php php php ifphp php(ordphp(php$strphp[php$countphp]php)php php=php=php php0php php)php php{
+php php php php php php php php php php php php php php php php php php php php php$containNullCharsphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$countphp php+php=php php$addBytesphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$charsphp <php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Invalidphp UTFphp-php8php stringphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>writeVIntphp(php$charsphp)php;
+php php php php php php php php ifphp php(php$containNullCharsphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_fwritephp(strphp_replacephp(php$strphp,php php"php\xphp0php0php"php,php php"php\xCphp0php\xphp8php0php"php)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_fwritephp(php$strphp)php;
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Readsphp binaryphp dataphp fromphp thephp currentphp positionphp inphp thephp file
+php php php php php php*php andphp advancesphp thephp filephp pointerphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp readBinaryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_freadphp(php$thisphp-php>readVIntphp(php)php)php;
+php php php php php}
+php}

@@ -1,131 +1,131 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Atom.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Atomphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/** @see Zend_Feed_Writer_Feed */
-require_once 'Zend/Feed/Writer/Feed.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Feedphp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Feedphp.phpphp'php;
 
-/** @see Zend_Version */
-require_once 'Zend/Version.php';
+php/php*php*php php@seephp Zendphp_Versionphp php*php/
+requirephp_oncephp php'Zendphp/Versionphp.phpphp'php;
 
-/** @see Zend_Feed_Writer_Renderer_RendererInterface */
-require_once 'Zend/Feed/Writer/Renderer/RendererInterface.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Rendererphp_RendererInterfacephp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/RendererInterfacephp.phpphp'php;
 
-/** @see Zend_Feed_Writer_Renderer_Entry_Atom */
-require_once 'Zend/Feed/Writer/Renderer/Entry/Atom.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Rendererphp_Entryphp_Atomphp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/Entryphp/Atomphp.phpphp'php;
 
-/** @see Zend_Feed_Writer_Renderer_Entry_Atom_Deleted */
-require_once 'Zend/Feed/Writer/Renderer/Entry/Atom/Deleted.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Rendererphp_Entryphp_Atomphp_Deletedphp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/Entryphp/Atomphp/Deletedphp.phpphp'php;
 
-/** @see Zend_Feed_Writer_Renderer_RendererAbstract */
-require_once 'Zend/Feed/Writer/Renderer/RendererAbstract.php';
+php/php*php*php php@seephp Zendphp_Feedphp_Writerphp_Rendererphp_RendererAbstractphp php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/RendererAbstractphp.phpphp'php;
 
-require_once 'Zend/Feed/Writer/Renderer/Feed/Atom/AtomAbstract.php';
+requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Rendererphp/Feedphp/Atomphp/AtomAbstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Feed_Writer_Renderer_Feed_Atom
-    extends Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
-    implements Zend_Feed_Writer_Renderer_RendererInterface
-{
-    /**
-     * Constructor
-     *
-     * @param  Zend_Feed_Writer_Feed $container
-     * @return void
-     */
-    public function __construct (Zend_Feed_Writer_Feed $container)
-    {
-        parent::__construct($container);
-    }
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Feedphp_Writerphp_Rendererphp_Feedphp_Atom
+php php php php extendsphp Zendphp_Feedphp_Writerphp_Rendererphp_Feedphp_Atomphp_AtomAbstract
+php php php php implementsphp Zendphp_Feedphp_Writerphp_Rendererphp_RendererInterface
+php{
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Feedphp_Writerphp_Feedphp php$container
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp php(Zendphp_Feedphp_Writerphp_Feedphp php$containerphp)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php$containerphp)php;
+php php php php php}
 
-    /**
-     * Render Atom feed
-     *
-     * @return Zend_Feed_Writer_Renderer_Feed_Atom
-     */
-    public function render()
-    {
-        if (!$this->_container->getEncoding()) {
-            $this->_container->setEncoding('UTF-8');
-        }
-        $this->_dom = new DOMDocument('1.0', $this->_container->getEncoding());
-        $this->_dom->formatOutput = true;
-        $root = $this->_dom->createElementNS(
-            Zend_Feed_Writer::NAMESPACE_ATOM_10, 'feed'
-        );
-        $this->setRootElement($root);
-        $this->_dom->appendChild($root);
-        $this->_setLanguage($this->_dom, $root);
-        $this->_setBaseUrl($this->_dom, $root);
-        $this->_setTitle($this->_dom, $root);
-        $this->_setDescription($this->_dom, $root);
-        $this->_setImage($this->_dom, $root);
-        $this->_setIcon($this->_dom, $root);
-        $this->_setDateCreated($this->_dom, $root);
-        $this->_setDateModified($this->_dom, $root);
-        $this->_setGenerator($this->_dom, $root);
-        $this->_setLink($this->_dom, $root);
-        $this->_setFeedLinks($this->_dom, $root);
-        $this->_setId($this->_dom, $root);
-        $this->_setAuthors($this->_dom, $root);
-        $this->_setCopyright($this->_dom, $root);
-        $this->_setCategories($this->_dom, $root);
-        $this->_setHubs($this->_dom, $root);
+php php php php php/php*php*
+php php php php php php*php Renderphp Atomphp feed
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Feedphp_Writerphp_Rendererphp_Feedphp_Atom
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_containerphp-php>getEncodingphp(php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_containerphp-php>setEncodingphp(php'UTFphp-php8php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_domphp php=php newphp DOMDocumentphp(php'php1php.php0php'php,php php$thisphp-php>php_containerphp-php>getEncodingphp(php)php)php;
+php php php php php php php php php$thisphp-php>php_domphp-php>formatOutputphp php=php truephp;
+php php php php php php php php php$rootphp php=php php$thisphp-php>php_domphp-php>createElementNSphp(
+php php php php php php php php php php php php Zendphp_Feedphp_Writerphp:php:NAMESPACEphp_ATOMphp_php1php0php,php php'feedphp'
+php php php php php php php php php)php;
+php php php php php php php php php$thisphp-php>setRootElementphp(php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_domphp-php>appendChildphp(php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setLanguagephp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setBaseUrlphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setTitlephp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setDescriptionphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setImagephp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setIconphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setDateCreatedphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setDateModifiedphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setGeneratorphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setLinkphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setFeedLinksphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setIdphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setAuthorsphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setCopyrightphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setCategoriesphp(php$thisphp-php>php_domphp,php php$rootphp)php;
+php php php php php php php php php$thisphp-php>php_setHubsphp(php$thisphp-php>php_domphp,php php$rootphp)php;
 
-        foreach ($this->_extensions as $ext) {
-            $ext->setType($this->getType());
-            $ext->setRootElement($this->getRootElement());
-            $ext->setDomDocument($this->getDomDocument(), $root);
-            $ext->render();
-        }
+php php php php php php php php foreachphp php(php$thisphp-php>php_extensionsphp asphp php$extphp)php php{
+php php php php php php php php php php php php php$extphp-php>setTypephp(php$thisphp-php>getTypephp(php)php)php;
+php php php php php php php php php php php php php$extphp-php>setRootElementphp(php$thisphp-php>getRootElementphp(php)php)php;
+php php php php php php php php php php php php php$extphp-php>setDomDocumentphp(php$thisphp-php>getDomDocumentphp(php)php,php php$rootphp)php;
+php php php php php php php php php php php php php$extphp-php>renderphp(php)php;
+php php php php php php php php php}
 
-        foreach ($this->_container as $entry) {
-            if ($this->getDataContainer()->getEncoding()) {
-                $entry->setEncoding($this->getDataContainer()->getEncoding());
-            }
-            if ($entry instanceof Zend_Feed_Writer_Entry) {
-                $renderer = new Zend_Feed_Writer_Renderer_Entry_Atom($entry);
-            } else {
-                if (!$this->_dom->documentElement->hasAttribute('xmlns:at')) {
-                    $this->_dom->documentElement->setAttribute(
-                        'xmlns:at', 'http://purl.org/atompub/tombstones/1.0'
-                    );
-                }
-                $renderer = new Zend_Feed_Writer_Renderer_Entry_Atom_Deleted($entry);
-            }
-            if ($this->_ignoreExceptions === true) {
-                $renderer->ignoreExceptions();
-            }
-            $renderer->setType($this->getType());
-            $renderer->setRootElement($this->_dom->documentElement);
-            $renderer->render();
-            $element = $renderer->getElement();
-            $imported = $this->_dom->importNode($element, true);
-            $root->appendChild($imported);
-        }
-        return $this;
-    }
+php php php php php php php php foreachphp php(php$thisphp-php>php_containerphp asphp php$entryphp)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>getDataContainerphp(php)php-php>getEncodingphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$entryphp-php>setEncodingphp(php$thisphp-php>getDataContainerphp(php)php-php>getEncodingphp(php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$entryphp instanceofphp Zendphp_Feedphp_Writerphp_Entryphp)php php{
+php php php php php php php php php php php php php php php php php$rendererphp php=php newphp Zendphp_Feedphp_Writerphp_Rendererphp_Entryphp_Atomphp(php$entryphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_domphp-php>documentElementphp-php>hasAttributephp(php'xmlnsphp:atphp'php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_domphp-php>documentElementphp-php>setAttributephp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'xmlnsphp:atphp'php,php php'httpphp:php/php/purlphp.orgphp/atompubphp/tombstonesphp/php1php.php0php'
+php php php php php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$rendererphp php=php newphp Zendphp_Feedphp_Writerphp_Rendererphp_Entryphp_Atomphp_Deletedphp(php$entryphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_ignoreExceptionsphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php$rendererphp-php>ignoreExceptionsphp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$rendererphp-php>setTypephp(php$thisphp-php>getTypephp(php)php)php;
+php php php php php php php php php php php php php$rendererphp-php>setRootElementphp(php$thisphp-php>php_domphp-php>documentElementphp)php;
+php php php php php php php php php php php php php$rendererphp-php>renderphp(php)php;
+php php php php php php php php php php php php php$elementphp php=php php$rendererphp-php>getElementphp(php)php;
+php php php php php php php php php php php php php$importedphp php=php php$thisphp-php>php_domphp-php>importNodephp(php$elementphp,php truephp)php;
+php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$importedphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-}
+php}

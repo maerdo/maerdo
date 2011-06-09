@@ -1,110 +1,110 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Default.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Defaultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/** Zend_Search_Lucene_Search_Similarity */
-require_once 'Zend/Search/Lucene/Search/Similarity.php';
+php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Similarityphp.phpphp'php;
 
 
-/**
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Search
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_Search_Similarity_Default extends Zend_Search_Lucene_Search_Similarity
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Search
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp_Defaultphp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarity
+php{
 
-    /**
-     * Implemented as '1/sqrt(numTerms)'.
-     *
-     * @param string $fieldName
-     * @param integer $numTerms
-     * @return float
-     */
-    public function lengthNorm($fieldName, $numTerms)
-    {
-        if ($numTerms == 0) {
-            return 1E10;
-        }
+php php php php php/php*php*
+php php php php php php*php Implementedphp asphp php'php1php/sqrtphp(numTermsphp)php'php.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$fieldName
+php php php php php php*php php@paramphp integerphp php$numTerms
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp lengthNormphp(php$fieldNamephp,php php$numTermsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$numTermsphp php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php1Ephp1php0php;
+php php php php php php php php php}
 
-        return 1.0/sqrt($numTerms);
-    }
+php php php php php php php php returnphp php1php.php0php/sqrtphp(php$numTermsphp)php;
+php php php php php}
 
-    /**
-     * Implemented as '1/sqrt(sumOfSquaredWeights)'.
-     *
-     * @param float $sumOfSquaredWeights
-     * @return float
-     */
-    public function queryNorm($sumOfSquaredWeights)
-    {
-        return 1.0/sqrt($sumOfSquaredWeights);
-    }
+php php php php php/php*php*
+php php php php php php*php Implementedphp asphp php'php1php/sqrtphp(sumOfSquaredWeightsphp)php'php.
+php php php php php php*
+php php php php php php*php php@paramphp floatphp php$sumOfSquaredWeights
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp queryNormphp(php$sumOfSquaredWeightsphp)
+php php php php php{
+php php php php php php php php returnphp php1php.php0php/sqrtphp(php$sumOfSquaredWeightsphp)php;
+php php php php php}
 
-    /**
-     * Implemented as 'sqrt(freq)'.
-     *
-     * @param float $freq
-     * @return float
-     */
-    public function tf($freq)
-    {
-        return sqrt($freq);
-    }
+php php php php php/php*php*
+php php php php php php*php Implementedphp asphp php'sqrtphp(freqphp)php'php.
+php php php php php php*
+php php php php php php*php php@paramphp floatphp php$freq
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp tfphp(php$freqphp)
+php php php php php{
+php php php php php php php php returnphp sqrtphp(php$freqphp)php;
+php php php php php}
 
-    /**
-     * Implemented as '1/(distance + 1)'.
-     *
-     * @param integer $distance
-     * @return float
-     */
-    public function sloppyFreq($distance)
-    {
-        return 1.0/($distance + 1);
-    }
+php php php php php/php*php*
+php php php php php php*php Implementedphp asphp php'php1php/php(distancephp php+php php1php)php'php.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$distance
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp sloppyFreqphp(php$distancephp)
+php php php php php{
+php php php php php php php php returnphp php1php.php0php/php(php$distancephp php+php php1php)php;
+php php php php php}
 
-    /**
-     * Implemented as 'log(numDocs/(docFreq+1)) + 1'.
-     *
-     * @param integer $docFreq
-     * @param integer $numDocs
-     * @return float
-     */
-    public function idfFreq($docFreq, $numDocs)
-    {
-        return log($numDocs/(float)($docFreq+1)) + 1.0;
-    }
+php php php php php/php*php*
+php php php php php php*php Implementedphp asphp php'logphp(numDocsphp/php(docFreqphp+php1php)php)php php+php php1php'php.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$docFreq
+php php php php php php*php php@paramphp integerphp php$numDocs
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp idfFreqphp(php$docFreqphp,php php$numDocsphp)
+php php php php php{
+php php php php php php php php returnphp logphp(php$numDocsphp/php(floatphp)php(php$docFreqphp+php1php)php)php php+php php1php.php0php;
+php php php php php}
 
-    /**
-     * Implemented as 'overlap/maxOverlap'.
-     *
-     * @param integer $overlap
-     * @param integer $maxOverlap
-     * @return float
-     */
-    public function coord($overlap, $maxOverlap)
-    {
-        return $overlap/(float)$maxOverlap;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Implementedphp asphp php'overlapphp/maxOverlapphp'php.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$overlap
+php php php php php php*php php@paramphp integerphp php$maxOverlap
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp coordphp(php$overlapphp,php php$maxOverlapphp)
+php php php php php{
+php php php php php php php php returnphp php$overlapphp/php(floatphp)php$maxOverlapphp;
+php php php php php}
+php}

@@ -1,95 +1,95 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Bootstrap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ResourceBootstrapper.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Bootstrap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ResourceBootstrapperphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Interface for bootstrap classes that utilize resource plugins
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Bootstrap
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Application_Bootstrap_ResourceBootstrapper
-{
-    /**
-     * Register a resource with the bootstrap
-     *
-     * @param  string|Zend_Application_Resource_Resource $resource
-     * @param  null|array|Zend_Config                     $options
-     * @return Zend_Application_Bootstrap_ResourceBootstrapper
-     */
-    public function registerPluginResource($resource, $options = null);
+php/php*php*
+php php*php Interfacephp forphp bootstrapphp classesphp thatphp utilizephp resourcephp plugins
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Bootstrap
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Applicationphp_Bootstrapphp_ResourceBootstrapper
+php{
+php php php php php/php*php*
+php php php php php php*php Registerphp aphp resourcephp withphp thephp bootstrap
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Applicationphp_Resourcephp_Resourcephp php$resource
+php php php php php php*php php@paramphp php nullphp|arrayphp|Zendphp_Configphp php php php php php php php php php php php php php php php php php php php php php$options
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Bootstrapphp_ResourceBootstrapper
+php php php php php php*php/
+php php php php publicphp functionphp registerPluginResourcephp(php$resourcephp,php php$optionsphp php=php nullphp)php;
 
-    /**
-     * Unregister a resource from the bootstrap
-     *
-     * @param  string|Zend_Application_Resource_Resource $resource
-     * @return Zend_Application_Bootstrap_ResourceBootstrapper
-     */
-    public function unregisterPluginResource($resource);
+php php php php php/php*php*
+php php php php php php*php Unregisterphp aphp resourcephp fromphp thephp bootstrap
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Applicationphp_Resourcephp_Resourcephp php$resource
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Bootstrapphp_ResourceBootstrapper
+php php php php php php*php/
+php php php php publicphp functionphp unregisterPluginResourcephp(php$resourcephp)php;
 
-    /**
-     * Is the requested resource registered?
-     *
-     * @param  string $resource
-     * @return bool
-     */
-    public function hasPluginResource($resource);
+php php php php php/php*php*
+php php php php php php*php Isphp thephp requestedphp resourcephp registeredphp?
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$resource
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasPluginResourcephp(php$resourcephp)php;
 
-    /**
-     * Retrieve resource
-     *
-     * @param  string $resource
-     * @return Zend_Application_Resource_Resource
-     */
-    public function getPluginResource($resource);
+php php php php php/php*php*
+php php php php php php*php Retrievephp resource
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$resource
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Resourcephp_Resource
+php php php php php php*php/
+php php php php publicphp functionphp getPluginResourcephp(php$resourcephp)php;
 
-    /**
-     * Get all resources
-     *
-     * @return array
-     */
-    public function getPluginResources();
+php php php php php/php*php*
+php php php php php php*php Getphp allphp resources
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getPluginResourcesphp(php)php;
 
-    /**
-     * Get just resource names
-     *
-     * @return array
-     */
-    public function getPluginResourceNames();
+php php php php php/php*php*
+php php php php php php*php Getphp justphp resourcephp names
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getPluginResourceNamesphp(php)php;
 
-    /**
-     * Set plugin loader to use to fetch resources
-     *
-     * @param  Zend_Loader_PluginLoader_Interface Zend_Loader_PluginLoader
-     * @return Zend_Application_Bootstrap_ResourceBootstrapper
-     */
-    public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader);
+php php php php php/php*php*
+php php php php php php*php Setphp pluginphp loaderphp tophp usephp tophp fetchphp resources
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp Zendphp_Loaderphp_PluginLoader
+php php php php php php*php php@returnphp Zendphp_Applicationphp_Bootstrapphp_ResourceBootstrapper
+php php php php php php*php/
+php php php php publicphp functionphp setPluginLoaderphp(Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loaderphp)php;
 
-    /**
-     * Retrieve plugin loader for resources
-     *
-     * @return Zend_Loader_PluginLoader
-     */
-    public function getPluginLoader();
-}
+php php php php php/php*php*
+php php php php php php*php Retrievephp pluginphp loaderphp forphp resources
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
+php php php php php php*php/
+php php php php publicphp functionphp getPluginLoaderphp(php)php;
+php}

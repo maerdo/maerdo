@@ -1,243 +1,243 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Transport
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Smtp.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Transport
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Smtpphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
 
-/**
- * @see Zend_Mime
- */
-require_once 'Zend/Mime.php';
+php/php*php*
+php php*php php@seephp Zendphp_Mime
+php php*php/
+requirephp_oncephp php'Zendphp/Mimephp.phpphp'php;
 
-/**
- * @see Zend_Mail_Protocol_Smtp
- */
-require_once 'Zend/Mail/Protocol/Smtp.php';
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Protocolphp_Smtp
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Protocolphp/Smtpphp.phpphp'php;
 
-/**
- * @see Zend_Mail_Transport_Abstract
- */
-require_once 'Zend/Mail/Transport/Abstract.php';
-
-
-/**
- * SMTP connection object
- *
- * Loads an instance of Zend_Mail_Protocol_Smtp and forwards smtp transactions
- *
- * @category   Zend
- * @package    Zend_Mail
- * @subpackage Transport
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
-{
-    /**
-     * EOL character string used by transport
-     * @var string
-     * @access public
-     */
-    public $EOL = "\n";
-
-    /**
-     * Remote smtp hostname or i.p.
-     *
-     * @var string
-     */
-    protected $_host;
+php/php*php*
+php php*php php@seephp Zendphp_Mailphp_Transportphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Mailphp/Transportphp/Abstractphp.phpphp'php;
 
 
-    /**
-     * Port number
-     *
-     * @var integer|null
-     */
-    protected $_port;
+php/php*php*
+php php*php SMTPphp connectionphp object
+php php*
+php php*php Loadsphp anphp instancephp ofphp Zendphp_Mailphp_Protocolphp_Smtpphp andphp forwardsphp smtpphp transactions
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Mail
+php php*php php@subpackagephp Transport
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Mailphp_Transportphp_Smtpphp extendsphp Zendphp_Mailphp_Transportphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php EOLphp characterphp stringphp usedphp byphp transport
+php php php php php php*php php@varphp string
+php php php php php php*php php@accessphp public
+php php php php php php*php/
+php php php php publicphp php$EOLphp php=php php"php\nphp"php;
+
+php php php php php/php*php*
+php php php php php php*php Remotephp smtpphp hostnamephp orphp iphp.pphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_hostphp;
 
 
-    /**
-     * Local client hostname or i.p.
-     *
-     * @var string
-     */
-    protected $_name = 'localhost';
+php php php php php/php*php*
+php php php php php php*php Portphp number
+php php php php php php*
+php php php php php php*php php@varphp integerphp|null
+php php php php php php*php/
+php php php php protectedphp php$php_portphp;
 
 
-    /**
-     * Authentication type OPTIONAL
-     *
-     * @var string
-     */
-    protected $_auth;
+php php php php php/php*php*
+php php php php php php*php Localphp clientphp hostnamephp orphp iphp.pphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_namephp php=php php'localhostphp'php;
 
 
-    /**
-     * Config options for authentication
-     *
-     * @var array
-     */
-    protected $_config;
+php php php php php/php*php*
+php php php php php php*php Authenticationphp typephp OPTIONAL
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_authphp;
 
 
-    /**
-     * Instance of Zend_Mail_Protocol_Smtp
-     *
-     * @var Zend_Mail_Protocol_Smtp
-     */
-    protected $_connection;
+php php php php php/php*php*
+php php php php php php*php Configphp optionsphp forphp authentication
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_configphp;
 
 
-    /**
-     * Constructor.
-     *
-     * @param  string $host OPTIONAL (Default: 127.0.0.1)
-     * @param  array|null $config OPTIONAL (Default: null)
-     * @return void
-     *
-     * @todo Someone please make this compatible
-     *       with the SendMail transport class.
-     */
-    public function __construct($host = '127.0.0.1', Array $config = array())
-    {
-        if (isset($config['name'])) {
-            $this->_name = $config['name'];
-        }
-        if (isset($config['port'])) {
-            $this->_port = $config['port'];
-        }
-        if (isset($config['auth'])) {
-            $this->_auth = $config['auth'];
-        }
-
-        $this->_host = $host;
-        $this->_config = $config;
-    }
+php php php php php/php*php*
+php php php php php php*php Instancephp ofphp Zendphp_Mailphp_Protocolphp_Smtp
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Mailphp_Protocolphp_Smtp
+php php php php php php*php/
+php php php php protectedphp php$php_connectionphp;
 
 
-    /**
-     * Class destructor to ensure all open connections are closed
-     *
-     * @return void
-     */
-    public function __destruct()
-    {
-        if ($this->_connection instanceof Zend_Mail_Protocol_Smtp) {
-            try {
-                $this->_connection->quit();
-            } catch (Zend_Mail_Protocol_Exception $e) {
-                // ignore
-            }
-            $this->_connection->disconnect();
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructorphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$hostphp OPTIONALphp php(Defaultphp:php php1php2php7php.php0php.php0php.php1php)
+php php php php php php*php php@paramphp php arrayphp|nullphp php$configphp OPTIONALphp php(Defaultphp:php nullphp)
+php php php php php php*php php@returnphp void
+php php php php php php*
+php php php php php php*php php@todophp Someonephp pleasephp makephp thisphp compatible
+php php php php php php*php php php php php php php withphp thephp SendMailphp transportphp classphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$hostphp php=php php'php1php2php7php.php0php.php0php.php1php'php,php Arrayphp php$configphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(issetphp(php$configphp[php'namephp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_namephp php=php php$configphp[php'namephp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$configphp[php'portphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_portphp php=php php$configphp[php'portphp'php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$configphp[php'authphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_authphp php=php php$configphp[php'authphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_hostphp php=php php$hostphp;
+php php php php php php php php php$thisphp-php>php_configphp php=php php$configphp;
+php php php php php}
 
 
-    /**
-     * Sets the connection protocol instance
-     *
-     * @param Zend_Mail_Protocol_Abstract $client
-     *
-     * @return void
-     */
-    public function setConnection(Zend_Mail_Protocol_Abstract $connection)
-    {
-        $this->_connection = $connection;
-    }
+php php php php php/php*php*
+php php php php php php*php Classphp destructorphp tophp ensurephp allphp openphp connectionsphp arephp closed
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_destructphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_connectionphp instanceofphp Zendphp_Mailphp_Protocolphp_Smtpphp)php php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_connectionphp-php>quitphp(php)php;
+php php php php php php php php php php php php php}php catchphp php(Zendphp_Mailphp_Protocolphp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php/php/php ignore
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>php_connectionphp-php>disconnectphp(php)php;
+php php php php php php php php php}
+php php php php php}
 
 
-    /**
-     * Gets the connection protocol instance
-     *
-     * @return Zend_Mail_Protocol|null
-     */
-    public function getConnection()
-    {
-        return $this->_connection;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp connectionphp protocolphp instance
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Mailphp_Protocolphp_Abstractphp php$client
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setConnectionphp(Zendphp_Mailphp_Protocolphp_Abstractphp php$connectionphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_connectionphp php=php php$connectionphp;
+php php php php php}
 
-    /**
-     * Send an email via the SMTP connection protocol
-     *
-     * The connection via the protocol adapter is made just-in-time to allow a
-     * developer to add a custom adapter if required before mail is sent.
-     *
-     * @return void
-     * @todo Rename this to sendMail, it's a public method...
-     */
-    public function _sendMail()
-    {
-        // If sending multiple messages per session use existing adapter
-        if (!($this->_connection instanceof Zend_Mail_Protocol_Smtp)) {
-            // Check if authentication is required and determine required class
-            $connectionClass = 'Zend_Mail_Protocol_Smtp';
-            if ($this->_auth) {
-                $connectionClass .= '_Auth_' . ucwords($this->_auth);
-            }
-            if (!class_exists($connectionClass)) {
-                require_once 'Zend/Loader.php';
-                Zend_Loader::loadClass($connectionClass);
-            }
-            $this->setConnection(new $connectionClass($this->_host, $this->_port, $this->_config));
-            $this->_connection->connect();
-            $this->_connection->helo($this->_name);
-        } else {
-            // Reset connection to ensure reliable transaction
-            $this->_connection->rset();
-        }
 
-        // Set sender email address
-        $this->_connection->mail($this->_mail->getReturnPath());
+php php php php php/php*php*
+php php php php php php*php Getsphp thephp connectionphp protocolphp instance
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Mailphp_Protocolphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getConnectionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_connectionphp;
+php php php php php}
 
-        // Set recipient forward paths
-        foreach ($this->_mail->getRecipients() as $recipient) {
-            $this->_connection->rcpt($recipient);
-        }
+php php php php php/php*php*
+php php php php php php*php Sendphp anphp emailphp viaphp thephp SMTPphp connectionphp protocol
+php php php php php php*
+php php php php php php*php Thephp connectionphp viaphp thephp protocolphp adapterphp isphp madephp justphp-inphp-timephp tophp allowphp a
+php php php php php php*php developerphp tophp addphp aphp customphp adapterphp ifphp requiredphp beforephp mailphp isphp sentphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@todophp Renamephp thisphp tophp sendMailphp,php itphp'sphp aphp publicphp methodphp.php.php.
+php php php php php php*php/
+php php php php publicphp functionphp php_sendMailphp(php)
+php php php php php{
+php php php php php php php php php/php/php Ifphp sendingphp multiplephp messagesphp perphp sessionphp usephp existingphp adapter
+php php php php php php php php ifphp php(php!php(php$thisphp-php>php_connectionphp instanceofphp Zendphp_Mailphp_Protocolphp_Smtpphp)php)php php{
+php php php php php php php php php php php php php/php/php Checkphp ifphp authenticationphp isphp requiredphp andphp determinephp requiredphp class
+php php php php php php php php php php php php php$connectionClassphp php=php php'Zendphp_Mailphp_Protocolphp_Smtpphp'php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_authphp)php php{
+php php php php php php php php php php php php php php php php php$connectionClassphp php.php=php php'php_Authphp_php'php php.php ucwordsphp(php$thisphp-php>php_authphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$connectionClassphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$connectionClassphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$thisphp-php>setConnectionphp(newphp php$connectionClassphp(php$thisphp-php>php_hostphp,php php$thisphp-php>php_portphp,php php$thisphp-php>php_configphp)php)php;
+php php php php php php php php php php php php php$thisphp-php>php_connectionphp-php>connectphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_connectionphp-php>helophp(php$thisphp-php>php_namephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Resetphp connectionphp tophp ensurephp reliablephp transaction
+php php php php php php php php php php php php php$thisphp-php>php_connectionphp-php>rsetphp(php)php;
+php php php php php php php php php}
 
-        // Issue DATA command to client
-        $this->_connection->data($this->header . Zend_Mime::LINEEND . $this->body);
-    }
+php php php php php php php php php/php/php Setphp senderphp emailphp address
+php php php php php php php php php$thisphp-php>php_connectionphp-php>mailphp(php$thisphp-php>php_mailphp-php>getReturnPathphp(php)php)php;
 
-    /**
-     * Format and fix headers
-     *
-     * Some SMTP servers do not strip BCC headers. Most clients do it themselves as do we.
-     *
-     * @access  protected
-     * @param   array $headers
-     * @return  void
-     * @throws  Zend_Transport_Exception
-     */
-    protected function _prepareHeaders($headers)
-    {
-        if (!$this->_mail) {
-            /**
-             * @see Zend_Mail_Transport_Exception
-             */
-            require_once 'Zend/Mail/Transport/Exception.php';
-            throw new Zend_Mail_Transport_Exception('_prepareHeaders requires a registered Zend_Mail object');
-        }
+php php php php php php php php php/php/php Setphp recipientphp forwardphp paths
+php php php php php php php php foreachphp php(php$thisphp-php>php_mailphp-php>getRecipientsphp(php)php asphp php$recipientphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_connectionphp-php>rcptphp(php$recipientphp)php;
+php php php php php php php php php}
 
-        unset($headers['Bcc']);
+php php php php php php php php php/php/php Issuephp DATAphp commandphp tophp client
+php php php php php php php php php$thisphp-php>php_connectionphp-php>dataphp(php$thisphp-php>headerphp php.php Zendphp_Mimephp:php:LINEENDphp php.php php$thisphp-php>bodyphp)php;
+php php php php php}
 
-        // Prepare headers
-        parent::_prepareHeaders($headers);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Formatphp andphp fixphp headers
+php php php php php php*
+php php php php php php*php Somephp SMTPphp serversphp dophp notphp stripphp BCCphp headersphp.php Mostphp clientsphp dophp itphp themselvesphp asphp dophp wephp.
+php php php php php php*
+php php php php php php*php php@accessphp php protected
+php php php php php php*php php@paramphp php php arrayphp php$headers
+php php php php php php*php php@returnphp php void
+php php php php php php*php php@throwsphp php Zendphp_Transportphp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_prepareHeadersphp(php$headersphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_mailphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Transportphp_Exception
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Transportphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Transportphp_Exceptionphp(php'php_prepareHeadersphp requiresphp aphp registeredphp Zendphp_Mailphp objectphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php unsetphp(php$headersphp[php'Bccphp'php]php)php;
+
+php php php php php php php php php/php/php Preparephp headers
+php php php php php php php php parentphp:php:php_prepareHeadersphp(php$headersphp)php;
+php php php php php}
+php}

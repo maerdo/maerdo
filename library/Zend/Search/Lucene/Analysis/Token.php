@@ -1,154 +1,154 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Analysis
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Token.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Analysis
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Tokenphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
 
-/**
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @subpackage Analysis
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_Analysis_Token
-{
-    /**
-     * The text of the term.
-     *
-     * @var string
-     */
-    private $_termText;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@subpackagephp Analysis
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_Analysisphp_Token
+php{
+php php php php php/php*php*
+php php php php php php*php Thephp textphp ofphp thephp termphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php privatephp php$php_termTextphp;
 
-    /**
-     * Start in source text.
-     *
-     * @var integer
-     */
-    private $_startOffset;
+php php php php php/php*php*
+php php php php php php*php Startphp inphp sourcephp textphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_startOffsetphp;
 
-    /**
-     * End in source text
-     *
-     * @var integer
-     */
-    private $_endOffset;
+php php php php php/php*php*
+php php php php php php*php Endphp inphp sourcephp text
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_endOffsetphp;
 
-    /**
-     * The position of this token relative to the previous Token.
-     *
-     * The default value is one.
-     *
-     * Some common uses for this are:
-     * Set it to zero to put multiple terms in the same position.  This is
-     * useful if, e.g., a word has multiple stems.  Searches for phrases
-     * including either stem will match.  In this case, all but the first stem's
-     * increment should be set to zero: the increment of the first instance
-     * should be one.  Repeating a token with an increment of zero can also be
-     * used to boost the scores of matches on that token.
-     *
-     * Set it to values greater than one to inhibit exact phrase matches.
-     * If, for example, one does not want phrases to match across removed stop
-     * words, then one could build a stop word filter that removes stop words and
-     * also sets the increment to the number of stop words removed before each
-     * non-stop word.  Then exact phrase queries will only match when the terms
-     * occur with no intervening stop words.
-     *
-     * @var integer
-     */
-    private $_positionIncrement;
-
-
-    /**
-     * Object constructor
-     *
-     * @param string  $text
-     * @param integer $start
-     * @param integer $end
-     * @param string  $type
-     */
-    public function __construct($text, $start, $end)
-    {
-        $this->_termText    = $text;
-        $this->_startOffset = $start;
-        $this->_endOffset   = $end;
-
-        $this->_positionIncrement = 1;
-    }
+php php php php php/php*php*
+php php php php php php*php Thephp positionphp ofphp thisphp tokenphp relativephp tophp thephp previousphp Tokenphp.
+php php php php php php*
+php php php php php php*php Thephp defaultphp valuephp isphp onephp.
+php php php php php php*
+php php php php php php*php Somephp commonphp usesphp forphp thisphp arephp:
+php php php php php php*php Setphp itphp tophp zerophp tophp putphp multiplephp termsphp inphp thephp samephp positionphp.php php Thisphp is
+php php php php php php*php usefulphp ifphp,php ephp.gphp.php,php aphp wordphp hasphp multiplephp stemsphp.php php Searchesphp forphp phrases
+php php php php php php*php includingphp eitherphp stemphp willphp matchphp.php php Inphp thisphp casephp,php allphp butphp thephp firstphp stemphp's
+php php php php php php*php incrementphp shouldphp bephp setphp tophp zerophp:php thephp incrementphp ofphp thephp firstphp instance
+php php php php php php*php shouldphp bephp onephp.php php Repeatingphp aphp tokenphp withphp anphp incrementphp ofphp zerophp canphp alsophp be
+php php php php php php*php usedphp tophp boostphp thephp scoresphp ofphp matchesphp onphp thatphp tokenphp.
+php php php php php php*
+php php php php php php*php Setphp itphp tophp valuesphp greaterphp thanphp onephp tophp inhibitphp exactphp phrasephp matchesphp.
+php php php php php php*php Ifphp,php forphp examplephp,php onephp doesphp notphp wantphp phrasesphp tophp matchphp acrossphp removedphp stop
+php php php php php php*php wordsphp,php thenphp onephp couldphp buildphp aphp stopphp wordphp filterphp thatphp removesphp stopphp wordsphp and
+php php php php php php*php alsophp setsphp thephp incrementphp tophp thephp numberphp ofphp stopphp wordsphp removedphp beforephp each
+php php php php php php*php nonphp-stopphp wordphp.php php Thenphp exactphp phrasephp queriesphp willphp onlyphp matchphp whenphp thephp terms
+php php php php php php*php occurphp withphp nophp interveningphp stopphp wordsphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php privatephp php$php_positionIncrementphp;
 
 
-    /**
-     * positionIncrement setter
-     *
-     * @param integer $positionIncrement
-     */
-    public function setPositionIncrement($positionIncrement)
-    {
-        $this->_positionIncrement = $positionIncrement;
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php php$text
+php php php php php php*php php@paramphp integerphp php$start
+php php php php php php*php php@paramphp integerphp php$end
+php php php php php php*php php@paramphp stringphp php php$type
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$textphp,php php$startphp,php php$endphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_termTextphp php php php php=php php$textphp;
+php php php php php php php php php$thisphp-php>php_startOffsetphp php=php php$startphp;
+php php php php php php php php php$thisphp-php>php_endOffsetphp php php php=php php$endphp;
 
-    /**
-     * Returns the position increment of this Token.
-     *
-     * @return integer
-     */
-    public function getPositionIncrement()
-    {
-        return $this->_positionIncrement;
-    }
+php php php php php php php php php$thisphp-php>php_positionIncrementphp php=php php1php;
+php php php php php}
 
-    /**
-     * Returns the Token's term text.
-     *
-     * @return string
-     */
-    public function getTermText()
-    {
-        return $this->_termText;
-    }
 
-    /**
-     * Returns this Token's starting offset, the position of the first character
-     * corresponding to this token in the source text.
-     *
-     * Note:
-     * The difference between getEndOffset() and getStartOffset() may not be equal
-     * to strlen(Zend_Search_Lucene_Analysis_Token::getTermText()), as the term text may have been altered
-     * by a stemmer or some other filter.
-     *
-     * @return integer
-     */
-    public function getStartOffset()
-    {
-        return $this->_startOffset;
-    }
+php php php php php/php*php*
+php php php php php php*php positionIncrementphp setter
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$positionIncrement
+php php php php php php*php/
+php php php php publicphp functionphp setPositionIncrementphp(php$positionIncrementphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_positionIncrementphp php=php php$positionIncrementphp;
+php php php php php}
 
-    /**
-     * Returns this Token's ending offset, one greater than the position of the
-     * last character corresponding to this token in the source text.
-     *
-     * @return integer
-     */
-    public function getEndOffset()
-    {
-        return $this->_endOffset;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp positionphp incrementphp ofphp thisphp Tokenphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getPositionIncrementphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_positionIncrementphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp Tokenphp'sphp termphp textphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTermTextphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_termTextphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thisphp Tokenphp'sphp startingphp offsetphp,php thephp positionphp ofphp thephp firstphp character
+php php php php php php*php correspondingphp tophp thisphp tokenphp inphp thephp sourcephp textphp.
+php php php php php php*
+php php php php php php*php Notephp:
+php php php php php php*php Thephp differencephp betweenphp getEndOffsetphp(php)php andphp getStartOffsetphp(php)php mayphp notphp bephp equal
+php php php php php php*php tophp strlenphp(Zendphp_Searchphp_Lucenephp_Analysisphp_Tokenphp:php:getTermTextphp(php)php)php,php asphp thephp termphp textphp mayphp havephp beenphp altered
+php php php php php php*php byphp aphp stemmerphp orphp somephp otherphp filterphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getStartOffsetphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_startOffsetphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thisphp Tokenphp'sphp endingphp offsetphp,php onephp greaterphp thanphp thephp positionphp ofphp the
+php php php php php php*php lastphp characterphp correspondingphp tophp thisphp tokenphp inphp thephp sourcephp textphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getEndOffsetphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_endOffsetphp;
+php php php php php}
+php}
 

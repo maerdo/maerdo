@@ -1,746 +1,746 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<supplementalData>
-    <version number="$Revision: 1.3 $"/>
-    <generation date="$Date: 2009/05/05 23:15:57 $"/>
-	<telephoneCodeData>
-		<codesByTerritory territory="001">
-			<telephoneCountryCode code="388"/>
-			<telephoneCountryCode code="800"/>
-			<telephoneCountryCode code="808"/>
-			<telephoneCountryCode code="870"/>
-			<telephoneCountryCode code="871"/>
-			<telephoneCountryCode code="872"/>
-			<telephoneCountryCode code="873"/>
-			<telephoneCountryCode code="874"/>
-			<telephoneCountryCode code="878"/>
-			<telephoneCountryCode code="881"/>
-			<telephoneCountryCode code="882"/>
-			<telephoneCountryCode code="883"/>
-			<telephoneCountryCode code="888"/>
-			<telephoneCountryCode code="979"/>
-			<telephoneCountryCode code="991"/>
-		</codesByTerritory>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<supplementalDataphp>
+php php php php php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php php$php"php/php>
+php php php php php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php1php5php:php5php7php php$php"php/php>
+php	php<telephoneCodeDataphp>
+php	php	php<codesByTerritoryphp territoryphp=php"php0php0php1php"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php8php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php0php0php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php0php8php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php7php0php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php7php1php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php7php2php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php7php3php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php7php4php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php7php8php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php8php1php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php8php2php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php8php3php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php8php8php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php9php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php9php1php"php/php>
+php	php	<php/codesByTerritoryphp>
 
-		<codesByTerritory territory="AC">
-			<telephoneCountryCode code="247"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AD">
-			<telephoneCountryCode code="376"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AE">
-			<telephoneCountryCode code="971"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AF">
-			<telephoneCountryCode code="93"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AG">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AI">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AL">
-			<telephoneCountryCode code="355"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AM">
-			<telephoneCountryCode code="374"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AN">
-			<telephoneCountryCode code="599"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AO">
-			<telephoneCountryCode code="244"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AQ">
-			<telephoneCountryCode code="672"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AR">
-			<telephoneCountryCode code="54"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AS">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AT">
-			<telephoneCountryCode code="43"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AU">
-			<telephoneCountryCode code="61"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AW">
-			<telephoneCountryCode code="297"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AX">
-			<telephoneCountryCode code="358"/>
-		</codesByTerritory>
-		<codesByTerritory territory="AZ">
-			<telephoneCountryCode code="994"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BA">
-			<telephoneCountryCode code="387"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BB">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BD">
-			<telephoneCountryCode code="880"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BE">
-			<telephoneCountryCode code="32"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BF">
-			<telephoneCountryCode code="226"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BG">
-			<telephoneCountryCode code="359"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BH">
-			<telephoneCountryCode code="973"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BI">
-			<telephoneCountryCode code="257"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BJ">
-			<telephoneCountryCode code="229"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BL">
-			<telephoneCountryCode code="590"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BM">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BN">
-			<telephoneCountryCode code="673"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BO">
-			<telephoneCountryCode code="591"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BR">
-			<telephoneCountryCode code="55"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BS">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BT">
-			<telephoneCountryCode code="975"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BW">
-			<telephoneCountryCode code="267"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BY">
-			<telephoneCountryCode code="375"/>
-		</codesByTerritory>
-		<codesByTerritory territory="BZ">
-			<telephoneCountryCode code="501"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CA">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CC">
-			<telephoneCountryCode code="61"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CD">
-			<telephoneCountryCode code="243"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CF">
-			<telephoneCountryCode code="236"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CG">
-			<telephoneCountryCode code="242"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CH">
-			<telephoneCountryCode code="41"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CI">
-			<telephoneCountryCode code="225"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CK">
-			<telephoneCountryCode code="682"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CL">
-			<telephoneCountryCode code="56"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CM">
-			<telephoneCountryCode code="237"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CN">
-			<telephoneCountryCode code="86"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CO">
-			<telephoneCountryCode code="57"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CR">
-			<telephoneCountryCode code="506"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CU">
-			<telephoneCountryCode code="53"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CV">
-			<telephoneCountryCode code="238"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CX">
-			<telephoneCountryCode code="61"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CY">
-			<telephoneCountryCode code="357"/>
-		</codesByTerritory>
-		<codesByTerritory territory="CZ">
-			<telephoneCountryCode code="420"/>
-		</codesByTerritory>
-		<codesByTerritory territory="DE">
-			<telephoneCountryCode code="49"/>
-		</codesByTerritory>
-		<codesByTerritory territory="DJ">
-			<telephoneCountryCode code="253"/>
-		</codesByTerritory>
-		<codesByTerritory territory="DK">
-			<telephoneCountryCode code="45"/>
-		</codesByTerritory>
-		<codesByTerritory territory="DM">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="DO">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="DZ">
-			<telephoneCountryCode code="213"/>
-		</codesByTerritory>
-		<codesByTerritory territory="EC">
-			<telephoneCountryCode code="593"/>
-		</codesByTerritory>
-		<codesByTerritory territory="EE">
-			<telephoneCountryCode code="372"/>
-		</codesByTerritory>
-		<codesByTerritory territory="EG">
-			<telephoneCountryCode code="20"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ER">
-			<telephoneCountryCode code="291"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ES">
-			<telephoneCountryCode code="34"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ET">
-			<telephoneCountryCode code="251"/>
-		</codesByTerritory>
-		<codesByTerritory territory="FI">
-			<telephoneCountryCode code="358"/>
-		</codesByTerritory>
-		<codesByTerritory territory="FJ">
-			<telephoneCountryCode code="679"/>
-		</codesByTerritory>
-		<codesByTerritory territory="FK">
-			<telephoneCountryCode code="500"/>
-		</codesByTerritory>
-		<codesByTerritory territory="FM">
-			<telephoneCountryCode code="691"/>
-		</codesByTerritory>
-		<codesByTerritory territory="FO">
-			<telephoneCountryCode code="298"/>
-		</codesByTerritory>
-		<codesByTerritory territory="FR">
-			<telephoneCountryCode code="33"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GA">
-			<telephoneCountryCode code="241"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GB">
-			<telephoneCountryCode code="44"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GD">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GE">
-			<telephoneCountryCode code="995"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GF">
-			<telephoneCountryCode code="594"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GG">
-			<telephoneCountryCode code="44"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GH">
-			<telephoneCountryCode code="233"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GI">
-			<telephoneCountryCode code="350"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GL">
-			<telephoneCountryCode code="299"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GM">
-			<telephoneCountryCode code="220"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GN">
-			<telephoneCountryCode code="224"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GP">
-			<telephoneCountryCode code="590"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GQ">
-			<telephoneCountryCode code="240"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GR">
-			<telephoneCountryCode code="30"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GT">
-			<telephoneCountryCode code="502"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GU">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GW">
-			<telephoneCountryCode code="245"/>
-		</codesByTerritory>
-		<codesByTerritory territory="GY">
-			<telephoneCountryCode code="592"/>
-		</codesByTerritory>
-		<codesByTerritory territory="HK">
-			<telephoneCountryCode code="852"/>
-		</codesByTerritory>
-		<codesByTerritory territory="HN">
-			<telephoneCountryCode code="504"/>
-		</codesByTerritory>
-		<codesByTerritory territory="HR">
-			<telephoneCountryCode code="385"/>
-		</codesByTerritory>
-		<codesByTerritory territory="HT">
-			<telephoneCountryCode code="509"/>
-		</codesByTerritory>
-		<codesByTerritory territory="HU">
-			<telephoneCountryCode code="36"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ID">
-			<telephoneCountryCode code="62"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IE">
-			<telephoneCountryCode code="353"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IL">
-			<telephoneCountryCode code="972"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IM">
-			<telephoneCountryCode code="44"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IN">
-			<telephoneCountryCode code="91"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IO">
-			<telephoneCountryCode code="246"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IQ">
-			<telephoneCountryCode code="964"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IR">
-			<telephoneCountryCode code="98"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IS">
-			<telephoneCountryCode code="354"/>
-		</codesByTerritory>
-		<codesByTerritory territory="IT">
-			<telephoneCountryCode code="39"/>
-		</codesByTerritory>
-		<codesByTerritory territory="JE">
-			<telephoneCountryCode code="44"/>
-		</codesByTerritory>
-		<codesByTerritory territory="JM">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="JO">
-			<telephoneCountryCode code="962"/>
-		</codesByTerritory>
-		<codesByTerritory territory="JP">
-			<telephoneCountryCode code="81"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KE">
-			<telephoneCountryCode code="254"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KG">
-			<telephoneCountryCode code="996"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KH">
-			<telephoneCountryCode code="855"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KI">
-			<telephoneCountryCode code="686"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KM">
-			<telephoneCountryCode code="269"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KN">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KP">
-			<telephoneCountryCode code="850"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KR">
-			<telephoneCountryCode code="82"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KW">
-			<telephoneCountryCode code="965"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KY">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="KZ">
-			<telephoneCountryCode code="7"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LA">
-			<telephoneCountryCode code="856"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LB">
-			<telephoneCountryCode code="961"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LC">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LI">
-			<telephoneCountryCode code="423"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LK">
-			<telephoneCountryCode code="94"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LR">
-			<telephoneCountryCode code="231"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LS">
-			<telephoneCountryCode code="266"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LT">
-			<telephoneCountryCode code="370"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LU">
-			<telephoneCountryCode code="352"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LV">
-			<telephoneCountryCode code="371"/>
-		</codesByTerritory>
-		<codesByTerritory territory="LY">
-			<telephoneCountryCode code="218"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MA">
-			<telephoneCountryCode code="212"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MC">
-			<telephoneCountryCode code="377"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MD">
-			<telephoneCountryCode code="373"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ME">
-			<telephoneCountryCode code="382"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MG">
-			<telephoneCountryCode code="261"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MH">
-			<telephoneCountryCode code="692"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MK">
-			<telephoneCountryCode code="389"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ML">
-			<telephoneCountryCode code="223"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MM">
-			<telephoneCountryCode code="95"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MN">
-			<telephoneCountryCode code="976"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MO">
-			<telephoneCountryCode code="853"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MP">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MQ">
-			<telephoneCountryCode code="596"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MR">
-			<telephoneCountryCode code="222"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MS">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MT">
-			<telephoneCountryCode code="356"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MU">
-			<telephoneCountryCode code="230"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MV">
-			<telephoneCountryCode code="960"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MW">
-			<telephoneCountryCode code="265"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MX">
-			<telephoneCountryCode code="52"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MY">
-			<telephoneCountryCode code="60"/>
-		</codesByTerritory>
-		<codesByTerritory territory="MZ">
-			<telephoneCountryCode code="258"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NA">
-			<telephoneCountryCode code="264"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NC">
-			<telephoneCountryCode code="687"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NE">
-			<telephoneCountryCode code="227"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NF">
-			<telephoneCountryCode code="672"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NG">
-			<telephoneCountryCode code="234"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NI">
-			<telephoneCountryCode code="505"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NL">
-			<telephoneCountryCode code="31"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NO">
-			<telephoneCountryCode code="47"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NP">
-			<telephoneCountryCode code="977"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NR">
-			<telephoneCountryCode code="674"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NU">
-			<telephoneCountryCode code="683"/>
-		</codesByTerritory>
-		<codesByTerritory territory="NZ">
-			<telephoneCountryCode code="64"/>
-		</codesByTerritory>
-		<codesByTerritory territory="OM">
-			<telephoneCountryCode code="968"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PA">
-			<telephoneCountryCode code="507"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PE">
-			<telephoneCountryCode code="51"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PF">
-			<telephoneCountryCode code="689"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PG">
-			<telephoneCountryCode code="675"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PH">
-			<telephoneCountryCode code="63"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PK">
-			<telephoneCountryCode code="92"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PL">
-			<telephoneCountryCode code="48"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PM">
-			<telephoneCountryCode code="508"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PR">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PS">
-			<telephoneCountryCode code="972"/>
-			<telephoneCountryCode code="970"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PT">
-			<telephoneCountryCode code="351"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PW">
-			<telephoneCountryCode code="680"/>
-		</codesByTerritory>
-		<codesByTerritory territory="PY">
-			<telephoneCountryCode code="595"/>
-		</codesByTerritory>
-		<codesByTerritory territory="QA">
-			<telephoneCountryCode code="974"/>
-		</codesByTerritory>
-		<codesByTerritory territory="RE">
-			<telephoneCountryCode code="262"/>
-		</codesByTerritory>
-		<codesByTerritory territory="RO">
-			<telephoneCountryCode code="40"/>
-		</codesByTerritory>
-		<codesByTerritory territory="RS">
-			<telephoneCountryCode code="381"/>
-		</codesByTerritory>
-		<codesByTerritory territory="RU">
-			<telephoneCountryCode code="7"/>
-		</codesByTerritory>
-		<codesByTerritory territory="RW">
-			<telephoneCountryCode code="250"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SA">
-			<telephoneCountryCode code="966"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SB">
-			<telephoneCountryCode code="677"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SC">
-			<telephoneCountryCode code="248"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SD">
-			<telephoneCountryCode code="249"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SE">
-			<telephoneCountryCode code="46"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SG">
-			<telephoneCountryCode code="65"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SH">
-			<telephoneCountryCode code="290"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SI">
-			<telephoneCountryCode code="386"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SJ">
-			<telephoneCountryCode code="47"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SK">
-			<telephoneCountryCode code="421"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SL">
-			<telephoneCountryCode code="232"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SM">
-			<telephoneCountryCode code="378"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SN">
-			<telephoneCountryCode code="221"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SO">
-			<telephoneCountryCode code="252"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SR">
-			<telephoneCountryCode code="597"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ST">
-			<telephoneCountryCode code="239"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SV">
-			<telephoneCountryCode code="503"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SY">
-			<telephoneCountryCode code="963"/>
-		</codesByTerritory>
-		<codesByTerritory territory="SZ">
-			<telephoneCountryCode code="268"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TC">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TD">
-			<telephoneCountryCode code="235"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TF">
-			<telephoneCountryCode code="262"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TG">
-			<telephoneCountryCode code="228"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TH">
-			<telephoneCountryCode code="66"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TJ">
-			<telephoneCountryCode code="992"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TK">
-			<telephoneCountryCode code="690"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TL">
-			<telephoneCountryCode code="670"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TM">
-			<telephoneCountryCode code="993"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TN">
-			<telephoneCountryCode code="216"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TO">
-			<telephoneCountryCode code="676"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TR">
-			<telephoneCountryCode code="90"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TT">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TV">
-			<telephoneCountryCode code="688"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TW">
-			<telephoneCountryCode code="886"/>
-		</codesByTerritory>
-		<codesByTerritory territory="TZ">
-			<telephoneCountryCode code="255"/>
-		</codesByTerritory>
-		<codesByTerritory territory="UA">
-			<telephoneCountryCode code="380"/>
-		</codesByTerritory>
-		<codesByTerritory territory="UG">
-			<telephoneCountryCode code="256"/>
-		</codesByTerritory>
-		<codesByTerritory territory="US">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="UY">
-			<telephoneCountryCode code="598"/>
-		</codesByTerritory>
-		<codesByTerritory territory="UZ">
-			<telephoneCountryCode code="998"/>
-		</codesByTerritory>
-		<codesByTerritory territory="VA">
-			<telephoneCountryCode code="39"/>
-		</codesByTerritory>
-		<codesByTerritory territory="VC">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="VE">
-			<telephoneCountryCode code="58"/>
-		</codesByTerritory>
-		<codesByTerritory territory="VG">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="VI">
-			<telephoneCountryCode code="1"/>
-		</codesByTerritory>
-		<codesByTerritory territory="VN">
-			<telephoneCountryCode code="84"/>
-		</codesByTerritory>
-		<codesByTerritory territory="VU">
-			<telephoneCountryCode code="678"/>
-		</codesByTerritory>
-		<codesByTerritory territory="WF">
-			<telephoneCountryCode code="681"/>
-		</codesByTerritory>
-		<codesByTerritory territory="WS">
-			<telephoneCountryCode code="685"/>
-		</codesByTerritory>
-		<codesByTerritory territory="YE">
-			<telephoneCountryCode code="967"/>
-		</codesByTerritory>
-		<codesByTerritory territory="YT">
-			<telephoneCountryCode code="262"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ZA">
-			<telephoneCountryCode code="27"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ZM">
-			<telephoneCountryCode code="260"/>
-		</codesByTerritory>
-		<codesByTerritory territory="ZW">
-			<telephoneCountryCode code="263"/>
-		</codesByTerritory>
-	</telephoneCodeData>
-</supplementalData>
+php	php	php<codesByTerritoryphp territoryphp=php"ACphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ADphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ALphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ANphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AQphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ARphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ASphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ATphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php9php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AXphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"AZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php9php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BBphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BDphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php8php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BHphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BJphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BSphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"BZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CCphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CDphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CHphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"COphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CVphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CXphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"CZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php2php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"DEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"DJphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"DKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"DMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"DOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"DZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php1php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ECphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"EEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"EGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ERphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php9php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ESphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ETphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"FIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"FJphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"FKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"FMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php9php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"FOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php9php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"FRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GBphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GDphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php9php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GHphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php9php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GPphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GQphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"GYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"HKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php5php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"HNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"HRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"HTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"HUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"IDphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"IEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ILphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"IMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"INphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"IOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"IQphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"IRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ISphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ITphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"JEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"JMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"JOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"JPphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php9php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KHphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php5php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KPphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php5php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"KZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php5php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LBphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LCphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php2php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LSphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LVphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"LYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php1php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php1php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MCphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MDphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MHphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php9php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php5php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MPphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MQphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MSphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MVphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MXphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"MZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NCphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NPphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"NZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"OMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PHphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PSphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php2php"php/php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php5php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"PYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"QAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php7php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"REphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ROphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"RSphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"RUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"RWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SBphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SCphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SDphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php4php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SHphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php9php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SJphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php4php2php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php7php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"STphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SVphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php0php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"SZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TCphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TDphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php3php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php2php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"THphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TJphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php9php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TKphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php9php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TLphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php9php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php1php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TOphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TRphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TVphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php8php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"TZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"UAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php8php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"UGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php5php6php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"USphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"UYphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php9php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"UZphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php9php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"VAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php3php9php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"VCphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"VEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php5php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"VGphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"VIphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"VNphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php8php4php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"VUphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php7php8php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"WFphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php1php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"WSphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php6php8php5php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"YEphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php9php6php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"YTphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php2php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ZAphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php7php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ZMphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php0php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	php	php<codesByTerritoryphp territoryphp=php"ZWphp"php>
+php	php	php	php<telephoneCountryCodephp codephp=php"php2php6php3php"php/php>
+php	php	<php/codesByTerritoryphp>
+php	<php/telephoneCodeDataphp>
+<php/supplementalDataphp>

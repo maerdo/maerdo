@@ -1,262 +1,262 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ConferenceSchedule.php 20166 2010-01-09 19:00:17Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp DeveloperGarden
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ConferenceSchedulephp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-{
-    /**
-     * @var integer
-     */
-    public $minute = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp DeveloperGarden
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@authorphp php php php php Marcophp Kaiser
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$minutephp php=php nullphp;
 
-    /**
-     * @var integer
-     */
-    public $hour = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$hourphp php=php nullphp;
 
-    /**
-     * @var integer
-     */
-    public $dayOfMonth = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$dayOfMonthphp php=php nullphp;
 
-    /**
-     * @var integer
-     */
-    public $month = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$monthphp php=php nullphp;
 
-    /**
-     * @var integer
-     */
-    public $year = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$yearphp php=php nullphp;
 
-    /**
-     * @var integer
-     */
-    public $recurring = 0;
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$recurringphp php=php php0php;
 
-    /**
-     * @var integer
-     */
-    public $notify = 0;
+php php php php php/php*php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$notifyphp php=php php0php;
 
-    /**
-     * possible recurring values
-     *
-     * @var array
-     */
-    private $_recurringValues = array(
-        0 => 'no recurring',
-        1 => 'hourly',
-        2 => 'daily',
-        3 => 'weekly',
-        4 => 'monthly',
-    );
+php php php php php/php*php*
+php php php php php php*php possiblephp recurringphp values
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_recurringValuesphp php=php arrayphp(
+php php php php php php php php php0php php=php>php php'nophp recurringphp'php,
+php php php php php php php php php1php php=php>php php'hourlyphp'php,
+php php php php php php php php php2php php=php>php php'dailyphp'php,
+php php php php php php php php php3php php=php>php php'weeklyphp'php,
+php php php php php php php php php4php php=php>php php'monthlyphp'php,
+php php php php php)php;
 
-    /**
-     * constructor for schedule object, all times are in UTC
-     *
-     * @param integer $minute
-     * @param integer $hour
-     * @param integer $dayOfMonth
-     * @param integer $month
-     * @param integer $year
-     * @param integer $recurring
-     * @param integer $notify
-     */
-    public function __construct($minute, $hour, $dayOfMonth, $month, $year, $recurring = 0, $notify = 0)
-    {
-        $this->setMinute($minute)
-             ->setHour($hour)
-             ->setDayOfMonth($dayOfMonth)
-             ->setMonth($month)
-             ->setYear($year)
-             ->setRecurring($recurring)
-             ->setNotify($notify);
-    }
+php php php php php/php*php*
+php php php php php php*php constructorphp forphp schedulephp objectphp,php allphp timesphp arephp inphp UTC
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$minute
+php php php php php php*php php@paramphp integerphp php$hour
+php php php php php php*php php@paramphp integerphp php$dayOfMonth
+php php php php php php*php php@paramphp integerphp php$month
+php php php php php php*php php@paramphp integerphp php$year
+php php php php php php*php php@paramphp integerphp php$recurring
+php php php php php php*php php@paramphp integerphp php$notify
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$minutephp,php php$hourphp,php php$dayOfMonthphp,php php$monthphp,php php$yearphp,php php$recurringphp php=php php0php,php php$notifyphp php=php php0php)
+php php php php php{
+php php php php php php php php php$thisphp-php>setMinutephp(php$minutephp)
+php php php php php php php php php php php php php php-php>setHourphp(php$hourphp)
+php php php php php php php php php php php php php php-php>setDayOfMonthphp(php$dayOfMonthphp)
+php php php php php php php php php php php php php php-php>setMonthphp(php$monthphp)
+php php php php php php php php php php php php php php-php>setYearphp(php$yearphp)
+php php php php php php php php php php php php php php-php>setRecurringphp(php$recurringphp)
+php php php php php php php php php php php php php php-php>setNotifyphp(php$notifyphp)php;
+php php php php php}
 
-    /**
-     * returns the value of $minute
-     *
-     * @return integer
-     */
-    public function getMinute()
-    {
-        return $this->minute;
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp valuephp ofphp php$minute
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMinutephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>minutephp;
+php php php php php}
 
-    /**
-     * sets $minute
-     *
-     * @param integer $minute
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-     */
-    public function setMinute($minute)
-    {
-        $this->minute = $minute;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setsphp php$minute
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$minute
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php php php php php php*php/
+php php php php publicphp functionphp setMinutephp(php$minutephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>minutephp php=php php$minutephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * returns the value of $hour
-     *
-     * @return integer
-     */
-    public function getHour()
-    {
-        return $this->hour;
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp valuephp ofphp php$hour
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getHourphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>hourphp;
+php php php php php}
 
-    /**
-     * sets $hour
-     *
-     * @param integer $hour
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-     */
-    public function setHour($hour)
-    {
-        $this->hour = $hour;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setsphp php$hour
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$hour
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php php php php php php*php/
+php php php php publicphp functionphp setHourphp(php$hourphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>hourphp php=php php$hourphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * returns the value of $dayOfMonth
-     *
-     * @return integer
-     */
-    public function getDayOfMonth()
-    {
-        return $this->dayOfMonth;
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp valuephp ofphp php$dayOfMonth
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getDayOfMonthphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>dayOfMonthphp;
+php php php php php}
 
-    /**
-     * sets $dayOfMonth
-     *
-     * @param integer $dayOfMonth
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-     */
-    public function setDayOfMonth($dayOfMonth)
-    {
-        $this->dayOfMonth = $dayOfMonth;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setsphp php$dayOfMonth
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$dayOfMonth
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php php php php php php*php/
+php php php php publicphp functionphp setDayOfMonthphp(php$dayOfMonthphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>dayOfMonthphp php=php php$dayOfMonthphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * returns the value of $month
-     *
-     * @return integer
-     */
-    public function getMonth()
-    {
-        return $this->month;
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp valuephp ofphp php$month
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMonthphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>monthphp;
+php php php php php}
 
-    /**
-     * sets $month
-     *
-     * @param integer $month
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-     */
-    public function setMonth($month)
-    {
-        $this->month = $month;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setsphp php$month
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$month
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php php php php php php*php/
+php php php php publicphp functionphp setMonthphp(php$monthphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>monthphp php=php php$monthphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * returns the value of $year
-     *
-     * @return integer
-     */
-    public function getYear()
-    {
-        return $this->year;
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp valuephp ofphp php$year
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getYearphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>yearphp;
+php php php php php}
 
-    /**
-     * sets $year
-     *
-     * @param integer $year
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-     */
-    public function setYear($year)
-    {
-        $this->year = $year;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setsphp php$year
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$year
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php php php php php php*php/
+php php php php publicphp functionphp setYearphp(php$yearphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>yearphp php=php php$yearphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * returns the value of $recurring
-     *
-     * @return integer
-     */
-    public function getRecurring()
-    {
-        return $this->recurring;
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp valuephp ofphp php$recurring
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getRecurringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>recurringphp;
+php php php php php}
 
-    /**
-     * sets $recurring
-     *
-     * @param integer $recurring
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-     */
-    public function setRecurring($recurring)
-    {
-        if (!array_key_exists($recurring, $this->_recurringValues)) {
-            require_once 'Zend/Service/DeveloperGarden/ConferenceCall/Exception.php';
-            throw new Zend_Service_DeveloperGarden_ConferenceCall_Exception(
-                'Unknown ConferenceCall recurring mode.'
-            );
-        }
-        $this->recurring = $recurring;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setsphp php$recurring
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$recurring
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php php php php php php*php/
+php php php php publicphp functionphp setRecurringphp(php$recurringphp)
+php php php php php{
+php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$recurringphp,php php$thisphp-php>php_recurringValuesphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/ConferenceCallphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Unknownphp ConferenceCallphp recurringphp modephp.php'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>recurringphp php=php php$recurringphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * returns the value of $notify
-     *
-     * @return integer
-     */
-    public function getNotify()
-    {
-        return $this->notify;
-    }
+php php php php php/php*php*
+php php php php php php*php returnsphp thephp valuephp ofphp php$notify
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getNotifyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>notifyphp;
+php php php php php}
 
-    /**
-     * sets $notify
-     *
-     * @param integer $notify
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
-     */
-    public function setNotify($notify)
-    {
-        $this->notify = $notify;
-        return $this;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php setsphp php$notify
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$notify
+php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ConferenceSchedule
+php php php php php php*php/
+php php php php publicphp functionphp setNotifyphp(php$notifyphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>notifyphp php=php php$notifyphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+php}

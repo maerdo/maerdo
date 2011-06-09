@@ -1,47 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.60 $"/>
-		<generation date="$Date: 2009/06/12 23:03:31 $"/>
-		<language type="sv"/>
-		<territory type="FI"/>
-	</identity>
-	<localeDisplayNames>
-		<territories>
-			<territory type="UM">USA:s yttre öar</territory>
-		</territories>
-		<variants>
-			<variant type="1996">1996 års stavning</variant>
-		</variants>
-		<types>
-			<type type="big5han" key="collation">kinesiska i big5-sorteringsordning</type>
-			<type type="gb2312han" key="collation">kinesiska i gb2312-sorteringsordning</type>
-			<type type="phonebook" key="collation">telefonkatalogssorteringsordning</type>
-			<type type="pinyin" key="collation">kinesiska i pinyin-sorteringsordning</type>
-			<type type="stroke" key="collation">kinesiska i strecksorteringsordning</type>
-			<type type="traditional" key="collation">traditionell sorteringsordning</type>
-		</types>
-		<measurementSystemNames>
-			<measurementSystemName type="US">imperiska enheter</measurementSystemName>
-		</measurementSystemNames>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[a à b-e é f-v x-z å ä ö]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[ã ç ë í ñ ó š ÿ ü ž]</exemplarCharacters>
-	</characters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<fields>
-					<field type="dayperiod">
-						<displayName>dagsperiod</displayName>
-					</field>
-				</fields>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;−HH:mm</hourFormat>
-		</timeZoneNames>
-	</dates>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php0php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php2php php2php3php:php0php3php:php3php1php php$php"php/php>
+php	php	php<languagephp typephp=php"svphp"php/php>
+php	php	php<territoryphp typephp=php"FIphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"UMphp"php>USAphp:sphp yttrephp öar<php/territoryphp>
+php	php	<php/territoriesphp>
+php	php	php<variantsphp>
+php	php	php	php<variantphp typephp=php"php1php9php9php6php"php>php1php9php9php6php årsphp stavning<php/variantphp>
+php	php	<php/variantsphp>
+php	php	php<typesphp>
+php	php	php	php<typephp typephp=php"bigphp5hanphp"php keyphp=php"collationphp"php>kinesiskaphp iphp bigphp5php-sorteringsordning<php/typephp>
+php	php	php	php<typephp typephp=php"gbphp2php3php1php2hanphp"php keyphp=php"collationphp"php>kinesiskaphp iphp gbphp2php3php1php2php-sorteringsordning<php/typephp>
+php	php	php	php<typephp typephp=php"phonebookphp"php keyphp=php"collationphp"php>telefonkatalogssorteringsordning<php/typephp>
+php	php	php	php<typephp typephp=php"pinyinphp"php keyphp=php"collationphp"php>kinesiskaphp iphp pinyinphp-sorteringsordning<php/typephp>
+php	php	php	php<typephp typephp=php"strokephp"php keyphp=php"collationphp"php>kinesiskaphp iphp strecksorteringsordning<php/typephp>
+php	php	php	php<typephp typephp=php"traditionalphp"php keyphp=php"collationphp"php>traditionellphp sorteringsordning<php/typephp>
+php	php	<php/typesphp>
+php	php	php<measurementSystemNamesphp>
+php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>imperiskaphp enheter<php/measurementSystemNamephp>
+php	php	<php/measurementSystemNamesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[aphp àphp bphp-ephp éphp fphp-vphp xphp-zphp åphp äphp öphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[ãphp çphp ëphp íphp ñphp óphp šphp ÿphp üphp phpžphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<fieldsphp>
+php	php	php	php	php	php<fieldphp typephp=php"dayperiodphp"php>
+php	php	php	php	php	php	php<displayNamephp>dagsperiod<php/displayNamephp>
+php	php	php	php	php	<php/fieldphp>
+php	php	php	php	<php/fieldsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php−HHphp:mm<php/hourFormatphp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+<php/ldmlphp>
 

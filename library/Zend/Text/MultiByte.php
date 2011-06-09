@@ -1,165 +1,165 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Text
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: MultiByte.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Text
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php MultiBytephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * Zend_Text_MultiByte contains multibyte safe string methods
- *
- * @category  Zend
- * @package   Zend_Text
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Text_MultiByte
-{
-    /**
-     * Word wrap
-     *
-     * @param  string  $string
-     * @param  integer $width
-     * @param  string  $break
-     * @param  boolean $cut
-     * @param  string  $charset
-     * @return string
-     */
-    public static function wordWrap($string, $width = 75, $break = "\n", $cut = false, $charset = 'UTF-8')
-    {
-        $result     = array();
-        $breakWidth = iconv_strlen($break, $charset);
+php/php*php*
+php php*php Zendphp_Textphp_MultiBytephp containsphp multibytephp safephp stringphp methods
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Text
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Textphp_MultiByte
+php{
+php php php php php/php*php*
+php php php php php php*php Wordphp wrap
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$string
+php php php php php php*php php@paramphp php integerphp php$width
+php php php php php php*php php@paramphp php stringphp php php$break
+php php php php php php*php php@paramphp php booleanphp php$cut
+php php php php php php*php php@paramphp php stringphp php php$charset
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp wordWrapphp(php$stringphp,php php$widthphp php=php php7php5php,php php$breakphp php=php php"php\nphp"php,php php$cutphp php=php falsephp,php php$charsetphp php=php php'UTFphp-php8php'php)
+php php php php php{
+php php php php php php php php php$resultphp php php php php php=php arrayphp(php)php;
+php php php php php php php php php$breakWidthphp php=php iconvphp_strlenphp(php$breakphp,php php$charsetphp)php;
 
-        while (($stringLength = iconv_strlen($string, $charset)) > 0) {
-            $breakPos = iconv_strpos($string, $break, 0, $charset);
+php php php php php php php php whilephp php(php(php$stringLengthphp php=php iconvphp_strlenphp(php$stringphp,php php$charsetphp)php)php php>php php0php)php php{
+php php php php php php php php php php php php php$breakPosphp php=php iconvphp_strposphp(php$stringphp,php php$breakphp,php php0php,php php$charsetphp)php;
 
-            if ($breakPos !== false && $breakPos < $width) {
-                if ($breakPos === $stringLength - $breakWidth) {
-                    $subString = $string;
-                    $cutLength = null;
-                } else {
-                    $subString = iconv_substr($string, 0, $breakPos, $charset);
-                    $cutLength = $breakPos + $breakWidth;
-                }
-            } else {
-                $subString = iconv_substr($string, 0, $width, $charset);
+php php php php php php php php php php php php ifphp php(php$breakPosphp php!php=php=php falsephp php&php&php php$breakPosphp <php php$widthphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$breakPosphp php=php=php=php php$stringLengthphp php-php php$breakWidthphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$subStringphp php=php php$stringphp;
+php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php nullphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$subStringphp php=php iconvphp_substrphp(php$stringphp,php php0php,php php$breakPosphp,php php$charsetphp)php;
+php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php php$breakPosphp php+php php$breakWidthphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$subStringphp php=php iconvphp_substrphp(php$stringphp,php php0php,php php$widthphp,php php$charsetphp)php;
 
-                if ($subString === $string) {
-                    $cutLength = null;
-                } else {
-                    $nextChar = iconv_substr($string, $width, 1, $charset);
+php php php php php php php php php php php php php php php php ifphp php(php$subStringphp php=php=php=php php$stringphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php nullphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$nextCharphp php=php iconvphp_substrphp(php$stringphp,php php$widthphp,php php1php,php php$charsetphp)php;
 
-                    if ($breakWidth === 1) {
-                        $nextBreak = $nextChar;
-                    } else {
-                        $nextBreak = iconv_substr($string, $breakWidth, 1, $charset);
-                    }
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$breakWidthphp php=php=php=php php1php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$nextBreakphp php=php php$nextCharphp;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$nextBreakphp php=php iconvphp_substrphp(php$stringphp,php php$breakWidthphp,php php1php,php php$charsetphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    if ($nextChar === ' ' || $nextBreak === $break) {
-                        $afterNextChar = iconv_substr($string, $width + 1, 1, $charset);
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$nextCharphp php=php=php=php php'php php'php php|php|php php$nextBreakphp php=php=php=php php$breakphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$afterNextCharphp php=php iconvphp_substrphp(php$stringphp,php php$widthphp php+php php1php,php php1php,php php$charsetphp)php;
 
-                        if ($afterNextChar === false) {
-                            $subString .= $nextChar;
-                        }
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$afterNextCharphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subStringphp php.php=php php$nextCharphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
 
-                        $cutLength = iconv_strlen($subString, $charset) + 1;
-                    } else {
-                        $spacePos = iconv_strrpos($subString, ' ', $charset);
+php php php php php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php iconvphp_strlenphp(php$subStringphp,php php$charsetphp)php php+php php1php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$spacePosphp php=php iconvphp_strrposphp(php$subStringphp,php php'php php'php,php php$charsetphp)php;
 
-                        if ($spacePos !== false) {
-                            $subString = iconv_substr($subString, 0, $spacePos, $charset);
-                            $cutLength = $spacePos + 1;
-                        } else if ($cut === false) {
-                            $spacePos = iconv_strpos($string, ' ', 0, $charset);
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$spacePosphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subStringphp php=php iconvphp_substrphp(php$subStringphp,php php0php,php php$spacePosphp,php php$charsetphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php php$spacePosphp php+php php1php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$cutphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$spacePosphp php=php iconvphp_strposphp(php$stringphp,php php'php php'php,php php0php,php php$charsetphp)php;
 
-                            if ($spacePos !== false) {
-                                $subString = iconv_substr($string, 0, $spacePos, $charset);
-                                $cutLength = $spacePos + 1;
-                            } else {
-                                $subString = $string;
-                                $cutLength = null;
-                            }
-                        } else {
-                            $subString = iconv_substr($subString, 0, $width, $charset);
-                            $cutLength = $width;
-                        }
-                    }
-                }
-            }
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$spacePosphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subStringphp php=php iconvphp_substrphp(php$stringphp,php php0php,php php$spacePosphp,php php$charsetphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php php$spacePosphp php+php php1php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subStringphp php=php php$stringphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php nullphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subStringphp php=php iconvphp_substrphp(php$subStringphp,php php0php,php php$widthphp,php php$charsetphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$cutLengthphp php=php php$widthphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
 
-            $result[] = $subString;
+php php php php php php php php php php php php php$resultphp[php]php php=php php$subStringphp;
 
-            if ($cutLength !== null) {
-                $string = iconv_substr($string, $cutLength, ($stringLength - $cutLength), $charset);
-            } else {
-                break;
-            }
-        }
+php php php php php php php php php php php php ifphp php(php$cutLengthphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$stringphp php=php iconvphp_substrphp(php$stringphp,php php$cutLengthphp,php php(php$stringLengthphp php-php php$cutLengthphp)php,php php$charsetphp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return implode($break, $result);
-    }
+php php php php php php php php returnphp implodephp(php$breakphp,php php$resultphp)php;
+php php php php php}
 
-    /**
-     * String padding
-     *
-     * @param  string  $input
-     * @param  integer $padLength
-     * @param  string  $padString
-     * @param  integer $padType
-     * @param  string  $charset
-     * @return string
-     */
-    public static function strPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $charset = 'UTF-8')
-    {
-        $return          = '';
-        $lengthOfPadding = $padLength - iconv_strlen($input, $charset);
-        $padStringLength = iconv_strlen($padString, $charset);
+php php php php php/php*php*
+php php php php php php*php Stringphp padding
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$input
+php php php php php php*php php@paramphp php integerphp php$padLength
+php php php php php php*php php@paramphp php stringphp php php$padString
+php php php php php php*php php@paramphp php integerphp php$padType
+php php php php php php*php php@paramphp php stringphp php php$charset
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp strPadphp(php$inputphp,php php$padLengthphp,php php$padStringphp php=php php'php php'php,php php$padTypephp php=php STRphp_PADphp_RIGHTphp,php php$charsetphp php=php php'UTFphp-php8php'php)
+php php php php php{
+php php php php php php php php php$returnphp php php php php php php php php php php=php php'php'php;
+php php php php php php php php php$lengthOfPaddingphp php=php php$padLengthphp php-php iconvphp_strlenphp(php$inputphp,php php$charsetphp)php;
+php php php php php php php php php$padStringLengthphp php=php iconvphp_strlenphp(php$padStringphp,php php$charsetphp)php;
 
-        if ($padStringLength === 0 || $lengthOfPadding === 0) {
-            $return = $input;
-        } else {
-            $repeatCount = floor($lengthOfPadding / $padStringLength);
+php php php php php php php php ifphp php(php$padStringLengthphp php=php=php=php php0php php|php|php php$lengthOfPaddingphp php=php=php=php php0php)php php{
+php php php php php php php php php php php php php$returnphp php=php php$inputphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$repeatCountphp php=php floorphp(php$lengthOfPaddingphp php/php php$padStringLengthphp)php;
 
-            if ($padType === STR_PAD_BOTH) {
-                $lastStringLeft  = '';
-                $lastStringRight = '';
-                $repeatCountLeft = $repeatCountRight = ($repeatCount - $repeatCount % 2) / 2;
+php php php php php php php php php php php php ifphp php(php$padTypephp php=php=php=php STRphp_PADphp_BOTHphp)php php{
+php php php php php php php php php php php php php php php php php$lastStringLeftphp php php=php php'php'php;
+php php php php php php php php php php php php php php php php php$lastStringRightphp php=php php'php'php;
+php php php php php php php php php php php php php php php php php$repeatCountLeftphp php=php php$repeatCountRightphp php=php php(php$repeatCountphp php-php php$repeatCountphp php%php php2php)php php/php php2php;
 
-                $lastStringLength       = $lengthOfPadding - 2 * $repeatCountLeft * $padStringLength;
-                $lastStringLeftLength   = $lastStringRightLength = floor($lastStringLength / 2);
-                $lastStringRightLength += $lastStringLength % 2;
+php php php php php php php php php php php php php php php php php$lastStringLengthphp php php php php php php php=php php$lengthOfPaddingphp php-php php2php php*php php$repeatCountLeftphp php*php php$padStringLengthphp;
+php php php php php php php php php php php php php php php php php$lastStringLeftLengthphp php php php=php php$lastStringRightLengthphp php=php floorphp(php$lastStringLengthphp php/php php2php)php;
+php php php php php php php php php php php php php php php php php$lastStringRightLengthphp php+php=php php$lastStringLengthphp php%php php2php;
 
-                $lastStringLeft  = iconv_substr($padString, 0, $lastStringLeftLength, $charset);
-                $lastStringRight = iconv_substr($padString, 0, $lastStringRightLength, $charset);
+php php php php php php php php php php php php php php php php php$lastStringLeftphp php php=php iconvphp_substrphp(php$padStringphp,php php0php,php php$lastStringLeftLengthphp,php php$charsetphp)php;
+php php php php php php php php php php php php php php php php php$lastStringRightphp php=php iconvphp_substrphp(php$padStringphp,php php0php,php php$lastStringRightLengthphp,php php$charsetphp)php;
 
-                $return = str_repeat($padString, $repeatCountLeft) . $lastStringLeft
-                        . $input
-                        . str_repeat($padString, $repeatCountRight) . $lastStringRight;
-            } else {
-                $lastString = iconv_substr($padString, 0, $lengthOfPadding % $padStringLength, $charset);
+php php php php php php php php php php php php php php php php php$returnphp php=php strphp_repeatphp(php$padStringphp,php php$repeatCountLeftphp)php php.php php$lastStringLeft
+php php php php php php php php php php php php php php php php php php php php php php php php php.php php$input
+php php php php php php php php php php php php php php php php php php php php php php php php php.php strphp_repeatphp(php$padStringphp,php php$repeatCountRightphp)php php.php php$lastStringRightphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$lastStringphp php=php iconvphp_substrphp(php$padStringphp,php php0php,php php$lengthOfPaddingphp php%php php$padStringLengthphp,php php$charsetphp)php;
 
-                if ($padType === STR_PAD_LEFT) {
-                    $return = str_repeat($padString, $repeatCount) . $lastString . $input;
-                } else {
-                    $return = $input . str_repeat($padString, $repeatCount) . $lastString;
-                }
-            }
-        }
+php php php php php php php php php php php php php php php php ifphp php(php$padTypephp php=php=php=php STRphp_PADphp_LEFTphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$returnphp php=php strphp_repeatphp(php$padStringphp,php php$repeatCountphp)php php.php php$lastStringphp php.php php$inputphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$returnphp php=php php$inputphp php.php strphp_repeatphp(php$padStringphp,php php$repeatCountphp)php php.php php$lastStringphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $return;
-    }
-}
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
+php}

@@ -1,982 +1,982 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Translate
- * @subpackage Zend_Translate_Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Adapter.php 23518 2010-12-16 13:31:25Z bittarman $
- */
-
-/**
- * @see Zend_Locale
- */
-require_once 'Zend/Locale.php';
-
-/**
- * @see Zend_Translate_Plural
- */
-require_once 'Zend/Translate/Plural.php';
-
-/**
- * Basic adapter class for each translation source adapter
- *
- * @category   Zend
- * @package    Zend_Translate
- * @subpackage Zend_Translate_Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Translate_Adapter {
-    /**
-     * Shows if locale detection is in automatic level
-     * @var boolean
-     */
-    private $_automatic = true;
-
-    /**
-     * Internal value to see already routed languages
-     * @var array()
-     */
-    private $_routed = array();
-
-    /**
-     * Internal cache for all adapters
-     * @var Zend_Cache_Core
-     */
-    protected static $_cache     = null;
-
-    /**
-     * Internal value to remember if cache supports tags
-     *
-     * @var boolean
-     */
-    private static $_cacheTags = false;
-
-    /**
-     * Scans for the locale within the name of the directory
-     * @constant integer
-     */
-    const LOCALE_DIRECTORY = 'directory';
-
-    /**
-     * Scans for the locale within the name of the file
-     * @constant integer
-     */
-    const LOCALE_FILENAME  = 'filename';
-
-    /**
-     * Array with all options, each adapter can have own additional options
-     *   'clear'           => when true, clears already loaded translations when adding new files
-     *   'content'         => content to translate or file or directory with content
-     *   'disableNotices'  => when true, omits notices from being displayed
-     *   'ignore'          => a prefix for files and directories which are not being added
-     *   'locale'          => the actual set locale to use
-     *   'log'             => a instance of Zend_Log where logs are written to
-     *   'logMessage'      => message to be logged
-     *   'logPriority'     => priority which is used to write the log message
-     *   'logUntranslated' => when true, untranslated messages are not logged
-     *   'reload'          => reloads the cache by reading the content again
-     *   'scan'            => searches for translation files using the LOCALE constants
-     *   'tag'             => tag to use for the cache
-     *
-     * @var array
-     */
-    protected $_options = array(
-        'clear'           => false,
-        'content'         => null,
-        'disableNotices'  => false,
-        'ignore'          => '.',
-        'locale'          => 'auto',
-        'log'             => null,
-        'logMessage'      => "Untranslated message within '%locale%': %message%",
-        'logPriority'     => 5,
-        'logUntranslated' => false,
-        'reload'          => false,
-        'route'           => null,
-        'scan'            => null,
-        'tag'             => 'Zend_Translate'
-    );
-
-    /**
-     * Translation table
-     * @var array
-     */
-    protected $_translate = array();
-
-    /**
-     * Generates the adapter
-     *
-     * @param  array|Zend_Config $options Translation options for this adapter
-     * @throws Zend_Translate_Exception
-     * @return void
-     */
-    public function __construct($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } else if (func_num_args() > 1) {
-            $args               = func_get_args();
-            $options            = array();
-            $options['content'] = array_shift($args);
-
-            if (!empty($args)) {
-                $options['locale'] = array_shift($args);
-            }
-
-            if (!empty($args)) {
-                $opt     = array_shift($args);
-                $options = array_merge($opt, $options);
-            }
-        } else if (!is_array($options)) {
-            $options = array('content' => $options);
-        }
-
-        if (array_key_exists('cache', $options)) {
-            self::setCache($options['cache']);
-            unset($options['cache']);
-        }
-
-        if (isset(self::$_cache)) {
-            $id = 'Zend_Translate_' . $this->toString() . '_Options';
-            $result = self::$_cache->load($id);
-            if ($result) {
-                $this->_options = $result;
-            }
-        }
-
-        if (empty($options['locale']) || ($options['locale'] === "auto")) {
-            $this->_automatic = true;
-        } else {
-            $this->_automatic = false;
-        }
-
-        $locale = null;
-        if (!empty($options['locale'])) {
-            $locale = $options['locale'];
-            unset($options['locale']);
-        }
-
-        $this->setOptions($options);
-        $options['locale'] = $locale;
-
-        if (!empty($options['content'])) {
-            $this->addTranslation($options);
-        }
-
-        if ($this->getLocale() !== (string) $options['locale']) {
-            $this->setLocale($options['locale']);
-        }
-    }
-
-    /**
-     * Add translations
-     *
-     * This may be a new language or additional content for an existing language
-     * If the key 'clear' is true, then translations for the specified
-     * language will be replaced and added otherwise
-     *
-     * @param  array|Zend_Config $options Options and translations to be added
-     * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
-     */
-    public function addTranslation($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } else if (func_num_args() > 1) {
-            $args = func_get_args();
-            $options            = array();
-            $options['content'] = array_shift($args);
-
-            if (!empty($args)) {
-                $options['locale'] = array_shift($args);
-            }
-
-            if (!empty($args)) {
-                $opt     = array_shift($args);
-                $options = array_merge($opt, $options);
-            }
-        } else if (!is_array($options)) {
-            $options = array('content' => $options);
-        }
-
-        $originate = null;
-        if (!empty($options['locale'])) {
-            $originate = (string) $options['locale'];
-        }
-
-        if ((array_key_exists('log', $options)) && !($options['log'] instanceof Zend_Log)) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception('Instance of Zend_Log expected for option log');
-        }
-
-        try {
-            if (!($options['content'] instanceof Zend_Translate) && !($options['content'] instanceof Zend_Translate_Adapter)) {
-                if (empty($options['locale'])) {
-                    $options['locale'] = null;
-                }
-
-                $options['locale'] = Zend_Locale::findLocale($options['locale']);
-            }
-        } catch (Zend_Locale_Exception $e) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception("The given Language '{$options['locale']}' does not exist", 0, $e);
-        }
-
-        $options  = $options + $this->_options;
-        if (is_string($options['content']) and is_dir($options['content'])) {
-            $options['content'] = realpath($options['content']);
-            $prev = '';
-            foreach (new RecursiveIteratorIterator(
-                     new RecursiveDirectoryIterator($options['content'], RecursiveDirectoryIterator::KEY_AS_PATHNAME),
-                     RecursiveIteratorIterator::SELF_FIRST) as $directory => $info) {
-                $file = $info->getFilename();
-                if (is_array($options['ignore'])) {
-                    foreach ($options['ignore'] as $key => $ignore) {
-                        if (strpos($key, 'regex') !== false) {
-                            if (preg_match($ignore, $directory)) {
-                                // ignore files matching the given regex from option 'ignore' and all files below
-                                continue 2;
-                            }
-                        } else if (strpos($directory, DIRECTORY_SEPARATOR . $ignore) !== false) {
-                            // ignore files matching first characters from option 'ignore' and all files below
-                            continue 2;
-                        }
-                    }
-                } else {
-                    if (strpos($directory, DIRECTORY_SEPARATOR . $options['ignore']) !== false) {
-                        // ignore files matching first characters from option 'ignore' and all files below
-                        continue;
-                    }
-                }
-
-                if ($info->isDir()) {
-                    // pathname as locale
-                    if (($options['scan'] === self::LOCALE_DIRECTORY) and (Zend_Locale::isLocale($file, true, false))) {
-                        $options['locale'] = $file;
-                        $prev              = (string) $options['locale'];
-                    }
-                } else if ($info->isFile()) {
-                    // filename as locale
-                    if ($options['scan'] === self::LOCALE_FILENAME) {
-                        $filename = explode('.', $file);
-                        array_pop($filename);
-                        $filename = implode('.', $filename);
-                        if (Zend_Locale::isLocale((string) $filename, true, false)) {
-                            $options['locale'] = (string) $filename;
-                        } else {
-                            $parts  = explode('.', $file);
-                            $parts2 = array();
-                            foreach($parts as $token) {
-                                $parts2 += explode('_', $token);
-                            }
-                            $parts  = array_merge($parts, $parts2);
-                            $parts2 = array();
-                            foreach($parts as $token) {
-                                $parts2 += explode('-', $token);
-                            }
-                            $parts = array_merge($parts, $parts2);
-                            $parts = array_unique($parts);
-                            $prev  = '';
-                            foreach($parts as $token) {
-                                if (Zend_Locale::isLocale($token, true, false)) {
-                                    if (strlen($prev) <= strlen($token)) {
-                                        $options['locale'] = $token;
-                                        $prev              = $token;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    try {
-                        $options['content'] = $info->getPathname();
-                        $this->_addTranslationData($options);
-                    } catch (Zend_Translate_Exception $e) {
-                        // ignore failed sources while scanning
-                    }
-                }
-            }
-        } else {
-            $this->_addTranslationData($options);
-        }
-
-        if ((isset($this->_translate[$originate]) === true) and (count($this->_translate[$originate]) > 0)) {
-            $this->setLocale($originate);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets new adapter options
-     *
-     * @param  array $options Adapter options
-     * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
-     */
-    public function setOptions(array $options = array())
-    {
-        $change = false;
-        $locale = null;
-        foreach ($options as $key => $option) {
-            if ($key == 'locale') {
-                $locale = $option;
-            } else if ((isset($this->_options[$key]) and ($this->_options[$key] != $option)) or
-                    !isset($this->_options[$key])) {
-                if (($key == 'log') && !($option instanceof Zend_Log)) {
-                    require_once 'Zend/Translate/Exception.php';
-                    throw new Zend_Translate_Exception('Instance of Zend_Log expected for option log');
-                }
-
-                if ($key == 'cache') {
-                    self::setCache($option);
-                    continue;
-                }
-
-                $this->_options[$key] = $option;
-                $change = true;
-            }
-        }
-
-        if ($locale !== null) {
-            $this->setLocale($locale);
-        }
-
-        if (isset(self::$_cache) and ($change == true)) {
-            $id = 'Zend_Translate_' . $this->toString() . '_Options';
-            if (self::$_cacheTags) {
-                self::$_cache->save($this->_options, $id, array($this->_options['tag']));
-            } else {
-                self::$_cache->save($this->_options, $id);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Returns the adapters name and it's options
-     *
-     * @param  string|null $optionKey String returns this option
-     *                                null returns all options
-     * @return integer|string|array|null
-     */
-    public function getOptions($optionKey = null)
-    {
-        if ($optionKey === null) {
-            return $this->_options;
-        }
-
-        if (isset($this->_options[$optionKey]) === true) {
-            return $this->_options[$optionKey];
-        }
-
-        return null;
-    }
-
-    /**
-     * Gets locale
-     *
-     * @return Zend_Locale|string|null
-     */
-    public function getLocale()
-    {
-        return $this->_options['locale'];
-    }
-
-    /**
-     * Sets locale
-     *
-     * @param  string|Zend_Locale $locale Locale to set
-     * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
-     */
-    public function setLocale($locale)
-    {
-        if (($locale === "auto") or ($locale === null)) {
-            $this->_automatic = true;
-        } else {
-            $this->_automatic = false;
-        }
-
-        try {
-            $locale = Zend_Locale::findLocale($locale);
-        } catch (Zend_Locale_Exception $e) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception("The given Language ({$locale}) does not exist", 0, $e);
-        }
-
-        if (!isset($this->_translate[$locale])) {
-            $temp = explode('_', $locale);
-            if (!isset($this->_translate[$temp[0]]) and !isset($this->_translate[$locale])) {
-                if (!$this->_options['disableNotices']) {
-                    if ($this->_options['log']) {
-                        $this->_options['log']->log("The language '{$locale}' has to be added before it can be used.", $this->_options['logPriority']);
-                    } else {
-                        trigger_error("The language '{$locale}' has to be added before it can be used.", E_USER_NOTICE);
-                    }
-                }
-            }
-
-            $locale = $temp[0];
-        }
-
-        if (empty($this->_translate[$locale])) {
-            if (!$this->_options['disableNotices']) {
-                if ($this->_options['log']) {
-                    $this->_options['log']->log("No translation for the language '{$locale}' available.", $this->_options['logPriority']);
-                } else {
-                    trigger_error("No translation for the language '{$locale}' available.", E_USER_NOTICE);
-                }
-            }
-        }
-
-        if ($this->_options['locale'] != $locale) {
-            $this->_options['locale'] = $locale;
-
-            if (isset(self::$_cache)) {
-                $id = 'Zend_Translate_' . $this->toString() . '_Options';
-                if (self::$_cacheTags) {
-                    self::$_cache->save($this->_options, $id, array($this->_options['tag']));
-                } else {
-                    self::$_cache->save($this->_options, $id);
-                }
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Returns the available languages from this adapter
-     *
-     * @return array|null
-     */
-    public function getList()
-    {
-        $list = array_keys($this->_translate);
-        $result = null;
-        foreach($list as $value) {
-            if (!empty($this->_translate[$value])) {
-                $result[$value] = $value;
-            }
-        }
-        return $result;
-    }
-
-    /**
-     * Returns the message id for a given translation
-     * If no locale is given, the actual language will be used
-     *
-     * @param  string             $message Message to get the key for
-     * @param  string|Zend_Locale $locale (optional) Language to return the message ids from
-     * @return string|array|false
-     */
-    public function getMessageId($message, $locale = null)
-    {
-        if (empty($locale) or !$this->isAvailable($locale)) {
-            $locale = $this->_options['locale'];
-        }
-
-        return array_search($message, $this->_translate[(string) $locale]);
-    }
-
-    /**
-     * Returns all available message ids from this adapter
-     * If no locale is given, the actual language will be used
-     *
-     * @param  string|Zend_Locale $locale (optional) Language to return the message ids from
-     * @return array
-     */
-    public function getMessageIds($locale = null)
-    {
-        if (empty($locale) or !$this->isAvailable($locale)) {
-            $locale = $this->_options['locale'];
-        }
-
-        return array_keys($this->_translate[(string) $locale]);
-    }
-
-    /**
-     * Returns all available translations from this adapter
-     * If no locale is given, the actual language will be used
-     * If 'all' is given the complete translation dictionary will be returned
-     *
-     * @param  string|Zend_Locale $locale (optional) Language to return the messages from
-     * @return array
-     */
-    public function getMessages($locale = null)
-    {
-        if ($locale === 'all') {
-            return $this->_translate;
-        }
-
-        if ((empty($locale) === true) or ($this->isAvailable($locale) === false)) {
-            $locale = $this->_options['locale'];
-        }
-
-        return $this->_translate[(string) $locale];
-    }
-
-    /**
-     * Is the wished language available ?
-     *
-     * @see    Zend_Locale
-     * @param  string|Zend_Locale $locale Language to search for, identical with locale identifier,
-     *                                    @see Zend_Locale for more information
-     * @return boolean
-     */
-    public function isAvailable($locale)
-    {
-        $return = isset($this->_translate[(string) $locale]);
-        return $return;
-    }
-
-    /**
-     * Load translation data
-     *
-     * @param  mixed              $data
-     * @param  string|Zend_Locale $locale
-     * @param  array              $options (optional)
-     * @return array
-     */
-    abstract protected function _loadTranslationData($data, $locale, array $options = array());
-
-    /**
-     * Internal function for adding translation data
-     *
-     * This may be a new language or additional data for an existing language
-     * If the options 'clear' is true, then the translation data for the specified
-     * language is replaced and added otherwise
-     *
-     * @see    Zend_Locale
-     * @param  array|Zend_Config $content Translation data to add
-     * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
-     */
-    private function _addTranslationData($options = array())
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        } else if (func_num_args() > 1) {
-            $args = func_get_args();
-            $options['content'] = array_shift($args);
-
-            if (!empty($args)) {
-                $options['locale'] = array_shift($args);
-            }
-
-            if (!empty($args)) {
-                $options += array_shift($args);
-            }
-        }
-
-        if (($options['content'] instanceof Zend_Translate) || ($options['content'] instanceof Zend_Translate_Adapter)) {
-            $options['usetranslateadapter'] = true;
-            if (!empty($options['locale']) && ($options['locale'] !== 'auto')) {
-                $options['content'] = $options['content']->getMessages($options['locale']);
-            } else {
-                $content = $options['content'];
-                $locales = $content->getList();
-                foreach ($locales as $locale) {
-                    $options['locale']  = $locale;
-                    $options['content'] = $content->getMessages($locale);
-                    $this->_addTranslationData($options);
-                }
-
-                return $this;
-            }
-        }
-
-        try {
-            $options['locale'] = Zend_Locale::findLocale($options['locale']);
-        } catch (Zend_Locale_Exception $e) {
-            require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception("The given Language '{$options['locale']}' does not exist", 0, $e);
-        }
-
-        if ($options['clear'] || !isset($this->_translate[$options['locale']])) {
-            $this->_translate[$options['locale']] = array();
-        }
-
-        $read = true;
-        if (isset(self::$_cache)) {
-            $id = 'Zend_Translate_' . md5(serialize($options['content'])) . '_' . $this->toString();
-            $temp = self::$_cache->load($id);
-            if ($temp) {
-                $read = false;
-            }
-        }
-
-        if ($options['reload']) {
-            $read = true;
-        }
-
-        if ($read) {
-            if (!empty($options['usetranslateadapter'])) {
-                $temp = array($options['locale'] => $options['content']);
-            } else {
-                $temp = $this->_loadTranslationData($options['content'], $options['locale'], $options);
-            }
-        }
-
-        if (empty($temp)) {
-            $temp = array();
-        }
-
-        $keys = array_keys($temp);
-        foreach($keys as $key) {
-            if (!isset($this->_translate[$key])) {
-                $this->_translate[$key] = array();
-            }
-
-            if (array_key_exists($key, $temp) && is_array($temp[$key])) {
-                $this->_translate[$key] = $temp[$key] + $this->_translate[$key];
-            }
-        }
-
-        if ($this->_automatic === true) {
-            $find = new Zend_Locale($options['locale']);
-            $browser = $find->getEnvironment() + $find->getBrowser();
-            arsort($browser);
-            foreach($browser as $language => $quality) {
-                if (isset($this->_translate[$language])) {
-                    $this->_options['locale'] = $language;
-                    break;
-                }
-            }
-        }
-
-        if (($read) and (isset(self::$_cache))) {
-            $id = 'Zend_Translate_' . md5(serialize($options['content'])) . '_' . $this->toString();
-            if (self::$_cacheTags) {
-                self::$_cache->save($temp, $id, array($this->_options['tag']));
-            } else {
-                self::$_cache->save($temp, $id);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Translates the given string
-     * returns the translation
-     *
-     * @see Zend_Locale
-     * @param  string|array       $messageId Translation string, or Array for plural translations
-     * @param  string|Zend_Locale $locale    (optional) Locale/Language to use, identical with
-     *                                       locale identifier, @see Zend_Locale for more information
-     * @return string
-     */
-    public function translate($messageId, $locale = null)
-    {
-        if ($locale === null) {
-            $locale = $this->_options['locale'];
-        }
-
-        $plural = null;
-        if (is_array($messageId)) {
-            if (count($messageId) > 2) {
-                $number = array_pop($messageId);
-                if (!is_numeric($number)) {
-                    $plocale = $number;
-                    $number  = array_pop($messageId);
-                } else {
-                    $plocale = 'en';
-                }
-
-                $plural    = $messageId;
-                $messageId = $messageId[0];
-            } else {
-                $messageId = $messageId[0];
-            }
-        }
-
-        if (!Zend_Locale::isLocale($locale, true, false)) {
-            if (!Zend_Locale::isLocale($locale, false, false)) {
-                // language does not exist, return original string
-                $this->_log($messageId, $locale);
-                // use rerouting when enabled
-                if (!empty($this->_options['route'])) {
-                    if (array_key_exists($locale, $this->_options['route']) &&
-                        !array_key_exists($locale, $this->_routed)) {
-                        $this->_routed[$locale] = true;
-                        return $this->translate($messageId, $this->_options['route'][$locale]);
-                    }
-                }
-
-                $this->_routed = array();
-                if ($plural === null) {
-                    return $messageId;
-                }
-
-                $rule = Zend_Translate_Plural::getPlural($number, $plocale);
-                if (!isset($plural[$rule])) {
-                    $rule = 0;
-                }
-
-                return $plural[$rule];
-            }
-
-            $locale = new Zend_Locale($locale);
-        }
-
-        $locale = (string) $locale;
-        if ((is_string($messageId) || is_int($messageId)) && isset($this->_translate[$locale][$messageId])) {
-            // return original translation
-            if ($plural === null) {
-                $this->_routed = array();
-                return $this->_translate[$locale][$messageId];
-            }
-
-            $rule = Zend_Translate_Plural::getPlural($number, $locale);
-            if (isset($this->_translate[$locale][$plural[0]][$rule])) {
-                $this->_routed = array();
-                return $this->_translate[$locale][$plural[0]][$rule];
-            }
-        } else if (strlen($locale) != 2) {
-            // faster than creating a new locale and separate the leading part
-            $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
-
-            if ((is_string($messageId) || is_int($messageId)) && isset($this->_translate[$locale][$messageId])) {
-                // return regionless translation (en_US -> en)
-                if ($plural === null) {
-                    $this->_routed = array();
-                    return $this->_translate[$locale][$messageId];
-                }
-
-                $rule = Zend_Translate_Plural::getPlural($number, $locale);
-                if (isset($this->_translate[$locale][$plural[0]][$rule])) {
-                    $this->_routed = array();
-                    return $this->_translate[$locale][$plural[0]][$rule];
-                }
-            }
-        }
-
-        $this->_log($messageId, $locale);
-        // use rerouting when enabled
-        if (!empty($this->_options['route'])) {
-            if (array_key_exists($locale, $this->_options['route']) &&
-                !array_key_exists($locale, $this->_routed)) {
-                $this->_routed[$locale] = true;
-                return $this->translate($messageId, $this->_options['route'][$locale]);
-            }
-        }
-
-        $this->_routed = array();
-        if ($plural === null) {
-            return $messageId;
-        }
-
-        $rule = Zend_Translate_Plural::getPlural($number, $plocale);
-        if (!isset($plural[$rule])) {
-            $rule = 0;
-        }
-
-        return $plural[$rule];
-    }
-
-    /**
-     * Translates the given string using plural notations
-     * Returns the translated string
-     *
-     * @see Zend_Locale
-     * @param  string             $singular Singular translation string
-     * @param  string             $plural   Plural translation string
-     * @param  integer            $number   Number for detecting the correct plural
-     * @param  string|Zend_Locale $locale   (Optional) Locale/Language to use, identical with
-     *                                      locale identifier, @see Zend_Locale for more information
-     * @return string
-     */
-    public function plural($singular, $plural, $number, $locale = null)
-    {
-        return $this->translate(array($singular, $plural, $number), $locale);
-    }
-
-    /**
-     * Logs a message when the log option is set
-     *
-     * @param string $message Message to log
-     * @param String $locale  Locale to log
-     */
-    protected function _log($message, $locale) {
-        if ($this->_options['logUntranslated']) {
-            $message = str_replace('%message%', $message, $this->_options['logMessage']);
-            $message = str_replace('%locale%', $locale, $message);
-            if ($this->_options['log']) {
-                $this->_options['log']->log($message, $this->_options['logPriority']);
-            } else {
-                trigger_error($message, E_USER_NOTICE);
-            }
-        }
-    }
-
-    /**
-     * Translates the given string
-     * returns the translation
-     *
-     * @param  string             $messageId Translation string
-     * @param  string|Zend_Locale $locale    (optional) Locale/Language to use, identical with locale
-     *                                       identifier, @see Zend_Locale for more information
-     * @return string
-     */
-    public function _($messageId, $locale = null)
-    {
-        return $this->translate($messageId, $locale);
-    }
-
-    /**
-     * Checks if a string is translated within the source or not
-     * returns boolean
-     *
-     * @param  string             $messageId Translation string
-     * @param  boolean            $original  (optional) Allow translation only for original language
-     *                                       when true, a translation for 'en_US' would give false when it can
-     *                                       be translated with 'en' only
-     * @param  string|Zend_Locale $locale    (optional) Locale/Language to use, identical with locale identifier,
-     *                                       see Zend_Locale for more information
-     * @return boolean
-     */
-    public function isTranslated($messageId, $original = false, $locale = null)
-    {
-        if (($original !== false) and ($original !== true)) {
-            $locale   = $original;
-            $original = false;
-        }
-
-        if ($locale === null) {
-            $locale = $this->_options['locale'];
-        }
-
-        if (!Zend_Locale::isLocale($locale, true, false)) {
-            if (!Zend_Locale::isLocale($locale, false, false)) {
-                // language does not exist, return original string
-                return false;
-            }
-
-            $locale = new Zend_Locale($locale);
-        }
-
-        $locale = (string) $locale;
-        if ((is_string($messageId) || is_int($messageId)) && isset($this->_translate[$locale][$messageId])) {
-            // return original translation
-            return true;
-        } else if ((strlen($locale) != 2) and ($original === false)) {
-            // faster than creating a new locale and separate the leading part
-            $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
-
-            if ((is_string($messageId) || is_int($messageId)) && isset($this->_translate[$locale][$messageId])) {
-                // return regionless translation (en_US -> en)
-                return true;
-            }
-        }
-
-        // No translation found, return original
-        return false;
-    }
-
-    /**
-     * Returns the set cache
-     *
-     * @return Zend_Cache_Core The set cache
-     */
-    public static function getCache()
-    {
-        return self::$_cache;
-    }
-
-    /**
-     * Sets a cache for all Zend_Translate_Adapters
-     *
-     * @param Zend_Cache_Core $cache Cache to store to
-     */
-    public static function setCache(Zend_Cache_Core $cache)
-    {
-        self::$_cache = $cache;
-        self::_getTagSupportForCache();
-    }
-
-    /**
-     * Returns true when a cache is set
-     *
-     * @return boolean
-     */
-    public static function hasCache()
-    {
-        if (self::$_cache !== null) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Removes any set cache
-     *
-     * @return void
-     */
-    public static function removeCache()
-    {
-        self::$_cache = null;
-    }
-
-    /**
-     * Clears all set cache data
-     *
-     * @param string $tag Tag to clear when the default tag name is not used
-     * @return void
-     */
-    public static function clearCache($tag = null)
-    {
-        require_once 'Zend/Cache.php';
-        if (self::$_cacheTags) {
-            if ($tag == null) {
-                $tag = 'Zend_Translate';
-            }
-
-            self::$_cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array($tag));
-        } else {
-            self::$_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
-        }
-    }
-
-    /**
-     * Returns the adapter name
-     *
-     * @return string
-     */
-    abstract public function toString();
-
-    /**
-     * Internal method to check if the given cache supports tags
-     *
-     * @param Zend_Cache $cache
-     */
-    private static function _getTagSupportForCache()
-    {
-        $backend = self::$_cache->getBackend();
-        if ($backend instanceof Zend_Cache_Backend_ExtendedInterface) {
-            $cacheOptions = $backend->getCapabilities();
-            self::$_cacheTags = $cacheOptions['tags'];
-        } else {
-            self::$_cacheTags = false;
-        }
-
-        return self::$_cacheTags;
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@subpackagephp Zendphp_Translatephp_Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Adapterphp.phpphp php2php3php5php1php8php php2php0php1php0php-php1php2php-php1php6php php1php3php:php3php1php:php2php5Zphp bittarmanphp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Locale
+php php*php/
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Translatephp_Plural
+php php*php/
+requirephp_oncephp php'Zendphp/Translatephp/Pluralphp.phpphp'php;
+
+php/php*php*
+php php*php Basicphp adapterphp classphp forphp eachphp translationphp sourcephp adapter
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Translate
+php php*php php@subpackagephp Zendphp_Translatephp_Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Translatephp_Adapterphp php{
+php php php php php/php*php*
+php php php php php php*php Showsphp ifphp localephp detectionphp isphp inphp automaticphp level
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php privatephp php$php_automaticphp php=php truephp;
+
+php php php php php/php*php*
+php php php php php php*php Internalphp valuephp tophp seephp alreadyphp routedphp languages
+php php php php php php*php php@varphp arrayphp(php)
+php php php php php php*php/
+php php php php privatephp php$php_routedphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Internalphp cachephp forphp allphp adapters
+php php php php php php*php php@varphp Zendphp_Cachephp_Core
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_cachephp php php php php php=php nullphp;
+
+php php php php php/php*php*
+php php php php php php*php Internalphp valuephp tophp rememberphp ifphp cachephp supportsphp tags
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php privatephp staticphp php$php_cacheTagsphp php=php falsephp;
+
+php php php php php/php*php*
+php php php php php php*php Scansphp forphp thephp localephp withinphp thephp namephp ofphp thephp directory
+php php php php php php*php php@constantphp integer
+php php php php php php*php/
+php php php php constphp LOCALEphp_DIRECTORYphp php=php php'directoryphp'php;
+
+php php php php php/php*php*
+php php php php php php*php Scansphp forphp thephp localephp withinphp thephp namephp ofphp thephp file
+php php php php php php*php php@constantphp integer
+php php php php php php*php/
+php php php php constphp LOCALEphp_FILENAMEphp php php=php php'filenamephp'php;
+
+php php php php php/php*php*
+php php php php php php*php Arrayphp withphp allphp optionsphp,php eachphp adapterphp canphp havephp ownphp additionalphp options
+php php php php php php*php php php php'clearphp'php php php php php php php php php php php php=php>php whenphp truephp,php clearsphp alreadyphp loadedphp translationsphp whenphp addingphp newphp files
+php php php php php php*php php php php'contentphp'php php php php php php php php php php=php>php contentphp tophp translatephp orphp filephp orphp directoryphp withphp content
+php php php php php php*php php php php'disableNoticesphp'php php php=php>php whenphp truephp,php omitsphp noticesphp fromphp beingphp displayed
+php php php php php php*php php php php'ignorephp'php php php php php php php php php php php=php>php aphp prefixphp forphp filesphp andphp directoriesphp whichphp arephp notphp beingphp added
+php php php php php php*php php php php'localephp'php php php php php php php php php php php=php>php thephp actualphp setphp localephp tophp use
+php php php php php php*php php php php'logphp'php php php php php php php php php php php php php php=php>php aphp instancephp ofphp Zendphp_Logphp wherephp logsphp arephp writtenphp to
+php php php php php php*php php php php'logMessagephp'php php php php php php php=php>php messagephp tophp bephp logged
+php php php php php php*php php php php'logPriorityphp'php php php php php php=php>php priorityphp whichphp isphp usedphp tophp writephp thephp logphp message
+php php php php php php*php php php php'logUntranslatedphp'php php=php>php whenphp truephp,php untranslatedphp messagesphp arephp notphp logged
+php php php php php php*php php php php'reloadphp'php php php php php php php php php php php=php>php reloadsphp thephp cachephp byphp readingphp thephp contentphp again
+php php php php php php*php php php php'scanphp'php php php php php php php php php php php php php=php>php searchesphp forphp translationphp filesphp usingphp thephp LOCALEphp constants
+php php php php php php*php php php php'tagphp'php php php php php php php php php php php php php php=php>php tagphp tophp usephp forphp thephp cache
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php arrayphp(
+php php php php php php php php php'clearphp'php php php php php php php php php php php php=php>php falsephp,
+php php php php php php php php php'contentphp'php php php php php php php php php php=php>php nullphp,
+php php php php php php php php php'disableNoticesphp'php php php=php>php falsephp,
+php php php php php php php php php'ignorephp'php php php php php php php php php php php=php>php php'php.php'php,
+php php php php php php php php php'localephp'php php php php php php php php php php php=php>php php'autophp'php,
+php php php php php php php php php'logphp'php php php php php php php php php php php php php php=php>php nullphp,
+php php php php php php php php php'logMessagephp'php php php php php php php=php>php php"Untranslatedphp messagephp withinphp php'php%localephp%php'php:php php%messagephp%php"php,
+php php php php php php php php php'logPriorityphp'php php php php php php=php>php php5php,
+php php php php php php php php php'logUntranslatedphp'php php=php>php falsephp,
+php php php php php php php php php'reloadphp'php php php php php php php php php php php=php>php falsephp,
+php php php php php php php php php'routephp'php php php php php php php php php php php php=php>php nullphp,
+php php php php php php php php php'scanphp'php php php php php php php php php php php php php=php>php nullphp,
+php php php php php php php php php'tagphp'php php php php php php php php php php php php php php=php>php php'Zendphp_Translatephp'
+php php php php php)php;
+
+php php php php php/php*php*
+php php php php php php*php Translationphp table
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_translatephp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Generatesphp thephp adapter
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Translationphp optionsphp forphp thisphp adapter
+php php php php php php*php php@throwsphp Zendphp_Translatephp_Exception
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(funcphp_numphp_argsphp(php)php php>php php1php)php php{
+php php php php php php php php php php php php php$argsphp php php php php php php php php php php php php php php php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php php$optionsphp php php php php php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php$optionsphp[php'contentphp'php]php php=php arrayphp_shiftphp(php$argsphp)php;
+
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php$optphp php php php php php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_mergephp(php$optphp,php php$optionsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'contentphp'php php=php>php php$optionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'cachephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php selfphp:php:setCachephp(php$optionsphp[php'cachephp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'cachephp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php php$idphp php=php php'Zendphp_Translatephp_php'php php.php php$thisphp-php>toStringphp(php)php php.php php'php_Optionsphp'php;
+php php php php php php php php php php php php php$resultphp php=php selfphp:php:php$php_cachephp-php>loadphp(php$idphp)php;
+php php php php php php php php php php php php ifphp php(php$resultphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp php=php php$resultphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$optionsphp[php'localephp'php]php)php php|php|php php(php$optionsphp[php'localephp'php]php php=php=php=php php"autophp"php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_automaticphp php=php truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_automaticphp php=php falsephp;
+php php php php php php php php php}
+
+php php php php php php php php php$localephp php=php nullphp;
+php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'localephp'php]php)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$optionsphp[php'localephp'php]php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php php$optionsphp[php'localephp'php]php php=php php$localephp;
+
+php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'contentphp'php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>addTranslationphp(php$optionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>getLocalephp(php)php php!php=php=php php(stringphp)php php$optionsphp[php'localephp'php]php)php php{
+php php php php php php php php php php php php php$thisphp-php>setLocalephp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp translations
+php php php php php php*
+php php php php php php*php Thisphp mayphp bephp aphp newphp languagephp orphp additionalphp contentphp forphp anphp existingphp language
+php php php php php php*php Ifphp thephp keyphp php'clearphp'php isphp truephp,php thenphp translationsphp forphp thephp specified
+php php php php php php*php languagephp willphp bephp replacedphp andphp addedphp otherwise
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Optionsphp andphp translationsphp tophp bephp added
+php php php php php php*php php@throwsphp Zendphp_Translatephp_Exception
+php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp addTranslationphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(funcphp_numphp_argsphp(php)php php>php php1php)php php{
+php php php php php php php php php php php php php$argsphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php php$optionsphp php php php php php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php$optionsphp[php'contentphp'php]php php=php arrayphp_shiftphp(php$argsphp)php;
+
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php$optphp php php php php php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_mergephp(php$optphp,php php$optionsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'contentphp'php php=php>php php$optionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$originatephp php=php nullphp;
+php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'localephp'php]php)php)php php{
+php php php php php php php php php php php php php$originatephp php=php php(stringphp)php php$optionsphp[php'localephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(arrayphp_keyphp_existsphp(php'logphp'php,php php$optionsphp)php)php php&php&php php!php(php$optionsphp[php'logphp'php]php instanceofphp Zendphp_Logphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php'Instancephp ofphp Zendphp_Logphp expectedphp forphp optionphp logphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php ifphp php(php!php(php$optionsphp[php'contentphp'php]php instanceofphp Zendphp_Translatephp)php php&php&php php!php(php$optionsphp[php'contentphp'php]php instanceofphp Zendphp_Translatephp_Adapterphp)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$optionsphp[php'localephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php nullphp;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php Zendphp_Localephp:php:findLocalephp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php catchphp php(Zendphp_Localephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php"Thephp givenphp Languagephp php'php{php$optionsphp[php'localephp'php]php}php'php doesphp notphp existphp"php,php php0php,php php$ephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$optionsphp php php=php php$optionsphp php+php php$thisphp-php>php_optionsphp;
+php php php php php php php php ifphp php(isphp_stringphp(php$optionsphp[php'contentphp'php]php)php andphp isphp_dirphp(php$optionsphp[php'contentphp'php]php)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'contentphp'php]php php=php realpathphp(php$optionsphp[php'contentphp'php]php)php;
+php php php php php php php php php php php php php$prevphp php=php php'php'php;
+php php php php php php php php php php php php foreachphp php(newphp RecursiveIteratorIteratorphp(
+php php php php php php php php php php php php php php php php php php php php php newphp RecursiveDirectoryIteratorphp(php$optionsphp[php'contentphp'php]php,php RecursiveDirectoryIteratorphp:php:KEYphp_ASphp_PATHNAMEphp)php,
+php php php php php php php php php php php php php php php php php php php php php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php asphp php$directoryphp php=php>php php$infophp)php php{
+php php php php php php php php php php php php php php php php php$filephp php=php php$infophp-php>getFilenamephp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp[php'ignorephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php foreachphp php(php$optionsphp[php'ignorephp'php]php asphp php$keyphp php=php>php php$ignorephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(strposphp(php$keyphp,php php'regexphp'php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php$ignorephp,php php$directoryphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php ignorephp filesphp matchingphp thephp givenphp regexphp fromphp optionphp php'ignorephp'php andphp allphp filesphp below
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp php2php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(strposphp(php$directoryphp,php DIRECTORYphp_SEPARATORphp php.php php$ignorephp)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php ignorephp filesphp matchingphp firstphp charactersphp fromphp optionphp php'ignorephp'php andphp allphp filesphp below
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp php2php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(strposphp(php$directoryphp,php DIRECTORYphp_SEPARATORphp php.php php$optionsphp[php'ignorephp'php]php)php php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php ignorephp filesphp matchingphp firstphp charactersphp fromphp optionphp php'ignorephp'php andphp allphp filesphp below
+php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$infophp-php>isDirphp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php pathnamephp asphp locale
+php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$optionsphp[php'scanphp'php]php php=php=php=php selfphp:php:LOCALEphp_DIRECTORYphp)php andphp php(Zendphp_Localephp:php:isLocalephp(php$filephp,php truephp,php falsephp)php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php php$filephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php$prevphp php php php php php php php php php php php php php php=php php(stringphp)php php$optionsphp[php'localephp'php]php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$infophp-php>isFilephp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php filenamephp asphp locale
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$optionsphp[php'scanphp'php]php php=php=php=php selfphp:php:LOCALEphp_FILENAMEphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$filenamephp php=php explodephp(php'php.php'php,php php$filephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php arrayphp_popphp(php$filenamephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$filenamephp php=php implodephp(php'php.php'php,php php$filenamephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(Zendphp_Localephp:php:isLocalephp(php(stringphp)php php$filenamephp,php truephp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php php(stringphp)php php$filenamephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp php php=php explodephp(php'php.php'php,php php$filephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp2php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php foreachphp(php$partsphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp2php php+php=php explodephp(php'php_php'php,php php$tokenphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp php php=php arrayphp_mergephp(php$partsphp,php php$partsphp2php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp2php php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php foreachphp(php$partsphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp2php php+php=php explodephp(php'php-php'php,php php$tokenphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp php=php arrayphp_mergephp(php$partsphp,php php$partsphp2php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$partsphp php=php arrayphp_uniquephp(php$partsphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$prevphp php php=php php'php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php foreachphp(php$partsphp asphp php$tokenphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(Zendphp_Localephp:php:isLocalephp(php$tokenphp,php truephp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(strlenphp(php$prevphp)php <php=php strlenphp(php$tokenphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php php$tokenphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$prevphp php php php php php php php php php php php php php php=php php$tokenphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'contentphp'php]php php=php php$infophp-php>getPathnamephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_addTranslationDataphp(php$optionsphp)php;
+php php php php php php php php php php php php php php php php php php php php php}php catchphp php(Zendphp_Translatephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php ignorephp failedphp sourcesphp whilephp scanning
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_addTranslationDataphp(php$optionsphp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(issetphp(php$thisphp-php>php_translatephp[php$originatephp]php)php php=php=php=php truephp)php andphp php(countphp(php$thisphp-php>php_translatephp[php$originatephp]php)php php>php php0php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setLocalephp(php$originatephp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp newphp adapterphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Adapterphp options
+php php php php php php*php php@throwsphp Zendphp_Translatephp_Exception
+php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php php$changephp php=php falsephp;
+php php php php php php php php php$localephp php=php nullphp;
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$optionphp)php php{
+php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php'localephp'php)php php{
+php php php php php php php php php php php php php php php php php$localephp php=php php$optionphp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php(issetphp(php$thisphp-php>php_optionsphp[php$keyphp]php)php andphp php(php$thisphp-php>php_optionsphp[php$keyphp]php php!php=php php$optionphp)php)php or
+php php php php php php php php php php php php php php php php php php php php php!issetphp(php$thisphp-php>php_optionsphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php(php$keyphp php=php=php php'logphp'php)php php&php&php php!php(php$optionphp instanceofphp Zendphp_Logphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php'Instancephp ofphp Zendphp_Logphp expectedphp forphp optionphp logphp'php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php'cachephp'php)php php{
+php php php php php php php php php php php php php php php php php php php php selfphp:php:setCachephp(php$optionphp)php;
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php$keyphp]php php=php php$optionphp;
+php php php php php php php php php php php php php php php php php$changephp php=php truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$localephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setLocalephp(php$localephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php andphp php(php$changephp php=php=php truephp)php)php php{
+php php php php php php php php php php php php php$idphp php=php php'Zendphp_Translatephp_php'php php.php php$thisphp-php>toStringphp(php)php php.php php'php_Optionsphp'php;
+php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php$thisphp-php>php_optionsphp,php php$idphp,php arrayphp(php$thisphp-php>php_optionsphp[php'tagphp'php]php)php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php$thisphp-php>php_optionsphp,php php$idphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adaptersphp namephp andphp itphp'sphp options
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|nullphp php$optionKeyphp Stringphp returnsphp thisphp option
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php nullphp returnsphp allphp options
+php php php php php php*php php@returnphp integerphp|stringphp|arrayphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php$optionKeyphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionKeyphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php$optionKeyphp]php)php php=php=php=php truephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php$optionKeyphp]php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getsphp locale
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Localephp|stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getLocalephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php'localephp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp locale
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp Localephp tophp set
+php php php php php php*php php@throwsphp Zendphp_Translatephp_Exception
+php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setLocalephp(php$localephp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$localephp php=php=php=php php"autophp"php)php orphp php(php$localephp php=php=php=php nullphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_automaticphp php=php truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_automaticphp php=php falsephp;
+php php php php php php php php php}
+
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$localephp php=php Zendphp_Localephp:php:findLocalephp(php$localephp)php;
+php php php php php php php php php}php catchphp php(Zendphp_Localephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php"Thephp givenphp Languagephp php(php{php$localephp}php)php doesphp notphp existphp"php,php php0php,php php$ephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_translatephp[php$localephp]php)php)php php{
+php php php php php php php php php php php php php$tempphp php=php explodephp(php'php_php'php,php php$localephp)php;
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_translatephp[php$tempphp[php0php]php]php)php andphp php!issetphp(php$thisphp-php>php_translatephp[php$localephp]php)php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'disableNoticesphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'logphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'logphp'php]php-php>logphp(php"Thephp languagephp php'php{php$localephp}php'php hasphp tophp bephp addedphp beforephp itphp canphp bephp usedphp.php"php,php php$thisphp-php>php_optionsphp[php'logPriorityphp'php]php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php triggerphp_errorphp(php"Thephp languagephp php'php{php$localephp}php'php hasphp tophp bephp addedphp beforephp itphp canphp bephp usedphp.php"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$localephp php=php php$tempphp[php0php]php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_translatephp[php$localephp]php)php)php php{
+php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_optionsphp[php'disableNoticesphp'php]php)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'logphp'php]php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'logphp'php]php-php>logphp(php"Nophp translationphp forphp thephp languagephp php'php{php$localephp}php'php availablephp.php"php,php php$thisphp-php>php_optionsphp[php'logPriorityphp'php]php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php triggerphp_errorphp(php"Nophp translationphp forphp thephp languagephp php'php{php$localephp}php'php availablephp.php"php,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'localephp'php]php php!php=php php$localephp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'localephp'php]php php=php php$localephp;
+
+php php php php php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php php php php php php$idphp php=php php'Zendphp_Translatephp_php'php php.php php$thisphp-php>toStringphp(php)php php.php php'php_Optionsphp'php;
+php php php php php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
+php php php php php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php$thisphp-php>php_optionsphp,php php$idphp,php arrayphp(php$thisphp-php>php_optionsphp[php'tagphp'php]php)php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php$thisphp-php>php_optionsphp,php php$idphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp availablephp languagesphp fromphp thisphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getListphp(php)
+php php php php php{
+php php php php php php php php php$listphp php=php arrayphp_keysphp(php$thisphp-php>php_translatephp)php;
+php php php php php php php php php$resultphp php=php nullphp;
+php php php php php php php php foreachphp(php$listphp asphp php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_translatephp[php$valuephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$resultphp[php$valuephp]php php=php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp messagephp idphp forphp aphp givenphp translation
+php php php php php php*php Ifphp nophp localephp isphp givenphp,php thephp actualphp languagephp willphp bephp used
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$messagephp Messagephp tophp getphp thephp keyphp for
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php(optionalphp)php Languagephp tophp returnphp thephp messagephp idsphp from
+php php php php php php*php php@returnphp stringphp|arrayphp|false
+php php php php php php*php/
+php php php php publicphp functionphp getMessageIdphp(php$messagephp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$localephp)php orphp php!php$thisphp-php>isAvailablephp(php$localephp)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_optionsphp[php'localephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp arrayphp_searchphp(php$messagephp,php php$thisphp-php>php_translatephp[php(stringphp)php php$localephp]php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp availablephp messagephp idsphp fromphp thisphp adapter
+php php php php php php*php Ifphp nophp localephp isphp givenphp,php thephp actualphp languagephp willphp bephp used
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php(optionalphp)php Languagephp tophp returnphp thephp messagephp idsphp from
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getMessageIdsphp(php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$localephp)php orphp php!php$thisphp-php>isAvailablephp(php$localephp)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_optionsphp[php'localephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp arrayphp_keysphp(php$thisphp-php>php_translatephp[php(stringphp)php php$localephp]php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp availablephp translationsphp fromphp thisphp adapter
+php php php php php php*php Ifphp nophp localephp isphp givenphp,php thephp actualphp languagephp willphp bephp used
+php php php php php php*php Ifphp php'allphp'php isphp givenphp thephp completephp translationphp dictionaryphp willphp bephp returned
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php(optionalphp)php Languagephp tophp returnphp thephp messagesphp from
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getMessagesphp(php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$localephp php=php=php=php php'allphp'php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_translatephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(emptyphp(php$localephp)php php=php=php=php truephp)php orphp php(php$thisphp-php>isAvailablephp(php$localephp)php php=php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_optionsphp[php'localephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp-php>php_translatephp[php(stringphp)php php$localephp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Isphp thephp wishedphp languagephp availablephp php?
+php php php php php php*
+php php php php php php*php php@seephp php php php Zendphp_Locale
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp Languagephp tophp searchphp forphp,php identicalphp withphp localephp identifierphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php@seephp Zendphp_Localephp forphp morephp information
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isAvailablephp(php$localephp)
+php php php php php{
+php php php php php php php php php$returnphp php=php issetphp(php$thisphp-php>php_translatephp[php(stringphp)php php$localephp]php)php;
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Loadphp translationphp data
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php php php php php php php php php php php php php php$data
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$locale
+php php php php php php*php php@paramphp php arrayphp php php php php php php php php php php php php php php$optionsphp php(optionalphp)
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php abstractphp protectedphp functionphp php_loadTranslationDataphp(php$dataphp,php php$localephp,php arrayphp php$optionsphp php=php arrayphp(php)php)php;
+
+php php php php php/php*php*
+php php php php php php*php Internalphp functionphp forphp addingphp translationphp data
+php php php php php php*
+php php php php php php*php Thisphp mayphp bephp aphp newphp languagephp orphp additionalphp dataphp forphp anphp existingphp language
+php php php php php php*php Ifphp thephp optionsphp php'clearphp'php isphp truephp,php thenphp thephp translationphp dataphp forphp thephp specified
+php php php php php php*php languagephp isphp replacedphp andphp addedphp otherwise
+php php php php php php*
+php php php php php php*php php@seephp php php php Zendphp_Locale
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$contentphp Translationphp dataphp tophp add
+php php php php php php*php php@throwsphp Zendphp_Translatephp_Exception
+php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp Providesphp fluentphp interface
+php php php php php php*php/
+php php php php privatephp functionphp php_addTranslationDataphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elsephp ifphp php(funcphp_numphp_argsphp(php)php php>php php1php)php php{
+php php php php php php php php php php php php php$argsphp php=php funcphp_getphp_argsphp(php)php;
+php php php php php php php php php php php php php$optionsphp[php'contentphp'php]php php=php arrayphp_shiftphp(php$argsphp)php;
+
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$argsphp)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp php+php=php arrayphp_shiftphp(php$argsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(php$optionsphp[php'contentphp'php]php instanceofphp Zendphp_Translatephp)php php|php|php php(php$optionsphp[php'contentphp'php]php instanceofphp Zendphp_Translatephp_Adapterphp)php)php php{
+php php php php php php php php php php php php php$optionsphp[php'usetranslateadapterphp'php]php php=php truephp;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'localephp'php]php)php php&php&php php(php$optionsphp[php'localephp'php]php php!php=php=php php'autophp'php)php)php php{
+php php php php php php php php php php php php php php php php php$optionsphp[php'contentphp'php]php php=php php$optionsphp[php'contentphp'php]php-php>getMessagesphp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$contentphp php=php php$optionsphp[php'contentphp'php]php;
+php php php php php php php php php php php php php php php php php$localesphp php=php php$contentphp-php>getListphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$localesphp asphp php$localephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php php=php php$localephp;
+php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'contentphp'php]php php=php php$contentphp-php>getMessagesphp(php$localephp)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_addTranslationDataphp(php$optionsphp)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$optionsphp[php'localephp'php]php php=php Zendphp_Localephp:php:findLocalephp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php}php catchphp php(Zendphp_Localephp_Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php"Thephp givenphp Languagephp php'php{php$optionsphp[php'localephp'php]php}php'php doesphp notphp existphp"php,php php0php,php php$ephp)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$optionsphp[php'clearphp'php]php php|php|php php!issetphp(php$thisphp-php>php_translatephp[php$optionsphp[php'localephp'php]php]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_translatephp[php$optionsphp[php'localephp'php]php]php php=php arrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$readphp php=php truephp;
+php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
+php php php php php php php php php php php php php$idphp php=php php'Zendphp_Translatephp_php'php php.php mdphp5php(serializephp(php$optionsphp[php'contentphp'php]php)php)php php.php php'php_php'php php.php php$thisphp-php>toStringphp(php)php;
+php php php php php php php php php php php php php$tempphp php=php selfphp:php:php$php_cachephp-php>loadphp(php$idphp)php;
+php php php php php php php php php php php php ifphp php(php$tempphp)php php{
+php php php php php php php php php php php php php php php php php$readphp php=php falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$optionsphp[php'reloadphp'php]php)php php{
+php php php php php php php php php php php php php$readphp php=php truephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$readphp)php php{
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'usetranslateadapterphp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php$optionsphp[php'localephp'php]php php=php>php php$optionsphp[php'contentphp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$tempphp php=php php$thisphp-php>php_loadTranslationDataphp(php$optionsphp[php'contentphp'php]php,php php$optionsphp[php'localephp'php]php,php php$optionsphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$tempphp)php)php php{
+php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$keysphp php=php arrayphp_keysphp(php$tempphp)php;
+php php php php php php php php foreachphp(php$keysphp asphp php$keyphp)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_translatephp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_translatephp[php$keyphp]php php=php arrayphp(php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$tempphp)php php&php&php isphp_arrayphp(php$tempphp[php$keyphp]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_translatephp[php$keyphp]php php=php php$tempphp[php$keyphp]php php+php php$thisphp-php>php_translatephp[php$keyphp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>php_automaticphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php$findphp php=php newphp Zendphp_Localephp(php$optionsphp[php'localephp'php]php)php;
+php php php php php php php php php php php php php$browserphp php=php php$findphp-php>getEnvironmentphp(php)php php+php php$findphp-php>getBrowserphp(php)php;
+php php php php php php php php php php php php arsortphp(php$browserphp)php;
+php php php php php php php php php php php php foreachphp(php$browserphp asphp php$languagephp php=php>php php$qualityphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_translatephp[php$languagephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'localephp'php]php php=php php$languagephp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php(php$readphp)php andphp php(issetphp(selfphp:php:php$php_cachephp)php)php)php php{
+php php php php php php php php php php php php php$idphp php=php php'Zendphp_Translatephp_php'php php.php mdphp5php(serializephp(php$optionsphp[php'contentphp'php]php)php)php php.php php'php_php'php php.php php$thisphp-php>toStringphp(php)php;
+php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php$tempphp,php php$idphp,php arrayphp(php$thisphp-php>php_optionsphp[php'tagphp'php]php)php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php$tempphp,php php$idphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Translatesphp thephp givenphp string
+php php php php php php*php returnsphp thephp translation
+php php php php php php*
+php php php php php php*php php@seephp Zendphp_Locale
+php php php php php php*php php@paramphp php stringphp|arrayphp php php php php php php php$messageIdphp Translationphp stringphp,php orphp Arrayphp forphp pluralphp translations
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php php php php(optionalphp)php Localephp/Languagephp tophp usephp,php identicalphp with
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php localephp identifierphp,php php@seephp Zendphp_Localephp forphp morephp information
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp translatephp(php$messageIdphp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$localephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_optionsphp[php'localephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$pluralphp php=php nullphp;
+php php php php php php php php ifphp php(isphp_arrayphp(php$messageIdphp)php)php php{
+php php php php php php php php php php php php ifphp php(countphp(php$messageIdphp)php php>php php2php)php php{
+php php php php php php php php php php php php php php php php php$numberphp php=php arrayphp_popphp(php$messageIdphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php!isphp_numericphp(php$numberphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$plocalephp php=php php$numberphp;
+php php php php php php php php php php php php php php php php php php php php php$numberphp php php=php arrayphp_popphp(php$messageIdphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$plocalephp php=php php'enphp'php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$pluralphp php php php php=php php$messageIdphp;
+php php php php php php php php php php php php php php php php php$messageIdphp php=php php$messageIdphp[php0php]php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$messageIdphp php=php php$messageIdphp[php0php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php truephp,php falsephp)php)php php{
+php php php php php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php falsephp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php languagephp doesphp notphp existphp,php returnphp originalphp string
+php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php$messageIdphp,php php$localephp)php;
+php php php php php php php php php php php php php php php php php/php/php usephp reroutingphp whenphp enabled
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_optionsphp[php'routephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$localephp,php php$thisphp-php>php_optionsphp[php'routephp'php]php)php php&php&
+php php php php php php php php php php php php php php php php php php php php php php php php php!arrayphp_keyphp_existsphp(php$localephp,php php$thisphp-php>php_routedphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_routedphp[php$localephp]php php=php truephp;
+php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>translatephp(php$messageIdphp,php php$thisphp-php>php_optionsphp[php'routephp'php]php[php$localephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$thisphp-php>php_routedphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$pluralphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php returnphp php$messageIdphp;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$rulephp php=php Zendphp_Translatephp_Pluralphp:php:getPluralphp(php$numberphp,php php$plocalephp)php;
+php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$pluralphp[php$rulephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$rulephp php=php php0php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php returnphp php$pluralphp[php$rulephp]php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$localephp php=php newphp Zendphp_Localephp(php$localephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$localephp php=php php(stringphp)php php$localephp;
+php php php php php php php php ifphp php(php(isphp_stringphp(php$messageIdphp)php php|php|php isphp_intphp(php$messageIdphp)php)php php&php&php issetphp(php$thisphp-php>php_translatephp[php$localephp]php[php$messageIdphp]php)php)php php{
+php php php php php php php php php php php php php/php/php returnphp originalphp translation
+php php php php php php php php php php php php ifphp php(php$pluralphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_routedphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_translatephp[php$localephp]php[php$messageIdphp]php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$rulephp php=php Zendphp_Translatephp_Pluralphp:php:getPluralphp(php$numberphp,php php$localephp)php;
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_translatephp[php$localephp]php[php$pluralphp[php0php]php]php[php$rulephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_routedphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_translatephp[php$localephp]php[php$pluralphp[php0php]php]php[php$rulephp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp ifphp php(strlenphp(php$localephp)php php!php=php php2php)php php{
+php php php php php php php php php php php php php/php/php fasterphp thanphp creatingphp aphp newphp localephp andphp separatephp thephp leadingphp part
+php php php php php php php php php php php php php$localephp php=php substrphp(php$localephp,php php0php,php php-strlenphp(strrchrphp(php$localephp,php php'php_php'php)php)php)php;
+
+php php php php php php php php php php php php ifphp php(php(isphp_stringphp(php$messageIdphp)php php|php|php isphp_intphp(php$messageIdphp)php)php php&php&php issetphp(php$thisphp-php>php_translatephp[php$localephp]php[php$messageIdphp]php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php returnphp regionlessphp translationphp php(enphp_USphp php-php>php enphp)
+php php php php php php php php php php php php php php php php ifphp php(php$pluralphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_routedphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_translatephp[php$localephp]php[php$messageIdphp]php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$rulephp php=php Zendphp_Translatephp_Pluralphp:php:getPluralphp(php$numberphp,php php$localephp)php;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_translatephp[php$localephp]php[php$pluralphp[php0php]php]php[php$rulephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_routedphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_translatephp[php$localephp]php[php$pluralphp[php0php]php]php[php$rulephp]php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_logphp(php$messageIdphp,php php$localephp)php;
+php php php php php php php php php/php/php usephp reroutingphp whenphp enabled
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_optionsphp[php'routephp'php]php)php)php php{
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$localephp,php php$thisphp-php>php_optionsphp[php'routephp'php]php)php php&php&
+php php php php php php php php php php php php php php php php php!arrayphp_keyphp_existsphp(php$localephp,php php$thisphp-php>php_routedphp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_routedphp[php$localephp]php php=php truephp;
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>translatephp(php$messageIdphp,php php$thisphp-php>php_optionsphp[php'routephp'php]php[php$localephp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_routedphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php$pluralphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$messageIdphp;
+php php php php php php php php php}
+
+php php php php php php php php php$rulephp php=php Zendphp_Translatephp_Pluralphp:php:getPluralphp(php$numberphp,php php$plocalephp)php;
+php php php php php php php php ifphp php(php!issetphp(php$pluralphp[php$rulephp]php)php)php php{
+php php php php php php php php php php php php php$rulephp php=php php0php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$pluralphp[php$rulephp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Translatesphp thephp givenphp stringphp usingphp pluralphp notations
+php php php php php php*php Returnsphp thephp translatedphp string
+php php php php php php*
+php php php php php php*php php@seephp Zendphp_Locale
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$singularphp Singularphp translationphp string
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$pluralphp php php Pluralphp translationphp string
+php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php php$numberphp php php Numberphp forphp detectingphp thephp correctphp plural
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php php php(Optionalphp)php Localephp/Languagephp tophp usephp,php identicalphp with
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php localephp identifierphp,php php@seephp Zendphp_Localephp forphp morephp information
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp pluralphp(php$singularphp,php php$pluralphp,php php$numberphp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>translatephp(arrayphp(php$singularphp,php php$pluralphp,php php$numberphp)php,php php$localephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Logsphp aphp messagephp whenphp thephp logphp optionphp isphp set
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$messagephp Messagephp tophp log
+php php php php php php*php php@paramphp Stringphp php$localephp php Localephp tophp log
+php php php php php php*php/
+php php php php protectedphp functionphp php_logphp(php$messagephp,php php$localephp)php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'logUntranslatedphp'php]php)php php{
+php php php php php php php php php php php php php$messagephp php=php strphp_replacephp(php'php%messagephp%php'php,php php$messagephp,php php$thisphp-php>php_optionsphp[php'logMessagephp'php]php)php;
+php php php php php php php php php php php php php$messagephp php=php strphp_replacephp(php'php%localephp%php'php,php php$localephp,php php$messagephp)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'logphp'php]php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php'logphp'php]php-php>logphp(php$messagephp,php php$thisphp-php>php_optionsphp[php'logPriorityphp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php triggerphp_errorphp(php$messagephp,php Ephp_USERphp_NOTICEphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Translatesphp thephp givenphp string
+php php php php php php*php returnsphp thephp translation
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$messageIdphp Translationphp string
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php php php php(optionalphp)php Localephp/Languagephp tophp usephp,php identicalphp withphp locale
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php identifierphp,php php@seephp Zendphp_Localephp forphp morephp information
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php(php$messageIdphp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>translatephp(php$messageIdphp,php php$localephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp aphp stringphp isphp translatedphp withinphp thephp sourcephp orphp not
+php php php php php php*php returnsphp boolean
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php$messageIdphp Translationphp string
+php php php php php php*php php@paramphp php booleanphp php php php php php php php php php php php php$originalphp php php(optionalphp)php Allowphp translationphp onlyphp forphp originalphp language
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php whenphp truephp,php aphp translationphp forphp php'enphp_USphp'php wouldphp givephp falsephp whenphp itphp can
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php bephp translatedphp withphp php'enphp'php only
+php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp php$localephp php php php php(optionalphp)php Localephp/Languagephp tophp usephp,php identicalphp withphp localephp identifierphp,
+php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php seephp Zendphp_Localephp forphp morephp information
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isTranslatedphp(php$messageIdphp,php php$originalphp php=php falsephp,php php$localephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php(php$originalphp php!php=php=php falsephp)php andphp php(php$originalphp php!php=php=php truephp)php)php php{
+php php php php php php php php php php php php php$localephp php php php=php php$originalphp;
+php php php php php php php php php php php php php$originalphp php=php falsephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$localephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$localephp php=php php$thisphp-php>php_optionsphp[php'localephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php truephp,php falsephp)php)php php{
+php php php php php php php php php php php php ifphp php(php!Zendphp_Localephp:php:isLocalephp(php$localephp,php falsephp,php falsephp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php languagephp doesphp notphp existphp,php returnphp originalphp string
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$localephp php=php newphp Zendphp_Localephp(php$localephp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$localephp php=php php(stringphp)php php$localephp;
+php php php php php php php php ifphp php(php(isphp_stringphp(php$messageIdphp)php php|php|php isphp_intphp(php$messageIdphp)php)php php&php&php issetphp(php$thisphp-php>php_translatephp[php$localephp]php[php$messageIdphp]php)php)php php{
+php php php php php php php php php php php php php/php/php returnphp originalphp translation
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp ifphp php(php(strlenphp(php$localephp)php php!php=php php2php)php andphp php(php$originalphp php=php=php=php falsephp)php)php php{
+php php php php php php php php php php php php php/php/php fasterphp thanphp creatingphp aphp newphp localephp andphp separatephp thephp leadingphp part
+php php php php php php php php php php php php php$localephp php=php substrphp(php$localephp,php php0php,php php-strlenphp(strrchrphp(php$localephp,php php'php_php'php)php)php)php;
+
+php php php php php php php php php php php php ifphp php(php(isphp_stringphp(php$messageIdphp)php php|php|php isphp_intphp(php$messageIdphp)php)php php&php&php issetphp(php$thisphp-php>php_translatephp[php$localephp]php[php$messageIdphp]php)php)php php{
+php php php php php php php php php php php php php php php php php/php/php returnphp regionlessphp translationphp php(enphp_USphp php-php>php enphp)
+php php php php php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Nophp translationphp foundphp,php returnphp original
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp setphp cache
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Cachephp_Corephp Thephp setphp cache
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getCachephp(php)
+php php php php php{
+php php php php php php php php returnphp selfphp:php:php$php_cachephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp cachephp forphp allphp Zendphp_Translatephp_Adapters
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Cachephp_Corephp php$cachephp Cachephp tophp storephp to
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setCachephp(Zendphp_Cachephp_Corephp php$cachephp)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_cachephp php=php php$cachephp;
+php php php php php php php php selfphp:php:php_getTagSupportForCachephp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp whenphp aphp cachephp isphp set
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp staticphp functionphp hasCachephp(php)
+php php php php php{
+php php php php php php php php ifphp php(selfphp:php:php$php_cachephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removesphp anyphp setphp cache
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp removeCachephp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_cachephp php=php nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Clearsphp allphp setphp cachephp data
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$tagphp Tagphp tophp clearphp whenphp thephp defaultphp tagphp namephp isphp notphp used
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp clearCachephp(php$tagphp php=php nullphp)
+php php php php php{
+php php php php php php php php requirephp_oncephp php'Zendphp/Cachephp.phpphp'php;
+php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
+php php php php php php php php php php php php ifphp php(php$tagphp php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$tagphp php=php php'Zendphp_Translatephp'php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp,php arrayphp(php$tagphp)php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php abstractphp publicphp functionphp toStringphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Internalphp methodphp tophp checkphp ifphp thephp givenphp cachephp supportsphp tags
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Cachephp php$cache
+php php php php php php*php/
+php php php php privatephp staticphp functionphp php_getTagSupportForCachephp(php)
+php php php php php{
+php php php php php php php php php$backendphp php=php selfphp:php:php$php_cachephp-php>getBackendphp(php)php;
+php php php php php php php php ifphp php(php$backendphp instanceofphp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp)php php{
+php php php php php php php php php php php php php$cacheOptionsphp php=php php$backendphp-php>getCapabilitiesphp(php)php;
+php php php php php php php php php php php php selfphp:php:php$php_cacheTagsphp php=php php$cacheOptionsphp[php'tagsphp'php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php selfphp:php:php$php_cacheTagsphp php=php falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp selfphp:php:php$php_cacheTagsphp;
+php php php php php}
+php}

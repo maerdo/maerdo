@@ -1,462 +1,462 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<supplementalData>
-    <version number="$Revision: 1.24 $"/>
-    <generation date="$Date: 2009/05/05 23:15:57 $"/>
-    <likelySubtags>
-      <likelySubtag from="aa" to="aa_Latn_ET"/>
-      <likelySubtag from="ab" to="ab_Cyrl_GE"/>
-      <likelySubtag from="ady" to="ady_Cyrl_RU"/>
-      <likelySubtag from="af" to="af_Latn_ZA"/>
-      <likelySubtag from="ak" to="ak_Latn_GH"/>
-      <likelySubtag from="am" to="am_Ethi_ET"/>
-      <likelySubtag from="ar" to="ar_Arab_EG"/>
-      <likelySubtag from="as" to="as_Beng_IN"/>
-      <likelySubtag from="ast" to="ast_Latn_ES"/>
-      <likelySubtag from="av" to="av_Cyrl_RU"/>
-      <likelySubtag from="ay" to="ay_Latn_BO"/>
-      <likelySubtag from="az" to="az_Latn_AZ"/>
-      <likelySubtag from="az_Arab" to="az_Arab_IR"/>
-      <likelySubtag from="az_IR" to="az_Arab_IR"/>
-      <likelySubtag from="ba" to="ba_Cyrl_RU"/>
-      <likelySubtag from="be" to="be_Cyrl_BY"/>
-      <likelySubtag from="bg" to="bg_Cyrl_BG"/>
-      <likelySubtag from="bi" to="bi_Latn_VU"/>
-      <likelySubtag from="bn" to="bn_Beng_BD"/>
-      <likelySubtag from="bo" to="bo_Tibt_CN"/>
-      <likelySubtag from="bs" to="bs_Latn_BA"/>
-      <likelySubtag from="ca" to="ca_Latn_ES"/>
-      <likelySubtag from="ce" to="ce_Cyrl_RU"/>
-      <likelySubtag from="ceb" to="ceb_Latn_PH"/>
-      <likelySubtag from="ch" to="ch_Latn_GU"/>
-      <likelySubtag from="chk" to="chk_Latn_FM"/>
-      <likelySubtag from="crk" to="crk_Cans_CA"/>
-      <likelySubtag from="cs" to="cs_Latn_CZ"/>
-      <likelySubtag from="cwd" to="cwd_Cans_CA"/>
-      <likelySubtag from="cy" to="cy_Latn_GB"/>
-      <likelySubtag from="da" to="da_Latn_DK"/>
-      <likelySubtag from="de" to="de_Latn_DE"/>
-      <likelySubtag from="dv" to="dv_Thaa_MV"/>
-      <likelySubtag from="dz" to="dz_Tibt_BT"/>
-      <likelySubtag from="ee" to="ee_Latn_GH"/>
-      <likelySubtag from="efi" to="efi_Latn_NG"/>
-      <likelySubtag from="el" to="el_Grek_GR"/>
-      <likelySubtag from="en" to="en_Latn_US"/>
-      <likelySubtag from="es" to="es_Latn_ES"/>
-      <likelySubtag from="et" to="et_Latn_EE"/>
-      <likelySubtag from="eu" to="eu_Latn_ES"/>
-      <likelySubtag from="fa" to="fa_Arab_IR"/>
-      <likelySubtag from="fi" to="fi_Latn_FI"/>
-      <likelySubtag from="fil" to="fil_Latn_PH"/>
-      <likelySubtag from="fj" to="fj_Latn_FJ"/>
-      <likelySubtag from="fo" to="fo_Latn_FO"/>
-      <likelySubtag from="fr" to="fr_Latn_FR"/>
-      <likelySubtag from="fur" to="fur_Latn_IT"/>
-      <likelySubtag from="fy" to="fy_Latn_NL"/>
-      <likelySubtag from="ga" to="ga_Latn_IE"/>
-      <likelySubtag from="gaa" to="gaa_Latn_GH"/>
-      <likelySubtag from="gag" to="gag_Latn_MD"/>
-      <likelySubtag from="gd" to="gd_Latn_GB"/>
-      <likelySubtag from="gil" to="gil_Latn_KI"/>
-      <likelySubtag from="gl" to="gl_Latn_ES"/>
-      <likelySubtag from="gn" to="gn_Latn_PY"/>
-      <likelySubtag from="gsw" to="gsw_Latn_CH"/>
-      <likelySubtag from="gu" to="gu_Gujr_IN"/>
-      <likelySubtag from="ha" to="ha_Latn_NG"/>
-      <likelySubtag from="ha_Arab" to="ha_Arab_SD"/>
-      <likelySubtag from="ha_SD" to="ha_Arab_SD"/>
-      <likelySubtag from="haw" to="haw_Latn_US"/>
-      <likelySubtag from="he" to="he_Hebr_IL"/>
-      <likelySubtag from="hi" to="hi_Deva_IN"/>
-      <likelySubtag from="hil" to="hil_Latn_PH"/>
-      <likelySubtag from="ho" to="ho_Latn_PG"/>
-      <likelySubtag from="hr" to="hr_Latn_HR"/>
-      <likelySubtag from="ht" to="ht_Latn_HT"/>
-      <likelySubtag from="hu" to="hu_Latn_HU"/>
-      <likelySubtag from="hy" to="hy_Armn_AM"/>
-      <likelySubtag from="id" to="id_Latn_ID"/>
-      <likelySubtag from="ig" to="ig_Latn_NG"/>
-      <likelySubtag from="ii" to="ii_Yiii_CN"/>
-      <likelySubtag from="ilo" to="ilo_Latn_PH"/>
-      <likelySubtag from="inh" to="inh_Cyrl_RU"/>
-      <likelySubtag from="is" to="is_Latn_IS"/>
-      <likelySubtag from="it" to="it_Latn_IT"/>
-      <likelySubtag from="iu" to="iu_Cans_CA"/>
-      <likelySubtag from="ja" to="ja_Jpan_JP"/>
-      <likelySubtag from="jv" to="jv_Latn_ID"/>
-      <likelySubtag from="ka" to="ka_Geor_GE"/>
-      <likelySubtag from="kaj" to="kaj_Latn_NG"/>
-      <likelySubtag from="kam" to="kam_Latn_KE"/>
-      <likelySubtag from="kbd" to="kbd_Cyrl_RU"/>
-      <likelySubtag from="kha" to="kha_Latn_IN"/>
-      <likelySubtag from="kk" to="kk_Cyrl_KZ"/>
-      <likelySubtag from="kl" to="kl_Latn_GL"/>
-      <likelySubtag from="km" to="km_Khmr_KH"/>
-      <likelySubtag from="kn" to="kn_Knda_IN"/>
-      <likelySubtag from="ko" to="ko_Kore_KR"/>
-      <likelySubtag from="koi" to="koi_Cyrl_RU"/>
-      <likelySubtag from="kok" to="kok_Deva_IN"/>
-      <likelySubtag from="kos" to="kos_Latn_FM"/>
-      <likelySubtag from="kpe" to="kpe_Latn_LR"/>
-      <likelySubtag from="kpv" to="kpv_Cyrl_RU"/>
-      <likelySubtag from="krc" to="krc_Cyrl_RU"/>
-      <likelySubtag from="ks" to="ks_Arab_IN"/>
-      <likelySubtag from="ku" to="ku_Arab_IQ"/>
-      <likelySubtag from="ku_Latn" to="ku_Latn_TR"/>
-      <likelySubtag from="ku_TR" to="ku_Latn_TR"/>
-      <likelySubtag from="kum" to="kum_Cyrl_RU"/>
-      <likelySubtag from="ky" to="ky_Cyrl_KG"/>
-      <likelySubtag from="la" to="la_Latn_VA"/>
-      <likelySubtag from="lah" to="lah_Arab_PK"/>
-      <likelySubtag from="lb" to="lb_Latn_LU"/>
-      <likelySubtag from="lbe" to="lbe_Cyrl_RU"/>
-      <likelySubtag from="lez" to="lez_Cyrl_RU"/>
-      <likelySubtag from="ln" to="ln_Latn_CD"/>
-      <likelySubtag from="lo" to="lo_Laoo_LA"/>
-      <likelySubtag from="lt" to="lt_Latn_LT"/>
-      <likelySubtag from="lv" to="lv_Latn_LV"/>
-      <likelySubtag from="mai" to="mai_Deva_IN"/>
-      <likelySubtag from="mdf" to="mdf_Cyrl_RU"/>
-      <likelySubtag from="mdh" to="mdh_Latn_PH"/>
-      <likelySubtag from="mg" to="mg_Latn_MG"/>
-      <likelySubtag from="mh" to="mh_Latn_MH"/>
-      <likelySubtag from="mi" to="mi_Latn_NZ"/>
-      <likelySubtag from="mk" to="mk_Cyrl_MK"/>
-      <likelySubtag from="ml" to="ml_Mlym_IN"/>
-      <likelySubtag from="mn" to="mn_Cyrl_MN"/>
-      <likelySubtag from="mn_CN" to="mn_Mong_CN"/>
-      <likelySubtag from="mn_Mong" to="mn_Mong_CN"/>
-      <likelySubtag from="mr" to="mr_Deva_IN"/>
-      <likelySubtag from="ms" to="ms_Latn_MY"/>
-      <likelySubtag from="mt" to="mt_Latn_MT"/>
-      <likelySubtag from="my" to="my_Mymr_MM"/>
-      <likelySubtag from="myv" to="myv_Cyrl_RU"/>
-      <likelySubtag from="na" to="na_Latn_NR"/>
-      <likelySubtag from="nb" to="nb_Latn_NO"/>
-      <likelySubtag from="ne" to="ne_Deva_NP"/>
-      <likelySubtag from="niu" to="niu_Latn_NU"/>
-      <likelySubtag from="nl" to="nl_Latn_NL"/>
-      <likelySubtag from="nn" to="nn_Latn_NO"/>
-      <likelySubtag from="nr" to="nr_Latn_ZA"/>
-      <likelySubtag from="nso" to="nso_Latn_ZA"/>
-      <likelySubtag from="ny" to="ny_Latn_MW"/>
-      <likelySubtag from="oc" to="oc_Latn_FR"/>
-      <likelySubtag from="om" to="om_Latn_ET"/>
-      <likelySubtag from="or" to="or_Orya_IN"/>
-      <likelySubtag from="os" to="os_Cyrl_GE"/>
-      <likelySubtag from="pa" to="pa_Guru_IN"/>
-      <likelySubtag from="pa_Arab" to="pa_Arab_PK"/>
-      <likelySubtag from="pa_PK" to="pa_Arab_PK"/>
-      <likelySubtag from="pag" to="pag_Latn_PH"/>
-      <likelySubtag from="pap" to="pap_Latn_AN"/>
-      <likelySubtag from="pau" to="pau_Latn_PW"/>
-      <likelySubtag from="pl" to="pl_Latn_PL"/>
-      <likelySubtag from="pon" to="pon_Latn_FM"/>
-      <likelySubtag from="ps" to="ps_Arab_AF"/>
-      <likelySubtag from="pt" to="pt_Latn_BR"/>
-      <likelySubtag from="qu" to="qu_Latn_PE"/>
-      <likelySubtag from="rm" to="rm_Latn_CH"/>
-      <likelySubtag from="rn" to="rn_Latn_BI"/>
-      <likelySubtag from="ro" to="ro_Latn_RO"/>
-      <likelySubtag from="ru" to="ru_Cyrl_RU"/>
-      <likelySubtag from="rw" to="rw_Latn_RW"/>
-      <likelySubtag from="sa" to="sa_Deva_IN"/>
-      <likelySubtag from="sah" to="sah_Cyrl_RU"/>
-      <likelySubtag from="sat" to="sat_Latn_IN"/>
-      <likelySubtag from="sd" to="sd_Arab_IN"/>
-      <likelySubtag from="se" to="se_Latn_NO"/>
-      <likelySubtag from="sg" to="sg_Latn_CF"/>
-      <likelySubtag from="si" to="si_Sinh_LK"/>
-      <likelySubtag from="sid" to="sid_Latn_ET"/>
-      <likelySubtag from="sk" to="sk_Latn_SK"/>
-      <likelySubtag from="sl" to="sl_Latn_SI"/>
-      <likelySubtag from="sm" to="sm_Latn_WS"/>
-      <likelySubtag from="so" to="so_Latn_SO"/>
-      <likelySubtag from="sq" to="sq_Latn_AL"/>
-      <likelySubtag from="sr" to="sr_Cyrl_RS"/>
-      <likelySubtag from="sr_ME" to="sr_Latn_ME"/>
-      <likelySubtag from="ss" to="ss_Latn_ZA"/>
-      <likelySubtag from="st" to="st_Latn_ZA"/>
-      <likelySubtag from="su" to="su_Latn_ID"/>
-      <likelySubtag from="sv" to="sv_Latn_SE"/>
-      <likelySubtag from="sw" to="sw_Latn_TZ"/>
-      <likelySubtag from="swb" to="swb_Arab_KM"/>
-      <likelySubtag from="ta" to="ta_Taml_IN"/>
-      <likelySubtag from="te" to="te_Telu_IN"/>
-      <likelySubtag from="tet" to="tet_Latn_TL"/>
-      <likelySubtag from="tg" to="tg_Cyrl_TJ"/>
-      <likelySubtag from="th" to="th_Thai_TH"/>
-      <likelySubtag from="ti" to="ti_Ethi_ET"/>
-      <likelySubtag from="tig" to="tig_Ethi_ER"/>
-      <likelySubtag from="tk" to="tk_Latn_TM"/>
-      <likelySubtag from="tkl" to="tkl_Latn_TK"/>
-      <likelySubtag from="tl" to="tl_Latn_PH"/>
-      <likelySubtag from="tn" to="tn_Latn_ZA"/>
-      <likelySubtag from="to" to="to_Latn_TO"/>
-      <likelySubtag from="tpi" to="tpi_Latn_PG"/>
-      <likelySubtag from="tr" to="tr_Latn_TR"/>
-      <likelySubtag from="trv" to="trv_Latn_TW"/>
-      <likelySubtag from="ts" to="ts_Latn_ZA"/>
-      <likelySubtag from="tsg" to="tsg_Latn_PH"/>
-      <likelySubtag from="tt" to="tt_Cyrl_RU"/>
-      <likelySubtag from="tts" to="tts_Thai_TH"/>
-      <likelySubtag from="tvl" to="tvl_Latn_TV"/>
-      <likelySubtag from="tw" to="tw_Latn_GH"/>
-      <likelySubtag from="ty" to="ty_Latn_PF"/>
-      <likelySubtag from="tyv" to="tyv_Cyrl_RU"/>
-      <likelySubtag from="udm" to="udm_Cyrl_RU"/>
-      <likelySubtag from="ug" to="ug_Arab_CN"/>
-      <likelySubtag from="uk" to="uk_Cyrl_UA"/>
-      <likelySubtag from="uli" to="uli_Latn_FM"/>
-      <likelySubtag from="und" to="en_Latn_US"/>
-      <likelySubtag from="und_AD" to="ca_Latn_AD"/>
-      <likelySubtag from="und_AE" to="ar_Arab_AE"/>
-      <likelySubtag from="und_AF" to="fa_Arab_AF"/>
-      <likelySubtag from="und_AL" to="sq_Latn_AL"/>
-      <likelySubtag from="und_AM" to="hy_Armn_AM"/>
-      <likelySubtag from="und_AN" to="pap_Latn_AN"/>
-      <likelySubtag from="und_AO" to="pt_Latn_AO"/>
-      <likelySubtag from="und_AR" to="es_Latn_AR"/>
-      <likelySubtag from="und_AS" to="sm_Latn_AS"/>
-      <likelySubtag from="und_AT" to="de_Latn_AT"/>
-      <likelySubtag from="und_AW" to="nl_Latn_AW"/>
-      <likelySubtag from="und_AX" to="sv_Latn_AX"/>
-      <likelySubtag from="und_AZ" to="az_Latn_AZ"/>
-      <likelySubtag from="und_Arab" to="ar_Arab_EG"/>
-      <likelySubtag from="und_Arab_CN" to="ug_Arab_CN"/>
-      <likelySubtag from="und_Arab_DJ" to="ar_Arab_DJ"/>
-      <likelySubtag from="und_Arab_ER" to="ar_Arab_ER"/>
-      <likelySubtag from="und_Arab_IL" to="ar_Arab_IL"/>
-      <likelySubtag from="und_Arab_IN" to="ur_Arab_IN"/>
-      <likelySubtag from="und_Arab_PK" to="ur_Arab_PK"/>
-      <likelySubtag from="und_Armn" to="hy_Armn_AM"/>
-      <likelySubtag from="und_BA" to="bs_Latn_BA"/>
-      <likelySubtag from="und_BD" to="bn_Beng_BD"/>
-      <likelySubtag from="und_BE" to="nl_Latn_BE"/>
-      <likelySubtag from="und_BF" to="fr_Latn_BF"/>
-      <likelySubtag from="und_BG" to="bg_Cyrl_BG"/>
-      <likelySubtag from="und_BH" to="ar_Arab_BH"/>
-      <likelySubtag from="und_BI" to="rn_Latn_BI"/>
-      <likelySubtag from="und_BJ" to="fr_Latn_BJ"/>
-      <likelySubtag from="und_BL" to="fr_Latn_BL"/>
-      <likelySubtag from="und_BN" to="ms_Latn_BN"/>
-      <likelySubtag from="und_BO" to="es_Latn_BO"/>
-      <likelySubtag from="und_BR" to="pt_Latn_BR"/>
-      <likelySubtag from="und_BT" to="dz_Tibt_BT"/>
-      <likelySubtag from="und_BY" to="be_Cyrl_BY"/>
-      <likelySubtag from="und_Beng" to="bn_Beng_BD"/>
-      <likelySubtag from="und_CD" to="sw_Latn_CD"/>
-      <likelySubtag from="und_CF" to="fr_Latn_CF"/>
-      <likelySubtag from="und_CG" to="fr_Latn_CG"/>
-      <likelySubtag from="und_CH" to="de_Latn_CH"/>
-      <likelySubtag from="und_CI" to="fr_Latn_CI"/>
-      <likelySubtag from="und_CL" to="es_Latn_CL"/>
-      <likelySubtag from="und_CM" to="fr_Latn_CM"/>
-      <likelySubtag from="und_CN" to="zh_Hans_CN"/>
-      <likelySubtag from="und_CO" to="es_Latn_CO"/>
-      <likelySubtag from="und_CR" to="es_Latn_CR"/>
-      <likelySubtag from="und_CU" to="es_Latn_CU"/>
-      <likelySubtag from="und_CV" to="pt_Latn_CV"/>
-      <likelySubtag from="und_CY" to="el_Grek_CY"/>
-      <likelySubtag from="und_CZ" to="cs_Latn_CZ"/>
-      <likelySubtag from="und_Cans" to="crk_Cans_CA"/>
-      <likelySubtag from="und_Cyrl" to="ru_Cyrl_RU"/>
-      <likelySubtag from="und_Cyrl_BA" to="sr_Cyrl_BA"/>
-      <likelySubtag from="und_Cyrl_GE" to="ab_Cyrl_GE"/>
-      <likelySubtag from="und_DE" to="de_Latn_DE"/>
-      <likelySubtag from="und_DJ" to="aa_Latn_DJ"/>
-      <likelySubtag from="und_DK" to="da_Latn_DK"/>
-      <likelySubtag from="und_DO" to="es_Latn_DO"/>
-      <likelySubtag from="und_DZ" to="ar_Arab_DZ"/>
-      <likelySubtag from="und_Deva" to="hi_Deva_IN"/>
-      <likelySubtag from="und_EC" to="es_Latn_EC"/>
-      <likelySubtag from="und_EE" to="et_Latn_EE"/>
-      <likelySubtag from="und_EG" to="ar_Arab_EG"/>
-      <likelySubtag from="und_EH" to="ar_Arab_EH"/>
-      <likelySubtag from="und_ER" to="ti_Ethi_ER"/>
-      <likelySubtag from="und_ES" to="es_Latn_ES"/>
-      <likelySubtag from="und_Ethi" to="am_Ethi_ET"/>
-      <likelySubtag from="und_FI" to="fi_Latn_FI"/>
-      <likelySubtag from="und_FJ" to="fj_Latn_FJ"/>
-      <likelySubtag from="und_FM" to="chk_Latn_FM"/>
-      <likelySubtag from="und_FO" to="fo_Latn_FO"/>
-      <likelySubtag from="und_FR" to="fr_Latn_FR"/>
-      <likelySubtag from="und_GA" to="fr_Latn_GA"/>
-      <likelySubtag from="und_GE" to="ka_Geor_GE"/>
-      <likelySubtag from="und_GF" to="fr_Latn_GF"/>
-      <likelySubtag from="und_GH" to="ak_Latn_GH"/>
-      <likelySubtag from="und_GL" to="kl_Latn_GL"/>
-      <likelySubtag from="und_GN" to="fr_Latn_GN"/>
-      <likelySubtag from="und_GP" to="fr_Latn_GP"/>
-      <likelySubtag from="und_GQ" to="fr_Latn_GQ"/>
-      <likelySubtag from="und_GR" to="el_Grek_GR"/>
-      <likelySubtag from="und_GT" to="es_Latn_GT"/>
-      <likelySubtag from="und_GW" to="pt_Latn_GW"/>
-      <likelySubtag from="und_Geor" to="ka_Geor_GE"/>
-      <likelySubtag from="und_Grek" to="el_Grek_GR"/>
-      <likelySubtag from="und_Gujr" to="gu_Gujr_IN"/>
-      <likelySubtag from="und_Guru" to="pa_Guru_IN"/>
-      <likelySubtag from="und_HK" to="zh_Hant_HK"/>
-      <likelySubtag from="und_HN" to="es_Latn_HN"/>
-      <likelySubtag from="und_HR" to="hr_Latn_HR"/>
-      <likelySubtag from="und_HT" to="ht_Latn_HT"/>
-      <likelySubtag from="und_HU" to="hu_Latn_HU"/>
-      <likelySubtag from="und_Hani" to="zh_Hans_CN"/>
-      <likelySubtag from="und_Hans" to="zh_Hans_CN"/>
-      <likelySubtag from="und_Hant" to="zh_Hant_TW"/>
-      <likelySubtag from="und_Hebr" to="he_Hebr_IL"/>
-      <likelySubtag from="und_ID" to="id_Latn_ID"/>
-      <likelySubtag from="und_IL" to="he_Hebr_IL"/>
-      <likelySubtag from="und_IN" to="hi_Deva_IN"/>
-      <likelySubtag from="und_IQ" to="ar_Arab_IQ"/>
-      <likelySubtag from="und_IR" to="fa_Arab_IR"/>
-      <likelySubtag from="und_IS" to="is_Latn_IS"/>
-      <likelySubtag from="und_IT" to="it_Latn_IT"/>
-      <likelySubtag from="und_JO" to="ar_Arab_JO"/>
-      <likelySubtag from="und_JP" to="ja_Jpan_JP"/>
-      <likelySubtag from="und_Jpan" to="ja_Jpan_JP"/>
-      <likelySubtag from="und_KG" to="ky_Cyrl_KG"/>
-      <likelySubtag from="und_KH" to="km_Khmr_KH"/>
-      <likelySubtag from="und_KM" to="ar_Arab_KM"/>
-      <likelySubtag from="und_KP" to="ko_Kore_KP"/>
-      <likelySubtag from="und_KR" to="ko_Kore_KR"/>
-      <likelySubtag from="und_KW" to="ar_Arab_KW"/>
-      <likelySubtag from="und_KZ" to="ru_Cyrl_KZ"/>
-      <likelySubtag from="und_Khmr" to="km_Khmr_KH"/>
-      <likelySubtag from="und_Knda" to="kn_Knda_IN"/>
-      <likelySubtag from="und_Kore" to="ko_Kore_KR"/>
-      <likelySubtag from="und_LA" to="lo_Laoo_LA"/>
-      <likelySubtag from="und_LB" to="ar_Arab_LB"/>
-      <likelySubtag from="und_LI" to="de_Latn_LI"/>
-      <likelySubtag from="und_LK" to="si_Sinh_LK"/>
-      <likelySubtag from="und_LS" to="st_Latn_LS"/>
-      <likelySubtag from="und_LT" to="lt_Latn_LT"/>
-      <likelySubtag from="und_LU" to="fr_Latn_LU"/>
-      <likelySubtag from="und_LV" to="lv_Latn_LV"/>
-      <likelySubtag from="und_LY" to="ar_Arab_LY"/>
-      <likelySubtag from="und_Laoo" to="lo_Laoo_LA"/>
-      <likelySubtag from="und_Latn_CN" to="za_Latn_CN"/>
-      <likelySubtag from="und_Latn_CY" to="tr_Latn_CY"/>
-      <likelySubtag from="und_Latn_DZ" to="fr_Latn_DZ"/>
-      <likelySubtag from="und_Latn_ER" to="aa_Latn_ER"/>
-      <likelySubtag from="und_Latn_KM" to="fr_Latn_KM"/>
-      <likelySubtag from="und_Latn_MA" to="fr_Latn_MA"/>
-      <likelySubtag from="und_Latn_MK" to="sq_Latn_MK"/>
-      <likelySubtag from="und_Latn_SY" to="fr_Latn_SY"/>
-      <likelySubtag from="und_Latn_TN" to="fr_Latn_TN"/>
-      <likelySubtag from="und_MA" to="ar_Arab_MA"/>
-      <likelySubtag from="und_MC" to="fr_Latn_MC"/>
-      <likelySubtag from="und_MD" to="ro_Latn_MD"/>
-      <likelySubtag from="und_ME" to="sr_Latn_ME"/>
-      <likelySubtag from="und_MF" to="fr_Latn_MF"/>
-      <likelySubtag from="und_MG" to="mg_Latn_MG"/>
-      <likelySubtag from="und_MH" to="mh_Latn_MH"/>
-      <likelySubtag from="und_MK" to="mk_Cyrl_MK"/>
-      <likelySubtag from="und_ML" to="fr_Latn_ML"/>
-      <likelySubtag from="und_MM" to="my_Mymr_MM"/>
-      <likelySubtag from="und_MN" to="mn_Cyrl_MN"/>
-      <likelySubtag from="und_MO" to="zh_Hant_MO"/>
-      <likelySubtag from="und_MQ" to="fr_Latn_MQ"/>
-      <likelySubtag from="und_MR" to="ar_Arab_MR"/>
-      <likelySubtag from="und_MT" to="mt_Latn_MT"/>
-      <likelySubtag from="und_MV" to="dv_Thaa_MV"/>
-      <likelySubtag from="und_MW" to="ny_Latn_MW"/>
-      <likelySubtag from="und_MX" to="es_Latn_MX"/>
-      <likelySubtag from="und_MY" to="ms_Latn_MY"/>
-      <likelySubtag from="und_MZ" to="pt_Latn_MZ"/>
-      <likelySubtag from="und_Mlym" to="ml_Mlym_IN"/>
-      <likelySubtag from="und_Mong" to="mn_Mong_CN"/>
-      <likelySubtag from="und_Mymr" to="my_Mymr_MM"/>
-      <likelySubtag from="und_NC" to="fr_Latn_NC"/>
-      <likelySubtag from="und_NE" to="ha_Latn_NE"/>
-      <likelySubtag from="und_NI" to="es_Latn_NI"/>
-      <likelySubtag from="und_NL" to="nl_Latn_NL"/>
-      <likelySubtag from="und_NO" to="nb_Latn_NO"/>
-      <likelySubtag from="und_NP" to="ne_Deva_NP"/>
-      <likelySubtag from="und_NU" to="niu_Latn_NU"/>
-      <likelySubtag from="und_OM" to="ar_Arab_OM"/>
-      <likelySubtag from="und_Orya" to="or_Orya_IN"/>
-      <likelySubtag from="und_PA" to="es_Latn_PA"/>
-      <likelySubtag from="und_PE" to="es_Latn_PE"/>
-      <likelySubtag from="und_PF" to="fr_Latn_PF"/>
-      <likelySubtag from="und_PG" to="tpi_Latn_PG"/>
-      <likelySubtag from="und_PH" to="fil_Latn_PH"/>
-      <likelySubtag from="und_PK" to="ur_Arab_PK"/>
-      <likelySubtag from="und_PL" to="pl_Latn_PL"/>
-      <likelySubtag from="und_PM" to="fr_Latn_PM"/>
-      <likelySubtag from="und_PR" to="es_Latn_PR"/>
-      <likelySubtag from="und_PS" to="ar_Arab_PS"/>
-      <likelySubtag from="und_PT" to="pt_Latn_PT"/>
-      <likelySubtag from="und_PW" to="pau_Latn_PW"/>
-      <likelySubtag from="und_PY" to="gn_Latn_PY"/>
-      <likelySubtag from="und_QA" to="ar_Arab_QA"/>
-      <likelySubtag from="und_RE" to="fr_Latn_RE"/>
-      <likelySubtag from="und_RO" to="ro_Latn_RO"/>
-      <likelySubtag from="und_RS" to="sr_Cyrl_RS"/>
-      <likelySubtag from="und_RU" to="ru_Cyrl_RU"/>
-      <likelySubtag from="und_RW" to="rw_Latn_RW"/>
-      <likelySubtag from="und_SA" to="ar_Arab_SA"/>
-      <likelySubtag from="und_SD" to="ar_Arab_SD"/>
-      <likelySubtag from="und_SE" to="sv_Latn_SE"/>
-      <likelySubtag from="und_SI" to="sl_Latn_SI"/>
-      <likelySubtag from="und_SJ" to="nb_Latn_SJ"/>
-      <likelySubtag from="und_SK" to="sk_Latn_SK"/>
-      <likelySubtag from="und_SM" to="it_Latn_SM"/>
-      <likelySubtag from="und_SN" to="fr_Latn_SN"/>
-      <likelySubtag from="und_SO" to="so_Latn_SO"/>
-      <likelySubtag from="und_SR" to="nl_Latn_SR"/>
-      <likelySubtag from="und_ST" to="pt_Latn_ST"/>
-      <likelySubtag from="und_SV" to="es_Latn_SV"/>
-      <likelySubtag from="und_SY" to="ar_Arab_SY"/>
-      <likelySubtag from="und_Sinh" to="si_Sinh_LK"/>
-      <likelySubtag from="und_TD" to="fr_Latn_TD"/>
-      <likelySubtag from="und_TG" to="fr_Latn_TG"/>
-      <likelySubtag from="und_TH" to="th_Thai_TH"/>
-      <likelySubtag from="und_TJ" to="tg_Cyrl_TJ"/>
-      <likelySubtag from="und_TL" to="pt_Latn_TL"/>
-      <likelySubtag from="und_TM" to="tk_Latn_TM"/>
-      <likelySubtag from="und_TN" to="ar_Arab_TN"/>
-      <likelySubtag from="und_TO" to="to_Latn_TO"/>
-      <likelySubtag from="und_TR" to="tr_Latn_TR"/>
-      <likelySubtag from="und_TV" to="tvl_Latn_TV"/>
-      <likelySubtag from="und_TW" to="zh_Hant_TW"/>
-      <likelySubtag from="und_TZ" to="sw_Latn_TZ"/>
-      <likelySubtag from="und_Taml" to="ta_Taml_IN"/>
-      <likelySubtag from="und_Telu" to="te_Telu_IN"/>
-      <likelySubtag from="und_Thaa" to="dv_Thaa_MV"/>
-      <likelySubtag from="und_Thai" to="th_Thai_TH"/>
-      <likelySubtag from="und_Tibt" to="bo_Tibt_CN"/>
-      <likelySubtag from="und_UA" to="uk_Cyrl_UA"/>
-      <likelySubtag from="und_UG" to="sw_Latn_UG"/>
-      <likelySubtag from="und_UY" to="es_Latn_UY"/>
-      <likelySubtag from="und_UZ" to="uz_Cyrl_UZ"/>
-      <likelySubtag from="und_VA" to="la_Latn_VA"/>
-      <likelySubtag from="und_VE" to="es_Latn_VE"/>
-      <likelySubtag from="und_VN" to="vi_Latn_VN"/>
-      <likelySubtag from="und_VU" to="bi_Latn_VU"/>
-      <likelySubtag from="und_WF" to="fr_Latn_WF"/>
-      <likelySubtag from="und_WS" to="sm_Latn_WS"/>
-      <likelySubtag from="und_YE" to="ar_Arab_YE"/>
-      <likelySubtag from="und_YT" to="fr_Latn_YT"/>
-      <likelySubtag from="und_Yiii" to="ii_Yiii_CN"/>
-      <likelySubtag from="ur" to="ur_Arab_PK"/>
-      <likelySubtag from="uz" to="uz_Cyrl_UZ"/>
-      <likelySubtag from="uz_AF" to="uz_Arab_AF"/>
-      <likelySubtag from="uz_Arab" to="uz_Arab_AF"/>
-      <likelySubtag from="ve" to="ve_Latn_ZA"/>
-      <likelySubtag from="vi" to="vi_Latn_VN"/>
-      <likelySubtag from="wal" to="wal_Ethi_ET"/>
-      <likelySubtag from="war" to="war_Latn_PH"/>
-      <likelySubtag from="wo" to="wo_Latn_SN"/>
-      <likelySubtag from="xh" to="xh_Latn_ZA"/>
-      <likelySubtag from="yap" to="yap_Latn_FM"/>
-      <likelySubtag from="yo" to="yo_Latn_NG"/>
-      <likelySubtag from="za" to="za_Latn_CN"/>
-      <likelySubtag from="zh" to="zh_Hans_CN"/>
-      <likelySubtag from="zh_HK" to="zh_Hant_HK"/>
-      <likelySubtag from="zh_Hani" to="zh_Hans_CN"/>
-      <likelySubtag from="zh_Hant" to="zh_Hant_TW"/>
-      <likelySubtag from="zh_MO" to="zh_Hant_MO"/>
-      <likelySubtag from="zh_TW" to="zh_Hant_TW"/>
-      <likelySubtag from="zu" to="zu_Latn_ZA"/>
-    </likelySubtags>
-</supplementalData>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<supplementalDataphp>
+php php php php php<versionphp numberphp=php"php$Revisionphp:php php1php.php2php4php php$php"php/php>
+php php php php php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php1php5php:php5php7php php$php"php/php>
+php php php php php<likelySubtagsphp>
+php php php php php php php<likelySubtagphp fromphp=php"aaphp"php tophp=php"aaphp_Latnphp_ETphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"abphp"php tophp=php"abphp_Cyrlphp_GEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"adyphp"php tophp=php"adyphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"afphp"php tophp=php"afphp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"akphp"php tophp=php"akphp_Latnphp_GHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"amphp"php tophp=php"amphp_Ethiphp_ETphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"arphp"php tophp=php"arphp_Arabphp_EGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"asphp"php tophp=php"asphp_Bengphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"astphp"php tophp=php"astphp_Latnphp_ESphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"avphp"php tophp=php"avphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ayphp"php tophp=php"ayphp_Latnphp_BOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"azphp"php tophp=php"azphp_Latnphp_AZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"azphp_Arabphp"php tophp=php"azphp_Arabphp_IRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"azphp_IRphp"php tophp=php"azphp_Arabphp_IRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"baphp"php tophp=php"baphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"bephp"php tophp=php"bephp_Cyrlphp_BYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"bgphp"php tophp=php"bgphp_Cyrlphp_BGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"biphp"php tophp=php"biphp_Latnphp_VUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"bnphp"php tophp=php"bnphp_Bengphp_BDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"bophp"php tophp=php"bophp_Tibtphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"bsphp"php tophp=php"bsphp_Latnphp_BAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"caphp"php tophp=php"caphp_Latnphp_ESphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"cephp"php tophp=php"cephp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"cebphp"php tophp=php"cebphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"chphp"php tophp=php"chphp_Latnphp_GUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"chkphp"php tophp=php"chkphp_Latnphp_FMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"crkphp"php tophp=php"crkphp_Cansphp_CAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"csphp"php tophp=php"csphp_Latnphp_CZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"cwdphp"php tophp=php"cwdphp_Cansphp_CAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"cyphp"php tophp=php"cyphp_Latnphp_GBphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"daphp"php tophp=php"daphp_Latnphp_DKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"dephp"php tophp=php"dephp_Latnphp_DEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"dvphp"php tophp=php"dvphp_Thaaphp_MVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"dzphp"php tophp=php"dzphp_Tibtphp_BTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"eephp"php tophp=php"eephp_Latnphp_GHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"efiphp"php tophp=php"efiphp_Latnphp_NGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"elphp"php tophp=php"elphp_Grekphp_GRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"enphp"php tophp=php"enphp_Latnphp_USphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"esphp"php tophp=php"esphp_Latnphp_ESphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"etphp"php tophp=php"etphp_Latnphp_EEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"euphp"php tophp=php"euphp_Latnphp_ESphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"faphp"php tophp=php"faphp_Arabphp_IRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"fiphp"php tophp=php"fiphp_Latnphp_FIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"filphp"php tophp=php"filphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"fjphp"php tophp=php"fjphp_Latnphp_FJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"fophp"php tophp=php"fophp_Latnphp_FOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"frphp"php tophp=php"frphp_Latnphp_FRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"furphp"php tophp=php"furphp_Latnphp_ITphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"fyphp"php tophp=php"fyphp_Latnphp_NLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"gaphp"php tophp=php"gaphp_Latnphp_IEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"gaaphp"php tophp=php"gaaphp_Latnphp_GHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"gagphp"php tophp=php"gagphp_Latnphp_MDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"gdphp"php tophp=php"gdphp_Latnphp_GBphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"gilphp"php tophp=php"gilphp_Latnphp_KIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"glphp"php tophp=php"glphp_Latnphp_ESphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"gnphp"php tophp=php"gnphp_Latnphp_PYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"gswphp"php tophp=php"gswphp_Latnphp_CHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"guphp"php tophp=php"guphp_Gujrphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"haphp"php tophp=php"haphp_Latnphp_NGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"haphp_Arabphp"php tophp=php"haphp_Arabphp_SDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"haphp_SDphp"php tophp=php"haphp_Arabphp_SDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"hawphp"php tophp=php"hawphp_Latnphp_USphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"hephp"php tophp=php"hephp_Hebrphp_ILphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"hiphp"php tophp=php"hiphp_Devaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"hilphp"php tophp=php"hilphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"hophp"php tophp=php"hophp_Latnphp_PGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"hrphp"php tophp=php"hrphp_Latnphp_HRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"htphp"php tophp=php"htphp_Latnphp_HTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"huphp"php tophp=php"huphp_Latnphp_HUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"hyphp"php tophp=php"hyphp_Armnphp_AMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"idphp"php tophp=php"idphp_Latnphp_IDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"igphp"php tophp=php"igphp_Latnphp_NGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"iiphp"php tophp=php"iiphp_Yiiiphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ilophp"php tophp=php"ilophp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"inhphp"php tophp=php"inhphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"isphp"php tophp=php"isphp_Latnphp_ISphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"itphp"php tophp=php"itphp_Latnphp_ITphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"iuphp"php tophp=php"iuphp_Cansphp_CAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"japhp"php tophp=php"japhp_Jpanphp_JPphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"jvphp"php tophp=php"jvphp_Latnphp_IDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kaphp"php tophp=php"kaphp_Georphp_GEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kajphp"php tophp=php"kajphp_Latnphp_NGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kamphp"php tophp=php"kamphp_Latnphp_KEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kbdphp"php tophp=php"kbdphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"khaphp"php tophp=php"khaphp_Latnphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kkphp"php tophp=php"kkphp_Cyrlphp_KZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"klphp"php tophp=php"klphp_Latnphp_GLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kmphp"php tophp=php"kmphp_Khmrphp_KHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"knphp"php tophp=php"knphp_Kndaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kophp"php tophp=php"kophp_Korephp_KRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"koiphp"php tophp=php"koiphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kokphp"php tophp=php"kokphp_Devaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kosphp"php tophp=php"kosphp_Latnphp_FMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kpephp"php tophp=php"kpephp_Latnphp_LRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kpvphp"php tophp=php"kpvphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"krcphp"php tophp=php"krcphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ksphp"php tophp=php"ksphp_Arabphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kuphp"php tophp=php"kuphp_Arabphp_IQphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kuphp_Latnphp"php tophp=php"kuphp_Latnphp_TRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kuphp_TRphp"php tophp=php"kuphp_Latnphp_TRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kumphp"php tophp=php"kumphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"kyphp"php tophp=php"kyphp_Cyrlphp_KGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"laphp"php tophp=php"laphp_Latnphp_VAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"lahphp"php tophp=php"lahphp_Arabphp_PKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"lbphp"php tophp=php"lbphp_Latnphp_LUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"lbephp"php tophp=php"lbephp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"lezphp"php tophp=php"lezphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"lnphp"php tophp=php"lnphp_Latnphp_CDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"lophp"php tophp=php"lophp_Laoophp_LAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ltphp"php tophp=php"ltphp_Latnphp_LTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"lvphp"php tophp=php"lvphp_Latnphp_LVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"maiphp"php tophp=php"maiphp_Devaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mdfphp"php tophp=php"mdfphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mdhphp"php tophp=php"mdhphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mgphp"php tophp=php"mgphp_Latnphp_MGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mhphp"php tophp=php"mhphp_Latnphp_MHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"miphp"php tophp=php"miphp_Latnphp_NZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mkphp"php tophp=php"mkphp_Cyrlphp_MKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mlphp"php tophp=php"mlphp_Mlymphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mnphp"php tophp=php"mnphp_Cyrlphp_MNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mnphp_CNphp"php tophp=php"mnphp_Mongphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mnphp_Mongphp"php tophp=php"mnphp_Mongphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mrphp"php tophp=php"mrphp_Devaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"msphp"php tophp=php"msphp_Latnphp_MYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"mtphp"php tophp=php"mtphp_Latnphp_MTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"myphp"php tophp=php"myphp_Mymrphp_MMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"myvphp"php tophp=php"myvphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"naphp"php tophp=php"naphp_Latnphp_NRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"nbphp"php tophp=php"nbphp_Latnphp_NOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"nephp"php tophp=php"nephp_Devaphp_NPphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"niuphp"php tophp=php"niuphp_Latnphp_NUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"nlphp"php tophp=php"nlphp_Latnphp_NLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"nnphp"php tophp=php"nnphp_Latnphp_NOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"nrphp"php tophp=php"nrphp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"nsophp"php tophp=php"nsophp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"nyphp"php tophp=php"nyphp_Latnphp_MWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ocphp"php tophp=php"ocphp_Latnphp_FRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"omphp"php tophp=php"omphp_Latnphp_ETphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"orphp"php tophp=php"orphp_Oryaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"osphp"php tophp=php"osphp_Cyrlphp_GEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"paphp"php tophp=php"paphp_Guruphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"paphp_Arabphp"php tophp=php"paphp_Arabphp_PKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"paphp_PKphp"php tophp=php"paphp_Arabphp_PKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"pagphp"php tophp=php"pagphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"papphp"php tophp=php"papphp_Latnphp_ANphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"pauphp"php tophp=php"pauphp_Latnphp_PWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"plphp"php tophp=php"plphp_Latnphp_PLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ponphp"php tophp=php"ponphp_Latnphp_FMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"psphp"php tophp=php"psphp_Arabphp_AFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ptphp"php tophp=php"ptphp_Latnphp_BRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"quphp"php tophp=php"quphp_Latnphp_PEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"rmphp"php tophp=php"rmphp_Latnphp_CHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"rnphp"php tophp=php"rnphp_Latnphp_BIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"rophp"php tophp=php"rophp_Latnphp_ROphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ruphp"php tophp=php"ruphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"rwphp"php tophp=php"rwphp_Latnphp_RWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"saphp"php tophp=php"saphp_Devaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"sahphp"php tophp=php"sahphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"satphp"php tophp=php"satphp_Latnphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"sdphp"php tophp=php"sdphp_Arabphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"sephp"php tophp=php"sephp_Latnphp_NOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"sgphp"php tophp=php"sgphp_Latnphp_CFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"siphp"php tophp=php"siphp_Sinhphp_LKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"sidphp"php tophp=php"sidphp_Latnphp_ETphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"skphp"php tophp=php"skphp_Latnphp_SKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"slphp"php tophp=php"slphp_Latnphp_SIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"smphp"php tophp=php"smphp_Latnphp_WSphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"sophp"php tophp=php"sophp_Latnphp_SOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"sqphp"php tophp=php"sqphp_Latnphp_ALphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"srphp"php tophp=php"srphp_Cyrlphp_RSphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"srphp_MEphp"php tophp=php"srphp_Latnphp_MEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ssphp"php tophp=php"ssphp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"stphp"php tophp=php"stphp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"suphp"php tophp=php"suphp_Latnphp_IDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"svphp"php tophp=php"svphp_Latnphp_SEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"swphp"php tophp=php"swphp_Latnphp_TZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"swbphp"php tophp=php"swbphp_Arabphp_KMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"taphp"php tophp=php"taphp_Tamlphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tephp"php tophp=php"tephp_Teluphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tetphp"php tophp=php"tetphp_Latnphp_TLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tgphp"php tophp=php"tgphp_Cyrlphp_TJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"thphp"php tophp=php"thphp_Thaiphp_THphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tiphp"php tophp=php"tiphp_Ethiphp_ETphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tigphp"php tophp=php"tigphp_Ethiphp_ERphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tkphp"php tophp=php"tkphp_Latnphp_TMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tklphp"php tophp=php"tklphp_Latnphp_TKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tlphp"php tophp=php"tlphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tnphp"php tophp=php"tnphp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tophp"php tophp=php"tophp_Latnphp_TOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tpiphp"php tophp=php"tpiphp_Latnphp_PGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"trphp"php tophp=php"trphp_Latnphp_TRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"trvphp"php tophp=php"trvphp_Latnphp_TWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tsphp"php tophp=php"tsphp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tsgphp"php tophp=php"tsgphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ttphp"php tophp=php"ttphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ttsphp"php tophp=php"ttsphp_Thaiphp_THphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tvlphp"php tophp=php"tvlphp_Latnphp_TVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"twphp"php tophp=php"twphp_Latnphp_GHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"typhp"php tophp=php"typhp_Latnphp_PFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"tyvphp"php tophp=php"tyvphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"udmphp"php tophp=php"udmphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ugphp"php tophp=php"ugphp_Arabphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"ukphp"php tophp=php"ukphp_Cyrlphp_UAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"uliphp"php tophp=php"uliphp_Latnphp_FMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp"php tophp=php"enphp_Latnphp_USphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ADphp"php tophp=php"caphp_Latnphp_ADphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_AEphp"php tophp=php"arphp_Arabphp_AEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_AFphp"php tophp=php"faphp_Arabphp_AFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ALphp"php tophp=php"sqphp_Latnphp_ALphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_AMphp"php tophp=php"hyphp_Armnphp_AMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ANphp"php tophp=php"papphp_Latnphp_ANphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_AOphp"php tophp=php"ptphp_Latnphp_AOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ARphp"php tophp=php"esphp_Latnphp_ARphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ASphp"php tophp=php"smphp_Latnphp_ASphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ATphp"php tophp=php"dephp_Latnphp_ATphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_AWphp"php tophp=php"nlphp_Latnphp_AWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_AXphp"php tophp=php"svphp_Latnphp_AXphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_AZphp"php tophp=php"azphp_Latnphp_AZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Arabphp"php tophp=php"arphp_Arabphp_EGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Arabphp_CNphp"php tophp=php"ugphp_Arabphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Arabphp_DJphp"php tophp=php"arphp_Arabphp_DJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Arabphp_ERphp"php tophp=php"arphp_Arabphp_ERphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Arabphp_ILphp"php tophp=php"arphp_Arabphp_ILphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Arabphp_INphp"php tophp=php"urphp_Arabphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Arabphp_PKphp"php tophp=php"urphp_Arabphp_PKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Armnphp"php tophp=php"hyphp_Armnphp_AMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BAphp"php tophp=php"bsphp_Latnphp_BAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BDphp"php tophp=php"bnphp_Bengphp_BDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BEphp"php tophp=php"nlphp_Latnphp_BEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BFphp"php tophp=php"frphp_Latnphp_BFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BGphp"php tophp=php"bgphp_Cyrlphp_BGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BHphp"php tophp=php"arphp_Arabphp_BHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BIphp"php tophp=php"rnphp_Latnphp_BIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BJphp"php tophp=php"frphp_Latnphp_BJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BLphp"php tophp=php"frphp_Latnphp_BLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BNphp"php tophp=php"msphp_Latnphp_BNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BOphp"php tophp=php"esphp_Latnphp_BOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BRphp"php tophp=php"ptphp_Latnphp_BRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BTphp"php tophp=php"dzphp_Tibtphp_BTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_BYphp"php tophp=php"bephp_Cyrlphp_BYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Bengphp"php tophp=php"bnphp_Bengphp_BDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CDphp"php tophp=php"swphp_Latnphp_CDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CFphp"php tophp=php"frphp_Latnphp_CFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CGphp"php tophp=php"frphp_Latnphp_CGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CHphp"php tophp=php"dephp_Latnphp_CHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CIphp"php tophp=php"frphp_Latnphp_CIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CLphp"php tophp=php"esphp_Latnphp_CLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CMphp"php tophp=php"frphp_Latnphp_CMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CNphp"php tophp=php"zhphp_Hansphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_COphp"php tophp=php"esphp_Latnphp_COphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CRphp"php tophp=php"esphp_Latnphp_CRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CUphp"php tophp=php"esphp_Latnphp_CUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CVphp"php tophp=php"ptphp_Latnphp_CVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CYphp"php tophp=php"elphp_Grekphp_CYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_CZphp"php tophp=php"csphp_Latnphp_CZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Cansphp"php tophp=php"crkphp_Cansphp_CAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Cyrlphp"php tophp=php"ruphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Cyrlphp_BAphp"php tophp=php"srphp_Cyrlphp_BAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Cyrlphp_GEphp"php tophp=php"abphp_Cyrlphp_GEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_DEphp"php tophp=php"dephp_Latnphp_DEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_DJphp"php tophp=php"aaphp_Latnphp_DJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_DKphp"php tophp=php"daphp_Latnphp_DKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_DOphp"php tophp=php"esphp_Latnphp_DOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_DZphp"php tophp=php"arphp_Arabphp_DZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Devaphp"php tophp=php"hiphp_Devaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ECphp"php tophp=php"esphp_Latnphp_ECphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_EEphp"php tophp=php"etphp_Latnphp_EEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_EGphp"php tophp=php"arphp_Arabphp_EGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_EHphp"php tophp=php"arphp_Arabphp_EHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ERphp"php tophp=php"tiphp_Ethiphp_ERphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ESphp"php tophp=php"esphp_Latnphp_ESphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Ethiphp"php tophp=php"amphp_Ethiphp_ETphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_FIphp"php tophp=php"fiphp_Latnphp_FIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_FJphp"php tophp=php"fjphp_Latnphp_FJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_FMphp"php tophp=php"chkphp_Latnphp_FMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_FOphp"php tophp=php"fophp_Latnphp_FOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_FRphp"php tophp=php"frphp_Latnphp_FRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GAphp"php tophp=php"frphp_Latnphp_GAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GEphp"php tophp=php"kaphp_Georphp_GEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GFphp"php tophp=php"frphp_Latnphp_GFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GHphp"php tophp=php"akphp_Latnphp_GHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GLphp"php tophp=php"klphp_Latnphp_GLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GNphp"php tophp=php"frphp_Latnphp_GNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GPphp"php tophp=php"frphp_Latnphp_GPphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GQphp"php tophp=php"frphp_Latnphp_GQphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GRphp"php tophp=php"elphp_Grekphp_GRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GTphp"php tophp=php"esphp_Latnphp_GTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_GWphp"php tophp=php"ptphp_Latnphp_GWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Georphp"php tophp=php"kaphp_Georphp_GEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Grekphp"php tophp=php"elphp_Grekphp_GRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Gujrphp"php tophp=php"guphp_Gujrphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Guruphp"php tophp=php"paphp_Guruphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_HKphp"php tophp=php"zhphp_Hantphp_HKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_HNphp"php tophp=php"esphp_Latnphp_HNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_HRphp"php tophp=php"hrphp_Latnphp_HRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_HTphp"php tophp=php"htphp_Latnphp_HTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_HUphp"php tophp=php"huphp_Latnphp_HUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Haniphp"php tophp=php"zhphp_Hansphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Hansphp"php tophp=php"zhphp_Hansphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Hantphp"php tophp=php"zhphp_Hantphp_TWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Hebrphp"php tophp=php"hephp_Hebrphp_ILphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_IDphp"php tophp=php"idphp_Latnphp_IDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ILphp"php tophp=php"hephp_Hebrphp_ILphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_INphp"php tophp=php"hiphp_Devaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_IQphp"php tophp=php"arphp_Arabphp_IQphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_IRphp"php tophp=php"faphp_Arabphp_IRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ISphp"php tophp=php"isphp_Latnphp_ISphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ITphp"php tophp=php"itphp_Latnphp_ITphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_JOphp"php tophp=php"arphp_Arabphp_JOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_JPphp"php tophp=php"japhp_Jpanphp_JPphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Jpanphp"php tophp=php"japhp_Jpanphp_JPphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_KGphp"php tophp=php"kyphp_Cyrlphp_KGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_KHphp"php tophp=php"kmphp_Khmrphp_KHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_KMphp"php tophp=php"arphp_Arabphp_KMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_KPphp"php tophp=php"kophp_Korephp_KPphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_KRphp"php tophp=php"kophp_Korephp_KRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_KWphp"php tophp=php"arphp_Arabphp_KWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_KZphp"php tophp=php"ruphp_Cyrlphp_KZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Khmrphp"php tophp=php"kmphp_Khmrphp_KHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Kndaphp"php tophp=php"knphp_Kndaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Korephp"php tophp=php"kophp_Korephp_KRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LAphp"php tophp=php"lophp_Laoophp_LAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LBphp"php tophp=php"arphp_Arabphp_LBphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LIphp"php tophp=php"dephp_Latnphp_LIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LKphp"php tophp=php"siphp_Sinhphp_LKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LSphp"php tophp=php"stphp_Latnphp_LSphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LTphp"php tophp=php"ltphp_Latnphp_LTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LUphp"php tophp=php"frphp_Latnphp_LUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LVphp"php tophp=php"lvphp_Latnphp_LVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_LYphp"php tophp=php"arphp_Arabphp_LYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Laoophp"php tophp=php"lophp_Laoophp_LAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_CNphp"php tophp=php"zaphp_Latnphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_CYphp"php tophp=php"trphp_Latnphp_CYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_DZphp"php tophp=php"frphp_Latnphp_DZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_ERphp"php tophp=php"aaphp_Latnphp_ERphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_KMphp"php tophp=php"frphp_Latnphp_KMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_MAphp"php tophp=php"frphp_Latnphp_MAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_MKphp"php tophp=php"sqphp_Latnphp_MKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_SYphp"php tophp=php"frphp_Latnphp_SYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Latnphp_TNphp"php tophp=php"frphp_Latnphp_TNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MAphp"php tophp=php"arphp_Arabphp_MAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MCphp"php tophp=php"frphp_Latnphp_MCphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MDphp"php tophp=php"rophp_Latnphp_MDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MEphp"php tophp=php"srphp_Latnphp_MEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MFphp"php tophp=php"frphp_Latnphp_MFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MGphp"php tophp=php"mgphp_Latnphp_MGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MHphp"php tophp=php"mhphp_Latnphp_MHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MKphp"php tophp=php"mkphp_Cyrlphp_MKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MLphp"php tophp=php"frphp_Latnphp_MLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MMphp"php tophp=php"myphp_Mymrphp_MMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MNphp"php tophp=php"mnphp_Cyrlphp_MNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MOphp"php tophp=php"zhphp_Hantphp_MOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MQphp"php tophp=php"frphp_Latnphp_MQphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MRphp"php tophp=php"arphp_Arabphp_MRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MTphp"php tophp=php"mtphp_Latnphp_MTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MVphp"php tophp=php"dvphp_Thaaphp_MVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MWphp"php tophp=php"nyphp_Latnphp_MWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MXphp"php tophp=php"esphp_Latnphp_MXphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MYphp"php tophp=php"msphp_Latnphp_MYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_MZphp"php tophp=php"ptphp_Latnphp_MZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Mlymphp"php tophp=php"mlphp_Mlymphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Mongphp"php tophp=php"mnphp_Mongphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Mymrphp"php tophp=php"myphp_Mymrphp_MMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_NCphp"php tophp=php"frphp_Latnphp_NCphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_NEphp"php tophp=php"haphp_Latnphp_NEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_NIphp"php tophp=php"esphp_Latnphp_NIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_NLphp"php tophp=php"nlphp_Latnphp_NLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_NOphp"php tophp=php"nbphp_Latnphp_NOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_NPphp"php tophp=php"nephp_Devaphp_NPphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_NUphp"php tophp=php"niuphp_Latnphp_NUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_OMphp"php tophp=php"arphp_Arabphp_OMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Oryaphp"php tophp=php"orphp_Oryaphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PAphp"php tophp=php"esphp_Latnphp_PAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PEphp"php tophp=php"esphp_Latnphp_PEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PFphp"php tophp=php"frphp_Latnphp_PFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PGphp"php tophp=php"tpiphp_Latnphp_PGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PHphp"php tophp=php"filphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PKphp"php tophp=php"urphp_Arabphp_PKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PLphp"php tophp=php"plphp_Latnphp_PLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PMphp"php tophp=php"frphp_Latnphp_PMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PRphp"php tophp=php"esphp_Latnphp_PRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PSphp"php tophp=php"arphp_Arabphp_PSphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PTphp"php tophp=php"ptphp_Latnphp_PTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PWphp"php tophp=php"pauphp_Latnphp_PWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_PYphp"php tophp=php"gnphp_Latnphp_PYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_QAphp"php tophp=php"arphp_Arabphp_QAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_REphp"php tophp=php"frphp_Latnphp_REphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_ROphp"php tophp=php"rophp_Latnphp_ROphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_RSphp"php tophp=php"srphp_Cyrlphp_RSphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_RUphp"php tophp=php"ruphp_Cyrlphp_RUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_RWphp"php tophp=php"rwphp_Latnphp_RWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SAphp"php tophp=php"arphp_Arabphp_SAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SDphp"php tophp=php"arphp_Arabphp_SDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SEphp"php tophp=php"svphp_Latnphp_SEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SIphp"php tophp=php"slphp_Latnphp_SIphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SJphp"php tophp=php"nbphp_Latnphp_SJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SKphp"php tophp=php"skphp_Latnphp_SKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SMphp"php tophp=php"itphp_Latnphp_SMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SNphp"php tophp=php"frphp_Latnphp_SNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SOphp"php tophp=php"sophp_Latnphp_SOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SRphp"php tophp=php"nlphp_Latnphp_SRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_STphp"php tophp=php"ptphp_Latnphp_STphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SVphp"php tophp=php"esphp_Latnphp_SVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_SYphp"php tophp=php"arphp_Arabphp_SYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Sinhphp"php tophp=php"siphp_Sinhphp_LKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TDphp"php tophp=php"frphp_Latnphp_TDphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TGphp"php tophp=php"frphp_Latnphp_TGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_THphp"php tophp=php"thphp_Thaiphp_THphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TJphp"php tophp=php"tgphp_Cyrlphp_TJphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TLphp"php tophp=php"ptphp_Latnphp_TLphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TMphp"php tophp=php"tkphp_Latnphp_TMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TNphp"php tophp=php"arphp_Arabphp_TNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TOphp"php tophp=php"tophp_Latnphp_TOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TRphp"php tophp=php"trphp_Latnphp_TRphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TVphp"php tophp=php"tvlphp_Latnphp_TVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TWphp"php tophp=php"zhphp_Hantphp_TWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_TZphp"php tophp=php"swphp_Latnphp_TZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Tamlphp"php tophp=php"taphp_Tamlphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Teluphp"php tophp=php"tephp_Teluphp_INphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Thaaphp"php tophp=php"dvphp_Thaaphp_MVphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Thaiphp"php tophp=php"thphp_Thaiphp_THphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Tibtphp"php tophp=php"bophp_Tibtphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_UAphp"php tophp=php"ukphp_Cyrlphp_UAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_UGphp"php tophp=php"swphp_Latnphp_UGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_UYphp"php tophp=php"esphp_Latnphp_UYphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_UZphp"php tophp=php"uzphp_Cyrlphp_UZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_VAphp"php tophp=php"laphp_Latnphp_VAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_VEphp"php tophp=php"esphp_Latnphp_VEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_VNphp"php tophp=php"viphp_Latnphp_VNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_VUphp"php tophp=php"biphp_Latnphp_VUphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_WFphp"php tophp=php"frphp_Latnphp_WFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_WSphp"php tophp=php"smphp_Latnphp_WSphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_YEphp"php tophp=php"arphp_Arabphp_YEphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_YTphp"php tophp=php"frphp_Latnphp_YTphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"undphp_Yiiiphp"php tophp=php"iiphp_Yiiiphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"urphp"php tophp=php"urphp_Arabphp_PKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"uzphp"php tophp=php"uzphp_Cyrlphp_UZphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"uzphp_AFphp"php tophp=php"uzphp_Arabphp_AFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"uzphp_Arabphp"php tophp=php"uzphp_Arabphp_AFphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"vephp"php tophp=php"vephp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"viphp"php tophp=php"viphp_Latnphp_VNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"walphp"php tophp=php"walphp_Ethiphp_ETphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"warphp"php tophp=php"warphp_Latnphp_PHphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"wophp"php tophp=php"wophp_Latnphp_SNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"xhphp"php tophp=php"xhphp_Latnphp_ZAphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"yapphp"php tophp=php"yapphp_Latnphp_FMphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"yophp"php tophp=php"yophp_Latnphp_NGphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zaphp"php tophp=php"zaphp_Latnphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zhphp"php tophp=php"zhphp_Hansphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zhphp_HKphp"php tophp=php"zhphp_Hantphp_HKphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zhphp_Haniphp"php tophp=php"zhphp_Hansphp_CNphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zhphp_Hantphp"php tophp=php"zhphp_Hantphp_TWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zhphp_MOphp"php tophp=php"zhphp_Hantphp_MOphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zhphp_TWphp"php tophp=php"zhphp_Hantphp_TWphp"php/php>
+php php php php php php php<likelySubtagphp fromphp=php"zuphp"php tophp=php"zuphp_Latnphp_ZAphp"php/php>
+php php php php <php/likelySubtagsphp>
+<php/supplementalDataphp>

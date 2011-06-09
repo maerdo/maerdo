@@ -1,209 +1,209 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @subpackage Node
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ChildrenIterator.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@subpackagephp Node
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php ChildrenIteratorphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Ldap_Node
- */
-require_once 'Zend/Ldap/Node.php';
+php/php*php*
+php php*php php@seephp Zendphp_Ldapphp_Node
+php php*php/
+requirephp_oncephp php'Zendphp/Ldapphp/Nodephp.phpphp'php;
 
-/**
- * Zend_Ldap_Node_ChildrenIterator provides an iterator to a collection of children nodes.
- *
- * @category   Zend
- * @package    Zend_Ldap
- * @subpackage Node
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveIterator, ArrayAccess
-{
-    /**
-     * An array of Zend_Ldap_Node objects
-     *
-     * @var array
-     */
-    private $_data;
+php/php*php*
+php php*php Zendphp_Ldapphp_Nodephp_ChildrenIteratorphp providesphp anphp iteratorphp tophp aphp collectionphp ofphp childrenphp nodesphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Ldap
+php php*php php@subpackagephp Node
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Ldapphp_Nodephp_ChildrenIteratorphp implementsphp Iteratorphp,php Countablephp,php RecursiveIteratorphp,php ArrayAccess
+php{
+php php php php php/php*php*
+php php php php php php*php Anphp arrayphp ofphp Zendphp_Ldapphp_Nodephp objects
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php privatephp php$php_dataphp;
 
-    /**
-     * Constructor.
-     *
-     * @param  array $data
-     * @return void
-     */
-    public function __construct(array $data)
-    {
-        $this->_data = $data;
-    }
+php php php php php/php*php*
+php php php php php php*php Constructorphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$data
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$dataphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_dataphp php=php php$dataphp;
+php php php php php}
 
-    /**
-     * Returns the number of child nodes.
-     * Implements Countable
-     *
-     * @return int
-     */
-    public function count()
-    {
-        return count($this->_data);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp childphp nodesphp.
+php php php php php php*php Implementsphp Countable
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp countphp(php)
+php php php php php{
+php php php php php php php php returnphp countphp(php$thisphp-php>php_dataphp)php;
+php php php php php}
 
-    /**
-     * Return the current child.
-     * Implements Iterator
-     *
-     * @return Zend_Ldap_Node
-     */
-    public function current()
-    {
-        return current($this->_data);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp currentphp childphp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Node
+php php php php php php*php/
+php php php php publicphp functionphp currentphp(php)
+php php php php php{
+php php php php php php php php returnphp currentphp(php$thisphp-php>php_dataphp)php;
+php php php php php}
 
-    /**
-     * Return the child'd RDN.
-     * Implements Iterator
-     *
-     * @return string
-     */
-    public function key()
-    {
-        return key($this->_data);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp childphp'dphp RDNphp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp keyphp(php)
+php php php php php{
+php php php php php php php php returnphp keyphp(php$thisphp-php>php_dataphp)php;
+php php php php php}
 
-    /**
-     * Move forward to next child.
-     * Implements Iterator
-     */
-    public function next()
-    {
-        next($this->_data);
-    }
+php php php php php/php*php*
+php php php php php php*php Movephp forwardphp tophp nextphp childphp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*php/
+php php php php publicphp functionphp nextphp(php)
+php php php php php{
+php php php php php php php php nextphp(php$thisphp-php>php_dataphp)php;
+php php php php php}
 
-    /**
-     * Rewind the Iterator to the first child.
-     * Implements Iterator
-     */
-    public function rewind()
-    {
-        reset($this->_data);
-    }
+php php php php php/php*php*
+php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp childphp.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*php/
+php php php php publicphp functionphp rewindphp(php)
+php php php php php{
+php php php php php php php php resetphp(php$thisphp-php>php_dataphp)php;
+php php php php php}
 
-    /**
-     * Check if there is a current child
-     * after calls to rewind() or next().
-     * Implements Iterator
-     *
-     * @return boolean
-     */
-    public function valid()
-    {
-        return (current($this->_data)!==false);
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp child
+php php php php php php*php afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)php.
+php php php php php php*php Implementsphp Iterator
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp validphp(php)
+php php php php php{
+php php php php php php php php returnphp php(currentphp(php$thisphp-php>php_dataphp)php!php=php=falsephp)php;
+php php php php php}
 
-    /**
-     * Checks if current node has children.
-     * Returns whether the current element has children.
-     *
-     * @return boolean
-     */
-    public function hasChildren()
-    {
-        if ($this->current() instanceof Zend_Ldap_Node) {
-            return $this->current()->hasChildren();
-        } else {
-            return false;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Checksphp ifphp currentphp nodephp hasphp childrenphp.
+php php php php php php*php Returnsphp whetherphp thephp currentphp elementphp hasphp childrenphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp hasChildrenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>currentphp(php)php instanceofphp Zendphp_Ldapphp_Nodephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>currentphp(php)php-php>hasChildrenphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the children for the current node.
-     *
-     * @return Zend_Ldap_Node_ChildrenIterator
-     */
-    public function getChildren()
-    {
-        if ($this->current() instanceof Zend_Ldap_Node) {
-            return $this->current()->getChildren();
-        } else {
-            return null;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp childrenphp forphp thephp currentphp nodephp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp_Nodephp_ChildrenIterator
+php php php php php php*php/
+php php php php publicphp functionphp getChildrenphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>currentphp(php)php instanceofphp Zendphp_Ldapphp_Nodephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>currentphp(php)php-php>getChildrenphp(php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns a child with a given RDN.
-     * Implements ArrayAccess.
-     *
-     * @param  string $rdn
-     * @return Zend_Ldap_node
-     */
-    public function offsetGet($rdn)
-    {
-        if ($this->offsetExists($rdn)) {
-            return $this->_data[$rdn];
-        } else {
-            return null;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp childphp withphp aphp givenphp RDNphp.
+php php php php php php*php Implementsphp ArrayAccessphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$rdn
+php php php php php php*php php@returnphp Zendphp_Ldapphp_node
+php php php php php php*php/
+php php php php publicphp functionphp offsetGetphp(php$rdnphp)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>offsetExistsphp(php$rdnphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php$rdnphp]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Checks whether a given rdn exists.
-     * Implements ArrayAccess.
-     *
-     * @param  string $rdn
-     * @return boolean
-     */
-    public function offsetExists($rdn)
-    {
-        return (array_key_exists($rdn, $this->_data));
-    }
+php php php php php/php*php*
+php php php php php php*php Checksphp whetherphp aphp givenphp rdnphp existsphp.
+php php php php php php*php Implementsphp ArrayAccessphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$rdn
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp offsetExistsphp(php$rdnphp)
+php php php php php{
+php php php php php php php php returnphp php(arrayphp_keyphp_existsphp(php$rdnphp,php php$thisphp-php>php_dataphp)php)php;
+php php php php php}
 
-    /**
-     * Does nothing.
-     * Implements ArrayAccess.
-     *
-     * @param  string $name
-     * @return null
-     */
-    public function offsetUnset($name) { }
+php php php php php/php*php*
+php php php php php php*php Doesphp nothingphp.
+php php php php php php*php Implementsphp ArrayAccessphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php publicphp functionphp offsetUnsetphp(php$namephp)php php{php php}
 
-    /**
-     * Does nothing.
-     * Implements ArrayAccess.
-     *
-     * @param  string $name
-     * @param  mixed $value
-     * @return null
-     */
-    public function offsetSet($name, $value) { }
+php php php php php/php*php*
+php php php php php php*php Doesphp nothingphp.
+php php php php php php*php Implementsphp ArrayAccessphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php mixedphp php$value
+php php php php php php*php php@returnphp null
+php php php php php php*php/
+php php php php publicphp functionphp offsetSetphp(php$namephp,php php$valuephp)php php{php php}
 
-    /**
-     * Get all children as an array
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        $data = array();
-        foreach ($this as $rdn => $node) {
-            $data[$rdn] = $node;
-        }
-        return $data;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp allphp childrenphp asphp anphp array
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp toArrayphp(php)
+php php php php php{
+php php php php php php php php php$dataphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$thisphp asphp php$rdnphp php=php>php php$nodephp)php php{
+php php php php php php php php php php php php php$dataphp[php$rdnphp]php php=php php$nodephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$dataphp;
+php php php php php}
+php}

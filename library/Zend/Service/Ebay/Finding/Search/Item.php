@@ -1,394 +1,394 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http:framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http:framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Item.php 22824 2010-08-09 18:59:54Z renanbr $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Ebay
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Itemphp.phpphp php2php2php8php2php4php php2php0php1php0php-php0php8php-php0php9php php1php8php:php5php9php:php5php4Zphp renanbrphp php$
+php php*php/
 
-/**
- * @see Zend_Service_Ebay_Finding_Abstract
- */
-require_once 'Zend/Service/Ebay/Finding/Abstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Abstract
+php php*php/
+requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Abstractphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Service
- * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http:framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
- */
-class Zend_Service_Ebay_Finding_Search_Item extends Zend_Service_Ebay_Finding_Abstract
-{
-    /**
-     * If true, the seller requires immediate payment for the item. If false (or
-     * not specified), immediate payment is not requested. Buyers must have a
-     * PayPal account to purchase items that require immediate payment.
-     *
-     * A seller can choose to require immediate payment for Fixed Price and Buy
-     * It Now listings, including eBay Stores Inventory listings. If a Buy It
-     * Now item ends as an auction (that is, if the Buy It Now option is removed
-     * due to bids being placed on the listing), the immediate payment
-     * requirement does not apply.
-     *
-     * @var boolean
-     */
-    public $autoPay;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Service
+php php*php php@subpackagephp Ebay
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@usesphp php php php php php php Zendphp_Servicephp_Ebayphp_Findingphp_Abstract
+php php*php/
+classphp Zendphp_Servicephp_Ebayphp_Findingphp_Searchphp_Itemphp extendsphp Zendphp_Servicephp_Ebayphp_Findingphp_Abstract
+php{
+php php php php php/php*php*
+php php php php php php*php Ifphp truephp,php thephp sellerphp requiresphp immediatephp paymentphp forphp thephp itemphp.php Ifphp falsephp php(or
+php php php php php php*php notphp specifiedphp)php,php immediatephp paymentphp isphp notphp requestedphp.php Buyersphp mustphp havephp a
+php php php php php php*php PayPalphp accountphp tophp purchasephp itemsphp thatphp requirephp immediatephp paymentphp.
+php php php php php php*
+php php php php php php*php Aphp sellerphp canphp choosephp tophp requirephp immediatephp paymentphp forphp Fixedphp Pricephp andphp Buy
+php php php php php php*php Itphp Nowphp listingsphp,php includingphp eBayphp Storesphp Inventoryphp listingsphp.php Ifphp aphp Buyphp It
+php php php php php php*php Nowphp itemphp endsphp asphp anphp auctionphp php(thatphp isphp,php ifphp thephp Buyphp Itphp Nowphp optionphp isphp removed
+php php php php php php*php duephp tophp bidsphp beingphp placedphp onphp thephp listingphp)php,php thephp immediatephp payment
+php php php php php php*php requirementphp doesphp notphp applyphp.
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php publicphp php$autoPayphp;
 
-    /**
-     * A unique identification number assigned by eBay to registered nonprofit
-     * charity organizations.
-     *
-     * @var integer
-     */
-    public $charityId;
+php php php php php/php*php*
+php php php php php php*php Aphp uniquephp identificationphp numberphp assignedphp byphp eBayphp tophp registeredphp nonprofit
+php php php php php php*php charityphp organizationsphp.
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php publicphp php$charityIdphp;
 
-    /**
-     * Two-letter ISO 3166 country code to indicate the country where the item
-     * is located.
-     *
-     * @link http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm
-     * @var  string
-     */
-    public $country;
+php php php php php/php*php*
+php php php php php php*php Twophp-letterphp ISOphp php3php1php6php6php countryphp codephp tophp indicatephp thephp countryphp wherephp thephp item
+php php php php php php*php isphp locatedphp.
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/wwwphp.isophp.orgphp/isophp/countryphp_codesphp/isophp_php3php1php6php6php_codephp_listsphp/englishphp_countryphp_namesphp_andphp_codephp_elementsphp.htm
+php php php php php php*php php@varphp php string
+php php php php php php*php/
+php php php php publicphp php$countryphp;
 
-    /**
-     * The distance that the item is from the buyer, calculated usin
-     *  buyerPostalCode.
-     *
-     *  The unit for distance varies by site, and is either miles or kilometers.
-     *  If the country whose site you are searching uses kilometers to measure
-     *  distance (for example, India/EBAY-IN), the unit is kilometers. If the
-     *  site is either the US or UK, the distance unit is miles.
-     *
-     *  This value is only returned for distance-based searches. You must
-     *  specify a buyerPostalCode and either sort by Distance, or use a
-     *  combination of the MaxDistance LocalSearch itemFilters.
-     *
-     * @var float
-     */
-    public $distance;
+php php php php php/php*php*
+php php php php php php*php Thephp distancephp thatphp thephp itemphp isphp fromphp thephp buyerphp,php calculatedphp usin
+php php php php php php*php php buyerPostalCodephp.
+php php php php php php*
+php php php php php php*php php Thephp unitphp forphp distancephp variesphp byphp sitephp,php andphp isphp eitherphp milesphp orphp kilometersphp.
+php php php php php php*php php Ifphp thephp countryphp whosephp sitephp youphp arephp searchingphp usesphp kilometersphp tophp measure
+php php php php php php*php php distancephp php(forphp examplephp,php Indiaphp/EBAYphp-INphp)php,php thephp unitphp isphp kilometersphp.php Ifphp the
+php php php php php php*php php sitephp isphp eitherphp thephp USphp orphp UKphp,php thephp distancephp unitphp isphp milesphp.
+php php php php php php*
+php php php php php php*php php Thisphp valuephp isphp onlyphp returnedphp forphp distancephp-basedphp searchesphp.php Youphp must
+php php php php php php*php php specifyphp aphp buyerPostalCodephp andphp eitherphp sortphp byphp Distancephp,php orphp usephp a
+php php php php php php*php php combinationphp ofphp thephp MaxDistancephp LocalSearchphp itemFiltersphp.
+php php php php php php*
+php php php php php php*php php@varphp float
+php php php php php php*php/
+php php php php publicphp php$distancephp;
 
-    /**
-     * URL for the Gallery Plus image.
-     *
-     * The size of Gallery Plus images (up to 400 x 400 pixels) is bigger than
-     * the size of standard gallery images. In site search results, you can view
-     * the Gallery Plus image by hovering over or clicking the Enlarge link or
-     * magifying glass icon. The image uses one of the following graphics
-     * formats: JPEG, BMP, TIFF, or GIF. This field is only returned when the
-     * seller has opted for the Gallery Plus option for the given item.
-     *
-     * @var string[]
-     */
-    public $galleryPlusPictureURL;
+php php php php php/php*php*
+php php php php php php*php URLphp forphp thephp Galleryphp Plusphp imagephp.
+php php php php php php*
+php php php php php php*php Thephp sizephp ofphp Galleryphp Plusphp imagesphp php(upphp tophp php4php0php0php xphp php4php0php0php pixelsphp)php isphp biggerphp than
+php php php php php php*php thephp sizephp ofphp standardphp galleryphp imagesphp.php Inphp sitephp searchphp resultsphp,php youphp canphp view
+php php php php php php*php thephp Galleryphp Plusphp imagephp byphp hoveringphp overphp orphp clickingphp thephp Enlargephp linkphp or
+php php php php php php*php magifyingphp glassphp iconphp.php Thephp imagephp usesphp onephp ofphp thephp followingphp graphics
+php php php php php php*php formatsphp:php JPEGphp,php BMPphp,php TIFFphp,php orphp GIFphp.php Thisphp fieldphp isphp onlyphp returnedphp whenphp the
+php php php php php php*php sellerphp hasphp optedphp forphp thephp Galleryphp Plusphp optionphp forphp thephp givenphp itemphp.
+php php php php php php*
+php php php php php php*php php@varphp stringphp[php]
+php php php php php php*php/
+php php php php publicphp php$galleryPlusPictureURLphp;
 
-    /**
-     * URL for the Gallery thumbnail image.
-     *
-     * The image must be provided in one of the following graphics formats:
-     * JPEG, BMP, TIF, or GIF. Returned only if the seller chose to show a
-     * gallery image.
-     *
-     * @var string
-     */
-    public $galleryURL;
+php php php php php/php*php*
+php php php php php php*php URLphp forphp thephp Galleryphp thumbnailphp imagephp.
+php php php php php php*
+php php php php php php*php Thephp imagephp mustphp bephp providedphp inphp onephp ofphp thephp followingphp graphicsphp formatsphp:
+php php php php php php*php JPEGphp,php BMPphp,php TIFphp,php orphp GIFphp.php Returnedphp onlyphp ifphp thephp sellerphp chosephp tophp showphp a
+php php php php php php*php galleryphp imagephp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$galleryURLphp;
 
-    /**
-     * The identifier for the site on which the item is listed.
-     *
-     * Returns a Global ID, which is a unique identifier that specifies the
-     * combination of the site, language, and territory. In other eBay APIs
-     * (such as the Shopping API), this value is know as the site ID.
-     *
-     * @link http://developer.ebay.com/DevZone/finding/CallRef/Enums/GlobalIdList.html
-     * @var  string
-     */
-    public $globalId;
+php php php php php/php*php*
+php php php php php php*php Thephp identifierphp forphp thephp sitephp onphp whichphp thephp itemphp isphp listedphp.
+php php php php php php*
+php php php php php php*php Returnsphp aphp Globalphp IDphp,php whichphp isphp aphp uniquephp identifierphp thatphp specifiesphp the
+php php php php php php*php combinationphp ofphp thephp sitephp,php languagephp,php andphp territoryphp.php Inphp otherphp eBayphp APIs
+php php php php php php*php php(suchphp asphp thephp Shoppingphp APIphp)php,php thisphp valuephp isphp knowphp asphp thephp sitephp IDphp.
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/Enumsphp/GlobalIdListphp.html
+php php php php php php*php php@varphp php string
+php php php php php php*php/
+php php php php publicphp php$globalIdphp;
 
-    /**
-     * The ID that uniquely identifies the item listing.
-     *
-     * eBay generates this ID when an item is listed. ID values are unique
-     * across all eBay sites.
-     *
-     * @var string
-     */
-    public $itemId;
+php php php php php/php*php*
+php php php php php php*php Thephp IDphp thatphp uniquelyphp identifiesphp thephp itemphp listingphp.
+php php php php php php*
+php php php php php php*php eBayphp generatesphp thisphp IDphp whenphp anphp itemphp isphp listedphp.php IDphp valuesphp arephp unique
+php php php php php php*php acrossphp allphp eBayphp sitesphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$itemIdphp;
 
-    /**
-     * The format type of the listing, such as online auction, fixed price, or
-     * advertisement.
-     *
-     * @var Zend_Service_Ebay_Finding_ListingInfo
-     */
-    public $listingInfo;
+php php php php php/php*php*
+php php php php php php*php Thephp formatphp typephp ofphp thephp listingphp,php suchphp asphp onlinephp auctionphp,php fixedphp pricephp,php or
+php php php php php php*php advertisementphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Ebayphp_Findingphp_ListingInfo
+php php php php php php*php/
+php php php php publicphp php$listingInfophp;
 
-    /**
-     * Physical location of the item, as specified by the seller.
-     *
-     * This gives a general indication from where the item will be shipped (or
-     * delivered).
-     *
-     * @var string
-     */
-    public $location;
+php php php php php/php*php*
+php php php php php php*php Physicalphp locationphp ofphp thephp itemphp,php asphp specifiedphp byphp thephp sellerphp.
+php php php php php php*
+php php php php php php*php Thisphp givesphp aphp generalphp indicationphp fromphp wherephp thephp itemphp willphp bephp shippedphp php(or
+php php php php php php*php deliveredphp)php.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$locationphp;
 
-    /**
-     * Identifies the payment method (or methods) the seller will accept for the
-     * item (such as PayPal).
-     *
-     *  Payment methods are not applicable to eBay Real Estate advertisement
-     *  listings or other Classified Ad listing formats.
-     *
-     * @link http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/BuyerPaymentMethodCodeType.html
-     * @var  string[]
-     */
-    public $paymentMethod;
+php php php php php/php*php*
+php php php php php php*php Identifiesphp thephp paymentphp methodphp php(orphp methodsphp)php thephp sellerphp willphp acceptphp forphp the
+php php php php php php*php itemphp php(suchphp asphp PayPalphp)php.
+php php php php php php*
+php php php php php php*php php Paymentphp methodsphp arephp notphp applicablephp tophp eBayphp Realphp Estatephp advertisement
+php php php php php php*php php listingsphp orphp otherphp Classifiedphp Adphp listingphp formatsphp.
+php php php php php php*
+php php php php php php*php php@linkphp httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/shoppingphp/docsphp/CallRefphp/typesphp/BuyerPaymentMethodCodeTypephp.html
+php php php php php php*php php@varphp php stringphp[php]
+php php php php php php*php/
+php php php php publicphp php$paymentMethodphp;
 
-    /**
-     * The postal code where the listed item is located.
-     *
-     * This field is returned only if a postal code has been specified by the
-     * seller. eBay proximity and local search behavior can use the combination
-     * of buyerPostalCode and postalCode values.
-     *
-     * @var string
-     */
-    public $postalCode;
+php php php php php/php*php*
+php php php php php php*php Thephp postalphp codephp wherephp thephp listedphp itemphp isphp locatedphp.
+php php php php php php*
+php php php php php php*php Thisphp fieldphp isphp returnedphp onlyphp ifphp aphp postalphp codephp hasphp beenphp specifiedphp byphp the
+php php php php php php*php sellerphp.php eBayphp proximityphp andphp localphp searchphp behaviorphp canphp usephp thephp combination
+php php php php php php*php ofphp buyerPostalCodephp andphp postalCodephp valuesphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$postalCodephp;
 
-    /**
-     * Details about the first (or only) category in which the item is listed.
-     *
-     * Note that items can be listed in more than a single category.
-     *
-     * @var Zend_Service_Ebay_Finding_Category
-     */
-    public $primaryCategory;
+php php php php php/php*php*
+php php php php php php*php Detailsphp aboutphp thephp firstphp php(orphp onlyphp)php categoryphp inphp whichphp thephp itemphp isphp listedphp.
+php php php php php php*
+php php php php php php*php Notephp thatphp itemsphp canphp bephp listedphp inphp morephp thanphp aphp singlephp categoryphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Ebayphp_Findingphp_Category
+php php php php php php*php/
+php php php php publicphp php$primaryCategoryphp;
 
-    /**
-     * Unique identifier for the eBay catalog product with which the item was
-     * listed.
-     *
-     * An eBay catalog product consists of pre-filled Item Specifics, additional
-     * descriptive information, plus a stock photo (if available). These product
-     * details are used to pre-fill item information, which is used to describe
-     * the item and can also help surface the item in searches.
-     *
-     * eBay supports the following types of product ID types: ISBN, UPC, EAN,
-     * and ReferenceID (ePID, also known as an eBay Product Reference ID).
-     * ReferenceID values are returned when available. A UPC, ISBN, or EAN
-     * product identifier will be returned only when a ReferenceID is not
-     * available.
-     *
-     * This productId value can be used as input with findItemsByProduct to
-     * retrieve items that were listed with the specified eBay catalog product.
-     *
-     * This field is only returned when a product was used to list the item.
-     *
-     * @var string
-     */
-    public $productId;
+php php php php php/php*php*
+php php php php php php*php Uniquephp identifierphp forphp thephp eBayphp catalogphp productphp withphp whichphp thephp itemphp was
+php php php php php php*php listedphp.
+php php php php php php*
+php php php php php php*php Anphp eBayphp catalogphp productphp consistsphp ofphp prephp-filledphp Itemphp Specificsphp,php additional
+php php php php php php*php descriptivephp informationphp,php plusphp aphp stockphp photophp php(ifphp availablephp)php.php Thesephp product
+php php php php php php*php detailsphp arephp usedphp tophp prephp-fillphp itemphp informationphp,php whichphp isphp usedphp tophp describe
+php php php php php php*php thephp itemphp andphp canphp alsophp helpphp surfacephp thephp itemphp inphp searchesphp.
+php php php php php php*
+php php php php php php*php eBayphp supportsphp thephp followingphp typesphp ofphp productphp IDphp typesphp:php ISBNphp,php UPCphp,php EANphp,
+php php php php php php*php andphp ReferenceIDphp php(ePIDphp,php alsophp knownphp asphp anphp eBayphp Productphp Referencephp IDphp)php.
+php php php php php php*php ReferenceIDphp valuesphp arephp returnedphp whenphp availablephp.php Aphp UPCphp,php ISBNphp,php orphp EAN
+php php php php php php*php productphp identifierphp willphp bephp returnedphp onlyphp whenphp aphp ReferenceIDphp isphp not
+php php php php php php*php availablephp.
+php php php php php php*
+php php php php php php*php Thisphp productIdphp valuephp canphp bephp usedphp asphp inputphp withphp findItemsByProductphp to
+php php php php php php*php retrievephp itemsphp thatphp werephp listedphp withphp thephp specifiedphp eBayphp catalogphp productphp.
+php php php php php php*
+php php php php php php*php Thisphp fieldphp isphp onlyphp returnedphp whenphp aphp productphp wasphp usedphp tophp listphp thephp itemphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$productIdphp;
 
-    /**
-     * Details about the second category in which the item is listed.
-     *
-     * This element is not returned if the seller did not specify a secondary
-     * category.
-     *
-     * @var Zend_Service_Ebay_Finding_Category
-     */
-    public $secondaryCategory;
+php php php php php/php*php*
+php php php php php php*php Detailsphp aboutphp thephp secondphp categoryphp inphp whichphp thephp itemphp isphp listedphp.
+php php php php php php*
+php php php php php php*php Thisphp elementphp isphp notphp returnedphp ifphp thephp sellerphp didphp notphp specifyphp aphp secondary
+php php php php php php*php categoryphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Ebayphp_Findingphp_Category
+php php php php php php*php/
+php php php php publicphp php$secondaryCategoryphp;
 
-    /**
-     * Information about the item's seller.
-     *
-     * Only returned if SellerInfo is specified in the outputSelector field in
-     * the request.
-     *
-     * @var Zend_Service_Ebay_Finding_SellerInfo
-     */
-    public $sellerInfo;
+php php php php php/php*php*
+php php php php php php*php Informationphp aboutphp thephp itemphp'sphp sellerphp.
+php php php php php php*
+php php php php php php*php Onlyphp returnedphp ifphp SellerInfophp isphp specifiedphp inphp thephp outputSelectorphp fieldphp in
+php php php php php php*php thephp requestphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Ebayphp_Findingphp_SellerInfo
+php php php php php php*php/
+php php php php publicphp php$sellerInfophp;
 
-    /**
-     * Specifies the item's selling status with regards to eBay's processing
-     * workflow.
-     *
-     * @var Zend_Service_Ebay_Finding_SellingStatus
-     */
-    public $sellingStatus;
+php php php php php/php*php*
+php php php php php php*php Specifiesphp thephp itemphp'sphp sellingphp statusphp withphp regardsphp tophp eBayphp'sphp processing
+php php php php php php*php workflowphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Ebayphp_Findingphp_SellingStatus
+php php php php php php*php/
+php php php php publicphp php$sellingStatusphp;
 
-    /**
-     * Container for data about a listing's shipping details.
-     *
-     * @var Zend_Service_Ebay_Finding_ShippingInfo
-     */
-    public $shippingInfo;
+php php php php php/php*php*
+php php php php php php*php Containerphp forphp dataphp aboutphp aphp listingphp'sphp shippingphp detailsphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Ebayphp_Findingphp_ShippingInfo
+php php php php php php*php/
+php php php php publicphp php$shippingInfophp;
 
-    /**
-     * Information about the eBay store in which the item is listed.
-     *
-     * Only returned if the item is listed in a store and StoreInfo is specified
-     * in the outputSelector field in the request.
-     *
-     * @var Zend_Service_Ebay_Finding_Storefront
-     */
-    public $storeInfo;
+php php php php php/php*php*
+php php php php php php*php Informationphp aboutphp thephp eBayphp storephp inphp whichphp thephp itemphp isphp listedphp.
+php php php php php php*
+php php php php php php*php Onlyphp returnedphp ifphp thephp itemphp isphp listedphp inphp aphp storephp andphp StoreInfophp isphp specified
+php php php php php php*php inphp thephp outputSelectorphp fieldphp inphp thephp requestphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Servicephp_Ebayphp_Findingphp_Storefront
+php php php php php php*php/
+php php php php publicphp php$storeInfophp;
 
-    /**
-     * Subtitle of the item.
-     *
-     * Only returned if the seller included a subtitle for the listing.
-     *
-     * @var string
-     */
-    public $subtitle;
+php php php php php/php*php*
+php php php php php php*php Subtitlephp ofphp thephp itemphp.
+php php php php php php*
+php php php php php php*php Onlyphp returnedphp ifphp thephp sellerphp includedphp aphp subtitlephp forphp thephp listingphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$subtitlephp;
 
-    /**
-     * Name of the item as it appears in the listing title, or in search and
-     * browse results.
-     *
-     * @var string
-     */
-    public $title;
+php php php php php/php*php*
+php php php php php php*php Namephp ofphp thephp itemphp asphp itphp appearsphp inphp thephp listingphp titlephp,php orphp inphp searchphp and
+php php php php php php*php browsephp resultsphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$titlephp;
 
-    /**
-     * The URL to view this specific listing on eBay.
-     *
-     * The returned URL is optimized to support natural search. That is, the URL
-     * is designed to make items on eBay easier to find via popular internet
-     * search engines. The URL includes the item title along with other
-     * optimizations. To note, "?" (question mark) optimizes to "_W0QQ", "&"
-     * (ampersand) optimizes to "QQ", and "=" (equals sign) optimizes to "Z".
-     *
-     * Do not modify the returned URLs in your application queries (for example,
-     * eBay won't recognize the URL if you change QQ to &). In the Sandbox
-     * environment (and on the Hong Kong site), the data returned in this field
-     * is a standard ViewItem URL rather than the ViewItemURL for natural
-     * search.
-     *
-     * @var string
-     */
-    public $viewItemURL;
+php php php php php/php*php*
+php php php php php php*php Thephp URLphp tophp viewphp thisphp specificphp listingphp onphp eBayphp.
+php php php php php php*
+php php php php php php*php Thephp returnedphp URLphp isphp optimizedphp tophp supportphp naturalphp searchphp.php Thatphp isphp,php thephp URL
+php php php php php php*php isphp designedphp tophp makephp itemsphp onphp eBayphp easierphp tophp findphp viaphp popularphp internet
+php php php php php php*php searchphp enginesphp.php Thephp URLphp includesphp thephp itemphp titlephp alongphp withphp other
+php php php php php php*php optimizationsphp.php Tophp notephp,php php"php?php"php php(questionphp markphp)php optimizesphp tophp php"php_Wphp0QQphp"php,php php"php&php"
+php php php php php php*php php(ampersandphp)php optimizesphp tophp php"QQphp"php,php andphp php"php=php"php php(equalsphp signphp)php optimizesphp tophp php"Zphp"php.
+php php php php php php*
+php php php php php php*php Dophp notphp modifyphp thephp returnedphp URLsphp inphp yourphp applicationphp queriesphp php(forphp examplephp,
+php php php php php php*php eBayphp wonphp'tphp recognizephp thephp URLphp ifphp youphp changephp QQphp tophp php&php)php.php Inphp thephp Sandbox
+php php php php php php*php environmentphp php(andphp onphp thephp Hongphp Kongphp sitephp)php,php thephp dataphp returnedphp inphp thisphp field
+php php php php php php*php isphp aphp standardphp ViewItemphp URLphp ratherphp thanphp thephp ViewItemURLphp forphp natural
+php php php php php php*php searchphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$viewItemURLphp;
 
-    /**
-     * @return void
-     */
-    protected function _init()
-    {
-        parent::_init();
-        $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
+php php php php php/php*php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_initphp(php)
+php php php php php{
+php php php php php php php php parentphp:php:php_initphp(php)php;
+php php php php php php php php php$nsphp php=php Zendphp_Servicephp_Ebayphp_Findingphp:php:XMLNSphp_FINDINGphp;
 
-        $this->autoPay               = $this->_query(".//$ns:autoPay[1]", 'boolean');
-        $this->charityId             = $this->_query(".//$ns:charityId[1]", 'integer');
-        $this->country               = $this->_query(".//$ns:country[1]", 'string');
-        $this->distance              = $this->_query(".//$ns:distance[1]", 'float');
-        $this->galleryPlusPictureURL = $this->_query(".//$ns:galleryPlusPictureURL", 'string', true);
-        $this->galleryURL            = $this->_query(".//$ns:galleryURL[1]", 'string');
-        $this->globalId              = $this->_query(".//$ns:globalId[1]", 'string');
-        $this->itemId                = $this->_query(".//$ns:itemId[1]", 'string');
-        $this->location              = $this->_query(".//$ns:location[1]", 'string');
-        $this->paymentMethod         = $this->_query(".//$ns:paymentMethod", 'string', true);
-        $this->postalCode            = $this->_query(".//$ns:postalCode[1]", 'string');
-        $this->productId             = $this->_query(".//$ns:productId[1]", 'string');
-        $this->subtitle              = $this->_query(".//$ns:subtitle[1]", 'string');
-        $this->title                 = $this->_query(".//$ns:title[1]", 'string');
-        $this->viewItemURL           = $this->_query(".//$ns:viewItemURL[1]", 'string');
+php php php php php php php php php$thisphp-php>autoPayphp php php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:autoPayphp[php1php]php"php,php php'booleanphp'php)php;
+php php php php php php php php php$thisphp-php>charityIdphp php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:charityIdphp[php1php]php"php,php php'integerphp'php)php;
+php php php php php php php php php$thisphp-php>countryphp php php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:countryphp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>distancephp php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:distancephp[php1php]php"php,php php'floatphp'php)php;
+php php php php php php php php php$thisphp-php>galleryPlusPictureURLphp php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:galleryPlusPictureURLphp"php,php php'stringphp'php,php truephp)php;
+php php php php php php php php php$thisphp-php>galleryURLphp php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:galleryURLphp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>globalIdphp php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:globalIdphp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>itemIdphp php php php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:itemIdphp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>locationphp php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:locationphp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>paymentMethodphp php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:paymentMethodphp"php,php php'stringphp'php,php truephp)php;
+php php php php php php php php php$thisphp-php>postalCodephp php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:postalCodephp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>productIdphp php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:productIdphp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>subtitlephp php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:subtitlephp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>titlephp php php php php php php php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:titlephp[php1php]php"php,php php'stringphp'php)php;
+php php php php php php php php php$thisphp-php>viewItemURLphp php php php php php php php php php php php=php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:viewItemURLphp[php1php]php"php,php php'stringphp'php)php;
 
-        $this->_attributes['distance'] = array(
-            'unit' => $this->_query(".//$ns:distance[1]/@unit[1]", 'string')
-        );
-        $this->_attributes['productId'] = array(
-            'type' => $this->_query(".//$ns:productId[1]/@type[1]", 'string')
-        );
+php php php php php php php php php$thisphp-php>php_attributesphp[php'distancephp'php]php php=php arrayphp(
+php php php php php php php php php php php php php'unitphp'php php=php>php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:distancephp[php1php]php/php@unitphp[php1php]php"php,php php'stringphp'php)
+php php php php php php php php php)php;
+php php php php php php php php php$thisphp-php>php_attributesphp[php'productIdphp'php]php php=php arrayphp(
+php php php php php php php php php php php php php'typephp'php php=php>php php$thisphp-php>php_queryphp(php"php.php/php/php$nsphp:productIdphp[php1php]php/php@typephp[php1php]php"php,php php'stringphp'php)
+php php php php php php php php php)php;
 
-        $node = $this->_xPath->query(".//$ns:listingInfo[1]", $this->_dom)->item(0);
-        if ($node) {
-            /**
-             * @see Zend_Service_Ebay_Finding_ListingInfo
-             */
-            require_once 'Zend/Service/Ebay/Finding/ListingInfo.php';
-            $this->listingInfo = new Zend_Service_Ebay_Finding_ListingInfo($node);
-        }
+php php php php php php php php php$nodephp php=php php$thisphp-php>php_xPathphp-php>queryphp(php"php.php/php/php$nsphp:listingInfophp[php1php]php"php,php php$thisphp-php>php_domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$nodephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_ListingInfo
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/ListingInfophp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>listingInfophp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_ListingInfophp(php$nodephp)php;
+php php php php php php php php php}
 
-        $node = $this->_xPath->query(".//$ns:primaryCategory[1]", $this->_dom)->item(0);
-        if ($node) {
-            /**
-             * @see Zend_Service_Ebay_Finding_Category
-             */
-            require_once 'Zend/Service/Ebay/Finding/Category.php';
-            $this->primaryCategory = new Zend_Service_Ebay_Finding_Category($node);
-        }
+php php php php php php php php php$nodephp php=php php$thisphp-php>php_xPathphp-php>queryphp(php"php.php/php/php$nsphp:primaryCategoryphp[php1php]php"php,php php$thisphp-php>php_domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$nodephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Category
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Categoryphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>primaryCategoryphp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_Categoryphp(php$nodephp)php;
+php php php php php php php php php}
 
-        $node = $this->_xPath->query(".//$ns:secondaryCategory[1]", $this->_dom)->item(0);
-        if ($node) {
-            /**
-             * @see Zend_Service_Ebay_Finding_Category
-             */
-            require_once 'Zend/Service/Ebay/Finding/Category.php';
-            $this->secondaryCategory = new Zend_Service_Ebay_Finding_Category($node);
-        }
+php php php php php php php php php$nodephp php=php php$thisphp-php>php_xPathphp-php>queryphp(php"php.php/php/php$nsphp:secondaryCategoryphp[php1php]php"php,php php$thisphp-php>php_domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$nodephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Category
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Categoryphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>secondaryCategoryphp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_Categoryphp(php$nodephp)php;
+php php php php php php php php php}
 
-        $node = $this->_xPath->query(".//$ns:sellerInfo[1]", $this->_dom)->item(0);
-        if ($node) {
-            /**
-             * @see Zend_Service_Ebay_Finding_SellerInfo
-             */
-            require_once 'Zend/Service/Ebay/Finding/SellerInfo.php';
-            $this->sellerInfo = new Zend_Service_Ebay_Finding_SellerInfo($node);
-        }
+php php php php php php php php php$nodephp php=php php$thisphp-php>php_xPathphp-php>queryphp(php"php.php/php/php$nsphp:sellerInfophp[php1php]php"php,php php$thisphp-php>php_domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$nodephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_SellerInfo
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/SellerInfophp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>sellerInfophp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_SellerInfophp(php$nodephp)php;
+php php php php php php php php php}
 
-        $node = $this->_xPath->query(".//$ns:sellingStatus[1]", $this->_dom)->item(0);
-        if ($node) {
-            /**
-             * @see Zend_Service_Ebay_Finding_SellingStatus
-             */
-            require_once 'Zend/Service/Ebay/Finding/SellingStatus.php';
-            $this->sellingStatus = new Zend_Service_Ebay_Finding_SellingStatus($node);
-        }
+php php php php php php php php php$nodephp php=php php$thisphp-php>php_xPathphp-php>queryphp(php"php.php/php/php$nsphp:sellingStatusphp[php1php]php"php,php php$thisphp-php>php_domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$nodephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_SellingStatus
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/SellingStatusphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>sellingStatusphp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_SellingStatusphp(php$nodephp)php;
+php php php php php php php php php}
 
-        $node = $this->_xPath->query("./$ns:shippingInfo", $this->_dom)->item(0);
-        if ($node) {
-            /**
-             * @see Zend_Service_Ebay_Finding_ShippingInfo
-             */
-            require_once 'Zend/Service/Ebay/Finding/ShippingInfo.php';
-            $this->shippingInfo = new Zend_Service_Ebay_Finding_ShippingInfo($node);
-        }
+php php php php php php php php php$nodephp php=php php$thisphp-php>php_xPathphp-php>queryphp(php"php.php/php$nsphp:shippingInfophp"php,php php$thisphp-php>php_domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$nodephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_ShippingInfo
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/ShippingInfophp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>shippingInfophp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_ShippingInfophp(php$nodephp)php;
+php php php php php php php php php}
 
-        $node = $this->_xPath->query(".//$ns:storeInfo[1]", $this->_dom)->item(0);
-        if ($node) {
-            /**
-             * @see Zend_Service_Ebay_Finding_Storefront
-             */
-            require_once 'Zend/Service/Ebay/Finding/Storefront.php';
-            $this->storeInfo = new Zend_Service_Ebay_Finding_Storefront($node);
-        }
-    }
+php php php php php php php php php$nodephp php=php php$thisphp-php>php_xPathphp-php>queryphp(php"php.php/php/php$nsphp:storeInfophp[php1php]php"php,php php$thisphp-php>php_domphp)php-php>itemphp(php0php)php;
+php php php php php php php php ifphp php(php$nodephp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Storefront
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Storefrontphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>storeInfophp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_Storefrontphp(php$nodephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * @param  Zend_Service_Ebay_Finding $proxy
-     * @param  Zend_Config|array         $options
-     * @return Zend_Service_Ebay_Finding_Response_Items
-     */
-    public function findItemsByProduct(Zend_Service_Ebay_Finding $proxy, $options = null)
-    {
-        $type = $this->attributes('productId', 'type');
-        return $proxy->findItemsByProduct($this->productId, $type, $options);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php php@paramphp php Zendphp_Servicephp_Ebayphp_Findingphp php$proxy
+php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php php php php php php php php php$options
+php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
+php php php php php php*php/
+php php php php publicphp functionphp findItemsByProductphp(Zendphp_Servicephp_Ebayphp_Findingphp php$proxyphp,php php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$typephp php=php php$thisphp-php>attributesphp(php'productIdphp'php,php php'typephp'php)php;
+php php php php php php php php returnphp php$proxyphp-php>findItemsByProductphp(php$thisphp-php>productIdphp,php php$typephp,php php$optionsphp)php;
+php php php php php}
+php}

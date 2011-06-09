@@ -1,667 +1,667 @@
-<?php
-
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Http
- * @subpackage Response
- * @version    $Id: Response.php 23484 2010-12-10 03:57:59Z mjh_ca $
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/**
- * Zend_Http_Response represents an HTTP 1.0 / 1.1 response message. It
- * includes easy access to all the response's different elemts, as well as some
- * convenience methods for parsing and validating HTTP responses.
- *
- * @package    Zend_Http
- * @subpackage Response
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Http_Response
-{
-    /**
-     * List of all known HTTP response codes - used by responseCodeAsText() to
-     * translate numeric codes to messages.
-     *
-     * @var array
-     */
-    protected static $messages = array(
-        // Informational 1xx
-        100 => 'Continue',
-        101 => 'Switching Protocols',
-
-        // Success 2xx
-        200 => 'OK',
-        201 => 'Created',
-        202 => 'Accepted',
-        203 => 'Non-Authoritative Information',
-        204 => 'No Content',
-        205 => 'Reset Content',
-        206 => 'Partial Content',
-
-        // Redirection 3xx
-        300 => 'Multiple Choices',
-        301 => 'Moved Permanently',
-        302 => 'Found',  // 1.1
-        303 => 'See Other',
-        304 => 'Not Modified',
-        305 => 'Use Proxy',
-        // 306 is deprecated but reserved
-        307 => 'Temporary Redirect',
-
-        // Client Error 4xx
-        400 => 'Bad Request',
-        401 => 'Unauthorized',
-        402 => 'Payment Required',
-        403 => 'Forbidden',
-        404 => 'Not Found',
-        405 => 'Method Not Allowed',
-        406 => 'Not Acceptable',
-        407 => 'Proxy Authentication Required',
-        408 => 'Request Timeout',
-        409 => 'Conflict',
-        410 => 'Gone',
-        411 => 'Length Required',
-        412 => 'Precondition Failed',
-        413 => 'Request Entity Too Large',
-        414 => 'Request-URI Too Long',
-        415 => 'Unsupported Media Type',
-        416 => 'Requested Range Not Satisfiable',
-        417 => 'Expectation Failed',
-
-        // Server Error 5xx
-        500 => 'Internal Server Error',
-        501 => 'Not Implemented',
-        502 => 'Bad Gateway',
-        503 => 'Service Unavailable',
-        504 => 'Gateway Timeout',
-        505 => 'HTTP Version Not Supported',
-        509 => 'Bandwidth Limit Exceeded'
-    );
-
-    /**
-     * The HTTP version (1.0, 1.1)
-     *
-     * @var string
-     */
-    protected $version;
-
-    /**
-     * The HTTP response code
-     *
-     * @var int
-     */
-    protected $code;
-
-    /**
-     * The HTTP response code as string
-     * (e.g. 'Not Found' for 404 or 'Internal Server Error' for 500)
-     *
-     * @var string
-     */
-    protected $message;
-
-    /**
-     * The HTTP response headers array
-     *
-     * @var array
-     */
-    protected $headers = array();
-
-    /**
-     * The HTTP response body
-     *
-     * @var string
-     */
-    protected $body;
-
-    /**
-     * HTTP response constructor
-     *
-     * In most cases, you would use Zend_Http_Response::fromString to parse an HTTP
-     * response string and create a new Zend_Http_Response object.
-     *
-     * NOTE: The constructor no longer accepts nulls or empty values for the code and
-     * headers and will throw an exception if the passed values do not form a valid HTTP
-     * responses.
-     *
-     * If no message is passed, the message will be guessed according to the response code.
-     *
-     * @param int    $code Response code (200, 404, ...)
-     * @param array  $headers Headers array
-     * @param string $body Response body
-     * @param string $version HTTP version
-     * @param string $message Response code as text
-     * @throws Zend_Http_Exception
-     */
-    public function __construct($code, array $headers, $body = null, $version = '1.1', $message = null)
-    {
-        // Make sure the response code is valid and set it
-        if (self::responseCodeAsText($code) === null) {
-            require_once 'Zend/Http/Exception.php';
-            throw new Zend_Http_Exception("{$code} is not a valid HTTP response code");
-        }
-
-        $this->code = $code;
-
-        foreach ($headers as $name => $value) {
-            if (is_int($name)) {
-                $header = explode(":", $value, 2);
-                if (count($header) != 2) {
-                    require_once 'Zend/Http/Exception.php';
-                    throw new Zend_Http_Exception("'{$value}' is not a valid HTTP header");
-                }
-
-                $name  = trim($header[0]);
-                $value = trim($header[1]);
-            }
-
-            $this->headers[ucwords(strtolower($name))] = $value;
-        }
-
-        // Set the body
-        $this->body = $body;
-
-        // Set the HTTP version
-        if (! preg_match('|^\d\.\d$|', $version)) {
-            require_once 'Zend/Http/Exception.php';
-            throw new Zend_Http_Exception("Invalid HTTP response version: $version");
-        }
-
-        $this->version = $version;
-
-        // If we got the response message, set it. Else, set it according to
-        // the response code
-        if (is_string($message)) {
-            $this->message = $message;
-        } else {
-            $this->message = self::responseCodeAsText($code);
-        }
-    }
-
-    /**
-     * Check whether the response is an error
-     *
-     * @return boolean
-     */
-    public function isError()
-    {
-        $restype = floor($this->code / 100);
-        if ($restype == 4 || $restype == 5) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Check whether the response in successful
-     *
-     * @return boolean
-     */
-    public function isSuccessful()
-    {
-        $restype = floor($this->code / 100);
-        if ($restype == 2 || $restype == 1) { // Shouldn't 3xx count as success as well ???
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Check whether the response is a redirection
-     *
-     * @return boolean
-     */
-    public function isRedirect()
-    {
-        $restype = floor($this->code / 100);
-        if ($restype == 3) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Get the response body as string
-     *
-     * This method returns the body of the HTTP response (the content), as it
-     * should be in it's readable version - that is, after decoding it (if it
-     * was decoded), deflating it (if it was gzip compressed), etc.
-     *
-     * If you want to get the raw body (as transfered on wire) use
-     * $this->getRawBody() instead.
-     *
-     * @return string
-     */
-    public function getBody()
-    {
-        $body = '';
-
-        // Decode the body if it was transfer-encoded
-        switch (strtolower($this->getHeader('transfer-encoding'))) {
-
-            // Handle chunked body
-            case 'chunked':
-                $body = self::decodeChunkedBody($this->body);
-                break;
-
-            // No transfer encoding, or unknown encoding extension:
-            // return body as is
-            default:
-                $body = $this->body;
-                break;
-        }
-
-        // Decode any content-encoding (gzip or deflate) if needed
-        switch (strtolower($this->getHeader('content-encoding'))) {
-
-            // Handle gzip encoding
-            case 'gzip':
-                $body = self::decodeGzip($body);
-                break;
-
-            // Handle deflate encoding
-            case 'deflate':
-                $body = self::decodeDeflate($body);
-                break;
-
-            default:
-                break;
-        }
-
-        return $body;
-    }
-
-    /**
-     * Get the raw response body (as transfered "on wire") as string
-     *
-     * If the body is encoded (with Transfer-Encoding, not content-encoding -
-     * IE "chunked" body), gzip compressed, etc. it will not be decoded.
-     *
-     * @return string
-     */
-    public function getRawBody()
-    {
-        return $this->body;
-    }
-
-    /**
-     * Get the HTTP version of the response
-     *
-     * @return string
-     */
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    /**
-     * Get the HTTP response status code
-     *
-     * @return int
-     */
-    public function getStatus()
-    {
-        return $this->code;
-    }
-
-    /**
-     * Return a message describing the HTTP response code
-     * (Eg. "OK", "Not Found", "Moved Permanently")
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    /**
-     * Get the response headers
-     *
-     * @return array
-     */
-    public function getHeaders()
-    {
-        return $this->headers;
-    }
-
-    /**
-     * Get a specific header as string, or null if it is not set
-     *
-     * @param string$header
-     * @return string|array|null
-     */
-    public function getHeader($header)
-    {
-        $header = ucwords(strtolower($header));
-        if (! is_string($header) || ! isset($this->headers[$header])) return null;
-
-        return $this->headers[$header];
-    }
-
-    /**
-     * Get all headers as string
-     *
-     * @param boolean $status_line Whether to return the first status line (IE "HTTP 200 OK")
-     * @param string $br Line breaks (eg. "\n", "\r\n", "<br />")
-     * @return string
-     */
-    public function getHeadersAsString($status_line = true, $br = "\n")
-    {
-        $str = '';
-
-        if ($status_line) {
-            $str = "HTTP/{$this->version} {$this->code} {$this->message}{$br}";
-        }
-
-        // Iterate over the headers and stringify them
-        foreach ($this->headers as $name => $value)
-        {
-            if (is_string($value))
-                $str .= "{$name}: {$value}{$br}";
-
-            elseif (is_array($value)) {
-                foreach ($value as $subval) {
-                    $str .= "{$name}: {$subval}{$br}";
-                }
-            }
-        }
-
-        return $str;
-    }
-
-    /**
-     * Get the entire response as string
-     *
-     * @param string $br Line breaks (eg. "\n", "\r\n", "<br />")
-     * @return string
-     */
-    public function asString($br = "\n")
-    {
-        return $this->getHeadersAsString(true, $br) . $br . $this->getRawBody();
-    }
-
-    /**
-     * Implements magic __toString()
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->asString();
-    }
-
-    /**
-     * A convenience function that returns a text representation of
-     * HTTP response codes. Returns 'Unknown' for unknown codes.
-     * Returns array of all codes, if $code is not specified.
-     *
-     * Conforms to HTTP/1.1 as defined in RFC 2616 (except for 'Unknown')
-     * See http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10 for reference
-     *
-     * @param int $code HTTP response code
-     * @param boolean $http11 Use HTTP version 1.1
-     * @return string
-     */
-    public static function responseCodeAsText($code = null, $http11 = true)
-    {
-        $messages = self::$messages;
-        if (! $http11) $messages[302] = 'Moved Temporarily';
-
-        if ($code === null) {
-            return $messages;
-        } elseif (isset($messages[$code])) {
-            return $messages[$code];
-        } else {
-            return 'Unknown';
-        }
-    }
-
-    /**
-     * Extract the response code from a response string
-     *
-     * @param string $response_str
-     * @return int
-     */
-    public static function extractCode($response_str)
-    {
-        preg_match("|^HTTP/[\d\.x]+ (\d+)|", $response_str, $m);
-
-        if (isset($m[1])) {
-            return (int) $m[1];
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Extract the HTTP message from a response
-     *
-     * @param string $response_str
-     * @return string
-     */
-    public static function extractMessage($response_str)
-    {
-        preg_match("|^HTTP/[\d\.x]+ \d+ ([^\r\n]+)|", $response_str, $m);
-
-        if (isset($m[1])) {
-            return $m[1];
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Extract the HTTP version from a response
-     *
-     * @param string $response_str
-     * @return string
-     */
-    public static function extractVersion($response_str)
-    {
-        preg_match("|^HTTP/([\d\.x]+) \d+|", $response_str, $m);
-
-        if (isset($m[1])) {
-            return $m[1];
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Extract the headers from a response string
-     *
-     * @param   string $response_str
-     * @return  array
-     */
-    public static function extractHeaders($response_str)
-    {
-        $headers = array();
-
-        // First, split body and headers
-        $parts = preg_split('|(?:\r?\n){2}|m', $response_str, 2);
-        if (! $parts[0]) return $headers;
-
-        // Split headers part to lines
-        $lines = explode("\n", $parts[0]);
-        unset($parts);
-        $last_header = null;
-
-        foreach($lines as $line) {
-            $line = trim($line, "\r\n");
-            if ($line == "") break;
-
-            // Locate headers like 'Location: ...' and 'Location:...' (note the missing space)
-            if (preg_match("|^([\w-]+):\s*(.+)|", $line, $m)) {
-                unset($last_header);
-                $h_name = strtolower($m[1]);
-                $h_value = $m[2];
-
-                if (isset($headers[$h_name])) {
-                    if (! is_array($headers[$h_name])) {
-                        $headers[$h_name] = array($headers[$h_name]);
-                    }
-
-                    $headers[$h_name][] = $h_value;
-                } else {
-                    $headers[$h_name] = $h_value;
-                }
-                $last_header = $h_name;
-            } elseif (preg_match("|^\s+(.+)$|", $line, $m) && $last_header !== null) {
-                if (is_array($headers[$last_header])) {
-                    end($headers[$last_header]);
-                    $last_header_key = key($headers[$last_header]);
-                    $headers[$last_header][$last_header_key] .= $m[1];
-                } else {
-                    $headers[$last_header] .= $m[1];
-                }
-            }
-        }
-
-        return $headers;
-    }
-
-    /**
-     * Extract the body from a response string
-     *
-     * @param string $response_str
-     * @return string
-     */
-    public static function extractBody($response_str)
-    {
-        $parts = preg_split('|(?:\r?\n){2}|m', $response_str, 2);
-        if (isset($parts[1])) {
-            return $parts[1];
-        }
-        return '';
-    }
-
-    /**
-     * Decode a "chunked" transfer-encoded body and return the decoded text
-     *
-     * @param string $body
-     * @return string
-     */
-    public static function decodeChunkedBody($body)
-    {
-        $decBody = '';
-
-        // If mbstring overloads substr and strlen functions, we have to
-        // override it's internal encoding
-        if (function_exists('mb_internal_encoding') &&
-           ((int) ini_get('mbstring.func_overload')) & 2) {
-
-            $mbIntEnc = mb_internal_encoding();
-            mb_internal_encoding('ASCII');
-        }
-
-        while (trim($body)) {
-            if (! preg_match("/^([\da-fA-F]+)[^\r\n]*\r\n/sm", $body, $m)) {
-                require_once 'Zend/Http/Exception.php';
-                throw new Zend_Http_Exception("Error parsing body - doesn't seem to be a chunked message");
-            }
-
-            $length = hexdec(trim($m[1]));
-            $cut = strlen($m[0]);
-            $decBody .= substr($body, $cut, $length);
-            $body = substr($body, $cut + $length + 2);
-        }
-
-        if (isset($mbIntEnc)) {
-            mb_internal_encoding($mbIntEnc);
-        }
-
-        return $decBody;
-    }
-
-    /**
-     * Decode a gzip encoded message (when Content-encoding = gzip)
-     *
-     * Currently requires PHP with zlib support
-     *
-     * @param string $body
-     * @return string
-     */
-    public static function decodeGzip($body)
-    {
-        if (! function_exists('gzinflate')) {
-            require_once 'Zend/Http/Exception.php';
-            throw new Zend_Http_Exception(
-                'zlib extension is required in order to decode "gzip" encoding'
-            );
-        }
-
-        return gzinflate(substr($body, 10));
-    }
-
-    /**
-     * Decode a zlib deflated message (when Content-encoding = deflate)
-     *
-     * Currently requires PHP with zlib support
-     *
-     * @param string $body
-     * @return string
-     */
-    public static function decodeDeflate($body)
-    {
-        if (! function_exists('gzuncompress')) {
-            require_once 'Zend/Http/Exception.php';
-            throw new Zend_Http_Exception(
-                'zlib extension is required in order to decode "deflate" encoding'
-            );
-        }
-
-        /**
-         * Some servers (IIS ?) send a broken deflate response, without the
-         * RFC-required zlib header.
-         *
-         * We try to detect the zlib header, and if it does not exsit we
-         * teat the body is plain DEFLATE content.
-         *
-         * This method was adapted from PEAR HTTP_Request2 by (c) Alexey Borzov
-         *
-         * @link http://framework.zend.com/issues/browse/ZF-6040
-         */
-        $zlibHeader = unpack('n', substr($body, 0, 2));
-        if ($zlibHeader[1] % 31 == 0) {
-            return gzuncompress($body);
-        } else {
-            return gzinflate($body);
-        }
-    }
-
-    /**
-     * Create a new Zend_Http_Response object from a string
-     *
-     * @param string $response_str
-     * @return Zend_Http_Response
-     */
-    public static function fromString($response_str)
-    {
-        $code    = self::extractCode($response_str);
-        $headers = self::extractHeaders($response_str);
-        $body    = self::extractBody($response_str);
-        $version = self::extractVersion($response_str);
-        $message = self::extractMessage($response_str);
-
-        return new Zend_Http_Response($code, $headers, $body, $version, $message);
-    }
-}
+<php?php
+
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Http
+php php*php php@subpackagephp Response
+php php*php php@versionphp php php php php$Idphp:php Responsephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+
+php/php*php*
+php php*php Zendphp_Httpphp_Responsephp representsphp anphp HTTPphp php1php.php0php php/php php1php.php1php responsephp messagephp.php It
+php php*php includesphp easyphp accessphp tophp allphp thephp responsephp'sphp differentphp elemtsphp,php asphp wellphp asphp some
+php php*php conveniencephp methodsphp forphp parsingphp andphp validatingphp HTTPphp responsesphp.
+php php*
+php php*php php@packagephp php php php Zendphp_Http
+php php*php php@subpackagephp Response
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Httpphp_Response
+php{
+php php php php php/php*php*
+php php php php php php*php Listphp ofphp allphp knownphp HTTPphp responsephp codesphp php-php usedphp byphp responseCodeAsTextphp(php)php to
+php php php php php php*php translatephp numericphp codesphp tophp messagesphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp staticphp php$messagesphp php=php arrayphp(
+php php php php php php php php php/php/php Informationalphp php1xx
+php php php php php php php php php1php0php0php php=php>php php'Continuephp'php,
+php php php php php php php php php1php0php1php php=php>php php'Switchingphp Protocolsphp'php,
+
+php php php php php php php php php/php/php Successphp php2xx
+php php php php php php php php php2php0php0php php=php>php php'OKphp'php,
+php php php php php php php php php2php0php1php php=php>php php'Createdphp'php,
+php php php php php php php php php2php0php2php php=php>php php'Acceptedphp'php,
+php php php php php php php php php2php0php3php php=php>php php'Nonphp-Authoritativephp Informationphp'php,
+php php php php php php php php php2php0php4php php=php>php php'Nophp Contentphp'php,
+php php php php php php php php php2php0php5php php=php>php php'Resetphp Contentphp'php,
+php php php php php php php php php2php0php6php php=php>php php'Partialphp Contentphp'php,
+
+php php php php php php php php php/php/php Redirectionphp php3xx
+php php php php php php php php php3php0php0php php=php>php php'Multiplephp Choicesphp'php,
+php php php php php php php php php3php0php1php php=php>php php'Movedphp Permanentlyphp'php,
+php php php php php php php php php3php0php2php php=php>php php'Foundphp'php,php php php/php/php php1php.php1
+php php php php php php php php php3php0php3php php=php>php php'Seephp Otherphp'php,
+php php php php php php php php php3php0php4php php=php>php php'Notphp Modifiedphp'php,
+php php php php php php php php php3php0php5php php=php>php php'Usephp Proxyphp'php,
+php php php php php php php php php/php/php php3php0php6php isphp deprecatedphp butphp reserved
+php php php php php php php php php3php0php7php php=php>php php'Temporaryphp Redirectphp'php,
+
+php php php php php php php php php/php/php Clientphp Errorphp php4xx
+php php php php php php php php php4php0php0php php=php>php php'Badphp Requestphp'php,
+php php php php php php php php php4php0php1php php=php>php php'Unauthorizedphp'php,
+php php php php php php php php php4php0php2php php=php>php php'Paymentphp Requiredphp'php,
+php php php php php php php php php4php0php3php php=php>php php'Forbiddenphp'php,
+php php php php php php php php php4php0php4php php=php>php php'Notphp Foundphp'php,
+php php php php php php php php php4php0php5php php=php>php php'Methodphp Notphp Allowedphp'php,
+php php php php php php php php php4php0php6php php=php>php php'Notphp Acceptablephp'php,
+php php php php php php php php php4php0php7php php=php>php php'Proxyphp Authenticationphp Requiredphp'php,
+php php php php php php php php php4php0php8php php=php>php php'Requestphp Timeoutphp'php,
+php php php php php php php php php4php0php9php php=php>php php'Conflictphp'php,
+php php php php php php php php php4php1php0php php=php>php php'Gonephp'php,
+php php php php php php php php php4php1php1php php=php>php php'Lengthphp Requiredphp'php,
+php php php php php php php php php4php1php2php php=php>php php'Preconditionphp Failedphp'php,
+php php php php php php php php php4php1php3php php=php>php php'Requestphp Entityphp Toophp Largephp'php,
+php php php php php php php php php4php1php4php php=php>php php'Requestphp-URIphp Toophp Longphp'php,
+php php php php php php php php php4php1php5php php=php>php php'Unsupportedphp Mediaphp Typephp'php,
+php php php php php php php php php4php1php6php php=php>php php'Requestedphp Rangephp Notphp Satisfiablephp'php,
+php php php php php php php php php4php1php7php php=php>php php'Expectationphp Failedphp'php,
+
+php php php php php php php php php/php/php Serverphp Errorphp php5xx
+php php php php php php php php php5php0php0php php=php>php php'Internalphp Serverphp Errorphp'php,
+php php php php php php php php php5php0php1php php=php>php php'Notphp Implementedphp'php,
+php php php php php php php php php5php0php2php php=php>php php'Badphp Gatewayphp'php,
+php php php php php php php php php5php0php3php php=php>php php'Servicephp Unavailablephp'php,
+php php php php php php php php php5php0php4php php=php>php php'Gatewayphp Timeoutphp'php,
+php php php php php php php php php5php0php5php php=php>php php'HTTPphp Versionphp Notphp Supportedphp'php,
+php php php php php php php php php5php0php9php php=php>php php'Bandwidthphp Limitphp Exceededphp'
+php php php php php)php;
+
+php php php php php/php*php*
+php php php php php php*php Thephp HTTPphp versionphp php(php1php.php0php,php php1php.php1php)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$versionphp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp HTTPphp responsephp code
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$codephp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp HTTPphp responsephp codephp asphp string
+php php php php php php*php php(ephp.gphp.php php'Notphp Foundphp'php forphp php4php0php4php orphp php'Internalphp Serverphp Errorphp'php forphp php5php0php0php)
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$messagephp;
+
+php php php php php/php*php*
+php php php php php php*php Thephp HTTPphp responsephp headersphp array
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$headersphp php=php arrayphp(php)php;
+
+php php php php php/php*php*
+php php php php php php*php Thephp HTTPphp responsephp body
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$bodyphp;
+
+php php php php php/php*php*
+php php php php php php*php HTTPphp responsephp constructor
+php php php php php php*
+php php php php php php*php Inphp mostphp casesphp,php youphp wouldphp usephp Zendphp_Httpphp_Responsephp:php:fromStringphp tophp parsephp anphp HTTP
+php php php php php php*php responsephp stringphp andphp createphp aphp newphp Zendphp_Httpphp_Responsephp objectphp.
+php php php php php php*
+php php php php php php*php NOTEphp:php Thephp constructorphp nophp longerphp acceptsphp nullsphp orphp emptyphp valuesphp forphp thephp codephp and
+php php php php php php*php headersphp andphp willphp throwphp anphp exceptionphp ifphp thephp passedphp valuesphp dophp notphp formphp aphp validphp HTTP
+php php php php php php*php responsesphp.
+php php php php php php*
+php php php php php php*php Ifphp nophp messagephp isphp passedphp,php thephp messagephp willphp bephp guessedphp accordingphp tophp thephp responsephp codephp.
+php php php php php php*
+php php php php php php*php php@paramphp intphp php php php php$codephp Responsephp codephp php(php2php0php0php,php php4php0php4php,php php.php.php.php)
+php php php php php php*php php@paramphp arrayphp php php$headersphp Headersphp array
+php php php php php php*php php@paramphp stringphp php$bodyphp Responsephp body
+php php php php php php*php php@paramphp stringphp php$versionphp HTTPphp version
+php php php php php php*php php@paramphp stringphp php$messagephp Responsephp codephp asphp text
+php php php php php php*php php@throwsphp Zendphp_Httpphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$codephp,php arrayphp php$headersphp,php php$bodyphp php=php nullphp,php php$versionphp php=php php'php1php.php1php'php,php php$messagephp php=php nullphp)
+php php php php php{
+php php php php php php php php php/php/php Makephp surephp thephp responsephp codephp isphp validphp andphp setphp it
+php php php php php php php php ifphp php(selfphp:php:responseCodeAsTextphp(php$codephp)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Exceptionphp(php"php{php$codephp}php isphp notphp aphp validphp HTTPphp responsephp codephp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>codephp php=php php$codephp;
+
+php php php php php php php php foreachphp php(php$headersphp asphp php$namephp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(isphp_intphp(php$namephp)php)php php{
+php php php php php php php php php php php php php php php php php$headerphp php=php explodephp(php"php:php"php,php php$valuephp,php php2php)php;
+php php php php php php php php php php php php php php php php ifphp php(countphp(php$headerphp)php php!php=php php2php)php php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Exceptionphp(php"php'php{php$valuephp}php'php isphp notphp aphp validphp HTTPphp headerphp"php)php;
+php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php$namephp php php=php trimphp(php$headerphp[php0php]php)php;
+php php php php php php php php php php php php php php php php php$valuephp php=php trimphp(php$headerphp[php1php]php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$thisphp-php>headersphp[ucwordsphp(strtolowerphp(php$namephp)php)php]php php=php php$valuephp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Setphp thephp body
+php php php php php php php php php$thisphp-php>bodyphp php=php php$bodyphp;
+
+php php php php php php php php php/php/php Setphp thephp HTTPphp version
+php php php php php php php php ifphp php(php!php pregphp_matchphp(php'php|php^php\dphp\php.php\dphp$php|php'php,php php$versionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Exceptionphp(php"Invalidphp HTTPphp responsephp versionphp:php php$versionphp"php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>versionphp php=php php$versionphp;
+
+php php php php php php php php php/php/php Ifphp wephp gotphp thephp responsephp messagephp,php setphp itphp.php Elsephp,php setphp itphp accordingphp to
+php php php php php php php php php/php/php thephp responsephp code
+php php php php php php php php ifphp php(isphp_stringphp(php$messagephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>messagephp php=php php$messagephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>messagephp php=php selfphp:php:responseCodeAsTextphp(php$codephp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp whetherphp thephp responsephp isphp anphp error
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isErrorphp(php)
+php php php php php{
+php php php php php php php php php$restypephp php=php floorphp(php$thisphp-php>codephp php/php php1php0php0php)php;
+php php php php php php php php ifphp php(php$restypephp php=php=php php4php php|php|php php$restypephp php=php=php php5php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp whetherphp thephp responsephp inphp successful
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isSuccessfulphp(php)
+php php php php php{
+php php php php php php php php php$restypephp php=php floorphp(php$thisphp-php>codephp php/php php1php0php0php)php;
+php php php php php php php php ifphp php(php$restypephp php=php=php php2php php|php|php php$restypephp php=php=php php1php)php php{php php/php/php Shouldnphp'tphp php3xxphp countphp asphp successphp asphp wellphp php?php?php?
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Checkphp whetherphp thephp responsephp isphp aphp redirection
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isRedirectphp(php)
+php php php php php{
+php php php php php php php php php$restypephp php=php floorphp(php$thisphp-php>codephp php/php php1php0php0php)php;
+php php php php php php php php ifphp php(php$restypephp php=php=php php3php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp falsephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp responsephp bodyphp asphp string
+php php php php php php*
+php php php php php php*php Thisphp methodphp returnsphp thephp bodyphp ofphp thephp HTTPphp responsephp php(thephp contentphp)php,php asphp it
+php php php php php php*php shouldphp bephp inphp itphp'sphp readablephp versionphp php-php thatphp isphp,php afterphp decodingphp itphp php(ifphp it
+php php php php php php*php wasphp decodedphp)php,php deflatingphp itphp php(ifphp itphp wasphp gzipphp compressedphp)php,php etcphp.
+php php php php php php*
+php php php php php php*php Ifphp youphp wantphp tophp getphp thephp rawphp bodyphp php(asphp transferedphp onphp wirephp)php use
+php php php php php php*php php$thisphp-php>getRawBodyphp(php)php insteadphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getBodyphp(php)
+php php php php php{
+php php php php php php php php php$bodyphp php=php php'php'php;
+
+php php php php php php php php php/php/php Decodephp thephp bodyphp ifphp itphp wasphp transferphp-encoded
+php php php php php php php php switchphp php(strtolowerphp(php$thisphp-php>getHeaderphp(php'transferphp-encodingphp'php)php)php)php php{
+
+php php php php php php php php php php php php php/php/php Handlephp chunkedphp body
+php php php php php php php php php php php php casephp php'chunkedphp'php:
+php php php php php php php php php php php php php php php php php$bodyphp php=php selfphp:php:decodeChunkedBodyphp(php$thisphp-php>bodyphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php/php/php Nophp transferphp encodingphp,php orphp unknownphp encodingphp extensionphp:
+php php php php php php php php php php php php php/php/php returnphp bodyphp asphp is
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$bodyphp php=php php$thisphp-php>bodyphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Decodephp anyphp contentphp-encodingphp php(gzipphp orphp deflatephp)php ifphp needed
+php php php php php php php php switchphp php(strtolowerphp(php$thisphp-php>getHeaderphp(php'contentphp-encodingphp'php)php)php)php php{
+
+php php php php php php php php php php php php php/php/php Handlephp gzipphp encoding
+php php php php php php php php php php php php casephp php'gzipphp'php:
+php php php php php php php php php php php php php php php php php$bodyphp php=php selfphp:php:decodeGzipphp(php$bodyphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php php/php/php Handlephp deflatephp encoding
+php php php php php php php php php php php php casephp php'deflatephp'php:
+php php php php php php php php php php php php php php php php php$bodyphp php=php selfphp:php:decodeDeflatephp(php$bodyphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$bodyphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp rawphp responsephp bodyphp php(asphp transferedphp php"onphp wirephp"php)php asphp string
+php php php php php php*
+php php php php php php*php Ifphp thephp bodyphp isphp encodedphp php(withphp Transferphp-Encodingphp,php notphp contentphp-encodingphp php-
+php php php php php php*php IEphp php"chunkedphp"php bodyphp)php,php gzipphp compressedphp,php etcphp.php itphp willphp notphp bephp decodedphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getRawBodyphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>bodyphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp HTTPphp versionphp ofphp thephp response
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getVersionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>versionphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp HTTPphp responsephp statusphp code
+php php php php php php*
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp getStatusphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>codephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp messagephp describingphp thephp HTTPphp responsephp code
+php php php php php php*php php(Egphp.php php"OKphp"php,php php"Notphp Foundphp"php,php php"Movedphp Permanentlyphp"php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getMessagephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>messagephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp responsephp headers
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getHeadersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>headersphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp aphp specificphp headerphp asphp stringphp,php orphp nullphp ifphp itphp isphp notphp set
+php php php php php php*
+php php php php php php*php php@paramphp stringphp$header
+php php php php php php*php php@returnphp stringphp|arrayphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getHeaderphp(php$headerphp)
+php php php php php{
+php php php php php php php php php$headerphp php=php ucwordsphp(strtolowerphp(php$headerphp)php)php;
+php php php php php php php php ifphp php(php!php isphp_stringphp(php$headerphp)php php|php|php php!php issetphp(php$thisphp-php>headersphp[php$headerphp]php)php)php returnphp nullphp;
+
+php php php php php php php php returnphp php$thisphp-php>headersphp[php$headerphp]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp allphp headersphp asphp string
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$statusphp_linephp Whetherphp tophp returnphp thephp firstphp statusphp linephp php(IEphp php"HTTPphp php2php0php0php OKphp"php)
+php php php php php php*php php@paramphp stringphp php$brphp Linephp breaksphp php(egphp.php php"php\nphp"php,php php"php\rphp\nphp"php,php php"php<brphp php/php>php"php)
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getHeadersAsStringphp(php$statusphp_linephp php=php truephp,php php$brphp php=php php"php\nphp"php)
+php php php php php{
+php php php php php php php php php$strphp php=php php'php'php;
+
+php php php php php php php php ifphp php(php$statusphp_linephp)php php{
+php php php php php php php php php php php php php$strphp php=php php"HTTPphp/php{php$thisphp-php>versionphp}php php{php$thisphp-php>codephp}php php{php$thisphp-php>messagephp}php{php$brphp}php"php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Iteratephp overphp thephp headersphp andphp stringifyphp them
+php php php php php php php php foreachphp php(php$thisphp-php>headersphp asphp php$namephp php=php>php php$valuephp)
+php php php php php php php php php{
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php)
+php php php php php php php php php php php php php php php php php$strphp php.php=php php"php{php$namephp}php:php php{php$valuephp}php{php$brphp}php"php;
+
+php php php php php php php php php php php php elseifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$subvalphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$strphp php.php=php php"php{php$namephp}php:php php{php$subvalphp}php{php$brphp}php"php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$strphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp entirephp responsephp asphp string
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$brphp Linephp breaksphp php(egphp.php php"php\nphp"php,php php"php\rphp\nphp"php,php php"php<brphp php/php>php"php)
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp asStringphp(php$brphp php=php php"php\nphp"php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getHeadersAsStringphp(truephp,php php$brphp)php php.php php$brphp php.php php$thisphp-php>getRawBodyphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Implementsphp magicphp php_php_toStringphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp php_php_toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>asStringphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Aphp conveniencephp functionphp thatphp returnsphp aphp textphp representationphp of
+php php php php php php*php HTTPphp responsephp codesphp.php Returnsphp php'Unknownphp'php forphp unknownphp codesphp.
+php php php php php php*php Returnsphp arrayphp ofphp allphp codesphp,php ifphp php$codephp isphp notphp specifiedphp.
+php php php php php php*
+php php php php php php*php Conformsphp tophp HTTPphp/php1php.php1php asphp definedphp inphp RFCphp php2php6php1php6php php(exceptphp forphp php'Unknownphp'php)
+php php php php php php*php Seephp httpphp:php/php/wwwphp.wphp3php.orgphp/Protocolsphp/rfcphp2php6php1php6php/rfcphp2php6php1php6php-secphp1php0php.htmlphp#secphp1php0php forphp reference
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$codephp HTTPphp responsephp code
+php php php php php php*php php@paramphp booleanphp php$httpphp1php1php Usephp HTTPphp versionphp php1php.php1
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp responseCodeAsTextphp(php$codephp php=php nullphp,php php$httpphp1php1php php=php truephp)
+php php php php php{
+php php php php php php php php php$messagesphp php=php selfphp:php:php$messagesphp;
+php php php php php php php php ifphp php(php!php php$httpphp1php1php)php php$messagesphp[php3php0php2php]php php=php php'Movedphp Temporarilyphp'php;
+
+php php php php php php php php ifphp php(php$codephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp php$messagesphp;
+php php php php php php php php php}php elseifphp php(issetphp(php$messagesphp[php$codephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$messagesphp[php$codephp]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php'Unknownphp'php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Extractphp thephp responsephp codephp fromphp aphp responsephp string
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$responsephp_str
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp staticphp functionphp extractCodephp(php$responsephp_strphp)
+php php php php php{
+php php php php php php php php pregphp_matchphp(php"php|php^HTTPphp/php[php\dphp\php.xphp]php+php php(php\dphp+php)php|php"php,php php$responsephp_strphp,php php$mphp)php;
+
+php php php php php php php php ifphp php(issetphp(php$mphp[php1php]php)php)php php{
+php php php php php php php php php php php php returnphp php(intphp)php php$mphp[php1php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Extractphp thephp HTTPphp messagephp fromphp aphp response
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$responsephp_str
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp extractMessagephp(php$responsephp_strphp)
+php php php php php{
+php php php php php php php php pregphp_matchphp(php"php|php^HTTPphp/php[php\dphp\php.xphp]php+php php\dphp+php php(php[php^php\rphp\nphp]php+php)php|php"php,php php$responsephp_strphp,php php$mphp)php;
+
+php php php php php php php php ifphp php(issetphp(php$mphp[php1php]php)php)php php{
+php php php php php php php php php php php php returnphp php$mphp[php1php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Extractphp thephp HTTPphp versionphp fromphp aphp response
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$responsephp_str
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp extractVersionphp(php$responsephp_strphp)
+php php php php php{
+php php php php php php php php pregphp_matchphp(php"php|php^HTTPphp/php(php[php\dphp\php.xphp]php+php)php php\dphp+php|php"php,php php$responsephp_strphp,php php$mphp)php;
+
+php php php php php php php php ifphp php(issetphp(php$mphp[php1php]php)php)php php{
+php php php php php php php php php php php php returnphp php$mphp[php1php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Extractphp thephp headersphp fromphp aphp responsephp string
+php php php php php php*
+php php php php php php*php php@paramphp php php stringphp php$responsephp_str
+php php php php php php*php php@returnphp php array
+php php php php php php*php/
+php php php php publicphp staticphp functionphp extractHeadersphp(php$responsephp_strphp)
+php php php php php{
+php php php php php php php php php$headersphp php=php arrayphp(php)php;
+
+php php php php php php php php php/php/php Firstphp,php splitphp bodyphp andphp headers
+php php php php php php php php php$partsphp php=php pregphp_splitphp(php'php|php(php?php:php\rphp?php\nphp)php{php2php}php|mphp'php,php php$responsephp_strphp,php php2php)php;
+php php php php php php php php ifphp php(php!php php$partsphp[php0php]php)php returnphp php$headersphp;
+
+php php php php php php php php php/php/php Splitphp headersphp partphp tophp lines
+php php php php php php php php php$linesphp php=php explodephp(php"php\nphp"php,php php$partsphp[php0php]php)php;
+php php php php php php php php unsetphp(php$partsphp)php;
+php php php php php php php php php$lastphp_headerphp php=php nullphp;
+
+php php php php php php php php foreachphp(php$linesphp asphp php$linephp)php php{
+php php php php php php php php php php php php php$linephp php=php trimphp(php$linephp,php php"php\rphp\nphp"php)php;
+php php php php php php php php php php php php ifphp php(php$linephp php=php=php php"php"php)php breakphp;
+
+php php php php php php php php php php php php php/php/php Locatephp headersphp likephp php'Locationphp:php php.php.php.php'php andphp php'Locationphp:php.php.php.php'php php(notephp thephp missingphp spacephp)
+php php php php php php php php php php php php ifphp php(pregphp_matchphp(php"php|php^php(php[php\wphp-php]php+php)php:php\sphp*php(php.php+php)php|php"php,php php$linephp,php php$mphp)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$lastphp_headerphp)php;
+php php php php php php php php php php php php php php php php php$hphp_namephp php=php strtolowerphp(php$mphp[php1php]php)php;
+php php php php php php php php php php php php php php php php php$hphp_valuephp php=php php$mphp[php2php]php;
+
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$headersphp[php$hphp_namephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!php isphp_arrayphp(php$headersphp[php$hphp_namephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$headersphp[php$hphp_namephp]php php=php arrayphp(php$headersphp[php$hphp_namephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php$headersphp[php$hphp_namephp]php[php]php php=php php$hphp_valuephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$headersphp[php$hphp_namephp]php php=php php$hphp_valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$lastphp_headerphp php=php php$hphp_namephp;
+php php php php php php php php php php php php php}php elseifphp php(pregphp_matchphp(php"php|php^php\sphp+php(php.php+php)php$php|php"php,php php$linephp,php php$mphp)php php&php&php php$lastphp_headerphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$headersphp[php$lastphp_headerphp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php endphp(php$headersphp[php$lastphp_headerphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php$lastphp_headerphp_keyphp php=php keyphp(php$headersphp[php$lastphp_headerphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php$headersphp[php$lastphp_headerphp]php[php$lastphp_headerphp_keyphp]php php.php=php php$mphp[php1php]php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$headersphp[php$lastphp_headerphp]php php.php=php php$mphp[php1php]php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$headersphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Extractphp thephp bodyphp fromphp aphp responsephp string
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$responsephp_str
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp extractBodyphp(php$responsephp_strphp)
+php php php php php{
+php php php php php php php php php$partsphp php=php pregphp_splitphp(php'php|php(php?php:php\rphp?php\nphp)php{php2php}php|mphp'php,php php$responsephp_strphp,php php2php)php;
+php php php php php php php php ifphp php(issetphp(php$partsphp[php1php]php)php)php php{
+php php php php php php php php php php php php returnphp php$partsphp[php1php]php;
+php php php php php php php php php}
+php php php php php php php php returnphp php'php'php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Decodephp aphp php"chunkedphp"php transferphp-encodedphp bodyphp andphp returnphp thephp decodedphp text
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$body
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp decodeChunkedBodyphp(php$bodyphp)
+php php php php php{
+php php php php php php php php php$decBodyphp php=php php'php'php;
+
+php php php php php php php php php/php/php Ifphp mbstringphp overloadsphp substrphp andphp strlenphp functionsphp,php wephp havephp to
+php php php php php php php php php/php/php overridephp itphp'sphp internalphp encoding
+php php php php php php php php ifphp php(functionphp_existsphp(php'mbphp_internalphp_encodingphp'php)php php&php&
+php php php php php php php php php php php php(php(intphp)php iniphp_getphp(php'mbstringphp.funcphp_overloadphp'php)php)php php&php php2php)php php{
+
+php php php php php php php php php php php php php$mbIntEncphp php=php mbphp_internalphp_encodingphp(php)php;
+php php php php php php php php php php php php mbphp_internalphp_encodingphp(php'ASCIIphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php whilephp php(trimphp(php$bodyphp)php)php php{
+php php php php php php php php php php php php ifphp php(php!php pregphp_matchphp(php"php/php^php(php[php\daphp-fAphp-Fphp]php+php)php[php^php\rphp\nphp]php*php\rphp\nphp/smphp"php,php php$bodyphp,php php$mphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Exceptionphp(php"Errorphp parsingphp bodyphp php-php doesnphp'tphp seemphp tophp bephp aphp chunkedphp messagephp"php)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$lengthphp php=php hexdecphp(trimphp(php$mphp[php1php]php)php)php;
+php php php php php php php php php php php php php$cutphp php=php strlenphp(php$mphp[php0php]php)php;
+php php php php php php php php php php php php php$decBodyphp php.php=php substrphp(php$bodyphp,php php$cutphp,php php$lengthphp)php;
+php php php php php php php php php php php php php$bodyphp php=php substrphp(php$bodyphp,php php$cutphp php+php php$lengthphp php+php php2php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(issetphp(php$mbIntEncphp)php)php php{
+php php php php php php php php php php php php mbphp_internalphp_encodingphp(php$mbIntEncphp)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php$decBodyphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Decodephp aphp gzipphp encodedphp messagephp php(whenphp Contentphp-encodingphp php=php gzipphp)
+php php php php php php*
+php php php php php php*php Currentlyphp requiresphp PHPphp withphp zlibphp support
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$body
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp decodeGzipphp(php$bodyphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php functionphp_existsphp(php'gzinflatephp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'zlibphp extensionphp isphp requiredphp inphp orderphp tophp decodephp php"gzipphp"php encodingphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp gzinflatephp(substrphp(php$bodyphp,php php1php0php)php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Decodephp aphp zlibphp deflatedphp messagephp php(whenphp Contentphp-encodingphp php=php deflatephp)
+php php php php php php*
+php php php php php php*php Currentlyphp requiresphp PHPphp withphp zlibphp support
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$body
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp decodeDeflatephp(php$bodyphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php functionphp_existsphp(php'gzuncompressphp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'zlibphp extensionphp isphp requiredphp inphp orderphp tophp decodephp php"deflatephp"php encodingphp'
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Somephp serversphp php(IISphp php?php)php sendphp aphp brokenphp deflatephp responsephp,php withoutphp the
+php php php php php php php php php php*php RFCphp-requiredphp zlibphp headerphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Wephp tryphp tophp detectphp thephp zlibphp headerphp,php andphp ifphp itphp doesphp notphp exsitphp we
+php php php php php php php php php php*php teatphp thephp bodyphp isphp plainphp DEFLATEphp contentphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Thisphp methodphp wasphp adaptedphp fromphp PEARphp HTTPphp_Requestphp2php byphp php(cphp)php Alexeyphp Borzov
+php php php php php php php php php php*
+php php php php php php php php php php*php php@linkphp httpphp:php/php/frameworkphp.zendphp.comphp/issuesphp/browsephp/ZFphp-php6php0php4php0
+php php php php php php php php php php*php/
+php php php php php php php php php$zlibHeaderphp php=php unpackphp(php'nphp'php,php substrphp(php$bodyphp,php php0php,php php2php)php)php;
+php php php php php php php php ifphp php(php$zlibHeaderphp[php1php]php php%php php3php1php php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp gzuncompressphp(php$bodyphp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp gzinflatephp(php$bodyphp)php;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp Zendphp_Httpphp_Responsephp objectphp fromphp aphp string
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$responsephp_str
+php php php php php php*php php@returnphp Zendphp_Httpphp_Response
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromStringphp(php$responsephp_strphp)
+php php php php php{
+php php php php php php php php php$codephp php php php php=php selfphp:php:extractCodephp(php$responsephp_strphp)php;
+php php php php php php php php php$headersphp php=php selfphp:php:extractHeadersphp(php$responsephp_strphp)php;
+php php php php php php php php php$bodyphp php php php php=php selfphp:php:extractBodyphp(php$responsephp_strphp)php;
+php php php php php php php php php$versionphp php=php selfphp:php:extractVersionphp(php$responsephp_strphp)php;
+php php php php php php php php php$messagephp php=php selfphp:php:extractMessagephp(php$responsephp_strphp)php;
+
+php php php php php php php php returnphp newphp Zendphp_Httpphp_Responsephp(php$codephp,php php$headersphp,php php$bodyphp,php php$versionphp,php php$messagephp)php;
+php php php php php}
+php}

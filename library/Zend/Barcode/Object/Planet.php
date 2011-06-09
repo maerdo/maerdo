@@ -1,62 +1,62 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @subpackage Object
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Planet.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@subpackagephp Object
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Planetphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Barcode_Object_Postnet
- */
-require_once 'Zend/Barcode/Object/Postnet.php';
+php/php*php*
+php php*php php@seephp Zendphp_Barcodephp_Objectphp_Postnet
+php php*php/
+requirephp_oncephp php'Zendphp/Barcodephp/Objectphp/Postnetphp.phpphp'php;
 
-/**
- * @see Zend_Validate_Barcode
- */
-require_once 'Zend/Validate/Barcode.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Barcode
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Barcodephp.phpphp'php;
 
-/**
- * Class for generate Planet barcode
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Barcode_Object_Planet extends Zend_Barcode_Object_Postnet
-{
+php/php*php*
+php php*php Classphp forphp generatephp Planetphp barcode
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Barcodephp_Objectphp_Planetphp extendsphp Zendphp_Barcodephp_Objectphp_Postnet
+php{
 
-    /**
-     * Coding map
-     * - 0 = half bar
-     * - 1 = complete bar
-     * @var array
-     */
-    protected $_codingMap = array(
-        0 => "00111",
-        1 => "11100",
-        2 => "11010",
-        3 => "11001",
-        4 => "10110",
-        5 => "10101",
-        6 => "10011",
-        7 => "01110",
-        8 => "01101",
-        9 => "01011"
-    );
-}
+php php php php php/php*php*
+php php php php php php*php Codingphp map
+php php php php php php*php php-php php0php php=php halfphp bar
+php php php php php php*php php-php php1php php=php completephp bar
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_codingMapphp php=php arrayphp(
+php php php php php php php php php0php php=php>php php"php0php0php1php1php1php"php,
+php php php php php php php php php1php php=php>php php"php1php1php1php0php0php"php,
+php php php php php php php php php2php php=php>php php"php1php1php0php1php0php"php,
+php php php php php php php php php3php php=php>php php"php1php1php0php0php1php"php,
+php php php php php php php php php4php php=php>php php"php1php0php1php1php0php"php,
+php php php php php php php php php5php php=php>php php"php1php0php1php0php1php"php,
+php php php php php php php php php6php php=php>php php"php1php0php0php1php1php"php,
+php php php php php php php php php7php php=php>php php"php0php1php1php1php0php"php,
+php php php php php php php php php8php php=php>php php"php0php1php1php0php1php"php,
+php php php php php php php php php9php php=php>php php"php0php1php0php1php1php"
+php php php php php)php;
+php}

@@ -1,320 +1,320 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.28 $"/>
-		<generation date="$Date: 2009/05/05 23:06:40 $"/>
-		<language type="st"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="af">Seburu</language>
-			<language type="am">Se-amhari</language>
-			<language type="ar">Se-arab</language>
-			<language type="az">Se-azerbaijani</language>
-			<language type="be">Se-belarusia</language>
-			<language type="bg">Se-bulgaria</language>
-			<language type="bh">Se-bihari</language>
-			<language type="bn">Se-bengali</language>
-			<language type="br">Breton</language>
-			<language type="bs">Se-bosnia</language>
-			<language type="ca">Se-catalia</language>
-			<language type="cs">Se-czech</language>
-			<language type="cy">Se-welsh</language>
-			<language type="da">Se-dutch</language>
-			<language type="de">Se-jeremane</language>
-			<language type="el">Se-greek</language>
-			<language type="en">Senyesemane</language>
-			<language type="eo">Se-esperanto</language>
-			<language type="es">Sespain</language>
-			<language type="et">Se-estonia</language>
-			<language type="eu">Se-basque</language>
-			<language type="fa">Se-persia</language>
-			<language type="fi">Se-finnish</language>
-			<language type="fil">Se-tagalog</language>
-			<language type="fo">Se-foroese</language>
-			<language type="fr">Se-french</language>
-			<language type="fy">Se-frisia</language>
-			<language type="ga">Se-irish</language>
-			<language type="gd">Se-scots gaelic</language>
-			<language type="gl">Se-galicia</language>
-			<language type="gn">Guarani</language>
-			<language type="gu">Se-gujarati</language>
-			<language type="he">Se-hebrew</language>
-			<language type="hi">Se-hindi</language>
-			<language type="hr">Se-croatia</language>
-			<language type="hu">Se-hungaria</language>
-			<language type="ia">Se-interlingua</language>
-			<language type="id">Se-indonesia</language>
-			<language type="is">Se-iceland</language>
-			<language type="it">Se-tariana</language>
-			<language type="ja">Se-japane</language>
-			<language type="jv">Se-javane</language>
-			<language type="ka">Se-geogia</language>
-			<language type="kn">Se-kannada</language>
-			<language type="ko">Se-korea</language>
-			<language type="ku">Kurdish</language>
-			<language type="ky">Kyrgyz</language>
-			<language type="la">Se-latino</language>
-			<language type="lt">Se-Lithuano</language>
-			<language type="mk">Se-masedonia</language>
-			<language type="ml">Se-malayalam</language>
-			<language type="mr">Se-marathi</language>
-			<language type="ms">Se-malay</language>
-			<language type="mt">Se-maltese</language>
-			<language type="ne">Se-nepali</language>
-			<language type="nl">Dutch</language>
-			<language type="nn">Se-norway (Nynorsk)</language>
-			<language type="no">Se-norway</language>
-			<language type="oc">Se-occitan</language>
-			<language type="or">Oriya</language>
-			<language type="pa">Se-punjabi</language>
-			<language type="pl">Se-polish</language>
-			<language type="ps">Pashto</language>
-			<language type="pt">Se-portugal</language>
-			<language type="pt_BR">Seputukesi (sa Brazil)</language>
-			<language type="pt_PT">Se-portugal (Portugal)</language>
-			<language type="ro">Se-romania</language>
-			<language type="ru">Se-rushia</language>
-			<language type="sh">Serbo-Croatian</language>
-			<language type="si">Se-sinhali</language>
-			<language type="sk">Se-slovak</language>
-			<language type="sl">Se-slovania</language>
-			<language type="sq">Se-albanian</language>
-			<language type="sr">Se-serbian</language>
-			<language type="st">Sesotho</language>
-			<language type="su">Se-sundanese</language>
-			<language type="sv">Se-sweden</language>
-			<language type="sw">Se-swahili</language>
-			<language type="ta">Se-tamil</language>
-			<language type="te">Se-telegu</language>
-			<language type="th">Se-thai</language>
-			<language type="ti">Se-tigrinya</language>
-			<language type="tk">Turkmen</language>
-			<language type="tlh">Se-klingon</language>
-			<language type="tr">Se-theki</language>
-			<language type="tw">Twi</language>
-			<language type="uk">Se-ukrania</language>
-			<language type="ur">Se-urdu</language>
-			<language type="uz">Se-uzbek</language>
-			<language type="vi">Se-vietnam</language>
-			<language type="xh">se Xhosa</language>
-			<language type="yi">Yiddish</language>
-			<language type="zu">se Zulu</language>
-		</languages>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[a b d-u w y]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[c v x z]</exemplarCharacters>
-		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
-	</characters>
-	<delimiters>
-		<quotationStart>‘</quotationStart>
-		<quotationEnd>’</quotationEnd>
-		<alternateQuotationStart>“</alternateQuotationStart>
-		<alternateQuotationEnd>”</alternateQuotationEnd>
-	</delimiters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">Phe</month>
-							<month type="2">Kol</month>
-							<month type="3">Ube</month>
-							<month type="4">Mme</month>
-							<month type="5">Mot</month>
-							<month type="6">Jan</month>
-							<month type="7">Upu</month>
-							<month type="8">Pha</month>
-							<month type="9">Leo</month>
-							<month type="10">Mph</month>
-							<month type="11">Pun</month>
-							<month type="12">Tsh</month>
-						</monthWidth>
-						<monthWidth type="wide">
-							<month type="1">Phesekgong</month>
-							<month type="2">Hlakola</month>
-							<month type="3">Hlakubele</month>
-							<month type="4">Mmese</month>
-							<month type="5">Motsheanong</month>
-							<month type="6">Phupjane</month>
-							<month type="7">Phupu</month>
-							<month type="8">Phata</month>
-							<month type="9">Leotshe</month>
-							<month type="10">Mphalane</month>
-							<month type="11">Pundungwane</month>
-							<month type="12">Tshitwe</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="narrow">
-							<month type="1">1</month>
-							<month type="2">2</month>
-							<month type="3">3</month>
-							<month type="4">4</month>
-							<month type="5">5</month>
-							<month type="6">6</month>
-							<month type="7">7</month>
-							<month type="8">8</month>
-							<month type="9">9</month>
-							<month type="10">10</month>
-							<month type="11">11</month>
-							<month type="12">12</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">Son</day>
-							<day type="mon">Mma</day>
-							<day type="tue">Bed</day>
-							<day type="wed">Rar</day>
-							<day type="thu">Ne</day>
-							<day type="fri">Hla</day>
-							<day type="sat">Moq</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">Sontaha</day>
-							<day type="mon">Mmantaha</day>
-							<day type="tue">Labobedi</day>
-							<day type="wed">Laboraru</day>
-							<day type="thu">Labone</day>
-							<day type="fri">Labohlane</day>
-							<day type="sat">Moqebelo</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">1</day>
-							<day type="mon">2</day>
-							<day type="tue">3</day>
-							<day type="wed">4</day>
-							<day type="thu">5</day>
-							<day type="fri">6</day>
-							<day type="sat">7</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<quarters>
-					<quarterContext type="format">
-						<quarterWidth type="abbreviated">
-							<quarter type="1">Q1</quarter>
-							<quarter type="2">Q2</quarter>
-							<quarter type="3">Q3</quarter>
-							<quarter type="4">Q4</quarter>
-						</quarterWidth>
-						<quarterWidth type="wide">
-							<quarter type="1">Q1</quarter>
-							<quarter type="2">Q2</quarter>
-							<quarter type="3">Q3</quarter>
-							<quarter type="4">Q4</quarter>
-						</quarterWidth>
-					</quarterContext>
-				</quarters>
-				<am>AM</am>
-				<pm>PM</pm>
-				<eras>
-					<eraNames>
-						<era type="0">BC</era>
-						<era type="1">AD</era>
-					</eraNames>
-					<eraAbbr>
-						<era type="0">BC</era>
-						<era type="1">AD</era>
-					</eraAbbr>
-				</eras>
-				<dateFormats>
-					<dateFormatLength type="full">
-						<dateFormat>
-							<pattern>EEEE, y MMMM dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="long">
-						<dateFormat>
-							<pattern>y MMMM d</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="medium">
-						<dateFormat>
-							<pattern>y MMM d</pattern>
-						</dateFormat>
-					</dateFormatLength>
-					<dateFormatLength type="short">
-						<dateFormat>
-							<pattern>yy/MM/dd</pattern>
-						</dateFormat>
-					</dateFormatLength>
-				</dateFormats>
-				<timeFormats>
-					<timeFormatLength type="full">
-						<timeFormat>
-							<pattern>HH:mm:ss zzzz</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="long">
-						<timeFormat>
-							<pattern>HH:mm:ss z</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="medium">
-						<timeFormat>
-							<pattern>HH:mm:ss</pattern>
-						</timeFormat>
-					</timeFormatLength>
-					<timeFormatLength type="short">
-						<timeFormat>
-							<pattern>HH:mm</pattern>
-						</timeFormat>
-					</timeFormatLength>
-				</timeFormats>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;-HH:mm</hourFormat>
-			<gmtFormat>GMT{0}</gmtFormat>
-			<regionFormat>{0}</regionFormat>
-		</timeZoneNames>
-	</dates>
-	<numbers>
-		<symbols>
-			<decimal>,</decimal>
-			<group> </group>
-		</symbols>
-		<decimalFormats>
-			<decimalFormatLength>
-				<decimalFormat>
-					<pattern>#,##0.###</pattern>
-				</decimalFormat>
-			</decimalFormatLength>
-		</decimalFormats>
-		<scientificFormats>
-			<scientificFormatLength>
-				<scientificFormat>
-					<pattern>#E0</pattern>
-				</scientificFormat>
-			</scientificFormatLength>
-		</scientificFormats>
-		<percentFormats>
-			<percentFormatLength>
-				<percentFormat>
-					<pattern>#,##0%</pattern>
-				</percentFormat>
-			</percentFormatLength>
-		</percentFormats>
-		<currencyFormats>
-			<currencyFormatLength>
-				<currencyFormat>
-					<pattern>¤#,##0.00</pattern>
-				</currencyFormat>
-			</currencyFormatLength>
-		</currencyFormats>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php2php8php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php4php0php php$php"php/php>
+php	php	php<languagephp typephp=php"stphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"afphp"php>Seburu<php/languagephp>
+php	php	php	php<languagephp typephp=php"amphp"php>Sephp-amhari<php/languagephp>
+php	php	php	php<languagephp typephp=php"arphp"php>Sephp-arab<php/languagephp>
+php	php	php	php<languagephp typephp=php"azphp"php>Sephp-azerbaijani<php/languagephp>
+php	php	php	php<languagephp typephp=php"bephp"php>Sephp-belarusia<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>Sephp-bulgaria<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>Sephp-bihari<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>Sephp-bengali<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>Breton<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>Sephp-bosnia<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>Sephp-catalia<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>Sephp-czech<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>Sephp-welsh<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>Sephp-dutch<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>Sephp-jeremane<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>Sephp-greek<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>Senyesemane<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>Sephp-esperanto<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>Sespain<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>Sephp-estonia<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>Sephp-basque<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>Sephp-persia<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>Sephp-finnish<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>Sephp-tagalog<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>Sephp-foroese<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>Sephp-french<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>Sephp-frisia<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>Sephp-irish<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>Sephp-scotsphp gaelic<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>Sephp-galicia<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>Guarani<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>Sephp-gujarati<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>Sephp-hebrew<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>Sephp-hindi<php/languagephp>
+php	php	php	php<languagephp typephp=php"hrphp"php>Sephp-croatia<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>Sephp-hungaria<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>Sephp-interlingua<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>Sephp-indonesia<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>Sephp-iceland<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>Sephp-tariana<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>Sephp-japane<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>Sephp-javane<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>Sephp-geogia<php/languagephp>
+php	php	php	php<languagephp typephp=php"knphp"php>Sephp-kannada<php/languagephp>
+php	php	php	php<languagephp typephp=php"kophp"php>Sephp-korea<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>Kurdish<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>Kyrgyz<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>Sephp-latino<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>Sephp-Lithuano<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>Sephp-masedonia<php/languagephp>
+php	php	php	php<languagephp typephp=php"mlphp"php>Sephp-malayalam<php/languagephp>
+php	php	php	php<languagephp typephp=php"mrphp"php>Sephp-marathi<php/languagephp>
+php	php	php	php<languagephp typephp=php"msphp"php>Sephp-malay<php/languagephp>
+php	php	php	php<languagephp typephp=php"mtphp"php>Sephp-maltese<php/languagephp>
+php	php	php	php<languagephp typephp=php"nephp"php>Sephp-nepali<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>Dutch<php/languagephp>
+php	php	php	php<languagephp typephp=php"nnphp"php>Sephp-norwayphp php(Nynorskphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>Sephp-norway<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>Sephp-occitan<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>Oriya<php/languagephp>
+php	php	php	php<languagephp typephp=php"paphp"php>Sephp-punjabi<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>Sephp-polish<php/languagephp>
+php	php	php	php<languagephp typephp=php"psphp"php>Pashto<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>Sephp-portugal<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>Seputukesiphp php(saphp Brazilphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>Sephp-portugalphp php(Portugalphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>Sephp-romania<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>Sephp-rushia<php/languagephp>
+php	php	php	php<languagephp typephp=php"shphp"php>Serbophp-Croatian<php/languagephp>
+php	php	php	php<languagephp typephp=php"siphp"php>Sephp-sinhali<php/languagephp>
+php	php	php	php<languagephp typephp=php"skphp"php>Sephp-slovak<php/languagephp>
+php	php	php	php<languagephp typephp=php"slphp"php>Sephp-slovania<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>Sephp-albanian<php/languagephp>
+php	php	php	php<languagephp typephp=php"srphp"php>Sephp-serbian<php/languagephp>
+php	php	php	php<languagephp typephp=php"stphp"php>Sesotho<php/languagephp>
+php	php	php	php<languagephp typephp=php"suphp"php>Sephp-sundanese<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>Sephp-sweden<php/languagephp>
+php	php	php	php<languagephp typephp=php"swphp"php>Sephp-swahili<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>Sephp-tamil<php/languagephp>
+php	php	php	php<languagephp typephp=php"tephp"php>Sephp-telegu<php/languagephp>
+php	php	php	php<languagephp typephp=php"thphp"php>Sephp-thai<php/languagephp>
+php	php	php	php<languagephp typephp=php"tiphp"php>Sephp-tigrinya<php/languagephp>
+php	php	php	php<languagephp typephp=php"tkphp"php>Turkmen<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlhphp"php>Sephp-klingon<php/languagephp>
+php	php	php	php<languagephp typephp=php"trphp"php>Sephp-theki<php/languagephp>
+php	php	php	php<languagephp typephp=php"twphp"php>Twi<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>Sephp-ukrania<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>Sephp-urdu<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>Sephp-uzbek<php/languagephp>
+php	php	php	php<languagephp typephp=php"viphp"php>Sephp-vietnam<php/languagephp>
+php	php	php	php<languagephp typephp=php"xhphp"php>sephp Xhosa<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>Yiddish<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>sephp Zulu<php/languagephp>
+php	php	<php/languagesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[aphp bphp dphp-uphp wphp yphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[cphp vphp xphp zphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"currencySymbolphp"php>php[aphp-zphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<delimitersphp>
+php	php	php<quotationStartphp>php‘<php/quotationStartphp>
+php	php	php<quotationEndphp>php’<php/quotationEndphp>
+php	php	php<alternateQuotationStartphp>php“<php/alternateQuotationStartphp>
+php	php	php<alternateQuotationEndphp>php”<php/alternateQuotationEndphp>
+php	<php/delimitersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Phe<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Kol<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Ube<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Mme<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Mot<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Jan<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Upu<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Pha<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Leo<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Mph<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Pun<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Tsh<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Phesekgong<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Hlakola<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Hlakubele<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Mmese<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Motsheanong<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Phupjane<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Phupu<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Phata<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Leotshe<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Mphalane<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Pundungwane<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Tshitwe<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>php1<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>php2<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>php3<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>php4<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>php5<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>php6<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>php7<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>php8<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>php9<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>php1php0<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>php1php1<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>php1php2<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Son<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Mma<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Bed<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Rar<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Ne<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Hla<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Moq<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Sontaha<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Mmantaha<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Labobedi<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Laboraru<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Labone<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Labohlane<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Moqebelo<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>php1<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>php2<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>php3<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>php4<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>php5<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>php6<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>php7<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<quartersphp>
+php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
+php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
+php	php	php	php	php	php	<php/quarterWidthphp>
+php	php	php	php	php	<php/quarterContextphp>
+php	php	php	php	<php/quartersphp>
+php	php	php	php	php<amphp>AM<php/amphp>
+php	php	php	php	php<pmphp>PM<php/pmphp>
+php	php	php	php	php<erasphp>
+php	php	php	php	php	php<eraNamesphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>BC<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>AD<php/eraphp>
+php	php	php	php	php	<php/eraNamesphp>
+php	php	php	php	php	php<eraAbbrphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>BC<php/eraphp>
+php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>AD<php/eraphp>
+php	php	php	php	php	<php/eraAbbrphp>
+php	php	php	php	<php/erasphp>
+php	php	php	php	php<dateFormatsphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>EEEEphp,php yphp MMMMphp dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp MMMMphp d<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yphp MMMphp d<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<dateFormatphp>
+php	php	php	php	php	php	php	php<patternphp>yyphp/MMphp/dd<php/patternphp>
+php	php	php	php	php	php	<php/dateFormatphp>
+php	php	php	php	php	<php/dateFormatLengthphp>
+php	php	php	php	<php/dateFormatsphp>
+php	php	php	php	php<timeFormatsphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
+php	php	php	php	php	php	php<timeFormatphp>
+php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
+php	php	php	php	php	php	<php/timeFormatphp>
+php	php	php	php	php	<php/timeFormatLengthphp>
+php	php	php	php	<php/timeFormatsphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
+php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
+php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<symbolsphp>
+php	php	php	php<decimalphp>php,<php/decimalphp>
+php	php	php	php<groupphp>php <php/groupphp>
+php	php	<php/symbolsphp>
+php	php	php<decimalFormatsphp>
+php	php	php	php<decimalFormatLengthphp>
+php	php	php	php	php<decimalFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php#php#php#<php/patternphp>
+php	php	php	php	<php/decimalFormatphp>
+php	php	php	<php/decimalFormatLengthphp>
+php	php	<php/decimalFormatsphp>
+php	php	php<scientificFormatsphp>
+php	php	php	php<scientificFormatLengthphp>
+php	php	php	php	php<scientificFormatphp>
+php	php	php	php	php	php<patternphp>php#Ephp0<php/patternphp>
+php	php	php	php	<php/scientificFormatphp>
+php	php	php	<php/scientificFormatLengthphp>
+php	php	<php/scientificFormatsphp>
+php	php	php<percentFormatsphp>
+php	php	php	php<percentFormatLengthphp>
+php	php	php	php	php<percentFormatphp>
+php	php	php	php	php	php<patternphp>php#php,php#php#php0php%<php/patternphp>
+php	php	php	php	<php/percentFormatphp>
+php	php	php	<php/percentFormatLengthphp>
+php	php	<php/percentFormatsphp>
+php	php	php<currencyFormatsphp>
+php	php	php	php<currencyFormatLengthphp>
+php	php	php	php	php<currencyFormatphp>
+php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0<php/patternphp>
+php	php	php	php	<php/currencyFormatphp>
+php	php	php	<php/currencyFormatLengthphp>
+php	php	<php/currencyFormatsphp>
+php	<php/numbersphp>
+<php/ldmlphp>
 

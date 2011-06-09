@@ -1,138 +1,138 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Encrypt.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Encryptphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Filter_Interface
- */
-require_once 'Zend/Filter/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
 
-/**
- * @see Zend_Loader
- */
-require_once 'Zend/Loader.php';
+php/php*php*
+php php*php php@seephp Zendphp_Loader
+php php*php/
+requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
 
-/**
- * Encrypts a given string
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Filter_Encrypt implements Zend_Filter_Interface
-{
-    /**
-     * Encryption adapter
-     */
-    protected $_adapter;
+php/php*php*
+php php*php Encryptsphp aphp givenphp string
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Filterphp_Encryptphp implementsphp Zendphp_Filterphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Encryptionphp adapter
+php php php php php php*php/
+php php php php protectedphp php$php_adapterphp;
 
-    /**
-     * Class constructor
-     *
-     * @param string|array $options (Optional) Options to set, if null mcrypt is used
-     */
-    public function __construct($options = null)
-    {
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php/php*php*
+php php php php php php*php Classphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$optionsphp php(Optionalphp)php Optionsphp tophp setphp,php ifphp nullphp mcryptphp isphp used
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        $this->setAdapter($options);
-    }
+php php php php php php php php php$thisphp-php>setAdapterphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Returns the name of the set adapter
-     *
-     * @return string
-     */
-    public function getAdapter()
-    {
-        return $this->_adapter->toString();
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp namephp ofphp thephp setphp adapter
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getAdapterphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp-php>toStringphp(php)php;
+php php php php php}
 
-    /**
-     * Sets new encryption options
-     *
-     * @param  string|array $options (Optional) Encryption options
-     * @return Zend_Filter_Encrypt
-     */
-    public function setAdapter($options = null)
-    {
-        if (is_string($options)) {
-            $adapter = $options;
-        } else if (isset($options['adapter'])) {
-            $adapter = $options['adapter'];
-            unset($options['adapter']);
-        } else {
-            $adapter = 'Mcrypt';
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp newphp encryptionphp options
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$optionsphp php(Optionalphp)php Encryptionphp options
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encrypt
+php php php php php php*php/
+php php php php publicphp functionphp setAdapterphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$adapterphp php=php php$optionsphp;
+php php php php php php php php php}php elsephp ifphp php(issetphp(php$optionsphp[php'adapterphp'php]php)php)php php{
+php php php php php php php php php php php php php$adapterphp php=php php$optionsphp[php'adapterphp'php]php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'adapterphp'php]php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$adapterphp php=php php'Mcryptphp'php;
+php php php php php php php php php}
 
-        if (!is_array($options)) {
-            $options = array();
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php)php;
+php php php php php php php php php}
 
-        if (Zend_Loader::isReadable('Zend/Filter/Encrypt/' . ucfirst($adapter). '.php')) {
-            $adapter = 'Zend_Filter_Encrypt_' . ucfirst($adapter);
-        }
+php php php php php php php php ifphp php(Zendphp_Loaderphp:php:isReadablephp(php'Zendphp/Filterphp/Encryptphp/php'php php.php ucfirstphp(php$adapterphp)php.php php'php.phpphp'php)php)php php{
+php php php php php php php php php php php php php$adapterphp php=php php'Zendphp_Filterphp_Encryptphp_php'php php.php ucfirstphp(php$adapterphp)php;
+php php php php php php php php php}
 
-        if (!class_exists($adapter)) {
-            Zend_Loader::loadClass($adapter);
-        }
+php php php php php php php php ifphp php(php!classphp_existsphp(php$adapterphp)php)php php{
+php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$adapterphp)php;
+php php php php php php php php php}
 
-        $this->_adapter = new $adapter($options);
-        if (!$this->_adapter instanceof Zend_Filter_Encrypt_Interface) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Encoding adapter '" . $adapter . "' does not implement Zend_Filter_Encrypt_Interface");
-        }
+php php php php php php php php php$thisphp-php>php_adapterphp php=php newphp php$adapterphp(php$optionsphp)php;
+php php php php php php php php ifphp php(php!php$thisphp-php>php_adapterphp instanceofphp Zendphp_Filterphp_Encryptphp_Interfacephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Encodingphp adapterphp php'php"php php.php php$adapterphp php.php php"php'php doesphp notphp implementphp Zendphp_Filterphp_Encryptphp_Interfacephp"php)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Calls adapter methods
-     *
-     * @param string       $method  Method to call
-     * @param string|array $options Options for this method
-     */
-    public function __call($method, $options)
-    {
-        $part = substr($method, 0, 3);
-        if ((($part != 'get') and ($part != 'set')) or !method_exists($this->_adapter, $method)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Unknown method '{$method}'");
-        }
+php php php php php/php*php*
+php php php php php php*php Callsphp adapterphp methods
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php php php php php php php$methodphp php Methodphp tophp call
+php php php php php php*php php@paramphp stringphp|arrayphp php$optionsphp Optionsphp forphp thisphp method
+php php php php php php*php/
+php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$optionsphp)
+php php php php php{
+php php php php php php php php php$partphp php=php substrphp(php$methodphp,php php0php,php php3php)php;
+php php php php php php php php ifphp php(php(php(php$partphp php!php=php php'getphp'php)php andphp php(php$partphp php!php=php php'setphp'php)php)php orphp php!methodphp_existsphp(php$thisphp-php>php_adapterphp,php php$methodphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Unknownphp methodphp php'php{php$methodphp}php'php"php)php;
+php php php php php php php php php}
 
-        return call_user_func_array(array($this->_adapter, $method), $options);
-    }
+php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_adapterphp,php php$methodphp)php,php php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Defined by Zend_Filter_Interface
-     *
-     * Encrypts the content $value with the defined settings
-     *
-     * @param  string $value Content to encrypt
-     * @return string The encrypted content
-     */
-    public function filter($value)
-    {
-        return $this->_adapter->encrypt($value);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
+php php php php php php*
+php php php php php php*php Encryptsphp thephp contentphp php$valuephp withphp thephp definedphp settings
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Contentphp tophp encrypt
+php php php php php php*php php@returnphp stringphp Thephp encryptedphp content
+php php php php php php*php/
+php php php php publicphp functionphp filterphp(php$valuephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_adapterphp-php>encryptphp(php$valuephp)php;
+php php php php php}
+php}

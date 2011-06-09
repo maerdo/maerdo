@@ -1,109 +1,109 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: ExcludeMimeType.php 21935 2010-04-18 16:21:35Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php ExcludeMimeTypephp.phpphp php2php1php9php3php5php php2php0php1php0php-php0php4php-php1php8php php1php6php:php2php1php:php3php5Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Validate_File_MimeType
- */
-require_once 'Zend/Validate/File/MimeType.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Filephp_MimeType
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Filephp/MimeTypephp.phpphp'php;
 
-/**
- * Validator for the mime type of a file
- *
- * @category  Zend
- * @package   Zend_Validate
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Validate_File_ExcludeMimeType extends Zend_Validate_File_MimeType
-{
-    const FALSE_TYPE   = 'fileExcludeMimeTypeFalse';
-    const NOT_DETECTED = 'fileExcludeMimeTypeNotDetected';
-    const NOT_READABLE = 'fileExcludeMimeTypeNotReadable';
+php/php*php*
+php php*php Validatorphp forphp thephp mimephp typephp ofphp aphp file
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Validate
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Validatephp_Filephp_ExcludeMimeTypephp extendsphp Zendphp_Validatephp_Filephp_MimeType
+php{
+php php php php constphp FALSEphp_TYPEphp php php php=php php'fileExcludeMimeTypeFalsephp'php;
+php php php php constphp NOTphp_DETECTEDphp php=php php'fileExcludeMimeTypeNotDetectedphp'php;
+php php php php constphp NOTphp_READABLEphp php=php php'fileExcludeMimeTypeNotReadablephp'php;
 
-    /**
-     * Defined by Zend_Validate_Interface
-     *
-     * Returns true if the mimetype of the file does not matche the given ones. Also parts
-     * of mimetypes can be checked. If you give for example "image" all image
-     * mime types will not be accepted like "image/gif", "image/jpeg" and so on.
-     *
-     * @param  string $value Real file to check for mimetype
-     * @param  array  $file  File data from Zend_File_Transfer
-     * @return boolean
-     */
-    public function isValid($value, $file = null)
-    {
-        if ($file === null) {
-            $file = array(
-                'type' => null,
-                'name' => $value
-            );
-        }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
+php php php php php php*
+php php php php php php*php Returnsphp truephp ifphp thephp mimetypephp ofphp thephp filephp doesphp notphp matchephp thephp givenphp onesphp.php Alsophp parts
+php php php php php php*php ofphp mimetypesphp canphp bephp checkedphp.php Ifphp youphp givephp forphp examplephp php"imagephp"php allphp image
+php php php php php php*php mimephp typesphp willphp notphp bephp acceptedphp likephp php"imagephp/gifphp"php,php php"imagephp/jpegphp"php andphp sophp onphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Realphp filephp tophp checkphp forphp mimetype
+php php php php php php*php php@paramphp php arrayphp php php$filephp php Filephp dataphp fromphp Zendphp_Filephp_Transfer
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isValidphp(php$valuephp,php php$filephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$filephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$filephp php=php arrayphp(
+php php php php php php php php php php php php php php php php php'typephp'php php=php>php nullphp,
+php php php php php php php php php php php php php php php php php'namephp'php php=php>php php$value
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
 
-        // Is file readable ?
-        require_once 'Zend/Loader.php';
-        if (!Zend_Loader::isReadable($value)) {
-            return $this->_throw($file, self::NOT_READABLE);
-        }
+php php php php php php php php php/php/php Isphp filephp readablephp php?
+php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php ifphp php(php!Zendphp_Loaderphp:php:isReadablephp(php$valuephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_READABLEphp)php;
+php php php php php php php php php}
 
-        $mimefile = $this->getMagicFile();
-        if (class_exists('finfo', false)) {
-            $const = defined('FILEINFO_MIME_TYPE') ? FILEINFO_MIME_TYPE : FILEINFO_MIME;
-            if (!empty($mimefile)) {
-                $mime = new finfo($const, $mimefile);
-            } else {
-                $mime = new finfo($const);
-            }
+php php php php php php php php php$mimefilephp php=php php$thisphp-php>getMagicFilephp(php)php;
+php php php php php php php php ifphp php(classphp_existsphp(php'finfophp'php,php falsephp)php)php php{
+php php php php php php php php php php php php php$constphp php=php definedphp(php'FILEINFOphp_MIMEphp_TYPEphp'php)php php?php FILEINFOphp_MIMEphp_TYPEphp php:php FILEINFOphp_MIMEphp;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$mimefilephp)php)php php{
+php php php php php php php php php php php php php php php php php$mimephp php=php newphp finfophp(php$constphp,php php$mimefilephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$mimephp php=php newphp finfophp(php$constphp)php;
+php php php php php php php php php php php php php}
 
-            if (!empty($mime)) {
-                $this->_type = $mime->file($value);
-            }
-            unset($mime);
-        }
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$mimephp)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_typephp php=php php$mimephp-php>filephp(php$valuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php unsetphp(php$mimephp)php;
+php php php php php php php php php}
 
-        if (empty($this->_type)) {
-            if (function_exists('mime_content_type') && ini_get('mime_magic.magicfile')) {
-                $this->_type = mime_content_type($value);
-            } elseif ($this->_headerCheck) {
-                $this->_type = $file['type'];
-            }
-        }
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_typephp)php)php php{
+php php php php php php php php php php php php ifphp php(functionphp_existsphp(php'mimephp_contentphp_typephp'php)php php&php&php iniphp_getphp(php'mimephp_magicphp.magicfilephp'php)php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_typephp php=php mimephp_contentphp_typephp(php$valuephp)php;
+php php php php php php php php php php php php php}php elseifphp php(php$thisphp-php>php_headerCheckphp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_typephp php=php php$filephp[php'typephp'php]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        if (empty($this->_type)) {
-            return $this->_throw($file, self::NOT_DETECTED);
-        }
+php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_typephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_DETECTEDphp)php;
+php php php php php php php php php}
 
-        $mimetype = $this->getMimeType(true);
-        if (in_array($this->_type, $mimetype)) {
-            return $this->_throw($file, self::FALSE_TYPE);
-        }
+php php php php php php php php php$mimetypephp php=php php$thisphp-php>getMimeTypephp(truephp)php;
+php php php php php php php php ifphp php(inphp_arrayphp(php$thisphp-php>php_typephp,php php$mimetypephp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:FALSEphp_TYPEphp)php;
+php php php php php php php php php}
 
-        $types = explode('/', $this->_type);
-        $types = array_merge($types, explode('-', $this->_type));
-        foreach($mimetype as $mime) {
-            if (in_array($mime, $types)) {
-                return $this->_throw($file, self::FALSE_TYPE);
-            }
-        }
+php php php php php php php php php$typesphp php=php explodephp(php'php/php'php,php php$thisphp-php>php_typephp)php;
+php php php php php php php php php$typesphp php=php arrayphp_mergephp(php$typesphp,php explodephp(php'php-php'php,php php$thisphp-php>php_typephp)php)php;
+php php php php php php php php foreachphp(php$mimetypephp asphp php$mimephp)php php{
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$mimephp,php php$typesphp)php)php php{
+php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:FALSEphp_TYPEphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return true;
-    }
-}
+php php php php php php php php returnphp truephp;
+php php php php php}
+php}

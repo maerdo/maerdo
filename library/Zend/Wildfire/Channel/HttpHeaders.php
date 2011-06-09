@@ -1,343 +1,343 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Wildfire
- * @subpackage Channel
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: HttpHeaders.php 23096 2010-10-12 20:36:15Z cadorn $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Wildfire
+php php*php php@subpackagephp Channel
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php HttpHeadersphp.phpphp php2php3php0php9php6php php2php0php1php0php-php1php0php-php1php2php php2php0php:php3php6php:php1php5Zphp cadornphp php$
+php php*php/
 
-/** Zend_Wildfire_Channel_Interface */
-require_once 'Zend/Wildfire/Channel/Interface.php';
+php/php*php*php Zendphp_Wildfirephp_Channelphp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Wildfirephp/Channelphp/Interfacephp.phpphp'php;
 
-/** Zend_Controller_Request_Abstract */
-require_once('Zend/Controller/Request/Abstract.php');
+php/php*php*php Zendphp_Controllerphp_Requestphp_Abstractphp php*php/
+requirephp_oncephp(php'Zendphp/Controllerphp/Requestphp/Abstractphp.phpphp'php)php;
 
-/** Zend_Controller_Response_Abstract */
-require_once('Zend/Controller/Response/Abstract.php');
+php/php*php*php Zendphp_Controllerphp_Responsephp_Abstractphp php*php/
+requirephp_oncephp(php'Zendphp/Controllerphp/Responsephp/Abstractphp.phpphp'php)php;
 
-/** Zend_Controller_Plugin_Abstract */
-require_once 'Zend/Controller/Plugin/Abstract.php';
+php/php*php*php Zendphp_Controllerphp_Pluginphp_Abstractphp php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Pluginphp/Abstractphp.phpphp'php;
 
-/** Zend_Wildfire_Protocol_JsonStream */
-require_once 'Zend/Wildfire/Protocol/JsonStream.php';
+php/php*php*php Zendphp_Wildfirephp_Protocolphp_JsonStreamphp php*php/
+requirephp_oncephp php'Zendphp/Wildfirephp/Protocolphp/JsonStreamphp.phpphp'php;
 
-/** Zend_Controller_Front **/
-require_once 'Zend/Controller/Front.php';
+php/php*php*php Zendphp_Controllerphp_Frontphp php*php*php/
+requirephp_oncephp php'Zendphp/Controllerphp/Frontphp.phpphp'php;
 
-/**
- * Implements communication via HTTP request and response headers for Wildfire Protocols.
- *
- * @category   Zend
- * @package    Zend_Wildfire
- * @subpackage Channel
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Wildfire_Channel_HttpHeaders extends Zend_Controller_Plugin_Abstract implements Zend_Wildfire_Channel_Interface
-{
-    /**
-     * The string to be used to prefix the headers.
-     * @var string
-     */
-    protected static $_headerPrefix = 'X-WF-';
+php/php*php*
+php php*php Implementsphp communicationphp viaphp HTTPphp requestphp andphp responsephp headersphp forphp Wildfirephp Protocolsphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Wildfire
+php php*php php@subpackagephp Channel
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Wildfirephp_Channelphp_HttpHeadersphp extendsphp Zendphp_Controllerphp_Pluginphp_Abstractphp implementsphp Zendphp_Wildfirephp_Channelphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Thephp stringphp tophp bephp usedphp tophp prefixphp thephp headersphp.
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_headerPrefixphp php=php php'Xphp-WFphp-php'php;
 
-    /**
-     * Singleton instance
-     * @var Zend_Wildfire_Channel_HttpHeaders
-     */
-    protected static $_instance = null;
+php php php php php/php*php*
+php php php php php php*php Singletonphp instance
+php php php php php php*php php@varphp Zendphp_Wildfirephp_Channelphp_HttpHeaders
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_instancephp php=php nullphp;
 
-    /**
-     * The index of the plugin in the controller dispatch loop plugin stack
-     * @var integer
-     */
-    protected static $_controllerPluginStackIndex = 999;
+php php php php php/php*php*
+php php php php php php*php Thephp indexphp ofphp thephp pluginphp inphp thephp controllerphp dispatchphp loopphp pluginphp stack
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp staticphp php$php_controllerPluginStackIndexphp php=php php9php9php9php;
 
-    /**
-     * The protocol instances for this channel
-     * @var array
-     */
-    protected $_protocols = null;
+php php php php php/php*php*
+php php php php php php*php Thephp protocolphp instancesphp forphp thisphp channel
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_protocolsphp php=php nullphp;
 
-    /**
-     * Initialize singleton instance.
-     *
-     * @param string $class OPTIONAL Subclass of Zend_Wildfire_Channel_HttpHeaders
-     * @return Zend_Wildfire_Channel_HttpHeaders Returns the singleton Zend_Wildfire_Channel_HttpHeaders instance
-     * @throws Zend_Wildfire_Exception
-     */
-    public static function init($class = null)
-    {
-        if (self::$_instance !== null) {
-            require_once 'Zend/Wildfire/Exception.php';
-            throw new Zend_Wildfire_Exception('Singleton instance of Zend_Wildfire_Channel_HttpHeaders already exists!');
-        }
-        if ($class !== null) {
-            if (!is_string($class)) {
-                require_once 'Zend/Wildfire/Exception.php';
-                throw new Zend_Wildfire_Exception('Third argument is not a class string');
-            }
+php php php php php/php*php*
+php php php php php php*php Initializephp singletonphp instancephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$classphp OPTIONALphp Subclassphp ofphp Zendphp_Wildfirephp_Channelphp_HttpHeaders
+php php php php php php*php php@returnphp Zendphp_Wildfirephp_Channelphp_HttpHeadersphp Returnsphp thephp singletonphp Zendphp_Wildfirephp_Channelphp_HttpHeadersphp instance
+php php php php php php*php php@throwsphp Zendphp_Wildfirephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp initphp(php$classphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(selfphp:php:php$php_instancephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Singletonphp instancephp ofphp Zendphp_Wildfirephp_Channelphp_HttpHeadersphp alreadyphp existsphp!php'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$classphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$classphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Thirdphp argumentphp isphp notphp aphp classphp stringphp'php)php;
+php php php php php php php php php php php php php}
 
-            if (!class_exists($class)) {
-                require_once 'Zend/Loader.php';
-                Zend_Loader::loadClass($class);
-            }
+php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$classphp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classphp)php;
+php php php php php php php php php php php php php}
 
-            self::$_instance = new $class();
+php php php php php php php php php php php php selfphp:php:php$php_instancephp php=php newphp php$classphp(php)php;
 
-            if (!self::$_instance instanceof Zend_Wildfire_Channel_HttpHeaders) {
-                self::$_instance = null;
-                require_once 'Zend/Wildfire/Exception.php';
-                throw new Zend_Wildfire_Exception('Invalid class to third argument. Must be subclass of Zend_Wildfire_Channel_HttpHeaders.');
-            }
-        } else {
-            self::$_instance = new self();
-        }
+php php php php php php php php php php php php ifphp php(php!selfphp:php:php$php_instancephp instanceofphp Zendphp_Wildfirephp_Channelphp_HttpHeadersphp)php php{
+php php php php php php php php php php php php php php php php selfphp:php:php$php_instancephp php=php nullphp;
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Invalidphp classphp tophp thirdphp argumentphp.php Mustphp bephp subclassphp ofphp Zendphp_Wildfirephp_Channelphp_HttpHeadersphp.php'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php selfphp:php:php$php_instancephp php=php newphp selfphp(php)php;
+php php php php php php php php php}
 
-        return self::$_instance;
-    }
-
-
-    /**
-     * Get or create singleton instance
-     *
-     * @param $skipCreate boolean True if an instance should not be created
-     * @return Zend_Wildfire_Channel_HttpHeaders
-     */
-    public static function getInstance($skipCreate=false)
-    {
-        if (self::$_instance===null && $skipCreate!==true) {
-            return self::init();
-        }
-        return self::$_instance;
-    }
-
-    /**
-     * Destroys the singleton instance
-     *
-     * Primarily used for testing.
-     *
-     * @return void
-     */
-    public static function destroyInstance()
-    {
-        self::$_instance = null;
-    }
-
-    /**
-     * Get the instance of a give protocol for this channel
-     *
-     * @param string $uri The URI for the protocol
-     * @return object Returns the protocol instance for the diven URI
-     */
-    public function getProtocol($uri)
-    {
-        if (!isset($this->_protocols[$uri])) {
-            $this->_protocols[$uri] = $this->_initProtocol($uri);
-        }
-
-        $this->_registerControllerPlugin();
-
-        return $this->_protocols[$uri];
-    }
-
-    /**
-     * Initialize a new protocol
-     *
-     * @param string $uri The URI for the protocol to be initialized
-     * @return object Returns the new initialized protocol instance
-     * @throws Zend_Wildfire_Exception
-     */
-    protected function _initProtocol($uri)
-    {
-        switch ($uri) {
-            case Zend_Wildfire_Protocol_JsonStream::PROTOCOL_URI;
-                return new Zend_Wildfire_Protocol_JsonStream();
-        }
-        require_once 'Zend/Wildfire/Exception.php';
-        throw new Zend_Wildfire_Exception('Tyring to initialize unknown protocol for URI "'.$uri.'".');
-    }
+php php php php php php php php returnphp selfphp:php:php$php_instancephp;
+php php php php php}
 
 
-    /**
-     * Flush all data from all protocols and send all data to response headers.
-     *
-     * @return boolean Returns TRUE if data was flushed
-     */
-    public function flush()
-    {
-        if (!$this->_protocols || !$this->isReady()) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php Getphp orphp createphp singletonphp instance
+php php php php php php*
+php php php php php php*php php@paramphp php$skipCreatephp booleanphp Truephp ifphp anphp instancephp shouldphp notphp bephp created
+php php php php php php*php php@returnphp Zendphp_Wildfirephp_Channelphp_HttpHeaders
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getInstancephp(php$skipCreatephp=falsephp)
+php php php php php{
+php php php php php php php php ifphp php(selfphp:php:php$php_instancephp=php=php=nullphp php&php&php php$skipCreatephp!php=php=truephp)php php{
+php php php php php php php php php php php php returnphp selfphp:php:initphp(php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp selfphp:php:php$php_instancephp;
+php php php php php}
 
-        foreach ( $this->_protocols as $protocol ) {
+php php php php php/php*php*
+php php php php php php*php Destroysphp thephp singletonphp instance
+php php php php php php*
+php php php php php php*php Primarilyphp usedphp forphp testingphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp staticphp functionphp destroyInstancephp(php)
+php php php php php{
+php php php php php php php php selfphp:php:php$php_instancephp php=php nullphp;
+php php php php php}
 
-            $payload = $protocol->getPayload($this);
+php php php php php/php*php*
+php php php php php php*php Getphp thephp instancephp ofphp aphp givephp protocolphp forphp thisphp channel
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$uriphp Thephp URIphp forphp thephp protocol
+php php php php php php*php php@returnphp objectphp Returnsphp thephp protocolphp instancephp forphp thephp divenphp URI
+php php php php php php*php/
+php php php php publicphp functionphp getProtocolphp(php$uriphp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_protocolsphp[php$uriphp]php)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_protocolsphp[php$uriphp]php php=php php$thisphp-php>php_initProtocolphp(php$uriphp)php;
+php php php php php php php php php}
 
-            if ($payload) {
-                foreach( $payload as $message ) {
+php php php php php php php php php$thisphp-php>php_registerControllerPluginphp(php)php;
 
-                    $this->getResponse()->setHeader(self::$_headerPrefix.$message[0],
-                                                    $message[1], true);
-                }
-            }
-        }
-        return true;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_protocolsphp[php$uriphp]php;
+php php php php php}
 
-    /**
-     * Set the index of the plugin in the controller dispatch loop plugin stack
-     *
-     * @param integer $index The index of the plugin in the stack
-     * @return integer The previous index.
-     */
-    public static function setControllerPluginStackIndex($index)
-    {
-        $previous = self::$_controllerPluginStackIndex;
-        self::$_controllerPluginStackIndex = $index;
-        return $previous;
-    }
-
-    /**
-     * Register this object as a controller plugin.
-     *
-     * @return void
-     */
-    protected function _registerControllerPlugin()
-    {
-        $controller = Zend_Controller_Front::getInstance();
-        if (!$controller->hasPlugin(get_class($this))) {
-            $controller->registerPlugin($this, self::$_controllerPluginStackIndex);
-        }
-    }
-
-
-    /*
-     * Zend_Wildfire_Channel_Interface
-     */
-
-    /**
-     * Determine if channel is ready.
-     *
-     * The channel is ready as long as the request and response objects are initialized,
-     * can send headers and the FirePHP header exists in the User-Agent.
-     *
-     * If the header does not exist in the User-Agent, no appropriate client
-     * is making this request and the messages should not be sent.
-     *
-     * A timing issue arises when messages are logged before the request/response
-     * objects are initialized. In this case we do not yet know if the client
-     * will be able to accept the messages. If we consequently indicate that
-     * the channel is not ready, these messages will be dropped which is in
-     * most cases not the intended behaviour. The intent is to send them at the
-     * end of the request when the request/response objects will be available
-     * for sure.
-     *
-     * If the request/response objects are not yet initialized we assume if messages are
-     * logged, the client will be able to receive them. As soon as the request/response
-     * objects are availoable and a message is logged this assumption is challenged.
-     * If the client cannot accept the messages any further messages are dropped
-     * and messages sent prior are kept but discarded when the channel is finally
-     * flushed at the end of the request.
-     *
-     * When the channel is flushed the $forceCheckRequest option is used to force
-     * a check of the request/response objects. This is the last verification to ensure
-     * messages are only sent when the client can accept them.
-     *
-     * @param boolean $forceCheckRequest OPTIONAL Set to TRUE if the request must be checked
-     * @return boolean Returns TRUE if channel is ready.
-     */
-    public function isReady($forceCheckRequest=false)
-    {
-        if (!$forceCheckRequest
-            && !$this->_request
-            && !$this->_response
-        ) {
-            return true;
-        }
-
-        if (!($this->getRequest() instanceof Zend_Controller_Request_Http)) {
-            return false;
-        }
-
-        return ($this->getResponse()->canSendHeaders()
-                && (preg_match_all(
-                        '/\s?FirePHP\/([\.\d]*)\s?/si',
-                        $this->getRequest()->getHeader('User-Agent'),
-                        $m
-                    ) ||
-                    (($header = $this->getRequest()->getHeader('X-FirePHP-Version'))
-                     && preg_match_all('/^([\.\d]*)$/si', $header, $m)
-                   ))
-               );
-    }
+php php php php php/php*php*
+php php php php php php*php Initializephp aphp newphp protocol
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$uriphp Thephp URIphp forphp thephp protocolphp tophp bephp initialized
+php php php php php php*php php@returnphp objectphp Returnsphp thephp newphp initializedphp protocolphp instance
+php php php php php php*php php@throwsphp Zendphp_Wildfirephp_Exception
+php php php php php php*php/
+php php php php protectedphp functionphp php_initProtocolphp(php$uriphp)
+php php php php php{
+php php php php php php php php switchphp php(php$uriphp)php php{
+php php php php php php php php php php php php casephp Zendphp_Wildfirephp_Protocolphp_JsonStreamphp:php:PROTOCOLphp_URIphp;
+php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Wildfirephp_Protocolphp_JsonStreamphp(php)php;
+php php php php php php php php php}
+php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Tyringphp tophp initializephp unknownphp protocolphp forphp URIphp php"php'php.php$uriphp.php'php"php.php'php)php;
+php php php php php}
 
 
-    /*
-     * Zend_Controller_Plugin_Abstract
-     */
+php php php php php/php*php*
+php php php php php php*php Flushphp allphp dataphp fromphp allphp protocolsphp andphp sendphp allphp dataphp tophp responsephp headersphp.
+php php php php php php*
+php php php php php php*php php@returnphp booleanphp Returnsphp TRUEphp ifphp dataphp wasphp flushed
+php php php php php php*php/
+php php php php publicphp functionphp flushphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_protocolsphp php|php|php php!php$thisphp-php>isReadyphp(php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-    /**
-     * Flush messages to headers as late as possible but before headers have been sent.
-     *
-     * @return void
-     */
-    public function dispatchLoopShutdown()
-    {
-        $this->flush();
-    }
+php php php php php php php php foreachphp php(php php$thisphp-php>php_protocolsphp asphp php$protocolphp php)php php{
 
-    /**
-     * Get the request object
-     *
-     * @return Zend_Controller_Request_Abstract
-     * @throws Zend_Wildfire_Exception
-     */
-    public function getRequest()
-    {
-        if (!$this->_request) {
-            $controller = Zend_Controller_Front::getInstance();
-            $this->setRequest($controller->getRequest());
-        }
-        if (!$this->_request) {
-            require_once 'Zend/Wildfire/Exception.php';
-            throw new Zend_Wildfire_Exception('Request objects not initialized.');
-        }
-        return $this->_request;
-    }
+php php php php php php php php php php php php php$payloadphp php=php php$protocolphp-php>getPayloadphp(php$thisphp)php;
 
-    /**
-     * Get the response object
-     *
-     * @return Zend_Controller_Response_Abstract
-     * @throws Zend_Wildfire_Exception
-     */
-    public function getResponse()
-    {
-        if (!$this->_response) {
-            $response = Zend_Controller_Front::getInstance()->getResponse();
-            if ($response) {
-                $this->setResponse($response);
-            }
-        }
-        if (!$this->_response) {
-            require_once 'Zend/Wildfire/Exception.php';
-            throw new Zend_Wildfire_Exception('Response objects not initialized.');
-        }
-        return $this->_response;
-    }
-}
+php php php php php php php php php php php php ifphp php(php$payloadphp)php php{
+php php php php php php php php php php php php php php php php foreachphp(php php$payloadphp asphp php$messagephp php)php php{
+
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getResponsephp(php)php-php>setHeaderphp(selfphp:php:php$php_headerPrefixphp.php$messagephp[php0php]php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$messagephp[php1php]php,php truephp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Setphp thephp indexphp ofphp thephp pluginphp inphp thephp controllerphp dispatchphp loopphp pluginphp stack
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$indexphp Thephp indexphp ofphp thephp pluginphp inphp thephp stack
+php php php php php php*php php@returnphp integerphp Thephp previousphp indexphp.
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setControllerPluginStackIndexphp(php$indexphp)
+php php php php php{
+php php php php php php php php php$previousphp php=php selfphp:php:php$php_controllerPluginStackIndexphp;
+php php php php php php php php selfphp:php:php$php_controllerPluginStackIndexphp php=php php$indexphp;
+php php php php php php php php returnphp php$previousphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Registerphp thisphp objectphp asphp aphp controllerphp pluginphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_registerControllerPluginphp(php)
+php php php php php{
+php php php php php php php php php$controllerphp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php;
+php php php php php php php php ifphp php(php!php$controllerphp-php>hasPluginphp(getphp_classphp(php$thisphp)php)php)php php{
+php php php php php php php php php php php php php$controllerphp-php>registerPluginphp(php$thisphp,php selfphp:php:php$php_controllerPluginStackIndexphp)php;
+php php php php php php php php php}
+php php php php php}
+
+
+php php php php php/php*
+php php php php php php*php Zendphp_Wildfirephp_Channelphp_Interface
+php php php php php php*php/
+
+php php php php php/php*php*
+php php php php php php*php Determinephp ifphp channelphp isphp readyphp.
+php php php php php php*
+php php php php php php*php Thephp channelphp isphp readyphp asphp longphp asphp thephp requestphp andphp responsephp objectsphp arephp initializedphp,
+php php php php php php*php canphp sendphp headersphp andphp thephp FirePHPphp headerphp existsphp inphp thephp Userphp-Agentphp.
+php php php php php php*
+php php php php php php*php Ifphp thephp headerphp doesphp notphp existphp inphp thephp Userphp-Agentphp,php nophp appropriatephp client
+php php php php php php*php isphp makingphp thisphp requestphp andphp thephp messagesphp shouldphp notphp bephp sentphp.
+php php php php php php*
+php php php php php php*php Aphp timingphp issuephp arisesphp whenphp messagesphp arephp loggedphp beforephp thephp requestphp/response
+php php php php php php*php objectsphp arephp initializedphp.php Inphp thisphp casephp wephp dophp notphp yetphp knowphp ifphp thephp client
+php php php php php php*php willphp bephp ablephp tophp acceptphp thephp messagesphp.php Ifphp wephp consequentlyphp indicatephp that
+php php php php php php*php thephp channelphp isphp notphp readyphp,php thesephp messagesphp willphp bephp droppedphp whichphp isphp in
+php php php php php php*php mostphp casesphp notphp thephp intendedphp behaviourphp.php Thephp intentphp isphp tophp sendphp themphp atphp the
+php php php php php php*php endphp ofphp thephp requestphp whenphp thephp requestphp/responsephp objectsphp willphp bephp available
+php php php php php php*php forphp surephp.
+php php php php php php*
+php php php php php php*php Ifphp thephp requestphp/responsephp objectsphp arephp notphp yetphp initializedphp wephp assumephp ifphp messagesphp are
+php php php php php php*php loggedphp,php thephp clientphp willphp bephp ablephp tophp receivephp themphp.php Asphp soonphp asphp thephp requestphp/response
+php php php php php php*php objectsphp arephp availoablephp andphp aphp messagephp isphp loggedphp thisphp assumptionphp isphp challengedphp.
+php php php php php php*php Ifphp thephp clientphp cannotphp acceptphp thephp messagesphp anyphp furtherphp messagesphp arephp dropped
+php php php php php php*php andphp messagesphp sentphp priorphp arephp keptphp butphp discardedphp whenphp thephp channelphp isphp finally
+php php php php php php*php flushedphp atphp thephp endphp ofphp thephp requestphp.
+php php php php php php*
+php php php php php php*php Whenphp thephp channelphp isphp flushedphp thephp php$forceCheckRequestphp optionphp isphp usedphp tophp force
+php php php php php php*php aphp checkphp ofphp thephp requestphp/responsephp objectsphp.php Thisphp isphp thephp lastphp verificationphp tophp ensure
+php php php php php php*php messagesphp arephp onlyphp sentphp whenphp thephp clientphp canphp acceptphp themphp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$forceCheckRequestphp OPTIONALphp Setphp tophp TRUEphp ifphp thephp requestphp mustphp bephp checked
+php php php php php php*php php@returnphp booleanphp Returnsphp TRUEphp ifphp channelphp isphp readyphp.
+php php php php php php*php/
+php php php php publicphp functionphp isReadyphp(php$forceCheckRequestphp=falsephp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$forceCheckRequest
+php php php php php php php php php php php php php&php&php php!php$thisphp-php>php_request
+php php php php php php php php php php php php php&php&php php!php$thisphp-php>php_response
+php php php php php php php php php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php(php$thisphp-php>getRequestphp(php)php instanceofphp Zendphp_Controllerphp_Requestphp_Httpphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+
+php php php php php php php php returnphp php(php$thisphp-php>getResponsephp(php)php-php>canSendHeadersphp(php)
+php php php php php php php php php php php php php php php php php&php&php php(pregphp_matchphp_allphp(
+php php php php php php php php php php php php php php php php php php php php php php php php php'php/php\sphp?FirePHPphp\php/php(php[php\php.php\dphp]php*php)php\sphp?php/siphp'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getRequestphp(php)php-php>getHeaderphp(php'Userphp-Agentphp'php)php,
+php php php php php php php php php php php php php php php php php php php php php php php php php$m
+php php php php php php php php php php php php php php php php php php php php php)php php|php|
+php php php php php php php php php php php php php php php php php php php php php(php(php$headerphp php=php php$thisphp-php>getRequestphp(php)php-php>getHeaderphp(php'Xphp-FirePHPphp-Versionphp'php)php)
+php php php php php php php php php php php php php php php php php php php php php php&php&php pregphp_matchphp_allphp(php'php/php^php(php[php\php.php\dphp]php*php)php$php/siphp'php,php php$headerphp,php php$mphp)
+php php php php php php php php php php php php php php php php php php php php)php)
+php php php php php php php php php php php php php php php php)php;
+php php php php php}
+
+
+php php php php php/php*
+php php php php php php*php Zendphp_Controllerphp_Pluginphp_Abstract
+php php php php php php*php/
+
+php php php php php/php*php*
+php php php php php php*php Flushphp messagesphp tophp headersphp asphp latephp asphp possiblephp butphp beforephp headersphp havephp beenphp sentphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp dispatchLoopShutdownphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>flushphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp requestphp object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Requestphp_Abstract
+php php php php php php*php php@throwsphp Zendphp_Wildfirephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getRequestphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_requestphp)php php{
+php php php php php php php php php php php php php$controllerphp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php;
+php php php php php php php php php php php php php$thisphp-php>setRequestphp(php$controllerphp-php>getRequestphp(php)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$thisphp-php>php_requestphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Requestphp objectsphp notphp initializedphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_requestphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp responsephp object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Controllerphp_Responsephp_Abstract
+php php php php php php*php php@throwsphp Zendphp_Wildfirephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp getResponsephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_responsephp)php php{
+php php php php php php php php php php php php php$responsephp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php-php>getResponsephp(php)php;
+php php php php php php php php php php php php ifphp php(php$responsephp)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>setResponsephp(php$responsephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$thisphp-php>php_responsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Wildfirephp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Wildfirephp_Exceptionphp(php'Responsephp objectsphp notphp initializedphp.php'php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_responsephp;
+php php php php php}
+php}

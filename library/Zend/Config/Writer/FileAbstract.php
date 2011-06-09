@@ -1,134 +1,134 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Config
- * @package    Writer
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Config
+php php*php php@packagephp php php php Writer
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-require_once "Zend/Config/Writer.php";
+requirephp_oncephp php"Zendphp/Configphp/Writerphp.phpphp"php;
 
-/**
- * Abstract File Writer
- *
- * @category   Zend
- * @package    Zend_package
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: FileAbstract.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Config_Writer_FileAbstract extends Zend_Config_Writer
-{
-    /**
-     * Filename to write to
-     *
-     * @var string
-     */
-    protected $_filename = null;
+php/php*php*
+php php*php Abstractphp Filephp Writer
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_package
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php FileAbstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Configphp_Writerphp_FileAbstractphp extendsphp Zendphp_Configphp_Writer
+php{
+php php php php php/php*php*
+php php php php php php*php Filenamephp tophp writephp to
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_filenamephp php=php nullphp;
 
-    /**
-     * Wether to exclusively lock the file or not
-     *
-     * @var boolean
-     */
-    protected $_exclusiveLock = false;
+php php php php php/php*php*
+php php php php php php*php Wetherphp tophp exclusivelyphp lockphp thephp filephp orphp not
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_exclusiveLockphp php=php falsephp;
 
-    /**
-     * Set the target filename
-     *
-     * @param  string $filename
-     * @return Zend_Config_Writer_Array
-     */
-    public function setFilename($filename)
-    {
-        $this->_filename = $filename;
+php php php php php/php*php*
+php php php php php php*php Setphp thephp targetphp filename
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$filename
+php php php php php php*php php@returnphp Zendphp_Configphp_Writerphp_Array
+php php php php php php*php/
+php php php php publicphp functionphp setFilenamephp(php$filenamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_filenamephp php=php php$filenamephp;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set wether to exclusively lock the file or not
-     *
-     * @param  boolean     $exclusiveLock
-     * @return Zend_Config_Writer_Array
-     */
-    public function setExclusiveLock($exclusiveLock)
-    {
-        $this->_exclusiveLock = $exclusiveLock;
+php php php php php/php*php*
+php php php php php php*php Setphp wetherphp tophp exclusivelyphp lockphp thephp filephp orphp not
+php php php php php php*
+php php php php php php*php php@paramphp php booleanphp php php php php php$exclusiveLock
+php php php php php php*php php@returnphp Zendphp_Configphp_Writerphp_Array
+php php php php php php*php/
+php php php php publicphp functionphp setExclusiveLockphp(php$exclusiveLockphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_exclusiveLockphp php=php php$exclusiveLockphp;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Write configuration to file.
-     *
-     * @param string $filename
-     * @param Zend_Config $config
-     * @param bool $exclusiveLock
-     * @return void
-     */
-    public function write($filename = null, Zend_Config $config = null, $exclusiveLock = null)
-    {
-        if ($filename !== null) {
-            $this->setFilename($filename);
-        }
+php php php php php/php*php*
+php php php php php php*php Writephp configurationphp tophp filephp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$filename
+php php php php php php*php php@paramphp Zendphp_Configphp php$config
+php php php php php php*php php@paramphp boolphp php$exclusiveLock
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp writephp(php$filenamephp php=php nullphp,php Zendphp_Configphp php$configphp php=php nullphp,php php$exclusiveLockphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$filenamephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setFilenamephp(php$filenamephp)php;
+php php php php php php php php php}
 
-        if ($config !== null) {
-            $this->setConfig($config);
-        }
+php php php php php php php php ifphp php(php$configphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$configphp)php;
+php php php php php php php php php}
 
-        if ($exclusiveLock !== null) {
-            $this->setExclusiveLock($exclusiveLock);
-        }
+php php php php php php php php ifphp php(php$exclusiveLockphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setExclusiveLockphp(php$exclusiveLockphp)php;
+php php php php php php php php php}
 
-        if ($this->_filename === null) {
-            require_once 'Zend/Config/Exception.php';
-            throw new Zend_Config_Exception('No filename was set');
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_filenamephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php'Nophp filenamephp wasphp setphp'php)php;
+php php php php php php php php php}
 
-        if ($this->_config === null) {
-            require_once 'Zend/Config/Exception.php';
-            throw new Zend_Config_Exception('No config was set');
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_configphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php'Nophp configphp wasphp setphp'php)php;
+php php php php php php php php php}
 
-        $configString = $this->render();
+php php php php php php php php php$configStringphp php=php php$thisphp-php>renderphp(php)php;
 
-        $flags = 0;
+php php php php php php php php php$flagsphp php=php php0php;
 
-        if ($this->_exclusiveLock) {
-            $flags |= LOCK_EX;
-        }
+php php php php php php php php ifphp php(php$thisphp-php>php_exclusiveLockphp)php php{
+php php php php php php php php php php php php php$flagsphp php|php=php LOCKphp_EXphp;
+php php php php php php php php php}
 
-        $result = @file_put_contents($this->_filename, $configString, $flags);
+php php php php php php php php php$resultphp php=php php@filephp_putphp_contentsphp(php$thisphp-php>php_filenamephp,php php$configStringphp,php php$flagsphp)php;
 
-        if ($result === false) {
-            require_once 'Zend/Config/Exception.php';
-            throw new Zend_Config_Exception('Could not write to file "' . $this->_filename . '"');
-        }
-    }
+php php php php php php php php ifphp php(php$resultphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php'Couldphp notphp writephp tophp filephp php"php'php php.php php$thisphp-php>php_filenamephp php.php php'php"php'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Render a Zend_Config into a config file string.
-     *
-     * @since 1.10
-     * @todo For 2.0 this should be redone into an abstract method.
-     * @return string
-     */
-    public function render()
-    {
-        return "";
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Renderphp aphp Zendphp_Configphp intophp aphp configphp filephp stringphp.
+php php php php php php*
+php php php php php php*php php@sincephp php1php.php1php0
+php php php php php php*php php@todophp Forphp php2php.php0php thisphp shouldphp bephp redonephp intophp anphp abstractphp methodphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp renderphp(php)
+php php php php php{
+php php php php php php php php returnphp php"php"php;
+php php php php php}
+php}

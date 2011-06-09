@@ -1,180 +1,180 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Frontend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Function.php 22648 2010-07-20 14:43:27Z mabe $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Frontend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Functionphp.phpphp php2php2php6php4php8php php2php0php1php0php-php0php7php-php2php0php php1php4php:php4php3php:php2php7Zphp mabephp php$
+php php*php/
 
 
-/**
- * @see Zend_Cache_Core
- */
-require_once 'Zend/Cache/Core.php';
+php/php*php*
+php php*php php@seephp Zendphp_Cachephp_Core
+php php*php/
+requirephp_oncephp php'Zendphp/Cachephp/Corephp.phpphp'php;
 
 
-/**
- * @package    Zend_Cache
- * @subpackage Zend_Cache_Frontend
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Cache_Frontend_Function extends Zend_Cache_Core
-{
-    /**
-     * This frontend specific options
-     *
-     * ====> (boolean) cache_by_default :
-     * - if true, function calls will be cached by default
-     *
-     * ====> (array) cached_functions :
-     * - an array of function names which will be cached (even if cache_by_default = false)
-     *
-     * ====> (array) non_cached_functions :
-     * - an array of function names which won't be cached (even if cache_by_default = true)
-     *
-     * @var array options
-     */
-    protected $_specificOptions = array(
-        'cache_by_default' => true,
-        'cached_functions' => array(),
-        'non_cached_functions' => array()
-    );
+php/php*php*
+php php*php php@packagephp php php php Zendphp_Cache
+php php*php php@subpackagephp Zendphp_Cachephp_Frontend
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Cachephp_Frontendphp_Functionphp extendsphp Zendphp_Cachephp_Core
+php{
+php php php php php/php*php*
+php php php php php php*php Thisphp frontendphp specificphp options
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(booleanphp)php cachephp_byphp_defaultphp php:
+php php php php php php*php php-php ifphp truephp,php functionphp callsphp willphp bephp cachedphp byphp default
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(arrayphp)php cachedphp_functionsphp php:
+php php php php php php*php php-php anphp arrayphp ofphp functionphp namesphp whichphp willphp bephp cachedphp php(evenphp ifphp cachephp_byphp_defaultphp php=php falsephp)
+php php php php php php*
+php php php php php php*php php=php=php=php=php>php php(arrayphp)php nonphp_cachedphp_functionsphp php:
+php php php php php php*php php-php anphp arrayphp ofphp functionphp namesphp whichphp wonphp'tphp bephp cachedphp php(evenphp ifphp cachephp_byphp_defaultphp php=php truephp)
+php php php php php php*
+php php php php php php*php php@varphp arrayphp options
+php php php php php php*php/
+php php php php protectedphp php$php_specificOptionsphp php=php arrayphp(
+php php php php php php php php php'cachephp_byphp_defaultphp'php php=php>php truephp,
+php php php php php php php php php'cachedphp_functionsphp'php php=php>php arrayphp(php)php,
+php php php php php php php php php'nonphp_cachedphp_functionsphp'php php=php>php arrayphp(php)
+php php php php php)php;
 
-    /**
-     * Constructor
-     *
-     * @param  array $options Associative array of options
-     * @return void
-     */
-    public function __construct(array $options = array())
-    {
-        while (list($name, $value) = each($options)) {
-            $this->setOption($name, $value);
-        }
-        $this->setOption('automatic_serialization', true);
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Associativephp arrayphp ofphp options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>setOptionphp(php'automaticphp_serializationphp'php,php truephp)php;
+php php php php php}
 
-    /**
-     * Main method : call the specified function or get the result from cache
-     *
-     * @param  callback $callback         A valid callback
-     * @param  array    $parameters       Function parameters
-     * @param  array    $tags             Cache tags
-     * @param  int      $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
-     * @param  int      $priority         integer between 0 (very low priority) and 10 (maximum priority) used by some particular backends
-     * @return mixed Result
-     */
-    public function call($callback, array $parameters = array(), $tags = array(), $specificLifetime = false, $priority = 8)
-    {
-        if (!is_callable($callback, true, $name)) {
-            Zend_Cache::throwException('Invalid callback');
-        }
+php php php php php/php*php*
+php php php php php php*php Mainphp methodphp php:php callphp thephp specifiedphp functionphp orphp getphp thephp resultphp fromphp cache
+php php php php php php*
+php php php php php php*php php@paramphp php callbackphp php$callbackphp php php php php php php php php Aphp validphp callback
+php php php php php php*php php@paramphp php arrayphp php php php php$parametersphp php php php php php php Functionphp parameters
+php php php php php php*php php@paramphp php arrayphp php php php php$tagsphp php php php php php php php php php php php php Cachephp tags
+php php php php php php*php php@paramphp php intphp php php php php php php$specificLifetimephp Ifphp php!php=php falsephp,php setphp aphp specificphp lifetimephp forphp thisphp cachephp recordphp php(nullphp php=php>php infinitephp lifetimephp)
+php php php php php php*php php@paramphp php intphp php php php php php php$priorityphp php php php php php php php php integerphp betweenphp php0php php(veryphp lowphp priorityphp)php andphp php1php0php php(maximumphp priorityphp)php usedphp byphp somephp particularphp backends
+php php php php php php*php php@returnphp mixedphp Result
+php php php php php php*php/
+php php php php publicphp functionphp callphp(php$callbackphp,php arrayphp php$parametersphp php=php arrayphp(php)php,php php$tagsphp php=php arrayphp(php)php,php php$specificLifetimephp php=php falsephp,php php$priorityphp php=php php8php)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_callablephp(php$callbackphp,php truephp,php php$namephp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp callbackphp'php)php;
+php php php php php php php php php}
 
-        $cacheBool1 = $this->_specificOptions['cache_by_default'];
-        $cacheBool2 = in_array($name, $this->_specificOptions['cached_functions']);
-        $cacheBool3 = in_array($name, $this->_specificOptions['non_cached_functions']);
-        $cache = (($cacheBool1 || $cacheBool2) && (!$cacheBool3));
-        if (!$cache) {
-            // Caching of this callback is disabled
-            return call_user_func_array($callback, $parameters);
-        }
+php php php php php php php php php$cacheBoolphp1php php=php php$thisphp-php>php_specificOptionsphp[php'cachephp_byphp_defaultphp'php]php;
+php php php php php php php php php$cacheBoolphp2php php=php inphp_arrayphp(php$namephp,php php$thisphp-php>php_specificOptionsphp[php'cachedphp_functionsphp'php]php)php;
+php php php php php php php php php$cacheBoolphp3php php=php inphp_arrayphp(php$namephp,php php$thisphp-php>php_specificOptionsphp[php'nonphp_cachedphp_functionsphp'php]php)php;
+php php php php php php php php php$cachephp php=php php(php(php$cacheBoolphp1php php|php|php php$cacheBoolphp2php)php php&php&php php(php!php$cacheBoolphp3php)php)php;
+php php php php php php php php ifphp php(php!php$cachephp)php php{
+php php php php php php php php php php php php php/php/php Cachingphp ofphp thisphp callbackphp isphp disabled
+php php php php php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(php$callbackphp,php php$parametersphp)php;
+php php php php php php php php php}
 
-        $id = $this->_makeId($callback, $parameters);
-        if ( ($rs = $this->load($id)) && isset($rs[0], $rs[1])) {
-            // A cache is available
-            $output = $rs[0];
-            $return = $rs[1];
-        } else {
-            // A cache is not available (or not valid for this frontend)
-            ob_start();
-            ob_implicit_flush(false);
-            $return = call_user_func_array($callback, $parameters);
-            $output = ob_get_contents();
-            ob_end_clean();
-            $data = array($output, $return);
-            $this->save($data, $id, $tags, $specificLifetime, $priority);
-        }
+php php php php php php php php php$idphp php=php php$thisphp-php>php_makeIdphp(php$callbackphp,php php$parametersphp)php;
+php php php php php php php php ifphp php(php php(php$rsphp php=php php$thisphp-php>loadphp(php$idphp)php)php php&php&php issetphp(php$rsphp[php0php]php,php php$rsphp[php1php]php)php)php php{
+php php php php php php php php php php php php php/php/php Aphp cachephp isphp available
+php php php php php php php php php php php php php$outputphp php=php php$rsphp[php0php]php;
+php php php php php php php php php php php php php$returnphp php=php php$rsphp[php1php]php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php/php Aphp cachephp isphp notphp availablephp php(orphp notphp validphp forphp thisphp frontendphp)
+php php php php php php php php php php php php obphp_startphp(php)php;
+php php php php php php php php php php php php obphp_implicitphp_flushphp(falsephp)php;
+php php php php php php php php php php php php php$returnphp php=php callphp_userphp_funcphp_arrayphp(php$callbackphp,php php$parametersphp)php;
+php php php php php php php php php php php php php$outputphp php=php obphp_getphp_contentsphp(php)php;
+php php php php php php php php php php php php obphp_endphp_cleanphp(php)php;
+php php php php php php php php php php php php php$dataphp php=php arrayphp(php$outputphp,php php$returnphp)php;
+php php php php php php php php php php php php php$thisphp-php>savephp(php$dataphp,php php$idphp,php php$tagsphp,php php$specificLifetimephp,php php$priorityphp)php;
+php php php php php php php php php}
 
-        echo $output;
-        return $return;
-    }
+php php php php php php php php echophp php$outputphp;
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * ZF-9970
-     *
-     * @deprecated
-     */
-    private function _makeId($callback, array $args)
-    {
-        return $this->makeId($callback, $args);
-    }
+php php php php php/php*php*
+php php php php php php*php ZFphp-php9php9php7php0
+php php php php php php*
+php php php php php php*php php@deprecated
+php php php php php php*php/
+php php php php privatephp functionphp php_makeIdphp(php$callbackphp,php arrayphp php$argsphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>makeIdphp(php$callbackphp,php php$argsphp)php;
+php php php php php}
 
-    /**
-     * Make a cache id from the function name and parameters
-     *
-     * @param  callback $callback A valid callback
-     * @param  array    $args     Function parameters
-     * @throws Zend_Cache_Exception
-     * @return string Cache id
-     */
-    public function makeId($callback, array $args = array())
-    {
-        if (!is_callable($callback, true, $name)) {
-            Zend_Cache::throwException('Invalid callback');
-        }
+php php php php php/php*php*
+php php php php php php*php Makephp aphp cachephp idphp fromphp thephp functionphp namephp andphp parameters
+php php php php php php*
+php php php php php php*php php@paramphp php callbackphp php$callbackphp Aphp validphp callback
+php php php php php php*php php@paramphp php arrayphp php php php php$argsphp php php php php Functionphp parameters
+php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
+php php php php php php*php php@returnphp stringphp Cachephp id
+php php php php php php*php/
+php php php php publicphp functionphp makeIdphp(php$callbackphp,php arrayphp php$argsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_callablephp(php$callbackphp,php truephp,php php$namephp)php)php php{
+php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp callbackphp'php)php;
+php php php php php php php php php}
 
-        // functions, methods and classnames are case-insensitive
-        $name = strtolower($name);
+php php php php php php php php php/php/php functionsphp,php methodsphp andphp classnamesphp arephp casephp-insensitive
+php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
 
-        // generate a unique id for object callbacks
-        if (is_object($callback)) { // Closures & __invoke
-            $object = $callback;
-        } elseif (isset($callback[0])) { // array($object, 'method')
-            $object = $callback[0];
-        }
-        if (isset($object)) {
-            try {
-                $tmp = @serialize($callback);
-            } catch (Exception $e) {
-                Zend_Cache::throwException($e->getMessage());
-            }
-            if (!$tmp) {
-                $lastErr = error_get_last();
-                Zend_Cache::throwException("Can't serialize callback object to generate id: {$lastErr['message']}");
-            }
-            $name.= '__' . $tmp;
-        }
+php php php php php php php php php/php/php generatephp aphp uniquephp idphp forphp objectphp callbacks
+php php php php php php php php ifphp php(isphp_objectphp(php$callbackphp)php)php php{php php/php/php Closuresphp php&php php_php_invoke
+php php php php php php php php php php php php php$objectphp php=php php$callbackphp;
+php php php php php php php php php}php elseifphp php(issetphp(php$callbackphp[php0php]php)php)php php{php php/php/php arrayphp(php$objectphp,php php'methodphp'php)
+php php php php php php php php php php php php php$objectphp php=php php$callbackphp[php0php]php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$objectphp)php)php php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php$tmpphp php=php php@serializephp(php$callbackphp)php;
+php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php$ephp-php>getMessagephp(php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php!php$tmpphp)php php{
+php php php php php php php php php php php php php php php php php$lastErrphp php=php errorphp_getphp_lastphp(php)php;
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Canphp'tphp serializephp callbackphp objectphp tophp generatephp idphp:php php{php$lastErrphp[php'messagephp'php]php}php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$namephp.php=php php'php_php_php'php php.php php$tmpphp;
+php php php php php php php php php}
 
-        // generate a unique id for arguments
-        $argsStr = '';
-        if ($args) {
-            try {
-                $argsStr = @serialize(array_values($args));
-            } catch (Exception $e) {
-                Zend_Cache::throwException($e->getMessage());
-            }
-            if (!$argsStr) {
-                $lastErr = error_get_last();
-                throw Zend_Cache::throwException("Can't serialize arguments to generate id: {$lastErr['message']}");
-            }
-        }
+php php php php php php php php php/php/php generatephp aphp uniquephp idphp forphp arguments
+php php php php php php php php php$argsStrphp php=php php'php'php;
+php php php php php php php php ifphp php(php$argsphp)php php{
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php php$argsStrphp php=php php@serializephp(arrayphp_valuesphp(php$argsphp)php)php;
+php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php$ephp-php>getMessagephp(php)php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(php!php$argsStrphp)php php{
+php php php php php php php php php php php php php php php php php$lastErrphp php=php errorphp_getphp_lastphp(php)php;
+php php php php php php php php php php php php php php php php throwphp Zendphp_Cachephp:php:throwExceptionphp(php"Canphp'tphp serializephp argumentsphp tophp generatephp idphp:php php{php$lastErrphp[php'messagephp'php]php}php"php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return md5($name . $argsStr);
-    }
+php php php php php php php php returnphp mdphp5php(php$namephp php.php php$argsStrphp)php;
+php php php php php}
 
-}
+php}

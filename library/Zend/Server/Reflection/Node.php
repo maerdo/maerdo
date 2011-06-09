@@ -1,201 +1,201 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Server
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Server
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/**
- * Node Tree class for Zend_Server reflection operations
- *
- * @category   Zend
- * @package    Zend_Server
- * @subpackage Reflection
- * @version $Id: Node.php 20096 2010-01-06 02:05:09Z bkarwin $
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Server_Reflection_Node
-{
-    /**
-     * Node value
-     * @var mixed
-     */
-    protected $_value = null;
+php/php*php*
+php php*php Nodephp Treephp classphp forphp Zendphp_Serverphp reflectionphp operations
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Server
+php php*php php@subpackagephp Reflection
+php php*php php@versionphp php$Idphp:php Nodephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Serverphp_Reflectionphp_Node
+php{
+php php php php php/php*php*
+php php php php php php*php Nodephp value
+php php php php php php*php php@varphp mixed
+php php php php php php*php/
+php php php php protectedphp php$php_valuephp php=php nullphp;
 
-    /**
-     * Array of child nodes (if any)
-     * @var array
-     */
-    protected $_children = array();
+php php php php php/php*php*
+php php php php php php*php Arrayphp ofphp childphp nodesphp php(ifphp anyphp)
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_childrenphp php=php arrayphp(php)php;
 
-    /**
-     * Parent node (if any)
-     * @var Zend_Server_Reflection_Node
-     */
-    protected $_parent = null;
+php php php php php/php*php*
+php php php php php php*php Parentphp nodephp php(ifphp anyphp)
+php php php php php php*php php@varphp Zendphp_Serverphp_Reflectionphp_Node
+php php php php php php*php/
+php php php php protectedphp php$php_parentphp php=php nullphp;
 
-    /**
-     * Constructor
-     *
-     * @param mixed $value
-     * @param Zend_Server_Reflection_Node $parent Optional
-     * @return Zend_Server_Reflection_Node
-     */
-    public function __construct($value, Zend_Server_Reflection_Node $parent = null)
-    {
-        $this->_value = $value;
-        if (null !== $parent) {
-            $this->setParent($parent, true);
-        }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$value
+php php php php php php*php php@paramphp Zendphp_Serverphp_Reflectionphp_Nodephp php$parentphp Optional
+php php php php php php*php php@returnphp Zendphp_Serverphp_Reflectionphp_Node
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$valuephp,php Zendphp_Serverphp_Reflectionphp_Nodephp php$parentphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_valuephp php=php php$valuephp;
+php php php php php php php php ifphp php(nullphp php!php=php=php php$parentphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setParentphp(php$parentphp,php truephp)php;
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set parent node
-     *
-     * @param Zend_Server_Reflection_Node $node
-     * @param boolean $new Whether or not the child node is newly created
-     * and should always be attached
-     * @return void
-     */
-    public function setParent(Zend_Server_Reflection_Node $node, $new = false)
-    {
-        $this->_parent = $node;
+php php php php php/php*php*
+php php php php php php*php Setphp parentphp node
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Serverphp_Reflectionphp_Nodephp php$node
+php php php php php php*php php@paramphp booleanphp php$newphp Whetherphp orphp notphp thephp childphp nodephp isphp newlyphp created
+php php php php php php*php andphp shouldphp alwaysphp bephp attached
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setParentphp(Zendphp_Serverphp_Reflectionphp_Nodephp php$nodephp,php php$newphp php=php falsephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_parentphp php=php php$nodephp;
 
-        if ($new) {
-            $node->attachChild($this);
-            return;
-        }
-    }
+php php php php php php php php ifphp php(php$newphp)php php{
+php php php php php php php php php php php php php$nodephp-php>attachChildphp(php$thisphp)php;
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Create and attach a new child node
-     *
-     * @param mixed $value
-     * @access public
-     * @return Zend_Server_Reflection_Node New child node
-     */
-    public function createChild($value)
-    {
-        $child = new self($value, $this);
+php php php php php/php*php*
+php php php php php php*php Createphp andphp attachphp aphp newphp childphp node
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$value
+php php php php php php*php php@accessphp public
+php php php php php php*php php@returnphp Zendphp_Serverphp_Reflectionphp_Nodephp Newphp childphp node
+php php php php php php*php/
+php php php php publicphp functionphp createChildphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$childphp php=php newphp selfphp(php$valuephp,php php$thisphp)php;
 
-        return $child;
-    }
+php php php php php php php php returnphp php$childphp;
+php php php php php}
 
-    /**
-     * Attach a child node
-     *
-     * @param Zend_Server_Reflection_Node $node
-     * @return void
-     */
-    public function attachChild(Zend_Server_Reflection_Node $node)
-    {
-        $this->_children[] = $node;
+php php php php php/php*php*
+php php php php php php*php Attachphp aphp childphp node
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Serverphp_Reflectionphp_Nodephp php$node
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp attachChildphp(Zendphp_Serverphp_Reflectionphp_Nodephp php$nodephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_childrenphp[php]php php=php php$nodephp;
 
-        if ($node->getParent() !== $this) {
-            $node->setParent($this);
-        }
-    }
+php php php php php php php php ifphp php(php$nodephp-php>getParentphp(php)php php!php=php=php php$thisphp)php php{
+php php php php php php php php php php php php php$nodephp-php>setParentphp(php$thisphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Return an array of all child nodes
-     *
-     * @return array
-     */
-    public function getChildren()
-    {
-        return $this->_children;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp allphp childphp nodes
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getChildrenphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_childrenphp;
+php php php php php}
 
-    /**
-     * Does this node have children?
-     *
-     * @return boolean
-     */
-    public function hasChildren()
-    {
-        return count($this->_children) > 0;
-    }
+php php php php php/php*php*
+php php php php php php*php Doesphp thisphp nodephp havephp childrenphp?
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp hasChildrenphp(php)
+php php php php php{
+php php php php php php php php returnphp countphp(php$thisphp-php>php_childrenphp)php php>php php0php;
+php php php php php}
 
-    /**
-     * Return the parent node
-     *
-     * @return null|Zend_Server_Reflection_Node
-     */
-    public function getParent()
-    {
-        return $this->_parent;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp parentphp node
+php php php php php php*
+php php php php php php*php php@returnphp nullphp|Zendphp_Serverphp_Reflectionphp_Node
+php php php php php php*php/
+php php php php publicphp functionphp getParentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_parentphp;
+php php php php php}
 
-    /**
-     * Return the node's current value
-     *
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->_value;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp nodephp'sphp currentphp value
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php publicphp functionphp getValuephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_valuephp;
+php php php php php}
 
-    /**
-     * Set the node value
-     *
-     * @param mixed $value
-     * @return void
-     */
-    public function setValue($value)
-    {
-        $this->_value = $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp nodephp value
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$value
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp setValuephp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_valuephp php=php php$valuephp;
+php php php php php}
 
-    /**
-     * Retrieve the bottommost nodes of this node's tree
-     *
-     * Retrieves the bottommost nodes of the tree by recursively calling
-     * getEndPoints() on all children. If a child is null, it returns the parent
-     * as an end point.
-     *
-     * @return array
-     */
-    public function getEndPoints()
-    {
-        $endPoints = array();
-        if (!$this->hasChildren()) {
-            return $endPoints;
-        }
+php php php php php/php*php*
+php php php php php php*php Retrievephp thephp bottommostphp nodesphp ofphp thisphp nodephp'sphp tree
+php php php php php php*
+php php php php php php*php Retrievesphp thephp bottommostphp nodesphp ofphp thephp treephp byphp recursivelyphp calling
+php php php php php php*php getEndPointsphp(php)php onphp allphp childrenphp.php Ifphp aphp childphp isphp nullphp,php itphp returnsphp thephp parent
+php php php php php php*php asphp anphp endphp pointphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getEndPointsphp(php)
+php php php php php{
+php php php php php php php php php$endPointsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(php!php$thisphp-php>hasChildrenphp(php)php)php php{
+php php php php php php php php php php php php returnphp php$endPointsphp;
+php php php php php php php php php}
 
-        foreach ($this->_children as $child) {
-            $value = $child->getValue();
+php php php php php php php php foreachphp php(php$thisphp-php>php_childrenphp asphp php$childphp)php php{
+php php php php php php php php php php php php php$valuephp php=php php$childphp-php>getValuephp(php)php;
 
-            if (null === $value) {
-                $endPoints[] = $this;
-            } elseif ((null !== $value)
-                && $child->hasChildren())
-            {
-                $childEndPoints = $child->getEndPoints();
-                if (!empty($childEndPoints)) {
-                    $endPoints = array_merge($endPoints, $childEndPoints);
-                }
-            } elseif ((null !== $value) && !$child->hasChildren()) {
-                $endPoints[] = $child;
-            }
-        }
+php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php$endPointsphp[php]php php=php php$thisphp;
+php php php php php php php php php php php php php}php elseifphp php(php(nullphp php!php=php=php php$valuephp)
+php php php php php php php php php php php php php php php php php&php&php php$childphp-php>hasChildrenphp(php)php)
+php php php php php php php php php php php php php{
+php php php php php php php php php php php php php php php php php$childEndPointsphp php=php php$childphp-php>getEndPointsphp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$childEndPointsphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$endPointsphp php=php arrayphp_mergephp(php$endPointsphp,php php$childEndPointsphp)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elseifphp php(php(nullphp php!php=php=php php$valuephp)php php&php&php php!php$childphp-php>hasChildrenphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$endPointsphp[php]php php=php php$childphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $endPoints;
-    }
-}
+php php php php php php php php returnphp php$endPointsphp;
+php php php php php}
+php}

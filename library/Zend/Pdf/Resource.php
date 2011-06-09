@@ -1,165 +1,165 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Resource.php 22909 2010-08-27 19:57:48Z alexander $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Resourcephp.phpphp php2php2php9php0php9php php2php0php1php0php-php0php8php-php2php7php php1php9php:php5php7php:php4php8Zphp alexanderphp php$
+php php*php/
 
 
-/**
- * PDF file Resource abstraction
- *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Pdf_Resource
-{
-    /**
-     * Each Pdf resource (fonts, images, ...) interacts with a PDF itself.
-     * It creates appropriate PDF objects, structures and sometime embedded files.
-     * Resources are referenced in content streams by names, which are stored in
-     * a page resource dictionaries.
-     *
-     * Thus, resources must be attached to the PDF.
-     *
-     * Resource abstraction uses own PDF object factory to store all necessary information.
-     * At the render time internal object factory is appended to the global PDF file
-     * factory.
-     *
-     * Resource abstraction also cashes information about rendered PDF files and
-     * doesn't duplicate resource description each time then Resource is rendered
-     * (referenced).
-     *
-     * @var Zend_Pdf_ElementFactory_Interface
-     */
-    protected $_objectFactory;
+php/php*php*
+php php*php PDFphp filephp Resourcephp abstraction
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Pdfphp_Resource
+php{
+php php php php php/php*php*
+php php php php php php*php Eachphp Pdfphp resourcephp php(fontsphp,php imagesphp,php php.php.php.php)php interactsphp withphp aphp PDFphp itselfphp.
+php php php php php php*php Itphp createsphp appropriatephp PDFphp objectsphp,php structuresphp andphp sometimephp embeddedphp filesphp.
+php php php php php php*php Resourcesphp arephp referencedphp inphp contentphp streamsphp byphp namesphp,php whichphp arephp storedphp in
+php php php php php php*php aphp pagephp resourcephp dictionariesphp.
+php php php php php php*
+php php php php php php*php Thusphp,php resourcesphp mustphp bephp attachedphp tophp thephp PDFphp.
+php php php php php php*
+php php php php php php*php Resourcephp abstractionphp usesphp ownphp PDFphp objectphp factoryphp tophp storephp allphp necessaryphp informationphp.
+php php php php php php*php Atphp thephp renderphp timephp internalphp objectphp factoryphp isphp appendedphp tophp thephp globalphp PDFphp file
+php php php php php php*php factoryphp.
+php php php php php php*
+php php php php php php*php Resourcephp abstractionphp alsophp cashesphp informationphp aboutphp renderedphp PDFphp filesphp and
+php php php php php php*php doesnphp'tphp duplicatephp resourcephp descriptionphp eachphp timephp thenphp Resourcephp isphp rendered
+php php php php php php*php php(referencedphp)php.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_ElementFactoryphp_Interface
+php php php php php php*php/
+php php php php protectedphp php$php_objectFactoryphp;
 
-    /**
-     * Main resource object
-     *
-     * @var Zend_Pdf_Element_Object
-     */
-    protected $_resource;
+php php php php php/php*php*
+php php php php php php*php Mainphp resourcephp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Pdfphp_Elementphp_Object
+php php php php php php*php/
+php php php php protectedphp php$php_resourcephp;
 
-    /**
-     * Object constructor.
-     *
-     * If resource is not a Zend_Pdf_Element object, then stream object with specified value is
-     * generated.
-     *
-     * @param Zend_Pdf_Element|string $resource
-     */
-    public function __construct($resource)
-    {
-        if ($resource instanceof Zend_Pdf_Element_Object) {
-            $this->_objectFactory = $resource->getFactory();
-            $this->_resource      = $resource;
+php php php php php/php*php*
+php php php php php php*php Objectphp constructorphp.
+php php php php php php*
+php php php php php php*php Ifphp resourcephp isphp notphp aphp Zendphp_Pdfphp_Elementphp objectphp,php thenphp streamphp objectphp withphp specifiedphp valuephp is
+php php php php php php*php generatedphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp|stringphp php$resource
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$resourcephp)
+php php php php php{
+php php php php php php php php ifphp php(php$resourcephp instanceofphp Zendphp_Pdfphp_Elementphp_Objectphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_objectFactoryphp php=php php$resourcephp-php>getFactoryphp(php)php;
+php php php php php php php php php php php php php$thisphp-php>php_resourcephp php php php php php php=php php$resourcephp;
 
-            return;
-        }
+php php php php php php php php php php php php returnphp;
+php php php php php php php php php}
 
-        require_once 'Zend/Pdf/ElementFactory.php';
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/ElementFactoryphp.phpphp'php;
 
-        $this->_objectFactory = Zend_Pdf_ElementFactory::createFactory(1);
-        if ($resource instanceof Zend_Pdf_Element) {
-            $this->_resource  = $this->_objectFactory->newObject($resource);
-        } else {
-            $this->_resource  = $this->_objectFactory->newStreamObject($resource);
-        }
-    }
+php php php php php php php php php$thisphp-php>php_objectFactoryphp php=php Zendphp_Pdfphp_ElementFactoryphp:php:createFactoryphp(php1php)php;
+php php php php php php php php ifphp php(php$resourcephp instanceofphp Zendphp_Pdfphp_Elementphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_resourcephp php php=php php$thisphp-php>php_objectFactoryphp-php>newObjectphp(php$resourcephp)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_resourcephp php php=php php$thisphp-php>php_objectFactoryphp-php>newStreamObjectphp(php$resourcephp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Clone page, extract it and dependent objects from the current document,
-     * so it can be used within other docs.
-     */
-    public function __clone()
-    {
-        /** @todo implementation*/
+php php php php php/php*php*
+php php php php php php*php Clonephp pagephp,php extractphp itphp andphp dependentphp objectsphp fromphp thephp currentphp documentphp,
+php php php php php php*php sophp itphp canphp bephp usedphp withinphp otherphp docsphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_clonephp(php)
+php php php php php{
+php php php php php php php php php/php*php*php php@todophp implementationphp*php/
 
-//        $factory = Zend_Pdf_ElementFactory::createFactory(1);
-//        $processed = array();
-//
-//        // Clone dictionary object.
-//        // Do it explicitly to prevent sharing resource attributes between different
-//        // results of clone operation (other resources are still shared)
-//        $dictionary = new Zend_Pdf_Element_Dictionary();
-//        foreach ($this->_pageDictionary->getKeys() as $key) {
-//         $dictionary->$key = $this->_pageDictionary->$key->makeClone($factory->getFactory(),
-//                                                                     $processed,
-//                                                                     Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES);
-//        }
-//
-//        $this->_pageDictionary = $factory->newObject($dictionary);
-//        $this->_objectFactory  = $factory;
-//        $this->_attached       = false;
-//        $this->_style          = null;
-//        $this->_font           = null;
-    }
+php/php/php php php php php php php php php$factoryphp php=php Zendphp_Pdfphp_ElementFactoryphp:php:createFactoryphp(php1php)php;
+php/php/php php php php php php php php php$processedphp php=php arrayphp(php)php;
+php/php/
+php/php/php php php php php php php php php/php/php Clonephp dictionaryphp objectphp.
+php/php/php php php php php php php php php/php/php Dophp itphp explicitlyphp tophp preventphp sharingphp resourcephp attributesphp betweenphp different
+php/php/php php php php php php php php php/php/php resultsphp ofphp clonephp operationphp php(otherphp resourcesphp arephp stillphp sharedphp)
+php/php/php php php php php php php php php$dictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
+php/php/php php php php php php php php foreachphp php(php$thisphp-php>php_pageDictionaryphp-php>getKeysphp(php)php asphp php$keyphp)php php{
+php/php/php php php php php php php php php php$dictionaryphp-php>php$keyphp php=php php$thisphp-php>php_pageDictionaryphp-php>php$keyphp-php>makeClonephp(php$factoryphp-php>getFactoryphp(php)php,
+php/php/php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$processedphp,
+php/php/php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Elementphp:php:CLONEphp_MODEphp_SKIPphp_PAGESphp)php;
+php/php/php php php php php php php php php}
+php/php/
+php/php/php php php php php php php php php$thisphp-php>php_pageDictionaryphp php=php php$factoryphp-php>newObjectphp(php$dictionaryphp)php;
+php/php/php php php php php php php php php$thisphp-php>php_objectFactoryphp php php=php php$factoryphp;
+php/php/php php php php php php php php php$thisphp-php>php_attachedphp php php php php php php php=php falsephp;
+php/php/php php php php php php php php php$thisphp-php>php_stylephp php php php php php php php php php php=php nullphp;
+php/php/php php php php php php php php php$thisphp-php>php_fontphp php php php php php php php php php php php=php nullphp;
+php php php php php}
 
-    /**
-     * Clone resource, extract it and dependent objects from the current document,
-     * so it can be used within other docs.
-     *
-     * @internal
-     * @param Zend_Pdf_ElementFactory_Interface $factory
-     * @param array $processed
-     * @return Zend_Pdf_Page
-     */
-    public function cloneResource($factory, &$processed)
-    {
-        /** @todo implementation*/
+php php php php php/php*php*
+php php php php php php*php Clonephp resourcephp,php extractphp itphp andphp dependentphp objectsphp fromphp thephp currentphp documentphp,
+php php php php php php*php sophp itphp canphp bephp usedphp withinphp otherphp docsphp.
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factory
+php php php php php php*php php@paramphp arrayphp php$processed
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Page
+php php php php php php*php/
+php php php php publicphp functionphp cloneResourcephp(php$factoryphp,php php&php$processedphp)
+php php php php php{
+php php php php php php php php php/php*php*php php@todophp implementationphp*php/
 
-//        // Clone dictionary object.
-//        // Do it explicitly to prevent sharing page attributes between different
-//        // results of clonePage() operation (other resources are still shared)
-//        $dictionary = new Zend_Pdf_Element_Dictionary();
-//        foreach ($this->_pageDictionary->getKeys() as $key) {
-//            $dictionary->$key = $this->_pageDictionary->$key->makeClone($factory->getFactory(),
-//                                                                        $processed,
-//                                                                        Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES);
-//        }
-//
-//        $clonedPage = new Zend_Pdf_Page($factory->newObject($dictionary), $factory);
-//        $clonedPage->_attached = false;
-//
-//        return $clonedPage;
-    }
+php/php/php php php php php php php php php/php/php Clonephp dictionaryphp objectphp.
+php/php/php php php php php php php php php/php/php Dophp itphp explicitlyphp tophp preventphp sharingphp pagephp attributesphp betweenphp different
+php/php/php php php php php php php php php/php/php resultsphp ofphp clonePagephp(php)php operationphp php(otherphp resourcesphp arephp stillphp sharedphp)
+php/php/php php php php php php php php php$dictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
+php/php/php php php php php php php php foreachphp php(php$thisphp-php>php_pageDictionaryphp-php>getKeysphp(php)php asphp php$keyphp)php php{
+php/php/php php php php php php php php php php php php php$dictionaryphp-php>php$keyphp php=php php$thisphp-php>php_pageDictionaryphp-php>php$keyphp-php>makeClonephp(php$factoryphp-php>getFactoryphp(php)php,
+php/php/php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$processedphp,
+php/php/php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Elementphp:php:CLONEphp_MODEphp_SKIPphp_PAGESphp)php;
+php/php/php php php php php php php php php}
+php/php/
+php/php/php php php php php php php php php$clonedPagephp php=php newphp Zendphp_Pdfphp_Pagephp(php$factoryphp-php>newObjectphp(php$dictionaryphp)php,php php$factoryphp)php;
+php/php/php php php php php php php php php$clonedPagephp-php>php_attachedphp php=php falsephp;
+php/php/
+php/php/php php php php php php php php returnphp php$clonedPagephp;
+php php php php php}
 
-    /**
-     * Get resource.
-     * Used to reference resource in an internal PDF data structures (resource dictionaries)
-     *
-     * @internal
-     * @return Zend_Pdf_Element_Object
-     */
-    public function getResource()
-    {
-        return $this->_resource;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp resourcephp.
+php php php php php php*php Usedphp tophp referencephp resourcephp inphp anphp internalphp PDFphp dataphp structuresphp php(resourcephp dictionariesphp)
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php php@returnphp Zendphp_Pdfphp_Elementphp_Object
+php php php php php php*php/
+php php php php publicphp functionphp getResourcephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_resourcephp;
+php php php php php}
 
-    /**
-     * Get factory.
-     *
-     * @internal
-     * @return Zend_Pdf_ElementFactory_Interface
-     */
-    public function getFactory()
-    {
-        return $this->_objectFactory;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp factoryphp.
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php php@returnphp Zendphp_Pdfphp_ElementFactoryphp_Interface
+php php php php php php*php/
+php php php php publicphp functionphp getFactoryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_objectFactoryphp;
+php php php php php}
+php}

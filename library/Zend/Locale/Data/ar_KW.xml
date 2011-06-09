@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.49 $"/>
-		<generation date="$Date: 2009/05/05 23:06:34 $"/>
-		<language type="ar"/>
-		<territory type="KW"/>
-	</identity>
-	<localeDisplayNames>
-		<scripts>
-			<script type="Ital">اللأيطالية القديمة</script>
-		</scripts>
-	</localeDisplayNames>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php4php9php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php4php php$php"php/php>
+php	php	php<languagephp typephp=php"arphp"php/php>
+php	php	php<territoryphp typephp=php"KWphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Italphp"php>phpاphpلphpلphpأphpيphpطphpاphpلphpيphpةphp phpاphpلphpقphpدphpيphpمphpة<php/scriptphp>
+php	php	<php/scriptsphp>
+php	<php/localeDisplayNamesphp>
+<php/ldmlphp>

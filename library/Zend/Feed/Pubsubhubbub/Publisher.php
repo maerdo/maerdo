@@ -1,418 +1,418 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Pubsubhubbub
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Publisher.php 23075 2010-10-10 21:31:30Z padraic $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Publisherphp.phpphp php2php3php0php7php5php php2php0php1php0php-php1php0php-php1php0php php2php1php:php3php1php:php3php0Zphp padraicphp php$
+php php*php/
 
-/**
- * @see Zend_Feed_Pubsubhubbub
- */
-require_once 'Zend/Feed/Pubsubhubbub.php';
+php/php*php*
+php php*php php@seephp Zendphp_Feedphp_Pubsubhubbub
+php php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Pubsubhubbub
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Feed_Pubsubhubbub_Publisher
-{
-    /**
-     * An array of URLs for all Hub Servers used by the Publisher, and to
-     * which all topic update notifications will be sent.
-     *
-     * @var array
-     */
-    protected $_hubUrls = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php{
+php php php php php/php*php*
+php php php php php php*php Anphp arrayphp ofphp URLsphp forphp allphp Hubphp Serversphp usedphp byphp thephp Publisherphp,php andphp to
+php php php php php php*php whichphp allphp topicphp updatephp notificationsphp willphp bephp sentphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_hubUrlsphp php=php arrayphp(php)php;
 
-    /**
-     * An array of topic (Atom or RSS feed) URLs which have been updated and
-     * whose updated status will be notified to all Hub Servers.
-     *
-     * @var array
-     */
-    protected $_updatedTopicUrls = array();
+php php php php php/php*php*
+php php php php php php*php Anphp arrayphp ofphp topicphp php(Atomphp orphp RSSphp feedphp)php URLsphp whichphp havephp beenphp updatedphp and
+php php php php php php*php whosephp updatedphp statusphp willphp bephp notifiedphp tophp allphp Hubphp Serversphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_updatedTopicUrlsphp php=php arrayphp(php)php;
 
-    /**
-     * An array of any errors including keys for 'response', 'hubUrl'.
-     * The response is the actual Zend_Http_Response object.
-     *
-     * @var array
-     */
-    protected $_errors = array();
+php php php php php/php*php*
+php php php php php php*php Anphp arrayphp ofphp anyphp errorsphp includingphp keysphp forphp php'responsephp'php,php php'hubUrlphp'php.
+php php php php php php*php Thephp responsephp isphp thephp actualphp Zendphp_Httpphp_Responsephp objectphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_errorsphp php=php arrayphp(php)php;
 
-    /**
-     * An array of topic (Atom or RSS feed) URLs which have been updated and
-     * whose updated status will be notified to all Hub Servers.
-     *
-     * @var array
-     */
-    protected $_parameters = array();
+php php php php php/php*php*
+php php php php php php*php Anphp arrayphp ofphp topicphp php(Atomphp orphp RSSphp feedphp)php URLsphp whichphp havephp beenphp updatedphp and
+php php php php php php*php whosephp updatedphp statusphp willphp bephp notifiedphp tophp allphp Hubphp Serversphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_parametersphp php=php arrayphp(php)php;
 
-    /**
-     * Constructor; accepts an array or Zend_Config instance to preset
-     * options for the Publisher without calling all supported setter
-     * methods in turn.
-     *
-     * @param  array|Zend_Config $options Options array or Zend_Config instance
-     * @return void
-     */
-    public function __construct($config = null)
-    {
-        if ($config !== null) {
-            $this->setConfig($config);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructorphp;php acceptsphp anphp arrayphp orphp Zendphp_Configphp instancephp tophp preset
+php php php php php php*php optionsphp forphp thephp Publisherphp withoutphp callingphp allphp supportedphp setter
+php php php php php php*php methodsphp inphp turnphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Optionsphp arrayphp orphp Zendphp_Configphp instance
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$configphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$configphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$configphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Process any injected configuration options
-     *
-     * @param  array|Zend_Config $options Options array or Zend_Config instance
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function setConfig($config)
-    {
-        if ($config instanceof Zend_Config) {
-            $config = $config->toArray();
-        } elseif (!is_array($config)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Array or Zend_Config object'
-                . 'expected, got ' . gettype($config));
-        }
-        if (array_key_exists('hubUrls', $config)) {
-            $this->addHubUrls($config['hubUrls']);
-        }
-        if (array_key_exists('updatedTopicUrls', $config)) {
-            $this->addUpdatedTopicUrls($config['updatedTopicUrls']);
-        }
-        if (array_key_exists('parameters', $config)) {
-            $this->setParameters($config['parameters']);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Processphp anyphp injectedphp configurationphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Optionsphp arrayphp orphp Zendphp_Configphp instance
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp setConfigphp(php$configphp)
+php php php php php{
+php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
+php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$configphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Arrayphp orphp Zendphp_Configphp objectphp'
+php php php php php php php php php php php php php php php php php.php php'expectedphp,php gotphp php'php php.php gettypephp(php$configphp)php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'hubUrlsphp'php,php php$configphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>addHubUrlsphp(php$configphp[php'hubUrlsphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'updatedTopicUrlsphp'php,php php$configphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>addUpdatedTopicUrlsphp(php$configphp[php'updatedTopicUrlsphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'parametersphp'php,php php$configphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setParametersphp(php$configphp[php'parametersphp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add a Hub Server URL supported by Publisher
-     *
-     * @param  string $url
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function addHubUrl($url)
-    {
-        if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .'URL');
-        }
-        $this->_hubUrls[] = $url;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp Hubphp Serverphp URLphp supportedphp byphp Publisher
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp addHubUrlphp(php$urlphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$urlphp)php php|php|php php!isphp_stringphp(php$urlphp)php php|php|php php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"urlphp"php'
+php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$urlphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp andphp aphp validphp'
+php php php php php php php php php php php php php php php php php.php'URLphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_hubUrlsphp[php]php php=php php$urlphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add an array of Hub Server URLs supported by Publisher
-     *
-     * @param  array $urls
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function addHubUrls(array $urls)
-    {
-        foreach ($urls as $url) {
-            $this->addHubUrl($url);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp anphp arrayphp ofphp Hubphp Serverphp URLsphp supportedphp byphp Publisher
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$urls
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp addHubUrlsphp(arrayphp php$urlsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$urlsphp asphp php$urlphp)php php{
+php php php php php php php php php php php php php$thisphp-php>addHubUrlphp(php$urlphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Remove a Hub Server URL
-     *
-     * @param  string $url
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function removeHubUrl($url)
-    {
-        if (!in_array($url, $this->getHubUrls())) {
-            return $this;
-        }
-        $key = array_search($url, $this->_hubUrls);
-        unset($this->_hubUrls[$key]);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp aphp Hubphp Serverphp URL
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp removeHubUrlphp(php$urlphp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$urlphp,php php$thisphp-php>getHubUrlsphp(php)php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+php php php php php php php php php$keyphp php=php arrayphp_searchphp(php$urlphp,php php$thisphp-php>php_hubUrlsphp)php;
+php php php php php php php php unsetphp(php$thisphp-php>php_hubUrlsphp[php$keyphp]php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Return an array of unique Hub Server URLs currently available
-     *
-     * @return array
-     */
-    public function getHubUrls()
-    {
-        $this->_hubUrls = array_unique($this->_hubUrls);
-        return $this->_hubUrls;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp uniquephp Hubphp Serverphp URLsphp currentlyphp available
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getHubUrlsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_hubUrlsphp php=php arrayphp_uniquephp(php$thisphp-php>php_hubUrlsphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_hubUrlsphp;
+php php php php php}
 
-    /**
-     * Add a URL to a topic (Atom or RSS feed) which has been updated
-     *
-     * @param  string $url
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function addUpdatedTopicUrl($url)
-    {
-        if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .'URL');
-        }
-        $this->_updatedTopicUrls[] = $url;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp aphp URLphp tophp aphp topicphp php(Atomphp orphp RSSphp feedphp)php whichphp hasphp beenphp updated
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp addUpdatedTopicUrlphp(php$urlphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$urlphp)php php|php|php php!isphp_stringphp(php$urlphp)php php|php|php php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"urlphp"php'
+php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$urlphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp andphp aphp validphp'
+php php php php php php php php php php php php php php php php php.php'URLphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_updatedTopicUrlsphp[php]php php=php php$urlphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add an array of Topic URLs which have been updated
-     *
-     * @param  array $urls
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function addUpdatedTopicUrls(array $urls)
-    {
-        foreach ($urls as $url) {
-            $this->addUpdatedTopicUrl($url);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp anphp arrayphp ofphp Topicphp URLsphp whichphp havephp beenphp updated
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$urls
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp addUpdatedTopicUrlsphp(arrayphp php$urlsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$urlsphp asphp php$urlphp)php php{
+php php php php php php php php php php php php php$thisphp-php>addUpdatedTopicUrlphp(php$urlphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Remove an updated topic URL
-     *
-     * @param  string $url
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function removeUpdatedTopicUrl($url)
-    {
-        if (!in_array($url, $this->getUpdatedTopicUrls())) {
-            return $this;
-        }
-        $key = array_search($url, $this->_updatedTopicUrls);
-        unset($this->_updatedTopicUrls[$key]);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp anphp updatedphp topicphp URL
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp removeUpdatedTopicUrlphp(php$urlphp)
+php php php php php{
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$urlphp,php php$thisphp-php>getUpdatedTopicUrlsphp(php)php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+php php php php php php php php php$keyphp php=php arrayphp_searchphp(php$urlphp,php php$thisphp-php>php_updatedTopicUrlsphp)php;
+php php php php php php php php unsetphp(php$thisphp-php>php_updatedTopicUrlsphp[php$keyphp]php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Return an array of unique updated topic URLs currently available
-     *
-     * @return array
-     */
-    public function getUpdatedTopicUrls()
-    {
-        $this->_updatedTopicUrls = array_unique($this->_updatedTopicUrls);
-        return $this->_updatedTopicUrls;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp uniquephp updatedphp topicphp URLsphp currentlyphp available
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getUpdatedTopicUrlsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_updatedTopicUrlsphp php=php arrayphp_uniquephp(php$thisphp-php>php_updatedTopicUrlsphp)php;
+php php php php php php php php returnphp php$thisphp-php>php_updatedTopicUrlsphp;
+php php php php php}
 
-    /**
-     * Notifies a single Hub Server URL of changes
-     *
-     * @param  string $url The Hub Server's URL
-     * @return void
-     * @throws Zend_Feed_Pubsubhubbub_Exception Thrown on failure
-     */
-    public function notifyHub($url)
-    {
-        if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .'URL');
-        }
-        $client = $this->_getHttpClient();
-        $client->setUri($url);
-        $response = $client->request();
-        if ($response->getStatus() !== 204) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Notification to Hub Server '
-                . 'at "' . $url . '" appears to have failed with a status code of "'
-                . $response->getStatus() . '" and message "'
-                . $response->getMessage() . '"');
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Notifiesphp aphp singlephp Hubphp Serverphp URLphp ofphp changes
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$urlphp Thephp Hubphp Serverphp'sphp URL
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp Thrownphp onphp failure
+php php php php php php*php/
+php php php php publicphp functionphp notifyHubphp(php$urlphp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$urlphp)php php|php|php php!isphp_stringphp(php$urlphp)php php|php|php php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"urlphp"php'
+php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$urlphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp andphp aphp validphp'
+php php php php php php php php php php php php php php php php php.php'URLphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$clientphp php=php php$thisphp-php>php_getHttpClientphp(php)php;
+php php php php php php php php php$clientphp-php>setUriphp(php$urlphp)php;
+php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php)php;
+php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php4php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Notificationphp tophp Hubphp Serverphp php'
+php php php php php php php php php php php php php php php php php.php php'atphp php"php'php php.php php$urlphp php.php php'php"php appearsphp tophp havephp failedphp withphp aphp statusphp codephp ofphp php"php'
+php php php php php php php php php php php php php php php php php.php php$responsephp-php>getStatusphp(php)php php.php php'php"php andphp messagephp php"php'
+php php php php php php php php php php php php php php php php php.php php$responsephp-php>getMessagephp(php)php php.php php'php"php'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Notifies all Hub Server URLs of changes
-     *
-     * If a Hub notification fails, certain data will be retained in an
-     * an array retrieved using getErrors(), if a failure occurs for any Hubs
-     * the isSuccess() check will return FALSE. This method is designed not
-     * to needlessly fail with an Exception/Error unless from Zend_Http_Client.
-     *
-     * @return void
-     * @throws Zend_Feed_Pubsubhubbub_Exception Thrown if no hubs attached
-     */
-    public function notifyAll()
-    {
-        $client = $this->_getHttpClient();
-        $hubs   = $this->getHubUrls();
-        if (empty($hubs)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('No Hub Server URLs'
-                . ' have been set so no notifcations can be sent');
-        }
-        $this->_errors = array();
-        foreach ($hubs as $url) {
-            $client->setUri($url);
-            $response = $client->request();
-            if ($response->getStatus() !== 204) {
-                $this->_errors[] = array(
-                    'response' => $response,
-                    'hubUrl' => $url
-                );
-            }
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Notifiesphp allphp Hubphp Serverphp URLsphp ofphp changes
+php php php php php php*
+php php php php php php*php Ifphp aphp Hubphp notificationphp failsphp,php certainphp dataphp willphp bephp retainedphp inphp an
+php php php php php php*php anphp arrayphp retrievedphp usingphp getErrorsphp(php)php,php ifphp aphp failurephp occursphp forphp anyphp Hubs
+php php php php php php*php thephp isSuccessphp(php)php checkphp willphp returnphp FALSEphp.php Thisphp methodphp isphp designedphp not
+php php php php php php*php tophp needlesslyphp failphp withphp anphp Exceptionphp/Errorphp unlessphp fromphp Zendphp_Httpphp_Clientphp.
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php php@throwsphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp Thrownphp ifphp nophp hubsphp attached
+php php php php php php*php/
+php php php php publicphp functionphp notifyAllphp(php)
+php php php php php{
+php php php php php php php php php$clientphp php=php php$thisphp-php>php_getHttpClientphp(php)php;
+php php php php php php php php php$hubsphp php php php=php php$thisphp-php>getHubUrlsphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$hubsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Nophp Hubphp Serverphp URLsphp'
+php php php php php php php php php php php php php php php php php.php php'php havephp beenphp setphp sophp nophp notifcationsphp canphp bephp sentphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_errorsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$hubsphp asphp php$urlphp)php php{
+php php php php php php php php php php php php php$clientphp-php>setUriphp(php$urlphp)php;
+php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php)php;
+php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php4php)php php{
+php php php php php php php php php php php php php php php php php$thisphp-php>php_errorsphp[php]php php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'responsephp'php php=php>php php$responsephp,
+php php php php php php php php php php php php php php php php php php php php php'hubUrlphp'php php=php>php php$url
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Add an optional parameter to the update notification requests
-     *
-     * @param  string $name
-     * @param  string|null $value
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function setParameter($name, $value = null)
-    {
-        if (is_array($name)) {
-            $this->setParameters($name);
-            return $this;
-        }
-        if (empty($name) || !is_string($name)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
-                .' of "' . $name . '" must be a non-empty string');
-        }
-        if ($value === null) {
-            $this->removeParameter($name);
-            return $this;
-        }
-        if (empty($value) || (!is_string($value) && $value !== null)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "value"'
-                .' of "' . $value . '" must be a non-empty string');
-        }
-        $this->_parameters[$name] = $value;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp anphp optionalphp parameterphp tophp thephp updatephp notificationphp requests
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@paramphp php stringphp|nullphp php$value
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp setParameterphp(php$namephp,php php$valuephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$namephp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setParametersphp(php$namephp)php;
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(emptyphp(php$namephp)php php|php|php php!isphp_stringphp(php$namephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"namephp"php'
+php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$namephp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$valuephp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>removeParameterphp(php$namephp)php;
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(emptyphp(php$valuephp)php php|php|php php(php!isphp_stringphp(php$valuephp)php php&php&php php$valuephp php!php=php=php nullphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"valuephp"php'
+php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$valuephp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_parametersphp[php$namephp]php php=php php$valuephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Add an optional parameter to the update notification requests
-     *
-     * @param  array $parameters
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function setParameters(array $parameters)
-    {
-        foreach ($parameters as $name => $value) {
-            $this->setParameter($name, $value);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Addphp anphp optionalphp parameterphp tophp thephp updatephp notificationphp requests
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$parameters
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp setParametersphp(arrayphp php$parametersphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$parametersphp asphp php$namephp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$thisphp-php>setParameterphp(php$namephp,php php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Remove an optional parameter for the notification requests
-     *
-     * @param  string $name
-     * @return Zend_Feed_Pubsubhubbub_Publisher
-     */
-    public function removeParameter($name)
-    {
-        if (empty($name) || !is_string($name)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
-                .' of "' . $name . '" must be a non-empty string');
-        }
-        if (array_key_exists($name, $this->_parameters)) {
-            unset($this->_parameters[$name]);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Removephp anphp optionalphp parameterphp forphp thephp notificationphp requests
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$name
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Publisher
+php php php php php php*php/
+php php php php publicphp functionphp removeParameterphp(php$namephp)
+php php php php php{
+php php php php php php php php ifphp php(emptyphp(php$namephp)php php|php|php php!isphp_stringphp(php$namephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"namephp"php'
+php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$namephp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_parametersphp)php)php php{
+php php php php php php php php php php php php unsetphp(php$thisphp-php>php_parametersphp[php$namephp]php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Return an array of optional parameters for notification requests
-     *
-     * @return array
-     */
-    public function getParameters()
-    {
-        return $this->_parameters;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp optionalphp parametersphp forphp notificationphp requests
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getParametersphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_parametersphp;
+php php php php php}
 
-    /**
-     * Returns a boolean indicator of whether the notifications to Hub
-     * Servers were ALL successful. If even one failed, FALSE is returned.
-     *
-     * @return bool
-     */
-    public function isSuccess()
-    {
-        if (count($this->_errors) > 0) {
-            return false;
-        }
-        return true;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp booleanphp indicatorphp ofphp whetherphp thephp notificationsphp tophp Hub
+php php php php php php*php Serversphp werephp ALLphp successfulphp.php Ifphp evenphp onephp failedphp,php FALSEphp isphp returnedphp.
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp isSuccessphp(php)
+php php php php php{
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_errorsphp)php php>php php0php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp truephp;
+php php php php php}
 
-    /**
-     * Return an array of errors met from any failures, including keys:
-     * 'response' => the Zend_Http_Response object from the failure
-     * 'hubUrl' => the URL of the Hub Server whose notification failed
-     *
-     * @return array
-     */
-    public function getErrors()
-    {
-        return $this->_errors;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnphp anphp arrayphp ofphp errorsphp metphp fromphp anyphp failuresphp,php includingphp keysphp:
+php php php php php php*php php'responsephp'php php=php>php thephp Zendphp_Httpphp_Responsephp objectphp fromphp thephp failure
+php php php php php php*php php'hubUrlphp'php php=php>php thephp URLphp ofphp thephp Hubphp Serverphp whosephp notificationphp failed
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getErrorsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_errorsphp;
+php php php php php}
 
-    /**
-     * Get a basic prepared HTTP client for use
-     *
-     * @return Zend_Http_Client
-     */
-    protected function _getHttpClient()
-    {
-        $client = Zend_Feed_Pubsubhubbub::getHttpClient();
-        $client->setMethod(Zend_Http_Client::POST);
-        $client->setConfig(array(
-            'useragent' => 'Zend_Feed_Pubsubhubbub_Publisher/' . Zend_Version::VERSION,
-        ));
-        $params   = array();
-        $params[] = 'hub.mode=publish';
-        $topics   = $this->getUpdatedTopicUrls();
-        if (empty($topics)) {
-            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('No updated topic URLs'
-                . ' have been set');
-        }
-        foreach ($topics as $topicUrl) {
-            $params[] = 'hub.url=' . urlencode($topicUrl);
-        }
-        $optParams = $this->getParameters();
-        foreach ($optParams as $name => $value) {
-            $params[] = urlencode($name) . '=' . urlencode($value);
-        }
-        $paramString = implode('&', $params);
-        $client->setRawData($paramString, 'application/x-www-form-urlencoded');
-        return $client;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Getphp aphp basicphp preparedphp HTTPphp clientphp forphp use
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php protectedphp functionphp php_getHttpClientphp(php)
+php php php php php{
+php php php php php php php php php$clientphp php=php Zendphp_Feedphp_Pubsubhubbubphp:php:getHttpClientphp(php)php;
+php php php php php php php php php$clientphp-php>setMethodphp(Zendphp_Httpphp_Clientphp:php:POSTphp)php;
+php php php php php php php php php$clientphp-php>setConfigphp(arrayphp(
+php php php php php php php php php php php php php'useragentphp'php php=php>php php'Zendphp_Feedphp_Pubsubhubbubphp_Publisherphp/php'php php.php Zendphp_Versionphp:php:VERSIONphp,
+php php php php php php php php php)php)php;
+php php php php php php php php php$paramsphp php php php=php arrayphp(php)php;
+php php php php php php php php php$paramsphp[php]php php=php php'hubphp.modephp=publishphp'php;
+php php php php php php php php php$topicsphp php php php=php php$thisphp-php>getUpdatedTopicUrlsphp(php)php;
+php php php php php php php php ifphp php(emptyphp(php$topicsphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Nophp updatedphp topicphp URLsphp'
+php php php php php php php php php php php php php php php php php.php php'php havephp beenphp setphp'php)php;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$topicsphp asphp php$topicUrlphp)php php{
+php php php php php php php php php php php php php$paramsphp[php]php php=php php'hubphp.urlphp=php'php php.php urlencodephp(php$topicUrlphp)php;
+php php php php php php php php php}
+php php php php php php php php php$optParamsphp php=php php$thisphp-php>getParametersphp(php)php;
+php php php php php php php php foreachphp php(php$optParamsphp asphp php$namephp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$paramsphp[php]php php=php urlencodephp(php$namephp)php php.php php'php=php'php php.php urlencodephp(php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php php$paramStringphp php=php implodephp(php'php&php'php,php php$paramsphp)php;
+php php php php php php php php php$clientphp-php>setRawDataphp(php$paramStringphp,php php'applicationphp/xphp-wwwphp-formphp-urlencodedphp'php)php;
+php php php php php php php php returnphp php$clientphp;
+php php php php php}
+php}

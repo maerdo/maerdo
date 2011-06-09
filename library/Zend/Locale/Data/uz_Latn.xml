@@ -1,169 +1,169 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.23 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="uz"/>
-		<script type="Latn"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="ar">arabcha</language>
-			<language type="de">olmoncha</language>
-			<language type="en">inglizcha</language>
-			<language type="es">ispancha</language>
-			<language type="fr">fransuzcha</language>
-			<language type="hi">hindcha</language>
-			<language type="it">italyancha</language>
-			<language type="ja">yaponcha</language>
-			<language type="pt">portugalcha</language>
-			<language type="ru">ruscha</language>
-			<language type="uz">o'zbekcha</language>
-			<language type="zh">xitoycha</language>
-		</languages>
-		<scripts>
-			<script type="Cyrl">Kiril</script>
-			<script type="Latn">Lotin</script>
-		</scripts>
-		<territories>
-			<territory type="AF">Afgʿoniston</territory>
-			<territory type="BR">Braziliya</territory>
-			<territory type="CN">Xitoy</territory>
-			<territory type="DE">Olmoniya</territory>
-			<territory type="FR">Fransiya</territory>
-			<territory type="GB">Birlashgan Qirollik</territory>
-			<territory type="IN">Hindiston</territory>
-			<territory type="IT">Italiya</territory>
-			<territory type="JP">Yaponiya</territory>
-			<territory type="RU">Rossiya</territory>
-			<territory type="US">Qo'shma Shtatlar</territory>
-			<territory type="UZ">Oʿzbekiston</territory>
-		</territories>
-	</localeDisplayNames>
-	<characters>
-		<exemplarCharacters>[a-v x-z ʿ]</exemplarCharacters>
-	</characters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="abbreviated">
-							<month type="1">Yanv</month>
-							<month type="2">Fev</month>
-							<month type="3">Mar</month>
-							<month type="4">Apr</month>
-							<month type="5">May</month>
-							<month type="6">Iyun</month>
-							<month type="7">Iyul</month>
-							<month type="8">Avg</month>
-							<month type="9">Sen</month>
-							<month type="10">Okt</month>
-							<month type="11">Noya</month>
-							<month type="12">Dek</month>
-						</monthWidth>
-					</monthContext>
-					<monthContext type="stand-alone">
-						<monthWidth type="narrow">
-							<month type="1">Y</month>
-							<month type="2">F</month>
-							<month type="3">M</month>
-							<month type="4">A</month>
-							<month type="5">M</month>
-							<month type="6">I</month>
-							<month type="7">I</month>
-							<month type="8">A</month>
-							<month type="9">S</month>
-							<month type="10">O</month>
-							<month type="11">N</month>
-							<month type="12">D</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">Yaksh</day>
-							<day type="mon">Dush</day>
-							<day type="tue">Sesh</day>
-							<day type="wed">Chor</day>
-							<day type="thu">Pay</day>
-							<day type="fri">Jum</day>
-							<day type="sat">Shan</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">yakshanba</day>
-							<day type="mon">dushanba</day>
-							<day type="tue">seshanba</day>
-							<day type="wed">chorshanba</day>
-							<day type="thu">payshanba</day>
-							<day type="fri">juma</day>
-							<day type="sat">shanba</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">Y</day>
-							<day type="mon">D</day>
-							<day type="tue">S</day>
-							<day type="wed">C</day>
-							<day type="thu">P</day>
-							<day type="fri">J</day>
-							<day type="sat">S</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-			</calendar>
-			<calendar type="islamic">
-				<months>
-					<monthContext type="format">
-						<monthWidth type="wide">
-							<month type="3">Rabiul-avval</month>
-							<month type="4">Rabiul-oxir</month>
-							<month type="5">Jumodiul-ulo</month>
-							<month type="6">Jumodiul-uxro</month>
-							<month type="8">Shaʿbon</month>
-							<month type="9">Ramazon</month>
-							<month type="10">Shavvol</month>
-							<month type="11">Zil-qaʿda</month>
-							<month type="12">Zil-hijja</month>
-						</monthWidth>
-					</monthContext>
-				</months>
-			</calendar>
-		</calendars>
-	</dates>
-	<numbers>
-		<currencies>
-			<currency type="BRL">
-				<displayName>Brazil reali</displayName>
-			</currency>
-			<currency type="CNY">
-				<displayName>Xitoy yuani</displayName>
-			</currency>
-			<currency type="EUR">
-				<displayName>Evro</displayName>
-			</currency>
-			<currency type="GBP">
-				<displayName>Ingliz funt sterlingi</displayName>
-			</currency>
-			<currency type="INR">
-				<displayName>Hind rupiyasi</displayName>
-			</currency>
-			<currency type="JPY">
-				<displayName>Yapon yenasi</displayName>
-			</currency>
-			<currency type="RUB">
-				<displayName>Rus rubli</displayName>
-			</currency>
-			<currency type="USD">
-				<displayName>AQSH dollari</displayName>
-			</currency>
-			<currency type="UZS">
-				<displayName>Oʿzbekiston soʿm</displayName>
-				<symbol>soʿm</symbol>
-			</currency>
-		</currencies>
-	</numbers>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php2php3php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
+php	php	php<languagephp typephp=php"uzphp"php/php>
+php	php	php<scriptphp typephp=php"Latnphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"arphp"php>arabcha<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>olmoncha<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>inglizcha<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>ispancha<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>fransuzcha<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>hindcha<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>italyancha<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>yaponcha<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>portugalcha<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>ruscha<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>ophp'zbekcha<php/languagephp>
+php	php	php	php<languagephp typephp=php"zhphp"php>xitoycha<php/languagephp>
+php	php	<php/languagesphp>
+php	php	php<scriptsphp>
+php	php	php	php<scriptphp typephp=php"Cyrlphp"php>Kiril<php/scriptphp>
+php	php	php	php<scriptphp typephp=php"Latnphp"php>Lotin<php/scriptphp>
+php	php	<php/scriptsphp>
+php	php	php<territoriesphp>
+php	php	php	php<territoryphp typephp=php"AFphp"php>Afgphpʿoniston<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"BRphp"php>Braziliya<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"CNphp"php>Xitoy<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"DEphp"php>Olmoniya<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"FRphp"php>Fransiya<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"GBphp"php>Birlashganphp Qirollik<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"INphp"php>Hindiston<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"ITphp"php>Italiya<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"JPphp"php>Yaponiya<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"RUphp"php>Rossiya<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"USphp"php>Qophp'shmaphp Shtatlar<php/territoryphp>
+php	php	php	php<territoryphp typephp=php"UZphp"php>Ophpʿzbekiston<php/territoryphp>
+php	php	<php/territoriesphp>
+php	<php/localeDisplayNamesphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[aphp-vphp xphp-zphp phpʿphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Yanv<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Fev<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Mar<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Apr<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>May<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Iyun<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Iyul<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Avg<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Sen<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Okt<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Noya<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Dek<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Y<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>F<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>M<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>A<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>M<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>I<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>I<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>A<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>S<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>O<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>N<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>D<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Yaksh<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Dush<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Sesh<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Chor<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Pay<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Jum<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Shan<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>yakshanba<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>dushanba<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>seshanba<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>chorshanba<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>payshanba<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>juma<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>shanba<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Y<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>D<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>S<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>C<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>P<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>J<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>S<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	<php/calendarphp>
+php	php	php	php<calendarphp typephp=php"islamicphp"php>
+php	php	php	php	php<monthsphp>
+php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Rabiulphp-avval<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Rabiulphp-oxir<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Jumodiulphp-ulo<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Jumodiulphp-uxro<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Shaphpʿbon<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Ramazon<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Shavvol<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Zilphp-qaphpʿda<php/monthphp>
+php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Zilphp-hijja<php/monthphp>
+php	php	php	php	php	php	<php/monthWidthphp>
+php	php	php	php	php	<php/monthContextphp>
+php	php	php	php	<php/monthsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+php	php<numbersphp>
+php	php	php<currenciesphp>
+php	php	php	php<currencyphp typephp=php"BRLphp"php>
+php	php	php	php	php<displayNamephp>Brazilphp reali<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"CNYphp"php>
+php	php	php	php	php<displayNamephp>Xitoyphp yuani<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"EURphp"php>
+php	php	php	php	php<displayNamephp>Evro<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"GBPphp"php>
+php	php	php	php	php<displayNamephp>Inglizphp funtphp sterlingi<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"INRphp"php>
+php	php	php	php	php<displayNamephp>Hindphp rupiyasi<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"JPYphp"php>
+php	php	php	php	php<displayNamephp>Yaponphp yenasi<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"RUBphp"php>
+php	php	php	php	php<displayNamephp>Rusphp rubli<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"USDphp"php>
+php	php	php	php	php<displayNamephp>AQSHphp dollari<php/displayNamephp>
+php	php	php	<php/currencyphp>
+php	php	php	php<currencyphp typephp=php"UZSphp"php>
+php	php	php	php	php<displayNamephp>Ophpʿzbekistonphp sophpʿm<php/displayNamephp>
+php	php	php	php	php<symbolphp>sophpʿm<php/symbolphp>
+php	php	php	<php/currencyphp>
+php	php	<php/currenciesphp>
+php	<php/numbersphp>
+<php/ldmlphp>
 

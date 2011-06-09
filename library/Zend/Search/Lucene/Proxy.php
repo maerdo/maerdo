@@ -1,612 +1,612 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Proxy.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Proxyphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Zend_Search_Lucene_Interface */
-require_once 'Zend/Search/Lucene/Interface.php';
-
-
-/**
- * Proxy class intended to be used in userland.
- *
- * It tracks, when index object goes out of scope and forces ndex closing
- *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
-{
-    /**
-     * Index object
-     *
-     * @var Zend_Search_Lucene_Interface
-     */
-    private $_index;
-
-    /**
-     * Object constructor
-     *
-     * @param Zend_Search_Lucene_Interface $index
-     */
-    public function __construct(Zend_Search_Lucene_Interface $index)
-    {
-        $this->_index = $index;
-        $this->_index->addReference();
-    }
-
-    /**
-     * Object destructor
-     */
-    public function __destruct()
-    {
-        if ($this->_index !== null) {
-            // This code is invoked if Zend_Search_Lucene_Interface object constructor throws an exception
-            $this->_index->removeReference();
-        }
-        $this->_index = null;
-    }
-
-    /**
-     * Get current generation number
-     *
-     * Returns generation number
-     * 0 means pre-2.1 index format
-     * -1 means there are no segments files.
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $directory
-     * @return integer
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public static function getActualGeneration(Zend_Search_Lucene_Storage_Directory $directory)
-    {
-        Zend_Search_Lucene::getActualGeneration($directory);
-    }
-
-    /**
-     * Get segments file name
-     *
-     * @param integer $generation
-     * @return string
-     */
-    public static function getSegmentFileName($generation)
-    {
-        Zend_Search_Lucene::getSegmentFileName($generation);
-    }
-
-    /**
-     * Get index format version
-     *
-     * @return integer
-     */
-    public function getFormatVersion()
-    {
-        return $this->_index->getFormatVersion();
-    }
-
-    /**
-     * Set index format version.
-     * Index is converted to this format at the nearest upfdate time
-     *
-     * @param int $formatVersion
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function setFormatVersion($formatVersion)
-    {
-        $this->_index->setFormatVersion($formatVersion);
-    }
-
-    /**
-     * Returns the Zend_Search_Lucene_Storage_Directory instance for this index.
-     *
-     * @return Zend_Search_Lucene_Storage_Directory
-     */
-    public function getDirectory()
-    {
-        return $this->_index->getDirectory();
-    }
-
-    /**
-     * Returns the total number of documents in this index (including deleted documents).
-     *
-     * @return integer
-     */
-    public function count()
-    {
-        return $this->_index->count();
-    }
-
-    /**
-     * Returns one greater than the largest possible document number.
-     * This may be used to, e.g., determine how big to allocate a structure which will have
-     * an element for every document number in an index.
-     *
-     * @return integer
-     */
-    public function maxDoc()
-    {
-        return $this->_index->maxDoc();
-    }
-
-    /**
-     * Returns the total number of non-deleted documents in this index.
-     *
-     * @return integer
-     */
-    public function numDocs()
-    {
-        return $this->_index->numDocs();
-    }
-
-    /**
-     * Checks, that document is deleted
-     *
-     * @param integer $id
-     * @return boolean
-     * @throws Zend_Search_Lucene_Exception    Exception is thrown if $id is out of the range
-     */
-    public function isDeleted($id)
-    {
-        return $this->_index->isDeleted($id);
-    }
-
-    /**
-     * Set default search field.
-     *
-     * Null means, that search is performed through all fields by default
-     *
-     * Default value is null
-     *
-     * @param string $fieldName
-     */
-    public static function setDefaultSearchField($fieldName)
-    {
-        Zend_Search_Lucene::setDefaultSearchField($fieldName);
-    }
-
-    /**
-     * Get default search field.
-     *
-     * Null means, that search is performed through all fields by default
-     *
-     * @return string
-     */
-    public static function getDefaultSearchField()
-    {
-        return Zend_Search_Lucene::getDefaultSearchField();
-    }
-
-    /**
-     * Set result set limit.
-     *
-     * 0 (default) means no limit
-     *
-     * @param integer $limit
-     */
-    public static function setResultSetLimit($limit)
-    {
-        Zend_Search_Lucene::setResultSetLimit($limit);
-    }
-
-    /**
-     * Set result set limit.
-     *
-     * 0 means no limit
-     *
-     * @return integer
-     */
-    public static function getResultSetLimit()
-    {
-        return Zend_Search_Lucene::getResultSetLimit();
-    }
-
-    /**
-     * Retrieve index maxBufferedDocs option
-     *
-     * maxBufferedDocs is a minimal number of documents required before
-     * the buffered in-memory documents are written into a new Segment
-     *
-     * Default value is 10
-     *
-     * @return integer
-     */
-    public function getMaxBufferedDocs()
-    {
-        return $this->_index->getMaxBufferedDocs();
-    }
-
-    /**
-     * Set index maxBufferedDocs option
-     *
-     * maxBufferedDocs is a minimal number of documents required before
-     * the buffered in-memory documents are written into a new Segment
-     *
-     * Default value is 10
-     *
-     * @param integer $maxBufferedDocs
-     */
-    public function setMaxBufferedDocs($maxBufferedDocs)
-    {
-        $this->_index->setMaxBufferedDocs($maxBufferedDocs);
-    }
+php/php*php*php Zendphp_Searchphp_Lucenephp_Interfacephp php*php/
+requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Interfacephp.phpphp'php;
 
 
-    /**
-     * Retrieve index maxMergeDocs option
-     *
-     * maxMergeDocs is a largest number of documents ever merged by addDocument().
-     * Small values (e.g., less than 10,000) are best for interactive indexing,
-     * as this limits the length of pauses while indexing to a few seconds.
-     * Larger values are best for batched indexing and speedier searches.
-     *
-     * Default value is PHP_INT_MAX
-     *
-     * @return integer
-     */
-    public function getMaxMergeDocs()
-    {
-        return $this->_index->getMaxMergeDocs();
-    }
+php/php*php*
+php php*php Proxyphp classphp intendedphp tophp bephp usedphp inphp userlandphp.
+php php*
+php php*php Itphp tracksphp,php whenphp indexphp objectphp goesphp outphp ofphp scopephp andphp forcesphp ndexphp closing
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Searchphp_Lucenephp_Proxyphp implementsphp Zendphp_Searchphp_Lucenephp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Indexphp object
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Interface
+php php php php php php*php/
+php php php php privatephp php$php_indexphp;
 
-    /**
-     * Set index maxMergeDocs option
-     *
-     * maxMergeDocs is a largest number of documents ever merged by addDocument().
-     * Small values (e.g., less than 10,000) are best for interactive indexing,
-     * as this limits the length of pauses while indexing to a few seconds.
-     * Larger values are best for batched indexing and speedier searches.
-     *
-     * Default value is PHP_INT_MAX
-     *
-     * @param integer $maxMergeDocs
-     */
-    public function setMaxMergeDocs($maxMergeDocs)
-    {
-        $this->_index->setMaxMergeDocs($maxMergeDocs);
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp php=php php$indexphp;
+php php php php php php php php php$thisphp-php>php_indexphp-php>addReferencephp(php)php;
+php php php php php}
 
+php php php php php/php*php*
+php php php php php php*php Objectphp destructor
+php php php php php php*php/
+php php php php publicphp functionphp php_php_destructphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_indexphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php/php Thisphp codephp isphp invokedphp ifphp Zendphp_Searchphp_Lucenephp_Interfacephp objectphp constructorphp throwsphp anphp exception
+php php php php php php php php php php php php php$thisphp-php>php_indexphp-php>removeReferencephp(php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_indexphp php=php nullphp;
+php php php php php}
 
-    /**
-     * Retrieve index mergeFactor option
-     *
-     * mergeFactor determines how often segment indices are merged by addDocument().
-     * With smaller values, less RAM is used while indexing,
-     * and searches on unoptimized indices are faster,
-     * but indexing speed is slower.
-     * With larger values, more RAM is used during indexing,
-     * and while searches on unoptimized indices are slower,
-     * indexing is faster.
-     * Thus larger values (> 10) are best for batch index creation,
-     * and smaller values (< 10) for indices that are interactively maintained.
-     *
-     * Default value is 10
-     *
-     * @return integer
-     */
-    public function getMergeFactor()
-    {
-        return $this->_index->getMergeFactor();
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp currentphp generationphp number
+php php php php php php*
+php php php php php php*php Returnsphp generationphp number
+php php php php php php*php php0php meansphp prephp-php2php.php1php indexphp format
+php php php php php php*php php-php1php meansphp therephp arephp nophp segmentsphp filesphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$directory
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getActualGenerationphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$directoryphp)
+php php php php php{
+php php php php php php php php Zendphp_Searchphp_Lucenephp:php:getActualGenerationphp(php$directoryphp)php;
+php php php php php}
 
-    /**
-     * Set index mergeFactor option
-     *
-     * mergeFactor determines how often segment indices are merged by addDocument().
-     * With smaller values, less RAM is used while indexing,
-     * and searches on unoptimized indices are faster,
-     * but indexing speed is slower.
-     * With larger values, more RAM is used during indexing,
-     * and while searches on unoptimized indices are slower,
-     * indexing is faster.
-     * Thus larger values (> 10) are best for batch index creation,
-     * and smaller values (< 10) for indices that are interactively maintained.
-     *
-     * Default value is 10
-     *
-     * @param integer $maxMergeDocs
-     */
-    public function setMergeFactor($mergeFactor)
-    {
-        $this->_index->setMergeFactor($mergeFactor);
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp segmentsphp filephp name
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$generation
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getSegmentFileNamephp(php$generationphp)
+php php php php php{
+php php php php php php php php Zendphp_Searchphp_Lucenephp:php:getSegmentFileNamephp(php$generationphp)php;
+php php php php php}
 
-    /**
-     * Performs a query against the index and returns an array
-     * of Zend_Search_Lucene_Search_QueryHit objects.
-     * Input is a string or Zend_Search_Lucene_Search_Query.
-     *
-     * @param mixed $query
-     * @return array Zend_Search_Lucene_Search_QueryHit
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function find($query)
-    {
-        // actual parameter list
-        $parameters = func_get_args();
+php php php php php/php*php*
+php php php php php php*php Getphp indexphp formatphp version
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getFormatVersionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getFormatVersionphp(php)php;
+php php php php php}
 
-        // invoke $this->_index->find() method with specified parameters
-        return call_user_func_array(array(&$this->_index, 'find'), $parameters);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp indexphp formatphp versionphp.
+php php php php php php*php Indexphp isphp convertedphp tophp thisphp formatphp atphp thephp nearestphp upfdatephp time
+php php php php php php*
+php php php php php php*php php@paramphp intphp php$formatVersion
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setFormatVersionphp(php$formatVersionphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>setFormatVersionphp(php$formatVersionphp)php;
+php php php php php}
 
-    /**
-     * Returns a list of all unique field names that exist in this index.
-     *
-     * @param boolean $indexed
-     * @return array
-     */
-    public function getFieldNames($indexed = false)
-    {
-        return $this->_index->getFieldNames($indexed);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp instancephp forphp thisphp indexphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Storagephp_Directory
+php php php php php php*php/
+php php php php publicphp functionphp getDirectoryphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getDirectoryphp(php)php;
+php php php php php}
 
-    /**
-     * Returns a Zend_Search_Lucene_Document object for the document
-     * number $id in this index.
-     *
-     * @param integer|Zend_Search_Lucene_Search_QueryHit $id
-     * @return Zend_Search_Lucene_Document
-     */
-    public function getDocument($id)
-    {
-        return $this->_index->getDocument($id);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp totalphp numberphp ofphp documentsphp inphp thisphp indexphp php(includingphp deletedphp documentsphp)php.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp countphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>countphp(php)php;
+php php php php php}
 
-    /**
-     * Returns true if index contain documents with specified term.
-     *
-     * Is used for query optimization.
-     *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @return boolean
-     */
-    public function hasTerm(Zend_Search_Lucene_Index_Term $term)
-    {
-        return $this->_index->hasTerm($term);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp onephp greaterphp thanphp thephp largestphp possiblephp documentphp numberphp.
+php php php php php php*php Thisphp mayphp bephp usedphp tophp,php ephp.gphp.php,php determinephp howphp bigphp tophp allocatephp aphp structurephp whichphp willphp have
+php php php php php php*php anphp elementphp forphp everyphp documentphp numberphp inphp anphp indexphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp maxDocphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>maxDocphp(php)php;
+php php php php php}
 
-    /**
-     * Returns IDs of all the documents containing term.
-     *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
-     * @return array
-     */
-    public function termDocs(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
-    {
-        return $this->_index->termDocs($term, $docsFilter);
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp totalphp numberphp ofphp nonphp-deletedphp documentsphp inphp thisphp indexphp.
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp numDocsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>numDocsphp(php)php;
+php php php php php}
 
-    /**
-     * Returns documents filter for all documents containing term.
-     *
-     * It performs the same operation as termDocs, but return result as
-     * Zend_Search_Lucene_Index_DocsFilter object
-     *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
-     * @return Zend_Search_Lucene_Index_DocsFilter
-     */
-    public function termDocsFilter(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
-    {
-        return $this->_index->termDocsFilter($term, $docsFilter);
-    }
+php php php php php/php*php*
+php php php php php php*php Checksphp,php thatphp documentphp isphp deleted
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$id
+php php php php php php*php php@returnphp boolean
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exceptionphp php php php Exceptionphp isphp thrownphp ifphp php$idphp isphp outphp ofphp thephp range
+php php php php php php*php/
+php php php php publicphp functionphp isDeletedphp(php$idphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>isDeletedphp(php$idphp)php;
+php php php php php}
 
-    /**
-     * Returns an array of all term freqs.
-     * Return array structure: array( docId => freq, ...)
-     *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
-     * @return integer
-     */
-    public function termFreqs(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
-    {
-        return $this->_index->termFreqs($term, $docsFilter);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp defaultphp searchphp fieldphp.
+php php php php php php*
+php php php php php php*php Nullphp meansphp,php thatphp searchphp isphp performedphp throughphp allphp fieldsphp byphp default
+php php php php php php*
+php php php php php php*php Defaultphp valuephp isphp null
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$fieldName
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setDefaultSearchFieldphp(php$fieldNamephp)
+php php php php php{
+php php php php php php php php Zendphp_Searchphp_Lucenephp:php:setDefaultSearchFieldphp(php$fieldNamephp)php;
+php php php php php}
 
-    /**
-     * Returns an array of all term positions in the documents.
-     * Return array structure: array( docId => array( pos1, pos2, ...), ...)
-     *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
-     * @return array
-     */
-    public function termPositions(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
-    {
-        return $this->_index->termPositions($term, $docsFilter);
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp defaultphp searchphp fieldphp.
+php php php php php php*
+php php php php php php*php Nullphp meansphp,php thatphp searchphp isphp performedphp throughphp allphp fieldsphp byphp default
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getDefaultSearchFieldphp(php)
+php php php php php{
+php php php php php php php php returnphp Zendphp_Searchphp_Lucenephp:php:getDefaultSearchFieldphp(php)php;
+php php php php php}
 
-    /**
-     * Returns the number of documents in this index containing the $term.
-     *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @return integer
-     */
-    public function docFreq(Zend_Search_Lucene_Index_Term $term)
-    {
-        return $this->_index->docFreq($term);
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp resultphp setphp limitphp.
+php php php php php php*
+php php php php php php*php php0php php(defaultphp)php meansphp nophp limit
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$limit
+php php php php php php*php/
+php php php php publicphp staticphp functionphp setResultSetLimitphp(php$limitphp)
+php php php php php{
+php php php php php php php php Zendphp_Searchphp_Lucenephp:php:setResultSetLimitphp(php$limitphp)php;
+php php php php php}
 
-    /**
-     * Retrive similarity used by index reader
-     *
-     * @return Zend_Search_Lucene_Search_Similarity
-     */
-    public function getSimilarity()
-    {
-        return $this->_index->getSimilarity();
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp resultphp setphp limitphp.
+php php php php php php*
+php php php php php php*php php0php meansphp nophp limit
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp staticphp functionphp getResultSetLimitphp(php)
+php php php php php{
+php php php php php php php php returnphp Zendphp_Searchphp_Lucenephp:php:getResultSetLimitphp(php)php;
+php php php php php}
 
-    /**
-     * Returns a normalization factor for "field, document" pair.
-     *
-     * @param integer $id
-     * @param string $fieldName
-     * @return float
-     */
-    public function norm($id, $fieldName)
-    {
-        return $this->_index->norm($id, $fieldName);
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp indexphp maxBufferedDocsphp option
+php php php php php php*
+php php php php php php*php maxBufferedDocsphp isphp aphp minimalphp numberphp ofphp documentsphp requiredphp before
+php php php php php php*php thephp bufferedphp inphp-memoryphp documentsphp arephp writtenphp intophp aphp newphp Segment
+php php php php php php*
+php php php php php php*php Defaultphp valuephp isphp php1php0
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMaxBufferedDocsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getMaxBufferedDocsphp(php)php;
+php php php php php}
 
-    /**
-     * Returns true if any documents have been deleted from this index.
-     *
-     * @return boolean
-     */
-    public function hasDeletions()
-    {
-        return $this->_index->hasDeletions();
-    }
-
-    /**
-     * Deletes a document from the index.
-     * $id is an internal document id
-     *
-     * @param integer|Zend_Search_Lucene_Search_QueryHit $id
-     * @throws Zend_Search_Lucene_Exception
-     */
-    public function delete($id)
-    {
-        return $this->_index->delete($id);
-    }
-
-    /**
-     * Adds a document to this index.
-     *
-     * @param Zend_Search_Lucene_Document $document
-     */
-    public function addDocument(Zend_Search_Lucene_Document $document)
-    {
-        $this->_index->addDocument($document);
-    }
-
-    /**
-     * Commit changes resulting from delete() or undeleteAll() operations.
-     */
-    public function commit()
-    {
-        $this->_index->commit();
-    }
-
-    /**
-     * Optimize index.
-     *
-     * Merges all segments into one
-     */
-    public function optimize()
-    {
-        $this->_index->optimize();
-    }
-
-    /**
-     * Returns an array of all terms in this index.
-     *
-     * @return array
-     */
-    public function terms()
-    {
-        return $this->_index->terms();
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp indexphp maxBufferedDocsphp option
+php php php php php php*
+php php php php php php*php maxBufferedDocsphp isphp aphp minimalphp numberphp ofphp documentsphp requiredphp before
+php php php php php php*php thephp bufferedphp inphp-memoryphp documentsphp arephp writtenphp intophp aphp newphp Segment
+php php php php php php*
+php php php php php php*php Defaultphp valuephp isphp php1php0
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$maxBufferedDocs
+php php php php php php*php/
+php php php php publicphp functionphp setMaxBufferedDocsphp(php$maxBufferedDocsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>setMaxBufferedDocsphp(php$maxBufferedDocsphp)php;
+php php php php php}
 
 
-    /**
-     * Reset terms stream.
-     */
-    public function resetTermsStream()
-    {
-        $this->_index->resetTermsStream();
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp indexphp maxMergeDocsphp option
+php php php php php php*
+php php php php php php*php maxMergeDocsphp isphp aphp largestphp numberphp ofphp documentsphp everphp mergedphp byphp addDocumentphp(php)php.
+php php php php php php*php Smallphp valuesphp php(ephp.gphp.php,php lessphp thanphp php1php0php,php0php0php0php)php arephp bestphp forphp interactivephp indexingphp,
+php php php php php php*php asphp thisphp limitsphp thephp lengthphp ofphp pausesphp whilephp indexingphp tophp aphp fewphp secondsphp.
+php php php php php php*php Largerphp valuesphp arephp bestphp forphp batchedphp indexingphp andphp speedierphp searchesphp.
+php php php php php php*
+php php php php php php*php Defaultphp valuephp isphp PHPphp_INTphp_MAX
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMaxMergeDocsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getMaxMergeDocsphp(php)php;
+php php php php php}
 
-    /**
-     * Skip terms stream up to specified term preffix.
-     *
-     * Prefix contains fully specified field info and portion of searched term
-     *
-     * @param Zend_Search_Lucene_Index_Term $prefix
-     */
-    public function skipTo(Zend_Search_Lucene_Index_Term $prefix)
-    {
-        return $this->_index->skipTo($prefix);
-    }
-
-    /**
-     * Scans terms dictionary and returns next term
-     *
-     * @return Zend_Search_Lucene_Index_Term|null
-     */
-    public function nextTerm()
-    {
-        return $this->_index->nextTerm();
-    }
-
-    /**
-     * Returns term in current position
-     *
-     * @return Zend_Search_Lucene_Index_Term|null
-     */
-    public function currentTerm()
-    {
-        return $this->_index->currentTerm();
-    }
-
-    /**
-     * Close terms stream
-     *
-     * Should be used for resources clean up if stream is not read up to the end
-     */
-    public function closeTermsStream()
-    {
-        $this->_index->closeTermsStream();
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp indexphp maxMergeDocsphp option
+php php php php php php*
+php php php php php php*php maxMergeDocsphp isphp aphp largestphp numberphp ofphp documentsphp everphp mergedphp byphp addDocumentphp(php)php.
+php php php php php php*php Smallphp valuesphp php(ephp.gphp.php,php lessphp thanphp php1php0php,php0php0php0php)php arephp bestphp forphp interactivephp indexingphp,
+php php php php php php*php asphp thisphp limitsphp thephp lengthphp ofphp pausesphp whilephp indexingphp tophp aphp fewphp secondsphp.
+php php php php php php*php Largerphp valuesphp arephp bestphp forphp batchedphp indexingphp andphp speedierphp searchesphp.
+php php php php php php*
+php php php php php php*php Defaultphp valuephp isphp PHPphp_INTphp_MAX
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$maxMergeDocs
+php php php php php php*php/
+php php php php publicphp functionphp setMaxMergeDocsphp(php$maxMergeDocsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>setMaxMergeDocsphp(php$maxMergeDocsphp)php;
+php php php php php}
 
 
-    /**
-     * Undeletes all documents currently marked as deleted in this index.
-     */
-    public function undeleteAll()
-    {
-        return $this->_index->undeleteAll();
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp indexphp mergeFactorphp option
+php php php php php php*
+php php php php php php*php mergeFactorphp determinesphp howphp oftenphp segmentphp indicesphp arephp mergedphp byphp addDocumentphp(php)php.
+php php php php php php*php Withphp smallerphp valuesphp,php lessphp RAMphp isphp usedphp whilephp indexingphp,
+php php php php php php*php andphp searchesphp onphp unoptimizedphp indicesphp arephp fasterphp,
+php php php php php php*php butphp indexingphp speedphp isphp slowerphp.
+php php php php php php*php Withphp largerphp valuesphp,php morephp RAMphp isphp usedphp duringphp indexingphp,
+php php php php php php*php andphp whilephp searchesphp onphp unoptimizedphp indicesphp arephp slowerphp,
+php php php php php php*php indexingphp isphp fasterphp.
+php php php php php php*php Thusphp largerphp valuesphp php(php>php php1php0php)php arephp bestphp forphp batchphp indexphp creationphp,
+php php php php php php*php andphp smallerphp valuesphp php(<php php1php0php)php forphp indicesphp thatphp arephp interactivelyphp maintainedphp.
+php php php php php php*
+php php php php php php*php Defaultphp valuephp isphp php1php0
+php php php php php php*
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp getMergeFactorphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getMergeFactorphp(php)php;
+php php php php php}
 
-    /**
-     * Add reference to the index object
-     *
-     * @internal
-     */
-    public function addReference()
-    {
-        return $this->_index->addReference();
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp indexphp mergeFactorphp option
+php php php php php php*
+php php php php php php*php mergeFactorphp determinesphp howphp oftenphp segmentphp indicesphp arephp mergedphp byphp addDocumentphp(php)php.
+php php php php php php*php Withphp smallerphp valuesphp,php lessphp RAMphp isphp usedphp whilephp indexingphp,
+php php php php php php*php andphp searchesphp onphp unoptimizedphp indicesphp arephp fasterphp,
+php php php php php php*php butphp indexingphp speedphp isphp slowerphp.
+php php php php php php*php Withphp largerphp valuesphp,php morephp RAMphp isphp usedphp duringphp indexingphp,
+php php php php php php*php andphp whilephp searchesphp onphp unoptimizedphp indicesphp arephp slowerphp,
+php php php php php php*php indexingphp isphp fasterphp.
+php php php php php php*php Thusphp largerphp valuesphp php(php>php php1php0php)php arephp bestphp forphp batchphp indexphp creationphp,
+php php php php php php*php andphp smallerphp valuesphp php(<php php1php0php)php forphp indicesphp thatphp arephp interactivelyphp maintainedphp.
+php php php php php php*
+php php php php php php*php Defaultphp valuephp isphp php1php0
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$maxMergeDocs
+php php php php php php*php/
+php php php php publicphp functionphp setMergeFactorphp(php$mergeFactorphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>setMergeFactorphp(php$mergeFactorphp)php;
+php php php php php}
 
-    /**
-     * Remove reference from the index object
-     *
-     * When reference count becomes zero, index is closed and resources are cleaned up
-     *
-     * @internal
-     */
-    public function removeReference()
-    {
-        return $this->_index->removeReference();
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Performsphp aphp queryphp againstphp thephp indexphp andphp returnsphp anphp array
+php php php php php php*php ofphp Zendphp_Searchphp_Lucenephp_Searchphp_QueryHitphp objectsphp.
+php php php php php php*php Inputphp isphp aphp stringphp orphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp.
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$query
+php php php php php php*php php@returnphp arrayphp Zendphp_Searchphp_Lucenephp_Searchphp_QueryHit
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp findphp(php$queryphp)
+php php php php php{
+php php php php php php php php php/php/php actualphp parameterphp list
+php php php php php php php php php$parametersphp php=php funcphp_getphp_argsphp(php)php;
+
+php php php php php php php php php/php/php invokephp php$thisphp-php>php_indexphp-php>findphp(php)php methodphp withphp specifiedphp parameters
+php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php&php$thisphp-php>php_indexphp,php php'findphp'php)php,php php$parametersphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp listphp ofphp allphp uniquephp fieldphp namesphp thatphp existphp inphp thisphp indexphp.
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$indexed
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getFieldNamesphp(php$indexedphp php=php falsephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getFieldNamesphp(php$indexedphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp Zendphp_Searchphp_Lucenephp_Documentphp objectphp forphp thephp document
+php php php php php php*php numberphp php$idphp inphp thisphp indexphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|Zendphp_Searchphp_Lucenephp_Searchphp_QueryHitphp php$id
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Document
+php php php php php php*php/
+php php php php publicphp functionphp getDocumentphp(php$idphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getDocumentphp(php$idphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp indexphp containphp documentsphp withphp specifiedphp termphp.
+php php php php php php*
+php php php php php php*php Isphp usedphp forphp queryphp optimizationphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp hasTermphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>hasTermphp(php$termphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp IDsphp ofphp allphp thephp documentsphp containingphp termphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp termDocsphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$docsFilterphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>termDocsphp(php$termphp,php php$docsFilterphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp documentsphp filterphp forphp allphp documentsphp containingphp termphp.
+php php php php php php*
+php php php php php php*php Itphp performsphp thephp samephp operationphp asphp termDocsphp,php butphp returnphp resultphp as
+php php php php php php*php Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp object
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilter
+php php php php php php*php/
+php php php php publicphp functionphp termDocsFilterphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$docsFilterphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>termDocsFilterphp(php$termphp,php php$docsFilterphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp allphp termphp freqsphp.
+php php php php php php*php Returnphp arrayphp structurephp:php arrayphp(php docIdphp php=php>php freqphp,php php.php.php.php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp termFreqsphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$docsFilterphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>termFreqsphp(php$termphp,php php$docsFilterphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp allphp termphp positionsphp inphp thephp documentsphp.
+php php php php php php*php Returnphp arrayphp structurephp:php arrayphp(php docIdphp php=php>php arrayphp(php posphp1php,php posphp2php,php php.php.php.php)php,php php.php.php.php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp termPositionsphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$docsFilterphp php=php nullphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>termPositionsphp(php$termphp,php php$docsFilterphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp numberphp ofphp documentsphp inphp thisphp indexphp containingphp thephp php$termphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp docFreqphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>docFreqphp(php$termphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Retrivephp similarityphp usedphp byphp indexphp reader
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarity
+php php php php php php*php/
+php php php php publicphp functionphp getSimilarityphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>getSimilarityphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp normalizationphp factorphp forphp php"fieldphp,php documentphp"php pairphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$id
+php php php php php php*php php@paramphp stringphp php$fieldName
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp normphp(php$idphp,php php$fieldNamephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>normphp(php$idphp,php php$fieldNamephp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp anyphp documentsphp havephp beenphp deletedphp fromphp thisphp indexphp.
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp hasDeletionsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>hasDeletionsphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Deletesphp aphp documentphp fromphp thephp indexphp.
+php php php php php php*php php$idphp isphp anphp internalphp documentphp id
+php php php php php php*
+php php php php php php*php php@paramphp integerphp|Zendphp_Searchphp_Lucenephp_Searchphp_QueryHitphp php$id
+php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp deletephp(php$idphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>deletephp(php$idphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addsphp aphp documentphp tophp thisphp indexphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Documentphp php$document
+php php php php php php*php/
+php php php php publicphp functionphp addDocumentphp(Zendphp_Searchphp_Lucenephp_Documentphp php$documentphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>addDocumentphp(php$documentphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Commitphp changesphp resultingphp fromphp deletephp(php)php orphp undeleteAllphp(php)php operationsphp.
+php php php php php php*php/
+php php php php publicphp functionphp commitphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>commitphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Optimizephp indexphp.
+php php php php php php*
+php php php php php php*php Mergesphp allphp segmentsphp intophp one
+php php php php php php*php/
+php php php php publicphp functionphp optimizephp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>optimizephp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp allphp termsphp inphp thisphp indexphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp termsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>termsphp(php)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Resetphp termsphp streamphp.
+php php php php php php*php/
+php php php php publicphp functionphp resetTermsStreamphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>resetTermsStreamphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Skipphp termsphp streamphp upphp tophp specifiedphp termphp preffixphp.
+php php php php php php*
+php php php php php php*php Prefixphp containsphp fullyphp specifiedphp fieldphp infophp andphp portionphp ofphp searchedphp term
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$prefix
+php php php php php php*php/
+php php php php publicphp functionphp skipTophp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$prefixphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>skipTophp(php$prefixphp)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Scansphp termsphp dictionaryphp andphp returnsphp nextphp term
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp|null
+php php php php php php*php/
+php php php php publicphp functionphp nextTermphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>nextTermphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Returnsphp termphp inphp currentphp position
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp|null
+php php php php php php*php/
+php php php php publicphp functionphp currentTermphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>currentTermphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Closephp termsphp stream
+php php php php php php*
+php php php php php php*php Shouldphp bephp usedphp forphp resourcesphp cleanphp upphp ifphp streamphp isphp notphp readphp upphp tophp thephp end
+php php php php php php*php/
+php php php php publicphp functionphp closeTermsStreamphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_indexphp-php>closeTermsStreamphp(php)php;
+php php php php php}
+
+
+php php php php php/php*php*
+php php php php php php*php Undeletesphp allphp documentsphp currentlyphp markedphp asphp deletedphp inphp thisphp indexphp.
+php php php php php php*php/
+php php php php publicphp functionphp undeleteAllphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>undeleteAllphp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Addphp referencephp tophp thephp indexphp object
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php/
+php php php php publicphp functionphp addReferencephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>addReferencephp(php)php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Removephp referencephp fromphp thephp indexphp object
+php php php php php php*
+php php php php php php*php Whenphp referencephp countphp becomesphp zerophp,php indexphp isphp closedphp andphp resourcesphp arephp cleanedphp up
+php php php php php php*
+php php php php php php*php php@internal
+php php php php php php*php/
+php php php php publicphp functionphp removeReferencephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_indexphp-php>removeReferencephp(php)php;
+php php php php php}
+php}

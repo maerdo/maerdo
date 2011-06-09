@@ -1,200 +1,200 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: EntryAbstract.php 22662 2010-07-24 17:37:36Z mabe $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php EntryAbstractphp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Feed_Reader_Extension_EntryAbstract
-{
-    /**
-     * Feed entry data
-     *
-     * @var array
-     */
-    protected $_data = array();
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Feedphp_Readerphp_Extensionphp_EntryAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Feedphp entryphp data
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_dataphp php=php arrayphp(php)php;
 
-    /**
-     * DOM document object
-     *
-     * @var DOMDocument
-     */
-    protected $_domDocument = null;
+php php php php php/php*php*
+php php php php php php*php DOMphp documentphp object
+php php php php php php*
+php php php php php php*php php@varphp DOMDocument
+php php php php php php*php/
+php php php php protectedphp php$php_domDocumentphp php=php nullphp;
 
-    /**
-     * Entry instance
-     *
-     * @var Zend_Feed_Entry_Abstract
-     */
-    protected $_entry = null;
+php php php php php/php*php*
+php php php php php php*php Entryphp instance
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Feedphp_Entryphp_Abstract
+php php php php php php*php/
+php php php php protectedphp php$php_entryphp php=php nullphp;
 
-    /**
-     * Pointer to the current entry
-     *
-     * @var int
-     */
-    protected $_entryKey = 0;
+php php php php php/php*php*
+php php php php php php*php Pointerphp tophp thephp currentphp entry
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_entryKeyphp php=php php0php;
 
-    /**
-     * XPath object
-     *
-     * @var DOMXPath
-     */
-    protected $_xpath = null;
+php php php php php/php*php*
+php php php php php php*php XPathphp object
+php php php php php php*
+php php php php php php*php php@varphp DOMXPath
+php php php php php php*php/
+php php php php protectedphp php$php_xpathphp php=php nullphp;
 
-    /**
-     * XPath query
-     *
-     * @var string
-     */
-    protected $_xpathPrefix = '';
+php php php php php/php*php*
+php php php php php php*php XPathphp query
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_xpathPrefixphp php=php php'php'php;
 
-    /**
-     * Constructor
-     *
-     * @param  Zend_Feed_Entry_Abstract $entry
-     * @param  int $entryKey
-     * @param  string $type
-     * @return void
-     */
-    public function __construct(DOMElement $entry, $entryKey, $type = null)
-    {
-        $this->_entry       = $entry;
-        $this->_entryKey    = $entryKey;
-        $this->_domDocument = $entry->ownerDocument;
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Feedphp_Entryphp_Abstractphp php$entry
+php php php php php php*php php@paramphp php intphp php$entryKey
+php php php php php php*php php@paramphp php stringphp php$type
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$entryphp,php php$entryKeyphp,php php$typephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_entryphp php php php php php php php=php php$entryphp;
+php php php php php php php php php$thisphp-php>php_entryKeyphp php php php php=php php$entryKeyphp;
+php php php php php php php php php$thisphp-php>php_domDocumentphp php=php php$entryphp-php>ownerDocumentphp;
 
-        if ($type !== null) {
-            $this->_data['type'] = $type;
-        } else {
-            $this->_data['type'] = Zend_Feed_Reader::detectType($entry->ownerDocument, true);
-        }
-        // set the XPath query prefix for the entry being queried
-        if ($this->getType() == Zend_Feed_Reader::TYPE_RSS_10
-            || $this->getType() == Zend_Feed_Reader::TYPE_RSS_090
-        ) {
-            $this->setXpathPrefix('//rss:item[' . ($this->_entryKey+1) . ']');
-        } elseif ($this->getType() == Zend_Feed_Reader::TYPE_ATOM_10
-                  || $this->getType() == Zend_Feed_Reader::TYPE_ATOM_03
-        ) {
-            $this->setXpathPrefix('//atom:entry[' . ($this->_entryKey+1) . ']');
-        } else {
-            $this->setXpathPrefix('//item[' . ($this->_entryKey+1) . ']');
-        }
-    }
+php php php php php php php php ifphp php(php$typephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dataphp[php'typephp'php]php php=php php$typephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>php_dataphp[php'typephp'php]php php=php Zendphp_Feedphp_Readerphp:php:detectTypephp(php$entryphp-php>ownerDocumentphp,php truephp)php;
+php php php php php php php php php}
+php php php php php php php php php/php/php setphp thephp XPathphp queryphp prefixphp forphp thephp entryphp beingphp queried
+php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_RSSphp_php1php0
+php php php php php php php php php php php php php|php|php php$thisphp-php>getTypephp(php)php php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_RSSphp_php0php9php0
+php php php php php php php php php)php php{
+php php php php php php php php php php php php php$thisphp-php>setXpathPrefixphp(php'php/php/rssphp:itemphp[php'php php.php php(php$thisphp-php>php_entryKeyphp+php1php)php php.php php'php]php'php)php;
+php php php php php php php php php}php elseifphp php(php$thisphp-php>getTypephp(php)php php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php1php0
+php php php php php php php php php php php php php php php php php php php|php|php php$thisphp-php>getTypephp(php)php php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3
+php php php php php php php php php)php php{
+php php php php php php php php php php php php php$thisphp-php>setXpathPrefixphp(php'php/php/atomphp:entryphp[php'php php.php php(php$thisphp-php>php_entryKeyphp+php1php)php php.php php'php]php'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$thisphp-php>setXpathPrefixphp(php'php/php/itemphp[php'php php.php php(php$thisphp-php>php_entryKeyphp+php1php)php php.php php'php]php'php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Get the DOM
-     *
-     * @return DOMDocument
-     */
-    public function getDomDocument()
-    {
-        return $this->_domDocument;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp DOM
+php php php php php php*
+php php php php php php*php php@returnphp DOMDocument
+php php php php php php*php/
+php php php php publicphp functionphp getDomDocumentphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_domDocumentphp;
+php php php php php}
 
-    /**
-     * Get the Entry's encoding
-     *
-     * @return string
-     */
-    public function getEncoding()
-    {
-        $assumed = $this->getDomDocument()->encoding;
-        return $assumed;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp Entryphp'sphp encoding
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getEncodingphp(php)
+php php php php php{
+php php php php php php php php php$assumedphp php=php php$thisphp-php>getDomDocumentphp(php)php-php>encodingphp;
+php php php php php php php php returnphp php$assumedphp;
+php php php php php}
 
-    /**
-     * Get the entry type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->_data['type'];
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp entryphp type
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTypephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'typephp'php]php;
+php php php php php}
 
-    /**
-     * Set the XPath query
-     *
-     * @param  DOMXPath $xpath
-     * @return Zend_Feed_Reader_Extension_EntryAbstract
-     */
-    public function setXpath(DOMXPath $xpath)
-    {
-        $this->_xpath = $xpath;
-        $this->_registerNamespaces();
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp XPathphp query
+php php php php php php*
+php php php php php php*php php@paramphp php DOMXPathphp php$xpath
+php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Extensionphp_EntryAbstract
+php php php php php php*php/
+php php php php publicphp functionphp setXpathphp(DOMXPathphp php$xpathphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_xpathphp php=php php$xpathphp;
+php php php php php php php php php$thisphp-php>php_registerNamespacesphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get the XPath query object
-     *
-     * @return DOMXPath
-     */
-    public function getXpath()
-    {
-        if (!$this->_xpath) {
-            $this->setXpath(new DOMXPath($this->getDomDocument()));
-        }
-        return $this->_xpath;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp XPathphp queryphp object
+php php php php php php*
+php php php php php php*php php@returnphp DOMXPath
+php php php php php php*php/
+php php php php publicphp functionphp getXpathphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_xpathphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setXpathphp(newphp DOMXPathphp(php$thisphp-php>getDomDocumentphp(php)php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_xpathphp;
+php php php php php}
 
-    /**
-     * Serialize the entry to an array
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return $this->_data;
-    }
+php php php php php/php*php*
+php php php php php php*php Serializephp thephp entryphp tophp anphp array
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp toArrayphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_dataphp;
+php php php php php}
 
-    /**
-     * Get the XPath prefix
-     *
-     * @return string
-     */
-    public function getXpathPrefix()
-    {
-        return $this->_xpathPrefix;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp thephp XPathphp prefix
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getXpathPrefixphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_xpathPrefixphp;
+php php php php php}
 
-    /**
-     * Set the XPath prefix
-     *
-     * @param  string $prefix
-     * @return Zend_Feed_Reader_Extension_EntryAbstract
-     */
-    public function setXpathPrefix($prefix)
-    {
-        $this->_xpathPrefix = $prefix;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp thephp XPathphp prefix
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$prefix
+php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Extensionphp_EntryAbstract
+php php php php php php*php/
+php php php php publicphp functionphp setXpathPrefixphp(php$prefixphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_xpathPrefixphp php=php php$prefixphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Register XML namespaces
-     *
-     * @return void
-     */
-    protected abstract function _registerNamespaces();
-}
+php php php php php/php*php*
+php php php php php php*php Registerphp XMLphp namespaces
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp abstractphp functionphp php_registerNamespacesphp(php)php;
+php}

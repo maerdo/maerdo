@@ -1,58 +1,58 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage DublinCore
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Language.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Gdata
+php php*php php@subpackagephp DublinCore
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Languagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Gdata_Extension
- */
-require_once 'Zend/Gdata/Extension.php';
+php/php*php*
+php php*php php@seephp Zendphp_Gdataphp_Extension
+php php*php/
+requirephp_oncephp php'Zendphp/Gdataphp/Extensionphp.phpphp'php;
 
-/**
- * Language of the resource
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage DublinCore
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Gdata_DublinCore_Extension_Language extends Zend_Gdata_Extension
-{
+php/php*php*
+php php*php Languagephp ofphp thephp resource
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Gdata
+php php*php php@subpackagephp DublinCore
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Gdataphp_DublinCorephp_Extensionphp_Languagephp extendsphp Zendphp_Gdataphp_Extension
+php{
 
-    protected $_rootNamespace = 'dc';
-    protected $_rootElement = 'language';
+php php php php protectedphp php$php_rootNamespacephp php=php php'dcphp'php;
+php php php php protectedphp php$php_rootElementphp php=php php'languagephp'php;
 
-    /**
-     * Constructor for Zend_Gdata_DublinCore_Extension_Language which
-     * Language of the resource
-     *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
-     */
-    public function __construct($value = null)
-    {
-        $this->registerAllNamespaces(Zend_Gdata_DublinCore::$namespaces);
-        parent::__construct();
-        $this->_text = $value;
-    }
+php php php php php/php*php*
+php php php php php php*php Constructorphp forphp Zendphp_Gdataphp_DublinCorephp_Extensionphp_Languagephp which
+php php php php php php*php Languagephp ofphp thephp resource
+php php php php php php*
+php php php php php php*php php@paramphp DOMElementphp php$elementphp php(optionalphp)php DOMElementphp fromphp whichphp this
+php php php php php php*php php php php php php php php php php objectphp shouldphp bephp constructedphp.
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$valuephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>registerAllNamespacesphp(Zendphp_Gdataphp_DublinCorephp:php:php$namespacesphp)php;
+php php php php php php php php parentphp:php:php_php_constructphp(php)php;
+php php php php php php php php php$thisphp-php>php_textphp php=php php$valuephp;
+php php php php php}
 
-}
+php}

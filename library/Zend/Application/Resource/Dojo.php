@@ -1,76 +1,76 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Dojo.php 21318 2010-03-04 13:20:01Z freak $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Dojophp.phpphp php2php1php3php1php8php php2php0php1php0php-php0php3php-php0php4php php1php3php:php2php0php:php0php1Zphp freakphp php$
+php php*php/
 
-/**
- * @see Zend_Application_Resource_ResourceAbstract
- */
-require_once 'Zend/Application/Resource/ResourceAbstract.php';
+php/php*php*
+php php*php php@seephp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Applicationphp/Resourcephp/ResourceAbstractphp.phpphp'php;
 
 
-/**
- * Resource for settings Dojo options
- *
- * @uses       Zend_Application_Resource_ResourceAbstract
- * @category   Zend
- * @package    Zend_Application
- * @subpackage Resource
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Application_Resource_Dojo
-    extends Zend_Application_Resource_ResourceAbstract
-{
-    /**
-     * @var Zend_Dojo_View_Helper_Dojo_Container
-     */
-    protected $_dojo;
+php/php*php*
+php php*php Resourcephp forphp settingsphp Dojophp options
+php php*
+php php*php php@usesphp php php php php php php Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Application
+php php*php php@subpackagephp Resource
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Applicationphp_Resourcephp_Dojo
+php php php php extendsphp Zendphp_Applicationphp_Resourcephp_ResourceAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php php@varphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp_Container
+php php php php php php*php/
+php php php php protectedphp php$php_dojophp;
 
-    /**
-     * Defined by Zend_Application_Resource_Resource
-     *
-     * @return Zend_Dojo_View_Helper_Dojo_Container
-     */
-    public function init()
-    {
-        return $this->getDojo();
-    }
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Applicationphp_Resourcephp_Resource
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp_Container
+php php php php php php*php/
+php php php php publicphp functionphp initphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getDojophp(php)php;
+php php php php php}
 
-    /**
-     * Retrieve Dojo View Helper
-     *
-     * @return Zend_Dojo_View_Dojo_Container
-     */
-    public function getDojo()
-    {
-        if (null === $this->_dojo) {
-            $this->getBootstrap()->bootstrap('view');
-            $view = $this->getBootstrap()->view;
+php php php php php/php*php*
+php php php php php php*php Retrievephp Dojophp Viewphp Helper
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Dojophp_Viewphp_Dojophp_Container
+php php php php php php*php/
+php php php php publicphp functionphp getDojophp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_dojophp)php php{
+php php php php php php php php php php php php php$thisphp-php>getBootstrapphp(php)php-php>bootstrapphp(php'viewphp'php)php;
+php php php php php php php php php php php php php$viewphp php=php php$thisphp-php>getBootstrapphp(php)php-php>viewphp;
 
-            Zend_Dojo::enableView($view);
-            $view->dojo()->setOptions($this->getOptions());
+php php php php php php php php php php php php Zendphp_Dojophp:php:enableViewphp(php$viewphp)php;
+php php php php php php php php php php php php php$viewphp-php>dojophp(php)php-php>setOptionsphp(php$thisphp-php>getOptionsphp(php)php)php;
 
-            $this->_dojo = $view->dojo();
-        }
+php php php php php php php php php php php php php$thisphp-php>php_dojophp php=php php$viewphp-php>dojophp(php)php;
+php php php php php php php php php}
 
-        return $this->_dojo;
-    }
-}
+php php php php php php php php returnphp php$thisphp-php>php_dojophp;
+php php php php php}
+php}

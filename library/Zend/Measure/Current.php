@@ -1,102 +1,102 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category  Zend
- * @package   Zend_Measure
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Current.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php Zend
+php php*php php@packagephp php php Zendphp_Measure
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php$Idphp:php Currentphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Implement needed classes
- */
-require_once 'Zend/Measure/Abstract.php';
-require_once 'Zend/Locale.php';
+php/php*php*
+php php*php Implementphp neededphp classes
+php php*php/
+requirephp_oncephp php'Zendphp/Measurephp/Abstractphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
 
-/**
- * Class for handling current conversions
- *
- * @category   Zend
- * @package    Zend_Measure
- * @subpackage Zend_Measure_Current
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Measure_Current extends Zend_Measure_Abstract
-{
-    const STANDARD = 'AMPERE';
+php/php*php*
+php php*php Classphp forphp handlingphp currentphp conversions
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Measure
+php php*php php@subpackagephp Zendphp_Measurephp_Current
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Measurephp_Currentphp extendsphp Zendphp_Measurephp_Abstract
+php{
+php php php php constphp STANDARDphp php=php php'AMPEREphp'php;
 
-    const ABAMPERE             = 'ABAMPERE';
-    const AMPERE               = 'AMPERE';
-    const BIOT                 = 'BIOT';
-    const CENTIAMPERE          = 'CENTIAMPERE';
-    const COULOMB_PER_SECOND   = 'COULOMB_PER_SECOND';
-    const DECIAMPERE           = 'DECIAMPERE';
-    const DEKAAMPERE           = 'DEKAAMPERE';
-    const ELECTROMAGNETIC_UNIT = 'ELECTROMAGNATIC_UNIT';
-    const ELECTROSTATIC_UNIT   = 'ELECTROSTATIC_UNIT';
-    const FRANCLIN_PER_SECOND  = 'FRANCLIN_PER_SECOND';
-    const GAUSSIAN             = 'GAUSSIAN';
-    const GIGAAMPERE           = 'GIGAAMPERE';
-    const GILBERT              = 'GILBERT';
-    const HECTOAMPERE          = 'HECTOAMPERE';
-    const KILOAMPERE           = 'KILOAMPERE';
-    const MEGAAMPERE           = 'MEGAAMPERE';
-    const MICROAMPERE          = 'MICROAMPERE';
-    const MILLIAMPERE          = 'MILLIAMPERE';
-    const NANOAMPERE           = 'NANOAMPERE';
-    const PICOAMPERE           = 'PICOAMPERE';
-    const SIEMENS_VOLT         = 'SIEMENS_VOLT';
-    const STATAMPERE           = 'STATAMPERE';
-    const TERAAMPERE           = 'TERAAMPERE';
-    const VOLT_PER_OHM         = 'VOLT_PER_OHM';
-    const WATT_PER_VOLT        = 'WATT_PER_VOLT';
-    const WEBER_PER_HENRY      = 'WEBER_PER_HENRY';
+php php php php constphp ABAMPEREphp php php php php php php php php php php php php php=php php'ABAMPEREphp'php;
+php php php php constphp AMPEREphp php php php php php php php php php php php php php php php=php php'AMPEREphp'php;
+php php php php constphp BIOTphp php php php php php php php php php php php php php php php php php=php php'BIOTphp'php;
+php php php php constphp CENTIAMPEREphp php php php php php php php php php php=php php'CENTIAMPEREphp'php;
+php php php php constphp COULOMBphp_PERphp_SECONDphp php php php=php php'COULOMBphp_PERphp_SECONDphp'php;
+php php php php constphp DECIAMPEREphp php php php php php php php php php php php=php php'DECIAMPEREphp'php;
+php php php php constphp DEKAAMPEREphp php php php php php php php php php php php=php php'DEKAAMPEREphp'php;
+php php php php constphp ELECTROMAGNETICphp_UNITphp php=php php'ELECTROMAGNATICphp_UNITphp'php;
+php php php php constphp ELECTROSTATICphp_UNITphp php php php=php php'ELECTROSTATICphp_UNITphp'php;
+php php php php constphp FRANCLINphp_PERphp_SECONDphp php php=php php'FRANCLINphp_PERphp_SECONDphp'php;
+php php php php constphp GAUSSIANphp php php php php php php php php php php php php php=php php'GAUSSIANphp'php;
+php php php php constphp GIGAAMPEREphp php php php php php php php php php php php=php php'GIGAAMPEREphp'php;
+php php php php constphp GILBERTphp php php php php php php php php php php php php php php=php php'GILBERTphp'php;
+php php php php constphp HECTOAMPEREphp php php php php php php php php php php=php php'HECTOAMPEREphp'php;
+php php php php constphp KILOAMPEREphp php php php php php php php php php php php=php php'KILOAMPEREphp'php;
+php php php php constphp MEGAAMPEREphp php php php php php php php php php php php=php php'MEGAAMPEREphp'php;
+php php php php constphp MICROAMPEREphp php php php php php php php php php php=php php'MICROAMPEREphp'php;
+php php php php constphp MILLIAMPEREphp php php php php php php php php php php=php php'MILLIAMPEREphp'php;
+php php php php constphp NANOAMPEREphp php php php php php php php php php php php=php php'NANOAMPEREphp'php;
+php php php php constphp PICOAMPEREphp php php php php php php php php php php php=php php'PICOAMPEREphp'php;
+php php php php constphp SIEMENSphp_VOLTphp php php php php php php php php php=php php'SIEMENSphp_VOLTphp'php;
+php php php php constphp STATAMPEREphp php php php php php php php php php php php=php php'STATAMPEREphp'php;
+php php php php constphp TERAAMPEREphp php php php php php php php php php php php=php php'TERAAMPEREphp'php;
+php php php php constphp VOLTphp_PERphp_OHMphp php php php php php php php php php=php php'VOLTphp_PERphp_OHMphp'php;
+php php php php constphp WATTphp_PERphp_VOLTphp php php php php php php php php=php php'WATTphp_PERphp_VOLTphp'php;
+php php php php constphp WEBERphp_PERphp_HENRYphp php php php php php php=php php'WEBERphp_PERphp_HENRYphp'php;
 
-    /**
-     * Calculations for all current units
-     *
-     * @var array
-     */
-    protected $_units = array(
-        'ABAMPERE'             => array('10',           'abampere'),
-        'AMPERE'               => array('1',            'A'),
-        'BIOT'                 => array('10',           'Bi'),
-        'CENTIAMPERE'          => array('0.01',         'cA'),
-        'COULOMB_PER_SECOND'   => array('1',            'C/s'),
-        'DECIAMPERE'           => array('0.1',          'dA'),
-        'DEKAAMPERE'           => array('10',           'daA'),
-        'ELECTROMAGNATIC_UNIT' => array('10',           'current emu'),
-        'ELECTROSTATIC_UNIT'   => array('3.335641e-10', 'current esu'),
-        'FRANCLIN_PER_SECOND'  => array('3.335641e-10', 'Fr/s'),
-        'GAUSSIAN'             => array('3.335641e-10', 'G current'),
-        'GIGAAMPERE'           => array('1.0e+9',       'GA'),
-        'GILBERT'              => array('0.79577472',   'Gi'),
-        'HECTOAMPERE'          => array('100',          'hA'),
-        'KILOAMPERE'           => array('1000',         'kA'),
-        'MEGAAMPERE'           => array('1000000',      'MA') ,
-        'MICROAMPERE'          => array('0.000001',     'µA'),
-        'MILLIAMPERE'          => array('0.001',        'mA'),
-        'NANOAMPERE'           => array('1.0e-9',       'nA'),
-        'PICOAMPERE'           => array('1.0e-12',      'pA'),
-        'SIEMENS_VOLT'         => array('1',            'SV'),
-        'STATAMPERE'           => array('3.335641e-10', 'statampere'),
-        'TERAAMPERE'           => array('1.0e+12',      'TA'),
-        'VOLT_PER_OHM'         => array('1',            'V/Ohm'),
-        'WATT_PER_VOLT'        => array('1',            'W/V'),
-        'WEBER_PER_HENRY'      => array('1',            'Wb/H'),
-        'STANDARD'             => 'AMPERE'
-    );
-}
+php php php php php/php*php*
+php php php php php php*php Calculationsphp forphp allphp currentphp units
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_unitsphp php=php arrayphp(
+php php php php php php php php php'ABAMPEREphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php'php,php php php php php php php php php php php php'abamperephp'php)php,
+php php php php php php php php php'AMPEREphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php'Aphp'php)php,
+php php php php php php php php php'BIOTphp'php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php'php,php php php php php php php php php php php php'Biphp'php)php,
+php php php php php php php php php'CENTIAMPEREphp'php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php1php'php,php php php php php php php php php php'cAphp'php)php,
+php php php php php php php php php'COULOMBphp_PERphp_SECONDphp'php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php'Cphp/sphp'php)php,
+php php php php php php php php php'DECIAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php0php.php1php'php,php php php php php php php php php php php'dAphp'php)php,
+php php php php php php php php php'DEKAAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php0php'php,php php php php php php php php php php php php'daAphp'php)php,
+php php php php php php php php php'ELECTROMAGNATICphp_UNITphp'php php=php>php arrayphp(php'php1php0php'php,php php php php php php php php php php php php'currentphp emuphp'php)php,
+php php php php php php php php php'ELECTROSTATICphp_UNITphp'php php php php=php>php arrayphp(php'php3php.php3php3php5php6php4php1ephp-php1php0php'php,php php'currentphp esuphp'php)php,
+php php php php php php php php php'FRANCLINphp_PERphp_SECONDphp'php php php=php>php arrayphp(php'php3php.php3php3php5php6php4php1ephp-php1php0php'php,php php'Frphp/sphp'php)php,
+php php php php php php php php php'GAUSSIANphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php3php.php3php3php5php6php4php1ephp-php1php0php'php,php php'Gphp currentphp'php)php,
+php php php php php php php php php'GIGAAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php9php'php,php php php php php php php php'GAphp'php)php,
+php php php php php php php php php'GILBERTphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php7php9php5php7php7php4php7php2php'php,php php php php'Giphp'php)php,
+php php php php php php php php php'HECTOAMPEREphp'php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php'php,php php php php php php php php php php php'hAphp'php)php,
+php php php php php php php php php'KILOAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php'kAphp'php)php,
+php php php php php php php php php'MEGAAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php php php'MAphp'php)php php,
+php php php php php php php php php'MICROAMPEREphp'php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php0php0php0php0php1php'php,php php php php php php'phpµAphp'php)php,
+php php php php php php php php php'MILLIAMPEREphp'php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php php php php php'mAphp'php)php,
+php php php php php php php php php'NANOAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php9php'php,php php php php php php php php'nAphp'php)php,
+php php php php php php php php php'PICOAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php2php'php,php php php php php php php'pAphp'php)php,
+php php php php php php php php php'SIEMENSphp_VOLTphp'php php php php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php'SVphp'php)php,
+php php php php php php php php php'STATAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php3php.php3php3php5php6php4php1ephp-php1php0php'php,php php'statamperephp'php)php,
+php php php php php php php php php'TERAAMPEREphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php2php'php,php php php php php php php'TAphp'php)php,
+php php php php php php php php php'VOLTphp_PERphp_OHMphp'php php php php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php'Vphp/Ohmphp'php)php,
+php php php php php php php php php'WATTphp_PERphp_VOLTphp'php php php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php'Wphp/Vphp'php)php,
+php php php php php php php php php'WEBERphp_PERphp_HENRYphp'php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php'Wbphp/Hphp'php)php,
+php php php php php php php php php'STANDARDphp'php php php php php php php php php php php php php php=php>php php'AMPEREphp'
+php php php php php)php;
+php}

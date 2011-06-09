@@ -1,63 +1,63 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Paginator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Elastic.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Paginator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Elasticphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Paginator_ScrollingStyle_Sliding
- */
-require_once 'Zend/Paginator/ScrollingStyle/Sliding.php';
+php/php*php*
+php php*php php@seephp Zendphp_Paginatorphp_ScrollingStylephp_Sliding
+php php*php/
+requirephp_oncephp php'Zendphp/Paginatorphp/ScrollingStylephp/Slidingphp.phpphp'php;
 
-/**
- * A Google-like scrolling style.  Incrementally expands the range to about
- * twice the given page range, then behaves like a slider.  See the example
- * link.
- *
- * @link       http://www.google.com/search?q=Zend+Framework
- * @category   Zend
- * @package    Zend_Paginator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Paginator_ScrollingStyle_Elastic extends Zend_Paginator_ScrollingStyle_Sliding
-{
-    /**
-     * Returns an array of "local" pages given a page number and range.
-     *
-     * @param  Zend_Paginator $paginator
-     * @param  integer $pageRange Unused
-     * @return array
-     */
-    public function getPages(Zend_Paginator $paginator, $pageRange = null)
-    {
-        $pageRange  = $paginator->getPageRange();
-        $pageNumber = $paginator->getCurrentPageNumber();
+php/php*php*
+php php*php Aphp Googlephp-likephp scrollingphp stylephp.php php Incrementallyphp expandsphp thephp rangephp tophp about
+php php*php twicephp thephp givenphp pagephp rangephp,php thenphp behavesphp likephp aphp sliderphp.php php Seephp thephp example
+php php*php linkphp.
+php php*
+php php*php php@linkphp php php php php php php httpphp:php/php/wwwphp.googlephp.comphp/searchphp?qphp=Zendphp+Framework
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Paginator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Paginatorphp_ScrollingStylephp_Elasticphp extendsphp Zendphp_Paginatorphp_ScrollingStylephp_Sliding
+php{
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp php"localphp"php pagesphp givenphp aphp pagephp numberphp andphp rangephp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Paginatorphp php$paginator
+php php php php php php*php php@paramphp php integerphp php$pageRangephp Unused
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getPagesphp(Zendphp_Paginatorphp php$paginatorphp,php php$pageRangephp php=php nullphp)
+php php php php php{
+php php php php php php php php php$pageRangephp php php=php php$paginatorphp-php>getPageRangephp(php)php;
+php php php php php php php php php$pageNumberphp php=php php$paginatorphp-php>getCurrentPageNumberphp(php)php;
 
-        $originalPageRange = $pageRange;
-        $pageRange         = $pageRange * 2 - 1;
+php php php php php php php php php$originalPageRangephp php=php php$pageRangephp;
+php php php php php php php php php$pageRangephp php php php php php php php php php=php php$pageRangephp php*php php2php php-php php1php;
 
-        if ($originalPageRange + $pageNumber - 1 < $pageRange) {
-            $pageRange = $originalPageRange + $pageNumber - 1;
-        } else if ($originalPageRange + $pageNumber - 1 > count($paginator)) {
-            $pageRange = $originalPageRange + count($paginator) - $pageNumber;
-        }
+php php php php php php php php ifphp php(php$originalPageRangephp php+php php$pageNumberphp php-php php1php <php php$pageRangephp)php php{
+php php php php php php php php php php php php php$pageRangephp php=php php$originalPageRangephp php+php php$pageNumberphp php-php php1php;
+php php php php php php php php php}php elsephp ifphp php(php$originalPageRangephp php+php php$pageNumberphp php-php php1php php>php countphp(php$paginatorphp)php)php php{
+php php php php php php php php php php php php php$pageRangephp php=php php$originalPageRangephp php+php countphp(php$paginatorphp)php php-php php$pageNumberphp;
+php php php php php php php php php}
 
-        return parent::getPages($paginator, $pageRange);
-    }
-}
+php php php php php php php php returnphp parentphp:php:getPagesphp(php$paginatorphp,php php$pageRangephp)php;
+php php php php php}
+php}

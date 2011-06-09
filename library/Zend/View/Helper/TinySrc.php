@@ -1,317 +1,317 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_View_Helper_HtmlElement */
-require_once 'Zend/View/Helper/HtmlElement.php';
+php/php*php*php Zendphp_Viewphp_Helperphp_HtmlElementphp php*php/
+requirephp_oncephp php'Zendphp/Viewphp/Helperphp/HtmlElementphp.phpphp'php;
 
-/**
- * Helper for generating urls and/or image tags for use with tinysrc.net
- *
- * tinysrc.net provides an API for generating scaled, browser device-specific
- * images. In essence, you pass the API the URL to an image on your own server,
- * and tinysrc.net then provides the appropriate image based on the device that
- * accesses it.
- *
- * Additionally, tinysrc.net allows you to specify additional configuration via
- * the API:
- *
- * - image size. You may define this as:
- *   - explicit size
- *   - subtractive size (size of screen minus specified number of pixels)
- *   - percentage size (percentage of screen size))
- * - image format. This will convert the image to the given format; allowed
- *   values are "png" or "jpeg". By default, gif images are converted to png.
- *
- * This helper allows you to specify all configuration options, as well as:
- *
- * - whether or not to generate the full image tag (or just the URL)
- * - base url to images (which should include the protocol, server, and
- *   optionally port and base path)
- *
- * @see        http://tinysrc.net/
- * @package    Zend_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
-{
-    const TINYSRC_BASE = 'http://i.tinysrc.mobi';
+php/php*php*
+php php*php Helperphp forphp generatingphp urlsphp andphp/orphp imagephp tagsphp forphp usephp withphp tinysrcphp.net
+php php*
+php php*php tinysrcphp.netphp providesphp anphp APIphp forphp generatingphp scaledphp,php browserphp devicephp-specific
+php php*php imagesphp.php Inphp essencephp,php youphp passphp thephp APIphp thephp URLphp tophp anphp imagephp onphp yourphp ownphp serverphp,
+php php*php andphp tinysrcphp.netphp thenphp providesphp thephp appropriatephp imagephp basedphp onphp thephp devicephp that
+php php*php accessesphp itphp.
+php php*
+php php*php Additionallyphp,php tinysrcphp.netphp allowsphp youphp tophp specifyphp additionalphp configurationphp via
+php php*php thephp APIphp:
+php php*
+php php*php php-php imagephp sizephp.php Youphp mayphp definephp thisphp asphp:
+php php*php php php php-php explicitphp size
+php php*php php php php-php subtractivephp sizephp php(sizephp ofphp screenphp minusphp specifiedphp numberphp ofphp pixelsphp)
+php php*php php php php-php percentagephp sizephp php(percentagephp ofphp screenphp sizephp)php)
+php php*php php-php imagephp formatphp.php Thisphp willphp convertphp thephp imagephp tophp thephp givenphp formatphp;php allowed
+php php*php php php valuesphp arephp php"pngphp"php orphp php"jpegphp"php.php Byphp defaultphp,php gifphp imagesphp arephp convertedphp tophp pngphp.
+php php*
+php php*php Thisphp helperphp allowsphp youphp tophp specifyphp allphp configurationphp optionsphp,php asphp wellphp asphp:
+php php*
+php php*php php-php whetherphp orphp notphp tophp generatephp thephp fullphp imagephp tagphp php(orphp justphp thephp URLphp)
+php php*php php-php basephp urlphp tophp imagesphp php(whichphp shouldphp includephp thephp protocolphp,php serverphp,php and
+php php*php php php optionallyphp portphp andphp basephp pathphp)
+php php*
+php php*php php@seephp php php php php php php php httpphp:php/php/tinysrcphp.netphp/
+php php*php php@packagephp php php php Zendphp_View
+php php*php php@subpackagephp Helper
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Viewphp_Helperphp_TinySrcphp extendsphp Zendphp_Viewphp_Helperphp_HtmlElement
+php{
+php php php php constphp TINYSRCphp_BASEphp php=php php'httpphp:php/php/iphp.tinysrcphp.mobiphp'php;
 
-    /**
-     * @var string Base URL for images
-     */
-    protected $_baseUrl;
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Basephp URLphp forphp images
+php php php php php php*php/
+php php php php protectedphp php$php_baseUrlphp;
 
-    /**
-     * @var bool Whether or not to create an image tag
-     */
-    protected $_createTagFlag = true;
+php php php php php/php*php*
+php php php php php php*php php@varphp boolphp Whetherphp orphp notphp tophp createphp anphp imagephp tag
+php php php php php php*php/
+php php php php protectedphp php$php_createTagFlagphp php=php truephp;
 
-    /**
-     * @var string Default width and height
-     */
-    protected $_dimensions = '';
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Defaultphp widthphp andphp height
+php php php php php php*php/
+php php php php protectedphp php$php_dimensionsphp php=php php'php'php;
 
-    /**
-     * Default options
-     *
-     * Used when determining what options were passed, and needing to merge
-     * them with default options.
-     *
-     * @var array
-     */
-    protected $_defaultOptions = array(
-        'base_url'   => null,
-        'format'     => null,
-        'width'      => false,
-        'height'     => false,
-        'create_tag' => true,
-    );
+php php php php php/php*php*
+php php php php php php*php Defaultphp options
+php php php php php php*
+php php php php php php*php Usedphp whenphp determiningphp whatphp optionsphp werephp passedphp,php andphp needingphp tophp merge
+php php php php php php*php themphp withphp defaultphp optionsphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_defaultOptionsphp php=php arrayphp(
+php php php php php php php php php'basephp_urlphp'php php php php=php>php nullphp,
+php php php php php php php php php'formatphp'php php php php php php=php>php nullphp,
+php php php php php php php php php'widthphp'php php php php php php php=php>php falsephp,
+php php php php php php php php php'heightphp'php php php php php php=php>php falsephp,
+php php php php php php php php php'createphp_tagphp'php php=php>php truephp,
+php php php php php)php;
 
-    /**
-     * @var string Default image format to use
-     */
-    protected $_format = '';
+php php php php php/php*php*
+php php php php php php*php php@varphp stringphp Defaultphp imagephp formatphp tophp use
+php php php php php php*php/
+php php php php protectedphp php$php_formatphp php=php php'php'php;
 
-    /**
-     * Generate a link or image tag pointing to tinysrc.net
-     *
-     * @param mixed $image
-     * @param array $options
-     * @return void
-     */
-    public function tinySrc($image = null, array $options = array())
-    {
-        if (null === $image) {
-            return $this;
-        }
+php php php php php/php*php*
+php php php php php php*php Generatephp aphp linkphp orphp imagephp tagphp pointingphp tophp tinysrcphp.net
+php php php php php php*
+php php php php php php*php php@paramphp mixedphp php$image
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp tinySrcphp(php$imagephp php=php nullphp,php arrayphp php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$imagephp)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
 
-        $defaultOptions = $this->_defaultOptions;
-        $defaultOptions['create_tag'] = $this->createTag();
-        $options = array_merge($defaultOptions, $options);
+php php php php php php php php php$defaultOptionsphp php=php php$thisphp-php>php_defaultOptionsphp;
+php php php php php php php php php$defaultOptionsphp[php'createphp_tagphp'php]php php=php php$thisphp-php>createTagphp(php)php;
+php php php php php php php php php$optionsphp php=php arrayphp_mergephp(php$defaultOptionsphp,php php$optionsphp)php;
 
-        $url = '/' . $this->_mergeBaseUrl($options) . ltrim($image, '/');
+php php php php php php php php php$urlphp php=php php'php/php'php php.php php$thisphp-php>php_mergeBaseUrlphp(php$optionsphp)php php.php ltrimphp(php$imagephp,php php'php/php'php)php;
 
-        $src = self::TINYSRC_BASE
-             . $this->_mergeFormat($options)
-             . $this->_mergeDimensions($options)
-             . $url;
+php php php php php php php php php$srcphp php=php selfphp:php:TINYSRCphp_BASE
+php php php php php php php php php php php php php php.php php$thisphp-php>php_mergeFormatphp(php$optionsphp)
+php php php php php php php php php php php php php php.php php$thisphp-php>php_mergeDimensionsphp(php$optionsphp)
+php php php php php php php php php php php php php php.php php$urlphp;
 
-        if (!$options['create_tag']) {
-            return $src;
-        }
+php php php php php php php php ifphp php(php!php$optionsphp[php'createphp_tagphp'php]php)php php{
+php php php php php php php php php php php php returnphp php$srcphp;
+php php php php php php php php php}
 
-        foreach (array_keys($this->_defaultOptions) as $key) {
-            switch ($key) {
-                case 'width':
-                case 'height':
-                    if (!is_int($options[$key]) || !is_numeric($options[$key]) || $options[$key] < 0) {
-                        unset($options[$key]);
-                    }
-                    break;
-                default:
-                    unset($options[$key]);
-                    break;
-            }
-        }
+php php php php php php php php foreachphp php(arrayphp_keysphp(php$thisphp-php>php_defaultOptionsphp)php asphp php$keyphp)php php{
+php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php casephp php'widthphp'php:
+php php php php php php php php php php php php php php php php casephp php'heightphp'php:
+php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_intphp(php$optionsphp[php$keyphp]php)php php|php|php php!isphp_numericphp(php$optionsphp[php$keyphp]php)php php|php|php php$optionsphp[php$keyphp]php <php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$optionsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$optionsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $options['src'] = $src;
+php php php php php php php php php$optionsphp[php'srcphp'php]php php=php php$srcphp;
 
-        $tag = '<img' . $this->_htmlAttribs($options) . $this->getClosingBracket();
-        return $tag;
-    }
+php php php php php php php php php$tagphp php=php php'php<imgphp'php php.php php$thisphp-php>php_htmlAttribsphp(php$optionsphp)php php.php php$thisphp-php>getClosingBracketphp(php)php;
+php php php php php php php php returnphp php$tagphp;
+php php php php php}
 
-    /**
-     * Set base URL for images
-     *
-     * @param  string $url
-     * @return Zend_View_Helper_TinySrc
-     */
-    public function setBaseUrl($url)
-    {
-        $this->_baseUrl = rtrim($url, '/') . '/';
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp basephp URLphp forphp images
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_TinySrc
+php php php php php php*php/
+php php php php publicphp functionphp setBaseUrlphp(php$urlphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_baseUrlphp php=php rtrimphp(php$urlphp,php php'php/php'php)php php.php php'php/php'php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Get base URL for images
-     *
-     * If none already set, uses the ServerUrl and BaseUrl view helpers to
-     * determine the base URL to images.
-     *
-     * @return string
-     */
-    public function getBaseUrl()
-    {
-        if (null === $this->_baseUrl) {
-            $this->setBaseUrl($this->view->serverUrl($this->view->baseUrl()));
-        }
-        return $this->_baseUrl;
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp basephp URLphp forphp images
+php php php php php php*
+php php php php php php*php Ifphp nonephp alreadyphp setphp,php usesphp thephp ServerUrlphp andphp BaseUrlphp viewphp helpersphp to
+php php php php php php*php determinephp thephp basephp URLphp tophp imagesphp.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getBaseUrlphp(php)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_baseUrlphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setBaseUrlphp(php$thisphp-php>viewphp-php>serverUrlphp(php$thisphp-php>viewphp-php>baseUrlphp(php)php)php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_baseUrlphp;
+php php php php php}
 
-    /**
-     * Set default image format
-     *
-     * If set, this will set the default format to use on all images.
-     *
-     * @param  null|string $format
-     * @return Zend_View_Helper_TinySrc
-     * @throws Zend_View_Exception
-     */
-    public function setDefaultFormat($format = null)
-    {
-        if (null === $format) {
-            $this->_format = '';
-            return $this;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp defaultphp imagephp format
+php php php php php php*
+php php php php php php*php Ifphp setphp,php thisphp willphp setphp thephp defaultphp formatphp tophp usephp onphp allphp imagesphp.
+php php php php php php*
+php php php php php php*php php@paramphp php nullphp|stringphp php$format
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_TinySrc
+php php php php php php*php php@throwsphp Zendphp_Viewphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setDefaultFormatphp(php$formatphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$formatphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_formatphp php=php php'php'php;
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
 
-        $format = strtolower($format);
-        if (!in_array($format, array('png', 'jpeg'))) {
-            require_once 'Zend/View/Exception.php';
-            throw new Zend_View_Exception('Invalid format; must be one of "jpeg" or "png"');
-        }
-        $this->_format = "/$format";
-        return $this;
-    }
+php php php php php php php php php$formatphp php=php strtolowerphp(php$formatphp)php;
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$formatphp,php arrayphp(php'pngphp'php,php php'jpegphp'php)php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Viewphp_Exceptionphp(php'Invalidphp formatphp;php mustphp bephp onephp ofphp php"jpegphp"php orphp php"pngphp"php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_formatphp php=php php"php/php$formatphp"php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set default dimensions
-     *
-     * If null is specified for width, default dimensions will be cleared. If
-     * only width is specified, only width will be used. If either dimension
-     * fails validation, an exception is raised.
-     *
-     * @param  null|int|string $width
-     * @param  null|int|string $height
-     * @return Zend_View_Helper_TinySrc
-     * @throws Zend_View_Exception
-     */
-    public function setDefaultDimensions($width = null, $height = null)
-    {
-        if (null === $width) {
-            $this->_dimensions = '';
-            return $this;
-        }
+php php php php php/php*php*
+php php php php php php*php Setphp defaultphp dimensions
+php php php php php php*
+php php php php php php*php Ifphp nullphp isphp specifiedphp forphp widthphp,php defaultphp dimensionsphp willphp bephp clearedphp.php If
+php php php php php php*php onlyphp widthphp isphp specifiedphp,php onlyphp widthphp willphp bephp usedphp.php Ifphp eitherphp dimension
+php php php php php php*php failsphp validationphp,php anphp exceptionphp isphp raisedphp.
+php php php php php php*
+php php php php php php*php php@paramphp php nullphp|intphp|stringphp php$width
+php php php php php php*php php@paramphp php nullphp|intphp|stringphp php$height
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_TinySrc
+php php php php php php*php php@throwsphp Zendphp_Viewphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp setDefaultDimensionsphp(php$widthphp php=php nullphp,php php$heightphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$widthphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_dimensionsphp php=php php'php'php;
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
 
-        if (!$this->_validateDimension($width)) {
-            require_once 'Zend/View/Exception.php';
-            throw new Zend_View_Exception('Invalid dimension; must be an integer, optionally preceded by "-" or "x"');
-        }
+php php php php php php php php ifphp php(php!php$thisphp-php>php_validateDimensionphp(php$widthphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Viewphp_Exceptionphp(php'Invalidphp dimensionphp;php mustphp bephp anphp integerphp,php optionallyphp precededphp byphp php"php-php"php orphp php"xphp"php'php)php;
+php php php php php php php php php}
 
-        $this->_dimensions = "/$width";
-        if (null === $height) {
-            return $this;
-        }
+php php php php php php php php php$thisphp-php>php_dimensionsphp php=php php"php/php$widthphp"php;
+php php php php php php php php ifphp php(nullphp php=php=php=php php$heightphp)php php{
+php php php php php php php php php php php php returnphp php$thisphp;
+php php php php php php php php php}
 
-        if (!$this->_validateDimension($height)) {
-            require_once 'Zend/View/Exception.php';
-            throw new Zend_View_Exception('Invalid dimension; must be an integer, optionally preceded by "-" or "x"');
-        }
-        $this->_dimensions .= "/$height";
-        return $this;
-    }
+php php php php php php php php ifphp php(php!php$thisphp-php>php_validateDimensionphp(php$heightphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Viewphp_Exceptionphp(php'Invalidphp dimensionphp;php mustphp bephp anphp integerphp,php optionallyphp precededphp byphp php"php-php"php orphp php"xphp"php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dimensionsphp php.php=php php"php/php$heightphp"php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Set state of "create tag" flag
-     *
-     * @param  bool $flag
-     * @return Zend_View_Helper_TinySrc
-     */
-    public function setCreateTag($flag)
-    {
-        $this->_createTagFlag = (bool) $flag;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp statephp ofphp php"createphp tagphp"php flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$flag
+php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_TinySrc
+php php php php php php*php/
+php php php php publicphp functionphp setCreateTagphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_createTagFlagphp php=php php(boolphp)php php$flagphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Should the helper create an image tag?
-     *
-     * @return bool
-     */
-    public function createTag()
-    {
-        return $this->_createTagFlag;
-    }
+php php php php php/php*php*
+php php php php php php*php Shouldphp thephp helperphp createphp anphp imagephp tagphp?
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp createTagphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_createTagFlagphp;
+php php php php php}
 
-    /**
-     * Validate a dimension
-     *
-     * Dimensions may be integers, optionally preceded by '-' or 'x'.
-     *
-     * @param  string $dim
-     * @return bool
-     */
-    protected function _validateDimension($dim)
-    {
-        if (!is_scalar($dim) || is_bool($dim)) {
-            return false;
-        }
-        return preg_match('/^(-|x)?\d+$/', (string) $dim);
-    }
+php php php php php/php*php*
+php php php php php php*php Validatephp aphp dimension
+php php php php php php*
+php php php php php php*php Dimensionsphp mayphp bephp integersphp,php optionallyphp precededphp byphp php'php-php'php orphp php'xphp'php.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$dim
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php protectedphp functionphp php_validateDimensionphp(php$dimphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_scalarphp(php$dimphp)php php|php|php isphp_boolphp(php$dimphp)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp pregphp_matchphp(php'php/php^php(php-php|xphp)php?php\dphp+php$php/php'php,php php(stringphp)php php$dimphp)php;
+php php php php php}
 
-    /**
-     * Determine whether to use default base URL, or base URL from options
-     *
-     * @param  array $options
-     * @return string
-     */
-    protected function _mergeBaseUrl(array $options)
-    {
-        if (null === $options['base_url']) {
-            return $this->getBaseUrl();
-        }
-        return rtrim($options['base_url'], '/') . '/';
-    }
+php php php php php/php*php*
+php php php php php php*php Determinephp whetherphp tophp usephp defaultphp basephp URLphp,php orphp basephp URLphp fromphp options
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_mergeBaseUrlphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$optionsphp[php'basephp_urlphp'php]php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>getBaseUrlphp(php)php;
+php php php php php php php php php}
+php php php php php php php php returnphp rtrimphp(php$optionsphp[php'basephp_urlphp'php]php,php php'php/php'php)php php.php php'php/php'php;
+php php php php php}
 
-    /**
-     * Determine whether to use default format or format provided in options.
-     *
-     * @param  array $options
-     * @return string
-     */
-    protected function _mergeFormat(array $options)
-    {
-        if (in_array($options['format'], array('png', 'jpeg'))) {
-            return '/' . $options['format'];
-        }
-        return $this->_format;
-    }
+php php php php php/php*php*
+php php php php php php*php Determinephp whetherphp tophp usephp defaultphp formatphp orphp formatphp providedphp inphp optionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_mergeFormatphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(inphp_arrayphp(php$optionsphp[php'formatphp'php]php,php arrayphp(php'pngphp'php,php php'jpegphp'php)php)php)php php{
+php php php php php php php php php php php php returnphp php'php/php'php php.php php$optionsphp[php'formatphp'php]php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_formatphp;
+php php php php php}
 
-    /**
-     * Determine whether to use default dimensions, or those passed in options.
-     *
-     * @param  array $options
-     * @return string
-     */
-    protected function _mergeDimensions(array $options)
-    {
-        if (!$this->_validateDimension($options['width'])) {
-            return $this->_dimensions;
-        }
-        $dimensions = '/' . $options['width'];
-        if (!$this->_validateDimension($options['height'])) {
-            return $dimensions;
-        }
-        $dimensions .= '/' . $options['height'];
-        return $dimensions;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Determinephp whetherphp tophp usephp defaultphp dimensionsphp,php orphp thosephp passedphp inphp optionsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_mergeDimensionsphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_validateDimensionphp(php$optionsphp[php'widthphp'php]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dimensionsphp;
+php php php php php php php php php}
+php php php php php php php php php$dimensionsphp php=php php'php/php'php php.php php$optionsphp[php'widthphp'php]php;
+php php php php php php php php ifphp php(php!php$thisphp-php>php_validateDimensionphp(php$optionsphp[php'heightphp'php]php)php)php php{
+php php php php php php php php php php php php returnphp php$dimensionsphp;
+php php php php php php php php php}
+php php php php php php php php php$dimensionsphp php.php=php php'php/php'php php.php php$optionsphp[php'heightphp'php]php;
+php php php php php php php php returnphp php$dimensionsphp;
+php php php php php}
+php}

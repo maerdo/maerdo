@@ -1,174 +1,174 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Queue
- * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: AdapterInterface.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Queue
+php php*php php@subpackagephp Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php AdapterInterfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Interface for common queue operations
- *
- * @category   Zend
- * @package    Zend_Queue
- * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Queue_Adapter_AdapterInterface
-{
-    /**
-     * Constructor
-     *
-     * @param  array|Zend_Config $options
-     * @param  Zend_Queue $queue
-     * @return void
-     */
-    public function __construct($options, Zend_Queue $queue = null);
+php/php*php*
+php php*php Interfacephp forphp commonphp queuephp operations
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Queue
+php php*php php@subpackagephp Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Queuephp_Adapterphp_AdapterInterface
+php{
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
+php php php php php php*php php@paramphp php Zendphp_Queuephp php$queue
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp,php Zendphp_Queuephp php$queuephp php=php nullphp)php;
 
-    /**
-     * Retrieve queue instance
-     *
-     * @return Zend_Queue
-     */
-    public function getQueue();
+php php php php php/php*php*
+php php php php php php*php Retrievephp queuephp instance
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Queue
+php php php php php php*php/
+php php php php publicphp functionphp getQueuephp(php)php;
 
-    /**
-     * Set queue instnace
-     *
-     * @param  Zend_Queue $queue
-     * @return Zend_Queue_Adapter_AdapterInterface
-     */
-    public function setQueue(Zend_Queue $queue);
+php php php php php/php*php*
+php php php php php php*php Setphp queuephp instnace
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Queuephp php$queue
+php php php php php php*php php@returnphp Zendphp_Queuephp_Adapterphp_AdapterInterface
+php php php php php php*php/
+php php php php publicphp functionphp setQueuephp(Zendphp_Queuephp php$queuephp)php;
 
-    /**
-     * Does a queue already exist?
-     *
-     * Use isSupported('isExists') to determine if an adapter can test for
-     * queue existance.
-     *
-     * @param  string $name Queue name
-     * @return boolean
-     */
-    public function isExists($name);
+php php php php php/php*php*
+php php php php php php*php Doesphp aphp queuephp alreadyphp existphp?
+php php php php php php*
+php php php php php php*php Usephp isSupportedphp(php'isExistsphp'php)php tophp determinephp ifphp anphp adapterphp canphp testphp for
+php php php php php php*php queuephp existancephp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$namephp Queuephp name
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isExistsphp(php$namephp)php;
 
-    /**
-     * Create a new queue
-     *
-     * Visibility timeout is how long a message is left in the queue
-     * "invisible" to other readers.  If the message is acknowleged (deleted)
-     * before the timeout, then the message is deleted.  However, if the
-     * timeout expires then the message will be made available to other queue
-     * readers.
-     *
-     * @param  string  $name Queue name
-     * @param  integer $timeout Default visibility timeout
-     * @return boolean
-     */
-    public function create($name, $timeout=null);
+php php php php php/php*php*
+php php php php php php*php Createphp aphp newphp queue
+php php php php php php*
+php php php php php php*php Visibilityphp timeoutphp isphp howphp longphp aphp messagephp isphp leftphp inphp thephp queue
+php php php php php php*php php"invisiblephp"php tophp otherphp readersphp.php php Ifphp thephp messagephp isphp acknowlegedphp php(deletedphp)
+php php php php php php*php beforephp thephp timeoutphp,php thenphp thephp messagephp isphp deletedphp.php php Howeverphp,php ifphp the
+php php php php php php*php timeoutphp expiresphp thenphp thephp messagephp willphp bephp madephp availablephp tophp otherphp queue
+php php php php php php*php readersphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php php$namephp Queuephp name
+php php php php php php*php php@paramphp php integerphp php$timeoutphp Defaultphp visibilityphp timeout
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp createphp(php$namephp,php php$timeoutphp=nullphp)php;
 
-    /**
-     * Delete a queue and all of its messages
-     *
-     * Return false if the queue is not found, true if the queue exists.
-     *
-     * @param  string $name Queue name
-     * @return boolean
-     */
-    public function delete($name);
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp queuephp andphp allphp ofphp itsphp messages
+php php php php php php*
+php php php php php php*php Returnphp falsephp ifphp thephp queuephp isphp notphp foundphp,php truephp ifphp thephp queuephp existsphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$namephp Queuephp name
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp deletephp(php$namephp)php;
 
-    /**
-     * Get an array of all available queues
-     *
-     * Not all adapters support getQueues(); use isSupported('getQueues')
-     * to determine if the adapter supports this feature.
-     *
-     * @return array
-     */
-    public function getQueues();
+php php php php php/php*php*
+php php php php php php*php Getphp anphp arrayphp ofphp allphp availablephp queues
+php php php php php php*
+php php php php php php*php Notphp allphp adaptersphp supportphp getQueuesphp(php)php;php usephp isSupportedphp(php'getQueuesphp'php)
+php php php php php php*php tophp determinephp ifphp thephp adapterphp supportsphp thisphp featurephp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getQueuesphp(php)php;
 
-    /**
-     * Return the approximate number of messages in the queue
-     *
-     * @param  Zend_Queue|null $queue
-     * @return integer
-     */
-    public function count(Zend_Queue $queue = null);
+php php php php php/php*php*
+php php php php php php*php Returnphp thephp approximatephp numberphp ofphp messagesphp inphp thephp queue
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Queuephp|nullphp php$queue
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp countphp(Zendphp_Queuephp php$queuephp php=php nullphp)php;
 
-    /********************************************************************
-     * Messsage management functions
-     *********************************************************************/
+php php php php php/php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*
+php php php php php php*php Messsagephp managementphp functions
+php php php php php php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php/
 
-    /**
-     * Send a message to the queue
-     *
-     * @param  mixed $message Message to send to the active queue
-     * @param  Zend_Queue|null $queue
-     * @return Zend_Queue_Message
-     */
-    public function send($message, Zend_Queue $queue = null);
+php php php php php/php*php*
+php php php php php php*php Sendphp aphp messagephp tophp thephp queue
+php php php php php php*
+php php php php php php*php php@paramphp php mixedphp php$messagephp Messagephp tophp sendphp tophp thephp activephp queue
+php php php php php php*php php@paramphp php Zendphp_Queuephp|nullphp php$queue
+php php php php php php*php php@returnphp Zendphp_Queuephp_Message
+php php php php php php*php/
+php php php php publicphp functionphp sendphp(php$messagephp,php Zendphp_Queuephp php$queuephp php=php nullphp)php;
 
-    /**
-     * Get messages in the queue
-     *
-     * @param  integer|null $maxMessages Maximum number of messages to return
-     * @param  integer|null $timeout Visibility timeout for these messages
-     * @param  Zend_Queue|null $queue
-     * @return Zend_Queue_Message_Iterator
-     */
-    public function receive($maxMessages = null, $timeout = null, Zend_Queue $queue = null);
+php php php php php/php*php*
+php php php php php php*php Getphp messagesphp inphp thephp queue
+php php php php php php*
+php php php php php php*php php@paramphp php integerphp|nullphp php$maxMessagesphp Maximumphp numberphp ofphp messagesphp tophp return
+php php php php php php*php php@paramphp php integerphp|nullphp php$timeoutphp Visibilityphp timeoutphp forphp thesephp messages
+php php php php php php*php php@paramphp php Zendphp_Queuephp|nullphp php$queue
+php php php php php php*php php@returnphp Zendphp_Queuephp_Messagephp_Iterator
+php php php php php php*php/
+php php php php publicphp functionphp receivephp(php$maxMessagesphp php=php nullphp,php php$timeoutphp php=php nullphp,php Zendphp_Queuephp php$queuephp php=php nullphp)php;
 
-    /**
-     * Delete a message from the queue
-     *
-     * Return true if the message is deleted, false if the deletion is
-     * unsuccessful.
-     *
-     * @param  Zend_Queue_Message $message
-     * @return boolean
-     */
-    public function deleteMessage(Zend_Queue_Message $message);
+php php php php php/php*php*
+php php php php php php*php Deletephp aphp messagephp fromphp thephp queue
+php php php php php php*
+php php php php php php*php Returnphp truephp ifphp thephp messagephp isphp deletedphp,php falsephp ifphp thephp deletionphp is
+php php php php php php*php unsuccessfulphp.
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Queuephp_Messagephp php$message
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp deleteMessagephp(Zendphp_Queuephp_Messagephp php$messagephp)php;
 
-    /********************************************************************
-     * Supporting functions
-     *********************************************************************/
+php php php php php/php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*
+php php php php php php*php Supportingphp functions
+php php php php php php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php/
 
-    /**
-     * Returns the configuration options in this adapter.
-     *
-     * @return array
-     */
-    public function getOptions();
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp configurationphp optionsphp inphp thisphp adapterphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php)php;
 
-    /**
-     * Return a list of queue capabilities functions
-     *
-     * $array['function name'] = true or false
-     * true is supported, false is not supported.
-     *
-     * @return array
-     */
-    public function getCapabilities();
+php php php php php/php*php*
+php php php php php php*php Returnphp aphp listphp ofphp queuephp capabilitiesphp functions
+php php php php php php*
+php php php php php php*php php$arrayphp[php'functionphp namephp'php]php php=php truephp orphp false
+php php php php php php*php truephp isphp supportedphp,php falsephp isphp notphp supportedphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getCapabilitiesphp(php)php;
 
-    /**
-     * Indicates if a function is supported or not.
-     *
-     * @param  string $name Function name
-     * @return boolean
-     */
-    public function isSupported($name);
-}
+php php php php php/php*php*
+php php php php php php*php Indicatesphp ifphp aphp functionphp isphp supportedphp orphp notphp.
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$namephp Functionphp name
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp isSupportedphp(php$namephp)php;
+php}

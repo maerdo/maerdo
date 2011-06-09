@@ -1,183 +1,183 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: SignatureAbstract.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Oauth
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php SignatureAbstractphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/** Zend_Oauth_Http_Utility */
-require_once 'Zend/Oauth/Http/Utility.php';
+php/php*php*php Zendphp_Oauthphp_Httpphp_Utilityphp php*php/
+requirephp_oncephp php'Zendphp/Oauthphp/Httpphp/Utilityphp.phpphp'php;
 
-/** Zend_Uri_Http */
-require_once 'Zend/Uri/Http.php';
+php/php*php*php Zendphp_Uriphp_Httpphp php*php/
+requirephp_oncephp php'Zendphp/Uriphp/Httpphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Oauth_Signature_SignatureAbstract
-{
-    /**
-     * Hash algorithm to use when generating signature
-     * @var string
-     */
-    protected $_hashAlgorithm = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Oauth
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Oauthphp_Signaturephp_SignatureAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Hashphp algorithmphp tophp usephp whenphp generatingphp signature
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_hashAlgorithmphp php=php nullphp;
 
-    /**
-     * Key to use when signing
-     * @var string
-     */
-    protected $_key = null;
+php php php php php/php*php*
+php php php php php php*php Keyphp tophp usephp whenphp signing
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_keyphp php=php nullphp;
 
-    /**
-     * Consumer secret
-     * @var string
-     */
-    protected $_consumerSecret = null;
+php php php php php/php*php*
+php php php php php php*php Consumerphp secret
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_consumerSecretphp php=php nullphp;
 
-    /**
-     * Token secret
-     * @var string
-     */
-    protected $_tokenSecret = '';
+php php php php php/php*php*
+php php php php php php*php Tokenphp secret
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_tokenSecretphp php=php php'php'php;
 
-    /**
-     * Constructor
-     *
-     * @param  string $consumerSecret
-     * @param  null|string $tokenSecret
-     * @param  null|string $hashAlgo
-     * @return void
-     */
-    public function __construct($consumerSecret, $tokenSecret = null, $hashAlgo = null)
-    {
-        $this->_consumerSecret = $consumerSecret;
-        if (isset($tokenSecret)) {
-            $this->_tokenSecret = $tokenSecret;
-        }
-        $this->_key = $this->_assembleKey();
-        if (isset($hashAlgo)) {
-            $this->_hashAlgorithm = $hashAlgo;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$consumerSecret
+php php php php php php*php php@paramphp php nullphp|stringphp php$tokenSecret
+php php php php php php*php php@paramphp php nullphp|stringphp php$hashAlgo
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$consumerSecretphp,php php$tokenSecretphp php=php nullphp,php php$hashAlgophp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_consumerSecretphp php=php php$consumerSecretphp;
+php php php php php php php php ifphp php(issetphp(php$tokenSecretphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_tokenSecretphp php=php php$tokenSecretphp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_keyphp php=php php$thisphp-php>php_assembleKeyphp(php)php;
+php php php php php php php php ifphp php(issetphp(php$hashAlgophp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>php_hashAlgorithmphp php=php php$hashAlgophp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Sign a request
-     *
-     * @param  array $params
-     * @param  null|string $method
-     * @param  null|string $url
-     * @return string
-     */
-    public abstract function sign(array $params, $method = null, $url = null);
+php php php php php/php*php*
+php php php php php php*php Signphp aphp request
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@paramphp php nullphp|stringphp php$method
+php php php php php php*php php@paramphp php nullphp|stringphp php$url
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp abstractphp functionphp signphp(arrayphp php$paramsphp,php php$methodphp php=php nullphp,php php$urlphp php=php nullphp)php;
 
-    /**
-     * Normalize the base signature URL
-     *
-     * @param  string $url
-     * @return string
-     */
-    public function normaliseBaseSignatureUrl($url)
-    {
-        $uri = Zend_Uri_Http::fromString($url);
-        if ($uri->getScheme() == 'http' && $uri->getPort() == '80') {
-            $uri->setPort('');
-        } elseif ($uri->getScheme() == 'https' && $uri->getPort() == '443') {
-            $uri->setPort('');
-        }
-        $uri->setQuery('');
-        $uri->setFragment('');
-        $uri->setHost(strtolower($uri->getHost()));
-        return $uri->getUri(true);
-    }
+php php php php php/php*php*
+php php php php php php*php Normalizephp thephp basephp signaturephp URL
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp normaliseBaseSignatureUrlphp(php$urlphp)
+php php php php php{
+php php php php php php php php php$uriphp php=php Zendphp_Uriphp_Httpphp:php:fromStringphp(php$urlphp)php;
+php php php php php php php php ifphp php(php$uriphp-php>getSchemephp(php)php php=php=php php'httpphp'php php&php&php php$uriphp-php>getPortphp(php)php php=php=php php'php8php0php'php)php php{
+php php php php php php php php php php php php php$uriphp-php>setPortphp(php'php'php)php;
+php php php php php php php php php}php elseifphp php(php$uriphp-php>getSchemephp(php)php php=php=php php'httpsphp'php php&php&php php$uriphp-php>getPortphp(php)php php=php=php php'php4php4php3php'php)php php{
+php php php php php php php php php php php php php$uriphp-php>setPortphp(php'php'php)php;
+php php php php php php php php php}
+php php php php php php php php php$uriphp-php>setQueryphp(php'php'php)php;
+php php php php php php php php php$uriphp-php>setFragmentphp(php'php'php)php;
+php php php php php php php php php$uriphp-php>setHostphp(strtolowerphp(php$uriphp-php>getHostphp(php)php)php)php;
+php php php php php php php php returnphp php$uriphp-php>getUriphp(truephp)php;
+php php php php php}
 
-    /**
-     * Assemble key from consumer and token secrets
-     *
-     * @return string
-     */
-    protected function _assembleKey()
-    {
-        $parts = array($this->_consumerSecret);
-        if ($this->_tokenSecret !== null) {
-            $parts[] = $this->_tokenSecret;
-        }
-        foreach ($parts as $key => $secret) {
-            $parts[$key] = Zend_Oauth_Http_Utility::urlEncode($secret);
-        }
-        return implode('&', $parts);
-    }
+php php php php php/php*php*
+php php php php php php*php Assemblephp keyphp fromphp consumerphp andphp tokenphp secrets
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_assembleKeyphp(php)
+php php php php php{
+php php php php php php php php php$partsphp php=php arrayphp(php$thisphp-php>php_consumerSecretphp)php;
+php php php php php php php php ifphp php(php$thisphp-php>php_tokenSecretphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$partsphp[php]php php=php php$thisphp-php>php_tokenSecretphp;
+php php php php php php php php php}
+php php php php php php php php foreachphp php(php$partsphp asphp php$keyphp php=php>php php$secretphp)php php{
+php php php php php php php php php php php php php$partsphp[php$keyphp]php php=php Zendphp_Oauthphp_Httpphp_Utilityphp:php:urlEncodephp(php$secretphp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp implodephp(php'php&php'php,php php$partsphp)php;
+php php php php php}
 
-    /**
-     * Get base signature string
-     *
-     * @param  array $params
-     * @param  null|string $method
-     * @param  null|string $url
-     * @return string
-     */
-    protected function _getBaseSignatureString(array $params, $method = null, $url = null)
-    {
-        $encodedParams = array();
-        foreach ($params as $key => $value) {
-            $encodedParams[Zend_Oauth_Http_Utility::urlEncode($key)] =
-                Zend_Oauth_Http_Utility::urlEncode($value);
-        }
-        $baseStrings = array();
-        if (isset($method)) {
-            $baseStrings[] = strtoupper($method);
-        }
-        if (isset($url)) {
-            // should normalise later
-            $baseStrings[] = Zend_Oauth_Http_Utility::urlEncode(
-                $this->normaliseBaseSignatureUrl($url)
-            );
-        }
-        if (isset($encodedParams['oauth_signature'])) {
-            unset($encodedParams['oauth_signature']);
-        }
-        $baseStrings[] = Zend_Oauth_Http_Utility::urlEncode(
-            $this->_toByteValueOrderedQueryString($encodedParams)
-        );
-        return implode('&', $baseStrings);
-    }
+php php php php php/php*php*
+php php php php php php*php Getphp basephp signaturephp string
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@paramphp php nullphp|stringphp php$method
+php php php php php php*php php@paramphp php nullphp|stringphp php$url
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getBaseSignatureStringphp(arrayphp php$paramsphp,php php$methodphp php=php nullphp,php php$urlphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$encodedParamsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php$encodedParamsphp[Zendphp_Oauthphp_Httpphp_Utilityphp:php:urlEncodephp(php$keyphp)php]php php=
+php php php php php php php php php php php php php php php php Zendphp_Oauthphp_Httpphp_Utilityphp:php:urlEncodephp(php$valuephp)php;
+php php php php php php php php php}
+php php php php php php php php php$baseStringsphp php=php arrayphp(php)php;
+php php php php php php php php ifphp php(issetphp(php$methodphp)php)php php{
+php php php php php php php php php php php php php$baseStringsphp[php]php php=php strtoupperphp(php$methodphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$urlphp)php)php php{
+php php php php php php php php php php php php php/php/php shouldphp normalisephp later
+php php php php php php php php php php php php php$baseStringsphp[php]php php=php Zendphp_Oauthphp_Httpphp_Utilityphp:php:urlEncodephp(
+php php php php php php php php php php php php php php php php php$thisphp-php>normaliseBaseSignatureUrlphp(php$urlphp)
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(issetphp(php$encodedParamsphp[php'oauthphp_signaturephp'php]php)php)php php{
+php php php php php php php php php php php php unsetphp(php$encodedParamsphp[php'oauthphp_signaturephp'php]php)php;
+php php php php php php php php php}
+php php php php php php php php php$baseStringsphp[php]php php=php Zendphp_Oauthphp_Httpphp_Utilityphp:php:urlEncodephp(
+php php php php php php php php php php php php php$thisphp-php>php_toByteValueOrderedQueryStringphp(php$encodedParamsphp)
+php php php php php php php php php)php;
+php php php php php php php php returnphp implodephp(php'php&php'php,php php$baseStringsphp)php;
+php php php php php}
 
-    /**
-     * Transform an array to a byte value ordered query string
-     *
-     * @param  array $params
-     * @return string
-     */
-    protected function _toByteValueOrderedQueryString(array $params)
-    {
-        $return = array();
-        uksort($params, 'strnatcmp');
-        foreach ($params as $key => $value) {
-            if (is_array($value)) {
-                natsort($value);
-                foreach ($value as $keyduplicate) {
-                    $return[] = $key . '=' . $keyduplicate;
-                }
-            } else {
-                $return[] = $key . '=' . $value;
-            }
-        }
-        return implode('&', $return);
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Transformphp anphp arrayphp tophp aphp bytephp valuephp orderedphp queryphp string
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_toByteValueOrderedQueryStringphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php php$returnphp php=php arrayphp(php)php;
+php php php php php php php php uksortphp(php$paramsphp,php php'strnatcmpphp'php)php;
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php natsortphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$keyduplicatephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$returnphp[php]php php=php php$keyphp php.php php'php=php'php php.php php$keyduplicatephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$returnphp[php]php php=php php$keyphp php.php php'php=php'php php.php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp implodephp(php'php&php'php,php php$returnphp)php;
+php php php php php}
+php}

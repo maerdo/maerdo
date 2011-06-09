@@ -1,442 +1,442 @@
-<?php
+<php?php
 
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_OpenId
- * @subpackage Zend_OpenId_Provider
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: File.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_OpenId
+php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Filephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_OpenId_Provider_Storage
- */
-require_once "Zend/OpenId/Provider/Storage.php";
+php/php*php*
+php php*php php@seephp Zendphp_OpenIdphp_Providerphp_Storage
+php php*php/
+requirephp_oncephp php"Zendphp/OpenIdphp/Providerphp/Storagephp.phpphp"php;
 
-/**
- * External storage implemmentation using serialized files
- *
- * @category   Zend
- * @package    Zend_OpenId
- * @subpackage Zend_OpenId_Provider
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
-{
+php/php*php*
+php php*php Externalphp storagephp implemmentationphp usingphp serializedphp files
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_OpenId
+php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_OpenIdphp_Providerphp_Storagephp_Filephp extendsphp Zendphp_OpenIdphp_Providerphp_Storage
+php{
 
-    /**
-     * Directory name to store data files in
-     *
-     * @var string $_dir
-     */
-    private $_dir;
+php php php php php/php*php*
+php php php php php php*php Directoryphp namephp tophp storephp dataphp filesphp in
+php php php php php php*
+php php php php php php*php php@varphp stringphp php$php_dir
+php php php php php php*php/
+php php php php privatephp php$php_dirphp;
 
-    /**
-     * Constructs storage object and creates storage directory
-     *
-     * @param string $dir directory name to store data files in
-     * @throws Zend_OpenId_Exception
-     */
-    public function __construct($dir = null)
-    {
-        if ($dir === null) {
-            $tmp = getenv('TMP');
-            if (empty($tmp)) {
-                $tmp = getenv('TEMP');
-                if (empty($tmp)) {
-                    $tmp = "/tmp";
-                }
-            }
-            $user = get_current_user();
-            if (is_string($user) && !empty($user)) {
-                $tmp .= '/' . $user;
-            }
-            $dir = $tmp . '/openid/provider';
-        }
-        $this->_dir = $dir;
-        if (!is_dir($this->_dir)) {
-            if (!@mkdir($this->_dir, 0700, 1)) {
-                throw new Zend_OpenId_Exception(
-                    "Cannot access storage directory $dir",
-                    Zend_OpenId_Exception::ERROR_STORAGE);
-            }
-        }
-        if (($f = fopen($this->_dir.'/assoc.lock', 'w+')) === null) {
-            throw new Zend_OpenId_Exception(
-                'Cannot create a lock file in the directory ' . $dir,
-                Zend_OpenId_Exception::ERROR_STORAGE);
-        }
-        fclose($f);
-        if (($f = fopen($this->_dir.'/user.lock', 'w+')) === null) {
-            throw new Zend_OpenId_Exception(
-                'Cannot create a lock file in the directory ' . $dir,
-                Zend_OpenId_Exception::ERROR_STORAGE);
-        }
-        fclose($f);
-    }
+php php php php php/php*php*
+php php php php php php*php Constructsphp storagephp objectphp andphp createsphp storagephp directory
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$dirphp directoryphp namephp tophp storephp dataphp filesphp in
+php php php php php php*php php@throwsphp Zendphp_OpenIdphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$dirphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$dirphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php$tmpphp php=php getenvphp(php'TMPphp'php)php;
+php php php php php php php php php php php php ifphp php(emptyphp(php$tmpphp)php)php php{
+php php php php php php php php php php php php php php php php php$tmpphp php=php getenvphp(php'TEMPphp'php)php;
+php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$tmpphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$tmpphp php=php php"php/tmpphp"php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$userphp php=php getphp_currentphp_userphp(php)php;
+php php php php php php php php php php php php ifphp php(isphp_stringphp(php$userphp)php php&php&php php!emptyphp(php$userphp)php)php php{
+php php php php php php php php php php php php php php php php php$tmpphp php.php=php php'php/php'php php.php php$userphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$dirphp php=php php$tmpphp php.php php'php/openidphp/providerphp'php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dirphp php=php php$dirphp;
+php php php php php php php php ifphp php(php!isphp_dirphp(php$thisphp-php>php_dirphp)php)php php{
+php php php php php php php php php php php php ifphp php(php!php@mkdirphp(php$thisphp-php>php_dirphp,php php0php7php0php0php,php php1php)php)php php{
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_OpenIdphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php php php php php"Cannotphp accessphp storagephp directoryphp php$dirphp"php,
+php php php php php php php php php php php php php php php php php php php php Zendphp_OpenIdphp_Exceptionphp:php:ERRORphp_STORAGEphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php ifphp php(php(php$fphp php=php fopenphp(php$thisphp-php>php_dirphp.php'php/assocphp.lockphp'php,php php'wphp+php'php)php)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_OpenIdphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Cannotphp createphp aphp lockphp filephp inphp thephp directoryphp php'php php.php php$dirphp,
+php php php php php php php php php php php php php php php php Zendphp_OpenIdphp_Exceptionphp:php:ERRORphp_STORAGEphp)php;
+php php php php php php php php php}
+php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php ifphp php(php(php$fphp php=php fopenphp(php$thisphp-php>php_dirphp.php'php/userphp.lockphp'php,php php'wphp+php'php)php)php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php throwphp newphp Zendphp_OpenIdphp_Exceptionphp(
+php php php php php php php php php php php php php php php php php'Cannotphp createphp aphp lockphp filephp inphp thephp directoryphp php'php php.php php$dirphp,
+php php php php php php php php php php php php php php php php Zendphp_OpenIdphp_Exceptionphp:php:ERRORphp_STORAGEphp)php;
+php php php php php php php php php}
+php php php php php php php php fclosephp(php$fphp)php;
+php php php php php}
 
-    /**
-     * Stores information about session identified by $handle
-     *
-     * @param string $handle assiciation handle
-     * @param string $macFunc HMAC function (sha1 or sha256)
-     * @param string $secret shared secret
-     * @param string $expires expiration UNIX time
-     * @return bool
-     */
-    public function addAssociation($handle, $macFunc, $secret, $expires)
-    {
-        $name = $this->_dir . '/assoc_' . md5($handle);
-        $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_EX)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            $f = @fopen($name, 'w+');
-            if ($f === false) {
-                fclose($lock);
-                return false;
-            }
-            $data = serialize(array($handle, $macFunc, $secret, $expires));
-            fwrite($f, $data);
-            fclose($f);
-            fclose($lock);
-            return true;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Storesphp informationphp aboutphp sessionphp identifiedphp byphp php$handle
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$handlephp assiciationphp handle
+php php php php php php*php php@paramphp stringphp php$macFuncphp HMACphp functionphp php(shaphp1php orphp shaphp2php5php6php)
+php php php php php php*php php@paramphp stringphp php$secretphp sharedphp secret
+php php php php php php*php php@paramphp stringphp php$expiresphp expirationphp UNIXphp time
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp addAssociationphp(php$handlephp,php php$macFuncphp,php php$secretphp,php php$expiresphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/assocphp_php'php php.php mdphp5php(php$handlephp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/assocphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$fphp php=php php@fopenphp(php$namephp,php php'wphp+php'php)php;
+php php php php php php php php php php php php ifphp php(php$fphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$dataphp php=php serializephp(arrayphp(php$handlephp,php php$macFuncphp,php php$secretphp,php php$expiresphp)php)php;
+php php php php php php php php php php php php fwritephp(php$fphp,php php$dataphp)php;
+php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Gets information about association identified by $handle
-     * Returns true if given association found and not expired and false
-     * otherwise
-     *
-     * @param string $handle assiciation handle
-     * @param string &$macFunc HMAC function (sha1 or sha256)
-     * @param string &$secret shared secret
-     * @param string &$expires expiration UNIX time
-     * @return bool
-     */
-    public function getAssociation($handle, &$macFunc, &$secret, &$expires)
-    {
-        $name = $this->_dir . '/assoc_' . md5($handle);
-        $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_EX)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            $f = @fopen($name, 'r');
-            if ($f === false) {
-                fclose($lock);
-                return false;
-            }
-            $ret = false;
-            $data = stream_get_contents($f);
-            if (!empty($data)) {
-                list($storedHandle, $macFunc, $secret, $expires) = unserialize($data);
-                if ($handle === $storedHandle && $expires > time()) {
-                    $ret = true;
-                } else {
-                    fclose($f);
-                    @unlink($name);
-                    fclose($lock);
-                    return false;
-                }
-            }
-            fclose($f);
-            fclose($lock);
-            return $ret;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Getsphp informationphp aboutphp associationphp identifiedphp byphp php$handle
+php php php php php php*php Returnsphp truephp ifphp givenphp associationphp foundphp andphp notphp expiredphp andphp false
+php php php php php php*php otherwise
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$handlephp assiciationphp handle
+php php php php php php*php php@paramphp stringphp php&php$macFuncphp HMACphp functionphp php(shaphp1php orphp shaphp2php5php6php)
+php php php php php php*php php@paramphp stringphp php&php$secretphp sharedphp secret
+php php php php php php*php php@paramphp stringphp php&php$expiresphp expirationphp UNIXphp time
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getAssociationphp(php$handlephp,php php&php$macFuncphp,php php&php$secretphp,php php&php$expiresphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/assocphp_php'php php.php mdphp5php(php$handlephp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/assocphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$fphp php=php php@fopenphp(php$namephp,php php'rphp'php)php;
+php php php php php php php php php php php php ifphp php(php$fphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$retphp php=php falsephp;
+php php php php php php php php php php php php php$dataphp php=php streamphp_getphp_contentsphp(php$fphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php listphp(php$storedHandlephp,php php$macFuncphp,php php$secretphp,php php$expiresphp)php php=php unserializephp(php$dataphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$handlephp php=php=php=php php$storedHandlephp php&php&php php$expiresphp php>php timephp(php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$retphp php=php truephp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php php php php php php php php php php@unlinkphp(php$namephp)php;
+php php php php php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Removes information about association identified by $handle
-     *
-     * @param string $handle assiciation handle
-     * @return bool
-     */
-    public function delAssociation($handle)
-    {
-        $name = $this->_dir . '/assoc_' . md5($handle);
-        $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_EX)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            @unlink($name);
-            fclose($lock);
-            return true;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Removesphp informationphp aboutphp associationphp identifiedphp byphp php$handle
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$handlephp assiciationphp handle
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp delAssociationphp(php$handlephp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/assocphp_php'php php.php mdphp5php(php$handlephp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/assocphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php@unlinkphp(php$namephp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Register new user with given $id and $password
-     * Returns true in case of success and false if user with given $id already
-     * exists
-     *
-     * @param string $id user identity URL
-     * @param string $password encoded user password
-     * @return bool
-     */
-    public function addUser($id, $password)
-    {
-        $name = $this->_dir . '/user_' . md5($id);
-        $lock = @fopen($this->_dir . '/user.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_EX)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            $f = @fopen($name, 'x');
-            if ($f === false) {
-                fclose($lock);
-                return false;
-            }
-            $data = serialize(array($id, $password, array()));
-            fwrite($f, $data);
-            fclose($f);
-            fclose($lock);
-            return true;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Registerphp newphp userphp withphp givenphp php$idphp andphp php$password
+php php php php php php*php Returnsphp truephp inphp casephp ofphp successphp andphp falsephp ifphp userphp withphp givenphp php$idphp already
+php php php php php php*php exists
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$passwordphp encodedphp userphp password
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp addUserphp(php$idphp,php php$passwordphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/userphp_php'php php.php mdphp5php(php$idphp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/userphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$fphp php=php php@fopenphp(php$namephp,php php'xphp'php)php;
+php php php php php php php php php php php php ifphp php(php$fphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$dataphp php=php serializephp(arrayphp(php$idphp,php php$passwordphp,php arrayphp(php)php)php)php;
+php php php php php php php php php php php php fwritephp(php$fphp,php php$dataphp)php;
+php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns true if user with given $id exists and false otherwise
-     *
-     * @param string $id user identity URL
-     * @return bool
-     */
-    public function hasUser($id)
-    {
-        $name = $this->_dir . '/user_' . md5($id);
-        $lock = @fopen($this->_dir . '/user.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_SH)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            $f = @fopen($name, 'r');
-            if ($f === false) {
-                fclose($lock);
-                return false;
-            }
-            $ret = false;
-            $data = stream_get_contents($f);
-            if (!empty($data)) {
-                list($storedId, $storedPassword, $trusted) = unserialize($data);
-                if ($id === $storedId) {
-                    $ret = true;
-                }
-            }
-            fclose($f);
-            fclose($lock);
-            return $ret;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp truephp ifphp userphp withphp givenphp php$idphp existsphp andphp falsephp otherwise
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasUserphp(php$idphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/userphp_php'php php.php mdphp5php(php$idphp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/userphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_SHphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$fphp php=php php@fopenphp(php$namephp,php php'rphp'php)php;
+php php php php php php php php php php php php ifphp php(php$fphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$retphp php=php falsephp;
+php php php php php php php php php php php php php$dataphp php=php streamphp_getphp_contentsphp(php$fphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php listphp(php$storedIdphp,php php$storedPasswordphp,php php$trustedphp)php php=php unserializephp(php$dataphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$idphp php=php=php=php php$storedIdphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$retphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Verify if user with given $id exists and has specified $password
-     *
-     * @param string $id user identity URL
-     * @param string $password user password
-     * @return bool
-     */
-    public function checkUser($id, $password)
-    {
-        $name = $this->_dir . '/user_' . md5($id);
-        $lock = @fopen($this->_dir . '/user.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_SH)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            $f = @fopen($name, 'r');
-            if ($f === false) {
-                fclose($lock);
-                return false;
-            }
-            $ret = false;
-            $data = stream_get_contents($f);
-            if (!empty($data)) {
-                list($storedId, $storedPassword, $trusted) = unserialize($data);
-                if ($id === $storedId && $password === $storedPassword) {
-                    $ret = true;
-                }
-            }
-            fclose($f);
-            fclose($lock);
-            return $ret;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Verifyphp ifphp userphp withphp givenphp php$idphp existsphp andphp hasphp specifiedphp php$password
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$passwordphp userphp password
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp checkUserphp(php$idphp,php php$passwordphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/userphp_php'php php.php mdphp5php(php$idphp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/userphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_SHphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$fphp php=php php@fopenphp(php$namephp,php php'rphp'php)php;
+php php php php php php php php php php php php ifphp php(php$fphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$retphp php=php falsephp;
+php php php php php php php php php php php php php$dataphp php=php streamphp_getphp_contentsphp(php$fphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php listphp(php$storedIdphp,php php$storedPasswordphp,php php$trustedphp)php php=php unserializephp(php$dataphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$idphp php=php=php=php php$storedIdphp php&php&php php$passwordphp php=php=php=php php$storedPasswordphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$retphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Removes information abou specified user
-     *
-     * @param string $id user identity URL
-     * @return bool
-     */
-    public function delUser($id)
-    {
-        $name = $this->_dir . '/user_' . md5($id);
-        $lock = @fopen($this->_dir . '/user.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_EX)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            @unlink($name);
-            fclose($lock);
-            return true;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Removesphp informationphp abouphp specifiedphp user
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp delUserphp(php$idphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/userphp_php'php php.php mdphp5php(php$idphp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/userphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php@unlinkphp(php$namephp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns array of all trusted/untrusted sites for given user identified
-     * by $id
-     *
-     * @param string $id user identity URL
-     * @return array
-     */
-    public function getTrustedSites($id)
-    {
-        $name = $this->_dir . '/user_' . md5($id);
-        $lock = @fopen($this->_dir . '/user.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_SH)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            $f = @fopen($name, 'r');
-            if ($f === false) {
-                fclose($lock);
-                return false;
-            }
-            $ret = false;
-            $data = stream_get_contents($f);
-            if (!empty($data)) {
-                list($storedId, $storedPassword, $trusted) = unserialize($data);
-                if ($id === $storedId) {
-                    $ret = $trusted;
-                }
-            }
-            fclose($f);
-            fclose($lock);
-            return $ret;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp arrayphp ofphp allphp trustedphp/untrustedphp sitesphp forphp givenphp userphp identified
+php php php php php php*php byphp php$id
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getTrustedSitesphp(php$idphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/userphp_php'php php.php mdphp5php(php$idphp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/userphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_SHphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$fphp php=php php@fopenphp(php$namephp,php php'rphp'php)php;
+php php php php php php php php php php php php ifphp php(php$fphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$retphp php=php falsephp;
+php php php php php php php php php php php php php$dataphp php=php streamphp_getphp_contentsphp(php$fphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php listphp(php$storedIdphp,php php$storedPasswordphp,php php$trustedphp)php php=php unserializephp(php$dataphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$idphp php=php=php=php php$storedIdphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$retphp php=php php$trustedphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Stores information about trusted/untrusted site for given user
-     *
-     * @param string $id user identity URL
-     * @param string $site site URL
-     * @param mixed $trusted trust data from extension or just a boolean value
-     * @return bool
-     */
-    public function addSite($id, $site, $trusted)
-    {
-        $name = $this->_dir . '/user_' . md5($id);
-        $lock = @fopen($this->_dir . '/user.lock', 'w+');
-        if ($lock === false) {
-            return false;
-        }
-        if (!flock($lock, LOCK_EX)) {
-            fclose($lock);
-            return false;
-        }
-        try {
-            $f = @fopen($name, 'r+');
-            if ($f === false) {
-                fclose($lock);
-                return false;
-            }
-            $ret = false;
-            $data = stream_get_contents($f);
-            if (!empty($data)) {
-                list($storedId, $storedPassword, $sites) = unserialize($data);
-                if ($id === $storedId) {
-                    if ($trusted === null) {
-                        unset($sites[$site]);
-                    } else {
-                        $sites[$site] = $trusted;
-                    }
-                    rewind($f);
-                    ftruncate($f, 0);
-                    $data = serialize(array($id, $storedPassword, $sites));
-                    fwrite($f, $data);
-                    $ret = true;
-                }
-            }
-            fclose($f);
-            fclose($lock);
-            return $ret;
-        } catch (Exception $e) {
-            fclose($lock);
-            throw $e;
-        }
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Storesphp informationphp aboutphp trustedphp/untrustedphp sitephp forphp givenphp user
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
+php php php php php php*php php@paramphp stringphp php$sitephp sitephp URL
+php php php php php php*php php@paramphp mixedphp php$trustedphp trustphp dataphp fromphp extensionphp orphp justphp aphp booleanphp value
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp addSitephp(php$idphp,php php$sitephp,php php$trustedphp)
+php php php php php{
+php php php php php php php php php$namephp php=php php$thisphp-php>php_dirphp php.php php'php/userphp_php'php php.php mdphp5php(php$idphp)php;
+php php php php php php php php php$lockphp php=php php@fopenphp(php$thisphp-php>php_dirphp php.php php'php/userphp.lockphp'php,php php'wphp+php'php)php;
+php php php php php php php php ifphp php(php$lockphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!flockphp(php$lockphp,php LOCKphp_EXphp)php)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php tryphp php{
+php php php php php php php php php php php php php$fphp php=php php@fopenphp(php$namephp,php php'rphp+php'php)php;
+php php php php php php php php php php php php ifphp php(php$fphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$retphp php=php falsephp;
+php php php php php php php php php php php php php$dataphp php=php streamphp_getphp_contentsphp(php$fphp)php;
+php php php php php php php php php php php php ifphp php(php!emptyphp(php$dataphp)php)php php{
+php php php php php php php php php php php php php php php php listphp(php$storedIdphp,php php$storedPasswordphp,php php$sitesphp)php php=php unserializephp(php$dataphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$idphp php=php=php=php php$storedIdphp)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$trustedphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$sitesphp[php$sitephp]php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$sitesphp[php$sitephp]php php=php php$trustedphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php rewindphp(php$fphp)php;
+php php php php php php php php php php php php php php php php php php php php ftruncatephp(php$fphp,php php0php)php;
+php php php php php php php php php php php php php php php php php php php php php$dataphp php=php serializephp(arrayphp(php$idphp,php php$storedPasswordphp,php php$sitesphp)php)php;
+php php php php php php php php php php php php php php php php php php php php fwritephp(php$fphp,php php$dataphp)php;
+php php php php php php php php php php php php php php php php php php php php php$retphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php fclosephp(php$fphp)php;
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php returnphp php$retphp;
+php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
+php php php php php php php php php php php php fclosephp(php$lockphp)php;
+php php php php php php php php php php php php throwphp php$ephp;
+php php php php php php php php php}
+php php php php php}
+php}

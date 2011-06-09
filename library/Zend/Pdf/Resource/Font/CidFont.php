@@ -1,490 +1,490 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: CidFont.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php CidFontphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/** Internally used classes */
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
-require_once 'Zend/Pdf/Element/String.php';
-
-
-/** Zend_Pdf_Resource_Font */
-require_once 'Zend/Pdf/Resource/Font.php';
-
-/**
- * Adobe PDF CIDFont font object implementation
- *
- * A CIDFont program contains glyph descriptions that are accessed using a CID as
- * the character selector. There are two types of CIDFont. A Type 0 CIDFont contains
- * glyph descriptions based on Adobe’s Type 1 font format, whereas those in a
- * Type 2 CIDFont are based on the TrueType font format.
- *
- * A CIDFont dictionary is a PDF object that contains information about a CIDFont program.
- * Although its Type value is Font, a CIDFont is not actually a font. It does not have an Encoding
- * entry, it cannot be listed in the Font subdictionary of a resource dictionary, and it cannot be
- * used as the operand of the Tf operator. It is used only as a descendant of a Type 0 font.
- * The CMap in the Type 0 font is what defines the encoding that maps character codes to CIDs
- * in the CIDFont.
- *
- * Font objects should be normally be obtained from the factory methods
- * {@link Zend_Pdf_Font::fontWithName} and {@link Zend_Pdf_Font::fontWithPath}.
- *
- * @package    Zend_Pdf
- * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-abstract class Zend_Pdf_Resource_Font_CidFont extends Zend_Pdf_Resource_Font
-{
-    /**
-     * Object representing the font's cmap (character to glyph map).
-     * @var Zend_Pdf_Cmap
-     */
-    protected $_cmap = null;
-
-    /**
-     * Array containing the widths of each character that have entries in used character map.
-     *
-     * @var array
-     */
-    protected $_charWidths = null;
-
-    /**
-     * Width for characters missed in the font
-     *
-     * @var integer
-     */
-    protected $_missingCharWidth = 0;
+php/php*php*php Internallyphp usedphp classesphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Stringphp.phpphp'php;
 
 
-    /**
-     * Object constructor
-     *
-     * @param Zend_Pdf_FileParser_Font_OpenType $fontParser Font parser object
-     *   containing OpenType file.
-     * @param integer $embeddingOptions Options for font embedding.
-     * @throws Zend_Pdf_Exception
-     */
-    public function __construct(Zend_Pdf_FileParser_Font_OpenType $fontParser)
-    {
-        parent::__construct();
+php/php*php*php Zendphp_Pdfphp_Resourcephp_Fontphp php*php/
+requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp.phpphp'php;
 
-        $fontParser->parse();
+php/php*php*
+php php*php Adobephp PDFphp CIDFontphp fontphp objectphp implementation
+php php*
+php php*php Aphp CIDFontphp programphp containsphp glyphphp descriptionsphp thatphp arephp accessedphp usingphp aphp CIDphp as
+php php*php thephp characterphp selectorphp.php Therephp arephp twophp typesphp ofphp CIDFontphp.php Aphp Typephp php0php CIDFontphp contains
+php php*php glyphphp descriptionsphp basedphp onphp Adobephp’sphp Typephp php1php fontphp formatphp,php whereasphp thosephp inphp a
+php php*php Typephp php2php CIDFontphp arephp basedphp onphp thephp TrueTypephp fontphp formatphp.
+php php*
+php php*php Aphp CIDFontphp dictionaryphp isphp aphp PDFphp objectphp thatphp containsphp informationphp aboutphp aphp CIDFontphp programphp.
+php php*php Althoughphp itsphp Typephp valuephp isphp Fontphp,php aphp CIDFontphp isphp notphp actuallyphp aphp fontphp.php Itphp doesphp notphp havephp anphp Encoding
+php php*php entryphp,php itphp cannotphp bephp listedphp inphp thephp Fontphp subdictionaryphp ofphp aphp resourcephp dictionaryphp,php andphp itphp cannotphp be
+php php*php usedphp asphp thephp operandphp ofphp thephp Tfphp operatorphp.php Itphp isphp usedphp onlyphp asphp aphp descendantphp ofphp aphp Typephp php0php fontphp.
+php php*php Thephp CMapphp inphp thephp Typephp php0php fontphp isphp whatphp definesphp thephp encodingphp thatphp mapsphp characterphp codesphp tophp CIDs
+php php*php inphp thephp CIDFontphp.
+php php*
+php php*php Fontphp objectsphp shouldphp bephp normallyphp bephp obtainedphp fromphp thephp factoryphp methods
+php php*php php{php@linkphp Zendphp_Pdfphp_Fontphp:php:fontWithNamephp}php andphp php{php@linkphp Zendphp_Pdfphp_Fontphp:php:fontWithPathphp}php.
+php php*
+php php*php php@packagephp php php php Zendphp_Pdf
+php php*php php@subpackagephp Fonts
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+abstractphp classphp Zendphp_Pdfphp_Resourcephp_Fontphp_CidFontphp extendsphp Zendphp_Pdfphp_Resourcephp_Font
+php{
+php php php php php/php*php*
+php php php php php php*php Objectphp representingphp thephp fontphp'sphp cmapphp php(characterphp tophp glyphphp mapphp)php.
+php php php php php php*php php@varphp Zendphp_Pdfphp_Cmap
+php php php php php php*php/
+php php php php protectedphp php$php_cmapphp php=php nullphp;
 
+php php php php php/php*php*
+php php php php php php*php Arrayphp containingphp thephp widthsphp ofphp eachphp characterphp thatphp havephp entriesphp inphp usedphp characterphp mapphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_charWidthsphp php=php nullphp;
 
-        /* Object properties */
-
-        $this->_fontNames = $fontParser->names;
-
-        $this->_isBold       = $fontParser->isBold;
-        $this->_isItalic     = $fontParser->isItalic;
-        $this->_isMonospaced = $fontParser->isMonospaced;
-
-        $this->_underlinePosition  = $fontParser->underlinePosition;
-        $this->_underlineThickness = $fontParser->underlineThickness;
-        $this->_strikePosition     = $fontParser->strikePosition;
-        $this->_strikeThickness    = $fontParser->strikeThickness;
-
-        $this->_unitsPerEm = $fontParser->unitsPerEm;
-
-        $this->_ascent  = $fontParser->ascent;
-        $this->_descent = $fontParser->descent;
-        $this->_lineGap = $fontParser->lineGap;
-
-
-        $this->_cmap = $fontParser->cmap;
-
-
-        /* Resource dictionary */
-
-        $baseFont = $this->getFontName(Zend_Pdf_Font::NAME_POSTSCRIPT, 'en', 'UTF-8');
-        $this->_resource->BaseFont = new Zend_Pdf_Element_Name($baseFont);
-
-
-        /**
-         * Prepare widths array.
-         */
-        /* Constract characters widths array using font CMap and glyphs widths array */
-        $glyphWidths = $fontParser->glyphWidths;
-        $charGlyphs  = $this->_cmap->getCoveredCharactersGlyphs();
-        $charWidths  = array();
-        foreach ($charGlyphs as $charCode => $glyph) {
-            $charWidths[$charCode] = $glyphWidths[$glyph];
-        }
-        $this->_charWidths       = $charWidths;
-        $this->_missingCharWidth = $glyphWidths[0];
-
-        /* Width array optimization. Step1: extract default value */
-        $widthFrequencies = array_count_values($charWidths);
-        $defaultWidth          = null;
-        $defaultWidthFrequency = -1;
-        foreach ($widthFrequencies as $width => $frequency) {
-            if ($frequency > $defaultWidthFrequency) {
-                $defaultWidth          = $width;
-                $defaultWidthFrequency = $frequency;
-            }
-        }
-
-        // Store default value in the font dictionary
-        $this->_resource->DW = new Zend_Pdf_Element_Numeric($this->toEmSpace($defaultWidth));
-
-        // Remove characters which corresponds to default width from the widths array
-        $defWidthChars = array_keys($charWidths, $defaultWidth);
-        foreach ($defWidthChars as $charCode) {
-            unset($charWidths[$charCode]);
-        }
-
-        // Order cheracter widths aray by character codes
-        ksort($charWidths, SORT_NUMERIC);
-
-        /* Width array optimization. Step2: Compact character codes sequences */
-        $lastCharCode = -1;
-        $widthsSequences = array();
-        foreach ($charWidths as $charCode => $width) {
-            if ($lastCharCode == -1) {
-                $charCodesSequense = array();
-                $sequenceStartCode = $charCode;
-            } else if ($charCode != $lastCharCode + 1) {
-                // New chracters sequence detected
-                $widthsSequences[$sequenceStartCode] = $charCodesSequense;
-                $charCodesSequense = array();
-                $sequenceStartCode = $charCode;
-            }
-            $charCodesSequense[] = $width;
-            $lastCharCode = $charCode;
-        }
-        // Save last sequence, if widths array is not empty (it may happens for monospaced fonts)
-        if (count($charWidths) != 0) {
-            $widthsSequences[$sequenceStartCode] = $charCodesSequense;
-        }
-
-        $pdfCharsWidths = array();
-        foreach ($widthsSequences as $startCode => $widthsSequence) {
-            /* Width array optimization. Step3: Compact widths sequences */
-            $pdfWidths        = array();
-            $lastWidth        = -1;
-            $widthsInSequence = 0;
-            foreach ($widthsSequence as $width) {
-                if ($lastWidth != $width) {
-                    // New width is detected
-                    if ($widthsInSequence != 0) {
-                        // Previous width value was a part of the widths sequence. Save it as 'c_1st c_last w'.
-                        $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($startCode);                         // First character code
-                        $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($startCode + $widthsInSequence - 1); // Last character code
-                        $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($this->toEmSpace($lastWidth));       // Width
-
-                        // Reset widths sequence
-                        $startCode = $startCode + $widthsInSequence;
-                        $widthsInSequence = 0;
-                    }
-
-                    // Collect new width
-                    $pdfWidths[] = new Zend_Pdf_Element_Numeric($this->toEmSpace($width));
-
-                    $lastWidth = $width;
-                } else {
-                    // Width is equal to previous
-                    if (count($pdfWidths) != 0) {
-                        // We already have some widths collected
-                        // So, we've just detected new widths sequence
-
-                        // Remove last element from widths list, since it's a part of widths sequence
-                        array_pop($pdfWidths);
-
-                        // and write the rest if it's not empty
-                        if (count($pdfWidths) != 0) {
-                            // Save it as 'c_1st [w1 w2 ... wn]'.
-                            $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($startCode); // First character code
-                            $pdfCharsWidths[] = new Zend_Pdf_Element_Array($pdfWidths);   // Widths array
-
-                            // Reset widths collection
-                            $startCode += count($pdfWidths);
-                            $pdfWidths = array();
-                        }
-
-                        $widthsInSequence = 2;
-                    } else {
-                        // Continue widths sequence
-                        $widthsInSequence++;
-                    }
-                }
-            }
-
-            // Check if we have widths collection or widths sequence to wite it down
-            if (count($pdfWidths) != 0) {
-                // We have some widths collected
-                // Save it as 'c_1st [w1 w2 ... wn]'.
-                $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($startCode); // First character code
-                $pdfCharsWidths[] = new Zend_Pdf_Element_Array($pdfWidths);   // Widths array
-            } else if ($widthsInSequence != 0){
-                // We have widths sequence
-                // Save it as 'c_1st c_last w'.
-                $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($startCode);                         // First character code
-                $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($startCode + $widthsInSequence - 1); // Last character code
-                $pdfCharsWidths[] = new Zend_Pdf_Element_Numeric($this->toEmSpace($lastWidth));       // Width
-            }
-        }
-
-        /* Create the Zend_Pdf_Element_Array object and add it to the font's
-         * object factory and resource dictionary.
-         */
-        $widthsArrayElement = new Zend_Pdf_Element_Array($pdfCharsWidths);
-        $widthsObject = $this->_objectFactory->newObject($widthsArrayElement);
-        $this->_resource->W = $widthsObject;
+php php php php php/php*php*
+php php php php php php*php Widthphp forphp charactersphp missedphp inphp thephp font
+php php php php php php*
+php php php php php php*php php@varphp integer
+php php php php php php*php/
+php php php php protectedphp php$php_missingCharWidthphp php=php php0php;
 
 
-        /* CIDSystemInfo dictionary */
-        $cidSystemInfo = new Zend_Pdf_Element_Dictionary();
-        $cidSystemInfo->Registry   = new Zend_Pdf_Element_String('Adobe');
-        $cidSystemInfo->Ordering   = new Zend_Pdf_Element_String('UCS');
-        $cidSystemInfo->Supplement = new Zend_Pdf_Element_Numeric(0);
-        $cidSystemInfoObject            = $this->_objectFactory->newObject($cidSystemInfo);
-        $this->_resource->CIDSystemInfo = $cidSystemInfoObject;
-    }
+php php php php php/php*php*
+php php php php php php*php Objectphp constructor
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Pdfphp_FileParserphp_Fontphp_OpenTypephp php$fontParserphp Fontphp parserphp object
+php php php php php php*php php php containingphp OpenTypephp filephp.
+php php php php php php*php php@paramphp integerphp php$embeddingOptionsphp Optionsphp forphp fontphp embeddingphp.
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(Zendphp_Pdfphp_FileParserphp_Fontphp_OpenTypephp php$fontParserphp)
+php php php php php{
+php php php php php php php php parentphp:php:php_php_constructphp(php)php;
+
+php php php php php php php php php$fontParserphp-php>parsephp(php)php;
+
+
+php php php php php php php php php/php*php Objectphp propertiesphp php*php/
+
+php php php php php php php php php$thisphp-php>php_fontNamesphp php=php php$fontParserphp-php>namesphp;
+
+php php php php php php php php php$thisphp-php>php_isBoldphp php php php php php php php=php php$fontParserphp-php>isBoldphp;
+php php php php php php php php php$thisphp-php>php_isItalicphp php php php php php=php php$fontParserphp-php>isItalicphp;
+php php php php php php php php php$thisphp-php>php_isMonospacedphp php=php php$fontParserphp-php>isMonospacedphp;
+
+php php php php php php php php php$thisphp-php>php_underlinePositionphp php php=php php$fontParserphp-php>underlinePositionphp;
+php php php php php php php php php$thisphp-php>php_underlineThicknessphp php=php php$fontParserphp-php>underlineThicknessphp;
+php php php php php php php php php$thisphp-php>php_strikePositionphp php php php php php=php php$fontParserphp-php>strikePositionphp;
+php php php php php php php php php$thisphp-php>php_strikeThicknessphp php php php php=php php$fontParserphp-php>strikeThicknessphp;
+
+php php php php php php php php php$thisphp-php>php_unitsPerEmphp php=php php$fontParserphp-php>unitsPerEmphp;
+
+php php php php php php php php php$thisphp-php>php_ascentphp php php=php php$fontParserphp-php>ascentphp;
+php php php php php php php php php$thisphp-php>php_descentphp php=php php$fontParserphp-php>descentphp;
+php php php php php php php php php$thisphp-php>php_lineGapphp php=php php$fontParserphp-php>lineGapphp;
+
+
+php php php php php php php php php$thisphp-php>php_cmapphp php=php php$fontParserphp-php>cmapphp;
+
+
+php php php php php php php php php/php*php Resourcephp dictionaryphp php*php/
+
+php php php php php php php php php$baseFontphp php=php php$thisphp-php>getFontNamephp(Zendphp_Pdfphp_Fontphp:php:NAMEphp_POSTSCRIPTphp,php php'enphp'php,php php'UTFphp-php8php'php)php;
+php php php php php php php php php$thisphp-php>php_resourcephp-php>BaseFontphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php$baseFontphp)php;
+
+
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php Preparephp widthsphp arrayphp.
+php php php php php php php php php php*php/
+php php php php php php php php php/php*php Constractphp charactersphp widthsphp arrayphp usingphp fontphp CMapphp andphp glyphsphp widthsphp arrayphp php*php/
+php php php php php php php php php$glyphWidthsphp php=php php$fontParserphp-php>glyphWidthsphp;
+php php php php php php php php php$charGlyphsphp php php=php php$thisphp-php>php_cmapphp-php>getCoveredCharactersGlyphsphp(php)php;
+php php php php php php php php php$charWidthsphp php php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$charGlyphsphp asphp php$charCodephp php=php>php php$glyphphp)php php{
+php php php php php php php php php php php php php$charWidthsphp[php$charCodephp]php php=php php$glyphWidthsphp[php$glyphphp]php;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_charWidthsphp php php php php php php php=php php$charWidthsphp;
+php php php php php php php php php$thisphp-php>php_missingCharWidthphp php=php php$glyphWidthsphp[php0php]php;
+
+php php php php php php php php php/php*php Widthphp arrayphp optimizationphp.php Stepphp1php:php extractphp defaultphp valuephp php*php/
+php php php php php php php php php$widthFrequenciesphp php=php arrayphp_countphp_valuesphp(php$charWidthsphp)php;
+php php php php php php php php php$defaultWidthphp php php php php php php php php php php=php nullphp;
+php php php php php php php php php$defaultWidthFrequencyphp php=php php-php1php;
+php php php php php php php php foreachphp php(php$widthFrequenciesphp asphp php$widthphp php=php>php php$frequencyphp)php php{
+php php php php php php php php php php php php ifphp php(php$frequencyphp php>php php$defaultWidthFrequencyphp)php php{
+php php php php php php php php php php php php php php php php php$defaultWidthphp php php php php php php php php php php=php php$widthphp;
+php php php php php php php php php php php php php php php php php$defaultWidthFrequencyphp php=php php$frequencyphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Storephp defaultphp valuephp inphp thephp fontphp dictionary
+php php php php php php php php php$thisphp-php>php_resourcephp-php>DWphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$thisphp-php>toEmSpacephp(php$defaultWidthphp)php)php;
+
+php php php php php php php php php/php/php Removephp charactersphp whichphp correspondsphp tophp defaultphp widthphp fromphp thephp widthsphp array
+php php php php php php php php php$defWidthCharsphp php=php arrayphp_keysphp(php$charWidthsphp,php php$defaultWidthphp)php;
+php php php php php php php php foreachphp php(php$defWidthCharsphp asphp php$charCodephp)php php{
+php php php php php php php php php php php php unsetphp(php$charWidthsphp[php$charCodephp]php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php Orderphp cheracterphp widthsphp arayphp byphp characterphp codes
+php php php php php php php php ksortphp(php$charWidthsphp,php SORTphp_NUMERICphp)php;
+
+php php php php php php php php php/php*php Widthphp arrayphp optimizationphp.php Stepphp2php:php Compactphp characterphp codesphp sequencesphp php*php/
+php php php php php php php php php$lastCharCodephp php=php php-php1php;
+php php php php php php php php php$widthsSequencesphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$charWidthsphp asphp php$charCodephp php=php>php php$widthphp)php php{
+php php php php php php php php php php php php ifphp php(php$lastCharCodephp php=php=php php-php1php)php php{
+php php php php php php php php php php php php php php php php php$charCodesSequensephp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php$sequenceStartCodephp php=php php$charCodephp;
+php php php php php php php php php php php php php}php elsephp ifphp php(php$charCodephp php!php=php php$lastCharCodephp php+php php1php)php php{
+php php php php php php php php php php php php php php php php php/php/php Newphp chractersphp sequencephp detected
+php php php php php php php php php php php php php php php php php$widthsSequencesphp[php$sequenceStartCodephp]php php=php php$charCodesSequensephp;
+php php php php php php php php php php php php php php php php php$charCodesSequensephp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php$sequenceStartCodephp php=php php$charCodephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$charCodesSequensephp[php]php php=php php$widthphp;
+php php php php php php php php php php php php php$lastCharCodephp php=php php$charCodephp;
+php php php php php php php php php}
+php php php php php php php php php/php/php Savephp lastphp sequencephp,php ifphp widthsphp arrayphp isphp notphp emptyphp php(itphp mayphp happensphp forphp monospacedphp fontsphp)
+php php php php php php php php ifphp php(countphp(php$charWidthsphp)php php!php=php php0php)php php{
+php php php php php php php php php php php php php$widthsSequencesphp[php$sequenceStartCodephp]php php=php php$charCodesSequensephp;
+php php php php php php php php php}
+
+php php php php php php php php php$pdfCharsWidthsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$widthsSequencesphp asphp php$startCodephp php=php>php php$widthsSequencephp)php php{
+php php php php php php php php php php php php php/php*php Widthphp arrayphp optimizationphp.php Stepphp3php:php Compactphp widthsphp sequencesphp php*php/
+php php php php php php php php php php php php php$pdfWidthsphp php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php php php php php$lastWidthphp php php php php php php php php=php php-php1php;
+php php php php php php php php php php php php php$widthsInSequencephp php=php php0php;
+php php php php php php php php php php php php foreachphp php(php$widthsSequencephp asphp php$widthphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$lastWidthphp php!php=php php$widthphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Newphp widthphp isphp detected
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$widthsInSequencephp php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Previousphp widthphp valuephp wasphp aphp partphp ofphp thephp widthsphp sequencephp.php Savephp itphp asphp php'cphp_php1stphp cphp_lastphp wphp'php.
+php php php php php php php php php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$startCodephp)php;php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Firstphp characterphp code
+php php php php php php php php php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$startCodephp php+php php$widthsInSequencephp php-php php1php)php;php php/php/php Lastphp characterphp code
+php php php php php php php php php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$thisphp-php>toEmSpacephp(php$lastWidthphp)php)php;php php php php php php php php/php/php Width
+
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Resetphp widthsphp sequence
+php php php php php php php php php php php php php php php php php php php php php php php php php$startCodephp php=php php$startCodephp php+php php$widthsInSequencephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php$widthsInSequencephp php=php php0php;
+php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php/php/php Collectphp newphp width
+php php php php php php php php php php php php php php php php php php php php php$pdfWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$thisphp-php>toEmSpacephp(php$widthphp)php)php;
+
+php php php php php php php php php php php php php php php php php php php php php$lastWidthphp php=php php$widthphp;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php/php/php Widthphp isphp equalphp tophp previous
+php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$pdfWidthsphp)php php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Wephp alreadyphp havephp somephp widthsphp collected
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Sophp,php wephp'vephp justphp detectedphp newphp widthsphp sequence
+
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Removephp lastphp elementphp fromphp widthsphp listphp,php sincephp itphp'sphp aphp partphp ofphp widthsphp sequence
+php php php php php php php php php php php php php php php php php php php php php php php php arrayphp_popphp(php$pdfWidthsphp)php;
+
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php andphp writephp thephp restphp ifphp itphp'sphp notphp empty
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$pdfWidthsphp)php php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Savephp itphp asphp php'cphp_php1stphp php[wphp1php wphp2php php.php.php.php wnphp]php'php.
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$startCodephp)php;php php/php/php Firstphp characterphp code
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php$pdfWidthsphp)php;php php php php/php/php Widthsphp array
+
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Resetphp widthsphp collection
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$startCodephp php+php=php countphp(php$pdfWidthsphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$pdfWidthsphp php=php arrayphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php php php php php php php php php php php php php$widthsInSequencephp php=php php2php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Continuephp widthsphp sequence
+php php php php php php php php php php php php php php php php php php php php php php php php php$widthsInSequencephp+php+php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php/php/php Checkphp ifphp wephp havephp widthsphp collectionphp orphp widthsphp sequencephp tophp witephp itphp down
+php php php php php php php php php php php php ifphp php(countphp(php$pdfWidthsphp)php php!php=php php0php)php php{
+php php php php php php php php php php php php php php php php php/php/php Wephp havephp somephp widthsphp collected
+php php php php php php php php php php php php php php php php php/php/php Savephp itphp asphp php'cphp_php1stphp php[wphp1php wphp2php php.php.php.php wnphp]php'php.
+php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$startCodephp)php;php php/php/php Firstphp characterphp code
+php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php$pdfWidthsphp)php;php php php php/php/php Widthsphp array
+php php php php php php php php php php php php php}php elsephp ifphp php(php$widthsInSequencephp php!php=php php0php)php{
+php php php php php php php php php php php php php php php php php/php/php Wephp havephp widthsphp sequence
+php php php php php php php php php php php php php php php php php/php/php Savephp itphp asphp php'cphp_php1stphp cphp_lastphp wphp'php.
+php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$startCodephp)php;php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Firstphp characterphp code
+php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$startCodephp php+php php$widthsInSequencephp php-php php1php)php;php php/php/php Lastphp characterphp code
+php php php php php php php php php php php php php php php php php$pdfCharsWidthsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$thisphp-php>toEmSpacephp(php$lastWidthphp)php)php;php php php php php php php php/php/php Width
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php/php*php Createphp thephp Zendphp_Pdfphp_Elementphp_Arrayphp objectphp andphp addphp itphp tophp thephp fontphp's
+php php php php php php php php php php*php objectphp factoryphp andphp resourcephp dictionaryphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$widthsArrayElementphp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php$pdfCharsWidthsphp)php;
+php php php php php php php php php$widthsObjectphp php=php php$thisphp-php>php_objectFactoryphp-php>newObjectphp(php$widthsArrayElementphp)php;
+php php php php php php php php php$thisphp-php>php_resourcephp-php>Wphp php=php php$widthsObjectphp;
+
+
+php php php php php php php php php/php*php CIDSystemInfophp dictionaryphp php*php/
+php php php php php php php php php$cidSystemInfophp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
+php php php php php php php php php$cidSystemInfophp-php>Registryphp php php php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php'Adobephp'php)php;
+php php php php php php php php php$cidSystemInfophp-php>Orderingphp php php php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php'UCSphp'php)php;
+php php php php php php php php php$cidSystemInfophp-php>Supplementphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php0php)php;
+php php php php php php php php php$cidSystemInfoObjectphp php php php php php php php php php php php php=php php$thisphp-php>php_objectFactoryphp-php>newObjectphp(php$cidSystemInfophp)php;
+php php php php php php php php php$thisphp-php>php_resourcephp-php>CIDSystemInfophp php=php php$cidSystemInfoObjectphp;
+php php php php php}
 
 
 
-    /**
-     * Returns an array of glyph numbers corresponding to the Unicode characters.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumberForCharacter()}.
-     *
-     * @param array $characterCodes Array of Unicode character codes (code points).
-     * @return array Array of glyph numbers.
-     */
-    public function glyphNumbersForCharacters($characterCodes)
-    {
-        /**
-         * CIDFont object is not actually a font. It does not have an Encoding entry,
-         * it cannot be listed in the Font subdictionary of a resource dictionary, and
-         * it cannot be used as the operand of the Tf operator.
-         *
-         * Throw an exception.
-         */
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('CIDFont PDF objects could not be used as the operand of the text drawing operators');
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp anphp arrayphp ofphp glyphphp numbersphp correspondingphp tophp thephp Unicodephp charactersphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumberForCharacterphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$characterCodesphp Arrayphp ofphp Unicodephp characterphp codesphp php(codephp pointsphp)php.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php/
+php php php php publicphp functionphp glyphNumbersForCharactersphp(php$characterCodesphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php CIDFontphp objectphp isphp notphp actuallyphp aphp fontphp.php Itphp doesphp notphp havephp anphp Encodingphp entryphp,
+php php php php php php php php php php*php itphp cannotphp bephp listedphp inphp thephp Fontphp subdictionaryphp ofphp aphp resourcephp dictionaryphp,php and
+php php php php php php php php php php*php itphp cannotphp bephp usedphp asphp thephp operandphp ofphp thephp Tfphp operatorphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Throwphp anphp exceptionphp.
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'CIDFontphp PDFphp objectsphp couldphp notphp bephp usedphp asphp thephp operandphp ofphp thephp textphp drawingphp operatorsphp'php)php;
+php php php php php}
 
-    /**
-     * Returns the glyph number corresponding to the Unicode character.
-     *
-     * If a particular character doesn't exist in this font, the special 'missing
-     * character glyph' will be substituted.
-     *
-     * See also {@link glyphNumbersForCharacters()} which is optimized for bulk
-     * operations.
-     *
-     * @param integer $characterCode Unicode character code (code point).
-     * @return integer Glyph number.
-     */
-    public function glyphNumberForCharacter($characterCode)
-    {
-        /**
-         * CIDFont object is not actually a font. It does not have an Encoding entry,
-         * it cannot be listed in the Font subdictionary of a resource dictionary, and
-         * it cannot be used as the operand of the Tf operator.
-         *
-         * Throw an exception.
-         */
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('CIDFont PDF objects could not be used as the operand of the text drawing operators');
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp glyphphp numberphp correspondingphp tophp thephp Unicodephp characterphp.
+php php php php php php*
+php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
+php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp glyphNumbersForCharactersphp(php)php}php whichphp isphp optimizedphp forphp bulk
+php php php php php php*php operationsphp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$characterCodephp Unicodephp characterphp codephp php(codephp pointphp)php.
+php php php php php php*php php@returnphp integerphp Glyphphp numberphp.
+php php php php php php*php/
+php php php php publicphp functionphp glyphNumberForCharacterphp(php$characterCodephp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php CIDFontphp objectphp isphp notphp actuallyphp aphp fontphp.php Itphp doesphp notphp havephp anphp Encodingphp entryphp,
+php php php php php php php php php php*php itphp cannotphp bephp listedphp inphp thephp Fontphp subdictionaryphp ofphp aphp resourcephp dictionaryphp,php and
+php php php php php php php php php php*php itphp cannotphp bephp usedphp asphp thephp operandphp ofphp thephp Tfphp operatorphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Throwphp anphp exceptionphp.
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'CIDFontphp PDFphp objectsphp couldphp notphp bephp usedphp asphp thephp operandphp ofphp thephp textphp drawingphp operatorsphp'php)php;
+php php php php php}
 
 
-    /**
-     * Returns a number between 0 and 1 inclusive that indicates the percentage
-     * of characters in the string which are covered by glyphs in this font.
-     *
-     * Since no one font will contain glyphs for the entire Unicode character
-     * range, this method can be used to help locate a suitable font when the
-     * actual contents of the string are not known.
-     *
-     * Note that some fonts lie about the characters they support. Additionally,
-     * fonts don't usually contain glyphs for control characters such as tabs
-     * and line breaks, so it is rare that you will get back a full 1.0 score.
-     * The resulting value should be considered informational only.
-     *
-     * @param string $string
-     * @param string $charEncoding (optional) Character encoding of source text.
-     *   If omitted, uses 'current locale'.
-     * @return float
-     */
-    public function getCoveredPercentage($string, $charEncoding = '')
-    {
-        /* Convert the string to UTF-16BE encoding so we can match the string's
-         * character codes to those found in the cmap.
-         */
-        if ($charEncoding != 'UTF-16BE') {
-            $string = iconv($charEncoding, 'UTF-16BE', $string);
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp numberphp betweenphp php0php andphp php1php inclusivephp thatphp indicatesphp thephp percentage
+php php php php php php*php ofphp charactersphp inphp thephp stringphp whichphp arephp coveredphp byphp glyphsphp inphp thisphp fontphp.
+php php php php php php*
+php php php php php php*php Sincephp nophp onephp fontphp willphp containphp glyphsphp forphp thephp entirephp Unicodephp character
+php php php php php php*php rangephp,php thisphp methodphp canphp bephp usedphp tophp helpphp locatephp aphp suitablephp fontphp whenphp the
+php php php php php php*php actualphp contentsphp ofphp thephp stringphp arephp notphp knownphp.
+php php php php php php*
+php php php php php php*php Notephp thatphp somephp fontsphp liephp aboutphp thephp charactersphp theyphp supportphp.php Additionallyphp,
+php php php php php php*php fontsphp donphp'tphp usuallyphp containphp glyphsphp forphp controlphp charactersphp suchphp asphp tabs
+php php php php php php*php andphp linephp breaksphp,php sophp itphp isphp rarephp thatphp youphp willphp getphp backphp aphp fullphp php1php.php0php scorephp.
+php php php php php php*php Thephp resultingphp valuephp shouldphp bephp consideredphp informationalphp onlyphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp php(optionalphp)php Characterphp encodingphp ofphp sourcephp textphp.
+php php php php php php*php php php Ifphp omittedphp,php usesphp php'currentphp localephp'php.
+php php php php php php*php php@returnphp float
+php php php php php php*php/
+php php php php publicphp functionphp getCoveredPercentagephp(php$stringphp,php php$charEncodingphp php=php php'php'php)
+php php php php php{
+php php php php php php php php php/php*php Convertphp thephp stringphp tophp UTFphp-php1php6BEphp encodingphp sophp wephp canphp matchphp thephp stringphp's
+php php php php php php php php php php*php characterphp codesphp tophp thosephp foundphp inphp thephp cmapphp.
+php php php php php php php php php php*php/
+php php php php php php php php ifphp php(php$charEncodingphp php!php=php php'UTFphp-php1php6BEphp'php)php php{
+php php php php php php php php php php php php php$stringphp php=php iconvphp(php$charEncodingphp,php php'UTFphp-php1php6BEphp'php,php php$stringphp)php;
+php php php php php php php php php}
 
-        $charCount = iconv_strlen($string, 'UTF-16BE');
-        if ($charCount == 0) {
-            return 0;
-        }
+php php php php php php php php php$charCountphp php=php iconvphp_strlenphp(php$stringphp,php php'UTFphp-php1php6BEphp'php)php;
+php php php php php php php php ifphp php(php$charCountphp php=php=php php0php)php php{
+php php php php php php php php php php php php returnphp php0php;
+php php php php php php php php php}
 
-        /* Calculate the score by doing a lookup for each character.
-         */
-        $score = 0;
-        $maxIndex = strlen($string);
-        for ($i = 0; $i < $maxIndex; $i++) {
-            /**
-             * @todo Properly handle characters encoded as surrogate pairs.
-             */
-            $charCode = (ord($string[$i]) << 8) | ord($string[++$i]);
-            /* This could probably be optimized a bit with a binary search...
-             */
-            if (isset($this->_charWidths[$charCode])) {
-                $score++;
-            }
-        }
-        return $score / $charCount;
-    }
+php php php php php php php php php/php*php Calculatephp thephp scorephp byphp doingphp aphp lookupphp forphp eachphp characterphp.
+php php php php php php php php php php*php/
+php php php php php php php php php$scorephp php=php php0php;
+php php php php php php php php php$maxIndexphp php=php strlenphp(php$stringphp)php;
+php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$maxIndexphp;php php$iphp+php+php)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@todophp Properlyphp handlephp charactersphp encodedphp asphp surrogatephp pairsphp.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$charCodephp php=php php(ordphp(php$stringphp[php$iphp]php)php <php<php php8php)php php|php ordphp(php$stringphp[php+php+php$iphp]php)php;
+php php php php php php php php php php php php php/php*php Thisphp couldphp probablyphp bephp optimizedphp aphp bitphp withphp aphp binaryphp searchphp.php.php.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_charWidthsphp[php$charCodephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$scorephp+php+php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$scorephp php/php php$charCountphp;
+php php php php php}
 
-    /**
-     * Returns the widths of the Chars.
-     *
-     * The widths are expressed in the font's glyph space. You are responsible
-     * for converting to user space as necessary. See {@link unitsPerEm()}.
-     *
-     * See also {@link widthForChar()}.
-     *
-     * @param array &$glyphNumbers Array of glyph numbers.
-     * @return array Array of glyph widths (integers).
-     */
-    public function widthsForChars($charCodes)
-    {
-        $widths = array();
-        foreach ($charCodes as $key => $charCode) {
-            if (!isset($this->_charWidths[$charCode])) {
-                $widths[$key] = $this->_missingCharWidth;
-            } else {
-                $widths[$key] = $this->_charWidths[$charCode];
-            }
-        }
-        return $widths;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthsphp ofphp thephp Charsphp.
+php php php php php php*
+php php php php php php*php Thephp widthsphp arephp expressedphp inphp thephp fontphp'sphp glyphphp spacephp.php Youphp arephp responsible
+php php php php php php*php forphp convertingphp tophp userphp spacephp asphp necessaryphp.php Seephp php{php@linkphp unitsPerEmphp(php)php}php.
+php php php php php php*
+php php php php php php*php Seephp alsophp php{php@linkphp widthForCharphp(php)php}php.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php&php$glyphNumbersphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp widthsphp php(integersphp)php.
+php php php php php php*php/
+php php php php publicphp functionphp widthsForCharsphp(php$charCodesphp)
+php php php php php{
+php php php php php php php php php$widthsphp php=php arrayphp(php)php;
+php php php php php php php php foreachphp php(php$charCodesphp asphp php$keyphp php=php>php php$charCodephp)php php{
+php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_charWidthsphp[php$charCodephp]php)php)php php{
+php php php php php php php php php php php php php php php php php$widthsphp[php$keyphp]php php=php php$thisphp-php>php_missingCharWidthphp;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$widthsphp[php$keyphp]php php=php php$thisphp-php>php_charWidthsphp[php$charCodephp]php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$widthsphp;
+php php php php php}
 
-    /**
-     * Returns the width of the character.
-     *
-     * Like {@link widthsForChars()} but used for one char at a time.
-     *
-     * @param integer $charCode
-     * @return integer
-     */
-    public function widthForChar($charCode)
-    {
-        if (!isset($this->_charWidths[$charCode])) {
-            return $this->_missingCharWidth;
-        }
-        return $this->_charWidths[$charCode];
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthphp ofphp thephp characterphp.
+php php php php php php*
+php php php php php php*php Likephp php{php@linkphp widthsForCharsphp(php)php}php butphp usedphp forphp onephp charphp atphp aphp timephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$charCode
+php php php php php php*php php@returnphp integer
+php php php php php php*php/
+php php php php publicphp functionphp widthForCharphp(php$charCodephp)
+php php php php php{
+php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_charWidthsphp[php$charCodephp]php)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_missingCharWidthphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>php_charWidthsphp[php$charCodephp]php;
+php php php php php}
 
-    /**
-     * Returns the widths of the glyphs.
-     *
-     * @param array &$glyphNumbers Array of glyph numbers.
-     * @return array Array of glyph widths (integers).
-     * @throws Zend_Pdf_Exception
-     */
-    public function widthsForGlyphs($glyphNumbers)
-    {
-        /**
-         * CIDFont object is not actually a font. It does not have an Encoding entry,
-         * it cannot be listed in the Font subdictionary of a resource dictionary, and
-         * it cannot be used as the operand of the Tf operator.
-         *
-         * Throw an exception.
-         */
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('CIDFont PDF objects could not be used as the operand of the text drawing operators');
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthsphp ofphp thephp glyphsphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php&php$glyphNumbersphp Arrayphp ofphp glyphphp numbersphp.
+php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp widthsphp php(integersphp)php.
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp widthsForGlyphsphp(php$glyphNumbersphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php CIDFontphp objectphp isphp notphp actuallyphp aphp fontphp.php Itphp doesphp notphp havephp anphp Encodingphp entryphp,
+php php php php php php php php php php*php itphp cannotphp bephp listedphp inphp thephp Fontphp subdictionaryphp ofphp aphp resourcephp dictionaryphp,php and
+php php php php php php php php php php*php itphp cannotphp bephp usedphp asphp thephp operandphp ofphp thephp Tfphp operatorphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Throwphp anphp exceptionphp.
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'CIDFontphp PDFphp objectsphp couldphp notphp bephp usedphp asphp thephp operandphp ofphp thephp textphp drawingphp operatorsphp'php)php;
+php php php php php}
 
-    /**
-     * Returns the width of the glyph.
-     *
-     * Like {@link widthsForGlyphs()} but used for one glyph at a time.
-     *
-     * @param integer $glyphNumber
-     * @return integer
-     * @throws Zend_Pdf_Exception
-     */
-    public function widthForGlyph($glyphNumber)
-    {
-        /**
-         * CIDFont object is not actually a font. It does not have an Encoding entry,
-         * it cannot be listed in the Font subdictionary of a resource dictionary, and
-         * it cannot be used as the operand of the Tf operator.
-         *
-         * Throw an exception.
-         */
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('CIDFont PDF objects could not be used as the operand of the text drawing operators');
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp widthphp ofphp thephp glyphphp.
+php php php php php php*
+php php php php php php*php Likephp php{php@linkphp widthsForGlyphsphp(php)php}php butphp usedphp forphp onephp glyphphp atphp aphp timephp.
+php php php php php php*
+php php php php php php*php php@paramphp integerphp php$glyphNumber
+php php php php php php*php php@returnphp integer
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp widthForGlyphphp(php$glyphNumberphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php CIDFontphp objectphp isphp notphp actuallyphp aphp fontphp.php Itphp doesphp notphp havephp anphp Encodingphp entryphp,
+php php php php php php php php php php*php itphp cannotphp bephp listedphp inphp thephp Fontphp subdictionaryphp ofphp aphp resourcephp dictionaryphp,php and
+php php php php php php php php php php*php itphp cannotphp bephp usedphp asphp thephp operandphp ofphp thephp Tfphp operatorphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Throwphp anphp exceptionphp.
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'CIDFontphp PDFphp objectsphp couldphp notphp bephp usedphp asphp thephp operandphp ofphp thephp textphp drawingphp operatorsphp'php)php;
+php php php php php}
 
-    /**
-     * Convert string to the font encoding.
-     *
-     * @param string $string
-     * @param string $charEncoding Character encoding of source text.
-     * @return string
-     * @throws Zend_Pdf_Exception
-     *      */
-    public function encodeString($string, $charEncoding)
-    {
-        /**
-         * CIDFont object is not actually a font. It does not have an Encoding entry,
-         * it cannot be listed in the Font subdictionary of a resource dictionary, and
-         * it cannot be used as the operand of the Tf operator.
-         *
-         * Throw an exception.
-         */
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('CIDFont PDF objects could not be used as the operand of the text drawing operators');
-    }
+php php php php php/php*php*
+php php php php php php*php Convertphp stringphp tophp thephp fontphp encodingphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp Characterphp encodingphp ofphp sourcephp textphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php php php php php php php*php/
+php php php php publicphp functionphp encodeStringphp(php$stringphp,php php$charEncodingphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php CIDFontphp objectphp isphp notphp actuallyphp aphp fontphp.php Itphp doesphp notphp havephp anphp Encodingphp entryphp,
+php php php php php php php php php php*php itphp cannotphp bephp listedphp inphp thephp Fontphp subdictionaryphp ofphp aphp resourcephp dictionaryphp,php and
+php php php php php php php php php php*php itphp cannotphp bephp usedphp asphp thephp operandphp ofphp thephp Tfphp operatorphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Throwphp anphp exceptionphp.
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'CIDFontphp PDFphp objectsphp couldphp notphp bephp usedphp asphp thephp operandphp ofphp thephp textphp drawingphp operatorsphp'php)php;
+php php php php php}
 
-    /**
-     * Convert string from the font encoding.
-     *
-     * @param string $string
-     * @param string $charEncoding Character encoding of resulting text.
-     * @return string
-     * @throws Zend_Pdf_Exception
-     */
-    public function decodeString($string, $charEncoding)
-    {
-        /**
-         * CIDFont object is not actually a font. It does not have an Encoding entry,
-         * it cannot be listed in the Font subdictionary of a resource dictionary, and
-         * it cannot be used as the operand of the Tf operator.
-         *
-         * Throw an exception.
-         */
-        require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('CIDFont PDF objects could not be used as the operand of the text drawing operators');
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Convertphp stringphp fromphp thephp fontphp encodingphp.
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$string
+php php php php php php*php php@paramphp stringphp php$charEncodingphp Characterphp encodingphp ofphp resultingphp textphp.
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp decodeStringphp(php$stringphp,php php$charEncodingphp)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php CIDFontphp objectphp isphp notphp actuallyphp aphp fontphp.php Itphp doesphp notphp havephp anphp Encodingphp entryphp,
+php php php php php php php php php php*php itphp cannotphp bephp listedphp inphp thephp Fontphp subdictionaryphp ofphp aphp resourcephp dictionaryphp,php and
+php php php php php php php php php php*php itphp cannotphp bephp usedphp asphp thephp operandphp ofphp thephp Tfphp operatorphp.
+php php php php php php php php php php*
+php php php php php php php php php php*php Throwphp anphp exceptionphp.
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
+php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'CIDFontphp PDFphp objectsphp couldphp notphp bephp usedphp asphp thephp operandphp ofphp thephp textphp drawingphp operatorsphp'php)php;
+php php php php php}
+php}

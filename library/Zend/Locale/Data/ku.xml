@@ -1,158 +1,158 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.25 $"/>
-		<generation date="$Date: 2009/05/05 23:06:38 $"/>
-		<language type="ku"/>
-	</identity>
-	<localeDisplayNames>
-		<languages>
-			<language type="af">ئه‌فریكای</language>
-			<language type="am">ئه‌مهه‌رینجی</language>
-			<language type="ar">عه‌ره‌بی</language>
-			<language type="as">ئا سسامی (زوبان)</language>
-			<language type="az">ئازه‌ربایجانی</language>
-			<language type="be">بێلاڕووسی</language>
-			<language type="bg">بۆلگاری</language>
-			<language type="bh">بیهاری</language>
-			<language type="bn">به‌نگلادێشی</language>
-			<language type="br">برێتونی</language>
-			<language type="bs">بۆسنی</language>
-			<language type="ca">كاتالۆنی</language>
-			<language type="cs">چه‌كی</language>
-			<language type="cy">وێلزی</language>
-			<language type="da">دانماركی</language>
-			<language type="de">ئاڵمانی</language>
-			<language type="el">یۆنانی</language>
-			<language type="en">ئینگلیزی</language>
-			<language type="eo">ئێسپیرانتۆ</language>
-			<language type="es">ئیسپانی</language>
-			<language type="et">ئیستۆنی</language>
-			<language type="eu">باسكی</language>
-			<language type="fa">فارسی</language>
-			<language type="fi">فینله‌ندی</language>
-			<language type="fil">تاگالۆگی</language>
-			<language type="fo">فه‌رئۆیی</language>
-			<language type="fr">فه‌رانسی</language>
-			<language type="fy">فریسی</language>
-			<language type="ga">ئیرله‌ندی</language>
-			<language type="gd">گه‌لیكی سكۆتله‌ندی</language>
-			<language type="gl">گالیسی</language>
-			<language type="gn">گووارانی</language>
-			<language type="gu">گوجاراتی</language>
-			<language type="he">هیبرێ</language>
-			<language type="hi">هیندی</language>
-			<language type="hr">كرواتی</language>
-			<language type="hu">هه‌نگاری (مه‌جاری)</language>
-			<language type="hy">ئه رمه نی</language>
-			<language type="ia">ئینترلینگوی</language>
-			<language type="id">ئێه‌ندونیزی</language>
-			<language type="ie">ئه نته ر لينگ (زوبان)</language>
-			<language type="is">ئیسله‌ندی</language>
-			<language type="it">ئیتالی</language>
-			<language type="ja">ژاپۆنی</language>
-			<language type="jv">جاڤانی</language>
-			<language type="ka">گۆرجستانی</language>
-			<language type="km">کامبۆجی (زوبان)</language>
-			<language type="kn">كه‌نه‌دایی</language>
-			<language type="ko">كۆری</language>
-			<language type="ku">كوردی</language>
-			<language type="ky">كرگیزی</language>
-			<language type="la">لاتینی</language>
-			<language type="ln">لينگالا</language>
-			<language type="lo">لاو‏ى</language>
-			<language type="lt">لیتوانی</language>
-			<language type="lv">لێتۆنی</language>
-			<language type="mk">ماكێدۆنی</language>
-			<language type="ml">مالایلام</language>
-			<language type="mn">مه‌نگۆلی</language>
-			<language type="mr">ماراتی</language>
-			<language type="ms">مالیزی</language>
-			<language type="mt">ماڵتایی</language>
-			<language type="ne">نێپالی</language>
-			<language type="nl">هۆڵه‌ندی</language>
-			<language type="no">نۆروێژی</language>
-			<language type="oc">ئۆسیتانی</language>
-			<language type="or">ئۆرییا</language>
-			<language type="pa">په‌نجابی</language>
-			<language type="pl">پۆڵۆنیایی (له‌هستانی)</language>
-			<language type="ps">په‌شتوو</language>
-			<language type="pt">پۆرتۆگالی</language>
-			<language type="pt_BR">پورتوگاڵی (برازیل)</language>
-			<language type="pt_PT">پورتوگاڵی (پورتوگاڵ)</language>
-			<language type="ro">ڕۆمانی</language>
-			<language type="ru">ڕووسی</language>
-			<language type="sa">سانسکريت</language>
-			<language type="sd">سيندی(زوبان)</language>
-			<language type="sh">سێربۆكرواتی</language>
-			<language type="si">سینهه‌لی</language>
-			<language type="sk">سلۆڤاكی</language>
-			<language type="sl">سلۆڤێنی</language>
-			<language type="so">سۆمالی</language>
-			<language type="sq">ئاڵبانی</language>
-			<language type="sr">سه‌ربی</language>
-			<language type="st">سێسۆتۆ</language>
-			<language type="su">سودانی</language>
-			<language type="sv">سویدی</language>
-			<language type="sw">سواهیلی</language>
-			<language type="ta">تامیلی</language>
-			<language type="te">ته‌لۆگوی</language>
-			<language type="th">تایله‌ندی</language>
-			<language type="ti">تیگرینیای</language>
-			<language type="tk">تروكمانی</language>
-			<language type="tlh">كلینگۆن</language>
-			<language type="tr">توركی</language>
-			<language type="tw">توی</language>
-			<language type="ug">ئويخووری</language>
-			<language type="uk">ئۆكراینی</language>
-			<language type="ur">ئۆردو‌و</language>
-			<language type="uz">ئۆزبه‌كی</language>
-			<language type="vi">ڤیه‌تنامی</language>
-			<language type="xh">سسوسا</language>
-			<language type="yi">یوددی</language>
-			<language type="zu">زولو</language>
-		</languages>
-	</localeDisplayNames>
-	<layout>
-		<orientation characters="right-to-left"/>
-	</layout>
-	<characters>
-		<exemplarCharacters>[ئ-ب پ ت ج چ ح-د ر ز ڕ ژ س ش ع غ ف ڤ ق ک گ ل ڵ م-ه ھ و ۆ ی ێ]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[\u064B-\u0652 ء-ة ث ذ ص-ظ ك ى ي]</exemplarCharacters>
-	</characters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<days>
-					<dayContext type="format">
-						<dayWidth type="abbreviated">
-							<day type="sun">یەکشەممە</day>
-							<day type="mon">دووشەممە</day>
-							<day type="tue">سێشەممە</day>
-							<day type="wed">چوارشەممە</day>
-						</dayWidth>
-						<dayWidth type="wide">
-							<day type="sun">یەکشەممە</day>
-							<day type="mon">دووشەممە</day>
-							<day type="tue">سێشەممە</day>
-							<day type="wed">چوارشەممە</day>
-						</dayWidth>
-					</dayContext>
-					<dayContext type="stand-alone">
-						<dayWidth type="narrow">
-							<day type="sun">ی</day>
-							<day type="mon">د</day>
-							<day type="tue">س</day>
-						</dayWidth>
-					</dayContext>
-				</days>
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-	</dates>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php2php5php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php8php php$php"php/php>
+php	php	php<languagephp typephp=php"kuphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<languagesphp>
+php	php	php	php<languagephp typephp=php"afphp"php>phpئphpهphp‌phpفphpرphpیphpكphpاphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"amphp"php>phpئphpهphp‌phpمphpهphpهphp‌phpرphpیphpنphpجphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"arphp"php>phpعphpهphp‌phpرphpهphp‌phpبphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"asphp"php>phpئphpاphp phpسphpسphpاphpمphpیphp php(phpزphpوphpبphpاphpنphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"azphp"php>phpئphpاphpزphpهphp‌phpرphpبphpاphpیphpجphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"bephp"php>phpبphpێphpلphpاphpڕphpوphpوphpسphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"bgphp"php>phpبphpۆphpلphpگphpاphpرphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"bhphp"php>phpبphpیphpهphpاphpرphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"bnphp"php>phpبphpهphp‌phpنphpگphpلphpاphpدphpێphpشphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"brphp"php>phpبphpرphpێphpتphpوphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"bsphp"php>phpبphpۆphpسphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"caphp"php>phpكphpاphpتphpاphpلphpۆphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"csphp"php>phpچphpهphp‌phpكphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"cyphp"php>phpوphpێphpلphpزphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"daphp"php>phpدphpاphpنphpمphpاphpرphpكphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"dephp"php>phpئphpاphpڵphpمphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"elphp"php>phpیphpۆphpنphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"enphp"php>phpئphpیphpنphpگphpلphpیphpزphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"eophp"php>phpئphpێphpسphpپphpیphpرphpاphpنphpتphpۆ<php/languagephp>
+php	php	php	php<languagephp typephp=php"esphp"php>phpئphpیphpسphpپphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"etphp"php>phpئphpیphpسphpتphpۆphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"euphp"php>phpبphpاphpسphpكphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"faphp"php>phpفphpاphpرphpسphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"fiphp"php>phpفphpیphpنphpلphpهphp‌phpنphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"filphp"php>phpتphpاphpگphpاphpلphpۆphpگphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"fophp"php>phpفphpهphp‌phpرphpئphpۆphpیphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"frphp"php>phpفphpهphp‌phpرphpاphpنphpسphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"fyphp"php>phpفphpرphpیphpسphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"gaphp"php>phpئphpیphpرphpلphpهphp‌phpنphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"gdphp"php>phpگphpهphp‌phpلphpیphpكphpیphp phpسphpكphpۆphpتphpلphpهphp‌phpنphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"glphp"php>phpگphpاphpلphpیphpسphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"gnphp"php>phpگphpوphpوphpاphpرphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"guphp"php>phpگphpوphpجphpاphpرphpاphpتphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"hephp"php>phpهphpیphpبphpرphpێ<php/languagephp>
+php	php	php	php<languagephp typephp=php"hiphp"php>phpهphpیphpنphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"hrphp"php>phpكphpرphpوphpاphpتphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"huphp"php>phpهphpهphp‌phpنphpگphpاphpرphpیphp php(phpمphpهphp‌phpجphpاphpرphpیphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"hyphp"php>phpئphpهphp phpرphpمphpهphp phpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"iaphp"php>phpئphpیphpنphpتphpرphpلphpیphpنphpگphpوphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"idphp"php>phpئphpێphpهphp‌phpنphpدphpوphpنphpیphpزphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"iephp"php>phpئphpهphp phpنphpتphpهphp phpرphp phpلphpيphpنphpگphp php(phpزphpوphpبphpاphpنphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"isphp"php>phpئphpیphpسphpلphpهphp‌phpنphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"itphp"php>phpئphpیphpتphpاphpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"japhp"php>phpژphpاphpپphpۆphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"jvphp"php>phpجphpاphpڤphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"kaphp"php>phpگphpۆphpرphpجphpسphpتphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"kmphp"php>phpکphpاphpمphpبphpۆphpجphpیphp php(phpزphpوphpبphpاphpنphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"knphp"php>phpكphpهphp‌phpنphpهphp‌phpدphpاphpیphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"kophp"php>phpكphpۆphpرphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"kuphp"php>phpكphpوphpرphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"kyphp"php>phpكphpرphpگphpیphpزphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"laphp"php>phpلphpاphpتphpیphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"lnphp"php>phpلphpيphpنphpگphpاphpلphpا<php/languagephp>
+php	php	php	php<languagephp typephp=php"lophp"php>phpلphpاphpوphp‏phpى<php/languagephp>
+php	php	php	php<languagephp typephp=php"ltphp"php>phpلphpیphpتphpوphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"lvphp"php>phpلphpێphpتphpۆphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"mkphp"php>phpمphpاphpكphpێphpدphpۆphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"mlphp"php>phpمphpاphpلphpاphpیphpلphpاphpم<php/languagephp>
+php	php	php	php<languagephp typephp=php"mnphp"php>phpمphpهphp‌phpنphpگphpۆphpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"mrphp"php>phpمphpاphpرphpاphpتphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"msphp"php>phpمphpاphpلphpیphpزphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"mtphp"php>phpمphpاphpڵphpتphpاphpیphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"nephp"php>phpنphpێphpپphpاphpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"nlphp"php>phpهphpۆphpڵphpهphp‌phpنphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"nophp"php>phpنphpۆphpرphpوphpێphpژphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"ocphp"php>phpئphpۆphpسphpیphpتphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"orphp"php>phpئphpۆphpرphpیphpیphpا<php/languagephp>
+php	php	php	php<languagephp typephp=php"paphp"php>phpپphpهphp‌phpنphpجphpاphpبphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"plphp"php>phpپphpۆphpڵphpۆphpنphpیphpاphpیphpیphp php(phpلphpهphp‌phpهphpسphpتphpاphpنphpیphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"psphp"php>phpپphpهphp‌phpشphpتphpوphpو<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp"php>phpپphpۆphpرphpتphpۆphpگphpاphpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>phpپphpوphpرphpتphpوphpگphpاphpڵphpیphp php(phpبphpرphpاphpزphpیphpلphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>phpپphpوphpرphpتphpوphpگphpاphpڵphpیphp php(phpپphpوphpرphpتphpوphpگphpاphpڵphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"rophp"php>phpڕphpۆphpمphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"ruphp"php>phpڕphpوphpوphpسphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"saphp"php>phpسphpاphpنphpسphpکphpرphpيphpت<php/languagephp>
+php	php	php	php<languagephp typephp=php"sdphp"php>phpسphpيphpنphpدphpیphp(phpزphpوphpبphpاphpنphp)<php/languagephp>
+php	php	php	php<languagephp typephp=php"shphp"php>phpسphpێphpرphpبphpۆphpكphpرphpوphpاphpتphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"siphp"php>phpسphpیphpنphpهphpهphp‌phpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"skphp"php>phpسphpلphpۆphpڤphpاphpكphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"slphp"php>phpسphpلphpۆphpڤphpێphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"sophp"php>phpسphpۆphpمphpاphpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"sqphp"php>phpئphpاphpڵphpبphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"srphp"php>phpسphpهphp‌phpرphpبphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"stphp"php>phpسphpێphpسphpۆphpتphpۆ<php/languagephp>
+php	php	php	php<languagephp typephp=php"suphp"php>phpسphpوphpدphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"svphp"php>phpسphpوphpیphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"swphp"php>phpسphpوphpاphpهphpیphpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"taphp"php>phpتphpاphpمphpیphpلphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"tephp"php>phpتphpهphp‌phpلphpۆphpگphpوphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"thphp"php>phpتphpاphpیphpلphpهphp‌phpنphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"tiphp"php>phpتphpیphpگphpرphpیphpنphpیphpاphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"tkphp"php>phpتphpرphpوphpكphpمphpاphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"tlhphp"php>phpكphpلphpیphpنphpگphpۆphpن<php/languagephp>
+php	php	php	php<languagephp typephp=php"trphp"php>phpتphpوphpرphpكphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"twphp"php>phpتphpوphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"ugphp"php>phpئphpوphpيphpخphpوphpوphpرphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"ukphp"php>phpئphpۆphpكphpرphpاphpیphpنphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"urphp"php>phpئphpۆphpرphpدphpوphp‌phpو<php/languagephp>
+php	php	php	php<languagephp typephp=php"uzphp"php>phpئphpۆphpزphpبphpهphp‌phpكphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"viphp"php>phpڤphpیphpهphp‌phpتphpنphpاphpمphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"xhphp"php>phpسphpسphpوphpسphpا<php/languagephp>
+php	php	php	php<languagephp typephp=php"yiphp"php>phpیphpوphpدphpدphpی<php/languagephp>
+php	php	php	php<languagephp typephp=php"zuphp"php>phpزphpوphpلphpو<php/languagephp>
+php	php	<php/languagesphp>
+php	<php/localeDisplayNamesphp>
+php	php<layoutphp>
+php	php	php<orientationphp charactersphp=php"rightphp-tophp-leftphp"php/php>
+php	<php/layoutphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[phpئphp-phpبphp phpپphp phpتphp phpجphp phpچphp phpحphp-phpدphp phpرphp phpزphp phpڕphp phpژphp phpسphp phpشphp phpعphp phpغphp phpفphp phpڤphp phpقphp phpکphp phpگphp phpلphp phpڵphp phpمphp-phpهphp phpھphp phpوphp phpۆphp phpیphp phpێphp]<php/exemplarCharactersphp>
+php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[php\uphp0php6php4Bphp-php\uphp0php6php5php2php phpءphp-phpةphp phpثphp phpذphp phpصphp-phpظphp phpكphp phpىphp phpيphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<daysphp>
+php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpیphpەphpکphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpدphpوphpوphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpسphpێphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpچphpوphpاphpرphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpیphpەphpکphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpدphpوphpوphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpسphpێphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpچphpوphpاphpرphpشphpەphpمphpمphpە<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
+php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
+php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpی<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpد<php/dayphp>
+php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpس<php/dayphp>
+php	php	php	php	php	php	<php/dayWidthphp>
+php	php	php	php	php	<php/dayContextphp>
+php	php	php	php	<php/daysphp>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	<php/datesphp>
+<php/ldmlphp>
 

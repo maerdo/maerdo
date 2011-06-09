@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ldml>
-	<identity>
-		<version number="$Revision: 1.30 $"/>
-		<generation date="$Date: 2009/05/05 23:06:41 $"/>
-		<language type="ug"/>
-	</identity>
-	<localeDisplayNames>
-		<variants>
-			<variant type="REVISED">Uyghur</variant>
-		</variants>
-	</localeDisplayNames>
-	<layout>
-		<orientation characters="right-to-left"/>
-	</layout>
-	<characters>
-		<exemplarCharacters>[ئ-ب پ ت ج چ خ د ر ز ژ س ش غ ف-ك ڭ گ ل-ه ە و ۆ-ۈ ۋ ى ي ې]</exemplarCharacters>
-	</characters>
-	<dates>
-		<calendars>
-			<calendar type="gregorian">
-				<dateTimeFormats>
-					<availableFormats>
-						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
-					</availableFormats>
-				</dateTimeFormats>
-			</calendar>
-		</calendars>
-		<timeZoneNames>
-			<hourFormat>+HH:mm;-HH:mm</hourFormat>
-			<gmtFormat>GMT{0}</gmtFormat>
-			<regionFormat>{0}</regionFormat>
-		</timeZoneNames>
-	</dates>
-</ldml>
+<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
+php<ldmlphp>
+php	php<identityphp>
+php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php0php php$php"php/php>
+php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php4php1php php$php"php/php>
+php	php	php<languagephp typephp=php"ugphp"php/php>
+php	<php/identityphp>
+php	php<localeDisplayNamesphp>
+php	php	php<variantsphp>
+php	php	php	php<variantphp typephp=php"REVISEDphp"php>Uyghur<php/variantphp>
+php	php	<php/variantsphp>
+php	<php/localeDisplayNamesphp>
+php	php<layoutphp>
+php	php	php<orientationphp charactersphp=php"rightphp-tophp-leftphp"php/php>
+php	<php/layoutphp>
+php	php<charactersphp>
+php	php	php<exemplarCharactersphp>php[phpئphp-phpبphp phpپphp phpتphp phpجphp phpچphp phpخphp phpدphp phpرphp phpزphp phpژphp phpسphp phpشphp phpغphp phpفphp-phpكphp phpڭphp phpگphp phpلphp-phpهphp phpەphp phpوphp phpۆphp-phpۈphp phpۋphp phpىphp phpيphp phpېphp]<php/exemplarCharactersphp>
+php	<php/charactersphp>
+php	php<datesphp>
+php	php	php<calendarsphp>
+php	php	php	php<calendarphp typephp=php"gregorianphp"php>
+php	php	php	php	php<dateTimeFormatsphp>
+php	php	php	php	php	php<availableFormatsphp>
+php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
+php	php	php	php	php	<php/availableFormatsphp>
+php	php	php	php	<php/dateTimeFormatsphp>
+php	php	php	<php/calendarphp>
+php	php	<php/calendarsphp>
+php	php	php<timeZoneNamesphp>
+php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
+php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
+php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
+php	php	<php/timeZoneNamesphp>
+php	<php/datesphp>
+<php/ldmlphp>

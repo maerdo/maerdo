@@ -1,189 +1,189 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: AccessToken.php 20217 2010-01-12 16:01:57Z matthew $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Oauth
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php AccessTokenphp.phpphp php2php0php2php1php7php php2php0php1php0php-php0php1php-php1php2php php1php6php:php0php1php:php5php7Zphp matthewphp php$
+php php*php/
 
-/** Zend_Oauth_Http */
-require_once 'Zend/Oauth/Http.php';
+php/php*php*php Zendphp_Oauthphp_Httpphp php*php/
+requirephp_oncephp php'Zendphp/Oauthphp/Httpphp.phpphp'php;
 
-/** Zend_Oauth_Token_Access */
-require_once 'Zend/Oauth/Token/Access.php';
+php/php*php*php Zendphp_Oauthphp_Tokenphp_Accessphp php*php/
+requirephp_oncephp php'Zendphp/Oauthphp/Tokenphp/Accessphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Oauth_Http_AccessToken extends Zend_Oauth_Http
-{
-    /**
-     * Singleton instance if required of the HTTP client
-     *
-     * @var Zend_Http_Client
-     */
-    protected $_httpClient = null;
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Oauth
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Oauthphp_Httpphp_AccessTokenphp extendsphp Zendphp_Oauthphp_Http
+php{
+php php php php php/php*php*
+php php php php php php*php Singletonphp instancephp ifphp requiredphp ofphp thephp HTTPphp client
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php protectedphp php$php_httpClientphp php=php nullphp;
 
-    /**
-     * Initiate a HTTP request to retrieve an Access Token.
-     *
-     * @return Zend_Oauth_Token_Access
-     */
-    public function execute()
-    {
-        $params   = $this->assembleParams();
-        $response = $this->startRequestCycle($params);
-        $return   = new Zend_Oauth_Token_Access($response);
-        return $return;
-    }
+php php php php php/php*php*
+php php php php php php*php Initiatephp aphp HTTPphp requestphp tophp retrievephp anphp Accessphp Tokenphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Oauthphp_Tokenphp_Access
+php php php php php php*php/
+php php php php publicphp functionphp executephp(php)
+php php php php php{
+php php php php php php php php php$paramsphp php php php=php php$thisphp-php>assembleParamsphp(php)php;
+php php php php php php php php php$responsephp php=php php$thisphp-php>startRequestCyclephp(php$paramsphp)php;
+php php php php php php php php php$returnphp php php php=php newphp Zendphp_Oauthphp_Tokenphp_Accessphp(php$responsephp)php;
+php php php php php php php php returnphp php$returnphp;
+php php php php php}
 
-    /**
-     * Assemble all parameters for an OAuth Access Token request.
-     *
-     * @return array
-     */
-    public function assembleParams()
-    {
-        $params = array(
-            'oauth_consumer_key'     => $this->_consumer->getConsumerKey(),
-            'oauth_nonce'            => $this->_httpUtility->generateNonce(),
-            'oauth_signature_method' => $this->_consumer->getSignatureMethod(),
-            'oauth_timestamp'        => $this->_httpUtility->generateTimestamp(),
-            'oauth_token'            => $this->_consumer->getLastRequestToken()->getToken(),
-            'oauth_version'          => $this->_consumer->getVersion(),
-        );
+php php php php php/php*php*
+php php php php php php*php Assemblephp allphp parametersphp forphp anphp OAuthphp Accessphp Tokenphp requestphp.
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp assembleParamsphp(php)
+php php php php php{
+php php php php php php php php php$paramsphp php=php arrayphp(
+php php php php php php php php php php php php php'oauthphp_consumerphp_keyphp'php php php php php php=php>php php$thisphp-php>php_consumerphp-php>getConsumerKeyphp(php)php,
+php php php php php php php php php php php php php'oauthphp_noncephp'php php php php php php php php php php php php php=php>php php$thisphp-php>php_httpUtilityphp-php>generateNoncephp(php)php,
+php php php php php php php php php php php php php'oauthphp_signaturephp_methodphp'php php=php>php php$thisphp-php>php_consumerphp-php>getSignatureMethodphp(php)php,
+php php php php php php php php php php php php php'oauthphp_timestampphp'php php php php php php php php php=php>php php$thisphp-php>php_httpUtilityphp-php>generateTimestampphp(php)php,
+php php php php php php php php php php php php php'oauthphp_tokenphp'php php php php php php php php php php php php php=php>php php$thisphp-php>php_consumerphp-php>getLastRequestTokenphp(php)php-php>getTokenphp(php)php,
+php php php php php php php php php php php php php'oauthphp_versionphp'php php php php php php php php php php php=php>php php$thisphp-php>php_consumerphp-php>getVersionphp(php)php,
+php php php php php php php php php)php;
 
-        if (!empty($this->_parameters)) {
-            $params = array_merge($params, $this->_parameters);
-        }
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_parametersphp)php)php php{
+php php php php php php php php php php php php php$paramsphp php=php arrayphp_mergephp(php$paramsphp,php php$thisphp-php>php_parametersphp)php;
+php php php php php php php php php}
 
-        $params['oauth_signature'] = $this->_httpUtility->sign(
-            $params,
-            $this->_consumer->getSignatureMethod(),
-            $this->_consumer->getConsumerSecret(),
-            $this->_consumer->getLastRequestToken()->getTokenSecret(),
-            $this->_preferredRequestMethod,
-            $this->_consumer->getAccessTokenUrl()
-        );
+php php php php php php php php php$paramsphp[php'oauthphp_signaturephp'php]php php=php php$thisphp-php>php_httpUtilityphp-php>signphp(
+php php php php php php php php php php php php php$paramsphp,
+php php php php php php php php php php php php php$thisphp-php>php_consumerphp-php>getSignatureMethodphp(php)php,
+php php php php php php php php php php php php php$thisphp-php>php_consumerphp-php>getConsumerSecretphp(php)php,
+php php php php php php php php php php php php php$thisphp-php>php_consumerphp-php>getLastRequestTokenphp(php)php-php>getTokenSecretphp(php)php,
+php php php php php php php php php php php php php$thisphp-php>php_preferredRequestMethodphp,
+php php php php php php php php php php php php php$thisphp-php>php_consumerphp-php>getAccessTokenUrlphp(php)
+php php php php php php php php php)php;
 
-        return $params;
-    }
+php php php php php php php php returnphp php$paramsphp;
+php php php php php}
 
-    /**
-     * Generate and return a HTTP Client configured for the Header Request Scheme
-     * specified by OAuth, for use in requesting an Access Token.
-     *
-     * @param  array $params
-     * @return Zend_Http_Client
-     */
-    public function getRequestSchemeHeaderClient(array $params)
-    {
-        $params      = $this->_cleanParamsOfIllegalCustomParameters($params);
-        $headerValue = $this->_toAuthorizationHeader($params);
-        $client      = Zend_Oauth::getHttpClient();
+php php php php php/php*php*
+php php php php php php*php Generatephp andphp returnphp aphp HTTPphp Clientphp configuredphp forphp thephp Headerphp Requestphp Scheme
+php php php php php php*php specifiedphp byphp OAuthphp,php forphp usephp inphp requestingphp anphp Accessphp Tokenphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp getRequestSchemeHeaderClientphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php php$paramsphp php php php php php php=php php$thisphp-php>php_cleanParamsOfIllegalCustomParametersphp(php$paramsphp)php;
+php php php php php php php php php$headerValuephp php=php php$thisphp-php>php_toAuthorizationHeaderphp(php$paramsphp)php;
+php php php php php php php php php$clientphp php php php php php php=php Zendphp_Oauthphp:php:getHttpClientphp(php)php;
 
-        $client->setUri($this->_consumer->getAccessTokenUrl());
-        $client->setHeaders('Authorization', $headerValue);
-        $client->setMethod($this->_preferredRequestMethod);
+php php php php php php php php php$clientphp-php>setUriphp(php$thisphp-php>php_consumerphp-php>getAccessTokenUrlphp(php)php)php;
+php php php php php php php php php$clientphp-php>setHeadersphp(php'Authorizationphp'php,php php$headerValuephp)php;
+php php php php php php php php php$clientphp-php>setMethodphp(php$thisphp-php>php_preferredRequestMethodphp)php;
 
-        return $client;
-    }
+php php php php php php php php returnphp php$clientphp;
+php php php php php}
 
-    /**
-     * Generate and return a HTTP Client configured for the POST Body Request
-     * Scheme specified by OAuth, for use in requesting an Access Token.
-     *
-     * @param  array $params
-     * @return Zend_Http_Client
-     */
-    public function getRequestSchemePostBodyClient(array $params)
-    {
-        $params = $this->_cleanParamsOfIllegalCustomParameters($params);
-        $client = Zend_Oauth::getHttpClient();
-        $client->setUri($this->_consumer->getAccessTokenUrl());
-        $client->setMethod($this->_preferredRequestMethod);
-        $client->setRawData(
-            $this->_httpUtility->toEncodedQueryString($params)
-        );
-        $client->setHeaders(
-            Zend_Http_Client::CONTENT_TYPE,
-            Zend_Http_Client::ENC_URLENCODED
-        );
-        return $client;
-    }
+php php php php php/php*php*
+php php php php php php*php Generatephp andphp returnphp aphp HTTPphp Clientphp configuredphp forphp thephp POSTphp Bodyphp Request
+php php php php php php*php Schemephp specifiedphp byphp OAuthphp,php forphp usephp inphp requestingphp anphp Accessphp Tokenphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp getRequestSchemePostBodyClientphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php php$paramsphp php=php php$thisphp-php>php_cleanParamsOfIllegalCustomParametersphp(php$paramsphp)php;
+php php php php php php php php php$clientphp php=php Zendphp_Oauthphp:php:getHttpClientphp(php)php;
+php php php php php php php php php$clientphp-php>setUriphp(php$thisphp-php>php_consumerphp-php>getAccessTokenUrlphp(php)php)php;
+php php php php php php php php php$clientphp-php>setMethodphp(php$thisphp-php>php_preferredRequestMethodphp)php;
+php php php php php php php php php$clientphp-php>setRawDataphp(
+php php php php php php php php php php php php php$thisphp-php>php_httpUtilityphp-php>toEncodedQueryStringphp(php$paramsphp)
+php php php php php php php php php)php;
+php php php php php php php php php$clientphp-php>setHeadersphp(
+php php php php php php php php php php php php Zendphp_Httpphp_Clientphp:php:CONTENTphp_TYPEphp,
+php php php php php php php php php php php php Zendphp_Httpphp_Clientphp:php:ENCphp_URLENCODED
+php php php php php php php php php)php;
+php php php php php php php php returnphp php$clientphp;
+php php php php php}
 
-    /**
-     * Generate and return a HTTP Client configured for the Query String Request
-     * Scheme specified by OAuth, for use in requesting an Access Token.
-     *
-     * @param  array $params
-     * @param  string $url
-     * @return Zend_Http_Client
-     */
-    public function getRequestSchemeQueryStringClient(array $params, $url)
-    {
-        $params = $this->_cleanParamsOfIllegalCustomParameters($params);
-        return parent::getRequestSchemeQueryStringClient($params, $url);
-    }
+php php php php php/php*php*
+php php php php php php*php Generatephp andphp returnphp aphp HTTPphp Clientphp configuredphp forphp thephp Queryphp Stringphp Request
+php php php php php php*php Schemephp specifiedphp byphp OAuthphp,php forphp usephp inphp requestingphp anphp Accessphp Tokenphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@paramphp php stringphp php$url
+php php php php php php*php php@returnphp Zendphp_Httpphp_Client
+php php php php php php*php/
+php php php php publicphp functionphp getRequestSchemeQueryStringClientphp(arrayphp php$paramsphp,php php$urlphp)
+php php php php php{
+php php php php php php php php php$paramsphp php=php php$thisphp-php>php_cleanParamsOfIllegalCustomParametersphp(php$paramsphp)php;
+php php php php php php php php returnphp parentphp:php:getRequestSchemeQueryStringClientphp(php$paramsphp,php php$urlphp)php;
+php php php php php}
 
-    /**
-     * Attempt a request based on the current configured OAuth Request Scheme and
-     * return the resulting HTTP Response.
-     *
-     * @param  array $params
-     * @return Zend_Http_Response
-     */
-    protected function _attemptRequest(array $params)
-    {
-        switch ($this->_preferredRequestScheme) {
-            case Zend_Oauth::REQUEST_SCHEME_HEADER:
-                $httpClient = $this->getRequestSchemeHeaderClient($params);
-                break;
-            case Zend_Oauth::REQUEST_SCHEME_POSTBODY:
-                $httpClient = $this->getRequestSchemePostBodyClient($params);
-                break;
-            case Zend_Oauth::REQUEST_SCHEME_QUERYSTRING:
-                $httpClient = $this->getRequestSchemeQueryStringClient($params,
-                    $this->_consumer->getAccessTokenUrl());
-                break;
-        }
-        return $httpClient->request();
-    }
+php php php php php/php*php*
+php php php php php php*php Attemptphp aphp requestphp basedphp onphp thephp currentphp configuredphp OAuthphp Requestphp Schemephp and
+php php php php php php*php returnphp thephp resultingphp HTTPphp Responsephp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp Zendphp_Httpphp_Response
+php php php php php php*php/
+php php php php protectedphp functionphp php_attemptRequestphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php switchphp php(php$thisphp-php>php_preferredRequestSchemephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_HEADERphp:
+php php php php php php php php php php php php php php php php php$httpClientphp php=php php$thisphp-php>getRequestSchemeHeaderClientphp(php$paramsphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_POSTBODYphp:
+php php php php php php php php php php php php php php php php php$httpClientphp php=php php$thisphp-php>getRequestSchemePostBodyClientphp(php$paramsphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_QUERYSTRINGphp:
+php php php php php php php php php php php php php php php php php$httpClientphp php=php php$thisphp-php>getRequestSchemeQueryStringClientphp(php$paramsphp,
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_consumerphp-php>getAccessTokenUrlphp(php)php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$httpClientphp-php>requestphp(php)php;
+php php php php php}
 
-    /**
-     * Access Token requests specifically may not contain non-OAuth parameters.
-     * So these should be striped out and excluded. Detection is easy since
-     * specified OAuth parameters start with "oauth_", Extension params start
-     * with "xouth_", and no other parameters should use these prefixes.
-     *
-     * xouth params are not currently allowable.
-     *
-     * @param  array $params
-     * @return array
-     */
-    protected function _cleanParamsOfIllegalCustomParameters(array $params)
-    {
-        foreach ($params as $key=>$value) {
-            if (!preg_match("/^oauth_/", $key)) {
-                unset($params[$key]);
-            }
-        }
-        return $params;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Accessphp Tokenphp requestsphp specificallyphp mayphp notphp containphp nonphp-OAuthphp parametersphp.
+php php php php php php*php Sophp thesephp shouldphp bephp stripedphp outphp andphp excludedphp.php Detectionphp isphp easyphp since
+php php php php php php*php specifiedphp OAuthphp parametersphp startphp withphp php"oauthphp_php"php,php Extensionphp paramsphp start
+php php php php php php*php withphp php"xouthphp_php"php,php andphp nophp otherphp parametersphp shouldphp usephp thesephp prefixesphp.
+php php php php php php*
+php php php php php php*php xouthphp paramsphp arephp notphp currentlyphp allowablephp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$params
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_cleanParamsOfIllegalCustomParametersphp(arrayphp php$paramsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp=php>php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(php!pregphp_matchphp(php"php/php^oauthphp_php/php"php,php php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php unsetphp(php$paramsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$paramsphp;
+php php php php php}
+php}

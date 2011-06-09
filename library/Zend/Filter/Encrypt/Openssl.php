@@ -1,492 +1,492 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Openssl.php 21212 2010-02-27 17:33:27Z thomas $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Opensslphp.phpphp php2php1php2php1php2php php2php0php1php0php-php0php2php-php2php7php php1php7php:php3php3php:php2php7Zphp thomasphp php$
+php php*php/
 
-/**
- * @see Zend_Filter_Encrypt_Interface
- */
-require_once 'Zend/Filter/Encrypt/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Filterphp_Encryptphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Filterphp/Encryptphp/Interfacephp.phpphp'php;
 
-/**
- * Encryption adapter for openssl
- *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
-{
-    /**
-     * Definitions for encryption
-     * array(
-     *     'public'   => public keys
-     *     'private'  => private keys
-     *     'envelope' => resulting envelope keys
-     * )
-     */
-    protected $_keys = array(
-        'public'   => array(),
-        'private'  => array(),
-        'envelope' => array()
-    );
+php/php*php*
+php php*php Encryptionphp adapterphp forphp openssl
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Filter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Filterphp_Encryptphp_Opensslphp implementsphp Zendphp_Filterphp_Encryptphp_Interface
+php{
+php php php php php/php*php*
+php php php php php php*php Definitionsphp forphp encryption
+php php php php php php*php arrayphp(
+php php php php php php*php php php php php php'publicphp'php php php php=php>php publicphp keys
+php php php php php php*php php php php php php'privatephp'php php php=php>php privatephp keys
+php php php php php php*php php php php php php'envelopephp'php php=php>php resultingphp envelopephp keys
+php php php php php php*php php)
+php php php php php php*php/
+php php php php protectedphp php$php_keysphp php=php arrayphp(
+php php php php php php php php php'publicphp'php php php php=php>php arrayphp(php)php,
+php php php php php php php php php'privatephp'php php php=php>php arrayphp(php)php,
+php php php php php php php php php'envelopephp'php php=php>php arrayphp(php)
+php php php php php)php;
 
-    /**
-     * Internal passphrase
-     *
-     * @var string
-     */
-    protected $_passphrase;
+php php php php php/php*php*
+php php php php php php*php Internalphp passphrase
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_passphrasephp;
 
-    /**
-     * Internal compression
-     *
-     * @var array
-     */
-    protected $_compression;
+php php php php php/php*php*
+php php php php php php*php Internalphp compression
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_compressionphp;
 
-    /**
-     * Internal create package
-     *
-     * @var boolean
-     */
-    protected $_package = false;
+php php php php php/php*php*
+php php php php php php*php Internalphp createphp package
+php php php php php php*
+php php php php php php*php php@varphp boolean
+php php php php php php*php/
+php php php php protectedphp php$php_packagephp php=php falsephp;
 
-    /**
-     * Class constructor
-     * Available options
-     *   'public'      => public key
-     *   'private'     => private key
-     *   'envelope'    => envelope key
-     *   'passphrase'  => passphrase
-     *   'compression' => compress value with this compression adapter
-     *   'package'     => pack envelope keys into encrypted string, simplifies decryption
-     *
-     * @param string|array $options Options for this adapter
-     */
-    public function __construct($options = array())
-    {
-        if (!extension_loaded('openssl')) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('This filter needs the openssl extension');
-        }
+php php php php php/php*php*
+php php php php php php*php Classphp constructor
+php php php php php php*php Availablephp options
+php php php php php php*php php php php'publicphp'php php php php php php php=php>php publicphp key
+php php php php php php*php php php php'privatephp'php php php php php php=php>php privatephp key
+php php php php php php*php php php php'envelopephp'php php php php php=php>php envelopephp key
+php php php php php php*php php php php'passphrasephp'php php php=php>php passphrase
+php php php php php php*php php php php'compressionphp'php php=php>php compressphp valuephp withphp thisphp compressionphp adapter
+php php php php php php*php php php php'packagephp'php php php php php php=php>php packphp envelopephp keysphp intophp encryptedphp stringphp,php simplifiesphp decryption
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$optionsphp Optionsphp forphp thisphp adapter
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'opensslphp'php)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Thisphp filterphp needsphp thephp opensslphp extensionphp'php)php;
+php php php php php php php php php}
 
-        if ($options instanceof Zend_Config) {
-            $options = $options->toArray();
-        }
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
+php php php php php php php php php}
 
-        if (!is_array($options)) {
-            $options = array('public' => $options);
-        }
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'publicphp'php php=php>php php$optionsphp)php;
+php php php php php php php php php}
 
-        if (array_key_exists('passphrase', $options)) {
-            $this->setPassphrase($options['passphrase']);
-            unset($options['passphrase']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'passphrasephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setPassphrasephp(php$optionsphp[php'passphrasephp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'passphrasephp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('compression', $options)) {
-            $this->setCompression($options['compression']);
-            unset($options['compress']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'compressionphp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setCompressionphp(php$optionsphp[php'compressionphp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'compressphp'php]php)php;
+php php php php php php php php php}
 
-        if (array_key_exists('package', $options)) {
-            $this->setPackage($options['package']);
-            unset($options['package']);
-        }
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'packagephp'php,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setPackagephp(php$optionsphp[php'packagephp'php]php)php;
+php php php php php php php php php php php php unsetphp(php$optionsphp[php'packagephp'php]php)php;
+php php php php php php php php php}
 
-        $this->_setKeys($options);
-    }
+php php php php php php php php php$thisphp-php>php_setKeysphp(php$optionsphp)php;
+php php php php php}
 
-    /**
-     * Sets the encryption keys
-     *
-     * @param  string|array $keys Key with type association
-     * @return Zend_Filter_Encrypt_Openssl
-     */
-    protected function _setKeys($keys)
-    {
-        if (!is_array($keys)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Invalid options argument provided to filter');
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp encryptionphp keys
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$keysphp Keyphp withphp typephp association
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Openssl
+php php php php php php*php/
+php php php php protectedphp functionphp php_setKeysphp(php$keysphp)
+php php php php php{
+php php php php php php php php ifphp php(php!isphp_arrayphp(php$keysphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Invalidphp optionsphp argumentphp providedphp tophp filterphp'php)php;
+php php php php php php php php php}
 
-        foreach ($keys as $type => $key) {
-            if (is_file($key) and is_readable($key)) {
-                $file = fopen($key, 'r');
-                $cert = fread($file, 8192);
-                fclose($file);
-            } else {
-                $cert = $key;
-                $key  = count($this->_keys[$type]);
-            }
+php php php php php php php php foreachphp php(php$keysphp asphp php$typephp php=php>php php$keyphp)php php{
+php php php php php php php php php php php php ifphp php(isphp_filephp(php$keyphp)php andphp isphp_readablephp(php$keyphp)php)php php{
+php php php php php php php php php php php php php php php php php$filephp php=php fopenphp(php$keyphp,php php'rphp'php)php;
+php php php php php php php php php php php php php php php php php$certphp php=php freadphp(php$filephp,php php8php1php9php2php)php;
+php php php php php php php php php php php php php php php php fclosephp(php$filephp)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$certphp php=php php$keyphp;
+php php php php php php php php php php php php php php php php php$keyphp php php=php countphp(php$thisphp-php>php_keysphp[php$typephp]php)php;
+php php php php php php php php php php php php php}
 
-            switch ($type) {
-                case 'public':
-                    $test = openssl_pkey_get_public($cert);
-                    if ($test === false) {
-                        require_once 'Zend/Filter/Exception.php';
-                        throw new Zend_Filter_Exception("Public key '{$cert}' not valid");
-                    }
+php php php php php php php php php php php php switchphp php(php$typephp)php php{
+php php php php php php php php php php php php php php php php casephp php'publicphp'php:
+php php php php php php php php php php php php php php php php php php php php php$testphp php=php opensslphp_pkeyphp_getphp_publicphp(php$certphp)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$testphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Publicphp keyphp php'php{php$certphp}php'php notphp validphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    openssl_free_key($test);
-                    $this->_keys['public'][$key] = $cert;
-                    break;
-                case 'private':
-                    $test = openssl_pkey_get_private($cert, $this->_passphrase);
-                    if ($test === false) {
-                        require_once 'Zend/Filter/Exception.php';
-                        throw new Zend_Filter_Exception("Private key '{$cert}' not valid");
-                    }
+php php php php php php php php php php php php php php php php php php php php opensslphp_freephp_keyphp(php$testphp)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_keysphp[php'publicphp'php]php[php$keyphp]php php=php php$certphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'privatephp'php:
+php php php php php php php php php php php php php php php php php php php php php$testphp php=php opensslphp_pkeyphp_getphp_privatephp(php$certphp,php php$thisphp-php>php_passphrasephp)php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$testphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Privatephp keyphp php'php{php$certphp}php'php notphp validphp"php)php;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                    openssl_free_key($test);
-                    $this->_keys['private'][$key] = $cert;
-                    break;
-                case 'envelope':
-                    $this->_keys['envelope'][$key] = $cert;
-                    break;
-                default:
-                    break;
-            }
-        }
+php php php php php php php php php php php php php php php php php php php php opensslphp_freephp_keyphp(php$testphp)php;
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_keysphp[php'privatephp'php]php[php$keyphp]php php=php php$certphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php'envelopephp'php:
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_keysphp[php'envelopephp'php]php[php$keyphp]php php=php php$certphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns all public keys
-     *
-     * @return array
-     */
-    public function getPublicKey()
-    {
-        $key = $this->_keys['public'];
-        return $key;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp publicphp keys
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getPublicKeyphp(php)
+php php php php php{
+php php php php php php php php php$keyphp php=php php$thisphp-php>php_keysphp[php'publicphp'php]php;
+php php php php php php php php returnphp php$keyphp;
+php php php php php}
 
-    /**
-     * Sets public keys
-     *
-     * @param  string|array $key Public keys
-     * @return Zend_Filter_Encrypt_Openssl
-     */
-    public function setPublicKey($key)
-    {
-        if (is_array($key)) {
-            foreach($key as $type => $option) {
-                if ($type !== 'public') {
-                    $key['public'] = $option;
-                    unset($key[$type]);
-                }
-            }
-        } else {
-            $key = array('public' => $key);
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp publicphp keys
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$keyphp Publicphp keys
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Openssl
+php php php php php php*php/
+php php php php publicphp functionphp setPublicKeyphp(php$keyphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$keyphp)php)php php{
+php php php php php php php php php php php php foreachphp(php$keyphp asphp php$typephp php=php>php php$optionphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$typephp php!php=php=php php'publicphp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp[php'publicphp'php]php php=php php$optionphp;
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$keyphp[php$typephp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$keyphp php=php arrayphp(php'publicphp'php php=php>php php$keyphp)php;
+php php php php php php php php php}
 
-        return $this->_setKeys($key);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_setKeysphp(php$keyphp)php;
+php php php php php}
 
-    /**
-     * Returns all private keys
-     *
-     * @return array
-     */
-    public function getPrivateKey()
-    {
-        $key = $this->_keys['private'];
-        return $key;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp privatephp keys
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getPrivateKeyphp(php)
+php php php php php{
+php php php php php php php php php$keyphp php=php php$thisphp-php>php_keysphp[php'privatephp'php]php;
+php php php php php php php php returnphp php$keyphp;
+php php php php php}
 
-    /**
-     * Sets private keys
-     *
-     * @param  string $key Private key
-     * @param  string $passphrase
-     * @return Zend_Filter_Encrypt_Openssl
-     */
-    public function setPrivateKey($key, $passphrase = null)
-    {
-        if (is_array($key)) {
-            foreach($key as $type => $option) {
-                if ($type !== 'private') {
-                    $key['private'] = $option;
-                    unset($key[$type]);
-                }
-            }
-        } else {
-            $key = array('private' => $key);
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp privatephp keys
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$keyphp Privatephp key
+php php php php php php*php php@paramphp php stringphp php$passphrase
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Openssl
+php php php php php php*php/
+php php php php publicphp functionphp setPrivateKeyphp(php$keyphp,php php$passphrasephp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$keyphp)php)php php{
+php php php php php php php php php php php php foreachphp(php$keyphp asphp php$typephp php=php>php php$optionphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$typephp php!php=php=php php'privatephp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp[php'privatephp'php]php php=php php$optionphp;
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$keyphp[php$typephp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$keyphp php=php arrayphp(php'privatephp'php php=php>php php$keyphp)php;
+php php php php php php php php php}
 
-        if ($passphrase !== null) {
-            $this->setPassphrase($passphrase);
-        }
+php php php php php php php php ifphp php(php$passphrasephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setPassphrasephp(php$passphrasephp)php;
+php php php php php php php php php}
 
-        return $this->_setKeys($key);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_setKeysphp(php$keyphp)php;
+php php php php php}
 
-    /**
-     * Returns all envelope keys
-     *
-     * @return array
-     */
-    public function getEnvelopeKey()
-    {
-        $key = $this->_keys['envelope'];
-        return $key;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp allphp envelopephp keys
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getEnvelopeKeyphp(php)
+php php php php php{
+php php php php php php php php php$keyphp php=php php$thisphp-php>php_keysphp[php'envelopephp'php]php;
+php php php php php php php php returnphp php$keyphp;
+php php php php php}
 
-    /**
-     * Sets envelope keys
-     *
-     * @param  string|array $options Envelope keys
-     * @return Zend_Filter_Encrypt_Openssl
-     */
-    public function setEnvelopeKey($key)
-    {
-        if (is_array($key)) {
-            foreach($key as $type => $option) {
-                if ($type !== 'envelope') {
-                    $key['envelope'] = $option;
-                    unset($key[$type]);
-                }
-            }
-        } else {
-            $key = array('envelope' => $key);
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp envelopephp keys
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp|arrayphp php$optionsphp Envelopephp keys
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Openssl
+php php php php php php*php/
+php php php php publicphp functionphp setEnvelopeKeyphp(php$keyphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_arrayphp(php$keyphp)php)php php{
+php php php php php php php php php php php php foreachphp(php$keyphp asphp php$typephp php=php>php php$optionphp)php php{
+php php php php php php php php php php php php php php php php ifphp php(php$typephp php!php=php=php php'envelopephp'php)php php{
+php php php php php php php php php php php php php php php php php php php php php$keyphp[php'envelopephp'php]php php=php php$optionphp;
+php php php php php php php php php php php php php php php php php php php php unsetphp(php$keyphp[php$typephp]php)php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$keyphp php=php arrayphp(php'envelopephp'php php=php>php php$keyphp)php;
+php php php php php php php php php}
 
-        return $this->_setKeys($key);
-    }
+php php php php php php php php returnphp php$thisphp-php>php_setKeysphp(php$keyphp)php;
+php php php php php}
 
-    /**
-     * Returns the passphrase
-     *
-     * @return string
-     */
-    public function getPassphrase()
-    {
-        return $this->_passphrase;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp passphrase
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getPassphrasephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_passphrasephp;
+php php php php php}
 
-    /**
-     * Sets a new passphrase
-     *
-     * @param string $passphrase
-     * @return Zend_Filter_Encrypt_Openssl
-     */
-    public function setPassphrase($passphrase)
-    {
-        $this->_passphrase = $passphrase;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp newphp passphrase
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$passphrase
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Openssl
+php php php php php php*php/
+php php php php publicphp functionphp setPassphrasephp(php$passphrasephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_passphrasephp php=php php$passphrasephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the compression
-     *
-     * @return array
-     */
-    public function getCompression()
-    {
-        return $this->_compression;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp compression
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getCompressionphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_compressionphp;
+php php php php php}
 
-    /**
-     * Sets a internal compression for values to encrypt
-     *
-     * @param string|array $compression
-     * @return Zend_Filter_Encrypt_Openssl
-     */
-    public function setCompression($compression)
-    {
-        if (is_string($this->_compression)) {
-            $compression = array('adapter' => $compression);
-        }
+php php php php php/php*php*
+php php php php php php*php Setsphp aphp internalphp compressionphp forphp valuesphp tophp encrypt
+php php php php php php*
+php php php php php php*php php@paramphp stringphp|arrayphp php$compression
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Openssl
+php php php php php php*php/
+php php php php publicphp functionphp setCompressionphp(php$compressionphp)
+php php php php php{
+php php php php php php php php ifphp php(isphp_stringphp(php$thisphp-php>php_compressionphp)php)php php{
+php php php php php php php php php php php php php$compressionphp php=php arrayphp(php'adapterphp'php php=php>php php$compressionphp)php;
+php php php php php php php php php}
 
-        $this->_compression = $compression;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_compressionphp php=php php$compressionphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns if header should be packaged
-     *
-     * @return boolean
-     */
-    public function getPackage()
-    {
-        return $this->_package;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp ifphp headerphp shouldphp bephp packaged
+php php php php php php*
+php php php php php php*php php@returnphp boolean
+php php php php php php*php/
+php php php php publicphp functionphp getPackagephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_packagephp;
+php php php php php}
 
-    /**
-     * Sets if the envelope keys should be included in the encrypted value
-     *
-     * @param boolean $package
-     * @return Zend_Filter_Encrypt_Openssl
-     */
-    public function setPackage($package)
-    {
-        $this->_package = (boolean) $package;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp ifphp thephp envelopephp keysphp shouldphp bephp includedphp inphp thephp encryptedphp value
+php php php php php php*
+php php php php php php*php php@paramphp booleanphp php$package
+php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Openssl
+php php php php php php*php/
+php php php php publicphp functionphp setPackagephp(php$packagephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_packagephp php=php php(booleanphp)php php$packagephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Encrypts $value with the defined settings
-     * Note that you also need the "encrypted" keys to be able to decrypt
-     *
-     * @param  string $value Content to encrypt
-     * @return string The encrypted content
-     * @throws Zend_Filter_Exception
-     */
-    public function encrypt($value)
-    {
-        $encrypted     = array();
-        $encryptedkeys = array();
+php php php php php/php*php*
+php php php php php php*php Encryptsphp php$valuephp withphp thephp definedphp settings
+php php php php php php*php Notephp thatphp youphp alsophp needphp thephp php"encryptedphp"php keysphp tophp bephp ablephp tophp decrypt
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Contentphp tophp encrypt
+php php php php php php*php php@returnphp stringphp Thephp encryptedphp content
+php php php php php php*php php@throwsphp Zendphp_Filterphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp encryptphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$encryptedphp php php php php php=php arrayphp(php)php;
+php php php php php php php php php$encryptedkeysphp php=php arrayphp(php)php;
 
-        if (count($this->_keys['public']) == 0) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Openssl can not encrypt without public keys');
-        }
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_keysphp[php'publicphp'php]php)php php=php=php php0php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Opensslphp canphp notphp encryptphp withoutphp publicphp keysphp'php)php;
+php php php php php php php php php}
 
-        $keys         = array();
-        $fingerprints = array();
-        $count        = -1;
-        foreach($this->_keys['public'] as $key => $cert) {
-            $keys[$key] = openssl_pkey_get_public($cert);
-            if ($this->_package) {
-                $details = openssl_pkey_get_details($keys[$key]);
-                if ($details === false) {
-                    $details = array('key' => 'ZendFramework');
-                }
+php php php php php php php php php$keysphp php php php php php php php php php=php arrayphp(php)php;
+php php php php php php php php php$fingerprintsphp php=php arrayphp(php)php;
+php php php php php php php php php$countphp php php php php php php php php=php php-php1php;
+php php php php php php php php foreachphp(php$thisphp-php>php_keysphp[php'publicphp'php]php asphp php$keyphp php=php>php php$certphp)php php{
+php php php php php php php php php php php php php$keysphp[php$keyphp]php php=php opensslphp_pkeyphp_getphp_publicphp(php$certphp)php;
+php php php php php php php php php php php php ifphp php(php$thisphp-php>php_packagephp)php php{
+php php php php php php php php php php php php php php php php php$detailsphp php=php opensslphp_pkeyphp_getphp_detailsphp(php$keysphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php ifphp php(php$detailsphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$detailsphp php=php arrayphp(php'keyphp'php php=php>php php'ZendFrameworkphp'php)php;
+php php php php php php php php php php php php php php php php php}
 
-                ++$count;
-                $fingerprints[$count] = md5($details['key']);
-            }
-        }
+php php php php php php php php php php php php php php php php php+php+php$countphp;
+php php php php php php php php php php php php php php php php php$fingerprintsphp[php$countphp]php php=php mdphp5php(php$detailsphp[php'keyphp'php]php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        // compress prior to encryption
-        if (!empty($this->_compression)) {
-            require_once 'Zend/Filter/Compress.php';
-            $compress = new Zend_Filter_Compress($this->_compression);
-            $value    = $compress->filter($value);
-        }
+php php php php php php php php php/php/php compressphp priorphp tophp encryption
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_compressionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Compressphp.phpphp'php;
+php php php php php php php php php php php php php$compressphp php=php newphp Zendphp_Filterphp_Compressphp(php$thisphp-php>php_compressionphp)php;
+php php php php php php php php php php php php php$valuephp php php php php=php php$compressphp-php>filterphp(php$valuephp)php;
+php php php php php php php php php}
 
-        $crypt  = openssl_seal($value, $encrypted, $encryptedkeys, $keys);
-        foreach ($keys as $key) {
-            openssl_free_key($key);
-        }
+php php php php php php php php php$cryptphp php php=php opensslphp_sealphp(php$valuephp,php php$encryptedphp,php php$encryptedkeysphp,php php$keysphp)php;
+php php php php php php php php foreachphp php(php$keysphp asphp php$keyphp)php php{
+php php php php php php php php php php php php opensslphp_freephp_keyphp(php$keyphp)php;
+php php php php php php php php php}
 
-        if ($crypt === false) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Openssl was not able to encrypt your content with the given options');
-        }
+php php php php php php php php ifphp php(php$cryptphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Opensslphp wasphp notphp ablephp tophp encryptphp yourphp contentphp withphp thephp givenphp optionsphp'php)php;
+php php php php php php php php php}
 
-        $this->_keys['envelope'] = $encryptedkeys;
+php php php php php php php php php$thisphp-php>php_keysphp[php'envelopephp'php]php php=php php$encryptedkeysphp;
 
-        // Pack data and envelope keys into single string
-        if ($this->_package) {
-            $header = pack('n', count($this->_keys['envelope']));
-            foreach($this->_keys['envelope'] as $key => $envKey) {
-                $header .= pack('H32n', $fingerprints[$key], strlen($envKey)) . $envKey;
-            }
+php php php php php php php php php/php/php Packphp dataphp andphp envelopephp keysphp intophp singlephp string
+php php php php php php php php ifphp php(php$thisphp-php>php_packagephp)php php{
+php php php php php php php php php php php php php$headerphp php=php packphp(php'nphp'php,php countphp(php$thisphp-php>php_keysphp[php'envelopephp'php]php)php)php;
+php php php php php php php php php php php php foreachphp(php$thisphp-php>php_keysphp[php'envelopephp'php]php asphp php$keyphp php=php>php php$envKeyphp)php php{
+php php php php php php php php php php php php php php php php php$headerphp php.php=php packphp(php'Hphp3php2nphp'php,php php$fingerprintsphp[php$keyphp]php,php strlenphp(php$envKeyphp)php)php php.php php$envKeyphp;
+php php php php php php php php php php php php php}
 
-            $encrypted = $header . $encrypted;
-        }
+php php php php php php php php php php php php php$encryptedphp php=php php$headerphp php.php php$encryptedphp;
+php php php php php php php php php}
 
-        return $encrypted;
-    }
+php php php php php php php php returnphp php$encryptedphp;
+php php php php php}
 
-    /**
-     * Defined by Zend_Filter_Interface
-     *
-     * Decrypts $value with the defined settings
-     *
-     * @param  string $value Content to decrypt
-     * @return string The decrypted content
-     * @throws Zend_Filter_Exception
-     */
-    public function decrypt($value)
-    {
-        $decrypted = "";
-        $envelope  = current($this->getEnvelopeKey());
+php php php php php/php*php*
+php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
+php php php php php php*
+php php php php php php*php Decryptsphp php$valuephp withphp thephp definedphp settings
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$valuephp Contentphp tophp decrypt
+php php php php php php*php php@returnphp stringphp Thephp decryptedphp content
+php php php php php php*php php@throwsphp Zendphp_Filterphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp decryptphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$decryptedphp php=php php"php"php;
+php php php php php php php php php$envelopephp php php=php currentphp(php$thisphp-php>getEnvelopeKeyphp(php)php)php;
 
-        if (count($this->_keys['private']) !== 1) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Please give a private key for decryption with Openssl');
-        }
+php php php php php php php php ifphp php(countphp(php$thisphp-php>php_keysphp[php'privatephp'php]php)php php!php=php=php php1php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Pleasephp givephp aphp privatephp keyphp forphp decryptionphp withphp Opensslphp'php)php;
+php php php php php php php php php}
 
-        if (!$this->_package && empty($envelope)) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Please give a envelope key for decryption with Openssl');
-        }
+php php php php php php php php ifphp php(php!php$thisphp-php>php_packagephp php&php&php emptyphp(php$envelopephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Pleasephp givephp aphp envelopephp keyphp forphp decryptionphp withphp Opensslphp'php)php;
+php php php php php php php php php}
 
-        foreach($this->_keys['private'] as $key => $cert) {
-            $keys = openssl_pkey_get_private($cert, $this->getPassphrase());
-        }
+php php php php php php php php foreachphp(php$thisphp-php>php_keysphp[php'privatephp'php]php asphp php$keyphp php=php>php php$certphp)php php{
+php php php php php php php php php php php php php$keysphp php=php opensslphp_pkeyphp_getphp_privatephp(php$certphp,php php$thisphp-php>getPassphrasephp(php)php)php;
+php php php php php php php php php}
 
-        if ($this->_package) {
-            $details = openssl_pkey_get_details($keys);
-            if ($details !== false) {
-                $fingerprint = md5($details['key']);
-            } else {
-                $fingerprint = md5("ZendFramework");
-            }
+php php php php php php php php ifphp php(php$thisphp-php>php_packagephp)php php{
+php php php php php php php php php php php php php$detailsphp php=php opensslphp_pkeyphp_getphp_detailsphp(php$keysphp)php;
+php php php php php php php php php php php php ifphp php(php$detailsphp php!php=php=php falsephp)php php{
+php php php php php php php php php php php php php php php php php$fingerprintphp php=php mdphp5php(php$detailsphp[php'keyphp'php]php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$fingerprintphp php=php mdphp5php(php"ZendFrameworkphp"php)php;
+php php php php php php php php php php php php php}
 
-            $count = unpack('ncount', $value);
-            $count = $count['count'];
-            $length  = 2;
-            for($i = $count; $i > 0; --$i) {
-                $header = unpack('H32print/nsize', substr($value, $length, 18));
-                $length  += 18;
-                if ($header['print'] == $fingerprint) {
-                    $envelope = substr($value, $length, $header['size']);
-                }
+php php php php php php php php php php php php php$countphp php=php unpackphp(php'ncountphp'php,php php$valuephp)php;
+php php php php php php php php php php php php php$countphp php=php php$countphp[php'countphp'php]php;
+php php php php php php php php php php php php php$lengthphp php php=php php2php;
+php php php php php php php php php php php php forphp(php$iphp php=php php$countphp;php php$iphp php>php php0php;php php-php-php$iphp)php php{
+php php php php php php php php php php php php php php php php php$headerphp php=php unpackphp(php'Hphp3php2printphp/nsizephp'php,php substrphp(php$valuephp,php php$lengthphp,php php1php8php)php)php;
+php php php php php php php php php php php php php php php php php$lengthphp php php+php=php php1php8php;
+php php php php php php php php php php php php php php php php ifphp php(php$headerphp[php'printphp'php]php php=php=php php$fingerprintphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$envelopephp php=php substrphp(php$valuephp,php php$lengthphp,php php$headerphp[php'sizephp'php]php)php;
+php php php php php php php php php php php php php php php php php}
 
-                $length += $header['size'];
-            }
+php php php php php php php php php php php php php php php php php$lengthphp php+php=php php$headerphp[php'sizephp'php]php;
+php php php php php php php php php php php php php}
 
-            // remainder of string is the value to decrypt
-            $value = substr($value, $length);
-        }
+php php php php php php php php php php php php php/php/php remainderphp ofphp stringphp isphp thephp valuephp tophp decrypt
+php php php php php php php php php php php php php$valuephp php=php substrphp(php$valuephp,php php$lengthphp)php;
+php php php php php php php php php}
 
-        $crypt  = openssl_open($value, $decrypted, $envelope, $keys);
-        openssl_free_key($keys);
+php php php php php php php php php$cryptphp php php=php opensslphp_openphp(php$valuephp,php php$decryptedphp,php php$envelopephp,php php$keysphp)php;
+php php php php php php php php opensslphp_freephp_keyphp(php$keysphp)php;
 
-        if ($crypt === false) {
-            require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception('Openssl was not able to decrypt you content with the given options');
-        }
+php php php php php php php php ifphp php(php$cryptphp php=php=php=php falsephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Opensslphp wasphp notphp ablephp tophp decryptphp youphp contentphp withphp thephp givenphp optionsphp'php)php;
+php php php php php php php php php}
 
-        // decompress after decryption
-        if (!empty($this->_compression)) {
-            require_once 'Zend/Filter/Decompress.php';
-            $decompress = new Zend_Filter_Decompress($this->_compression);
-            $decrypted  = $decompress->filter($decrypted);
-        }
+php php php php php php php php php/php/php decompressphp afterphp decryption
+php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_compressionphp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Decompressphp.phpphp'php;
+php php php php php php php php php php php php php$decompressphp php=php newphp Zendphp_Filterphp_Decompressphp(php$thisphp-php>php_compressionphp)php;
+php php php php php php php php php php php php php$decryptedphp php php=php php$decompressphp-php>filterphp(php$decryptedphp)php;
+php php php php php php php php php}
 
-        return $decrypted;
-    }
+php php php php php php php php returnphp php$decryptedphp;
+php php php php php}
 
-    /**
-     * Returns the adapter name
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return 'Openssl';
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp adapterphp name
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp toStringphp(php)
+php php php php php{
+php php php php php php php php returnphp php'Opensslphp'php;
+php php php php php}
+php}

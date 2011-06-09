@@ -1,131 +1,131 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Table
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Definition.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Table
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Definitionphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * Class for SQL table interface.
- *
- * @category   Zend
- * @package    Zend_Db
- * @subpackage Table
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Db_Table_Definition
-{
+php/php*php*
+php php*php Classphp forphp SQLphp tablephp interfacephp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Db
+php php*php php@subpackagephp Table
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Dbphp_Tablephp_Definition
+php{
 
-    /**
-     * @var array
-     */
-    protected $_tableConfigs = array();
+php php php php php/php*php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_tableConfigsphp php=php arrayphp(php)php;
 
-    /**
-     * __construct()
-     *
-     * @param array|Zend_Config $options
-     */
-    public function __construct($options = null)
-    {
-        if ($options instanceof Zend_Config) {
-            $this->setConfig($options);
-        } elseif (is_array($options)) {
-            $this->setOptions($options);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php php_php_constructphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$options
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
+php php php php php{
+php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$optionsphp)php;
+php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * setConfig()
-     *
-     * @param Zend_Config $config
-     * @return Zend_Db_Table_Definition
-     */
-    public function setConfig(Zend_Config $config)
-    {
-        $this->setOptions($config->toArray());
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setConfigphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Configphp php$config
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Definition
+php php php php php php*php/
+php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setOptionsphp(php$configphp-php>toArrayphp(php)php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * setOptions()
-     *
-     * @param array $options
-     * @return Zend_Db_Table_Definition
-     */
-    public function setOptions(Array $options)
-    {
-        foreach ($options as $optionName => $optionValue) {
-            $this->setTableConfig($optionName, $optionValue);
-        }
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setOptionsphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$options
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Definition
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(Arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php foreachphp php(php$optionsphp asphp php$optionNamephp php=php>php php$optionValuephp)php php{
+php php php php php php php php php php php php php$thisphp-php>setTableConfigphp(php$optionNamephp,php php$optionValuephp)php;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * @param string $tableName
-     * @param array  $tableConfig
-     * @return Zend_Db_Table_Definition
-     */
-    public function setTableConfig($tableName, array $tableConfig)
-    {
-        // @todo logic here
-        $tableConfig[Zend_Db_Table::DEFINITION_CONFIG_NAME] = $tableName;
-        $tableConfig[Zend_Db_Table::DEFINITION] = $this;
+php php php php php/php*php*
+php php php php php php*php php@paramphp stringphp php$tableName
+php php php php php php*php php@paramphp arrayphp php php$tableConfig
+php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Definition
+php php php php php php*php/
+php php php php publicphp functionphp setTableConfigphp(php$tableNamephp,php arrayphp php$tableConfigphp)
+php php php php php{
+php php php php php php php php php/php/php php@todophp logicphp here
+php php php php php php php php php$tableConfigphp[Zendphp_Dbphp_Tablephp:php:DEFINITIONphp_CONFIGphp_NAMEphp]php php=php php$tableNamephp;
+php php php php php php php php php$tableConfigphp[Zendphp_Dbphp_Tablephp:php:DEFINITIONphp]php php=php php$thisphp;
 
-        if (!isset($tableConfig[Zend_Db_Table::NAME])) {
-            $tableConfig[Zend_Db_Table::NAME] = $tableName;
-        }
+php php php php php php php php ifphp php(php!issetphp(php$tableConfigphp[Zendphp_Dbphp_Tablephp:php:NAMEphp]php)php)php php{
+php php php php php php php php php php php php php$tableConfigphp[Zendphp_Dbphp_Tablephp:php:NAMEphp]php php=php php$tableNamephp;
+php php php php php php php php php}
 
-        $this->_tableConfigs[$tableName] = $tableConfig;
-        return $this;
-    }
+php php php php php php php php php$thisphp-php>php_tableConfigsphp[php$tableNamephp]php php=php php$tableConfigphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getTableConfig()
-     *
-     * @param string $tableName
-     * @return array
-     */
-    public function getTableConfig($tableName)
-    {
-        return $this->_tableConfigs[$tableName];
-    }
+php php php php php/php*php*
+php php php php php php*php getTableConfigphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$tableName
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getTableConfigphp(php$tableNamephp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_tableConfigsphp[php$tableNamephp]php;
+php php php php php}
 
-    /**
-     * removeTableConfig()
-     *
-     * @param string $tableName
-     */
-    public function removeTableConfig($tableName)
-    {
-        unset($this->_tableConfigs[$tableName]);
-    }
+php php php php php/php*php*
+php php php php php php*php removeTableConfigphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$tableName
+php php php php php php*php/
+php php php php publicphp functionphp removeTableConfigphp(php$tableNamephp)
+php php php php php{
+php php php php php php php php unsetphp(php$thisphp-php>php_tableConfigsphp[php$tableNamephp]php)php;
+php php php php php}
 
-    /**
-     * hasTableConfig()
-     *
-     * @param string $tableName
-     * @return bool
-     */
-    public function hasTableConfig($tableName)
-    {
-        return (isset($this->_tableConfigs[$tableName]));
-    }
+php php php php php/php*php*
+php php php php php php*php hasTableConfigphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$tableName
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp hasTableConfigphp(php$tableNamephp)
+php php php php php{
+php php php php php php php php returnphp php(issetphp(php$thisphp-php>php_tableConfigsphp[php$tableNamephp]php)php)php;
+php php php php php}
 
-}
+php}

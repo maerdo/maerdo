@@ -1,69 +1,69 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Pubsubhubbub
- * @subpackage Callback
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: CallbackInterface.php 20785 2010-01-31 09:43:03Z mikaelkael $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
+php php*php php@subpackagephp Callback
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php CallbackInterfacephp.phpphp php2php0php7php8php5php php2php0php1php0php-php0php1php-php3php1php php0php9php:php4php3php:php0php3Zphp mikaelkaelphp php$
+php php*php/
 
-/**
- * @category   Zend
- * @package    Zend_Feed_Pubsubhubbub
- * @subpackage Callback
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-interface Zend_Feed_Pubsubhubbub_CallbackInterface
-{
-    /**
-     * Handle any callback from a Hub Server responding to a subscription or
-     * unsubscription request. This should be the Hub Server confirming the
-     * the request prior to taking action on it.
-     *
-     * @param array $httpData GET/POST data if available and not in $_GET/POST
-     * @param bool $sendResponseNow Whether to send response now or when asked
-     */
-    public function handle(array $httpData = null, $sendResponseNow = false);
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
+php php*php php@subpackagephp Callback
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+interfacephp Zendphp_Feedphp_Pubsubhubbubphp_CallbackInterface
+php{
+php php php php php/php*php*
+php php php php php php*php Handlephp anyphp callbackphp fromphp aphp Hubphp Serverphp respondingphp tophp aphp subscriptionphp or
+php php php php php php*php unsubscriptionphp requestphp.php Thisphp shouldphp bephp thephp Hubphp Serverphp confirmingphp the
+php php php php php php*php thephp requestphp priorphp tophp takingphp actionphp onphp itphp.
+php php php php php php*
+php php php php php php*php php@paramphp arrayphp php$httpDataphp GETphp/POSTphp dataphp ifphp availablephp andphp notphp inphp php$php_GETphp/POST
+php php php php php php*php php@paramphp boolphp php$sendResponseNowphp Whetherphp tophp sendphp responsephp nowphp orphp whenphp asked
+php php php php php php*php/
+php php php php publicphp functionphp handlephp(arrayphp php$httpDataphp php=php nullphp,php php$sendResponseNowphp php=php falsephp)php;
 
-    /**
-     * Send the response, including all headers.
-     * If you wish to handle this via Zend_Controller, use the getter methods
-     * to retrieve any data needed to be set on your HTTP Response object, or
-     * simply give this object the HTTP Response instance to work with for you!
-     *
-     * @return void
-     */
-    public function sendResponse();
+php php php php php/php*php*
+php php php php php php*php Sendphp thephp responsephp,php includingphp allphp headersphp.
+php php php php php php*php Ifphp youphp wishphp tophp handlephp thisphp viaphp Zendphp_Controllerphp,php usephp thephp getterphp methods
+php php php php php php*php tophp retrievephp anyphp dataphp neededphp tophp bephp setphp onphp yourphp HTTPphp Responsephp objectphp,php or
+php php php php php php*php simplyphp givephp thisphp objectphp thephp HTTPphp Responsephp instancephp tophp workphp withphp forphp youphp!
+php php php php php php*
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp sendResponsephp(php)php;
 
-    /**
-     * An instance of a class handling Http Responses. This is implemented in
-     * Zend_Feed_Pubsubhubbub_HttpResponse which shares an unenforced interface with
-     * (i.e. not inherited from) Zend_Controller_Response_Http.
-     *
-     * @param Zend_Feed_Pubsubhubbub_HttpResponse|Zend_Controller_Response_Http $httpResponse
-     */
-    public function setHttpResponse($httpResponse);
+php php php php php/php*php*
+php php php php php php*php Anphp instancephp ofphp aphp classphp handlingphp Httpphp Responsesphp.php Thisphp isphp implementedphp in
+php php php php php php*php Zendphp_Feedphp_Pubsubhubbubphp_HttpResponsephp whichphp sharesphp anphp unenforcedphp interfacephp with
+php php php php php php*php php(iphp.ephp.php notphp inheritedphp fromphp)php Zendphp_Controllerphp_Responsephp_Httpphp.
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Feedphp_Pubsubhubbubphp_HttpResponsephp|Zendphp_Controllerphp_Responsephp_Httpphp php$httpResponse
+php php php php php php*php/
+php php php php publicphp functionphp setHttpResponsephp(php$httpResponsephp)php;
 
-    /**
-     * An instance of a class handling Http Responses. This is implemented in
-     * Zend_Feed_Pubsubhubbub_HttpResponse which shares an unenforced interface with
-     * (i.e. not inherited from) Zend_Controller_Response_Http.
-     *
-     * @return Zend_Feed_Pubsubhubbub_HttpResponse|Zend_Controller_Response_Http
-     */
-    public function getHttpResponse();
-}
+php php php php php/php*php*
+php php php php php php*php Anphp instancephp ofphp aphp classphp handlingphp Httpphp Responsesphp.php Thisphp isphp implementedphp in
+php php php php php php*php Zendphp_Feedphp_Pubsubhubbubphp_HttpResponsephp whichphp sharesphp anphp unenforcedphp interfacephp with
+php php php php php php*php php(iphp.ephp.php notphp inheritedphp fromphp)php Zendphp_Controllerphp_Responsephp_Httpphp.
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_HttpResponsephp|Zendphp_Controllerphp_Responsephp_Http
+php php php php php php*php/
+php php php php publicphp functionphp getHttpResponsephp(php)php;
+php}

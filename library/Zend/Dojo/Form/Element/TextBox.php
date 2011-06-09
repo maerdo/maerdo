@@ -1,164 +1,164 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Dojo
- * @subpackage Form_Element
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Dojo
+php php*php php@subpackagephp Formphp_Element
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
 
-/** Zend_Dojo_Form_Element_Dijit */
-require_once 'Zend/Dojo/Form/Element/Dijit.php';
+php/php*php*php Zendphp_Dojophp_Formphp_Elementphp_Dijitphp php*php/
+requirephp_oncephp php'Zendphp/Dojophp/Formphp/Elementphp/Dijitphp.phpphp'php;
 
-/**
- * TextBox dijit
- *
- * @category   Zend
- * @package    Zend_Dojo
- * @subpackage Form_Element
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: TextBox.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
-class Zend_Dojo_Form_Element_TextBox extends Zend_Dojo_Form_Element_Dijit
-{
-    /**
-     * Use TextBox dijit view helper
-     * @var string
-     */
-    public $helper = 'TextBox';
+php/php*php*
+php php*php TextBoxphp dijit
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Dojo
+php php*php php@subpackagephp Formphp_Element
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php TextBoxphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
+classphp Zendphp_Dojophp_Formphp_Elementphp_TextBoxphp extendsphp Zendphp_Dojophp_Formphp_Elementphp_Dijit
+php{
+php php php php php/php*php*
+php php php php php php*php Usephp TextBoxphp dijitphp viewphp helper
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php publicphp php$helperphp php=php php'TextBoxphp'php;
 
-    /**
-     * Set lowercase flag
-     *
-     * @param  bool $lowercase
-     * @return Zend_Dojo_Form_Element_TextBox
-     */
-    public function setLowercase($flag)
-    {
-        $this->setDijitParam('lowercase', (bool) $flag);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp lowercasephp flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$lowercase
+php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_TextBox
+php php php php php php*php/
+php php php php publicphp functionphp setLowercasephp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setDijitParamphp(php'lowercasephp'php,php php(boolphp)php php$flagphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve lowercase flag
-     *
-     * @return bool
-     */
-    public function getLowercase()
-    {
-        if (!$this->hasDijitParam('lowercase')) {
-            return false;
-        }
-        return $this->getDijitParam('lowercase');
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp lowercasephp flag
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getLowercasephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'lowercasephp'php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'lowercasephp'php)php;
+php php php php php}
 
-    /**
-     * Set propercase flag
-     *
-     * @param  bool $propercase
-     * @return Zend_Dojo_Form_Element_TextBox
-     */
-    public function setPropercase($flag)
-    {
-        $this->setDijitParam('propercase', (bool) $flag);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp propercasephp flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$propercase
+php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_TextBox
+php php php php php php*php/
+php php php php publicphp functionphp setPropercasephp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setDijitParamphp(php'propercasephp'php,php php(boolphp)php php$flagphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve propercase flag
-     *
-     * @return bool
-     */
-    public function getPropercase()
-    {
-        if (!$this->hasDijitParam('propercase')) {
-            return false;
-        }
-        return $this->getDijitParam('propercase');
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp propercasephp flag
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getPropercasephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'propercasephp'php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'propercasephp'php)php;
+php php php php php}
 
-    /**
-     * Set uppercase flag
-     *
-     * @param  bool $uppercase
-     * @return Zend_Dojo_Form_Element_TextBox
-     */
-    public function setUppercase($flag)
-    {
-        $this->setDijitParam('uppercase', (bool) $flag);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp uppercasephp flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$uppercase
+php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_TextBox
+php php php php php php*php/
+php php php php publicphp functionphp setUppercasephp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setDijitParamphp(php'uppercasephp'php,php php(boolphp)php php$flagphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve uppercase flag
-     *
-     * @return bool
-     */
-    public function getUppercase()
-    {
-        if (!$this->hasDijitParam('uppercase')) {
-            return false;
-        }
-        return $this->getDijitParam('uppercase');
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp uppercasephp flag
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getUppercasephp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'uppercasephp'php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'uppercasephp'php)php;
+php php php php php}
 
-    /**
-     * Set trim flag
-     *
-     * @param  bool $trim
-     * @return Zend_Dojo_Form_Element_TextBox
-     */
-    public function setTrim($flag)
-    {
-        $this->setDijitParam('trim', (bool) $flag);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp trimphp flag
+php php php php php php*
+php php php php php php*php php@paramphp php boolphp php$trim
+php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_TextBox
+php php php php php php*php/
+php php php php publicphp functionphp setTrimphp(php$flagphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setDijitParamphp(php'trimphp'php,php php(boolphp)php php$flagphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve trim flag
-     *
-     * @return bool
-     */
-    public function getTrim()
-    {
-        if (!$this->hasDijitParam('trim')) {
-            return false;
-        }
-        return $this->getDijitParam('trim');
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp trimphp flag
+php php php php php php*
+php php php php php php*php php@returnphp bool
+php php php php php php*php/
+php php php php publicphp functionphp getTrimphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'trimphp'php)php)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'trimphp'php)php;
+php php php php php}
 
-    /**
-     * Set maxLength
-     *
-     * @param  int $length
-     * @return Zend_Dojo_Form_Element_TextBox
-     */
-    public function setMaxLength($length)
-    {
-        $this->setDijitParam('maxLength', (int) $length);
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setphp maxLength
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$length
+php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_TextBox
+php php php php php php*php/
+php php php php publicphp functionphp setMaxLengthphp(php$lengthphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setDijitParamphp(php'maxLengthphp'php,php php(intphp)php php$lengthphp)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Retrieve maxLength
-     *
-     * @return int|null
-     */
-    public function getMaxLength()
-    {
-        return $this->getDijitParam('maxLength');
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Retrievephp maxLength
+php php php php php php*
+php php php php php php*php php@returnphp intphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getMaxLengthphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'maxLengthphp'php)php;
+php php php php php}
+php}

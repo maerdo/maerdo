@@ -1,526 +1,526 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Auth
- * @subpackage Zend_Auth_Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Ldap.php 23486 2010-12-10 04:05:30Z mjh_ca $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Auth
+php php*php php@subpackagephp Zendphp_Authphp_Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Ldapphp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
+php php*php/
 
-/**
- * @see Zend_Auth_Adapter_Interface
- */
-require_once 'Zend/Auth/Adapter/Interface.php';
+php/php*php*
+php php*php php@seephp Zendphp_Authphp_Adapterphp_Interface
+php php*php/
+requirephp_oncephp php'Zendphp/Authphp/Adapterphp/Interfacephp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_Auth
- * @subpackage Zend_Auth_Adapter
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Auth
+php php*php php@subpackagephp Zendphp_Authphp_Adapter
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Authphp_Adapterphp_Ldapphp implementsphp Zendphp_Authphp_Adapterphp_Interface
+php{
 
-    /**
-     * The Zend_Ldap context.
-     *
-     * @var Zend_Ldap
-     */
-    protected $_ldap = null;
+php php php php php/php*php*
+php php php php php php*php Thephp Zendphp_Ldapphp contextphp.
+php php php php php php*
+php php php php php php*php php@varphp Zendphp_Ldap
+php php php php php php*php/
+php php php php protectedphp php$php_ldapphp php=php nullphp;
 
-    /**
-     * The array of arrays of Zend_Ldap options passed to the constructor.
-     *
-     * @var array
-     */
-    protected $_options = null;
+php php php php php/php*php*
+php php php php php php*php Thephp arrayphp ofphp arraysphp ofphp Zendphp_Ldapphp optionsphp passedphp tophp thephp constructorphp.
+php php php php php php*
+php php php php php php*php php@varphp array
+php php php php php php*php/
+php php php php protectedphp php$php_optionsphp php=php nullphp;
 
-    /**
-     * The username of the account being authenticated.
-     *
-     * @var string
-     */
-    protected $_username = null;
+php php php php php/php*php*
+php php php php php php*php Thephp usernamephp ofphp thephp accountphp beingphp authenticatedphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_usernamephp php=php nullphp;
 
-    /**
-     * The password of the account being authenticated.
-     *
-     * @var string
-     */
-    protected $_password = null;
+php php php php php/php*php*
+php php php php php php*php Thephp passwordphp ofphp thephp accountphp beingphp authenticatedphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_passwordphp php=php nullphp;
 
-    /**
-     * The DN of the authenticated account. Used to retrieve the account entry on request.
-     *
-     * @var string
-     */
-    protected $_authenticatedDn = null;
+php php php php php/php*php*
+php php php php php php*php Thephp DNphp ofphp thephp authenticatedphp accountphp.php Usedphp tophp retrievephp thephp accountphp entryphp onphp requestphp.
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_authenticatedDnphp php=php nullphp;
 
-    /**
-     * Constructor
-     *
-     * @param  array  $options  An array of arrays of Zend_Ldap options
-     * @param  string $username The username of the account being authenticated
-     * @param  string $password The password of the account being authenticated
-     * @return void
-     */
-    public function __construct(array $options = array(), $username = null, $password = null)
-    {
-        $this->setOptions($options);
-        if ($username !== null) {
-            $this->setUsername($username);
-        }
-        if ($password !== null) {
-            $this->setPassword($password);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php php$optionsphp php Anphp arrayphp ofphp arraysphp ofphp Zendphp_Ldapphp options
+php php php php php php*php php@paramphp php stringphp php$usernamephp Thephp usernamephp ofphp thephp accountphp beingphp authenticated
+php php php php php php*php php@paramphp php stringphp php$passwordphp Thephp passwordphp ofphp thephp accountphp beingphp authenticated
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php,php php$usernamephp php=php nullphp,php php$passwordphp php=php nullphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php ifphp php(php$usernamephp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setUsernamephp(php$usernamephp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$passwordphp php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php$thisphp-php>setPasswordphp(php$passwordphp)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * Returns the array of arrays of Zend_Ldap options of this adapter.
-     *
-     * @return array|null
-     */
-    public function getOptions()
-    {
-        return $this->_options;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp arrayphp ofphp arraysphp ofphp Zendphp_Ldapphp optionsphp ofphp thisphp adapterphp.
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getOptionsphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_optionsphp;
+php php php php php}
 
-    /**
-     * Sets the array of arrays of Zend_Ldap options to be used by
-     * this adapter.
-     *
-     * @param  array $options The array of arrays of Zend_Ldap options
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
-     */
-    public function setOptions($options)
-    {
-        $this->_options = is_array($options) ? $options : array();
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp arrayphp ofphp arraysphp ofphp Zendphp_Ldapphp optionsphp tophp bephp usedphp by
+php php php php php php*php thisphp adapterphp.
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$optionsphp Thephp arrayphp ofphp arraysphp ofphp Zendphp_Ldapphp options
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_Ldapphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setOptionsphp(php$optionsphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_optionsphp php=php isphp_arrayphp(php$optionsphp)php php?php php$optionsphp php:php arrayphp(php)php;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the username of the account being authenticated, or
-     * NULL if none is set.
-     *
-     * @return string|null
-     */
-    public function getUsername()
-    {
-        return $this->_username;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp usernamephp ofphp thephp accountphp beingphp authenticatedphp,php or
+php php php php php php*php NULLphp ifphp nonephp isphp setphp.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getUsernamephp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_usernamephp;
+php php php php php}
 
-    /**
-     * Sets the username for binding
-     *
-     * @param  string $username The username for binding
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
-     */
-    public function setUsername($username)
-    {
-        $this->_username = (string) $username;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp usernamephp forphp binding
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$usernamephp Thephp usernamephp forphp binding
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_Ldapphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setUsernamephp(php$usernamephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_usernamephp php=php php(stringphp)php php$usernamephp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns the password of the account being authenticated, or
-     * NULL if none is set.
-     *
-     * @return string|null
-     */
-    public function getPassword()
-    {
-        return $this->_password;
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp passwordphp ofphp thephp accountphp beingphp authenticatedphp,php or
+php php php php php php*php NULLphp ifphp nonephp isphp setphp.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getPasswordphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_passwordphp;
+php php php php php}
 
-    /**
-     * Sets the passwort for the account
-     *
-     * @param  string $password The password of the account being authenticated
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
-     */
-    public function setPassword($password)
-    {
-        $this->_password = (string) $password;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp passwortphp forphp thephp account
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$passwordphp Thephp passwordphp ofphp thephp accountphp beingphp authenticated
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_Ldapphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setPasswordphp(php$passwordphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_passwordphp php=php php(stringphp)php php$passwordphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * setIdentity() - set the identity (username) to be used
-     *
-     * Proxies to {@see setUsername()}
-     *
-     * Closes ZF-6813
-     *
-     * @param  string $identity
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
-     */
-    public function setIdentity($identity)
-    {
-        return $this->setUsername($identity);
-    }
+php php php php php/php*php*
+php php php php php php*php setIdentityphp(php)php php-php setphp thephp identityphp php(usernamephp)php tophp bephp used
+php php php php php php*
+php php php php php php*php Proxiesphp tophp php{php@seephp setUsernamephp(php)php}
+php php php php php php*
+php php php php php php*php Closesphp ZFphp-php6php8php1php3
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$identity
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_Ldapphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setIdentityphp(php$identityphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>setUsernamephp(php$identityphp)php;
+php php php php php}
 
-    /**
-     * setCredential() - set the credential (password) value to be used
-     *
-     * Proxies to {@see setPassword()}
-     *
-     * Closes ZF-6813
-     *
-     * @param  string $credential
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
-     */
-    public function setCredential($credential)
-    {
-        return $this->setPassword($credential);
-    }
+php php php php php/php*php*
+php php php php php php*php setCredentialphp(php)php php-php setphp thephp credentialphp php(passwordphp)php valuephp tophp bephp used
+php php php php php php*
+php php php php php php*php Proxiesphp tophp php{php@seephp setPasswordphp(php)php}
+php php php php php php*
+php php php php php php*php Closesphp ZFphp-php6php8php1php3
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$credential
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_Ldapphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setCredentialphp(php$credentialphp)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>setPasswordphp(php$credentialphp)php;
+php php php php php}
 
-    /**
-     * Returns the LDAP Object
-     *
-     * @return Zend_Ldap The Zend_Ldap object used to authenticate the credentials
-     */
-    public function getLdap()
-    {
-        if ($this->_ldap === null) {
-            /**
-             * @see Zend_Ldap
-             */
-            require_once 'Zend/Ldap.php';
-            $this->_ldap = new Zend_Ldap();
-        }
+php php php php php/php*php*
+php php php php php php*php Returnsphp thephp LDAPphp Object
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Ldapphp Thephp Zendphp_Ldapphp objectphp usedphp tophp authenticatephp thephp credentials
+php php php php php php*php/
+php php php php publicphp functionphp getLdapphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>php_ldapphp php=php=php=php nullphp)php php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldap
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp.phpphp'php;
+php php php php php php php php php php php php php$thisphp-php>php_ldapphp php=php newphp Zendphp_Ldapphp(php)php;
+php php php php php php php php php}
 
-        return $this->_ldap;
-    }
+php php php php php php php php returnphp php$thisphp-php>php_ldapphp;
+php php php php php}
 
-    /**
-     * Set an Ldap connection
-     *
-     * @param Zend_Ldap $ldap An existing Ldap object
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
-     */
-    public function setLdap(Zend_Ldap $ldap)
-    {
-        $this->_ldap = $ldap;
+php php php php php/php*php*
+php php php php php php*php Setphp anphp Ldapphp connection
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Ldapphp php$ldapphp Anphp existingphp Ldapphp object
+php php php php php php*php php@returnphp Zendphp_Authphp_Adapterphp_Ldapphp Providesphp aphp fluentphp interface
+php php php php php php*php/
+php php php php publicphp functionphp setLdapphp(Zendphp_Ldapphp php$ldapphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_ldapphp php=php php$ldapphp;
 
-        $this->setOptions(array($ldap->getOptions()));
+php php php php php php php php php$thisphp-php>setOptionsphp(arrayphp(php$ldapphp-php>getOptionsphp(php)php)php)php;
 
-        return $this;
-    }
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * Returns a domain name for the current LDAP options. This is used
-     * for skipping redundant operations (e.g. authentications).
-     *
-     * @return string
-     */
-    protected function _getAuthorityName()
-    {
-        $options = $this->getLdap()->getOptions();
-        $name = $options['accountDomainName'];
-        if (!$name)
-            $name = $options['accountDomainNameShort'];
-        return $name ? $name : '';
-    }
+php php php php php/php*php*
+php php php php php php*php Returnsphp aphp domainphp namephp forphp thephp currentphp LDAPphp optionsphp.php Thisphp isphp used
+php php php php php php*php forphp skippingphp redundantphp operationsphp php(ephp.gphp.php authenticationsphp)php.
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getAuthorityNamephp(php)
+php php php php php{
+php php php php php php php php php$optionsphp php=php php$thisphp-php>getLdapphp(php)php-php>getOptionsphp(php)php;
+php php php php php php php php php$namephp php=php php$optionsphp[php'accountDomainNamephp'php]php;
+php php php php php php php php ifphp php(php!php$namephp)
+php php php php php php php php php php php php php$namephp php=php php$optionsphp[php'accountDomainNameShortphp'php]php;
+php php php php php php php php returnphp php$namephp php?php php$namephp php:php php'php'php;
+php php php php php}
 
-    /**
-     * Authenticate the user
-     *
-     * @throws Zend_Auth_Adapter_Exception
-     * @return Zend_Auth_Result
-     */
-    public function authenticate()
-    {
-        /**
-         * @see Zend_Ldap_Exception
-         */
-        require_once 'Zend/Ldap/Exception.php';
+php php php php php/php*php*
+php php php php php php*php Authenticatephp thephp user
+php php php php php php*
+php php php php php php*php php@throwsphp Zendphp_Authphp_Adapterphp_Exception
+php php php php php php*php php@returnphp Zendphp_Authphp_Result
+php php php php php php*php/
+php php php php publicphp functionphp authenticatephp(php)
+php php php php php{
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
 
-        $messages = array();
-        $messages[0] = ''; // reserved
-        $messages[1] = ''; // reserved
+php php php php php php php php php$messagesphp php=php arrayphp(php)php;
+php php php php php php php php php$messagesphp[php0php]php php=php php'php'php;php php/php/php reserved
+php php php php php php php php php$messagesphp[php1php]php php=php php'php'php;php php/php/php reserved
 
-        $username = $this->_username;
-        $password = $this->_password;
+php php php php php php php php php$usernamephp php=php php$thisphp-php>php_usernamephp;
+php php php php php php php php php$passwordphp php=php php$thisphp-php>php_passwordphp;
 
-        if (!$username) {
-            $code = Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND;
-            $messages[0] = 'A username is required';
-            return new Zend_Auth_Result($code, '', $messages);
-        }
-        if (!$password) {
-            /* A password is required because some servers will
-             * treat an empty password as an anonymous bind.
-             */
-            $code = Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID;
-            $messages[0] = 'A password is required';
-            return new Zend_Auth_Result($code, '', $messages);
-        }
+php php php php php php php php ifphp php(php!php$usernamephp)php php{
+php php php php php php php php php php php php php$codephp php=php Zendphp_Authphp_Resultphp:php:FAILUREphp_IDENTITYphp_NOTphp_FOUNDphp;
+php php php php php php php php php php php php php$messagesphp[php0php]php php=php php'Aphp usernamephp isphp requiredphp'php;
+php php php php php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(php$codephp,php php'php'php,php php$messagesphp)php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php!php$passwordphp)php php{
+php php php php php php php php php php php php php/php*php Aphp passwordphp isphp requiredphp becausephp somephp serversphp will
+php php php php php php php php php php php php php php*php treatphp anphp emptyphp passwordphp asphp anphp anonymousphp bindphp.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$codephp php=php Zendphp_Authphp_Resultphp:php:FAILUREphp_CREDENTIALphp_INVALIDphp;
+php php php php php php php php php php php php php$messagesphp[php0php]php php=php php'Aphp passwordphp isphp requiredphp'php;
+php php php php php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(php$codephp,php php'php'php,php php$messagesphp)php;
+php php php php php php php php php}
 
-        $ldap = $this->getLdap();
+php php php php php php php php php$ldapphp php=php php$thisphp-php>getLdapphp(php)php;
 
-        $code = Zend_Auth_Result::FAILURE;
-        $messages[0] = "Authority not found: $username";
-        $failedAuthorities = array();
+php php php php php php php php php$codephp php=php Zendphp_Authphp_Resultphp:php:FAILUREphp;
+php php php php php php php php php$messagesphp[php0php]php php=php php"Authorityphp notphp foundphp:php php$usernamephp"php;
+php php php php php php php php php$failedAuthoritiesphp php=php arrayphp(php)php;
 
-        /* Iterate through each server and try to authenticate the supplied
-         * credentials against it.
-         */
-        foreach ($this->_options as $name => $options) {
+php php php php php php php php php/php*php Iteratephp throughphp eachphp serverphp andphp tryphp tophp authenticatephp thephp supplied
+php php php php php php php php php php*php credentialsphp againstphp itphp.
+php php php php php php php php php php*php/
+php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp asphp php$namephp php=php>php php$optionsphp)php php{
 
-            if (!is_array($options)) {
-                /**
-                 * @see Zend_Auth_Adapter_Exception
-                 */
-                require_once 'Zend/Auth/Adapter/Exception.php';
-                throw new Zend_Auth_Adapter_Exception('Adapter options array not an array');
-            }
-            $adapterOptions = $this->_prepareOptions($ldap, $options);
-            $dname = '';
+php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Authphp_Adapterphp_Exception
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Authphp/Adapterphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Authphp_Adapterphp_Exceptionphp(php'Adapterphp optionsphp arrayphp notphp anphp arrayphp'php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php php$adapterOptionsphp php=php php$thisphp-php>php_prepareOptionsphp(php$ldapphp,php php$optionsphp)php;
+php php php php php php php php php php php php php$dnamephp php=php php'php'php;
 
-            try {
-                if ($messages[1])
-                    $messages[] = $messages[1];
-                $messages[1] = '';
-                $messages[] = $this->_optionsToString($options);
+php php php php php php php php php php php php tryphp php{
+php php php php php php php php php php php php php php php php ifphp php(php$messagesphp[php1php]php)
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php]php php=php php$messagesphp[php1php]php;
+php php php php php php php php php php php php php php php php php$messagesphp[php1php]php php=php php'php'php;
+php php php php php php php php php php php php php php php php php$messagesphp[php]php php=php php$thisphp-php>php_optionsToStringphp(php$optionsphp)php;
 
-                $dname = $this->_getAuthorityName();
-                if (isset($failedAuthorities[$dname])) {
-                    /* If multiple sets of server options for the same domain
-                     * are supplied, we want to skip redundant authentications
-                     * where the identity or credentials where found to be
-                     * invalid with another server for the same domain. The
-                     * $failedAuthorities array tracks this condition (and also
-                     * serves to supply the original error message).
-                     * This fixes issue ZF-4093.
-                     */
-                    $messages[1] = $failedAuthorities[$dname];
-                    $messages[] = "Skipping previously failed authority: $dname";
-                    continue;
-                }
+php php php php php php php php php php php php php php php php php$dnamephp php=php php$thisphp-php>php_getAuthorityNamephp(php)php;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$failedAuthoritiesphp[php$dnamephp]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php Ifphp multiplephp setsphp ofphp serverphp optionsphp forphp thephp samephp domain
+php php php php php php php php php php php php php php php php php php php php php php*php arephp suppliedphp,php wephp wantphp tophp skipphp redundantphp authentications
+php php php php php php php php php php php php php php php php php php php php php php*php wherephp thephp identityphp orphp credentialsphp wherephp foundphp tophp be
+php php php php php php php php php php php php php php php php php php php php php php*php invalidphp withphp anotherphp serverphp forphp thephp samephp domainphp.php The
+php php php php php php php php php php php php php php php php php php php php php php*php php$failedAuthoritiesphp arrayphp tracksphp thisphp conditionphp php(andphp also
+php php php php php php php php php php php php php php php php php php php php php php*php servesphp tophp supplyphp thephp originalphp errorphp messagephp)php.
+php php php php php php php php php php php php php php php php php php php php php php*php Thisphp fixesphp issuephp ZFphp-php4php0php9php3php.
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php1php]php php=php php$failedAuthoritiesphp[php$dnamephp]php;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php]php php=php php"Skippingphp previouslyphp failedphp authorityphp:php php$dnamephp"php;
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}
 
-                $canonicalName = $ldap->getCanonicalAccountName($username);
-                $ldap->bind($canonicalName, $password);
-                /*
-                 * Fixes problem when authenticated user is not allowed to retrieve
-                 * group-membership information or own account.
-                 * This requires that the user specified with "username" and optionally
-                 * "password" in the Zend_Ldap options is able to retrieve the required
-                 * information.
-                 */
-                $requireRebind = false;
-                if (isset($options['username'])) {
-                    $ldap->bind();
-                    $requireRebind = true;
-                }
-                $dn = $ldap->getCanonicalAccountName($canonicalName, Zend_Ldap::ACCTNAME_FORM_DN);
+php php php php php php php php php php php php php php php php php$canonicalNamephp php=php php$ldapphp-php>getCanonicalAccountNamephp(php$usernamephp)php;
+php php php php php php php php php php php php php php php php php$ldapphp-php>bindphp(php$canonicalNamephp,php php$passwordphp)php;
+php php php php php php php php php php php php php php php php php/php*
+php php php php php php php php php php php php php php php php php php*php Fixesphp problemphp whenphp authenticatedphp userphp isphp notphp allowedphp tophp retrieve
+php php php php php php php php php php php php php php php php php php*php groupphp-membershipphp informationphp orphp ownphp accountphp.
+php php php php php php php php php php php php php php php php php php*php Thisphp requiresphp thatphp thephp userphp specifiedphp withphp php"usernamephp"php andphp optionally
+php php php php php php php php php php php php php php php php php php*php php"passwordphp"php inphp thephp Zendphp_Ldapphp optionsphp isphp ablephp tophp retrievephp thephp required
+php php php php php php php php php php php php php php php php php php*php informationphp.
+php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php$requireRebindphp php=php falsephp;
+php php php php php php php php php php php php php php php php ifphp php(issetphp(php$optionsphp[php'usernamephp'php]php)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$ldapphp-php>bindphp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$requireRebindphp php=php truephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$dnphp php=php php$ldapphp-php>getCanonicalAccountNamephp(php$canonicalNamephp,php Zendphp_Ldapphp:php:ACCTNAMEphp_FORMphp_DNphp)php;
 
-                $groupResult = $this->_checkGroupMembership($ldap, $canonicalName, $dn, $adapterOptions);
-                if ($groupResult === true) {
-                    $this->_authenticatedDn = $dn;
-                    $messages[0] = '';
-                    $messages[1] = '';
-                    $messages[] = "$canonicalName authentication successful";
-                    if ($requireRebind === true) {
-                        // rebinding with authenticated user
-                        $ldap->bind($dn, $password);
-                    }
-                    return new Zend_Auth_Result(Zend_Auth_Result::SUCCESS, $canonicalName, $messages);
-                } else {
-                    $messages[0] = 'Account is not a member of the specified group';
-                    $messages[1] = $groupResult;
-                    $failedAuthorities[$dname] = $groupResult;
-                }
-            } catch (Zend_Ldap_Exception $zle) {
+php php php php php php php php php php php php php php php php php$groupResultphp php=php php$thisphp-php>php_checkGroupMembershipphp(php$ldapphp,php php$canonicalNamephp,php php$dnphp,php php$adapterOptionsphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php$groupResultphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_authenticatedDnphp php=php php$dnphp;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php0php]php php=php php'php'php;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php1php]php php=php php'php'php;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php]php php=php php"php$canonicalNamephp authenticationphp successfulphp"php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$requireRebindphp php=php=php=php truephp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php/php/php rebindingphp withphp authenticatedphp user
+php php php php php php php php php php php php php php php php php php php php php php php php php$ldapphp-php>bindphp(php$dnphp,php php$passwordphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(Zendphp_Authphp_Resultphp:php:SUCCESSphp,php php$canonicalNamephp,php php$messagesphp)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php0php]php php=php php'Accountphp isphp notphp aphp memberphp ofphp thephp specifiedphp groupphp'php;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php1php]php php=php php$groupResultphp;
+php php php php php php php php php php php php php php php php php php php php php$failedAuthoritiesphp[php$dnamephp]php php=php php$groupResultphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}php catchphp php(Zendphp_Ldapphp_Exceptionphp php$zlephp)php php{
 
-                /* LDAP based authentication is notoriously difficult to diagnose. Therefore
-                 * we bend over backwards to capture and record every possible bit of
-                 * information when something goes wrong.
-                 */
+php php php php php php php php php php php php php php php php php/php*php LDAPphp basedphp authenticationphp isphp notoriouslyphp difficultphp tophp diagnosephp.php Therefore
+php php php php php php php php php php php php php php php php php php*php wephp bendphp overphp backwardsphp tophp capturephp andphp recordphp everyphp possiblephp bitphp of
+php php php php php php php php php php php php php php php php php php*php informationphp whenphp somethingphp goesphp wrongphp.
+php php php php php php php php php php php php php php php php php php*php/
 
-                $err = $zle->getCode();
+php php php php php php php php php php php php php php php php php$errphp php=php php$zlephp-php>getCodephp(php)php;
 
-                if ($err == Zend_Ldap_Exception::LDAP_X_DOMAIN_MISMATCH) {
-                    /* This error indicates that the domain supplied in the
-                     * username did not match the domains in the server options
-                     * and therefore we should just skip to the next set of
-                     * server options.
-                     */
-                    continue;
-                } else if ($err == Zend_Ldap_Exception::LDAP_NO_SUCH_OBJECT) {
-                    $code = Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND;
-                    $messages[0] = "Account not found: $username";
-                    $failedAuthorities[$dname] = $zle->getMessage();
-                } else if ($err == Zend_Ldap_Exception::LDAP_INVALID_CREDENTIALS) {
-                    $code = Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID;
-                    $messages[0] = 'Invalid credentials';
-                    $failedAuthorities[$dname] = $zle->getMessage();
-                } else {
-                    $line = $zle->getLine();
-                    $messages[] = $zle->getFile() . "($line): " . $zle->getMessage();
-                    $messages[] = str_replace($password, '*****', $zle->getTraceAsString());
-                    $messages[0] = 'An unexpected failure occurred';
-                }
-                $messages[1] = $zle->getMessage();
-            }
-        }
+php php php php php php php php php php php php php php php php ifphp php(php$errphp php=php=php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_Xphp_DOMAINphp_MISMATCHphp)php php{
+php php php php php php php php php php php php php php php php php php php php php/php*php Thisphp errorphp indicatesphp thatphp thephp domainphp suppliedphp inphp the
+php php php php php php php php php php php php php php php php php php php php php php*php usernamephp didphp notphp matchphp thephp domainsphp inphp thephp serverphp options
+php php php php php php php php php php php php php php php php php php php php php php*php andphp thereforephp wephp shouldphp justphp skipphp tophp thephp nextphp setphp of
+php php php php php php php php php php php php php php php php php php php php php php*php serverphp optionsphp.
+php php php php php php php php php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$errphp php=php=php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_NOphp_SUCHphp_OBJECTphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$codephp php=php Zendphp_Authphp_Resultphp:php:FAILUREphp_IDENTITYphp_NOTphp_FOUNDphp;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php0php]php php=php php"Accountphp notphp foundphp:php php$usernamephp"php;
+php php php php php php php php php php php php php php php php php php php php php$failedAuthoritiesphp[php$dnamephp]php php=php php$zlephp-php>getMessagephp(php)php;
+php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$errphp php=php=php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_INVALIDphp_CREDENTIALSphp)php php{
+php php php php php php php php php php php php php php php php php php php php php$codephp php=php Zendphp_Authphp_Resultphp:php:FAILUREphp_CREDENTIALphp_INVALIDphp;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php0php]php php=php php'Invalidphp credentialsphp'php;
+php php php php php php php php php php php php php php php php php php php php php$failedAuthoritiesphp[php$dnamephp]php php=php php$zlephp-php>getMessagephp(php)php;
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php$linephp php=php php$zlephp-php>getLinephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php]php php=php php$zlephp-php>getFilephp(php)php php.php php"php(php$linephp)php:php php"php php.php php$zlephp-php>getMessagephp(php)php;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php]php php=php strphp_replacephp(php$passwordphp,php php'php*php*php*php*php*php'php,php php$zlephp-php>getTraceAsStringphp(php)php)php;
+php php php php php php php php php php php php php php php php php php php php php$messagesphp[php0php]php php=php php'Anphp unexpectedphp failurephp occurredphp'php;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$messagesphp[php1php]php php=php php$zlephp-php>getMessagephp(php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $msg = isset($messages[1]) ? $messages[1] : $messages[0];
-        $messages[] = "$username authentication failed: $msg";
+php php php php php php php php php$msgphp php=php issetphp(php$messagesphp[php1php]php)php php?php php$messagesphp[php1php]php php:php php$messagesphp[php0php]php;
+php php php php php php php php php$messagesphp[php]php php=php php"php$usernamephp authenticationphp failedphp:php php$msgphp"php;
 
-        return new Zend_Auth_Result($code, $username, $messages);
-    }
+php php php php php php php php returnphp newphp Zendphp_Authphp_Resultphp(php$codephp,php php$usernamephp,php php$messagesphp)php;
+php php php php php}
 
-    /**
-     * Sets the LDAP specific options on the Zend_Ldap instance
-     *
-     * @param  Zend_Ldap $ldap
-     * @param  array $options
-     * @return array of auth-adapter specific options
-     */
-    protected function _prepareOptions(Zend_Ldap $ldap, array $options)
-    {
-        $adapterOptions = array(
-            'group'       => null,
-            'groupDn'     => $ldap->getBaseDn(),
-            'groupScope'  => Zend_Ldap::SEARCH_SCOPE_SUB,
-            'groupAttr'   => 'cn',
-            'groupFilter' => 'objectClass=groupOfUniqueNames',
-            'memberAttr'  => 'uniqueMember',
-            'memberIsDn'  => true
-        );
-        foreach ($adapterOptions as $key => $value) {
-            if (array_key_exists($key, $options)) {
-                $value = $options[$key];
-                unset($options[$key]);
-                switch ($key) {
-                    case 'groupScope':
-                        $value = (int)$value;
-                        if (in_array($value, array(Zend_Ldap::SEARCH_SCOPE_BASE,
-                                Zend_Ldap::SEARCH_SCOPE_ONE, Zend_Ldap::SEARCH_SCOPE_SUB), true)) {
-                           $adapterOptions[$key] = $value;
-                        }
-                        break;
-                    case 'memberIsDn':
-                        $adapterOptions[$key] = ($value === true ||
-                                $value === '1' || strcasecmp($value, 'true') == 0);
-                        break;
-                    default:
-                        $adapterOptions[$key] = trim($value);
-                        break;
-                }
-            }
-        }
-        $ldap->setOptions($options);
-        return $adapterOptions;
-    }
+php php php php php/php*php*
+php php php php php php*php Setsphp thephp LDAPphp specificphp optionsphp onphp thephp Zendphp_Ldapphp instance
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp arrayphp ofphp authphp-adapterphp specificphp options
+php php php php php php*php/
+php php php php protectedphp functionphp php_prepareOptionsphp(Zendphp_Ldapphp php$ldapphp,php arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php php$adapterOptionsphp php=php arrayphp(
+php php php php php php php php php php php php php'groupphp'php php php php php php php php=php>php nullphp,
+php php php php php php php php php php php php php'groupDnphp'php php php php php php=php>php php$ldapphp-php>getBaseDnphp(php)php,
+php php php php php php php php php php php php php'groupScopephp'php php php=php>php Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_SUBphp,
+php php php php php php php php php php php php php'groupAttrphp'php php php php=php>php php'cnphp'php,
+php php php php php php php php php php php php php'groupFilterphp'php php=php>php php'objectClassphp=groupOfUniqueNamesphp'php,
+php php php php php php php php php php php php php'memberAttrphp'php php php=php>php php'uniqueMemberphp'php,
+php php php php php php php php php php php php php'memberIsDnphp'php php php=php>php true
+php php php php php php php php php)php;
+php php php php php php php php foreachphp php(php$adapterOptionsphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$optionsphp)php)php php{
+php php php php php php php php php php php php php php php php php$valuephp php=php php$optionsphp[php$keyphp]php;
+php php php php php php php php php php php php php php php php unsetphp(php$optionsphp[php$keyphp]php)php;
+php php php php php php php php php php php php php php php php switchphp php(php$keyphp)php php{
+php php php php php php php php php php php php php php php php php php php php casephp php'groupScopephp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php(intphp)php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$valuephp,php arrayphp(Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_BASEphp,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_ONEphp,php Zendphp_Ldapphp:php:SEARCHphp_SCOPEphp_SUBphp)php,php truephp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php$adapterOptionsphp[php$keyphp]php php=php php$valuephp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php casephp php'memberIsDnphp'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php$adapterOptionsphp[php$keyphp]php php=php php(php$valuephp php=php=php=php truephp php|php|
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php=php=php php'php1php'php php|php|php strcasecmpphp(php$valuephp,php php'truephp'php)php php=php=php php0php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php$adapterOptionsphp[php$keyphp]php php=php trimphp(php$valuephp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php php$ldapphp-php>setOptionsphp(php$optionsphp)php;
+php php php php php php php php returnphp php$adapterOptionsphp;
+php php php php php}
 
-    /**
-     * Checks the group membership of the bound user
-     *
-     * @param  Zend_Ldap $ldap
-     * @param  string    $canonicalName
-     * @param  string    $dn
-     * @param  array     $adapterOptions
-     * @return string|true
-     */
-    protected function _checkGroupMembership(Zend_Ldap $ldap, $canonicalName, $dn, array $adapterOptions)
-    {
-        if ($adapterOptions['group'] === null) {
-            return true;
-        }
+php php php php php/php*php*
+php php php php php php*php Checksphp thephp groupphp membershipphp ofphp thephp boundphp user
+php php php php php php*
+php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
+php php php php php php*php php@paramphp php stringphp php php php php$canonicalName
+php php php php php php*php php@paramphp php stringphp php php php php$dn
+php php php php php php*php php@paramphp php arrayphp php php php php php$adapterOptions
+php php php php php php*php php@returnphp stringphp|true
+php php php php php php*php/
+php php php php protectedphp functionphp php_checkGroupMembershipphp(Zendphp_Ldapphp php$ldapphp,php php$canonicalNamephp,php php$dnphp,php arrayphp php$adapterOptionsphp)
+php php php php php{
+php php php php php php php php ifphp php(php$adapterOptionsphp[php'groupphp'php]php php=php=php=php nullphp)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}
 
-        if ($adapterOptions['memberIsDn'] === false) {
-            $user = $canonicalName;
-        } else {
-            $user = $dn;
-        }
+php php php php php php php php ifphp php(php$adapterOptionsphp[php'memberIsDnphp'php]php php=php=php=php falsephp)php php{
+php php php php php php php php php php php php php$userphp php=php php$canonicalNamephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$userphp php=php php$dnphp;
+php php php php php php php php php}
 
-        /**
-         * @see Zend_Ldap_Filter
-         */
-        require_once 'Zend/Ldap/Filter.php';
-        $groupName = Zend_Ldap_Filter::equals($adapterOptions['groupAttr'], $adapterOptions['group']);
-        $membership = Zend_Ldap_Filter::equals($adapterOptions['memberAttr'], $user);
-        $group = Zend_Ldap_Filter::andFilter($groupName, $membership);
-        $groupFilter = $adapterOptions['groupFilter'];
-        if (!empty($groupFilter)) {
-            $group = $group->addAnd($groupFilter);
-        }
+php php php php php php php php php/php*php*
+php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Filter
+php php php php php php php php php php*php/
+php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Filterphp.phpphp'php;
+php php php php php php php php php$groupNamephp php=php Zendphp_Ldapphp_Filterphp:php:equalsphp(php$adapterOptionsphp[php'groupAttrphp'php]php,php php$adapterOptionsphp[php'groupphp'php]php)php;
+php php php php php php php php php$membershipphp php=php Zendphp_Ldapphp_Filterphp:php:equalsphp(php$adapterOptionsphp[php'memberAttrphp'php]php,php php$userphp)php;
+php php php php php php php php php$groupphp php=php Zendphp_Ldapphp_Filterphp:php:andFilterphp(php$groupNamephp,php php$membershipphp)php;
+php php php php php php php php php$groupFilterphp php=php php$adapterOptionsphp[php'groupFilterphp'php]php;
+php php php php php php php php ifphp php(php!emptyphp(php$groupFilterphp)php)php php{
+php php php php php php php php php php php php php$groupphp php=php php$groupphp-php>addAndphp(php$groupFilterphp)php;
+php php php php php php php php php}
 
-        $result = $ldap->count($group, $adapterOptions['groupDn'], $adapterOptions['groupScope']);
+php php php php php php php php php$resultphp php=php php$ldapphp-php>countphp(php$groupphp,php php$adapterOptionsphp[php'groupDnphp'php]php,php php$adapterOptionsphp[php'groupScopephp'php]php)php;
 
-        if ($result === 1) {
-            return true;
-        } else {
-            return 'Failed to verify group membership with ' . $group->toString();
-        }
-    }
+php php php php php php php php ifphp php(php$resultphp php=php=php=php php1php)php php{
+php php php php php php php php php php php php returnphp truephp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp php'Failedphp tophp verifyphp groupphp membershipphp withphp php'php php.php php$groupphp-php>toStringphp(php)php;
+php php php php php php php php php}
+php php php php php}
 
-    /**
-     * getAccountObject() - Returns the result entry as a stdClass object
-     *
-     * This resembles the feature {@see Zend_Auth_Adapter_DbTable::getResultRowObject()}.
-     * Closes ZF-6813
-     *
-     * @param  array $returnAttribs
-     * @param  array $omitAttribs
-     * @return stdClass|boolean
-     */
-    public function getAccountObject(array $returnAttribs = array(), array $omitAttribs = array())
-    {
-        if (!$this->_authenticatedDn) {
-            return false;
-        }
+php php php php php/php*php*
+php php php php php php*php getAccountObjectphp(php)php php-php Returnsphp thephp resultphp entryphp asphp aphp stdClassphp object
+php php php php php php*
+php php php php php php*php Thisphp resemblesphp thephp featurephp php{php@seephp Zendphp_Authphp_Adapterphp_DbTablephp:php:getResultRowObjectphp(php)php}php.
+php php php php php php*php Closesphp ZFphp-php6php8php1php3
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$returnAttribs
+php php php php php php*php php@paramphp php arrayphp php$omitAttribs
+php php php php php php*php php@returnphp stdClassphp|boolean
+php php php php php php*php/
+php php php php publicphp functionphp getAccountObjectphp(arrayphp php$returnAttribsphp php=php arrayphp(php)php,php arrayphp php$omitAttribsphp php=php arrayphp(php)php)
+php php php php php{
+php php php php php php php php ifphp php(php!php$thisphp-php>php_authenticatedDnphp)php php{
+php php php php php php php php php php php php returnphp falsephp;
+php php php php php php php php php}
 
-        $returnObject = new stdClass();
+php php php php php php php php php$returnObjectphp php=php newphp stdClassphp(php)php;
 
-        $omitAttribs = array_map('strtolower', $omitAttribs);
+php php php php php php php php php$omitAttribsphp php=php arrayphp_mapphp(php'strtolowerphp'php,php php$omitAttribsphp)php;
 
-        $entry = $this->getLdap()->getEntry($this->_authenticatedDn, $returnAttribs, true);
-        foreach ($entry as $attr => $value) {
-            if (in_array($attr, $omitAttribs)) {
-                // skip attributes marked to be omitted
-                continue;
-            }
-            if (is_array($value)) {
-                $returnObject->$attr = (count($value) > 1) ? $value : $value[0];
-            } else {
-                $returnObject->$attr = $value;
-            }
-        }
-        return $returnObject;
-    }
+php php php php php php php php php$entryphp php=php php$thisphp-php>getLdapphp(php)php-php>getEntryphp(php$thisphp-php>php_authenticatedDnphp,php php$returnAttribsphp,php truephp)php;
+php php php php php php php php foreachphp php(php$entryphp asphp php$attrphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$attrphp,php php$omitAttribsphp)php)php php{
+php php php php php php php php php php php php php php php php php/php/php skipphp attributesphp markedphp tophp bephp omitted
+php php php php php php php php php php php php php php php php continuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
+php php php php php php php php php php php php php php php php php$returnObjectphp-php>php$attrphp php=php php(countphp(php$valuephp)php php>php php1php)php php?php php$valuephp php:php php$valuephp[php0php]php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$returnObjectphp-php>php$attrphp php=php php$valuephp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$returnObjectphp;
+php php php php php}
 
-    /**
-     * Converts options to string
-     *
-     * @param  array $options
-     * @return string
-     */
-    private function _optionsToString(array $options)
-    {
-        $str = '';
-        foreach ($options as $key => $val) {
-            if ($key === 'password')
-                $val = '*****';
-            if ($str)
-                $str .= ',';
-            $str .= $key . '=' . $val;
-        }
-        return $str;
-    }
-}
+php php php php php/php*php*
+php php php php php php*php Convertsphp optionsphp tophp string
+php php php php php php*
+php php php php php php*php php@paramphp php arrayphp php$options
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php privatephp functionphp php_optionsToStringphp(arrayphp php$optionsphp)
+php php php php php{
+php php php php php php php php php$strphp php=php php'php'php;
+php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valphp)php php{
+php php php php php php php php php php php php ifphp php(php$keyphp php=php=php=php php'passwordphp'php)
+php php php php php php php php php php php php php php php php php$valphp php=php php'php*php*php*php*php*php'php;
+php php php php php php php php php php php php ifphp php(php$strphp)
+php php php php php php php php php php php php php php php php php$strphp php.php=php php'php,php'php;
+php php php php php php php php php php php php php$strphp php.php=php php$keyphp php.php php'php=php'php php.php php$valphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$strphp;
+php php php php php}
+php}

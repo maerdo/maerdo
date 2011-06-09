@@ -251,7 +251,9 @@
 							<?php endforeach;?>
 					 				
 						</table>
-						<input type="hidden" id="page_meta_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+
+						<input type="hidden" id="page_meta_row_id" value="<?php  if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+
 						<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />
 						<br />
 						<img onclick="updateMeta()" id='img_update_meta' class="fright" alt='Update' src='/tools/button/white/Update META-TAG/000000/arial/10/' />
@@ -307,7 +309,9 @@
 							}
 							?>				 						
 						</table>
-						<input type="hidden" id="page_javascript_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+
+						<input type="hidden" id="page_javascript_row_id" value="<?php  if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+
 						<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />						
 						<br />
 						<img  id='img_update_javascript' class="fright pointer" alt='Update' src='/tools/button/white/Update Javascript/000000/arial/10/' />
@@ -358,7 +362,9 @@
 								<?php endforeach;
 							}?>
 						</table>	
-						<input type="hidden" id="page_css_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+
+						<input type="hidden" id="page_css_row_id" value="<?php  if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+
 						<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />						
 						<br />
 						<img  id='img_update_css' class=" pointer fright" alt='Update' src='/tools/button/white/Update css/000000/arial/10/' />

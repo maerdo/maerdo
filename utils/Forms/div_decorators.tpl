@@ -1,33 +1,33 @@
-[form]
-elementFilters.trim = "StringTrim"
+php[formphp]
+elementFiltersphp.trimphp php=php php"StringTrimphp"
 
-; Form Decorators
-disableLoadDefaultDecorators = true
-decorators.formElements.decorator = "FormElements"
-decorators.description.decorator = "Description" 
+php;php Formphp Decorators
+disableLoadDefaultDecoratorsphp php=php true
+decoratorsphp.formElementsphp.decoratorphp php=php php"FormElementsphp"
+decoratorsphp.descriptionphp.decoratorphp php=php php"Descriptionphp"php 
 
-decorators.div.decorator = "HtmlTag"
-decorators.div.options.tag = "div"
-decorators.div.options.class = "forms"
+decoratorsphp.divphp.decoratorphp php=php php"HtmlTagphp"
+decoratorsphp.divphp.optionsphp.tagphp php=php php"divphp"
+decoratorsphp.divphp.optionsphp.classphp php=php php"formsphp"
 
-decorators.form.decorator = "Form"
+decoratorsphp.formphp.decoratorphp php=php php"Formphp"
 
-; Add the following element decorators to the add form
-elementDecorators.description.decorator = "Description"
-elementDecorators.viewhelper.decorator= "ViewHelper"
-elementDecorators.error.decorator = "Errors"
-
-
-; Add a data tag to each data field
-elementDecorators.datatag.type.datatag = "HtmlTag"
-elementDecorators.datatag.options.tag = "div"
-elementDecorators.datatag.options.class = "inputs"
+php;php Addphp thephp followingphp elementphp decoratorsphp tophp thephp addphp form
+elementDecoratorsphp.descriptionphp.decoratorphp php=php php"Descriptionphp"
+elementDecoratorsphp.viewhelperphp.decoratorphp=php php"ViewHelperphp"
+elementDecoratorsphp.errorphp.decoratorphp php=php php"Errorsphp"
 
 
-; Add a decorator to each element labelled as a label
-elementDecorators.label.decorator = "Label"
+php;php Addphp aphp dataphp tagphp tophp eachphp dataphp field
+elementDecoratorsphp.datatagphp.typephp.datatagphp php=php php"HtmlTagphp"
+elementDecoratorsphp.datatagphp.optionsphp.tagphp php=php php"divphp"
+elementDecoratorsphp.datatagphp.optionsphp.classphp php=php php"inputsphp"
 
-; Add a tag to the end of a what it things is a row.
-elementDecorators.rowtag.type.rowtag = "HtmlTag"
-elementDecorators.rowtag.options.tag = "div"
-elementDecorators.rowtag.options.class = "row"
+
+php;php Addphp aphp decoratorphp tophp eachphp elementphp labelledphp asphp aphp label
+elementDecoratorsphp.labelphp.decoratorphp php=php php"Labelphp"
+
+php;php Addphp aphp tagphp tophp thephp endphp ofphp aphp whatphp itphp thingsphp isphp aphp rowphp.
+elementDecoratorsphp.rowtagphp.typephp.rowtagphp php=php php"HtmlTagphp"
+elementDecoratorsphp.rowtagphp.optionsphp.tagphp php=php php"divphp"
+elementDecoratorsphp.rowtagphp.optionsphp.classphp php=php php"rowphp"

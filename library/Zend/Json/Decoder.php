@@ -1,578 +1,578 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Json
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Decoder.php 22653 2010-07-22 18:41:39Z mabe $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Json
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Decoderphp.phpphp php2php2php6php5php3php php2php0php1php0php-php0php7php-php2php2php php1php8php:php4php1php:php3php9Zphp mabephp php$
+php php*php/
 
-/**
- * @see Zend_Json
- */
-require_once 'Zend/Json.php';
+php/php*php*
+php php*php php@seephp Zendphp_Json
+php php*php/
+requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
 
-/**
- * Decode JSON encoded string to PHP variable constructs
- *
- * @category   Zend
- * @package    Zend_Json
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Json_Decoder
-{
-    /**
-     * Parse tokens used to decode the JSON object. These are not
-     * for public consumption, they are just used internally to the
-     * class.
-     */
-    const EOF         = 0;
-    const DATUM        = 1;
-    const LBRACE    = 2;
-    const LBRACKET    = 3;
-    const RBRACE     = 4;
-    const RBRACKET    = 5;
-    const COMMA       = 6;
-    const COLON        = 7;
+php/php*php*
+php php*php Decodephp JSONphp encodedphp stringphp tophp PHPphp variablephp constructs
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Json
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Jsonphp_Decoder
+php{
+php php php php php/php*php*
+php php php php php php*php Parsephp tokensphp usedphp tophp decodephp thephp JSONphp objectphp.php Thesephp arephp not
+php php php php php php*php forphp publicphp consumptionphp,php theyphp arephp justphp usedphp internallyphp tophp the
+php php php php php php*php classphp.
+php php php php php php*php/
+php php php php constphp EOFphp php php php php php php php php php=php php0php;
+php php php php constphp DATUMphp php php php php php php php php=php php1php;
+php php php php constphp LBRACEphp php php php php=php php2php;
+php php php php constphp LBRACKETphp php php php php=php php3php;
+php php php php constphp RBRACEphp php php php php php=php php4php;
+php php php php constphp RBRACKETphp php php php php=php php5php;
+php php php php constphp COMMAphp php php php php php php php=php php6php;
+php php php php constphp COLONphp php php php php php php php php=php php7php;
 
-    /**
-     * Use to maintain a "pointer" to the source being decoded
-     *
-     * @var string
-     */
-    protected $_source;
+php php php php php/php*php*
+php php php php php php*php Usephp tophp maintainphp aphp php"pointerphp"php tophp thephp sourcephp beingphp decoded
+php php php php php php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_sourcephp;
 
-    /**
-     * Caches the source length
-     *
-     * @var int
-     */
-    protected $_sourceLength;
+php php php php php/php*php*
+php php php php php php*php Cachesphp thephp sourcephp length
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_sourceLengthphp;
 
-    /**
-     * The offset within the souce being decoded
-     *
-     * @var int
-     *
-     */
-    protected $_offset;
+php php php php php/php*php*
+php php php php php php*php Thephp offsetphp withinphp thephp soucephp beingphp decoded
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*
+php php php php php php*php/
+php php php php protectedphp php$php_offsetphp;
 
-    /**
-     * The current token being considered in the parser cycle
-     *
-     * @var int
-     */
-    protected $_token;
+php php php php php/php*php*
+php php php php php php*php Thephp currentphp tokenphp beingphp consideredphp inphp thephp parserphp cycle
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php/
+php php php php protectedphp php$php_tokenphp;
 
-    /**
-     * Flag indicating how objects should be decoded
-     *
-     * @var int
-     * @access protected
-     */
-    protected $_decodeType;
+php php php php php/php*php*
+php php php php php php*php Flagphp indicatingphp howphp objectsphp shouldphp bephp decoded
+php php php php php php*
+php php php php php php*php php@varphp int
+php php php php php php*php php@accessphp protected
+php php php php php php*php/
+php php php php protectedphp php$php_decodeTypephp;
 
-    /**
-     * Constructor
-     *
-     * @param string $source String source to decode
-     * @param int $decodeType How objects should be decoded -- see
-     * {@link Zend_Json::TYPE_ARRAY} and {@link Zend_Json::TYPE_OBJECT} for
-     * valid values
-     * @return void
-     */
-    protected function __construct($source, $decodeType)
-    {
-        // Set defaults
-        $this->_source       = self::decodeUnicodeString($source);
-        $this->_sourceLength = strlen($this->_source);
-        $this->_token        = self::EOF;
-        $this->_offset       = 0;
+php php php php php/php*php*
+php php php php php php*php Constructor
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$sourcephp Stringphp sourcephp tophp decode
+php php php php php php*php php@paramphp intphp php$decodeTypephp Howphp objectsphp shouldphp bephp decodedphp php-php-php see
+php php php php php php*php php{php@linkphp Zendphp_Jsonphp:php:TYPEphp_ARRAYphp}php andphp php{php@linkphp Zendphp_Jsonphp:php:TYPEphp_OBJECTphp}php for
+php php php php php php*php validphp values
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_php_constructphp(php$sourcephp,php php$decodeTypephp)
+php php php php php{
+php php php php php php php php php/php/php Setphp defaults
+php php php php php php php php php$thisphp-php>php_sourcephp php php php php php php php=php selfphp:php:decodeUnicodeStringphp(php$sourcephp)php;
+php php php php php php php php php$thisphp-php>php_sourceLengthphp php=php strlenphp(php$thisphp-php>php_sourcephp)php;
+php php php php php php php php php$thisphp-php>php_tokenphp php php php php php php php php=php selfphp:php:EOFphp;
+php php php php php php php php php$thisphp-php>php_offsetphp php php php php php php php=php php0php;
 
-        // Normalize and set $decodeType
-        if (!in_array($decodeType, array(Zend_Json::TYPE_ARRAY, Zend_Json::TYPE_OBJECT)))
-        {
-            $decodeType = Zend_Json::TYPE_ARRAY;
-        }
-        $this->_decodeType   = $decodeType;
+php php php php php php php php php/php/php Normalizephp andphp setphp php$decodeType
+php php php php php php php php ifphp php(php!inphp_arrayphp(php$decodeTypephp,php arrayphp(Zendphp_Jsonphp:php:TYPEphp_ARRAYphp,php Zendphp_Jsonphp:php:TYPEphp_OBJECTphp)php)php)
+php php php php php php php php php{
+php php php php php php php php php php php php php$decodeTypephp php=php Zendphp_Jsonphp:php:TYPEphp_ARRAYphp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_decodeTypephp php php php=php php$decodeTypephp;
 
-        // Set pointer at first token
-        $this->_getNextToken();
-    }
+php php php php php php php php php/php/php Setphp pointerphp atphp firstphp token
+php php php php php php php php php$thisphp-php>php_getNextTokenphp(php)php;
+php php php php php}
 
-    /**
-     * Decode a JSON source string
-     *
-     * Decodes a JSON encoded string. The value returned will be one of the
-     * following:
-     *        - integer
-     *        - float
-     *        - boolean
-     *        - null
-     *      - StdClass
-     *      - array
-     *         - array of one or more of the above types
-     *
-     * By default, decoded objects will be returned as associative arrays; to
-     * return a StdClass object instead, pass {@link Zend_Json::TYPE_OBJECT} to
-     * the $objectDecodeType parameter.
-     *
-     * Throws a Zend_Json_Exception if the source string is null.
-     *
-     * @static
-     * @access public
-     * @param string $source String to be decoded
-     * @param int $objectDecodeType How objects should be decoded; should be
-     * either or {@link Zend_Json::TYPE_ARRAY} or
-     * {@link Zend_Json::TYPE_OBJECT}; defaults to TYPE_ARRAY
-     * @return mixed
-     * @throws Zend_Json_Exception
-     */
-    public static function decode($source = null, $objectDecodeType = Zend_Json::TYPE_ARRAY)
-    {
-        if (null === $source) {
-            require_once 'Zend/Json/Exception.php';
-            throw new Zend_Json_Exception('Must specify JSON encoded source for decoding');
-        } elseif (!is_string($source)) {
-            require_once 'Zend/Json/Exception.php';
-            throw new Zend_Json_Exception('Can only decode JSON encoded strings');
-        }
+php php php php php/php*php*
+php php php php php php*php Decodephp aphp JSONphp sourcephp string
+php php php php php php*
+php php php php php php*php Decodesphp aphp JSONphp encodedphp stringphp.php Thephp valuephp returnedphp willphp bephp onephp ofphp the
+php php php php php php*php followingphp:
+php php php php php php*php php php php php php php php php-php integer
+php php php php php php*php php php php php php php php php-php float
+php php php php php php*php php php php php php php php php-php boolean
+php php php php php php*php php php php php php php php php-php null
+php php php php php php*php php php php php php php-php StdClass
+php php php php php php*php php php php php php php-php array
+php php php php php php*php php php php php php php php php php-php arrayphp ofphp onephp orphp morephp ofphp thephp abovephp types
+php php php php php php*
+php php php php php php*php Byphp defaultphp,php decodedphp objectsphp willphp bephp returnedphp asphp associativephp arraysphp;php to
+php php php php php php*php returnphp aphp StdClassphp objectphp insteadphp,php passphp php{php@linkphp Zendphp_Jsonphp:php:TYPEphp_OBJECTphp}php to
+php php php php php php*php thephp php$objectDecodeTypephp parameterphp.
+php php php php php php*
+php php php php php php*php Throwsphp aphp Zendphp_Jsonphp_Exceptionphp ifphp thephp sourcephp stringphp isphp nullphp.
+php php php php php php*
+php php php php php php*php php@static
+php php php php php php*php php@accessphp public
+php php php php php php*php php@paramphp stringphp php$sourcephp Stringphp tophp bephp decoded
+php php php php php php*php php@paramphp intphp php$objectDecodeTypephp Howphp objectsphp shouldphp bephp decodedphp;php shouldphp be
+php php php php php php*php eitherphp orphp php{php@linkphp Zendphp_Jsonphp:php:TYPEphp_ARRAYphp}php or
+php php php php php php*php php{php@linkphp Zendphp_Jsonphp:php:TYPEphp_OBJECTphp}php;php defaultsphp tophp TYPEphp_ARRAY
+php php php php php php*php php@returnphp mixed
+php php php php php php*php php@throwsphp Zendphp_Jsonphp_Exception
+php php php php php php*php/
+php php php php publicphp staticphp functionphp decodephp(php$sourcephp php=php nullphp,php php$objectDecodeTypephp php=php Zendphp_Jsonphp:php:TYPEphp_ARRAYphp)
+php php php php php{
+php php php php php php php php ifphp php(nullphp php=php=php=php php$sourcephp)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php'Mustphp specifyphp JSONphp encodedphp sourcephp forphp decodingphp'php)php;
+php php php php php php php php php}php elseifphp php(php!isphp_stringphp(php$sourcephp)php)php php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php'Canphp onlyphp decodephp JSONphp encodedphp stringsphp'php)php;
+php php php php php php php php php}
 
-        $decoder = new self($source, $objectDecodeType);
+php php php php php php php php php$decoderphp php=php newphp selfphp(php$sourcephp,php php$objectDecodeTypephp)php;
 
-        return $decoder->_decodeValue();
-    }
-
-
-    /**
-     * Recursive driving rountine for supported toplevel tops
-     *
-     * @return mixed
-     */
-    protected function _decodeValue()
-    {
-        switch ($this->_token) {
-            case self::DATUM:
-                $result  = $this->_tokenValue;
-                $this->_getNextToken();
-                return($result);
-                break;
-            case self::LBRACE:
-                return($this->_decodeObject());
-                break;
-            case self::LBRACKET:
-                return($this->_decodeArray());
-                break;
-            default:
-                return null;
-                break;
-        }
-    }
-
-    /**
-     * Decodes an object of the form:
-     *  { "attribute: value, "attribute2" : value,...}
-     *
-     * If Zend_Json_Encoder was used to encode the original object then
-     * a special attribute called __className which specifies a class
-     * name that should wrap the data contained within the encoded source.
-     *
-     * Decodes to either an array or StdClass object, based on the value of
-     * {@link $_decodeType}. If invalid $_decodeType present, returns as an
-     * array.
-     *
-     * @return array|StdClass
-     */
-    protected function _decodeObject()
-    {
-        $members = array();
-        $tok = $this->_getNextToken();
-
-        while ($tok && $tok != self::RBRACE) {
-            if ($tok != self::DATUM || ! is_string($this->_tokenValue)) {
-                require_once 'Zend/Json/Exception.php';
-                throw new Zend_Json_Exception('Missing key in object encoding: ' . $this->_source);
-            }
-
-            $key = $this->_tokenValue;
-            $tok = $this->_getNextToken();
-
-            if ($tok != self::COLON) {
-                require_once 'Zend/Json/Exception.php';
-                throw new Zend_Json_Exception('Missing ":" in object encoding: ' . $this->_source);
-            }
-
-            $tok = $this->_getNextToken();
-            $members[$key] = $this->_decodeValue();
-            $tok = $this->_token;
-
-            if ($tok == self::RBRACE) {
-                break;
-            }
-
-            if ($tok != self::COMMA) {
-                require_once 'Zend/Json/Exception.php';
-                throw new Zend_Json_Exception('Missing "," in object encoding: ' . $this->_source);
-            }
-
-            $tok = $this->_getNextToken();
-        }
-
-        switch ($this->_decodeType) {
-            case Zend_Json::TYPE_OBJECT:
-                // Create new StdClass and populate with $members
-                $result = new StdClass();
-                foreach ($members as $key => $value) {
-                    $result->$key = $value;
-                }
-                break;
-            case Zend_Json::TYPE_ARRAY:
-            default:
-                $result = $members;
-                break;
-        }
-
-        $this->_getNextToken();
-        return $result;
-    }
-
-    /**
-     * Decodes a JSON array format:
-     *    [element, element2,...,elementN]
-     *
-     * @return array
-     */
-    protected function _decodeArray()
-    {
-        $result = array();
-        $starttok = $tok = $this->_getNextToken(); // Move past the '['
-        $index  = 0;
-
-        while ($tok && $tok != self::RBRACKET) {
-            $result[$index++] = $this->_decodeValue();
-
-            $tok = $this->_token;
-
-            if ($tok == self::RBRACKET || !$tok) {
-                break;
-            }
-
-            if ($tok != self::COMMA) {
-                require_once 'Zend/Json/Exception.php';
-                throw new Zend_Json_Exception('Missing "," in array encoding: ' . $this->_source);
-            }
-
-            $tok = $this->_getNextToken();
-        }
-
-        $this->_getNextToken();
-        return($result);
-    }
+php php php php php php php php returnphp php$decoderphp-php>php_decodeValuephp(php)php;
+php php php php php}
 
 
-    /**
-     * Removes whitepsace characters from the source input
-     */
-    protected function _eatWhitespace()
-    {
-        if (preg_match(
-                '/([\t\b\f\n\r ])*/s',
-                $this->_source,
-                $matches,
-                PREG_OFFSET_CAPTURE,
-                $this->_offset)
-            && $matches[0][1] == $this->_offset)
-        {
-            $this->_offset += strlen($matches[0][0]);
-        }
-    }
+php php php php php/php*php*
+php php php php php php*php Recursivephp drivingphp rountinephp forphp supportedphp toplevelphp tops
+php php php php php php*
+php php php php php php*php php@returnphp mixed
+php php php php php php*php/
+php php php php protectedphp functionphp php_decodeValuephp(php)
+php php php php php{
+php php php php php php php php switchphp php(php$thisphp-php>php_tokenphp)php php{
+php php php php php php php php php php php php casephp selfphp:php:DATUMphp:
+php php php php php php php php php php php php php php php php php$resultphp php php=php php$thisphp-php>php_tokenValuephp;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_getNextTokenphp(php)php;
+php php php php php php php php php php php php php php php php returnphp(php$resultphp)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp selfphp:php:LBRACEphp:
+php php php php php php php php php php php php php php php php returnphp(php$thisphp-php>php_decodeObjectphp(php)php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp selfphp:php:LBRACKETphp:
+php php php php php php php php php php php php php php php php returnphp(php$thisphp-php>php_decodeArrayphp(php)php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Decodesphp anphp objectphp ofphp thephp formphp:
+php php php php php php*php php php{php php"attributephp:php valuephp,php php"attributephp2php"php php:php valuephp,php.php.php.php}
+php php php php php php*
+php php php php php php*php Ifphp Zendphp_Jsonphp_Encoderphp wasphp usedphp tophp encodephp thephp originalphp objectphp then
+php php php php php php*php aphp specialphp attributephp calledphp php_php_classNamephp whichphp specifiesphp aphp class
+php php php php php php*php namephp thatphp shouldphp wrapphp thephp dataphp containedphp withinphp thephp encodedphp sourcephp.
+php php php php php php*
+php php php php php php*php Decodesphp tophp eitherphp anphp arrayphp orphp StdClassphp objectphp,php basedphp onphp thephp valuephp of
+php php php php php php*php php{php@linkphp php$php_decodeTypephp}php.php Ifphp invalidphp php$php_decodeTypephp presentphp,php returnsphp asphp an
+php php php php php php*php arrayphp.
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp|StdClass
+php php php php php php*php/
+php php php php protectedphp functionphp php_decodeObjectphp(php)
+php php php php php{
+php php php php php php php php php$membersphp php=php arrayphp(php)php;
+php php php php php php php php php$tokphp php=php php$thisphp-php>php_getNextTokenphp(php)php;
+
+php php php php php php php php whilephp php(php$tokphp php&php&php php$tokphp php!php=php selfphp:php:RBRACEphp)php php{
+php php php php php php php php php php php php ifphp php(php$tokphp php!php=php selfphp:php:DATUMphp php|php|php php!php isphp_stringphp(php$thisphp-php>php_tokenValuephp)php)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php'Missingphp keyphp inphp objectphp encodingphp:php php'php php.php php$thisphp-php>php_sourcephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$keyphp php=php php$thisphp-php>php_tokenValuephp;
+php php php php php php php php php php php php php$tokphp php=php php$thisphp-php>php_getNextTokenphp(php)php;
+
+php php php php php php php php php php php php ifphp php(php$tokphp php!php=php selfphp:php:COLONphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php'Missingphp php"php:php"php inphp objectphp encodingphp:php php'php php.php php$thisphp-php>php_sourcephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$tokphp php=php php$thisphp-php>php_getNextTokenphp(php)php;
+php php php php php php php php php php php php php$membersphp[php$keyphp]php php=php php$thisphp-php>php_decodeValuephp(php)php;
+php php php php php php php php php php php php php$tokphp php=php php$thisphp-php>php_tokenphp;
+
+php php php php php php php php php php php php ifphp php(php$tokphp php=php=php selfphp:php:RBRACEphp)php php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$tokphp php!php=php selfphp:php:COMMAphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php'Missingphp php"php,php"php inphp objectphp encodingphp:php php'php php.php php$thisphp-php>php_sourcephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$tokphp php=php php$thisphp-php>php_getNextTokenphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php switchphp php(php$thisphp-php>php_decodeTypephp)php php{
+php php php php php php php php php php php php casephp Zendphp_Jsonphp:php:TYPEphp_OBJECTphp:
+php php php php php php php php php php php php php php php php php/php/php Createphp newphp StdClassphp andphp populatephp withphp php$members
+php php php php php php php php php php php php php php php php php$resultphp php=php newphp StdClassphp(php)php;
+php php php php php php php php php php php php php php php php foreachphp php(php$membersphp asphp php$keyphp php=php>php php$valuephp)php php{
+php php php php php php php php php php php php php php php php php php php php php$resultphp-php>php$keyphp php=php php$valuephp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp Zendphp_Jsonphp:php:TYPEphp_ARRAYphp:
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$resultphp php=php php$membersphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_getNextTokenphp(php)php;
+php php php php php php php php returnphp php$resultphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Decodesphp aphp JSONphp arrayphp formatphp:
+php php php php php php*php php php php php[elementphp,php elementphp2php,php.php.php.php,elementNphp]
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php protectedphp functionphp php_decodeArrayphp(php)
+php php php php php{
+php php php php php php php php php$resultphp php=php arrayphp(php)php;
+php php php php php php php php php$starttokphp php=php php$tokphp php=php php$thisphp-php>php_getNextTokenphp(php)php;php php/php/php Movephp pastphp thephp php'php[php'
+php php php php php php php php php$indexphp php php=php php0php;
+
+php php php php php php php php whilephp php(php$tokphp php&php&php php$tokphp php!php=php selfphp:php:RBRACKETphp)php php{
+php php php php php php php php php php php php php$resultphp[php$indexphp+php+php]php php=php php$thisphp-php>php_decodeValuephp(php)php;
+
+php php php php php php php php php php php php php$tokphp php=php php$thisphp-php>php_tokenphp;
+
+php php php php php php php php php php php php ifphp php(php$tokphp php=php=php selfphp:php:RBRACKETphp php|php|php php!php$tokphp)php php{
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php ifphp php(php$tokphp php!php=php selfphp:php:COMMAphp)php php{
+php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php'Missingphp php"php,php"php inphp arrayphp encodingphp:php php'php php.php php$thisphp-php>php_sourcephp)php;
+php php php php php php php php php php php php php}
+
+php php php php php php php php php php php php php$tokphp php=php php$thisphp-php>php_getNextTokenphp(php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_getNextTokenphp(php)php;
+php php php php php php php php returnphp(php$resultphp)php;
+php php php php php}
 
 
-    /**
-     * Retrieves the next token from the source stream
-     *
-     * @return int Token constant value specified in class definition
-     */
-    protected function _getNextToken()
-    {
-        $this->_token      = self::EOF;
-        $this->_tokenValue = null;
-        $this->_eatWhitespace();
+php php php php php/php*php*
+php php php php php php*php Removesphp whitepsacephp charactersphp fromphp thephp sourcephp input
+php php php php php php*php/
+php php php php protectedphp functionphp php_eatWhitespacephp(php)
+php php php php php{
+php php php php php php php php ifphp php(pregphp_matchphp(
+php php php php php php php php php php php php php php php php php'php/php(php[php\tphp\bphp\fphp\nphp\rphp php]php)php*php/sphp'php,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_sourcephp,
+php php php php php php php php php php php php php php php php php$matchesphp,
+php php php php php php php php php php php php php php php php PREGphp_OFFSETphp_CAPTUREphp,
+php php php php php php php php php php php php php php php php php$thisphp-php>php_offsetphp)
+php php php php php php php php php php php php php&php&php php$matchesphp[php0php]php[php1php]php php=php=php php$thisphp-php>php_offsetphp)
+php php php php php php php php php{
+php php php php php php php php php php php php php$thisphp-php>php_offsetphp php+php=php strlenphp(php$matchesphp[php0php]php[php0php]php)php;
+php php php php php php php php php}
+php php php php php}
 
-        if ($this->_offset >= $this->_sourceLength) {
-            return(self::EOF);
-        }
 
-        $str        = $this->_source;
-        $str_length = $this->_sourceLength;
-        $i          = $this->_offset;
-        $start      = $i;
+php php php php php/php*php*
+php php php php php php*php Retrievesphp thephp nextphp tokenphp fromphp thephp sourcephp stream
+php php php php php php*
+php php php php php php*php php@returnphp intphp Tokenphp constantphp valuephp specifiedphp inphp classphp definition
+php php php php php php*php/
+php php php php protectedphp functionphp php_getNextTokenphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_tokenphp php php php php php php=php selfphp:php:EOFphp;
+php php php php php php php php php$thisphp-php>php_tokenValuephp php=php nullphp;
+php php php php php php php php php$thisphp-php>php_eatWhitespacephp(php)php;
 
-        switch ($str{$i}) {
-            case '{':
-               $this->_token = self::LBRACE;
-               break;
-            case '}':
-                $this->_token = self::RBRACE;
-                break;
-            case '[':
-                $this->_token = self::LBRACKET;
-                break;
-            case ']':
-                $this->_token = self::RBRACKET;
-                break;
-            case ',':
-                $this->_token = self::COMMA;
-                break;
-            case ':':
-                $this->_token = self::COLON;
-                break;
-            case  '"':
-                $result = '';
-                do {
-                    $i++;
-                    if ($i >= $str_length) {
-                        break;
-                    }
+php php php php php php php php ifphp php(php$thisphp-php>php_offsetphp php>php=php php$thisphp-php>php_sourceLengthphp)php php{
+php php php php php php php php php php php php returnphp(selfphp:php:EOFphp)php;
+php php php php php php php php php}
 
-                    $chr = $str{$i};
+php php php php php php php php php$strphp php php php php php php php php=php php$thisphp-php>php_sourcephp;
+php php php php php php php php php$strphp_lengthphp php=php php$thisphp-php>php_sourceLengthphp;
+php php php php php php php php php$iphp php php php php php php php php php php=php php$thisphp-php>php_offsetphp;
+php php php php php php php php php$startphp php php php php php php=php php$iphp;
 
-                    if ($chr == '\\') {
-                        $i++;
-                        if ($i >= $str_length) {
-                            break;
-                        }
-                        $chr = $str{$i};
-                        switch ($chr) {
-                            case '"' :
-                                $result .= '"';
-                                break;
-                            case '\\':
-                                $result .= '\\';
-                                break;
-                            case '/' :
-                                $result .= '/';
-                                break;
-                            case 'b' :
-                                $result .= "\x08";
-                                break;
-                            case 'f' :
-                                $result .= "\x0c";
-                                break;
-                            case 'n' :
-                                $result .= "\x0a";
-                                break;
-                            case 'r' :
-                                $result .= "\x0d";
-                                break;
-                            case 't' :
-                                $result .= "\x09";
-                                break;
-                            case '\'' :
-                                $result .= '\'';
-                                break;
-                            default:
-                                require_once 'Zend/Json/Exception.php';
-                                throw new Zend_Json_Exception("Illegal escape "
-                                    .  "sequence '" . $chr . "'");
-                        }
-                    } elseif($chr == '"') {
-                        break;
-                    } else {
-                        $result .= $chr;
-                    }
-                } while ($i < $str_length);
+php php php php php php php php switchphp php(php$strphp{php$iphp}php)php php{
+php php php php php php php php php php php php casephp php'php{php'php:
+php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:LBRACEphp;
+php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'php}php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:RBRACEphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'php[php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:LBRACKETphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'php]php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:RBRACKETphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'php,php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:COMMAphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'php:php'php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:COLONphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php php'php"php'php:
+php php php php php php php php php php php php php php php php php$resultphp php=php php'php'php;
+php php php php php php php php php php php php php php php php dophp php{
+php php php php php php php php php php php php php php php php php php php php php$iphp+php+php;
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$iphp php>php=php php$strphp_lengthphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}
 
-                $this->_token = self::DATUM;
-                //$this->_tokenValue = substr($str, $start + 1, $i - $start - 1);
-                $this->_tokenValue = $result;
-                break;
-            case 't':
-                if (($i+ 3) < $str_length && substr($str, $start, 4) == "true") {
-                    $this->_token = self::DATUM;
-                }
-                $this->_tokenValue = true;
-                $i += 3;
-                break;
-            case 'f':
-                if (($i+ 4) < $str_length && substr($str, $start, 5) == "false") {
-                    $this->_token = self::DATUM;
-                }
-                $this->_tokenValue = false;
-                $i += 4;
-                break;
-            case 'n':
-                if (($i+ 3) < $str_length && substr($str, $start, 4) == "null") {
-                    $this->_token = self::DATUM;
-                }
-                $this->_tokenValue = NULL;
-                $i += 3;
-                break;
-        }
+php php php php php php php php php php php php php php php php php php php php php$chrphp php=php php$strphp{php$iphp}php;
 
-        if ($this->_token != self::EOF) {
-            $this->_offset = $i + 1; // Consume the last token character
-            return($this->_token);
-        }
+php php php php php php php php php php php php php php php php php php php php ifphp php(php$chrphp php=php=php php'php\php\php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$iphp+php+php;
+php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$iphp php>php=php php$strphp_lengthphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php php php php php$chrphp php=php php$strphp{php$iphp}php;
+php php php php php php php php php php php php php php php php php php php php php php php php switchphp php(php$chrphp)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php"php'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php'php"php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php\php\php'php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php'php\php\php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php/php'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php'php/php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'bphp'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php"php\xphp0php8php"php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'fphp'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php"php\xphp0cphp"php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'nphp'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php"php\xphp0aphp"php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'rphp'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php"php\xphp0dphp"php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'tphp'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php"php\xphp0php9php"php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php casephp php'php\php'php'php php:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php'php\php'php'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php"Illegalphp escapephp php"
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php php"sequencephp php'php"php php.php php$chrphp php.php php"php'php"php)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php php php php php}php elseifphp(php$chrphp php=php=php php'php"php'php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp php.php=php php$chrphp;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php whilephp php(php$iphp <php php$strphp_lengthphp)php;
 
-        $chr = $str{$i};
-        if ($chr == '-' || $chr == '.' || ($chr >= '0' && $chr <= '9')) {
-            if (preg_match('/-?([0-9])*(\.[0-9]*)?((e|E)((-|\+)?)[0-9]+)?/s',
-                $str, $matches, PREG_OFFSET_CAPTURE, $start) && $matches[0][1] == $start) {
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:DATUMphp;
+php php php php php php php php php php php php php php php php php/php/php$thisphp-php>php_tokenValuephp php=php substrphp(php$strphp,php php$startphp php+php php1php,php php$iphp php-php php$startphp php-php php1php)php;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenValuephp php=php php$resultphp;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'tphp'php:
+php php php php php php php php php php php php php php php php ifphp php(php(php$iphp+php php3php)php <php php$strphp_lengthphp php&php&php substrphp(php$strphp,php php$startphp,php php4php)php php=php=php php"truephp"php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:DATUMphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenValuephp php=php truephp;
+php php php php php php php php php php php php php php php php php$iphp php+php=php php3php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'fphp'php:
+php php php php php php php php php php php php php php php php ifphp php(php(php$iphp+php php4php)php <php php$strphp_lengthphp php&php&php substrphp(php$strphp,php php$startphp,php php5php)php php=php=php php"falsephp"php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:DATUMphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenValuephp php=php falsephp;
+php php php php php php php php php php php php php php php php php$iphp php+php=php php4php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php casephp php'nphp'php:
+php php php php php php php php php php php php php php php php ifphp php(php(php$iphp+php php3php)php <php php$strphp_lengthphp php&php&php substrphp(php$strphp,php php$startphp,php php4php)php php=php=php php"nullphp"php)php php{
+php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:DATUMphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenValuephp php=php NULLphp;
+php php php php php php php php php php php php php php php php php$iphp php+php=php php3php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
 
-                $datum = $matches[0][0];
+php php php php php php php php ifphp php(php$thisphp-php>php_tokenphp php!php=php selfphp:php:EOFphp)php php{
+php php php php php php php php php php php php php$thisphp-php>php_offsetphp php=php php$iphp php+php php1php;php php/php/php Consumephp thephp lastphp tokenphp character
+php php php php php php php php php php php php returnphp(php$thisphp-php>php_tokenphp)php;
+php php php php php php php php php}
 
-                if (is_numeric($datum)) {
-                    if (preg_match('/^0\d+$/', $datum)) {
-                        require_once 'Zend/Json/Exception.php';
-                        throw new Zend_Json_Exception("Octal notation not supported by JSON (value: $datum)");
-                    } else {
-                        $val  = intval($datum);
-                        $fVal = floatval($datum);
-                        $this->_tokenValue = ($val == $fVal ? $val : $fVal);
-                    }
-                } else {
-                    require_once 'Zend/Json/Exception.php';
-                    throw new Zend_Json_Exception("Illegal number format: $datum");
-                }
+php php php php php php php php php$chrphp php=php php$strphp{php$iphp}php;
+php php php php php php php php ifphp php(php$chrphp php=php=php php'php-php'php php|php|php php$chrphp php=php=php php'php.php'php php|php|php php(php$chrphp php>php=php php'php0php'php php&php&php php$chrphp <php=php php'php9php'php)php)php php{
+php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php-php?php(php[php0php-php9php]php)php*php(php\php.php[php0php-php9php]php*php)php?php(php(ephp|Ephp)php(php(php-php|php\php+php)php?php)php[php0php-php9php]php+php)php?php/sphp'php,
+php php php php php php php php php php php php php php php php php$strphp,php php$matchesphp,php PREGphp_OFFSETphp_CAPTUREphp,php php$startphp)php php&php&php php$matchesphp[php0php]php[php1php]php php=php=php php$startphp)php php{
 
-                $this->_token = self::DATUM;
-                $this->_offset = $start + strlen($datum);
-            }
-        } else {
-            require_once 'Zend/Json/Exception.php';
-            throw new Zend_Json_Exception('Illegal Token');
-        }
+php php php php php php php php php php php php php php php php php$datumphp php=php php$matchesphp[php0php]php[php0php]php;
 
-        return($this->_token);
-    }
+php php php php php php php php php php php php php php php php ifphp php(isphp_numericphp(php$datumphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^php0php\dphp+php$php/php'php,php php$datumphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php"Octalphp notationphp notphp supportedphp byphp JSONphp php(valuephp:php php$datumphp)php"php)php;
+php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php php php php php php$valphp php php=php intvalphp(php$datumphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$fValphp php=php floatvalphp(php$datumphp)php;
+php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenValuephp php=php php(php$valphp php=php=php php$fValphp php?php php$valphp php:php php$fValphp)php;
+php php php php php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php"Illegalphp numberphp formatphp:php php$datumphp"php)php;
+php php php php php php php php php php php php php php php php php}
 
-    /**
-     * Decode Unicode Characters from \u0000 ASCII syntax.
-     *
-     * This algorithm was originally developed for the
-     * Solar Framework by Paul M. Jones
-     *
-     * @link   http://solarphp.com/
-     * @link   http://svn.solarphp.com/core/trunk/Solar/Json.php
-     * @param  string $value
-     * @return string
-     */
-    public static function decodeUnicodeString($chrs)
-    {
-        $delim       = substr($chrs, 0, 1);
-        $utf8        = '';
-        $strlen_chrs = strlen($chrs);
+php php php php php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php selfphp:php:DATUMphp;
+php php php php php php php php php php php php php php php php php$thisphp-php>php_offsetphp php=php php$startphp php+php strlenphp(php$datumphp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp/Exceptionphp.phpphp'php;
+php php php php php php php php php php php php throwphp newphp Zendphp_Jsonphp_Exceptionphp(php'Illegalphp Tokenphp'php)php;
+php php php php php php php php php}
 
-        for($i = 0; $i < $strlen_chrs; $i++) {
+php php php php php php php php returnphp(php$thisphp-php>php_tokenphp)php;
+php php php php php}
 
-            $substr_chrs_c_2 = substr($chrs, $i, 2);
-            $ord_chrs_c = ord($chrs[$i]);
+php php php php php/php*php*
+php php php php php php*php Decodephp Unicodephp Charactersphp fromphp php\uphp0php0php0php0php ASCIIphp syntaxphp.
+php php php php php php*
+php php php php php php*php Thisphp algorithmphp wasphp originallyphp developedphp forphp the
+php php php php php php*php Solarphp Frameworkphp byphp Paulphp Mphp.php Jones
+php php php php php php*
+php php php php php php*php php@linkphp php php httpphp:php/php/solarphpphp.comphp/
+php php php php php php*php php@linkphp php php httpphp:php/php/svnphp.solarphpphp.comphp/corephp/trunkphp/Solarphp/Jsonphp.php
+php php php php php php*php php@paramphp php stringphp php$value
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp staticphp functionphp decodeUnicodeStringphp(php$chrsphp)
+php php php php php{
+php php php php php php php php php$delimphp php php php php php php php=php substrphp(php$chrsphp,php php0php,php php1php)php;
+php php php php php php php php php$utfphp8php php php php php php php php php=php php'php'php;
+php php php php php php php php php$strlenphp_chrsphp php=php strlenphp(php$chrsphp)php;
 
-            switch (true) {
-                case preg_match('/\\\u[0-9A-F]{4}/i', substr($chrs, $i, 6)):
-                    // single, escaped unicode character
-                    $utf16 = chr(hexdec(substr($chrs, ($i + 2), 2)))
-                           . chr(hexdec(substr($chrs, ($i + 4), 2)));
-                    $utf8 .= self::_utf162utf8($utf16);
-                    $i += 5;
-                    break;
-                case ($ord_chrs_c >= 0x20) && ($ord_chrs_c <= 0x7F):
-                    $utf8 .= $chrs{$i};
-                    break;
-                case ($ord_chrs_c & 0xE0) == 0xC0:
-                    // characters U-00000080 - U-000007FF, mask 110XXXXX
-                    //see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 2);
-                    ++$i;
-                    break;
-                case ($ord_chrs_c & 0xF0) == 0xE0:
-                    // characters U-00000800 - U-0000FFFF, mask 1110XXXX
-                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 3);
-                    $i += 2;
-                    break;
-                case ($ord_chrs_c & 0xF8) == 0xF0:
-                    // characters U-00010000 - U-001FFFFF, mask 11110XXX
-                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 4);
-                    $i += 3;
-                    break;
-                case ($ord_chrs_c & 0xFC) == 0xF8:
-                    // characters U-00200000 - U-03FFFFFF, mask 111110XX
-                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 5);
-                    $i += 4;
-                    break;
-                case ($ord_chrs_c & 0xFE) == 0xFC:
-                    // characters U-04000000 - U-7FFFFFFF, mask 1111110X
-                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 6);
-                    $i += 5;
-                    break;
-            }
-        }
+php php php php php php php php forphp(php$iphp php=php php0php;php php$iphp <php php$strlenphp_chrsphp;php php$iphp+php+php)php php{
 
-        return $utf8;
-    }
+php php php php php php php php php php php php php$substrphp_chrsphp_cphp_php2php php=php substrphp(php$chrsphp,php php$iphp,php php2php)php;
+php php php php php php php php php php php php php$ordphp_chrsphp_cphp php=php ordphp(php$chrsphp[php$iphp]php)php;
 
-    /**
-     * Convert a string from one UTF-16 char to one UTF-8 char.
-     *
-     * Normally should be handled by mb_convert_encoding, but
-     * provides a slower PHP-only method for installations
-     * that lack the multibye string extension.
-     *
-     * This method is from the Solar Framework by Paul M. Jones
-     *
-     * @link   http://solarphp.com
-     * @param  string $utf16 UTF-16 character
-     * @return string UTF-8 character
-     */
-    protected static function _utf162utf8($utf16)
-    {
-        // Check for mb extension otherwise do by hand.
-        if( function_exists('mb_convert_encoding') ) {
-            return mb_convert_encoding($utf16, 'UTF-8', 'UTF-16');
-        }
+php php php php php php php php php php php php switchphp php(truephp)php php{
+php php php php php php php php php php php php php php php php casephp pregphp_matchphp(php'php/php\php\php\uphp[php0php-php9Aphp-Fphp]php{php4php}php/iphp'php,php substrphp(php$chrsphp,php php$iphp,php php6php)php)php:
+php php php php php php php php php php php php php php php php php php php php php/php/php singlephp,php escapedphp unicodephp character
+php php php php php php php php php php php php php php php php php php php php php$utfphp1php6php php=php chrphp(hexdecphp(substrphp(php$chrsphp,php php(php$iphp php+php php2php)php,php php2php)php)php)
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php chrphp(hexdecphp(substrphp(php$chrsphp,php php(php$iphp php+php php4php)php,php php2php)php)php)php;
+php php php php php php php php php php php php php php php php php php php php php$utfphp8php php.php=php selfphp:php:php_utfphp1php6php2utfphp8php(php$utfphp1php6php)php;
+php php php php php php php php php php php php php php php php php php php php php$iphp php+php=php php5php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php(php$ordphp_chrsphp_cphp php>php=php php0xphp2php0php)php php&php&php php(php$ordphp_chrsphp_cphp <php=php php0xphp7Fphp)php:
+php php php php php php php php php php php php php php php php php php php php php$utfphp8php php.php=php php$chrsphp{php$iphp}php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php(php$ordphp_chrsphp_cphp php&php php0xEphp0php)php php=php=php php0xCphp0php:
+php php php php php php php php php php php php php php php php php php php php php/php/php charactersphp Uphp-php0php0php0php0php0php0php8php0php php-php Uphp-php0php0php0php0php0php7FFphp,php maskphp php1php1php0XXXXX
+php php php php php php php php php php php php php php php php php php php php php/php/seephp httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php php php php php php$utfphp8php php.php=php substrphp(php$chrsphp,php php$iphp,php php2php)php;
+php php php php php php php php php php php php php php php php php php php php php+php+php$iphp;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php(php$ordphp_chrsphp_cphp php&php php0xFphp0php)php php=php=php php0xEphp0php:
+php php php php php php php php php php php php php php php php php php php php php/php/php charactersphp Uphp-php0php0php0php0php0php8php0php0php php-php Uphp-php0php0php0php0FFFFphp,php maskphp php1php1php1php0XXXX
+php php php php php php php php php php php php php php php php php php php php php/php/php seephp httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php php php php php php$utfphp8php php.php=php substrphp(php$chrsphp,php php$iphp,php php3php)php;
+php php php php php php php php php php php php php php php php php php php php php$iphp php+php=php php2php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php(php$ordphp_chrsphp_cphp php&php php0xFphp8php)php php=php=php php0xFphp0php:
+php php php php php php php php php php php php php php php php php php php php php/php/php charactersphp Uphp-php0php0php0php1php0php0php0php0php php-php Uphp-php0php0php1FFFFFphp,php maskphp php1php1php1php1php0XXX
+php php php php php php php php php php php php php php php php php php php php php/php/php seephp httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php php php php php php$utfphp8php php.php=php substrphp(php$chrsphp,php php$iphp,php php4php)php;
+php php php php php php php php php php php php php php php php php php php php php$iphp php+php=php php3php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php(php$ordphp_chrsphp_cphp php&php php0xFCphp)php php=php=php php0xFphp8php:
+php php php php php php php php php php php php php php php php php php php php php/php/php charactersphp Uphp-php0php0php2php0php0php0php0php0php php-php Uphp-php0php3FFFFFFphp,php maskphp php1php1php1php1php1php0XX
+php php php php php php php php php php php php php php php php php php php php php/php/php seephp httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php php php php php php$utfphp8php php.php=php substrphp(php$chrsphp,php php$iphp,php php5php)php;
+php php php php php php php php php php php php php php php php php php php php php$iphp php+php=php php4php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php php php php casephp php(php$ordphp_chrsphp_cphp php&php php0xFEphp)php php=php=php php0xFCphp:
+php php php php php php php php php php php php php php php php php php php php php/php/php charactersphp Uphp-php0php4php0php0php0php0php0php0php php-php Uphp-php7FFFFFFFphp,php maskphp php1php1php1php1php1php1php0X
+php php php php php php php php php php php php php php php php php php php php php/php/php seephp httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php php php php php php$utfphp8php php.php=php substrphp(php$chrsphp,php php$iphp,php php6php)php;
+php php php php php php php php php php php php php php php php php php php php php$iphp php+php=php php5php;
+php php php php php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
 
-        $bytes = (ord($utf16{0}) << 8) | ord($utf16{1});
+php php php php php php php php returnphp php$utfphp8php;
+php php php php php}
 
-        switch (true) {
-            case ((0x7F & $bytes) == $bytes):
-                // this case should never be reached, because we are in ASCII range
-                // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                return chr(0x7F & $bytes);
+php php php php php/php*php*
+php php php php php php*php Convertphp aphp stringphp fromphp onephp UTFphp-php1php6php charphp tophp onephp UTFphp-php8php charphp.
+php php php php php php*
+php php php php php php*php Normallyphp shouldphp bephp handledphp byphp mbphp_convertphp_encodingphp,php but
+php php php php php php*php providesphp aphp slowerphp PHPphp-onlyphp methodphp forphp installations
+php php php php php php*php thatphp lackphp thephp multibyephp stringphp extensionphp.
+php php php php php php*
+php php php php php php*php Thisphp methodphp isphp fromphp thephp Solarphp Frameworkphp byphp Paulphp Mphp.php Jones
+php php php php php php*
+php php php php php php*php php@linkphp php php httpphp:php/php/solarphpphp.com
+php php php php php php*php php@paramphp php stringphp php$utfphp1php6php UTFphp-php1php6php character
+php php php php php php*php php@returnphp stringphp UTFphp-php8php character
+php php php php php php*php/
+php php php php protectedphp staticphp functionphp php_utfphp1php6php2utfphp8php(php$utfphp1php6php)
+php php php php php{
+php php php php php php php php php/php/php Checkphp forphp mbphp extensionphp otherwisephp dophp byphp handphp.
+php php php php php php php php ifphp(php functionphp_existsphp(php'mbphp_convertphp_encodingphp'php)php php)php php{
+php php php php php php php php php php php php returnphp mbphp_convertphp_encodingphp(php$utfphp1php6php,php php'UTFphp-php8php'php,php php'UTFphp-php1php6php'php)php;
+php php php php php php php php php}
 
-            case (0x07FF & $bytes) == $bytes:
-                // return a 2-byte UTF-8 character
-                // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                return chr(0xC0 | (($bytes >> 6) & 0x1F))
-                     . chr(0x80 | ($bytes & 0x3F));
+php php php php php php php php php$bytesphp php=php php(ordphp(php$utfphp1php6php{php0php}php)php <php<php php8php)php php|php ordphp(php$utfphp1php6php{php1php}php)php;
 
-            case (0xFFFF & $bytes) == $bytes:
-                // return a 3-byte UTF-8 character
-                // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                return chr(0xE0 | (($bytes >> 12) & 0x0F))
-                     . chr(0x80 | (($bytes >> 6) & 0x3F))
-                     . chr(0x80 | ($bytes & 0x3F));
-        }
+php php php php php php php php switchphp php(truephp)php php{
+php php php php php php php php php php php php casephp php(php(php0xphp7Fphp php&php php$bytesphp)php php=php=php php$bytesphp)php:
+php php php php php php php php php php php php php php php php php/php/php thisphp casephp shouldphp neverphp bephp reachedphp,php becausephp wephp arephp inphp ASCIIphp range
+php php php php php php php php php php php php php php php php php/php/php seephp:php httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php returnphp chrphp(php0xphp7Fphp php&php php$bytesphp)php;
 
-        // ignoring UTF-32 for now, sorry
-        return '';
-    }
-}
+php php php php php php php php php php php php casephp php(php0xphp0php7FFphp php&php php$bytesphp)php php=php=php php$bytesphp:
+php php php php php php php php php php php php php php php php php/php/php returnphp aphp php2php-bytephp UTFphp-php8php character
+php php php php php php php php php php php php php php php php php/php/php seephp:php httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php returnphp chrphp(php0xCphp0php php|php php(php(php$bytesphp php>php>php php6php)php php&php php0xphp1Fphp)php)
+php php php php php php php php php php php php php php php php php php php php php php.php chrphp(php0xphp8php0php php|php php(php$bytesphp php&php php0xphp3Fphp)php)php;
+
+php php php php php php php php php php php php casephp php(php0xFFFFphp php&php php$bytesphp)php php=php=php php$bytesphp:
+php php php php php php php php php php php php php php php php php/php/php returnphp aphp php3php-bytephp UTFphp-php8php character
+php php php php php php php php php php php php php php php php php/php/php seephp:php httpphp:php/php/wwwphp.clphp.camphp.acphp.ukphp/php~mgkphp2php5php/unicodephp.htmlphp#utfphp-php8
+php php php php php php php php php php php php php php php php returnphp chrphp(php0xEphp0php php|php php(php(php$bytesphp php>php>php php1php2php)php php&php php0xphp0Fphp)php)
+php php php php php php php php php php php php php php php php php php php php php php.php chrphp(php0xphp8php0php php|php php(php(php$bytesphp php>php>php php6php)php php&php php0xphp3Fphp)php)
+php php php php php php php php php php php php php php php php php php php php php php.php chrphp(php0xphp8php0php php|php php(php$bytesphp php&php php0xphp3Fphp)php)php;
+php php php php php php php php php}
+
+php php php php php php php php php/php/php ignoringphp UTFphp-php3php2php forphp nowphp,php sorry
+php php php php php php php php returnphp php'php'php;
+php php php php php}
+php}
 

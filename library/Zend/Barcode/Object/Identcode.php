@@ -1,95 +1,95 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @subpackage Object
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Identcode.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@subpackagephp Object
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Identcodephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Barcode_Object_Code25interleaved
- */
-require_once 'Zend/Barcode/Object/Code25interleaved.php';
+php/php*php*
+php php*php php@seephp Zendphp_Barcodephp_Objectphp_Codephp2php5interleaved
+php php*php/
+requirephp_oncephp php'Zendphp/Barcodephp/Objectphp/Codephp2php5interleavedphp.phpphp'php;
 
-/**
- * @see Zend_Validate_Barcode
- */
-require_once 'Zend/Validate/Barcode.php';
+php/php*php*
+php php*php php@seephp Zendphp_Validatephp_Barcode
+php php*php/
+requirephp_oncephp php'Zendphp/Validatephp/Barcodephp.phpphp'php;
 
-/**
- * Class for generate Identcode barcode
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Barcode_Object_Identcode extends Zend_Barcode_Object_Code25interleaved
-{
+php/php*php*
+php php*php Classphp forphp generatephp Identcodephp barcode
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Barcode
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Barcodephp_Objectphp_Identcodephp extendsphp Zendphp_Barcodephp_Objectphp_Codephp2php5interleaved
+php{
 
-    /**
-     * Default options for Identcode barcode
-     * @return void
-     */
-    protected function _getDefaultOptions()
-    {
-        $this->_barcodeLength = 12;
-        $this->_mandatoryChecksum = true;
-    }
+php php php php php/php*php*
+php php php php php php*php Defaultphp optionsphp forphp Identcodephp barcode
+php php php php php php*php php@returnphp void
+php php php php php php*php/
+php php php php protectedphp functionphp php_getDefaultOptionsphp(php)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_barcodeLengthphp php=php php1php2php;
+php php php php php php php php php$thisphp-php>php_mandatoryChecksumphp php=php truephp;
+php php php php php}
 
-    /**
-     * Retrieve text to display
-     * @return string
-     */
-    public function getTextToDisplay()
-    {
-        return preg_replace('/([0-9]{2})([0-9]{3})([0-9]{3})([0-9]{3})([0-9])/',
-                            '$1.$2 $3.$4 $5',
-                            $this->getText());
-    }
+php php php php php/php*php*
+php php php php php php*php Retrievephp textphp tophp display
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getTextToDisplayphp(php)
+php php php php php{
+php php php php php php php php returnphp pregphp_replacephp(php'php/php(php[php0php-php9php]php{php2php}php)php(php[php0php-php9php]php{php3php}php)php(php[php0php-php9php]php{php3php}php)php(php[php0php-php9php]php{php3php}php)php(php[php0php-php9php]php)php/php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php$php1php.php$php2php php$php3php.php$php4php php$php5php'php,
+php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getTextphp(php)php)php;
+php php php php php}
 
-    /**
-     * Check allowed characters
-     * @param string $value
-     * @return string
-     * @throw Zend_Barcode_Object_Exception
-     */
-    public function validateText($value)
-    {
-        $this->_validateText($value, array('validator' => $this->getType()));
-    }
+php php php php php/php*php*
+php php php php php php*php Checkphp allowedphp characters
+php php php php php php*php php@paramphp stringphp php$value
+php php php php php php*php php@returnphp string
+php php php php php php*php php@throwphp Zendphp_Barcodephp_Objectphp_Exception
+php php php php php php*php/
+php php php php publicphp functionphp validateTextphp(php$valuephp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_validateTextphp(php$valuephp,php arrayphp(php'validatorphp'php php=php>php php$thisphp-php>getTypephp(php)php)php)php;
+php php php php php}
 
-    /**
-     * Get barcode checksum
-     *
-     * @param  string $text
-     * @return int
-     */
-    public function getChecksum($text)
-    {
-        $this->_checkText($text);
-        $checksum = 0;
+php php php php php/php*php*
+php php php php php php*php Getphp barcodephp checksum
+php php php php php php*
+php php php php php php*php php@paramphp php stringphp php$text
+php php php php php php*php php@returnphp int
+php php php php php php*php/
+php php php php publicphp functionphp getChecksumphp(php$textphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_checkTextphp(php$textphp)php;
+php php php php php php php php php$checksumphp php=php php0php;
 
-        for ($i = strlen($text); $i > 0; $i --) {
-            $checksum += intval($text{$i - 1}) * (($i % 2) ? 4 : 9);
-        }
+php php php php php php php php forphp php(php$iphp php=php strlenphp(php$textphp)php;php php$iphp php>php php0php;php php$iphp php-php-php)php php{
+php php php php php php php php php php php php php$checksumphp php+php=php intvalphp(php$textphp{php$iphp php-php php1php}php)php php*php php(php(php$iphp php%php php2php)php php?php php4php php:php php9php)php;
+php php php php php php php php php}
 
-        $checksum = (10 - ($checksum % 10)) % 10;
+php php php php php php php php php$checksumphp php=php php(php1php0php php-php php(php$checksumphp php%php php1php0php)php)php php%php php1php0php;
 
-        return $checksum;
-    }
-}
+php php php php php php php php returnphp php$checksumphp;
+php php php php php}
+php}

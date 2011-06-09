@@ -1,98 +1,98 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @subpackage PHP
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: License.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_CodeGenerator
+php php*php php@subpackagephp PHP
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Licensephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_CodeGenerator_Php_Docblock_Tag
- */
-require_once 'Zend/CodeGenerator/Php/Docblock/Tag.php';
+php/php*php*
+php php*php php@seephp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tag
+php php*php/
+requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Docblockphp/Tagphp.phpphp'php;
 
-/**
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_CodeGenerator_Php_Docblock_Tag_License extends Zend_CodeGenerator_Php_Docblock_Tag
-{
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_CodeGenerator
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tagphp_Licensephp extendsphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tag
+php{
 
-    /**
-     * @var string
-     */
-    protected $_url = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_urlphp php=php nullphp;
 
-    /**
-     * @var string
-     */
-    protected $_description = null;
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_descriptionphp php=php nullphp;
 
-    /**
-     * fromReflection()
-     *
-     * @param Zend_Reflection_Docblock_Tag $reflectionTagReturn
-     * @return Zend_CodeGenerator_Php_Docblock_Tag_License
-     */
-    public static function fromReflection(Zend_Reflection_Docblock_Tag $reflectionTagLicense)
-    {
-        $returnTag = new self();
+php php php php php/php*php*
+php php php php php php*php fromReflectionphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp Zendphp_Reflectionphp_Docblockphp_Tagphp php$reflectionTagReturn
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tagphp_License
+php php php php php php*php/
+php php php php publicphp staticphp functionphp fromReflectionphp(Zendphp_Reflectionphp_Docblockphp_Tagphp php$reflectionTagLicensephp)
+php php php php php{
+php php php php php php php php php$returnTagphp php=php newphp selfphp(php)php;
 
-        $returnTag->setName('license');
-        $returnTag->setUrl($reflectionTagLicense->getUrl());
-        $returnTag->setDescription($reflectionTagLicense->getDescription());
+php php php php php php php php php$returnTagphp-php>setNamephp(php'licensephp'php)php;
+php php php php php php php php php$returnTagphp-php>setUrlphp(php$reflectionTagLicensephp-php>getUrlphp(php)php)php;
+php php php php php php php php php$returnTagphp-php>setDescriptionphp(php$reflectionTagLicensephp-php>getDescriptionphp(php)php)php;
 
-        return $returnTag;
-    }
+php php php php php php php php returnphp php$returnTagphp;
+php php php php php}
 
-    /**
-     * setUrl()
-     *
-     * @param string $url
-     * @return Zend_CodeGenerator_Php_Docblock_Tag_License
-     */
-    public function setUrl($url)
-    {
-        $this->_url = $url;
-        return $this;
-    }
+php php php php php/php*php*
+php php php php php php*php setUrlphp(php)
+php php php php php php*
+php php php php php php*php php@paramphp stringphp php$url
+php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tagphp_License
+php php php php php php*php/
+php php php php publicphp functionphp setUrlphp(php$urlphp)
+php php php php php{
+php php php php php php php php php$thisphp-php>php_urlphp php=php php$urlphp;
+php php php php php php php php returnphp php$thisphp;
+php php php php php}
 
-    /**
-     * getUrl()
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->_url;
-    }
+php php php php php/php*php*
+php php php php php php*php getUrlphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getUrlphp(php)
+php php php php php{
+php php php php php php php php returnphp php$thisphp-php>php_urlphp;
+php php php php php}
 
 
-    /**
-     * generate()
-     *
-     * @return string
-     */
-    public function generate()
-    {
-        $output = '@license ' . $this->_url . ' ' . $this->_description . self::LINE_FEED;
-        return $output;
-    }
+php php php php php/php*php*
+php php php php php php*php generatephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp generatephp(php)
+php php php php php{
+php php php php php php php php php$outputphp php=php php'php@licensephp php'php php.php php$thisphp-php>php_urlphp php.php php'php php'php php.php php$thisphp-php>php_descriptionphp php.php selfphp:php:LINEphp_FEEDphp;
+php php php php php php php php returnphp php$outputphp;
+php php php php php}
 
-}
+php}

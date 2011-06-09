@@ -1,590 +1,590 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Feed.php 23484 2010-12-10 03:57:59Z mjh_ca $
- */
-
-/**
- * @see Zend_Feed_Reader_Extension_FeedAbstract
- */
-require_once 'Zend/Feed/Reader/Extension/FeedAbstract.php';
-
-/**
- * @see Zend_Date
- */
-require_once 'Zend/Date.php';
-
-/**
- * @see Zend_Uri
- */
-require_once 'Zend/Uri.php';
-
-/**
- * @see Zend_Feed_Reader_Collection_Author
- */
-require_once 'Zend/Feed/Reader/Collection/Author.php';
-
-/**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Feed_Reader_Extension_Atom_Feed
-    extends Zend_Feed_Reader_Extension_FeedAbstract
-{
-    /**
-     * Get a single author
-     *
-     * @param  int $index
-     * @return string|null
-     */
-    public function getAuthor($index = 0)
-    {
-        $authors = $this->getAuthors();
-
-        if (isset($authors[$index])) {
-            return $authors[$index];
-        }
-
-        return null;
-    }
-
-    /**
-     * Get an array with feed authors
-     *
-     * @return array
-     */
-    public function getAuthors()
-    {
-        if (array_key_exists('authors', $this->_data)) {
-            return $this->_data['authors'];
-        }
-
-        $list = $this->_xpath->query('//atom:author');
-
-        $authors = array();
-
-        if ($list->length) {
-            foreach ($list as $author) {
-                $author = $this->_getAuthor($author);
-                if (!empty($author)) {
-                    $authors[] = $author;
-                }
-            }
-        }
-
-        if (count($authors) == 0) {
-            $authors = null;
-        } else {
-            $authors = new Zend_Feed_Reader_Collection_Author(
-                Zend_Feed_Reader::arrayUnique($authors)
-            );
-        }
-
-        $this->_data['authors'] = $authors;
-
-        return $this->_data['authors'];
-    }
-
-    /**
-     * Get the copyright entry
-     *
-     * @return string|null
-     */
-    public function getCopyright()
-    {
-        if (array_key_exists('copyright', $this->_data)) {
-            return $this->_data['copyright'];
-        }
-
-        $copyright = null;
-
-        if ($this->getType() === Zend_Feed_Reader::TYPE_ATOM_03) {
-            $copyright = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:copyright)');
-        } else {
-            $copyright = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:rights)');
-        }
-
-        if (!$copyright) {
-            $copyright = null;
-        }
-
-        $this->_data['copyright'] = $copyright;
-
-        return $this->_data['copyright'];
-    }
-
-    /**
-     * Get the feed creation date
-     *
-     * @return Zend_Date|null
-     */
-    public function getDateCreated()
-    {
-        if (array_key_exists('datecreated', $this->_data)) {
-            return $this->_data['datecreated'];
-        }
-
-        $date = null;
-
-        if ($this->getType() === Zend_Feed_Reader::TYPE_ATOM_03) {
-            $dateCreated = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:created)');
-        } else {
-            $dateCreated = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:published)');
-        }
-
-        if ($dateCreated) {
-            $date = new Zend_Date;
-            $date->set($dateCreated, Zend_Date::ISO_8601);
-        }
-
-        $this->_data['datecreated'] = $date;
-
-        return $this->_data['datecreated'];
-    }
-
-    /**
-     * Get the feed modification date
-     *
-     * @return Zend_Date|null
-     */
-    public function getDateModified()
-    {
-        if (array_key_exists('datemodified', $this->_data)) {
-            return $this->_data['datemodified'];
-        }
-
-        $date = null;
-
-        if ($this->getType() === Zend_Feed_Reader::TYPE_ATOM_03) {
-            $dateModified = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:modified)');
-        } else {
-            $dateModified = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:updated)');
-        }
-
-        if ($dateModified) {
-            $date = new Zend_Date;
-            $date->set($dateModified, Zend_Date::ISO_8601);
-        }
-
-        $this->_data['datemodified'] = $date;
-
-        return $this->_data['datemodified'];
-    }
-
-    /**
-     * Get the feed description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        if (array_key_exists('description', $this->_data)) {
-            return $this->_data['description'];
-        }
-
-        $description = null;
-
-        if ($this->getType() === Zend_Feed_Reader::TYPE_ATOM_03) {
-            $description = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:tagline)'); // TODO: Is this the same as subtitle?
-        } else {
-            $description = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:subtitle)');
-        }
-
-        if (!$description) {
-            $description = null;
-        }
-
-        $this->_data['description'] = $description;
-
-        return $this->_data['description'];
-    }
-
-    /**
-     * Get the feed generator entry
-     *
-     * @return string|null
-     */
-    public function getGenerator()
-    {
-        if (array_key_exists('generator', $this->_data)) {
-            return $this->_data['generator'];
-        }
-        // TODO: Add uri support
-        $generator = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:generator)');
-
-        if (!$generator) {
-            $generator = null;
-        }
-
-        $this->_data['generator'] = $generator;
-
-        return $this->_data['generator'];
-    }
-
-    /**
-     * Get the feed ID
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        if (array_key_exists('id', $this->_data)) {
-            return $this->_data['id'];
-        }
-
-        $id = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:id)');
-
-        if (!$id) {
-            if ($this->getLink()) {
-                $id = $this->getLink();
-            } elseif ($this->getTitle()) {
-                $id = $this->getTitle();
-            } else {
-                $id = null;
-            }
-        }
-
-        $this->_data['id'] = $id;
-
-        return $this->_data['id'];
-    }
-
-    /**
-     * Get the feed language
-     *
-     * @return string|null
-     */
-    public function getLanguage()
-    {
-        if (array_key_exists('language', $this->_data)) {
-            return $this->_data['language'];
-        }
-
-        $language = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:lang)');
-
-        if (!$language) {
-            $language = $this->_xpath->evaluate('string(//@xml:lang[1])');
-        }
-
-        if (!$language) {
-            $language = null;
-        }
-
-        $this->_data['language'] = $language;
-
-        return $this->_data['language'];
-    }
-
-    /**
-     * Get the feed image
-     *
-     * @return array|null
-     */
-    public function getImage()
-    {
-        if (array_key_exists('image', $this->_data)) {
-            return $this->_data['image'];
-        }
-
-        $imageUrl = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:logo)');
-
-        if (!$imageUrl) {
-            $image = null;
-        } else {
-            $image = array('uri'=>$imageUrl);
-        }
-
-        $this->_data['image'] = $image;
-
-        return $this->_data['image'];
-    }
-
-    /**
-     * Get the feed image
-     *
-     * @return array|null
-     */
-    public function getIcon()
-    {
-        if (array_key_exists('icon', $this->_data)) {
-            return $this->_data['icon'];
-        }
-
-        $imageUrl = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:icon)');
-
-        if (!$imageUrl) {
-            $image = null;
-        } else {
-            $image = array('uri'=>$imageUrl);
-        }
-
-        $this->_data['icon'] = $image;
-
-        return $this->_data['icon'];
-    }
-
-    /**
-     * Get the base URI of the feed (if set).
-     *
-     * @return string|null
-     */
-    public function getBaseUrl()
-    {
-        if (array_key_exists('baseUrl', $this->_data)) {
-            return $this->_data['baseUrl'];
-        }
-
-        $baseUrl = $this->_xpath->evaluate('string(//@xml:base[1])');
-
-        if (!$baseUrl) {
-            $baseUrl = null;
-        }
-        $this->_data['baseUrl'] = $baseUrl;
-
-        return $this->_data['baseUrl'];
-    }
-
-    /**
-     * Get a link to the source website
-     *
-     * @return string|null
-     */
-    public function getLink()
-    {
-        if (array_key_exists('link', $this->_data)) {
-            return $this->_data['link'];
-        }
-
-        $link = null;
-
-        $list = $this->_xpath->query(
-            $this->getXpathPrefix() . '/atom:link[@rel="alternate"]/@href' . '|' .
-            $this->getXpathPrefix() . '/atom:link[not(@rel)]/@href'
-        );
-
-        if ($list->length) {
-            $link = $list->item(0)->nodeValue;
-            $link = $this->_absolutiseUri($link);
-        }
-
-        $this->_data['link'] = $link;
-
-        return $this->_data['link'];
-    }
-
-    /**
-     * Get a link to the feed's XML Url
-     *
-     * @return string|null
-     */
-    public function getFeedLink()
-    {
-        if (array_key_exists('feedlink', $this->_data)) {
-            return $this->_data['feedlink'];
-        }
-
-        $link = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:link[@rel="self"]/@href)');
-
-        $link = $this->_absolutiseUri($link);
-
-        $this->_data['feedlink'] = $link;
-
-        return $this->_data['feedlink'];
-    }
-
-    /**
-     * Get an array of any supported Pusubhubbub endpoints
-     *
-     * @return array|null
-     */
-    public function getHubs()
-    {
-        if (array_key_exists('hubs', $this->_data)) {
-            return $this->_data['hubs'];
-        }
-        $hubs = array();
-
-        $list = $this->_xpath->query($this->getXpathPrefix()
-            . '//atom:link[@rel="hub"]/@href');
-
-        if ($list->length) {
-            foreach ($list as $uri) {
-                $hubs[] = $this->_absolutiseUri($uri->nodeValue);
-            }
-        } else {
-            $hubs = null;
-        }
-
-        $this->_data['hubs'] = $hubs;
-
-        return $this->_data['hubs'];
-    }
-
-    /**
-     * Get the feed title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        if (array_key_exists('title', $this->_data)) {
-            return $this->_data['title'];
-        }
-
-        $title = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:title)');
-
-        if (!$title) {
-            $title = null;
-        }
-
-        $this->_data['title'] = $title;
-
-        return $this->_data['title'];
-    }
-
-    /**
-     * Get all categories
-     *
-     * @return Zend_Feed_Reader_Collection_Category
-     */
-    public function getCategories()
-    {
-        if (array_key_exists('categories', $this->_data)) {
-            return $this->_data['categories'];
-        }
-
-        if ($this->getType() == Zend_Feed_Reader::TYPE_ATOM_10) {
-            $list = $this->_xpath->query($this->getXpathPrefix() . '/atom:category');
-        } else {
-            /**
-             * Since Atom 0.3 did not support categories, it would have used the
-             * Dublin Core extension. However there is a small possibility Atom 0.3
-             * may have been retrofittied to use Atom 1.0 instead.
-             */
-            $this->_xpath->registerNamespace('atom10', Zend_Feed_Reader::NAMESPACE_ATOM_10);
-            $list = $this->_xpath->query($this->getXpathPrefix() . '/atom10:category');
-        }
-
-        if ($list->length) {
-            $categoryCollection = new Zend_Feed_Reader_Collection_Category;
-            foreach ($list as $category) {
-                $categoryCollection[] = array(
-                    'term' => $category->getAttribute('term'),
-                    'scheme' => $category->getAttribute('scheme'),
-                    'label' => $category->getAttribute('label')
-                );
-            }
-        } else {
-            return new Zend_Feed_Reader_Collection_Category;
-        }
-
-        $this->_data['categories'] = $categoryCollection;
-
-        return $this->_data['categories'];
-    }
-
-    /**
-     * Get an author entry in RSS format
-     *
-     * @param  DOMElement $element
-     * @return string
-     */
-    protected function _getAuthor(DOMElement $element)
-    {
-        $author = array();
-
-        $emailNode = $element->getElementsByTagName('email');
-        $nameNode  = $element->getElementsByTagName('name');
-        $uriNode   = $element->getElementsByTagName('uri');
-
-        if ($emailNode->length && strlen($emailNode->item(0)->nodeValue) > 0) {
-            $author['email'] = $emailNode->item(0)->nodeValue;
-        }
-
-        if ($nameNode->length && strlen($nameNode->item(0)->nodeValue) > 0) {
-            $author['name'] = $nameNode->item(0)->nodeValue;
-        }
-
-        if ($uriNode->length && strlen($uriNode->item(0)->nodeValue) > 0) {
-            $author['uri'] = $uriNode->item(0)->nodeValue;
-        }
-
-        if (empty($author)) {
-            return null;
-        }
-        return $author;
-    }
-
-    /**
-     *  Attempt to absolutise the URI, i.e. if a relative URI apply the
-     *  xml:base value as a prefix to turn into an absolute URI.
-     */
-    protected function _absolutiseUri($link)
-    {
-        if (!Zend_Uri::check($link)) {
-            if ($this->getBaseUrl() !== null) {
-                $link = $this->getBaseUrl() . $link;
-                if (!Zend_Uri::check($link)) {
-                    $link = null;
-                }
-            }
-        }
-        return $link;
-    }
-
-    /**
-     * Register the default namespaces for the current feed format
-     */
-    protected function _registerNamespaces()
-    {
-        if ($this->getType() == Zend_Feed_Reader::TYPE_ATOM_10
-            || $this->getType() == Zend_Feed_Reader::TYPE_ATOM_03
-        ) {
-            return; // pre-registered at Feed level
-        }
-        $atomDetected = $this->_getAtomType();
-        switch ($atomDetected) {
-            case Zend_Feed_Reader::TYPE_ATOM_03:
-                $this->_xpath->registerNamespace('atom', Zend_Feed_Reader::NAMESPACE_ATOM_03);
-                break;
-            default:
-                $this->_xpath->registerNamespace('atom', Zend_Feed_Reader::NAMESPACE_ATOM_10);
-                break;
-        }
-    }
-
-    /**
-     * Detect the presence of any Atom namespaces in use
-     */
-    protected function _getAtomType()
-    {
-        $dom = $this->getDomDocument();
-        $prefixAtom03 = $dom->lookupPrefix(Zend_Feed_Reader::NAMESPACE_ATOM_03);
-        $prefixAtom10 = $dom->lookupPrefix(Zend_Feed_Reader::NAMESPACE_ATOM_10);
-        if ($dom->isDefaultNamespace(Zend_Feed_Reader::NAMESPACE_ATOM_10)
-        || !empty($prefixAtom10)) {
-            return Zend_Feed_Reader::TYPE_ATOM_10;
-        }
-        if ($dom->isDefaultNamespace(Zend_Feed_Reader::NAMESPACE_ATOM_03)
-        || !empty($prefixAtom03)) {
-            return Zend_Feed_Reader::TYPE_ATOM_03;
-        }
-    }
-}
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php Feedphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
+php php*php/
+
+php/php*php*
+php php*php php@seephp Zendphp_Feedphp_Readerphp_Extensionphp_FeedAbstract
+php php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Extensionphp/FeedAbstractphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Date
+php php*php/
+requirephp_oncephp php'Zendphp/Datephp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Uri
+php php*php/
+requirephp_oncephp php'Zendphp/Uriphp.phpphp'php;
+
+php/php*php*
+php php*php php@seephp Zendphp_Feedphp_Readerphp_Collectionphp_Author
+php php*php/
+requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Collectionphp/Authorphp.phpphp'php;
+
+php/php*php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Feedphp_Reader
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Feedphp_Readerphp_Extensionphp_Atomphp_Feed
+php php php php extendsphp Zendphp_Feedphp_Readerphp_Extensionphp_FeedAbstract
+php{
+php php php php php/php*php*
+php php php php php php*php Getphp aphp singlephp author
+php php php php php php*
+php php php php php php*php php@paramphp php intphp php$index
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getAuthorphp(php$indexphp php=php php0php)
+php php php php php{
+php php php php php php php php php$authorsphp php=php php$thisphp-php>getAuthorsphp(php)php;
+
+php php php php php php php php ifphp php(issetphp(php$authorsphp[php$indexphp]php)php)php php{
+php php php php php php php php php php php php returnphp php$authorsphp[php$indexphp]php;
+php php php php php php php php php}
+
+php php php php php php php php returnphp nullphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp anphp arrayphp withphp feedphp authors
+php php php php php php*
+php php php php php php*php php@returnphp array
+php php php php php php*php/
+php php php php publicphp functionphp getAuthorsphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'authorsphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'authorsphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$listphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php/php/atomphp:authorphp'php)php;
+
+php php php php php php php php php$authorsphp php=php arrayphp(php)php;
+
+php php php php php php php php ifphp php(php$listphp-php>lengthphp)php php{
+php php php php php php php php php php php php foreachphp php(php$listphp asphp php$authorphp)php php{
+php php php php php php php php php php php php php php php php php$authorphp php=php php$thisphp-php>php_getAuthorphp(php$authorphp)php;
+php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$authorphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$authorsphp[php]php php=php php$authorphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(countphp(php$authorsphp)php php=php=php php0php)php php{
+php php php php php php php php php php php php php$authorsphp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$authorsphp php=php newphp Zendphp_Feedphp_Readerphp_Collectionphp_Authorphp(
+php php php php php php php php php php php php php php php php Zendphp_Feedphp_Readerphp:php:arrayUniquephp(php$authorsphp)
+php php php php php php php php php php php php php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'authorsphp'php]php php=php php$authorsphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'authorsphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp copyrightphp entry
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getCopyrightphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'copyrightphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'copyrightphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$copyrightphp php=php nullphp;
+
+php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php=php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3php)php php{
+php php php php php php php php php php php php php$copyrightphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:copyrightphp)php'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$copyrightphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:rightsphp)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$copyrightphp)php php{
+php php php php php php php php php php php php php$copyrightphp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'copyrightphp'php]php php=php php$copyrightphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'copyrightphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp creationphp date
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Datephp|null
+php php php php php php*php/
+php php php php publicphp functionphp getDateCreatedphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'datecreatedphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datecreatedphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$datephp php=php nullphp;
+
+php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php=php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3php)php php{
+php php php php php php php php php php php php php$dateCreatedphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:createdphp)php'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$dateCreatedphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:publishedphp)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$dateCreatedphp)php php{
+php php php php php php php php php php php php php$datephp php=php newphp Zendphp_Datephp;
+php php php php php php php php php php php php php$datephp-php>setphp(php$dateCreatedphp,php Zendphp_Datephp:php:ISOphp_php8php6php0php1php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'datecreatedphp'php]php php=php php$datephp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datecreatedphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp modificationphp date
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Datephp|null
+php php php php php php*php/
+php php php php publicphp functionphp getDateModifiedphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'datemodifiedphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datemodifiedphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$datephp php=php nullphp;
+
+php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php=php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3php)php php{
+php php php php php php php php php php php php php$dateModifiedphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:modifiedphp)php'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$dateModifiedphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:updatedphp)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$dateModifiedphp)php php{
+php php php php php php php php php php php php php$datephp php=php newphp Zendphp_Datephp;
+php php php php php php php php php php php php php$datephp-php>setphp(php$dateModifiedphp,php Zendphp_Datephp:php:ISOphp_php8php6php0php1php)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'datemodifiedphp'php]php php=php php$datephp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datemodifiedphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp description
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getDescriptionphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'descriptionphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'descriptionphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$descriptionphp php=php nullphp;
+
+php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php=php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3php)php php{
+php php php php php php php php php php php php php$descriptionphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:taglinephp)php'php)php;php php/php/php TODOphp:php Isphp thisphp thephp samephp asphp subtitlephp?
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$descriptionphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:subtitlephp)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$descriptionphp)php php{
+php php php php php php php php php php php php php$descriptionphp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'descriptionphp'php]php php=php php$descriptionphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'descriptionphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp generatorphp entry
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getGeneratorphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'generatorphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'generatorphp'php]php;
+php php php php php php php php php}
+php php php php php php php php php/php/php TODOphp:php Addphp uriphp support
+php php php php php php php php php$generatorphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:generatorphp)php'php)php;
+
+php php php php php php php php ifphp php(php!php$generatorphp)php php{
+php php php php php php php php php php php php php$generatorphp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'generatorphp'php]php php=php php$generatorphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'generatorphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp ID
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getIdphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'idphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'idphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$idphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:idphp)php'php)php;
+
+php php php php php php php php ifphp php(php!php$idphp)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>getLinkphp(php)php)php php{
+php php php php php php php php php php php php php php php php php$idphp php=php php$thisphp-php>getLinkphp(php)php;
+php php php php php php php php php php php php php}php elseifphp php(php$thisphp-php>getTitlephp(php)php)php php{
+php php php php php php php php php php php php php php php php php$idphp php=php php$thisphp-php>getTitlephp(php)php;
+php php php php php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php php php php php$idphp php=php nullphp;
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'idphp'php]php php=php php$idphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'idphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp language
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getLanguagephp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'languagephp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'languagephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$languagephp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:langphp)php'php)php;
+
+php php php php php php php php ifphp php(php!php$languagephp)php php{
+php php php php php php php php php php php php php$languagephp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php/php/php@xmlphp:langphp[php1php]php)php'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php!php$languagephp)php php{
+php php php php php php php php php php php php php$languagephp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'languagephp'php]php php=php php$languagephp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'languagephp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp image
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getImagephp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'imagephp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'imagephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$imageUrlphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:logophp)php'php)php;
+
+php php php php php php php php ifphp php(php!php$imageUrlphp)php php{
+php php php php php php php php php php php php php$imagephp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$imagephp php=php arrayphp(php'uriphp'php=php>php$imageUrlphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'imagephp'php]php php=php php$imagephp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'imagephp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp image
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getIconphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'iconphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'iconphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$imageUrlphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:iconphp)php'php)php;
+
+php php php php php php php php ifphp php(php!php$imageUrlphp)php php{
+php php php php php php php php php php php php php$imagephp php=php nullphp;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$imagephp php=php arrayphp(php'uriphp'php=php>php$imageUrlphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'iconphp'php]php php=php php$imagephp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'iconphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp basephp URIphp ofphp thephp feedphp php(ifphp setphp)php.
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getBaseUrlphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'baseUrlphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'baseUrlphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$baseUrlphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php/php/php@xmlphp:basephp[php1php]php)php'php)php;
+
+php php php php php php php php ifphp php(php!php$baseUrlphp)php php{
+php php php php php php php php php php php php php$baseUrlphp php=php nullphp;
+php php php php php php php php php}
+php php php php php php php php php$thisphp-php>php_dataphp[php'baseUrlphp'php]php php=php php$baseUrlphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'baseUrlphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp aphp linkphp tophp thephp sourcephp website
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getLinkphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'linkphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'linkphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$linkphp php=php nullphp;
+
+php php php php php php php php php$listphp php=php php$thisphp-php>php_xpathphp-php>queryphp(
+php php php php php php php php php php php php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:linkphp[php@relphp=php"alternatephp"php]php/php@hrefphp'php php.php php'php|php'php php.
+php php php php php php php php php php php php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:linkphp[notphp(php@relphp)php]php/php@hrefphp'
+php php php php php php php php php)php;
+
+php php php php php php php php ifphp php(php$listphp-php>lengthphp)php php{
+php php php php php php php php php php php php php$linkphp php=php php$listphp-php>itemphp(php0php)php-php>nodeValuephp;
+php php php php php php php php php php php php php$linkphp php=php php$thisphp-php>php_absolutiseUriphp(php$linkphp)php;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'linkphp'php]php php=php php$linkphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'linkphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp aphp linkphp tophp thephp feedphp'sphp XMLphp Url
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getFeedLinkphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'feedlinkphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'feedlinkphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$linkphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:linkphp[php@relphp=php"selfphp"php]php/php@hrefphp)php'php)php;
+
+php php php php php php php php php$linkphp php=php php$thisphp-php>php_absolutiseUriphp(php$linkphp)php;
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'feedlinkphp'php]php php=php php$linkphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'feedlinkphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp anphp arrayphp ofphp anyphp supportedphp Pusubhubbubphp endpoints
+php php php php php php*
+php php php php php php*php php@returnphp arrayphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getHubsphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'hubsphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'hubsphp'php]php;
+php php php php php php php php php}
+php php php php php php php php php$hubsphp php=php arrayphp(php)php;
+
+php php php php php php php php php$listphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php$thisphp-php>getXpathPrefixphp(php)
+php php php php php php php php php php php php php.php php'php/php/atomphp:linkphp[php@relphp=php"hubphp"php]php/php@hrefphp'php)php;
+
+php php php php php php php php ifphp php(php$listphp-php>lengthphp)php php{
+php php php php php php php php php php php php foreachphp php(php$listphp asphp php$uriphp)php php{
+php php php php php php php php php php php php php php php php php$hubsphp[php]php php=php php$thisphp-php>php_absolutiseUriphp(php$uriphp-php>nodeValuephp)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php$hubsphp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'hubsphp'php]php php=php php$hubsphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'hubsphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp thephp feedphp title
+php php php php php php*
+php php php php php php*php php@returnphp stringphp|null
+php php php php php php*php/
+php php php php publicphp functionphp getTitlephp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'titlephp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'titlephp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php php$titlephp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:titlephp)php'php)php;
+
+php php php php php php php php ifphp php(php!php$titlephp)php php{
+php php php php php php php php php php php php php$titlephp php=php nullphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'titlephp'php]php php=php php$titlephp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'titlephp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp allphp categories
+php php php php php php*
+php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Collectionphp_Category
+php php php php php php*php/
+php php php php publicphp functionphp getCategoriesphp(php)
+php php php php php{
+php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'categoriesphp'php,php php$thisphp-php>php_dataphp)php)php php{
+php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'categoriesphp'php]php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php1php0php)php php{
+php php php php php php php php php php php php php$listphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp:categoryphp'php)php;
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php php/php*php*
+php php php php php php php php php php php php php php*php Sincephp Atomphp php0php.php3php didphp notphp supportphp categoriesphp,php itphp wouldphp havephp usedphp the
+php php php php php php php php php php php php php php*php Dublinphp Corephp extensionphp.php Howeverphp therephp isphp aphp smallphp possibilityphp Atomphp php0php.php3
+php php php php php php php php php php php php php php*php mayphp havephp beenphp retrofittiedphp tophp usephp Atomphp php1php.php0php insteadphp.
+php php php php php php php php php php php php php php*php/
+php php php php php php php php php php php php php$thisphp-php>php_xpathphp-php>registerNamespacephp(php'atomphp1php0php'php,php Zendphp_Feedphp_Readerphp:php:NAMESPACEphp_ATOMphp_php1php0php)php;
+php php php php php php php php php php php php php$listphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/atomphp1php0php:categoryphp'php)php;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$listphp-php>lengthphp)php php{
+php php php php php php php php php php php php php$categoryCollectionphp php=php newphp Zendphp_Feedphp_Readerphp_Collectionphp_Categoryphp;
+php php php php php php php php php php php php foreachphp php(php$listphp asphp php$categoryphp)php php{
+php php php php php php php php php php php php php php php php php$categoryCollectionphp[php]php php=php arrayphp(
+php php php php php php php php php php php php php php php php php php php php php'termphp'php php=php>php php$categoryphp-php>getAttributephp(php'termphp'php)php,
+php php php php php php php php php php php php php php php php php php php php php'schemephp'php php=php>php php$categoryphp-php>getAttributephp(php'schemephp'php)php,
+php php php php php php php php php php php php php php php php php php php php php'labelphp'php php=php>php php$categoryphp-php>getAttributephp(php'labelphp'php)
+php php php php php php php php php php php php php php php php php)php;
+php php php php php php php php php php php php php}
+php php php php php php php php php}php elsephp php{
+php php php php php php php php php php php php returnphp newphp Zendphp_Feedphp_Readerphp_Collectionphp_Categoryphp;
+php php php php php php php php php}
+
+php php php php php php php php php$thisphp-php>php_dataphp[php'categoriesphp'php]php php=php php$categoryCollectionphp;
+
+php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'categoriesphp'php]php;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Getphp anphp authorphp entryphp inphp RSSphp format
+php php php php php php*
+php php php php php php*php php@paramphp php DOMElementphp php$element
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php protectedphp functionphp php_getAuthorphp(DOMElementphp php$elementphp)
+php php php php php{
+php php php php php php php php php$authorphp php=php arrayphp(php)php;
+
+php php php php php php php php php$emailNodephp php=php php$elementphp-php>getElementsByTagNamephp(php'emailphp'php)php;
+php php php php php php php php php$nameNodephp php php=php php$elementphp-php>getElementsByTagNamephp(php'namephp'php)php;
+php php php php php php php php php$uriNodephp php php php=php php$elementphp-php>getElementsByTagNamephp(php'uriphp'php)php;
+
+php php php php php php php php ifphp php(php$emailNodephp-php>lengthphp php&php&php strlenphp(php$emailNodephp-php>itemphp(php0php)php-php>nodeValuephp)php php>php php0php)php php{
+php php php php php php php php php php php php php$authorphp[php'emailphp'php]php php=php php$emailNodephp-php>itemphp(php0php)php-php>nodeValuephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$nameNodephp-php>lengthphp php&php&php strlenphp(php$nameNodephp-php>itemphp(php0php)php-php>nodeValuephp)php php>php php0php)php php{
+php php php php php php php php php php php php php$authorphp[php'namephp'php]php php=php php$nameNodephp-php>itemphp(php0php)php-php>nodeValuephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(php$uriNodephp-php>lengthphp php&php&php strlenphp(php$uriNodephp-php>itemphp(php0php)php-php>nodeValuephp)php php>php php0php)php php{
+php php php php php php php php php php php php php$authorphp[php'uriphp'php]php php=php php$uriNodephp-php>itemphp(php0php)php-php>nodeValuephp;
+php php php php php php php php php}
+
+php php php php php php php php ifphp php(emptyphp(php$authorphp)php)php php{
+php php php php php php php php php php php php returnphp nullphp;
+php php php php php php php php php}
+php php php php php php php php returnphp php$authorphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php php Attemptphp tophp absolutisephp thephp URIphp,php iphp.ephp.php ifphp aphp relativephp URIphp applyphp the
+php php php php php php*php php xmlphp:basephp valuephp asphp aphp prefixphp tophp turnphp intophp anphp absolutephp URIphp.
+php php php php php php*php/
+php php php php protectedphp functionphp php_absolutiseUriphp(php$linkphp)
+php php php php php{
+php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$linkphp)php)php php{
+php php php php php php php php php php php php ifphp php(php$thisphp-php>getBaseUrlphp(php)php php!php=php=php nullphp)php php{
+php php php php php php php php php php php php php php php php php$linkphp php=php php$thisphp-php>getBaseUrlphp(php)php php.php php$linkphp;
+php php php php php php php php php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$linkphp)php)php php{
+php php php php php php php php php php php php php php php php php php php php php$linkphp php=php nullphp;
+php php php php php php php php php php php php php php php php php}
+php php php php php php php php php php php php php}
+php php php php php php php php php}
+php php php php php php php php returnphp php$linkphp;
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Registerphp thephp defaultphp namespacesphp forphp thephp currentphp feedphp format
+php php php php php php*php/
+php php php php protectedphp functionphp php_registerNamespacesphp(php)
+php php php php php{
+php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php1php0
+php php php php php php php php php php php php php|php|php php$thisphp-php>getTypephp(php)php php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3
+php php php php php php php php php)php php{
+php php php php php php php php php php php php returnphp;php php/php/php prephp-registeredphp atphp Feedphp level
+php php php php php php php php php}
+php php php php php php php php php$atomDetectedphp php=php php$thisphp-php>php_getAtomTypephp(php)php;
+php php php php php php php php switchphp php(php$atomDetectedphp)php php{
+php php php php php php php php php php php php casephp Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3php:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_xpathphp-php>registerNamespacephp(php'atomphp'php,php Zendphp_Feedphp_Readerphp:php:NAMESPACEphp_ATOMphp_php0php3php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php php php php defaultphp:
+php php php php php php php php php php php php php php php php php$thisphp-php>php_xpathphp-php>registerNamespacephp(php'atomphp'php,php Zendphp_Feedphp_Readerphp:php:NAMESPACEphp_ATOMphp_php1php0php)php;
+php php php php php php php php php php php php php php php php breakphp;
+php php php php php php php php php}
+php php php php php}
+
+php php php php php/php*php*
+php php php php php php*php Detectphp thephp presencephp ofphp anyphp Atomphp namespacesphp inphp use
+php php php php php php*php/
+php php php php protectedphp functionphp php_getAtomTypephp(php)
+php php php php php{
+php php php php php php php php php$domphp php=php php$thisphp-php>getDomDocumentphp(php)php;
+php php php php php php php php php$prefixAtomphp0php3php php=php php$domphp-php>lookupPrefixphp(Zendphp_Feedphp_Readerphp:php:NAMESPACEphp_ATOMphp_php0php3php)php;
+php php php php php php php php php$prefixAtomphp1php0php php=php php$domphp-php>lookupPrefixphp(Zendphp_Feedphp_Readerphp:php:NAMESPACEphp_ATOMphp_php1php0php)php;
+php php php php php php php php ifphp php(php$domphp-php>isDefaultNamespacephp(Zendphp_Feedphp_Readerphp:php:NAMESPACEphp_ATOMphp_php1php0php)
+php php php php php php php php php|php|php php!emptyphp(php$prefixAtomphp1php0php)php)php php{
+php php php php php php php php php php php php returnphp Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php1php0php;
+php php php php php php php php php}
+php php php php php php php php ifphp php(php$domphp-php>isDefaultNamespacephp(Zendphp_Feedphp_Readerphp:php:NAMESPACEphp_ATOMphp_php0php3php)
+php php php php php php php php php|php|php php!emptyphp(php$prefixAtomphp0php3php)php)php php{
+php php php php php php php php php php php php returnphp Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php0php3php;
+php php php php php php php php php}
+php php php php php}
+php}

@@ -1,95 +1,95 @@
-<?php
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @subpackage Framework
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: PublicIndexFile.php 20096 2010-01-06 02:05:09Z bkarwin $
- */
+<php?php
+php/php*php*
+php php*php Zendphp Framework
+php php*
+php php*php LICENSE
+php php*
+php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
+php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
+php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
+php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
+php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
+php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
+php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@subpackagephp Framework
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php php@versionphp php php php php$Idphp:php PublicIndexFilephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
+php php*php/
 
-/**
- * @see Zend_Tool_Project_Context_Filesystem_File
- */
-require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
+php/php*php*
+php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_File
+php php*php/
+requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Filesystemphp/Filephp.phpphp'php;
 
-/**
- * This class is the front most class for utilizing Zend_Tool_Project
- *
- * A profile is a hierarchical set of resources that keep track of
- * items within a specific project.
- *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_Tool_Project_Context_Zf_PublicIndexFile extends Zend_Tool_Project_Context_Filesystem_File
-{
+php/php*php*
+php php*php Thisphp classphp isphp thephp frontphp mostphp classphp forphp utilizingphp Zendphp_Toolphp_Project
+php php*
+php php*php Aphp profilephp isphp aphp hierarchicalphp setphp ofphp resourcesphp thatphp keepphp trackphp of
+php php*php itemsphp withinphp aphp specificphp projectphp.
+php php*
+php php*php php@categoryphp php php Zend
+php php*php php@packagephp php php php Zendphp_Tool
+php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
+php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
+php php*php/
+classphp Zendphp_Toolphp_Projectphp_Contextphp_Zfphp_PublicIndexFilephp extendsphp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_File
+php{
 
-    /**
-     * @var string
-     */
-    protected $_filesystemName = 'index.php';
+php php php php php/php*php*
+php php php php php php*php php@varphp string
+php php php php php php*php/
+php php php php protectedphp php$php_filesystemNamephp php=php php'indexphp.phpphp'php;
 
-    /**
-     * getName()
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'PublicIndexFile';
-    }
+php php php php php/php*php*
+php php php php php php*php getNamephp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getNamephp(php)
+php php php php php{
+php php php php php php php php returnphp php'PublicIndexFilephp'php;
+php php php php php}
 
-    /**
-     * getContents()
-     *
-     * @return string
-     */
-    public function getContents()
-    {
-        $codeGenerator = new Zend_CodeGenerator_Php_File(array(
-            'body' => <<<EOS
-// Define path to application directory
-defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+php php php php php/php*php*
+php php php php php php*php getContentsphp(php)
+php php php php php php*
+php php php php php php*php php@returnphp string
+php php php php php php*php/
+php php php php publicphp functionphp getContentsphp(php)
+php php php php php{
+php php php php php php php php php$codeGeneratorphp php=php newphp Zendphp_CodeGeneratorphp_Phpphp_Filephp(arrayphp(
+php php php php php php php php php php php php php'bodyphp'php php=php>php <php<php<EOS
+php/php/php Definephp pathphp tophp applicationphp directory
+definedphp(php'APPLICATIONphp_PATHphp'php)
+php php php php php|php|php definephp(php'APPLICATIONphp_PATHphp'php,php realpathphp(dirnamephp(php_php_FILEphp_php_php)php php.php php'php/php.php.php/applicationphp'php)php)php;
 
-// Define application environment
-defined('APPLICATION_ENV')
-    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+php/php/php Definephp applicationphp environment
+definedphp(php'APPLICATIONphp_ENVphp'php)
+php php php php php|php|php definephp(php'APPLICATIONphp_ENVphp'php,php php(getenvphp(php'APPLICATIONphp_ENVphp'php)php php?php getenvphp(php'APPLICATIONphp_ENVphp'php)php php:php php'productionphp'php)php)php;
 
-// Ensure library/ is on include_path
-set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(APPLICATION_PATH . '/../library'),
-    get_include_path(),
-)));
+php/php/php Ensurephp libraryphp/php isphp onphp includephp_path
+setphp_includephp_pathphp(implodephp(PATHphp_SEPARATORphp,php arrayphp(
+php php php php realpathphp(APPLICATIONphp_PATHphp php.php php'php/php.php.php/libraryphp'php)php,
+php php php php getphp_includephp_pathphp(php)php,
+php)php)php)php;
 
-/** Zend_Application */
-require_once 'Zend/Application.php';
+php/php*php*php Zendphp_Applicationphp php*php/
+requirephp_oncephp php'Zendphp/Applicationphp.phpphp'php;
 
-// Create application, bootstrap, and run
-\$application = new Zend_Application(
-    APPLICATION_ENV,
-    APPLICATION_PATH . '/configs/application.ini'
-);
-\$application->bootstrap()
-            ->run();
+php/php/php Createphp applicationphp,php bootstrapphp,php andphp run
+php\php$applicationphp php=php newphp Zendphp_Applicationphp(
+php php php php APPLICATIONphp_ENVphp,
+php php php php APPLICATIONphp_PATHphp php.php php'php/configsphp/applicationphp.iniphp'
+php)php;
+php\php$applicationphp-php>bootstrapphp(php)
+php php php php php php php php php php php php php-php>runphp(php)php;
 EOS
-            ));
-        return $codeGenerator->generate();
-    }
+php php php php php php php php php php php php php)php)php;
+php php php php php php php php returnphp php$codeGeneratorphp-php>generatephp(php)php;
+php php php php php}
 
-}
+php}
