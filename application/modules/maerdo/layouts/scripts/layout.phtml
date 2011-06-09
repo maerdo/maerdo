@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-		<?php echo  $this->headTitle();?>
+		<?php echo $this->headTitle();?>
 		<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/reset.css" />        
         <link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/header.css" />
         <link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/nav.css" />
@@ -12,7 +12,7 @@
         <link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/footer.css" />
         <link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/styles.css" />
         <link type="text/css" rel="stylesheet" media="all" href="/css/jquery-ui/smoothness/jquery.ui.all.css" />        
-        <?php echo  $this->headLink();?>
+        <?php echo $this->headLink();?>
         
         
 
@@ -20,14 +20,14 @@
 		<script type="text/javascript" src="/js/jquery-ui/jquery-ui-1.8.9.js"></script>
        
 
-        <?php echo  $this->headScript() ?>
+        <?php echo $this->headScript() ?>
     </head>
 
     <body>
         	<?php if($this->layout()->reportMessage==true):?>
             <div style='font-weight:bold;width:100%;background-color:#dedede;text-align:center;'>
             	<br />
-            	<?php echo  $this->translate('<a href="http://bugstracker.maerdo.com">You use a beta version. Report your bugs on http://bugstracker.maerdo.com. Thanks</a>')?>
+            	<?php echo $this->translate('<a href="http://bugstracker.maerdo.com">You use a beta version. Report your bugs on http://bugstracker.maerdo.com. Thanks</a>')?>
             	<br /><br />
             </div>	
             <?php endif;?> 
@@ -38,7 +38,7 @@
 
             <div class="header-middle">
                 <!-- Start Nav -->
-                <?php echo  $this->render('snippets/top_menu.phtml');?>                                
+                <?php echo $this->render('snippets/top_menu.phtml');?>                                
                 <!-- End Nav -->
                 <img id="logo" src="/images/maerdo/logo.png" alt="Logo" />
                 <br class="cl" />
@@ -54,14 +54,14 @@
             <div class="page">
                 <!-- Start Sidebar -->
                 <div id="sidebar">
-                   <?php echo  $this->render($this->layout()->sidebar_file);?>           
+                   <?php echo $this->render($this->layout()->sidebar_file);?>           
                 </div>
                 <!-- End Sidebar  -->
                 
                 <!-- Star Page Content  -->
                 <div id="page-content">
                     <!-- Start Page Header -->
-                    <?php echo  $this->layout()->content;?>                   
+                    <?php echo $this->layout()->content;?>                   
                     <!-- End Page Header -->
                 </div>
                  <!-- End Page Content  -->

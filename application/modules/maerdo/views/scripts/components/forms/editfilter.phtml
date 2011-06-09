@@ -1,15 +1,15 @@
 <div id="page-header">
-	<h1><?php echo  $this->translate('Edit a filter configuration')?></h1>
+	<h1><?php echo $this->translate('Edit a filter configuration')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px900'>
 	<?php if($this->notification_error=='updateOptions_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to update filter options.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to update filter options.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='updateMessages_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to update filter errors messages.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to update filter errors messages.');?><br /></div>
 	<?php endif;?>			
 </div>
 <br /><br />
@@ -19,54 +19,54 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px900'>
 	<?php if($this->notification_success=='updateOptions_success'):?>
-	<div><?php echo  $this->translate('The filter options has been updated.');?><br /></div>
+	<div><?php echo $this->translate('The filter options has been updated.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_success=='updateMessages_success'):?>
-	<div><?php echo  $this->translate('The filter errors messages has been updated.');?><br /></div>
+	<div><?php echo $this->translate('The filter errors messages has been updated.');?><br /></div>
 	<?php endif;?>
 </div>
 <br /><br />
 <?php endif;?>	
 
-<input id="validator_id" type="hidden" name="filter_id" value="<?php echo $this->filter_id?>" />	
-<a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>/'>> <?php echo  $this->translate('Return to field edition')?></a><br />
+<input id="validator_id" type="hidden" name="filter_id" value="<?=$this->filter_id?>" />	
+<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>/'>> <?php echo $this->translate('Return to field edition')?></a><br />
 <br /><br />
 <div id="tabs" class="px900">
     <ul class="px900">		
-        <li><a href="#tabs-1"><?php echo  $this->translate('Options')?></a></li>
+        <li><a href="#tabs-1"><?php echo $this->translate('Options')?></a></li>
     </ul>
     <div id="tabs-1">
          <h1>Options</h1>
-         <form id='form_filters' action='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>/filter/<?php echo $this->filter_id?>' method='post'>
-		 <input type="hidden" id="filter_id" value="<?php echo $this->filter_id?>" />
+         <form id='form_filters' action='/maerdo/component/forms/edit/field/<?=$this->field_id?>/filter/<?=$this->filter_id?>' method='post'>
+		 <input type="hidden" id="filter_id" value="<?=$this->filter_id?>" />
          <input type="hidden" name="form_action" value="update_filteroptions" />
-		<?php echo  $this->translate('Add this option')?> :
+		<?php echo $this->translate('Add this option')?> :
          <select  id='filter_option' name="select_option">
          	<?php foreach($this->filter_options_list as $option):?>
-         		<option value='<?php echo $option?>'><?php echo $option?></option>
+         		<option value='<?=$option?>'><?=$option?></option>
          	<?php endforeach;?>
-         	<option value='other'><?php echo  $this->translate('Other');?></option>
+         	<option value='other'><?php echo $this->translate('Other');?></option>
          </select>	
-         <input onclick="addOption()" type="button"  value="<?php echo  $this->translate('Add')?>" /> 
+         <input onclick="addOption()" type="button"  value="<?php echo $this->translate('Add')?>" /> 
          <br /><br />
          <br />
          <table name="table_option" class="px450" id='table_option'>
          	<tr class="bggrey bold">
-         		<td class="px200"><?php echo  $this->translate('Option')?></td>
-         		<td class="px300"><?php echo  $this->translate('Value')?></td>
-         		<td><?php echo  $this->translate('Delete')?></td>
+         		<td class="px200"><?php echo $this->translate('Option')?></td>
+         		<td class="px300"><?php echo $this->translate('Value')?></td>
+         		<td><?php echo $this->translate('Delete')?></td>
          	</tr>  
          	<?php 
          		$i=0;
          		foreach($this->filter_options as $option):?>
-				<tr id='table_option_<?php echo $i?>'>
+				<tr id='table_option_<?=$i?>'>
 					<?php if($option->option=="other") :?>
-						<td class='px200'><input type='text' name='option[<?php echo $i?>][option]' value='' /></td>
+						<td class='px200'><input type='text' name='option[<?=$i?>][option]' value='' /></td>
 					<?php else: ?> 
-						<td class='px200'><input type='hidden' id='option_<?php echo $i?>' name='option[<?php echo $i?>][option]' value='<?php echo $option->option?>' /><?php echo $option->option?></td>
+						<td class='px200'><input type='hidden' id='option_<?=$i?>' name='option[<?=$i?>][option]' value='<?=$option->option?>' /><?=$option->option?></td>
 					<?php endif;?>
-					<td class='px300'><input type='text' class='px300' name='option[<?php echo $i?>][value]' value='<?php echo $option->value?>' /></td>
-					<td><a href='#table_option' onclick='deleteOption("<?php echo $i?>")'><img class='pr t3' src='/images/icons/delete.gif' /></a></td>
+					<td class='px300'><input type='text' class='px300' name='option[<?=$i?>][value]' value='<?=$option->value?>' /></td>
+					<td><a href='#table_option' onclick='deleteOption("<?=$i?>")'><img class='pr t3' src='/images/icons/delete.gif' /></a></td>
 				</tr>
 		 		<?php 
 		 		$i++;

@@ -1,14 +1,14 @@
 <div id="page-header">
-	<h1><?php echo  $this->translate('Acl')?></h1>
+	<h1><?php echo $this->translate('Acl')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px700'>
 	<?php if($this->notification_error=='add_aclrole_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to add the Role.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to add the Role.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_error=='delete_aclrole_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the Role.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the Role.');?><br /></div>
 	<?php endif;?>	
 </div>
 <?php endif;?>
@@ -17,10 +17,10 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='add_aclrole_success'):?>
-	<div><?php echo  $this->translate('The Role has been created.');?><br /></div>
+	<div><?php echo $this->translate('The Role has been created.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_success=='delete_aclrole_success'):?>
-	<div><?php echo  $this->translate('The Role has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('The Role has been deleted.');?><br /></div>
 	<?php endif;?>	
 </div>	
 <?php endif;?>
@@ -32,7 +32,7 @@
 		<option value="">-- Select parent --</option>
 		<option value="">None</option>
 		<?php foreach($this->aclRoles as $role):?>
-		<option value='<?php echo $role->role?>'><?php echo $role->role?></option>
+		<option value='<?=$role->role?>'><?=$role->role?></option>
 		<?php endforeach;?>
 	</select>
 	<input type="text" id="role" name="role" />
@@ -54,10 +54,10 @@
 		else
 			$class="";	
 		?>
-		<tr class="<?php echo $class?>">		
-			<td><?php echo $role->role?></td>
-			<td><?php echo $role->parent?></td>
-			<td><a href='/maerdo/component/acl?form_action=delete&id=<?php echo $role->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a></td>
+		<tr class="<?=$class?>">		
+			<td><?=$role->role?></td>
+			<td><?=$role->parent?></td>
+			<td><a href='/maerdo/component/acl?form_action=delete&id=<?=$role->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a></td>
 		</tr>
 	<?php endforeach;?>
 </table>		

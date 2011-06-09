@@ -1,32 +1,32 @@
 
 <div id="page-header">
-	<h1><?php echo  ($this->translate('Edit module'));?> "<?php echo $this->module_details['name']?>"</h1>
+	<h1><?php echo ($this->translate('Edit module'));?> "<?=$this->module_details['name']?>"</h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px700'>
 	<?php if($this->notification_error=='controller_already_exist'):?>
-	<div><?php echo  $this->translate('A controller with this name already exist.');?><br /></div>
+	<div><?php echo $this->translate('A controller with this name already exist.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='add_controller_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to add controller.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to add controller.');?><br /></div>
 	<?php endif;?>	
 	
 	<?php if($this->notification_error=='action_already_exist'):?>
-	<div><?php echo  $this->translate('An action with this name already exist.');?><br /></div>
+	<div><?php echo $this->translate('An action with this name already exist.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='add_action_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to add the action.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to add the action.');?><br /></div>
 	<?php endif;?>	
 	
 	<?php if($this->notification_error=='delete_controller_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the controller.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the controller.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='delete_action_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the action.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the action.');?><br /></div>
 	<?php endif;?>			
 </div>
 <br />
@@ -35,19 +35,19 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='controller_has_been_added'):?>
-	<div><?php echo  $this->translate('Controller has been added.');?><br /></div>
+	<div><?php echo $this->translate('Controller has been added.');?><br /></div>
 	<?php endif;?>	
 
 	<?php if($this->notification_success=='action_has_been_added'):?>
-	<div><?php echo  $this->translate('Action has been added.');?><br /></div>
+	<div><?php echo $this->translate('Action has been added.');?><br /></div>
 	<?php endif;?>	
 
 	<?php if($this->notification_success=='controller_has_been_deleted'):?>
-	<div><?php echo  $this->translate('Controller has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('Controller has been deleted.');?><br /></div>
 	<?php endif;?>	
 
 	<?php if($this->notification_success=='action_has_been_deleted'):?>
-	<div><?php echo  $this->translate('Action has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('Action has been deleted.');?><br /></div>
 	<?php endif;?>		
 </div>
 <br />
@@ -65,9 +65,9 @@
 <br />
 <table>
 	<tr class='bggrey bold'>
-		<td class="px300"><?php echo  $this->translate('Name')?></td>
-		<td class="px400"><?php echo  $this->translate('Description')?></td>
-		<td class="px20"><?php echo  $this->translate('Action')?></td>
+		<td class="px300"><?php echo $this->translate('Name')?></td>
+		<td class="px400"><?php echo $this->translate('Description')?></td>
+		<td class="px20"><?php echo $this->translate('Action')?></td>
 	</tr>
 	<?php 
 	$class='';
@@ -75,11 +75,11 @@
 		foreach($this->module_details['controllers'] as $controller):
 			($class=='') ? $class='bggreylight' : $class='';
 		?>
-			<tr class='<?php echo $class?>'>
-				<td class="px300"><img src='/images/icons/folder.png' alt='Controller' class="pr t3 mr5"/><?php echo $controller['name']?></td>
-				<td class="px400"><?php echo $controller['description']?></td>
+			<tr class='<?=$class?>'>
+				<td class="px300"><img src='/images/icons/folder.png' alt='Controller' class="pr t3 mr5"/><?=$controller['name']?></td>
+				<td class="px400"><?=$controller['description']?></td>
 				<td class="px20">
-					<a href='/maerdo/modules/edit/<?php echo  $this->module_details['id']?>?form_action=delete_controller&controller_id=<?php echo $controller['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+					<a href='/maerdo/modules/edit/<?php echo $this->module_details['id']?>?form_action=delete_controller&controller_id=<?=$controller['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
 				</td>
 			</tr>		
 			<?php 
@@ -88,15 +88,15 @@
 					foreach($controller['actions'] as $action):
 						($class=='') ? $class='bggreylight' : $class='';
 						?>	
-						<tr class='<?php echo $class?>'>
+						<tr class='<?=$class?>'>
 							<td class="px200">
 								<div class='ml20'>				
-									<img src='/images/icons/page_white_text_width.png' class='pr t3 mr5' /><?php echo $action['name']?><br />				
+									<img src='/images/icons/page_white_text_width.png' class='pr t3 mr5' /><?=$action['name']?><br />				
 								</div>
 							</td>
-							<td><?php echo $action['description']?></td>
+							<td><?=$action['description']?></td>
 							<td class='px20'>
-								<a href='/maerdo/modules/edit/<?php echo  $this->module_details['id']?>?form_action=delete_action&action_id=<?php echo $action['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+								<a href='/maerdo/modules/edit/<?php echo $this->module_details['id']?>?form_action=delete_action&action_id=<?=$action['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
 							</td>	
 						</tr>
 					<?php endforeach;
@@ -108,54 +108,54 @@
 </table>
 <br /><br />
 
-<div class="hidden" id='dialog-addController' title='<?php echo  $this->translate('Add a controller');?>'>
+<div class="hidden" id='dialog-addController' title='<?php echo $this->translate('Add a controller');?>'>
  <div id='form_controller_error' class="hidden">
 	<br />
 	<div class='notification_error px300'>
-		<div id='form_error_controller_name' class='hidden'><?php echo  $this->translate('You need to set a controller name to validate form.');?></div>		
+		<div id='form_error_controller_name' class='hidden'><?php echo $this->translate('You need to set a controller name to validate form.');?></div>		
 	</div>
 	<br />
  </div>
- <form id='form_controller_add' action='/maerdo/modules/edit/<?php echo $this->module_details['id']?>' method='post'>
+ <form id='form_controller_add' action='/maerdo/modules/edit/<?=$this->module_details['id']?>' method='post'>
  	<br />
-	<?php echo  $this->translate('Controller name');?> :
+	<?php echo $this->translate('Controller name');?> :
 	<br />
 	<input type="text" id="controller_name" name="controller_name" />
 	<br /><br />
-	<?php echo  $this->translate('Description');?> :
+	<?php echo $this->translate('Description');?> :
 	<br />
 	<input type="text" name="controller_description" class="px250" />
 	<br /><br />
 	<input type='hidden' name='form_action' value='add_controller' />
-	<input  type='button' onclick='addController()' value='<?php echo  $this->translate('Add');?>' class="px50 fright"/>
+	<input  type='button' onclick='addController()' value='<?php echo $this->translate('Add');?>' class="px50 fright"/>
 	<div class="cleaner"></div>
  </form>
 </div>
 
-<div class="hidden" id='dialog-addAction' title='<?php echo  $this->translate('Add an action');?>'>
+<div class="hidden" id='dialog-addAction' title='<?php echo $this->translate('Add an action');?>'>
   <div id='form_action_error' class="hidden">
 	<br />
 	<div class='notification_error px300'>
-		<div id='form_error_action_name' class='hidden'><?php echo  $this->translate('You need to set an action name to validate form.');?></div>		
+		<div id='form_error_action_name' class='hidden'><?php echo $this->translate('You need to set an action name to validate form.');?></div>		
 	</div>
 	<br />
  </div>
- <form id='form_action_add' action='/maerdo/modules/edit/<?php echo $this->module_details['id']?> ' method='post'>
+ <form id='form_action_add' action='/maerdo/modules/edit/<?=$this->module_details['id']?> ' method='post'>
  	<br />
-	<?php echo  $this->translate('Controller');?> :
+	<?php echo $this->translate('Controller');?> :
 	<br />
 	<select name='controller_id'>
 		<?php foreach($this->module_details['controllers'] as $controller):?>
-			<option value='<?php echo $controller['id']?>'><?php echo $controller['name']?></option>
+			<option value='<?=$controller['id']?>'><?=$controller['name']?></option>
 		<?php endforeach;?>
 	</select>
 	<br /><br />
-	<?php echo  $this->translate('Action name');?> :
+	<?php echo $this->translate('Action name');?> :
 	<br />
 	<input type="text" name="action_name" id='action_name' class="px250" />
 	<br /><br />
 	<input type='hidden' name='form_action' value='add_action' />
-	<input  type='button' onclick='addAction()' value='<?php echo  $this->translate('Add');?>' class="px50 fright"/>
+	<input  type='button' onclick='addAction()' value='<?php echo $this->translate('Add');?>' class="px50 fright"/>
 	<div class="cleaner"></div>
  </form>
 </div>

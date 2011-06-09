@@ -1,14 +1,14 @@
 <div id="page-header">
-	<h1><?php echo  $this->translate('Pages list')?></h1>
+	<h1><?php echo $this->translate('Pages list')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px800'>
 	<?php if($this->notification_error=='delete_page_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the page.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the page.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_error=='add_page_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to add the page.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to add the page.');?><br /></div>
 	<?php endif;?>
 </div>
 <br />
@@ -18,52 +18,52 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px800'>
 	<?php if($this->notification_success=='page_has_been_deleted'):?>
-	<div><?php echo  $this->translate('Page has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('Page has been deleted.');?><br /></div>
 	<?php endif;?>			
 	<?php if($this->notification_success=='page_has_been_added'):?>
-	<div><?php echo  $this->translate('Page has been added.');?><br /></div>
+	<div><?php echo $this->translate('Page has been added.');?><br /></div>
 	<?php endif;?>	
 </div>
 <br />
 <?php endif;?>
 
 
-<a href='#' onclick='showPageForm()'><img src='/images/icons/add.png' alt='add' class='pr t3 mr5' /><?php echo  $this->translate('Add a page')?></a>
+<a href='#' onclick='showPageForm()'><img src='/images/icons/add.png' alt='add' class='pr t3 mr5' /><?php echo $this->translate('Add a page')?></a>
 <br /><br />
 <form action='/maerdo/pages' method='post'>
 	<input type='hidden' name='form_action' value='filter' />
 	<span>
-		<?php echo  $this->translate('Modules')?> :
+		<?php echo $this->translate('Modules')?> :
 		<select id="module" name='module_id'  class="px150">
 			<option>All</option>
 			<?php foreach($this->modules as $module):?>
 				<?php $selected="";if($this->module_id==$module->id) $selected="selected='selected'";?>
-				<option <?php echo $selected?> value="<?php echo $module->id?>"><?php echo $module->name?></option>
+				<option <?=$selected?> value="<?=$module->id?>"><?=$module->name?></option>
 			<?php endforeach;?>
 		</select>
 	</span>	
 	<span class="ml50">
-		<?php echo  $this->translate('Controller');?> :
+		<?php echo $this->translate('Controller');?> :
 		<select id="controller" name='controller_id' class="px150">
 			<option value="all">All</option>
 			<?php foreach($this->controllers as $controller):?>
 				<?php $selected="";if($this->controller_id==$controller['id']) $selected="selected='selected'";?>
-				<option <?php echo $selected?> value="<?php echo $controller['id']?>"><?php echo $controller['name']?></option>
+				<option <?=$selected?> value="<?=$controller['id']?>"><?=$controller['name']?></option>
 			<?php endforeach;?>			
 		</select>
 	</span>	
-	<input type='submit' class='ml50 px100' value='<?php echo  $this->translate('Filter')?>' />
+	<input type='submit' class='ml50 px100' value='<?php echo $this->translate('Filter')?>' />
 </form>
 <br /><br />
 <table class="px850">
 	<tr class="bold bggrey">
 		<td class=""></td>
-		<td class="px300"><?php echo  $this->translate('URL');?></td>
-		<td class="px100"><?php echo  $this->translate('Module');?></td>
-		<td class="px100"><?php echo  $this->translate('Controller');?></td>
-		<td class="px100"><?php echo  $this->translate('Action');?></td>
-		<td class="px300"><?php echo  $this->translate('Description');?></td>
-		<td class="px50"><?php echo  $this->translate('Action');?></td>
+		<td class="px300"><?php echo $this->translate('URL');?></td>
+		<td class="px100"><?php echo $this->translate('Module');?></td>
+		<td class="px100"><?php echo $this->translate('Controller');?></td>
+		<td class="px100"><?php echo $this->translate('Action');?></td>
+		<td class="px300"><?php echo $this->translate('Description');?></td>
+		<td class="px50"><?php echo $this->translate('Action');?></td>
 	</tr>	
 	<?php 
 	$class="bggreylight";
@@ -74,16 +74,16 @@
 			else
 				$class="";
 			?>		
-			<tr class="<?php echo $class?>">
+			<tr class="<?=$class?>">
 				<td class=""><img src='/images/icons/page_white_text_width.png' alt='Page' class='mr5 pr t3'/></td>
-				<td class="px200"><?php echo $page->url?></td>
-				<td class="px100"><?php echo My_Class_Maerdo_Framework_Module::getNameById($page->module_id);?></td>
-				<td class="px100"><?php echo My_Class_Maerdo_Framework_Controller::getNameById($page->controller_id);?></td>
-				<td class="px100"><?php echo My_Class_Maerdo_Framework_Action::getNameById($page->action_id);?></td>				
-				<td class="px400"><?php echo $page->description?></td>
+				<td class="px200"><?=$page->url?></td>
+				<td class="px100"><?=My_Class_Maerdo_Framework_Module::getNameById($page->module_id);?></td>
+				<td class="px100"><?=My_Class_Maerdo_Framework_Controller::getNameById($page->controller_id);?></td>
+				<td class="px100"><?=My_Class_Maerdo_Framework_Action::getNameById($page->action_id);?></td>				
+				<td class="px400"><?=$page->description?></td>
 				<td class="px50">
-					<a href='/maerdo/pages/edit/<?php echo $page->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
-					<a href='/maerdo/pages/?form_action=delete_page&page_id=<?php echo $page->id?>'><img src='/images/icons/delete.gif' alt='edit' /></a>
+					<a href='/maerdo/pages/edit/<?=$page->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
+					<a href='/maerdo/pages/?form_action=delete_page&page_id=<?=$page->id?>'><img src='/images/icons/delete.gif' alt='edit' /></a>
 				</td>
 			</tr>	
 		<?php 
@@ -91,64 +91,64 @@
 	}?>
 </table>	
 
-<div class="hidden" id='dialog-addPage' title='<?php echo  $this->translate('Create a page');?>'>
+<div class="hidden" id='dialog-addPage' title='<?php echo $this->translate('Create a page');?>'>
  <div id='form_page_error' class="hidden">
 	<br />
 	<div class='notification_error px300'>
-		<div id='form_error_page_name' class='hidden'><?php echo  $this->translate('You need to set a name to validate form.');?></div>		
-		<div id='form_error_page_url' class='hidden'><?php echo  $this->translate('You need to set an URL to validate form.');?></div>		
-		<div id='form_error_page_description' class='hidden'><?php echo  $this->translate('You need to set a description to validate form.');?></div>		
-		<div id='form_error_page_module_id' class='hidden'><?php echo  $this->translate('You need to select a module to validate form.');?></div>		
-		<div id='form_error_page_controller_id' class='hidden'><?php echo  $this->translate('You need to select a controller to validate form.');?></div>		
-		<div id='form_error_page_action_id' class='hidden'><?php echo  $this->translate('You need to select an action to validate form.');?></div>
-		<div id='form_error_page_url_alreadyexist' class='hidden'><?php echo  $this->translate('A page with this URL already exist.');?></div>
-		<div id='form_error_page_name_alreadyexist' class='hidden'><?php echo  $this->translate('A page with this name already exist.');?></div>			
+		<div id='form_error_page_name' class='hidden'><?php echo $this->translate('You need to set a name to validate form.');?></div>		
+		<div id='form_error_page_url' class='hidden'><?php echo $this->translate('You need to set an URL to validate form.');?></div>		
+		<div id='form_error_page_description' class='hidden'><?php echo $this->translate('You need to set a description to validate form.');?></div>		
+		<div id='form_error_page_module_id' class='hidden'><?php echo $this->translate('You need to select a module to validate form.');?></div>		
+		<div id='form_error_page_controller_id' class='hidden'><?php echo $this->translate('You need to select a controller to validate form.');?></div>		
+		<div id='form_error_page_action_id' class='hidden'><?php echo $this->translate('You need to select an action to validate form.');?></div>
+		<div id='form_error_page_url_alreadyexist' class='hidden'><?php echo $this->translate('A page with this URL already exist.');?></div>
+		<div id='form_error_page_name_alreadyexist' class='hidden'><?php echo $this->translate('A page with this name already exist.');?></div>			
 	</div>
 	<br />
  </div>
  <form id='form_page_add' action='/maerdo/pages' method='post'>
- 	<?php echo  $this->translate('Module');?> :
+ 	<?php echo $this->translate('Module');?> :
 	<br />
 	<select id="page_module_id" name="page_module_id" class="px150">
 		<option value="null">-----</option>
 		<?php foreach($this->modules as $module):?>
 			<?php $selected="";if($this->module_id==$module->id) $selected="selected='selected'";?>
-			<option <?php echo $selected?> value="<?php echo $module->id?>"><?php echo $module->name?></option>
+			<option <?=$selected?> value="<?=$module->id?>"><?=$module->name?></option>
 		<?php endforeach;?>	
 	</select>
 	<br />
-	<?php echo  $this->translate('Controller');?> :
+	<?php echo $this->translate('Controller');?> :
 	<br />
 	<select id="page_controller_id" name="page_controller_id" class="px150">
 		<option value="null">-----</option>	
 		<?php foreach($this->firtstModuleController as $controller):?>			
-			<option <?php echo $selected?> value="<?php echo $controller['id']?>"><?php echo $controller['name']?></option>
+			<option <?=$selected?> value="<?=$controller['id']?>"><?=$controller['name']?></option>
 		<?php endforeach;?>		
 	</select>
 	<br />
- 	<?php echo  $this->translate('Action');?> :
+ 	<?php echo $this->translate('Action');?> :
 	<br />
 	<select id="page_action_id" name="page_action_id" class="px150">
 		<option value="null">-----</option>
 		<?php foreach($this->firtsControllerAction as $action):?>			
-			<option <?php echo $selected?> value="<?php echo $action['id']?>"><?php echo $action['name']?></option>
+			<option <?=$selected?> value="<?=$action['id']?>"><?=$action['name']?></option>
 		<?php endforeach;?>		
 	</select>		
  	<br />
-	<?php echo  $this->translate('Page name');?> :
+	<?php echo $this->translate('Page name');?> :
 	<br />
 	<input type="text" id="page_name" name="page_name" />
  	<br />
-	<?php echo  $this->translate('Page URL');?> :
+	<?php echo $this->translate('Page URL');?> :
 	<br />
 	<input type="text" class="px250" id="page_url" name="page_url" />
  	<br /> 	
-	<?php echo  $this->translate('Page description');?> :
+	<?php echo $this->translate('Page description');?> :
 	<br />
 	<input type="text" id="page_description" class="px250" name="page_description" />	
 	<input type='hidden' name='form_action' value='add_page' />
 	<br /><br />
-	<input  type='button' onclick='addPage()' value='<?php echo  $this->translate('Add');?>' class="px50 fright"/>
+	<input  type='button' onclick='addPage()' value='<?php echo $this->translate('Add');?>' class="px50 fright"/>
 	<div class="cleaner"></div>
 	<br /><br />
  </form>

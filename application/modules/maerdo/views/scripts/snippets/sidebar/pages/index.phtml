@@ -1,13 +1,13 @@
-   <span class="ul-header"><a id="toggle-pagesnav" href="#" name="toggle-pagesnav"><?php echo  $this->translate('Module')?></a></span>
+   <span class="ul-header"><a id="toggle-pagesnav" href="#" name="toggle-pagesnav"><?php echo $this->translate('Module')?></a></span>
                     <ul id="pagesnav">
-						<li><a class="icn_manage_pages" href="/maerdo/pages/"><?php echo  $this->translate('Pages list')?></a></li>
-                        <li><a class="icn_add_pages" href="#" onclick='showPageForm()'><?php echo  $this->translate('Add a page')?></a></li>                        
+						<li><a class="icn_manage_pages" href="/maerdo/pages/"><?php echo $this->translate('Pages list')?></a></li>
+                        <li><a class="icn_add_pages" href="#" onclick='showPageForm()'><?php echo $this->translate('Add a page')?></a></li>                        
                     </ul>
 
                     <span class="ul-header">Statistics</span>
                     <ul>
-						<li>Pages: <?php echo  $this->sidebarCountPage?> </li>
-                        <li>Modules: <?php echo  $this->sidebarCountModule?> </li>
-                        <li>Controller: <?php echo  $this->sidebarCountController?> </li>
-                        <li>Action: <?php echo  $this->sidebarCountAction?> </li>                        
+						<li>Pages: <?=$this->sidebarCountPage?> </li>
+                        <li>Modules: <?=$this->sidebarCountModule?> </li>
+                        <li>Controller: <?=$this->sidebarCountController?> </li>
+                        <li>Action: <?=$this->sidebarCountAction?> </li>                       
                     </ul>

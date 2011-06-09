@@ -1,21 +1,21 @@
 <div id="page-header">
-	<h1><?php echo  $this->translate('Database management')?></h1>
+	<h1><?php echo $this->translate('Database management')?></h1>
 </div>
 <br />
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px700'>
 	<?php if($this->notification_error=='add_database_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to add the database.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to add the database.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_error=='delete_database_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the database.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the database.');?><br /></div>
 	<?php endif;?>	
 	<?php if($this->notification_error=='deletedefaultadapter_database_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the default database.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the default database.');?><br /></div>
 	<?php endif;?>		
 	<?php if($this->notification_error=='adddefaultadapter_database_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to set the default database.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to set the default database.');?><br /></div>
 	<?php endif;?>		
 </div>
 <br />
@@ -25,16 +25,16 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='add_database_success'):?>
-	<div><?php echo  $this->translate('The database has been created.');?><br /></div>
+	<div><?php echo $this->translate('The database has been created.');?><br /></div>
 	<?php endif;?>		
 	<?php if($this->notification_success=='delete_database_success'):?>
-	<div><?php echo  $this->translate('The database has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('The database has been deleted.');?><br /></div>
 	<?php endif;?>	
 	<?php if($this->notification_success=='deletedefaultadapter_database_success'):?>
-	<div><?php echo  $this->translate('The default database has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('The default database has been deleted.');?><br /></div>
 	<?php endif;?>	
 	<?php if($this->notification_success=='adddefaultadapter_database_success'):?>
-	<div><?php echo  $this->translate('The default database has been setted.');?><br /></div>
+	<div><?php echo $this->translate('The default database has been setted.');?><br /></div>
 	<?php endif;?>	
 </div>
 <br />
@@ -42,26 +42,26 @@
 
 
 <div class='notification_error_whitout_img px700 hidden' id='form_database_error'>	
-	<div id='form_error_database_name' class='hidden'><?php echo  $this->translate('You must set a name to validate form.');?><br /></div>
-	<div id='form_error_database_hostname' class='hidden'><?php echo  $this->translate('You must set a hostname to validate form.');?><br /></div>
-	<div id='form_error_database_database' class='hidden'><?php echo  $this->translate('You must set a database name to validate form.');?><br /></div>
-	<div id='form_error_database_username' class='hidden'><?php echo  $this->translate('You must set a username to validate form.');?><br /></div>
-	<div id='form_error_database_password' class='hidden'><?php echo  $this->translate('You must set a password to validate form.');?><br /></div>	
+	<div id='form_error_database_name' class='hidden'><?php echo $this->translate('You must set a name to validate form.');?><br /></div>
+	<div id='form_error_database_hostname' class='hidden'><?php echo $this->translate('You must set a hostname to validate form.');?><br /></div>
+	<div id='form_error_database_database' class='hidden'><?php echo $this->translate('You must set a database name to validate form.');?><br /></div>
+	<div id='form_error_database_username' class='hidden'><?php echo $this->translate('You must set a username to validate form.');?><br /></div>
+	<div id='form_error_database_password' class='hidden'><?php echo $this->translate('You must set a password to validate form.');?><br /></div>	
 </div>
 <br />
 
-<h2><?php echo  $this->translate('Database');?></h2>	
-<a href='#' onclick='$("#database_new").toggle()'><img class="pr t3 mr5" src='/images/icons/add.png' alt='add' /><?php echo  $this->translate('Add a database')?></a>
+<h2><?php echo $this->translate('Database');?></h2>	
+<a href='#' onclick='$("#database_new").toggle()'><img class="pr t3 mr5" src='/images/icons/add.png' alt='add' /><?php echo $this->translate('Add a database')?></a>
 <br /><br />
 <table class='px500'>
 	<tr class="bggrey bold">
-		<td><?php echo  $this->translate('Name');?></td>
-		<td><?php echo  $this->translate('Adapter');?></td>
-		<td><?php echo  $this->translate('Host');?></td>
-		<td><?php echo  $this->translate('Database');?></td>
-		<td><?php echo  $this->translate('User');?></td>
-		<td><?php echo  $this->translate('Password');?></td>
-		<td><?php echo  $this->translate('Action');?></td>
+		<td><?php echo $this->translate('Name');?></td>
+		<td><?php echo $this->translate('Adapter');?></td>
+		<td><?php echo $this->translate('Host');?></td>
+		<td><?php echo $this->translate('Database');?></td>
+		<td><?php echo $this->translate('User');?></td>
+		<td><?php echo $this->translate('Password');?></td>
+		<td><?php echo $this->translate('Action');?></td>
 	</tr>	
 <?php 
 $class="bggrey";
@@ -75,14 +75,14 @@ if(is_array($this->databases)):
 				
 				
 ?>
-			<tr class="<?php echo $class?>">
-				<td><?php echo $database['name']?></td>
-				<td><?php echo $database['adapter']?></td>
-				<td><?php echo $database['hostname']?></td>
-				<td><?php echo $database['database']?></td>
-				<td><?php echo $database['username']?></td>
-				<td><?php echo $database['password']?></td>
-				<td><a href='/maerdo/component/database?form_action=delete&id=<?php echo $database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+			<tr class="<?=$class?>">
+				<td><?=$database['name']?></td>
+				<td><?=$database['adapter']?></td>
+				<td><?=$database['hostname']?></td>
+				<td><?=$database['database']?></td>
+				<td><?=$database['username']?></td>
+				<td><?=$database['password']?></td>
+				<td><a href='/maerdo/component/database?form_action=delete&id=<?=$database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
 			</tr>
 	<?php endif;?>	
 	<?php endforeach;
@@ -93,11 +93,11 @@ endif;?>
 <input type="hidden" name="form_action" value="add_database">
 <table class="ml100 hidden" id="database_new">
 	<tr>
-		<td class="px200"><?php echo  $this->translate('Name')?> :</td>
+		<td class="px200"><?php echo $this->translate('Name')?> :</td>
 		<td><input id='database_name' value="" type="text" class="px200" name="database[name]"></td>
 	</tr>		
 	<tr>
-		<td class="px200"><?php echo  $this->translate('Adapter')?> :</td>
+		<td class="px200"><?php echo $this->translate('Adapter')?> :</td>
 		<td>
 			<select name="database[adapter]">				
 				<option  value="pdo_mysql">pdo_mysql</option>
@@ -112,19 +112,19 @@ endif;?>
 		</td>
 	</tr>
 	<tr>
-		<td class="px200"><?php echo  $this->translate('Hostname')?> :</td>
+		<td class="px200"><?php echo $this->translate('Hostname')?> :</td>
 		<td><input id='database_hostname' value="" type="text" class="px200" name="database[hostname]"></td>
 	</tr>
 	<tr>
-		<td class="px200"><?php echo  $this->translate('Database')?> :</td>
+		<td class="px200"><?php echo $this->translate('Database')?> :</td>
 		<td><input id='database_database' value="" type="text" class="px200" name="database[database]"></td>
 	</tr>	
 	<tr>
-		<td class="px200"><?php echo  $this->translate('Username')?> :</td>
+		<td class="px200"><?php echo $this->translate('Username')?> :</td>
 		<td><input id='database_username' value="" type="text" class="px200" name="database[username]"></td>
 	</tr>	
 	<tr>
-		<td class="px200"><?php echo  $this->translate('Password')?> :</td>
+		<td class="px200"><?php echo $this->translate('Password')?> :</td>
 		<td><input id='database_password' value="" type="password" class="px200" name="database[password]"></td>
 	</tr>	
 	<tr>
@@ -137,12 +137,12 @@ endif;?>
 </table>
 </form>
 
-<h2><?php echo  $this->translate('Select a  default database connection for a module');?></h2>
+<h2><?php echo $this->translate('Select a  default database connection for a module');?></h2>
 
 
 
 <div id='form_module_error' class='h50 hidden notification_error px400'>	
-	<div><?php echo  $this->translate('You need to select a database and a module.');?></div>	
+	<div><?php echo $this->translate('You need to select a database and a module.');?></div>	
 </div>	
 <br />
 
@@ -150,24 +150,24 @@ endif;?>
 <input type="hidden" name="form_action" value="addDefaultAdapter">
 <select id='form_module_id' name='module_id' class="px200">
 	<?php foreach($this->modules as $module):?>
-		<option value='<?php echo  $module['id']?>'><?php echo  $module['name']?></option>
+		<option value='<?php echo $module['id']?>'><?php echo $module['name']?></option>
 	<?php endforeach;?>
 </select>	
 <select id='form_database_id' name='database_id' class="px200">	
 	<?php foreach($this->databases as $database):?>
 		<?php if($database['name']!="maerdo_db") :?>
-		<option value='<?php echo  $database['id']?>'><?php echo  $database['name']?></option>
+		<option value='<?php echo $database['id']?>'><?php echo $database['name']?></option>
 		<?php endif;?>
 	<?php endforeach;?>
 </select>
-<input type="submit" value="<?php echo  $this->translate('Set to default adapter');?>" class="px150"/>
+<input type="submit" value="<?php echo $this->translate('Set to default adapter');?>" class="px150"/>
 </form>
 <br /><br />
 <table class='px500'>
 	<tr class="bggrey bold">
-		<td><?php echo  $this->translate('Module');?></td>
-		<td><?php echo  $this->translate('Database');?></td>	
-		<td><?php echo  $this->translate('Action');?></td>	
+		<td><?php echo $this->translate('Module');?></td>
+		<td><?php echo $this->translate('Database');?></td>	
+		<td><?php echo $this->translate('Action');?></td>	
 	</tr>	
 <?php 
 $class="bggrey";
@@ -178,10 +178,10 @@ if(is_array($this->modulesDatabases)):
 		else
 			$class="bggrey";	
 	?>
-		<tr class="<?php echo $class?>">
-			<td><?php echo $moduleDatabase['module_name']?></td>
-			<td><?php echo $moduleDatabase['database_name']?></td>
-			<td><a href='/maerdo/component/database?form_action=deleteDefaultadApter&id=<?php echo $moduleDatabase['da_id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+		<tr class="<?=$class?>">
+			<td><?=$moduleDatabase['module_name']?></td>
+			<td><?=$moduleDatabase['database_name']?></td>
+			<td><a href='/maerdo/component/database?form_action=deleteDefaultadApter&id=<?=$moduleDatabase['da_id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
 		</tr>
 	<?php endforeach;
 endif;?>	

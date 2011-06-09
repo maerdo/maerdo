@@ -1,47 +1,47 @@
 <div id="page-header">
-	<h1><?php echo  $this->translate('Forms')?></h1>
+	<h1><?php echo $this->translate('Forms')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px700'>
 	<?php if($this->notification_error=='add_form_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to add form.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to add form.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_error=='delete_form_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete form.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete form.');?><br /></div>
 	<?php endif;?>	
 </div>
 <br /><br />
 <?php endif;?>
 
 <div id='form_error' class='notification_error hidden px700'>
-	<div><?php echo  $this->translate('All field must be setted to valid form.');?><br /></div>
+	<div><?php echo $this->translate('All field must be setted to valid form.');?><br /></div>
 </div>
 <br />
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='add_form_success'):?>
-	<div><?php echo  $this->translate('The form has been added.');?><br /></div>
+	<div><?php echo $this->translate('The form has been added.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_success=='delete_form_success'):?>
-	<div><?php echo  $this->translate('The form has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('The form has been deleted.');?><br /></div>
 	<?php endif;?>	
 </div>	
 <br /><br />
 <?php endif;?>
 
-<a href='#' onclick='$("#form_add_div").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo  $this->translate('Add a form')?></a>
+<a href='#' onclick='$("#form_add_div").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo $this->translate('Add a form')?></a>
 <br /><br />
 <div id='form_add_div' class='hidden'>
 	<form id='form' action='/maerdo/component/forms/' method='post'>
 		<input type="hidden" name="form_action" value="add_form" />
 		<table>
 			<tr>
-				<td><?php echo  $this->translate('Form name')?> :</td>
+				<td><?php echo $this->translate('Form name')?> :</td>
 				<td><input type="text" id='form_name' name="form[name]" class="px200" /></td>
 			</tr>
 			<tr>
-				<td><?php echo  $this->translate('Template')?> :</td>
+				<td><?php echo $this->translate('Template')?> :</td>
 				<td>
 					<select id="form_template" name="form[template]" class="px200">
 						<?php 
@@ -55,11 +55,11 @@
 				</td>
 			</tr>					
 			<tr>
-				<td><?php echo  $this->translate('Action URL')?> :</td>
+				<td><?php echo $this->translate('Action URL')?> :</td>
 				<td><input type="text" id="form_actionurl" name="form[action_url]" class="px200" /></td>
 			</tr>	
 			<tr>
-				<td><?php echo  $this->translate('Method')?> :</td>
+				<td><?php echo $this->translate('Method')?> :</td>
 				<td>
 					<select name="form[method]" class="px200">
 						<option value="post">POST</option>
@@ -75,8 +75,8 @@
 </div>
 <table class="px400">
 	<tr class="bggrey bold">
-		<td><?php echo  $this->translate('Form name')?></td>
-		<td class="px50"><?php echo  $this->translate('Actions')?></td>
+		<td><?php echo $this->translate('Form name')?></td>
+		<td class="px50"><?php echo $this->translate('Actions')?></td>
 	</tr>
 	<?php foreach($this->forms as $key=>$form):
 	if($key%2==0) {
@@ -85,11 +85,11 @@
 		$class="bggreylight";
 	}
 	?>
-	<tr class="<?php echo $class?>">
-		<td><?php echo $form->name?></td>
+	<tr class="<?=$class?>">
+		<td><?=$form->name?></td>
 		<td>
-			<a href='/maerdo/component/forms/edit/<?php echo $form->id?>'><img src='/images/icons/edit.gif'></a>
-			<a href='/maerdo/component/forms/delete/<?php echo $form->id?>'><img src='/images/icons/delete.gif'></a>
+			<a href='/maerdo/component/forms/edit/<?=$form->id?>'><img src='/images/icons/edit.gif'></a>
+			<a href='/maerdo/component/forms/delete/<?=$form->id?>'><img src='/images/icons/delete.gif'></a>
 		</td>
 	</tr>
 	<?php endforeach;?>

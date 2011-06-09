@@ -1,24 +1,24 @@
 
 <div id="page-header">
-	<h1><?php echo  $this->translate('Parameters')?></h1>
+	<h1><?php echo $this->translate('Parameters')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px900'>
 	<?php if($this->notification_error=='update_password_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to update admin password.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to update admin password.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='update_password_mismatch'):?>
-	<div><?php echo  $this->translate('Password and confirmation password mismatch.');?><br /></div>
+	<div><?php echo $this->translate('Password and confirmation password mismatch.');?><br /></div>
 	<?php endif;?>		
 	
 	<?php if($this->notification_error=='update_password_oldpassword'):?>
-	<div><?php echo  $this->translate('Old password is wrong.');?><br /></div>
+	<div><?php echo $this->translate('Old password is wrong.');?><br /></div>
 	<?php endif;?>	
 	
 	<?php if($this->notification_error=='update_language_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to update the default language.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to update the default language.');?><br /></div>
 	<?php endif;?>			
 </div>
 <br /><br />
@@ -28,28 +28,28 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px900'>
 	<?php if($this->notification_success=='update_password_success'):?>
-	<div><?php echo  $this->translate('The admin password  has been updated.');?><br /></div>
+	<div><?php echo $this->translate('The admin password  has been updated.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_success=='update_language_success'):?>
-	<div><?php echo  $this->translate('The default language has been updated.');?><br /></div>
+	<div><?php echo $this->translate('The default language has been updated.');?><br /></div>
 	<?php endif;?>
 </div>
 <br /><br />
 <?php endif;?>
 
 
-<h2><?php echo  $this->translate('Language')?></h2>
+<h2><?php echo $this->translate('Language')?></h2>
 
 <form id="parameters_language_form" action='/maerdo/parameters/' method="post">
 <input type="hidden" name="form_action" value="update_language" />
 <div class="px200 fleft">
-<?php echo  $this->translate('Select application language')?> :
+<?php echo $this->translate('Select application language')?> :
 </div>
 <select name="language" class="fleft px200">
 	<?php $selected="";if($this->default_language=="fr") $selected='selected="selected"'?>
-	<option <?php echo $selected?> value="fr">Francais</option>
+	<option <?=$selected?> value="fr">Francais</option>
 	<?php $selected="";if($this->default_language=="en") $selected='selected="selected"'?>
-	<option <?php echo $selected?> value="en">English</option>
+	<option <?=$selected?> value="en">English</option>
 </select>
 <img onclick="$('#parameters_language_form').submit();" class="pointer fleft ml5" src='/tools/button/white/Update language/000000/arial/10/edit.gif/0/0' />
 </form>
@@ -58,18 +58,18 @@
 <br /><br />
 <form id="parameters_password_form" action='/maerdo/parameters/' method="post">
 <input type="hidden" name="form_action" value="update_password" />
-<h2><?php echo  $this->translate('Password')?></h2>
+<h2><?php echo $this->translate('Password')?></h2>
 <table>
 	<tr>
-		<td class="px200"><?php echo  $this->translate('Old password')?> :</td>
+		<td class="px200"><?php echo $this->translate('Old password')?> :</td>
 		<td class="px200"><input type="password" class="px200" name="password[old]" /></td>
 	</tr>
 	<tr>
-		<td><?php echo  $this->translate('New password')?> :</td>
+		<td><?php echo $this->translate('New password')?> :</td>
 		<td><input type="password"" class="px200" name="password[new]" /></td>
 	</tr>
 	<tr>
-		<td><?php echo  $this->translate('Confirm password')?> :</td>
+		<td><?php echo $this->translate('Confirm password')?> :</td>
 		<td><input type="password" class="px200" name="password[confirm]" /></td>
 	</tr>	
 	<tr>

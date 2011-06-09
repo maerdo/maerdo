@@ -1,14 +1,14 @@
-            <span class="ul-header"><a id="toggle-pagesnav" href="#" name="toggle-pagesnav"><?php echo  $this->translate('Acl')?></a></span>
+            <span class="ul-header"><a id="toggle-pagesnav" href="#" name="toggle-pagesnav"><?php echo $this->translate('Acl')?></a></span>
                     <ul id="pagesnav">
-						<li><a  class="icn_parameters" href='/maerdo/component/cache'><?php echo  $this->translate('Configuration')?></a></li>                        
+						<li><a  class="icn_parameters" href='/maerdo/component/cache'><?php echo $this->translate('Configuration')?></a></li>                        
                     </ul>
 
                     <span class="ul-header">Statistics</span>
                     <ul>
-						<li>Pages: <?php echo  $this->sidebarCountPage?> </li>
-                        <li>Modules: <?php echo  $this->sidebarCountModule?> </li>
-                        <li>Controller: <?php echo  $this->sidebarCountController?> </li>
-                        <li>Action: <?php echo  $this->sidebarCountAction?> </li>                     
+						<li>Pages: <?=$this->sidebarCountPage?> </li>
+                        <li>Modules: <?=$this->sidebarCountModule?> </li>
+                        <li>Controller: <?=$this->sidebarCountController?> </li>
+                        <li>Action: <?=$this->sidebarCountAction?> </li>                       
                     </ul>
 
             
