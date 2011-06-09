@@ -47,9 +47,9 @@
 </div>
 <select name="language" class="fleft px200">
 	<?php $selected="";if($this->default_language=="fr") $selected='selected="selected"'?>
-	<option <?=$selected?> value="fr">Francais</option>
+	<option <?php echo $selected?> value="fr">Francais</option>
 	<?php $selected="";if($this->default_language=="en") $selected='selected="selected"'?>
-	<option <?=$selected?> value="en">English</option>
+	<option <?php echo $selected?> value="en">English</option>
 </select>
 <img onclick="$('#parameters_language_form').submit();" class="pointer fleft ml5" src='/tools/button/white/Update language/000000/arial/10/edit.gif/0/0' />
 </form>

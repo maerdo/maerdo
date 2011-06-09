@@ -75,14 +75,14 @@ if(is_array($this->databases)):
 				
 				
 ?>
-			<tr class="<?=$class?>">
-				<td><?=$database['name']?></td>
-				<td><?=$database['adapter']?></td>
-				<td><?=$database['hostname']?></td>
-				<td><?=$database['database']?></td>
-				<td><?=$database['username']?></td>
-				<td><?=$database['password']?></td>
-				<td><a href='/maerdo/component/database?form_action=delete&id=<?=$database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+			<tr class="<?php echo $class?>">
+				<td><?php echo $database['name']?></td>
+				<td><?php echo $database['adapter']?></td>
+				<td><?php echo $database['hostname']?></td>
+				<td><?php echo $database['database']?></td>
+				<td><?php echo $database['username']?></td>
+				<td><?php echo $database['password']?></td>
+				<td><a href='/maerdo/component/database?form_action=delete&id=<?php echo $database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
 			</tr>
 	<?php endif;?>	
 	<?php endforeach;
@@ -178,10 +178,10 @@ if(is_array($this->modulesDatabases)):
 		else
 			$class="bggrey";	
 	?>
-		<tr class="<?=$class?>">
-			<td><?=$moduleDatabase['module_name']?></td>
-			<td><?=$moduleDatabase['database_name']?></td>
-			<td><a href='/maerdo/component/database?form_action=deleteDefaultadApter&id=<?=$moduleDatabase['da_id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+		<tr class="<?php echo $class?>">
+			<td><?php echo $moduleDatabase['module_name']?></td>
+			<td><?php echo $moduleDatabase['database_name']?></td>
+			<td><a href='/maerdo/component/database?form_action=deleteDefaultadApter&id=<?php echo $moduleDatabase['da_id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
 		</tr>
 	<?php endforeach;
 endif;?>	

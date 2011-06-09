@@ -45,7 +45,7 @@
 		<table>
 			<tr>
 				<td><?php echo $this->translate('Form name')?> :</td>
-				<td><input id="form_name" type="text" value="<?=$this->form_info->name?>" name="form[name]" class="px200" /></td>
+				<td><input id="form_name" type="text" value="<?php echo $this->form_info->name?>" name="form[name]" class="px200" /></td>
 			</tr>
 			<tr>
 				<td><?php echo $this->translate('Template')?> :</td>
@@ -64,7 +64,7 @@
 			</tr>					
 			<tr>
 				<td><?php echo $this->translate('Action URL')?> :</td>
-				<td><input id="form_actionurl" type="text" value="<?=$this->form_info->action?>" name="form[action_url]" class="px200" /></td>
+				<td><input id="form_actionurl" type="text" value="<?php echo $this->form_info->action?>" name="form[action_url]" class="px200" /></td>
 			</tr>	
 			<tr>
 				<td><?php echo $this->translate('Method')?> :</td>
@@ -85,7 +85,7 @@
 <h2><?php echo $this->translate('Fields');?></h2>
 <h3><?php echo $this->translate('Add a field')?></h3>
 <div id='form_add_field_div'>
-	<form  id='form_add_field' action='/maerdo/component/forms/edit/<?=$this->form_id?>' method='post'>
+	<form  id='form_add_field' action='/maerdo/component/forms/edit/<?php echo $this->form_id?>' method='post'>
 	<input type="hidden" name="form_action" value="add_field" />
 	<div id='form_field_error' class='notification_error hidden px700'>
 		<div><?php echo $this->translate('All field must be setted to valid form.');?><br /></div>
@@ -99,7 +99,7 @@
 					<?php 
 					if(is_array($this->fieldTypes)):
 						foreach($this->fieldTypes as $type):?>
-							<option value='<?=$type->type?>'><?=$type->type?></option>						
+							<option value='<?php echo $type->type?>'><?php echo $type->type?></option>						
 					<?php 
 						endforeach;
 					endif;
@@ -132,11 +132,11 @@
 		if(is_array($this->fields)):
 			foreach($this->fields as $field):?>
 				<tr>
-					<td><?=$field->name?></td>
-					<td><?=$field->type?></td>					
+					<td><?php echo $field->name?></td>
+					<td><?php echo $field->type?></td>					
 					<td>
-						<a href='/maerdo/component/forms/edit/field/<?=$field->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
-						<a href='/maerdo/component/forms/edit/<?=$this->form_id?>/?form_action=delete_field&field_id=<?=$field->id?>'><img src='/images/icons/delete.gif' alt='delete' />
+						<a href='/maerdo/component/forms/edit/field/<?php echo $field->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
+						<a href='/maerdo/component/forms/edit/<?php echo $this->form_id?>/?form_action=delete_field&field_id=<?php echo $field->id?>'><img src='/images/icons/delete.gif' alt='delete' />
 					</td>
 				</tr>					
 		<?php 

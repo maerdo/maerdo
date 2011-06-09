@@ -32,7 +32,7 @@
 		<option value="">-- Select parent --</option>
 		<option value="">None</option>
 		<?php foreach($this->aclRoles as $role):?>
-		<option value='<?=$role->role?>'><?=$role->role?></option>
+		<option value='<?php echo $role->role?>'><?php echo $role->role?></option>
 		<?php endforeach;?>
 	</select>
 	<input type="text" id="role" name="role" />
@@ -54,10 +54,10 @@
 		else
 			$class="";	
 		?>
-		<tr class="<?=$class?>">		
-			<td><?=$role->role?></td>
-			<td><?=$role->parent?></td>
-			<td><a href='/maerdo/component/acl?form_action=delete&id=<?=$role->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a></td>
+		<tr class="<?php echo $class?>">		
+			<td><?php echo $role->role?></td>
+			<td><?php echo $role->parent?></td>
+			<td><a href='/maerdo/component/acl?form_action=delete&id=<?php echo $role->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a></td>
 		</tr>
 	<?php endforeach;?>
 </table>		

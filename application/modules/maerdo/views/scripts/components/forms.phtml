@@ -85,11 +85,11 @@
 		$class="bggreylight";
 	}
 	?>
-	<tr class="<?=$class?>">
-		<td><?=$form->name?></td>
+	<tr class="<?php echo $class?>">
+		<td><?php echo $form->name?></td>
 		<td>
-			<a href='/maerdo/component/forms/edit/<?=$form->id?>'><img src='/images/icons/edit.gif'></a>
-			<a href='/maerdo/component/forms/delete/<?=$form->id?>'><img src='/images/icons/delete.gif'></a>
+			<a href='/maerdo/component/forms/edit/<?php echo $form->id?>'><img src='/images/icons/edit.gif'></a>
+			<a href='/maerdo/component/forms/delete/<?php echo $form->id?>'><img src='/images/icons/delete.gif'></a>
 		</td>
 	</tr>
 	<?php endforeach;?>

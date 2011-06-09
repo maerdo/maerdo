@@ -30,7 +30,7 @@
 <?php if($this->module_id!=null): ?>
 <form id="form_auth" action='/maerdo/component/auth' method='post'>
 <h2><?echo $this->translate('Database configuration');?></h2>
-<input type="hidden" name="module_id" value="<?=$this->module_id?>" />
+<input type="hidden" name="module_id" value="<?php echo $this->module_id?>" />
 <input type="hidden" name="form_action" value="update_auth" />
 
 <div id='form_error' class='hidden notification_error px700'>
@@ -46,7 +46,7 @@
 				<?php foreach($this->databases as $database):?>
 					<?php if($database['name']!="maerdo_db") :?>
 						<?php (isset($this->authconfiguration['database_name']) && $this->authconfiguration['database_name']==$database['name']) ? $selected='selected="selected"' : $selected=''?>
-						<option <?php echo $selected?>  value="<?=$database['name']?>"><?=$database['name']?></option>
+						<option <?php echo $selected?>  value="<?php echo $database['name']?>"><?php echo $database['name']?></option>
 					<?php endif;?>	
 				<?php endforeach;?>		
 			</select>

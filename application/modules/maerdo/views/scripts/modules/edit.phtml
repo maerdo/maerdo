@@ -1,6 +1,6 @@
 
 <div id="page-header">
-	<h1><?php echo ($this->translate('Edit module'));?> "<?=$this->module_details['name']?>"</h1>
+	<h1><?php echo ($this->translate('Edit module'));?> "<?php echo $this->module_details['name']?>"</h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
@@ -75,11 +75,11 @@
 		foreach($this->module_details['controllers'] as $controller):
 			($class=='') ? $class='bggreylight' : $class='';
 		?>
-			<tr class='<?=$class?>'>
-				<td class="px300"><img src='/images/icons/folder.png' alt='Controller' class="pr t3 mr5"/><?=$controller['name']?></td>
-				<td class="px400"><?=$controller['description']?></td>
+			<tr class='<?php echo $class?>'>
+				<td class="px300"><img src='/images/icons/folder.png' alt='Controller' class="pr t3 mr5"/><?php echo $controller['name']?></td>
+				<td class="px400"><?php echo $controller['description']?></td>
 				<td class="px20">
-					<a href='/maerdo/modules/edit/<?php echo $this->module_details['id']?>?form_action=delete_controller&controller_id=<?=$controller['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+					<a href='/maerdo/modules/edit/<?php echo $this->module_details['id']?>?form_action=delete_controller&controller_id=<?php echo $controller['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
 				</td>
 			</tr>		
 			<?php 
@@ -88,15 +88,15 @@
 					foreach($controller['actions'] as $action):
 						($class=='') ? $class='bggreylight' : $class='';
 						?>	
-						<tr class='<?=$class?>'>
+						<tr class='<?php echo $class?>'>
 							<td class="px200">
 								<div class='ml20'>				
-									<img src='/images/icons/page_white_text_width.png' class='pr t3 mr5' /><?=$action['name']?><br />				
+									<img src='/images/icons/page_white_text_width.png' class='pr t3 mr5' /><?php echo $action['name']?><br />				
 								</div>
 							</td>
-							<td><?=$action['description']?></td>
+							<td><?php echo $action['description']?></td>
 							<td class='px20'>
-								<a href='/maerdo/modules/edit/<?php echo $this->module_details['id']?>?form_action=delete_action&action_id=<?=$action['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+								<a href='/maerdo/modules/edit/<?php echo $this->module_details['id']?>?form_action=delete_action&action_id=<?php echo $action['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
 							</td>	
 						</tr>
 					<?php endforeach;
@@ -116,7 +116,7 @@
 	</div>
 	<br />
  </div>
- <form id='form_controller_add' action='/maerdo/modules/edit/<?=$this->module_details['id']?>' method='post'>
+ <form id='form_controller_add' action='/maerdo/modules/edit/<?php echo $this->module_details['id']?>' method='post'>
  	<br />
 	<?php echo $this->translate('Controller name');?> :
 	<br />
@@ -140,13 +140,13 @@
 	</div>
 	<br />
  </div>
- <form id='form_action_add' action='/maerdo/modules/edit/<?=$this->module_details['id']?> ' method='post'>
+ <form id='form_action_add' action='/maerdo/modules/edit/<?php echo $this->module_details['id']?> ' method='post'>
  	<br />
 	<?php echo $this->translate('Controller');?> :
 	<br />
 	<select name='controller_id'>
 		<?php foreach($this->module_details['controllers'] as $controller):?>
-			<option value='<?=$controller['id']?>'><?=$controller['name']?></option>
+			<option value='<?php echo $controller['id']?>'><?php echo $controller['name']?></option>
 		<?php endforeach;?>
 	</select>
 	<br /><br />

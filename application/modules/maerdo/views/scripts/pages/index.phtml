@@ -38,7 +38,7 @@
 			<option>All</option>
 			<?php foreach($this->modules as $module):?>
 				<?php $selected="";if($this->module_id==$module->id) $selected="selected='selected'";?>
-				<option <?=$selected?> value="<?=$module->id?>"><?=$module->name?></option>
+				<option <?php echo $selected?> value="<?php echo $module->id?>"><?php echo $module->name?></option>
 			<?php endforeach;?>
 		</select>
 	</span>	
@@ -48,7 +48,7 @@
 			<option value="all">All</option>
 			<?php foreach($this->controllers as $controller):?>
 				<?php $selected="";if($this->controller_id==$controller['id']) $selected="selected='selected'";?>
-				<option <?=$selected?> value="<?=$controller['id']?>"><?=$controller['name']?></option>
+				<option <?php echo $selected?> value="<?php echo $controller['id']?>"><?php echo $controller['name']?></option>
 			<?php endforeach;?>			
 		</select>
 	</span>	
@@ -74,16 +74,16 @@
 			else
 				$class="";
 			?>		
-			<tr class="<?=$class?>">
+			<tr class="<?php echo $class?>">
 				<td class=""><img src='/images/icons/page_white_text_width.png' alt='Page' class='mr5 pr t3'/></td>
-				<td class="px200"><?=$page->url?></td>
-				<td class="px100"><?=My_Class_Maerdo_Framework_Module::getNameById($page->module_id);?></td>
-				<td class="px100"><?=My_Class_Maerdo_Framework_Controller::getNameById($page->controller_id);?></td>
-				<td class="px100"><?=My_Class_Maerdo_Framework_Action::getNameById($page->action_id);?></td>				
-				<td class="px400"><?=$page->description?></td>
+				<td class="px200"><?php echo $page->url?></td>
+				<td class="px100"><?php echo My_Class_Maerdo_Framework_Module::getNameById($page->module_id);?></td>
+				<td class="px100"><?php echo My_Class_Maerdo_Framework_Controller::getNameById($page->controller_id);?></td>
+				<td class="px100"><?php echo My_Class_Maerdo_Framework_Action::getNameById($page->action_id);?></td>				
+				<td class="px400"><?php echo $page->description?></td>
 				<td class="px50">
-					<a href='/maerdo/pages/edit/<?=$page->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
-					<a href='/maerdo/pages/?form_action=delete_page&page_id=<?=$page->id?>'><img src='/images/icons/delete.gif' alt='edit' /></a>
+					<a href='/maerdo/pages/edit/<?php echo $page->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
+					<a href='/maerdo/pages/?form_action=delete_page&page_id=<?php echo $page->id?>'><img src='/images/icons/delete.gif' alt='edit' /></a>
 				</td>
 			</tr>	
 		<?php 
@@ -113,7 +113,7 @@
 		<option value="null">-----</option>
 		<?php foreach($this->modules as $module):?>
 			<?php $selected="";if($this->module_id==$module->id) $selected="selected='selected'";?>
-			<option <?=$selected?> value="<?=$module->id?>"><?=$module->name?></option>
+			<option <?php echo $selected?> value="<?php echo $module->id?>"><?php echo $module->name?></option>
 		<?php endforeach;?>	
 	</select>
 	<br />
@@ -122,7 +122,7 @@
 	<select id="page_controller_id" name="page_controller_id" class="px150">
 		<option value="null">-----</option>	
 		<?php foreach($this->firtstModuleController as $controller):?>			
-			<option <?=$selected?> value="<?=$controller['id']?>"><?=$controller['name']?></option>
+			<option <?php echo $selected?> value="<?php echo $controller['id']?>"><?php echo $controller['name']?></option>
 		<?php endforeach;?>		
 	</select>
 	<br />
@@ -131,7 +131,7 @@
 	<select id="page_action_id" name="page_action_id" class="px150">
 		<option value="null">-----</option>
 		<?php foreach($this->firtsControllerAction as $action):?>			
-			<option <?=$selected?> value="<?=$action['id']?>"><?=$action['name']?></option>
+			<option <?php echo $selected?> value="<?php echo $action['id']?>"><?php echo $action['name']?></option>
 		<?php endforeach;?>		
 	</select>		
  	<br />

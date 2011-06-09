@@ -1,4 +1,4 @@
-<?
+<?php
 class My_Plugins_Acl extends Zend_Controller_Plugin_Abstract {
 	
 	private $_auth;

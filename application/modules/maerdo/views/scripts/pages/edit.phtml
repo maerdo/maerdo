@@ -1,6 +1,6 @@
 
 <div id="page-header">
-	<h1><?php echo $this->translate('Edit Page')?> "<?=$this->page->name?>"</h1>
+	<h1><?php echo $this->translate('Edit Page')?> "<?php echo $this->page->name?>"</h1>
 </div>
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px900'>
@@ -45,9 +45,9 @@
 				<br />
 			 </div>
 			 	         
-	         <form id='form_page_update' action='/maerdo/pages/edit/<?=$this->page->id?>' method='post'>
+	         <form id='form_page_update' action='/maerdo/pages/edit/<?php echo $this->page->id?>' method='post'>
 	         	<input type='hidden' name='form_action' value='updatePage' />
-	         	<input value="<?=$this->page->id?>" type="hidden" id="page_id" name="page_id" />
+	         	<input value="<?php echo $this->page->id?>" type="hidden" id="page_id" name="page_id" />
 	         	<table >
 			 		<tr>
 			 			<td><?php echo $this->translate('Module');?> :</td>
@@ -55,7 +55,7 @@
 							<select id="page_module_id" name="page_module_id" class="px150">
 								<?php foreach($this->modules as $module):?>
 									<?php $selected="";if($this->page->module_id==$module->id) $selected="selected='selected'";?>
-									<option <?=$selected?> value="<?=$module->id?>"><?=$module->name?></option>
+									<option <?php echo $selected?> value="<?php echo $module->id?>"><?php echo $module->name?></option>
 								<?php endforeach;?>	
 							</select>
 						</td>
@@ -66,7 +66,7 @@
 							<select id="page_controller_id" name="page_controller_id" class="px150">
 								<?php foreach($this->controllers as $controller):?>
 									<?php $selected="";if($this->page->controller_id==$controller['id']) $selected="selected='selected'";?>
-									<option <?=$selected?> value="<?=$controller['id']?>"><?=$controller['name']?></option>
+									<option <?php echo $selected?> value="<?php echo $controller['id']?>"><?php echo $controller['name']?></option>
 								<?php endforeach;?>		
 							</select>
 						</td>
@@ -77,7 +77,7 @@
 							<select id="page_action_id" name="page_action_id" class="px150">
 								<?php foreach($this->actions as $action):?>
 									<?php $selected="";if($this->page->action_id==$action['id']) $selected="selected='selected'";?>
-									<option <?=$selected?> value="<?=$action['id']?>"><?=$action['name']?></option>
+									<option <?php echo $selected?> value="<?php echo $action['id']?>"><?php echo $action['name']?></option>
 								<?php endforeach;?>		
 							</select>
 						</td>
@@ -85,21 +85,21 @@
 			 		<tr>
 			 			<td><?php echo $this->translate('Page name');?> :</td>
 						<td>
-							<input type='hidden' id='page_db_name' name='page_db_name' value='<?=$this->page->name?>' />
-							<input value="<?=$this->page->name?>" type="text" id="page_name" name="page_name" />
+							<input type='hidden' id='page_db_name' name='page_db_name' value='<?php echo $this->page->name?>' />
+							<input value="<?php echo $this->page->name?>" type="text" id="page_name" name="page_name" />
 						</td>
 					</tr>	
 			 		<tr>
 			 			<td><?php echo $this->translate('Page URL');?> :</td>
 			 			<td>
-			 				<input type='hidden' id='page_db_url' name='page_db_url' value='<?=$this->page->url?>' />
-			 				<input value="<?=$this->page->url?>" type="text" class="px250" id="page_url" name="page_url" />
+			 				<input type='hidden' id='page_db_url' name='page_db_url' value='<?php echo $this->page->url?>' />
+			 				<input value="<?php echo $this->page->url?>" type="text" class="px250" id="page_url" name="page_url" />
 			 			</td>
 			 		</tr>
 			 		<tr>
 			 			<td><?php echo $this->translate('Page description');?> :</td>
 						<td>
-							<input value="<?=$this->page->description?>" type="text" id="page_description" class="px250" name="page_description" />								
+							<input value="<?php echo $this->page->description?>" type="text" id="page_description" class="px250" name="page_description" />								
 						</td>
 					</tr>		
 					<tr>
@@ -148,11 +148,11 @@
 						<select id="page_heads_title_locale" name="locale" class="px150">
 							<?php 
 							foreach($this->titlesfreelocales as $key=>$locale):?>
-							<option value="<?=$key?>"><?=$locale?></option>
+							<option value="<?php echo $key?>"><?php echo $locale?></option>
 							<?php endforeach;?>
 						</select>				
 						<img class="pr t8" id='img_add_title' alt='Add' src='/tools/button/white/Add/000000/arial/10/add.png/0/0' /> 													
-			         	<input class="px400"  value="<?=$this->page->id?>" type="hidden" name="page_id" />
+			         	<input class="px400"  value="<?php echo $this->page->id?>" type="hidden" name="page_id" />
 			         	<br /><br />
 			         	<table  id='table_title'>
 							<tr class="bggrey bold">
@@ -168,21 +168,21 @@
 							</tr>	
 							<?php $key="0"?>		         	
 			         		<?php foreach($this->titles as $key=>$title):?>
-						 		<tr id='table_title_row_<?=$key?>'>
+						 		<tr id='table_title_row_<?php echo $key?>'>
 									<td class="px150">
-										<input value="<?=$title['locale']?>" type="hidden" id="title_<?=$key?>_locale" name="title[<?=$key?>][locale]" />
-										<?=$title['language_name']?>
+										<input value="<?php echo $title['locale']?>" type="hidden" id="title_<?php echo $key?>_locale" name="title[<?php echo $key?>][locale]" />
+										<?php echo $title['language_name']?>
 									</td>
 									<td class="px150">
-										<input class="px400" value="<?=$title['value']?>" type="text" name="title[<?=$key?>][title]" />
+										<input class="px400" value="<?php echo $title['value']?>" type="text" name="title[<?php echo $key?>][title]" />
 									</td>
 									<td class="px50">
-										<img onclick="deleteTitle(<?=$key?>)" class="pr t3" src='/images/icons/delete.gif' alt='Delete' />
+										<img onclick="deleteTitle(<?php echo $key?>)" class="pr t3" src='/images/icons/delete.gif' alt='Delete' />
 									</td>								
 								</tr>
 							<?php endforeach;?>					
 						</table>
-						<input type="hidden" id="page_title_row_id" value="<?=$key?>" />
+						<input type="hidden" id="page_title_row_id" value="<?php echo $key?>" />
 						<br /><br />
 						<img onclick="updateTitle()" class="pointer pr t8 fright" alt='Update title' src='/tools/button/white/Update titles/000000/arial/10' />
 						<div class='cleaner'></div>
@@ -213,7 +213,7 @@
 						<select id="page_heads_metattag_locale"  name="page_heads_metattag_locale" class="px150">
 								<?php
 								foreach($this->metafreelocales as $key=>$locale):?>
-								<option value="<?=$key?>"><?=$locale?></option>
+								<option value="<?php echo $key?>"><?php echo $locale?></option>
 								<?php endforeach;?>
 						</select>
 						<select id="page_heads_metatag_tag" name="page_heads_metatag_tag" class="px150">
@@ -232,27 +232,27 @@
 								<td class="px50">Action</td>
 							</tr>
 							<?php foreach($this->metas as $key=>$meta):?>				
-					 		<tr id="table_meta_row_<?=$key?>">
+					 		<tr id="table_meta_row_<?php echo $key?>">
 								<td class="vtop">
-									<?=$meta['language_name']?>
-									<input id="meta_<?=$key?>_locale" type="hidden" name="meta[<?=$key?>][locale]" value="<?=$meta['locale']?>" />
+									<?php echo $meta['language_name']?>
+									<input id="meta_<?php echo $key?>_locale" type="hidden" name="meta[<?php echo $key?>][locale]" value="<?php echo $meta['locale']?>" />
 								</td>
 								<td class="vtop">
-									<?=ucfirst($meta['meta'])?>
-									<input value="<?=$meta['meta']?>" id='meta_<?=$key?>_metatag' type="hidden" name="meta[<?=$key?>][meta]" />
+									<?php echo ucfirst($meta['meta'])?>
+									<input value="<?php echo $meta['meta']?>" id='meta_<?php echo $key?>_metatag' type="hidden" name="meta[<?php echo $key?>][meta]" />
 								</td>
 								<td class="vtop">
-									<textarea rows='4' class="px250" type="text" name="meta[<?=$key?>][value]" /><?=$meta['value']?></textarea>
+									<textarea rows='4' class="px250" type="text" name="meta[<?php echo $key?>][value]" /><?php echo $meta['value']?></textarea>
 								</td>
 								<td class="vtop">
-									<img onclick="deleteMeta(<?=$key?>)" class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
+									<img onclick="deleteMeta(<?php echo $key?>)" class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
 								</td>							
 							</tr>
 							<?php endforeach;?>
 					 				
 						</table>
 						<input type="hidden" id="page_meta_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
-						<input type="hidden" name="page_id" value="<?=$this->page->id?>" />
+						<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />
 						<br />
 						<img onclick="updateMeta()" id='img_update_meta' class="fright" alt='Update' src='/tools/button/white/Update META-TAG/000000/arial/10/' />
 						<br /><br />
@@ -292,15 +292,15 @@
 							<?php 							
 							if(count($this->jsfiles)>0) {
 								foreach($this->jsfiles as $key=>$js):?>	       	
-						 		<tr id='table_javascript_row_<?=$key?>'>
+						 		<tr id='table_javascript_row_<?php echo $key?>'>
 									<td>
-										<input class="px150 maskalpha" value="<?=$js->identifiant?>" type="text" name="javascript[<?=$key?>][identifiant]" />
+										<input class="px150 maskalpha" value="<?php echo $js->identifiant?>" type="text" name="javascript[<?php echo $key?>][identifiant]" />
 									</td>
 									<td>
-										<input class="px600" value="<?=$js->file?>" type="text" name="javascript[<?=$key?>][file]" />
+										<input class="px600" value="<?php echo $js->file?>" type="text" name="javascript[<?php echo $key?>][file]" />
 									</td>
 									<td>
-										<img onclick='deleteJavascript(<?=$key?>)' class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
+										<img onclick='deleteJavascript(<?php echo $key?>)' class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
 									</td>									
 								</tr>
 								<?php endforeach;
@@ -308,7 +308,7 @@
 							?>				 						
 						</table>
 						<input type="hidden" id="page_javascript_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
-						<input type="hidden" name="page_id" value="<?=$this->page->id?>" />						
+						<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />						
 						<br />
 						<img  id='img_update_javascript' class="fright pointer" alt='Update' src='/tools/button/white/Update Javascript/000000/arial/10/' />
 						<div class="cleaner"></div>		
@@ -344,22 +344,22 @@
 							
 							if(count($this->cssfiles)>0) {
 								foreach($this->cssfiles as $key=>$css):?>	         	
-						 		<tr id='table_css_row_<?=$key?>'>
+						 		<tr id='table_css_row_<?php echo $key?>'>
 									<td>
-										<input class="px150 maskalpha" value="<?=$css->identifiant?>" type="text" name="css[<?=$key?>][identifiant]" />
+										<input class="px150 maskalpha" value="<?php echo $css->identifiant?>" type="text" name="css[<?php echo $key?>][identifiant]" />
 									</td>
 									<td>
-										<input class="px600" value="<?=$css->file?>" type="text" name="css[<?=$key?>][file]" />
+										<input class="px600" value="<?php echo $css->file?>" type="text" name="css[<?php echo $key?>][file]" />
 									</td>
 									<td>
-										<img onclick='deleteCss(<?=$key?>)' class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
+										<img onclick='deleteCss(<?php echo $key?>)' class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
 									</td>
 								</tr>
 								<?php endforeach;
 							}?>
 						</table>	
 						<input type="hidden" id="page_css_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
-						<input type="hidden" name="page_id" value="<?=$this->page->id?>" />						
+						<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />						
 						<br />
 						<img  id='img_update_css' class=" pointer fright" alt='Update' src='/tools/button/white/Update css/000000/arial/10/' />
 						<div class="cleaner"></div>	
@@ -375,7 +375,7 @@
 	    <div id="tabs-3">
 			<iframe name="page_update_acl_iframe" id='page_update_acl_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>
 			<form target='page_update_acl_iframe' id='form_page_update_acl' action='/maerdo/pages/update/acl' method='post'>
-	         	<input type="hidden" name="page_id" value="<?=$this->page->id?>" />	
+	         	<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />	
 	         	<h2><?php echo $this->translate('ACL');?></h2>
 				
 				<div id='page_heads_acl_notification_success' class='notification_success hidden px750'>							
@@ -391,7 +391,7 @@
 			       	<?php 					       					   
 			       	$checked=""; if(in_array($role->role,$this->pageroles)==true) $checked='checked="checked"';				       		       	
 			       	?>
-			       	<input type="checkbox" <?=$checked?> name='role[<?=$role->role?>]' value="<?=$role->id?>" /> <?=ucfirst($role->role)?><br/>
+			       	<input type="checkbox" <?php echo $checked?> name='role[<?php echo $role->role?>]' value="<?php echo $role->id?>" /> <?php echo ucfirst($role->role)?><br/>
 			       					
 				<?php endforeach;?>
 				<img class="pr t8" onclick='updateACL();' alt='Update ACL' src='/tools/button/white/Update ACL/000000/arial/10' />
@@ -403,7 +403,7 @@
 	    <div id="tabs-4">
 			<iframe name="page_update_navigation_iframe" id='page_update_navigation_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>
 			<form target='page_update_navigation_iframe' id='form_page_update_navigation' action='/maerdo/pages/update/navigation' method='post'>
-	         	<input type="hidden" name="page_id" value="<?=$this->page->id?>" />	
+	         	<input type="hidden" name="page_id" value="<?php echo $this->page->id?>" />	
 	         	<h2><?php echo $this->translate('Navigation');?></h2>
 				
 				<div id='page_heads_navigation_notification_success' class='notification_success hidden px750'>							
@@ -418,7 +418,7 @@
 				<select class="px400 fleft" name="navigation[parent]">
 					<option value="0">Root</option>
 					<?php foreach($this->pages as $page) :?>
-					<option value="<?=$page->id?>"><?=$page->name?> - <?=$page->description?></option>
+					<option value="<?php echo $page->id?>"><?php echo $page->name?> - <?php echo $page->description?></option>
 					<?php endforeach;?>
 				</select>
 				<div class="cleaner"></div>
