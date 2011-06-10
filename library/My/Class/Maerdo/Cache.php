@@ -30,7 +30,8 @@ class My_Class_Maerdo_Cache {
 			if(self::$_cache->test(md5($selectObj->__toString()))!=false) {			
 				return(self::$_cache->load(md5($selectObj->__toString())));
 			} else {			
-				$stmt=$selectObj->query();			
+				$stmt=$selectObj->query();		
+				$result=$stmt->fetchAll();	
 				self::set(md5($selectObj->__toString()),$result,$ttl,array('sqlSelect'),$cache);
 				return($result);
 			}
