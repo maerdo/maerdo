@@ -1,7 +1,7 @@
 
 <h3>Error has happened. Inside this application. Sorry about that.</h3>
 <p><?php $this->message ?> (<?php echo $this->code ?>) </p>
-<?
+<?php
 if( $this->env == 'development' ) {
  if ( isset($this->info ) ) { ?>
 <?php if ( 404 == $this->code ) { ?>
