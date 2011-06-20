@@ -59,7 +59,7 @@
 			<td><?php echo $cache->name?></td>
 			<td><?php echo $cache->type?></td>
 			<td><?php echo $cache->backend_type?></td>
-			<td><input <?if($cache->default=="yes") { echo "checked='checked'";}?> type="radio" name="default" value="<?php echo $cache->id?>" /></td>
+			<td><input <?php if($cache->default=="yes") { echo "checked='checked'";}?> type="radio" name="default" value="<?php echo $cache->id?>" /></td>
 			<td>
 				<a href='/maerdo/component/cache/?form_action=update_form&id=<?php echo $cache->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
 				<a href='/maerdo/component/cache/?form_action=delete&id=<?php echo $cache->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a>			

@@ -54,10 +54,10 @@
 		<form id='options_form' action='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>' method='post'>
 			<input type='hidden' name='form_action' value='update_options' />
 			<table>
-		    <tr><td>Label :</td><td> <input type="text" name="options[label]" value="<?if(isset($this->options['options']['label'])) echo $this->options['options']['label']?>"/></td></tr>
-	        <tr><td>Description :</td><td> <input type="text" name="options[description]" value="<?if(isset($this->options['options']['description'])) echo $this->options['options']['description']?>" class="px400"/></td></tr>
-	        <tr><td>Required :</td><td><input class="pr t3" type="checkbox" <?if(isset($this->options['options']['required']) && $this->options['options']['required']=="true") echo "checked='checked'";?>name="options[required]"> </td></tr>      
-	        <tr><td>Order :</td><td><input type="text" name="options[order]" value="<?if(isset($this->options['options']['order'])) echo $this->options['options']['order']?>" size="2"/></td></tr>
+		    <tr><td>Label :</td><td> <input type="text" name="options[label]" value="<?php if(isset($this->options['options']['label'])) echo $this->options['options']['label']?>"/></td></tr>
+	        <tr><td>Description :</td><td> <input type="text" name="options[description]" value="<?php if(isset($this->options['options']['description'])) echo $this->options['options']['description']?>" class="px400"/></td></tr>
+	        <tr><td>Required :</td><td><input class="pr t3" type="checkbox" <?php if(isset($this->options['options']['required']) && $this->options['options']['required']=="true") echo "checked='checked'";?>name="options[required]"> </td></tr>      
+	        <tr><td>Order :</td><td><input type="text" name="options[order]" value="<?php if(isset($this->options['options']['order'])) echo $this->options['options']['order']?>" size="2"/></td></tr>
 			</table>
 			
 	        <br />

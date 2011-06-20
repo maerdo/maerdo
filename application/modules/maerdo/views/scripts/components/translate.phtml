@@ -67,7 +67,7 @@
 					<td class="px50"><input type="text" class="field px50" value="<?php echo $value['identifiant']?>" name="translate[<?php echo $key?>][identifiant]" /></td>
 					<td class="px50"><input type="text" class="field px50" value="<?php echo $value['locale']?>" name="translate[<?php echo $key?>][locale]" /></td>
 					<td><input type="text" class="field" value="<?php echo $value['language_name']?>" name="translate[<?php echo $key?>][language_name]" /></td>
-					<td><input type="radio" name="translate[default]" value="<?php echo $key?>" <?if($value['default']==1) echo "checked='checked'"?>></td>
+					<td><input type="radio" name="translate[default]" value="<?php echo $key?>" <?php if($value['default']==1) echo "checked='checked'"?>></td>
 					<td><a href='#' onclick='deleteLanguage(<?php echo $key?>)'><img src='/images/icons/delete.gif' /></a></tr>																																																				
 				</tr>
 			<?php endforeach;?>
