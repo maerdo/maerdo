@@ -19,6 +19,10 @@
 <div class="box">
 
 <form method="post" action="/maerdo/login" class="login">
+  <?php if($this->error):?>
+  	<div class="maxsize textcenter"><span class="red">Login or password incorrect</span></div>
+  	<br />
+  <?php endif?>
   <div class="row">
     <?php echo $this->form->username->renderLabel();?>
     <?php echo $this->form->username->renderViewHelper();?>

@@ -26,6 +26,9 @@ class Maerdo_IndexController extends Zend_Controller_Action
 				$this->view->form_error=true;
 			}
 		} 	
+		if($this->_getParam('error')=="error") {
+			$this->view->error=true;
+		}
 		$this->view->form=$form;	
     }   
 
