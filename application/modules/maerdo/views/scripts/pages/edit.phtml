@@ -174,7 +174,7 @@
 										<?php echo $title['language_name']?>
 									</td>
 									<td class="px150">
-										<input class="px400" value="<?php echo $title['value']?>" type="text" name="title[<?php echo $key?>][title]" />
+										<input class="px400" value="<?php echo stripslashes($title['value'])?>" type="text" name="title[<?php echo $key?>][title]" />
 									</td>
 									<td class="px50">
 										<img onclick="deleteTitle(<?php echo $key?>)" class="pr t3" src='/images/icons/delete.gif' alt='Delete' />
@@ -242,7 +242,7 @@
 									<input value="<?php echo $meta['meta']?>" id='meta_<?php echo $key?>_metatag' type="hidden" name="meta[<?php echo $key?>][meta]" />
 								</td>
 								<td class="vtop">
-									<textarea rows='4' class="px250" type="text" name="meta[<?php echo $key?>][value]" /><?php echo $meta['value']?></textarea>
+									<textarea rows='4' class="px250" type="text" name="meta[<?php echo $key?>][value]" /><?php echo stripslashes($meta['value'])?></textarea>
 								</td>
 								<td class="vtop">
 									<img onclick="deleteMeta(<?php echo $key?>)" class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
