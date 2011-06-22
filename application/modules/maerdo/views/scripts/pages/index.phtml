@@ -62,7 +62,7 @@
 		<td class="px100"><?php echo $this->translate('Module');?></td>
 		<td class="px100"><?php echo $this->translate('Controller');?></td>
 		<td class="px100"><?php echo $this->translate('Action');?></td>
-		<td class="px300"><?php echo stripslashes($this->translate('Description'));?></td>
+		<td class="px300"><?php echo $this->translate('Description');?></td>
 		<td class="px50"><?php echo $this->translate('Action');?></td>
 	</tr>	
 	<?php 
@@ -80,7 +80,7 @@
 				<td class="px100"><?php echo My_Class_Maerdo_Framework_Module::getNameById($page->module_id);?></td>
 				<td class="px100"><?php echo My_Class_Maerdo_Framework_Controller::getNameById($page->controller_id);?></td>
 				<td class="px100"><?php echo My_Class_Maerdo_Framework_Action::getNameById($page->action_id);?></td>				
-				<td class="px400"><?php echo $page->description?></td>
+				<td class="px400"><?php echo stripslashes($page->description)?></td>
 				<td class="px50">
 					<a href='/maerdo/pages/edit/<?php echo $page->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
 					<a href='/maerdo/pages/?form_action=delete_page&page_id=<?php echo $page->id?>'><img src='/images/icons/delete.gif' alt='edit' /></a>

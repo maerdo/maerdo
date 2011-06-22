@@ -99,7 +99,7 @@
 			 		<tr>
 			 			<td><?php echo $this->translate('Page description');?> :</td>
 						<td>
-							<input value="<?php echo $this->page->description?>" type="text" id="page_description" class="px250" name="page_description" />								
+							<input value="<?php echo stripslashes($this->page->description)?>" type="text" id="page_description" class="px250" name="page_description" />								
 						</td>
 					</tr>		
 					<tr>
