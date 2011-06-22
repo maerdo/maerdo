@@ -62,7 +62,7 @@
 		<td class="px100"><?php echo $this->translate('Module');?></td>
 		<td class="px100"><?php echo $this->translate('Controller');?></td>
 		<td class="px100"><?php echo $this->translate('Action');?></td>
-		<td class="px300"><?php echo $this->translate('Description');?></td>
+		<td class="px300"><?php echo stripslashes($this->translate('Description'));?></td>
 		<td class="px50"><?php echo $this->translate('Action');?></td>
 	</tr>	
 	<?php 
